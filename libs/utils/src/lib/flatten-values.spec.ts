@@ -1,4 +1,4 @@
-import { flattenValues } from "./flatten-values";
+import { flattenValues } from './flatten-values';
 
 describe('flattenValues', () => {
   it('combines unique object array values into a single array', () => {
@@ -17,5 +17,5 @@ describe('flattenValues', () => {
       wednesday: [5, 6, 7],
     };
     expect(flattenValues(menu)).toEqual([1, 2, 3, 3, 4, 5, 5, 6, 7]);
-  })
+  });
 });

@@ -1,8 +1,11 @@
 import { dedupe } from './dedupe';
 
-export function uniqueDiff<T>(initial: T[], final: T[]): {
-  added: T[],
-  removed: T[],
+export function uniqueDiff<T>(
+  initial: T[],
+  final: T[]
+): {
+  added: T[];
+  removed: T[];
 } {
   const added: T[] = [];
   const removed: T[] = [];

@@ -5,7 +5,9 @@ describe('getDynamicValue', () => {
     expect(getDynamicValue(1, [])).toBe(1);
     expect(getDynamicValue('1', [])).toBe('1');
     expect(getDynamicValue([3, 4], [])).toStrictEqual([3, 4]);
-    expect(getDynamicValue({ location: 'Brooklyn' }, [])).toStrictEqual({ location: 'Brooklyn' });
+    expect(getDynamicValue({ location: 'Brooklyn' }, [])).toStrictEqual({
+      location: 'Brooklyn',
+    });
     expect(getDynamicValue(null, [])).toBe(null);
     expect(getDynamicValue(undefined, [])).toBe(undefined);
   });

@@ -1,4 +1,4 @@
-import { lower, upper, upperFirst } from "./format";
+import { lower, upper, upperFirst } from './format';
 
 describe('formatting functions', () => {
   describe('lower', () => {
@@ -21,4 +21,4 @@ describe('formatting functions', () => {
       expect(upperFirst('second test')).toEqual('Second test');
     });
   });
-})
+});

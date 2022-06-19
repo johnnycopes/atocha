@@ -16,5 +16,5 @@ describe('createArray', () => {
   it('returns an array from start number until end number, inclusive', () => {
     expect(createArray(8, 5)).toStrictEqual([5, 6, 7, 8]);
     expect(createArray(2, 0)).toStrictEqual([0, 1, 2]);
-  })
+  });
 });
