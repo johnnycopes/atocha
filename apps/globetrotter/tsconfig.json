@@ -14,6 +14,14 @@
     }
   ],
   "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "@env/*": ["src/environments/*"],
+      "@models/*": ["src/app/models/*"],
+      "@services/*": ["src/app/services/*"],
+      "@shared/*": ["src/app/modules/shared/*"],
+      "@utility/*": ["src/app/utility/*"],
+    },
     "target": "es2020",
     "forceConsistentCasingInFileNames": true,
     "strict": true,

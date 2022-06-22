@@ -1,0 +1,37 @@
+@import 'typography';
+@import 'colors';
+@import 'layout';
+@import 'animations';
+@import 'mixins';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  color: map-get($color, lightest);
+  background: map-get($color, darkest);
+  font-family: $font-stack;
+  font-size: map-get($font-size, 20);
+  font-weight: map-get($font-weight, normal);
+  line-height: map-get($line-height, small);
+  min-height: 100vh;
+  position: relative;
+  @include custom-scrollbar;
+
+  @include tablet {
+    font-size: map-get($font-size, 24);
+  }
+}
+
+sup {
+  position: relative;
+  bottom: 10px;
+	font-size: 16px;
+}
+
+.bold {
+  font-weight: map-get($font-weight, bold);
+}

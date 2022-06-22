@@ -1,0 +1,32 @@
+<app-tree
+  [item]="item"
+  [treeProvider]="treeProvider"
+  [itemTemplate]="checkbox"
+  >
+</app-tree>
+
+<ng-template #checkbox
+  let-item
+  let-parent="parent"
+  >
+  <app-checkbox class="checkbox"
+    [invertColors]="!parent && invertedRootCheckbox"
+    [ngModel]="states[this.treeProvider.getId(item)]"
+    (ngModelChange)="onChange($event, item)"
+    >
+    <ng-container
+      [ngTemplateOutlet]="itemTemplate ? itemTemplate : defaultTemplate"
+      [ngTemplateOutletContext]="{
+        $implicit: item,
+        parent: parent
+      }"
+      >
+    </ng-container>
+  </app-checkbox>
+</ng-template>
+
+<ng-template #defaultTemplate
+  let-item
+  >
+  {{this.treeProvider.getId(item)}}
+</ng-template>

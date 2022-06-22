@@ -1,0 +1,14 @@
+<app-input
+  label="Quantity"
+  [showError]="invalid"
+  errorMessage="Invalid quantity"
+  >
+  <div class="container">
+    <input type="number"
+      appAutofocus
+      [ngModel]="quantity"
+      (ngModelChange)="onChange($event)"
+    />
+    <p>cards</p>
+  </div>
+</app-input>

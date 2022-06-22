@@ -1,17 +1,41 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
 
-import { AppComponent } from './app.component';
-import { NxWelcomeComponent } from './nx-welcome.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
+import { AppRoutingModule } from './app-routing.module';
+import { ExploreModule } from './modules/explore/explore.module';
+import { LearnModule } from './modules/learn/learn.module';
+import { SharedModule } from '@shared/shared.module';
+
+import { AppComponent } from './app.component';
+import { ErrorComponent } from './components/error/error.component';
+import { HomeComponent } from './components/home/home.component';
+import { NavigationComponent } from './components/navigation/navigation.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { PlaceholderComponent } from './components/placeholder/placeholder.component';
+import { ShellComponent } from './components/shell/shell.component';
+
 @NgModule({
-  declarations: [AppComponent, NxWelcomeComponent],
-  imports: [
-    BrowserModule,
-    RouterModule.forRoot([], { initialNavigation: 'enabledBlocking' }),
+  declarations: [
+    AppComponent,
+    ErrorComponent,
+    HomeComponent,
+    NavigationComponent,
+    PageNotFoundComponent,
+    PlaceholderComponent,
+    ShellComponent,
   ],
-  providers: [],
-  bootstrap: [AppComponent],
+  imports: [
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    HttpClientModule,
+    RouterModule,
+    ExploreModule,
+    LearnModule,
+    SharedModule,
+  ],
+  bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

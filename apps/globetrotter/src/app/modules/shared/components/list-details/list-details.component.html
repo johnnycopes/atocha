@@ -1,0 +1,36 @@
+<div class="container"
+  [ngStyle]="{'grid-template-rows': this.containerHeight}"
+  >
+  <nav class="toolbar">
+    <app-input
+      [ngStyle]="{'margin-bottom': this.styles.gap}"
+      >
+      <input
+        type="text"
+        appAutofocus
+        [placeholder]="placeholderText"
+        [ngModel]="searchTerm"
+        (ngModelChange)="onSearch($event)"
+      />
+    </app-input>
+    <ul class="list"
+      #list
+      [ngStyle]="{'max-height': this.toolbarHeight}"
+      >
+      <li class="list__item"
+        #listItem
+        *ngFor="let item of items; trackBy: trackByFn"
+        [ngClass]="{'list__item--selected': checkIfSelected(item)}"
+        [ngStyle]="{'margin-bottom': this.styles.gap}"
+        (click)="onSelect(item)"
+        >
+        <ng-container *ngTemplateOutlet="listItemTemplate; context: { $implicit: item }">
+        </ng-container>
+      </li>
+    </ul>
+  </nav>
+  <div class="details">
+    <ng-container *ngTemplateOutlet="detailsTemplate; context: { $implicit: selectedItem }">
+    </ng-container>
+  </div>
+</div>

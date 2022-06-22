@@ -1,7 +1,7 @@
 {
   "projectType": "application",
   "sourceRoot": "apps/globetrotter/src",
-  "prefix": "atocha",
+  "prefix": "app",
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
@@ -17,7 +17,15 @@
           "apps/globetrotter/src/favicon.ico",
           "apps/globetrotter/src/assets"
         ],
-        "styles": ["apps/globetrotter/src/styles.scss"],
+        "styles": [
+          "apps/globetrotter/src/scss/reset.scss",
+          "apps/globetrotter/src/scss/styles.scss"
+        ],
+        "stylePreprocessorOptions": {
+          "includePaths": [
+            "src/scss"
+          ]
+        },
         "scripts": []
       },
       "configurations": {

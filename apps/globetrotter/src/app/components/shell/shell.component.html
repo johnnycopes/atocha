@@ -1,0 +1,12 @@
+<ng-container *ngIf="vm$ | async as vm">
+  <app-navigation (animationFinished)="onNavigationReady($event)">
+  </app-navigation>
+  <div class="content">
+    <div class="content__wrapper"
+      *ngIf="vm.showContent"
+      [ngClass]="{'content__wrapper--no-scroll': vm.quizComplete}"
+      >
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</ng-container>

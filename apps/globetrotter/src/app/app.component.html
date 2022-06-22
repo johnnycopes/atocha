@@ -1,1 +1,12 @@
-<atocha-nx-welcome></atocha-nx-welcome> <router-outlet></router-outlet>
+<app-loader *ngIf="loading$ | async">
+</app-loader>
+
+<app-error *ngIf="error$ | async">
+</app-error>
+
+<ng-container *ngIf="
+  (loading$ | async) === false &&
+  (error$ | async) === false
+">
+  <router-outlet></router-outlet>
+</ng-container>
