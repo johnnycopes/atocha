@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { UiCoreModule, AutofocusDirective, TreeComponent } from '@atocha/ui-core';
+import { UiCoreModule, AutofocusDirective } from '@atocha/ui-core';
 
 import { ButtonComponent } from './button/button.component';
 import { CheckboxComponent } from './checkbox/checkbox.component';
@@ -19,10 +19,7 @@ import { NestedCheckboxesWithCountsComponent } from './nested-checkboxes-with-co
   exports: [
     AutofocusDirective,
     ButtonComponent,
-    CheckboxComponent,
-    NestedCheckboxesComponent,
     NestedCheckboxesWithCountsComponent,
-    TreeComponent,
   ],
 })
 export class UiGlobetrotterModule {}
