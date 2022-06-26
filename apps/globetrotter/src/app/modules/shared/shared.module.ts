@@ -4,7 +4,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { UiGlobetrotterModule } from '@atocha/ui-globetrotter';
 import { AlertComponent } from './components/alert/alert.component';
-import { CheckboxComponent } from './components/checkbox/checkbox.component';
 import { ContainerComponent } from './components/container/container.component';
 import { FixedSlideablePanelComponent } from './components/fixed-slideable-panel/fixed-slideable-panel.component';
 import { FlipCardComponent } from './components/flip-card/flip-card.component';
@@ -15,8 +14,6 @@ import { ListDetailsComponent } from './components/list-details/list-details.com
 import { LoaderComponent } from './components/loader/loader.component';
 import { MeasurementPipe } from './pipes/measurement.pipe';
 import { ModalComponent } from './components/modal/modal.component';
-import { NestedCheckboxesComponent } from './components/nested-checkboxes/nested-checkboxes.component';
-import { NestedCheckboxesWithCountsComponent } from './components/nested-checkboxes-with-counts/nested-checkboxes-with-counts.component';
 import { RadioButtonsComponent } from './components/radio-buttons/radio-buttons.component';
 import { SmallCapsComponent } from './components/small-caps/small-caps.component';
 import { SmallCapsContentComponent } from './components/small-caps-content/small-caps-content.component';
@@ -33,7 +30,6 @@ import { TreeComponent } from './components/tree/tree.component';
   ],
   declarations: [
     AlertComponent,
-    CheckboxComponent,
     ContainerComponent,
     FixedSlideablePanelComponent,
     FlipCardComponent,
@@ -44,8 +40,6 @@ import { TreeComponent } from './components/tree/tree.component';
     LoaderComponent,
     MeasurementPipe,
     ModalComponent,
-    NestedCheckboxesComponent,
-    NestedCheckboxesWithCountsComponent,
     RadioButtonsComponent,
     SmallCapsComponent,
     SmallCapsContentComponent,
@@ -55,7 +49,6 @@ import { TreeComponent } from './components/tree/tree.component';
   ],
   exports: [
     AlertComponent,
-    CheckboxComponent,
     ContainerComponent,
     FixedSlideablePanelComponent,
     FlipCardComponent,
@@ -66,8 +59,6 @@ import { TreeComponent } from './components/tree/tree.component';
     LoaderComponent,
     MeasurementPipe,
     ModalComponent,
-    NestedCheckboxesComponent,
-    NestedCheckboxesWithCountsComponent,
     RadioButtonsComponent,
     SmallCapsComponent,
     SmallCapsContentComponent,
