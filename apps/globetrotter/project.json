@@ -22,9 +22,7 @@
           "apps/globetrotter/src/scss/styles.scss"
         ],
         "stylePreprocessorOptions": {
-          "includePaths": [
-            "apps/globetrotter/src/scss"
-          ]
+          "includePaths": ["apps/globetrotter/src/scss"]
         },
         "scripts": []
       },

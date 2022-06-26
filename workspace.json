@@ -4,6 +4,7 @@
   "projects": {
     "globetrotter": "apps/globetrotter",
     "globetrotter-e2e": "apps/globetrotter-e2e",
+    "ui-globetrotter": "libs/ui-globetrotter",
     "utils": "libs/utils"
   }
 }
