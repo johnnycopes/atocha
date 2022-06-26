@@ -1,1 +1,11 @@
-<p>button works!</p>
+<button class="button"
+  [class]="{
+    'button--primary': buttonStyle === 'primary',
+    'button--secondary': buttonStyle === 'secondary'
+  }"
+  [type]="buttonType"
+  [disabled]="disabled"
+  (click)="onClick()"
+  >
+  {{ buttonText }}
+</button>

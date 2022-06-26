@@ -39,12 +39,10 @@
       <h1 class="accuracy">
         {{vm.quiz?.accuracy ?? 0}}%
       </h1>
-      <app-button class="reset"
-        buttonStyle="primary"
+      <ui-button class="reset"
         buttonText="Reset"
         (click)="onBack()"
-        >
-      </app-button>
+      ></ui-button>
     </div>
   </app-fixed-slideable-panel>
 </ng-container>

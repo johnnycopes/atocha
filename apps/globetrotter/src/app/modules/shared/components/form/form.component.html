@@ -19,11 +19,10 @@
     >
     <ng-content select="app-input">
     </ng-content>
-    <app-button class="button"
+    <ui-button class="button"
       buttonType="submit"
       [buttonText]="buttonText"
       [disabled]="!vm.valid"
-      >
-    </app-button>
+    ></ui-button>
   </form>
 </ng-container>
