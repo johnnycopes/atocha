@@ -16,6 +16,7 @@
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
+      "@atocha/ui-globetrotter": ["../../libs/ui-globetrotter/src/index.ts"],
       "@env/*": ["src/environments/*"],
       "@models/*": ["src/app/models/*"],
       "@services/*": ["src/app/services/*"],
