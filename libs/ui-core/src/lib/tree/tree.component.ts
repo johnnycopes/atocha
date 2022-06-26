@@ -19,7 +19,7 @@ export class TreeComponent<T> implements OnInit {
   /**
    * The template of the node to pass into the tree.
    */
-  @Input() template?: TemplateRef<TreeNodeContext<T> | null> | undefined | null = null;
+  @Input() template?: TemplateRef<TreeNodeContext<T>> | undefined = undefined;
   /**
    * **Do not modify**. Used internally to track number of levels of recursion and exposed via the template context.
    */
