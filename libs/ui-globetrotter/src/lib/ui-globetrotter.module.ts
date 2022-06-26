@@ -6,6 +6,7 @@ import { UiCoreModule, AutofocusDirective, TreeComponent } from '@atocha/ui-core
 import { ButtonComponent } from './button/button.component';
 import { CheckboxComponent } from './checkbox/checkbox.component';
 import { NestedCheckboxesComponent } from './nested-checkboxes/nested-checkboxes.component';
+import { NestedCheckboxesWithCountsComponent } from './nested-checkboxes-with-counts/nested-checkboxes-with-counts.component';
 
 @NgModule({
   imports: [CommonModule, FormsModule, UiCoreModule],
@@ -13,12 +14,14 @@ import { NestedCheckboxesComponent } from './nested-checkboxes/nested-checkboxes
     ButtonComponent,
     CheckboxComponent,
     NestedCheckboxesComponent,
+    NestedCheckboxesWithCountsComponent,
   ],
   exports: [
     AutofocusDirective,
     ButtonComponent,
     CheckboxComponent,
     NestedCheckboxesComponent,
+    NestedCheckboxesWithCountsComponent,
     TreeComponent,
   ],
 })

@@ -8,16 +8,20 @@
 <ng-template #checkbox
   let-item
   let-level="level"
-  >
+  let-parent="level > 0"
+>
   <ui-checkbox class="checkbox"
     [style.margin-left.px]="level * 24"
-    [invertColors]="level === 0 && invertedRootCheckbox"
+    [invertColors]="!parent && invertedRootCheckbox"
     [ngModel]="states[this.treeProvider.getId(item)]"
     (ngModelChange)="onChange($event, item)"
-    >
+  >
     <ng-container
       [ngTemplateOutlet]="itemTemplate ? itemTemplate : defaultTemplate"
-      [ngTemplateOutletContext]="{ $implicit: item }"
+      [ngTemplateOutletContext]="{
+        $implicit: item,
+        parent: parent
+      }"
     ></ng-container>
   </ui-checkbox>
 </ng-template>

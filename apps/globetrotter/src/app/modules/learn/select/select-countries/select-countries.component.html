@@ -32,7 +32,7 @@
           [highlighted]="!!(regionDatum.selected$ | async)"
           >
         </app-icon>
-        <app-nested-checkboxes-with-counts class="region__checkboxes"
+        <ui-nested-checkboxes-with-counts class="region__checkboxes"
           [item]="region"
           [treeProvider]="regionDatum.treeProvider"
           [itemTemplate]="label"
@@ -41,8 +41,7 @@
           (ngModelChange)="onCountriesChange($event)"
           (selectedChange)="regionDatum.selectedSubject.next($event)"
           (totalChange)="regionDatum.totalSubject.next($event)"
-          >
-        </app-nested-checkboxes-with-counts>
+        ></ui-nested-checkboxes-with-counts>
       </ng-container>
 
       <ng-template
@@ -55,11 +54,11 @@
         <span class="bold"
           *ngIf="!parent; else child"
           >
-          {{regionDatum.treeProvider.getId(item)}} ({{selected}} / {{total}})
+          {{ regionDatum.treeProvider.getId(item) }} ({{ selected }} / {{ total }})
         </span>
         <ng-template #child>
           <span>
-            {{regionDatum.treeProvider.getId(item)}} ({{total}})
+            {{ regionDatum.treeProvider.getId(item) }} ({{ total }})
           </span>
         </ng-template>
       </ng-template>
