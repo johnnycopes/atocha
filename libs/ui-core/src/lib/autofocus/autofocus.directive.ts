@@ -9,13 +9,13 @@ export class AutofocusDirective {
 		// Because of the input alias, if no value is provided then the value defaults to an empty string
 		const valueIsTrueOrEmpty = value || value === '';
 		if (valueIsTrueOrEmpty) {
-			this.setFocus();
+			this._setFocus();
 		}
 	}
 
 	constructor(private _elementRef: ElementRef) { }
 
-	setFocus(): void {
+	private _setFocus(): void {
 		setTimeout(() => this._elementRef.nativeElement.focus());
 	}
 }
