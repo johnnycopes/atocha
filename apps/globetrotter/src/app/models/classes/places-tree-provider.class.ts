@@ -1,9 +1,9 @@
 import { Dictionary } from "lodash";
+import { ITreeProvider } from "@atocha/ui-globetrotter";
 
 import { Place } from "../types/place.type";
 import { IRegion } from "../interfaces/region.interface";
 import { ISubregion } from "../interfaces/subregion.interface";
-import { ITreeProvider } from "@shared/components/tree/tree.component";
 
 export class PlacesTreeProvider implements ITreeProvider<Place> {
   private _placesById: Dictionary<Place> = {};

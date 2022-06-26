@@ -2,10 +2,10 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Observable, BehaviorSubject, combineLatest } from 'rxjs';
 import { map, tap, first, distinctUntilChanged, switchMap, shareReplay } from 'rxjs/operators';
 
+import { CheckboxStates } from '@atocha/ui-globetrotter';
 import { IRegion } from '@models/interfaces/region.interface';
 import { ISubregion } from '@models/interfaces/subregion.interface';
 import { PlacesTreeProvider } from '@models/classes/places-tree-provider.class';
-import { CheckboxStates } from '@shared/components/nested-checkboxes/nested-checkboxes.component';
 import { CountryService } from '@services/country.service';
 import { SelectService } from '@services/select.service';
 

@@ -1,4 +1,4 @@
-import { IDefaultTreeItem } from "@shared/components/tree/default-tree-item.interface";
+import { IDefaultTreeItem } from "./default-tree-item";
 
 export const NESTED_ITEM: IDefaultTreeItem = {
   id: "Africa",

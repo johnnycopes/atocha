@@ -19,7 +19,6 @@ import { SmallCapsComponent } from './components/small-caps/small-caps.component
 import { SmallCapsContentComponent } from './components/small-caps-content/small-caps-content.component';
 import { TabComponent } from './components/tabset/tab/tab.component';
 import { TabsetComponent } from './components/tabset/tabset.component';
-import { TreeComponent } from './components/tree/tree.component';
 
 @NgModule({
   imports: [
@@ -45,7 +44,6 @@ import { TreeComponent } from './components/tree/tree.component';
     SmallCapsContentComponent,
     TabComponent,
     TabsetComponent,
-    TreeComponent,
   ],
   exports: [
     AlertComponent,
@@ -64,7 +62,6 @@ import { TreeComponent } from './components/tree/tree.component';
     SmallCapsContentComponent,
     TabComponent,
     TabsetComponent,
-    TreeComponent
   ]
 })
 export class SharedModule { }

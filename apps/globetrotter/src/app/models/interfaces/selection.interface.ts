@@ -1,5 +1,5 @@
+import { CheckboxStates } from '@atocha/ui-globetrotter';
 import { EQuizType } from '../enums/quiz-type.enum';
-import { CheckboxStates } from '@shared/components/nested-checkboxes/nested-checkboxes.component';
 
 export interface ISelection {
   type: EQuizType;

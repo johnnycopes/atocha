@@ -19,6 +19,8 @@ import { NestedCheckboxesWithCountsComponent } from './nested-checkboxes-with-co
   exports: [
     AutofocusDirective,
     ButtonComponent,
+    CheckboxComponent,
+    NestedCheckboxesComponent,
     NestedCheckboxesWithCountsComponent,
   ],
 })

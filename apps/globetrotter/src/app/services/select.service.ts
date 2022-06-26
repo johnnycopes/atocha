@@ -3,11 +3,10 @@ import { BehaviorSubject } from "rxjs";
 import { first, map } from "rxjs/operators";
 import { replace, omitBy, map as _map } from "lodash-es";
 
+import { CheckboxState, CheckboxStates } from "@atocha/ui-globetrotter";
 import { ISelection, ISelectionParams } from "@models/interfaces/selection.interface";
 import { IRegion } from "@models/interfaces/region.interface";
 import { EQuizType } from "@models/enums/quiz-type.enum";
-import { CheckboxState } from "@shared/components/checkbox/checkbox.component";
-import { CheckboxStates } from "@shared/components/nested-checkboxes/nested-checkboxes.component";
 import { CountryService } from "./country.service";
 
 @Injectable({
@@ -73,7 +72,7 @@ export class SelectService {
     const quantity = selection.quantity.toString();
     const selectedCountries = omitBy(selection.countries, value => value === "unchecked");
     const countries = _map(selectedCountries,
-      (value, key) => key + this._paramDict[value]
+      (value: CheckboxState, key) => key + this._paramDict[value]
     ).join(",");
     return {
       type,
