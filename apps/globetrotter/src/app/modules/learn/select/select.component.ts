@@ -60,12 +60,14 @@ export class SelectComponent implements OnInit {
   }
 
   private _initializeSubscriptions(): void {
-    this._selection$ = this._selectService.selection.observe().pipe(
+    this._selection$ = this._selectService.selection.pipe(
       tap(selection => this._selection = selection)
     );
-    this._quantity$ = this._selectService.selection.observe(lens => lens.to("quantity"));
+    this._quantity$ = this._selectService.selection.pipe(
+      map(({ quantity }) => quantity)
+    );
     this._numberOfSelectedCountries$ = combineLatest([
-      this._countryService.countries.observe(lens => lens.to("countriesBySubregion")),
+      this._countryService.countries.pipe(map(({ countriesBySubregion }) => countriesBySubregion)),
       this._selection$
     ]).pipe(
       map(([subregions, selection]) => {
@@ -74,7 +76,7 @@ export class SelectComponent implements OnInit {
           .keys(selectedCountries)
           .reduce((total, currentPlace) =>
             subregions[currentPlace] ? total + subregions[currentPlace].length : total
-            , 0);
+          , 0);
       }),
       distinctUntilChanged()
     );

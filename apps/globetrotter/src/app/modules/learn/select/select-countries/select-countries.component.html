@@ -31,7 +31,7 @@
       <ng-container *ngIf="regionDatum.region as region">
         <app-icon class="region__image"
           [icon]="region.name"
-          [highlighted]="regionDatum.selected$ | async"
+          [highlighted]="!!(regionDatum.selected$ | async)"
           >
         </app-icon>
         <app-nested-checkboxes-with-counts class="region__checkboxes"

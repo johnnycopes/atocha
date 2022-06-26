@@ -7,5 +7,5 @@
   "files": [
     "main.ts",
     "polyfills.ts"
-  ],
+  ]
 }

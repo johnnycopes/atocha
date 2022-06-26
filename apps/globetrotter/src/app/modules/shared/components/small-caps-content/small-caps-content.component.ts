@@ -8,5 +8,5 @@ import { Component, Input, ChangeDetectionStrategy, TemplateRef } from '@angular
 })
 export class SmallCapsContentComponent {
   @Input() header: string;
-  @Input() template: TemplateRef<unknown>;
+  @Input() template: TemplateRef<unknown> | undefined;
 }

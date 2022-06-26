@@ -5,7 +5,8 @@
   <a class="home"
     routerLink="/{{home.route}}"
     >
-    <app-icon class="home__icon"
+    <app-icon *ngIf="home.icon"
+      class="home__icon"
       [icon]="home.icon"
       [highlighted]="false"
       >

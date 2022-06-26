@@ -5,7 +5,7 @@
     >
     <app-container class="progress"
       header
-      *ngIf="!vm.quiz.isComplete"
+      *ngIf="!vm.quiz?.isComplete"
       >
       <app-icon class="back"
         left
@@ -22,22 +22,22 @@
         right
         >
         <h4 class="details__tally">
-          {{vm.quiz.correctGuesses}} / {{vm.quiz.totalCountries}}
+          {{vm.quiz?.correctGuesses ?? 0}} / {{vm.quiz?.totalCountries ?? 0}}
         </h4>
         <h4 class="details__guess">
-          Guess #{{vm.quiz.guess}}
+          Guess #{{vm.quiz?.guess ?? 0}}
         </h4>
       </div>
     </app-container>
     <div class="outcome"
       content
-      *ngIf="vm.quiz.isComplete"
+      *ngIf="vm.quiz?.isComplete"
       >
       <p class="text">
         Quiz complete! You scored
       </p>
       <h1 class="accuracy">
-        {{vm.quiz.accuracy}}%
+        {{vm.quiz?.accuracy ?? 0}}%
       </h1>
       <app-button class="reset"
         buttonStyle="primary"
