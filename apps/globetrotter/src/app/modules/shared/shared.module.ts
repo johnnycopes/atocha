@@ -4,7 +4,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { UiGlobetrotterModule } from '@atocha/ui-globetrotter';
 import { AlertComponent } from './components/alert/alert.component';
-import { AutofocusDirective } from './directives/autofocus.directive';
 import { CheckboxComponent } from './components/checkbox/checkbox.component';
 import { ContainerComponent } from './components/container/container.component';
 import { FixedSlideablePanelComponent } from './components/fixed-slideable-panel/fixed-slideable-panel.component';
@@ -34,7 +33,6 @@ import { TreeComponent } from './components/tree/tree.component';
   ],
   declarations: [
     AlertComponent,
-    AutofocusDirective,
     CheckboxComponent,
     ContainerComponent,
     FixedSlideablePanelComponent,
@@ -57,7 +55,6 @@ import { TreeComponent } from './components/tree/tree.component';
   ],
   exports: [
     AlertComponent,
-    AutofocusDirective,
     CheckboxComponent,
     ContainerComponent,
     FixedSlideablePanelComponent,
