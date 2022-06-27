@@ -4,10 +4,10 @@ import { Observable, combineLatest } from "rxjs";
 import { map, tap, distinctUntilChanged } from "rxjs/operators";
 import { pickBy } from "lodash-es";
 
+import { fadeInAnimation } from "@atocha/ui-globetrotter";
 import { ERoute } from "@models/enums/route.enum";
 import { ISelection, ISelectionParams } from "@models/interfaces/selection.interface";
 import { SelectService } from "@services/select.service";
-import { fadeInAnimation } from "@utility/animations";
 import { CountryService } from "@services/country.service";
 
 interface IViewModel {

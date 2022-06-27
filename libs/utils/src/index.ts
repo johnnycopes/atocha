@@ -14,3 +14,4 @@ export * from './lib/snake-case';
 export * from './lib/sort';
 export * from './lib/tally';
 export * from './lib/unique-diff';
+export * from './lib/wait';

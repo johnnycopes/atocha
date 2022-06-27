@@ -2,10 +2,10 @@ import { Component, OnInit, ChangeDetectionStrategy } from "@angular/core";
 import { Observable, combineLatest } from "rxjs";
 import { map, first } from "rxjs/operators";
 
+import { staggerAnimation, fadeInAnimation } from "@atocha/ui-globetrotter";
 import { ICountry } from "@models/interfaces/country.interface";
 import { EQuizType } from "@models/enums/quiz-type.enum";
 import { QuizService } from "@services/quiz.service";
-import { staggerAnimation, fadeInAnimation } from "@utility/animations";
 import { shuffle } from "lodash-es";
 
 interface IViewModel {

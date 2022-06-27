@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 
-import { fadeInAnimation } from '@utility/animations';
+import { fadeInAnimation } from '@atocha/ui-globetrotter';
 
 @Component({
   selector: 'app-placeholder',

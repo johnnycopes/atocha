@@ -4,12 +4,11 @@ import { AnimationEvent } from "@angular/animations";
 import { Observable, BehaviorSubject, combineLatest } from "rxjs";
 import { map, distinctUntilChanged } from "rxjs/operators";
 
-import { FlipCardComponent, FlipCardGuess, FlipCardSide } from "@atocha/ui-globetrotter";
+import { FlipCardComponent, FlipCardGuess, FlipCardSide, Duration } from "@atocha/ui-globetrotter";
+import { wait } from "@atocha/utils";
 import { ICountry } from "@models/interfaces/country.interface";
-import { EDuration } from "@models/enums/duration.enum";
 import { EQuizType } from "@models/enums/quiz-type.enum";
 import { QuizService } from "@services/quiz.service";
-import { wait } from "@utility/functions/wait";
 
 interface IViewModel {
   guess: FlipCardGuess;
@@ -75,7 +74,7 @@ export class QuizCardComponent implements OnInit {
     // after flip animation is complete, the card is flipped back over and the guess is reset
     else if (triggerName === "guess") {
       if (toState === "correct" || toState === "incorrect") {
-        await wait(EDuration.cardFlipDisplay);
+        await wait(Duration.cardFlipDisplay);
         this.guessChange.next("none");
         this.flipCardComponent.flip();
       }
@@ -93,7 +92,7 @@ export class QuizCardComponent implements OnInit {
   }
 
   private async _updateQuiz() {
-    await wait(EDuration.shortDelay);
+    await wait(Duration.shortDelay);
     this._quizService.updateQuiz(this.isCurrentCountry);
     this.flipped.emit(false);
     this.processingFlip = false;

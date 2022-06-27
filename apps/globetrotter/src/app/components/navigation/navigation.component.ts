@@ -1,8 +1,8 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
+import { AnimatedComponent } from '@atocha/ui-core';
+import { positionAnimation } from '@atocha/ui-globetrotter';
 import { ERoute } from '@models/enums/route.enum';
-import { positionAnimation } from '@utility/animations';
-import { AnimatedComponent } from '@models/animated-component.class';
 
 interface INavigationLink {
   name: string;

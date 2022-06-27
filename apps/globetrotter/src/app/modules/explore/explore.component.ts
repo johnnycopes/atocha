@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable, Subject, ReplaySubject, combineLatest } from 'rxjs';
 import { map, tap, switchMap, startWith, debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
-import { fadeInAnimation } from '@utility/animations';
+import { fadeInAnimation } from '@atocha/ui-globetrotter';
 import { CountryService } from '@services/country.service';
 import { ICountry } from '@models/interfaces/country.interface';
 

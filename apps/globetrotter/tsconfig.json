@@ -18,10 +18,10 @@
     "paths": {
       "@atocha/ui-core": ["../../libs/ui-core/src/index.ts"],
       "@atocha/ui-globetrotter": ["../../libs/ui-globetrotter/src/index.ts"],
+      "@atocha/utils": ["../../libs/utils/src/index.ts"],
       "@env/*": ["src/environments/*"],
       "@models/*": ["src/app/models/*"],
       "@services/*": ["src/app/services/*"],
-      "@utility/*": ["src/app/utility/*"],
     },
     "target": "es2020",
     "forceConsistentCasingInFileNames": true,

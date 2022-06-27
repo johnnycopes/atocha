@@ -1,8 +1,8 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { Router } from '@angular/router';
 
+import { fadeInAnimation } from '@atocha/ui-globetrotter';
 import { ERoute } from '@models/enums/route.enum';
-import { fadeInAnimation } from '@utility/animations';
 
 @Component({
   selector: 'app-page-not-found',
