@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { UiGlobetrotterModule } from '@atocha/ui-globetrotter';
-import { FlipCardComponent } from './components/flip-card/flip-card.component';
 import { FormComponent } from './components/form/form.component';
 import { IconComponent } from './components/icon/icon.component';
 import { InputComponent } from './components/input/input.component';
@@ -25,7 +24,6 @@ import { TabsetComponent } from './components/tabset/tabset.component';
     UiGlobetrotterModule
   ],
   declarations: [
-    FlipCardComponent,
     FormComponent,
     IconComponent,
     InputComponent,
@@ -40,7 +38,6 @@ import { TabsetComponent } from './components/tabset/tabset.component';
     TabsetComponent,
   ],
   exports: [
-    FlipCardComponent,
     FormComponent,
     IconComponent,
     InputComponent,

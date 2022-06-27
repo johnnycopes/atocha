@@ -1,13 +1,13 @@
 import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 
-import { flipAnimation, guessAnimation, disabledAnimation } from '@utility/animations';
-import { AnimatedComponent } from '@models/animated-component.class';
+import { AnimatedComponent } from '@atocha/ui-core';
+import { flipAnimation, guessAnimation, disabledAnimation } from '../animations';
 
 export type FlipCardSide = 'front' | 'back';
 export type FlipCardGuess = 'correct' | 'incorrect' | 'none';
 
 @Component({
-  selector: 'app-flip-card',
+  selector: 'ui-flip-card',
   templateUrl: './flip-card.component.html',
   styleUrls: ['./flip-card.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -20,8 +20,8 @@ export type FlipCardGuess = 'correct' | 'incorrect' | 'none';
 export class FlipCardComponent extends AnimatedComponent {
   @Input() side: FlipCardSide = 'front';
   @Input() guess: FlipCardGuess = 'none';
-  @Input() canFlip: boolean = true;
-  @Input() disabled: boolean = false;
+  @Input() canFlip = true;
+  @Input() disabled = false;
   @Output() flipped = new EventEmitter<FlipCardSide>();
 
   onClick(): void {

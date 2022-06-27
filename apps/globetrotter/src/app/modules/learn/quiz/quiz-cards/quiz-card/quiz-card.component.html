@@ -1,18 +1,18 @@
-<app-flip-card
+<ui-flip-card
   *ngIf="vm$ | async as vm"
   [canFlip]="canFlip"
   [guess]="vm.guess"
   [disabled]="vm.disabled"
   (flipped)="onFlip()"
   (animationFinished)="onAnimationFinish($event)"
-  >
+>
   <ng-container app-flip-card-front>
     <ng-container *ngTemplateOutlet="template.front"></ng-container>
   </ng-container>
   <ng-container app-flip-card-back>
     <ng-container *ngTemplateOutlet="template.back"></ng-container>
   </ng-container>
-</app-flip-card>
+</ui-flip-card>
 
 
 

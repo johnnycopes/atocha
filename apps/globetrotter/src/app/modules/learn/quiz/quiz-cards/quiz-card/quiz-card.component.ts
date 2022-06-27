@@ -4,10 +4,10 @@ import { AnimationEvent } from "@angular/animations";
 import { Observable, BehaviorSubject, combineLatest } from "rxjs";
 import { map, distinctUntilChanged } from "rxjs/operators";
 
+import { FlipCardComponent, FlipCardGuess, FlipCardSide } from "@atocha/ui-globetrotter";
 import { ICountry } from "@models/interfaces/country.interface";
 import { EDuration } from "@models/enums/duration.enum";
 import { EQuizType } from "@models/enums/quiz-type.enum";
-import { FlipCardComponent, FlipCardGuess, FlipCardSide } from "@shared/components/flip-card/flip-card.component";
 import { QuizService } from "@services/quiz.service";
 import { wait } from "@utility/functions/wait";
 

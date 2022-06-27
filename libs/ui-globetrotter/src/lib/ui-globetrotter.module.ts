@@ -7,6 +7,7 @@ import { AlertComponent } from './alert/alert.component';
 import { ButtonComponent } from './button/button.component';
 import { CheckboxComponent } from './checkbox/checkbox.component';
 import { ContainerComponent } from './container/container.component';
+import { FlipCardComponent } from './flip-card/flip-card.component';
 import { FixedSlideablePanelComponent } from './fixed-slideable-panel/fixed-slideable-panel.component';
 import { NestedCheckboxesComponent } from './nested-checkboxes/nested-checkboxes.component';
 import { NestedCheckboxesWithCountsComponent } from './nested-checkboxes-with-counts/nested-checkboxes-with-counts.component';
@@ -18,6 +19,7 @@ import { NestedCheckboxesWithCountsComponent } from './nested-checkboxes-with-co
     ButtonComponent,
     CheckboxComponent,
     ContainerComponent,
+    FlipCardComponent,
     FixedSlideablePanelComponent,
     NestedCheckboxesComponent,
     NestedCheckboxesWithCountsComponent,
@@ -28,6 +30,7 @@ import { NestedCheckboxesWithCountsComponent } from './nested-checkboxes-with-co
     ButtonComponent,
     CheckboxComponent,
     ContainerComponent,
+    FlipCardComponent,
     FixedSlideablePanelComponent,
     NestedCheckboxesComponent,
     NestedCheckboxesWithCountsComponent,
