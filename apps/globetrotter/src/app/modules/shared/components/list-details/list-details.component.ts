@@ -1,5 +1,6 @@
 import { Component, OnInit, OnChanges, SimpleChanges, Input, Output, EventEmitter, TemplateRef, ChangeDetectionStrategy, ViewChild, ElementRef, AfterViewInit, ChangeDetectorRef, HostListener } from '@angular/core';
-import { InputComponent } from '../input/input.component';
+
+import { InputComponent } from '@atocha/ui-globetrotter';
 
 export interface IListDetailsStyles {
   offsetTop: string;

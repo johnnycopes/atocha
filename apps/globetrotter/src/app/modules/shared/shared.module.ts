@@ -3,14 +3,11 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { UiGlobetrotterModule } from '@atocha/ui-globetrotter';
-import { InputComponent } from './components/input/input.component';
 import { ListDetailsComponent } from './components/list-details/list-details.component';
 import { LoaderComponent } from './components/loader/loader.component';
 import { MeasurementPipe } from './pipes/measurement.pipe';
 import { ModalComponent } from './components/modal/modal.component';
 import { RadioButtonsComponent } from './components/radio-buttons/radio-buttons.component';
-import { SmallCapsComponent } from './components/small-caps/small-caps.component';
-import { SmallCapsContentComponent } from './components/small-caps-content/small-caps-content.component';
 import { TabComponent } from './components/tabset/tab/tab.component';
 import { TabsetComponent } from './components/tabset/tabset.component';
 
@@ -22,26 +19,20 @@ import { TabsetComponent } from './components/tabset/tabset.component';
     UiGlobetrotterModule
   ],
   declarations: [
-    InputComponent,
     ListDetailsComponent,
     LoaderComponent,
     MeasurementPipe,
     ModalComponent,
     RadioButtonsComponent,
-    SmallCapsComponent,
-    SmallCapsContentComponent,
     TabComponent,
     TabsetComponent,
   ],
   exports: [
-    InputComponent,
     ListDetailsComponent,
     LoaderComponent,
     MeasurementPipe,
     ModalComponent,
     RadioButtonsComponent,
-    SmallCapsComponent,
-    SmallCapsContentComponent,
     TabComponent,
     TabsetComponent,
   ]
