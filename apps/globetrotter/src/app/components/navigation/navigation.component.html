@@ -1,0 +1,28 @@
+<nav class="navigation"
+  [@position]="position"
+  (@position.done)="onAnimationFinish($event)"
+  >
+  <a class="home"
+    routerLink="/{{home.route}}"
+    >
+    <ui-icon *ngIf="home.icon"
+      class="home__icon"
+      [icon]="home.icon"
+      [highlighted]="false"
+    ></ui-icon>
+  </a>
+  <a class="link"
+    *ngFor="let link of links"
+    routerLink="/{{link.route}}"
+    routerLinkActive="link--active"
+    [routerLinkActiveOptions]="{exact: link.exactPathMatch}"
+    #navigationLink="routerLinkActive"
+    >
+    {{link.name}}
+  </a>
+  <a class="signature"
+    href="https://www.johnnycopes.com"
+    >
+    made by johnnycopes
+  </a>
+</nav>

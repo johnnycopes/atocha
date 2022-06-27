@@ -1,0 +1,47 @@
+<ng-container *ngIf="vm$ | async as vm">
+  <ui-fixed-slideable-panel
+    [position]="vm.position"
+    (animationFinished)="onMenuAnimationFinish($event)"
+    >
+    <ui-container class="progress"
+      header
+      *ngIf="!vm.quiz?.isComplete"
+      >
+      <ui-icon left
+        class="back"
+        icon="Cancel"
+        [highlighted]="true"
+        (clicked)="onBack()"
+      ></ui-icon>
+      <p class="prompt"
+        center>
+        {{vm.prompt}}
+      </p>
+      <div class="details"
+        right
+        >
+        <h4 class="details__tally">
+          {{vm.quiz?.correctGuesses ?? 0}} / {{vm.quiz?.totalCountries ?? 0}}
+        </h4>
+        <h4 class="details__guess">
+          Guess #{{vm.quiz?.guess ?? 0}}
+        </h4>
+      </div>
+    </ui-container>
+    <div class="outcome"
+      content
+      *ngIf="vm.quiz?.isComplete"
+      >
+      <p class="text">
+        Quiz complete! You scored
+      </p>
+      <h1 class="accuracy">
+        {{vm.quiz?.accuracy ?? 0}}%
+      </h1>
+      <ui-button class="reset"
+        buttonText="Reset"
+        (click)="onBack()"
+      ></ui-button>
+    </div>
+  </ui-fixed-slideable-panel>
+</ng-container>

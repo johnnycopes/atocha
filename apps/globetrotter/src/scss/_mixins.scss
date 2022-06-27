@@ -1,0 +1,66 @@
+// Keep this in-sync with the Breakpoints enum in breakpoints.enum.ts
+$breakpoints: (
+  all: 0px,
+  mobile: 400px,
+  tablet: 750px,
+  desktop: 1200px,
+);
+
+@mixin mobile {
+  @media (min-width: #{map-get($breakpoints, mobile)}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: #{map-get($breakpoints, tablet)}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: #{map-get($breakpoints, desktop)}) {
+    @content;
+  }
+}
+
+@mixin full-screen-page {
+  position: absolute;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin small-caps {
+  margin-bottom: map-get($spacing, 8);
+  font-size: map-get($font-size, 16);
+  font-weight: map-get($font-weight, bold);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: map-get($color, medium);
+}
+
+@mixin flag {
+  max-width: 192px;
+  max-height: 128px;
+}
+
+@mixin custom-scrollbar {
+  &::-webkit-scrollbar-track {
+    background-color: map-get($color, darkest);
+    border-radius: map-get($border, radius);
+  }
+
+  &::-webkit-scrollbar {
+    width: 10px;
+    background-color: map-get($color, darkest);
+    border-radius: map-get($border, radius);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: map-get($color, medium-dark);
+    border-radius: map-get($border, radius);
+  }
+}

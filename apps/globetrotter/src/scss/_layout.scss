@@ -1,0 +1,53 @@
+/*
+Use these values for spacing and sizing. A hand-crafted type scale
+(source: Refactoring UI, page 73)
+*/
+$spacing: (
+  2: 2px,
+  4: 4px,
+  8: 8px,
+  12: 12px,
+  16: 16px,
+  24: 24px,
+  32: 32px,
+  48: 48px,
+  64: 64px,
+  96: 96px,
+  128: 128px,
+  192: 192px,
+  256: 256px,
+  384: 384px,
+  512: 512px,
+  640: 640px,
+  768: 768px,
+);
+
+$z-index: (
+  modal: 400,
+  header: 300,
+  fixed-slideable-panel: 200,
+  navigation: 100,
+  positive: 1,
+  none: 0,
+  negative: -1,
+);
+
+$border: (
+  radius: 2px,
+  thinnest: 1px,
+  thin: 2px,
+  medium: 4px,
+  thick: 20px,
+);
+
+$app: (
+  gap: map-get($spacing, 12),
+  wrapper-padding: map-get($spacing, 24),
+  header-height: map-get($spacing, 64),
+  navigation-width: map-get($spacing, 128),
+  card-width: map-get($spacing, 256),
+);
+
+$learn: (
+  max-width: 1328px,
+);

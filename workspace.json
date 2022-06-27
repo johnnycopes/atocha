@@ -2,6 +2,10 @@
   "$schema": "./node_modules/nx/schemas/workspace-schema.json",
   "version": 2,
   "projects": {
+    "globetrotter": "apps/globetrotter",
+    "globetrotter-e2e": "apps/globetrotter-e2e",
+    "ui-core": "libs/ui-core",
+    "ui-globetrotter": "libs/ui-globetrotter",
     "utils": "libs/utils"
   }
 }
