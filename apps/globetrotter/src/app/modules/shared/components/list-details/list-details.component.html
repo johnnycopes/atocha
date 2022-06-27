@@ -2,9 +2,7 @@
   [ngStyle]="{'grid-template-rows': this.containerHeight}"
   >
   <nav class="toolbar">
-    <app-input
-      [ngStyle]="{'margin-bottom': this.styles.gap}"
-      >
+    <ui-input [style]="{'margin-bottom': this.styles.gap}">
       <input
         type="text"
         uiAutofocus
@@ -12,7 +10,7 @@
         [ngModel]="searchTerm"
         (ngModelChange)="onSearch($event)"
       />
-    </app-input>
+    </ui-input>
     <ul class="list"
       #list
       [ngStyle]="{'max-height': this.toolbarHeight}"
