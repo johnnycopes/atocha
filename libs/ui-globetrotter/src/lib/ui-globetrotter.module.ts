@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { UiCoreModule, AutofocusDirective } from '@atocha/ui-core';
+import { UiCoreModule, AutofocusDirective, MeasurementPipe } from '@atocha/ui-core';
 
 import { AlertComponent } from './alert/alert.component';
 import { ButtonComponent } from './button/button.component';
@@ -18,7 +18,11 @@ import { NestedCheckboxesWithCountsComponent } from './nested-checkboxes-with-co
 import { SmallCapsComponent } from './small-caps/small-caps.component';
 
 @NgModule({
-  imports: [CommonModule, FormsModule, UiCoreModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    UiCoreModule
+  ],
   declarations: [
     AlertComponent,
     ButtonComponent,
@@ -46,6 +50,7 @@ import { SmallCapsComponent } from './small-caps/small-caps.component';
     InputComponent,
     ListDetailsComponent,
     LoaderComponent,
+    MeasurementPipe,
     NestedCheckboxesComponent,
     NestedCheckboxesWithCountsComponent,
     SmallCapsComponent,
