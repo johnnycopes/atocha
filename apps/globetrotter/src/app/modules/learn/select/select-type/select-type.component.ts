@@ -2,7 +2,7 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { IRadioButtonsOption } from '@atocha/ui-globetrotter';
+import { RadioButtonsOption } from '@atocha/ui-globetrotter';
 import { EQuizType } from '@models/enums/quiz-type.enum';
 import { SelectService } from '@services/select.service';
 
@@ -13,24 +13,24 @@ import { SelectService } from '@services/select.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SelectTypeComponent {
-  public types: IRadioButtonsOption<EQuizType>[] = [
+  public types: RadioButtonsOption<EQuizType>[] = [
     EQuizType.flagsCountries,
     EQuizType.capitalsCountries,
     EQuizType.countriesCapitals
   ].map(quizType => this._generateOption(quizType));
 
-  public selectedType$: Observable<IRadioButtonsOption<EQuizType>> = this._selectService.selection
+  public selectedType$: Observable<RadioButtonsOption<EQuizType>> = this._selectService.selection
     .pipe(
       map(({ type }) => this._generateOption(type))
     );
 
   constructor(private _selectService: SelectService) { }
 
-  public onChange(selectedType: IRadioButtonsOption<EQuizType>): void {
+  public onChange(selectedType: RadioButtonsOption<EQuizType>): void {
     this._selectService.updateType(selectedType.value);
   }
 
-  private _generateOption(quizType: EQuizType): IRadioButtonsOption<EQuizType> {
+  private _generateOption(quizType: EQuizType): RadioButtonsOption<EQuizType> {
     return {
       display: this._getDisplayText(quizType),
       value: quizType

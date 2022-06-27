@@ -1,10 +1,10 @@
 import { Dictionary } from "lodash";
 
-import { ITreeProvider } from "@atocha/ui-globetrotter";
+import { TreeProvider } from "@atocha/ui-globetrotter";
 import { IDefaultTreeItem } from "./default-tree-item";
 
 
-export class NestedItemTreeProvider implements ITreeProvider<IDefaultTreeItem> {
+export class NestedItemTreeProvider implements TreeProvider<IDefaultTreeItem> {
   private itemsKeyedById: Dictionary<IDefaultTreeItem> = {};
 
   constructor(item: IDefaultTreeItem) {

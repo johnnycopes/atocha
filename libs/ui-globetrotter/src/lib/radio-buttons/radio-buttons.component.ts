@@ -3,7 +3,7 @@ import { Component, Input, ChangeDetectorRef, ChangeDetectionStrategy } from '@a
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { BreakpointObserver } from '@angular/cdk/layout';
 
-export interface IRadioButtonsOption<T> {
+export interface RadioButtonsOption<T> {
   display: string;
   value: T;
 }
@@ -20,17 +20,17 @@ export interface IRadioButtonsOption<T> {
   }]
 })
 export class RadioButtonsComponent<T> implements ControlValueAccessor {
-  @Input() options: IRadioButtonsOption<T>[] = [];
+  @Input() options: RadioButtonsOption<T>[] = [];
   @Input() stacked = false;
-  model: IRadioButtonsOption<T> | undefined;
-  private _onChangeFn: (model: IRadioButtonsOption<T>) => void = () => undefined;
+  model: RadioButtonsOption<T> | undefined;
+  private _onChangeFn: (model: RadioButtonsOption<T>) => void = () => undefined;
 
   constructor(
     public changeDetectorRef: ChangeDetectorRef,
     public breakpointObserver: BreakpointObserver
   ) { }
 
-  writeValue(obj: IRadioButtonsOption<T>): void {
+  writeValue(obj: RadioButtonsOption<T>): void {
     this.model = obj;
     this.changeDetectorRef.markForCheck();
   }

@@ -5,7 +5,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Dictionary } from "lodash";
 import { reduce } from "lodash-es";
 
-import { CheckboxStates, ITreeProvider } from '../nested-checkboxes/nested-checkboxes.component';
+import { CheckboxStates, TreeProvider } from '../nested-checkboxes/nested-checkboxes.component';
 
 type Counts = Dictionary<number>;
 
@@ -21,7 +21,7 @@ type Counts = Dictionary<number>;
 })
 export class NestedCheckboxesWithCountsComponent<T> implements ControlValueAccessor, OnInit {
   @Input() item!: T;
-  @Input() treeProvider!: ITreeProvider<T>;
+  @Input() treeProvider!: TreeProvider<T>;
   @Input() itemTemplate: TemplateRef<unknown> | undefined;
   @Input() invertedRootCheckbox = true;
   @Input() getLeafItemCount: (item: T) => number = () => 0;

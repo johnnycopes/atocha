@@ -6,7 +6,7 @@ import { CheckboxState } from '../checkbox/checkbox.component';
 
 export type CheckboxStates = Dictionary<CheckboxState>;
 
-export interface ITreeProvider<T> {
+export interface TreeProvider<T> {
   getId(item: T): string;
   getChildren(item: T): T[];
   getParent?(item: T): T | undefined;
@@ -25,7 +25,7 @@ export interface ITreeProvider<T> {
 })
 export class NestedCheckboxesComponent<T> implements ControlValueAccessor, OnInit {
   @Input() item!: T;
-  @Input() treeProvider!: ITreeProvider<T>;
+  @Input() treeProvider!: TreeProvider<T>;
   @Input() itemTemplate: TemplateRef<unknown> | undefined;
   @Input() invertedRootCheckbox = true;
   public states: CheckboxStates = {};
