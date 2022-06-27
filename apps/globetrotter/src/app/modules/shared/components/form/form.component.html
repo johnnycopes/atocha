@@ -8,12 +8,12 @@
       {{guideline}}
     </li>
   </ul>
-  <app-alert class="error"
+  <ui-alert class="error"
     *ngIf="error"
     [large]="true"
-    >
-    {{error}}
-  </app-alert>
+  >
+    {{ error }}
+  </ui-alert>
   <form [formGroup]="formGroup"
     (ngSubmit)="onSubmit()"
     >

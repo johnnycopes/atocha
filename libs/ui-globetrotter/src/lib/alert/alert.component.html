@@ -1,8 +1,9 @@
 <div class="alert"
-  [ngClass]="{
+  [class]="{
     'alert--success': type === 'success',
     'alert--error': type === 'error',
     'alert--large': large
-  }">
+  }"
+>
   <ng-content></ng-content>
 </div>

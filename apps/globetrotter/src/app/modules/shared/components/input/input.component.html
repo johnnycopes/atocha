@@ -5,8 +5,8 @@
   {{label}}
 </label>
 <ng-content></ng-content>
-<app-alert class="error"
-  *ngIf="showError && !!errorMessage.length"
-  >
-  {{errorMessage}}
-</app-alert>
+<ui-alert *ngIf="showError && !!errorMessage.length"
+  class="error"
+>
+  {{ errorMessage }}
+</ui-alert>
