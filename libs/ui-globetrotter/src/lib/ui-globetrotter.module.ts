@@ -12,6 +12,7 @@ import { FlipCardComponent } from './flip-card/flip-card.component';
 import { IconComponent } from './icon/icon.component';
 import { NestedCheckboxesComponent } from './nested-checkboxes/nested-checkboxes.component';
 import { NestedCheckboxesWithCountsComponent } from './nested-checkboxes-with-counts/nested-checkboxes-with-counts.component';
+import { SmallCapsComponent } from './small-caps/small-caps.component';
 
 @NgModule({
   imports: [CommonModule, FormsModule, UiCoreModule],
@@ -25,6 +26,7 @@ import { NestedCheckboxesWithCountsComponent } from './nested-checkboxes-with-co
     IconComponent,
     NestedCheckboxesComponent,
     NestedCheckboxesWithCountsComponent,
+    SmallCapsComponent,
   ],
   exports: [
     AlertComponent,
@@ -37,6 +39,7 @@ import { NestedCheckboxesWithCountsComponent } from './nested-checkboxes-with-co
     IconComponent,
     NestedCheckboxesComponent,
     NestedCheckboxesWithCountsComponent,
+    SmallCapsComponent,
   ],
 })
 export class UiGlobetrotterModule {}

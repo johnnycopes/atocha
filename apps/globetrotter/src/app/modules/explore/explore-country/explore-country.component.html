@@ -13,13 +13,13 @@
   />
 </div>
 <div class="table">
-  <app-small-caps-content
-    *ngFor="let tableDatum of tableData"
+  <ui-small-caps *ngFor="let tableDatum of tableData"
+    class="table-header"
     [header]="tableDatum.header"
     [template]="tableDatum?.template"
-    >
-    {{tableDatum?.content}}
-  </app-small-caps-content>
+  >
+    {{ tableDatum?.content }}
+  </ui-small-caps>
 </div>
 <p class="summary">
   {{summary}}
