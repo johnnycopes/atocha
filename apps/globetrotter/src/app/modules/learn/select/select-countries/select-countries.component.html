@@ -27,11 +27,10 @@
       *ngFor="let regionDatum of vm.regionData"
       >
       <ng-container *ngIf="regionDatum.region as region">
-        <app-icon class="region__image"
+        <ui-icon class="region__image"
           [icon]="region.name"
           [highlighted]="!!(regionDatum.selected$ | async)"
-          >
-        </app-icon>
+        ></ui-icon>
         <ui-nested-checkboxes-with-counts class="region__checkboxes"
           [item]="region"
           [treeProvider]="regionDatum.treeProvider"

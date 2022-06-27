@@ -7,13 +7,12 @@
       header
       *ngIf="!vm.quiz?.isComplete"
       >
-      <app-icon class="back"
-        left
+      <ui-icon left
+        class="back"
         icon="Cancel"
         [highlighted]="true"
         (clicked)="onBack()"
-        >
-      </app-icon>
+      ></ui-icon>
       <p class="prompt"
         center>
         {{vm.prompt}}

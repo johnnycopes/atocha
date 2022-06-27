@@ -5,12 +5,11 @@
   <a class="home"
     routerLink="/{{home.route}}"
     >
-    <app-icon *ngIf="home.icon"
+    <ui-icon *ngIf="home.icon"
       class="home__icon"
       [icon]="home.icon"
       [highlighted]="false"
-      >
-    </app-icon>
+    ></ui-icon>
   </a>
   <a class="link"
     *ngFor="let link of links"

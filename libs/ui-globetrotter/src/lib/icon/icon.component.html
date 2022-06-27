@@ -1,10 +1,10 @@
 <div class="icon"
-  [ngClass]="{
+  [class]="{
     'icon--highlighted': highlighted,
     'icon--clickable': clickable
   }"
-  (click)="onClick()"
-  >
+  (click)="clicked.emit()"
+>
   <ng-container *ngTemplateOutlet="templatesDict[icon]">
   </ng-container>
 </div>
