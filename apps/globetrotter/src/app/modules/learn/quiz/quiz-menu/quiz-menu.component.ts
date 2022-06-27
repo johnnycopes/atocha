@@ -4,10 +4,10 @@ import { map, tap, distinctUntilChanged } from "rxjs/operators";
 import { Router } from "@angular/router";
 import { AnimationEvent } from "@angular/animations";
 
+import { FixedSlideablePanelPosition } from "@atocha/ui-globetrotter";
 import { IQuiz } from "@models/interfaces/quiz.interface";
 import { EQuizType } from "@models/enums/quiz-type.enum";
 import { ERoute } from "@models/enums/route.enum";
-import { FixedSlideablePanelPosition } from "@shared/components/fixed-slideable-panel/fixed-slideable-panel.component";
 import { QuizService } from "@services/quiz.service";
 import { ICountry } from "@models/interfaces/country.interface";
 

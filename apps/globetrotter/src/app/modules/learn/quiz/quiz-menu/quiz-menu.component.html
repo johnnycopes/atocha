@@ -1,5 +1,5 @@
 <ng-container *ngIf="vm$ | async as vm">
-  <app-fixed-slideable-panel
+  <ui-fixed-slideable-panel
     [position]="vm.position"
     (animationFinished)="onMenuAnimationFinish($event)"
     >
@@ -44,5 +44,5 @@
         (click)="onBack()"
       ></ui-button>
     </div>
-  </app-fixed-slideable-panel>
+  </ui-fixed-slideable-panel>
 </ng-container>
