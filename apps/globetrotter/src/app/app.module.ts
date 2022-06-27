@@ -7,7 +7,6 @@ import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { ExploreModule } from './modules/explore/explore.module';
 import { LearnModule } from './modules/learn/learn.module';
-import { SharedModule } from '@shared/shared.module';
 import { UiGlobetrotterModule } from '@atocha/ui-globetrotter';
 
 import { AppComponent } from './app.component';
@@ -35,7 +34,6 @@ import { ShellComponent } from './components/shell/shell.component';
     RouterModule,
     ExploreModule,
     LearnModule,
-    SharedModule,
     UiGlobetrotterModule,
   ],
   bootstrap: [AppComponent]
