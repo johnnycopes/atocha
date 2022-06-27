@@ -20,10 +20,9 @@
 }
 
 .fields {
-
   &__top {
     display: flex;
     justify-content: space-between;
-    margin-bottom: map-get($spacing, 24)
+    margin-bottom: map-get($spacing, 24);
   }
 }

@@ -1,9 +1,9 @@
-import { Dictionary } from "lodash";
-import { TreeProvider } from "@atocha/ui-globetrotter";
+import { Dictionary } from 'lodash';
+import { TreeProvider } from '@atocha/ui-globetrotter';
 
-import { Place } from "../types/place.type";
-import { IRegion } from "../interfaces/region.interface";
-import { ISubregion } from "../interfaces/subregion.interface";
+import { Place } from '../types/place.type';
+import { IRegion } from '../interfaces/region.interface';
+import { ISubregion } from '../interfaces/subregion.interface';
 
 export class PlacesTreeProvider implements TreeProvider<Place> {
   private _placesById: Dictionary<Place> = {};
@@ -18,7 +18,7 @@ export class PlacesTreeProvider implements TreeProvider<Place> {
         const currentPlaceChildren = this.getChildren(currentPlace);
         this._placesById[currentPlaceId] = currentPlace;
         if (currentPlaceChildren.length) {
-          currentPlaceChildren.forEach(child => {
+          currentPlaceChildren.forEach((child) => {
             places.push(child);
           });
         }
@@ -46,9 +46,9 @@ export class PlacesTreeProvider implements TreeProvider<Place> {
 }
 
 function isRegion(place: Place): place is IRegion {
-  return "subregions" in place;
+  return 'subregions' in place;
 }
 
 function isSubregion(place: Place): place is ISubregion {
-  return "countries" in place;
+  return 'countries' in place;
 }

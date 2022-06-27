@@ -1,4 +1,9 @@
-import { Component, Input, ChangeDetectionStrategy, TemplateRef } from '@angular/core';
+import {
+  Component,
+  Input,
+  ChangeDetectionStrategy,
+  TemplateRef,
+} from '@angular/core';
 
 @Component({
   selector: 'ui-small-caps',

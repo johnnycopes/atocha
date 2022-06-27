@@ -1,4 +1,4 @@
-import { Output, EventEmitter, Directive } from "@angular/core";
+import { Output, EventEmitter, Directive } from '@angular/core';
 import { AnimationEvent } from '@angular/animations';
 
 @Directive()

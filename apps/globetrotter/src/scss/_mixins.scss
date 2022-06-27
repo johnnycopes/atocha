@@ -3,7 +3,7 @@ $breakpoints: (
   all: 0px,
   mobile: 400px,
   tablet: 750px,
-  desktop: 1200px
+  desktop: 1200px,
 );
 
 @mixin mobile {
@@ -44,7 +44,7 @@ $breakpoints: (
 
 @mixin flag {
   max-width: 192px;
-	max-height: 128px;
+  max-height: 128px;
 }
 
 @mixin custom-scrollbar {

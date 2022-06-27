@@ -9,11 +9,10 @@ import { ERoute } from '@models/enums/route.enum';
   templateUrl: './page-not-found.component.html',
   styleUrls: ['./page-not-found.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  animations: [fadeInAnimation]
+  animations: [fadeInAnimation],
 })
 export class PageNotFoundComponent {
-
-  constructor(private router: Router) { }
+  constructor(private router: Router) {}
 
   async onHomeClick(): Promise<void> {
     await this.router.navigate([ERoute.home]);

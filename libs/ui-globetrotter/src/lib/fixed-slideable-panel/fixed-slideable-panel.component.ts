@@ -10,7 +10,7 @@ export type FixedSlideablePanelPosition = 'offscreen' | 'header' | 'fullscreen';
   templateUrl: './fixed-slideable-panel.component.html',
   styleUrls: ['./fixed-slideable-panel.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  animations: [positionAnimation]
+  animations: [positionAnimation],
 })
 export class FixedSlideablePanelComponent extends AnimatedComponent {
   @Input() position: FixedSlideablePanelPosition = 'header';

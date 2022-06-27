@@ -1,4 +1,11 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit, TemplateRef, TrackByFunction } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  OnInit,
+  TemplateRef,
+  TrackByFunction,
+} from '@angular/core';
 
 interface TreeNodeContext<T> {
   $implicit: T;

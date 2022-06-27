@@ -13,18 +13,14 @@ import { SelectTypeComponent } from './select-type/select-type.component';
     SelectComponent,
     SelectCountriesComponent,
     SelectQuantityComponent,
-    SelectTypeComponent
+    SelectTypeComponent,
   ],
-  imports: [
-    CommonModule,
-    UiGlobetrotterModule,
-    FormsModule
-  ],
+  imports: [CommonModule, UiGlobetrotterModule, FormsModule],
   exports: [
     SelectComponent,
     SelectCountriesComponent,
     SelectQuantityComponent,
-    SelectTypeComponent
+    SelectTypeComponent,
   ],
 })
-export class SelectModule { }
+export class SelectModule {}

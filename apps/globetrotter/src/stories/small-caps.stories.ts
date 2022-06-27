@@ -2,11 +2,10 @@ import { storiesOf, moduleMetadata } from '@storybook/angular';
 
 import { SmallCapsComponent } from '@shared/components/small-caps/small-caps.component';
 
-
 storiesOf('Shared/Small Caps', module)
   .addDecorator(
     moduleMetadata({
-      declarations: [SmallCapsComponent]
+      declarations: [SmallCapsComponent],
     })
   )
   .add('alone', () => {
@@ -15,6 +14,6 @@ storiesOf('Shared/Small Caps', module)
         <h3 app-small-caps>
           Content
         </h3>
-      `
+      `,
     };
   });

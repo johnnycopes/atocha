@@ -1,8 +1,7 @@
-import { Dictionary } from "lodash";
+import { Dictionary } from 'lodash';
 
-import { TreeProvider } from "@atocha/ui-globetrotter";
-import { IDefaultTreeItem } from "./default-tree-item";
-
+import { TreeProvider } from '@atocha/ui-globetrotter';
+import { IDefaultTreeItem } from './default-tree-item';
 
 export class NestedItemTreeProvider implements TreeProvider<IDefaultTreeItem> {
   private itemsKeyedById: Dictionary<IDefaultTreeItem> = {};
@@ -17,7 +16,7 @@ export class NestedItemTreeProvider implements TreeProvider<IDefaultTreeItem> {
         const currentItemChildren = this.getChildren(currentItem);
         this.itemsKeyedById[currentItemId] = currentItem;
         if (currentItemChildren.length) {
-          currentItemChildren.forEach(child => {
+          currentItemChildren.forEach((child) => {
             items.push(child);
           });
         }

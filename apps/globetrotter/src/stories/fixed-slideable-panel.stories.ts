@@ -1,19 +1,23 @@
 import { storiesOf, moduleMetadata } from '@storybook/angular';
-import {
-  withKnobs,
-  select
-} from '@storybook/addon-knobs';
+import { withKnobs, select } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FixedSlideablePanelComponent, FixedSlideablePanelPosition } from '@shared/components/fixed-slideable-panel/fixed-slideable-panel.component';
+import {
+  FixedSlideablePanelComponent,
+  FixedSlideablePanelPosition,
+} from '@shared/components/fixed-slideable-panel/fixed-slideable-panel.component';
 import { ContainerComponent } from '@shared/components/container/container.component';
 
 const actions = {
   onAnimationStart: action('animation started'),
-  onAnimationFinish: action('animation finished')
+  onAnimationFinish: action('animation finished'),
 };
-const positions: FixedSlideablePanelPosition[] = ['offscreen', 'header', 'fullscreen'];
+const positions: FixedSlideablePanelPosition[] = [
+  'offscreen',
+  'header',
+  'fullscreen',
+];
 const simpleTemplate = `
   <app-fixed-slideable-panel
     [position]="position"
@@ -56,7 +60,7 @@ storiesOf('Shared/Fixed Slideable Panel', module)
   .addDecorator(
     moduleMetadata({
       imports: [BrowserAnimationsModule],
-      declarations: [FixedSlideablePanelComponent, ContainerComponent]
+      declarations: [FixedSlideablePanelComponent, ContainerComponent],
     })
   )
   .add('offscreen', () => {
@@ -65,8 +69,8 @@ storiesOf('Shared/Fixed Slideable Panel', module)
       props: {
         position: select('position', positions, 'offscreen'),
         onAnimationStart: actions.onAnimationStart,
-        onAnimationFinish: actions.onAnimationFinish
-      }
+        onAnimationFinish: actions.onAnimationFinish,
+      },
     };
   })
   .add('header', () => {
@@ -75,8 +79,8 @@ storiesOf('Shared/Fixed Slideable Panel', module)
       props: {
         position: select('position', positions, 'header'),
         onAnimationStart: actions.onAnimationStart,
-        onAnimationFinish: actions.onAnimationFinish
-      }
+        onAnimationFinish: actions.onAnimationFinish,
+      },
     };
   })
   .add('header with container', () => {
@@ -85,8 +89,8 @@ storiesOf('Shared/Fixed Slideable Panel', module)
       props: {
         position: select('position', positions, 'header'),
         onAnimationStart: actions.onAnimationStart,
-        onAnimationFinish: actions.onAnimationFinish
-      }
+        onAnimationFinish: actions.onAnimationFinish,
+      },
     };
   })
   .add('fullscreen', () => {
@@ -95,7 +99,7 @@ storiesOf('Shared/Fixed Slideable Panel', module)
       props: {
         position: select('position', positions, 'fullscreen'),
         onAnimationStart: actions.onAnimationStart,
-        onAnimationFinish: actions.onAnimationFinish
-      }
+        onAnimationFinish: actions.onAnimationFinish,
+      },
     };
   });

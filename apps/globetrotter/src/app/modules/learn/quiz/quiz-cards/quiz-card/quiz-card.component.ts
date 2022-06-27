@@ -1,14 +1,28 @@
 /* eslint-disable brace-style */
-import { Component, Input, Output, EventEmitter, OnInit, ViewChild, TemplateRef, ChangeDetectionStrategy } from "@angular/core";
-import { AnimationEvent } from "@angular/animations";
-import { Observable, BehaviorSubject, combineLatest } from "rxjs";
-import { map, distinctUntilChanged } from "rxjs/operators";
+import {
+  Component,
+  Input,
+  Output,
+  EventEmitter,
+  OnInit,
+  ViewChild,
+  TemplateRef,
+  ChangeDetectionStrategy,
+} from '@angular/core';
+import { AnimationEvent } from '@angular/animations';
+import { Observable, BehaviorSubject, combineLatest } from 'rxjs';
+import { map, distinctUntilChanged } from 'rxjs/operators';
 
-import { FlipCardComponent, FlipCardGuess, FlipCardSide, Duration } from "@atocha/ui-globetrotter";
-import { wait } from "@atocha/utils";
-import { ICountry } from "@models/interfaces/country.interface";
-import { EQuizType } from "@models/enums/quiz-type.enum";
-import { QuizService } from "@services/quiz.service";
+import {
+  FlipCardComponent,
+  FlipCardGuess,
+  FlipCardSide,
+  Duration,
+} from '@atocha/ui-globetrotter';
+import { wait } from '@atocha/utils';
+import { ICountry } from '@models/interfaces/country.interface';
+import { EQuizType } from '@models/enums/quiz-type.enum';
+import { QuizService } from '@services/quiz.service';
 
 interface IViewModel {
   guess: FlipCardGuess;
@@ -18,10 +32,10 @@ interface IViewModel {
 type CardTemplate = Record<FlipCardSide, TemplateRef<unknown>>;
 
 @Component({
-  selector: "app-quiz-card",
-  templateUrl: "./quiz-card.component.html",
-  styleUrls: ["./quiz-card.component.scss"],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  selector: 'app-quiz-card',
+  templateUrl: './quiz-card.component.html',
+  styleUrls: ['./quiz-card.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class QuizCardComponent implements OnInit {
   @Input() country: ICountry;
@@ -29,40 +43,40 @@ export class QuizCardComponent implements OnInit {
   @Input() canFlip: boolean;
   @Input() type: EQuizType;
   @Output() flipped = new EventEmitter<boolean>();
-  @ViewChild("flagTemplate", { static: true }) flagTemplate: TemplateRef<unknown>;
-  @ViewChild("countryTemplate", { static: true }) countryTemplate: TemplateRef<unknown>;
-  @ViewChild("capitalTemplate", { static: true }) capitalTemplate: TemplateRef<unknown>;
+  @ViewChild('flagTemplate', { static: true })
+  flagTemplate: TemplateRef<unknown>;
+  @ViewChild('countryTemplate', { static: true })
+  countryTemplate: TemplateRef<unknown>;
+  @ViewChild('capitalTemplate', { static: true })
+  capitalTemplate: TemplateRef<unknown>;
   @ViewChild(FlipCardComponent) private flipCardComponent: FlipCardComponent;
   public vm$: Observable<IViewModel>;
   public template: CardTemplate;
   private templates: Record<EQuizType, CardTemplate>;
   private processingFlip = false;
   private guess$: Observable<FlipCardGuess>;
-  private guessChange = new BehaviorSubject<FlipCardGuess>("none");
+  private guessChange = new BehaviorSubject<FlipCardGuess>('none');
   private disabled$: Observable<boolean>;
   private disabledChange = new BehaviorSubject<boolean>(false);
 
   public ngOnInit(): void {
     this._setCardTemplates();
     this._initializeStreams();
-    this.vm$ = combineLatest([
-      this.guess$,
-      this.disabled$
-    ]).pipe(
+    this.vm$ = combineLatest([this.guess$, this.disabled$]).pipe(
       map(([guess, disabled]) => ({ guess, disabled }))
     );
   }
 
-  constructor(private _quizService: QuizService) { }
+  constructor(private _quizService: QuizService) {}
 
   public async onAnimationFinish(event: AnimationEvent): Promise<void> {
     const { triggerName, toState } = event;
 
     // onFlip kicks off the chain of events, starting with the flip animation from front to back
-    if (triggerName === "flip") {
-      if (toState === "back") {
-        this.guessChange.next(this.isCurrentCountry ? "correct" : "incorrect");
-      } else if (toState === "front" && this.processingFlip) {
+    if (triggerName === 'flip') {
+      if (toState === 'back') {
+        this.guessChange.next(this.isCurrentCountry ? 'correct' : 'incorrect');
+      } else if (toState === 'front' && this.processingFlip) {
         if (this.isCurrentCountry) {
           this.disabledChange.next(true);
         } else {
@@ -72,16 +86,16 @@ export class QuizCardComponent implements OnInit {
     }
 
     // after flip animation is complete, the card is flipped back over and the guess is reset
-    else if (triggerName === "guess") {
-      if (toState === "correct" || toState === "incorrect") {
+    else if (triggerName === 'guess') {
+      if (toState === 'correct' || toState === 'incorrect') {
         await wait(Duration.cardFlipDisplay);
-        this.guessChange.next("none");
+        this.guessChange.next('none');
         this.flipCardComponent.flip();
       }
     }
 
     // disabled is only reached after guess state to correct
-    else if (triggerName === "disabled" && toState === "disabled") {
+    else if (triggerName === 'disabled' && toState === 'disabled') {
       await this._updateQuiz();
     }
   }
@@ -99,28 +113,26 @@ export class QuizCardComponent implements OnInit {
   }
 
   private _initializeStreams(): void {
-    this.guess$ = this.guessChange.asObservable().pipe(
-      distinctUntilChanged()
-    );
-    this.disabled$ = this.disabledChange.asObservable().pipe(
-      distinctUntilChanged()
-    );
+    this.guess$ = this.guessChange.asObservable().pipe(distinctUntilChanged());
+    this.disabled$ = this.disabledChange
+      .asObservable()
+      .pipe(distinctUntilChanged());
   }
 
   private _setCardTemplates(): void {
     this.templates = {
       [EQuizType.flagsCountries]: {
         front: this.flagTemplate,
-        back: this.countryTemplate
+        back: this.countryTemplate,
       },
       [EQuizType.capitalsCountries]: {
         front: this.capitalTemplate,
-        back: this.countryTemplate
+        back: this.countryTemplate,
       },
       [EQuizType.countriesCapitals]: {
         front: this.countryTemplate,
-        back: this.capitalTemplate
-      }
+        back: this.capitalTemplate,
+      },
     };
     this.template = this.templates[this.type];
   }

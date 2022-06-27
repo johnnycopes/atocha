@@ -4,7 +4,7 @@ import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
   selector: 'ui-input',
   templateUrl: './input.component.html',
   styleUrls: ['./input.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InputComponent {
   @Input() label = '';

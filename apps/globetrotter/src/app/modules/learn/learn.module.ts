@@ -10,22 +10,24 @@ import { SelectModule } from './select/select.module';
 import { SelectComponent } from './select/select.component';
 
 const learnRoutes: Routes = [
-  { path: '', component: LearnComponent, children: [
-    { path: ERoute.select, component: SelectComponent },
-    { path: ERoute.quiz, component: QuizComponent },
-    { path: '', redirectTo: ERoute.select, pathMatch: 'full' },
-  ]},
+  {
+    path: '',
+    component: LearnComponent,
+    children: [
+      { path: ERoute.select, component: SelectComponent },
+      { path: ERoute.quiz, component: QuizComponent },
+      { path: '', redirectTo: ERoute.select, pathMatch: 'full' },
+    ],
+  },
 ];
 
 @NgModule({
-  declarations: [
-    LearnComponent
-  ],
+  declarations: [LearnComponent],
   imports: [
     CommonModule,
     QuizModule,
     SelectModule,
     RouterModule.forChild(learnRoutes),
-  ]
+  ],
 })
-export class LearnModule { }
+export class LearnModule {}

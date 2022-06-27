@@ -1,20 +1,20 @@
 import { storiesOf, moduleMetadata } from '@storybook/angular';
 import { action } from '@storybook/addon-actions';
-import {
-  withKnobs,
-  boolean,
-  select
-} from '@storybook/addon-knobs';
+import { withKnobs, boolean, select } from '@storybook/addon-knobs';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { FlipCardComponent, FlipCardSide, FlipCardGuess } from '@shared/components/flip-card/flip-card.component';
+import {
+  FlipCardComponent,
+  FlipCardSide,
+  FlipCardGuess,
+} from '@shared/components/flip-card/flip-card.component';
 
 const sides: FlipCardSide[] = ['front', 'back'];
 const guesses: FlipCardGuess[] = ['none', 'correct', 'incorrect'];
 const actions = {
   onFlip: action('flipped'),
   onAnimationStart: action('animation started'),
-  onAnimationFinish: action('animation finished')
+  onAnimationFinish: action('animation finished'),
 };
 const template = `
   <app-flip-card
@@ -43,7 +43,7 @@ storiesOf('Shared/Flip Card', module)
   .addDecorator(
     moduleMetadata({
       imports: [BrowserAnimationsModule],
-      declarations: [FlipCardComponent]
+      declarations: [FlipCardComponent],
     })
   )
   .add('front side', () => {
@@ -56,8 +56,8 @@ storiesOf('Shared/Flip Card', module)
         disabled: boolean('disabled', false),
         onFlip: actions.onFlip,
         onAnimationStart: actions.onAnimationStart,
-        onAnimationFinish: actions.onAnimationFinish
-      }
+        onAnimationFinish: actions.onAnimationFinish,
+      },
     };
   })
   .add('back side', () => {
@@ -70,8 +70,8 @@ storiesOf('Shared/Flip Card', module)
         disabled: boolean('disabled', false),
         onFlip: actions.onFlip,
         onAnimationStart: actions.onAnimationStart,
-        onAnimationFinish: actions.onAnimationFinish
-      }
+        onAnimationFinish: actions.onAnimationFinish,
+      },
     };
   })
   .add('correct guess', () => {
@@ -84,8 +84,8 @@ storiesOf('Shared/Flip Card', module)
         disabled: boolean('disabled', false),
         onFlip: actions.onFlip,
         onAnimationStart: actions.onAnimationStart,
-        onAnimationFinish: actions.onAnimationFinish
-      }
+        onAnimationFinish: actions.onAnimationFinish,
+      },
     };
   })
   .add('incorrect guess', () => {
@@ -98,8 +98,8 @@ storiesOf('Shared/Flip Card', module)
         disabled: boolean('disabled', false),
         onFlip: actions.onFlip,
         onAnimationStart: actions.onAnimationStart,
-        onAnimationFinish: actions.onAnimationFinish
-      }
+        onAnimationFinish: actions.onAnimationFinish,
+      },
     };
   })
   .add('disabled', () => {
@@ -112,7 +112,7 @@ storiesOf('Shared/Flip Card', module)
         disabled: boolean('disabled', true),
         onFlip: actions.onFlip,
         onAnimationStart: actions.onAnimationStart,
-        onAnimationFinish: actions.onAnimationFinish
-      }
+        onAnimationFinish: actions.onAnimationFinish,
+      },
     };
   });

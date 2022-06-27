@@ -1,4 +1,9 @@
-import { Component, Input, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import {
+  Component,
+  Input,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+} from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 export type CheckboxState = 'checked' | 'unchecked' | 'indeterminate';
@@ -8,11 +13,13 @@ export type CheckboxState = 'checked' | 'unchecked' | 'indeterminate';
   templateUrl: './checkbox.component.html',
   styleUrls: ['./checkbox.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [{
-    provide: NG_VALUE_ACCESSOR,
-    useExisting: CheckboxComponent,
-    multi: true
-  }]
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: CheckboxComponent,
+      multi: true,
+    },
+  ],
 })
 export class CheckboxComponent implements ControlValueAccessor {
   @Input() bold = false;
@@ -20,7 +27,7 @@ export class CheckboxComponent implements ControlValueAccessor {
   state: CheckboxState = 'unchecked';
   private _onChangeFn: (value: CheckboxState) => void = () => undefined;
 
-  constructor(private _changeDetectorRef: ChangeDetectorRef) { }
+  constructor(private _changeDetectorRef: ChangeDetectorRef) {}
 
   writeValue(value: CheckboxState): void {
     this.state = value;
@@ -32,7 +39,7 @@ export class CheckboxComponent implements ControlValueAccessor {
   }
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-empty-function
-  registerOnTouched(fn: (value: CheckboxState) => void): void { }
+  registerOnTouched(fn: (value: CheckboxState) => void): void {}
 
   onChange(): void {
     this.state = this.state !== 'checked' ? 'checked' : 'unchecked';

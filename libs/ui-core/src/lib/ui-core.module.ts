@@ -7,15 +7,7 @@ import { TreeComponent } from './tree/tree.component';
 
 @NgModule({
   imports: [CommonModule],
-  declarations: [
-    AutofocusDirective,
-    MeasurementPipe,
-    TreeComponent,
-  ],
-  exports: [
-    AutofocusDirective,
-    MeasurementPipe,
-    TreeComponent,
-  ],
+  declarations: [AutofocusDirective, MeasurementPipe, TreeComponent],
+  exports: [AutofocusDirective, MeasurementPipe, TreeComponent],
 })
 export class UiCoreModule {}

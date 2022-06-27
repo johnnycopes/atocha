@@ -1,6 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, Subject, ReplaySubject, combineLatest } from 'rxjs';
-import { map, tap, switchMap, startWith, debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import {
+  map,
+  tap,
+  switchMap,
+  startWith,
+  debounceTime,
+  distinctUntilChanged,
+} from 'rxjs/operators';
 
 import { fadeInAnimation } from '@atocha/ui-globetrotter';
 import { CountryService } from '@services/country.service';
@@ -17,7 +24,7 @@ interface IViewModel {
   selector: 'app-explore',
   templateUrl: './explore.component.html',
   styleUrls: ['./explore.component.scss'],
-  animations: [fadeInAnimation]
+  animations: [fadeInAnimation],
 })
 export class ExploreComponent implements OnInit {
   vm$: Observable<IViewModel>;
@@ -29,7 +36,7 @@ export class ExploreComponent implements OnInit {
   private selectedCountryChange = new ReplaySubject<ICountry>(1);
   private summary$: Observable<string>;
 
-  constructor(private countryService: CountryService) { }
+  constructor(private countryService: CountryService) {}
 
   ngOnInit(): void {
     this.initializeStreams();
@@ -37,9 +44,14 @@ export class ExploreComponent implements OnInit {
       this.filteredCountries$,
       this.selectedCountry$,
       this.searchTerm$,
-      this.summary$
+      this.summary$,
     ]).pipe(
-      map(([filteredCountries, selectedCountry, searchTerm, summary]) => ({ filteredCountries, selectedCountry, searchTerm, summary }))
+      map(([filteredCountries, selectedCountry, searchTerm, summary]) => ({
+        filteredCountries,
+        selectedCountry,
+        searchTerm,
+        summary,
+      }))
     );
   }
 
@@ -59,30 +71,32 @@ export class ExploreComponent implements OnInit {
     this.countries$ = this.countryService.countries.pipe(
       map(({ flatCountries }) => flatCountries)
     );
-    this.selectedCountry$ = this.selectedCountryChange.asObservable().pipe(
-      distinctUntilChanged()
-    );
+    this.selectedCountry$ = this.selectedCountryChange
+      .asObservable()
+      .pipe(distinctUntilChanged());
     this.summary$ = this.selectedCountryChange.asObservable().pipe(
-      switchMap(country => this.countryService.getSummary(country.name)),
+      switchMap((country) => this.countryService.getSummary(country.name)),
       distinctUntilChanged()
     );
-    this.searchTerm$ = this.searchTermChange.asObservable().pipe(
-      startWith(''),
-      debounceTime(100),
-      distinctUntilChanged()
-    );
+    this.searchTerm$ = this.searchTermChange
+      .asObservable()
+      .pipe(startWith(''), debounceTime(100), distinctUntilChanged());
     this.filteredCountries$ = this.searchTerm$.pipe(
-      map(searchTerm => searchTerm.toLowerCase()),
-      switchMap((searchTerm, index) => this.countries$.pipe(
-        tap(countries => index === 0 ? this.onSelect(countries[0]) : null),
-        map(countries => {
-          return countries.filter(country => {
-            const name = country.name.toLowerCase();
-            const capital = country.capital.toLowerCase();
-            return name.includes(searchTerm) || capital.includes(searchTerm);
-          });
-        })
+      map((searchTerm) => searchTerm.toLowerCase()),
+      switchMap((searchTerm, index) =>
+        this.countries$.pipe(
+          tap((countries) =>
+            index === 0 ? this.onSelect(countries[0]) : null
+          ),
+          map((countries) => {
+            return countries.filter((country) => {
+              const name = country.name.toLowerCase();
+              const capital = country.capital.toLowerCase();
+              return name.includes(searchTerm) || capital.includes(searchTerm);
+            });
+          })
+        )
       )
-    ));
+    );
   }
 }

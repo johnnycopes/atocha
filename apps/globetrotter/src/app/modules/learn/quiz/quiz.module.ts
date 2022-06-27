@@ -12,17 +12,14 @@ import { QuizMenuComponent } from './quiz-menu/quiz-menu.component';
     QuizComponent,
     QuizCardComponent,
     QuizCardsComponent,
-    QuizMenuComponent
+    QuizMenuComponent,
   ],
-  imports: [
-    CommonModule,
-    UiGlobetrotterModule
-  ],
+  imports: [CommonModule, UiGlobetrotterModule],
   exports: [
     QuizComponent,
     QuizCardComponent,
     QuizCardsComponent,
-    QuizMenuComponent
-  ]
+    QuizMenuComponent,
+  ],
 })
-export class QuizModule { }
+export class QuizModule {}

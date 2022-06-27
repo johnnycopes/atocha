@@ -12,7 +12,7 @@ interface IViewModel {
 @Component({
   selector: 'app-shell',
   templateUrl: './shell.component.html',
-  styleUrls: ['./shell.component.scss']
+  styleUrls: ['./shell.component.scss'],
 })
 export class ShellComponent implements OnInit {
   vm$: Observable<IViewModel>;
@@ -20,22 +20,16 @@ export class ShellComponent implements OnInit {
   private showContent$: Observable<boolean>;
   private quizComplete$: Observable<boolean>;
 
-  constructor(private quizService: QuizService) { }
+  constructor(private quizService: QuizService) {}
 
   ngOnInit(): void {
     this.initializeStreams();
-    this.vm$ = combineLatest([
-      this.showContent$,
-      this.quizComplete$
-    ]).pipe(
-      map(([
+    this.vm$ = combineLatest([this.showContent$, this.quizComplete$]).pipe(
+      map(([showContent, quizComplete]) => ({
         showContent,
-        quizComplete
-      ]) => ({
-        showContent,
-        quizComplete
-      })
-    ));
+        quizComplete,
+      }))
+    );
   }
 
   onNavigationReady(): void {
@@ -43,11 +37,11 @@ export class ShellComponent implements OnInit {
   }
 
   private initializeStreams(): void {
-    this.showContent$ = this.showContentSubject.asObservable().pipe(
-      distinctUntilChanged()
-    );
+    this.showContent$ = this.showContentSubject
+      .asObservable()
+      .pipe(distinctUntilChanged());
     this.quizComplete$ = this.quizService.quiz.pipe(
-      map(quiz => quiz?.isComplete ?? false),
+      map((quiz) => quiz?.isComplete ?? false),
       distinctUntilChanged()
     );
   }

@@ -9,11 +9,10 @@ import { ERoute } from '@models/enums/route.enum';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  animations: [fadeInAnimation]
+  animations: [fadeInAnimation],
 })
 export class HomeComponent {
-
-  constructor(private router: Router) { }
+  constructor(private router: Router) {}
 
   async onClick(): Promise<void> {
     await this.router.navigate([ERoute.learn]);

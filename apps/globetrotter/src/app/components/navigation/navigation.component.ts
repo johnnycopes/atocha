@@ -16,10 +16,10 @@ interface INavigationLink {
   templateUrl: './navigation.component.html',
   styleUrls: ['./navigation.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  animations: [positionAnimation]
+  animations: [positionAnimation],
 })
 export class NavigationComponent extends AnimatedComponent implements OnInit {
-  position = "navigation"
+  position = 'navigation';
   home: INavigationLink;
   links: INavigationLink[];
 
@@ -28,18 +28,18 @@ export class NavigationComponent extends AnimatedComponent implements OnInit {
       name: 'Home',
       icon: 'Globetrotter',
       route: ERoute.home,
-      exactPathMatch: true
+      exactPathMatch: true,
     };
     this.links = [
       {
         name: 'Explore',
         route: ERoute.explore,
-        exactPathMatch: true
+        exactPathMatch: true,
       },
       {
         name: 'Learn',
         route: ERoute.learn,
-        exactPathMatch: false
+        exactPathMatch: false,
       },
     ];
   }

@@ -21,7 +21,7 @@
       "@atocha/utils": ["../../libs/utils/src/index.ts"],
       "@env/*": ["src/environments/*"],
       "@models/*": ["src/app/models/*"],
-      "@services/*": ["src/app/services/*"],
+      "@services/*": ["src/app/services/*"]
     },
     "target": "es2020",
     "forceConsistentCasingInFileNames": true,

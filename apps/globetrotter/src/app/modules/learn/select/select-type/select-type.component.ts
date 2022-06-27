@@ -10,21 +10,21 @@ import { SelectService } from '@services/select.service';
   selector: 'app-select-type',
   templateUrl: './select-type.component.html',
   styleUrls: ['./select-type.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SelectTypeComponent {
   public types: RadioButtonsOption<EQuizType>[] = [
     EQuizType.flagsCountries,
     EQuizType.capitalsCountries,
-    EQuizType.countriesCapitals
-  ].map(quizType => this._generateOption(quizType));
+    EQuizType.countriesCapitals,
+  ].map((quizType) => this._generateOption(quizType));
 
-  public selectedType$: Observable<RadioButtonsOption<EQuizType>> = this._selectService.selection
-    .pipe(
+  public selectedType$: Observable<RadioButtonsOption<EQuizType>> =
+    this._selectService.selection.pipe(
       map(({ type }) => this._generateOption(type))
     );
 
-  constructor(private _selectService: SelectService) { }
+  constructor(private _selectService: SelectService) {}
 
   public onChange(selectedType: RadioButtonsOption<EQuizType>): void {
     this._selectService.updateType(selectedType.value);
@@ -33,18 +33,18 @@ export class SelectTypeComponent {
   private _generateOption(quizType: EQuizType): RadioButtonsOption<EQuizType> {
     return {
       display: this._getDisplayText(quizType),
-      value: quizType
+      value: quizType,
     };
   }
 
   private _getDisplayText(quizType: EQuizType): string {
     switch (quizType) {
       case EQuizType.flagsCountries:
-        return "Flags / Countries";
+        return 'Flags / Countries';
       case EQuizType.capitalsCountries:
-        return "Capitals / Countries";
+        return 'Capitals / Countries';
       case EQuizType.countriesCapitals:
-        return "Countries / Capitals";
+        return 'Countries / Capitals';
     }
   }
 }

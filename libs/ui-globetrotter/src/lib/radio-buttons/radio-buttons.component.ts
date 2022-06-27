@@ -1,5 +1,9 @@
-
-import { Component, Input, ChangeDetectorRef, ChangeDetectionStrategy } from '@angular/core';
+import {
+  Component,
+  Input,
+  ChangeDetectorRef,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { BreakpointObserver } from '@angular/cdk/layout';
 
@@ -13,11 +17,13 @@ export interface RadioButtonsOption<T> {
   templateUrl: './radio-buttons.component.html',
   styleUrls: ['./radio-buttons.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [{
-    provide: NG_VALUE_ACCESSOR,
-    useExisting: RadioButtonsComponent,
-    multi: true
-  }]
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: RadioButtonsComponent,
+      multi: true,
+    },
+  ],
 })
 export class RadioButtonsComponent<T> implements ControlValueAccessor {
   @Input() options: RadioButtonsOption<T>[] = [];
@@ -28,7 +34,7 @@ export class RadioButtonsComponent<T> implements ControlValueAccessor {
   constructor(
     public changeDetectorRef: ChangeDetectorRef,
     public breakpointObserver: BreakpointObserver
-  ) { }
+  ) {}
 
   writeValue(obj: RadioButtonsOption<T>): void {
     this.model = obj;
@@ -40,7 +46,7 @@ export class RadioButtonsComponent<T> implements ControlValueAccessor {
   }
 
   // eslint-disable-next-line @typescript-eslint/no-empty-function, @typescript-eslint/no-unused-vars
-  registerOnTouched(fn: () => void): void { }
+  registerOnTouched(fn: () => void): void {}
 
   onChange(): void {
     if (this.model) {

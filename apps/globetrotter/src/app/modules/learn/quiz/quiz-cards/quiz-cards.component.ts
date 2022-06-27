@@ -1,12 +1,12 @@
-import { Component, OnInit, ChangeDetectionStrategy } from "@angular/core";
-import { Observable, combineLatest } from "rxjs";
-import { map, first } from "rxjs/operators";
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Observable, combineLatest } from 'rxjs';
+import { map, first } from 'rxjs/operators';
 
-import { staggerAnimation, fadeInAnimation } from "@atocha/ui-globetrotter";
-import { ICountry } from "@models/interfaces/country.interface";
-import { EQuizType } from "@models/enums/quiz-type.enum";
-import { QuizService } from "@services/quiz.service";
-import { shuffle } from "lodash-es";
+import { staggerAnimation, fadeInAnimation } from '@atocha/ui-globetrotter';
+import { ICountry } from '@models/interfaces/country.interface';
+import { EQuizType } from '@models/enums/quiz-type.enum';
+import { QuizService } from '@services/quiz.service';
+import { shuffle } from 'lodash-es';
 
 interface IViewModel {
   quizType: EQuizType;
@@ -15,14 +15,11 @@ interface IViewModel {
 }
 
 @Component({
-  selector: "app-quiz-cards",
-  templateUrl: "./quiz-cards.component.html",
-  styleUrls: ["./quiz-cards.component.scss"],
+  selector: 'app-quiz-cards',
+  templateUrl: './quiz-cards.component.html',
+  styleUrls: ['./quiz-cards.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  animations: [
-    fadeInAnimation,
-    staggerAnimation
-  ]
+  animations: [fadeInAnimation, staggerAnimation],
 })
 export class QuizCardsComponent implements OnInit {
   public canFlipCards = true;
@@ -31,16 +28,20 @@ export class QuizCardsComponent implements OnInit {
   private _countries$: Observable<ICountry[]>;
   private _currentCountry$: Observable<ICountry | undefined>;
 
-  constructor(private quizService: QuizService) { }
+  constructor(private quizService: QuizService) {}
 
   public ngOnInit(): void {
     this._initializeStreams();
     this.vm$ = combineLatest([
       this._quizType$,
       this._countries$,
-      this._currentCountry$
+      this._currentCountry$,
     ]).pipe(
-      map(([quizType, countries, currentCountry]) => ({ quizType, countries, currentCountry }))
+      map(([quizType, countries, currentCountry]) => ({
+        quizType,
+        countries,
+        currentCountry,
+      }))
     );
   }
 
@@ -50,14 +51,14 @@ export class QuizCardsComponent implements OnInit {
 
   private _initializeStreams(): void {
     this._quizType$ = this.quizService.quiz.pipe(
-      map(quiz => quiz?.type ?? EQuizType.flagsCountries)
+      map((quiz) => quiz?.type ?? EQuizType.flagsCountries)
     );
     this._countries$ = this.quizService.quiz.pipe(
       first(),
-      map(quiz => shuffle(quiz?.countries ?? [])),
+      map((quiz) => shuffle(quiz?.countries ?? []))
     );
     this._currentCountry$ = this.quizService.quiz.pipe(
-      map(quiz => quiz?.countries[0] ?? undefined)
+      map((quiz) => quiz?.countries[0] ?? undefined)
     );
   }
 }

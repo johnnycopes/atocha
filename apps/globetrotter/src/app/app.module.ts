@@ -36,6 +36,6 @@ import { ShellComponent } from './components/shell/shell.component';
     LearnModule,
     UiGlobetrotterModule,
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

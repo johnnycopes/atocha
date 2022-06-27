@@ -1,8 +1,5 @@
 import { storiesOf, moduleMetadata } from '@storybook/angular';
-import {
-  withKnobs,
-  object
-} from '@storybook/addon-knobs';
+import { withKnobs, object } from '@storybook/addon-knobs';
 
 import { TreeComponent } from '@shared/components/tree/tree.component';
 import { NESTED_ITEM } from './mock-data/nested-item.data';
@@ -19,7 +16,7 @@ storiesOf('Shared/Tree', module)
   .addDecorator(withKnobs)
   .addDecorator(
     moduleMetadata({
-      declarations: [TreeComponent]
+      declarations: [TreeComponent],
     })
   )
   .add('nested item with default template', () => {
@@ -33,8 +30,8 @@ storiesOf('Shared/Tree', module)
       `,
       props: {
         item: object('item', nestedItem),
-        treeProvider: nestedItemTreeProvider
-      }
+        treeProvider: nestedItemTreeProvider,
+      },
     };
   })
   .add('nested item with custom template', () => {
@@ -59,7 +56,7 @@ storiesOf('Shared/Tree', module)
       props: {
         item: object('item', nestedItem),
         treeProvider: nestedItemTreeProvider,
-      }
+      },
     };
   })
   .add('flat item with default template', () => {
@@ -73,8 +70,8 @@ storiesOf('Shared/Tree', module)
       `,
       props: {
         item: object('item', flatItems[0]),
-        treeProvider: flatItemTreeProvider
-      }
+        treeProvider: flatItemTreeProvider,
+      },
     };
   })
   .add('flat item with custom template', () => {
@@ -98,7 +95,7 @@ storiesOf('Shared/Tree', module)
       `,
       props: {
         item: object('item', flatItems[0]),
-        treeProvider: flatItemTreeProvider
-      }
+        treeProvider: flatItemTreeProvider,
+      },
     };
   });

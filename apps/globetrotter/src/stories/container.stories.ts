@@ -6,7 +6,7 @@ import { IconComponent } from '@shared/components/icon/icon.component';
 storiesOf('Shared/Container', module)
   .addDecorator(
     moduleMetadata({
-      declarations: [ContainerComponent, IconComponent]
+      declarations: [ContainerComponent, IconComponent],
     })
   )
   .add('split in thirds', () => {

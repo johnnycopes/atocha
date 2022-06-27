@@ -1,10 +1,6 @@
 import { storiesOf } from '@storybook/angular';
 import { action } from '@storybook/addon-actions';
-import {
-  withKnobs,
-  select,
-  boolean
-} from '@storybook/addon-knobs';
+import { withKnobs, select, boolean } from '@storybook/addon-knobs';
 
 import { IconComponent } from '@shared/components/icon/icon.component';
 
@@ -19,10 +15,10 @@ const icons = [
   'Lightbulb',
   'Luggage',
   'Oceania',
-  'User'
+  'User',
 ];
 const actions = {
-  onClick: action('clicked')
+  onClick: action('clicked'),
 };
 
 storiesOf('Shared/Icon', module)
@@ -33,9 +29,9 @@ storiesOf('Shared/Icon', module)
       props: {
         icon: select('icon', icons, 'Earth'),
         highlighted: boolean('highlighted', false),
-        clicked: actions.onClick
-      }
-    }
+        clicked: actions.onClick,
+      },
+    };
   })
   .add('highlighted', () => {
     return {
@@ -43,7 +39,7 @@ storiesOf('Shared/Icon', module)
       props: {
         icon: select('icon', icons, 'Earth'),
         highlighted: boolean('highlighted', true),
-        clicked: actions.onClick
-      }
+        clicked: actions.onClick,
+      },
     };
   });

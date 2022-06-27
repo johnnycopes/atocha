@@ -1,9 +1,5 @@
 import { storiesOf, moduleMetadata } from '@storybook/angular';
-import {
-  withKnobs,
-  boolean,
-  select
-} from '@storybook/addon-knobs';
+import { withKnobs, boolean, select } from '@storybook/addon-knobs';
 
 import { AlertComponent } from '@shared/components/alert/alert.component';
 
@@ -13,7 +9,7 @@ storiesOf('Shared/Alert', module)
   .addDecorator(withKnobs)
   .addDecorator(
     moduleMetadata({
-      declarations: [AlertComponent]
+      declarations: [AlertComponent],
     })
   )
   .add('success', () => {
@@ -29,7 +25,7 @@ storiesOf('Shared/Alert', module)
       props: {
         type: select('type', types, 'success'),
         large: boolean('large', true),
-      }
+      },
     };
   })
   .add('error', () => {
@@ -45,7 +41,6 @@ storiesOf('Shared/Alert', module)
       props: {
         type: select('type', types, 'error'),
         large: boolean('large', true),
-      }
+      },
     };
-  })
-
+  });

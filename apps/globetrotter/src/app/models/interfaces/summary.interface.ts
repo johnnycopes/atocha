@@ -12,8 +12,8 @@ export interface ISummary {
   pageid: number;
   extract: string;
   extract_html: string;
-  thumbnail: IImage,
-  originalimage: IImage,
+  thumbnail: IImage;
+  originalimage: IImage;
   lang: string;
   dir: string;
   timestamp: string;

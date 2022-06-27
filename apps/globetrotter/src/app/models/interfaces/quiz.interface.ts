@@ -1,5 +1,5 @@
-import { EQuizType } from "@models/enums/quiz-type.enum";
-import { ICountry } from "./country.interface";
+import { EQuizType } from '@models/enums/quiz-type.enum';
+import { ICountry } from './country.interface';
 
 export interface IQuiz {
   guess: number;

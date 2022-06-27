@@ -1,18 +1,18 @@
 import { storiesOf, moduleMetadata } from '@storybook/angular';
 import { action } from '@storybook/addon-actions';
-import {
-  withKnobs,
-  select
-} from '@storybook/addon-knobs';
+import { withKnobs, select } from '@storybook/addon-knobs';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { TabsetComponent, TabsetContentVisibility } from '@shared/components/tabset/tabset.component';
+import {
+  TabsetComponent,
+  TabsetContentVisibility,
+} from '@shared/components/tabset/tabset.component';
 import { TabComponent } from '@shared/components/tabset/tab/tab.component';
 
 const visibilityStates: TabsetContentVisibility[] = ['visible', 'invisible'];
 const actions = {
   onAnimationStart: action('animation started'),
-  onAnimationFinish: action('animation finished')
+  onAnimationFinish: action('animation finished'),
 };
 
 storiesOf('Shared/Tabset', module)
@@ -20,10 +20,7 @@ storiesOf('Shared/Tabset', module)
   .addDecorator(
     moduleMetadata({
       imports: [BrowserAnimationsModule],
-      declarations: [
-        TabsetComponent,
-        TabComponent
-      ]
+      declarations: [TabsetComponent, TabComponent],
     })
   )
   .add('with default template', () => {
@@ -46,9 +43,13 @@ storiesOf('Shared/Tabset', module)
         </app-tabset>
       `,
       props: {
-        contentVisibility: select('contentVisibility', visibilityStates, 'visible'),
+        contentVisibility: select(
+          'contentVisibility',
+          visibilityStates,
+          'visible'
+        ),
         onAnimationStart: actions.onAnimationStart,
-        onAnimationFinish: actions.onAnimationFinish
-      }
+        onAnimationFinish: actions.onAnimationFinish,
+      },
     };
   });

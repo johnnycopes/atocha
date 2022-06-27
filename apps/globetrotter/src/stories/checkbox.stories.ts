@@ -1,24 +1,23 @@
 import { storiesOf, moduleMetadata } from '@storybook/angular';
 import { action } from '@storybook/addon-actions';
-import {
-  withKnobs,
-  boolean,
-  select,
-} from '@storybook/addon-knobs';
+import { withKnobs, boolean, select } from '@storybook/addon-knobs';
 
-import { CheckboxComponent, CheckboxState } from '@shared/components/checkbox/checkbox.component';
+import {
+  CheckboxComponent,
+  CheckboxState,
+} from '@shared/components/checkbox/checkbox.component';
 
 const states: CheckboxState[] = ['checked', 'unchecked', 'indeterminate'];
 const actions = {
-  onChange: action('ngModelChanged')
+  onChange: action('ngModelChanged'),
 };
 
 storiesOf('Shared/Checkbox', module)
   .addDecorator(withKnobs)
   .addDecorator(
     moduleMetadata({
-      declarations: [CheckboxComponent]
-    }),
+      declarations: [CheckboxComponent],
+    })
   )
   .add('alone', () => {
     return {
@@ -33,8 +32,8 @@ storiesOf('Shared/Checkbox', module)
       props: {
         state: select('state', states, 'indeterminate'),
         invertColors: boolean('invertColors', false),
-        onChange: actions.onChange
-      }
+        onChange: actions.onChange,
+      },
     };
   })
   .add('with text', () => {
@@ -50,7 +49,7 @@ storiesOf('Shared/Checkbox', module)
       `,
       props: {
         invertColors: boolean('invertColors', true),
-        onChange: actions.onChange
-      }
+        onChange: actions.onChange,
+      },
     };
   });

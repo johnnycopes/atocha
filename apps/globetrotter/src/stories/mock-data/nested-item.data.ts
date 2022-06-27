@@ -1,45 +1,45 @@
-import { IDefaultTreeItem } from "./default-tree-item";
+import { IDefaultTreeItem } from './default-tree-item';
 
 export const NESTED_ITEM: IDefaultTreeItem = {
-  id: "Africa",
+  id: 'Africa',
   children: [
     {
-      id: "Southern Africa",
-      parentId: "Africa",
+      id: 'Southern Africa',
+      parentId: 'Africa',
       children: [
         {
-          id: "Swaziland",
-          parentId: "Southern Africa",
+          id: 'Swaziland',
+          parentId: 'Southern Africa',
         },
         {
-          id: "Namibia",
-          parentId: "Southern Africa",
-        }
-      ]
+          id: 'Namibia',
+          parentId: 'Southern Africa',
+        },
+      ],
     },
     {
-      id: "Central Africa",
-      parentId: "Africa",
+      id: 'Central Africa',
+      parentId: 'Africa',
     },
     {
-      id: "Northern Africa",
-      parentId: "Africa",
+      id: 'Northern Africa',
+      parentId: 'Africa',
       children: [
         {
-          id: "Morocco",
-          parentId: "Northern Africa",
+          id: 'Morocco',
+          parentId: 'Northern Africa',
           children: [
             {
-              id: "Marrakesh",
-              parentId: "Morocco",
+              id: 'Marrakesh',
+              parentId: 'Morocco',
             },
             {
-              id: "Fes",
-              parentId: "Morocco",
-            }
-          ]
-        }
-      ]
+              id: 'Fes',
+              parentId: 'Morocco',
+            },
+          ],
+        },
+      ],
     },
   ],
 };

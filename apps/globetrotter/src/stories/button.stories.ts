@@ -1,17 +1,15 @@
 import { storiesOf } from '@storybook/angular';
 import { action } from '@storybook/addon-actions';
-import {
-  withKnobs,
-  text,
-  boolean,
-  select,
-} from '@storybook/addon-knobs';
+import { withKnobs, text, boolean, select } from '@storybook/addon-knobs';
 
-import { ButtonComponent, TButtonStyle } from '@shared/components/button/button.component';
+import {
+  ButtonComponent,
+  TButtonStyle,
+} from '@shared/components/button/button.component';
 
 const buttonStyles: TButtonStyle[] = ['primary', 'secondary'];
 const actions = {
-  onClick: action('clicked')
+  onClick: action('clicked'),
 };
 
 storiesOf('Shared/Button', module)
@@ -23,9 +21,9 @@ storiesOf('Shared/Button', module)
         buttonText: text('buttonText', 'Embark'),
         buttonStyle: select('buttonStyle', buttonStyles, 'primary'),
         disabled: boolean('disabled', false),
-        clicked: actions.onClick
-      }
-    }
+        clicked: actions.onClick,
+      },
+    };
   })
   .add('secondary', () => {
     return {
@@ -34,7 +32,7 @@ storiesOf('Shared/Button', module)
         buttonText: text('buttonText', 'Select All'),
         buttonStyle: select('buttonStyle', buttonStyles, 'secondary'),
         disabled: boolean('disabled', false),
-        clicked: actions.onClick
-      }
+        clicked: actions.onClick,
+      },
     };
   });

@@ -1,6 +1,21 @@
 /* eslint-disable @typescript-eslint/member-ordering */
 
-import { Component, OnInit, OnChanges, SimpleChanges, Input, Output, EventEmitter, TemplateRef, ChangeDetectionStrategy, ViewChild, ElementRef, AfterViewInit, ChangeDetectorRef, HostListener } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  OnChanges,
+  SimpleChanges,
+  Input,
+  Output,
+  EventEmitter,
+  TemplateRef,
+  ChangeDetectionStrategy,
+  ViewChild,
+  ElementRef,
+  AfterViewInit,
+  ChangeDetectorRef,
+  HostListener,
+} from '@angular/core';
 import { InputComponent } from '../input/input.component';
 
 export interface IListDetailsStyles {
@@ -12,15 +27,17 @@ export interface IListDetailsStyles {
   selector: 'ui-list-details',
   templateUrl: './list-details.component.html',
   styleUrls: ['./list-details.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ListDetailsComponent<T> implements OnInit, OnChanges, AfterViewInit {
+export class ListDetailsComponent<T>
+  implements OnInit, OnChanges, AfterViewInit
+{
   @Input() items: T[] = [];
   @Input() listItemTemplate: TemplateRef<unknown> | undefined;
   @Input() detailsTemplate: TemplateRef<unknown> | undefined;
   @Input() styles: IListDetailsStyles = {
     offsetTop: '0px',
-    gap: '12px'
+    gap: '12px',
   };
   @Input() getItemUniqueId: (item: T) => string = () => '';
   @Input() selectedItem: T | undefined;
@@ -46,7 +63,7 @@ export class ListDetailsComponent<T> implements OnInit, OnChanges, AfterViewInit
 
   public trackByFn = (index: number, item: T): string => {
     return this.getItemUniqueId(item);
-  }
+  };
 
   @HostListener('window:keydown.arrowUp', ['$event'])
   onArrowUp(event: KeyboardEvent): void {
@@ -72,11 +89,13 @@ export class ListDetailsComponent<T> implements OnInit, OnChanges, AfterViewInit
     this._moveDownList(10);
   }
 
-  constructor(private changeDetectorRef: ChangeDetectorRef) { }
+  constructor(private changeDetectorRef: ChangeDetectorRef) {}
 
   ngOnInit(): void {
     if (!this.getItemUniqueId) {
-      throw new Error('Missing input(s): getItemUniqueId must be passed to the list-details component');
+      throw new Error(
+        'Missing input(s): getItemUniqueId must be passed to the list-details component'
+      );
     }
   }
 
@@ -91,7 +110,7 @@ export class ListDetailsComponent<T> implements OnInit, OnChanges, AfterViewInit
         setTimeout(() => {
           const list = this.list?.nativeElement;
           if (list) {
-            list.scrollTop = this._selectedItemIndex * this._listItemHeight
+            list.scrollTop = this._selectedItemIndex * this._listItemHeight;
           }
         });
       }
@@ -108,7 +127,8 @@ export class ListDetailsComponent<T> implements OnInit, OnChanges, AfterViewInit
       ${this.styles.gap} -
       ${this.styles.offsetTop})
     `;
-    this._listItemHeight = this.listItem.nativeElement.offsetHeight + parseInt(this.gap);
+    this._listItemHeight =
+      this.listItem.nativeElement.offsetHeight + parseInt(this.gap);
     this.changeDetectorRef.detectChanges();
   }
 
@@ -124,7 +144,9 @@ export class ListDetailsComponent<T> implements OnInit, OnChanges, AfterViewInit
     if (!this.selectedItem) {
       return false;
     }
-    return this.getItemUniqueId(item) === this.getItemUniqueId(this.selectedItem);
+    return (
+      this.getItemUniqueId(item) === this.getItemUniqueId(this.selectedItem)
+    );
   }
 
   private _moveUpList(incrementValue: number): void {

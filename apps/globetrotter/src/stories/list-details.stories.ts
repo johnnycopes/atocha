@@ -1,9 +1,6 @@
 import { storiesOf, moduleMetadata } from '@storybook/angular';
 import { action } from '@storybook/addon-actions';
-import {
-  withKnobs,
-  object
-} from '@storybook/addon-knobs';
+import { withKnobs, object } from '@storybook/addon-knobs';
 
 import { MOCK_DATA } from './mock-data/list-details.data';
 import { ICountry } from '@models/interfaces/country.interface';
@@ -12,18 +9,14 @@ import { InputComponent } from '@shared/components/input/input.component';
 import { ListDetailsComponent } from '@shared/components/list-details/list-details.component';
 
 const actions = {
-  onSelect: action('selected')
+  onSelect: action('selected'),
 };
 
 storiesOf('Shared/List Details', module)
   .addDecorator(withKnobs)
   .addDecorator(
     moduleMetadata({
-      declarations: [
-        AlertComponent,
-        InputComponent,
-        ListDetailsComponent
-      ]
+      declarations: [AlertComponent, InputComponent, ListDetailsComponent],
     })
   )
   .add('basic', () => {
@@ -61,7 +54,7 @@ storiesOf('Shared/List Details', module)
         selectedItem: object('item', MOCK_DATA[0]),
         items: object('items', MOCK_DATA),
         getUniqueId: (item: ICountry) => item.cioc,
-        onSelect: actions.onSelect
-      }
-    }
-  })
+        onSelect: actions.onSelect,
+      },
+    };
+  });

@@ -1,4 +1,4 @@
-import { ICountry } from "./country.interface";
+import { ICountry } from './country.interface';
 
 export interface ISubregion {
   name: string;

@@ -11,8 +11,18 @@ interface DummyItem {
 
 @Component({
   template: `
-    <ui-tree [node]="flatItem" [template]="item" [getId]="getId" [getChildren]="getItems"></ui-tree>
-    <ui-tree [node]="nestedItem" [template]="item" [getId]="getId" [getChildren]="getItems"></ui-tree>
+    <ui-tree
+      [node]="flatItem"
+      [template]="item"
+      [getId]="getId"
+      [getChildren]="getItems"
+    ></ui-tree>
+    <ui-tree
+      [node]="nestedItem"
+      [template]="item"
+      [getId]="getId"
+      [getChildren]="getItems"
+    ></ui-tree>
 
     <ng-template #item let-item let-level="level">
       <h1>{{ item.name }} | Level {{ level }}</h1>
@@ -42,13 +52,11 @@ describe('TreeComponent', () => {
   let app: TestHostComponent;
   let fixture: ComponentFixture<TestHostComponent>;
 
-  beforeEach(
-    waitForAsync(() => {
-      TestBed.configureTestingModule({
-        declarations: [TestHostComponent, TreeComponent],
-      }).compileComponents();
-    })
-  );
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      declarations: [TestHostComponent, TreeComponent],
+    }).compileComponents();
+  }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(TestHostComponent);
@@ -69,7 +77,8 @@ describe('TreeComponent', () => {
 
   it('renders item with children', () => {
     const name = fixture.nativeElement.querySelectorAll('h1')[1].textContent;
-    const childName = fixture.nativeElement.querySelectorAll('h1')[2].textContent;
+    const childName =
+      fixture.nativeElement.querySelectorAll('h1')[2].textContent;
     fixture.detectChanges();
 
     expect(name).toBe('Item 2 | Level 0');

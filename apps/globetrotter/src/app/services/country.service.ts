@@ -1,16 +1,19 @@
-import { Injectable } from "@angular/core";
-import { Resolve } from "@angular/router";
-import { BehaviorSubject, Observable } from "rxjs";
-import { map } from "rxjs/operators";
-import { groupBy, reduce, shuffle, map as _map } from "lodash-es";
-import { Dictionary } from "lodash";
+import { Injectable } from '@angular/core';
+import { Resolve } from '@angular/router';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { groupBy, reduce, shuffle, map as _map } from 'lodash-es';
+import { Dictionary } from 'lodash';
 
-import { COUNTRY_STATUSES } from "@models/data/country-statuses";
-import { COUNTRY_APP_NAMES, COUNTRY_SUMMARY_NAMES } from "@models/data/country-modifications";
-import { ICountry } from "@models/interfaces/country.interface";
-import { IRegion } from "@models/interfaces/region.interface";
-import { ISelection } from "@models/interfaces/selection.interface";
-import { ApiService } from "./api.service";
+import { COUNTRY_STATUSES } from '@models/data/country-statuses';
+import {
+  COUNTRY_APP_NAMES,
+  COUNTRY_SUMMARY_NAMES,
+} from '@models/data/country-modifications';
+import { ICountry } from '@models/interfaces/country.interface';
+import { IRegion } from '@models/interfaces/region.interface';
+import { ISelection } from '@models/interfaces/selection.interface';
+import { ApiService } from './api.service';
 
 interface ICountryState {
   flatCountries: ICountry[];
@@ -19,29 +22,33 @@ interface ICountryState {
 }
 
 @Injectable({
-  providedIn: "root"
+  providedIn: 'root',
 })
 export class CountryService implements Resolve<Observable<ICountry[]>> {
   private _request: Observable<ICountry[]>;
   private readonly _countries = new BehaviorSubject<ICountryState>({
     flatCountries: [],
     countriesBySubregion: {},
-    nestedCountries: []
+    nestedCountries: [],
   });
   get countries(): Observable<ICountryState> {
     return this._countries;
   }
 
   constructor(private _apiService: ApiService) {
-    this._apiService.fetchCountries().subscribe(countriesData => {
+    this._apiService.fetchCountries().subscribe((countriesData) => {
       const flatCountries = this._sanitizeRawData(countriesData);
-      const countriesBySubregion = groupBy(flatCountries, "subregion");
-      const subregionsByRegion = this._groupSubregionsByRegion(countriesBySubregion);
-      const nestedCountries = this._formatNestedCountries(countriesBySubregion, subregionsByRegion);
+      const countriesBySubregion = groupBy(flatCountries, 'subregion');
+      const subregionsByRegion =
+        this._groupSubregionsByRegion(countriesBySubregion);
+      const nestedCountries = this._formatNestedCountries(
+        countriesBySubregion,
+        subregionsByRegion
+      );
       this._countries.next({
         flatCountries,
         countriesBySubregion,
-        nestedCountries
+        nestedCountries,
       });
     });
   }
@@ -50,21 +57,29 @@ export class CountryService implements Resolve<Observable<ICountry[]>> {
     return this._request;
   }
 
-  public getCountriesFromSelection(selection: ISelection): Observable<ICountry[]> {
-    return this.countries
-      .pipe(
-        map(({ countriesBySubregion }) => {
-          const quantity = selection.quantity || undefined;
-          const countries = reduce(selection.countries, (accum, checkboxState, placeName) => {
-            if (checkboxState === "checked" && countriesBySubregion[placeName]) {
+  public getCountriesFromSelection(
+    selection: ISelection
+  ): Observable<ICountry[]> {
+    return this.countries.pipe(
+      map(({ countriesBySubregion }) => {
+        const quantity = selection.quantity || undefined;
+        const countries = reduce(
+          selection.countries,
+          (accum, checkboxState, placeName) => {
+            if (
+              checkboxState === 'checked' &&
+              countriesBySubregion[placeName]
+            ) {
               const selectedCountries = countriesBySubregion[placeName];
               return accum.concat(selectedCountries);
             }
             return accum;
-          }, [] as ICountry[]);
-          return shuffle(countries).slice(0, quantity);
-        })
-      );
+          },
+          [] as ICountry[]
+        );
+        return shuffle(countries).slice(0, quantity);
+      })
+    );
   }
 
   public getSummary(countryName: string): Observable<string> {
@@ -83,42 +98,52 @@ export class CountryService implements Resolve<Observable<ICountry[]>> {
     return sanitizedCountries;
   }
 
-  private _groupSubregionsByRegion(countriesBySubregion: Dictionary<ICountry[]>): Dictionary<string[]> {
-    return reduce(countriesBySubregion, (accum, countries, subregion) => {
-      const region = countries?.[0]?.region ?? "ERROR";
-      if (!accum[region]) {
-        return {
-          ...accum,
-          [region]: [subregion]
-        };
-      } else {
-        const subregions = accum[region].slice();
-        return {
-          ...accum,
-          [region]: [...subregions, subregion]
-        };
-      }
-    }, {} as Dictionary<string[]>);
+  private _groupSubregionsByRegion(
+    countriesBySubregion: Dictionary<ICountry[]>
+  ): Dictionary<string[]> {
+    return reduce(
+      countriesBySubregion,
+      (accum, countries, subregion) => {
+        const region = countries?.[0]?.region ?? 'ERROR';
+        if (!accum[region]) {
+          return {
+            ...accum,
+            [region]: [subregion],
+          };
+        } else {
+          const subregions = accum[region].slice();
+          return {
+            ...accum,
+            [region]: [...subregions, subregion],
+          };
+        }
+      },
+      {} as Dictionary<string[]>
+    );
   }
 
   private _formatNestedCountries(
     countriesBySubregion: Dictionary<ICountry[]>,
     subregionsByRegion: Dictionary<string[]>
   ): IRegion[] {
-    return reduce(subregionsByRegion, (accum, subregions, region) => {
-      const subregionsData = _map(subregions, subregion => {
-        return {
-          name: subregion,
-          region: region,
-          countries: countriesBySubregion[subregion]
+    return reduce(
+      subregionsByRegion,
+      (accum, subregions, region) => {
+        const subregionsData = _map(subregions, (subregion) => {
+          return {
+            name: subregion,
+            region: region,
+            countries: countriesBySubregion[subregion],
+          };
+        });
+        const regionData = {
+          name: region,
+          subregions: subregionsData,
         };
-      });
-      const regionData = {
-        name: region,
-        subregions: subregionsData
-      };
-      const regions = accum.slice();
-      return [...regions, regionData];
-    }, [] as IRegion[]);
+        const regions = accum.slice();
+        return [...regions, regionData];
+      },
+      [] as IRegion[]
+    );
   }
 }

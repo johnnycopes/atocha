@@ -1,6 +1,13 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Observable, BehaviorSubject, combineLatest } from 'rxjs';
-import { map, tap, first, distinctUntilChanged, switchMap, shareReplay } from 'rxjs/operators';
+import {
+  map,
+  tap,
+  first,
+  distinctUntilChanged,
+  switchMap,
+  shareReplay,
+} from 'rxjs/operators';
 
 import { CheckboxStates } from '@atocha/ui-globetrotter';
 import { IRegion } from '@models/interfaces/region.interface';
@@ -29,7 +36,7 @@ interface IViewModel {
   selector: 'app-select-countries',
   templateUrl: './select-countries.component.html',
   styleUrls: ['./select-countries.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SelectCountriesComponent implements OnInit {
   vm$: Observable<IViewModel>;
@@ -42,7 +49,7 @@ export class SelectCountriesComponent implements OnInit {
   constructor(
     private countryService: CountryService,
     private selectService: SelectService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.initializeStreams();
@@ -50,11 +57,14 @@ export class SelectCountriesComponent implements OnInit {
       this.regionData$,
       this.checkboxStates$,
       this.overallSelected$,
-      this.overallTotal$
+      this.overallTotal$,
     ]).pipe(
-      map(([regionData, checkboxStates, overallSelected, overallTotal]) =>
-        ({ regionData, checkboxStates, overallSelected, overallTotal  })
-      )
+      map(([regionData, checkboxStates, overallSelected, overallTotal]) => ({
+        regionData,
+        checkboxStates,
+        overallSelected,
+        overallTotal,
+      }))
     );
   }
 
@@ -78,43 +88,63 @@ export class SelectCountriesComponent implements OnInit {
     this.checkboxStates$ = this.selectService.selection.pipe(
       map(({ countries }) => countries)
     );
-    this.regionData$ = this.countryService.countries
-      .pipe(
-        first(),
-        map(({ nestedCountries }) => nestedCountries),
-        tap(regions => {
-          this.fullySelectedState = regions.reduce((states, region) => {
-            states[region.name] = 'checked';
-            region.subregions.forEach(subregion => states[subregion.name] = 'checked');
-            return states;
-          }, {} as CheckboxStates);
-        }),
-        map(regions => regions.map(region => {
+    this.regionData$ = this.countryService.countries.pipe(
+      first(),
+      map(({ nestedCountries }) => nestedCountries),
+      tap((regions) => {
+        this.fullySelectedState = regions.reduce((states, region) => {
+          states[region.name] = 'checked';
+          region.subregions.forEach(
+            (subregion) => (states[subregion.name] = 'checked')
+          );
+          return states;
+        }, {} as CheckboxStates);
+      }),
+      map((regions) =>
+        regions.map((region) => {
           const treeProvider = new PlacesTreeProvider(region);
           const selectedSubject = new BehaviorSubject<number>(0);
           const totalSubject = new BehaviorSubject<number>(0);
-          const selected$ = selectedSubject.asObservable().pipe(
-            distinctUntilChanged()
-          );
-          const total$ = totalSubject.asObservable().pipe(
-            distinctUntilChanged()
-          );
-          return { region, treeProvider, selectedSubject, totalSubject, selected$, total$ };
-        })),
-        shareReplay({ bufferSize: 1, refCount: true })
-      );
+          const selected$ = selectedSubject
+            .asObservable()
+            .pipe(distinctUntilChanged());
+          const total$ = totalSubject
+            .asObservable()
+            .pipe(distinctUntilChanged());
+          return {
+            region,
+            treeProvider,
+            selectedSubject,
+            totalSubject,
+            selected$,
+            total$,
+          };
+        })
+      ),
+      shareReplay({ bufferSize: 1, refCount: true })
+    );
     this.overallSelected$ = this.regionData$.pipe(
-      map(regionData => regionData.map(regionDatum => regionDatum.selected$)),
-      switchMap(selectedArr$ => combineLatest(selectedArr$).pipe(
-        map(([...values]) => values.reduce((accum, current) => accum + current, 0))
-      )),
+      map((regionData) =>
+        regionData.map((regionDatum) => regionDatum.selected$)
+      ),
+      switchMap((selectedArr$) =>
+        combineLatest(selectedArr$).pipe(
+          map(([...values]) =>
+            values.reduce((accum, current) => accum + current, 0)
+          )
+        )
+      ),
       distinctUntilChanged()
     );
     this.overallTotal$ = this.regionData$.pipe(
-      map(regionData => regionData.map(regionDatum => regionDatum.total$)),
-      switchMap(totals$ => combineLatest(totals$).pipe(
-        map(([...values]) => values.reduce((accum, current) => accum + current, 0))
-      )),
+      map((regionData) => regionData.map((regionDatum) => regionDatum.total$)),
+      switchMap((totals$) =>
+        combineLatest(totals$).pipe(
+          map(([...values]) =>
+            values.reduce((accum, current) => accum + current, 0)
+          )
+        )
+      ),
       distinctUntilChanged()
     );
   }

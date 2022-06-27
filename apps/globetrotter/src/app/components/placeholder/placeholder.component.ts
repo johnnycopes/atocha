@@ -7,8 +7,6 @@ import { fadeInAnimation } from '@atocha/ui-globetrotter';
   templateUrl: './placeholder.component.html',
   styleUrls: ['./placeholder.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  animations: [fadeInAnimation]
+  animations: [fadeInAnimation],
 })
-export class PlaceholderComponent {
-
-}
+export class PlaceholderComponent {}

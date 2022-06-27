@@ -1,10 +1,12 @@
 import { storiesOf, moduleMetadata } from '@storybook/angular';
 import { action } from '@storybook/addon-actions';
+import { withKnobs, text } from '@storybook/addon-knobs';
 import {
-  withKnobs,
-  text
-} from '@storybook/addon-knobs';
-import { FormsModule, ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
+  FormsModule,
+  ReactiveFormsModule,
+  FormBuilder,
+  Validators,
+} from '@angular/forms';
 
 import { AlertComponent } from '@shared/components/alert/alert.component';
 import { ButtonComponent } from '@shared/components/button/button.component';
@@ -13,16 +15,16 @@ import { InputComponent } from '@shared/components/input/input.component';
 import { SmallCapsComponent } from '@shared/components/small-caps/small-caps.component';
 
 const actions = {
-  onSubmit: action('submitted')
+  onSubmit: action('submitted'),
 };
 const formBuilder = new FormBuilder();
 const basicForm = formBuilder.group({
   username: [''],
-  password: ['']
+  password: [''],
 });
 const withValidationForm = formBuilder.group({
   username: ['', Validators.required],
-  password: ['', Validators.required]
+  password: ['', Validators.required],
 });
 
 storiesOf('Shared/Form', module)
@@ -34,9 +36,9 @@ storiesOf('Shared/Form', module)
         ButtonComponent,
         FormComponent,
         InputComponent,
-        SmallCapsComponent
+        SmallCapsComponent,
       ],
-      imports: [FormsModule, ReactiveFormsModule]
+      imports: [FormsModule, ReactiveFormsModule],
     })
   )
   .add('basic', () => {
@@ -70,8 +72,8 @@ storiesOf('Shared/Form', module)
       props: {
         form: basicForm,
         buttonText: text('buttonText', 'Sign In'),
-        onSubmit: actions.onSubmit
-      }
+        onSubmit: actions.onSubmit,
+      },
     };
   })
   .add('with validation', () => {
@@ -111,7 +113,7 @@ storiesOf('Shared/Form', module)
         form: withValidationForm,
         buttonText: text('buttonText', 'Sign In'),
         errorMessage: text('errorMessage', 'All fields must be filled out'),
-        onSubmit: actions.onSubmit
-      }
+        onSubmit: actions.onSubmit,
+      },
     };
   });

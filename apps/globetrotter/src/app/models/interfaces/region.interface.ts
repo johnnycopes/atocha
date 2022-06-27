@@ -1,4 +1,4 @@
-import { ISubregion } from "./subregion.interface";
+import { ISubregion } from './subregion.interface';
 
 export interface IRegion {
   name: string;
