@@ -12,7 +12,7 @@ import { SelectService } from '@services/select.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class QuizComponent implements OnInit {
-  showCards: boolean = false;
+  showCards = false;
 
   constructor(
     private _route: ActivatedRoute,

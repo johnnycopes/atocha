@@ -9,7 +9,7 @@ import { SelectService } from '@services/select.service';
 })
 export class SelectQuantityComponent {
   @Input() quantity: number;
-  @Input() invalid: boolean = false;
+  @Input() invalid = false;
 
   constructor(private selectService: SelectService) {}
 
