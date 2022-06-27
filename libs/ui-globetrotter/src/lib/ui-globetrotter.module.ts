@@ -15,6 +15,7 @@ import { ListDetailsComponent } from './list-details/list-details.component';
 import { LoaderComponent } from './loader/loader.component';
 import { NestedCheckboxesComponent } from './nested-checkboxes/nested-checkboxes.component';
 import { NestedCheckboxesWithCountsComponent } from './nested-checkboxes-with-counts/nested-checkboxes-with-counts.component';
+import { RadioButtonsComponent } from './radio-buttons/radio-buttons.component';
 import { SmallCapsComponent } from './small-caps/small-caps.component';
 
 @NgModule({
@@ -36,6 +37,7 @@ import { SmallCapsComponent } from './small-caps/small-caps.component';
     LoaderComponent,
     NestedCheckboxesComponent,
     NestedCheckboxesWithCountsComponent,
+    RadioButtonsComponent,
     SmallCapsComponent,
   ],
   exports: [
@@ -53,6 +55,7 @@ import { SmallCapsComponent } from './small-caps/small-caps.component';
     MeasurementPipe,
     NestedCheckboxesComponent,
     NestedCheckboxesWithCountsComponent,
+    RadioButtonsComponent,
     SmallCapsComponent,
   ],
 })

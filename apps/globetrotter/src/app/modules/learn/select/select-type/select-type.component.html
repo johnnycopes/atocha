@@ -1,11 +1,10 @@
 <ui-small-caps header="Type">
   <div class="container">
     <p>Front / back of cards:</p>
-    <app-radio-buttons
+    <ui-radio-buttons
       [options]="types"
       [ngModel]="selectedType$ | async"
       (ngModelChange)="onChange($event)"
-      >
-    </app-radio-buttons>
+    ></ui-radio-buttons>
   </div>
 </ui-small-caps>

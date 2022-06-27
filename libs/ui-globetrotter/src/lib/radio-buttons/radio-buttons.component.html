@@ -1,13 +1,13 @@
 <form class="form"
   #optionForm="ngForm"
-  >
+>
   <div class="options"
-    [ngClass]="{'options--stacked': stacked}"
-    >
+    [class.options--stacked]="stacked"
+  >
     <div class="option"
-      [ngClass]="{'option--stacked': stacked}"
       *ngFor="let option of options"
-      >
+      [class.option--stacked]="stacked"
+    >
       <input class="option__input"
         [id]="option.display"
         [value]="option.value"
@@ -18,8 +18,8 @@
       />
       <label class="option__label"
         [for]="option.display"
-        >
-        {{option.display}}
+      >
+        {{ option.display }}
       </label>
     </div>
   </div>

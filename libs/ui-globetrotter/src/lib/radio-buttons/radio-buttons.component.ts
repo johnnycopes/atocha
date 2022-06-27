@@ -9,7 +9,7 @@ export interface IRadioButtonsOption<T> {
 }
 
 @Component({
-  selector: 'app-radio-buttons',
+  selector: 'ui-radio-buttons',
   templateUrl: './radio-buttons.component.html',
   styleUrls: ['./radio-buttons.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -20,10 +20,10 @@ export interface IRadioButtonsOption<T> {
   }]
 })
 export class RadioButtonsComponent<T> implements ControlValueAccessor {
-  @Input() options: IRadioButtonsOption<T>[];
-  @Input() stacked: boolean;
-  model: IRadioButtonsOption<T>;
-  private onChangeFn: (model: IRadioButtonsOption<T>) => void;
+  @Input() options: IRadioButtonsOption<T>[] = [];
+  @Input() stacked = false;
+  model: IRadioButtonsOption<T> | undefined;
+  private _onChangeFn: (model: IRadioButtonsOption<T>) => void = () => undefined;
 
   constructor(
     public changeDetectorRef: ChangeDetectorRef,
@@ -36,13 +36,15 @@ export class RadioButtonsComponent<T> implements ControlValueAccessor {
   }
 
   registerOnChange(fn: () => void): void {
-    this.onChangeFn = fn;
+    this._onChangeFn = fn;
   }
 
   // eslint-disable-next-line @typescript-eslint/no-empty-function, @typescript-eslint/no-unused-vars
   registerOnTouched(fn: () => void): void { }
 
   onChange(): void {
-    this.onChangeFn(this.model);
+    if (this.model) {
+      this._onChangeFn(this.model);
+    }
   }
 }

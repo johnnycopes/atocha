@@ -2,8 +2,8 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
+import { IRadioButtonsOption } from '@atocha/ui-globetrotter';
 import { EQuizType } from '@models/enums/quiz-type.enum';
-import { IRadioButtonsOption } from '@shared/components/radio-buttons/radio-buttons.component';
 import { SelectService } from '@services/select.service';
 
 @Component({
