@@ -3,7 +3,7 @@
     [position]="vm.position"
     (animationFinished)="onMenuAnimationFinish($event)"
     >
-    <app-container class="progress"
+    <ui-container class="progress"
       header
       *ngIf="!vm.quiz?.isComplete"
       >
@@ -28,7 +28,7 @@
           Guess #{{vm.quiz?.guess ?? 0}}
         </h4>
       </div>
-    </app-container>
+    </ui-container>
     <div class="outcome"
       content
       *ngIf="vm.quiz?.isComplete"

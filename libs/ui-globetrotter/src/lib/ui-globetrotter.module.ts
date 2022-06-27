@@ -6,6 +6,7 @@ import { UiCoreModule, AutofocusDirective } from '@atocha/ui-core';
 import { AlertComponent } from './alert/alert.component';
 import { ButtonComponent } from './button/button.component';
 import { CheckboxComponent } from './checkbox/checkbox.component';
+import { ContainerComponent } from './container/container.component';
 import { NestedCheckboxesComponent } from './nested-checkboxes/nested-checkboxes.component';
 import { NestedCheckboxesWithCountsComponent } from './nested-checkboxes-with-counts/nested-checkboxes-with-counts.component';
 
@@ -15,6 +16,7 @@ import { NestedCheckboxesWithCountsComponent } from './nested-checkboxes-with-co
     AlertComponent,
     ButtonComponent,
     CheckboxComponent,
+    ContainerComponent,
     NestedCheckboxesComponent,
     NestedCheckboxesWithCountsComponent,
   ],
@@ -23,6 +25,7 @@ import { NestedCheckboxesWithCountsComponent } from './nested-checkboxes-with-co
     AutofocusDirective,
     ButtonComponent,
     CheckboxComponent,
+    ContainerComponent,
     NestedCheckboxesComponent,
     NestedCheckboxesWithCountsComponent,
   ],
