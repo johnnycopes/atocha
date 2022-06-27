@@ -6,7 +6,6 @@ import { UiGlobetrotterModule } from '@atocha/ui-globetrotter';
 import { ListDetailsComponent } from './components/list-details/list-details.component';
 import { LoaderComponent } from './components/loader/loader.component';
 import { MeasurementPipe } from './pipes/measurement.pipe';
-import { ModalComponent } from './components/modal/modal.component';
 import { RadioButtonsComponent } from './components/radio-buttons/radio-buttons.component';
 import { TabComponent } from './components/tabset/tab/tab.component';
 import { TabsetComponent } from './components/tabset/tabset.component';
@@ -22,7 +21,6 @@ import { TabsetComponent } from './components/tabset/tabset.component';
     ListDetailsComponent,
     LoaderComponent,
     MeasurementPipe,
-    ModalComponent,
     RadioButtonsComponent,
     TabComponent,
     TabsetComponent,
@@ -31,7 +29,6 @@ import { TabsetComponent } from './components/tabset/tabset.component';
     ListDetailsComponent,
     LoaderComponent,
     MeasurementPipe,
-    ModalComponent,
     RadioButtonsComponent,
     TabComponent,
     TabsetComponent,
