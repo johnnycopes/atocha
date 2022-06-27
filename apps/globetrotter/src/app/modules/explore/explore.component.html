@@ -1,7 +1,7 @@
 <div @fadeIn
   *ngIf="vm$ | async as vm"
   >
-  <app-list-details
+  <ui-list-details
     [items]="vm.filteredCountries"
     [listItemTemplate]="listItemTemplate"
     [detailsTemplate]="detailsTemplate"
@@ -11,8 +11,7 @@
     placeholderText="Search by country or capital"
     (selectedItemChange)="onSelect($event)"
     (searchTermChange)="onSearch($event)"
-    >
-  </app-list-details>
+  ></ui-list-details>
 
   <ng-template #listItemTemplate
     let-country

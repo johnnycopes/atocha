@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { UiGlobetrotterModule } from '@atocha/ui-globetrotter';
-import { ListDetailsComponent } from './components/list-details/list-details.component';
 import { LoaderComponent } from './components/loader/loader.component';
 import { MeasurementPipe } from './pipes/measurement.pipe';
 import { RadioButtonsComponent } from './components/radio-buttons/radio-buttons.component';
@@ -18,7 +17,6 @@ import { TabsetComponent } from './components/tabset/tabset.component';
     UiGlobetrotterModule
   ],
   declarations: [
-    ListDetailsComponent,
     LoaderComponent,
     MeasurementPipe,
     RadioButtonsComponent,
@@ -26,7 +24,6 @@ import { TabsetComponent } from './components/tabset/tabset.component';
     TabsetComponent,
   ],
   exports: [
-    ListDetailsComponent,
     LoaderComponent,
     MeasurementPipe,
     RadioButtonsComponent,

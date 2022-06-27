@@ -1,6 +1,7 @@
-import { Component, OnInit, OnChanges, SimpleChanges, Input, Output, EventEmitter, TemplateRef, ChangeDetectionStrategy, ViewChild, ElementRef, AfterViewInit, ChangeDetectorRef, HostListener } from '@angular/core';
+/* eslint-disable @typescript-eslint/member-ordering */
 
-import { InputComponent } from '@atocha/ui-globetrotter';
+import { Component, OnInit, OnChanges, SimpleChanges, Input, Output, EventEmitter, TemplateRef, ChangeDetectionStrategy, ViewChild, ElementRef, AfterViewInit, ChangeDetectorRef, HostListener } from '@angular/core';
+import { InputComponent } from '../input/input.component';
 
 export interface IListDetailsStyles {
   offsetTop: string;
@@ -8,33 +9,40 @@ export interface IListDetailsStyles {
 }
 
 @Component({
-  selector: 'app-list-details',
+  selector: 'ui-list-details',
   templateUrl: './list-details.component.html',
   styleUrls: ['./list-details.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ListDetailsComponent<T> implements OnInit, OnChanges, AfterViewInit {
-  @Input() items: T[];
-  @Input() listItemTemplate: TemplateRef<unknown>;
-  @Input() detailsTemplate: TemplateRef<unknown>;
+  @Input() items: T[] = [];
+  @Input() listItemTemplate: TemplateRef<unknown> | undefined;
+  @Input() detailsTemplate: TemplateRef<unknown> | undefined;
   @Input() styles: IListDetailsStyles = {
     offsetTop: '0px',
     gap: '12px'
   };
-  @Input() getItemUniqueId: (item: T) => string;
-  @Input() selectedItem: T;
-  @Input() searchTerm: string;
-  @Input() placeholderText: string = "";
+  @Input() getItemUniqueId: (item: T) => string = () => '';
+  @Input() selectedItem: T | undefined;
+  @Input() searchTerm = '';
+  @Input() placeholderText = '';
   @Output() selectedItemChange = new EventEmitter<T>();
   @Output() searchTermChange = new EventEmitter<string>();
-  @ViewChild(InputComponent, { read: ElementRef }) private search: ElementRef<HTMLInputElement>;
-  @ViewChild('list') private list: ElementRef<HTMLElement>;
-  @ViewChild('listItem') private listItem: ElementRef<HTMLElement>;
-  public gap: string = '12px';
-  public containerHeight: string;
-  public toolbarHeight: string;
-  private selectedItemIndex: number;
-  private listItemHeight: number;
+
+  @ViewChild(InputComponent, { read: ElementRef })
+  search!: ElementRef<HTMLInputElement>;
+
+  @ViewChild('list')
+  list!: ElementRef<HTMLElement>;
+
+  @ViewChild('listItem')
+  listItem!: ElementRef<HTMLElement>;
+
+  gap = '12px';
+  containerHeight = '';
+  toolbarHeight = '';
+  private _selectedItemIndex = 0;
+  private _listItemHeight = 0;
 
   public trackByFn = (index: number, item: T): string => {
     return this.getItemUniqueId(item);
@@ -43,25 +51,25 @@ export class ListDetailsComponent<T> implements OnInit, OnChanges, AfterViewInit
   @HostListener('window:keydown.arrowUp', ['$event'])
   onArrowUp(event: KeyboardEvent): void {
     event.preventDefault();
-    this.moveUpList(1);
+    this._moveUpList(1);
   }
 
   @HostListener('window:keydown.shift.arrowUp', ['$event'])
   onShiftArrowUp(event: KeyboardEvent): void {
     event.preventDefault();
-    this.moveUpList(10);
+    this._moveUpList(10);
   }
 
   @HostListener('window:keydown.arrowDown', ['$event'])
   onArrowDown(event: KeyboardEvent): void {
     event.preventDefault();
-    this.moveDownList(1);
+    this._moveDownList(1);
   }
 
   @HostListener('window:keydown.shift.arrowDown', ['$event'])
   onShiftArrowDown(event: KeyboardEvent): void {
     event.preventDefault();
-    this.moveDownList(10);
+    this._moveDownList(10);
   }
 
   constructor(private changeDetectorRef: ChangeDetectorRef) { }
@@ -73,13 +81,17 @@ export class ListDetailsComponent<T> implements OnInit, OnChanges, AfterViewInit
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes?.selectedItem || changes?.items) {
-      this.selectedItemIndex = this.items.indexOf(this.selectedItem);
-      if (this.selectedItemIndex >= 0 && this.list) {
+    if (changes?.['selectedItem'] || changes?.['items']) {
+      if (!this.selectedItem) {
+        return;
+      }
+
+      this._selectedItemIndex = this.items.indexOf(this.selectedItem);
+      if (this._selectedItemIndex >= 0) {
         setTimeout(() => {
           const list = this.list?.nativeElement;
           if (list) {
-            list.scrollTop = this.selectedItemIndex * this.listItemHeight
+            list.scrollTop = this._selectedItemIndex * this._listItemHeight
           }
         });
       }
@@ -96,7 +108,7 @@ export class ListDetailsComponent<T> implements OnInit, OnChanges, AfterViewInit
       ${this.styles.gap} -
       ${this.styles.offsetTop})
     `;
-    this.listItemHeight = this.listItem.nativeElement.offsetHeight + parseInt(this.gap);
+    this._listItemHeight = this.listItem.nativeElement.offsetHeight + parseInt(this.gap);
     this.changeDetectorRef.detectChanges();
   }
 
@@ -109,18 +121,21 @@ export class ListDetailsComponent<T> implements OnInit, OnChanges, AfterViewInit
   }
 
   checkIfSelected(item: T): boolean {
+    if (!this.selectedItem) {
+      return false;
+    }
     return this.getItemUniqueId(item) === this.getItemUniqueId(this.selectedItem);
   }
 
-  private moveUpList(incrementValue: number): void {
-    const newItemIndex = this.selectedItemIndex - incrementValue;
+  private _moveUpList(incrementValue: number): void {
+    const newItemIndex = this._selectedItemIndex - incrementValue;
     if (newItemIndex >= 0) {
       this.onSelect(this.items[newItemIndex]);
     }
   }
 
-  private moveDownList(incrementValue: number): void {
-    const newItemIndex = this.selectedItemIndex + incrementValue;
+  private _moveDownList(incrementValue: number): void {
+    const newItemIndex = this._selectedItemIndex + incrementValue;
     if (newItemIndex < this.items.length) {
       this.onSelect(this.items[newItemIndex]);
     }
