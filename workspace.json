@@ -2,6 +2,7 @@
   "$schema": "./node_modules/nx/schemas/workspace-schema.json",
   "version": 2,
   "projects": {
+    "data-access-globetrotter": "libs/data-access-globetrotter",
     "globetrotter": "apps/globetrotter",
     "globetrotter-e2e": "apps/globetrotter-e2e",
     "ui-core": "libs/ui-core",
