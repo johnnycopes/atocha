@@ -9,13 +9,7 @@ import {
 } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 
-import { CheckboxState, CheckboxStates } from '@atocha/types-globetrotter';
-
-export interface TreeProvider<T> {
-  getId(item: T): string;
-  getChildren(item: T): T[];
-  getParent?(item: T): T | undefined;
-}
+import { CheckboxState, CheckboxStates, TreeProvider } from '@atocha/types-globetrotter';
 
 @Component({
   selector: 'ui-nested-checkboxes',
