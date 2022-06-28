@@ -3,8 +3,8 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { RadioButtonsOption } from '@atocha/ui-globetrotter';
-import { EQuizType } from '@models/enums/quiz-type.enum';
-import { SelectService } from '@services/select.service';
+import { QuizType } from '@atocha/types-globetrotter';
+import { SelectService } from '@atocha/data-access-globetrotter';
 
 @Component({
   selector: 'app-select-type',
@@ -13,37 +13,37 @@ import { SelectService } from '@services/select.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SelectTypeComponent {
-  public types: RadioButtonsOption<EQuizType>[] = [
-    EQuizType.flagsCountries,
-    EQuizType.capitalsCountries,
-    EQuizType.countriesCapitals,
+  public types: RadioButtonsOption<QuizType>[] = [
+    QuizType.flagsCountries,
+    QuizType.capitalsCountries,
+    QuizType.countriesCapitals,
   ].map((quizType) => this._generateOption(quizType));
 
-  public selectedType$: Observable<RadioButtonsOption<EQuizType>> =
+  public selectedType$: Observable<RadioButtonsOption<QuizType>> =
     this._selectService.selection.pipe(
       map(({ type }) => this._generateOption(type))
     );
 
   constructor(private _selectService: SelectService) {}
 
-  public onChange(selectedType: RadioButtonsOption<EQuizType>): void {
+  public onChange(selectedType: RadioButtonsOption<QuizType>): void {
     this._selectService.updateType(selectedType.value);
   }
 
-  private _generateOption(quizType: EQuizType): RadioButtonsOption<EQuizType> {
+  private _generateOption(quizType: QuizType): RadioButtonsOption<QuizType> {
     return {
       display: this._getDisplayText(quizType),
       value: quizType,
     };
   }
 
-  private _getDisplayText(quizType: EQuizType): string {
+  private _getDisplayText(quizType: QuizType): string {
     switch (quizType) {
-      case EQuizType.flagsCountries:
+      case QuizType.flagsCountries:
         return 'Flags / Countries';
-      case EQuizType.capitalsCountries:
+      case QuizType.capitalsCountries:
         return 'Capitals / Countries';
-      case EQuizType.countriesCapitals:
+      case QuizType.countriesCapitals:
         return 'Countries / Capitals';
     }
   }

@@ -1,9 +1,8 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-
 import { ActivatedRoute } from '@angular/router';
-import { ISelectionParams } from '@models/interfaces/selection.interface';
-import { QuizService } from '@services/quiz.service';
-import { SelectService } from '@services/select.service';
+
+import { QuizService, SelectService } from '@atocha/data-access-globetrotter';
+import { SelectionParams } from '@atocha/types-globetrotter';
 
 @Component({
   selector: 'app-quiz',
@@ -22,7 +21,7 @@ export class QuizComponent implements OnInit {
 
   public ngOnInit(): void {
     this._route.queryParamMap.subscribe((queryParams) => {
-      const params: ISelectionParams = {
+      const params: SelectionParams = {
         type: queryParams.get('type') || '',
         quantity: queryParams.get('quantity') || '',
         countries: queryParams.get('countries') || '',

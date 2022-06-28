@@ -9,15 +9,15 @@ import {
   shareReplay,
 } from 'rxjs/operators';
 
-import { CheckboxStates } from '@atocha/ui-globetrotter';
-import { IRegion } from '@models/interfaces/region.interface';
-import { ISubregion } from '@models/interfaces/subregion.interface';
-import { PlacesTreeProvider } from '@models/classes/places-tree-provider.class';
-import { CountryService } from '@services/country.service';
-import { SelectService } from '@services/select.service';
+import { CheckboxStates, Region, Subregion } from '@atocha/types-globetrotter';
+import {
+  CountryService,
+  PlacesTreeProvider,
+  SelectService,
+} from '@atocha/data-access-globetrotter';
 
 interface IRegionData {
-  region: IRegion;
+  region: Region;
   treeProvider: PlacesTreeProvider;
   selectedSubject: BehaviorSubject<number>;
   totalSubject: BehaviorSubject<number>;
@@ -47,8 +47,8 @@ export class SelectCountriesComponent implements OnInit {
   private fullySelectedState: CheckboxStates;
 
   constructor(
-    private countryService: CountryService,
-    private selectService: SelectService
+    private _countryService: CountryService,
+    private _selectService: SelectService
   ) {}
 
   ngOnInit(): void {
@@ -69,26 +69,26 @@ export class SelectCountriesComponent implements OnInit {
   }
 
   onCountriesChange(state: CheckboxStates): void {
-    this.selectService.updateCountries(state);
+    this._selectService.updateCountries(state);
   }
 
   onSelectAll(): void {
-    this.selectService.updateCountries(this.fullySelectedState);
+    this._selectService.updateCountries(this.fullySelectedState);
   }
 
   onClearAll(): void {
-    this.selectService.updateCountries({});
+    this._selectService.updateCountries({});
   }
 
-  getNumberOfCountries(item: ISubregion): number {
+  getNumberOfCountries(item: Subregion): number {
     return item.countries.length;
   }
 
   private initializeStreams(): void {
-    this.checkboxStates$ = this.selectService.selection.pipe(
+    this.checkboxStates$ = this._selectService.selection.pipe(
       map(({ countries }) => countries)
     );
-    this.regionData$ = this.countryService.countries.pipe(
+    this.regionData$ = this._countryService.countries.pipe(
       first(),
       map(({ nestedCountries }) => nestedCountries),
       tap((regions) => {

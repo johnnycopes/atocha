@@ -8,17 +8,12 @@ import {
   ChangeDetectorRef,
 } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
-import { Dictionary } from 'lodash';
 
-import { CheckboxState } from '../checkbox/checkbox.component';
-
-export type CheckboxStates = Dictionary<CheckboxState>;
-
-export interface TreeProvider<T> {
-  getId(item: T): string;
-  getChildren(item: T): T[];
-  getParent?(item: T): T | undefined;
-}
+import {
+  CheckboxState,
+  CheckboxStates,
+  TreeProvider,
+} from '@atocha/types-globetrotter';
 
 @Component({
   selector: 'ui-nested-checkboxes',

@@ -1,17 +1,16 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Observable, combineLatest } from 'rxjs';
 import { map, first } from 'rxjs/operators';
-
-import { staggerAnimation, fadeInAnimation } from '@atocha/ui-globetrotter';
-import { ICountry } from '@models/interfaces/country.interface';
-import { EQuizType } from '@models/enums/quiz-type.enum';
-import { QuizService } from '@services/quiz.service';
 import { shuffle } from 'lodash-es';
 
+import { staggerAnimation, fadeInAnimation } from '@atocha/ui-globetrotter';
+import { QuizService } from '@atocha/data-access-globetrotter';
+import { Country, QuizType } from '@atocha/types-globetrotter';
+
 interface IViewModel {
-  quizType: EQuizType;
-  countries: ICountry[];
-  currentCountry: ICountry | undefined;
+  quizType: QuizType;
+  countries: Country[];
+  currentCountry: Country | undefined;
 }
 
 @Component({
@@ -24,9 +23,9 @@ interface IViewModel {
 export class QuizCardsComponent implements OnInit {
   public canFlipCards = true;
   public vm$: Observable<IViewModel>;
-  private _quizType$: Observable<EQuizType>;
-  private _countries$: Observable<ICountry[]>;
-  private _currentCountry$: Observable<ICountry | undefined>;
+  private _quizType$: Observable<QuizType>;
+  private _countries$: Observable<Country[]>;
+  private _currentCountry$: Observable<Country | undefined>;
 
   constructor(private quizService: QuizService) {}
 
@@ -51,7 +50,7 @@ export class QuizCardsComponent implements OnInit {
 
   private _initializeStreams(): void {
     this._quizType$ = this.quizService.quiz.pipe(
-      map((quiz) => quiz?.type ?? EQuizType.flagsCountries)
+      map((quiz) => quiz?.type ?? QuizType.flagsCountries)
     );
     this._countries$ = this.quizService.quiz.pipe(
       first(),

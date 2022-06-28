@@ -2,7 +2,7 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 import { AnimatedComponent } from '@atocha/ui-core';
 import { positionAnimation } from '@atocha/ui-globetrotter';
-import { ERoute } from '@models/enums/route.enum';
+import { Route } from '@atocha/types-globetrotter';
 
 interface INavigationLink {
   name: string;
@@ -27,18 +27,18 @@ export class NavigationComponent extends AnimatedComponent implements OnInit {
     this.home = {
       name: 'Home',
       icon: 'Globetrotter',
-      route: ERoute.home,
+      route: Route.home,
       exactPathMatch: true,
     };
     this.links = [
       {
         name: 'Explore',
-        route: ERoute.explore,
+        route: Route.explore,
         exactPathMatch: true,
       },
       {
         name: 'Learn',
-        route: ERoute.learn,
+        route: Route.learn,
         exactPathMatch: false,
       },
     ];

@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { QuizService } from '@atocha/data-access-globetrotter';
 import { Observable, BehaviorSubject, combineLatest } from 'rxjs';
 import { map, distinctUntilChanged } from 'rxjs/operators';
-
-import { QuizService } from '@services/quiz.service';
 
 interface IViewModel {
   showContent: boolean;
@@ -20,7 +19,7 @@ export class ShellComponent implements OnInit {
   private showContent$: Observable<boolean>;
   private quizComplete$: Observable<boolean>;
 
-  constructor(private quizService: QuizService) {}
+  constructor(private _quizService: QuizService) {}
 
   ngOnInit(): void {
     this.initializeStreams();
@@ -40,7 +39,7 @@ export class ShellComponent implements OnInit {
     this.showContent$ = this.showContentSubject
       .asObservable()
       .pipe(distinctUntilChanged());
-    this.quizComplete$ = this.quizService.quiz.pipe(
+    this.quizComplete$ = this._quizService.quiz.pipe(
       map((quiz) => quiz?.isComplete ?? false),
       distinctUntilChanged()
     );
