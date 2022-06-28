@@ -8,11 +8,8 @@ import {
   ChangeDetectorRef,
 } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
-import { Dictionary } from 'lodash';
 
-import { CheckboxState } from '../checkbox/checkbox.component';
-
-export type CheckboxStates = Dictionary<CheckboxState>;
+import { CheckboxState, CheckboxStates } from '@atocha/types-globetrotter';
 
 export interface TreeProvider<T> {
   getId(item: T): string;

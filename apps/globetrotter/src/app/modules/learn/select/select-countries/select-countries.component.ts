@@ -9,8 +9,7 @@ import {
   shareReplay,
 } from 'rxjs/operators';
 
-import { CheckboxStates } from '@atocha/ui-globetrotter';
-import { Region, Subregion } from '@atocha/types-globetrotter';
+import { CheckboxStates, Region, Subregion } from '@atocha/types-globetrotter';
 import { CountryService, PlacesTreeProvider, SelectService } from '@atocha/data-access-globetrotter';
 
 interface IRegionData {

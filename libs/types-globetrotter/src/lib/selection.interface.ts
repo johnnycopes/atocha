@@ -1,10 +1,10 @@
-import { CheckboxStates } from '@atocha/ui-globetrotter';
+import { CheckboxStates } from './checkbox';
 import { QuizType } from './quiz-type.enum';
 
 export interface Selection {
   type: QuizType;
   quantity: number;
-  countries: CheckboxStates; // TODO: dissolve CheckboxStates
+  countries: CheckboxStates;
 }
 
 export interface SelectionParams {
