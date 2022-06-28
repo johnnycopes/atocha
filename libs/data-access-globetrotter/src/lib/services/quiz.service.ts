@@ -27,7 +27,7 @@ export class QuizService {
       .subscribe(() => this._quiz.next(undefined));
   }
 
-  public initializeQuiz(selection: Selection): void {
+  initializeQuiz(selection: Selection): void {
     this._countryService
       .getCountriesFromSelection(selection)
       .subscribe((countries) => {
@@ -43,7 +43,7 @@ export class QuizService {
       });
   }
 
-  public updateQuiz(correctGuess: boolean): void {
+  updateQuiz(correctGuess: boolean): void {
     this._quiz
       .pipe(
         first(),

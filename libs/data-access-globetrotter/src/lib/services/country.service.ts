@@ -51,11 +51,11 @@ export class CountryService implements Resolve<Observable<Country[]>> {
     });
   }
 
-  public resolve(): Observable<Country[]> {
+  resolve(): Observable<Country[]> {
     return this._request;
   }
 
-  public getCountriesFromSelection(
+  getCountriesFromSelection(
     selection: Selection
   ): Observable<Country[]> {
     return this.countries.pipe(
@@ -80,7 +80,7 @@ export class CountryService implements Resolve<Observable<Country[]>> {
     );
   }
 
-  public getSummary(countryName: string): Observable<string> {
+  getSummary(countryName: string): Observable<string> {
     const searchTerm = COUNTRY_SUMMARY_NAMES[countryName] || countryName;
     return this._apiService.fetchSummary(searchTerm);
   }

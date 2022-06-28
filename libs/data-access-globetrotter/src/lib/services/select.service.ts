@@ -37,11 +37,11 @@ export class SelectService {
       });
   }
 
-  public updateSelection(selection: Selection): void {
+  updateSelection(selection: Selection): void {
     this._selection.next(selection);
   }
 
-  public updateType(type: QuizType): void {
+  updateType(type: QuizType): void {
     this._selection
       .pipe(
         first(),
@@ -50,7 +50,7 @@ export class SelectService {
       .subscribe((selection) => this._selection.next(selection));
   }
 
-  public updateQuantity(quantity: number): void {
+  updateQuantity(quantity: number): void {
     this._selection
       .pipe(
         first(),
@@ -59,7 +59,7 @@ export class SelectService {
       .subscribe((selection) => this._selection.next(selection));
   }
 
-  public updateCountries(countries: CheckboxStates): void {
+  updateCountries(countries: CheckboxStates): void {
     this._selection
       .pipe(
         first(),
@@ -68,7 +68,7 @@ export class SelectService {
       .subscribe((selection) => this._selection.next(selection));
   }
 
-  public mapSelectionToQueryParams(selection: Selection): SelectionParams {
+  mapSelectionToQueryParams(selection: Selection): SelectionParams {
     const type = selection.type.toString();
     const quantity = selection.quantity.toString();
     const selectedCountries = omitBy(
@@ -86,7 +86,7 @@ export class SelectService {
     };
   }
 
-  public mapQueryParamsToSelection(queryParams: SelectionParams): Selection {
+  mapQueryParamsToSelection(queryParams: SelectionParams): Selection {
     const type = parseInt(queryParams.type, 10) as QuizType;
     const quantity = parseInt(queryParams.quantity, 10);
     const countries = queryParams.countries

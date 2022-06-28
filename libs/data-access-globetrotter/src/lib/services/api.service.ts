@@ -16,7 +16,7 @@ export class ApiService {
 
   constructor(private _http: HttpClient, private _errorService: ErrorService) {}
 
-  public fetchCountries(): Observable<Country[]> {
+  fetchCountries(): Observable<Country[]> {
     return this._http.get<Country[]>(this._countriesApiUrl).pipe(
       shareReplay({ bufferSize: 1, refCount: true }),
       catchError((error: { message: string }) => {
@@ -26,7 +26,7 @@ export class ApiService {
     );
   }
 
-  public fetchSummary(searchTerm: string): Observable<string> {
+  fetchSummary(searchTerm: string): Observable<string> {
     return this._http.get<Summary>(this._wikipediaApiUrl + searchTerm).pipe(
       map((result) => result.extract),
       catchError(() => of('A summary of this country could not be found.'))

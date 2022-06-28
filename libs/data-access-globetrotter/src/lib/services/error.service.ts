@@ -21,7 +21,7 @@ export class ErrorService {
     return this._errors;
   }
 
-  public setGlobalError(error: string): void {
+  setGlobalError(error: string): void {
     this._errors
       .pipe(
         first(),
@@ -30,7 +30,7 @@ export class ErrorService {
       .subscribe();
   }
 
-  public setLoginError(error: string): void {
+  setLoginError(error: string): void {
     this._errors
       .pipe(
         first(),
@@ -39,7 +39,7 @@ export class ErrorService {
       .subscribe();
   }
 
-  public setRegisterError(error: string): void {
+  setRegisterError(error: string): void {
     this._errors
       .pipe(
         first(),
