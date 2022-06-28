@@ -4,8 +4,6 @@ import { ActivatedRoute } from '@angular/router';
 import { QuizService, SelectService } from '@atocha/data-access-globetrotter';
 import { SelectionParams } from '@atocha/types-globetrotter';
 
-
-
 @Component({
   selector: 'app-quiz',
   templateUrl: './quiz.component.html',

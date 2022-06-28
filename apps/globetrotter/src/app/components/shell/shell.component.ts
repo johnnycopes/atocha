@@ -3,7 +3,6 @@ import { QuizService } from '@atocha/data-access-globetrotter';
 import { Observable, BehaviorSubject, combineLatest } from 'rxjs';
 import { map, distinctUntilChanged } from 'rxjs/operators';
 
-
 interface IViewModel {
   showContent: boolean;
   quizComplete: boolean;

@@ -55,9 +55,7 @@ export class CountryService implements Resolve<Observable<Country[]>> {
     return this._request;
   }
 
-  getCountriesFromSelection(
-    selection: Selection
-  ): Observable<Country[]> {
+  getCountriesFromSelection(selection: Selection): Observable<Country[]> {
     return this.countries.pipe(
       map(({ countriesBySubregion }) => {
         const quantity = selection.quantity || undefined;

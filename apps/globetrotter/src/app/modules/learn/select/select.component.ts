@@ -6,7 +6,10 @@ import { pickBy } from 'lodash-es';
 
 import { fadeInAnimation } from '@atocha/ui-globetrotter';
 import { Selection, SelectionParams, Route } from '@atocha/types-globetrotter';
-import { CountryService, SelectService } from '@atocha/data-access-globetrotter';
+import {
+  CountryService,
+  SelectService,
+} from '@atocha/data-access-globetrotter';
 
 interface IViewModel {
   numberOfSelectedCountries: number;

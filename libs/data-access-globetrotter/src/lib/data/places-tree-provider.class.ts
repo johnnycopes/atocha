@@ -1,6 +1,11 @@
 import { Dictionary } from 'lodash';
 
-import { Place, Region, Subregion, TreeProvider } from '@atocha/types-globetrotter';
+import {
+  Place,
+  Region,
+  Subregion,
+  TreeProvider,
+} from '@atocha/types-globetrotter';
 
 export class PlacesTreeProvider implements TreeProvider<Place> {
   private _placesById: Dictionary<Place> = {};

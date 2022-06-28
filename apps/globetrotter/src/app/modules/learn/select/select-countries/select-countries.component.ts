@@ -10,7 +10,11 @@ import {
 } from 'rxjs/operators';
 
 import { CheckboxStates, Region, Subregion } from '@atocha/types-globetrotter';
-import { CountryService, PlacesTreeProvider, SelectService } from '@atocha/data-access-globetrotter';
+import {
+  CountryService,
+  PlacesTreeProvider,
+  SelectService,
+} from '@atocha/data-access-globetrotter';
 
 interface IRegionData {
   region: Region;

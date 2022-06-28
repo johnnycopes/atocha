@@ -3,7 +3,14 @@ import { BehaviorSubject } from 'rxjs';
 import { first, map } from 'rxjs/operators';
 import { replace, omitBy, map as _map } from 'lodash-es';
 
-import { Region, QuizType, Selection, SelectionParams, CheckboxState, CheckboxStates } from '@atocha/types-globetrotter';
+import {
+  Region,
+  QuizType,
+  Selection,
+  SelectionParams,
+  CheckboxState,
+  CheckboxStates,
+} from '@atocha/types-globetrotter';
 import { CountryService } from './country.service';
 
 @Injectable({
