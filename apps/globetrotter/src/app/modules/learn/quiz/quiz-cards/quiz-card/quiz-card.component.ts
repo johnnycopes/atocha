@@ -17,10 +17,9 @@ import {
   FlipCardComponent,
   FlipCardGuess,
   FlipCardSide,
-  Duration,
 } from '@atocha/ui-globetrotter';
 import { wait } from '@atocha/utils';
-import { Country, QuizType } from '@atocha/types-globetrotter';
+import { Country, Duration, QuizType } from '@atocha/types-globetrotter';
 import { QuizService } from '@atocha/data-access-globetrotter';
 
 interface IViewModel {
