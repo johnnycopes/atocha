@@ -9,7 +9,8 @@ import {
   ChangeDetectorRef,
   SimpleChanges,
 } from '@angular/core';
-import { ICountry } from '@models/interfaces/country.interface';
+
+import { Country } from '@atocha/types-globetrotter';
 
 interface ITableContent {
   header: string;
@@ -24,7 +25,7 @@ interface ITableContent {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ExploreCountryComponent implements OnChanges, AfterViewInit {
-  @Input() country: ICountry;
+  @Input() country: Country;
   @Input() summary: string;
   tableData: ITableContent[];
   @ViewChild('population') populationTemplate: TemplateRef<unknown>;

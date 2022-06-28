@@ -1,8 +1,8 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { Router } from '@angular/router';
 
+import { Route } from '@atocha/types-globetrotter';
 import { fadeInAnimation } from '@atocha/ui-globetrotter';
-import { ERoute } from '@models/enums/route.enum';
 
 @Component({
   selector: 'app-home',
@@ -12,9 +12,9 @@ import { ERoute } from '@models/enums/route.enum';
   animations: [fadeInAnimation],
 })
 export class HomeComponent {
-  constructor(private router: Router) {}
+  constructor(private _router: Router) {}
 
   async onClick(): Promise<void> {
-    await this.router.navigate([ERoute.learn]);
+    await this._router.navigate([Route.learn]);
   }
 }

@@ -1,4 +1,4 @@
-import { EQuizType } from '@models/enums/quiz-type.enum';
+import { QuizType } from '@atocha/types-globetrotter';
 import { ICountry } from './country.interface';
 
 export interface IQuiz {
@@ -8,5 +8,5 @@ export interface IQuiz {
   totalCountries: number;
   correctGuesses: number;
   countries: ICountry[];
-  type: EQuizType;
+  type: QuizType;
 }

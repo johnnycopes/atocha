@@ -5,13 +5,8 @@ import { map, tap, distinctUntilChanged } from 'rxjs/operators';
 import { pickBy } from 'lodash-es';
 
 import { fadeInAnimation } from '@atocha/ui-globetrotter';
-import { ERoute } from '@models/enums/route.enum';
-import {
-  ISelection,
-  ISelectionParams,
-} from '@models/interfaces/selection.interface';
-import { SelectService } from '@services/select.service';
-import { CountryService } from '@services/country.service';
+import { Selection, SelectionParams, Route } from '@atocha/types-globetrotter';
+import { CountryService, SelectService } from '@atocha/data-access-globetrotter';
 
 interface IViewModel {
   numberOfSelectedCountries: number;
@@ -28,9 +23,9 @@ interface IViewModel {
 })
 export class SelectComponent implements OnInit {
   public vm$: Observable<IViewModel>;
-  private _queryParams: ISelectionParams;
-  private _selection: ISelection;
-  private _selection$: Observable<ISelection>;
+  private _queryParams: SelectionParams;
+  private _selection: Selection;
+  private _selection$: Observable<Selection>;
   private _quantity$: Observable<number>;
   private _invalidQuantity$: Observable<boolean>;
   private _numberOfSelectedCountries$: Observable<number>;
@@ -60,7 +55,7 @@ export class SelectComponent implements OnInit {
     this._queryParams = this._selectService.mapSelectionToQueryParams(
       this._selection
     );
-    await this._router.navigate([`${ERoute.learn}/${ERoute.quiz}`], {
+    await this._router.navigate([`${Route.learn}/${Route.quiz}`], {
       queryParams: this._queryParams,
     });
   }

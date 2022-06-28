@@ -20,9 +20,8 @@ import {
   Duration,
 } from '@atocha/ui-globetrotter';
 import { wait } from '@atocha/utils';
-import { ICountry } from '@models/interfaces/country.interface';
-import { EQuizType } from '@models/enums/quiz-type.enum';
-import { QuizService } from '@services/quiz.service';
+import { Country, QuizType } from '@atocha/types-globetrotter';
+import { QuizService } from '@atocha/data-access-globetrotter';
 
 interface IViewModel {
   guess: FlipCardGuess;
@@ -38,10 +37,10 @@ type CardTemplate = Record<FlipCardSide, TemplateRef<unknown>>;
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class QuizCardComponent implements OnInit {
-  @Input() country: ICountry;
+  @Input() country: Country;
   @Input() isCurrentCountry: boolean;
   @Input() canFlip: boolean;
-  @Input() type: EQuizType;
+  @Input() type: QuizType;
   @Output() flipped = new EventEmitter<boolean>();
   @ViewChild('flagTemplate', { static: true })
   flagTemplate: TemplateRef<unknown>;
@@ -52,7 +51,7 @@ export class QuizCardComponent implements OnInit {
   @ViewChild(FlipCardComponent) private flipCardComponent: FlipCardComponent;
   public vm$: Observable<IViewModel>;
   public template: CardTemplate;
-  private templates: Record<EQuizType, CardTemplate>;
+  private templates: Record<QuizType, CardTemplate>;
   private processingFlip = false;
   private guess$: Observable<FlipCardGuess>;
   private guessChange = new BehaviorSubject<FlipCardGuess>('none');
@@ -121,15 +120,15 @@ export class QuizCardComponent implements OnInit {
 
   private _setCardTemplates(): void {
     this.templates = {
-      [EQuizType.flagsCountries]: {
+      [QuizType.flagsCountries]: {
         front: this.flagTemplate,
         back: this.countryTemplate,
       },
-      [EQuizType.capitalsCountries]: {
+      [QuizType.capitalsCountries]: {
         front: this.capitalTemplate,
         back: this.countryTemplate,
       },
-      [EQuizType.countriesCapitals]: {
+      [QuizType.countriesCapitals]: {
         front: this.countryTemplate,
         back: this.capitalTemplate,
       },

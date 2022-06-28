@@ -1,8 +1,8 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { Router } from '@angular/router';
 
+import { Route } from '@atocha/types-globetrotter';
 import { fadeInAnimation } from '@atocha/ui-globetrotter';
-import { ERoute } from '@models/enums/route.enum';
 
 @Component({
   selector: 'app-page-not-found',
@@ -12,9 +12,9 @@ import { ERoute } from '@models/enums/route.enum';
   animations: [fadeInAnimation],
 })
 export class PageNotFoundComponent {
-  constructor(private router: Router) {}
+  constructor(private _router: Router) {}
 
   async onHomeClick(): Promise<void> {
-    await this.router.navigate([ERoute.home]);
+    await this._router.navigate([Route.home]);
   }
 }

@@ -5,20 +5,17 @@ import {
   Output,
   EventEmitter,
 } from '@angular/core';
-import { Observable, BehaviorSubject, combineLatest } from 'rxjs';
-import { map, tap, distinctUntilChanged } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { AnimationEvent } from '@angular/animations';
+import { Observable, BehaviorSubject, combineLatest } from 'rxjs';
+import { map, tap, distinctUntilChanged } from 'rxjs/operators';
 
 import { FixedSlideablePanelPosition } from '@atocha/ui-globetrotter';
-import { IQuiz } from '@models/interfaces/quiz.interface';
-import { EQuizType } from '@models/enums/quiz-type.enum';
-import { ERoute } from '@models/enums/route.enum';
-import { QuizService } from '@services/quiz.service';
-import { ICountry } from '@models/interfaces/country.interface';
+import { Country, Quiz, QuizType, Route } from '@atocha/types-globetrotter';
+import { QuizService } from '@atocha/data-access-globetrotter';
 
 interface IViewModel {
-  quiz: IQuiz | undefined;
+  quiz: Quiz | undefined;
   prompt: string;
   position: FixedSlideablePanelPosition;
 }
@@ -35,13 +32,13 @@ export class QuizMenuComponent implements OnInit {
   private _positionSubject$ = new BehaviorSubject<FixedSlideablePanelPosition>(
     'header'
   );
-  private _quiz$: Observable<IQuiz | undefined>;
+  private _quiz$: Observable<Quiz | undefined>;
   private _position$: Observable<FixedSlideablePanelPosition>;
   private _prompt$: Observable<string>;
-  private _promptDict: Record<EQuizType, (country: ICountry) => string> = {
-    [EQuizType.flagsCountries]: (country) => country.name,
-    [EQuizType.capitalsCountries]: (country) => country.name,
-    [EQuizType.countriesCapitals]: (country) => country.capital,
+  private _promptDict: Record<QuizType, (country: Country) => string> = {
+    [QuizType.flagsCountries]: (country) => country.name,
+    [QuizType.capitalsCountries]: (country) => country.name,
+    [QuizType.countriesCapitals]: (country) => country.capital,
   };
 
   constructor(private _quizService: QuizService, private _router: Router) {}
@@ -62,7 +59,7 @@ export class QuizMenuComponent implements OnInit {
   }
 
   public async onBack(): Promise<void> {
-    await this._router.navigate([ERoute.learn]);
+    await this._router.navigate([Route.learn]);
   }
 
   public onMenuAnimationFinish(event: AnimationEvent): void {

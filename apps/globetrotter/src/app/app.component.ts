@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { RouterService } from '@services/router.service';
-import { ErrorService } from '@services/error.service';
+import { ErrorService, RouterService } from '@atocha/data-access-globetrotter';
 
 @Component({
   selector: 'app-root',
@@ -15,14 +14,14 @@ export class AppComponent implements OnInit {
   error$: Observable<boolean>;
 
   constructor(
-    private routerService: RouterService,
-    private errorService: ErrorService
+    private _routerService: RouterService,
+    private _errorService: ErrorService
   ) {}
 
   ngOnInit(): void {
-    this.loading$ = this.routerService.state.pipe(
+    this.loading$ = this._routerService.state.pipe(
       map(({ loading }) => loading)
     );
-    this.error$ = this.errorService.errors.pipe(map(({ global }) => !!global));
+    this.error$ = this._errorService.errors.pipe(map(({ global }) => !!global));
   }
 }

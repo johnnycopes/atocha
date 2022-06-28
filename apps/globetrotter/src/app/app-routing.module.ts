@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes, PreloadAllModules } from '@angular/router';
 
-import { ERoute } from './models/enums/route.enum';
-import { CountryService } from './services/country.service';
+import { CountryService } from '@atocha/data-access-globetrotter';
+import { Route } from '@atocha/types-globetrotter';
 import { ShellComponent } from './components/shell/shell.component';
 import { HomeComponent } from './components/home/home.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
@@ -14,24 +14,24 @@ const routes: Routes = [
     resolve: { countries: CountryService },
     children: [
       {
-        path: ERoute.home,
+        path: Route.home,
         component: HomeComponent,
       },
       {
-        path: ERoute.explore,
+        path: Route.explore,
         loadChildren: () =>
           import('./modules/explore/explore.module').then(
             (m) => m.ExploreModule
           ),
       },
       {
-        path: ERoute.learn,
+        path: Route.learn,
         loadChildren: () =>
           import('./modules/learn/learn.module').then((m) => m.LearnModule),
       },
       {
         path: '',
-        redirectTo: ERoute.home,
+        redirectTo: Route.home,
         pathMatch: 'full',
       },
     ],

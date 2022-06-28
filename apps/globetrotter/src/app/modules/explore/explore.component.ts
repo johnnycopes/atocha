@@ -10,12 +10,12 @@ import {
 } from 'rxjs/operators';
 
 import { fadeInAnimation } from '@atocha/ui-globetrotter';
-import { CountryService } from '@services/country.service';
-import { ICountry } from '@models/interfaces/country.interface';
+import { CountryService } from '@atocha/data-access-globetrotter';
+import { Country } from '@atocha/types-globetrotter';
 
 interface IViewModel {
-  filteredCountries: ICountry[];
-  selectedCountry: ICountry;
+  filteredCountries: Country[];
+  selectedCountry: Country;
   searchTerm: string;
   summary: string;
 }
@@ -28,12 +28,12 @@ interface IViewModel {
 })
 export class ExploreComponent implements OnInit {
   vm$: Observable<IViewModel>;
-  private countries$: Observable<ICountry[]>;
-  private filteredCountries$: Observable<ICountry[]>;
+  private countries$: Observable<Country[]>;
+  private filteredCountries$: Observable<Country[]>;
   private searchTerm$: Observable<string>;
   private searchTermChange = new Subject<string>();
-  private selectedCountry$: Observable<ICountry>;
-  private selectedCountryChange = new ReplaySubject<ICountry>(1);
+  private selectedCountry$: Observable<Country>;
+  private selectedCountryChange = new ReplaySubject<Country>(1);
   private summary$: Observable<string>;
 
   constructor(private countryService: CountryService) {}
@@ -55,11 +55,11 @@ export class ExploreComponent implements OnInit {
     );
   }
 
-  getCountryCode(country: ICountry): string {
+  getCountryCode(country: Country): string {
     return country.cioc;
   }
 
-  onSelect(selectedCountry: ICountry): void {
+  onSelect(selectedCountry: Country): void {
     this.selectedCountryChange.next(selectedCountry);
   }
 
