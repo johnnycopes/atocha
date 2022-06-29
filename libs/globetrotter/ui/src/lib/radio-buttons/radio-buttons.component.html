@@ -1,0 +1,22 @@
+<form class="form" #optionForm="ngForm">
+  <div class="options" [class.options--stacked]="stacked">
+    <div
+      class="option"
+      *ngFor="let option of options"
+      [class.option--stacked]="stacked"
+    >
+      <input
+        class="option__input"
+        [id]="option.display"
+        [value]="option.value"
+        (change)="onChange()"
+        [(ngModel)]="model && model.value"
+        type="radio"
+        name="option"
+      />
+      <label class="option__label" [for]="option.display">
+        {{ option.display }}
+      </label>
+    </div>
+  </div>
+</form>

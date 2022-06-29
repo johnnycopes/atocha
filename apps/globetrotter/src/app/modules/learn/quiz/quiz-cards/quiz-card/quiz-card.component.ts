@@ -17,10 +17,10 @@ import {
   FlipCardComponent,
   FlipCardGuess,
   FlipCardSide,
-} from '@atocha/ui-globetrotter';
-import { wait } from '@atocha/utils';
-import { Country, Duration, QuizType } from '@atocha/types-globetrotter';
-import { QuizService } from '@atocha/data-access-globetrotter';
+} from '@atocha/globetrotter-ui';
+import { wait } from '@atocha/core-util';
+import { Country, Duration, QuizType } from '@atocha/globetrotter-types';
+import { QuizService } from '@atocha/globetrotter-data-access';
 
 interface IViewModel {
   guess: FlipCardGuess;

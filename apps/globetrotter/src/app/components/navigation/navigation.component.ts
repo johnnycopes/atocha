@@ -1,8 +1,8 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
-import { AnimatedComponent } from '@atocha/ui-core';
-import { positionAnimation } from '@atocha/ui-globetrotter';
-import { Route } from '@atocha/types-globetrotter';
+import { AnimatedComponent } from '@atocha/core-ui';
+import { positionAnimation } from '@atocha/globetrotter-ui';
+import { Route } from '@atocha/globetrotter-types';
 
 interface INavigationLink {
   name: string;

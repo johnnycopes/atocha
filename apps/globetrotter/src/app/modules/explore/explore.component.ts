@@ -9,9 +9,9 @@ import {
   distinctUntilChanged,
 } from 'rxjs/operators';
 
-import { fadeInAnimation } from '@atocha/ui-globetrotter';
-import { CountryService } from '@atocha/data-access-globetrotter';
-import { Country } from '@atocha/types-globetrotter';
+import { fadeInAnimation } from '@atocha/globetrotter-ui';
+import { CountryService } from '@atocha/globetrotter-data-access';
+import { Country } from '@atocha/globetrotter-types';
 
 interface IViewModel {
   filteredCountries: Country[];

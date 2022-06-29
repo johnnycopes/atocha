@@ -10,9 +10,9 @@ import { AnimationEvent } from '@angular/animations';
 import { Observable, BehaviorSubject, combineLatest } from 'rxjs';
 import { map, tap, distinctUntilChanged } from 'rxjs/operators';
 
-import { FixedSlideablePanelPosition } from '@atocha/ui-globetrotter';
-import { Country, Quiz, QuizType, Route } from '@atocha/types-globetrotter';
-import { QuizService } from '@atocha/data-access-globetrotter';
+import { FixedSlideablePanelPosition } from '@atocha/globetrotter-ui';
+import { Country, Quiz, QuizType, Route } from '@atocha/globetrotter-types';
+import { QuizService } from '@atocha/globetrotter-data-access';
 
 interface IViewModel {
   quiz: Quiz | undefined;

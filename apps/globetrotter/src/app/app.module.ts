@@ -7,7 +7,7 @@ import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { ExploreModule } from './modules/explore/explore.module';
 import { LearnModule } from './modules/learn/learn.module';
-import { UiGlobetrotterModule } from '@atocha/ui-globetrotter';
+import { GlobetrotterUiModule } from '@atocha/globetrotter-ui';
 
 import { AppComponent } from './app.component';
 import { ErrorComponent } from './components/error/error.component';
@@ -34,7 +34,7 @@ import { ShellComponent } from './components/shell/shell.component';
     RouterModule,
     ExploreModule,
     LearnModule,
-    UiGlobetrotterModule,
+    GlobetrotterUiModule,
   ],
   bootstrap: [AppComponent],
 })
