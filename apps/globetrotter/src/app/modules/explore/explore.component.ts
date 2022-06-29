@@ -10,7 +10,7 @@ import {
 } from 'rxjs/operators';
 
 import { fadeInAnimation } from '@atocha/globetrotter-ui';
-import { CountryService } from '@atocha/data-access-globetrotter';
+import { CountryService } from '@atocha/globetrotter-data-access';
 import { Country } from '@atocha/globetrotter-types';
 
 interface IViewModel {

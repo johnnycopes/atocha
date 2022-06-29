@@ -12,7 +12,7 @@ import { map, tap, distinctUntilChanged } from 'rxjs/operators';
 
 import { FixedSlideablePanelPosition } from '@atocha/globetrotter-ui';
 import { Country, Quiz, QuizType, Route } from '@atocha/globetrotter-types';
-import { QuizService } from '@atocha/data-access-globetrotter';
+import { QuizService } from '@atocha/globetrotter-data-access';
 
 interface IViewModel {
   quiz: Quiz | undefined;

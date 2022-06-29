@@ -9,7 +9,7 @@ import { Selection, SelectionParams, Route } from '@atocha/globetrotter-types';
 import {
   CountryService,
   SelectService,
-} from '@atocha/data-access-globetrotter';
+} from '@atocha/globetrotter-data-access';
 
 interface IViewModel {
   numberOfSelectedCountries: number;

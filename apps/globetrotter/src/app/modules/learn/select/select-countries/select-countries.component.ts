@@ -14,7 +14,7 @@ import {
   CountryService,
   PlacesTreeProvider,
   SelectService,
-} from '@atocha/data-access-globetrotter';
+} from '@atocha/globetrotter-data-access';
 
 interface IRegionData {
   region: Region;

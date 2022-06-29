@@ -4,7 +4,7 @@ import { map, first } from 'rxjs/operators';
 import { shuffle } from 'lodash-es';
 
 import { staggerAnimation, fadeInAnimation } from '@atocha/globetrotter-ui';
-import { QuizService } from '@atocha/data-access-globetrotter';
+import { QuizService } from '@atocha/globetrotter-data-access';
 import { Country, QuizType } from '@atocha/globetrotter-types';
 
 interface IViewModel {

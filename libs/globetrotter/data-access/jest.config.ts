@@ -1,7 +1,7 @@
 /* eslint-disable */
 export default {
-  displayName: 'data-access-globetrotter',
-  preset: '../../jest.preset.js',
+  displayName: 'globetrotter-data-access',
+  preset: '../../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
     'ts-jest': {
@@ -9,7 +9,7 @@ export default {
       stringifyContentPathRegex: '\\.(html|svg)$',
     },
   },
-  coverageDirectory: '../../coverage/libs/data-access-globetrotter',
+  coverageDirectory: '../../../coverage/libs/globetrotter/data-access',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': 'jest-preset-angular',
   },
