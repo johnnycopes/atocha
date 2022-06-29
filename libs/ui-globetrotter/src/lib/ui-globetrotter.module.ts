@@ -2,10 +2,10 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import {
-  UiCoreModule,
+  CoreUiModule,
   AutofocusDirective,
   MeasurementPipe,
-} from '@atocha/ui-core';
+} from '@atocha/core-ui';
 
 import { AlertComponent } from './alert/alert.component';
 import { ButtonComponent } from './button/button.component';
@@ -23,7 +23,7 @@ import { RadioButtonsComponent } from './radio-buttons/radio-buttons.component';
 import { SmallCapsComponent } from './small-caps/small-caps.component';
 
 @NgModule({
-  imports: [CommonModule, FormsModule, UiCoreModule],
+  imports: [CommonModule, FormsModule, CoreUiModule],
   declarations: [
     AlertComponent,
     ButtonComponent,

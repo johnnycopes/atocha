@@ -1,6 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
-import { AnimatedComponent } from '@atocha/ui-core';
+import { AnimatedComponent } from '@atocha/core-ui';
 import { positionAnimation } from '@atocha/ui-globetrotter';
 import { Route } from '@atocha/types-globetrotter';
 

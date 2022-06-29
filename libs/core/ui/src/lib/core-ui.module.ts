@@ -10,4 +10,4 @@ import { TreeComponent } from './tree/tree.component';
   declarations: [AutofocusDirective, MeasurementPipe, TreeComponent],
   exports: [AutofocusDirective, MeasurementPipe, TreeComponent],
 })
-export class UiCoreModule {}
+export class CoreUiModule {}

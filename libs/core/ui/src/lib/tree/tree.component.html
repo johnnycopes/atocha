@@ -8,13 +8,13 @@
 
 <ng-container *ngIf="getChildren(node)?.length">
   <ui-tree
-		*ngFor="let child of getChildren(node); trackBy: trackById"
-		[node]="child"
+    *ngFor="let child of getChildren(node); trackBy: trackById"
+    [node]="child"
     [template]="template ? template : defaultTemplate"
     [level]="level + 1"
     [getId]="getId"
     [getChildren]="getChildren"
-	></ui-tree>
+  ></ui-tree>
 </ng-container>
 
 <ng-template #defaultTemplate>
