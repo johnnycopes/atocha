@@ -15,13 +15,13 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@atocha/core-util": ["libs/core/util/src/index.ts"],
       "@atocha/data-access-globetrotter": [
         "libs/data-access-globetrotter/src/index.ts"
       ],
       "@atocha/types-globetrotter": ["libs/types-globetrotter/src/index.ts"],
       "@atocha/ui-core": ["libs/ui-core/src/index.ts"],
-      "@atocha/ui-globetrotter": ["libs/ui-globetrotter/src/index.ts"],
-      "@atocha/utils": ["libs/utils/src/index.ts"]
+      "@atocha/ui-globetrotter": ["libs/ui-globetrotter/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
