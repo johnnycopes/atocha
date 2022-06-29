@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { UiGlobetrotterModule } from '@atocha/ui-globetrotter';
+import { GlobetrotterUiModule } from '@atocha/globetrotter-ui';
 import { QuizComponent } from './quiz.component';
 import { QuizCardComponent } from './quiz-cards/quiz-card/quiz-card.component';
 import { QuizCardsComponent } from './quiz-cards/quiz-cards.component';
@@ -14,7 +14,7 @@ import { QuizMenuComponent } from './quiz-menu/quiz-menu.component';
     QuizCardsComponent,
     QuizMenuComponent,
   ],
-  imports: [CommonModule, UiGlobetrotterModule],
+  imports: [CommonModule, GlobetrotterUiModule],
   exports: [
     QuizComponent,
     QuizCardComponent,

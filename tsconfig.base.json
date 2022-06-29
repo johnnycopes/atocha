@@ -20,8 +20,8 @@
       "@atocha/data-access-globetrotter": [
         "libs/data-access-globetrotter/src/index.ts"
       ],
-      "@atocha/types-globetrotter": ["libs/types-globetrotter/src/index.ts"],
-      "@atocha/ui-globetrotter": ["libs/ui-globetrotter/src/index.ts"]
+      "@atocha/globetrotter-ui": ["libs/globetrotter/ui/src/index.ts"],
+      "@atocha/types-globetrotter": ["libs/types-globetrotter/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

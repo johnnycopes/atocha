@@ -3,7 +3,7 @@ import { Observable, combineLatest } from 'rxjs';
 import { map, first } from 'rxjs/operators';
 import { shuffle } from 'lodash-es';
 
-import { staggerAnimation, fadeInAnimation } from '@atocha/ui-globetrotter';
+import { staggerAnimation, fadeInAnimation } from '@atocha/globetrotter-ui';
 import { QuizService } from '@atocha/data-access-globetrotter';
 import { Country, QuizType } from '@atocha/types-globetrotter';
 
