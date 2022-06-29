@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { RadioButtonsOption } from '@atocha/globetrotter-ui';
-import { QuizType } from '@atocha/types-globetrotter';
+import { QuizType } from '@atocha/globetrotter-types';
 import { SelectService } from '@atocha/data-access-globetrotter';
 
 @Component({

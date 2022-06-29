@@ -11,7 +11,7 @@ import { Observable, BehaviorSubject, combineLatest } from 'rxjs';
 import { map, tap, distinctUntilChanged } from 'rxjs/operators';
 
 import { FixedSlideablePanelPosition } from '@atocha/globetrotter-ui';
-import { Country, Quiz, QuizType, Route } from '@atocha/types-globetrotter';
+import { Country, Quiz, QuizType, Route } from '@atocha/globetrotter-types';
 import { QuizService } from '@atocha/data-access-globetrotter';
 
 interface IViewModel {

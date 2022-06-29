@@ -5,7 +5,7 @@ import { map } from 'rxjs/operators';
 import { groupBy, reduce, shuffle, map as _map } from 'lodash-es';
 import { Dictionary } from 'lodash';
 
-import { Country, Region, Selection } from '@atocha/types-globetrotter';
+import { Country, Region, Selection } from '@atocha/globetrotter-types';
 import { ApiService } from './api.service';
 import { COUNTRY_STATUSES } from '../data/country-statuses';
 import {

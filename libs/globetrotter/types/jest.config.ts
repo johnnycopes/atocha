@@ -7,11 +7,11 @@ const { exclude: _, ...swcJestConfig } = JSON.parse(
   readFileSync(`${__dirname}/.lib.swcrc`, 'utf-8')
 );
 export default {
-  displayName: 'types-globetrotter',
-  preset: '../../jest.preset.js',
+  displayName: 'globetrotter-types',
+  preset: '../../../jest.preset.js',
   transform: {
     '^.+\\.[tj]s$': ['@swc/jest', swcJestConfig],
   },
   moduleFileExtensions: ['ts', 'js', 'html'],
-  coverageDirectory: '../../coverage/libs/types-globetrotter',
+  coverageDirectory: '../../../coverage/libs/globetrotter/types',
 };

@@ -11,7 +11,7 @@ import {
 
 import { fadeInAnimation } from '@atocha/globetrotter-ui';
 import { CountryService } from '@atocha/data-access-globetrotter';
-import { Country } from '@atocha/types-globetrotter';
+import { Country } from '@atocha/globetrotter-types';
 
 interface IViewModel {
   filteredCountries: Country[];

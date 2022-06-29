@@ -10,7 +10,7 @@ import {
   SelectionParams,
   CheckboxState,
   CheckboxStates,
-} from '@atocha/types-globetrotter';
+} from '@atocha/globetrotter-types';
 import { CountryService } from './country.service';
 
 @Injectable({

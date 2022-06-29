@@ -11,7 +11,7 @@ import {
   animateChild,
 } from '@angular/animations';
 
-import { Duration } from '@atocha/types-globetrotter';
+import { Duration } from '@atocha/globetrotter-types';
 
 const fadeIn = animation([
   style({ opacity: '0' }),

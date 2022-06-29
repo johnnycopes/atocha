@@ -5,7 +5,7 @@ import {
   Region,
   Subregion,
   TreeProvider,
-} from '@atocha/types-globetrotter';
+} from '@atocha/globetrotter-types';
 
 export class PlacesTreeProvider implements TreeProvider<Place> {
   private _placesById: Dictionary<Place> = {};

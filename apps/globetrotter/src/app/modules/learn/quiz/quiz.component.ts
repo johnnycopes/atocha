@@ -2,7 +2,7 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { QuizService, SelectService } from '@atocha/data-access-globetrotter';
-import { SelectionParams } from '@atocha/types-globetrotter';
+import { SelectionParams } from '@atocha/globetrotter-types';
 
 @Component({
   selector: 'app-quiz',

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { filter, first, map } from 'rxjs/operators';
 
-import { Route, Country, Selection, Quiz } from '@atocha/types-globetrotter';
+import { Route, Country, Selection, Quiz } from '@atocha/globetrotter-types';
 import { CountryService } from './country.service';
 import { RouterService } from './router.service';
 
