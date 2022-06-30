@@ -11,9 +11,7 @@ import { ExploreCountryComponent } from './explore-country/explore-country.compo
   imports: [
     GlobetrotterUiModule,
     CommonModule,
-    RouterModule.forChild([
-      { path: '', component: ExploreComponent }
-    ]),
+    RouterModule.forChild([{ path: '', component: ExploreComponent }]),
   ],
 })
 export class GlobetrotterFeatureExploreModule {}

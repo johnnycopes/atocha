@@ -15,6 +15,6 @@ import { SelectTypeComponent } from './select-type/select-type.component';
     SelectCountriesComponent,
     SelectQuantityComponent,
     SelectTypeComponent,
-  ]
+  ],
 })
 export class SelectModule {}

@@ -51,7 +51,14 @@ export class ExploreCountryComponent implements OnChanges, AfterViewInit {
     if (!this.country) {
       return;
     }
-    const { subregion, demonym, languages, currencies, numericCode, topLevelDomain } = this.country;
+    const {
+      subregion,
+      demonym,
+      languages,
+      currencies,
+      numericCode,
+      topLevelDomain,
+    } = this.country;
     this.tableData = [
       {
         header: 'subregion',

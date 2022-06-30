@@ -45,12 +45,8 @@ export class SelectCountriesComponent {
         const treeProvider = new PlacesTreeProvider(region);
         const selectedSubject = new BehaviorSubject<number>(0);
         const totalSubject = new BehaviorSubject<number>(0);
-        const selected$ = selectedSubject
-          .asObservable()
-          .pipe(distinctUntilChanged());
-        const total$ = totalSubject
-          .asObservable()
-          .pipe(distinctUntilChanged());
+        const selected$ = selectedSubject.pipe(distinctUntilChanged());
+        const total$ = totalSubject.pipe(distinctUntilChanged());
         return {
           region: region as Place,
           treeProvider,
@@ -64,9 +60,7 @@ export class SelectCountriesComponent {
     shareReplay({ bufferSize: 1, refCount: true })
   );
   private _overallSelected$ = this._regionData$.pipe(
-    map((regionData) =>
-      regionData.map((regionDatum) => regionDatum.selected$)
-    ),
+    map((regionData) => regionData.map((regionDatum) => regionDatum.selected$)),
     switchMap((selectedArr$) =>
       combineLatest(selectedArr$).pipe(
         map(([...values]) =>

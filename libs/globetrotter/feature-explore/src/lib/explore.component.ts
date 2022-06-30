@@ -27,26 +27,26 @@ export class ExploreComponent {
   private _countries$ = this._countryService.countries.pipe(
     map(({ flatCountries }) => flatCountries)
   );
-  private _selectedCountry$ = this._selectedCountryChange
-    .pipe(distinctUntilChanged());
+  private _selectedCountry$ = this._selectedCountryChange.pipe(
+    distinctUntilChanged()
+  );
   private _summary$ = this._selectedCountryChange.pipe(
     switchMap((country) => this._countryService.getSummary(country.name)),
     distinctUntilChanged()
   );
-  private _searchTerm$ = this._searchTermChange
-    .pipe(
-      startWith(''),
-      debounceTime(100),
-      distinctUntilChanged()
-    );
+  private _searchTerm$ = this._searchTermChange.pipe(
+    startWith(''),
+    debounceTime(100),
+    distinctUntilChanged()
+  );
   private _filteredCountries$ = this._searchTerm$.pipe(
     switchMap((searchTerm, index) =>
       this._countries$.pipe(
-        tap((countries) =>
-          index === 0 ? this.onSelect(countries[0]) : null
-        ),
-        map((countries) => countries.filter(
-          ({ name, capital }) => includes([name, capital], searchTerm))
+        tap((countries) => (index === 0 ? this.onSelect(countries[0]) : null)),
+        map((countries) =>
+          countries.filter(({ name, capital }) =>
+            includes([name, capital], searchTerm)
+          )
         )
       )
     )

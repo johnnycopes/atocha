@@ -57,12 +57,8 @@ export class QuizCardComponent implements OnInit {
   private _processingFlip = false;
   private _guessChange = new BehaviorSubject<FlipCardGuess>('none');
   private _disabledChange = new BehaviorSubject<boolean>(false);
-  private _guess$ = this._guessChange.pipe(
-    distinctUntilChanged()
-  );
-  private _disabled$ = this._disabledChange.pipe(
-    distinctUntilChanged()
-  );
+  private _guess$ = this._guessChange.pipe(distinctUntilChanged());
+  private _disabled$ = this._disabledChange.pipe(distinctUntilChanged());
   vm$ = combineLatest([this._guess$, this._disabled$]).pipe(
     map(([guess, disabled]) => ({ guess, disabled }))
   );
