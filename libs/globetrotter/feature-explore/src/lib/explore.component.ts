@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { combineLatest, ReplaySubject, Subject } from 'rxjs';
 import {
   map,
@@ -18,6 +18,7 @@ import { Country } from '@atocha/globetrotter-types';
   selector: 'app-explore',
   templateUrl: './explore.component.html',
   styleUrls: ['./explore.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [fadeInAnimation],
 })
 export class ExploreComponent {
@@ -27,21 +28,18 @@ export class ExploreComponent {
     map(({ flatCountries }) => flatCountries)
   );
   private _selectedCountry$ = this._selectedCountryChange
-    .asObservable()
     .pipe(distinctUntilChanged());
-  private _summary$ = this._selectedCountryChange.asObservable().pipe(
+  private _summary$ = this._selectedCountryChange.pipe(
     switchMap((country) => this._countryService.getSummary(country.name)),
     distinctUntilChanged()
   );
   private _searchTerm$ = this._searchTermChange
-    .asObservable()
     .pipe(
       startWith(''),
       debounceTime(100),
       distinctUntilChanged()
     );
   private _filteredCountries$ = this._searchTerm$.pipe(
-    map((searchTerm) => searchTerm.toLowerCase()),
     switchMap((searchTerm, index) =>
       this._countries$.pipe(
         tap((countries) =>
