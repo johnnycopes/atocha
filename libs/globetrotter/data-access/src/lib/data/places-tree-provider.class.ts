@@ -47,10 +47,10 @@ export class PlacesTreeProvider implements TreeProvider<Place> {
   }
 }
 
-function isRegion(place: Place): place is Region {
+export function isRegion(place: Place): place is Region {
   return 'subregions' in place;
 }
 
-function isSubregion(place: Place): place is Subregion {
+export function isSubregion(place: Place): place is Subregion {
   return 'countries' in place;
 }

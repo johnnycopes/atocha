@@ -1,0 +1,25 @@
+{
+  "projectType": "library",
+  "sourceRoot": "libs/globetrotter/feature-learn/src",
+  "prefix": "atocha",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/globetrotter/feature-learn"],
+      "options": {
+        "jestConfig": "libs/globetrotter/feature-learn/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/globetrotter/feature-learn/**/*.ts",
+          "libs/globetrotter/feature-learn/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

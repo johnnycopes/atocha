@@ -20,14 +20,16 @@ const routes: Routes = [
       {
         path: Route.explore,
         loadChildren: () =>
-          import('./modules/explore/explore.module').then(
-            (m) => m.ExploreModule
+          import('@atocha/globetrotter-feature-explore').then(
+            (m) => m.GlobetrotterFeatureExploreModule
           ),
       },
       {
         path: Route.learn,
         loadChildren: () =>
-          import('./modules/learn/learn.module').then((m) => m.LearnModule),
+          import('@atocha/globetrotter-feature-learn').then(
+            (m) => m.GlobetrotterFeatureLearnModule
+          ),
       },
       {
         path: '',

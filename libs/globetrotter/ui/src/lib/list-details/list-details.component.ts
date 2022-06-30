@@ -16,6 +16,7 @@ import {
   ChangeDetectorRef,
   HostListener,
 } from '@angular/core';
+
 import { InputComponent } from '../input/input.component';
 
 export interface IListDetailsStyles {

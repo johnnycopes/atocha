@@ -36,9 +36,7 @@ export class ShellComponent implements OnInit {
   }
 
   private initializeStreams(): void {
-    this.showContent$ = this.showContentSubject
-      .asObservable()
-      .pipe(distinctUntilChanged());
+    this.showContent$ = this.showContentSubject.pipe(distinctUntilChanged());
     this.quizComplete$ = this._quizService.quiz.pipe(
       map((quiz) => quiz?.isComplete ?? false),
       distinctUntilChanged()

@@ -14,17 +14,21 @@
     }
   ],
   "compilerOptions": {
-    "baseUrl": "./",
+    "baseUrl": "../../libs/",
     "paths": {
-      "@atocha/core-ui": ["../../libs/core/ui/src/index.ts"],
-      "@atocha/core-util": ["../../libs/core/util/src/index.ts"],
+      "@atocha/core-ui": ["core/ui/src/index.ts"],
+      "@atocha/core-util": ["core/util/src/index.ts"],
       "@atocha/globetrotter-data-access": [
-        "../../libs/globetrotter/data-access/src/index.ts"
+        "globetrotter/data-access/src/index.ts"
       ],
-      "@atocha/globetrotter-types": [
-        "../../libs/globetrotter/types/src/index.ts"
+      "@atocha/globetrotter-feature-explore": [
+        "globetrotter/feature-explore/src/index.ts"
       ],
-      "@atocha/globetrotter-ui": ["../../libs/globetrotter/ui/src/index.ts"],
+      "@atocha/globetrotter-feature-learn": [
+        "globetrotter/feature-learn/src/index.ts"
+      ],
+      "@atocha/globetrotter-types": ["globetrotter/types/src/index.ts"],
+      "@atocha/globetrotter-ui": ["globetrotter/ui/src/index.ts"],
       "@env/*": ["src/environments/*"]
     },
     "target": "es2020",
