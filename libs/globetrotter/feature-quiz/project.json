@@ -1,0 +1,25 @@
+{
+  "projectType": "library",
+  "sourceRoot": "libs/globetrotter/feature-quiz/src",
+  "prefix": "atocha",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/globetrotter/feature-quiz"],
+      "options": {
+        "jestConfig": "libs/globetrotter/feature-quiz/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/globetrotter/feature-quiz/**/*.ts",
+          "libs/globetrotter/feature-quiz/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}
