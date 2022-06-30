@@ -9,6 +9,7 @@ import {
   distinctUntilChanged,
 } from 'rxjs/operators';
 
+import { includes } from '@atocha/core-util';
 import { fadeInAnimation } from '@atocha/globetrotter-ui';
 import { CountryService } from '@atocha/globetrotter-data-access';
 import { Country } from '@atocha/globetrotter-types';
@@ -34,7 +35,11 @@ export class ExploreComponent {
   );
   private _searchTerm$ = this._searchTermChange
     .asObservable()
-    .pipe(startWith(''), debounceTime(100), distinctUntilChanged());
+    .pipe(
+      startWith(''),
+      debounceTime(100),
+      distinctUntilChanged()
+    );
   private _filteredCountries$ = this._searchTerm$.pipe(
     map((searchTerm) => searchTerm.toLowerCase()),
     switchMap((searchTerm, index) =>
@@ -42,13 +47,9 @@ export class ExploreComponent {
         tap((countries) =>
           index === 0 ? this.onSelect(countries[0]) : null
         ),
-        map((countries) => {
-          return countries.filter((country) => {
-            const name = country.name.toLowerCase();
-            const capital = country.capital.toLowerCase();
-            return name.includes(searchTerm) || capital.includes(searchTerm);
-          });
-        })
+        map((countries) => countries.filter(
+          ({ name, capital }) => includes([name, capital], searchTerm))
+        )
       )
     )
   );
