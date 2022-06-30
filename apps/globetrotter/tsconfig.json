@@ -27,6 +27,9 @@
       "@atocha/globetrotter-feature-quiz": [
         "../../libs/globetrotter/feature-quiz/src/index.ts"
       ],
+      "@atocha/globetrotter-feature-select": [
+        "../../libs/globetrotter/feature-select/src/index.ts"
+      ],
       "@atocha/globetrotter-types": [
         "../../libs/globetrotter/types/src/index.ts"
       ],

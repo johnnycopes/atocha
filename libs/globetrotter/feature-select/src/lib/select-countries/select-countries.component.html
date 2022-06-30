@@ -1,0 +1,66 @@
+<ui-small-caps
+  *ngIf="vm$ | async as vm"
+  header="Content"
+>
+  <div class="top">
+    <div class="top__counter">
+      <span class="bold">
+        {{ vm.overallSelected}} / {{ vm.overallTotal }}
+      </span>
+      possible countries in the cards.
+    </div>
+    <div class="top__buttons">
+      <ui-button class="top__select-all"
+        buttonStyle="secondary"
+        buttonText="Select all"
+        (click)="onSelectAll()"
+      ></ui-button>
+      <ui-button class="top__clear-all"
+        buttonStyle="secondary"
+        buttonText="Clear all"
+        (click)="onClearAll()"
+      ></ui-button>
+    </div>
+  </div>
+  <div class="regions">
+    <div class="region"
+      *ngFor="let regionDatum of vm.regionData"
+      >
+      <ng-container *ngIf="regionDatum.region as region">
+        <ui-icon class="region__image"
+          [icon]="region.name"
+          [highlighted]="!!(regionDatum.selected$ | async)"
+        ></ui-icon>
+        <ui-nested-checkboxes-with-counts class="region__checkboxes"
+          [item]="region"
+          [treeProvider]="regionDatum.treeProvider"
+          [itemTemplate]="label"
+          [getLeafItemCount]="getNumberOfCountries"
+          [ngModel]="vm.checkboxStates"
+          (ngModelChange)="onCountriesChange($event)"
+          (selectedChange)="regionDatum.selectedSubject.next($event)"
+          (totalChange)="regionDatum.totalSubject.next($event)"
+        ></ui-nested-checkboxes-with-counts>
+      </ng-container>
+
+      <ng-template
+        #label
+        let-item
+        let-parent="parent"
+        let-selected="selected"
+        let-total="total"
+      >
+        <span class="bold"
+          *ngIf="!parent; else child"
+        >
+          {{ regionDatum.treeProvider.getId(item) }} ({{ selected }} / {{ total }})
+        </span>
+        <ng-template #child>
+          <span>
+            {{ regionDatum.treeProvider.getId(item) }} ({{ total }})
+          </span>
+        </ng-template>
+      </ng-template>
+    </div>
+  </div>
+</ui-small-caps>

@@ -1,0 +1,25 @@
+<div class="wrapper"
+  *ngIf="vm$ | async as vm"
+  @fadeIn
+>
+  <div class="launchpad">
+    <h1 class="header">
+      Create Quiz
+    </h1>
+    <ui-button
+      buttonText="Launch"
+      [disabled]="vm.invalidQuantity"
+      (clicked)="onLaunch()"
+    ></ui-button>
+  </div>
+  <div class="fields">
+    <div class="fields__top">
+      <app-select-type></app-select-type>
+      <app-select-quantity
+        [quantity]="vm.quantity"
+        [invalid]="vm.invalidQuantity"
+      ></app-select-quantity>
+    </div>
+    <app-select-countries></app-select-countries>
+  </div>
+</div>

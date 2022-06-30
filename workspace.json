@@ -9,6 +9,7 @@
     "globetrotter-e2e": "apps/globetrotter-e2e",
     "globetrotter-feature-explore": "libs/globetrotter/feature-explore",
     "globetrotter-feature-quiz": "libs/globetrotter/feature-quiz",
+    "globetrotter-feature-select": "libs/globetrotter/feature-select",
     "globetrotter-types": "libs/globetrotter/types",
     "globetrotter-ui": "libs/globetrotter/ui"
   }
