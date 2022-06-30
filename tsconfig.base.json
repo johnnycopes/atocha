@@ -25,11 +25,8 @@
       "@atocha/globetrotter/feature-explore": [
         "libs/globetrotter/feature-explore/src/index.ts"
       ],
-      "@atocha/globetrotter/feature-quiz": [
-        "libs/globetrotter/feature-quiz/src/index.ts"
-      ],
-      "@atocha/globetrotter/feature-select": [
-        "libs/globetrotter/feature-select/src/index.ts"
+      "@atocha/globetrotter/feature-learn": [
+        "libs/globetrotter/feature-learn/src/index.ts"
       ]
     }
   },

@@ -16,4 +16,4 @@ import { QuizMenuComponent } from './quiz-menu/quiz-menu.component';
     QuizMenuComponent,
   ],
 })
-export class GlobetrotterFeatureQuizModule {}
+export class QuizModule {}

@@ -17,4 +17,4 @@ import { SelectTypeComponent } from './select-type/select-type.component';
     SelectTypeComponent,
   ]
 })
-export class GlobetrotterFeatureSelectModule {}
+export class SelectModule {}

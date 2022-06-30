@@ -27,7 +27,9 @@ const routes: Routes = [
       {
         path: Route.learn,
         loadChildren: () =>
-          import('./modules/learn/learn.module').then((m) => m.LearnModule),
+          import('@atocha/globetrotter-feature-learn').then(
+            (m) => m.GlobetrotterFeatureLearnModule
+          ),
       },
       {
         path: '',
