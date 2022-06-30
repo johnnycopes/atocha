@@ -7,6 +7,7 @@
     "globetrotter": "apps/globetrotter",
     "globetrotter-data-access": "libs/globetrotter/data-access",
     "globetrotter-e2e": "apps/globetrotter-e2e",
+    "globetrotter-feature-explore": "libs/globetrotter/feature-explore",
     "globetrotter-types": "libs/globetrotter/types",
     "globetrotter-ui": "libs/globetrotter/ui"
   }

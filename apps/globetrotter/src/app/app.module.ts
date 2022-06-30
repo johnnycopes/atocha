@@ -5,8 +5,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
-import { ExploreModule } from './modules/explore/explore.module';
 import { LearnModule } from './modules/learn/learn.module';
+import { GlobetrotterFeatureExploreModule } from '@atocha/globetrotter-feature-explore';
 import { GlobetrotterUiModule } from '@atocha/globetrotter-ui';
 
 import { AppComponent } from './app.component';
@@ -32,8 +32,8 @@ import { ShellComponent } from './components/shell/shell.component';
     BrowserAnimationsModule,
     HttpClientModule,
     RouterModule,
-    ExploreModule,
     LearnModule,
+    GlobetrotterFeatureExploreModule,
     GlobetrotterUiModule,
   ],
   bootstrap: [AppComponent],
