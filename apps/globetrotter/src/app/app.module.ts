@@ -11,9 +11,7 @@ import { GlobetrotterUiModule } from '@atocha/globetrotter/ui';
 import { AppComponent } from './app.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-  ],
+  declarations: [AppComponent],
   imports: [
     AppRoutingModule,
     BrowserAnimationsModule,

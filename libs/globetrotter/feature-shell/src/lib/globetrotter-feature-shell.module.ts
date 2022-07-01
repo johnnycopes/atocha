@@ -18,8 +18,6 @@ import { ShellComponent } from './shell/shell.component';
     PageNotFoundComponent,
     ShellComponent,
   ],
-  exports: [
-    ErrorComponent,
-  ],
+  exports: [ErrorComponent],
 })
 export class GlobetrotterFeatureShellModule {}
