@@ -1,6 +1,6 @@
 import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 
-import { AnimatedComponent } from '@atocha/core-ui';
+import { AnimatedComponent } from '@atocha/core/ui';
 import { positionAnimation } from '../animations';
 
 export type FixedSlideablePanelPosition = 'offscreen' | 'header' | 'fullscreen';

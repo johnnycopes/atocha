@@ -6,7 +6,7 @@ import {
   ChangeDetectionStrategy,
 } from '@angular/core';
 
-import { AnimatedComponent } from '@atocha/core-ui';
+import { AnimatedComponent } from '@atocha/core/ui';
 import {
   flipAnimation,
   guessAnimation,

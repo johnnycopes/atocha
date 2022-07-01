@@ -15,7 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@atocha/core-ui": ["libs/core/ui/src/index.ts"],
+      "@atocha/core/ui": ["libs/core/ui/src/index.ts"],
       "@atocha/core-util": ["libs/core/util/src/index.ts"],
       "@atocha/globetrotter/data-access": [
         "libs/globetrotter/data-access/src/index.ts"
