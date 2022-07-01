@@ -1,0 +1,4 @@
+export * from './lib/globetrotter-feature-shell.module';
+
+export * from './lib/home/home.component';
+export * from './lib/page-not-found/page-not-found.component';

@@ -1,11 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes, PreloadAllModules } from '@angular/router';
 
+import { HomeComponent, PageNotFoundComponent } from '@atocha/globetrotter-feature-shell';
 import { CountryService } from '@atocha/globetrotter-data-access';
 import { Route } from '@atocha/globetrotter-types';
 import { ShellComponent } from './components/shell/shell.component';
-import { HomeComponent } from './components/home/home.component';
-import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 const routes: Routes = [
   {

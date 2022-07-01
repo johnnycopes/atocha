@@ -7,24 +7,19 @@ import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { GlobetrotterFeatureExploreModule } from '@atocha/globetrotter-feature-explore';
 import { GlobetrotterFeatureLearnModule } from '@atocha/globetrotter-feature-learn';
+import { GlobetrotterFeatureShellModule } from '@atocha/globetrotter-feature-shell';
 import { GlobetrotterUiModule } from '@atocha/globetrotter-ui';
 
 import { AppComponent } from './app.component';
 import { ErrorComponent } from './components/error/error.component';
-import { HomeComponent } from './components/home/home.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
-import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
-import { PlaceholderComponent } from './components/placeholder/placeholder.component';
 import { ShellComponent } from './components/shell/shell.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ErrorComponent,
-    HomeComponent,
     NavigationComponent,
-    PageNotFoundComponent,
-    PlaceholderComponent,
     ShellComponent,
   ],
   imports: [
@@ -34,6 +29,7 @@ import { ShellComponent } from './components/shell/shell.component';
     RouterModule,
     GlobetrotterFeatureExploreModule,
     GlobetrotterFeatureLearnModule,
+    GlobetrotterFeatureShellModule,
     GlobetrotterUiModule,
   ],
   bootstrap: [AppComponent],
