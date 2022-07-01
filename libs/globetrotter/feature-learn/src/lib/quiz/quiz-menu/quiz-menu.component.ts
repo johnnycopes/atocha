@@ -9,7 +9,7 @@ import { AnimationEvent } from '@angular/animations';
 import { BehaviorSubject, combineLatest } from 'rxjs';
 import { map, tap, distinctUntilChanged } from 'rxjs/operators';
 
-import { FixedSlideablePanelPosition } from '@atocha/globetrotter-ui';
+import { FixedSlideablePanelPosition } from '@atocha/globetrotter/ui';
 import { Country, QuizType, Route } from '@atocha/globetrotter/types';
 import { QuizService } from '@atocha/globetrotter/data-access';
 

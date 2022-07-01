@@ -21,7 +21,7 @@
         "libs/globetrotter/data-access/src/index.ts"
       ],
       "@atocha/globetrotter/types": ["libs/globetrotter/types/src/index.ts"],
-      "@atocha/globetrotter-ui": ["libs/globetrotter/ui/src/index.ts"],
+      "@atocha/globetrotter/ui": ["libs/globetrotter/ui/src/index.ts"],
       "@atocha/globetrotter/feature-explore": [
         "libs/globetrotter/feature-explore/src/index.ts"
       ],

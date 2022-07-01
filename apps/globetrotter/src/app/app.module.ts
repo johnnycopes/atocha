@@ -7,7 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { GlobetrotterFeatureLearnModule } from '@atocha/globetrotter/feature-learn';
 import { GlobetrotterFeatureExploreModule } from '@atocha/globetrotter/feature-explore';
 import { GlobetrotterFeatureShellModule } from '@atocha/globetrotter/feature-shell';
-import { GlobetrotterUiModule } from '@atocha/globetrotter-ui';
+import { GlobetrotterUiModule } from '@atocha/globetrotter/ui';
 import { AppComponent } from './app.component';
 
 @NgModule({

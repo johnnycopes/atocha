@@ -1,7 +1,7 @@
 import { Dictionary } from 'lodash';
 import { keyBy, groupBy } from 'lodash-es';
 
-import { TreeProvider } from '@atocha/globetrotter-ui';
+import { TreeProvider } from '@atocha/globetrotter/ui';
 import { IDefaultTreeItem } from './default-tree-item';
 
 export class FlatItemTreeProvider implements TreeProvider<IDefaultTreeItem> {

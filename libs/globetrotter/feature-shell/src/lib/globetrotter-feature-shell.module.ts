@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
-import { GlobetrotterUiModule } from '@atocha/globetrotter-ui';
+import { GlobetrotterUiModule } from '@atocha/globetrotter/ui';
 import { ErrorComponent } from './error/error.component';
 import { HomeComponent } from './home/home.component';
 import { NavigationComponent } from './navigation/navigation.component';
