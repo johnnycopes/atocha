@@ -11,7 +11,7 @@ import {
 
 import { includes } from '@atocha/core-util';
 import { fadeInAnimation } from '@atocha/globetrotter-ui';
-import { CountryService } from '@atocha/globetrotter-data-access';
+import { CountryService } from '@atocha/globetrotter/data-access';
 import { Country } from '@atocha/globetrotter-types';
 
 @Component({

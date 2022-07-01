@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { ErrorService, RouterService } from '@atocha/globetrotter-data-access';
+import { ErrorService, RouterService } from '@atocha/globetrotter/data-access';
 
 @Component({
   selector: 'app-root',

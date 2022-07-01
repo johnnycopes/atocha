@@ -15,7 +15,7 @@ import {
   isSubregion,
   PlacesTreeProvider,
   SelectService,
-} from '@atocha/globetrotter-data-access';
+} from '@atocha/globetrotter/data-access';
 
 @Component({
   selector: 'app-select-countries',

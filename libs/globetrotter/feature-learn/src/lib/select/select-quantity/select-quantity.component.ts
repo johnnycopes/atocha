@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
 
-import { SelectService } from '@atocha/globetrotter-data-access';
+import { SelectService } from '@atocha/globetrotter/data-access';
 
 @Component({
   selector: 'app-select-quantity',
