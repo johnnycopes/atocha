@@ -3,7 +3,7 @@ import { RouterModule, Routes, PreloadAllModules } from '@angular/router';
 
 import { HomeComponent, PageNotFoundComponent, ShellComponent } from '@atocha/globetrotter/feature-shell';
 import { CountryService } from '@atocha/globetrotter/data-access';
-import { Route } from '@atocha/globetrotter-types';
+import { Route } from '@atocha/globetrotter/types';
 
 const routes: Routes = [
   {

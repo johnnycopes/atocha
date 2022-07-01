@@ -13,7 +13,7 @@ import {
   CheckboxState,
   CheckboxStates,
   TreeProvider,
-} from '@atocha/globetrotter-types';
+} from '@atocha/globetrotter/types';
 
 @Component({
   selector: 'ui-nested-checkboxes',

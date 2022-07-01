@@ -10,7 +10,7 @@ import {
   SimpleChanges,
 } from '@angular/core';
 
-import { Country } from '@atocha/globetrotter-types';
+import { Country } from '@atocha/globetrotter/types';
 
 interface ITableContent {
   header: string;
