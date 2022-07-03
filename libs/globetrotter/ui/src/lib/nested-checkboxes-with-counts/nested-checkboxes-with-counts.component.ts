@@ -15,7 +15,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Dictionary } from 'lodash';
 import { reduce } from 'lodash-es';
 
-import { CheckboxStates, TreeProvider } from '@atocha/globetrotter-types';
+import { CheckboxStates, TreeProvider } from '@atocha/globetrotter/types';
 
 type Counts = Dictionary<number>;
 

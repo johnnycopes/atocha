@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 
-import { fadeInAnimation } from '@atocha/globetrotter-ui';
+import { fadeInAnimation } from '@atocha/globetrotter/ui';
 
 @Component({
   selector: 'app-error',

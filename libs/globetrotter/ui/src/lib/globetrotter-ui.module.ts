@@ -5,7 +5,7 @@ import {
   CoreUiModule,
   AutofocusDirective,
   MeasurementPipe,
-} from '@atocha/core-ui';
+} from '@atocha/core/ui';
 
 import { AlertComponent } from './alert/alert.component';
 import { ButtonComponent } from './button/button.component';

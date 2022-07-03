@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes, PreloadAllModules } from '@angular/router';
 
-import { CountryService } from '@atocha/globetrotter-data-access';
-import { Route } from '@atocha/globetrotter-types';
-import { ShellComponent } from './components/shell/shell.component';
-import { HomeComponent } from './components/home/home.component';
-import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import {
+  HomeComponent,
+  PageNotFoundComponent,
+  ShellComponent,
+} from '@atocha/globetrotter/feature-shell';
+import { CountryService } from '@atocha/globetrotter/data-access';
+import { Route } from '@atocha/globetrotter/types';
 
 const routes: Routes = [
   {
@@ -20,14 +22,14 @@ const routes: Routes = [
       {
         path: Route.explore,
         loadChildren: () =>
-          import('@atocha/globetrotter-feature-explore').then(
+          import('@atocha/globetrotter/feature-explore').then(
             (m) => m.GlobetrotterFeatureExploreModule
           ),
       },
       {
         path: Route.learn,
         loadChildren: () =>
-          import('@atocha/globetrotter-feature-learn').then(
+          import('@atocha/globetrotter/feature-learn').then(
             (m) => m.GlobetrotterFeatureLearnModule
           ),
       },

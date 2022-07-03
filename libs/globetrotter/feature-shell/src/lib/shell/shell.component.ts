@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { QuizService } from '@atocha/globetrotter-data-access';
+import { QuizService } from '@atocha/globetrotter/data-access';
 import { Observable, BehaviorSubject, combineLatest } from 'rxjs';
 import { map, distinctUntilChanged } from 'rxjs/operators';
 

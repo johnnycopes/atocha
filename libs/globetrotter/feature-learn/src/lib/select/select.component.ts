@@ -4,12 +4,12 @@ import { combineLatest } from 'rxjs';
 import { map, tap, distinctUntilChanged } from 'rxjs/operators';
 import { pickBy } from 'lodash-es';
 
-import { fadeInAnimation } from '@atocha/globetrotter-ui';
-import { Selection, SelectionParams, Route } from '@atocha/globetrotter-types';
+import { fadeInAnimation } from '@atocha/globetrotter/ui';
+import { Selection, SelectionParams, Route } from '@atocha/globetrotter/types';
 import {
   CountryService,
   SelectService,
-} from '@atocha/globetrotter-data-access';
+} from '@atocha/globetrotter/data-access';
 
 @Component({
   selector: 'app-select',

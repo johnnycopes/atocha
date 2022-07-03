@@ -1,6 +1,6 @@
 import { Dictionary } from 'lodash';
 
-import { TreeProvider } from '@atocha/globetrotter-ui';
+import { TreeProvider } from '@atocha/globetrotter/ui';
 import { IDefaultTreeItem } from './default-tree-item';
 
 export class NestedItemTreeProvider implements TreeProvider<IDefaultTreeItem> {
