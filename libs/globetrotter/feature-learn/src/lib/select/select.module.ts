@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 
 import { GlobetrotterUiModule } from '@atocha/globetrotter/ui';
 import { SelectComponent } from './select.component';
-import { SelectCountriesComponent } from './select-countries/select-countries.component';
+import { SelectPlacesComponent } from './select-places/select-places.component';
 import { SelectQuantityComponent } from './select-quantity/select-quantity.component';
 import { SelectTypeComponent } from './select-type/select-type.component';
 
@@ -12,7 +12,7 @@ import { SelectTypeComponent } from './select-type/select-type.component';
   imports: [CommonModule, FormsModule, GlobetrotterUiModule],
   declarations: [
     SelectComponent,
-    SelectCountriesComponent,
+    SelectPlacesComponent,
     SelectQuantityComponent,
     SelectTypeComponent,
   ],
