@@ -39,18 +39,15 @@ export class SelectCountriesComponent {
     }),
     map((regions) =>
       regions.map((region) => {
-        const treeProvider = new PlacesTreeProvider(region);
         const selectedSubject = new BehaviorSubject<number>(0);
         const totalSubject = new BehaviorSubject<number>(0);
-        const selected$ = selectedSubject.pipe(distinctUntilChanged());
-        const total$ = totalSubject.pipe(distinctUntilChanged());
         return {
           region: region as Place,
-          treeProvider,
+          treeProvider: new PlacesTreeProvider(region),
           selectedSubject,
           totalSubject,
-          selected$,
-          total$,
+          selected$: selectedSubject.pipe(distinctUntilChanged()),
+          total$: totalSubject.pipe(distinctUntilChanged()),
         };
       })
     ),
