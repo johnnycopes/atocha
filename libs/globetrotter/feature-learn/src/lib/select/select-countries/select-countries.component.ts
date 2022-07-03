@@ -26,7 +26,7 @@ import {
 export class SelectCountriesComponent {
   private fullySelectedState: CheckboxStates = {};
   private _checkboxStates$ = this._selectService.selection.pipe(
-    map(({ countries }) => countries)
+    map(({ places }) => places)
   );
   private _regionData$ = this._countryService.countries.pipe(
     first(),
@@ -101,15 +101,15 @@ export class SelectCountriesComponent {
   ) {}
 
   onCountriesChange(state: CheckboxStates): void {
-    this._selectService.updateCountries(state);
+    this._selectService.updatePlaces(state);
   }
 
   onSelectAll(): void {
-    this._selectService.updateCountries(this.fullySelectedState);
+    this._selectService.updatePlaces(this.fullySelectedState);
   }
 
   onClearAll(): void {
-    this._selectService.updateCountries({});
+    this._selectService.updatePlaces({});
   }
 
   getNumberOfCountries(item: Place): number {

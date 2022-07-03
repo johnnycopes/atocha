@@ -4,11 +4,11 @@ import { QuizType } from './quiz-type.enum';
 export interface Selection {
   type: QuizType;
   quantity: number;
-  countries: CheckboxStates;
+  places: CheckboxStates;
 }
 
 export interface SelectionParams {
   type: string;
   quantity: string;
-  countries: string;
+  places: string;
 }

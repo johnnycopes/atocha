@@ -60,7 +60,7 @@ export class CountryService implements Resolve<Observable<Country[]>> {
       map(({ countriesBySubregion }) => {
         const quantity = selection.quantity || undefined;
         const countries = reduce(
-          selection.countries,
+          selection.places,
           (accum, checkboxState, placeName) => {
             if (
               checkboxState === 'checked' &&

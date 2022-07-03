@@ -31,7 +31,7 @@ export class SelectService {
     this._selection = new BehaviorSubject<Selection>({
       type: QuizType.flagsCountries,
       quantity: 5,
-      countries: {},
+      places: {},
     });
     this._countryService.countries
       .pipe(
@@ -39,13 +39,12 @@ export class SelectService {
         map(({ nestedCountries }) => nestedCountries)
       )
       .subscribe((regions) => {
-        const countries = this._mapPlacesToCheckboxStates(regions);
-        this.updateCountries(countries);
+        const checkboxStates = this._mapPlacesToCheckboxStates(regions);
+        this.updatePlaces(checkboxStates);
       });
   }
 
   updateSelection(selection: Selection): void {
-    console.log(selection);
     this._selection.next(selection);
   }
 
@@ -67,11 +66,11 @@ export class SelectService {
       .subscribe((selection) => this._selection.next(selection));
   }
 
-  updateCountries(countries: CheckboxStates): void {
+  updatePlaces(places: CheckboxStates): void {
     this._selection
       .pipe(
         first(),
-        map((selection) => ({ ...selection, countries }))
+        map((selection) => ({ ...selection, places }))
       )
       .subscribe((selection) => this._selection.next(selection));
   }
@@ -79,25 +78,25 @@ export class SelectService {
   mapSelectionToQueryParams(selection: Selection): SelectionParams {
     const type = selection.type.toString();
     const quantity = selection.quantity.toString();
-    const selectedCountries = omitBy(
-      selection.countries,
+    const selectedPlaces = omitBy(
+      selection.places,
       (value) => value === 'unchecked'
     );
-    const countries = _map(
-      selectedCountries,
+    const places = _map(
+      selectedPlaces,
       (value: CheckboxState, key) => key + this._paramDict[value]
     ).join(',');
     return {
       type,
       quantity,
-      countries,
+      places,
     };
   }
 
   mapQueryParamsToSelection(queryParams: SelectionParams): Selection {
     const type = parseInt(queryParams.type, 10) as QuizType;
     const quantity = parseInt(queryParams.quantity, 10);
-    const countries = queryParams.countries
+    const places = queryParams.places
       .split(',')
       .reduce((accum, current) => {
         if (current.includes(this._paramDict.checked)) {
@@ -116,7 +115,7 @@ export class SelectService {
     return {
       type,
       quantity,
-      countries,
+      places,
     };
   }
 
