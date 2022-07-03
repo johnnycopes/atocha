@@ -2,8 +2,8 @@ import {
   Place,
   Region,
   Subregion,
-  TreeProvider,
 } from '@atocha/globetrotter/types';
+import { TreeProvider } from '@atocha/globetrotter/ui';
 
 export class PlacesTreeProvider implements TreeProvider<Place> {
   private _placesById: Record<string, Place> = {};
