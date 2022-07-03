@@ -98,7 +98,7 @@ export class SelectCountriesComponent {
   ) {}
 
   onCountriesChange(state: CheckboxStates): void {
-    this._selectService.updatePlaces(this._sanitizeState(state));
+    this._selectService.updatePlaces(this._transformState(state));
   }
 
   onSelectAll(): void {
@@ -116,17 +116,17 @@ export class SelectCountriesComponent {
     return 0;
   }
 
-  private _sanitizeState(state: CheckboxStates): PlaceSelection {
-    const sanitizedState: PlaceSelection = {};
+  private _transformState(state: CheckboxStates): PlaceSelection {
+    const placeSelection: PlaceSelection = {};
 
     for (const [place, checkboxState] of Object.entries(state)) {
       if (checkboxState === 'checked') {
-        sanitizedState[place] = 'checked';
+        placeSelection[place] = 'checked';
       } else if (checkboxState === 'indeterminate') {
-        sanitizedState[place] = 'indeterminate';
+        placeSelection[place] = 'indeterminate';
       }
     }
 
-    return sanitizedState;
+    return placeSelection;
   }
 }
