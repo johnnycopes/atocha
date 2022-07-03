@@ -1,6 +1,6 @@
-import { IDefaultTreeItem } from './default-tree-item';
+import { DefaultTreeItem } from './default-tree-item';
 
-export const NESTED_ITEM: IDefaultTreeItem = {
+export const NESTED_ITEM: DefaultTreeItem = {
   id: 'Africa',
   children: [
     {

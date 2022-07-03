@@ -1,6 +1,6 @@
-import { IDefaultTreeItem } from './default-tree-item';
+import { DefaultTreeItem } from './default-tree-item';
 
-export const FLAT_ITEMS: IDefaultTreeItem[] = [
+export const FLAT_ITEMS: DefaultTreeItem[] = [
   { id: 'Africa', parentId: undefined },
   { id: 'Southern Africa', parentId: 'Africa' },
   { id: 'Swaziland', parentId: 'Southern Africa' },

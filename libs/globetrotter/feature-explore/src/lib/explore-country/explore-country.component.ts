@@ -12,7 +12,7 @@ import {
 
 import { Country } from '@atocha/globetrotter/types';
 
-interface ITableContent {
+interface TableContent {
   header: string;
   content?: string;
   template?: TemplateRef<unknown>;
@@ -32,7 +32,7 @@ export class ExploreCountryComponent implements OnChanges, AfterViewInit {
   @ViewChild('language') languageTemplate: TemplateRef<unknown> | undefined;
   @ViewChild('currency') currencyTemplate: TemplateRef<unknown> | undefined;
   @ViewChild('list') listTemplate: TemplateRef<unknown> | undefined;
-  tableData: ITableContent[] = [];
+  tableData: TableContent[] = [];
 
   constructor(private _changeDetectorRef: ChangeDetectorRef) {}
 
