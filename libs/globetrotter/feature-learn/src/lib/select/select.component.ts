@@ -83,7 +83,9 @@ export class SelectComponent {
       return;
     }
 
-    const queryParams = this._selectService.mapSelectionToQueryParams(this._selection);
+    const queryParams = this._selectService.mapSelectionToQueryParams(
+      this._selection
+    );
     await this._router.navigate([`${Route.learn}/${Route.quiz}`], {
       queryParams,
     });

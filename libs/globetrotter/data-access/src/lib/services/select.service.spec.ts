@@ -12,29 +12,31 @@ describe('SelectService', () => {
     countries: new BehaviorSubject({
       nestedCountries: [
         {
-          "name": "Africa",
-          "subregions": [
+          name: 'Africa',
+          subregions: [
             {
-              "name": "Northern Africa",
-              "region": "Africa",
+              name: 'Northern Africa',
+              region: 'Africa',
             },
             {
-              "name": "Western Africa",
-              "region": "Africa",
+              name: 'Western Africa',
+              region: 'Africa',
             },
-          ]
-        }
+          ],
+        },
       ],
-    })
+    }),
   };
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
-      providers: [{
-        provide: CountryService,
-        useValue: mockCountryService,
-      }],
+      providers: [
+        {
+          provide: CountryService,
+          useValue: mockCountryService,
+        },
+      ],
     });
     service = TestBed.inject(SelectService);
   });
@@ -56,27 +58,31 @@ describe('SelectService', () => {
   });
 
   it('maps selection to selection query params', () => {
-    expect(service.mapSelectionToQueryParams({
-      type: QuizType.flagsCountries,
-      quantity: 3,
-      places: {
-        Asia: 'indeterminate',
-        'Southern Asia': 'checked',
-        'Western Asia': 'checked',
-      },
-    })).toEqual({
-      type: "1",
-      quantity: "3",
-      places: "Asia_i,Southern Asia_c,Western Asia_c",
+    expect(
+      service.mapSelectionToQueryParams({
+        type: QuizType.flagsCountries,
+        quantity: 3,
+        places: {
+          Asia: 'indeterminate',
+          'Southern Asia': 'checked',
+          'Western Asia': 'checked',
+        },
+      })
+    ).toEqual({
+      type: '1',
+      quantity: '3',
+      places: 'Asia_i,Southern Asia_c,Western Asia_c',
     });
   });
 
   it('maps selection query params to selection', () => {
-    expect(service.mapQueryParamsToSelection({
-      type: '2',
-      quantity: '7',
-      places: 'Oceania_i,Melanesia_c,Micronesia_c,Polynesia_c',
-    })).toEqual({
+    expect(
+      service.mapQueryParamsToSelection({
+        type: '2',
+        quantity: '7',
+        places: 'Oceania_i,Melanesia_c,Micronesia_c,Polynesia_c',
+      })
+    ).toEqual({
       type: QuizType.capitalsCountries,
       quantity: 7,
       places: {

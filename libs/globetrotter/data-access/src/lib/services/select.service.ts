@@ -75,8 +75,7 @@ export class SelectService {
   mapSelectionToQueryParams(selection: Selection): SelectionParams {
     const type = selection.type.toString();
     const quantity = selection.quantity.toString();
-    const places = Object
-      .entries(selection.places)
+    const places = Object.entries(selection.places)
       .map(([place, state]) => place + this._paramDict[state])
       .join(',');
     return {
@@ -89,18 +88,19 @@ export class SelectService {
   mapQueryParamsToSelection(queryParams: SelectionParams): Selection {
     const type = parseInt(queryParams.type, 10) as QuizType;
     const quantity = parseInt(queryParams.quantity, 10);
-    const places = queryParams.places
-      .split(',')
-      .reduce((accum, current) => {
-        if (current.includes(this._paramDict['checked'])) {
-          const updatedKey = current.replace(this._paramDict['checked'], '');
-          accum[updatedKey] = 'checked';
-        } else if (current.includes(this._paramDict['indeterminate'])) {
-          const updatedKey = current.replace(this._paramDict['indeterminate'], '');
-          accum[updatedKey] = 'indeterminate';
-        }
-        return accum;
-      }, {} as PlaceSelection);
+    const places = queryParams.places.split(',').reduce((accum, current) => {
+      if (current.includes(this._paramDict['checked'])) {
+        const updatedKey = current.replace(this._paramDict['checked'], '');
+        accum[updatedKey] = 'checked';
+      } else if (current.includes(this._paramDict['indeterminate'])) {
+        const updatedKey = current.replace(
+          this._paramDict['indeterminate'],
+          ''
+        );
+        accum[updatedKey] = 'indeterminate';
+      }
+      return accum;
+    }, {} as PlaceSelection);
     return {
       type,
       quantity,

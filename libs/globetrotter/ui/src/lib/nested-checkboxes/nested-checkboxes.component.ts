@@ -19,7 +19,6 @@ export interface TreeProvider<T> {
   getParent?(item: T): T | undefined;
 }
 
-
 @Component({
   selector: 'ui-nested-checkboxes',
   templateUrl: './nested-checkboxes.component.html',
