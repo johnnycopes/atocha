@@ -1,10 +1,8 @@
-import { Dictionary } from 'lodash';
-
-import { TreeProvider } from '@atocha/globetrotter/ui';
+import { TreeProvider } from '@atocha/globetrotter/types';
 import { DefaultTreeItem } from './default-tree-item';
 
 export class NestedItemTreeProvider implements TreeProvider<DefaultTreeItem> {
-  private itemsKeyedById: Dictionary<DefaultTreeItem> = {};
+  private itemsKeyedById: Record<string, DefaultTreeItem> = {};
 
   constructor(item: DefaultTreeItem) {
     // set itemsKeyedById recursively

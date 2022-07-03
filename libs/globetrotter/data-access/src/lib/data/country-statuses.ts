@@ -1,8 +1,6 @@
-import { Dictionary } from 'lodash';
-
 // List of UN member/observer states
 
-export const COUNTRY_STATUSES: Dictionary<boolean> = {
+export const COUNTRY_STATUSES: Record<string, boolean> = {
   Afghanistan: true,
   'Åland Islands': false,
   Albania: true,

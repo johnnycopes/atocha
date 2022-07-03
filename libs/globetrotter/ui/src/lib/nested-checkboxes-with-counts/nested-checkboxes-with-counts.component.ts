@@ -12,12 +12,11 @@ import {
   forwardRef,
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { Dictionary } from 'lodash';
 import { reduce } from 'lodash-es';
 
 import { CheckboxStates, TreeProvider } from '@atocha/globetrotter/types';
 
-type Counts = Dictionary<number>;
+type Counts = Record<string, number>;
 
 @Component({
   selector: 'ui-nested-checkboxes-with-counts',

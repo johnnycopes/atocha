@@ -1,5 +1,3 @@
-import { Dictionary } from 'lodash';
-
 import {
   Place,
   Region,
@@ -8,7 +6,7 @@ import {
 } from '@atocha/globetrotter/types';
 
 export class PlacesTreeProvider implements TreeProvider<Place> {
-  private _placesById: Dictionary<Place> = {};
+  private _placesById: Record<string, Place> = {};
 
   constructor(place: Place) {
     // set placesKeyedById recursively

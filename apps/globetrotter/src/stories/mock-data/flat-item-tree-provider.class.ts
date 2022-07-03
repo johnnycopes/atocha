@@ -1,12 +1,11 @@
-import { Dictionary } from 'lodash';
 import { keyBy, groupBy } from 'lodash-es';
 
-import { TreeProvider } from '@atocha/globetrotter/ui';
+import { TreeProvider } from '@atocha/globetrotter/types';
 import { DefaultTreeItem } from './default-tree-item';
 
 export class FlatItemTreeProvider implements TreeProvider<DefaultTreeItem> {
-  private itemsKeyedById: Dictionary<DefaultTreeItem>;
-  private itemsGroupedByParentId: Dictionary<DefaultTreeItem[]>;
+  private itemsKeyedById: Record<string, DefaultTreeItem>;
+  private itemsGroupedByParentId: Record<string, DefaultTreeItem[]>;
 
   constructor(items: DefaultTreeItem[]) {
     this.itemsKeyedById = keyBy(items, 'id');
