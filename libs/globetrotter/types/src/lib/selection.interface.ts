@@ -1,10 +1,9 @@
-import { CheckboxStates } from './checkbox';
 import { QuizType } from './quiz-type.enum';
 
 export interface Selection {
   type: QuizType;
   quantity: number;
-  places: CheckboxStates;
+  places: PlaceSelection;
 }
 
 export interface SelectionParams {
@@ -12,3 +11,5 @@ export interface SelectionParams {
   quantity: string;
   places: string;
 }
+
+export type PlaceSelection = Record<string, 'checked' | 'indeterminate'>;

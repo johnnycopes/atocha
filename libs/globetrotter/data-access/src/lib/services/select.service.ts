@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { first, map } from 'rxjs/operators';
-import { replace, omitBy, map as _map } from 'lodash-es';
+import { replace, map as _map } from 'lodash-es';
 
 import {
   Region,
@@ -9,7 +9,7 @@ import {
   Selection,
   SelectionParams,
   CheckboxState,
-  CheckboxStates,
+  PlaceSelection,
 } from '@atocha/globetrotter/types';
 import { CountryService } from './country.service';
 
@@ -17,10 +17,9 @@ import { CountryService } from './country.service';
   providedIn: 'root',
 })
 export class SelectService {
-  private readonly _paramDict: Record<CheckboxState, string> = {
+  private readonly _paramDict: Record<string, string> = {
     checked: '_c',
     indeterminate: '_i',
-    unchecked: '',
   };
   private readonly _selection: BehaviorSubject<Selection>;
   get selection(): BehaviorSubject<Selection> {
@@ -39,8 +38,7 @@ export class SelectService {
         map(({ nestedCountries }) => nestedCountries)
       )
       .subscribe((regions) => {
-        const checkboxStates = this._mapPlacesToCheckboxStates(regions);
-        this.updatePlaces(checkboxStates);
+        this.updatePlaces(this._mapToPlaceSelection(regions));
       });
   }
 
@@ -66,7 +64,7 @@ export class SelectService {
       .subscribe((selection) => this._selection.next(selection));
   }
 
-  updatePlaces(places: CheckboxStates): void {
+  updatePlaces(places: PlaceSelection): void {
     this._selection
       .pipe(
         first(),
@@ -78,12 +76,8 @@ export class SelectService {
   mapSelectionToQueryParams(selection: Selection): SelectionParams {
     const type = selection.type.toString();
     const quantity = selection.quantity.toString();
-    const selectedPlaces = omitBy(
-      selection.places,
-      (value) => value === 'unchecked'
-    );
     const places = _map(
-      selectedPlaces,
+      selection.places,
       (value: CheckboxState, key) => key + this._paramDict[value]
     ).join(',');
     return {
@@ -99,19 +93,19 @@ export class SelectService {
     const places = queryParams.places
       .split(',')
       .reduce((accum, current) => {
-        if (current.includes(this._paramDict.checked)) {
-          const updatedKey = replace(current, this._paramDict.checked, '');
+        if (current.includes(this._paramDict['checked'])) {
+          const updatedKey = replace(current, this._paramDict['checked'], '');
           accum[updatedKey] = 'checked';
-        } else if (current.includes(this._paramDict.indeterminate)) {
+        } else if (current.includes(this._paramDict['indeterminate'])) {
           const updatedKey = replace(
             current,
-            this._paramDict.indeterminate,
+            this._paramDict['indeterminate'],
             ''
           );
           accum[updatedKey] = 'indeterminate';
         }
         return accum;
-      }, {} as CheckboxStates);
+      }, {} as PlaceSelection);
     return {
       type,
       quantity,
@@ -119,16 +113,16 @@ export class SelectService {
     };
   }
 
-  private _mapPlacesToCheckboxStates(regions: Region[]): CheckboxStates {
-    const checkboxStates: CheckboxStates = {};
+  private _mapToPlaceSelection(regions: Region[]): PlaceSelection {
+    const placeSelection: PlaceSelection = {};
 
     for (const { name, subregions } of regions) {
-      checkboxStates[name] = 'checked';
+      placeSelection[name] = 'checked';
       for (const { name } of subregions) {
-        checkboxStates[name] = 'checked';
+        placeSelection[name] = 'checked';
       }
     }
 
-    return checkboxStates;
+    return placeSelection;
   }
 }

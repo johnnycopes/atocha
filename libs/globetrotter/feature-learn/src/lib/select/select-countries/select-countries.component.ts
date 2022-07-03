@@ -9,7 +9,7 @@ import {
   shareReplay,
 } from 'rxjs/operators';
 
-import { CheckboxStates, Place } from '@atocha/globetrotter/types';
+import { CheckboxStates, Place, PlaceSelection } from '@atocha/globetrotter/types';
 import {
   CountryService,
   isSubregion,
@@ -24,7 +24,7 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SelectCountriesComponent {
-  private fullySelectedState: CheckboxStates = {};
+  private _fullySelectedState: PlaceSelection = {};
   private _checkboxStates$ = this._selectService.selection.pipe(
     map(({ places }) => places)
   );
@@ -32,13 +32,13 @@ export class SelectCountriesComponent {
     first(),
     map(({ nestedCountries }) => nestedCountries),
     tap((regions) => {
-      this.fullySelectedState = regions.reduce((states, region) => {
+      this._fullySelectedState = regions.reduce((states, region) => {
         states[region.name] = 'checked';
         region.subregions.forEach(
           (subregion) => (states[subregion.name] = 'checked')
         );
         return states;
-      }, {} as CheckboxStates);
+      }, {} as PlaceSelection);
     }),
     map((regions) =>
       regions.map((region) => {
@@ -101,11 +101,11 @@ export class SelectCountriesComponent {
   ) {}
 
   onCountriesChange(state: CheckboxStates): void {
-    this._selectService.updatePlaces(state);
+    this._selectService.updatePlaces(this._sanitizeState(state));
   }
 
   onSelectAll(): void {
-    this._selectService.updatePlaces(this.fullySelectedState);
+    this._selectService.updatePlaces(this._fullySelectedState);
   }
 
   onClearAll(): void {
@@ -117,5 +117,19 @@ export class SelectCountriesComponent {
       return item.countries.length;
     }
     return 0;
+  }
+
+  private _sanitizeState(state: CheckboxStates): PlaceSelection {
+    const sanitizedState: PlaceSelection = {};
+
+    for (const [place, checkboxState] of Object.entries(state)) {
+      if (checkboxState === 'checked') {
+        sanitizedState[place] = 'checked';
+      } else if (checkboxState === 'indeterminate') {
+        sanitizedState[place] = 'indeterminate';
+      }
+    }
+
+    return sanitizedState;
   }
 }
