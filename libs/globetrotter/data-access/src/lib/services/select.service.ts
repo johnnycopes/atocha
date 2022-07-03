@@ -8,8 +8,8 @@ import {
   QuizType,
   Selection,
   SelectionParams,
-  CheckboxState,
   PlaceSelection,
+  PlaceSelectionState,
 } from '@atocha/globetrotter/types';
 import { CountryService } from './country.service';
 
@@ -17,7 +17,7 @@ import { CountryService } from './country.service';
   providedIn: 'root',
 })
 export class SelectService {
-  private readonly _paramDict: Record<string, string> = {
+  private readonly _paramDict: Record<PlaceSelectionState, string> = {
     checked: '_c',
     indeterminate: '_i',
   };
@@ -78,7 +78,7 @@ export class SelectService {
     const quantity = selection.quantity.toString();
     const places = _map(
       selection.places,
-      (value: CheckboxState, key) => key + this._paramDict[value]
+      (value, key) => key + this._paramDict[value]
     ).join(',');
     return {
       type,

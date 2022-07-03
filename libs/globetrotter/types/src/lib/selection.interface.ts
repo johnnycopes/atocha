@@ -12,4 +12,5 @@ export interface SelectionParams {
   places: string;
 }
 
-export type PlaceSelection = Record<string, 'checked' | 'indeterminate'>;
+export type PlaceSelection = Record<string, PlaceSelectionState>;
+export type PlaceSelectionState = 'checked' | 'indeterminate';

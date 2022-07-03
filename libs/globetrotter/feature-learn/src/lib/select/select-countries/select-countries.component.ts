@@ -9,13 +9,14 @@ import {
   shareReplay,
 } from 'rxjs/operators';
 
-import { CheckboxStates, Place, PlaceSelection } from '@atocha/globetrotter/types';
 import {
   CountryService,
   isSubregion,
   PlacesTreeProvider,
   SelectService,
 } from '@atocha/globetrotter/data-access';
+import { Place, PlaceSelection } from '@atocha/globetrotter/types';
+import { CheckboxStates } from '@atocha/globetrotter/ui';
 
 @Component({
   selector: 'app-select-countries',
