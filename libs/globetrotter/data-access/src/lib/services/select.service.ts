@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { first, map } from 'rxjs/operators';
-import { replace } from 'lodash-es';
 
 import {
   Region,
@@ -94,14 +93,10 @@ export class SelectService {
       .split(',')
       .reduce((accum, current) => {
         if (current.includes(this._paramDict['checked'])) {
-          const updatedKey = replace(current, this._paramDict['checked'], '');
+          const updatedKey = current.replace(this._paramDict['checked'], '');
           accum[updatedKey] = 'checked';
         } else if (current.includes(this._paramDict['indeterminate'])) {
-          const updatedKey = replace(
-            current,
-            this._paramDict['indeterminate'],
-            ''
-          );
+          const updatedKey = current.replace(this._paramDict['indeterminate'], '');
           accum[updatedKey] = 'indeterminate';
         }
         return accum;
