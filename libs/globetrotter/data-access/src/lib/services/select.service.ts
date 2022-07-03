@@ -38,7 +38,7 @@ export class SelectService {
         map(({ nestedCountries }) => nestedCountries)
       )
       .subscribe((regions) => {
-        this.updatePlaces(this._mapToPlaceSelection(regions));
+        this.updatePlaces(this._mapRegionsToPlaceSelection(regions));
       });
   }
 
@@ -113,7 +113,7 @@ export class SelectService {
     };
   }
 
-  private _mapToPlaceSelection(regions: Region[]): PlaceSelection {
+  private _mapRegionsToPlaceSelection(regions: Region[]): PlaceSelection {
     const placeSelection: PlaceSelection = {};
 
     for (const { name, subregions } of regions) {
