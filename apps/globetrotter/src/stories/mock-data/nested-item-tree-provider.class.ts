@@ -1,8 +1,8 @@
-import { TreeProvider } from '@atocha/globetrotter/types';
+import { TreeProvider } from '@atocha/globetrotter/ui';
 import { DefaultTreeItem } from './default-tree-item';
 
 export class NestedItemTreeProvider implements TreeProvider<DefaultTreeItem> {
-  private itemsKeyedById: Record<string, DefaultTreeItem> = {};
+  private _itemsKeyedById: Record<string, DefaultTreeItem> = {};
 
   constructor(item: DefaultTreeItem) {
     // set itemsKeyedById recursively
@@ -12,7 +12,7 @@ export class NestedItemTreeProvider implements TreeProvider<DefaultTreeItem> {
       if (currentItem) {
         const currentItemId = this.getId(currentItem);
         const currentItemChildren = this.getChildren(currentItem);
-        this.itemsKeyedById[currentItemId] = currentItem;
+        this._itemsKeyedById[currentItemId] = currentItem;
         if (currentItemChildren.length) {
           currentItemChildren.forEach((child) => {
             items.push(child);
@@ -29,7 +29,7 @@ export class NestedItemTreeProvider implements TreeProvider<DefaultTreeItem> {
   getParent(item: DefaultTreeItem): DefaultTreeItem | undefined {
     const parentId = item.parentId;
     if (parentId) {
-      return this.itemsKeyedById[parentId];
+      return this._itemsKeyedById[parentId];
     }
     return undefined;
   }
