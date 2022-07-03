@@ -1,5 +1,3 @@
-export * from './lib/data/places-tree-provider.class';
-
 export * from './lib/services/api.service';
 export * from './lib/services/country.service';
 export * from './lib/services/error.service';

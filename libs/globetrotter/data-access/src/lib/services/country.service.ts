@@ -3,7 +3,6 @@ import { Resolve } from '@angular/router';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { groupBy, reduce, shuffle, map as _map } from 'lodash-es';
-import { Dictionary } from 'lodash';
 
 import { Country, Region, Selection } from '@atocha/globetrotter/types';
 import { ApiService } from './api.service';
@@ -15,7 +14,7 @@ import {
 
 interface CountryState {
   flatCountries: Country[];
-  countriesBySubregion: Dictionary<Country[]>;
+  countriesBySubregion: Record<string, Country[]>;
   nestedCountries: Region[];
 }
 
@@ -60,7 +59,7 @@ export class CountryService implements Resolve<Observable<Country[]>> {
       map(({ countriesBySubregion }) => {
         const quantity = selection.quantity || undefined;
         const countries = reduce(
-          selection.countries,
+          selection.places,
           (accum, checkboxState, placeName) => {
             if (
               checkboxState === 'checked' &&
@@ -95,8 +94,8 @@ export class CountryService implements Resolve<Observable<Country[]>> {
   }
 
   private _groupSubregionsByRegion(
-    countriesBySubregion: Dictionary<Country[]>
-  ): Dictionary<string[]> {
+    countriesBySubregion: Record<string, Country[]>
+  ): Record<string, string[]> {
     return reduce(
       countriesBySubregion,
       (accum, countries, subregion) => {
@@ -114,13 +113,13 @@ export class CountryService implements Resolve<Observable<Country[]>> {
           };
         }
       },
-      {} as Dictionary<string[]>
+      {} as Record<string, string[]>
     );
   }
 
   private _formatNestedCountries(
-    countriesBySubregion: Dictionary<Country[]>,
-    subregionsByRegion: Dictionary<string[]>
+    countriesBySubregion: Record<string, Country[]>,
+    subregionsByRegion: Record<string, string[]>
   ): Region[] {
     return reduce(
       subregionsByRegion,

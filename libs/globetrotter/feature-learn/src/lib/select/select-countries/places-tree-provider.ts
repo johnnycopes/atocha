@@ -1,14 +1,8 @@
-import { Dictionary } from 'lodash';
-
-import {
-  Place,
-  Region,
-  Subregion,
-  TreeProvider,
-} from '@atocha/globetrotter/types';
+import { Place, Region, Subregion } from '@atocha/globetrotter/types';
+import { TreeProvider } from '@atocha/globetrotter/ui';
 
 export class PlacesTreeProvider implements TreeProvider<Place> {
-  private _placesById: Dictionary<Place> = {};
+  private _placesById: Record<string, Place> = {};
 
   constructor(place: Place) {
     // set placesKeyedById recursively

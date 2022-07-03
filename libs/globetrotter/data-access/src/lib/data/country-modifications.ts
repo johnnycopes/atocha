@@ -1,8 +1,6 @@
 // Modifications to REST Countries API names for use in Globetrotter
 
-import { Dictionary } from 'lodash';
-
-export const COUNTRY_APP_NAMES: Dictionary<string> = {
+export const COUNTRY_APP_NAMES: Record<string, string> = {
   "Côte d'Ivoire": 'Ivory Coast',
   "Korea (Democratic People's Republic of)": 'North Korea',
   'Korea (Republic of)': 'South Korea',
@@ -10,6 +8,6 @@ export const COUNTRY_APP_NAMES: Dictionary<string> = {
   'Macedonia (the former Yugoslav Republic of)': 'North Macedonia',
 };
 
-export const COUNTRY_SUMMARY_NAMES: Dictionary<string> = {
+export const COUNTRY_SUMMARY_NAMES: Record<string, string> = {
   Georgia: 'Georgia country',
 };

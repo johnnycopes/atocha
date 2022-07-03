@@ -9,13 +9,13 @@ import {
   shareReplay,
 } from 'rxjs/operators';
 
-import { CheckboxStates, Place } from '@atocha/globetrotter/types';
 import {
   CountryService,
-  isSubregion,
-  PlacesTreeProvider,
   SelectService,
 } from '@atocha/globetrotter/data-access';
+import { Place, PlaceSelection } from '@atocha/globetrotter/types';
+import { CheckboxStates } from '@atocha/globetrotter/ui';
+import { PlacesTreeProvider, isSubregion } from './places-tree-provider';
 
 @Component({
   selector: 'app-select-countries',
@@ -24,36 +24,33 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SelectCountriesComponent {
-  private fullySelectedState: CheckboxStates = {};
+  private _fullySelectedState: PlaceSelection = {};
   private _checkboxStates$ = this._selectService.selection.pipe(
-    map(({ countries }) => countries)
+    map(({ places }) => places)
   );
   private _regionData$ = this._countryService.countries.pipe(
     first(),
     map(({ nestedCountries }) => nestedCountries),
     tap((regions) => {
-      this.fullySelectedState = regions.reduce((states, region) => {
+      this._fullySelectedState = regions.reduce((states, region) => {
         states[region.name] = 'checked';
         region.subregions.forEach(
           (subregion) => (states[subregion.name] = 'checked')
         );
         return states;
-      }, {} as CheckboxStates);
+      }, {} as PlaceSelection);
     }),
     map((regions) =>
       regions.map((region) => {
-        const treeProvider = new PlacesTreeProvider(region);
         const selectedSubject = new BehaviorSubject<number>(0);
         const totalSubject = new BehaviorSubject<number>(0);
-        const selected$ = selectedSubject.pipe(distinctUntilChanged());
-        const total$ = totalSubject.pipe(distinctUntilChanged());
         return {
           region: region as Place,
-          treeProvider,
+          treeProvider: new PlacesTreeProvider(region),
           selectedSubject,
           totalSubject,
-          selected$,
-          total$,
+          selected$: selectedSubject.pipe(distinctUntilChanged()),
+          total$: totalSubject.pipe(distinctUntilChanged()),
         };
       })
     ),
@@ -101,15 +98,15 @@ export class SelectCountriesComponent {
   ) {}
 
   onCountriesChange(state: CheckboxStates): void {
-    this._selectService.updateCountries(state);
+    this._selectService.updatePlaces(this._transformState(state));
   }
 
   onSelectAll(): void {
-    this._selectService.updateCountries(this.fullySelectedState);
+    this._selectService.updatePlaces(this._fullySelectedState);
   }
 
   onClearAll(): void {
-    this._selectService.updateCountries({});
+    this._selectService.updatePlaces({});
   }
 
   getNumberOfCountries(item: Place): number {
@@ -117,5 +114,19 @@ export class SelectCountriesComponent {
       return item.countries.length;
     }
     return 0;
+  }
+
+  private _transformState(state: CheckboxStates): PlaceSelection {
+    const placeSelection: PlaceSelection = {};
+
+    for (const [place, checkboxState] of Object.entries(state)) {
+      if (checkboxState === 'checked') {
+        placeSelection[place] = 'checked';
+      } else if (checkboxState === 'indeterminate') {
+        placeSelection[place] = 'indeterminate';
+      }
+    }
+
+    return placeSelection;
   }
 }

@@ -6,7 +6,7 @@ import {
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
-import { CheckboxState } from '@atocha/globetrotter/types';
+export type CheckboxState = 'checked' | 'unchecked' | 'indeterminate';
 
 @Component({
   selector: 'ui-checkbox',

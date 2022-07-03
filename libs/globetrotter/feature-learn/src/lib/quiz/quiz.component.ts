@@ -24,7 +24,7 @@ export class QuizComponent implements OnInit {
       const params: SelectionParams = {
         type: queryParams.get('type') || '',
         quantity: queryParams.get('quantity') || '',
-        countries: queryParams.get('countries') || '',
+        places: queryParams.get('places') || '',
       };
       const selection = this._selectService.mapQueryParamsToSelection(params);
       this._selectService.updateSelection(selection);
