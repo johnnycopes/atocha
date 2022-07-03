@@ -5,7 +5,7 @@ import { map, tap, distinctUntilChanged } from 'rxjs/operators';
 import { pickBy } from 'lodash-es';
 
 import { fadeInAnimation } from '@atocha/globetrotter/ui';
-import { Selection, SelectionParams, Route } from '@atocha/globetrotter/types';
+import { Selection, Route } from '@atocha/globetrotter/types';
 import {
   CountryService,
   SelectService,
@@ -19,7 +19,6 @@ import {
   animations: [fadeInAnimation],
 })
 export class SelectComponent {
-  private _queryParams: SelectionParams | undefined;
   private _selection: Selection | undefined;
   private _selection$ = this._selectService.selection.pipe(
     tap((selection) => (this._selection = selection))
@@ -84,11 +83,9 @@ export class SelectComponent {
       return;
     }
 
-    this._queryParams = this._selectService.mapSelectionToQueryParams(
-      this._selection
-    );
+    const queryParams = this._selectService.mapSelectionToQueryParams(this._selection);
     await this._router.navigate([`${Route.learn}/${Route.quiz}`], {
-      queryParams: this._queryParams,
+      queryParams,
     });
   }
 }

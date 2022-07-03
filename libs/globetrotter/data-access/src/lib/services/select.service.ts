@@ -39,12 +39,13 @@ export class SelectService {
         map(({ nestedCountries }) => nestedCountries)
       )
       .subscribe((regions) => {
-        const countries = this._mapCountriesToCheckboxStates(regions);
+        const countries = this._mapPlacesToCheckboxStates(regions);
         this.updateCountries(countries);
       });
   }
 
   updateSelection(selection: Selection): void {
+    console.log(selection);
     this._selection.next(selection);
   }
 
@@ -119,13 +120,16 @@ export class SelectService {
     };
   }
 
-  private _mapCountriesToCheckboxStates(countries: Region[]): CheckboxStates {
-    return countries.reduce((accum, region) => {
-      accum[region.name] = 'checked';
-      region.subregions.forEach((subregion) => {
-        accum[subregion?.name] = 'checked';
-      });
-      return accum;
-    }, {} as CheckboxStates);
+  private _mapPlacesToCheckboxStates(regions: Region[]): CheckboxStates {
+    const checkboxStates: CheckboxStates = {};
+
+    for (const { name, subregions } of regions) {
+      checkboxStates[name] = 'checked';
+      for (const { name } of subregions) {
+        checkboxStates[name] = 'checked';
+      }
+    }
+
+    return checkboxStates;
   }
 }
