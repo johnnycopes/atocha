@@ -18,12 +18,12 @@ import { CheckboxStates } from '@atocha/globetrotter/ui';
 import { PlacesTreeProvider, isSubregion } from './places-tree-provider';
 
 @Component({
-  selector: 'app-select-countries',
-  templateUrl: './select-countries.component.html',
-  styleUrls: ['./select-countries.component.scss'],
+  selector: 'app-select-places',
+  templateUrl: './select-places.component.html',
+  styleUrls: ['./select-places.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SelectCountriesComponent {
+export class SelectPlacesComponent {
   private _fullySelectedState: PlaceSelection = {};
   private _checkboxStates$ = this._selectService.selection.pipe(
     map(({ places }) => places)
