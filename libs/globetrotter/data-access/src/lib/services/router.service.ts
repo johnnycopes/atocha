@@ -15,7 +15,7 @@ import {
   distinctUntilChanged,
 } from 'rxjs/operators';
 
-interface IRouterState {
+interface RouterState {
   currentRoute: string;
   loading: boolean;
 }
@@ -24,11 +24,11 @@ interface IRouterState {
   providedIn: 'root',
 })
 export class RouterService {
-  private readonly _state = new BehaviorSubject<IRouterState>({
+  private readonly _state = new BehaviorSubject<RouterState>({
     currentRoute: '',
     loading: false,
   });
-  get state(): BehaviorSubject<IRouterState> {
+  get state(): BehaviorSubject<RouterState> {
     return this._state;
   }
 

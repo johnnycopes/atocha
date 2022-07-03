@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { map } from 'rxjs/operators';
 
 import { ErrorService, RouterService } from '@atocha/globetrotter/data-access';
@@ -8,20 +7,14 @@ import { ErrorService, RouterService } from '@atocha/globetrotter/data-access';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AppComponent implements OnInit {
-  loading$: Observable<boolean>;
-  error$: Observable<boolean>;
+export class AppComponent {
+  loading$ = this._routerService.state.pipe(map(({ loading }) => loading));
+  error$ = this._errorService.errors.pipe(map(({ global }) => !!global));
 
   constructor(
     private _routerService: RouterService,
     private _errorService: ErrorService
   ) {}
-
-  ngOnInit(): void {
-    this.loading$ = this._routerService.state.pipe(
-      map(({ loading }) => loading)
-    );
-    this.error$ = this._errorService.errors.pipe(map(({ global }) => !!global));
-  }
 }

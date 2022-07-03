@@ -19,7 +19,7 @@ import {
 
 import { InputComponent } from '../input/input.component';
 
-export interface IListDetailsStyles {
+export interface ListDetailsStyles {
   offsetTop: string;
   gap: string;
 }
@@ -36,7 +36,7 @@ export class ListDetailsComponent<T>
   @Input() items: T[] = [];
   @Input() listItemTemplate: TemplateRef<unknown> | undefined;
   @Input() detailsTemplate: TemplateRef<unknown> | undefined;
-  @Input() styles: IListDetailsStyles = {
+  @Input() styles: ListDetailsStyles = {
     offsetTop: '0px',
     gap: '12px',
   };
