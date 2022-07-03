@@ -1,45 +1,32 @@
-import { Component, OnInit } from '@angular/core';
-import { QuizService } from '@atocha/globetrotter/data-access';
-import { Observable, BehaviorSubject, combineLatest } from 'rxjs';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { BehaviorSubject, combineLatest } from 'rxjs';
 import { map, distinctUntilChanged } from 'rxjs/operators';
 
-interface IViewModel {
-  showContent: boolean;
-  quizComplete: boolean;
-}
+import { QuizService } from '@atocha/globetrotter/data-access';
 
 @Component({
   selector: 'app-shell',
   templateUrl: './shell.component.html',
   styleUrls: ['./shell.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ShellComponent implements OnInit {
-  vm$: Observable<IViewModel>;
-  private showContentSubject = new BehaviorSubject<boolean>(false);
-  private showContent$: Observable<boolean>;
-  private quizComplete$: Observable<boolean>;
+export class ShellComponent {
+  private _showContentSubject = new BehaviorSubject<boolean>(false);
+  private _showContent$ = this._showContentSubject.pipe(distinctUntilChanged());
+  private _quizComplete$ = this._quizService.quiz.pipe(
+    map((quiz) => quiz?.isComplete ?? false),
+    distinctUntilChanged()
+  );
+  vm$ = combineLatest([this._showContent$, this._quizComplete$]).pipe(
+    map(([showContent, quizComplete]) => ({
+      showContent,
+      quizComplete,
+    }))
+  );
 
   constructor(private _quizService: QuizService) {}
 
-  ngOnInit(): void {
-    this.initializeStreams();
-    this.vm$ = combineLatest([this.showContent$, this.quizComplete$]).pipe(
-      map(([showContent, quizComplete]) => ({
-        showContent,
-        quizComplete,
-      }))
-    );
-  }
-
   onNavigationReady(): void {
-    this.showContentSubject.next(true);
-  }
-
-  private initializeStreams(): void {
-    this.showContent$ = this.showContentSubject.pipe(distinctUntilChanged());
-    this.quizComplete$ = this._quizService.quiz.pipe(
-      map((quiz) => quiz?.isComplete ?? false),
-      distinctUntilChanged()
-    );
+    this._showContentSubject.next(true);
   }
 }
