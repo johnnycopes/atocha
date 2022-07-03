@@ -10,9 +10,7 @@ import { ErrorService, RouterService } from '@atocha/globetrotter/data-access';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
-  loading$ = this._routerService.state.pipe(
-    map(({ loading }) => loading)
-  );
+  loading$ = this._routerService.state.pipe(map(({ loading }) => loading));
   error$ = this._errorService.errors.pipe(map(({ global }) => !!global));
 
   constructor(
