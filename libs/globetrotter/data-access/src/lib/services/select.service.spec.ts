@@ -1,15 +1,40 @@
 import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { BehaviorSubject } from 'rxjs';
 
-import { SelectService } from './select.service';
 import { QuizType } from '@atocha/globetrotter/types';
+import { CountryService } from './country.service';
+import { SelectService } from './select.service';
 
 describe('SelectService', () => {
   let service: SelectService;
+  const mockCountryService = {
+    countries: new BehaviorSubject({
+      nestedCountries: [
+        {
+          "name": "Africa",
+          "subregions": [
+            {
+              "name": "Northern Africa",
+              "region": "Africa",
+            },
+            {
+              "name": "Western Africa",
+              "region": "Africa",
+            },
+          ]
+        }
+      ],
+    })
+  };
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
+      providers: [{
+        provide: CountryService,
+        useValue: mockCountryService,
+      }],
     });
     service = TestBed.inject(SelectService);
   });
@@ -18,7 +43,19 @@ describe('SelectService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('maps a selection to selection query params', () => {
+  it('contains correct default selection', () => {
+    expect(service.selection.value).toEqual({
+      type: 1,
+      quantity: 5,
+      places: {
+        Africa: 'checked',
+        'Northern Africa': 'checked',
+        'Western Africa': 'checked',
+      },
+    });
+  });
+
+  it('maps selection to selection query params', () => {
     expect(service.mapSelectionToQueryParams({
       type: QuizType.flagsCountries,
       quantity: 3,
@@ -34,7 +71,7 @@ describe('SelectService', () => {
     });
   });
 
-  it('maps selection query params to a selection', () => {
+  it('maps selection query params to selection', () => {
     expect(service.mapQueryParamsToSelection({
       type: '2',
       quantity: '7',
