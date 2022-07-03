@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { first, map } from 'rxjs/operators';
-import { replace, map as _map } from 'lodash-es';
+import { replace } from 'lodash-es';
 
 import {
   Region,
@@ -76,10 +76,10 @@ export class SelectService {
   mapSelectionToQueryParams(selection: Selection): SelectionParams {
     const type = selection.type.toString();
     const quantity = selection.quantity.toString();
-    const places = _map(
-      selection.places,
-      (value, key) => key + this._paramDict[value]
-    ).join(',');
+    const places = Object
+      .entries(selection.places)
+      .map(([place, state]) => place + this._paramDict[state])
+      .join(',');
     return {
       type,
       quantity,
