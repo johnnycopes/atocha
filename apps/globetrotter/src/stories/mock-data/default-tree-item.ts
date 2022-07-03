@@ -1,5 +1,5 @@
-export interface IDefaultTreeItem {
+export interface DefaultTreeItem {
   id: string;
   parentId?: string;
-  children?: IDefaultTreeItem[];
+  children?: DefaultTreeItem[];
 }

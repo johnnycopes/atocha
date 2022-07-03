@@ -4,7 +4,7 @@ import { AnimatedComponent } from '@atocha/core/ui';
 import { positionAnimation } from '@atocha/globetrotter/ui';
 import { Route } from '@atocha/globetrotter/types';
 
-interface INavigationLink {
+interface NavigationLink {
   name: string;
   route: string;
   icon?: string;
@@ -20,13 +20,13 @@ interface INavigationLink {
 })
 export class NavigationComponent extends AnimatedComponent {
   position = 'navigation';
-  home: INavigationLink = {
+  home: NavigationLink = {
     name: 'Home',
     icon: 'Globetrotter',
     route: Route.home,
     exactPathMatch: true,
   };
-  links: INavigationLink[] = [
+  links: NavigationLink[] = [
     {
       name: 'Explore',
       route: Route.explore,

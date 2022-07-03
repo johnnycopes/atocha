@@ -1,12 +1,12 @@
 import { Dictionary } from 'lodash';
 
 import { TreeProvider } from '@atocha/globetrotter/ui';
-import { IDefaultTreeItem } from './default-tree-item';
+import { DefaultTreeItem } from './default-tree-item';
 
-export class NestedItemTreeProvider implements TreeProvider<IDefaultTreeItem> {
-  private itemsKeyedById: Dictionary<IDefaultTreeItem> = {};
+export class NestedItemTreeProvider implements TreeProvider<DefaultTreeItem> {
+  private itemsKeyedById: Dictionary<DefaultTreeItem> = {};
 
-  constructor(item: IDefaultTreeItem) {
+  constructor(item: DefaultTreeItem) {
     // set itemsKeyedById recursively
     const items = [item];
     while (items.length) {
@@ -24,11 +24,11 @@ export class NestedItemTreeProvider implements TreeProvider<IDefaultTreeItem> {
     }
   }
 
-  getId(item: IDefaultTreeItem): string {
+  getId(item: DefaultTreeItem): string {
     return item.id;
   }
 
-  getParent(item: IDefaultTreeItem): IDefaultTreeItem | undefined {
+  getParent(item: DefaultTreeItem): DefaultTreeItem | undefined {
     const parentId = item.parentId;
     if (parentId) {
       return this.itemsKeyedById[parentId];
@@ -36,7 +36,7 @@ export class NestedItemTreeProvider implements TreeProvider<IDefaultTreeItem> {
     return undefined;
   }
 
-  getChildren(item: IDefaultTreeItem): IDefaultTreeItem[] {
+  getChildren(item: DefaultTreeItem): DefaultTreeItem[] {
     return item.children || [];
   }
 }

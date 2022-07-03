@@ -13,7 +13,7 @@ import {
   COUNTRY_SUMMARY_NAMES,
 } from '../data/country-modifications';
 
-interface ICountryState {
+interface CountryState {
   flatCountries: Country[];
   countriesBySubregion: Dictionary<Country[]>;
   nestedCountries: Region[];
@@ -24,12 +24,12 @@ interface ICountryState {
 })
 export class CountryService implements Resolve<Observable<Country[]>> {
   private _request: Observable<Country[]> = of([]);
-  private readonly _countries = new BehaviorSubject<ICountryState>({
+  private readonly _countries = new BehaviorSubject<CountryState>({
     flatCountries: [],
     countriesBySubregion: {},
     nestedCountries: [],
   });
-  get countries(): Observable<ICountryState> {
+  get countries(): Observable<CountryState> {
     return this._countries;
   }
 
