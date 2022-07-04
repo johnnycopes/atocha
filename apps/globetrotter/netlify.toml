@@ -8,4 +8,4 @@
   from = "/*"
   to = "/index.html"
   status = 200
-  forced = true
+  force = true
