@@ -8,6 +8,30 @@ interface Item {
   children?: Item[];
 }
 
+const singleItem: Item = {
+  id: '1',
+  name: 'Item 1',
+};
+const itemWithDescendants: Item =  {
+  id: '2',
+  name: 'Item 2',
+  children: [
+    {
+      id: '2A',
+      name: 'Item 2A',
+    },
+    {
+      id: '2B',
+      name: 'Item 2B',
+      children: [
+        {
+          id: '2B.1',
+          name: 'Item 2B1'
+        }
+      ]
+    },
+  ],
+};
 const getId = ({ id }: Item) => id;
 const getChildren = ({ children }: Item) => children ?? [];
 
@@ -21,12 +45,9 @@ export default {
   ],
 } as Meta<TreeComponent<Item>>;
 
-export const singleItem: Story<TreeComponent<Item>> = () => ({
+export const leaf: Story<TreeComponent<Item>> = () => ({
   props: {
-    item: {
-      id: '1',
-      name: 'Item 1',
-    },
+    item: singleItem,
     getId,
   },
   template: `
@@ -37,18 +58,9 @@ export const singleItem: Story<TreeComponent<Item>> = () => ({
   `
 });
 
-export const multipleItems: Story<TreeComponent<Item>> = () => ({
+export const withChildren: Story<TreeComponent<Item>> = () => ({
   props: {
-    item: {
-      id: '2',
-      name: 'Item 2',
-      children: [
-        {
-          id: '2A',
-          name: 'Item 2A',
-        },
-      ],
-    },
+    item: itemWithDescendants,
     getId,
     getChildren,
   },
@@ -58,5 +70,34 @@ export const multipleItems: Story<TreeComponent<Item>> = () => ({
       [getId]="getId"
       [getChildren]="getChildren"
     ></ui-tree>
+  `
+});
+
+export const withCustomTemplate: Story<TreeComponent<Item>> = () => ({
+  props: {
+    item: itemWithDescendants,
+    getId,
+    getChildren,
+  },
+  template: `
+    <ui-tree
+      [node]="item"
+      [template]="itemTemplate"
+      [getId]="getId"
+      [getChildren]="getChildren"
+    ></ui-tree>
+
+    <ng-template #itemTemplate
+      let-item
+      let-level="level"
+      let-isTop="level === 0"
+    >
+      <span
+        [style.fontWeight]="isTop ? '700' : '400'"
+        [style.margin-left.px]="level * 16"
+      >
+        {{ item.name }}{{ isTop ? ' | 👑' : '' }}
+      </span>
+    </ng-template>
   `
 });
