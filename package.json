@@ -25,6 +25,7 @@
     "@nrwl/js": "^14.3.6",
     "@nrwl/linter": "14.3.6",
     "@nrwl/nx-cloud": "latest",
+    "@nrwl/storybook": "^14.4.0",
     "@nrwl/workspace": "14.3.6",
     "@swc/cli": "~0.1.55",
     "@swc/core": "^1.2.173",
