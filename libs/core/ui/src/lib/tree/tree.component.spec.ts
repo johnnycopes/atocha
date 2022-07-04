@@ -3,16 +3,16 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { TreeComponent } from './tree.component';
 
-interface DummyItem {
+interface Item {
   id: string;
   name: string;
-  items?: DummyItem[];
+  items?: Item[];
 }
 
 @Component({
   template: `
     <ui-tree
-      [node]="flatItem"
+      [node]="leafItem"
       [template]="item"
       [getId]="getId"
       [getChildren]="getItems"
@@ -29,12 +29,13 @@ interface DummyItem {
     </ng-template>
   `,
 })
+// TODO: write tests that make template null in order to test default rendering
 class TestHostComponent {
-  public flatItem: DummyItem = {
+  leafItem: Item = {
     id: '1',
     name: 'Item 1',
   };
-  public nestedItem: DummyItem = {
+  nestedItem: Item = {
     id: '2',
     name: 'Item 2',
     items: [
@@ -44,8 +45,8 @@ class TestHostComponent {
       },
     ],
   };
-  public getId = (item: DummyItem) => item.id;
-  public getItems = (item: DummyItem) => item?.items ?? [];
+  getId = ({ id }: Item) => id;
+  getItems = ({ items }: Item) => items ?? [];
 }
 
 describe('TreeComponent', () => {
@@ -64,7 +65,7 @@ describe('TreeComponent', () => {
     fixture.detectChanges();
   });
 
-  it('creates', () => {
+  it('renders', () => {
     expect(app).toBeTruthy();
   });
 
