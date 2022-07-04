@@ -1,0 +1,10 @@
+# Settings in the [build] context are global and are applied to
+# all contexts unless otherwise overridden by more specific contexts.
+[build]
+  publish = "dist/apps/globetrotter"
+  command = "nx build globetrotter"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
