@@ -17,6 +17,6 @@
   ></ui-tree>
 </ng-container>
 
-<ng-template #defaultTemplate>
-  {{ getId(node) }}
+<ng-template #defaultTemplate let-item>
+  {{ getId(item) }}
 </ng-template>
