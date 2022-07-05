@@ -25,9 +25,7 @@ interface Item {
     ></ui-tree>
 
     <ng-template #item let-item let-level="level">
-      <h1 data-test="ui-tree-test-item">
-        {{ item.name }} | Level {{ level }}
-      </h1>
+      <h1 data-test="ui-tree-test-item">{{ item.name }} | Level {{ level }}</h1>
     </ng-template>
   `,
 })
@@ -78,12 +76,16 @@ describe('TreeComponent', () => {
     hostComponent.itemTemplate = undefined;
     fixture.detectChanges();
 
-    const name = fixture.nativeElement.querySelector('[data-test="ui-tree-default-item"]').textContent.trim();
+    const name = fixture.nativeElement
+      .querySelector('[data-test="ui-tree-default-item"]')
+      .textContent.trim();
     expect(name).toBe('1');
   });
 
   it('renders leaf item with custom template', () => {
-    const name = fixture.nativeElement.querySelector('[data-test="ui-tree-test-item"]').textContent.trim();
+    const name = fixture.nativeElement
+      .querySelector('[data-test="ui-tree-test-item"]')
+      .textContent.trim();
     expect(name).toBe('Item 1 | Level 0');
   });
 
@@ -91,7 +93,9 @@ describe('TreeComponent', () => {
     hostComponent.itemTemplate = undefined;
     fixture.detectChanges();
 
-    const items = fixture.nativeElement.querySelectorAll('[data-test="ui-tree-default-item"]');
+    const items = fixture.nativeElement.querySelectorAll(
+      '[data-test="ui-tree-default-item"]'
+    );
     const name = items[1].textContent.trim();
     const childName = items[2].textContent.trim();
 
@@ -100,7 +104,9 @@ describe('TreeComponent', () => {
   });
 
   it('renders nested item with custom template', () => {
-    const items = fixture.nativeElement.querySelectorAll('[data-test="ui-tree-test-item"]');
+    const items = fixture.nativeElement.querySelectorAll(
+      '[data-test="ui-tree-test-item"]'
+    );
     const name = items[1].textContent.trim();
     const childName = items[2].textContent.trim();
     fixture.detectChanges();

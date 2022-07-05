@@ -8,11 +8,11 @@ interface Item {
   children?: Item[];
 }
 
-const singleItem: Item = {
+const leafItem: Item = {
   id: '1',
   name: 'Item 1',
 };
-const itemWithDescendants: Item =  {
+const nestedItem: Item = {
   id: '2',
   name: 'Item 2',
   children: [
@@ -26,9 +26,9 @@ const itemWithDescendants: Item =  {
       children: [
         {
           id: '2B.1',
-          name: 'Item 2B1'
-        }
-      ]
+          name: 'Item 2B1',
+        },
+      ],
     },
   ],
 };
@@ -41,13 +41,13 @@ export default {
   decorators: [
     moduleMetadata({
       imports: [],
-    })
+    }),
   ],
 } as Meta<TreeComponent<Item>>;
 
 export const leaf: Story<TreeComponent<Item>> = () => ({
   props: {
-    item: singleItem,
+    item: leafItem,
     getId,
   },
   template: `
@@ -55,12 +55,12 @@ export const leaf: Story<TreeComponent<Item>> = () => ({
       [node]="item"
       [getId]="getId"
     ></ui-tree>
-  `
+  `,
 });
 
 export const withChildren: Story<TreeComponent<Item>> = () => ({
   props: {
-    item: itemWithDescendants,
+    item: nestedItem,
     getId,
     getChildren,
   },
@@ -70,12 +70,12 @@ export const withChildren: Story<TreeComponent<Item>> = () => ({
       [getId]="getId"
       [getChildren]="getChildren"
     ></ui-tree>
-  `
+  `,
 });
 
 export const withCustomTemplate: Story<TreeComponent<Item>> = () => ({
   props: {
-    item: itemWithDescendants,
+    item: nestedItem,
     getId,
     getChildren,
   },
@@ -99,5 +99,5 @@ export const withCustomTemplate: Story<TreeComponent<Item>> = () => ({
         {{ item.name }}{{ isTop ? ' | 👑' : '' }}
       </span>
     </ng-template>
-  `
+  `,
 });
