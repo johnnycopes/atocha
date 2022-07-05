@@ -18,5 +18,7 @@
 </ng-container>
 
 <ng-template #defaultTemplate let-item>
-  {{ getId(item) }}
+  <span data-test="ui-tree-default-item">
+    {{ getId(item) }}
+  </span>
 </ng-template>
