@@ -1,1 +1,17 @@
-<p>checkbox works!</p>
+<label class="core-ui-checkbox__container"
+  [class.core-ui-checkbox__container--disabled]="disabled"
+>
+  <input class="core-ui-checkbox__input"
+    type="checkbox"
+    [indeterminate]="indeterminate"
+    [disabled]="disabled"
+    [ngModel]="checked"
+    (ngModelChange)="onChange($event)"
+  />
+  <div class="core-ui-checkbox__checkbox"></div>
+  <div class="core-ui-checkbox__label"
+    [class.core-ui-checkbox__label--disabled]="disabled"
+  >
+    <ng-content></ng-content>
+  </div>
+</label>

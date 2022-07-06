@@ -1,0 +1,85 @@
+.core-ui-checkbox {
+  display: inline-flex;
+  position: relative;
+  --checkbox-size: 14px;
+  --checkbox-color: lightgray;
+  --checkmark-color: gray;
+  --border-radius: 2px;
+  --hover-color: lightgray;
+  --disabled-color: darkgray;
+  --label-margin: 4px;
+
+  $checkmark-width: 2px;
+
+  &__checkbox {
+    position: relative;
+    height: var(--checkbox-size);
+    width: var(--checkbox-size);
+    border: $checkmark-width solid var(--checkmark-color);
+    border-radius: var(--border-radius);
+
+    // Default checkmark (unchecked)
+    &::after {
+      content: '';
+      position: absolute;
+      display: none;
+    }
+  }
+
+  &__container {
+    display: inline-flex;
+    position: relative;
+    font-size: var(--font-size);
+
+    &:hover .core-ui-checkbox__checkbox {
+      background: var(--hover-color);
+    }
+
+    &--disabled {
+      &:hover .core-ui-checkbox__checkbox {
+        background: none;
+      }
+    }
+  }
+
+  &__label {
+    display: inline-flex;
+    margin-left: var(--label-margin);
+    user-select: none;
+
+    &--disabled {
+      font-style: italic;
+      color: var(--disabled-color);
+    }
+  }
+
+  // Hide the default checkbox input
+  &__input {
+    position: absolute;
+    margin: 0;
+    opacity: 0;
+  }
+
+  // Checkmark (indeterminate)
+  &__input:indeterminate ~ &__checkbox::after {
+    display: block;
+    left: 50%;
+    top: 50%;
+    width: 8px;
+    transform: translate(-50%, -50%);
+    border-top: $checkmark-width solid var(--disabled-color);
+  }
+
+  // Checkmark (checked)
+  &__input:checked ~ &__checkbox::after {
+    display: block;
+    top: calc(var(--checkbox-size) * -0.05);
+    left: calc(var(--checkbox-size) * 0.18);
+    width: calc(var(--checkbox-size) * 0.45);
+    height: calc(var(--checkbox-size) * 0.8);
+    border: solid var(--checkmark-color);
+    border-width: 0 $checkmark-width $checkmark-width 0;
+    transform: rotate(45deg);
+  }
+}
+

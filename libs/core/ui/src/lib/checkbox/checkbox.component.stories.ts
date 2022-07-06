@@ -1,21 +1,43 @@
-import { moduleMetadata, Story, Meta } from '@storybook/angular';
+import { FormsModule } from '@angular/forms';
+import { Meta, moduleMetadata, Story } from '@storybook/angular';
+
 import { CheckboxComponent } from './checkbox.component';
 
+type CheckboxArgs = CheckboxComponent & { slot: string };
+
 export default {
-  title: 'CheckboxComponent',
+  title: 'Checkbox',
   component: CheckboxComponent,
   decorators: [
     moduleMetadata({
-      imports: [],
-    })
+      imports: [FormsModule],
+    }),
   ],
-} as Meta<CheckboxComponent>;
+} as Meta;
 
-const Template: Story<CheckboxComponent> = (args: CheckboxComponent) => ({
+const Template: Story<CheckboxArgs> = (args: CheckboxArgs) => ({
   props: args,
+  template: `
+    <ui-checkbox
+      [indeterminate]="indeterminate"
+      [disabled]="disabled"
+      [ngModel]="checked"
+    >
+      {{ slot }}
+    </ui-checkbox>
+  `,
 });
 
+export const Default = Template.bind({});
+Default.args = createArgs({
+  slot: 'Click me!',
+});
 
-export const Primary = Template.bind({});
-Primary.args = {
+function createArgs({
+  slot = '',
+  checked = false,
+  disabled = false,
+  indeterminate = false,
+} = {}) {
+  return { slot, checked, disabled, indeterminate };
 }
