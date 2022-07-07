@@ -1,13 +1,8 @@
-<label class="checkbox" [class]="{ 'checkbox--inverted': invertColors }">
-  <input
-    class="input"
-    type="checkbox"
-    [indeterminate]="state === 'indeterminate'"
-    [checked]="state === 'checked'"
-    (change)="onChange()"
-  />
-  <div class="element"></div>
-  <div class="label" [class]="{ 'label--bold': bold }">
-    <ng-content></ng-content>
-  </div>
-</label>
+<atocha-checkbox class="checkbox"
+  [class.checkbox--unchecked]="state !== 'checked' && state !== 'indeterminate'"
+  [indeterminate]="state === 'indeterminate'"
+  [ngModel]="state === 'checked'"
+  (ngModelChange)="onChange()"
+>
+  <ng-content></ng-content>
+</atocha-checkbox>
