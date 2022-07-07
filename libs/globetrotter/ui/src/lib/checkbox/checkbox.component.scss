@@ -9,12 +9,12 @@
   --checkbox-color: #{map-get($color, lightest)};
   --checkmark-color: #{map-get($color, lightest)};
   --hover-color: #{map-get($color, medium)};
-  --label-margin: #{map-get($spacing, 8)};
+  --label-margin: #{map-get($spacing, 12)};
   color: map-get($color, lightest);
+}
 
-  &--unchecked {
-    --checkbox-color: #{map-get($color, medium)};
-    --checkmark-color: #{map-get($color, medium)};
-    color: map-get($color, medium);
-  }
+.unchecked {
+  --checkbox-color: #{map-get($color, medium)};
+  --checkmark-color: #{map-get($color, medium)};
+  color: map-get($color, medium);
 }
