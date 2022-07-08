@@ -1,8 +1,0 @@
-<atocha-checkbox class="checkbox"
-  [class.unchecked]="state !== 'checked' && state !== 'indeterminate'"
-  [indeterminate]="state === 'indeterminate'"
-  [ngModel]="state === 'checked'"
-  (ngModelChange)="onChange()"
->
-  <ng-content></ng-content>
-</atocha-checkbox>

@@ -1,4 +1,4 @@
-import { TreeProvider } from '@atocha/globetrotter/ui';
+import { TreeProvider } from '@atocha/core/ui';
 import { DefaultTreeItem } from './default-tree-item';
 
 export class NestedItemTreeProvider implements TreeProvider<DefaultTreeItem> {

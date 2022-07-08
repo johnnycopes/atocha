@@ -14,10 +14,7 @@ import {
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { reduce } from 'lodash-es';
 
-import {
-  CheckboxStates,
-  TreeProvider,
-} from '../nested-checkboxes/nested-checkboxes.component';
+import { CheckboxStates, TreeProvider } from '@atocha/core/ui';
 
 type Counts = Record<string, number>;
 
