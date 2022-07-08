@@ -5,7 +5,6 @@
   --checkbox-size: 14px;
   --checkbox-color: lightgray;
   --checkmark-color: gray;
-  --disabled-color: darkgray;
   --hover-color: lightgray;
   --label-margin: 4px;
 }
@@ -70,12 +69,6 @@ $checkmark-width: 2px;
 
 .label {
   display: inline-flex;
-  color: var(--label-color);
   margin-left: var(--label-margin);
   user-select: none;
-
-  &--disabled {
-    font-style: italic;
-    color: var(--disabled-color);
-  }
 }

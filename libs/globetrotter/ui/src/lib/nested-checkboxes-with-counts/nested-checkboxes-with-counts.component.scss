@@ -7,13 +7,23 @@
 .nested-checkboxes {
   --checkbox-margin: #{map-get($spacing, 8)};
 
-  ::ng-deep .checkbox {
-    --checkbox-size: #{map-get($font-size, 20)};
-    --checkbox-color: #{map-get($color, lightest)};
-    --checkmark-color: #{map-get($color, lightest)};
-    --hover-color: #{map-get($color, medium)};
-    --label-margin: #{map-get($spacing, 12)};
+  ::ng-deep {
+    .checkbox {
+      --checkbox-size: #{map-get($font-size, 20)};
+      --hover-color: #{map-get($color, medium)};
+      --label-margin: #{map-get($spacing, 12)};
+    }
 
-    // TODO: move unchecked styles from globetrotter/checkbox
+    &.checkbox--checked,
+    &.checkbox--indeterminate {
+      --checkbox-color: #{map-get($color, lightest)};
+      --checkmark-color: #{map-get($color, lightest)};
+    }
+
+    &.checkbox--unchecked {
+      --checkbox-color: #{map-get($color, medium)};
+      --checkmark-color: #{map-get($color, medium)};
+      color: map-get($color, medium);
+    }
   }
 }
