@@ -21,14 +21,14 @@ export default {
 const Template: Story<CheckboxArgs> = (args: CheckboxArgs) => ({
   props: args,
   template: `
-    <atocha-checkbox
+    <ui-checkbox
       [indeterminate]="indeterminate"
       [disabled]="disabled"
       [ngModel]="checked"
       (ngModelChange)="checked = $event; onClick($event)"
     >
       {{ slot }}
-    </atocha-checkbox>
+    </ui-checkbox>
 
     <br>
 

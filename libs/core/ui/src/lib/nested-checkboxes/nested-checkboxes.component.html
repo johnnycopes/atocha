@@ -11,7 +11,7 @@
   let-level="level"
   let-parent="level > 0"
 >
-  <atocha-checkbox
+  <ui-checkbox
     class="checkbox"
     [class.checkbox--top]="!parent"
     [class.checkbox--checked]="states[this.treeProvider.getId(item)] === 'checked'"
@@ -29,7 +29,7 @@
         parent: parent
       }"
     ></ng-container>
-  </atocha-checkbox>
+  </ui-checkbox>
 </ng-template>
 
 <ng-template #defaultTemplate let-item>
