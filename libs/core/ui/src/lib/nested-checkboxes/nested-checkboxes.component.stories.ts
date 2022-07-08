@@ -1,9 +1,10 @@
 import { FormsModule } from '@angular/forms';
-import { moduleMetadata, Story, Meta } from '@storybook/angular';
+import { moduleMetadata, Story, Meta, componentWrapperDecorator } from '@storybook/angular';
 
 import { CheckboxStates, NestedCheckboxesComponent } from './nested-checkboxes.component';
 import { CheckboxComponent } from '../checkbox/checkbox.component';
 import { TreeComponent } from '../tree/tree.component';
+import { StorybookWrapperComponent } from '../../../.storybook/storybook-wrapper/storybook-wrapper.component';
 import { ALL_SELECTED, Item, ITEM, NestedItemTreeProvider, SOME_SELECTED } from '../../../.storybook/nested-checkboxes.data';
 
 type NestedCheckboxesArgs = NestedCheckboxesComponent<Item> & { className: string };
@@ -14,8 +15,9 @@ export default {
   decorators: [
     moduleMetadata({
       imports: [FormsModule],
-      declarations: [CheckboxComponent, TreeComponent]
-    })
+      declarations: [StorybookWrapperComponent, CheckboxComponent, TreeComponent]
+    }),
+    componentWrapperDecorator(StorybookWrapperComponent),
   ],
   argTypes: {
     onClick: { action: 'clicked' },

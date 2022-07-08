@@ -7,34 +7,3 @@
 body {
   font-family: sans-serif;
 }
-
-.custom-nested-checkboxes {
-  --checkbox-margin: 8px;
-
-  ::ng-deep {
-    .checkbox {
-      --checkbox-size: 20px;
-      --hover-color: limegreen;
-      --label-margin: 12px;
-    }
-
-    &.checkbox--top.checkbox--checked,
-    &.checkbox--top.checkbox--indeterminate {
-      --checkbox-color: salmon;
-      --checkmark-color: darkblue;
-      --checkbox-background: salmon;
-    }
-
-    &.checkbox--checked,
-    &.checkbox--indeterminate {
-      --checkbox-color: goldenrod;
-      --checkmark-color: goldenrod;
-    }
-
-    &.checkbox--unchecked {
-      --checkbox-color: cadetblue;
-      --checkmark-color: cadetblue;
-      color: darkgray;
-    }
-  }
-}
