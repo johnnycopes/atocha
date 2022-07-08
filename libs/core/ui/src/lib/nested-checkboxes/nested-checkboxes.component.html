@@ -5,16 +5,22 @@
   [template]="checkbox"
 ></ui-tree>
 
-<ng-template #checkbox let-item let-level="level" let-parent="level > 0">
+<ng-template
+  #checkbox
+  let-item
+  let-level="level"
+  let-parent="level > 0"
+>
   <atocha-checkbox
     class="checkbox"
+    [class.checkbox--top]="!parent"
     [class.checkbox--checked]="states[this.treeProvider.getId(item)] === 'checked'"
     [class.checkbox--indeterminate]="states[this.treeProvider.getId(item)] === 'indeterminate'"
     [class.checkbox--unchecked]="states[this.treeProvider.getId(item)] === 'unchecked' || !states[this.treeProvider.getId(item)]"
     [style.margin-left.px]="level * 24"
     [indeterminate]="states[this.treeProvider.getId(item)] === 'indeterminate'"
     [ngModel]="states[this.treeProvider.getId(item)] === 'checked'"
-    (ngModelChange)="onCChange($event, item)"
+    (ngModelChange)="onChange($event, item)"
   >
     <ng-container
       [ngTemplateOutlet]="itemTemplate ? itemTemplate : defaultTemplate"

@@ -67,7 +67,7 @@ export class NestedCheckboxesComponent<T>
   // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-empty-function
   public registerOnTouched(_fn: (value: CheckboxStates) => void): void {}
 
-  public onCChange(state: boolean, item: T): void {
+  public onChange(state: boolean, item: T): void {
     const states = { ...this.states };
     const ancestors = this._getAncestors(item);
     this._updateItemAndDescendantStates(state, item, states);

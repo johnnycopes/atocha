@@ -3,6 +3,7 @@
   position: relative;
   --border-radius: 2px;
   --checkbox-size: 14px;
+  --checkbox-background: transparent;
   --checkbox-color: lightgray;
   --checkmark-color: gray;
   --hover-color: lightgray;
@@ -41,6 +42,7 @@ $checkmark-width: 2px;
   position: relative;
   height: var(--checkbox-size);
   width: var(--checkbox-size);
+  background: var(--checkbox-background);
   border: $checkmark-width solid var(--checkbox-color);
   border-radius: var(--border-radius);
 }
