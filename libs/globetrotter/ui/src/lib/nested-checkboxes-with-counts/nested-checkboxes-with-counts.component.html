@@ -1,10 +1,11 @@
-<ui-nested-checkboxes
+<atocha-nested-checkboxes
+  class="nested-checkboxes"
   [item]="item"
   [treeProvider]="treeProvider"
   [itemTemplate]="checkbox"
   [ngModel]="states"
   (ngModelChange)="onChange($event)"
-></ui-nested-checkboxes>
+></atocha-nested-checkboxes>
 
 <ng-template #checkbox let-item let-parent="parent">
   <ng-container

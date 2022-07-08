@@ -24,6 +24,7 @@ type Counts = Record<string, number>;
 @Component({
   selector: 'ui-nested-checkboxes-with-counts',
   templateUrl: './nested-checkboxes-with-counts.component.html',
+  styleUrls: ['./nested-checkboxes-with-counts.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {
