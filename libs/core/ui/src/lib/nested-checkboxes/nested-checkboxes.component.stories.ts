@@ -106,7 +106,7 @@ export default {
     })
   ],
   argTypes: {
-    onChange: { action: 'clicked' },
+    // onChange: { action: 'clicked' },
   }
 } as Meta<NestedCheckboxesComponent<Item>>;
 

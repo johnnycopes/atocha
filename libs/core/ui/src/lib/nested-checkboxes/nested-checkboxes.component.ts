@@ -39,7 +39,7 @@ export class NestedCheckboxesComponent<T>
   @Input() item!: T;
   @Input() treeProvider!: TreeProvider<T>;
   @Input() itemTemplate: TemplateRef<unknown> | undefined;
-  @Input() invertedRootCheckbox = true;
+  @Input() indentation = 24;
   public states: CheckboxStates = {};
   private _onChangeFn: (value: CheckboxStates) => void = () => ({});
 

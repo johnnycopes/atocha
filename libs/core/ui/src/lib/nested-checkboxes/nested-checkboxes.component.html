@@ -17,7 +17,7 @@
     [class.checkbox--checked]="states[this.treeProvider.getId(item)] === 'checked'"
     [class.checkbox--indeterminate]="states[this.treeProvider.getId(item)] === 'indeterminate'"
     [class.checkbox--unchecked]="states[this.treeProvider.getId(item)] === 'unchecked' || !states[this.treeProvider.getId(item)]"
-    [style.margin-left.px]="level * 24"
+    [style.margin-left.px]="level * indentation"
     [indeterminate]="states[this.treeProvider.getId(item)] === 'indeterminate'"
     [ngModel]="states[this.treeProvider.getId(item)] === 'checked'"
     (ngModelChange)="onChange($event, item)"
