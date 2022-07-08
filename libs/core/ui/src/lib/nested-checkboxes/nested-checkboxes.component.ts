@@ -21,7 +21,7 @@ export interface TreeProvider<T> {
 }
 
 @Component({
-  selector: 'atocha-nested-checkboxes',
+  selector: 'ui-nested-checkboxes',
   templateUrl: './nested-checkboxes.component.html',
   styleUrls: ['./nested-checkboxes.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

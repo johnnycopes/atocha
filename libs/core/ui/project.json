@@ -39,6 +39,7 @@
         "outputDir": "dist/storybook/core-ui",
         "configDir": "libs/core/ui/.storybook",
         "browserTarget": "core-ui:build-storybook",
+        "styles": ["libs/core/ui/src/storybook.scss"],
         "compodoc": false
       },
       "configurations": {

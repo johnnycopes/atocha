@@ -52,7 +52,7 @@ $checkmark-width: 2px;
   position: absolute;
   top: calc(var(--checkbox-size) * -0.05);
   left: calc(var(--checkbox-size) * 0.2);
-  width: calc(var(--checkbox-size) * 0.4);
+  width: calc(var(--checkbox-size) * 0.37);
   height: calc(var(--checkbox-size) * 0.7);
   border: solid var(--checkmark-color);
   border-width: 0 $checkmark-width $checkmark-width 0;
