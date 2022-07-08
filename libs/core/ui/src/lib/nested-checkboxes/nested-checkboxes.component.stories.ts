@@ -4,10 +4,7 @@ import { moduleMetadata, Story, Meta } from '@storybook/angular';
 import { CheckboxStates, NestedCheckboxesComponent, TreeProvider } from './nested-checkboxes.component';
 import { CheckboxComponent } from '../checkbox/checkbox.component';
 import { TreeComponent } from '../tree/tree.component';
-import { ITEM, Item, NestedItemTreeProvider } from '../../../.storybook/nested-checkboxes.data';
-
-
-type NestedCheckboxesArgs = NestedCheckboxesComponent<Item>;
+import { ALL_SELECTED, ITEM, Item, NestedItemTreeProvider, SOME_SELECTED } from '../../../.storybook/nested-checkboxes.data';
 
 export default {
   title: 'NestedCheckboxesComponent',
@@ -23,7 +20,7 @@ export default {
   }
 } as Meta<NestedCheckboxesComponent<Item>>;
 
-const Template: Story<NestedCheckboxesArgs> = (args: NestedCheckboxesArgs) => ({
+const Template: Story<NestedCheckboxesComponent<Item>> = (args: NestedCheckboxesComponent<Item>) => ({
   props: args,
   template: `
     <atocha-nested-checkboxes
@@ -39,11 +36,26 @@ const Template: Story<NestedCheckboxesArgs> = (args: NestedCheckboxesArgs) => ({
   `,
 });
 
-export const Default = Template.bind({});
-Default.args = createArgs({
+export const noneSelected = Template.bind({});
+noneSelected.args = createArgs({
   item: ITEM,
   treeProvider: new NestedItemTreeProvider(ITEM),
 });
+
+export const someSelected = Template.bind({});
+someSelected.args = createArgs({
+  item: ITEM,
+  treeProvider: new NestedItemTreeProvider(ITEM),
+  states: SOME_SELECTED
+});
+
+export const allSelected = Template.bind({});
+allSelected.args = createArgs({
+  item: ITEM,
+  treeProvider: new NestedItemTreeProvider(ITEM),
+  states: ALL_SELECTED
+});
+
 
 function createArgs<T>({
   item = {} as Item,
