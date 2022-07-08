@@ -13,6 +13,9 @@ export default {
       imports: [FormsModule],
     }),
   ],
+  argTypes: {
+    onClick: { action: 'clicked' },
+  }
 } as Meta;
 
 const Template: Story<CheckboxArgs> = (args: CheckboxArgs) => ({
@@ -22,9 +25,14 @@ const Template: Story<CheckboxArgs> = (args: CheckboxArgs) => ({
       [indeterminate]="indeterminate"
       [disabled]="disabled"
       [ngModel]="checked"
+      (ngModelChange)="checked = $event; onClick($event)"
     >
       {{ slot }}
     </atocha-checkbox>
+
+    <br>
+
+    <p>checked: {{ checked }}</p>
   `,
 });
 
