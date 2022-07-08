@@ -1,1 +1,28 @@
-<p>nested-checkboxes works!</p>
+<ui-tree
+  [node]="item"
+  [getId]="treeProvider.getId"
+  [getChildren]="treeProvider.getChildren"
+  [template]="checkbox"
+></ui-tree>
+
+<ng-template #checkbox let-item let-level="level" let-parent="level > 0">
+  <atocha-checkbox
+    class="checkbox"
+    [style.margin-left.px]="level * 24"
+    [indeterminate]="states[this.treeProvider.getId(item)] === 'indeterminate'"
+    [ngModel]="states[this.treeProvider.getId(item)] === 'checked'"
+    (ngModelChange)="onCChange($event, item)"
+  >
+    <ng-container
+      [ngTemplateOutlet]="itemTemplate ? itemTemplate : defaultTemplate"
+      [ngTemplateOutletContext]="{
+        $implicit: item,
+        parent: parent
+      }"
+    ></ng-container>
+  </atocha-checkbox>
+</ng-template>
+
+<ng-template #defaultTemplate let-item>
+  {{ this.treeProvider.getId(item) }}
+</ng-template>
