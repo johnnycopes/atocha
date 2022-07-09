@@ -9,17 +9,20 @@ import {
 import {
   CheckboxStates,
   NestedCheckboxesComponent,
+  TreeProvider,
 } from './nested-checkboxes.component';
 import { CheckboxComponent } from '../checkbox/checkbox.component';
 import { TreeComponent } from '../tree/tree.component';
 import { StorybookWrapperComponent } from '../../../.storybook/storybook-wrapper/storybook-wrapper.component';
+import { Item } from '../../../.storybook/mock-data/item.interface';
 import {
   ALL_SELECTED,
-  Item,
-  ITEM,
-  NestedItemTreeProvider,
   SOME_SELECTED,
-} from '../../../.storybook/nested-checkboxes.data';
+} from '../../../.storybook/mock-data/checkbox-states';
+import { NESTED_ITEM } from '../../../.storybook/mock-data/nested-item';
+import { FLAT_ITEMS } from '../../../.storybook/mock-data/flat-items';
+import { NestedItemTreeProvider } from '../../../.storybook/mock-data/nested-item-tree-provider';
+import { FlatItemsTreeProvider } from '../../../.storybook/mock-data/flat-items-tree-provider';
 
 type NestedCheckboxesArgs = NestedCheckboxesComponent<Item> & {
   className: string;
@@ -61,29 +64,75 @@ const Template: Story<NestedCheckboxesArgs> = (args: NestedCheckboxesArgs) => ({
   `,
 });
 
-export const noneSelected = Template.bind({});
-noneSelected.args = createArgs({});
+export const nestedItemWithNoneSelected = Template.bind({});
+nestedItemWithNoneSelected.args = createNestedItemArgs({});
 
-export const someSelected = Template.bind({});
-someSelected.args = createArgs({
+export const nestedItemWithSomeSelected = Template.bind({});
+nestedItemWithSomeSelected.args = createNestedItemArgs({
   states: SOME_SELECTED,
 });
 
-export const allSelected = Template.bind({});
-allSelected.args = createArgs({
+export const nestedItemWithAllSelected = Template.bind({});
+nestedItemWithAllSelected.args = createNestedItemArgs({
   states: ALL_SELECTED,
 });
 
-export const withCustomStyling = Template.bind({});
-withCustomStyling.args = createArgs({
+export const nestedItemWithCustomStyling = Template.bind({});
+nestedItemWithCustomStyling.args = createNestedItemArgs({
+  states: SOME_SELECTED,
   className: 'custom-nested-checkboxes',
 });
 
-function createArgs({
-  item = ITEM,
-  treeProvider = new NestedItemTreeProvider(ITEM),
+export const flatItemWithNoneSelected = Template.bind({});
+flatItemWithNoneSelected.args = createFlatArgs({});
+
+export const flatItemWithSomeSelected = Template.bind({});
+flatItemWithSomeSelected.args = createFlatArgs({
+  states: SOME_SELECTED,
+});
+
+export const flatItemWithAllSelected = Template.bind({});
+flatItemWithAllSelected.args = createFlatArgs({
+  states: ALL_SELECTED,
+});
+
+export const flatItemWithCustomStyling = Template.bind({});
+flatItemWithCustomStyling.args = createFlatArgs({
+  states: SOME_SELECTED,
+  className: 'custom-nested-checkboxes',
+});
+
+function createNestedItemArgs({
   states = {} as CheckboxStates,
   className = '',
-} = {}) {
+}) {
+  return createArgs({
+    item: NESTED_ITEM,
+    treeProvider: new NestedItemTreeProvider(NESTED_ITEM),
+    states,
+    className,
+  });
+}
+
+function createFlatArgs({ states = {} as CheckboxStates, className = '' }) {
+  return createArgs({
+    item: FLAT_ITEMS[0],
+    treeProvider: new FlatItemsTreeProvider(FLAT_ITEMS),
+    states,
+    className,
+  });
+}
+
+function createArgs<T>({
+  item,
+  treeProvider,
+  states = {},
+  className = '',
+}: {
+  item: T;
+  treeProvider: TreeProvider<T>;
+  states: CheckboxStates;
+  className: string;
+}) {
   return { item, treeProvider, states, className };
 }
