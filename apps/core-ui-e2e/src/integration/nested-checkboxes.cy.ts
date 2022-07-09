@@ -18,14 +18,20 @@ describe('NestedCheckboxesComponent', () => {
     checkboxSelector = '[data-test="ui-nested-checkboxes-checkbox"]';
     stories = {
       nested: {
-        noneSelected: '/iframe.html?id=nestedcheckboxescomponent--nested-item-with-none-selected',
-        someSelected: '/iframe.html?id=nestedcheckboxescomponent--nested-item-with-some-selected',
-        allSelected: '/iframe.html?id=nestedcheckboxescomponent--nested-item-with-all-selected',
+        noneSelected:
+          '/iframe.html?id=nestedcheckboxescomponent--nested-item-with-none-selected',
+        someSelected:
+          '/iframe.html?id=nestedcheckboxescomponent--nested-item-with-some-selected',
+        allSelected:
+          '/iframe.html?id=nestedcheckboxescomponent--nested-item-with-all-selected',
       },
       flat: {
-        noneSelected: '/iframe.html?id=nestedcheckboxescomponent--flat-item-with-none-selected',
-        someSelected: '/iframe.html?id=nestedcheckboxescomponent--flat-item-with-some-selected',
-        allSelected: '/iframe.html?id=nestedcheckboxescomponent--flat-item-with-all-selected',
+        noneSelected:
+          '/iframe.html?id=nestedcheckboxescomponent--flat-item-with-none-selected',
+        someSelected:
+          '/iframe.html?id=nestedcheckboxescomponent--flat-item-with-some-selected',
+        allSelected:
+          '/iframe.html?id=nestedcheckboxescomponent--flat-item-with-all-selected',
       },
     };
   });

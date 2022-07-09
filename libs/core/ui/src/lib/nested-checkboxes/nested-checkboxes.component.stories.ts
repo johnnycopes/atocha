@@ -15,7 +15,10 @@ import { CheckboxComponent } from '../checkbox/checkbox.component';
 import { TreeComponent } from '../tree/tree.component';
 import { StorybookWrapperComponent } from '../../../.storybook/storybook-wrapper/storybook-wrapper.component';
 import { Item } from '../../../.storybook/mock-data/item.interface';
-import { ALL_SELECTED, SOME_SELECTED } from '../../../.storybook/mock-data/checkbox-states';
+import {
+  ALL_SELECTED,
+  SOME_SELECTED,
+} from '../../../.storybook/mock-data/checkbox-states';
 import { NESTED_ITEM } from '../../../.storybook/mock-data/nested-item';
 import { FLAT_ITEMS } from '../../../.storybook/mock-data/flat-items';
 import { NestedItemTreeProvider } from '../../../.storybook/mock-data/nested-item-tree-provider';
@@ -99,7 +102,10 @@ flatItemWithCustomStyling.args = createFlatArgs({
   className: 'custom-nested-checkboxes',
 });
 
-function createNestedItemArgs({ states = {} as CheckboxStates, className = ''}) {
+function createNestedItemArgs({
+  states = {} as CheckboxStates,
+  className = '',
+}) {
   return createArgs({
     item: NESTED_ITEM,
     treeProvider: new NestedItemTreeProvider(NESTED_ITEM),
@@ -108,7 +114,7 @@ function createNestedItemArgs({ states = {} as CheckboxStates, className = ''}) 
   });
 }
 
-function createFlatArgs({ states = {} as CheckboxStates, className = ''}) {
+function createFlatArgs({ states = {} as CheckboxStates, className = '' }) {
   return createArgs({
     item: FLAT_ITEMS[0],
     treeProvider: new FlatItemsTreeProvider(FLAT_ITEMS),
@@ -122,6 +128,11 @@ function createArgs<T>({
   treeProvider,
   states = {},
   className = '',
-}: { item: T, treeProvider: TreeProvider<T>, states: CheckboxStates, className: string }) {
+}: {
+  item: T;
+  treeProvider: TreeProvider<T>;
+  states: CheckboxStates;
+  className: string;
+}) {
   return { item, treeProvider, states, className };
 }

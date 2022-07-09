@@ -1,5 +1,5 @@
-import { Item } from "./item.interface";
-import { TreeProvider } from "../../src/lib/nested-checkboxes/nested-checkboxes.component";
+import { Item } from './item.interface';
+import { TreeProvider } from '../../src/lib/nested-checkboxes/nested-checkboxes.component';
 
 export class NestedItemTreeProvider implements TreeProvider<Item> {
   private _itemsKeyedById: Record<string, Item> = {};

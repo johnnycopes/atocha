@@ -1,11 +1,12 @@
-import { groupBy, keyBy } from "lodash-es";
+import { groupBy, keyBy } from 'lodash-es';
 
-import { TreeProvider } from "../../src/lib/nested-checkboxes/nested-checkboxes.component";
-import { Item } from "./item.interface";
+import { TreeProvider } from '../../src/lib/nested-checkboxes/nested-checkboxes.component';
+import { Item } from './item.interface';
 
 export class FlatItemsTreeProvider implements TreeProvider<Item> {
   constructor(items: Item[]) {
-    this.getParent = ({ parentId }: Item) => parentId ? keyBy(items, 'id')[parentId] : undefined;
+    this.getParent = ({ parentId }: Item) =>
+      parentId ? keyBy(items, 'id')[parentId] : undefined;
     this.getChildren = ({ id }: Item) => groupBy(items, 'parentId')[id] || [];
   }
 
