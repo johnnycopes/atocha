@@ -1,9 +1,9 @@
-<ui-tree
+<core-tree
   [node]="item"
   [getId]="treeProvider.getId"
   [getChildren]="treeProvider.getChildren"
   [template]="checkbox"
-></ui-tree>
+></core-tree>
 
 <ng-template
   #checkbox
@@ -11,7 +11,7 @@
   let-level="level"
   let-parent="level > 0"
 >
-  <ui-checkbox
+  <core-checkbox
     class="checkbox"
     [class.checkbox--top]="!parent"
     [class.checkbox--checked]="states[this.treeProvider.getId(item)] === 'checked'"
@@ -30,7 +30,7 @@
         parent: parent
       }"
     ></ng-container>
-  </ui-checkbox>
+  </core-checkbox>
 </ng-template>
 
 <ng-template #defaultTemplate let-item>

@@ -51,10 +51,10 @@ export const leaf: Story<TreeComponent<Item>> = () => ({
     getId,
   },
   template: `
-    <ui-tree
+    <core-tree
       [node]="item"
       [getId]="getId"
-    ></ui-tree>
+    ></core-tree>
   `,
 });
 
@@ -65,11 +65,11 @@ export const withChildren: Story<TreeComponent<Item>> = () => ({
     getChildren,
   },
   template: `
-    <ui-tree
+    <core-tree
       [node]="item"
       [getId]="getId"
       [getChildren]="getChildren"
-    ></ui-tree>
+    ></core-tree>
   `,
 });
 
@@ -80,12 +80,12 @@ export const withCustomTemplate: Story<TreeComponent<Item>> = () => ({
     getChildren,
   },
   template: `
-    <ui-tree
+    <core-tree
       [node]="item"
       [template]="itemTemplate"
       [getId]="getId"
       [getChildren]="getChildren"
-    ></ui-tree>
+    ></core-tree>
 
     <ng-template #itemTemplate
       let-item

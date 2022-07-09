@@ -47,13 +47,13 @@ export default {
 const Template: Story<NestedCheckboxesArgs> = (args: NestedCheckboxesArgs) => ({
   props: args,
   template: `
-    <ui-nested-checkboxes
+    <core-nested-checkboxes
       [class]="className"
       [item]="item"
       [treeProvider]="treeProvider"
       [ngModel]="states"
       (ngModelChange)="states = $event; onClick($event)"
-    ></ui-nested-checkboxes>
+    ></core-nested-checkboxes>
 
     <br />
 

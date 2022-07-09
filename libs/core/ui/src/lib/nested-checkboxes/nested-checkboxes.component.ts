@@ -20,7 +20,7 @@ export interface TreeProvider<T> {
 }
 
 @Component({
-  selector: 'ui-nested-checkboxes',
+  selector: 'core-nested-checkboxes',
   templateUrl: './nested-checkboxes.component.html',
   styleUrls: ['./nested-checkboxes.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

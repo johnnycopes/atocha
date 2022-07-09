@@ -3,7 +3,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 type Unit = 'km' | 'mi' | 'sqKm' | 'sqMi';
 
 @Pipe({
-  name: 'measurement',
+  name: 'coreMeasurement',
 })
 export class MeasurementPipe implements PipeTransform {
   transform(value: number, fromUnit: Unit, toUnit: Unit): number {
