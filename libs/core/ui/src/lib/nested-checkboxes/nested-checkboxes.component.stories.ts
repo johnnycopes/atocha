@@ -13,13 +13,10 @@ import {
 import { CheckboxComponent } from '../checkbox/checkbox.component';
 import { TreeComponent } from '../tree/tree.component';
 import { StorybookWrapperComponent } from '../../../.storybook/storybook-wrapper/storybook-wrapper.component';
-import {
-  ALL_SELECTED,
-  Item,
-  ITEM,
-  NestedItemTreeProvider,
-  SOME_SELECTED,
-} from '../../../.storybook/nested-checkboxes.data';
+import { ALL_SELECTED, SOME_SELECTED } from '../../../.storybook/mock-data/nested-checkboxes.data';
+import { NESTED_ITEM } from '../../../.storybook/mock-data/nested-item';
+import { Item } from '../../../.storybook/mock-data/item.interface';
+import { NestedItemTreeProvider } from '../../../.storybook/mock-data/nested-item-tree-provider';
 
 type NestedCheckboxesArgs = NestedCheckboxesComponent<Item> & {
   className: string;
@@ -80,8 +77,8 @@ withCustomStyling.args = createArgs({
 });
 
 function createArgs({
-  item = ITEM,
-  treeProvider = new NestedItemTreeProvider(ITEM),
+  item = NESTED_ITEM,
+  treeProvider = new NestedItemTreeProvider(NESTED_ITEM),
   states = {} as CheckboxStates,
   className = '',
 } = {}) {
