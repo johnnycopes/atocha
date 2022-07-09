@@ -15,7 +15,7 @@ export default {
   ],
   argTypes: {
     onClick: { action: 'clicked' },
-  }
+  },
 } as Meta;
 
 const Template: Story<CheckboxArgs> = (args: CheckboxArgs) => ({

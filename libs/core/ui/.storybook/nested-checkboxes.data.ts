@@ -1,4 +1,7 @@
-import { CheckboxStates, TreeProvider } from "../src/lib/nested-checkboxes/nested-checkboxes.component";
+import {
+  CheckboxStates,
+  TreeProvider,
+} from '../src/lib/nested-checkboxes/nested-checkboxes.component';
 
 export interface Item {
   id: string;
@@ -48,7 +51,7 @@ export const ITEM: Item = {
       ],
     },
   ],
-}
+};
 
 export const SOME_SELECTED: CheckboxStates = {
   Africa: 'indeterminate',

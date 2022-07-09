@@ -1,19 +1,18 @@
-import { CheckboxState } from "@atocha/core/ui";
-
+import { CheckboxState } from '@atocha/core/ui';
 
 describe('NestedCheckboxesComponent', () => {
   let checkboxSelector = '';
   let stories: Record<string, string> = {};
 
   function assertState(place: string, state: CheckboxState): void {
-    cy
-      .get(checkboxSelector)
+    cy.get(checkboxSelector)
       .contains(place)
-      .parent().should('have.class', `checkbox--${state}`);
+      .parent()
+      .should('have.class', `checkbox--${state}`);
   }
 
   beforeEach(() => {
-    checkboxSelector = '[data-test="ui-nested-checkboxes-checkbox"]'
+    checkboxSelector = '[data-test="ui-nested-checkboxes-checkbox"]';
     stories = {
       noneSelected: '/iframe.html?id=nestedcheckboxescomponent--none-selected',
       someSelected: '/iframe.html?id=nestedcheckboxescomponent--some-selected',
@@ -22,16 +21,15 @@ describe('NestedCheckboxesComponent', () => {
   });
 
   it('Renders checkboxes correctly', () => {
-    cy
-      .visit(stories.noneSelected)
+    cy.visit(stories.noneSelected)
       .get(checkboxSelector)
-      .should('have.length', 9)
+      .should('have.length', 9);
   });
 
-  it("Selects entire tree when none are checked and the top one is clicked", () => {
-    cy
-      .visit(stories.noneSelected)
-      .get(checkboxSelector).contains('Africa')
+  it('Selects entire tree when none are checked and the top one is clicked', () => {
+    cy.visit(stories.noneSelected)
+      .get(checkboxSelector)
+      .contains('Africa')
       .click();
 
     assertState('Africa', 'checked');
@@ -45,10 +43,10 @@ describe('NestedCheckboxesComponent', () => {
     assertState('Fes', 'checked');
   });
 
-  it("Deselects entire tree when all are checked and the top one is clicked", () => {
-    cy
-      .visit(stories.allSelected)
-      .get(checkboxSelector).contains('Africa')
+  it('Deselects entire tree when all are checked and the top one is clicked', () => {
+    cy.visit(stories.allSelected)
+      .get(checkboxSelector)
+      .contains('Africa')
       .click();
 
     assertState('Africa', 'unchecked');
@@ -62,10 +60,10 @@ describe('NestedCheckboxesComponent', () => {
     assertState('Fes', 'unchecked');
   });
 
-  it("Correctly affects tree when middle checkbox is clicked", () => {
-    cy
-      .visit(stories.noneSelected)
-      .get(checkboxSelector).contains('Morocco')
+  it('Correctly affects tree when middle checkbox is clicked', () => {
+    cy.visit(stories.noneSelected)
+      .get(checkboxSelector)
+      .contains('Morocco')
       .click();
 
     assertState('Africa', 'indeterminate');
@@ -79,10 +77,10 @@ describe('NestedCheckboxesComponent', () => {
     assertState('Fes', 'checked');
   });
 
-  it("Correctly affects tree when leaf checkbox is clicked", () => {
-    cy
-      .visit(stories.noneSelected)
-      .get(checkboxSelector).contains('Namibia')
+  it('Correctly affects tree when leaf checkbox is clicked', () => {
+    cy.visit(stories.noneSelected)
+      .get(checkboxSelector)
+      .contains('Namibia')
       .click();
 
     assertState('Africa', 'indeterminate');
@@ -97,12 +95,13 @@ describe('NestedCheckboxesComponent', () => {
   });
 
   it('Converts indeterminate states to checked when clicked', () => {
-    cy
-      .visit(stories.someSelected)
-      .get(checkboxSelector).contains('Southern Africa')
+    cy.visit(stories.someSelected)
+      .get(checkboxSelector)
+      .contains('Southern Africa')
       .click()
       .click()
-      .get(checkboxSelector).contains('Northern Africa')
+      .get(checkboxSelector)
+      .contains('Northern Africa')
       .click();
 
     assertState('Africa', 'indeterminate');
