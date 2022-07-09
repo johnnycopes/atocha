@@ -11,18 +11,18 @@ interface Item {
 
 @Component({
   template: `
-    <ui-tree
+    <core-tree
       [node]="leafItem"
       [template]="itemTemplate"
       [getId]="getId"
       [getChildren]="getItems"
-    ></ui-tree>
-    <ui-tree
+    ></core-tree>
+    <core-tree
       [node]="nestedItem"
       [template]="itemTemplate"
       [getId]="getId"
       [getChildren]="getItems"
-    ></ui-tree>
+    ></core-tree>
 
     <ng-template #item let-item let-level="level">
       <h1 data-test="ui-tree-test-item">{{ item.name }} | Level {{ level }}</h1>

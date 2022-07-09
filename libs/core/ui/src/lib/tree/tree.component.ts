@@ -13,7 +13,7 @@ interface TreeNodeContext<T> {
 }
 
 @Component({
-  selector: 'ui-tree',
+  selector: 'core-tree',
   templateUrl: './tree.component.html',
   styleUrls: ['./tree.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

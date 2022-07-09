@@ -21,14 +21,14 @@ export default {
 const Template: Story<CheckboxArgs> = (args: CheckboxArgs) => ({
   props: args,
   template: `
-    <ui-checkbox
+    <core-checkbox
       [indeterminate]="indeterminate"
       [disabled]="disabled"
       [ngModel]="checked"
       (ngModelChange)="checked = $event; onClick($event)"
     >
       {{ slot }}
-    </ui-checkbox>
+    </core-checkbox>
 
     <br>
 
