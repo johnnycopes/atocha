@@ -6,8 +6,6 @@ import {
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
-export type CheckboxState = 'checked' | 'unchecked' | 'indeterminate';
-
 @Component({
   selector: 'ui-checkbox',
   templateUrl: './checkbox.component.html',
@@ -22,27 +20,31 @@ export type CheckboxState = 'checked' | 'unchecked' | 'indeterminate';
   ],
 })
 export class CheckboxComponent implements ControlValueAccessor {
-  @Input() bold = false;
-  @Input() invertColors = false;
-  state: CheckboxState = 'unchecked';
-  private _onChangeFn: (value: CheckboxState) => void = () => undefined;
+  @Input() disabled = false;
+  @Input() indeterminate = false;
+  public checked = false;
+  private _onChangeFn: (value: boolean) => void = () => undefined;
 
   constructor(private _changeDetectorRef: ChangeDetectorRef) {}
 
-  writeValue(value: CheckboxState): void {
-    this.state = value;
+  writeValue(value: boolean): void {
+    this.checked = value;
     this._changeDetectorRef.markForCheck();
   }
 
-  registerOnChange(fn: (value: CheckboxState) => void): void {
+  registerOnChange(fn: (value: boolean) => void): void {
     this._onChangeFn = fn;
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-empty-function
-  registerOnTouched(fn: (value: CheckboxState) => void): void {}
+  registerOnTouched(fn: (value: boolean) => void): void {
+    fn;
+  }
 
-  onChange(): void {
-    this.state = this.state !== 'checked' ? 'checked' : 'unchecked';
-    this._onChangeFn(this.state);
+  // TODO: set this up
+  setDisabledState?(isDisabled: boolean): void;
+
+  onChange(value: boolean): void {
+    this.checked = value;
+    this._onChangeFn(this.checked);
   }
 }

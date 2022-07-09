@@ -1,0 +1,76 @@
+:host {
+  display: inline-flex;
+  position: relative;
+  --border-radius: 2px;
+  --checkbox-size: 14px;
+  --checkbox-background: transparent;
+  --checkbox-color: lightgray;
+  --checkmark-color: gray;
+  --hover-color: lightgray;
+  --label-margin: 4px;
+}
+
+$checkmark-width: 2px;
+
+.container {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  font-size: var(--font-size);
+
+  &:hover {
+    .checkbox {
+      background: var(--hover-color);
+    }
+  }
+
+  &--disabled {
+    &:hover .checkbox {
+      background: none;
+    }
+  }
+}
+
+// Hide the default checkbox input
+.input {
+  position: absolute;
+  margin: 0;
+  opacity: 0;
+}
+
+.checkbox {
+  position: relative;
+  height: var(--checkbox-size);
+  width: var(--checkbox-size);
+  background: var(--checkbox-background);
+  border: $checkmark-width solid var(--checkbox-color);
+  border-radius: var(--border-radius);
+}
+
+.checkmark {
+  display: block;
+  position: absolute;
+  top: calc(var(--checkbox-size) * -0.05);
+  left: calc(var(--checkbox-size) * 0.2);
+  width: calc(var(--checkbox-size) * 0.37);
+  height: calc(var(--checkbox-size) * 0.7);
+  border: solid var(--checkmark-color);
+  border-width: 0 $checkmark-width $checkmark-width 0;
+  transform: rotate(45deg);
+
+  &--indeterminate {
+    top: 50%;
+    left: 50%;
+    width: 8px;
+    height: unset;
+    border: unset;
+    border-top: $checkmark-width solid var(--checkmark-color);
+    transform: translate(-50%, -50%);
+  }
+}
+
+.label {
+  display: inline-flex;
+  margin-left: var(--label-margin);
+  user-select: none;
+}

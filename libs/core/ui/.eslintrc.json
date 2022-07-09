@@ -13,7 +13,7 @@
           "error",
           {
             "type": "attribute",
-            "prefix": "ui",
+            "prefix": ["ui", "atocha"],
             "style": "camelCase"
           }
         ],
@@ -21,10 +21,11 @@
           "error",
           {
             "type": "element",
-            "prefix": "ui",
+            "prefix": ["ui", "atocha"],
             "style": "kebab-case"
           }
-        ]
+        ],
+        "@angular-eslint/no-host-metadata-property": ["off"]
       }
     },
     {

@@ -1,0 +1,38 @@
+<ui-tree
+  [node]="item"
+  [getId]="treeProvider.getId"
+  [getChildren]="treeProvider.getChildren"
+  [template]="checkbox"
+></ui-tree>
+
+<ng-template
+  #checkbox
+  let-item
+  let-level="level"
+  let-parent="level > 0"
+>
+  <ui-checkbox
+    class="checkbox"
+    [class.checkbox--top]="!parent"
+    [class.checkbox--checked]="states[this.treeProvider.getId(item)] === 'checked'"
+    [class.checkbox--indeterminate]="states[this.treeProvider.getId(item)] === 'indeterminate'"
+    [class.checkbox--unchecked]="states[this.treeProvider.getId(item)] === 'unchecked' || !states[this.treeProvider.getId(item)]"
+    [style.margin-left.px]="level * indentation"
+    [indeterminate]="states[this.treeProvider.getId(item)] === 'indeterminate'"
+    data-test="ui-nested-checkboxes-checkbox"
+    [ngModel]="states[this.treeProvider.getId(item)] === 'checked'"
+    (ngModelChange)="onChange($event, item)"
+  >
+    <ng-container
+      [ngTemplateOutlet]="itemTemplate ? itemTemplate : defaultTemplate"
+      [ngTemplateOutletContext]="{
+        $implicit: item,
+        parent: parent
+      }"
+    ></ng-container>
+  </ui-checkbox>
+</ng-template>
+
+<ng-template #defaultTemplate let-item>
+  {{ this.treeProvider.getId(item) }}
+</ng-template>

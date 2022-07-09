@@ -2,7 +2,7 @@
   "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "sourceRoot": "libs/core/ui/src",
-  "prefix": "ui",
+  "prefix": "atocha",
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
@@ -39,6 +39,7 @@
         "outputDir": "dist/storybook/core-ui",
         "configDir": "libs/core/ui/.storybook",
         "browserTarget": "core-ui:build-storybook",
+        "styles": ["libs/core/ui/src/storybook.scss"],
         "compodoc": false
       },
       "configurations": {

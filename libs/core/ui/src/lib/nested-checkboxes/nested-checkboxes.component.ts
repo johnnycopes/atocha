@@ -9,7 +9,7 @@ import {
 } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 
-import { CheckboxState } from '../checkbox/checkbox.component';
+export type CheckboxState = 'checked' | 'unchecked' | 'indeterminate';
 
 export type CheckboxStates = Record<string, CheckboxState>;
 
@@ -38,7 +38,7 @@ export class NestedCheckboxesComponent<T>
   @Input() item!: T;
   @Input() treeProvider!: TreeProvider<T>;
   @Input() itemTemplate: TemplateRef<unknown> | undefined;
-  @Input() invertedRootCheckbox = true;
+  @Input() indentation = 24;
   public states: CheckboxStates = {};
   private _onChangeFn: (value: CheckboxStates) => void = () => ({});
 
@@ -66,7 +66,7 @@ export class NestedCheckboxesComponent<T>
   // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-empty-function
   public registerOnTouched(_fn: (value: CheckboxStates) => void): void {}
 
-  public onChange(state: CheckboxState, item: T): void {
+  public onChange(state: boolean, item: T): void {
     const states = { ...this.states };
     const ancestors = this._getAncestors(item);
     this._updateItemAndDescendantStates(state, item, states);
@@ -86,13 +86,13 @@ export class NestedCheckboxesComponent<T>
   }
 
   private _updateItemAndDescendantStates(
-    state: CheckboxState,
+    state: boolean,
     item: T,
     states: CheckboxStates
   ): CheckboxStates {
     const id = this.treeProvider.getId(item);
     const children = this.treeProvider.getChildren(item);
-    states[id] = state;
+    states[id] = state ? 'checked' : 'unchecked';
     if (children.length) {
       children.forEach((child) =>
         this._updateItemAndDescendantStates(state, child, states)

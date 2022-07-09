@@ -1,0 +1,20 @@
+<label class="container"
+  [class.container--disabled]="disabled"
+>
+  <input class="input"
+    type="checkbox"
+    [indeterminate]="indeterminate"
+    [disabled]="disabled"
+    [ngModel]="checked"
+    (ngModelChange)="onChange($event)"
+  />
+  <div class="checkbox">
+    <div *ngIf="checked || indeterminate"
+      class="checkmark"
+      [class.checkmark--indeterminate]="indeterminate"
+    ></div>
+  </div>
+  <div class="label">
+    <ng-content></ng-content>
+  </div>
+</label>
