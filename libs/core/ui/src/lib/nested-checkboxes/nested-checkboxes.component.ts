@@ -39,12 +39,12 @@ export class NestedCheckboxesComponent<T>
   @Input() treeProvider!: TreeProvider<T>;
   @Input() itemTemplate: TemplateRef<unknown> | undefined;
   @Input() indentation = 24;
-  public states: CheckboxStates = {};
+  states: CheckboxStates = {};
   private _onChangeFn: (value: CheckboxStates) => void = () => ({});
 
   constructor(private changeDetectorRef: ChangeDetectorRef) {}
 
-  public ngOnInit(): void {
+  ngOnInit(): void {
     if (!this.item || !this.treeProvider) {
       throw new Error(
         'Missing input(s): item and treeProvider must be passed to the nested-checkboxes component'
@@ -52,21 +52,21 @@ export class NestedCheckboxesComponent<T>
     }
   }
 
-  public writeValue(value: CheckboxStates): void {
+  writeValue(value: CheckboxStates): void {
     if (value) {
       this.states = value;
     }
     this.changeDetectorRef.markForCheck();
   }
 
-  public registerOnChange(fn: (value: CheckboxStates) => void): void {
+  registerOnChange(fn: (value: CheckboxStates) => void): void {
     this._onChangeFn = fn;
   }
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-empty-function
-  public registerOnTouched(_fn: (value: CheckboxStates) => void): void {}
+  registerOnTouched(_fn: (value: CheckboxStates) => void): void {}
 
-  public onChange(state: boolean, item: T): void {
+  onChange(state: boolean, item: T): void {
     const states = { ...this.states };
     const ancestors = this._getAncestors(item);
     this._updateItemAndDescendantStates(state, item, states);
