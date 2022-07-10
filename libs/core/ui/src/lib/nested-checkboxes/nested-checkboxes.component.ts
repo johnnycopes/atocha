@@ -10,7 +10,7 @@ import {
   SimpleChanges,
 } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
-import { dedupe } from '@atocha/core/util';
+import { dedupe, getItemsRecursively } from '@atocha/core/util';
 
 export type CheckboxState = 'checked' | 'unchecked' | 'indeterminate';
 
@@ -49,6 +49,7 @@ export class NestedCheckboxesComponent<T> implements OnChanges, ControlValueAcce
   @Input() treeProvider!: TreeProvider<T>;
   @Input() itemTemplate: TemplateRef<unknown> | undefined;
   @Input() indentation = 24;
+  indeterminates: string[] = [];
   model: string[] = [];
   private _itemsKeyedById: ItemsRecord<T> = {};
   private _onChangeFn: (value: string[]) => void = () => ({});
@@ -91,24 +92,33 @@ export class NestedCheckboxesComponent<T> implements OnChanges, ControlValueAcce
   }
 
   onChange(checked: boolean, item: T): void {
-    const parent = this._itemsKeyedById[this.getId(item)].parent;
+    // const parent = this._itemsKeyedById[this.getId(item)].parent;
     let model = [...this.model];
 
-    if (!parent) {
-      model = checked ? Object.keys(this._itemsKeyedById) : [];
+    const itemAndDescendantsIds = this._getIds(getItemsRecursively(item, this.getChildren));
+
+    if (checked) {
+      model = [...model, ...itemAndDescendantsIds];
     } else {
-      const id = this.getId(item);
-      const ids = this._getIds(this.getChildren(parent));
-      const parentId = this.getId(parent);
-
-      model = checked ? [...model, id] : model.filter(modelId => modelId !== id);
-
-      if (ids.every(id => model.includes(id))) {
-        model = [...model, parentId];
-      } else {
-        model = model.filter(modelValue => modelValue !== parentId);
-      }
+      model = model.filter(id => !itemAndDescendantsIds.includes(id));
     }
+
+    // TODO: recursively look up from the target and either make each parent indeterminate or unchecked
+    // if (!parent) {
+    //   model = checked ? Object.keys(this._itemsKeyedById) : [];
+    // } else {
+    //   const id = this.getId(item);
+    //   const ids = this._getIds(this.getChildren(parent));
+    //   const parentId = this.getId(parent);
+
+    //   model = checked ? [...model, id] : model.filter(modelId => modelId !== id);
+
+    //   if (ids.every(id => model.includes(id))) {
+    //     model = [...model, parentId];
+    //   } else {
+    //     model = model.filter(modelValue => modelValue !== parentId);
+    //   }
+    // }
 
     this.model = dedupe(model);
     this._onChangeFn(this.model);

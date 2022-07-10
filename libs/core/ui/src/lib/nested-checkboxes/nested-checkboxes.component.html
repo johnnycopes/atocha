@@ -13,12 +13,12 @@
 >
   <core-checkbox
     class="checkbox"
+    [indeterminate]="indeterminates.includes(getId(item))"
     [class.checkbox--top]="!parent"
+    [class.checkbox--indeterminate]="indeterminates.includes(getId(item))"
     [class.checkbox--checked]="model.includes(getId(item))"
-    [class.checkbox--indeterminate]="isIndeterminate(item)"
-    [class.checkbox--unchecked]="!model.includes(getId(item)) && !isIndeterminate(item)"
+    [class.checkbox--unchecked]="!model.includes(getId(item)) && !indeterminates.includes(getId(item))"
     [style.margin-left.px]="level * indentation"
-    [indeterminate]="isIndeterminate(item)"
     data-test="ui-nested-checkboxes-checkbox"
     [ngModel]="model.includes(getId(item))"
     (ngModelChange)="onChange($event, item)"
