@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/member-ordering */
 import {
   Component,
   Input,
@@ -8,6 +9,7 @@ import {
   ChangeDetectorRef,
 } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
+import { dedupe, getItemsRecursively } from '@atocha/core/util';
 
 export type CheckboxState = 'checked' | 'unchecked' | 'indeterminate';
 
@@ -18,6 +20,12 @@ export interface TreeProvider<T> {
   getChildren(item: T): T[];
   getParent?(item: T): T | undefined;
 }
+
+// interface NestedCheckboxItem {
+//   id: string;
+//   parentId?: string;
+//   children?: NestedCheckboxItem[];
+// }
 
 @Component({
   selector: 'core-nested-checkboxes',
@@ -32,106 +40,90 @@ export interface TreeProvider<T> {
     },
   ],
 })
-export class NestedCheckboxesComponent<T>
-  implements ControlValueAccessor, OnInit
-{
-  @Input() item!: T;
+export class NestedCheckboxesComponent<T> implements ControlValueAccessor {
+  @Input()
+  set item(value: T | undefined) {
+    if (!value) {
+      throw new Error('Item must be defined');
+    }
+    console.log(value);
+    this._item = value;
+  };
+  get item(): T {
+    return this._item;
+  }
+  private _item!: T;
+  @Input() getId: (item: T) => string = () => '';
+  @Input() getChildren: (item: T) => T[] = () => [];
   @Input() treeProvider!: TreeProvider<T>;
   @Input() itemTemplate: TemplateRef<unknown> | undefined;
   @Input() indentation = 24;
-  states: CheckboxStates = {};
-  private _onChangeFn: (value: CheckboxStates) => void = () => ({});
+  model: string[] = [];
+  private _onChangeFn: (value: string[]) => void = () => ({});
 
   constructor(private changeDetectorRef: ChangeDetectorRef) {}
 
-  ngOnInit(): void {
-    if (!this.item || !this.treeProvider) {
-      throw new Error(
-        'Missing input(s): item and treeProvider must be passed to the nested-checkboxes component'
-      );
-    }
-  }
-
-  writeValue(value: CheckboxStates): void {
+  writeValue(value: string[]): void {
     if (value) {
-      this.states = value;
+      this.model = value;
     }
     this.changeDetectorRef.markForCheck();
   }
 
-  registerOnChange(fn: (value: CheckboxStates) => void): void {
+  registerOnChange(fn: (value: string[]) => void): void {
     this._onChangeFn = fn;
   }
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-empty-function
-  registerOnTouched(_fn: (value: CheckboxStates) => void): void {}
+  registerOnTouched(_fn: (value: string[]) => void): void {}
 
-  onChange(state: boolean, item: T): void {
-    const states = { ...this.states };
-    const ancestors = this._getAncestors(item);
-    this._updateItemAndDescendantStates(state, item, states);
-    this._updateAncestorStates(ancestors, states);
+  isIndeterminate(item: T, model: string[]): boolean {
+    const children = this.getChildren(item);
 
-    this.states = states;
-    this._onChangeFn(this.states);
+		if (children?.length) {
+			const validChildrenIds = this._getIds(children);
+			const validChildrenSelected = validChildrenIds.reduce((accum, childId) => {
+				if (model.includes(childId)) {
+					return accum + 1;
+				}
+				return accum;
+			}, 0);
+			return validChildrenSelected > 0 && validChildrenSelected < validChildrenIds.length;
+		}
+
+    return false;
   }
 
-  private _getAncestors(item: T): T[] {
-    const parent =
-      this.treeProvider.getParent && this.treeProvider.getParent(item);
-    if (parent) {
-      return [parent, ...this._getAncestors(parent)];
-    }
-    return [];
+  private _getIds(items: T[]): string[] {
+    return items.map(item => this.getId(item));
   }
 
-  private _updateItemAndDescendantStates(
-    state: boolean,
-    item: T,
-    states: CheckboxStates
-  ): CheckboxStates {
-    const id = this.treeProvider.getId(item);
-    const children = this.treeProvider.getChildren(item);
-    states[id] = state ? 'checked' : 'unchecked';
-    if (children.length) {
-      children.forEach((child) =>
-        this._updateItemAndDescendantStates(state, child, states)
-      );
-    }
-    return states;
+  onChange(checked: boolean, item: T): void {
+    const items = getItemsRecursively(item, this.getChildren);
+		const ids = this._getIds(items);
+		let updatedModel: string[];
+
+		if (checked) {
+			updatedModel = [...this.model, ...ids];
+		} else {
+			updatedModel = this.model.filter(modelValue => !ids.includes(modelValue));
+		}
+
+    this._onChangeFn(updatedModel);
   }
 
-  private _updateAncestorStates(
-    parents: T[],
-    states: CheckboxStates
-  ): CheckboxStates {
-    parents.forEach((parentItem) => {
-      const parentId = this.treeProvider.getId(parentItem);
-      const parentChildren = this.treeProvider.getChildren(parentItem);
-      const parentChildrenStates = parentChildren.reduce(
-        (accum, childItem) => {
-          const childId = this.treeProvider.getId(childItem);
-          const childState = states[childId] || 'unchecked'; // set to 'unchecked' if not present in states dict
-          return {
-            ...accum,
-            [childState]: accum[childState] + 1,
-          };
-        },
-        {
-          checked: 0,
-          indeterminate: 0,
-          unchecked: 0,
-        }
-      );
+  // private _onChildrenChange(model: string[], parent: T): void {
+	// 	const children = this.getChildren(parent);
+	// 	const ids = this._getIds(children);
+	// 	const parentId = this.getId(parent);
+	// 	let updatedModel: string[];
 
-      if (parentChildrenStates.checked === parentChildren.length) {
-        states[parentId] = 'checked';
-      } else if (parentChildrenStates.unchecked === parentChildren.length) {
-        states[parentId] = 'unchecked';
-      } else {
-        states[parentId] = 'indeterminate';
-      }
-    });
-    return states;
-  }
+	// 	if (ids.every(id => model.includes(id))) {
+	// 		updatedModel = [...model, parentId];
+	// 	} else {
+	// 		updatedModel = model.filter(modelValue => modelValue !== parentId);
+	// 	}
+
+  //   this._onChangeFn(dedupe(updatedModel))
+	// }
 }

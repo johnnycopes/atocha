@@ -1,7 +1,7 @@
 <core-tree
   [node]="item"
-  [getId]="treeProvider.getId"
-  [getChildren]="treeProvider.getChildren"
+  [getId]="getId"
+  [getChildren]="getChildren"
   [template]="checkbox"
 ></core-tree>
 
@@ -14,13 +14,13 @@
   <core-checkbox
     class="checkbox"
     [class.checkbox--top]="!parent"
-    [class.checkbox--checked]="states[this.treeProvider.getId(item)] === 'checked'"
-    [class.checkbox--indeterminate]="states[this.treeProvider.getId(item)] === 'indeterminate'"
-    [class.checkbox--unchecked]="states[this.treeProvider.getId(item)] === 'unchecked' || !states[this.treeProvider.getId(item)]"
+    [class.checkbox--checked]="model.includes(getId(item))"
+    [class.checkbox--indeterminate]="isIndeterminate(item, model)"
+    [class.checkbox--unchecked]="!model.includes(getId(item)) && !isIndeterminate(item, model)"
     [style.margin-left.px]="level * indentation"
-    [indeterminate]="states[this.treeProvider.getId(item)] === 'indeterminate'"
+    [indeterminate]="isIndeterminate(item, model)"
     data-test="ui-nested-checkboxes-checkbox"
-    [ngModel]="states[this.treeProvider.getId(item)] === 'checked'"
+    [ngModel]="model.includes(getId(item))"
     (ngModelChange)="onChange($event, item)"
   >
     <ng-container
@@ -34,5 +34,5 @@
 </ng-template>
 
 <ng-template #defaultTemplate let-item>
-  {{ this.treeProvider.getId(item) }}
+  {{ this.getId(item) }}
 </ng-template>
