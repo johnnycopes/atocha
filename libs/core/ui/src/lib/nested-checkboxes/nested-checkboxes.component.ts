@@ -76,26 +76,12 @@ export class NestedCheckboxesComponent<T> implements OnChanges, ControlValueAcce
   // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-empty-function
   registerOnTouched(_fn: (value: string[]) => void): void {}
 
-  isIndeterminate(item: T): boolean {
-		const children = this.getChildren(item);
-		if (children?.length) {
-			const validChildrenIds = this._getIds(children);
-			const validChildrenSelected = validChildrenIds.reduce((accum, childId) => {
-				if (this.model.includes(childId)) {
-					return accum + 1;
-				}
-				return accum;
-			}, 0);
-			return validChildrenSelected > 0 && validChildrenSelected < validChildrenIds.length;
-		}
-    return false;
-  }
-
   onChange(checked: boolean, item: T): void {
-    // const parent = this._itemsKeyedById[this.getId(item)].parent;
     let model = [...this.model];
+    let indeterminates = [...this.indeterminates];
 
     const itemAndDescendantsIds = this._getIds(getItemsRecursively(item, this.getChildren));
+    indeterminates = indeterminates.filter(id => !itemAndDescendantsIds.includes(id));
 
     if (checked) {
       model = [...model, ...itemAndDescendantsIds];
@@ -103,29 +89,49 @@ export class NestedCheckboxesComponent<T> implements OnChanges, ControlValueAcce
       model = model.filter(id => !itemAndDescendantsIds.includes(id));
     }
 
-    // TODO: recursively look up from the target and either make each parent indeterminate or unchecked
-    // if (!parent) {
-    //   model = checked ? Object.keys(this._itemsKeyedById) : [];
-    // } else {
-    //   const id = this.getId(item);
-    //   const ids = this._getIds(this.getChildren(parent));
-    //   const parentId = this.getId(parent);
-
-    //   model = checked ? [...model, id] : model.filter(modelId => modelId !== id);
-
-    //   if (ids.every(id => model.includes(id))) {
-    //     model = [...model, parentId];
-    //   } else {
-    //     model = model.filter(modelValue => modelValue !== parentId);
-    //   }
-    // }
+    let current: T | undefined = item;
+    while (current) {
+      const parent = this._getParent(current);
+      if (parent) {
+        const indeterminate = this._isIndeterminate(parent, model, indeterminates);
+        const parentId = this.getId(parent);
+        if (indeterminate) {
+          indeterminates = [...indeterminates, parentId];
+        } else {
+          indeterminates = indeterminates.filter(id => parentId !== id);
+        }
+        current = parent;
+      } else {
+        current = undefined;
+      }
+    }
 
     this.model = dedupe(model);
+    this.indeterminates = dedupe(indeterminates);
     this._onChangeFn(this.model);
   }
 
   private _getIds(items: T[]): string[] {
     return items.map(item => this.getId(item));
+  }
+
+  private _getParent(item: T): T | undefined {
+    return this._itemsKeyedById[this.getId(item)].parent;
+  }
+
+  private _isIndeterminate(item: T, model: string[], indeterminates: string[]): boolean {
+		const children = this.getChildren(item);
+		if (children?.length) {
+			const validChildrenIds = this._getIds(children);
+			const validChildrenSelected = validChildrenIds.reduce((accum, childId) => {
+				if (model.includes(childId) || indeterminates.includes(childId)) {
+					return accum + 1;
+				}
+				return accum;
+			}, 0);
+			return validChildrenSelected > 0 && validChildrenSelected < validChildrenIds.length;
+		}
+    return false;
   }
 
   private _createParentIdsRecord(item: T): ItemsRecord<T> {
