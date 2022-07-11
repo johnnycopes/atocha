@@ -53,6 +53,10 @@ export class NestedCheckboxesComponent<T> implements OnChanges, ControlValueAcce
   model: string[] = [];
   private _itemsKeyedById: ItemsRecord<T> = {};
   private _onChangeFn: (value: string[]) => void = () => ({});
+  private _getParent = (item: T) => {
+    const parent = this._itemsKeyedById[this.getId(item)].parent;
+    return parent ? [parent] : [];
+  };
 
   constructor(private changeDetectorRef: ChangeDetectorRef) {}
 
@@ -80,6 +84,7 @@ export class NestedCheckboxesComponent<T> implements OnChanges, ControlValueAcce
     let model = [...this.model];
     let indeterminates = [...this.indeterminates];
 
+    // Item and all descendants become either checked or unchecked and they lose any indeterminate status
     const itemAndDescendantsIds = this._getIds(getItemsRecursively(item, this.getChildren));
     indeterminates = indeterminates.filter(id => !itemAndDescendantsIds.includes(id));
 
@@ -89,22 +94,38 @@ export class NestedCheckboxesComponent<T> implements OnChanges, ControlValueAcce
       model = model.filter(id => !itemAndDescendantsIds.includes(id));
     }
 
-    let current: T | undefined = item;
-    while (current) {
-      const parent = this._getParent(current);
-      if (parent) {
-        const indeterminate = this._isIndeterminate(parent, model, indeterminates);
-        const parentId = this.getId(parent);
-        if (indeterminate) {
-          indeterminates = [...indeterminates, parentId];
-        } else {
-          indeterminates = indeterminates.filter(id => parentId !== id);
+    // Ancestors can change to checked, unchecked, or indeterminate
+    const ancestors = getItemsRecursively(item, this._getParent)
+    ancestors.shift();
+
+    ancestors.forEach(ancestor => {
+      const childrenIds = this._getIds(this.getChildren(ancestor));
+      const childrenStates = childrenIds.reduce(
+        (accum, childId) => {
+          if (model.includes(childId)) {
+            return { ...accum, checked: accum.checked + 1 };
+          } else if (indeterminates.includes(childId)) {
+            return { ...accum, indeterminate: accum.indeterminate + 1 };
+          }
+          return { ...accum, unchecked: accum.unchecked + 1 };
+        }, {
+          checked: 0,
+          indeterminate: 0,
+          unchecked: 0,
         }
-        current = parent;
+      );
+
+      const ancestorId = this.getId(ancestor);
+      if (childrenStates.checked === childrenIds.length) {
+        model = [...model, ancestorId];
+        indeterminates = indeterminates.filter(id => ancestorId !== id);
+      } else if (childrenStates.unchecked === childrenIds.length) {
+        model = model.filter(id => ancestorId !== id);
+        indeterminates = indeterminates.filter(id => ancestorId !== id);
       } else {
-        current = undefined;
+        indeterminates = [...indeterminates, ancestorId];
       }
-    }
+    });
 
     this.model = dedupe(model);
     this.indeterminates = dedupe(indeterminates);
@@ -113,25 +134,6 @@ export class NestedCheckboxesComponent<T> implements OnChanges, ControlValueAcce
 
   private _getIds(items: T[]): string[] {
     return items.map(item => this.getId(item));
-  }
-
-  private _getParent(item: T): T | undefined {
-    return this._itemsKeyedById[this.getId(item)].parent;
-  }
-
-  private _isIndeterminate(item: T, model: string[], indeterminates: string[]): boolean {
-		const children = this.getChildren(item);
-		if (children?.length) {
-			const validChildrenIds = this._getIds(children);
-			const validChildrenSelected = validChildrenIds.reduce((accum, childId) => {
-				if (model.includes(childId) || indeterminates.includes(childId)) {
-					return accum + 1;
-				}
-				return accum;
-			}, 0);
-			return validChildrenSelected > 0 && validChildrenSelected < validChildrenIds.length;
-		}
-    return false;
   }
 
   private _createParentIdsRecord(item: T): ItemsRecord<T> {
