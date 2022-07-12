@@ -49,8 +49,6 @@ export class NestedCheckboxesComponent<T> implements OnChanges, ControlValueAcce
   @Input() itemTemplate: TemplateRef<unknown> | undefined;
   @Input() indentation = 24;
   states: CheckboxStates = {};
-  indeterminates: string[] = [];
-  model: string[] = [];
   private _itemsKeyedById: ItemsRecord<T> = {};
   private _onChangeFn: (value: CheckboxStates) => void = () => ({});
   private _getParent = (item: T): T[] => {
@@ -58,7 +56,7 @@ export class NestedCheckboxesComponent<T> implements OnChanges, ControlValueAcce
     return parentId ? [this._itemsKeyedById[parentId].item] : [];
   };
 
-  constructor(private changeDetectorRef: ChangeDetectorRef) {}
+  constructor(private _changeDetectorRef: ChangeDetectorRef) {}
 
   ngOnChanges({ item }: SimpleChanges): void {
     if (item) {
@@ -70,7 +68,7 @@ export class NestedCheckboxesComponent<T> implements OnChanges, ControlValueAcce
     if (value) {
       this.states = value;
     }
-    this.changeDetectorRef.markForCheck();
+    this._changeDetectorRef.markForCheck();
   }
 
   registerOnChange(fn: (value: CheckboxStates) => void): void {
@@ -90,16 +88,14 @@ export class NestedCheckboxesComponent<T> implements OnChanges, ControlValueAcce
     this._onChangeFn(this.states);
   }
 
-  private _getIds(items: T[]): string[] {
-    return items.map(item => this.getId(item));
-  }
-
   private _updateItemAndDescendantStates({ item, checked, states }: {
     item: T,
     checked: boolean,
     states: CheckboxStates
   }): CheckboxStates {
-    const itemAndDescendantsIds = this._getIds(getItemsRecursively(item, this.getChildren));
+    const itemAndDescendantsIds = getItemsRecursively(item, this.getChildren).map(
+      item => this.getId(item)
+    );
 
     itemAndDescendantsIds.forEach(id => {
       if (checked) {
@@ -119,26 +115,21 @@ export class NestedCheckboxesComponent<T> implements OnChanges, ControlValueAcce
     const ancestors = getItemsRecursively(item, this._getParent)
     ancestors.shift(); // TODO: make this unnecssary
 
-    ancestors.forEach((ancestor) => {
+    ancestors.forEach(ancestor => {
       const ancestorId = this.getId(ancestor);
       const ancestorChildren = this.getChildren(ancestor);
-      const ancestorChildrenStates = ancestorChildren.reduce(
-        (accum, child) => {
-          const childId = this.getId(child);
-          const childState = states[childId];
-          if (childState) {
-            return {
-              ...accum,
-              [childState]: accum[childState] + 1,
-            };
-          }
-          return accum;
-        },
-        {
-          checked: 0,
-          indeterminate: 0,
-        } as Record<CheckboxState, number>
-      );
+      const ancestorChildrenStates: Record<CheckboxState, number> = {
+        checked: 0,
+        indeterminate: 0,
+      };
+
+      ancestorChildren.forEach(child => {
+        const childId = this.getId(child);
+        const childState = states[childId];
+        if (childState) {
+          ancestorChildrenStates[childState]++;
+        }
+      });
 
       if (ancestorChildrenStates.checked === ancestorChildren.length) {
         states[ancestorId] = 'checked';
