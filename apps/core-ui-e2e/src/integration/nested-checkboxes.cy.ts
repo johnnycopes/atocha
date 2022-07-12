@@ -43,6 +43,20 @@ describe('NestedCheckboxesComponent', () => {
         .should('have.length', 9);
     });
 
+    it('Displays all states correctly when model is passed in', () => {
+      cy.visit(stories.nested.someSelected);
+
+      assertState('Africa', 'indeterminate');
+      assertState('Southern Africa', 'indeterminate');
+      assertState('Swaziland', 'checked');
+      assertState('Namibia', 'unchecked');
+      assertState('Central Africa', 'unchecked');
+      assertState('Northern Africa', 'indeterminate');
+      assertState('Morocco', 'indeterminate');
+      assertState('Marrakesh', 'unchecked');
+      assertState('Fes', 'checked');
+    });
+
     it('Selects entire tree when none are checked and the top one is clicked', () => {
       cy.visit(stories.nested.noneSelected)
         .get(checkboxSelector)
