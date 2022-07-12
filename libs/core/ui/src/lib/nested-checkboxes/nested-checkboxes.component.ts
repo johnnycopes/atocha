@@ -10,10 +10,10 @@ import {
   SimpleChanges,
 } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
-import { dedupe, getItemsRecursively } from '@atocha/core/util';
+
+import { getItemsRecursively } from '@atocha/core/util';
 
 export type CheckboxState = 'checked' | 'indeterminate';
-
 export type CheckboxStates = Record<string, CheckboxState>;
 
 export interface TreeProvider<T> {
@@ -81,59 +81,75 @@ export class NestedCheckboxesComponent<T> implements OnChanges, ControlValueAcce
   registerOnTouched(_fn: (value: CheckboxStates) => void): void {}
 
   onChange(checked: boolean, item: T): void {
-    // let model = [...this.model];
-    // let indeterminates = [...this.indeterminates];
+    let states = { ...this.states };
 
-    // // Item and all descendants become either checked or unchecked and they lose any indeterminate status
-    // const itemAndDescendantsIds = this._getIds(getItemsRecursively(item, this.getChildren));
-    // indeterminates = indeterminates.filter(id => !itemAndDescendantsIds.includes(id));
+    states = this._updateItemAndDescendantStates({ item, checked, states });
+    states = this._updateAncestorStates(item, states);
 
-    // if (checked) {
-    //   model = [...model, ...itemAndDescendantsIds];
-    // } else {
-    //   model = model.filter(id => !itemAndDescendantsIds.includes(id));
-    // }
-
-    // // Ancestors can change to checked, unchecked, or indeterminate
-    // const ancestors = getItemsRecursively(item, this._getParent)
-    // ancestors.shift();
-
-    // ancestors.forEach(ancestor => {
-    //   const childrenIds = this._getIds(this.getChildren(ancestor));
-    //   const childrenStates = childrenIds.reduce(
-    //     (accum, childId) => {
-    //       if (model.includes(childId)) {
-    //         return { ...accum, checked: accum.checked + 1 };
-    //       } else if (indeterminates.includes(childId)) {
-    //         return { ...accum, indeterminate: accum.indeterminate + 1 };
-    //       }
-    //       return { ...accum, unchecked: accum.unchecked + 1 };
-    //     }, {
-    //       checked: 0,
-    //       indeterminate: 0,
-    //       unchecked: 0,
-    //     }
-    //   );
-
-    //   const ancestorId = this.getId(ancestor);
-    //   if (childrenStates.checked === childrenIds.length) {
-    //     model = [...model, ancestorId];
-    //     indeterminates = indeterminates.filter(id => ancestorId !== id);
-    //   } else if (childrenStates.unchecked === childrenIds.length) {
-    //     model = model.filter(id => ancestorId !== id);
-    //     indeterminates = indeterminates.filter(id => ancestorId !== id);
-    //   } else {
-    //     indeterminates = [...indeterminates, ancestorId];
-    //   }
-    // });
-
-    // this.model = dedupe(model);
-    // this.indeterminates = dedupe(indeterminates);
-    // this._onChangeFn(this.model);
+    this.states = states;
+    this._onChangeFn(this.states);
   }
 
   private _getIds(items: T[]): string[] {
     return items.map(item => this.getId(item));
+  }
+
+  private _updateItemAndDescendantStates({ item, checked, states }: {
+    item: T,
+    checked: boolean,
+    states: CheckboxStates
+  }): CheckboxStates {
+    const itemAndDescendantsIds = this._getIds(getItemsRecursively(item, this.getChildren));
+
+    itemAndDescendantsIds.forEach(id => {
+      if (checked) {
+        states[id] = 'checked';
+      } else {
+        delete states[id];
+      }
+    });
+
+    return states;
+  }
+
+  private _updateAncestorStates(
+    item: T,
+    states: CheckboxStates
+  ): CheckboxStates {
+    const ancestors = getItemsRecursively(item, this._getParent)
+    ancestors.shift(); // TODO: make this unnecssary
+
+    ancestors.forEach((ancestor) => {
+      const ancestorId = this.getId(ancestor);
+      const ancestorChildren = this.getChildren(ancestor);
+      const ancestorChildrenStates = ancestorChildren.reduce(
+        (accum, child) => {
+          const childId = this.getId(child);
+          const childState = states[childId];
+          if (childState) {
+            return {
+              ...accum,
+              [childState]: accum[childState] + 1,
+            };
+          }
+          return accum;
+        },
+        {
+          checked: 0,
+          indeterminate: 0,
+        } as Record<CheckboxState, number>
+      );
+
+      if (ancestorChildrenStates.checked === ancestorChildren.length) {
+        states[ancestorId] = 'checked';
+      } else if (ancestorChildrenStates.checked > 0 || ancestorChildrenStates.indeterminate > 0) {
+        states[ancestorId] = 'indeterminate';
+      } else {
+        delete states[ancestorId];
+      }
+    });
+
+    return states;
   }
 
   private _createParentIdsRecord(item: T): ItemsRecord<T> {
