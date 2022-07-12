@@ -13,18 +13,11 @@ import {
 import { CheckboxComponent } from '../checkbox/checkbox.component';
 import { TreeComponent } from '../tree/tree.component';
 import { StorybookWrapperComponent } from '../../../.storybook/storybook-wrapper/storybook-wrapper.component';
-import { NestedItem, NESTED_ITEM } from '../../../.storybook/mock-data/nested-item';
-import {
-  ALL_SELECTED,
-  SOME_SELECTED,
-} from '../../../.storybook/mock-data/checkbox-states';
+import { ALL_SELECTED, getChildren, getId, NestedItem, NESTED_ITEM, SOME_SELECTED } from '../../../.storybook/mock-data/nested-checkboxes';
 
 type NestedCheckboxesArgs = Pick<NestedCheckboxesComponent<NestedItem>, 'states'> & {
   className: string;
 };
-
-const getId = ({ id }: NestedItem) => id;
-const getChildren = ({ children }: NestedItem) => children ?? [];
 
 export default {
   title: 'NestedCheckboxesComponent',
