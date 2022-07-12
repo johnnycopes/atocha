@@ -9,7 +9,6 @@ import {
 import {
   CheckboxStates,
   NestedCheckboxesComponent,
-  TreeProvider,
 } from './nested-checkboxes.component';
 import { CheckboxComponent } from '../checkbox/checkbox.component';
 import { TreeComponent } from '../tree/tree.component';
@@ -20,13 +19,13 @@ import {
   SOME_SELECTED,
 } from '../../../.storybook/mock-data/checkbox-states';
 import { NESTED_ITEM } from '../../../.storybook/mock-data/nested-item';
-import { FLAT_ITEMS } from '../../../.storybook/mock-data/flat-items';
-import { NestedItemTreeProvider } from '../../../.storybook/mock-data/nested-item-tree-provider';
-import { FlatItemsTreeProvider } from '../../../.storybook/mock-data/flat-items-tree-provider';
 
-type NestedCheckboxesArgs = NestedCheckboxesComponent<Item> & {
+type NestedCheckboxesArgs = Pick<NestedCheckboxesComponent<Item>, 'states'> & {
   className: string;
 };
+
+const getId = ({ id }: Item) => id;
+const getChildren = ({ children }: Item) => children ?? [];
 
 export default {
   title: 'NestedCheckboxesComponent',
@@ -47,94 +46,50 @@ export default {
   },
 } as Meta<NestedCheckboxesArgs>;
 
-const Template: Story<NestedCheckboxesArgs> = (args: NestedCheckboxesArgs) => ({
-  props: args,
+const Template: Story<NestedCheckboxesArgs> = ({ states, className }: NestedCheckboxesArgs) => ({
+  props: {
+    item: NESTED_ITEM,
+    getId,
+    getChildren,
+    states,
+    className,
+  },
   template: `
     <core-nested-checkboxes
       [class]="className"
       [item]="item"
-      [treeProvider]="treeProvider"
-      [getId]="treeProvider.getId"
-      [getChildren]="treeProvider.getChildren"
+      [getId]="getId"
+      [getChildren]="getChildren"
       [ngModel]="states"
       (ngModelChange)="states = $event; onClick($event)"
     ></core-nested-checkboxes>
-
-    <br />
-
-    <p>states: {{ states | json }}</p>
   `,
 });
 
 export const nestedItemWithNoneSelected = Template.bind({});
-nestedItemWithNoneSelected.args = createNestedItemArgs({});
+nestedItemWithNoneSelected.args = {
+  states: {},
+};
 
 export const nestedItemWithSomeSelected = Template.bind({});
-nestedItemWithSomeSelected.args = createNestedItemArgs({
+nestedItemWithSomeSelected.args = createArgs({
   states: SOME_SELECTED,
 });
 
 export const nestedItemWithAllSelected = Template.bind({});
-nestedItemWithAllSelected.args = createNestedItemArgs({
+nestedItemWithAllSelected.args = createArgs({
   states: ALL_SELECTED,
 });
 
 export const nestedItemWithCustomStyling = Template.bind({});
-nestedItemWithCustomStyling.args = createNestedItemArgs({
+nestedItemWithCustomStyling.args = createArgs({
   states: SOME_SELECTED,
   className: 'custom-nested-checkboxes',
 });
 
-export const flatItemWithNoneSelected = Template.bind({});
-flatItemWithNoneSelected.args = createFlatArgs({});
-
-export const flatItemWithSomeSelected = Template.bind({});
-flatItemWithSomeSelected.args = createFlatArgs({
-  states: SOME_SELECTED,
-});
-
-export const flatItemWithAllSelected = Template.bind({});
-flatItemWithAllSelected.args = createFlatArgs({
-  states: ALL_SELECTED,
-});
-
-export const flatItemWithCustomStyling = Template.bind({});
-flatItemWithCustomStyling.args = createFlatArgs({
-  states: SOME_SELECTED,
-  className: 'custom-nested-checkboxes',
-});
-
-function createNestedItemArgs({
-  states = {} as CheckboxStates,
-  className = '',
+function createArgs({ states = {}, className = '' }: {
+  states?: CheckboxStates;
+  className?: string;
 }) {
-  return createArgs({
-    item: NESTED_ITEM,
-    treeProvider: new NestedItemTreeProvider(NESTED_ITEM),
-    states,
-    className,
-  });
-}
-
-function createFlatArgs({ states = {} as CheckboxStates, className = '' }) {
-  return createArgs({
-    item: FLAT_ITEMS[0],
-    treeProvider: new FlatItemsTreeProvider(FLAT_ITEMS),
-    states,
-    className,
-  });
-}
-
-function createArgs<T>({
-  item,
-  treeProvider,
-  states = {},
-  className = '',
-}: {
-  item: T;
-  treeProvider: TreeProvider<T>;
-  states: CheckboxStates;
-  className: string;
-}) {
-  return { item, treeProvider, states, className };
+  return { states, className };
 }
