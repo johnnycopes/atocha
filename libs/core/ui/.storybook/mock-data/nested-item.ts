@@ -1,42 +1,28 @@
-import { Item } from './item.interface';
 
-export const NESTED_ITEM: Item = {
+export interface NestedItem {
+  id: string;
+  children?: NestedItem[];
+}
+
+export const NESTED_ITEM: NestedItem = {
   id: 'Africa',
   children: [
     {
       id: 'Southern Africa',
-      parentId: 'Africa',
       children: [
-        {
-          id: 'Swaziland',
-          parentId: 'Southern Africa',
-        },
-        {
-          id: 'Namibia',
-          parentId: 'Southern Africa',
-        },
+        { id: 'Swaziland' },
+        { id: 'Namibia' },
       ],
     },
-    {
-      id: 'Central Africa',
-      parentId: 'Africa',
-    },
+    { id: 'Central Africa' },
     {
       id: 'Northern Africa',
-      parentId: 'Africa',
       children: [
         {
           id: 'Morocco',
-          parentId: 'Northern Africa',
           children: [
-            {
-              id: 'Marrakesh',
-              parentId: 'Morocco',
-            },
-            {
-              id: 'Fes',
-              parentId: 'Morocco',
-            },
+            { id: 'Marrakesh' },
+            { id: 'Fes' },
           ],
         },
       ],
