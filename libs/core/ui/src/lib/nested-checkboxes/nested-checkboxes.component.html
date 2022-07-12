@@ -5,9 +5,6 @@
   [template]="checkbox"
 ></core-tree>
 
-<p>model: {{ model | json }}</p>
-<p>indeterminates: {{ indeterminates | json }}</p>
-
 <ng-template
   #checkbox
   let-item
@@ -16,14 +13,14 @@
 >
   <core-checkbox
     class="checkbox"
-    [indeterminate]="indeterminates.includes(getId(item))"
+    [indeterminate]="states[getId(item)] === 'indeterminate'"
     [class.checkbox--top]="!parent"
-    [class.checkbox--indeterminate]="indeterminates.includes(getId(item))"
-    [class.checkbox--checked]="model.includes(getId(item))"
-    [class.checkbox--unchecked]="!model.includes(getId(item)) && !indeterminates.includes(getId(item))"
+    [class.checkbox--checked]="states[getId(item)] === 'checked'"
+    [class.checkbox--indeterminate]="states[getId(item)] === 'indeterminate'"
+    [class.checkbox--unchecked]="!states[getId(item)]"
     [style.margin-left.px]="level * indentation"
     data-test="ui-nested-checkboxes-checkbox"
-    [ngModel]="model.includes(getId(item))"
+    [ngModel]="states[getId(item)] === 'checked'"
     (ngModelChange)="onChange($event, item)"
   >
     <ng-container
