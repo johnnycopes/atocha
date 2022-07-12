@@ -24,8 +24,8 @@ export interface TreeProvider<T> {
 
 interface ItemsRecord<T> {
   [id: string]: {
-    parent: T | undefined;
     item: T;
+    parentId: string | undefined;
   }
 }
 @Component({
@@ -53,9 +53,9 @@ export class NestedCheckboxesComponent<T> implements OnChanges, ControlValueAcce
   model: string[] = [];
   private _itemsKeyedById: ItemsRecord<T> = {};
   private _onChangeFn: (value: CheckboxStates) => void = () => ({});
-  private _getParent = (item: T) => {
-    const parent = this._itemsKeyedById[this.getId(item)].parent;
-    return parent ? [parent] : [];
+  private _getParent = (item: T): T[] => {
+    const parentId = this._itemsKeyedById[this.getId(item)].parentId;
+    return parentId ? [this._itemsKeyedById[parentId].item] : [];
   };
 
   constructor(private changeDetectorRef: ChangeDetectorRef) {}
@@ -155,8 +155,8 @@ export class NestedCheckboxesComponent<T> implements OnChanges, ControlValueAcce
   private _createParentIdsRecord(item: T): ItemsRecord<T> {
     const output: ItemsRecord<T> = {
       [this.getId(item)]: {
-        parent: undefined,
         item,
+        parentId: undefined,
       }
     };
     const items = [item];
@@ -168,8 +168,8 @@ export class NestedCheckboxesComponent<T> implements OnChanges, ControlValueAcce
         if (children.length) {
           children.forEach(child => {
             output[this.getId(child)] = {
-              parent: current,
               item: child,
+              parentId: this.getId(current),
             };
             items.push(child);
           });
