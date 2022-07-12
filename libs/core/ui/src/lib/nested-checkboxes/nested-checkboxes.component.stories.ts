@@ -54,6 +54,8 @@ const Template: Story<NestedCheckboxesArgs> = (args: NestedCheckboxesArgs) => ({
       [class]="className"
       [item]="item"
       [treeProvider]="treeProvider"
+      [getId]="treeProvider.getId"
+      [getChildren]="treeProvider.getChildren"
       [ngModel]="states"
       (ngModelChange)="states = $event; onClick($event)"
     ></core-nested-checkboxes>
