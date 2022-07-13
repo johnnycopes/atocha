@@ -32,6 +32,7 @@ export class CheckboxComponent implements ControlValueAccessor {
   get hostClasses(): Record<string, boolean> {
     return {
       'core-ui-checkbox--checked': this.checked && !this.indeterminate,
+      'core-ui-checkbox--unchecked': !this.checked && !this.indeterminate,
       'core-ui-checkbox--indeterminate': this.indeterminate,
       'core-ui-checkbox--disabled': this.disabled,
     }
