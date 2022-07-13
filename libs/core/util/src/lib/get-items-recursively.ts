@@ -1,15 +1,15 @@
 export function getItemsRecursively<T>(
   item: T,
-  getChildren: (item: T) => T[]
+  getItems: (item: T) => T[]
 ): T[] {
-  const children = getChildren(item);
+  const items = getItems(item);
 
-  if (!children?.length) {
+  if (!items?.length) {
     return [item];
   } else {
     return [
       item,
-      ...children.flatMap((child) => getItemsRecursively(child, getChildren)),
+      ...items.flatMap((child) => getItemsRecursively(child, getItems)),
     ];
   }
 }

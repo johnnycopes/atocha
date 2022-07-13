@@ -1,7 +1,8 @@
 <core-nested-checkboxes
   class="nested-checkboxes"
   [item]="item"
-  [treeProvider]="treeProvider"
+  [getId]="treeProvider.getId"
+  [getChildren]="treeProvider.getChildren"
   [itemTemplate]="checkbox"
   [ngModel]="states"
   (ngModelChange)="onChange($event)"

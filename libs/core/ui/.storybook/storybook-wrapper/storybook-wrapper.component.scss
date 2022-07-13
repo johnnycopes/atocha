@@ -1,30 +1,51 @@
-::ng-deep {
+:host::ng-deep {
+  .custom-checkbox {
+    --checkbox-size: 20px;
+    --hover-color: beige;
+    --label-margin: 12px;
+
+    &.core-ui-checkbox--checked {
+      --checkbox-color: aquamarine;
+      --checkmark-color: darkblue;
+      --checkbox-background: aquamarine;
+    }
+
+    &.core-ui-checkbox--indeterminate {
+      --checkbox-color: goldenrod;
+      --checkmark-color: goldenrod;
+    }
+
+    &.core-ui-checkbox--unchecked {
+      --checkbox-color: darkseagreen;
+      color: darkgray;
+    }
+  }
+
   .custom-nested-checkboxes {
     --checkbox-margin: 8px;
 
     ::ng-deep {
       .checkbox {
         --checkbox-size: 20px;
-        --hover-color: limegreen;
+        --hover-color: beige;
         --label-margin: 12px;
       }
 
-      &.checkbox--top.checkbox--checked,
-      &.checkbox--top.checkbox--indeterminate {
-        --checkbox-color: salmon;
+      &.checkbox--top.core-ui-checkbox--checked,
+      &.checkbox--top.core-ui-checkbox--indeterminate {
+        --checkbox-color: aquamarine;
         --checkmark-color: darkblue;
-        --checkbox-background: salmon;
+        --checkbox-background: aquamarine;
       }
 
-      &.checkbox--checked,
-      &.checkbox--indeterminate {
+      &.core-ui-checkbox--checked,
+      &.core-ui-checkbox--indeterminate {
         --checkbox-color: goldenrod;
         --checkmark-color: goldenrod;
       }
 
       &.checkbox--unchecked {
-        --checkbox-color: cadetblue;
-        --checkmark-color: cadetblue;
+        --checkbox-color: darkseagreen;
         color: darkgray;
       }
     }

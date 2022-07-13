@@ -1,5 +1,30 @@
 import { CheckboxStates } from '../../src/lib/nested-checkboxes/nested-checkboxes.component';
 
+export interface NestedItem {
+  id: string;
+  children?: NestedItem[];
+}
+
+export const NESTED_ITEM: NestedItem = {
+  id: 'Africa',
+  children: [
+    {
+      id: 'Southern Africa',
+      children: [{ id: 'Swaziland' }, { id: 'Namibia' }],
+    },
+    { id: 'Central Africa' },
+    {
+      id: 'Northern Africa',
+      children: [
+        {
+          id: 'Morocco',
+          children: [{ id: 'Marrakesh' }, { id: 'Fes' }],
+        },
+      ],
+    },
+  ],
+};
+
 export const SOME_SELECTED: CheckboxStates = {
   Africa: 'indeterminate',
   Morocco: 'indeterminate',
@@ -20,3 +45,6 @@ export const ALL_SELECTED: CheckboxStates = {
   Marrakesh: 'checked',
   Fes: 'checked',
 };
+
+export const getId = ({ id }: NestedItem) => id;
+export const getChildren = ({ children }: NestedItem) => children ?? [];

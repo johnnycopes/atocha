@@ -3,6 +3,7 @@ import {
   Input,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
+  HostBinding,
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
@@ -22,10 +23,20 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 export class CheckboxComponent implements ControlValueAccessor {
   @Input() disabled = false;
   @Input() indeterminate = false;
-  public checked = false;
+  checked = false;
   private _onChangeFn: (value: boolean) => void = () => undefined;
 
   constructor(private _changeDetectorRef: ChangeDetectorRef) {}
+
+  @HostBinding('class')
+  get hostClasses(): Record<string, boolean> {
+    return {
+      'core-ui-checkbox--checked': this.checked && !this.indeterminate,
+      'core-ui-checkbox--unchecked': !this.checked && !this.indeterminate,
+      'core-ui-checkbox--indeterminate': this.indeterminate,
+      'core-ui-checkbox--disabled': this.disabled,
+    };
+  }
 
   writeValue(value: boolean): void {
     this.checked = value;
