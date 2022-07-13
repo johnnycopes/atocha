@@ -1,5 +1,10 @@
 import { FormsModule } from '@angular/forms';
-import { Meta, moduleMetadata, Story, componentWrapperDecorator } from '@storybook/angular';
+import {
+  Meta,
+  moduleMetadata,
+  Story,
+  componentWrapperDecorator,
+} from '@storybook/angular';
 
 import { StorybookWrapperComponent } from '../../../.storybook/storybook-wrapper/storybook-wrapper.component';
 import { CheckboxComponent } from './checkbox.component';

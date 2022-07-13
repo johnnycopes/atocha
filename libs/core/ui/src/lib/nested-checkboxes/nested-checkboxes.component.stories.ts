@@ -13,9 +13,19 @@ import {
 import { CheckboxComponent } from '../checkbox/checkbox.component';
 import { TreeComponent } from '../tree/tree.component';
 import { StorybookWrapperComponent } from '../../../.storybook/storybook-wrapper/storybook-wrapper.component';
-import { ALL_SELECTED, getChildren, getId, NestedItem, NESTED_ITEM, SOME_SELECTED } from '../../../.storybook/mock-data/nested-checkboxes';
+import {
+  ALL_SELECTED,
+  getChildren,
+  getId,
+  NestedItem,
+  NESTED_ITEM,
+  SOME_SELECTED,
+} from '../../../.storybook/mock-data/nested-checkboxes';
 
-type NestedCheckboxesArgs = Pick<NestedCheckboxesComponent<NestedItem>, 'states'> & {
+type NestedCheckboxesArgs = Pick<
+  NestedCheckboxesComponent<NestedItem>,
+  'states'
+> & {
   className: string;
 };
 
@@ -38,7 +48,10 @@ export default {
   },
 } as Meta<NestedCheckboxesArgs>;
 
-const Template: Story<NestedCheckboxesArgs> = ({ states, className }: NestedCheckboxesArgs) => ({
+const Template: Story<NestedCheckboxesArgs> = ({
+  states,
+  className,
+}: NestedCheckboxesArgs) => ({
   props: {
     item: NESTED_ITEM,
     getId,
@@ -79,7 +92,10 @@ nestedItemWithCustomStyling.args = createArgs({
   className: 'custom-nested-checkboxes',
 });
 
-function createArgs({ states = {}, className = '' }: {
+function createArgs({
+  states = {},
+  className = '',
+}: {
   states?: CheckboxStates;
   className?: string;
 }) {

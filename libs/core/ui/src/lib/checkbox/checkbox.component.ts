@@ -35,7 +35,7 @@ export class CheckboxComponent implements ControlValueAccessor {
       'core-ui-checkbox--unchecked': !this.checked && !this.indeterminate,
       'core-ui-checkbox--indeterminate': this.indeterminate,
       'core-ui-checkbox--disabled': this.disabled,
-    }
+    };
   }
 
   writeValue(value: boolean): void {

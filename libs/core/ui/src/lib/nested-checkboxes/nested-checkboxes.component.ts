@@ -26,7 +26,7 @@ interface ItemsRecord<T> {
   [id: string]: {
     item: T;
     parentId: string | undefined;
-  }
+  };
 }
 @Component({
   selector: 'core-nested-checkboxes',
@@ -41,7 +41,9 @@ interface ItemsRecord<T> {
     },
   ],
 })
-export class NestedCheckboxesComponent<T> implements OnChanges, ControlValueAccessor {
+export class NestedCheckboxesComponent<T>
+  implements OnChanges, ControlValueAccessor
+{
   @Input() item!: T;
   @Input() getId: (item: T) => string = () => '';
   @Input() getChildren: (item: T) => T[] = () => [];
@@ -88,16 +90,21 @@ export class NestedCheckboxesComponent<T> implements OnChanges, ControlValueAcce
     this._onChangeFn(this.states);
   }
 
-  private _updateItemAndDescendantStates({ item, checked, states }: {
-    item: T,
-    checked: boolean,
-    states: CheckboxStates
+  private _updateItemAndDescendantStates({
+    item,
+    checked,
+    states,
+  }: {
+    item: T;
+    checked: boolean;
+    states: CheckboxStates;
   }): CheckboxStates {
-    const itemAndDescendantsIds = getItemsRecursively(item, this.getChildren).map(
-      item => this.getId(item)
-    );
+    const itemAndDescendantsIds = getItemsRecursively(
+      item,
+      this.getChildren
+    ).map((item) => this.getId(item));
 
-    itemAndDescendantsIds.forEach(id => {
+    itemAndDescendantsIds.forEach((id) => {
       if (checked) {
         states[id] = 'checked';
       } else {
@@ -112,10 +119,10 @@ export class NestedCheckboxesComponent<T> implements OnChanges, ControlValueAcce
     item: T,
     states: CheckboxStates
   ): CheckboxStates {
-    const ancestors = getItemsRecursively(item, this._getParent)
+    const ancestors = getItemsRecursively(item, this._getParent);
     ancestors.shift(); // TODO: make this unnecssary
 
-    ancestors.forEach(ancestor => {
+    ancestors.forEach((ancestor) => {
       const ancestorId = this.getId(ancestor);
       const ancestorChildren = this.getChildren(ancestor);
       const ancestorChildrenStates: Record<CheckboxState, number> = {
@@ -123,7 +130,7 @@ export class NestedCheckboxesComponent<T> implements OnChanges, ControlValueAcce
         indeterminate: 0,
       };
 
-      ancestorChildren.forEach(child => {
+      ancestorChildren.forEach((child) => {
         const childId = this.getId(child);
         const childState = states[childId];
         if (childState) {
@@ -133,7 +140,10 @@ export class NestedCheckboxesComponent<T> implements OnChanges, ControlValueAcce
 
       if (ancestorChildrenStates.checked === ancestorChildren.length) {
         states[ancestorId] = 'checked';
-      } else if (ancestorChildrenStates.checked > 0 || ancestorChildrenStates.indeterminate > 0) {
+      } else if (
+        ancestorChildrenStates.checked > 0 ||
+        ancestorChildrenStates.indeterminate > 0
+      ) {
         states[ancestorId] = 'indeterminate';
       } else {
         delete states[ancestorId];
@@ -148,7 +158,7 @@ export class NestedCheckboxesComponent<T> implements OnChanges, ControlValueAcce
       [this.getId(item)]: {
         item,
         parentId: undefined,
-      }
+      },
     };
     const items = [item];
 
@@ -157,7 +167,7 @@ export class NestedCheckboxesComponent<T> implements OnChanges, ControlValueAcce
       if (current) {
         const children = this.getChildren(current);
         if (children.length) {
-          children.forEach(child => {
+          children.forEach((child) => {
             output[this.getId(child)] = {
               item: child,
               parentId: this.getId(current),

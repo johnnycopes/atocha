@@ -3,7 +3,10 @@ describe('NestedCheckboxesComponent', () => {
   let inputSelector = '';
   let stories: Record<string, string>;
 
-  function assertState(place: string, stateClass: 'checked' | 'unchecked' | 'indeterminate'): void {
+  function assertState(
+    place: string,
+    stateClass: 'checked' | 'unchecked' | 'indeterminate'
+  ): void {
     if (stateClass === 'checked') {
       cy.get(checkboxSelector)
         .contains(place)
@@ -13,7 +16,7 @@ describe('NestedCheckboxesComponent', () => {
       cy.get(checkboxSelector)
         .contains(place)
         .find(inputSelector)
-        .should('not.be.checked')
+        .should('not.be.checked');
     } else {
       cy.get(checkboxSelector)
         .contains(place)

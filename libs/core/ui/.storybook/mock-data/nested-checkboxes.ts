@@ -1,4 +1,4 @@
-import { CheckboxStates } from "../../src/lib/nested-checkboxes/nested-checkboxes.component";
+import { CheckboxStates } from '../../src/lib/nested-checkboxes/nested-checkboxes.component';
 
 export interface NestedItem {
   id: string;
@@ -10,10 +10,7 @@ export const NESTED_ITEM: NestedItem = {
   children: [
     {
       id: 'Southern Africa',
-      children: [
-        { id: 'Swaziland' },
-        { id: 'Namibia' },
-      ],
+      children: [{ id: 'Swaziland' }, { id: 'Namibia' }],
     },
     { id: 'Central Africa' },
     {
@@ -21,10 +18,7 @@ export const NESTED_ITEM: NestedItem = {
       children: [
         {
           id: 'Morocco',
-          children: [
-            { id: 'Marrakesh' },
-            { id: 'Fes' },
-          ],
+          children: [{ id: 'Marrakesh' }, { id: 'Fes' }],
         },
       ],
     },
