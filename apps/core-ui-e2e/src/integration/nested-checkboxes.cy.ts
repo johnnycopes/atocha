@@ -1,18 +1,30 @@
-import { CheckboxState } from '@atocha/core/ui';
-
 describe('NestedCheckboxesComponent', () => {
   let checkboxSelector = '';
+  let inputSelector = '';
   let stories: Record<string, string>;
 
-  function assertState(place: string, stateClass: CheckboxState | 'unchecked'): void {
-    cy.get(checkboxSelector)
-      .contains(place)
-      .parent()
-      .should('have.class', `checkbox--${stateClass}`);
+  function assertState(place: string, stateClass: 'checked' | 'unchecked' | 'indeterminate'): void {
+    if (stateClass === 'checked') {
+      cy.get(checkboxSelector)
+        .contains(place)
+        .find(inputSelector)
+        .should('be.checked');
+    } else if (stateClass === 'unchecked') {
+      cy.get(checkboxSelector)
+        .contains(place)
+        .find(inputSelector)
+        .should('not.be.checked')
+    } else {
+      cy.get(checkboxSelector)
+        .contains(place)
+        .find(inputSelector)
+        .should('have.prop', 'indeterminate');
+    }
   }
 
   beforeEach(() => {
-    checkboxSelector = '[data-test="ui-nested-checkboxes-checkbox"]';
+    checkboxSelector = '[data-test="core-ui-nested-checkbox"]';
+    inputSelector = '[data-test="core-ui-checkbox"]';
     stories = {
       noneSelected:
         '/iframe.html?id=nestedcheckboxescomponent--nested-item-with-none-selected',

@@ -15,7 +15,7 @@
     class="checkbox"
     [class.checkbox--top]="!parent"
     [style.margin-left.px]="level * indentation"
-    data-test="ui-nested-checkboxes-checkbox"
+    data-test="core-ui-nested-checkbox"
     [indeterminate]="states[getId(item)] === 'indeterminate'"
     [ngModel]="states[getId(item)] === 'checked'"
     (ngModelChange)="onChange($event, item)"
