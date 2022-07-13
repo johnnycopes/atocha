@@ -1,4 +1,23 @@
-::ng-deep {
+:host::ng-deep {
+  .custom-checkbox {
+    --checkbox-size: 20px;
+    --hover-color: limegreen;
+    --label-margin: 12px;
+    color: darkgray;
+
+    &.core-ui-checkbox--checked {
+      --checkbox-color: salmon;
+      --checkmark-color: darkblue;
+      --checkbox-background: salmon;
+      color: inherit;
+    }
+
+    &.core-ui-checkbox--indeterminate {
+      --checkbox-color: goldenrod;
+      --checkmark-color: goldenrod;
+    }
+  }
+
   .custom-nested-checkboxes {
     --checkbox-margin: 8px;
 

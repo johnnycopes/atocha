@@ -1,6 +1,7 @@
 import { FormsModule } from '@angular/forms';
-import { Meta, moduleMetadata, Story } from '@storybook/angular';
+import { Meta, moduleMetadata, Story, componentWrapperDecorator } from '@storybook/angular';
 
+import { StorybookWrapperComponent } from '../../../.storybook/storybook-wrapper/storybook-wrapper.component';
 import { CheckboxComponent } from './checkbox.component';
 
 type CheckboxArgs = CheckboxComponent & { slot: string };
@@ -11,7 +12,9 @@ export default {
   decorators: [
     moduleMetadata({
       imports: [FormsModule],
+      declarations: [StorybookWrapperComponent],
     }),
+    componentWrapperDecorator(StorybookWrapperComponent),
   ],
   argTypes: {
     onClick: { action: 'clicked' },
@@ -22,6 +25,7 @@ const Template: Story<CheckboxArgs> = (args: CheckboxArgs) => ({
   props: args,
   template: `
     <core-checkbox
+      [class]="className"
       [indeterminate]="indeterminate"
       [disabled]="disabled"
       [ngModel]="checked"
@@ -29,23 +33,26 @@ const Template: Story<CheckboxArgs> = (args: CheckboxArgs) => ({
     >
       {{ slot }}
     </core-checkbox>
-
-    <br>
-
-    <p>checked: {{ checked }}</p>
   `,
 });
 
-export const Default = Template.bind({});
-Default.args = createArgs({
+export const base = Template.bind({});
+base.args = createArgs({
   slot: 'Click me!',
+});
+
+export const withCustomStyling = Template.bind({});
+withCustomStyling.args = createArgs({
+  slot: 'Click me!',
+  className: 'custom-checkbox',
 });
 
 function createArgs({
   slot = '',
+  className = '',
   checked = false,
   disabled = false,
   indeterminate = false,
 } = {}) {
-  return { slot, checked, disabled, indeterminate };
+  return { slot, className, checked, disabled, indeterminate };
 }
