@@ -44,7 +44,7 @@ interface ItemsRecord<T> {
 export class NestedCheckboxesComponent<T>
   implements OnChanges, ControlValueAccessor
 {
-  @Input() item!: T;
+  @Input() item: T | undefined;
   @Input() getId: (item: T) => string = () => '';
   @Input() getChildren: (item: T) => T[] = () => [];
   @Input() treeProvider!: TreeProvider<T>;
@@ -62,7 +62,7 @@ export class NestedCheckboxesComponent<T>
 
   ngOnChanges({ item }: SimpleChanges): void {
     if (item) {
-      this._itemsKeyedById = this._createParentIdsRecord(item.currentValue);
+      this._itemsKeyedById = this._createdItemsRecord(item.currentValue);
     }
   }
 
@@ -120,7 +120,7 @@ export class NestedCheckboxesComponent<T>
     states: CheckboxStates
   ): CheckboxStates {
     const ancestors = getItemsRecursively(item, this._getParent);
-    ancestors.shift(); // TODO: make this unnecssary
+    ancestors.shift(); // TODO: make this unnecessary
 
     ancestors.forEach((ancestor) => {
       const ancestorId = this.getId(ancestor);
@@ -153,7 +153,7 @@ export class NestedCheckboxesComponent<T>
     return states;
   }
 
-  private _createParentIdsRecord(item: T): ItemsRecord<T> {
+  private _createdItemsRecord(item: T): ItemsRecord<T> {
     const output: ItemsRecord<T> = {
       [this.getId(item)]: {
         item,

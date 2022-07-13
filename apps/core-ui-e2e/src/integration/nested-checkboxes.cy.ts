@@ -5,14 +5,14 @@ describe('NestedCheckboxesComponent', () => {
 
   function assertState(
     place: string,
-    stateClass: 'checked' | 'unchecked' | 'indeterminate'
+    state: 'checked' | 'unchecked' | 'indeterminate'
   ): void {
-    if (stateClass === 'checked') {
+    if (state === 'checked') {
       cy.get(checkboxSelector)
         .contains(place)
         .find(inputSelector)
         .should('be.checked');
-    } else if (stateClass === 'unchecked') {
+    } else if (state === 'unchecked') {
       cy.get(checkboxSelector)
         .contains(place)
         .find(inputSelector)
