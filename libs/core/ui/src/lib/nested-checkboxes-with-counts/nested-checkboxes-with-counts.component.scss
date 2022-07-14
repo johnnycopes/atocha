@@ -1,36 +1,3 @@
-// @import 'styles';
-
-// :host {
-//   display: block;
-// }
-
-// .nested-checkboxes {
-//   --checkbox-margin: #{map-get($spacing, 8)};
-
-//   ::ng-deep {
-//     .checkbox {
-//       --checkbox-size: #{map-get($font-size, 20)};
-//       --hover-color: #{map-get($color, medium)};
-//       --label-margin: #{map-get($spacing, 12)};
-//     }
-
-//     &.checkbox--top.core-ui-checkbox--checked,
-//     &.checkbox--top.core-ui-checkbox--indeterminate {
-//       --checkbox-color: #{map-get($color, lightest)};
-//       --checkmark-color: #{map-get($color, darkest)};
-//       --checkbox-background: #{map-get($color, lightest)};
-//     }
-
-//     &.core-ui-checkbox--checked,
-//     &.core-ui-checkbox--indeterminate {
-//       --checkbox-color: #{map-get($color, lightest)};
-//       --checkmark-color: #{map-get($color, lightest)};
-//     }
-
-//     &.core-ui-checkbox--unchecked {
-//       --checkbox-color: #{map-get($color, medium)};
-//       --checkmark-color: #{map-get($color, medium)};
-//       color: map-get($color, medium);
-//     }
-//   }
-// }
+:host {
+  display: block;
+}
