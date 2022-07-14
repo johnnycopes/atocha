@@ -14,8 +14,7 @@ import {
   CountryService,
   SelectService,
 } from '@atocha/globetrotter/data-access';
-import { Place, PlaceSelection } from '@atocha/globetrotter/types';
-import { isSubregion, isRegion } from './places-tree-provider';
+import { Place, PlaceSelection, isSubregion, isRegion } from '@atocha/globetrotter/types';
 
 @Component({
   selector: 'app-select-places',
