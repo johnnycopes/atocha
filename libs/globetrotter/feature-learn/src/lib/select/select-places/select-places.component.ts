@@ -90,6 +90,12 @@ export class SelectPlacesComponent {
     }))
   );
 
+  getId = ({ name }: Place) => name;
+
+  getChildren = (place: Place): Place[] => isRegion(place) ? place.subregions : [];
+
+  getNumberOfCountries = (place: Place) => isSubregion(place) ? place.countries.length : 0;
+
   constructor(
     private _countryService: CountryService,
     private _selectService: SelectService
@@ -105,24 +111,6 @@ export class SelectPlacesComponent {
 
   onClearAll(): void {
     this._selectService.updatePlaces({});
-  }
-
-  getId({ name }: Place): string {
-    return name;
-  }
-
-  getChildren(place: Place): Place[] {
-    if (isRegion(place)) {
-      return place.subregions;
-    }
-    return [];
-  }
-
-  getNumberOfCountries(item: Place): number {
-    if (isSubregion(item)) {
-      return item.countries.length;
-    }
-    return 0;
   }
 
   private _transformState(state: CheckboxStates): PlaceSelection {
