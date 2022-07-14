@@ -18,13 +18,13 @@ import {
   ALL_SELECTED,
   getChildren,
   getId,
-  NestedItem,
-  NESTED_ITEM,
+  TestItem,
+  AFRICA,
   SOME_SELECTED,
 } from '../../../.storybook/mock-data/nested-checkboxes';
 
 type NestedCheckboxesArgs = Pick<
-  NestedCheckboxesComponent<NestedItem>,
+  NestedCheckboxesComponent<TestItem>,
   'states'
 > & {
   className: string;
@@ -56,7 +56,7 @@ const Template: Story<NestedCheckboxesArgs> = ({
   onClick,
 }: NestedCheckboxesArgs) => ({
   props: {
-    item: NESTED_ITEM,
+    item: AFRICA,
     getId,
     getChildren,
     states,

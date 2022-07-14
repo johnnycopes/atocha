@@ -1,12 +1,12 @@
 import { CheckboxStates } from '../../src/lib/nested-checkboxes/nested-checkboxes.component';
 
-export interface NestedItem {
+export interface TestItem {
   id: string;
-  children?: NestedItem[];
+  children?: TestItem[];
   targets?: number;
 }
 
-export const NESTED_ITEM: NestedItem = {
+export const AFRICA: TestItem = {
   id: 'Africa',
   children: [
     {
@@ -47,6 +47,6 @@ export const ALL_SELECTED: CheckboxStates = {
   Fes: 'checked',
 };
 
-export const getId = ({ id }: NestedItem) => id;
-export const getChildren = ({ children }: NestedItem) => children ?? [];
-export const getCounts = ({ targets }: NestedItem) => targets ?? 0;
+export const getId = ({ id }: TestItem) => id;
+export const getChildren = ({ children }: TestItem) => children ?? [];
+export const getCounts = ({ targets }: TestItem) => targets ?? 0;

@@ -19,14 +19,14 @@ import {
   getChildren,
   getCounts,
   getId,
-  NestedItem,
-  NESTED_ITEM,
+  TestItem,
+  AFRICA,
   SOME_SELECTED,
 } from '../../../.storybook/mock-data/nested-checkboxes';
 import { NestedCheckboxesWithCountsComponent } from './nested-checkboxes-with-counts.component';
 
 type NestedCheckboxesWithCountsArgs = Pick<
-  NestedCheckboxesComponent<NestedItem>,
+  NestedCheckboxesComponent<TestItem>,
   'states'
 > & {
   className: string;
@@ -59,7 +59,7 @@ const Template: Story<NestedCheckboxesWithCountsArgs> = ({
   onClick,
 }: NestedCheckboxesWithCountsArgs) => ({
   props: {
-    item: NESTED_ITEM,
+    item: AFRICA,
     getId,
     getChildren,
     getCounts,
