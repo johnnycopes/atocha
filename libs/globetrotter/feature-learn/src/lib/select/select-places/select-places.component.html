@@ -31,16 +31,17 @@
           [icon]="region.name"
           [highlighted]="!!(regionDatum.selected$ | async)"
         ></ui-icon>
-        <ui-nested-checkboxes-with-counts class="region__checkboxes"
+        <core-nested-checkboxes-with-counts class="region__checkboxes"
           [item]="region"
-          [treeProvider]="regionDatum.treeProvider"
-          [itemTemplate]="label"
+          [getId]="regionDatum.treeProvider.getId"
+          [getChildren]="regionDatum.treeProvider.getChildren"
           [getLeafItemCount]="getNumberOfCountries"
+          [itemTemplate]="label"
           [ngModel]="vm.checkboxStates"
           (ngModelChange)="onCountriesChange($event)"
           (selectedChange)="regionDatum.selectedSubject.next($event)"
           (totalChange)="regionDatum.totalSubject.next($event)"
-        ></ui-nested-checkboxes-with-counts>
+        ></core-nested-checkboxes-with-counts>
       </ng-container>
 
       <ng-template
