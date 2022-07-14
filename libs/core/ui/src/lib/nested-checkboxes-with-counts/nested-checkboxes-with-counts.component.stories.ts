@@ -20,7 +20,6 @@ import {
   getCounts,
   getId,
   NestedItem,
-  NestedItemTreeProvider,
   NESTED_ITEM,
   SOME_SELECTED,
 } from '../../../.storybook/mock-data/nested-checkboxes';
