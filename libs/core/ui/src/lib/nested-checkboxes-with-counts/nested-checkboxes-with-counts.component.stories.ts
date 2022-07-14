@@ -61,7 +61,6 @@ const Template: Story<NestedCheckboxesWithCountsArgs> = ({
 }: NestedCheckboxesWithCountsArgs) => ({
   props: {
     item: NESTED_ITEM,
-    treeProvider: new NestedItemTreeProvider(NESTED_ITEM),
     getId,
     getChildren,
     getCounts,
@@ -73,7 +72,8 @@ const Template: Story<NestedCheckboxesWithCountsArgs> = ({
     <core-nested-checkboxes-with-counts
       [class]="className"
       [item]="item"
-      [treeProvider]="treeProvider"
+      [getId]="getId"
+      [getChildren]="getChildren"
       [getLeafItemCount]="getCounts"
       [ngModel]="states"
       (ngModelChange)="states = $event; onClick($event)"

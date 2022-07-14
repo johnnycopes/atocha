@@ -2,7 +2,6 @@
 
 import {
   Component,
-  OnInit,
   Input,
   Output,
   EventEmitter,
@@ -10,11 +9,13 @@ import {
   ChangeDetectorRef,
   ChangeDetectionStrategy,
   forwardRef,
+  SimpleChanges,
+  OnChanges,
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { reduce } from 'lodash-es';
 
-import { CheckboxStates, TreeProvider } from '../nested-checkboxes/nested-checkboxes.component';
+import { CheckboxStates } from '../nested-checkboxes/nested-checkboxes.component';
 
 type Counts = Record<string, number>;
 
@@ -32,13 +33,14 @@ type Counts = Record<string, number>;
   ],
 })
 export class NestedCheckboxesWithCountsComponent<T>
-  implements ControlValueAccessor, OnInit
+  implements ControlValueAccessor, OnChanges
 {
-  @Input() item!: T;
-  @Input() treeProvider!: TreeProvider<T>;
-  @Input() itemTemplate: TemplateRef<unknown> | undefined;
-  @Input() invertedRootCheckbox = true;
+  @Input() item: T | undefined;
+  @Input() getId: (item: T) => string = () => '';
+  @Input() getChildren: (item: T) => T[] = () => [];
   @Input() getLeafItemCount: (item: T) => number = () => 0;
+  @Input() itemTemplate: TemplateRef<unknown> | undefined;
+  @Input() indentation = 24;
   @Output() selectedChange = new EventEmitter<number>();
   @Output() totalChange = new EventEmitter<number>();
   states: CheckboxStates = {};
@@ -49,16 +51,17 @@ export class NestedCheckboxesWithCountsComponent<T>
 
   constructor(private _changeDetectorRef: ChangeDetectorRef) {}
 
-  ngOnInit(): void {
-    if (!this.item || !this.treeProvider) {
-      throw new Error(
-        'Missing input(s): item, treeProvider, and getTotalCount must be passed to the nested-checkboxes-with-counts component'
-      );
+  ngOnChanges({ item }: SimpleChanges): void {
+    if (item) {
+      this._id = this.getId(item.currentValue);
     }
-    this._id = this.treeProvider.getId(this.item);
   }
 
   writeValue(value: CheckboxStates): void {
+    if (!this.item) {
+      return;
+    }
+
     if (value) {
       this.states = value;
       this.selectedCounts = this._getSelectedCounts(this.item);
@@ -77,6 +80,10 @@ export class NestedCheckboxesWithCountsComponent<T>
   registerOnTouched(fn: (value: CheckboxStates) => void): void {}
 
   onChange(states: CheckboxStates): void {
+    if (!this.item) {
+      return;
+    }
+
     this.states = states;
     this._onChangeFn(this.states);
 
@@ -90,7 +97,7 @@ export class NestedCheckboxesWithCountsComponent<T>
 
   private _getSelectedCounts(item: T): Counts {
     const leafNodeCount = (leafItem: T): number => {
-      const leafItemId = this.treeProvider.getId(leafItem);
+      const leafItemId = this.getId(leafItem);
       return this.states[leafItemId] === 'checked'
         ? this.getLeafItemCount(leafItem)
         : 0;
@@ -99,8 +106,8 @@ export class NestedCheckboxesWithCountsComponent<T>
   }
 
   private _getCounts(item: T, getLeafItemCount: (item: T) => number): Counts {
-    const id = this.treeProvider.getId(item);
-    const children = this.treeProvider.getChildren(item);
+    const id = this.getId(item);
+    const children = this.getChildren(item);
     if (!children.length) {
       const count = getLeafItemCount(item);
       return { [id]: count };
@@ -113,7 +120,7 @@ export class NestedCheckboxesWithCountsComponent<T>
     const grandTotal = reduce(
       children,
       (total, child) => {
-        const childId = this.treeProvider.getId(child);
+        const childId = this.getId(child);
         const childTotal = descendantTotals[childId];
         return total + childTotal;
       },

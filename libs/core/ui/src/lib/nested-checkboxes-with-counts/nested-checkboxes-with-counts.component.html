@@ -1,8 +1,8 @@
 <core-nested-checkboxes
   class="nested-checkboxes"
   [item]="item"
-  [getId]="treeProvider.getId"
-  [getChildren]="treeProvider.getChildren"
+  [getId]="getId"
+  [getChildren]="getChildren"
   [itemTemplate]="checkbox"
   [ngModel]="states"
   (ngModelChange)="onChange($event)"
@@ -14,8 +14,8 @@
     [ngTemplateOutletContext]="{
       $implicit: item,
       parent: parent,
-      selected: this.selectedCounts[this.treeProvider.getId(item)],
-      total: this.totalCounts[this.treeProvider.getId(item)]
+      selected: selectedCounts[getId(item)],
+      total: totalCounts[getId(item)]
     }"
   ></ng-container>
 </ng-template>
@@ -26,9 +26,9 @@
   let-selected="selected"
   let-total="total"
 >
-  {{ this.treeProvider.getId(item) }}
+  {{ getId(item) }}
   ({{
-    this.treeProvider.getChildren(item)?.length
+    getChildren(item)?.length
       ? selected + ' / ' + total
       : total
   }})
