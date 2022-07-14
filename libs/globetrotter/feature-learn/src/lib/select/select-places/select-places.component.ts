@@ -15,7 +15,7 @@ import {
   SelectService,
 } from '@atocha/globetrotter/data-access';
 import { Place, PlaceSelection } from '@atocha/globetrotter/types';
-import { PlacesTreeProvider, isSubregion } from './places-tree-provider';
+import { isSubregion, isRegion } from './places-tree-provider';
 
 @Component({
   selector: 'app-select-places',
@@ -46,7 +46,6 @@ export class SelectPlacesComponent {
         const totalSubject = new BehaviorSubject<number>(0);
         return {
           region: region as Place,
-          treeProvider: new PlacesTreeProvider(region),
           selectedSubject,
           totalSubject,
           selected$: selectedSubject.pipe(distinctUntilChanged()),
@@ -107,6 +106,17 @@ export class SelectPlacesComponent {
 
   onClearAll(): void {
     this._selectService.updatePlaces({});
+  }
+
+  getId({ name }: Place): string {
+    return name;
+  }
+
+  getChildren(place: Place): Place[] {
+    if (isRegion(place)) {
+      return place.subregions;
+    }
+    return [];
   }
 
   getNumberOfCountries(item: Place): number {
