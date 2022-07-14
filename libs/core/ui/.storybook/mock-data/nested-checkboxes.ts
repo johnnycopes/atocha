@@ -11,7 +11,10 @@ export const AFRICA: TestItem = {
   children: [
     {
       id: 'Southern Africa',
-      children: [{ id: 'Swaziland', targets: 28 }, { id: 'Namibia', targets: 17 }],
+      children: [
+        { id: 'Swaziland', targets: 28 },
+        { id: 'Namibia', targets: 17 },
+      ],
     },
     { id: 'Central Africa', targets: 65 },
     {
@@ -19,7 +22,10 @@ export const AFRICA: TestItem = {
       children: [
         {
           id: 'Morocco',
-          children: [{ id: 'Marrakesh', targets: 9 }, { id: 'Fes', targets: 11 }],
+          children: [
+            { id: 'Marrakesh', targets: 9 },
+            { id: 'Fes', targets: 11 },
+          ],
         },
       ],
     },

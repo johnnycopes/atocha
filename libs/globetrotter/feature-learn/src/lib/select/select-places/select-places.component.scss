@@ -65,7 +65,6 @@
   }
 
   &__checkboxes {
-
     ::ng-deep {
       .nested-checkboxes {
         --checkbox-margin: #{map-get($spacing, 8)};

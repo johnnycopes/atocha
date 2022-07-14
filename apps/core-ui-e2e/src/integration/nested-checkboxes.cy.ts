@@ -29,12 +29,9 @@ describe('NestedCheckboxesComponent', () => {
     checkboxSelector = '[data-test="core-ui-nested-checkbox"]';
     inputSelector = '[data-test="core-ui-checkbox"]';
     stories = {
-      noneSelected:
-        '/iframe.html?id=nestedcheckboxescomponent--none-selected',
-      someSelected:
-        '/iframe.html?id=nestedcheckboxescomponent--some-selected',
-      allSelected:
-        '/iframe.html?id=nestedcheckboxescomponent--all-selected',
+      noneSelected: '/iframe.html?id=nestedcheckboxescomponent--none-selected',
+      someSelected: '/iframe.html?id=nestedcheckboxescomponent--some-selected',
+      allSelected: '/iframe.html?id=nestedcheckboxescomponent--all-selected',
     };
   });
 

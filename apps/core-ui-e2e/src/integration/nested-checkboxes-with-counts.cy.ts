@@ -2,10 +2,7 @@ describe('NestedCheckboxesWithCountsComponent', () => {
   let checkboxSelector = '';
   let stories: Record<string, string> = {};
 
-  function assertCount(
-    place: string,
-    count: string,
-  ): void {
+  function assertCount(place: string, count: string): void {
     cy.get(checkboxSelector)
       .contains(place)
       .should('contain.text', `${place} (${count})`);
@@ -66,15 +63,15 @@ describe('NestedCheckboxesWithCountsComponent', () => {
       .contains('Africa')
       .click();
 
-      assertCount('Africa', '0 / 130');
-      assertCount('Southern Africa', '0 / 45');
-      assertCount('Swaziland', '28');
-      assertCount('Namibia', '17');
-      assertCount('Central Africa', '65');
-      assertCount('Northern Africa', '0 / 20');
-      assertCount('Morocco', '0 / 20');
-      assertCount('Marrakesh', '9');
-      assertCount('Fes', '11');
+    assertCount('Africa', '0 / 130');
+    assertCount('Southern Africa', '0 / 45');
+    assertCount('Swaziland', '28');
+    assertCount('Namibia', '17');
+    assertCount('Central Africa', '65');
+    assertCount('Northern Africa', '0 / 20');
+    assertCount('Morocco', '0 / 20');
+    assertCount('Marrakesh', '9');
+    assertCount('Fes', '11');
   });
 
   it('Correctly affects tree when middle checkbox is clicked', () => {
@@ -83,15 +80,15 @@ describe('NestedCheckboxesWithCountsComponent', () => {
       .contains('Morocco')
       .click();
 
-      assertCount('Africa', '20 / 130');
-      assertCount('Southern Africa', '0 / 45');
-      assertCount('Swaziland', '28');
-      assertCount('Namibia', '17');
-      assertCount('Central Africa', '65');
-      assertCount('Northern Africa', '20 / 20');
-      assertCount('Morocco', '20 / 20');
-      assertCount('Marrakesh', '9');
-      assertCount('Fes', '11');
+    assertCount('Africa', '20 / 130');
+    assertCount('Southern Africa', '0 / 45');
+    assertCount('Swaziland', '28');
+    assertCount('Namibia', '17');
+    assertCount('Central Africa', '65');
+    assertCount('Northern Africa', '20 / 20');
+    assertCount('Morocco', '20 / 20');
+    assertCount('Marrakesh', '9');
+    assertCount('Fes', '11');
   });
 
   it('Correctly affects tree when leaf checkbox is clicked', () => {
@@ -100,15 +97,15 @@ describe('NestedCheckboxesWithCountsComponent', () => {
       .contains('Namibia')
       .click();
 
-      assertCount('Africa', '17 / 130');
-      assertCount('Southern Africa', '17 / 45');
-      assertCount('Swaziland', '28');
-      assertCount('Namibia', '17');
-      assertCount('Central Africa', '65');
-      assertCount('Northern Africa', '0 / 20');
-      assertCount('Morocco', '0 / 20');
-      assertCount('Marrakesh', '9');
-      assertCount('Fes', '11');
+    assertCount('Africa', '17 / 130');
+    assertCount('Southern Africa', '17 / 45');
+    assertCount('Swaziland', '28');
+    assertCount('Namibia', '17');
+    assertCount('Central Africa', '65');
+    assertCount('Northern Africa', '0 / 20');
+    assertCount('Morocco', '0 / 20');
+    assertCount('Marrakesh', '9');
+    assertCount('Fes', '11');
   });
 
   it('Converts indeterminate states to checked when clicked', () => {
@@ -121,14 +118,14 @@ describe('NestedCheckboxesWithCountsComponent', () => {
       .contains('Northern Africa')
       .click();
 
-      assertCount('Africa', '20 / 130');
-      assertCount('Southern Africa', '0 / 45');
-      assertCount('Swaziland', '28');
-      assertCount('Namibia', '17');
-      assertCount('Central Africa', '65');
-      assertCount('Northern Africa', '20 / 20');
-      assertCount('Morocco', '20 / 20');
-      assertCount('Marrakesh', '9');
-      assertCount('Fes', '11');
+    assertCount('Africa', '20 / 130');
+    assertCount('Southern Africa', '0 / 45');
+    assertCount('Swaziland', '28');
+    assertCount('Namibia', '17');
+    assertCount('Central Africa', '65');
+    assertCount('Northern Africa', '20 / 20');
+    assertCount('Morocco', '20 / 20');
+    assertCount('Marrakesh', '9');
+    assertCount('Fes', '11');
   });
 });

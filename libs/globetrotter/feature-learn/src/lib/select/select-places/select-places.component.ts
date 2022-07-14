@@ -14,7 +14,12 @@ import {
   CountryService,
   SelectService,
 } from '@atocha/globetrotter/data-access';
-import { Place, PlaceSelection, isSubregion, isRegion } from '@atocha/globetrotter/types';
+import {
+  Place,
+  PlaceSelection,
+  isSubregion,
+  isRegion,
+} from '@atocha/globetrotter/types';
 
 @Component({
   selector: 'app-select-places',
@@ -92,9 +97,11 @@ export class SelectPlacesComponent {
 
   getId = ({ name }: Place) => name;
 
-  getChildren = (place: Place): Place[] => isRegion(place) ? place.subregions : [];
+  getChildren = (place: Place): Place[] =>
+    isRegion(place) ? place.subregions : [];
 
-  getNumberOfCountries = (place: Place) => isSubregion(place) ? place.countries.length : 0;
+  getNumberOfCountries = (place: Place) =>
+    isSubregion(place) ? place.countries.length : 0;
 
   constructor(
     private _countryService: CountryService,
