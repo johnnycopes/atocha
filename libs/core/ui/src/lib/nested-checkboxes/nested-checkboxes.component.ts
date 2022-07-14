@@ -47,7 +47,6 @@ export class NestedCheckboxesComponent<T>
   @Input() item: T | undefined;
   @Input() getId: (item: T) => string = () => '';
   @Input() getChildren: (item: T) => T[] = () => [];
-  @Input() treeProvider!: TreeProvider<T>;
   @Input() itemTemplate: TemplateRef<unknown> | undefined;
   @Input() indentation = 24;
   states: CheckboxStates = {};
