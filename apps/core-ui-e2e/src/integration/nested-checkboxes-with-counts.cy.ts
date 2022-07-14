@@ -15,11 +15,11 @@ describe('NestedCheckboxesWithCountsComponent', () => {
     checkboxSelector = '[data-test="core-ui-nested-checkbox"]';
     stories = {
       noneSelected:
-        '/iframe.html?id=nestedcheckboxeswithcountscomponent--nested-item-with-none-selected',
+        '/iframe.html?id=nestedcheckboxeswithcountscomponent--none-selected',
       someSelected:
-        '/iframe.html?id=nestedcheckboxeswithcountscomponent--nested-item-with-some-selected',
+        '/iframe.html?id=nestedcheckboxeswithcountscomponent--some-selected',
       allSelected:
-        '/iframe.html?id=nestedcheckboxeswithcountscomponent--nested-item-with-all-selected',
+        '/iframe.html?id=nestedcheckboxeswithcountscomponent--all-selected',
     };
   });
 

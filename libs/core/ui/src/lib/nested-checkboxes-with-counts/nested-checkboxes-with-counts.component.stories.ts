@@ -80,18 +80,18 @@ const Template: Story<NestedCheckboxesWithCountsArgs> = ({
   `,
 });
 
-export const nestedItemWithNoneSelected = Template.bind({});
-nestedItemWithNoneSelected.args = {
+export const noneSelected = Template.bind({});
+noneSelected.args = {
   states: {},
 };
 
-export const nestedItemWithSomeSelected = Template.bind({});
-nestedItemWithSomeSelected.args = createArgs({
+export const someSelected = Template.bind({});
+someSelected.args = createArgs({
   states: SOME_SELECTED,
 });
 
-export const nestedItemWithAllSelected = Template.bind({});
-nestedItemWithAllSelected.args = createArgs({
+export const allSelected = Template.bind({});
+allSelected.args = createArgs({
   states: ALL_SELECTED,
 });
 

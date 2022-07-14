@@ -30,11 +30,11 @@ describe('NestedCheckboxesComponent', () => {
     inputSelector = '[data-test="core-ui-checkbox"]';
     stories = {
       noneSelected:
-        '/iframe.html?id=nestedcheckboxescomponent--nested-item-with-none-selected',
+        '/iframe.html?id=nestedcheckboxescomponent--none-selected',
       someSelected:
-        '/iframe.html?id=nestedcheckboxescomponent--nested-item-with-some-selected',
+        '/iframe.html?id=nestedcheckboxescomponent--some-selected',
       allSelected:
-        '/iframe.html?id=nestedcheckboxescomponent--nested-item-with-all-selected',
+        '/iframe.html?id=nestedcheckboxescomponent--all-selected',
     };
   });
 
