@@ -5,6 +5,7 @@ import {
   Meta,
   componentWrapperDecorator,
 } from '@storybook/angular';
+import { InputType } from 'zlib';
 
 import {
   CheckboxStates,
@@ -27,6 +28,7 @@ type NestedCheckboxesArgs = Pick<
   'states'
 > & {
   className: string;
+  onClick: InputType | undefined;
 };
 
 export default {
@@ -51,6 +53,7 @@ export default {
 const Template: Story<NestedCheckboxesArgs> = ({
   states,
   className,
+  onClick,
 }: NestedCheckboxesArgs) => ({
   props: {
     item: NESTED_ITEM,
@@ -58,6 +61,7 @@ const Template: Story<NestedCheckboxesArgs> = ({
     getChildren,
     states,
     className,
+    onClick,
   },
   template: `
     <core-nested-checkboxes
