@@ -1,7 +1,7 @@
 describe('NestedCheckboxesComponent', () => {
   let checkboxSelector = '';
   let inputSelector = '';
-  let stories: Record<string, string>;
+  let stories: Record<string, string> = {};
 
   function assertState(
     place: string,
