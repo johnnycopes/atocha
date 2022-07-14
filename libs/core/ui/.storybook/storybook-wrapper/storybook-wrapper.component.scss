@@ -50,4 +50,37 @@
       }
     }
   }
+
+  .custom-nested-checkboxes-with-counts {
+    ::ng-deep {
+      .nested-checkboxes {
+        --checkbox-margin: 8px;
+      }
+
+      .checkbox {
+        --checkbox-size: 20px;
+        --hover-color: beige;
+        --label-margin: 12px;
+      }
+
+      &.checkbox--top.core-ui-checkbox--checked,
+      &.checkbox--top.core-ui-checkbox--indeterminate {
+        --checkbox-color: aquamarine;
+        --checkmark-color: darkblue;
+        --checkbox-background: aquamarine;
+      }
+
+      &.core-ui-checkbox--checked,
+      &.core-ui-checkbox--indeterminate {
+        --checkbox-color: goldenrod;
+        --checkmark-color: goldenrod;
+      }
+
+      &.checkbox--unchecked {
+        --checkbox-color: darkseagreen;
+        color: darkgray;
+      }
+    }
+  }
 }
+

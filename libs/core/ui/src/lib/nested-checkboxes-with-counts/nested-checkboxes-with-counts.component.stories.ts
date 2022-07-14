@@ -95,11 +95,11 @@ allSelected.args = createArgs({
   states: ALL_SELECTED,
 });
 
-// export const nestedItemWithCustomStyling = Template.bind({});
-// nestedItemWithCustomStyling.args = createArgs({
-//   states: SOME_SELECTED,
-//   className: 'custom-nested-checkboxes',
-// });
+export const withCustomStyling = Template.bind({});
+withCustomStyling.args = createArgs({
+  states: SOME_SELECTED,
+  className: 'custom-nested-checkboxes-with-counts',
+});
 
 function createArgs({
   states = {},
