@@ -9,7 +9,6 @@ import {
   OnChanges,
   SimpleChanges,
   ViewEncapsulation,
-  HostListener,
 } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 

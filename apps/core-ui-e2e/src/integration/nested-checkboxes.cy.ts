@@ -3,6 +3,16 @@ describe('NestedCheckboxesComponent', () => {
   let inputSelector = '';
   let stories: Record<string, string> = {};
 
+  function assertIndentation(
+    place: string,
+    indentation: number
+  ): void {
+    cy.get(checkboxSelector)
+      .contains(place)
+      .parent()
+      .should('have.css', 'margin-left', `${indentation}px`);
+  }
+
   function assertState(
     place: string,
     state: 'checked' | 'unchecked' | 'indeterminate'
@@ -39,6 +49,16 @@ describe('NestedCheckboxesComponent', () => {
     cy.visit(stories.noneSelected)
       .get(checkboxSelector)
       .should('have.length', 9);
+
+    assertIndentation('Africa', 0);
+    assertIndentation('Southern Africa', 24);
+    assertIndentation('Swaziland', 48);
+    assertIndentation('Namibia', 48);
+    assertIndentation('Central Africa', 24);
+    assertIndentation('Northern Africa', 24);
+    assertIndentation('Morocco', 48);
+    assertIndentation('Marrakesh', 72);
+    assertIndentation('Fes', 72);
   });
 
   it('Displays all states correctly when model is passed in', () => {

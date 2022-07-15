@@ -27,6 +27,7 @@ import { NestedCheckboxesWithCountsComponent } from './nested-checkboxes-with-co
 
 type NestedCheckboxesWithCountsArgs = Pick<
   NestedCheckboxesComponent<TestItem>,
+  'indentation' |
   'states'
 > & {
   className: string;
@@ -58,6 +59,7 @@ export default {
 } as Meta<NestedCheckboxesWithCountsArgs>;
 
 const Template: Story<NestedCheckboxesWithCountsArgs> = ({
+  indentation,
   states,
   className,
   onNgModelChange,
@@ -69,6 +71,7 @@ const Template: Story<NestedCheckboxesWithCountsArgs> = ({
     getId,
     getChildren,
     getCounts,
+    indentation,
     states,
     className,
     onNgModelChange,
@@ -82,6 +85,7 @@ const Template: Story<NestedCheckboxesWithCountsArgs> = ({
       [getId]="getId"
       [getChildren]="getChildren"
       [getLeafItemCount]="getCounts"
+      [indentation]="indentation"
       [ngModel]="states"
       (ngModelChange)="states = $event; onNgModelChange($event)"
       (selectedChange)="onSelectedChange($event)"
@@ -91,9 +95,9 @@ const Template: Story<NestedCheckboxesWithCountsArgs> = ({
 });
 
 export const noneSelected = Template.bind({});
-noneSelected.args = {
+noneSelected.args = createArgs({
   states: {},
-};
+});
 
 export const someSelected = Template.bind({});
 someSelected.args = createArgs({
@@ -112,11 +116,13 @@ withCustomStyling.args = createArgs({
 });
 
 function createArgs({
+  indentation = 24,
   states = {},
   className = '',
 }: {
+  indentation?: number,
   states?: CheckboxStates;
   className?: string;
 }) {
-  return { states, className };
+  return { indentation, states, className };
 }

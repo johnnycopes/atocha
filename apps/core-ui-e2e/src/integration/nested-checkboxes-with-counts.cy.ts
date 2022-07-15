@@ -20,12 +20,6 @@ describe('NestedCheckboxesWithCountsComponent', () => {
     };
   });
 
-  it('Renders checkboxes correctly', () => {
-    cy.visit(stories.noneSelected)
-      .get(checkboxSelector)
-      .should('have.length', 9);
-  });
-
   it('Displays all states correctly when model is passed in', () => {
     cy.visit(stories.someSelected);
 
