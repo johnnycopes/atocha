@@ -6,6 +6,7 @@ import { AutofocusDirective } from './autofocus/autofocus.directive';
 import { CheckboxComponent } from './checkbox/checkbox.component';
 import { MeasurementPipe } from './measurement/measurement.pipe';
 import { NestedCheckboxesComponent } from './nested-checkboxes/nested-checkboxes.component';
+import { NestedCheckboxesWithCountsComponent } from './nested-checkboxes-with-counts/nested-checkboxes-with-counts.component';
 import { TreeComponent } from './tree/tree.component';
 
 @NgModule({
@@ -15,6 +16,7 @@ import { TreeComponent } from './tree/tree.component';
     CheckboxComponent,
     MeasurementPipe,
     NestedCheckboxesComponent,
+    NestedCheckboxesWithCountsComponent,
     TreeComponent,
   ],
   exports: [
@@ -22,6 +24,7 @@ import { TreeComponent } from './tree/tree.component';
     CheckboxComponent,
     MeasurementPipe,
     NestedCheckboxesComponent,
+    NestedCheckboxesWithCountsComponent,
     TreeComponent,
   ],
 })

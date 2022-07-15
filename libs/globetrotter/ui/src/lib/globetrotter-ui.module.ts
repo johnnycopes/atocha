@@ -5,6 +5,7 @@ import {
   CoreUiModule,
   AutofocusDirective,
   MeasurementPipe,
+  NestedCheckboxesWithCountsComponent,
 } from '@atocha/core/ui';
 
 import { AlertComponent } from './alert/alert.component';
@@ -16,7 +17,6 @@ import { IconComponent } from './icon/icon.component';
 import { InputComponent } from './input/input.component';
 import { ListDetailsComponent } from './list-details/list-details.component';
 import { LoaderComponent } from './loader/loader.component';
-import { NestedCheckboxesWithCountsComponent } from './nested-checkboxes-with-counts/nested-checkboxes-with-counts.component';
 import { RadioButtonsComponent } from './radio-buttons/radio-buttons.component';
 import { SmallCapsComponent } from './small-caps/small-caps.component';
 
@@ -32,7 +32,6 @@ import { SmallCapsComponent } from './small-caps/small-caps.component';
     InputComponent,
     ListDetailsComponent,
     LoaderComponent,
-    NestedCheckboxesWithCountsComponent,
     RadioButtonsComponent,
     SmallCapsComponent,
   ],

@@ -16,18 +16,13 @@ import { getItemsRecursively } from '@atocha/core/util';
 export type CheckboxState = 'checked' | 'indeterminate';
 export type CheckboxStates = Record<string, CheckboxState>;
 
-export interface TreeProvider<T> {
-  getId(item: T): string;
-  getChildren(item: T): T[];
-  getParent?(item: T): T | undefined;
-}
-
 interface ItemsRecord<T> {
   [id: string]: {
     item: T;
     parentId: string | undefined;
   };
 }
+
 @Component({
   selector: 'core-nested-checkboxes',
   templateUrl: './nested-checkboxes.component.html',
@@ -47,7 +42,6 @@ export class NestedCheckboxesComponent<T>
   @Input() item: T | undefined;
   @Input() getId: (item: T) => string = () => '';
   @Input() getChildren: (item: T) => T[] = () => [];
-  @Input() treeProvider!: TreeProvider<T>;
   @Input() itemTemplate: TemplateRef<unknown> | undefined;
   @Input() indentation = 24;
   states: CheckboxStates = {};

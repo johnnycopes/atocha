@@ -1,7 +1,7 @@
 describe('NestedCheckboxesComponent', () => {
   let checkboxSelector = '';
   let inputSelector = '';
-  let stories: Record<string, string>;
+  let stories: Record<string, string> = {};
 
   function assertState(
     place: string,
@@ -29,12 +29,9 @@ describe('NestedCheckboxesComponent', () => {
     checkboxSelector = '[data-test="core-ui-nested-checkbox"]';
     inputSelector = '[data-test="core-ui-checkbox"]';
     stories = {
-      noneSelected:
-        '/iframe.html?id=nestedcheckboxescomponent--nested-item-with-none-selected',
-      someSelected:
-        '/iframe.html?id=nestedcheckboxescomponent--nested-item-with-some-selected',
-      allSelected:
-        '/iframe.html?id=nestedcheckboxescomponent--nested-item-with-all-selected',
+      noneSelected: '/iframe.html?id=nestedcheckboxescomponent--none-selected',
+      someSelected: '/iframe.html?id=nestedcheckboxescomponent--some-selected',
+      allSelected: '/iframe.html?id=nestedcheckboxescomponent--all-selected',
     };
   });
 
