@@ -25,8 +25,7 @@ import {
 
 type NestedCheckboxesArgs = Pick<
   NestedCheckboxesComponent<TestItem>,
-  'indentation' |
-  'states'
+  'indentation' | 'states'
 > & {
   className: string;
   onClick: InputType | undefined;
@@ -105,7 +104,7 @@ function createArgs({
   states = {},
   className = '',
 }: {
-  indentation?: number
+  indentation?: number;
   states?: CheckboxStates;
   className?: string;
 }) {

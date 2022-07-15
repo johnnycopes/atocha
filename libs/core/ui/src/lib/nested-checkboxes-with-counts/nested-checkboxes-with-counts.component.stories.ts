@@ -27,8 +27,7 @@ import { NestedCheckboxesWithCountsComponent } from './nested-checkboxes-with-co
 
 type NestedCheckboxesWithCountsArgs = Pick<
   NestedCheckboxesComponent<TestItem>,
-  'indentation' |
-  'states'
+  'indentation' | 'states'
 > & {
   className: string;
   onNgModelChange: InputType | undefined;
@@ -120,7 +119,7 @@ function createArgs({
   states = {},
   className = '',
 }: {
-  indentation?: number,
+  indentation?: number;
   states?: CheckboxStates;
   className?: string;
 }) {

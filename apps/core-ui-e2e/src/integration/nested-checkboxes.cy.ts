@@ -3,10 +3,7 @@ describe('NestedCheckboxesComponent', () => {
   let inputSelector = '';
   let stories: Record<string, string> = {};
 
-  function assertIndentation(
-    place: string,
-    indentation: number
-  ): void {
+  function assertIndentation(place: string, indentation: number): void {
     cy.get(checkboxSelector)
       .contains(place)
       .parent()
