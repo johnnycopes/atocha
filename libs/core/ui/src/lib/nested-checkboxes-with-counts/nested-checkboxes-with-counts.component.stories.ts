@@ -30,7 +30,9 @@ type NestedCheckboxesWithCountsArgs = Pick<
   'states'
 > & {
   className: string;
-  onClick: InputType | undefined;
+  onNgModelChange: InputType | undefined;
+  onSelectedChange: InputType | undefined;
+  onTotalChange: InputType | undefined;
 };
 
 export default {
@@ -49,14 +51,18 @@ export default {
     componentWrapperDecorator(StorybookWrapperComponent),
   ],
   argTypes: {
-    onClick: { action: 'clicked' },
+    onNgModelChange: { action: 'ngModelChange' },
+    onSelectedChange: { action: 'selectedChange' },
+    onTotalChange: { action: 'totalChange' },
   },
 } as Meta<NestedCheckboxesWithCountsArgs>;
 
 const Template: Story<NestedCheckboxesWithCountsArgs> = ({
   states,
   className,
-  onClick,
+  onNgModelChange,
+  onSelectedChange,
+  onTotalChange,
 }: NestedCheckboxesWithCountsArgs) => ({
   props: {
     item: AFRICA,
@@ -65,7 +71,9 @@ const Template: Story<NestedCheckboxesWithCountsArgs> = ({
     getCounts,
     states,
     className,
-    onClick,
+    onNgModelChange,
+    onSelectedChange,
+    onTotalChange,
   },
   template: `
     <core-nested-checkboxes-with-counts
@@ -75,7 +83,9 @@ const Template: Story<NestedCheckboxesWithCountsArgs> = ({
       [getChildren]="getChildren"
       [getLeafItemCount]="getCounts"
       [ngModel]="states"
-      (ngModelChange)="states = $event; onClick($event)"
+      (ngModelChange)="states = $event; onNgModelChange($event)"
+      (selectedChange)="onSelectedChange($event)"
+      (totalChange)="onTotalChange($event)"
     ></core-nested-checkboxes-with-counts>
   `,
 });
