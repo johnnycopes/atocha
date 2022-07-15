@@ -19,7 +19,7 @@ interface TreeNodeContext<T> {
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
     class: 'core-tree',
-  }
+  },
 })
 export class TreeComponent<T> implements OnInit {
   /**
