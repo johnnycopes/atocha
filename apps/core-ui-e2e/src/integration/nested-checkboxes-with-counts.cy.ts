@@ -9,7 +9,7 @@ describe('NestedCheckboxesWithCountsComponent', () => {
   }
 
   beforeEach(() => {
-    checkboxSelector = '[data-test="core-ui-nested-checkbox"]';
+    checkboxSelector = '[data-test="core-nested-checkbox"]';
     stories = {
       noneSelected:
         '/iframe.html?id=nestedcheckboxeswithcountscomponent--none-selected',
@@ -18,12 +18,6 @@ describe('NestedCheckboxesWithCountsComponent', () => {
       allSelected:
         '/iframe.html?id=nestedcheckboxeswithcountscomponent--all-selected',
     };
-  });
-
-  it('Renders checkboxes correctly', () => {
-    cy.visit(stories.noneSelected)
-      .get(checkboxSelector)
-      .should('have.length', 9);
   });
 
   it('Displays all states correctly when model is passed in', () => {

@@ -4,6 +4,7 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   HostBinding,
+  ViewEncapsulation,
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
@@ -12,6 +13,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
   templateUrl: './checkbox.component.html',
   styleUrls: ['./checkbox.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -31,10 +33,11 @@ export class CheckboxComponent implements ControlValueAccessor {
   @HostBinding('class')
   get hostClasses(): Record<string, boolean> {
     return {
-      'core-ui-checkbox--checked': this.checked && !this.indeterminate,
-      'core-ui-checkbox--unchecked': !this.checked && !this.indeterminate,
-      'core-ui-checkbox--indeterminate': this.indeterminate,
-      'core-ui-checkbox--disabled': this.disabled,
+      'core-checkbox': true,
+      'core-checkbox--checked': this.checked && !this.indeterminate,
+      'core-checkbox--unchecked': !this.checked && !this.indeterminate,
+      'core-checkbox--indeterminate': this.indeterminate,
+      'core-checkbox--disabled': this.disabled,
     };
   }
 

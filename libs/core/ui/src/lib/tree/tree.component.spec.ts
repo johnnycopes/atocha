@@ -77,7 +77,7 @@ describe('TreeComponent', () => {
     fixture.detectChanges();
 
     const name = fixture.nativeElement
-      .querySelector('[data-test="ui-tree-default-item"]')
+      .querySelector('[data-test="core-tree-default-item"]')
       .textContent.trim();
     expect(name).toBe('1');
   });
@@ -94,7 +94,7 @@ describe('TreeComponent', () => {
     fixture.detectChanges();
 
     const items = fixture.nativeElement.querySelectorAll(
-      '[data-test="ui-tree-default-item"]'
+      '[data-test="core-tree-default-item"]'
     );
     const name = items[1].textContent.trim();
     const childName = items[2].textContent.trim();

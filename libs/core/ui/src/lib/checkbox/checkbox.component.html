@@ -1,21 +1,21 @@
-<label class="container"
-  [class.container--disabled]="disabled"
+<label class="core-checkbox__container"
+  [class.core-checkbox__container--disabled]="disabled"
 >
-  <input class="input"
+  <input class="core-checkbox__input"
     type="checkbox"
-    data-test="core-ui-checkbox"
+    data-test="core-checkbox-input"
     [indeterminate]="indeterminate"
     [disabled]="disabled"
     [ngModel]="checked"
     (ngModelChange)="onChange($event)"
   />
-  <div class="checkbox">
+  <div class="core-checkbox__checkbox">
     <div *ngIf="checked || indeterminate"
-      class="checkmark"
-      [class.checkmark--indeterminate]="indeterminate"
+      class="core-checkbox__checkmark"
+      [class.core-checkbox__checkmark--indeterminate]="indeterminate"
     ></div>
   </div>
-  <div class="label">
+  <div class="core-checkbox__label">
     <ng-content></ng-content>
   </div>
 </label>
