@@ -8,6 +8,8 @@ import {
   ChangeDetectorRef,
   OnChanges,
   SimpleChanges,
+  ViewEncapsulation,
+  HostListener,
 } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 
@@ -28,6 +30,10 @@ interface ItemsRecord<T> {
   templateUrl: './nested-checkboxes.component.html',
   styleUrls: ['./nested-checkboxes.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
+  host: {
+    class: 'core-nested-checkboxes',
+  },
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,

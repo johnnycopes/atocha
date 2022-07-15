@@ -11,6 +11,7 @@ import {
   forwardRef,
   SimpleChanges,
   OnChanges,
+  ViewEncapsulation,
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { reduce } from 'lodash-es';
@@ -24,6 +25,10 @@ type Counts = Record<string, number>;
   templateUrl: './nested-checkboxes-with-counts.component.html',
   styleUrls: ['./nested-checkboxes-with-counts.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
+  host: {
+    class: 'core-nested-checkboxes-with-counts',
+  },
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,

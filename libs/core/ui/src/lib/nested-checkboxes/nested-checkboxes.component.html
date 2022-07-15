@@ -12,8 +12,7 @@
   let-parent="level > 0"
 >
   <core-checkbox
-    class="checkbox"
-    [class.checkbox--top]="!parent"
+    [class.core-nested-checkboxes__top]="!parent"
     [style.margin-left.px]="level * indentation"
     data-test="core-ui-nested-checkbox"
     [indeterminate]="states[getId(item)] === 'indeterminate'"

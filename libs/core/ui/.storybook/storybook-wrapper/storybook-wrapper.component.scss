@@ -4,18 +4,18 @@
     --hover-color: beige;
     --label-margin: 12px;
 
-    &.core-ui-checkbox--checked {
+    &.core-checkbox--checked {
       --checkbox-color: aquamarine;
       --checkmark-color: darkblue;
       --checkbox-background: aquamarine;
     }
 
-    &.core-ui-checkbox--indeterminate {
+    &.core-checkbox--indeterminate {
       --checkbox-color: goldenrod;
       --checkmark-color: goldenrod;
     }
 
-    &.core-ui-checkbox--unchecked {
+    &.core-checkbox--unchecked {
       --checkbox-color: darkseagreen;
       color: darkgray;
     }
@@ -24,62 +24,58 @@
   .custom-nested-checkboxes {
     --checkbox-margin: 8px;
 
-    ::ng-deep {
-      .checkbox {
-        --checkbox-size: 20px;
-        --hover-color: beige;
-        --label-margin: 12px;
-      }
+    .core-checkbox {
+      --checkbox-size: 20px;
+      --hover-color: beige;
+      --label-margin: 12px;
+    }
 
-      &.checkbox--top.core-ui-checkbox--checked,
-      &.checkbox--top.core-ui-checkbox--indeterminate {
-        --checkbox-color: aquamarine;
-        --checkmark-color: darkblue;
-        --checkbox-background: aquamarine;
-      }
+    .core-nested-checkboxes__top.core-checkbox--checked,
+    .core-nested-checkboxes__top.core-checkbox--indeterminate {
+      --checkbox-color: aquamarine;
+      --checkmark-color: darkblue;
+      --checkbox-background: aquamarine;
+    }
 
-      &.core-ui-checkbox--checked,
-      &.core-ui-checkbox--indeterminate {
-        --checkbox-color: goldenrod;
-        --checkmark-color: goldenrod;
-      }
+    .core-checkbox--checked,
+    .core-checkbox--indeterminate {
+      --checkbox-color: goldenrod;
+      --checkmark-color: goldenrod;
+    }
 
-      &.checkbox--unchecked {
-        --checkbox-color: darkseagreen;
-        color: darkgray;
-      }
+    .checkbox--unchecked {
+      --checkbox-color: darkseagreen;
+      color: darkgray;
     }
   }
 
   .custom-nested-checkboxes-with-counts {
-    ::ng-deep {
-      .nested-checkboxes {
-        --checkbox-margin: 8px;
-      }
+    .core-nested-checkboxes {
+      --checkbox-margin: 8px;
+    }
 
-      .checkbox {
-        --checkbox-size: 20px;
-        --hover-color: beige;
-        --label-margin: 12px;
-      }
+    .core-checkbox {
+      --checkbox-size: 20px;
+      --hover-color: beige;
+      --label-margin: 12px;
+    }
 
-      &.checkbox--top.core-ui-checkbox--checked,
-      &.checkbox--top.core-ui-checkbox--indeterminate {
-        --checkbox-color: aquamarine;
-        --checkmark-color: darkblue;
-        --checkbox-background: aquamarine;
-      }
+    .core-nested-checkboxes__top.core-checkbox--checked,
+    .core-nested-checkboxes__top.core-checkbox--indeterminate {
+      --checkbox-color: aquamarine;
+      --checkmark-color: darkblue;
+      --checkbox-background: aquamarine;
+    }
 
-      &.core-ui-checkbox--checked,
-      &.core-ui-checkbox--indeterminate {
-        --checkbox-color: goldenrod;
-        --checkmark-color: goldenrod;
-      }
+    .core-checkbox--checked,
+    .core-checkbox--indeterminate {
+      --checkbox-color: goldenrod;
+      --checkmark-color: goldenrod;
+    }
 
-      &.checkbox--unchecked {
-        --checkbox-color: darkseagreen;
-        color: darkgray;
-      }
+    .checkbox--unchecked {
+      --checkbox-color: darkseagreen;
+      color: darkgray;
     }
   }
 }

@@ -17,6 +17,9 @@ interface TreeNodeContext<T> {
   templateUrl: './tree.component.html',
   styleUrls: ['./tree.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  host: {
+    class: 'core-tree',
+  }
 })
 export class TreeComponent<T> implements OnInit {
   /**
