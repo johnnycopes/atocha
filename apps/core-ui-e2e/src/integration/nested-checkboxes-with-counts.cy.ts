@@ -9,7 +9,7 @@ describe('NestedCheckboxesWithCountsComponent', () => {
   }
 
   beforeEach(() => {
-    checkboxSelector = '[data-test="core-ui-nested-checkbox"]';
+    checkboxSelector = '[data-test="core-nested-checkbox"]';
     stories = {
       noneSelected:
         '/iframe.html?id=nestedcheckboxeswithcountscomponent--none-selected',

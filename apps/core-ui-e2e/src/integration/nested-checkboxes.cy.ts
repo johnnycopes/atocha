@@ -26,8 +26,8 @@ describe('NestedCheckboxesComponent', () => {
   }
 
   beforeEach(() => {
-    checkboxSelector = '[data-test="core-ui-nested-checkbox"]';
-    inputSelector = '[data-test="core-ui-checkbox"]';
+    checkboxSelector = '[data-test="core-nested-checkbox"]';
+    inputSelector = '[data-test="core-checkbox-input"]';
     stories = {
       noneSelected: '/iframe.html?id=nestedcheckboxescomponent--none-selected',
       someSelected: '/iframe.html?id=nestedcheckboxescomponent--some-selected',
