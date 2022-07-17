@@ -1,4 +1,4 @@
-export interface CountryDto  {
+export interface CountryDto {
   altSpellings: string[];
   area: number;
   borders: string[];
@@ -25,7 +25,7 @@ export interface CountryDto  {
   demonyms: {
     eng: {
       f: string;
-      m: string
+      m: string;
     };
     fra: {
       f: string;
@@ -152,7 +152,7 @@ export interface CountryDto  {
     zho: {
       official: string;
       common: string;
-    }
+    };
   };
   unMember: boolean;
-};
+}

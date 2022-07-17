@@ -32,7 +32,9 @@ export class ExploreCountryComponent implements OnChanges, AfterViewInit {
   @ViewChild('size') sizeTemplate: TemplateRef<unknown> | undefined;
   @ViewChild('language') languageTemplate: TemplateRef<unknown> | undefined;
   @ViewChild('currency') currencyTemplate: TemplateRef<unknown> | undefined;
-  @ViewChild('callingCodes') callingCodesTemplate: TemplateRef<unknown> | undefined;
+  @ViewChild('callingCodes') callingCodesTemplate:
+    | TemplateRef<unknown>
+    | undefined;
   @ViewChild('list') listTemplate: TemplateRef<unknown> | undefined;
   tableData: TableContent[] = [];
 
