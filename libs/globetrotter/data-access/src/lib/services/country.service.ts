@@ -4,6 +4,7 @@ import { BehaviorSubject, Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { groupBy, reduce, shuffle, map as _map } from 'lodash-es';
 
+import { sort } from '@atocha/core/util';
 import { Country, CountryDto, Region, Selection } from '@atocha/globetrotter/types';
 import { ApiService } from './api.service';
 import { COUNTRY_SUMMARY_NAMES } from '../data/country-modifications';
@@ -29,10 +30,10 @@ export class CountryService implements Resolve<Observable<Country[]>> {
   }
 
   constructor(private _apiService: ApiService) {
-    this._apiService.fetchCountries().subscribe((countryDtos) => {
-      const flatCountries = countryDtos
+    this._apiService.fetchCountries().subscribe(countryDtos => {
+      const flatCountries = sort(countryDtos
         .filter(({ unMember }) => unMember)
-        .map(dto => this._transformDto(dto));
+        .map(dto => this._transformDto(dto)), ({ name }) => name);
       const countriesBySubregion = groupBy(flatCountries, 'subregion');
       const subregionsByRegion =
         this._groupSubregionsByRegion(countriesBySubregion);
@@ -81,9 +82,6 @@ export class CountryService implements Resolve<Observable<Country[]>> {
   }
 
   private _transformDto(dto: CountryDto): Country {
-    if (dto.name.common === 'Dominican Republic') {
-      console.log(dto);
-    }
     return {
       area: dto.area,
       callingCodes: dto.idd.suffixes.map(suffix => dto.idd.root + suffix),

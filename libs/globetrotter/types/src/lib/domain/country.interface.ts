@@ -25,5 +25,9 @@ export interface Country {
   population: number;
   region: string;
   subregion: string;
+  /**
+   * The domain associated with the country shown at the end of website URLs
+   * {@link https://en.wikipedia.org/wiki/List_of_Internet_top-level_domains}
+   */
   topLevelDomain: string[];
 }
