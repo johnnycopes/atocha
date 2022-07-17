@@ -4,11 +4,16 @@ import { BehaviorSubject, Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { groupBy, reduce, shuffle, map as _map } from 'lodash-es';
 
-import { Country, Region, Selection } from '@atocha/globetrotter/types';
-import { ApiService } from './api.service';
-import { COUNTRY_STATUSES } from '../data/country-statuses';
+import { sort } from '@atocha/core/util';
 import {
-  COUNTRY_APP_NAMES,
+  Country,
+  CountryDto,
+  Region,
+  Selection,
+} from '@atocha/globetrotter/types';
+import { ApiService } from './api.service';
+import {
+  CALLING_CODES,
   COUNTRY_SUMMARY_NAMES,
 } from '../data/country-modifications';
 
@@ -33,8 +38,13 @@ export class CountryService implements Resolve<Observable<Country[]>> {
   }
 
   constructor(private _apiService: ApiService) {
-    this._apiService.fetchCountries().subscribe((countriesData) => {
-      const flatCountries = this._sanitizeRawData(countriesData);
+    this._apiService.fetchCountries().subscribe((countryDtos) => {
+      const flatCountries = sort(
+        countryDtos
+          .filter(({ unMember }) => unMember)
+          .map((dto) => this._transformDto(dto)),
+        ({ name }) => name
+      );
       const countriesBySubregion = groupBy(flatCountries, 'subregion');
       const subregionsByRegion =
         this._groupSubregionsByRegion(countriesBySubregion);
@@ -82,15 +92,24 @@ export class CountryService implements Resolve<Observable<Country[]>> {
     return this._apiService.fetchSummary(searchTerm);
   }
 
-  private _sanitizeRawData(countries: Country[]): Country[] {
-    const sanitizedCountries: Country[] = [];
-    for (const country of countries) {
-      if (COUNTRY_STATUSES[country.name]) {
-        country.name = COUNTRY_APP_NAMES[country.name] || country.name;
-        sanitizedCountries.push(country);
-      }
-    }
-    return sanitizedCountries;
+  private _transformDto(dto: CountryDto): Country {
+    return {
+      area: dto.area,
+      callingCodes:
+        CALLING_CODES[dto.name.common] ||
+        dto.idd.suffixes.map((suffix) => dto.idd.root + suffix),
+      capital: dto.capital[0],
+      currencies: Object.keys(dto.currencies),
+      demonym: dto.demonyms?.['eng']?.m ?? '',
+      flag: dto.flags.svg,
+      id: dto.cioc ?? dto.name.common,
+      languages: Object.values(dto.languages),
+      name: dto.name.common,
+      population: dto.population,
+      region: dto.region,
+      subregion: dto.subregion,
+      topLevelDomain: dto.tld,
+    };
   }
 
   private _groupSubregionsByRegion(

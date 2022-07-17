@@ -10,6 +10,7 @@ import {
   SimpleChanges,
 } from '@angular/core';
 
+import { pluralize } from '@atocha/core/util';
 import { Country } from '@atocha/globetrotter/types';
 
 interface TableContent {
@@ -31,6 +32,9 @@ export class ExploreCountryComponent implements OnChanges, AfterViewInit {
   @ViewChild('size') sizeTemplate: TemplateRef<unknown> | undefined;
   @ViewChild('language') languageTemplate: TemplateRef<unknown> | undefined;
   @ViewChild('currency') currencyTemplate: TemplateRef<unknown> | undefined;
+  @ViewChild('callingCodes') callingCodesTemplate:
+    | TemplateRef<unknown>
+    | undefined;
   @ViewChild('list') listTemplate: TemplateRef<unknown> | undefined;
   tableData: TableContent[] = [];
 
@@ -56,7 +60,7 @@ export class ExploreCountryComponent implements OnChanges, AfterViewInit {
       demonym,
       languages,
       currencies,
-      numericCode,
+      callingCodes,
       topLevelDomain,
     } = this.country;
     this.tableData = [
@@ -69,11 +73,11 @@ export class ExploreCountryComponent implements OnChanges, AfterViewInit {
         content: demonym,
       },
       {
-        header: `language${languages.length > 1 ? 's' : ''}`,
+        header: pluralize(languages.length, 'languages'),
         template: this.languageTemplate,
       },
       {
-        header: `currenc${currencies.length > 1 ? 'ies' : 'y'}`,
+        header: pluralize(currencies.length, 'currency', 'currencies'),
         template: this.currencyTemplate,
       },
       {
@@ -85,8 +89,8 @@ export class ExploreCountryComponent implements OnChanges, AfterViewInit {
         template: this.sizeTemplate,
       },
       {
-        header: 'numeric code',
-        content: `+${numericCode}`,
+        header: `calling ${pluralize(callingCodes.length, 'code')}`,
+        template: this.callingCodesTemplate,
       },
       {
         header: 'top-level domain',

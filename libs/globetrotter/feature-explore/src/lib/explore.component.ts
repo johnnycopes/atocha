@@ -67,8 +67,8 @@ export class ExploreComponent {
 
   constructor(private _countryService: CountryService) {}
 
-  getCountryCode(country: Country): string {
-    return country.cioc;
+  getCountryId({ id }: Country): string {
+    return id;
   }
 
   onSelect(selectedCountry: Country): void {
