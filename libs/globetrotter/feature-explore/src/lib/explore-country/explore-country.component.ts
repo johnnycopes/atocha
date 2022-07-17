@@ -60,7 +60,7 @@ export class ExploreCountryComponent implements OnChanges, AfterViewInit {
       demonym,
       languages,
       currencies,
-      callingCodes: idd,
+      callingCodes,
       topLevelDomain,
     } = this.country;
     this.tableData = [
@@ -89,7 +89,7 @@ export class ExploreCountryComponent implements OnChanges, AfterViewInit {
         template: this.sizeTemplate,
       },
       {
-        header: `calling ${pluralize(idd.length, 'code')}`,
+        header: `calling ${pluralize(callingCodes.length, 'code')}`,
         template: this.callingCodesTemplate,
       },
       {
