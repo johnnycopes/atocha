@@ -81,8 +81,12 @@ export class CountryService implements Resolve<Observable<Country[]>> {
   }
 
   private _transformDto(dto: CountryDto): Country {
+    if (dto.name.common === 'Dominican Republic') {
+      console.log(dto);
+    }
     return {
       area: dto.area,
+      callingCodes: dto.idd.suffixes.map(suffix => dto.idd.root + suffix),
       capital: dto.capital[0],
       cioc: dto.cioc,
       currencies: Object.keys(dto.currencies),
@@ -90,7 +94,6 @@ export class CountryService implements Resolve<Observable<Country[]>> {
       flag: dto.flags.svg,
       languages: Object.values(dto.languages),
       name: dto.name.common,
-      numericCode: '1',
       population: dto.population,
       region: dto.region,
       subregion: dto.subregion,

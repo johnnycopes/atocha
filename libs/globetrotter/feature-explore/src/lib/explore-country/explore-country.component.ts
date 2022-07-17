@@ -32,6 +32,7 @@ export class ExploreCountryComponent implements OnChanges, AfterViewInit {
   @ViewChild('size') sizeTemplate: TemplateRef<unknown> | undefined;
   @ViewChild('language') languageTemplate: TemplateRef<unknown> | undefined;
   @ViewChild('currency') currencyTemplate: TemplateRef<unknown> | undefined;
+  @ViewChild('callingCodes') callingCodesTemplate: TemplateRef<unknown> | undefined;
   @ViewChild('list') listTemplate: TemplateRef<unknown> | undefined;
   tableData: TableContent[] = [];
 
@@ -57,7 +58,7 @@ export class ExploreCountryComponent implements OnChanges, AfterViewInit {
       demonym,
       languages,
       currencies,
-      numericCode,
+      callingCodes: idd,
       topLevelDomain,
     } = this.country;
     this.tableData = [
@@ -86,8 +87,8 @@ export class ExploreCountryComponent implements OnChanges, AfterViewInit {
         template: this.sizeTemplate,
       },
       {
-        header: 'numeric code',
-        content: `+${numericCode}`,
+        header: `calling ${pluralize(idd.length, 'code')}`,
+        template: this.callingCodesTemplate,
       },
       {
         header: 'top-level domain',

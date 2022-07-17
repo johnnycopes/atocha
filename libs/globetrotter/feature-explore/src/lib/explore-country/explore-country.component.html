@@ -62,5 +62,12 @@
       {{ key ? item[key] : item }}{{ !last ? ',' : '' }}
     </span>
   </ng-template>
+
+  <ng-template #callingCodes>
+    <ng-container *ngTemplateOutlet="list; context: {
+      items: country.callingCodes
+    }"
+    ></ng-container>
+  </ng-template>
 </ng-container>
 
