@@ -12,7 +12,10 @@ import {
   Selection,
 } from '@atocha/globetrotter/types';
 import { ApiService } from './api.service';
-import { COUNTRY_SUMMARY_NAMES } from '../data/country-modifications';
+import {
+  CALLING_CODES,
+  COUNTRY_SUMMARY_NAMES,
+} from '../data/country-modifications';
 
 interface CountryState {
   flatCountries: Country[];
@@ -92,7 +95,9 @@ export class CountryService implements Resolve<Observable<Country[]>> {
   private _transformDto(dto: CountryDto): Country {
     return {
       area: dto.area,
-      callingCodes: dto.idd.suffixes.map((suffix) => dto.idd.root + suffix),
+      callingCodes:
+        CALLING_CODES[dto.name.common] ||
+        dto.idd.suffixes.map((suffix) => dto.idd.root + suffix),
       capital: dto.capital[0],
       cioc: dto.cioc,
       currencies: Object.keys(dto.currencies),
