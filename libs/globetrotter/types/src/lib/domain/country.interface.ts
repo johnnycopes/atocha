@@ -16,12 +16,8 @@ export interface Country {
   /** The name for an inhabitant of a specific place */
   demonym: string;
   flag: string;
-  languages: {
-    iso639_1: string;
-    iso639_2: string;
-    name: string;
-    nativeName: string;
-  }[];
+  gini: number;
+  languages: string[];
   name: string;
   numericCode: string;
   population: number;
