@@ -85,7 +85,7 @@ export class CountryService implements Resolve<Observable<Country[]>> {
       area: dto.area,
       capital: dto.capital[0],
       cioc: dto.cioc,
-      currencies: Object.values(dto.currencies).map(({ name, symbol }) => ({ name, symbol, code: '' })),
+      currencies: Object.keys(dto.currencies),
       demonym: dto.demonyms?.['eng']?.m ?? '',
       flag: dto.flags.svg,
       languages: Object.values(dto.languages),

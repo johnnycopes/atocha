@@ -17,7 +17,7 @@ export interface CountryDto  {
   };
   continents: string[];
   currencies: {
-    [key: string]: {
+    [code: string]: {
       name: string;
       symbol: string;
     };
