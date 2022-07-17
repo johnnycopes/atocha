@@ -10,6 +10,7 @@ import {
   SimpleChanges,
 } from '@angular/core';
 
+import { pluralize } from '@atocha/core/util';
 import { Country } from '@atocha/globetrotter/types';
 
 interface TableContent {
@@ -69,11 +70,11 @@ export class ExploreCountryComponent implements OnChanges, AfterViewInit {
         content: demonym,
       },
       {
-        header: `language${languages.length > 1 ? 's' : ''}`,
+        header: pluralize(languages.length, 'languages'),
         template: this.languageTemplate,
       },
       {
-        header: `currenc${currencies.length > 1 ? 'ies' : 'y'}`,
+        header: pluralize(currencies.length, 'currency', 'currencies'),
         template: this.currencyTemplate,
       },
       {
