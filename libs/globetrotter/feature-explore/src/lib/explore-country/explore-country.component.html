@@ -30,8 +30,7 @@
 
   <ng-template #language>
     <ng-container *ngTemplateOutlet="list; context: {
-      items: country.languages,
-      key: 'name'
+      items: country.languages
     }"></ng-container>
   </ng-template>
 
@@ -56,10 +55,9 @@
 
   <ng-template #list
     let-items="items"
-    let-key="key"
   >
     <span *ngFor="let item of items; last as last">
-      {{ key ? item[key] : item }}{{ !last ? ',' : '' }}
+      {{ item }}{{ !last ? ',' : '' }}
     </span>
   </ng-template>
 
