@@ -1,4 +1,4 @@
-import { PlaceSelection, Region } from "@atocha/globetrotter/types";
+import { PlaceSelection, Region } from '@atocha/globetrotter/types';
 
 export function mapRegionsToPlaceSelection(regions: Region[]): PlaceSelection {
   const placeSelection: PlaceSelection = {};

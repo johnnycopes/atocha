@@ -21,8 +21,8 @@ describe('mapRegionsToPlaceSelection', () => {
             name: 'South America',
             region: 'Americas',
             countries: [],
-          }
-        ]
+          },
+        ],
       },
     ];
 
@@ -32,5 +32,5 @@ describe('mapRegionsToPlaceSelection', () => {
       'North America': 'checked',
       'South America': 'checked',
     });
-  })
+  });
 });
