@@ -1,6 +1,4 @@
-import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
-
-import { SelectService } from '@atocha/globetrotter/data-access';
+import { Component, ChangeDetectionStrategy, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-select-quantity',
@@ -9,12 +7,7 @@ import { SelectService } from '@atocha/globetrotter/data-access';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SelectQuantityComponent {
-  @Input() quantity = 0;
   @Input() invalid = false;
-
-  constructor(private _selectService: SelectService) {}
-
-  onChange(quantity: number): void {
-    this._selectService.updateQuantity(quantity);
-  }
+  @Input() quantity = 0;
+  @Output() quantityChange = new EventEmitter<number>();
 }

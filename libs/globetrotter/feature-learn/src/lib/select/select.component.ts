@@ -78,6 +78,10 @@ export class SelectComponent {
     private _router: Router
   ) {}
 
+  onQuantityChange(quantity: number): void {
+    this._selectService.updateQuantity(quantity);
+  }
+
   async onLaunch(): Promise<void> {
     if (!this._selection) {
       return;

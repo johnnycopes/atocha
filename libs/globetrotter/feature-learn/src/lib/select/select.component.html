@@ -16,8 +16,9 @@
     <div class="fields__top">
       <app-select-type></app-select-type>
       <app-select-quantity
-        [quantity]="vm.quantity"
         [invalid]="vm.invalidQuantity"
+        [quantity]="vm.quantity"
+        (quantityChange)="onQuantityChange($event)"
       ></app-select-quantity>
     </div>
     <app-select-places></app-select-places>
