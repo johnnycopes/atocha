@@ -1,5 +1,5 @@
-import { Region } from "../domain/region.interface";
-import { PlaceSelection } from "../selection.interface";
+import { Region } from '../domain/region.interface';
+import { PlaceSelection } from '../selection.interface';
 
 export function mapRegionsToPlaceSelection(regions: Region[]): PlaceSelection {
   const placeSelection: PlaceSelection = {};

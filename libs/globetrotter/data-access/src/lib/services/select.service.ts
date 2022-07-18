@@ -8,7 +8,7 @@ import {
   SelectionParams,
   PlaceSelection,
   PlaceSelectionState,
-  mapRegionsToPlaceSelection
+  mapRegionsToPlaceSelection,
 } from '@atocha/globetrotter/types';
 import { CountryService } from './country.service';
 
