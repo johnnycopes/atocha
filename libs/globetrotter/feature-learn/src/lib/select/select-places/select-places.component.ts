@@ -88,10 +88,10 @@ export class SelectPlacesComponent {
   private _transformPlaceSelection(selection: PlaceSelection): CheckboxStates {
     const states: CheckboxStates = {};
 
-    for (const [place, checkboxState] of Object.entries(selection)) {
-      if (checkboxState === 'checked') {
+    for (const [place, placeSelectionState] of Object.entries(selection)) {
+      if (placeSelectionState === 'checked') {
         states[place] = 'checked';
-      } else if (checkboxState === 'indeterminate') {
+      } else if (placeSelectionState === 'indeterminate') {
         states[place] = 'indeterminate';
       }
     }
