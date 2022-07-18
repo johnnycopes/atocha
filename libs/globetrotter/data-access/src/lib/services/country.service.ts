@@ -34,7 +34,7 @@ export class CountryService implements Resolve<Observable<Country[]>> {
     nestedCountries: [],
   });
   get countries(): Observable<CountryState> {
-    return this._countries;
+    return this._countries.asObservable();
   }
 
   constructor(private _apiService: ApiService) {

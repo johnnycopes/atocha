@@ -6,7 +6,7 @@ import {
   NavigationCancel,
   NavigationError,
 } from '@angular/router';
-import { BehaviorSubject, of } from 'rxjs';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 import {
   map,
   filter,
@@ -28,8 +28,8 @@ export class RouterService {
     currentRoute: '',
     loading: false,
   });
-  get state(): BehaviorSubject<RouterState> {
-    return this._state;
+  get state(): Observable<RouterState> {
+    return this._state.asObservable();
   }
 
   constructor(private _router: Router) {
