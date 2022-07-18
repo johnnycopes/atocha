@@ -5,7 +5,7 @@ import { map, tap, distinctUntilChanged } from 'rxjs/operators';
 import { pickBy } from 'lodash-es';
 
 import { fadeInAnimation } from '@atocha/globetrotter/ui';
-import { Selection, Route } from '@atocha/globetrotter/types';
+import { Selection, Route, QuizType } from '@atocha/globetrotter/types';
 import {
   CountryService,
   SelectService,
@@ -22,6 +22,9 @@ export class SelectComponent {
   private _selection: Selection | undefined;
   private _selection$ = this._selectService.selection.pipe(
     tap((selection) => (this._selection = selection))
+  );
+  private _type$ = this._selectService.selection.pipe(
+    map(({ type }) => type)
   );
   private _quantity$ = this._selectService.selection.pipe(
     map(({ quantity }) => quantity)
@@ -62,11 +65,13 @@ export class SelectComponent {
   );
   vm$ = combineLatest([
     this._numberOfSelectedCountries$,
+    this._type$,
     this._quantity$,
     this._invalidQuantity$,
   ]).pipe(
-    map(([numberOfSelectedCountries, quantity, invalidQuantity]) => ({
+    map(([numberOfSelectedCountries, type, quantity, invalidQuantity]) => ({
       numberOfSelectedCountries,
+      type,
       quantity,
       invalidQuantity,
     }))
@@ -77,6 +82,10 @@ export class SelectComponent {
     private _selectService: SelectService,
     private _router: Router
   ) {}
+
+  onTypeChange(type: QuizType): void {
+    this._selectService.updateType(type);
+  }
 
   onQuantityChange(quantity: number): void {
     this._selectService.updateQuantity(quantity);
