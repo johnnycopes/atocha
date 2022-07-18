@@ -27,9 +27,9 @@ export class SelectTypeComponent {
 
   @Input()
   set type(value: QuizType) {
-    const type = this.options.find((type) => type.value === value);
-    if (type) {
-      this.selectedOption = type;
+    const option = this.options.find((type) => type.value === value);
+    if (option) {
+      this.selectedOption = { ...option };
     }
   }
   selectedOption = this.options[0];
