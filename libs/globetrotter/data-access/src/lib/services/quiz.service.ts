@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { filter, first, map } from 'rxjs/operators';
 
 import { Route, Country, Selection, Quiz } from '@atocha/globetrotter/types';
@@ -11,7 +11,7 @@ import { RouterService } from './router.service';
 })
 export class QuizService {
   private readonly _quiz = new BehaviorSubject<Quiz | undefined>(undefined);
-  get quiz(): BehaviorSubject<Quiz | undefined> {
+  get quiz(): Observable<Quiz | undefined> {
     return this._quiz;
   }
 

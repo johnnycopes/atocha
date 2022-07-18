@@ -57,8 +57,10 @@ export class NestedCheckboxesWithCountsComponent<T>
   constructor(private _changeDetectorRef: ChangeDetectorRef) {}
 
   ngOnChanges({ item }: SimpleChanges): void {
-    if (item) {
+    if (item.currentValue) {
       this._id = this.getId(item.currentValue);
+      this.totalCounts = this._getTotalCounts(item.currentValue);
+      this.totalChange.emit(this.totalCounts[this._id]);
     }
   }
 
@@ -71,8 +73,6 @@ export class NestedCheckboxesWithCountsComponent<T>
       this.states = value;
       this.selectedCounts = this._getSelectedCounts(this.item);
       this.selectedChange.emit(this.selectedCounts[this._id]);
-      this.totalCounts = this._getTotalCounts(this.item);
-      this.totalChange.emit(this.totalCounts[this._id]);
     }
     this._changeDetectorRef.markForCheck();
   }

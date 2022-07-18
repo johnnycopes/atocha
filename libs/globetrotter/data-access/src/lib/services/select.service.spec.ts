@@ -45,15 +45,18 @@ describe('SelectService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('contains correct default selection', () => {
-    expect(service.selection.value).toEqual({
-      type: 1,
-      quantity: 5,
-      places: {
-        Africa: 'checked',
-        'Northern Africa': 'checked',
-        'Western Africa': 'checked',
-      },
+  it('contains correct default selection', (done) => {
+    service.selection.subscribe((value) => {
+      expect(value).toEqual({
+        type: 1,
+        quantity: 5,
+        places: {
+          Africa: 'checked',
+          'Northern Africa': 'checked',
+          'Western Africa': 'checked',
+        },
+      });
+      done();
     });
   });
 

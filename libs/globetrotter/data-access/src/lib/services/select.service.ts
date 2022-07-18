@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { first, map } from 'rxjs/operators';
 
 import {
@@ -21,8 +21,8 @@ export class SelectService {
     indeterminate: '_i',
   };
   private readonly _selection: BehaviorSubject<Selection>;
-  get selection(): BehaviorSubject<Selection> {
-    return this._selection;
+  get selection(): Observable<Selection> {
+    return this._selection.asObservable();
   }
 
   constructor(private _countryService: CountryService) {
@@ -32,10 +32,7 @@ export class SelectService {
       places: {},
     });
     this._countryService.countries
-      .pipe(
-        first(),
-        map(({ nestedCountries }) => nestedCountries)
-      )
+      .pipe(map(({ nestedCountries }) => nestedCountries))
       .subscribe((regions) => {
         this.updatePlaces(this._mapRegionsToPlaceSelection(regions));
       });

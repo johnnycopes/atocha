@@ -1,10 +1,13 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import {
+  Component,
+  ChangeDetectionStrategy,
+  Input,
+  Output,
+  EventEmitter,
+} from '@angular/core';
 
 import { RadioButtonsOption } from '@atocha/globetrotter/ui';
 import { QuizType } from '@atocha/globetrotter/types';
-import { SelectService } from '@atocha/globetrotter/data-access';
 
 @Component({
   selector: 'app-select-type',
@@ -13,29 +16,25 @@ import { SelectService } from '@atocha/globetrotter/data-access';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SelectTypeComponent {
-  types: RadioButtonsOption<QuizType>[] = [
+  options: RadioButtonsOption<QuizType>[] = [
     QuizType.flagsCountries,
     QuizType.capitalsCountries,
     QuizType.countriesCapitals,
-  ].map((quizType) => this._generateOption(quizType));
+  ].map((quizType) => ({
+    display: this._getDisplayText(quizType),
+    value: quizType,
+  }));
 
-  selectedType$: Observable<RadioButtonsOption<QuizType>> =
-    this._selectService.selection.pipe(
-      map(({ type }) => this._generateOption(type))
-    );
-
-  constructor(private _selectService: SelectService) {}
-
-  onChange(selectedType: RadioButtonsOption<QuizType>): void {
-    this._selectService.updateType(selectedType.value);
+  @Input()
+  set type(value: QuizType) {
+    const type = this.options.find((type) => type.value === value);
+    if (type) {
+      this.selectedOption = type;
+    }
   }
+  selectedOption = this.options[0];
 
-  private _generateOption(quizType: QuizType): RadioButtonsOption<QuizType> {
-    return {
-      display: this._getDisplayText(quizType),
-      value: quizType,
-    };
-  }
+  @Output() typeChange = new EventEmitter<QuizType>();
 
   private _getDisplayText(quizType: QuizType): string {
     switch (quizType) {

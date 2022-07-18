@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { first, map } from 'rxjs/operators';
 
 interface ErrorState {
@@ -17,7 +17,7 @@ export class ErrorService {
     login: '',
     register: '',
   });
-  get errors(): BehaviorSubject<ErrorState> {
+  get errors(): Observable<ErrorState> {
     return this._errors;
   }
 

@@ -1,25 +1,25 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { BehaviorSubject, combineLatest } from 'rxjs';
 import {
-  map,
-  tap,
-  first,
-  distinctUntilChanged,
-  switchMap,
-  shareReplay,
-} from 'rxjs/operators';
+  Component,
+  ChangeDetectionStrategy,
+  Input,
+  Output,
+  EventEmitter,
+} from '@angular/core';
 
 import { CheckboxStates } from '@atocha/core/ui';
-import {
-  CountryService,
-  SelectService,
-} from '@atocha/globetrotter/data-access';
 import {
   Place,
   PlaceSelection,
   isSubregion,
   isRegion,
+  Region,
 } from '@atocha/globetrotter/types';
+
+interface RegionState {
+  region: Place;
+  selected: number;
+  total: number;
+}
 
 @Component({
   selector: 'app-select-places',
@@ -28,72 +28,40 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SelectPlacesComponent {
+  @Input()
+  set places(value: Region[]) {
+    this._fullySelectedState = value.reduce((states, region) => {
+      states[region.name] = 'checked';
+      region.subregions.forEach(
+        (subregion) => (states[subregion.name] = 'checked')
+      );
+      return states;
+    }, {} as PlaceSelection);
+
+    this.regionStates = value.map((region) => ({
+      region,
+      selected: 0,
+      total: 0,
+    }));
+  }
+
+  @Input()
+  set state(value: PlaceSelection) {
+    if (value) {
+      this._state = this._transformPlaceSelection(value);
+    }
+  }
+  get state(): CheckboxStates {
+    return this._state;
+  }
+  private _state: CheckboxStates = {};
+
+  @Output() stateChange = new EventEmitter<PlaceSelection>();
+
+  regionStates: RegionState[] = [];
+  overallSelected = 0;
+  overallTotal = 0;
   private _fullySelectedState: PlaceSelection = {};
-  private _checkboxStates$ = this._selectService.selection.pipe(
-    map(({ places }) => places)
-  );
-  private _regionData$ = this._countryService.countries.pipe(
-    first(),
-    map(({ nestedCountries }) => nestedCountries),
-    tap((regions) => {
-      this._fullySelectedState = regions.reduce((states, region) => {
-        states[region.name] = 'checked';
-        region.subregions.forEach(
-          (subregion) => (states[subregion.name] = 'checked')
-        );
-        return states;
-      }, {} as PlaceSelection);
-    }),
-    map((regions) =>
-      regions.map((region) => {
-        const selectedSubject = new BehaviorSubject<number>(0);
-        const totalSubject = new BehaviorSubject<number>(0);
-        return {
-          region: region as Place,
-          selectedSubject,
-          totalSubject,
-          selected$: selectedSubject.pipe(distinctUntilChanged()),
-          total$: totalSubject.pipe(distinctUntilChanged()),
-        };
-      })
-    ),
-    shareReplay({ bufferSize: 1, refCount: true })
-  );
-  private _overallSelected$ = this._regionData$.pipe(
-    map((regionData) => regionData.map((regionDatum) => regionDatum.selected$)),
-    switchMap((selectedArr$) =>
-      combineLatest(selectedArr$).pipe(
-        map(([...values]) =>
-          values.reduce((accum, current) => accum + current, 0)
-        )
-      )
-    ),
-    distinctUntilChanged()
-  );
-  private _overallTotal$ = this._regionData$.pipe(
-    map((regionData) => regionData.map((regionDatum) => regionDatum.total$)),
-    switchMap((totals$) =>
-      combineLatest(totals$).pipe(
-        map(([...values]) =>
-          values.reduce((accum, current) => accum + current, 0)
-        )
-      )
-    ),
-    distinctUntilChanged()
-  );
-  vm$ = combineLatest([
-    this._regionData$,
-    this._checkboxStates$,
-    this._overallSelected$,
-    this._overallTotal$,
-  ]).pipe(
-    map(([regionData, checkboxStates, overallSelected, overallTotal]) => ({
-      regionData,
-      checkboxStates,
-      overallSelected,
-      overallTotal,
-    }))
-  );
 
   getId = ({ name }: Place) => name;
 
@@ -103,21 +71,46 @@ export class SelectPlacesComponent {
   getNumberOfCountries = (place: Place) =>
     isSubregion(place) ? place.countries.length : 0;
 
-  constructor(
-    private _countryService: CountryService,
-    private _selectService: SelectService
-  ) {}
+  onStateChange(state: CheckboxStates): void {
+    this.stateChange.emit(this._transformState(state));
+  }
 
-  onCountriesChange(state: CheckboxStates): void {
-    this._selectService.updatePlaces(this._transformState(state));
+  onSelectedChange(regionState: RegionState, quantity: number): void {
+    regionState.selected = quantity;
+    this.overallSelected = this.regionStates.reduce(
+      (accum, { selected }) => accum + selected,
+      0
+    );
+  }
+
+  onTotalChange(regionState: RegionState, quantity: number): void {
+    regionState.total = quantity;
+    this.overallTotal = this.regionStates.reduce(
+      (accum, { total }) => accum + total,
+      0
+    );
   }
 
   onSelectAll(): void {
-    this._selectService.updatePlaces(this._fullySelectedState);
+    this.stateChange.emit(this._fullySelectedState);
   }
 
   onClearAll(): void {
-    this._selectService.updatePlaces({});
+    this.stateChange.emit({});
+  }
+
+  private _transformPlaceSelection(selection: PlaceSelection): CheckboxStates {
+    const states: CheckboxStates = {};
+
+    for (const [place, placeSelectionState] of Object.entries(selection)) {
+      if (placeSelectionState === 'checked') {
+        states[place] = 'checked';
+      } else if (placeSelectionState === 'indeterminate') {
+        states[place] = 'indeterminate';
+      }
+    }
+
+    return states;
   }
 
   private _transformState(state: CheckboxStates): PlaceSelection {

@@ -14,12 +14,20 @@
   </div>
   <div class="fields">
     <div class="fields__top">
-      <app-select-type></app-select-type>
+      <app-select-type
+        [type]="vm.type"
+        (typeChange)="onTypeChange($event)"
+      ></app-select-type>
       <app-select-quantity
-        [quantity]="vm.quantity"
         [invalid]="vm.invalidQuantity"
+        [quantity]="vm.quantity"
+        (quantityChange)="onQuantityChange($event)"
       ></app-select-quantity>
     </div>
-    <app-select-places></app-select-places>
+    <app-select-places
+      [places]="vm.places"
+      [state]="vm.placeSelection"
+      (stateChange)="onPlaceSelectionChange($event)"
+    ></app-select-places>
   </div>
 </div>
