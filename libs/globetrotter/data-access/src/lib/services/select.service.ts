@@ -33,7 +33,6 @@ export class SelectService {
     });
     this._countryService.countries
       .pipe(
-        first(),
         map(({ nestedCountries }) => nestedCountries)
       )
       .subscribe((regions) => {
@@ -118,6 +117,7 @@ export class SelectService {
       }
     }
 
+    console.log(placeSelection);
     return placeSelection;
   }
 }

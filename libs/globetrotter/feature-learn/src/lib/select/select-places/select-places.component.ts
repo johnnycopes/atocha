@@ -3,7 +3,6 @@ import { BehaviorSubject, combineLatest } from 'rxjs';
 import {
   map,
   tap,
-  first,
   distinctUntilChanged,
   switchMap,
   shareReplay,
@@ -33,7 +32,6 @@ export class SelectPlacesComponent {
     map(({ places }) => places)
   );
   private _regionData$ = this._countryService.countries.pipe(
-    first(),
     map(({ nestedCountries }) => nestedCountries),
     tap((regions) => {
       this._fullySelectedState = regions.reduce((states, region) => {
