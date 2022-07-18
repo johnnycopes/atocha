@@ -38,7 +38,16 @@ export class SelectPlacesComponent {
       total: 0,
     }));
   }
-  @Input() state: PlaceSelection = {};
+
+  @Input()
+  set state(value: PlaceSelection) {
+    if (value) {
+      this._state = this._transformPlaceSelection(value);
+    }
+  }
+  get state(): CheckboxStates { return this._state; }
+  private _state: CheckboxStates = {};
+
   @Output() stateChange = new EventEmitter<PlaceSelection>();
 
   regionStates: RegionState[] = [];
@@ -74,6 +83,20 @@ export class SelectPlacesComponent {
 
   onClearAll(): void {
     this.stateChange.emit({});
+  }
+
+  private _transformPlaceSelection(selection: PlaceSelection): CheckboxStates {
+    const states: CheckboxStates = {};
+
+    for (const [place, checkboxState] of Object.entries(selection)) {
+      if (checkboxState === 'checked') {
+        states[place] = 'checked';
+      } else if (checkboxState === 'indeterminate') {
+        states[place] = 'indeterminate';
+      }
+    }
+
+    return states;
   }
 
   private _transformState(state: CheckboxStates): PlaceSelection {
