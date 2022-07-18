@@ -1,4 +1,10 @@
-import { Component, ChangeDetectionStrategy, Input, Output, EventEmitter } from '@angular/core';
+import {
+  Component,
+  ChangeDetectionStrategy,
+  Input,
+  Output,
+  EventEmitter,
+} from '@angular/core';
 
 import { RadioButtonsOption } from '@atocha/globetrotter/ui';
 import { QuizType } from '@atocha/globetrotter/types';
@@ -21,7 +27,7 @@ export class SelectTypeComponent {
 
   @Input()
   set type(value: QuizType) {
-    const type = this.options.find(type => type.value === value);
+    const type = this.options.find((type) => type.value === value);
     if (type) {
       this.selectedOption = type;
     }

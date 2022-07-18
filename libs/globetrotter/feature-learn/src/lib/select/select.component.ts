@@ -63,19 +63,26 @@ export class SelectComponent {
     this._selection$,
     this._invalidQuantity$,
   ]).pipe(
-    map(([numberOfSelectedCountries, places, { places: placeSelection, type, quantity}, invalidQuantity]) => {
-      if (!places.length) {
-        return undefined;
-      }
-      return {
+    map(
+      ([
         numberOfSelectedCountries,
         places,
-        placeSelection,
-        type,
-        quantity,
+        { places: placeSelection, type, quantity },
         invalidQuantity,
-      };
-    })
+      ]) => {
+        if (!places.length) {
+          return undefined;
+        }
+        return {
+          numberOfSelectedCountries,
+          places,
+          placeSelection,
+          type,
+          quantity,
+          invalidQuantity,
+        };
+      }
+    )
   );
 
   constructor(
@@ -97,16 +104,15 @@ export class SelectComponent {
   }
 
   async onLaunch(): Promise<void> {
-    this._selection$.pipe(first()).subscribe(
-      async (selection) => {
-        if (!selection) {
-          return;
-        }
-        const queryParams = this._selectService.mapSelectionToQueryParams(selection);
-        await this._router.navigate([`${Route.learn}/${Route.quiz}`], {
-          queryParams,
-        });
+    this._selection$.pipe(first()).subscribe(async (selection) => {
+      if (!selection) {
+        return;
       }
-    );
+      const queryParams =
+        this._selectService.mapSelectionToQueryParams(selection);
+      await this._router.navigate([`${Route.learn}/${Route.quiz}`], {
+        queryParams,
+      });
+    });
   }
 }

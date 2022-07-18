@@ -1,4 +1,10 @@
-import { Component, ChangeDetectionStrategy, Input, Output, EventEmitter } from '@angular/core';
+import {
+  Component,
+  ChangeDetectionStrategy,
+  Input,
+  Output,
+  EventEmitter,
+} from '@angular/core';
 
 import { CheckboxStates } from '@atocha/core/ui';
 import {
@@ -32,7 +38,7 @@ export class SelectPlacesComponent {
       return states;
     }, {} as PlaceSelection);
 
-    this.regionStates = value.map(region => ({
+    this.regionStates = value.map((region) => ({
       region,
       selected: 0,
       total: 0,
@@ -45,7 +51,9 @@ export class SelectPlacesComponent {
       this._state = this._transformPlaceSelection(value);
     }
   }
-  get state(): CheckboxStates { return this._state; }
+  get state(): CheckboxStates {
+    return this._state;
+  }
   private _state: CheckboxStates = {};
 
   @Output() stateChange = new EventEmitter<PlaceSelection>();
@@ -69,12 +77,18 @@ export class SelectPlacesComponent {
 
   onSelectedChange(regionState: RegionState, quantity: number): void {
     regionState.selected = quantity;
-    this.overallSelected = this.regionStates.reduce((accum, { selected }) => accum + selected, 0);
+    this.overallSelected = this.regionStates.reduce(
+      (accum, { selected }) => accum + selected,
+      0
+    );
   }
 
   onTotalChange(regionState: RegionState, quantity: number): void {
     regionState.total = quantity;
-    this.overallTotal = this.regionStates.reduce((accum, { total }) => accum + total, 0);
+    this.overallTotal = this.regionStates.reduce(
+      (accum, { total }) => accum + total,
+      0
+    );
   }
 
   onSelectAll(): void {
