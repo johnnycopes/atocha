@@ -63,14 +63,19 @@ export class SelectComponent {
     this._selection$,
     this._invalidQuantity$,
   ]).pipe(
-    map(([numberOfSelectedCountries, places, { places: placeSelection, type, quantity}, invalidQuantity]) => ({
-      numberOfSelectedCountries,
-      places,
-      placeSelection,
-      type,
-      quantity,
-      invalidQuantity,
-    }))
+    map(([numberOfSelectedCountries, places, { places: placeSelection, type, quantity}, invalidQuantity]) => {
+      if (!places.length) {
+        return undefined;
+      }
+      return {
+        numberOfSelectedCountries,
+        places,
+        placeSelection,
+        type,
+        quantity,
+        invalidQuantity,
+      };
+    })
   );
 
   constructor(
