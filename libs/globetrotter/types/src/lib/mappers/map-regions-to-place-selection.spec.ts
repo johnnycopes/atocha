@@ -1,4 +1,4 @@
-import { Region } from '@atocha/globetrotter/types';
+import { Region } from '../domain/region.interface';
 import { mapRegionsToPlaceSelection } from './map-regions-to-place-selection';
 
 describe('mapRegionsToPlaceSelection', () => {

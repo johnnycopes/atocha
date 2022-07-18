@@ -12,7 +12,6 @@
     "globetrotter-feature-learn": "libs/globetrotter/feature-learn",
     "globetrotter-feature-shell": "libs/globetrotter/feature-shell",
     "globetrotter-types": "libs/globetrotter/types",
-    "globetrotter-ui": "libs/globetrotter/ui",
-    "globetrotter-util": "libs/globetrotter/util"
+    "globetrotter-ui": "libs/globetrotter/ui"
   }
 }

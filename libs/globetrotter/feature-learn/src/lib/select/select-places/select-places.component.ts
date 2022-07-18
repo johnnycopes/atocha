@@ -12,9 +12,9 @@ import {
   PlaceSelection,
   isSubregion,
   isRegion,
+  mapRegionsToPlaceSelection,
   Region,
 } from '@atocha/globetrotter/types';
-import { mapRegionsToPlaceSelection } from '@atocha/globetrotter/util';
 
 interface RegionState {
   region: Place;

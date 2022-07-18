@@ -8,8 +8,8 @@ import {
   SelectionParams,
   PlaceSelection,
   PlaceSelectionState,
+  mapRegionsToPlaceSelection
 } from '@atocha/globetrotter/types';
-import { mapRegionsToPlaceSelection } from '@atocha/globetrotter/util';
 import { CountryService } from './country.service';
 
 @Injectable({
