@@ -14,6 +14,7 @@ import {
   isRegion,
   Region,
 } from '@atocha/globetrotter/types';
+import { mapRegionsToPlaceSelection } from '@atocha/globetrotter/util';
 
 interface RegionState {
   region: Place;
@@ -30,14 +31,7 @@ interface RegionState {
 export class SelectPlacesComponent {
   @Input()
   set places(value: Region[]) {
-    this._fullySelectedState = value.reduce((states, region) => {
-      states[region.name] = 'checked';
-      region.subregions.forEach(
-        (subregion) => (states[subregion.name] = 'checked')
-      );
-      return states;
-    }, {} as PlaceSelection);
-
+    this._allSelectedState = mapRegionsToPlaceSelection(value);
     this.regionStates = value.map((region) => ({
       region,
       selected: 0,
@@ -61,7 +55,7 @@ export class SelectPlacesComponent {
   regionStates: RegionState[] = [];
   overallSelected = 0;
   overallTotal = 0;
-  private _fullySelectedState: PlaceSelection = {};
+  private _allSelectedState: PlaceSelection = {};
 
   getId = ({ name }: Place) => name;
 
@@ -92,7 +86,7 @@ export class SelectPlacesComponent {
   }
 
   onSelectAll(): void {
-    this.stateChange.emit(this._fullySelectedState);
+    this.stateChange.emit(this._allSelectedState);
   }
 
   onClearAll(): void {

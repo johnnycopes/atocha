@@ -3,13 +3,13 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { first, map } from 'rxjs/operators';
 
 import {
-  Region,
   QuizType,
   Selection,
   SelectionParams,
   PlaceSelection,
   PlaceSelectionState,
 } from '@atocha/globetrotter/types';
+import { mapRegionsToPlaceSelection } from '@atocha/globetrotter/util';
 import { CountryService } from './country.service';
 
 @Injectable({
@@ -34,7 +34,7 @@ export class SelectService {
     this._countryService.countries
       .pipe(map(({ nestedCountries }) => nestedCountries))
       .subscribe((regions) => {
-        this.updatePlaces(this._mapRegionsToPlaceSelection(regions));
+        this.updatePlaces(mapRegionsToPlaceSelection(regions));
       });
   }
 
@@ -103,18 +103,5 @@ export class SelectService {
       quantity,
       places,
     };
-  }
-
-  private _mapRegionsToPlaceSelection(regions: Region[]): PlaceSelection {
-    const placeSelection: PlaceSelection = {};
-
-    for (const { name, subregions } of regions) {
-      placeSelection[name] = 'checked';
-      for (const { name } of subregions) {
-        placeSelection[name] = 'checked';
-      }
-    }
-
-    return placeSelection;
   }
 }
