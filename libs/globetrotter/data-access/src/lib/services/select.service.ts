@@ -117,7 +117,6 @@ export class SelectService {
       }
     }
 
-    console.log(placeSelection);
     return placeSelection;
   }
 }

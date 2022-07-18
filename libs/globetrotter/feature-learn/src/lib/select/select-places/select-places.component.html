@@ -1,11 +1,8 @@
-<ui-small-caps
-  *ngIf="vm$ | async as vm"
-  header="Places"
->
+<ui-small-caps header="Places">
   <div class="top">
     <div class="top__counter">
       <span class="bold">
-        {{ vm.overallSelected}} / {{ vm.overallTotal }}
+        {{ overallSelected }} / {{ overallTotal }}
       </span>
       possible countries in the cards.
     </div>
@@ -24,25 +21,23 @@
   </div>
   <div class="regions">
     <div class="region"
-      *ngFor="let regionDatum of vm.regionData"
+      *ngFor="let regionState of regionStates"
       >
-      <ng-container *ngIf="regionDatum.region as region">
-        <ui-icon class="region__image"
-          [icon]="region.name"
-          [highlighted]="!!(regionDatum.selected$ | async)"
-        ></ui-icon>
-        <core-nested-checkboxes-with-counts class="region__checkboxes"
-          [item]="region"
-          [getId]="getId"
-          [getChildren]="getChildren"
-          [getLeafItemCount]="getNumberOfCountries"
-          [itemTemplate]="label"
-          [ngModel]="vm.checkboxStates"
-          (ngModelChange)="onCountriesChange($event)"
-          (selectedChange)="regionDatum.selectedSubject.next($event)"
-          (totalChange)="regionDatum.totalSubject.next($event)"
-        ></core-nested-checkboxes-with-counts>
-      </ng-container>
+      <ui-icon class="region__image"
+        [icon]="regionState.region.name"
+        [highlighted]="!!regionState.selected"
+      ></ui-icon>
+      <core-nested-checkboxes-with-counts class="region__checkboxes"
+        [item]="regionState.region"
+        [getId]="getId"
+        [getChildren]="getChildren"
+        [getLeafItemCount]="getNumberOfCountries"
+        [itemTemplate]="label"
+        [ngModel]="state"
+        (ngModelChange)="onStateChange($event)"
+        (selectedChange)="onSelectedChange(regionState, $event)"
+        (totalChange)="onTotalChange(regionState, $event)"
+      ></core-nested-checkboxes-with-counts>
 
       <ng-template
         #label
