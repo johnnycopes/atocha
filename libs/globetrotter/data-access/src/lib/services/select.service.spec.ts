@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { BehaviorSubject } from 'rxjs';
+import { of } from 'rxjs';
 
 import { QuizType } from '@atocha/globetrotter/types';
 import { CountryService } from './country.service';
@@ -9,7 +9,7 @@ import { SelectService } from './select.service';
 describe('SelectService', () => {
   let service: SelectService;
   const mockCountryService = {
-    countries: new BehaviorSubject({
+    countries$: of({
       nestedCountries: [
         {
           name: 'Africa',
