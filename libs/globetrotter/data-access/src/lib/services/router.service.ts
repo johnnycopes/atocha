@@ -17,11 +17,11 @@ export class RouterService {
   private _loadingSubject = new BehaviorSubject<boolean>(false);
 
   get route$(): Observable<string> {
-    return this._routeSubject.asObservable();
+    return this._routeSubject.pipe(distinctUntilChanged());
   }
 
   get loading$(): Observable<boolean> {
-    return this._loadingSubject.asObservable();
+    return this._loadingSubject.pipe(distinctUntilChanged());
   }
 
   constructor(private _router: Router) {
