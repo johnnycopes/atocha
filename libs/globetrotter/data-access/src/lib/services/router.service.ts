@@ -6,30 +6,26 @@ import {
   NavigationCancel,
   NavigationError,
 } from '@angular/router';
-import { BehaviorSubject, Observable, of } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import {
   map,
   filter,
-  first,
-  switchMap,
   distinctUntilChanged,
 } from 'rxjs/operators';
-
-interface RouterState {
-  currentRoute: string;
-  loading: boolean;
-}
 
 @Injectable({
   providedIn: 'root',
 })
 export class RouterService {
-  private readonly _stateSubject = new BehaviorSubject<RouterState>({
-    currentRoute: '',
-    loading: false,
-  });
-  get state$(): Observable<RouterState> {
-    return this._stateSubject.asObservable();
+  private _routeSubject = new BehaviorSubject<string>('');
+  private _loadingSubject = new BehaviorSubject<boolean>(false);
+
+  get route$(): Observable<string> {
+    return this._routeSubject.asObservable();
+  }
+
+  get loading$(): Observable<boolean> {
+    return this._loadingSubject.asObservable();
   }
 
   constructor(private _router: Router) {
@@ -40,44 +36,28 @@ export class RouterService {
     this._router.events
       .pipe(
         filter((e): e is NavigationEnd => e instanceof NavigationEnd),
-        switchMap(
+        map(
           (navigationEnd: NavigationEnd) => navigationEnd.urlAfterRedirects
-        ),
-        map((currentRoute) =>
-          this._stateSubject
-            .pipe(
-              first(),
-              map((state) => ({ ...state, currentRoute }))
-            )
-            .subscribe((state) => this._stateSubject.next(state))
         ),
         distinctUntilChanged()
       )
-      .subscribe();
+      .subscribe(currentRoute => this._routeSubject.next(currentRoute));
 
     this._router.events
       .pipe(
         filter((e): e is RouterEvent => e instanceof RouterEvent),
-        switchMap((routerEvent) => {
+        map((routerEvent) => {
           if (
             routerEvent instanceof NavigationEnd ||
             routerEvent instanceof NavigationCancel ||
             routerEvent instanceof NavigationError
           ) {
-            return of(false);
+            return false;
           }
-          return of(true);
+          return true;
         }),
-        map((loading) =>
-          this._stateSubject
-            .pipe(
-              first(),
-              map((state) => ({ ...state, loading }))
-            )
-            .subscribe((state) => this._stateSubject.next(state))
-        ),
-        distinctUntilChanged()
+        distinctUntilChanged(),
       )
-      .subscribe();
+      .subscribe(loading => this._loadingSubject.next(loading));
   }
 }

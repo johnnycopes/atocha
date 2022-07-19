@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { BehaviorSubject, combineLatest } from 'rxjs';
-import { map, tap, distinctUntilChanged } from 'rxjs/operators';
+import { map, distinctUntilChanged } from 'rxjs/operators';
 
 import { QuizService } from '@atocha/globetrotter/data-access';
 
@@ -15,7 +15,6 @@ export class ShellComponent {
   private _showContent$ = this._showContentSubject.pipe(distinctUntilChanged());
   private _quizComplete$ = this._quizService.quiz$.pipe(
     map((quiz) => quiz?.isComplete ?? false),
-    tap(console.log),
     distinctUntilChanged()
   );
   vm$ = combineLatest([this._showContent$, this._quizComplete$]).pipe(

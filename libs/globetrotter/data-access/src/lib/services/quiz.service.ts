@@ -20,10 +20,9 @@ export class QuizService {
     private _countryService: CountryService,
     private _routerService: RouterService
   ) {
-    this._routerService.state$
+    this._routerService.route$
       .pipe(
-        map(({ currentRoute }) => currentRoute),
-        filter((route) => route.includes(Route.select))
+        filter((route) => route.includes(Route.select)),
       )
       .subscribe(() => this._quizSubject.next(undefined));
   }
