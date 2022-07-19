@@ -1,15 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Resolve } from '@angular/router';
 import { BehaviorSubject, Observable, of } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { groupBy, reduce, shuffle, map as _map } from 'lodash-es';
+import { groupBy, reduce, map } from 'lodash-es';
 
 import { sort } from '@atocha/core/util';
 import {
   Country,
   CountryDto,
   Region,
-  Selection,
 } from '@atocha/globetrotter/types';
 import { ApiService } from './api.service';
 import {
@@ -62,29 +60,6 @@ export class CountryService implements Resolve<Observable<Country[]>> {
 
   resolve(): Observable<Country[]> {
     return this._request;
-  }
-
-  getCountriesFromSelection(selection: Selection): Observable<Country[]> {
-    return this.countries.pipe(
-      map(({ countriesBySubregion }) => {
-        const quantity = selection.quantity || undefined;
-        const countries = reduce(
-          selection.places,
-          (accum, checkboxState, placeName) => {
-            if (
-              checkboxState === 'checked' &&
-              countriesBySubregion[placeName]
-            ) {
-              const selectedCountries = countriesBySubregion[placeName];
-              return accum.concat(selectedCountries);
-            }
-            return accum;
-          },
-          [] as Country[]
-        );
-        return shuffle(countries).slice(0, quantity);
-      })
-    );
   }
 
   getSummary(countryName: string): Observable<string> {
@@ -143,7 +118,7 @@ export class CountryService implements Resolve<Observable<Country[]>> {
     return reduce(
       subregionsByRegion,
       (accum, subregions, region) => {
-        const subregionsData = _map(subregions, (subregion) => {
+        const subregionsData = map(subregions, (subregion) => {
           return {
             name: subregion,
             region: region,

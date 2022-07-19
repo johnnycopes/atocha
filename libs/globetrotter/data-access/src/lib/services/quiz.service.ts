@@ -5,6 +5,7 @@ import { filter, first, map } from 'rxjs/operators';
 import { Route, Country, Selection, Quiz } from '@atocha/globetrotter/types';
 import { CountryService } from './country.service';
 import { RouterService } from './router.service';
+import { reduce, shuffle } from 'lodash-es';
 
 @Injectable({
   providedIn: 'root',
@@ -29,7 +30,26 @@ export class QuizService {
 
   initializeQuiz(selection: Selection): void {
     this._countryService
-      .getCountriesFromSelection(selection)
+      .countries.pipe(
+        map(({ countriesBySubregion }) => {
+          const quantity = selection.quantity || undefined;
+          const countries = reduce(
+            selection.places,
+            (accum, checkboxState, placeName) => {
+              if (
+                checkboxState === 'checked' &&
+                countriesBySubregion[placeName]
+              ) {
+                const selectedCountries = countriesBySubregion[placeName];
+                return accum.concat(selectedCountries);
+              }
+              return accum;
+            },
+            [] as Country[]
+          );
+          return shuffle(countries).slice(0, quantity);
+        })
+      )
       .subscribe((countries) => {
         this._quiz.next({
           guess: 1,
