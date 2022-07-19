@@ -26,13 +26,13 @@ interface CountryState {
 })
 export class CountryService implements Resolve<Observable<Country[]>> {
   private _request: Observable<Country[]> = of([]);
-  private readonly _countries = new BehaviorSubject<CountryState>({
+  private readonly _countriesSubject = new BehaviorSubject<CountryState>({
     flatCountries: [],
     countriesBySubregion: {},
     nestedCountries: [],
   });
-  get countries(): Observable<CountryState> {
-    return this._countries.asObservable();
+  get countries$(): Observable<CountryState> {
+    return this._countriesSubject.asObservable();
   }
 
   constructor(private _apiService: ApiService) {
@@ -50,7 +50,7 @@ export class CountryService implements Resolve<Observable<Country[]>> {
         countriesBySubregion,
         subregionsByRegion
       );
-      this._countries.next({
+      this._countriesSubject.next({
         flatCountries,
         countriesBySubregion,
         nestedCountries,

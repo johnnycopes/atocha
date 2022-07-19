@@ -24,12 +24,12 @@ interface RouterState {
   providedIn: 'root',
 })
 export class RouterService {
-  private readonly _state = new BehaviorSubject<RouterState>({
+  private readonly _stateSubject = new BehaviorSubject<RouterState>({
     currentRoute: '',
     loading: false,
   });
-  get state(): Observable<RouterState> {
-    return this._state.asObservable();
+  get state$(): Observable<RouterState> {
+    return this._stateSubject.asObservable();
   }
 
   constructor(private _router: Router) {
@@ -44,12 +44,12 @@ export class RouterService {
           (navigationEnd: NavigationEnd) => navigationEnd.urlAfterRedirects
         ),
         map((currentRoute) =>
-          this._state
+          this._stateSubject
             .pipe(
               first(),
               map((state) => ({ ...state, currentRoute }))
             )
-            .subscribe((state) => this._state.next(state))
+            .subscribe((state) => this._stateSubject.next(state))
         ),
         distinctUntilChanged()
       )
@@ -69,12 +69,12 @@ export class RouterService {
           return of(true);
         }),
         map((loading) =>
-          this._state
+          this._stateSubject
             .pipe(
               first(),
               map((state) => ({ ...state, loading }))
             )
-            .subscribe((state) => this._state.next(state))
+            .subscribe((state) => this._stateSubject.next(state))
         ),
         distinctUntilChanged()
       )

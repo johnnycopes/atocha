@@ -11,26 +11,26 @@ import { shuffle } from 'lodash-es';
   providedIn: 'root',
 })
 export class QuizService {
-  private readonly _quiz = new BehaviorSubject<Quiz | undefined>(undefined);
-  get quiz(): Observable<Quiz | undefined> {
-    return this._quiz;
+  private readonly _quizSubject = new BehaviorSubject<Quiz | undefined>(undefined);
+  get quiz$(): Observable<Quiz | undefined> {
+    return this._quizSubject;
   }
 
   constructor(
     private _countryService: CountryService,
     private _routerService: RouterService
   ) {
-    this._routerService.state
+    this._routerService.state$
       .pipe(
         map(({ currentRoute }) => currentRoute),
         filter((route) => route.includes(Route.select))
       )
-      .subscribe(() => this._quiz.next(undefined));
+      .subscribe(() => this._quizSubject.next(undefined));
   }
 
   initializeQuiz({ type, quantity, places }: Selection): void {
     this._countryService
-      .countries.pipe(
+      .countries$.pipe(
         map(({ countriesBySubregion }) => {
           const countries: Country[] = [];
 
@@ -44,7 +44,7 @@ export class QuizService {
         })
       )
       .subscribe((countries) => {
-        this._quiz.next({
+        this._quizSubject.next({
           guess: 1,
           correctGuesses: 0,
           type,
@@ -57,10 +57,9 @@ export class QuizService {
   }
 
   updateQuiz(correctGuess: boolean): void {
-    this._quiz
+    this._quizSubject
       .pipe(
         first(),
-
         map((quiz) => {
           if (!quiz) {
             return undefined;
@@ -89,7 +88,7 @@ export class QuizService {
           return updatedQuiz;
         })
       )
-      .subscribe((quiz) => this._quiz.next(quiz));
+      .subscribe((quiz) => this._quizSubject.next(quiz));
   }
 
   private _moveGuessedCountryToEnd(countries: Country[]): Country[] {

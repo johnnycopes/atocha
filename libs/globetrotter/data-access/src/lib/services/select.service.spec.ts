@@ -46,7 +46,7 @@ describe('SelectService', () => {
   });
 
   it('contains correct default selection', (done) => {
-    service.selection.subscribe((value) => {
+    service.selection$.subscribe((value) => {
       expect(value).toEqual({
         type: 1,
         quantity: 5,

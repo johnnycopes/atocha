@@ -24,7 +24,7 @@ import { Country } from '@atocha/globetrotter/types';
 export class ExploreComponent {
   private _searchTermChange = new Subject<string>();
   private _selectedCountryChange = new ReplaySubject<Country>(1);
-  private _countries$ = this._countryService.countries.pipe(
+  private _countries$ = this._countryService.countries$.pipe(
     map(({ flatCountries }) => flatCountries)
   );
   private _selectedCountry$ = this._selectedCountryChange.pipe(
