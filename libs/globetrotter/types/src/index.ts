@@ -1,5 +1,6 @@
 export * from './lib/dtos/country-dto.interface';
 
+export * from './lib/mappers/map-country-dto-to-country';
 export * from './lib/mappers/map-regions-to-place-selection';
 
 export * from './lib/domain/country.interface';

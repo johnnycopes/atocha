@@ -5,14 +5,11 @@ import { groupBy, reduce, map } from 'lodash-es';
 import { sort } from '@atocha/core/util';
 import {
   Country,
-  CountryDto,
+  mapCountryDtoToCountry,
   Region,
 } from '@atocha/globetrotter/types';
 import { ApiService } from './api.service';
-import {
-  CALLING_CODES,
-  COUNTRY_SUMMARY_NAMES,
-} from '../data/country-modifications';
+import { COUNTRY_SUMMARY_NAMES } from '../data/country-modifications';
 
 interface CountryState {
   flatCountries: Country[];
@@ -38,7 +35,7 @@ export class CountryService {
       const flatCountries = sort(
         countryDtos
           .filter(({ unMember }) => unMember)
-          .map((dto) => this._transformDto(dto)),
+          .map(mapCountryDtoToCountry),
         ({ name }) => name
       );
       const countriesBySubregion = groupBy(flatCountries, 'subregion');
@@ -59,26 +56,6 @@ export class CountryService {
   getSummary(countryName: string): Observable<string> {
     const searchTerm = COUNTRY_SUMMARY_NAMES[countryName] || countryName;
     return this._apiService.fetchSummary(searchTerm);
-  }
-
-  private _transformDto(dto: CountryDto): Country {
-    return {
-      area: dto.area,
-      callingCodes:
-        CALLING_CODES[dto.name.common] ||
-        dto.idd.suffixes.map((suffix) => dto.idd.root + suffix),
-      capital: dto.capital[0],
-      currencies: Object.keys(dto.currencies),
-      demonym: dto.demonyms?.['eng']?.m ?? '',
-      flag: dto.flags.svg,
-      id: dto.cioc ?? dto.name.common,
-      languages: Object.values(dto.languages),
-      name: dto.name.common,
-      population: dto.population,
-      region: dto.region,
-      subregion: dto.subregion,
-      topLevelDomain: dto.tld,
-    };
   }
 
   private _groupSubregionsByRegion(
