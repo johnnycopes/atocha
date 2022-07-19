@@ -13,7 +13,7 @@ import { shuffle } from 'lodash-es';
 export class QuizService {
   private readonly _quizSubject = new BehaviorSubject<Quiz | undefined>(undefined);
   get quiz$(): Observable<Quiz | undefined> {
-    return this._quizSubject;
+    return this._quizSubject.asObservable();
   }
 
   constructor(
@@ -22,7 +22,7 @@ export class QuizService {
   ) {
     this._routerService.route$
       .pipe(
-        filter((route) => route.includes(Route.select)),
+        filter((route) => !route.includes(Route.quiz)),
       )
       .subscribe(() => this._quizSubject.next(undefined));
   }
