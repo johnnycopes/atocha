@@ -1,21 +1,15 @@
 import { Injectable } from '@angular/core';
-import { Resolve } from '@angular/router';
-import { BehaviorSubject, Observable, of } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { groupBy, reduce, shuffle, map as _map } from 'lodash-es';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { groupBy, reduce, map } from 'lodash-es';
 
 import { sort } from '@atocha/core/util';
 import {
   Country,
-  CountryDto,
+  mapCountryDtoToCountry,
   Region,
-  Selection,
 } from '@atocha/globetrotter/types';
 import { ApiService } from './api.service';
-import {
-  CALLING_CODES,
-  COUNTRY_SUMMARY_NAMES,
-} from '../data/country-modifications';
+import { COUNTRY_SUMMARY_NAMES } from '../data/country-modifications';
 
 interface CountryState {
   flatCountries: Country[];
@@ -26,15 +20,14 @@ interface CountryState {
 @Injectable({
   providedIn: 'root',
 })
-export class CountryService implements Resolve<Observable<Country[]>> {
-  private _request: Observable<Country[]> = of([]);
-  private readonly _countries = new BehaviorSubject<CountryState>({
+export class CountryService {
+  private readonly _countriesSubject = new BehaviorSubject<CountryState>({
     flatCountries: [],
     countriesBySubregion: {},
     nestedCountries: [],
   });
-  get countries(): Observable<CountryState> {
-    return this._countries.asObservable();
+  get countries$(): Observable<CountryState> {
+    return this._countriesSubject.asObservable();
   }
 
   constructor(private _apiService: ApiService) {
@@ -42,7 +35,7 @@ export class CountryService implements Resolve<Observable<Country[]>> {
       const flatCountries = sort(
         countryDtos
           .filter(({ unMember }) => unMember)
-          .map((dto) => this._transformDto(dto)),
+          .map(mapCountryDtoToCountry),
         ({ name }) => name
       );
       const countriesBySubregion = groupBy(flatCountries, 'subregion');
@@ -52,7 +45,7 @@ export class CountryService implements Resolve<Observable<Country[]>> {
         countriesBySubregion,
         subregionsByRegion
       );
-      this._countries.next({
+      this._countriesSubject.next({
         flatCountries,
         countriesBySubregion,
         nestedCountries,
@@ -60,56 +53,9 @@ export class CountryService implements Resolve<Observable<Country[]>> {
     });
   }
 
-  resolve(): Observable<Country[]> {
-    return this._request;
-  }
-
-  getCountriesFromSelection(selection: Selection): Observable<Country[]> {
-    return this.countries.pipe(
-      map(({ countriesBySubregion }) => {
-        const quantity = selection.quantity || undefined;
-        const countries = reduce(
-          selection.places,
-          (accum, checkboxState, placeName) => {
-            if (
-              checkboxState === 'checked' &&
-              countriesBySubregion[placeName]
-            ) {
-              const selectedCountries = countriesBySubregion[placeName];
-              return accum.concat(selectedCountries);
-            }
-            return accum;
-          },
-          [] as Country[]
-        );
-        return shuffle(countries).slice(0, quantity);
-      })
-    );
-  }
-
   getSummary(countryName: string): Observable<string> {
     const searchTerm = COUNTRY_SUMMARY_NAMES[countryName] || countryName;
     return this._apiService.fetchSummary(searchTerm);
-  }
-
-  private _transformDto(dto: CountryDto): Country {
-    return {
-      area: dto.area,
-      callingCodes:
-        CALLING_CODES[dto.name.common] ||
-        dto.idd.suffixes.map((suffix) => dto.idd.root + suffix),
-      capital: dto.capital[0],
-      currencies: Object.keys(dto.currencies),
-      demonym: dto.demonyms?.['eng']?.m ?? '',
-      flag: dto.flags.svg,
-      id: dto.cioc ?? dto.name.common,
-      languages: Object.values(dto.languages),
-      name: dto.name.common,
-      population: dto.population,
-      region: dto.region,
-      subregion: dto.subregion,
-      topLevelDomain: dto.tld,
-    };
   }
 
   private _groupSubregionsByRegion(
@@ -143,7 +89,7 @@ export class CountryService implements Resolve<Observable<Country[]>> {
     return reduce(
       subregionsByRegion,
       (accum, subregions, region) => {
-        const subregionsData = _map(subregions, (subregion) => {
+        const subregionsData = map(subregions, (subregion) => {
           return {
             name: subregion,
             region: region,

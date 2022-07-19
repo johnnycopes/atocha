@@ -19,12 +19,12 @@ import {
   animations: [fadeInAnimation],
 })
 export class SelectComponent {
-  private _selection$ = this._selectService.selection;
-  private _places$ = this._countryService.countries.pipe(
+  private _selection$ = this._selectService.selection$;
+  private _places$ = this._countryService.countries$.pipe(
     map(({ nestedCountries }) => nestedCountries)
   );
   private _numberOfSelectedCountries$ = combineLatest([
-    this._countryService.countries.pipe(
+    this._countryService.countries$.pipe(
       map(({ countriesBySubregion }) => countriesBySubregion)
     ),
     this._selection$,

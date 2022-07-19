@@ -30,14 +30,14 @@ export class QuizMenuComponent {
     [QuizType.capitalsCountries]: (country) => country.name,
     [QuizType.countriesCapitals]: (country) => country.capital,
   };
-  private _quiz$ = this._quizService.quiz.pipe(
+  private _quiz$ = this._quizService.quiz$.pipe(
     tap((quiz) => {
       if (quiz?.isComplete) {
         this._positionSubject$.next('offscreen');
       }
     })
   );
-  private _prompt$ = this._quizService.quiz.pipe(
+  private _prompt$ = this._quizService.quiz$.pipe(
     map((quiz) => {
       const currentCountry = quiz?.countries[0];
       return currentCountry ? this._promptDict[quiz.type](currentCountry) : '';

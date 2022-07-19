@@ -15,14 +15,14 @@ import { QuizType } from '@atocha/globetrotter/types';
   animations: [fadeInAnimation, staggerAnimation],
 })
 export class QuizCardsComponent {
-  private _quizType$ = this._quizService.quiz.pipe(
+  private _quizType$ = this._quizService.quiz$.pipe(
     map((quiz) => quiz?.type ?? QuizType.flagsCountries)
   );
-  private _countries$ = this._quizService.quiz.pipe(
+  private _countries$ = this._quizService.quiz$.pipe(
     first(),
     map((quiz) => shuffle(quiz?.countries ?? []))
   );
-  private _currentCountry$ = this._quizService.quiz.pipe(
+  private _currentCountry$ = this._quizService.quiz$.pipe(
     map((quiz) => quiz?.countries[0] ?? undefined)
   );
   vm$ = combineLatest([

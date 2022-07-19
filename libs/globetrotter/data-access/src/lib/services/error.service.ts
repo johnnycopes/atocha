@@ -12,17 +12,17 @@ interface ErrorState {
   providedIn: 'root',
 })
 export class ErrorService {
-  private readonly _errors = new BehaviorSubject<ErrorState>({
+  private readonly _errorsSubject = new BehaviorSubject<ErrorState>({
     global: '',
     login: '',
     register: '',
   });
-  get errors(): Observable<ErrorState> {
-    return this._errors;
+  get errors$(): Observable<ErrorState> {
+    return this._errorsSubject;
   }
 
   setGlobalError(error: string): void {
-    this._errors
+    this._errorsSubject
       .pipe(
         first(),
         map((errors) => ({ ...errors, global: error }))
@@ -31,7 +31,7 @@ export class ErrorService {
   }
 
   setLoginError(error: string): void {
-    this._errors
+    this._errorsSubject
       .pipe(
         first(),
         map((errors) => ({ ...errors, login: error }))
@@ -40,7 +40,7 @@ export class ErrorService {
   }
 
   setRegisterError(error: string): void {
-    this._errors
+    this._errorsSubject
       .pipe(
         first(),
         map((errors) => ({ ...errors, register: error }))

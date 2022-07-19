@@ -4,6 +4,9 @@ export interface CountryDto {
   area: number;
   borders: string[];
   capital: string[];
+  capitalInfo: {
+    latlng: number[];
+  };
   car: {
     side: 'left' | 'right';
     signs: string[];
@@ -80,6 +83,10 @@ export interface CountryDto {
     };
   };
   population: number;
+  postalCode: {
+    format: string;
+    regex: string;
+  };
   region: string;
   startOfWeek: string;
   status: string;
@@ -91,83 +98,7 @@ export interface CountryDto {
    */
   tld: string[];
   translations: {
-    ces: {
-      official: string;
-      common: string;
-    };
-    deu: {
-      official: string;
-      common: string;
-    };
-    est: {
-      official: string;
-      common: string;
-    };
-    fin: {
-      official: string;
-      common: string;
-    };
-    fra: {
-      official: string;
-      common: string;
-    };
-    hrv: {
-      official: string;
-      common: string;
-    };
-    hun: {
-      official: string;
-      common: string;
-    };
-    ita: {
-      official: string;
-      common: string;
-    };
-    jpn: {
-      official: string;
-      common: string;
-    };
-    kor: {
-      official: string;
-      common: string;
-    };
-    nld: {
-      official: string;
-      common: string;
-    };
-    per: {
-      official: string;
-      common: string;
-    };
-    pol: {
-      official: string;
-      common: string;
-    };
-    por: {
-      official: string;
-      common: string;
-    };
-    rus: {
-      official: string;
-      common: string;
-    };
-    slk: {
-      official: string;
-      common: string;
-    };
-    spa: {
-      official: string;
-      common: string;
-    };
-    swe: {
-      official: string;
-      common: string;
-    };
-    urd: {
-      official: string;
-      common: string;
-    };
-    zho: {
+    [languageCode: string]: {
       official: string;
       common: string;
     };

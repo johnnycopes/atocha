@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { combineLatest, ReplaySubject, Subject } from 'rxjs';
+import { BehaviorSubject, combineLatest, of, Subject } from 'rxjs';
 import {
   map,
   tap,
@@ -23,15 +23,22 @@ import { Country } from '@atocha/globetrotter/types';
 })
 export class ExploreComponent {
   private _searchTermChange = new Subject<string>();
-  private _selectedCountryChange = new ReplaySubject<Country>(1);
-  private _countries$ = this._countryService.countries.pipe(
+  private _selectedCountryChange = new BehaviorSubject<Country | undefined>(
+    undefined
+  );
+  private _countries$ = this._countryService.countries$.pipe(
     map(({ flatCountries }) => flatCountries)
   );
   private _selectedCountry$ = this._selectedCountryChange.pipe(
     distinctUntilChanged()
   );
   private _summary$ = this._selectedCountryChange.pipe(
-    switchMap((country) => this._countryService.getSummary(country.name)),
+    switchMap((country) => {
+      if (!country) {
+        return of(undefined);
+      }
+      return this._countryService.getSummary(country.name);
+    }),
     distinctUntilChanged()
   );
   private _searchTerm$ = this._searchTermChange.pipe(
@@ -57,12 +64,17 @@ export class ExploreComponent {
     this._searchTerm$,
     this._summary$,
   ]).pipe(
-    map(([filteredCountries, selectedCountry, searchTerm, summary]) => ({
-      filteredCountries,
-      selectedCountry,
-      searchTerm,
-      summary,
-    }))
+    map(([filteredCountries, selectedCountry, searchTerm, summary]) => {
+      if (!filteredCountries.length || !summary) {
+        return undefined;
+      }
+      return {
+        filteredCountries,
+        selectedCountry,
+        searchTerm,
+        summary,
+      };
+    })
   );
 
   constructor(private _countryService: CountryService) {}

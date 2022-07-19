@@ -20,18 +20,18 @@ export class SelectService {
     checked: '_c',
     indeterminate: '_i',
   };
-  private readonly _selection: BehaviorSubject<Selection>;
-  get selection(): Observable<Selection> {
-    return this._selection.asObservable();
+  private readonly _selectionSubject: BehaviorSubject<Selection>;
+  get selection$(): Observable<Selection> {
+    return this._selectionSubject.asObservable();
   }
 
   constructor(private _countryService: CountryService) {
-    this._selection = new BehaviorSubject<Selection>({
+    this._selectionSubject = new BehaviorSubject<Selection>({
       type: QuizType.flagsCountries,
       quantity: 5,
       places: {},
     });
-    this._countryService.countries
+    this._countryService.countries$
       .pipe(map(({ nestedCountries }) => nestedCountries))
       .subscribe((regions) => {
         this.updatePlaces(mapRegionsToPlaceSelection(regions));
@@ -39,34 +39,34 @@ export class SelectService {
   }
 
   updateSelection(selection: Selection): void {
-    this._selection.next(selection);
+    this._selectionSubject.next(selection);
   }
 
   updateType(type: QuizType): void {
-    this._selection
+    this._selectionSubject
       .pipe(
         first(),
         map((selection) => ({ ...selection, type }))
       )
-      .subscribe((selection) => this._selection.next(selection));
+      .subscribe((selection) => this._selectionSubject.next(selection));
   }
 
   updateQuantity(quantity: number): void {
-    this._selection
+    this._selectionSubject
       .pipe(
         first(),
         map((selection) => ({ ...selection, quantity }))
       )
-      .subscribe((selection) => this._selection.next(selection));
+      .subscribe((selection) => this._selectionSubject.next(selection));
   }
 
   updatePlaces(places: PlaceSelection): void {
-    this._selection
+    this._selectionSubject
       .pipe(
         first(),
         map((selection) => ({ ...selection, places }))
       )
-      .subscribe((selection) => this._selection.next(selection));
+      .subscribe((selection) => this._selectionSubject.next(selection));
   }
 
   mapSelectionToQueryParams(selection: Selection): SelectionParams {

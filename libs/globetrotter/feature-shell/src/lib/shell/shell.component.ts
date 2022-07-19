@@ -13,7 +13,7 @@ import { QuizService } from '@atocha/globetrotter/data-access';
 export class ShellComponent {
   private _showContentSubject = new BehaviorSubject<boolean>(false);
   private _showContent$ = this._showContentSubject.pipe(distinctUntilChanged());
-  private _quizComplete$ = this._quizService.quiz.pipe(
+  private _quizComplete$ = this._quizService.quiz$.pipe(
     map((quiz) => quiz?.isComplete ?? false),
     distinctUntilChanged()
   );
