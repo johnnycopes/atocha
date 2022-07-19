@@ -23,7 +23,9 @@ import { Country } from '@atocha/globetrotter/types';
 })
 export class ExploreComponent {
   private _searchTermChange = new Subject<string>();
-  private _selectedCountryChange = new BehaviorSubject<Country | undefined>(undefined);
+  private _selectedCountryChange = new BehaviorSubject<Country | undefined>(
+    undefined
+  );
   private _countries$ = this._countryService.countries$.pipe(
     map(({ flatCountries }) => flatCountries)
   );
@@ -32,10 +34,10 @@ export class ExploreComponent {
   );
   private _summary$ = this._selectedCountryChange.pipe(
     switchMap((country) => {
-      if (!country ) {
+      if (!country) {
         return of(undefined);
       }
-      return this._countryService.getSummary(country.name)
+      return this._countryService.getSummary(country.name);
     }),
     distinctUntilChanged()
   );
@@ -71,7 +73,7 @@ export class ExploreComponent {
         selectedCountry,
         searchTerm,
         summary,
-      }
+      };
     })
   );
 

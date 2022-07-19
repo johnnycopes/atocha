@@ -5,8 +5,8 @@ export interface CountryDto {
   borders: string[];
   capital: string[];
   capitalInfo: {
-    latlng: number[]
-  },
+    latlng: number[];
+  };
   car: {
     side: 'left' | 'right';
     signs: string[];

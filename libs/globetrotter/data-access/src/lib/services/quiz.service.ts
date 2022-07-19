@@ -11,7 +11,9 @@ import { shuffle } from 'lodash-es';
   providedIn: 'root',
 })
 export class QuizService {
-  private readonly _quizSubject = new BehaviorSubject<Quiz | undefined>(undefined);
+  private readonly _quizSubject = new BehaviorSubject<Quiz | undefined>(
+    undefined
+  );
   get quiz$(): Observable<Quiz | undefined> {
     return this._quizSubject.asObservable();
   }
@@ -21,15 +23,13 @@ export class QuizService {
     private _routerService: RouterService
   ) {
     this._routerService.route$
-      .pipe(
-        filter((route) => !route.includes(Route.quiz)),
-      )
+      .pipe(filter((route) => !route.includes(Route.quiz)))
       .subscribe(() => this._quizSubject.next(undefined));
   }
 
   initializeQuiz({ type, quantity, places }: Selection): void {
-    this._countryService
-      .countries$.pipe(
+    this._countryService.countries$
+      .pipe(
         map(({ countriesBySubregion }) => {
           const countries: Country[] = [];
 

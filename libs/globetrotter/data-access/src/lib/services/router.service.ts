@@ -7,11 +7,7 @@ import {
   NavigationError,
 } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
-import {
-  map,
-  filter,
-  distinctUntilChanged,
-} from 'rxjs/operators';
+import { map, filter, distinctUntilChanged } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -36,12 +32,10 @@ export class RouterService {
     this._router.events
       .pipe(
         filter((e): e is NavigationEnd => e instanceof NavigationEnd),
-        map(
-          (navigationEnd: NavigationEnd) => navigationEnd.urlAfterRedirects
-        ),
+        map((navigationEnd: NavigationEnd) => navigationEnd.urlAfterRedirects),
         distinctUntilChanged()
       )
-      .subscribe(currentRoute => this._routeSubject.next(currentRoute));
+      .subscribe((currentRoute) => this._routeSubject.next(currentRoute));
 
     this._router.events
       .pipe(
@@ -56,8 +50,8 @@ export class RouterService {
           }
           return true;
         }),
-        distinctUntilChanged(),
+        distinctUntilChanged()
       )
-      .subscribe(loading => this._loadingSubject.next(loading));
+      .subscribe((loading) => this._loadingSubject.next(loading));
   }
 }
