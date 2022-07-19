@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Resolve } from '@angular/router';
-import { BehaviorSubject, Observable, of } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { groupBy, reduce, map } from 'lodash-es';
 
 import { sort } from '@atocha/core/util';
@@ -24,8 +23,7 @@ interface CountryState {
 @Injectable({
   providedIn: 'root',
 })
-export class CountryService implements Resolve<Observable<Country[]>> {
-  private _request: Observable<Country[]> = of([]);
+export class CountryService {
   private readonly _countriesSubject = new BehaviorSubject<CountryState>({
     flatCountries: [],
     countriesBySubregion: {},
@@ -56,10 +54,6 @@ export class CountryService implements Resolve<Observable<Country[]>> {
         nestedCountries,
       });
     });
-  }
-
-  resolve(): Observable<Country[]> {
-    return this._request;
   }
 
   getSummary(countryName: string): Observable<string> {

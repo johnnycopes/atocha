@@ -6,14 +6,12 @@ import {
   PageNotFoundComponent,
   ShellComponent,
 } from '@atocha/globetrotter/feature-shell';
-import { CountryService } from '@atocha/globetrotter/data-access';
 import { Route } from '@atocha/globetrotter/types';
 
 const routes: Routes = [
   {
     path: '',
     component: ShellComponent,
-    resolve: { countries: CountryService },
     children: [
       {
         path: Route.home,
