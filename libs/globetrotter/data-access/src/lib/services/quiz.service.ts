@@ -28,13 +28,12 @@ export class QuizService {
       .subscribe(() => this._quiz.next(undefined));
   }
 
-  initializeQuiz(selection: Selection): void {
+  initializeQuiz({ type, quantity, places }: Selection): void {
     this._countryService
       .countries.pipe(
         map(({ countriesBySubregion }) => {
-          const quantity = selection.quantity || undefined;
           const countries = reduce(
-            selection.places,
+            places,
             (accum, checkboxState, placeName) => {
               if (
                 checkboxState === 'checked' &&
@@ -54,7 +53,7 @@ export class QuizService {
         this._quiz.next({
           guess: 1,
           correctGuesses: 0,
-          type: selection.type,
+          type,
           countries: countries,
           totalCountries: countries.length,
           accuracy: 100,
