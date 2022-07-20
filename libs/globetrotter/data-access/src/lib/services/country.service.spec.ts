@@ -5,12 +5,20 @@ import { Observable, of } from "rxjs";
 import { CountryDto } from "@atocha/globetrotter/types";
 import { CountryService } from "./country.service";
 import { ApiService } from "./api.service";
+import { DJIBOUTI, MONTENEGRO, PHILIPPINES, SEYCHELLES } from '../mock-data/countries';
+import { DJIBOUTI_DTO, MONTENEGRO_DTO, PHILLIPINES_DTO, PUERTO_RICO_DTO, SEYCHELLES_DTO } from '../mock-data/country-dtos';
 
 describe('CountryService', () => {
   let service: CountryService;
   const mockApiService = {
     fetchCountries(): Observable<CountryDto[]> {
-      return of([]);
+      return of([
+        MONTENEGRO_DTO,
+        PHILLIPINES_DTO,
+        SEYCHELLES_DTO,
+        PUERTO_RICO_DTO,
+        DJIBOUTI_DTO,
+      ]);
     }
   }
 
@@ -30,9 +38,49 @@ describe('CountryService', () => {
   it('correctly initializes state', (done) => {
     service.countries$.subscribe((value) => {
       expect(value).toEqual({
-        countries: [],
-        countriesBySubregion: {},
-        regions: [],
+        countries: [
+          DJIBOUTI,
+          MONTENEGRO,
+          PHILIPPINES,
+          SEYCHELLES,
+        ],
+        countriesBySubregion: {
+          'Eastern Africa': [DJIBOUTI, SEYCHELLES],
+          'Southeast Europe': [MONTENEGRO],
+          'South-Eastern Asia': [PHILIPPINES],
+        },
+        regions: [
+          {
+            name: 'Africa',
+            subregions: [
+              {
+                name: 'Eastern Africa',
+                region: 'Africa',
+                countries: [DJIBOUTI, SEYCHELLES],
+              },
+            ]
+          },
+          {
+            name: 'Europe',
+            subregions: [
+              {
+                name: 'Southeast Europe',
+                region: 'Europe',
+                countries: [MONTENEGRO],
+              },
+            ]
+          },
+          {
+            name: 'Asia',
+            subregions: [
+              {
+                name: 'South-Eastern Asia',
+                region: 'Asia',
+                countries: [PHILIPPINES],
+              },
+            ]
+          }
+        ],
       });
       done();
     });
