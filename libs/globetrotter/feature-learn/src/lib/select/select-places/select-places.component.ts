@@ -42,13 +42,10 @@ export class SelectPlacesComponent {
   @Input()
   set places(value: PlaceSelection) {
     if (value) {
-      this._state = this._transformPlaceSelection(value);
+      this.state = this._transformPlaceSelection(value);
     }
   }
-  get places(): CheckboxStates {
-    return this._state;
-  }
-  private _state: CheckboxStates = {};
+  state: CheckboxStates = {};
 
   @Output() placesChange = new EventEmitter<PlaceSelection>();
 
