@@ -45,7 +45,7 @@ describe('SelectService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('contains correct default selection', (done) => {
+  it('correctly initializes state', (done) => {
     service.selection$.subscribe((value) => {
       expect(value).toEqual({
         type: 1,
