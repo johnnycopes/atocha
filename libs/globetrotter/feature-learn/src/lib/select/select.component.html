@@ -25,9 +25,9 @@
       ></app-select-quantity>
     </div>
     <app-select-places
+      [regions]="vm.regions"
       [places]="vm.places"
-      [state]="vm.placeSelection"
-      (stateChange)="onPlaceSelectionChange($event)"
+      (placesChange)="onPlacesChange($event)"
     ></app-select-places>
   </div>
 </div>

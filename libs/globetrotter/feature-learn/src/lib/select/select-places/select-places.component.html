@@ -33,7 +33,7 @@
         [getChildren]="getChildren"
         [getLeafItemCount]="getNumberOfCountries"
         [itemTemplate]="label"
-        [ngModel]="state"
+        [ngModel]="places"
         (ngModelChange)="onStateChange($event)"
         (selectedChange)="onSelectedChange(regionState, $event)"
         (totalChange)="onTotalChange(regionState, $event)"

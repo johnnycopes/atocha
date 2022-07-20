@@ -20,7 +20,7 @@ import {
 })
 export class SelectComponent {
   private _selection$ = this._selectService.selection$;
-  private _places$ = this._countryService.countries$.pipe(
+  private _regions$ = this._countryService.countries$.pipe(
     map(({ regions }) => regions)
   );
   private _numberOfSelectedCountries$ = combineLatest([
@@ -59,24 +59,24 @@ export class SelectComponent {
   );
   vm$ = combineLatest([
     this._numberOfSelectedCountries$,
-    this._places$,
+    this._regions$,
     this._selection$,
     this._invalidQuantity$,
   ]).pipe(
     map(
       ([
         numberOfSelectedCountries,
-        places,
-        { places: placeSelection, type, quantity },
+        regions,
+        { places, type, quantity },
         invalidQuantity,
       ]) => {
-        if (!places.length) {
+        if (!regions.length) {
           return undefined;
         }
         return {
           numberOfSelectedCountries,
+          regions,
           places,
-          placeSelection,
           type,
           quantity,
           invalidQuantity,
@@ -91,16 +91,16 @@ export class SelectComponent {
     private _router: Router
   ) {}
 
-  onPlaceSelectionChange(places: PlaceSelection): void {
-    this._selectService.updatePlaces(places);
-  }
-
   onTypeChange(type: QuizType): void {
     this._selectService.updateType(type);
   }
 
   onQuantityChange(quantity: number): void {
     this._selectService.updateQuantity(quantity);
+  }
+
+  onPlacesChange(places: PlaceSelection): void {
+    this._selectService.updatePlaces(places);
   }
 
   async onLaunch(): Promise<void> {
