@@ -12,7 +12,7 @@ import { ApiService } from './api.service';
 import { COUNTRY_SUMMARY_NAMES } from '../data/country-modifications';
 
 interface CountryState {
-  flatCountries: Country[];
+  countries: Country[];
   countriesBySubregion: Record<string, Country[]>;
   nestedCountries: Region[];
 }
@@ -22,7 +22,7 @@ interface CountryState {
 })
 export class CountryService {
   private readonly _countriesSubject = new BehaviorSubject<CountryState>({
-    flatCountries: [],
+    countries: [],
     countriesBySubregion: {},
     nestedCountries: [],
   });
@@ -32,13 +32,13 @@ export class CountryService {
 
   constructor(private _apiService: ApiService) {
     this._apiService.fetchCountries().subscribe((countryDtos) => {
-      const flatCountries = sort(
+      const countries = sort(
         countryDtos
           .filter(({ unMember }) => unMember)
           .map(mapCountryDtoToCountry),
         ({ name }) => name
       );
-      const countriesBySubregion = groupBy(flatCountries, 'subregion');
+      const countriesBySubregion = groupBy(countries, 'subregion');
       const subregionsByRegion =
         this._groupSubregionsByRegion(countriesBySubregion);
       const nestedCountries = this._formatNestedCountries(
@@ -46,7 +46,7 @@ export class CountryService {
         subregionsByRegion
       );
       this._countriesSubject.next({
-        flatCountries,
+        countries,
         countriesBySubregion,
         nestedCountries,
       });

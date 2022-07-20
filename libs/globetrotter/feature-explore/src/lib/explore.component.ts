@@ -27,7 +27,7 @@ export class ExploreComponent {
     undefined
   );
   private _countries$ = this._countryService.countries$.pipe(
-    map(({ flatCountries }) => flatCountries)
+    map(({ countries: flatCountries }) => flatCountries)
   );
   private _selectedCountry$ = this._selectedCountryChange.pipe(
     distinctUntilChanged()
