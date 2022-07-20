@@ -14,7 +14,7 @@ import { COUNTRY_SUMMARY_NAMES } from '../data/country-modifications';
 interface CountryState {
   countries: Country[];
   countriesBySubregion: Record<string, Country[]>;
-  nestedCountries: Region[];
+  regions: Region[];
 }
 
 @Injectable({
@@ -24,7 +24,7 @@ export class CountryService {
   private readonly _countriesSubject = new BehaviorSubject<CountryState>({
     countries: [],
     countriesBySubregion: {},
-    nestedCountries: [],
+    regions: [],
   });
   get countries$(): Observable<CountryState> {
     return this._countriesSubject.asObservable();
@@ -41,14 +41,14 @@ export class CountryService {
       const countriesBySubregion = groupBy(countries, 'subregion');
       const subregionsByRegion =
         this._groupSubregionsByRegion(countriesBySubregion);
-      const nestedCountries = this._formatNestedCountries(
+      const regions = this._formatRegions(
         countriesBySubregion,
         subregionsByRegion
       );
       this._countriesSubject.next({
         countries,
         countriesBySubregion,
-        nestedCountries,
+        regions,
       });
     });
   }
@@ -82,7 +82,7 @@ export class CountryService {
     );
   }
 
-  private _formatNestedCountries(
+  private _formatRegions(
     countriesBySubregion: Record<string, Country[]>,
     subregionsByRegion: Record<string, string[]>
   ): Region[] {

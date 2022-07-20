@@ -32,7 +32,7 @@ export class SelectService {
       places: {},
     });
     this._countryService.countries$
-      .pipe(map(({ nestedCountries }) => nestedCountries))
+      .pipe(map(({ regions }) => regions))
       .subscribe((regions) => {
         this.updatePlaces(mapRegionsToPlaceSelection(regions));
       });

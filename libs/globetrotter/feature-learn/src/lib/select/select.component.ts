@@ -21,7 +21,7 @@ import {
 export class SelectComponent {
   private _selection$ = this._selectService.selection$;
   private _places$ = this._countryService.countries$.pipe(
-    map(({ nestedCountries }) => nestedCountries)
+    map(({ regions }) => regions)
   );
   private _numberOfSelectedCountries$ = combineLatest([
     this._countryService.countries$.pipe(
