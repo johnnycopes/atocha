@@ -2,7 +2,7 @@ export interface CountryDto {
   altSpellings: string[];
   /** Area in km² */
   area: number;
-  borders: string[];
+  borders?: string[];
   capital: string[];
   capitalInfo: {
     latlng: number[];
@@ -21,8 +21,8 @@ export interface CountryDto {
    */
   cioc: string | undefined;
   coatOfArms: {
-    png: string;
-    svg: string;
+    png?: string;
+    svg?: string;
   };
   continents: string[];
   /**
@@ -52,7 +52,7 @@ export interface CountryDto {
     svg: string;
     png: string;
   };
-  gini: {
+  gini?: {
     [key: number]: number;
   };
   /** Country calling code(s) for [international direct dialing]
@@ -83,7 +83,7 @@ export interface CountryDto {
     };
   };
   population: number;
-  postalCode: {
+  postalCode?: {
     format: string;
     regex: string;
   };
