@@ -1,12 +1,23 @@
-import { TestBed } from "@angular/core/testing";
-import { HttpClientTestingModule } from "@angular/common/http/testing";
-import { Observable, of } from "rxjs";
+import { TestBed } from '@angular/core/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { Observable, of } from 'rxjs';
 
-import { CountryDto } from "@atocha/globetrotter/types";
-import { CountryService } from "./country.service";
-import { ApiService } from "./api.service";
-import { DJIBOUTI, MONTENEGRO, PHILIPPINES, SEYCHELLES } from '../mock-data/countries';
-import { DJIBOUTI_DTO, MONTENEGRO_DTO, PHILLIPINES_DTO, PUERTO_RICO_DTO, SEYCHELLES_DTO } from '../mock-data/country-dtos';
+import { CountryDto } from '@atocha/globetrotter/types';
+import { CountryService } from './country.service';
+import { ApiService } from './api.service';
+import {
+  DJIBOUTI,
+  MONTENEGRO,
+  PHILIPPINES,
+  SEYCHELLES,
+} from '../mock-data/countries';
+import {
+  DJIBOUTI_DTO,
+  MONTENEGRO_DTO,
+  PHILLIPINES_DTO,
+  PUERTO_RICO_DTO,
+  SEYCHELLES_DTO,
+} from '../mock-data/country-dtos';
 
 describe('CountryService', () => {
   let service: CountryService;
@@ -19,8 +30,8 @@ describe('CountryService', () => {
         PUERTO_RICO_DTO,
         DJIBOUTI_DTO,
       ]);
-    }
-  }
+    },
+  };
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -30,7 +41,7 @@ describe('CountryService', () => {
           provide: ApiService,
           useValue: mockApiService,
         },
-      ]
+      ],
     });
     service = TestBed.inject(CountryService);
   });
@@ -38,12 +49,7 @@ describe('CountryService', () => {
   it('correctly initializes state', (done) => {
     service.countries$.subscribe((value) => {
       expect(value).toEqual({
-        countries: [
-          DJIBOUTI,
-          MONTENEGRO,
-          PHILIPPINES,
-          SEYCHELLES,
-        ],
+        countries: [DJIBOUTI, MONTENEGRO, PHILIPPINES, SEYCHELLES],
         countriesBySubregion: {
           'Eastern Africa': [DJIBOUTI, SEYCHELLES],
           'Southeast Europe': [MONTENEGRO],
@@ -57,7 +63,7 @@ describe('CountryService', () => {
                 name: 'Eastern Africa',
                 countries: [DJIBOUTI, SEYCHELLES],
               },
-            ]
+            ],
           },
           {
             name: 'Europe',
@@ -66,7 +72,7 @@ describe('CountryService', () => {
                 name: 'Southeast Europe',
                 countries: [MONTENEGRO],
               },
-            ]
+            ],
           },
           {
             name: 'Asia',
@@ -75,8 +81,8 @@ describe('CountryService', () => {
                 name: 'South-Eastern Asia',
                 countries: [PHILIPPINES],
               },
-            ]
-          }
+            ],
+          },
         ],
       });
       done();

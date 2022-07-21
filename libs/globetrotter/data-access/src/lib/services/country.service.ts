@@ -38,7 +38,10 @@ export class CountryService {
           .map(mapCountryDtoToCountry),
         ({ name }) => name
       );
-      const countriesBySubregion = groupBy(countries, ({ subregion }) => subregion);
+      const countriesBySubregion = groupBy(
+        countries,
+        ({ subregion }) => subregion
+      );
       const subregionsByRegion =
         this._groupSubregionsByRegion(countriesBySubregion);
       const regions = this._formatRegions(
@@ -65,7 +68,9 @@ export class CountryService {
 
     for (const [subregion, countries] of Object.entries(countriesBySubregion)) {
       const region = countries?.[0]?.region ?? 'MISSING_REGION';
-      subregions[region] = !subregions[region] ? [subregion] : [...subregions[region], subregion];
+      subregions[region] = !subregions[region]
+        ? [subregion]
+        : [...subregions[region], subregion];
     }
 
     return subregions;
@@ -77,7 +82,9 @@ export class CountryService {
   ): Region[] {
     const regions: Region[] = [];
 
-    for (const [regionName, subregionNames] of Object.entries(subregionsByRegion)) {
+    for (const [regionName, subregionNames] of Object.entries(
+      subregionsByRegion
+    )) {
       regions.push({
         name: regionName,
         subregions: subregionNames.map((subregionName) => ({
