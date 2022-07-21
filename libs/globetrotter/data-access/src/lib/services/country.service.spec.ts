@@ -55,7 +55,6 @@ describe('CountryService', () => {
             subregions: [
               {
                 name: 'Eastern Africa',
-                region: 'Africa',
                 countries: [DJIBOUTI, SEYCHELLES],
               },
             ]
@@ -65,7 +64,6 @@ describe('CountryService', () => {
             subregions: [
               {
                 name: 'Southeast Europe',
-                region: 'Europe',
                 countries: [MONTENEGRO],
               },
             ]
@@ -75,7 +73,6 @@ describe('CountryService', () => {
             subregions: [
               {
                 name: 'South-Eastern Asia',
-                region: 'Asia',
                 countries: [PHILIPPINES],
               },
             ]
