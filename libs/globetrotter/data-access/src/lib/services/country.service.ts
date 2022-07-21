@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { groupBy, reduce, map } from 'lodash-es';
+import { groupBy, reduce } from 'lodash-es';
 
 import { sort } from '@atocha/core/util';
 import {
@@ -77,19 +77,15 @@ export class CountryService {
   ): Region[] {
     return reduce(
       subregionsByRegion,
-      (accum, subregions, region) => {
-        const subregionsData = map(subregions, (subregion) => {
-          return {
-            name: subregion,
-            countries: countriesBySubregion[subregion],
-          };
-        });
-        const regionData = {
-          name: region,
-          subregions: subregionsData,
+      (accum, subregionNames, regionName) => {
+        const region: Region = {
+          name: regionName,
+          subregions: subregionNames.map((subregionName) => ({
+            name: subregionName,
+            countries: countriesBySubregion[subregionName],
+          })),
         };
-        const regions = accum.slice();
-        return [...regions, regionData];
+        return [...accum.slice(), region];
       },
       [] as Region[]
     );
