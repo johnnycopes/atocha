@@ -30,7 +30,7 @@ interface RegionState {
 })
 export class SelectPlacesComponent {
   @Input()
-  set places(value: Region[]) {
+  set regions(value: Region[]) {
     this._allSelectedState = mapRegionsToPlaceSelection(value);
     this.regionStates = value.map((region) => ({
       region,
@@ -40,17 +40,14 @@ export class SelectPlacesComponent {
   }
 
   @Input()
-  set state(value: PlaceSelection) {
+  set places(value: PlaceSelection) {
     if (value) {
-      this._state = this._transformPlaceSelection(value);
+      this.state = this._transformPlaceSelection(value);
     }
   }
-  get state(): CheckboxStates {
-    return this._state;
-  }
-  private _state: CheckboxStates = {};
+  state: CheckboxStates = {};
 
-  @Output() stateChange = new EventEmitter<PlaceSelection>();
+  @Output() placesChange = new EventEmitter<PlaceSelection>();
 
   regionStates: RegionState[] = [];
   overallSelected = 0;
@@ -66,7 +63,7 @@ export class SelectPlacesComponent {
     isSubregion(place) ? place.countries.length : 0;
 
   onStateChange(state: CheckboxStates): void {
-    this.stateChange.emit(this._transformState(state));
+    this.placesChange.emit(this._transformState(state));
   }
 
   onSelectedChange(regionState: RegionState, quantity: number): void {
@@ -86,11 +83,11 @@ export class SelectPlacesComponent {
   }
 
   onSelectAll(): void {
-    this.stateChange.emit(this._allSelectedState);
+    this.placesChange.emit(this._allSelectedState);
   }
 
   onClearAll(): void {
-    this.stateChange.emit({});
+    this.placesChange.emit({});
   }
 
   private _transformPlaceSelection(selection: PlaceSelection): CheckboxStates {

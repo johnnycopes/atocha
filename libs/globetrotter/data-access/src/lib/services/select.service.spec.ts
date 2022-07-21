@@ -1,5 +1,4 @@
 import { TestBed } from '@angular/core/testing';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { of } from 'rxjs';
 
 import { QuizType } from '@atocha/globetrotter/types';
@@ -8,19 +7,21 @@ import { SelectService } from './select.service';
 
 describe('SelectService', () => {
   let service: SelectService;
-  const mockCountryService = {
+  const mockCountryService: Pick<CountryService, 'countries$'> = {
     countries$: of({
-      nestedCountries: [
+      countries: [],
+      countriesBySubregion: {},
+      regions: [
         {
           name: 'Africa',
           subregions: [
             {
               name: 'Northern Africa',
-              region: 'Africa',
+              countries: [],
             },
             {
               name: 'Western Africa',
-              region: 'Africa',
+              countries: [],
             },
           ],
         },
@@ -30,7 +31,6 @@ describe('SelectService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
       providers: [
         {
           provide: CountryService,
@@ -45,7 +45,7 @@ describe('SelectService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('contains correct default selection', (done) => {
+  it('correctly initializes state', (done) => {
     service.selection$.subscribe((value) => {
       expect(value).toEqual({
         type: 1,

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { groupBy, reduce, map } from 'lodash-es';
+import { groupBy } from 'lodash-es';
 
 import { sort } from '@atocha/core/util';
 import {
@@ -12,9 +12,9 @@ import { ApiService } from './api.service';
 import { COUNTRY_SUMMARY_NAMES } from '../data/country-modifications';
 
 interface CountryState {
-  flatCountries: Country[];
+  countries: Country[];
   countriesBySubregion: Record<string, Country[]>;
-  nestedCountries: Region[];
+  regions: Region[];
 }
 
 @Injectable({
@@ -22,9 +22,9 @@ interface CountryState {
 })
 export class CountryService {
   private readonly _countriesSubject = new BehaviorSubject<CountryState>({
-    flatCountries: [],
+    countries: [],
     countriesBySubregion: {},
-    nestedCountries: [],
+    regions: [],
   });
   get countries$(): Observable<CountryState> {
     return this._countriesSubject.asObservable();
@@ -32,23 +32,26 @@ export class CountryService {
 
   constructor(private _apiService: ApiService) {
     this._apiService.fetchCountries().subscribe((countryDtos) => {
-      const flatCountries = sort(
+      const countries = sort(
         countryDtos
           .filter(({ unMember }) => unMember)
           .map(mapCountryDtoToCountry),
         ({ name }) => name
       );
-      const countriesBySubregion = groupBy(flatCountries, 'subregion');
+      const countriesBySubregion = groupBy(
+        countries,
+        ({ subregion }) => subregion
+      );
       const subregionsByRegion =
         this._groupSubregionsByRegion(countriesBySubregion);
-      const nestedCountries = this._formatNestedCountries(
+      const regions = this._formatRegions(
         countriesBySubregion,
         subregionsByRegion
       );
       this._countriesSubject.next({
-        flatCountries,
+        countries,
         countriesBySubregion,
-        nestedCountries,
+        regions,
       });
     });
   }
@@ -61,49 +64,36 @@ export class CountryService {
   private _groupSubregionsByRegion(
     countriesBySubregion: Record<string, Country[]>
   ): Record<string, string[]> {
-    return reduce(
-      countriesBySubregion,
-      (accum, countries, subregion) => {
-        const region = countries?.[0]?.region ?? 'ERROR';
-        if (!accum[region]) {
-          return {
-            ...accum,
-            [region]: [subregion],
-          };
-        } else {
-          const subregions = accum[region].slice();
-          return {
-            ...accum,
-            [region]: [...subregions, subregion],
-          };
-        }
-      },
-      {} as Record<string, string[]>
-    );
+    const subregions: Record<string, string[]> = {};
+
+    for (const [subregion, countries] of Object.entries(countriesBySubregion)) {
+      const region = countries?.[0]?.region ?? 'MISSING_REGION';
+      subregions[region] = !subregions[region]
+        ? [subregion]
+        : [...subregions[region], subregion];
+    }
+
+    return subregions;
   }
 
-  private _formatNestedCountries(
+  private _formatRegions(
     countriesBySubregion: Record<string, Country[]>,
     subregionsByRegion: Record<string, string[]>
   ): Region[] {
-    return reduce(
-      subregionsByRegion,
-      (accum, subregions, region) => {
-        const subregionsData = map(subregions, (subregion) => {
-          return {
-            name: subregion,
-            region: region,
-            countries: countriesBySubregion[subregion],
-          };
-        });
-        const regionData = {
-          name: region,
-          subregions: subregionsData,
-        };
-        const regions = accum.slice();
-        return [...regions, regionData];
-      },
-      [] as Region[]
-    );
+    const regions: Region[] = [];
+
+    for (const [regionName, subregionNames] of Object.entries(
+      subregionsByRegion
+    )) {
+      regions.push({
+        name: regionName,
+        subregions: subregionNames.map((subregionName) => ({
+          name: subregionName,
+          countries: countriesBySubregion[subregionName],
+        })),
+      });
+    }
+
+    return regions;
   }
 }
