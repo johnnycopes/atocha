@@ -81,7 +81,6 @@ export class CountryService {
         const subregionsData = map(subregions, (subregion) => {
           return {
             name: subregion,
-            region: region,
             countries: countriesBySubregion[subregion],
           };
         });
