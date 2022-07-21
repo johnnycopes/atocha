@@ -21,7 +21,7 @@ import {
 
 describe('CountryService', () => {
   let service: CountryService;
-  const mockApiService = {
+  const mockApiService: Pick<ApiService, 'fetchCountries'> = {
     fetchCountries(): Observable<CountryDto[]> {
       return of([
         MONTENEGRO_DTO,

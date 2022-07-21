@@ -8,19 +8,21 @@ import { SelectService } from './select.service';
 
 describe('SelectService', () => {
   let service: SelectService;
-  const mockCountryService = {
+  const mockCountryService: Pick<CountryService, 'countries$'> = {
     countries$: of({
-      nestedCountries: [
+      countries: [],
+      countriesBySubregion: {},
+      regions: [
         {
           name: 'Africa',
           subregions: [
             {
               name: 'Northern Africa',
-              region: 'Africa',
+              countries: [],
             },
             {
               name: 'Western Africa',
-              region: 'Africa',
+              countries: [],
             },
           ],
         },
