@@ -61,25 +61,14 @@ export class CountryService {
   private _groupSubregionsByRegion(
     countriesBySubregion: Record<string, Country[]>
   ): Record<string, string[]> {
-    return reduce(
-      countriesBySubregion,
-      (accum, countries, subregion) => {
-        const region = countries?.[0]?.region ?? 'ERROR';
-        if (!accum[region]) {
-          return {
-            ...accum,
-            [region]: [subregion],
-          };
-        } else {
-          const subregions = accum[region].slice();
-          return {
-            ...accum,
-            [region]: [...subregions, subregion],
-          };
-        }
-      },
-      {} as Record<string, string[]>
-    );
+    const subregions: Record<string, string[]> = {};
+
+    for (const [subregion, countries] of Object.entries(countriesBySubregion)) {
+      const region = countries?.[0]?.region ?? 'MISSING_REGION';
+      subregions[region] = !subregions[region] ? [subregion] : [...subregions[region], subregion];
+    }
+
+    return subregions;
   }
 
   private _formatRegions(
