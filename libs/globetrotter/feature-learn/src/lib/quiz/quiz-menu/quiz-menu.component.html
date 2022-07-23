@@ -21,10 +21,10 @@
         right
       >
         <h4 class="details__tally">
-          {{ vm.quiz?.correctGuesses ?? 0 }} / {{ vm.quiz?.totalCountries ?? 0 }}
+          {{ correctGuesses }} / {{ totalCountries }}
         </h4>
         <h4 class="details__guess">
-          Guess #{{ vm.quiz?.guess ?? 0 }}
+          Guess #{{ guess }}
         </h4>
       </div>
     </ui-container>
@@ -36,7 +36,7 @@
         Quiz complete! You scored
       </p>
       <h1 class="accuracy">
-        {{ vm.quiz?.accuracy ?? 0 }}%
+        {{ accuracy }}%
       </h1>
       <ui-button class="reset"
         buttonText="Reset"

@@ -8,7 +8,7 @@ import {
 import { Router } from '@angular/router';
 import { AnimationEvent } from '@angular/animations';
 import { BehaviorSubject, combineLatest } from 'rxjs';
-import { map, tap, distinctUntilChanged } from 'rxjs/operators';
+import { map, distinctUntilChanged } from 'rxjs/operators';
 
 import { FixedSlideablePanelPosition } from '@atocha/globetrotter/ui';
 import { Country, QuizType, Route } from '@atocha/globetrotter/types';
@@ -21,6 +21,10 @@ import { QuizService } from '@atocha/globetrotter/data-access';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class QuizMenuComponent {
+  @Input() guess = 1;
+  @Input() correctGuesses = 0;
+  @Input() totalCountries = 0;
+  @Input() accuracy = 0;
   @Input()
   set isComplete(value) {
     if (value) {
