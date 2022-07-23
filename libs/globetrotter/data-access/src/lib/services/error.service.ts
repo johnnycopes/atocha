@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { first, map } from 'rxjs/operators';
+import { BehaviorSubject } from 'rxjs';
+import { first, map, shareReplay } from 'rxjs/operators';
 
 interface ErrorState {
   global: string;
@@ -17,9 +17,9 @@ export class ErrorService {
     login: '',
     register: '',
   });
-  get errors$(): Observable<ErrorState> {
-    return this._errorsSubject;
-  }
+  errors$ = this._errorsSubject.pipe(
+    shareReplay({ bufferSize: 1, refCount: true })
+  );
 
   setGlobalError(error: string): void {
     this._errorsSubject

@@ -6,8 +6,8 @@ import {
   NavigationCancel,
   NavigationError,
 } from '@angular/router';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { map, filter, distinctUntilChanged } from 'rxjs/operators';
+import { BehaviorSubject } from 'rxjs';
+import { map, filter, distinctUntilChanged, shareReplay } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -15,20 +15,16 @@ import { map, filter, distinctUntilChanged } from 'rxjs/operators';
 export class RouterService {
   private _routeSubject = new BehaviorSubject<string>('');
   private _loadingSubject = new BehaviorSubject<boolean>(false);
-
-  get route$(): Observable<string> {
-    return this._routeSubject.pipe(distinctUntilChanged());
-  }
-
-  get loading$(): Observable<boolean> {
-    return this._loadingSubject.pipe(distinctUntilChanged());
-  }
+  route$ = this._routeSubject.pipe(
+    distinctUntilChanged(),
+    shareReplay({ bufferSize: 1, refCount: true })
+  );
+  loading$ = this._loadingSubject.pipe(
+    distinctUntilChanged(),
+    shareReplay({ bufferSize: 1, refCount: true })
+  );
 
   constructor(private _router: Router) {
-    this._intialize();
-  }
-
-  private _intialize(): void {
     this._router.events
       .pipe(
         filter((e): e is NavigationEnd => e instanceof NavigationEnd),

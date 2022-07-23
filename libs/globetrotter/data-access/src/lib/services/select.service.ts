@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { first, map } from 'rxjs/operators';
+import { BehaviorSubject } from 'rxjs';
+import { first, map, shareReplay } from 'rxjs/operators';
 
 import {
   QuizType,
@@ -16,21 +16,20 @@ import { CountryService } from './country.service';
   providedIn: 'root',
 })
 export class SelectService {
-  private readonly _paramDict: Record<PlaceSelectionState, string> = {
+  private _paramDict: Record<PlaceSelectionState, string> = {
     checked: '_c',
     indeterminate: '_i',
   };
-  private readonly _selectionSubject: BehaviorSubject<Selection>;
-  get selection$(): Observable<Selection> {
-    return this._selectionSubject.asObservable();
-  }
+  private _selectionSubject = new BehaviorSubject<Selection>({
+    type: QuizType.flagsCountries,
+    quantity: 5,
+    places: {},
+  });
+  selection$ = this._selectionSubject.pipe(
+    shareReplay({ bufferSize: 1, refCount: true })
+  );
 
   constructor(private _countryService: CountryService) {
-    this._selectionSubject = new BehaviorSubject<Selection>({
-      type: QuizType.flagsCountries,
-      quantity: 5,
-      places: {},
-    });
     this._countryService.countries$
       .pipe(map(({ regions }) => regions))
       .subscribe((regions) => {

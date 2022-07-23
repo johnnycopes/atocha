@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { filter, first, map } from 'rxjs/operators';
+import { BehaviorSubject } from 'rxjs';
+import { filter, first, map, shareReplay } from 'rxjs/operators';
 
 import { Route, Country, Selection, Quiz } from '@atocha/globetrotter/types';
 import { CountryService } from './country.service';
@@ -14,9 +14,9 @@ export class QuizService {
   private readonly _quizSubject = new BehaviorSubject<Quiz | undefined>(
     undefined
   );
-  get quiz$(): Observable<Quiz | undefined> {
-    return this._quizSubject.asObservable();
-  }
+  quiz$ = this._quizSubject.pipe(
+    shareReplay({ bufferSize: 1, refCount: true })
+  );
 
   constructor(
     private _countryService: CountryService,

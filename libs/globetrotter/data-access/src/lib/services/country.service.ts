@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, shareReplay } from 'rxjs';
 import { groupBy } from 'lodash-es';
 
 import { sort } from '@atocha/core/util';
@@ -26,9 +26,9 @@ export class CountryService {
     countriesBySubregion: {},
     regions: [],
   });
-  get countries$(): Observable<CountryState> {
-    return this._countriesSubject.asObservable();
-  }
+  countries$ = this._countriesSubject.pipe(
+    shareReplay({ bufferSize: 1, refCount: true })
+  );
 
   constructor(private _apiService: ApiService) {
     this._apiService.fetchCountries().subscribe((countryDtos) => {
