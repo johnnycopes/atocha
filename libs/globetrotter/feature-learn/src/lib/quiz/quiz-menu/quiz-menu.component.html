@@ -2,9 +2,9 @@
   [position]="position"
   (animationFinished)="onMenuAnimationFinish($event)"
 >
-  <ui-container class="progress"
+  <ui-container *ngIf="!isComplete"
+    class="progress"
     header
-    *ngIf="!isComplete"
   >
     <ui-icon left
       class="back"
@@ -27,9 +27,9 @@
       </h4>
     </div>
   </ui-container>
-  <div class="outcome"
+  <div *ngIf="isComplete"
+    class="outcome"
     content
-    *ngIf="isComplete"
   >
     <p class="text">
       Quiz complete! You scored
