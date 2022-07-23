@@ -27,9 +27,9 @@ export class QuizMenuComponent implements OnChanges {
   };
 
   @Input() type: QuizType | undefined;
-  @Input() countries: Country[] = [];
   @Input() guess = 1;
   @Input() correctGuesses = 0;
+  @Input() currentCountry: Country | undefined;
   @Input() totalCountries = 0;
   @Input() accuracy = 0;
   @Input() isComplete = false;
@@ -42,9 +42,8 @@ export class QuizMenuComponent implements OnChanges {
   constructor(private _router: Router) {}
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (this.type && this.countries.length) {
-      const currentCountry = this.countries[0];
-      this.prompt = this._promptDict[this.type](currentCountry);
+    if (this.type && this.currentCountry) {
+      this.prompt = this._promptDict[this.type](this.currentCountry);
     }
 
     if (changes['isComplete']?.currentValue) {

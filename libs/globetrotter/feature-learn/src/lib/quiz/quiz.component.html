@@ -1,9 +1,9 @@
 <ng-container *ngIf="quiz$ | async as quiz">
   <app-quiz-menu
     [type]="quiz.type"
-    [countries]="quiz.countries"
     [guess]="quiz.guess"
     [correctGuesses]="quiz.correctGuesses"
+    [currentCountry]="quiz.countries[0]"
     [totalCountries]="quiz.totalCountries"
     [accuracy]="quiz.accuracy"
     [isComplete]="quiz.isComplete"
