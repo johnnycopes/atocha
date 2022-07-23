@@ -56,10 +56,10 @@ export class QuizMenuComponent implements OnChanges {
     await this._router.navigate([Route.learn]);
   }
 
-  onMenuAnimationFinish(event: AnimationEvent): void {
-    if (event.toState === 'header') {
+  onMenuAnimationFinish({ toState }: AnimationEvent): void {
+    if (toState === 'header') {
       this.menuReady.emit(true);
-    } else if (event.toState === 'offscreen') {
+    } else if (toState === 'offscreen') {
       this.position = 'fullscreen';
     }
   }
