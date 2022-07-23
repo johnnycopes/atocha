@@ -5,7 +5,7 @@
   >
     <ui-container class="progress"
       header
-      *ngIf="!vm.quiz?.isComplete"
+      *ngIf="!isComplete"
     >
       <ui-icon left
         class="back"
@@ -30,7 +30,7 @@
     </ui-container>
     <div class="outcome"
       content
-      *ngIf="vm.quiz?.isComplete"
+      *ngIf="isComplete"
     >
       <p class="text">
         Quiz complete! You scored

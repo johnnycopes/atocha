@@ -1,6 +1,6 @@
 <ng-container *ngIf="quiz$ | async as quiz">
   <app-quiz-menu
-    [offscreen]="quiz.isComplete"
+    [isComplete]="quiz.isComplete"
     (menuReady)="showCards = $event"
   ></app-quiz-menu>
   <app-quiz-cards *ngIf="showCards">

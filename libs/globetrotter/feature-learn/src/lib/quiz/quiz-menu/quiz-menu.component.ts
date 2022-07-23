@@ -22,11 +22,14 @@ import { QuizService } from '@atocha/globetrotter/data-access';
 })
 export class QuizMenuComponent {
   @Input()
-  set offscreen(value: boolean) {
+  set isComplete(value) {
     if (value) {
       this._positionSubject$.next('offscreen');
     }
+    this._isComplete = value;
   }
+  get isComplete() { return this._isComplete; }
+  private _isComplete = false;
 
   @Output() menuReady = new EventEmitter<true>();
 
