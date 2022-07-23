@@ -45,7 +45,6 @@ export class QuizMenuComponent {
     [QuizType.capitalsCountries]: (country) => country.name,
     [QuizType.countriesCapitals]: (country) => country.capital,
   };
-  private _quiz$ = this._quizService.quiz$;
   private _prompt$ = this._quizService.quiz$.pipe(
     map((quiz) => {
       const currentCountry = quiz?.countries[0];
@@ -53,9 +52,8 @@ export class QuizMenuComponent {
     })
   );
   private _position$ = this._positionSubject$.pipe(distinctUntilChanged());
-  vm$ = combineLatest([this._quiz$, this._position$, this._prompt$]).pipe(
-    map(([quiz, position, prompt]) => ({
-      quiz,
+  vm$ = combineLatest([this._position$, this._prompt$]).pipe(
+    map(([position, prompt]) => ({
       position,
       prompt,
     }))
