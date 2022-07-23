@@ -9,12 +9,9 @@ import {
 } from '@angular/core';
 import { Router } from '@angular/router';
 import { AnimationEvent } from '@angular/animations';
-import { BehaviorSubject, combineLatest } from 'rxjs';
-import { map, distinctUntilChanged } from 'rxjs/operators';
 
 import { FixedSlideablePanelPosition } from '@atocha/globetrotter/ui';
 import { Country, QuizType, Route } from '@atocha/globetrotter/types';
-import { QuizService } from '@atocha/globetrotter/data-access';
 
 @Component({
   selector: 'app-quiz-menu',
@@ -37,21 +34,12 @@ export class QuizMenuComponent implements OnChanges {
   @Input() accuracy = 0;
   @Input() isComplete = false;
 
+  position: FixedSlideablePanelPosition = 'header';
   prompt = '';
 
   @Output() menuReady = new EventEmitter<true>();
 
-  private _positionSubject$ = new BehaviorSubject<FixedSlideablePanelPosition>(
-    'header'
-  );
-  private _position$ = this._positionSubject$.pipe(distinctUntilChanged());
-  vm$ = combineLatest([this._position$]).pipe(
-    map(([position]) => ({
-      position,
-    }))
-  );
-
-  constructor(private _quizService: QuizService, private _router: Router) {}
+  constructor(private _router: Router) {}
 
   ngOnChanges(changes: SimpleChanges): void {
     if (this.type && this.countries.length) {
@@ -60,7 +48,7 @@ export class QuizMenuComponent implements OnChanges {
     }
 
     if (changes['isComplete']?.currentValue) {
-      this._positionSubject$.next('offscreen');
+      this.position = 'offscreen';
     }
   }
 
@@ -72,7 +60,7 @@ export class QuizMenuComponent implements OnChanges {
     if (event.toState === 'header') {
       this.menuReady.emit(true);
     } else if (event.toState === 'offscreen') {
-      this._positionSubject$.next('fullscreen');
+      this.position = 'fullscreen';
     }
   }
 }
