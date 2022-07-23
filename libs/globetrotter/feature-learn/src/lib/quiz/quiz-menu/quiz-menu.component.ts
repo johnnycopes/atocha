@@ -4,6 +4,8 @@ import {
   Output,
   EventEmitter,
   Input,
+  OnChanges,
+  SimpleChanges,
 } from '@angular/core';
 import { Router } from '@angular/router';
 import { AnimationEvent } from '@angular/animations';
@@ -20,46 +22,47 @@ import { QuizService } from '@atocha/globetrotter/data-access';
   styleUrls: ['./quiz-menu.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class QuizMenuComponent {
+export class QuizMenuComponent implements OnChanges {
+  private _promptDict: Record<QuizType, (country: Country) => string> = {
+    [QuizType.flagsCountries]: (country) => country.name,
+    [QuizType.capitalsCountries]: (country) => country.name,
+    [QuizType.countriesCapitals]: (country) => country.capital,
+  };
+
+  @Input() type: QuizType | undefined;
+  @Input() countries: Country[] = [];
   @Input() guess = 1;
   @Input() correctGuesses = 0;
   @Input() totalCountries = 0;
   @Input() accuracy = 0;
-  @Input()
-  set isComplete(value) {
-    if (value) {
-      this._positionSubject$.next('offscreen');
-    }
-    this._isComplete = value;
-  }
-  get isComplete() { return this._isComplete; }
-  private _isComplete = false;
+  @Input() isComplete = false;
+
+  prompt = '';
 
   @Output() menuReady = new EventEmitter<true>();
 
   private _positionSubject$ = new BehaviorSubject<FixedSlideablePanelPosition>(
     'header'
   );
-  private _promptDict: Record<QuizType, (country: Country) => string> = {
-    [QuizType.flagsCountries]: (country) => country.name,
-    [QuizType.capitalsCountries]: (country) => country.name,
-    [QuizType.countriesCapitals]: (country) => country.capital,
-  };
-  private _prompt$ = this._quizService.quiz$.pipe(
-    map((quiz) => {
-      const currentCountry = quiz?.countries[0];
-      return currentCountry ? this._promptDict[quiz.type](currentCountry) : '';
-    })
-  );
   private _position$ = this._positionSubject$.pipe(distinctUntilChanged());
-  vm$ = combineLatest([this._position$, this._prompt$]).pipe(
-    map(([position, prompt]) => ({
+  vm$ = combineLatest([this._position$]).pipe(
+    map(([position]) => ({
       position,
-      prompt,
     }))
   );
 
   constructor(private _quizService: QuizService, private _router: Router) {}
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (this.type && this.countries.length) {
+      const currentCountry = this.countries[0];
+      this.prompt = this._promptDict[this.type](currentCountry);
+    }
+
+    if (changes['isComplete']?.currentValue) {
+      this._positionSubject$.next('offscreen');
+    }
+  }
 
   async onBack(): Promise<void> {
     await this._router.navigate([Route.learn]);
