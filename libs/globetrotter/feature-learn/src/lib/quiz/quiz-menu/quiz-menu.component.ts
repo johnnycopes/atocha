@@ -25,7 +25,6 @@ export class QuizMenuComponent implements OnChanges {
     [QuizType.capitalsCountries]: ({ name }) => name,
     [QuizType.countriesCapitals]: ({ capital }) => capital,
   };
-
   @Input() type: QuizType | undefined;
   @Input() guess = 1;
   @Input() correctGuesses = 0;
@@ -33,11 +32,9 @@ export class QuizMenuComponent implements OnChanges {
   @Input() totalCountries = 0;
   @Input() accuracy = 0;
   @Input() isComplete = false;
-
+  @Output() menuReady = new EventEmitter<true>();
   position: FixedSlideablePanelPosition = 'header';
   prompt = '';
-
-  @Output() menuReady = new EventEmitter<true>();
 
   constructor(private _router: Router) {}
 
@@ -51,7 +48,7 @@ export class QuizMenuComponent implements OnChanges {
     }
   }
 
-  async onBack(): Promise<void> {
+  async goBack(): Promise<void> {
     await this._router.navigate([Route.learn]);
   }
 

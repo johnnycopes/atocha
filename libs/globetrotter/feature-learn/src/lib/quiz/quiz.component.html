@@ -9,6 +9,7 @@
     [isComplete]="quiz.isComplete"
     (menuReady)="showCards = $event"
   ></app-quiz-menu>
+
   <app-quiz-cards *ngIf="showCards">
   </app-quiz-cards>
 </ng-container>

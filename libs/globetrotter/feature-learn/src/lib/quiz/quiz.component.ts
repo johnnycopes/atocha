@@ -11,8 +11,8 @@ import { SelectionParams } from '@atocha/globetrotter/types';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class QuizComponent implements OnInit {
-  showCards = false;
   quiz$ = this._quizService.quiz$;
+  showCards = false;
 
   constructor(
     private _route: ActivatedRoute,
