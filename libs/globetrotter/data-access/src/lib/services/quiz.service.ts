@@ -15,7 +15,7 @@ export class QuizService {
     undefined
   );
   quiz$ = this._quizSubject.pipe(
-    shareReplay({ bufferSize: 1, refCount: true }),
+    shareReplay({ bufferSize: 1, refCount: true })
   );
 
   constructor(

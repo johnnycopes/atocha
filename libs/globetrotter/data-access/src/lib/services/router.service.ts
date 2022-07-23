@@ -17,11 +17,11 @@ export class RouterService {
   private _loadingSubject = new BehaviorSubject<boolean>(false);
   route$ = this._routeSubject.pipe(
     distinctUntilChanged(),
-    shareReplay({ bufferSize: 1, refCount: true }),
+    shareReplay({ bufferSize: 1, refCount: true })
   );
   loading$ = this._loadingSubject.pipe(
     distinctUntilChanged(),
-    shareReplay({ bufferSize: 1, refCount: true }),
+    shareReplay({ bufferSize: 1, refCount: true })
   );
 
   constructor(private _router: Router) {

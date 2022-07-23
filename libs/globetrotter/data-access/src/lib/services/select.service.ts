@@ -26,7 +26,7 @@ export class SelectService {
     places: {},
   });
   selection$ = this._selectionSubject.pipe(
-    shareReplay({ bufferSize: 1, refCount: true }),
+    shareReplay({ bufferSize: 1, refCount: true })
   );
 
   constructor(private _countryService: CountryService) {
