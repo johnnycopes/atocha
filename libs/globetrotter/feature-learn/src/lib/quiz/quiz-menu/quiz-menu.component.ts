@@ -3,6 +3,7 @@ import {
   ChangeDetectionStrategy,
   Output,
   EventEmitter,
+  Input,
 } from '@angular/core';
 import { Router } from '@angular/router';
 import { AnimationEvent } from '@angular/animations';
@@ -20,6 +21,13 @@ import { QuizService } from '@atocha/globetrotter/data-access';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class QuizMenuComponent {
+  @Input()
+  set offscreen(value: boolean) {
+    if (value) {
+      this._positionSubject$.next('offscreen');
+    }
+  }
+
   @Output() menuReady = new EventEmitter<true>();
 
   private _positionSubject$ = new BehaviorSubject<FixedSlideablePanelPosition>(
@@ -30,13 +38,7 @@ export class QuizMenuComponent {
     [QuizType.capitalsCountries]: (country) => country.name,
     [QuizType.countriesCapitals]: (country) => country.capital,
   };
-  private _quiz$ = this._quizService.quiz$.pipe(
-    tap((quiz) => {
-      if (quiz?.isComplete) {
-        this._positionSubject$.next('offscreen');
-      }
-    })
-  );
+  private _quiz$ = this._quizService.quiz$;
   private _prompt$ = this._quizService.quiz$.pipe(
     map((quiz) => {
       const currentCountry = quiz?.countries[0];

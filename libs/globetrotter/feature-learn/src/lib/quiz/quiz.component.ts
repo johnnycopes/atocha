@@ -12,6 +12,7 @@ import { SelectionParams } from '@atocha/globetrotter/types';
 })
 export class QuizComponent implements OnInit {
   showCards = false;
+  quiz$ = this._quizService.quiz$;
 
   constructor(
     private _route: ActivatedRoute,
