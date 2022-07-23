@@ -20,10 +20,10 @@ import { Country, QuizType, Route } from '@atocha/globetrotter/types';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class QuizMenuComponent implements OnChanges {
-  private _promptDict: Record<QuizType, (country: Country) => string> = {
-    [QuizType.flagsCountries]: (country) => country.name,
-    [QuizType.capitalsCountries]: (country) => country.name,
-    [QuizType.countriesCapitals]: (country) => country.capital,
+  private _promptFns: Record<QuizType, (country: Country) => string> = {
+    [QuizType.flagsCountries]: ({ name }) => name,
+    [QuizType.capitalsCountries]: ({ name }) => name,
+    [QuizType.countriesCapitals]: ({ capital }) => capital,
   };
 
   @Input() type: QuizType | undefined;
@@ -43,7 +43,7 @@ export class QuizMenuComponent implements OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (this.type && this.currentCountry) {
-      this.prompt = this._promptDict[this.type](this.currentCountry);
+      this.prompt = this._promptFns[this.type](this.currentCountry);
     }
 
     if (changes['isComplete']?.currentValue) {
