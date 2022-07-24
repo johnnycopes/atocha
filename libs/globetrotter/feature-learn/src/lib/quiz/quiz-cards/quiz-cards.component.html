@@ -6,7 +6,7 @@
     *ngFor="let country of vm.countries"
     [type]="type"
     [country]="country"
-    [isCurrentCountry]="country === vm.currentCountry"
+    [isCurrentCountry]="country === currentCountry"
     [canFlip]="canFlipCards"
     (flipped)="onFlip($event)"
     @fadeIn

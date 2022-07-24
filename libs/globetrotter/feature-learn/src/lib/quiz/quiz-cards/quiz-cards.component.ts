@@ -5,7 +5,7 @@ import { shuffle } from 'lodash-es';
 
 import { staggerAnimation, fadeInAnimation } from '@atocha/globetrotter/ui';
 import { QuizService } from '@atocha/globetrotter/data-access';
-import { QuizType } from '@atocha/globetrotter/types';
+import { Country, QuizType } from '@atocha/globetrotter/types';
 
 @Component({
   selector: 'app-quiz-cards',
@@ -16,20 +16,16 @@ import { QuizType } from '@atocha/globetrotter/types';
 })
 export class QuizCardsComponent {
   @Input() type: QuizType | undefined;
+  @Input() currentCountry: Country | undefined;
   private _countries$ = this._quizService.quiz$.pipe(
     first(),
     map((quiz) => shuffle(quiz?.countries ?? []))
   );
-  private _currentCountry$ = this._quizService.quiz$.pipe(
-    map((quiz) => quiz?.countries[0] ?? undefined)
-  );
   vm$ = combineLatest([
     this._countries$,
-    this._currentCountry$,
   ]).pipe(
-    map(([countries, currentCountry]) => ({
+    map(([countries]) => ({
       countries,
-      currentCountry,
     }))
   );
   canFlipCards = true;
