@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
+import { Component, ChangeDetectionStrategy, Input, OnInit } from '@angular/core';
 import { shuffle } from 'lodash-es';
 
 import { staggerAnimation, fadeInAnimation } from '@atocha/globetrotter/ui';
@@ -11,15 +11,16 @@ import { Country, QuizType } from '@atocha/globetrotter/types';
   changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [fadeInAnimation, staggerAnimation],
 })
-export class QuizCardsComponent {
+export class QuizCardsComponent implements OnInit {
   @Input() type: QuizType | undefined;
+  @Input() countries: Country[] = [];
   @Input() currentCountry: Country | undefined;
-  @Input()
-  set countries(value: Country[]) {
-    this.shuffledCountries = shuffle(value);
-  }
   shuffledCountries: Country[] = [];
   canFlipCards = true;
+
+  ngOnInit(): void {
+    this.shuffledCountries = shuffle(this.countries);
+  }
 
   onFlip(cardFlipped: boolean): void {
     this.canFlipCards = !cardFlipped;
