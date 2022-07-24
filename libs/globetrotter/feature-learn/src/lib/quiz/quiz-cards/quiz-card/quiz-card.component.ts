@@ -70,8 +70,7 @@ export class QuizCardComponent implements OnInit {
 
   constructor(private _quizService: QuizService) {}
 
-  async onAnimationFinish(event: AnimationEvent): Promise<void> {
-    const { triggerName, toState } = event;
+  async onAnimationFinish({ triggerName, toState}: AnimationEvent): Promise<void> {
 
     // onFlip kicks off the chain of events, starting with the flip animation from front to back
     if (triggerName === 'flip') {
