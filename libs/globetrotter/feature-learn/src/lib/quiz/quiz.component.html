@@ -12,6 +12,7 @@
 
   <app-quiz-cards *ngIf="showCards"
     [type]="quiz.type"
+    [countries]="quiz.countries"
     [currentCountry]="quiz.countries[0]"
   ></app-quiz-cards>
 </ng-container>
