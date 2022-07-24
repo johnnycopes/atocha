@@ -22,8 +22,4 @@ export class QuizCardsComponent implements OnInit {
   ngOnInit(): void {
     this.shuffledCountries = shuffle(this.countries);
   }
-
-  onFlip(cardFlipped: boolean): void {
-    this.canFlipCards = !cardFlipped;
-  }
 }

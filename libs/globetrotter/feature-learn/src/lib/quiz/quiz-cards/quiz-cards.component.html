@@ -8,7 +8,7 @@
     [country]="country"
     [isCurrentCountry]="country === currentCountry"
     [canFlip]="canFlipCards"
-    (flipped)="onFlip($event)"
+    (flipped)="canFlipCards = !$event"
     (guessed)="guessed.emit($event)"
   ></app-quiz-card>
 </div>
