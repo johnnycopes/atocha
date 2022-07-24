@@ -10,6 +10,7 @@
     (menuReady)="showCards = $event"
   ></app-quiz-menu>
 
-  <app-quiz-cards *ngIf="showCards">
-  </app-quiz-cards>
+  <app-quiz-cards *ngIf="showCards"
+    [type]="quiz.type"
+  ></app-quiz-cards>
 </ng-container>

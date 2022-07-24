@@ -4,7 +4,7 @@
 >
   <app-quiz-card
     *ngFor="let country of vm.countries"
-    [type]="vm.quizType"
+    [type]="type"
     [country]="country"
     [isCurrentCountry]="country === vm.currentCountry"
     [canFlip]="canFlipCards"

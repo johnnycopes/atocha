@@ -34,7 +34,7 @@ export class QuizCardComponent implements OnInit {
   @Input() country: Country | undefined;
   @Input() isCurrentCountry = false;
   @Input() canFlip = false;
-  @Input() type: QuizType = QuizType.flagsCountries;
+  @Input() type: QuizType | undefined;
   @Output() flipped = new EventEmitter<boolean>();
 
   @ViewChild('flagTemplate', { static: true })
@@ -128,6 +128,8 @@ export class QuizCardComponent implements OnInit {
         back: this.capitalTemplate,
       },
     };
-    this.template = this._templates[this.type];
+    if (this.type) {
+      this.template = this._templates[this.type];
+    }
   }
 }
