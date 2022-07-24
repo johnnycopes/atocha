@@ -1,4 +1,11 @@
-import { Component, ChangeDetectionStrategy, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import {
+  Component,
+  ChangeDetectionStrategy,
+  Input,
+  OnInit,
+  Output,
+  EventEmitter,
+} from '@angular/core';
 import { shuffle } from 'lodash-es';
 
 import { staggerAnimation, fadeInAnimation } from '@atocha/globetrotter/ui';

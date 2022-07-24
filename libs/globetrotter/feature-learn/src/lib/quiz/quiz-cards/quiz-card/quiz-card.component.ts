@@ -57,14 +57,16 @@ export class QuizCardComponent implements OnInit {
   };
   private _processingFlip = false;
 
-  constructor(private _changeDetectorRef: ChangeDetectorRef) { }
+  constructor(private _changeDetectorRef: ChangeDetectorRef) {}
 
   ngOnInit(): void {
     this._setCardTemplates();
   }
 
-  async onAnimationFinish({ triggerName, toState}: AnimationEvent): Promise<void> {
-
+  async onAnimationFinish({
+    triggerName,
+    toState,
+  }: AnimationEvent): Promise<void> {
     // onFlip kicks off the chain of events, starting with the flip animation from front to back
     if (triggerName === 'flip') {
       if (toState === 'back') {
