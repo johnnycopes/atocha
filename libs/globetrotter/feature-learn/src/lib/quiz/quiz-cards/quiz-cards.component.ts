@@ -1,11 +1,15 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { combineLatest } from 'rxjs';
-import { map, first } from 'rxjs/operators';
+import {
+  Component,
+  ChangeDetectionStrategy,
+  Input,
+  OnInit,
+  Output,
+  EventEmitter,
+} from '@angular/core';
 import { shuffle } from 'lodash-es';
 
 import { staggerAnimation, fadeInAnimation } from '@atocha/globetrotter/ui';
-import { QuizService } from '@atocha/globetrotter/data-access';
-import { QuizType } from '@atocha/globetrotter/types';
+import { Country, QuizType } from '@atocha/globetrotter/types';
 
 @Component({
   selector: 'app-quiz-cards',
@@ -14,33 +18,15 @@ import { QuizType } from '@atocha/globetrotter/types';
   changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [fadeInAnimation, staggerAnimation],
 })
-export class QuizCardsComponent {
-  private _quizType$ = this._quizService.quiz$.pipe(
-    map((quiz) => quiz?.type ?? QuizType.flagsCountries)
-  );
-  private _countries$ = this._quizService.quiz$.pipe(
-    first(),
-    map((quiz) => shuffle(quiz?.countries ?? []))
-  );
-  private _currentCountry$ = this._quizService.quiz$.pipe(
-    map((quiz) => quiz?.countries[0] ?? undefined)
-  );
-  vm$ = combineLatest([
-    this._quizType$,
-    this._countries$,
-    this._currentCountry$,
-  ]).pipe(
-    map(([quizType, countries, currentCountry]) => ({
-      quizType,
-      countries,
-      currentCountry,
-    }))
-  );
+export class QuizCardsComponent implements OnInit {
+  @Input() type: QuizType | undefined;
+  @Input() countries: Country[] = [];
+  @Input() currentCountry: Country | undefined;
+  @Output() guessed = new EventEmitter<boolean>();
+  shuffledCountries: Country[] = [];
   canFlipCards = true;
 
-  constructor(private _quizService: QuizService) {}
-
-  onFlip(cardFlipped: boolean): void {
-    this.canFlipCards = !cardFlipped;
+  ngOnInit(): void {
+    this.shuffledCountries = shuffle(this.countries);
   }
 }

@@ -1,8 +1,7 @@
 <ui-flip-card
-  *ngIf="vm$ | async as vm"
   [canFlip]="canFlip"
-  [guess]="vm.guess"
-  [disabled]="vm.disabled"
+  [guess]="guess"
+  [disabled]="disabled"
   (flipped)="onFlip()"
   (animationFinished)="onAnimationFinish($event)"
 >

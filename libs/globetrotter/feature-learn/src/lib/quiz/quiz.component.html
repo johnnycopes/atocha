@@ -1,4 +1,20 @@
-<app-quiz-menu (menuReady)="showCards = $event">
-</app-quiz-menu>
-<app-quiz-cards *ngIf="showCards">
-</app-quiz-cards>
+<ng-container *ngIf="quiz$ | async as quiz">
+  <app-quiz-menu
+    [type]="quiz.type"
+    [guess]="quiz.guess"
+    [correctGuesses]="quiz.correctGuesses"
+    [currentCountry]="quiz.countries[0]"
+    [totalCountries]="quiz.totalCountries"
+    [accuracy]="quiz.accuracy"
+    [isComplete]="quiz.isComplete"
+    (menuReady)="showCards = $event"
+    (exit)="goBack()"
+  ></app-quiz-menu>
+
+  <app-quiz-cards *ngIf="showCards"
+    [type]="quiz.type"
+    [countries]="quiz.countries"
+    [currentCountry]="quiz.countries[0]"
+    (guessed)="onGuess($event)"
+  ></app-quiz-cards>
+</ng-container>

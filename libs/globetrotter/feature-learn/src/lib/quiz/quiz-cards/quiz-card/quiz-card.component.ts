@@ -1,4 +1,3 @@
-/* eslint-disable brace-style */
 import {
   Component,
   Input,
@@ -8,10 +7,9 @@ import {
   ViewChild,
   TemplateRef,
   ChangeDetectionStrategy,
+  ChangeDetectorRef,
 } from '@angular/core';
 import { AnimationEvent } from '@angular/animations';
-import { BehaviorSubject, combineLatest } from 'rxjs';
-import { map, distinctUntilChanged } from 'rxjs/operators';
 
 import {
   FlipCardComponent,
@@ -20,7 +18,6 @@ import {
 } from '@atocha/globetrotter/ui';
 import { wait } from '@atocha/core/util';
 import { Country, Duration, QuizType } from '@atocha/globetrotter/types';
-import { QuizService } from '@atocha/globetrotter/data-access';
 
 type CardTemplate = Record<FlipCardSide, TemplateRef<unknown> | undefined>;
 
@@ -34,8 +31,9 @@ export class QuizCardComponent implements OnInit {
   @Input() country: Country | undefined;
   @Input() isCurrentCountry = false;
   @Input() canFlip = false;
-  @Input() type: QuizType = QuizType.flagsCountries;
+  @Input() type: QuizType | undefined;
   @Output() flipped = new EventEmitter<boolean>();
+  @Output() guessed = new EventEmitter<boolean>();
 
   @ViewChild('flagTemplate', { static: true })
   flagTemplate: TemplateRef<unknown> | undefined;
@@ -49,37 +47,33 @@ export class QuizCardComponent implements OnInit {
   @ViewChild(FlipCardComponent)
   flipCardComponent: FlipCardComponent | undefined;
 
+  template: CardTemplate | undefined;
+  guess: FlipCardGuess = 'none';
+  disabled = false;
   private _templates: Record<QuizType, CardTemplate | undefined> = {
     [QuizType.flagsCountries]: undefined,
     [QuizType.countriesCapitals]: undefined,
     [QuizType.capitalsCountries]: undefined,
   };
   private _processingFlip = false;
-  private _guessChange = new BehaviorSubject<FlipCardGuess>('none');
-  private _disabledChange = new BehaviorSubject<boolean>(false);
-  private _guess$ = this._guessChange.pipe(distinctUntilChanged());
-  private _disabled$ = this._disabledChange.pipe(distinctUntilChanged());
-  vm$ = combineLatest([this._guess$, this._disabled$]).pipe(
-    map(([guess, disabled]) => ({ guess, disabled }))
-  );
-  template: CardTemplate | undefined;
+
+  constructor(private _changeDetectorRef: ChangeDetectorRef) {}
 
   ngOnInit(): void {
     this._setCardTemplates();
   }
 
-  constructor(private _quizService: QuizService) {}
-
-  async onAnimationFinish(event: AnimationEvent): Promise<void> {
-    const { triggerName, toState } = event;
-
+  async onAnimationFinish({
+    triggerName,
+    toState,
+  }: AnimationEvent): Promise<void> {
     // onFlip kicks off the chain of events, starting with the flip animation from front to back
     if (triggerName === 'flip') {
       if (toState === 'back') {
-        this._guessChange.next(this.isCurrentCountry ? 'correct' : 'incorrect');
+        this.guess = this.isCurrentCountry ? 'correct' : 'incorrect';
       } else if (toState === 'front' && this._processingFlip) {
         if (this.isCurrentCountry) {
-          this._disabledChange.next(true);
+          this.disabled = true;
         } else {
           await this._updateQuiz();
         }
@@ -90,12 +84,13 @@ export class QuizCardComponent implements OnInit {
     else if (triggerName === 'guess') {
       if (toState === 'correct' || toState === 'incorrect') {
         await wait(Duration.cardFlipDisplay);
-        this._guessChange.next('none');
+        this.guess = 'none';
         this.flipCardComponent?.flip();
+        this._changeDetectorRef.markForCheck();
       }
     }
 
-    // disabled is only reached after guess state to correct
+    // disabled is only reached after country is correctly guessed
     else if (triggerName === 'disabled' && toState === 'disabled') {
       await this._updateQuiz();
     }
@@ -107,8 +102,8 @@ export class QuizCardComponent implements OnInit {
   }
 
   private async _updateQuiz() {
-    await wait(Duration.shortDelay);
-    this._quizService.updateQuiz(this.isCurrentCountry);
+    await wait(Duration.quizUpdateDelay);
+    this.guessed.emit(this.isCurrentCountry);
     this.flipped.emit(false);
     this._processingFlip = false;
   }
@@ -128,6 +123,8 @@ export class QuizCardComponent implements OnInit {
         back: this.capitalTemplate,
       },
     };
-    this.template = this._templates[this.type];
+    if (this.type) {
+      this.template = this._templates[this.type];
+    }
   }
 }

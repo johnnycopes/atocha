@@ -1,14 +1,14 @@
 <div class="quiz-cards"
-  *ngIf="vm$ | async as vm"
   @stagger
 >
   <app-quiz-card
-    *ngFor="let country of vm.countries"
-    [type]="vm.quizType"
-    [country]="country"
-    [isCurrentCountry]="country === vm.currentCountry"
-    [canFlip]="canFlipCards"
-    (flipped)="onFlip($event)"
+    *ngFor="let country of shuffledCountries"
     @fadeIn
+    [type]="type"
+    [country]="country"
+    [isCurrentCountry]="country === currentCountry"
+    [canFlip]="canFlipCards"
+    (flipped)="canFlipCards = !$event"
+    (guessed)="guessed.emit($event)"
   ></app-quiz-card>
 </div>

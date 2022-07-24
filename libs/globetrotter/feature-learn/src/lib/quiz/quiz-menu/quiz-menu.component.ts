@@ -3,15 +3,14 @@ import {
   ChangeDetectionStrategy,
   Output,
   EventEmitter,
+  Input,
+  OnChanges,
+  SimpleChanges,
 } from '@angular/core';
-import { Router } from '@angular/router';
 import { AnimationEvent } from '@angular/animations';
-import { BehaviorSubject, combineLatest } from 'rxjs';
-import { map, tap, distinctUntilChanged } from 'rxjs/operators';
 
 import { FixedSlideablePanelPosition } from '@atocha/globetrotter/ui';
-import { Country, QuizType, Route } from '@atocha/globetrotter/types';
-import { QuizService } from '@atocha/globetrotter/data-access';
+import { Country, QuizType } from '@atocha/globetrotter/types';
 
 @Component({
   selector: 'app-quiz-menu',
@@ -19,50 +18,39 @@ import { QuizService } from '@atocha/globetrotter/data-access';
   styleUrls: ['./quiz-menu.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class QuizMenuComponent {
-  @Output() menuReady = new EventEmitter<true>();
-
-  private _positionSubject$ = new BehaviorSubject<FixedSlideablePanelPosition>(
-    'header'
-  );
-  private _promptDict: Record<QuizType, (country: Country) => string> = {
-    [QuizType.flagsCountries]: (country) => country.name,
-    [QuizType.capitalsCountries]: (country) => country.name,
-    [QuizType.countriesCapitals]: (country) => country.capital,
+export class QuizMenuComponent implements OnChanges {
+  private _promptFns: Record<QuizType, (country: Country) => string> = {
+    [QuizType.flagsCountries]: ({ name }) => name,
+    [QuizType.capitalsCountries]: ({ name }) => name,
+    [QuizType.countriesCapitals]: ({ capital }) => capital,
   };
-  private _quiz$ = this._quizService.quiz$.pipe(
-    tap((quiz) => {
-      if (quiz?.isComplete) {
-        this._positionSubject$.next('offscreen');
-      }
-    })
-  );
-  private _prompt$ = this._quizService.quiz$.pipe(
-    map((quiz) => {
-      const currentCountry = quiz?.countries[0];
-      return currentCountry ? this._promptDict[quiz.type](currentCountry) : '';
-    })
-  );
-  private _position$ = this._positionSubject$.pipe(distinctUntilChanged());
-  vm$ = combineLatest([this._quiz$, this._position$, this._prompt$]).pipe(
-    map(([quiz, position, prompt]) => ({
-      quiz,
-      position,
-      prompt,
-    }))
-  );
+  @Input() type: QuizType | undefined;
+  @Input() guess = 1;
+  @Input() correctGuesses = 0;
+  @Input() currentCountry: Country | undefined;
+  @Input() totalCountries = 0;
+  @Input() accuracy = 0;
+  @Input() isComplete = false;
+  @Output() menuReady = new EventEmitter<true>();
+  @Output() exit = new EventEmitter<void>();
+  position: FixedSlideablePanelPosition = 'header';
+  prompt = '';
 
-  constructor(private _quizService: QuizService, private _router: Router) {}
+  ngOnChanges(changes: SimpleChanges): void {
+    if (this.type && this.currentCountry) {
+      this.prompt = this._promptFns[this.type](this.currentCountry);
+    }
 
-  async onBack(): Promise<void> {
-    await this._router.navigate([Route.learn]);
+    if (changes['isComplete']?.currentValue) {
+      this.position = 'offscreen';
+    }
   }
 
-  onMenuAnimationFinish(event: AnimationEvent): void {
-    if (event.toState === 'header') {
+  onMenuAnimationFinish({ toState }: AnimationEvent): void {
+    if (toState === 'header') {
       this.menuReady.emit(true);
-    } else if (event.toState === 'offscreen') {
-      this._positionSubject$.next('fullscreen');
+    } else if (toState === 'offscreen') {
+      this.position = 'fullscreen';
     }
   }
 }
