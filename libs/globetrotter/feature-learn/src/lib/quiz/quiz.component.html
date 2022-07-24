@@ -15,5 +15,6 @@
     [type]="quiz.type"
     [countries]="quiz.countries"
     [currentCountry]="quiz.countries[0]"
+    (guessed)="onGuess($event)"
   ></app-quiz-cards>
 </ng-container>

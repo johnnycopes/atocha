@@ -1,4 +1,3 @@
-/* eslint-disable brace-style */
 import {
   Component,
   Input,
@@ -20,7 +19,6 @@ import {
 } from '@atocha/globetrotter/ui';
 import { wait } from '@atocha/core/util';
 import { Country, Duration, QuizType } from '@atocha/globetrotter/types';
-import { QuizService } from '@atocha/globetrotter/data-access';
 
 type CardTemplate = Record<FlipCardSide, TemplateRef<unknown> | undefined>;
 
@@ -36,6 +34,7 @@ export class QuizCardComponent implements OnInit {
   @Input() canFlip = false;
   @Input() type: QuizType | undefined;
   @Output() flipped = new EventEmitter<boolean>();
+  @Output() guessed = new EventEmitter<boolean>();
 
   @ViewChild('flagTemplate', { static: true })
   flagTemplate: TemplateRef<unknown> | undefined;
@@ -67,8 +66,6 @@ export class QuizCardComponent implements OnInit {
   ngOnInit(): void {
     this._setCardTemplates();
   }
-
-  constructor(private _quizService: QuizService) {}
 
   async onAnimationFinish({ triggerName, toState}: AnimationEvent): Promise<void> {
 
@@ -107,7 +104,7 @@ export class QuizCardComponent implements OnInit {
 
   private async _updateQuiz() {
     await wait(Duration.shortDelay);
-    this._quizService.updateQuiz(this.isCurrentCountry);
+    this.guessed.emit(this.isCurrentCountry);
     this.flipped.emit(false);
     this._processingFlip = false;
   }

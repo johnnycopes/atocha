@@ -37,4 +37,8 @@ export class QuizComponent implements OnInit {
   async goBack(): Promise<void> {
     await this._router.navigate([Route.learn]);
   }
+
+  onGuess(correctGuess: boolean): void {
+    this._quizService.updateQuiz(correctGuess);
+  }
 }
