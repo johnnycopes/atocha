@@ -1,8 +1,8 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { QuizService, SelectService } from '@atocha/globetrotter/data-access';
-import { SelectionParams } from '@atocha/globetrotter/types';
+import { Route, SelectionParams } from '@atocha/globetrotter/types';
 
 @Component({
   selector: 'app-quiz',
@@ -16,6 +16,7 @@ export class QuizComponent implements OnInit {
 
   constructor(
     private _route: ActivatedRoute,
+    private _router: Router,
     private _selectService: SelectService,
     private _quizService: QuizService
   ) {}
@@ -31,5 +32,9 @@ export class QuizComponent implements OnInit {
       this._selectService.updateSelection(selection);
       this._quizService.initializeQuiz(selection);
     });
+  }
+
+  async goBack(): Promise<void> {
+    await this._router.navigate([Route.learn]);
   }
 }

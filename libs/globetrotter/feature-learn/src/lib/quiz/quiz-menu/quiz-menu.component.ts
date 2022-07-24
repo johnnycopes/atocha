@@ -7,11 +7,10 @@ import {
   OnChanges,
   SimpleChanges,
 } from '@angular/core';
-import { Router } from '@angular/router';
 import { AnimationEvent } from '@angular/animations';
 
 import { FixedSlideablePanelPosition } from '@atocha/globetrotter/ui';
-import { Country, QuizType, Route } from '@atocha/globetrotter/types';
+import { Country, QuizType } from '@atocha/globetrotter/types';
 
 @Component({
   selector: 'app-quiz-menu',
@@ -33,10 +32,9 @@ export class QuizMenuComponent implements OnChanges {
   @Input() accuracy = 0;
   @Input() isComplete = false;
   @Output() menuReady = new EventEmitter<true>();
+  @Output() exit = new EventEmitter<void>();
   position: FixedSlideablePanelPosition = 'header';
   prompt = '';
-
-  constructor(private _router: Router) {}
 
   ngOnChanges(changes: SimpleChanges): void {
     if (this.type && this.currentCountry) {
@@ -46,10 +44,6 @@ export class QuizMenuComponent implements OnChanges {
     if (changes['isComplete']?.currentValue) {
       this.position = 'offscreen';
     }
-  }
-
-  async goBack(): Promise<void> {
-    await this._router.navigate([Route.learn]);
   }
 
   onMenuAnimationFinish({ toState }: AnimationEvent): void {

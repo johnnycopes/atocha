@@ -10,7 +10,7 @@
       class="back"
       icon="Cancel"
       [highlighted]="true"
-      (clicked)="goBack()"
+      (clicked)="exit.emit()"
     ></ui-icon>
     <p class="prompt"
       center>
@@ -39,7 +39,7 @@
     </h1>
     <ui-button class="reset"
       buttonText="Reset"
-      (click)="goBack()"
+      (click)="exit.emit()"
     ></ui-button>
   </div>
 </ui-fixed-slideable-panel>
