@@ -2,7 +2,6 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { Router } from '@angular/router';
 import { combineLatest } from 'rxjs';
 import { first, map, distinctUntilChanged } from 'rxjs/operators';
-import { pickBy } from 'lodash-es';
 
 import { fadeInAnimation } from '@atocha/globetrotter/ui';
 import { Route, QuizType, PlaceSelection } from '@atocha/globetrotter/types';
@@ -29,19 +28,15 @@ export class SelectComponent {
     ),
     this._selection$,
   ]).pipe(
-    map(([countriesBySubregion, { places }]) => {
-      const selectedPlaces = pickBy(
-        places,
-        (value) => value === 'checked'
-      );
-      return Object.keys(selectedPlaces).reduce(
-      (total, currentPlace) =>
-          countriesBySubregion[currentPlace]
-            ? total + countriesBySubregion[currentPlace].length
-            : total,
-        0
-      );
-    }),
+    map(([countriesBySubregion, { places }]) => (
+      Object.keys(places).reduce(
+        (total, name) =>
+            countriesBySubregion[name]
+              ? total + countriesBySubregion[name].length
+              : total,
+          0
+        )
+      )),
     distinctUntilChanged()
   );
   private _invalidQuantity$ = combineLatest([
