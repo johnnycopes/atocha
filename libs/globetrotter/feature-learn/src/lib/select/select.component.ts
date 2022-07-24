@@ -29,9 +29,9 @@ export class SelectComponent {
     ),
     this._selection$,
   ]).pipe(
-    map(([countriesBySubregion, selection]) => {
+    map(([countriesBySubregion, { places }]) => {
       const selectedPlaces = pickBy(
-        selection.places,
+        places,
         (value) => value === 'checked'
       );
       return Object.keys(selectedPlaces).reduce(
