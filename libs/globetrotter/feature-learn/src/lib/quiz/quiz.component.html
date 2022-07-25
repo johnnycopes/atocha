@@ -1,20 +1,22 @@
 <ng-container *ngIf="vm$ | async as vm">
-  <app-quiz-menu *ngIf="vm.quiz"
-    [type]="vm.type"
-    [guess]="vm.quiz.currentGuess"
-    [correctGuesses]="vm.quiz.correctGuesses"
-    [currentCountry]="vm.quiz.currentItem"
-    [totalCountries]="vm.quiz.itemsTotal"
-    [accuracy]="vm.quiz.accuracy"
-    [isComplete]="vm.quiz.isComplete"
-    (menuReady)="showCards = $event"
-    (exit)="goBack()"
-  ></app-quiz-menu>
+  <ng-container *ngIf="vm.quiz">
+    <app-quiz-menu
+      [type]="vm.type"
+      [guess]="vm.quiz.currentGuess"
+      [correctGuesses]="vm.quiz.correctGuesses"
+      [currentCountry]="vm.quiz.currentItem"
+      [totalCountries]="vm.quiz.itemsTotal"
+      [accuracy]="vm.quiz.accuracy"
+      [isComplete]="vm.quiz.isComplete"
+      (menuReady)="showCards = $event"
+      (exit)="goBack()"
+    ></app-quiz-menu>
 
-  <app-quiz-cards *ngIf="vm.quiz && showCards"
-    [type]="vm.type"
-    [countries]="vm.quiz.items"
-    [currentCountry]="vm.quiz.currentItem"
-    (guessed)="onGuess($event)"
-  ></app-quiz-cards>
+    <app-quiz-cards *ngIf="showCards"
+      [type]="vm.type"
+      [countries]="vm.quiz.items"
+      [currentCountry]="vm.quiz.currentItem"
+      (guessed)="onGuess($event)"
+    ></app-quiz-cards>
+  </ng-container>
 </ng-container>
