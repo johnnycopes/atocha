@@ -8,6 +8,7 @@ export * from './lib/get-dynamic-value';
 export * from './lib/get-items-recursively';
 export * from './lib/includes';
 export * from './lib/pluralize';
+export * from './lib/quiz';
 export * from './lib/record-to-array';
 export * from './lib/select-random';
 export * from './lib/snake-case';
