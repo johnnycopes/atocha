@@ -50,7 +50,9 @@ export class Quiz<T> {
       }
     }
 
-    this._accuracy = Math.round((this._correctGuesses / this._totalGuesses) * 100);
+    this._accuracy = Math.round(
+      (this._correctGuesses / this._totalGuesses) * 100
+    );
     this._isComplete = !this._queue.length;
   }
 }

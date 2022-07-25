@@ -8,14 +8,13 @@ import { PlaceService } from './place.service';
 import { RouterService } from './router.service';
 import { shuffle } from 'lodash-es';
 
-
 @Injectable({
   providedIn: 'root',
 })
 export class QuizService {
-  private readonly _quizSubject = new BehaviorSubject<Quiz<Country> | undefined>(
-    undefined
-  );
+  private readonly _quizSubject = new BehaviorSubject<
+    Quiz<Country> | undefined
+  >(undefined);
   quiz$ = this._quizSubject.pipe(
     map((quiz) => quiz?.state),
     shareReplay({ bufferSize: 1, refCount: true })
@@ -51,9 +50,7 @@ export class QuizService {
   }
 
   updateQuiz(correctGuess: boolean): void {
-    this._quizSubject.pipe(
-      first()
-    ).subscribe(quiz => {
+    this._quizSubject.pipe(first()).subscribe((quiz) => {
       if (quiz) {
         quiz.guess(correctGuess);
         this._quizSubject.next(quiz);

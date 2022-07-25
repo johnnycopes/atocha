@@ -18,7 +18,8 @@ export class QuizComponent implements OnInit {
     this._selectService.selection$,
   ]).pipe(
     map(([quiz, { type }]) => ({
-      quiz, type
+      quiz,
+      type,
     }))
   );
   showCards = false;
