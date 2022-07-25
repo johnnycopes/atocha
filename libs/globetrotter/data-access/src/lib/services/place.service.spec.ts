@@ -45,7 +45,7 @@ describe('PlaceService', () => {
   });
 
   it('correctly initializes state', (done) => {
-    service.countries$.subscribe((value) => {
+    service.places$.subscribe((value) => {
       expect(value).toEqual({
         countries: [DJIBOUTI, MONTENEGRO, PHILIPPINES, SEYCHELLES],
         countriesBySubregion: {

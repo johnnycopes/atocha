@@ -30,7 +30,7 @@ export class SelectService {
   );
 
   constructor(private _countryService: PlaceService) {
-    this._countryService.countries$
+    this._countryService.places$
       .pipe(map(({ regions }) => regions))
       .subscribe((regions) => {
         this.updatePlaces(mapRegionsToPlaceSelection(regions));

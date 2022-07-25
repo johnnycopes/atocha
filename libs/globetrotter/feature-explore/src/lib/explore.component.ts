@@ -26,7 +26,7 @@ export class ExploreComponent {
   private _selectedCountryChange = new BehaviorSubject<Country | undefined>(
     undefined
   );
-  private _countries$ = this._countryService.countries$.pipe(
+  private _countries$ = this._countryService.places$.pipe(
     map(({ countries }) => countries)
   );
   private _selectedCountry$ = this._selectedCountryChange.pipe(

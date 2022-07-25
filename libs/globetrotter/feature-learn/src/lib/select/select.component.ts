@@ -19,7 +19,7 @@ import {
 })
 export class SelectComponent {
   vm$ = combineLatest([
-    this._countryService.countries$,
+    this._countryService.places$,
     this._selectService.selection$,
   ]).pipe(
     map(([{ regions, countriesBySubregion }, { places, type, quantity }]) => {

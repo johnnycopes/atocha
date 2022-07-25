@@ -7,8 +7,8 @@ import { SelectService } from './select.service';
 
 describe('SelectService', () => {
   let service: SelectService;
-  const mockPlaceService: Pick<PlaceService, 'countries$'> = {
-    countries$: of({
+  const mockPlaceService: Pick<PlaceService, 'places$'> = {
+    places$: of({
       countries: [],
       countriesBySubregion: {},
       regions: [

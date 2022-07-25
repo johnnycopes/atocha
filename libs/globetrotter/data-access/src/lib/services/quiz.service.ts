@@ -28,7 +28,7 @@ export class QuizService {
   }
 
   initializeQuiz({ type, quantity, places }: Selection): void {
-    this._countryService.countries$
+    this._countryService.places$
       .pipe(
         map(({ countriesBySubregion }) => {
           const countries: Country[] = [];

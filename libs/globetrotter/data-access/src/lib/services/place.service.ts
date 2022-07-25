@@ -11,7 +11,7 @@ import {
 import { ApiService } from './api.service';
 import { COUNTRY_SUMMARY_NAMES } from '../data/country-modifications';
 
-interface CountryState {
+interface Places {
   countries: Country[];
   countriesBySubregion: Record<string, Country[]>;
   regions: Region[];
@@ -21,12 +21,12 @@ interface CountryState {
   providedIn: 'root',
 })
 export class PlaceService {
-  private readonly _countriesSubject = new BehaviorSubject<CountryState>({
+  private readonly _placesSubject = new BehaviorSubject<Places>({
     countries: [],
     countriesBySubregion: {},
     regions: [],
   });
-  countries$ = this._countriesSubject.pipe(
+  places$ = this._placesSubject.pipe(
     shareReplay({ bufferSize: 1, refCount: true })
   );
 
@@ -48,7 +48,7 @@ export class PlaceService {
         countriesBySubregion,
         subregionsByRegion
       );
-      this._countriesSubject.next({
+      this._placesSubject.next({
         countries,
         countriesBySubregion,
         regions,
