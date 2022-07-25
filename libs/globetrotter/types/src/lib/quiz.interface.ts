@@ -1,5 +1,4 @@
 import { Country } from './domain/country.interface';
-import { QuizType } from './quiz-type.enum';
 
 export interface Quiz {
   guess: number;
@@ -8,5 +7,4 @@ export interface Quiz {
   totalCountries: number;
   correctGuesses: number;
   countries: Country[];
-  type: QuizType;
 }

@@ -47,7 +47,6 @@ export class QuizService {
         this._quizSubject.next({
           guess: 1,
           correctGuesses: 0,
-          type,
           countries,
           totalCountries: countries.length,
           accuracy: 100,
