@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 import { Observable, of } from 'rxjs';
 
 import { CountryDto } from '@atocha/globetrotter/types';
-import { CountryService } from './country.service';
+import { PlaceService } from './place.service';
 import { ApiService } from './api.service';
 import {
   DJIBOUTI,
@@ -18,8 +18,8 @@ import {
   SEYCHELLES_DTO,
 } from '../mock-data/country-dtos';
 
-describe('CountryService', () => {
-  let service: CountryService;
+describe('PlaceService', () => {
+  let service: PlaceService;
   const mockApiService: Pick<ApiService, 'fetchCountries'> = {
     fetchCountries(): Observable<CountryDto[]> {
       return of([
@@ -41,7 +41,7 @@ describe('CountryService', () => {
         },
       ],
     });
-    service = TestBed.inject(CountryService);
+    service = TestBed.inject(PlaceService);
   });
 
   it('correctly initializes state', (done) => {

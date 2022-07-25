@@ -2,12 +2,12 @@ import { TestBed } from '@angular/core/testing';
 import { of } from 'rxjs';
 
 import { QuizType } from '@atocha/globetrotter/types';
-import { CountryService } from './country.service';
+import { PlaceService } from './place.service';
 import { SelectService } from './select.service';
 
 describe('SelectService', () => {
   let service: SelectService;
-  const mockCountryService: Pick<CountryService, 'countries$'> = {
+  const mockPlaceService: Pick<PlaceService, 'countries$'> = {
     countries$: of({
       countries: [],
       countriesBySubregion: {},
@@ -33,8 +33,8 @@ describe('SelectService', () => {
     TestBed.configureTestingModule({
       providers: [
         {
-          provide: CountryService,
-          useValue: mockCountryService,
+          provide: PlaceService,
+          useValue: mockPlaceService,
         },
       ],
     });

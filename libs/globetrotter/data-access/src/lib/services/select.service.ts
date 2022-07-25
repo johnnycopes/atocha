@@ -10,7 +10,7 @@ import {
   PlaceSelectionState,
   mapRegionsToPlaceSelection,
 } from '@atocha/globetrotter/types';
-import { PlaceService } from './country.service';
+import { PlaceService } from './place.service';
 
 @Injectable({
   providedIn: 'root',
