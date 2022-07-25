@@ -22,34 +22,28 @@ export class SelectComponent {
     this._countryService.countries$,
     this._selectService.selection$,
   ]).pipe(
-    map(
-      ([
-        { regions, countriesBySubregion },
-        { places, type, quantity },
-      ]) => {
-        if (!regions.length) {
-          return undefined;
-        }
-        const selectedCountriesQuantity = Object.keys(places).reduce(
-        (total, name) =>
-            countriesBySubregion[name]
-              ? total + countriesBySubregion[name].length
-              : total,
-          0
-        );
-        return {
-          regions,
-          places,
-          type,
-          quantity,
-          invalidQuantity: (
-            selectedCountriesQuantity < 2 ||
-            quantity < 2 ||
-            quantity > selectedCountriesQuantity
-          ),
-        };
+    map(([{ regions, countriesBySubregion }, { places, type, quantity }]) => {
+      if (!regions.length) {
+        return undefined;
       }
-    )
+      const selectedCountriesQuantity = Object.keys(places).reduce(
+        (total, name) =>
+          countriesBySubregion[name]
+            ? total + countriesBySubregion[name].length
+            : total,
+        0
+      );
+      return {
+        regions,
+        places,
+        type,
+        quantity,
+        invalidQuantity:
+          selectedCountriesQuantity < 2 ||
+          quantity < 2 ||
+          quantity > selectedCountriesQuantity,
+      };
+    })
   );
 
   constructor(
@@ -71,15 +65,17 @@ export class SelectComponent {
   }
 
   async onLaunch(): Promise<void> {
-    this._selectService.selection$.pipe(first()).subscribe(async (selection) => {
-      if (!selection) {
-        return;
-      }
-      const queryParams =
-        this._selectService.mapSelectionToQueryParams(selection);
-      await this._router.navigate([`${Route.learn}/${Route.quiz}`], {
-        queryParams,
+    this._selectService.selection$
+      .pipe(first())
+      .subscribe(async (selection) => {
+        if (!selection) {
+          return;
+        }
+        const queryParams =
+          this._selectService.mapSelectionToQueryParams(selection);
+        await this._router.navigate([`${Route.learn}/${Route.quiz}`], {
+          queryParams,
+        });
       });
-    });
   }
 }
