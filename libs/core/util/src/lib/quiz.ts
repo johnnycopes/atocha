@@ -1,5 +1,4 @@
 interface QuizState<T> {
-  items: T[];
   currentItem: T | undefined;
   totalItems: number;
   currentGuess: number;
@@ -9,32 +8,27 @@ interface QuizState<T> {
 }
 
 export class Quiz<T> {
-  private _originalItems: T[] = [];
   private _items: T[] = [];
-  private _currentGuess = 1;
+  private _totalItems = 0;
   private _correctGuesses = 0;
+  private _totalGuesses = 0;
   private _accuracy = 100;
   private _isComplete = false;
 
   get state(): QuizState<T> {
     return {
-      items: this._items.slice(),
       currentItem: this._items.slice()[0],
-      totalItems: this._originalItems.length,
-      currentGuess: this._currentGuess,
+      totalItems: this._totalItems,
+      currentGuess: this._totalGuesses + 1,
       correctGuesses: this._correctGuesses,
       accuracy: this._accuracy,
       isComplete: this._isComplete,
     };
   }
 
-  constructor({
-    items = [],
-  }: {
-    items?: T[],
-  } = {}) {
-    this._originalItems = items.slice();
+  constructor(items: T[] = []) {
     this._items = items.slice();
+    this._totalItems = items.length;
   }
 
   makeGuess(isCorrect: boolean): void {
@@ -42,22 +36,17 @@ export class Quiz<T> {
       return;
     }
 
+    this._totalGuesses++;
+
     if (isCorrect) {
       this._items.shift();
       this._correctGuesses++;
-      // End the game if there are no remaining items left to guess
-      if (!this._items.length) {
-        this._accuracy = this._calculateAccuracy(this._currentGuess, this._originalItems.length);
-        this._isComplete = true;
-      }
     } else {
       this._items = this._movedGuessedItemToEnd(this._items);
     }
 
-    // Increment the guess counter if the game isn't over, regardless of whether the guess was right or wrong
-    if (!this._isComplete) {
-      this._currentGuess++;
-    }
+    this._accuracy = this._calculateAccuracy(this._correctGuesses, this._totalGuesses);
+    this._isComplete = !this._items.length;
   }
 
   private _movedGuessedItemToEnd(items: T[]): T[] {
@@ -67,7 +56,7 @@ export class Quiz<T> {
     return updatedItems;
   }
 
-  private _calculateAccuracy(guesses: number, totalItems: number): number {
-    return Math.round((totalItems / guesses) * 100);
+  private _calculateAccuracy(correctGuesses: number, totalGuesses: number): number {
+    return Math.round((correctGuesses / totalGuesses) * 100);
   }
 }
