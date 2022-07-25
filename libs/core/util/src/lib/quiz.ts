@@ -42,19 +42,11 @@ export class Quiz<T> {
       this._items.shift();
       this._correctGuesses++;
     } else {
-      this._cycleItems(this._items);
+      const guessedItem = this._items.splice(0, 1)[0];
+      this._items.push(guessedItem);
     }
 
-    this._accuracy = this._calculateAccuracy(this._correctGuesses, this._totalGuesses);
+    this._accuracy = Math.round((this._correctGuesses / this._totalGuesses) * 100);
     this._isComplete = !this._items.length;
-  }
-
-  private _cycleItems(items: T[]): void {
-    const guessedItem = items.splice(0, 1)[0];
-    items.push(guessedItem);
-  }
-
-  private _calculateAccuracy(correctGuesses: number, totalGuesses: number): number {
-    return Math.round((correctGuesses / totalGuesses) * 100);
   }
 }
