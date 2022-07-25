@@ -2,20 +2,10 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { filter, first, map, shareReplay } from 'rxjs/operators';
 
-import { Route, Country, Selection, QuizType } from '@atocha/globetrotter/types';
+import { Route, Country, Selection, Quiz } from '@atocha/globetrotter/types';
 import { PlaceService } from './place.service';
 import { RouterService } from './router.service';
 import { shuffle } from 'lodash-es';
-
-interface Quiz {
-  guess: number;
-  accuracy: number;
-  isComplete: boolean;
-  totalCountries: number;
-  correctGuesses: number;
-  countries: Country[];
-  type: QuizType;
-}
 
 
 @Injectable({
