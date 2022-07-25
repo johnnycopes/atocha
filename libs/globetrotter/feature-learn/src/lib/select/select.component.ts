@@ -5,10 +5,7 @@ import { first, map } from 'rxjs/operators';
 
 import { fadeInAnimation } from '@atocha/globetrotter/ui';
 import { Route, QuizType, PlaceSelection } from '@atocha/globetrotter/types';
-import {
-  PlaceService,
-  SelectService,
-} from '@atocha/globetrotter/data-access';
+import { PlaceService, SelectService } from '@atocha/globetrotter/data-access';
 
 @Component({
   selector: 'app-select',
