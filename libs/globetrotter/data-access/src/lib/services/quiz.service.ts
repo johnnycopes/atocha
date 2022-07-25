@@ -19,7 +19,7 @@ export class QuizService {
   );
 
   constructor(
-    private _countryService: PlaceService,
+    private _placeService: PlaceService,
     private _routerService: RouterService
   ) {
     this._routerService.route$
@@ -28,7 +28,7 @@ export class QuizService {
   }
 
   initializeQuiz({ type, quantity, places }: Selection): void {
-    this._countryService.places$
+    this._placeService.places$
       .pipe(
         map(({ countriesBySubregion }) => {
           const countries: Country[] = [];

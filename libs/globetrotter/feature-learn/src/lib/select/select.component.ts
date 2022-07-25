@@ -19,7 +19,7 @@ import {
 })
 export class SelectComponent {
   vm$ = combineLatest([
-    this._countryService.places$,
+    this._placeService.places$,
     this._selectService.selection$,
   ]).pipe(
     map(([{ regions, countriesBySubregion }, { places, type, quantity }]) => {
@@ -47,7 +47,7 @@ export class SelectComponent {
   );
 
   constructor(
-    private _countryService: PlaceService,
+    private _placeService: PlaceService,
     private _selectService: SelectService,
     private _router: Router
   ) {}

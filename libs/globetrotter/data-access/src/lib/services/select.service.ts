@@ -29,8 +29,8 @@ export class SelectService {
     shareReplay({ bufferSize: 1, refCount: true })
   );
 
-  constructor(private _countryService: PlaceService) {
-    this._countryService.places$
+  constructor(private _placeService: PlaceService) {
+    this._placeService.places$
       .pipe(map(({ regions }) => regions))
       .subscribe((regions) => {
         this.updatePlaces(mapRegionsToPlaceSelection(regions));
