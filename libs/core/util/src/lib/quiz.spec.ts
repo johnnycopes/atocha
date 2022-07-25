@@ -51,25 +51,26 @@ describe('Quiz', () => {
     });
   });
 
-  it('returns state after partially completing quiz', () => {
+  it('returns state after partially finishing quiz', () => {
     const quiz = new Quiz(['French', 'Italian', 'Portuguese']);
     quiz.guess(true);
     quiz.guess(false);
     quiz.guess(false);
     quiz.guess(true);
     quiz.guess(false);
+    quiz.guess(false);
 
     expect(quiz.state).toStrictEqual({
       currentItem: 'Portuguese',
       totalItems: 3,
-      currentGuess: 6,
+      currentGuess: 7,
       correctGuesses: 2,
-      accuracy: 40,
+      accuracy: 33,
       isComplete: false,
     });
   });
 
-  it('returns state after fully completing quiz', () => {
+  it('returns state after completing quiz', () => {
     const quiz = new Quiz(['French', 'Italian', 'Portuguese']);
     quiz.guess(true);
     quiz.guess(false);
@@ -82,6 +83,24 @@ describe('Quiz', () => {
       currentGuess: 5,
       correctGuesses: 3,
       accuracy: 75,
+      isComplete: true,
+    });
+  });
+
+  it('prevents additional guesses after completing quiz', () => {
+    const quiz = new Quiz(['French', 'Italian', 'Portuguese']);
+    quiz.guess(true);
+    quiz.guess(true);
+    quiz.guess(true);
+    quiz.guess(true);
+    quiz.guess(true);
+
+    expect(quiz.state).toStrictEqual({
+      currentItem: undefined,
+      totalItems: 3,
+      currentGuess: 4,
+      correctGuesses: 3,
+      accuracy: 100,
       isComplete: true,
     });
   });
