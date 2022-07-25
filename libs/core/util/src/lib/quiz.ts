@@ -1,6 +1,7 @@
-interface QuizState<T> {
+export interface QuizState<T> {
+  items: T[];
   currentItem: T | undefined;
-  totalItems: number;
+  itemsTotal: number;
   currentGuess: number;
   correctGuesses: number;
   accuracy: number;
@@ -8,8 +9,8 @@ interface QuizState<T> {
 }
 
 export class Quiz<T> {
+  private _queue: T[] = [];
   private _items: T[] = [];
-  private _totalItems = 0;
   private _correctGuesses = 0;
   private _totalGuesses = 0;
   private _accuracy = 100;
@@ -17,8 +18,9 @@ export class Quiz<T> {
 
   get state(): QuizState<T> {
     return {
-      currentItem: this._items.slice()[0],
-      totalItems: this._totalItems,
+      items: this._items.slice(),
+      itemsTotal: this._items.length,
+      currentItem: this._queue.slice()[0],
       currentGuess: this._totalGuesses + 1,
       correctGuesses: this._correctGuesses,
       accuracy: this._accuracy,
@@ -27,8 +29,8 @@ export class Quiz<T> {
   }
 
   constructor(items: T[] = []) {
+    this._queue = items.slice();
     this._items = items.slice();
-    this._totalItems = items.length;
   }
 
   guess(isCorrect: boolean): void {
@@ -39,16 +41,16 @@ export class Quiz<T> {
     this._totalGuesses++;
 
     if (isCorrect) {
-      this._items.shift();
+      this._queue.shift();
       this._correctGuesses++;
     } else {
-      const guessedItem = this._items.shift();
+      const guessedItem = this._queue.shift();
       if (guessedItem) {
-        this._items.push(guessedItem);
+        this._queue.push(guessedItem);
       }
     }
 
     this._accuracy = Math.round((this._correctGuesses / this._totalGuesses) * 100);
-    this._isComplete = !this._items.length;
+    this._isComplete = !this._queue.length;
   }
 }

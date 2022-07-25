@@ -3,8 +3,9 @@ import { Quiz } from './quiz';
 describe('Quiz', () => {
   it('initializes state when passed no data', () => {
     expect(new Quiz().state).toStrictEqual({
+      items: [],
+      itemsTotal: 0,
       currentItem: undefined,
-      totalItems: 0,
       currentGuess: 1,
       correctGuesses: 0,
       accuracy: 100,
@@ -14,8 +15,9 @@ describe('Quiz', () => {
 
   it('initalizes state when passed data', () => {
     expect(new Quiz(['French', 'Italian', 'Portuguese']).state).toStrictEqual({
+      items: ['French', 'Italian', 'Portuguese'],
+      itemsTotal: 3,
       currentItem: 'French',
-      totalItems: 3,
       currentGuess: 1,
       correctGuesses: 0,
       accuracy: 100,
@@ -28,8 +30,9 @@ describe('Quiz', () => {
     quiz.guess(true);
 
     expect(quiz.state).toStrictEqual({
+      items: ['French', 'Italian', 'Portuguese'],
+      itemsTotal: 3,
       currentItem: 'Italian',
-      totalItems: 3,
       currentGuess: 2,
       correctGuesses: 1,
       accuracy: 100,
@@ -42,8 +45,9 @@ describe('Quiz', () => {
     quiz.guess(false);
 
     expect(quiz.state).toStrictEqual({
+      items: ['French', 'Italian', 'Portuguese'],
+      itemsTotal: 3,
       currentItem: 'Italian',
-      totalItems: 3,
       currentGuess: 2,
       correctGuesses: 0,
       accuracy: 0,
@@ -61,8 +65,9 @@ describe('Quiz', () => {
     quiz.guess(false);
 
     expect(quiz.state).toStrictEqual({
+      items: ['French', 'Italian', 'Portuguese'],
+      itemsTotal: 3,
       currentItem: 'Portuguese',
-      totalItems: 3,
       currentGuess: 7,
       correctGuesses: 2,
       accuracy: 33,
@@ -78,8 +83,9 @@ describe('Quiz', () => {
     quiz.guess(true);
 
     expect(quiz.state).toStrictEqual({
+      items: ['French', 'Italian', 'Portuguese'],
+      itemsTotal: 3,
       currentItem: undefined,
-      totalItems: 3,
       currentGuess: 5,
       correctGuesses: 3,
       accuracy: 75,
@@ -96,8 +102,9 @@ describe('Quiz', () => {
     quiz.guess(true);
 
     expect(quiz.state).toStrictEqual({
+      items: ['French', 'Italian', 'Portuguese'],
+      itemsTotal: 3,
       currentItem: undefined,
-      totalItems: 3,
       currentGuess: 4,
       correctGuesses: 3,
       accuracy: 100,
