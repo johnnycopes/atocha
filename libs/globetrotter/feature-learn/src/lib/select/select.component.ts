@@ -30,25 +30,23 @@ export class SelectComponent {
         if (!regions.length) {
           return undefined;
         }
-        const numberOfSelectedCountries = Object.keys(places).reduce(
+        const selectedCountriesQuantity = Object.keys(places).reduce(
         (total, name) =>
             countriesBySubregion[name]
               ? total + countriesBySubregion[name].length
               : total,
           0
         );
-        const invalidQuantity = (
-          numberOfSelectedCountries <= 1 ||
-          quantity < 2 ||
-          quantity > numberOfSelectedCountries
-        );
         return {
           regions,
           places,
           type,
           quantity,
-          numberOfSelectedCountries,
-          invalidQuantity,
+          invalidQuantity: (
+            selectedCountriesQuantity < 2 ||
+            quantity < 2 ||
+            quantity > selectedCountriesQuantity
+          ),
         };
       }
     )
