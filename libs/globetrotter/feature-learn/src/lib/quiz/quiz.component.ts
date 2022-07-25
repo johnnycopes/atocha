@@ -1,5 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { combineLatest } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 import { QuizService, SelectService } from '@atocha/globetrotter/data-access';
 import { Route, SelectionParams } from '@atocha/globetrotter/types';
@@ -11,7 +13,14 @@ import { Route, SelectionParams } from '@atocha/globetrotter/types';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class QuizComponent implements OnInit {
-  quiz$ = this._quizService.quiz$;
+  vm$ = combineLatest([
+    this._quizService.quiz$,
+    this._selectService.selection$,
+  ]).pipe(
+    map(([quiz, { type }]) => ({
+      quiz, type
+    }))
+  );
   showCards = false;
 
   constructor(
