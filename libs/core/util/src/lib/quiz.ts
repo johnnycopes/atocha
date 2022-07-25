@@ -42,8 +42,10 @@ export class Quiz<T> {
       this._items.shift();
       this._correctGuesses++;
     } else {
-      const guessedItem = this._items.splice(0, 1)[0];
-      this._items.push(guessedItem);
+      const guessedItem = this._items.shift();
+      if (guessedItem) {
+        this._items.push(guessedItem);
+      }
     }
 
     this._accuracy = Math.round((this._correctGuesses / this._totalGuesses) * 100);
