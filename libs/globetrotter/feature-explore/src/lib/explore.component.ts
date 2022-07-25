@@ -11,7 +11,7 @@ import {
 
 import { includes } from '@atocha/core/util';
 import { fadeInAnimation } from '@atocha/globetrotter/ui';
-import { CountryService } from '@atocha/globetrotter/data-access';
+import { PlaceService } from '@atocha/globetrotter/data-access';
 import { Country } from '@atocha/globetrotter/types';
 
 @Component({
@@ -77,7 +77,7 @@ export class ExploreComponent {
     })
   );
 
-  constructor(private _countryService: CountryService) {}
+  constructor(private _countryService: PlaceService) {}
 
   getCountryId({ id }: Country): string {
     return id;

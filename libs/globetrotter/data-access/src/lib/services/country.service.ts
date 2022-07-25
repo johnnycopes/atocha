@@ -20,7 +20,7 @@ interface CountryState {
 @Injectable({
   providedIn: 'root',
 })
-export class CountryService {
+export class PlaceService {
   private readonly _countriesSubject = new BehaviorSubject<CountryState>({
     countries: [],
     countriesBySubregion: {},

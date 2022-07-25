@@ -6,7 +6,7 @@ import { first, map } from 'rxjs/operators';
 import { fadeInAnimation } from '@atocha/globetrotter/ui';
 import { Route, QuizType, PlaceSelection } from '@atocha/globetrotter/types';
 import {
-  CountryService,
+  PlaceService,
   SelectService,
 } from '@atocha/globetrotter/data-access';
 
@@ -47,7 +47,7 @@ export class SelectComponent {
   );
 
   constructor(
-    private _countryService: CountryService,
+    private _countryService: PlaceService,
     private _selectService: SelectService,
     private _router: Router
   ) {}

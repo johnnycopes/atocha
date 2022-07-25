@@ -10,7 +10,7 @@ import {
   PlaceSelectionState,
   mapRegionsToPlaceSelection,
 } from '@atocha/globetrotter/types';
-import { CountryService } from './country.service';
+import { PlaceService } from './country.service';
 
 @Injectable({
   providedIn: 'root',
@@ -29,7 +29,7 @@ export class SelectService {
     shareReplay({ bufferSize: 1, refCount: true })
   );
 
-  constructor(private _countryService: CountryService) {
+  constructor(private _countryService: PlaceService) {
     this._countryService.countries$
       .pipe(map(({ regions }) => regions))
       .subscribe((regions) => {

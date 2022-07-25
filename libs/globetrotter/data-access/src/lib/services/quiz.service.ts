@@ -3,7 +3,7 @@ import { BehaviorSubject } from 'rxjs';
 import { filter, first, map, shareReplay } from 'rxjs/operators';
 
 import { Route, Country, Selection, Quiz } from '@atocha/globetrotter/types';
-import { CountryService } from './country.service';
+import { PlaceService } from './country.service';
 import { RouterService } from './router.service';
 import { shuffle } from 'lodash-es';
 
@@ -19,7 +19,7 @@ export class QuizService {
   );
 
   constructor(
-    private _countryService: CountryService,
+    private _countryService: PlaceService,
     private _routerService: RouterService
   ) {
     this._routerService.route$
