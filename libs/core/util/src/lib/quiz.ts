@@ -31,7 +31,7 @@ export class Quiz<T> {
     this._totalItems = items.length;
   }
 
-  makeGuess(isCorrect: boolean): void {
+  guess(isCorrect: boolean): void {
     if (this._isComplete) {
       return;
     }
@@ -42,18 +42,16 @@ export class Quiz<T> {
       this._items.shift();
       this._correctGuesses++;
     } else {
-      this._items = this._movedGuessedItemToEnd(this._items);
+      this._cycleItems(this._items);
     }
 
     this._accuracy = this._calculateAccuracy(this._correctGuesses, this._totalGuesses);
     this._isComplete = !this._items.length;
   }
 
-  private _movedGuessedItemToEnd(items: T[]): T[] {
-    const guessedItem = items[0];
-    const updatedItems = items.slice(1);
-    updatedItems.push(guessedItem);
-    return updatedItems;
+  private _cycleItems(items: T[]): void {
+    const guessedItem = items.splice(0, 1)[0];
+    items.push(guessedItem);
   }
 
   private _calculateAccuracy(correctGuesses: number, totalGuesses: number): number {

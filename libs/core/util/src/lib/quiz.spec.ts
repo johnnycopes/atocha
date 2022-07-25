@@ -25,7 +25,7 @@ describe('Quiz', () => {
 
   it('returns state after correct guess', () => {
     const quiz = new Quiz(['French', 'Italian', 'Portuguese']);
-    quiz.makeGuess(true);
+    quiz.guess(true);
 
     expect(quiz.state).toStrictEqual({
       currentItem: 'Italian',
@@ -39,7 +39,7 @@ describe('Quiz', () => {
 
   it('returns state after incorrect guess', () => {
     const quiz = new Quiz(['French', 'Italian', 'Portuguese']);
-    quiz.makeGuess(false);
+    quiz.guess(false);
 
     expect(quiz.state).toStrictEqual({
       currentItem: 'Italian',
@@ -53,11 +53,11 @@ describe('Quiz', () => {
 
   it('returns state after partially completing quiz', () => {
     const quiz = new Quiz(['French', 'Italian', 'Portuguese']);
-    quiz.makeGuess(true);
-    quiz.makeGuess(false);
-    quiz.makeGuess(false);
-    quiz.makeGuess(true);
-    quiz.makeGuess(false);
+    quiz.guess(true);
+    quiz.guess(false);
+    quiz.guess(false);
+    quiz.guess(true);
+    quiz.guess(false);
 
     expect(quiz.state).toStrictEqual({
       currentItem: 'Portuguese',
@@ -71,10 +71,10 @@ describe('Quiz', () => {
 
   it('returns state after fully completing quiz', () => {
     const quiz = new Quiz(['French', 'Italian', 'Portuguese']);
-    quiz.makeGuess(true);
-    quiz.makeGuess(false);
-    quiz.makeGuess(true);
-    quiz.makeGuess(true);
+    quiz.guess(true);
+    quiz.guess(false);
+    quiz.guess(true);
+    quiz.guess(true);
 
     expect(quiz.state).toStrictEqual({
       currentItem: undefined,
