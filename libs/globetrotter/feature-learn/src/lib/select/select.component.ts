@@ -5,10 +5,7 @@ import { first, map } from 'rxjs/operators';
 
 import { fadeInAnimation } from '@atocha/globetrotter/ui';
 import { Route, QuizType, PlaceSelection } from '@atocha/globetrotter/types';
-import {
-  CountryService,
-  SelectService,
-} from '@atocha/globetrotter/data-access';
+import { PlaceService, SelectService } from '@atocha/globetrotter/data-access';
 
 @Component({
   selector: 'app-select',
@@ -19,7 +16,7 @@ import {
 })
 export class SelectComponent {
   vm$ = combineLatest([
-    this._countryService.countries$,
+    this._placeService.places$,
     this._selectService.selection$,
   ]).pipe(
     map(([{ regions, countriesBySubregion }, { places, type, quantity }]) => {
@@ -47,7 +44,7 @@ export class SelectComponent {
   );
 
   constructor(
-    private _countryService: CountryService,
+    private _placeService: PlaceService,
     private _selectService: SelectService,
     private _router: Router
   ) {}

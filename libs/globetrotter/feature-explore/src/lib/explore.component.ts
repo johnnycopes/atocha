@@ -11,7 +11,7 @@ import {
 
 import { includes } from '@atocha/core/util';
 import { fadeInAnimation } from '@atocha/globetrotter/ui';
-import { CountryService } from '@atocha/globetrotter/data-access';
+import { PlaceService } from '@atocha/globetrotter/data-access';
 import { Country } from '@atocha/globetrotter/types';
 
 @Component({
@@ -26,7 +26,7 @@ export class ExploreComponent {
   private _selectedCountryChange = new BehaviorSubject<Country | undefined>(
     undefined
   );
-  private _countries$ = this._countryService.countries$.pipe(
+  private _countries$ = this._placeService.places$.pipe(
     map(({ countries }) => countries)
   );
   private _selectedCountry$ = this._selectedCountryChange.pipe(
@@ -37,7 +37,7 @@ export class ExploreComponent {
       if (!country) {
         return of(undefined);
       }
-      return this._countryService.getSummary(country.name);
+      return this._placeService.getSummary(country.name);
     }),
     distinctUntilChanged()
   );
@@ -77,7 +77,7 @@ export class ExploreComponent {
     })
   );
 
-  constructor(private _countryService: CountryService) {}
+  constructor(private _placeService: PlaceService) {}
 
   getCountryId({ id }: Country): string {
     return id;
