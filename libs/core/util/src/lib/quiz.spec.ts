@@ -14,10 +14,10 @@ describe('Quiz', () => {
   });
 
   it('initalizes state when passed data', () => {
-    expect(new Quiz({items: ['English', 'Spanish', 'French', 'Italian', 'Portuguese'] }).state).toStrictEqual({
-      items: ['English', 'Spanish', 'French', 'Italian', 'Portuguese'],
-      currentItem: 'English',
-      totalItems: 5,
+    expect(new Quiz({items: ['French', 'Italian', 'Portuguese'] }).state).toStrictEqual({
+      items: ['French', 'Italian', 'Portuguese'],
+      currentItem: 'French',
+      totalItems: 3,
       guess: 1,
       correctGuesses: 0,
       accuracy: 100,
@@ -26,17 +26,32 @@ describe('Quiz', () => {
   });
 
   it('returns state after correct guess', () => {
-    const quiz = new Quiz({items: ['English', 'Spanish', 'French', 'Italian', 'Portuguese'] });
+    const quiz = new Quiz({ items: ['French', 'Italian', 'Portuguese'] });
     quiz.makeGuess(true);
 
     expect(quiz.state).toStrictEqual({
-      items: ['Spanish', 'French', 'Italian', 'Portuguese'],
-      currentItem: 'Spanish',
-      totalItems: 5,
+      items: ['Italian', 'Portuguese'],
+      currentItem: 'Italian',
+      totalItems: 3,
       guess: 2,
       correctGuesses: 1,
       accuracy: 100,
       isComplete: false,
-    })
+    });
+  });
+
+  it('returns state after incorrect guess', () => {
+    const quiz = new Quiz({ items: ['French', 'Italian', 'Portuguese'] });
+    quiz.makeGuess(false);
+
+    expect(quiz.state).toStrictEqual({
+      items: ['Italian', 'Portuguese', 'French'],
+      currentItem: 'Italian',
+      totalItems: 3,
+      guess: 2,
+      correctGuesses: 0,
+      accuracy: 100,
+      isComplete: false,
+    });
   });
 });
