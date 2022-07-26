@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { filter, first, map, shareReplay } from 'rxjs/operators';
+import { filter, map, shareReplay } from 'rxjs/operators';
 
-import { Quiz } from '@atocha/core/util';
+import { Quiz, QuizState } from '@atocha/core/util';
 import { Route, Country, Selection } from '@atocha/globetrotter/types';
 import { PlaceService } from './place.service';
 import { RouterService } from './router.service';
@@ -12,11 +12,11 @@ import { shuffle } from 'lodash-es';
   providedIn: 'root',
 })
 export class QuizService {
-  private readonly _quizSubject = new BehaviorSubject<
-    Quiz<Country> | undefined
-  >(undefined);
-  quiz$ = this._quizSubject.pipe(
-    map((quiz) => quiz?.state),
+  private _quiz: Quiz<Country> | undefined = undefined;
+  private _stateSubject = new BehaviorSubject<QuizState<Country> | undefined>(
+    undefined
+  );
+  quiz$ = this._stateSubject.pipe(
     shareReplay({ bufferSize: 1, refCount: true })
   );
 
@@ -26,7 +26,7 @@ export class QuizService {
   ) {
     this._routerService.route$
       .pipe(filter((route) => !route.includes(Route.quiz)))
-      .subscribe(() => this._quizSubject.next(undefined));
+      .subscribe(() => this._stateSubject.next(undefined));
   }
 
   initializeQuiz({ quantity, places }: Selection): void {
@@ -45,16 +45,15 @@ export class QuizService {
         })
       )
       .subscribe((countries) => {
-        this._quizSubject.next(new Quiz(countries));
+        this._quiz = new Quiz(countries);
+        this._stateSubject.next(this._quiz.state);
       });
   }
 
   updateQuiz(correctGuess: boolean): void {
-    this._quizSubject.pipe(first()).subscribe((quiz) => {
-      if (quiz) {
-        quiz.guess(correctGuess);
-        this._quizSubject.next(quiz);
-      }
-    });
+    if (this._quiz) {
+      this._quiz.guess(correctGuess);
+      this._stateSubject.next(this._quiz.state);
+    }
   }
 }

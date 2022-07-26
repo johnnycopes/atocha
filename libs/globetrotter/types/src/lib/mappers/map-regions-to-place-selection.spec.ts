@@ -9,17 +9,14 @@ describe('mapRegionsToPlaceSelection', () => {
         subregions: [
           {
             name: 'North America',
-            region: 'Americas',
             countries: [],
           },
           {
             name: 'Central America',
-            region: 'Americas',
             countries: [],
           },
           {
             name: 'South America',
-            region: 'Americas',
             countries: [],
           },
         ],

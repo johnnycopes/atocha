@@ -4,10 +4,9 @@ describe('Quiz', () => {
   it('initializes state when passed no data', () => {
     expect(new Quiz().state).toStrictEqual({
       items: [],
-      itemsTotal: 0,
       currentItem: undefined,
-      currentGuess: 1,
       correctGuesses: 0,
+      totalGuesses: 0,
       accuracy: 100,
       isComplete: false,
     });
@@ -16,10 +15,9 @@ describe('Quiz', () => {
   it('initalizes state when passed data', () => {
     expect(new Quiz(['French', 'Italian', 'Portuguese']).state).toStrictEqual({
       items: ['French', 'Italian', 'Portuguese'],
-      itemsTotal: 3,
       currentItem: 'French',
-      currentGuess: 1,
       correctGuesses: 0,
+      totalGuesses: 0,
       accuracy: 100,
       isComplete: false,
     });
@@ -31,10 +29,9 @@ describe('Quiz', () => {
 
     expect(quiz.state).toStrictEqual({
       items: ['French', 'Italian', 'Portuguese'],
-      itemsTotal: 3,
       currentItem: 'Italian',
-      currentGuess: 2,
       correctGuesses: 1,
+      totalGuesses: 1,
       accuracy: 100,
       isComplete: false,
     });
@@ -46,10 +43,9 @@ describe('Quiz', () => {
 
     expect(quiz.state).toStrictEqual({
       items: ['French', 'Italian', 'Portuguese'],
-      itemsTotal: 3,
       currentItem: 'Italian',
-      currentGuess: 2,
       correctGuesses: 0,
+      totalGuesses: 1,
       accuracy: 0,
       isComplete: false,
     });
@@ -66,10 +62,9 @@ describe('Quiz', () => {
 
     expect(quiz.state).toStrictEqual({
       items: ['French', 'Italian', 'Portuguese'],
-      itemsTotal: 3,
       currentItem: 'Portuguese',
-      currentGuess: 7,
       correctGuesses: 2,
+      totalGuesses: 6,
       accuracy: 33,
       isComplete: false,
     });
@@ -84,10 +79,9 @@ describe('Quiz', () => {
 
     expect(quiz.state).toStrictEqual({
       items: ['French', 'Italian', 'Portuguese'],
-      itemsTotal: 3,
       currentItem: undefined,
-      currentGuess: 5,
       correctGuesses: 3,
+      totalGuesses: 4,
       accuracy: 75,
       isComplete: true,
     });
@@ -103,10 +97,9 @@ describe('Quiz', () => {
 
     expect(quiz.state).toStrictEqual({
       items: ['French', 'Italian', 'Portuguese'],
-      itemsTotal: 3,
       currentItem: undefined,
-      currentGuess: 4,
       correctGuesses: 3,
+      totalGuesses: 3,
       accuracy: 100,
       isComplete: true,
     });

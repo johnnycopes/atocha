@@ -1,16 +1,15 @@
 export interface QuizState<T> {
-  items: T[];
+  items: readonly T[];
   currentItem: T | undefined;
-  itemsTotal: number;
-  currentGuess: number;
   correctGuesses: number;
+  totalGuesses: number;
   accuracy: number;
   isComplete: boolean;
 }
 
 export class Quiz<T> {
+  private _items: readonly T[] = [];
   private _queue: T[] = [];
-  private _items: T[] = [];
   private _correctGuesses = 0;
   private _totalGuesses = 0;
   private _accuracy = 100;
@@ -18,11 +17,10 @@ export class Quiz<T> {
 
   get state(): QuizState<T> {
     return {
-      items: this._items.slice(),
-      itemsTotal: this._items.length,
-      currentItem: this._queue.slice()[0],
-      currentGuess: this._totalGuesses + 1,
+      items: this._items,
+      currentItem: this._queue[0],
       correctGuesses: this._correctGuesses,
+      totalGuesses: this._totalGuesses,
       accuracy: this._accuracy,
       isComplete: this._isComplete,
     };
@@ -38,8 +36,6 @@ export class Quiz<T> {
       return;
     }
 
-    this._totalGuesses++;
-
     if (isCorrect) {
       this._queue.shift();
       this._correctGuesses++;
@@ -50,6 +46,7 @@ export class Quiz<T> {
       }
     }
 
+    this._totalGuesses++;
     this._accuracy = Math.round(
       (this._correctGuesses / this._totalGuesses) * 100
     );
