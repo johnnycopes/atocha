@@ -20,10 +20,10 @@ import { Country, QuizType } from '@atocha/globetrotter/types';
 })
 export class QuizCardsComponent implements OnInit {
   @Input() type: QuizType | undefined;
-  @Input() countries: Country[] = [];
+  @Input() countries: readonly Country[] = [];
   @Input() currentCountry: Country | undefined;
   @Output() guessed = new EventEmitter<boolean>();
-  shuffledCountries: Country[] = [];
+  shuffledCountries: readonly Country[] = [];
   canFlipCards = true;
 
   ngOnInit(): void {
