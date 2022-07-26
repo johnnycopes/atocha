@@ -36,8 +36,6 @@ export class Quiz<T> {
       return;
     }
 
-    this._totalGuesses++;
-
     if (isCorrect) {
       this._queue.shift();
       this._correctGuesses++;
@@ -48,6 +46,7 @@ export class Quiz<T> {
       }
     }
 
+    this._totalGuesses++;
     this._accuracy = Math.round(
       (this._correctGuesses / this._totalGuesses) * 100
     );
