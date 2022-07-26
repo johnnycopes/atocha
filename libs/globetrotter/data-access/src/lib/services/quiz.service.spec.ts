@@ -5,7 +5,6 @@ import { shuffle } from 'lodash-es';
 
 import { QuizType } from '@atocha/globetrotter/types';
 import { QuizService } from "./quiz.service";
-import { SelectService } from "./select.service";
 import { PlaceService } from './place.service';
 import {
   DJIBOUTI,
@@ -31,13 +30,6 @@ describe('QuizService', () => {
       regions: [],
     })
   };
-  const mockSelectService: Pick<SelectService, 'selection$'> = {
-    selection$: of({
-      type: QuizType.flagsCountries,
-      quantity: 2,
-      places: {}
-    }),
-  };
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -46,10 +38,6 @@ describe('QuizService', () => {
         {
           provide: PlaceService,
           useValue: mockPlaceService,
-        },
-        {
-          provide: SelectService,
-          useValue: mockSelectService,
         },
       ],
     });
@@ -60,13 +48,13 @@ describe('QuizService', () => {
     jest.resetAllMocks();
   });
 
-  it('renders and mocks shuffle', () => {
+  it('renders', () => {
     expect(service).toBeTruthy();
     expect(jest.isMockFunction(shuffle)).toBeTruthy();
     expect(shuffle([1, 2, 3])).toEqual([1, 2, 3]);
   });
 
-  it('initializes quiz', (done) => {
+  it('has correct state after initializing quiz', (done) => {
     service.initializeQuiz({
       type: QuizType.flagsCountries,
       quantity: 2,
@@ -85,6 +73,35 @@ describe('QuizService', () => {
         correctGuesses: 0,
         totalGuesses: 0,
         accuracy: 100,
+        isComplete: false,
+      });
+      done();
+    });
+  });
+
+  it('has correct state after updating quiz', (done) => {
+    service.initializeQuiz({
+      type: QuizType.flagsCountries,
+      quantity: 4,
+      places: {
+        Africa: 'checked',
+        'Eastern Africa': 'checked',
+        'Southeast Europe': 'checked',
+        'South-Eastern Asia': 'checked',
+      },
+    });
+
+    service.updateQuiz(false);
+    service.updateQuiz(false);
+    service.updateQuiz(true);
+
+    service.quiz$.subscribe((value) => {
+      expect(value).toEqual({
+        items: [DJIBOUTI, SEYCHELLES, MONTENEGRO, PHILIPPINES],
+        currentItem: PHILIPPINES,
+        correctGuesses: 1,
+        totalGuesses: 3,
+        accuracy: 33,
         isComplete: false,
       });
       done();
