@@ -1,9 +1,8 @@
 export interface QuizState<T> {
   items: readonly T[];
-  itemsTotal: number;
   currentItem: T | undefined;
-  currentGuess: number;
   correctGuesses: number;
+  totalGuesses: number;
   accuracy: number;
   isComplete: boolean;
 }
@@ -19,10 +18,9 @@ export class Quiz<T> {
   get state(): QuizState<T> {
     return {
       items: this._items,
-      itemsTotal: this._items.length,
       currentItem: this._queue[0],
-      currentGuess: this._totalGuesses + 1,
       correctGuesses: this._correctGuesses,
+      totalGuesses: this._totalGuesses,
       accuracy: this._accuracy,
       isComplete: this._isComplete,
     };

@@ -2,10 +2,10 @@
   <ng-container *ngIf="vm.quiz">
     <app-quiz-menu
       [type]="vm.type"
-      [guess]="vm.quiz.currentGuess"
+      [guess]="vm.quiz.totalGuesses + 1"
       [correctGuesses]="vm.quiz.correctGuesses"
       [currentCountry]="vm.quiz.currentItem"
-      [totalCountries]="vm.quiz.itemsTotal"
+      [totalCountries]="vm.quiz.items.length"
       [accuracy]="vm.quiz.accuracy"
       [isComplete]="vm.quiz.isComplete"
       (menuReady)="showCards = $event"
