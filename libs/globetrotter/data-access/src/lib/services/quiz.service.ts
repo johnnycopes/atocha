@@ -13,9 +13,9 @@ import { shuffle } from 'lodash-es';
 })
 export class QuizService {
   private _quiz: Quiz<Country> | undefined = undefined;
-  private _stateSubject = new BehaviorSubject<
-    QuizState<Country> | undefined
-  >(undefined);
+  private _stateSubject = new BehaviorSubject<QuizState<Country> | undefined>(
+    undefined
+  );
   quiz$ = this._stateSubject.pipe(
     shareReplay({ bufferSize: 1, refCount: true })
   );

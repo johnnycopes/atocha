@@ -4,7 +4,7 @@ import { of } from 'rxjs';
 import { shuffle } from 'lodash-es';
 
 import { QuizType } from '@atocha/globetrotter/types';
-import { QuizService } from "./quiz.service";
+import { QuizService } from './quiz.service';
 import { PlaceService } from './place.service';
 import {
   DJIBOUTI,
@@ -28,7 +28,7 @@ describe('QuizService', () => {
         'South-Eastern Asia': [PHILIPPINES],
       },
       regions: [],
-    })
+    }),
   };
 
   beforeEach(() => {
