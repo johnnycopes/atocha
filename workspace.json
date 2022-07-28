@@ -12,6 +12,8 @@
     "globetrotter-feature-learn": "libs/globetrotter/feature-learn",
     "globetrotter-feature-shell": "libs/globetrotter/feature-shell",
     "globetrotter-types": "libs/globetrotter/types",
-    "globetrotter-ui": "libs/globetrotter/ui"
+    "globetrotter-ui": "libs/globetrotter/ui",
+    "menu-matriarch": "apps/menu-matriarch",
+    "menu-matriarch-e2e": "apps/menu-matriarch-e2e"
   }
 }
