@@ -4,4 +4,4 @@
   status = 200
 
 [[plugins]]
-  package = "./tools/plugins/netlify/stop-build"
+  package = "./tools/plugins/netlify/skip-build"
