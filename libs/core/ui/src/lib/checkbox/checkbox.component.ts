@@ -27,6 +27,7 @@ export class CheckboxComponent implements ControlValueAccessor {
   @Input() indeterminate = false;
   checked = false;
   private _onChangeFn: (value: boolean) => void = () => undefined;
+  // test comment
 
   constructor(private _changeDetectorRef: ChangeDetectorRef) {}
 
