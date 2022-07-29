@@ -18,6 +18,4 @@ jobs:
       # - run: npx nx affected --target=test --parallel=3 --ci --code-coverage
       # - run: npx nx affected --target=e2e --parallel=3 --ci --code-coverage
       - run: npx nx affected --target=build --parallel=3
-      echo ${{ github.event.pull_request.base.sha }}
-      echo ${{ github.event.pull_request.head.sha }}
       - run: npx nx affected --target=deploy --base=${{ github.event.pull_request.base.sha }} --head=HEAD
