@@ -1,3 +1,8 @@
 [build]
   publish = "dist/apps/globetrotter"
   command = "nx build globetrotter"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
