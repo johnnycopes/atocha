@@ -1,5 +1,5 @@
 module.exports = {
-  onPrebuild: () => {
+  onPreBuild: ({ utils }) => {
     console.log('---------------- hello world: prebuild');
   },
   onBuild: () => {
