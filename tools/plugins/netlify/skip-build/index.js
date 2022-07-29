@@ -1,8 +1,11 @@
 module.exports = {
   onPreBuild: ({ utils }) => {
-    console.log('---------------- hello world: prebuild');
-  },
-  onBuild: () => {
-    console.log('---------------- hello world: build');
+    const currentProject = 'globetrotter';
+    const projectHasChanged = false;
+    if (!projectHasChanged) {
+      utils.build.cancelBuild(
+        `Build was cancelled because ${currentProject} was not affected`;
+      );
+    }
   },
 };
