@@ -1,5 +1,8 @@
 module.exports = {
+  onPrebuild: () => {
+    console.log('---------------- hello world: prebuild');
+  },
   onBuild: () => {
-    console.log('Hello world from the plugin!');
-  }
+    console.log('---------------- hello world: build');
+  },
 };
