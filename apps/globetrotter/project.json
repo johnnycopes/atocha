@@ -93,6 +93,13 @@
         "jestConfig": "apps/globetrotter/jest.config.ts",
         "passWithNoTests": true
       }
+    },
+    "deploy": {
+      "builder": "@netlify-builder/deploy:deploy",
+      "options": {
+        "outputPath": "dist/apps/globetrotter",
+        "siteId": "faabf44d-1d2f-45d5-96fc-3cce8b6d0060"
+      }
     }
   },
   "tags": []
