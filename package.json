@@ -6,7 +6,6 @@
     "start": "nx serve",
     "build": "nx build",
     "test": "nx test",
-    "deploy:globetrotter": "env-cmd nx deploy globetrotter",
     "postinstall": "ngcc --properties es2020 browser module main"
   },
   "private": true,
