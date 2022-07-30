@@ -5,7 +5,7 @@ import { Dish } from '@models/dish.interface';
 import { Menu } from '@models/menu.interface';
 import { Orientation } from '@models/orientation.type';
 import { Tag } from '@models/tag.interface';
-import { trackByDay } from '@utility/domain/track-by-functions';
+import { trackByFactory } from '@shared/utility/generic/track-by-factory';
 
 interface EntryModel {
   day: Day;
@@ -47,7 +47,7 @@ export class PlannerMealComponent {
   }
   @Output() dayChange = new EventEmitter<{ dishIds: string[], day: Day, selected: boolean }>();
   public entryModels: EntryModel[] = [];
-  public readonly trackByFn = trackByDay;
+  public readonly trackByFn = trackByFactory<EntryModel>(({ day }) => day);
 
   private _compare(
     mealDishIds: string[],

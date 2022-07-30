@@ -4,7 +4,7 @@ import { Menu } from '@models/menu.interface';
 import { Tag } from '@models/tag.interface';
 import { DishType } from '@models/dish-type.type';
 import { Day } from '@models/day.type';
-import { trackByDay } from '@utility/domain/track-by-functions';
+import { trackByFactory } from '@shared/utility/generic/track-by-factory';
 
 interface EntryModel {
   day: Day;
@@ -37,5 +37,5 @@ export class PlannerDishComponent {
   @Output() dayChange = new EventEmitter<{ id: string, day: Day, selected: boolean }>();
 
   public entryModels: EntryModel[] = [];
-  public readonly trackByFn = trackByDay;
+  public readonly trackByFn = trackByFactory<EntryModel>(({ day }) => day);
 }

@@ -4,7 +4,7 @@ import { Menu } from '@models/menu.interface';
 import { MenuEntry } from '@models/menu-entry.interface';
 import { MenuService } from '@services/menu.service';
 import { PrintService } from '@services/print.service';
-import { trackByDay } from '@utility/domain/track-by-functions';
+import { entryTrackBy } from '@utility/domain/track-by-functions';
 
 @Component({
   selector: 'app-planner-menu',
@@ -14,7 +14,7 @@ import { trackByDay } from '@utility/domain/track-by-functions';
 })
 export class PlannerMenuComponent {
   @Input() menu: Menu | undefined;
-  public readonly trackByFn = trackByDay;
+  public readonly trackByFn = entryTrackBy;
 
   constructor(
     private _menuService: MenuService,
