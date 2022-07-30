@@ -42,6 +42,8 @@ Thumbs.db
 
 # Firebase
 firebase-admin-*.json
+serviceAccount.json
+cypress.env.json
 
 # Local Netlify folder
 .netlify
