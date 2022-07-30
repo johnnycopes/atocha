@@ -23,7 +23,7 @@ export class TabsetComponent extends AnimatedComponent implements AfterContentIn
   @ContentChildren(TabComponent)
   public tabs: QueryList<TabComponent> | undefined;
   public trackByFn = trackByFactory<TabComponent>(tab => tab.name);
-  private _destroy$ = new Subject();
+  private _destroy$ = new Subject<void>();
 
   @ViewChild('tabsElement')
   public tabsElement: ElementRef | undefined;
