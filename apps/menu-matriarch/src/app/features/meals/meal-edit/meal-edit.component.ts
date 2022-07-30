@@ -2,7 +2,14 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { combineLatest, of, Subject } from 'rxjs';
-import { concatMap, distinctUntilChanged, first, map, startWith, tap } from 'rxjs/operators';
+import {
+  concatMap,
+  distinctUntilChanged,
+  first,
+  map,
+  startWith,
+  tap,
+} from 'rxjs/operators';
 
 import { Dish } from '@models/dish.interface';
 import { TagModel } from '@models/tag-model.interface';
@@ -27,7 +34,7 @@ type FormDishes = Record<string, boolean>;
   selector: 'app-meal-edit',
   templateUrl: './meal-edit.component.html',
   styleUrls: ['./meal-edit.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MealEditComponent {
   private _routeId = this._route.snapshot.paramMap.get('id');
@@ -42,25 +49,24 @@ export class MealEditComponent {
     this._tagService.getTags(),
     this._userService.getPreferences(),
     this._formDishes$.pipe(
-      startWith(this._dishIds
-        ? this._transformDishIds(JSON.parse(this._dishIds))
-        : null
+      startWith(
+        this._dishIds ? this._transformDishIds(JSON.parse(this._dishIds)) : null
       ),
-      distinctUntilChanged(),
+      distinctUntilChanged()
     ),
   ]).pipe(
     map(([meal, allDishes, tags, preferences, formDishes]) => {
       const dishes = formDishes
         ? this._transformFormDishes(allDishes, formDishes)
         : meal?.dishes ?? [];
-      const dishesModel = dishes.map(dish => dish.id);
+      const dishesModel = dishes.map((dish) => dish.id);
       const fallbackText = preferences?.emptyMealText ?? '';
       const orientation = preferences?.mealOrientation ?? 'horizontal';
       if (!meal) {
         return {
           name: '',
           description: '',
-          tags: tags.map<TagModel>(tag => ({
+          tags: tags.map<TagModel>((tag) => ({
             ...tag,
             checked: false,
           })),
@@ -72,9 +78,9 @@ export class MealEditComponent {
       } else {
         return {
           ...meal,
-          tags: tags.map<TagModel>(tag => ({
+          tags: tags.map<TagModel>((tag) => ({
             ...tag,
-            checked: !!meal?.tags.find(mealTag => mealTag.id === tag.id)
+            checked: !!meal?.tags.find((mealTag) => mealTag.id === tag.id),
           })),
           dishes,
           dishesModel,
@@ -94,8 +100,8 @@ export class MealEditComponent {
     private _dishService: DishService,
     private _mealService: MealService,
     private _tagService: TagService,
-    private _userService: UserService,
-  ) { }
+    private _userService: UserService
+  ) {}
 
   public onDishChange(dishesModel: FormDishes): void {
     this._formDishes$.next(dishesModel);
@@ -109,32 +115,39 @@ export class MealEditComponent {
       dishIds: recordToArray<string>(form.value.dishes),
     };
     if (!this._routeId) {
-      this._mealService.createMeal(details).pipe(
-        tap(newId => this._router.navigate(['..', newId], { relativeTo: this._route }))
-      ).subscribe();
+      this._mealService
+        .createMeal(details)
+        .pipe(
+          tap((newId) =>
+            this._router.navigate(['..', newId], { relativeTo: this._route })
+          )
+        )
+        .subscribe();
     } else {
-      this._meal$.pipe(
-        first(),
-        concatMap(meal => {
-          if (meal) {
-            return this._mealService.updateMeal(meal.id, details);
-          } else {
-            return of(undefined);
-          }
-        }),
-        tap(() => this._router.navigate(['..'], { relativeTo: this._route }))
-      ).subscribe();
+      this._meal$
+        .pipe(
+          first(),
+          concatMap((meal) => {
+            if (meal) {
+              return this._mealService.updateMeal(meal.id, details);
+            } else {
+              return of(undefined);
+            }
+          }),
+          tap(() => this._router.navigate(['..'], { relativeTo: this._route }))
+        )
+        .subscribe();
     }
   }
 
   private _transformFormDishes(
     allDishes: Dish[],
-    formDishes: Record<string, boolean>,
+    formDishes: Record<string, boolean>
   ): Dish[] {
     const dishes: Dish[] = [];
     for (const dishId in formDishes) {
       if (formDishes[dishId]) {
-        const dish = allDishes.find(dish => dish.id === dishId);
+        const dish = allDishes.find((dish) => dish.id === dishId);
         if (dish) {
           dishes.push(dish);
         }

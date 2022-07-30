@@ -1,4 +1,10 @@
-import { Component, ChangeDetectionStrategy, Input, Output, EventEmitter } from '@angular/core';
+import {
+  Component,
+  ChangeDetectionStrategy,
+  Input,
+  Output,
+  EventEmitter,
+} from '@angular/core';
 import { Day } from '@models/day.type';
 
 import { Dish } from '@models/dish.interface';
@@ -18,7 +24,7 @@ interface EntryModel {
   selector: 'app-planner-meal',
   templateUrl: './planner-meal.component.html',
   styleUrls: ['./planner-meal.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PlannerMealComponent {
   @Input() id = '';
@@ -30,29 +36,36 @@ export class PlannerMealComponent {
   @Input() orientation: Orientation = 'horizontal';
   @Input()
   public set menu(menu: Menu | undefined) {
-    this.entryModels = menu?.entries.map(entry => {
-      const mealDishIds = this.dishes.map(dish => dish.id);
-      const entryDishIds = entry.dishes.map(dish => dish.id);
-      const { checked, indeterminate } = this._compare(mealDishIds, entryDishIds);
-      return {
-        day: entry.day,
-        dishIds: indeterminate
-          ? mealDishIds.filter(id => !entryDishIds.includes(id))
-          : mealDishIds
-        ,
-        checked,
-        indeterminate,
-      };
-    }) ?? [];
+    this.entryModels =
+      menu?.entries.map((entry) => {
+        const mealDishIds = this.dishes.map((dish) => dish.id);
+        const entryDishIds = entry.dishes.map((dish) => dish.id);
+        const { checked, indeterminate } = this._compare(
+          mealDishIds,
+          entryDishIds
+        );
+        return {
+          day: entry.day,
+          dishIds: indeterminate
+            ? mealDishIds.filter((id) => !entryDishIds.includes(id))
+            : mealDishIds,
+          checked,
+          indeterminate,
+        };
+      }) ?? [];
   }
-  @Output() dayChange = new EventEmitter<{ dishIds: string[], day: Day, selected: boolean }>();
+  @Output() dayChange = new EventEmitter<{
+    dishIds: string[];
+    day: Day;
+    selected: boolean;
+  }>();
   public entryModels: EntryModel[] = [];
   public readonly trackByFn = trackByFactory<EntryModel>(({ day }) => day);
 
   private _compare(
     mealDishIds: string[],
-    entryDishIds: string[],
-  ): { checked: boolean, indeterminate: boolean } {
+    entryDishIds: string[]
+  ): { checked: boolean; indeterminate: boolean } {
     if (entryDishIds.length === 0) {
       return { checked: false, indeterminate: false };
     }

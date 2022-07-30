@@ -1,4 +1,10 @@
-import { Component, ChangeDetectionStrategy, EventEmitter, Input, Output } from '@angular/core';
+import {
+  Component,
+  ChangeDetectionStrategy,
+  EventEmitter,
+  Input,
+  Output,
+} from '@angular/core';
 import { combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -9,7 +15,7 @@ import { TagService } from '@services/tag.service';
   selector: 'app-filterable-list',
   templateUrl: './filterable-list.component.html',
   styleUrls: ['./filterable-list.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FilterableListComponent {
   @Input() total = 0;
@@ -34,8 +40,8 @@ export class FilterableListComponent {
 
   constructor(
     private _filterService: FilterService,
-    private _tagService: TagService,
-  ) { }
+    private _tagService: TagService
+  ) {}
 
   public onSearchTextChange(text: string): void {
     this._filterService.updateText(text);

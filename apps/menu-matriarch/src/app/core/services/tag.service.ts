@@ -8,14 +8,13 @@ import { AuthService } from './auth.service';
 import { TagDataService } from './internal/tag-data.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class TagService {
-
   constructor(
     private _authService: AuthService,
-    private _tagDataService: TagDataService,
-  ) { }
+    private _tagDataService: TagDataService
+  ) {}
 
   public getTag(id: string): Observable<Tag | undefined> {
     return this._tagDataService.getTag(id);
@@ -24,7 +23,7 @@ export class TagService {
   public getTags(): Observable<Tag[]> {
     return this._authService.uid$.pipe(
       first(),
-      concatMap(uid => {
+      concatMap((uid) => {
         if (uid) {
           return this._tagDataService.getTags(uid);
         }
@@ -33,10 +32,12 @@ export class TagService {
     );
   }
 
-  public createTag(tag: Partial<Omit<TagDto, 'id' | 'uid'>>): Observable<string | undefined> {
+  public createTag(
+    tag: Partial<Omit<TagDto, 'id' | 'uid'>>
+  ): Observable<string | undefined> {
     return this._authService.uid$.pipe(
       first(),
-      concatMap(async uid => {
+      concatMap(async (uid) => {
         if (uid) {
           const id = await this._tagDataService.createTag({ uid, tag });
           return id;
@@ -54,7 +55,7 @@ export class TagService {
   public deleteTag(id: string): Observable<Tag | undefined> {
     return this.getTag(id).pipe(
       first(),
-      tap(async tag => {
+      tap(async (tag) => {
         if (!tag) {
           return;
         }

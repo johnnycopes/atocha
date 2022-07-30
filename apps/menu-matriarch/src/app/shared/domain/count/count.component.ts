@@ -1,5 +1,10 @@
 import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
-import { IconDefinition, faCalendarDay, faUtensils, faLayerGroup } from '@fortawesome/free-solid-svg-icons';
+import {
+  IconDefinition,
+  faCalendarDay,
+  faUtensils,
+  faLayerGroup,
+} from '@fortawesome/free-solid-svg-icons';
 import { faMap } from '@fortawesome/free-regular-svg-icons';
 
 type CountType = 'days' | 'dishes' | 'meals' | 'menus';
@@ -8,7 +13,7 @@ type CountType = 'days' | 'dishes' | 'meals' | 'menus';
   selector: 'app-count',
   templateUrl: './count.component.html',
   styleUrls: ['./count.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CountComponent {
   @Input() count = 0;

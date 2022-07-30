@@ -19,7 +19,7 @@ $primary: (
   7: hsl(184deg, 65%, 59%),
   8: hsl(184deg, 80%, 74%),
   9: hsl(185deg, 94%, 87%),
-  10: hsl(186deg, 100%, 94%)
+  10: hsl(186deg, 100%, 94%),
 );
 
 // Blue gray
@@ -33,9 +33,8 @@ $neutral: (
   7: hsl(211deg, 27%, 70%),
   8: hsl(210deg, 31%, 80%),
   9: hsl(212deg, 33%, 89%),
-  10: hsl(210deg, 36%, 96%)
+  10: hsl(210deg, 36%, 96%),
 );
-
 
 // SUPPORTING COLORS
 
@@ -49,7 +48,7 @@ $indigo: (
   7: hsl(225deg, 57%, 67%),
   8: hsl(224deg, 67%, 76%),
   9: hsl(221deg, 78%, 86%),
-  10: hsl(221deg, 68%, 93%)
+  10: hsl(221deg, 68%, 93%),
 );
 
 $pink: (
@@ -62,7 +61,7 @@ $pink: (
   7: hsl(330deg, 72%, 67%),
   8: hsl(330deg, 77%, 76%),
   9: hsl(330deg, 87%, 86%),
-  10: hsl(329deg, 100%, 93%)
+  10: hsl(329deg, 100%, 93%),
 );
 
 $red: (
@@ -75,7 +74,7 @@ $red: (
   7: hsl(360deg, 71%, 66%),
   8: hsl(360deg, 77%, 78%),
   9: hsl(360deg, 82%, 89%),
-  10: hsl(360deg, 100%, 97%)
+  10: hsl(360deg, 100%, 97%),
 );
 
 $yellow: (
@@ -88,7 +87,7 @@ $yellow: (
   7: hsl(43deg, 90%, 76%),
   8: hsl(45deg, 86%, 81%),
   9: hsl(45deg, 90%, 88%),
-  10: hsl(45deg, 100%, 96%)
+  10: hsl(45deg, 100%, 96%),
 );
 
 @function color($palette, $value) {

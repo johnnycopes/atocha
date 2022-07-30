@@ -1,5 +1,4 @@
-
-import { Output, EventEmitter, Component } from "@angular/core";
+import { Output, EventEmitter, Component } from '@angular/core';
 import { AnimationEvent } from '@angular/animations';
 
 @Component({

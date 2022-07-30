@@ -1,6 +1,6 @@
-import { DayNameDisplay } from "./date-name-display.type";
-import { Day } from "./day.type";
-import { Orientation } from "./orientation.type";
+import { DayNameDisplay } from './date-name-display.type';
+import { Day } from './day.type';
+import { Orientation } from './orientation.type';
 
 export interface UserPreferences {
   darkMode: boolean;

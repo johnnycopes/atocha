@@ -12,7 +12,7 @@ admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
 });
 
-(async function() {
+(async function () {
   if (uid === TEST_UID) {
     throw new Error('UID belongs to test user and will not be be deleted.');
   }

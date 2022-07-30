@@ -1,4 +1,10 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+} from '@angular/core';
 
 import { Menu } from '@models/menu.interface';
 import { Tag } from '@models/tag.interface';
@@ -29,12 +35,17 @@ export class PlannerDishComponent {
   @Input() usages = 0;
   @Input()
   public set menu(menu: Menu | undefined) {
-    this.entryModels = menu?.entries.map(entry => ({
-      day: entry.day,
-      checked: !!entry.dishes.find(dish => dish.id === this.id),
-    })) ?? [];
+    this.entryModels =
+      menu?.entries.map((entry) => ({
+        day: entry.day,
+        checked: !!entry.dishes.find((dish) => dish.id === this.id),
+      })) ?? [];
   }
-  @Output() dayChange = new EventEmitter<{ id: string, day: Day, selected: boolean }>();
+  @Output() dayChange = new EventEmitter<{
+    id: string;
+    day: Day;
+    selected: boolean;
+  }>();
 
   public entryModels: EntryModel[] = [];
   public readonly trackByFn = trackByFactory<EntryModel>(({ day }) => day);

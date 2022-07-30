@@ -13,33 +13,39 @@ import { SeedDataService } from '@services/seed-data.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class WelcomeComponent {
-
   constructor(
     private _router: Router,
     private _authService: AuthService,
     private _routerService: RouterService,
-    private _seedDataService: SeedDataService,
-  ) { }
+    private _seedDataService: SeedDataService
+  ) {}
 
   public async login(): Promise<void> {
     try {
       const user = await this._authService.login();
       if (user) {
         const { name, email } = user;
-        this._authService.uid$.pipe(
-          first(),
-          tap(async uid => {
-            if (!uid) {
-              return;
-            }
-            const menuId = await this._seedDataService.createUserData({ uid, name, email });
-            this._router.navigate(['/planner', menuId]);
-          })
-        ).subscribe();
+        this._authService.uid$
+          .pipe(
+            first(),
+            tap(async (uid) => {
+              if (!uid) {
+                return;
+              }
+              const menuId = await this._seedDataService.createUserData({
+                uid,
+                name,
+                email,
+              });
+              this._router.navigate(['/planner', menuId]);
+            })
+          )
+          .subscribe();
       } else {
-        this._routerService.getPlannerRoute().pipe(
-          tap(route => this._router.navigate(route))
-        ).subscribe();
+        this._routerService
+          .getPlannerRoute()
+          .pipe(tap((route) => this._router.navigate(route)))
+          .subscribe();
       }
     } catch (e) {
       console.error(e);

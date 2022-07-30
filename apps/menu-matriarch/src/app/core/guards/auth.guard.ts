@@ -6,19 +6,19 @@ import { first, map } from 'rxjs/operators';
 import { AuthService } from '@services/auth.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthGuard implements CanActivate {
+  constructor(private _router: Router, private _authService: AuthService) {}
 
-  constructor(
-    private _router: Router,
-    private _authService: AuthService,
-  ) { }
-
-  canActivate(): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+  canActivate():
+    | Observable<boolean | UrlTree>
+    | Promise<boolean | UrlTree>
+    | boolean
+    | UrlTree {
     return this._authService.loggedIn$.pipe(
       first(),
-      map(loggedIn => {
+      map((loggedIn) => {
         if (!loggedIn) {
           return this._router.createUrlTree(['/welcome']);
         }

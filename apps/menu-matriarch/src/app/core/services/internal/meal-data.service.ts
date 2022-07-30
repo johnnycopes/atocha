@@ -12,24 +12,26 @@ import { BatchService } from './batch.service';
 import { DataService } from './data.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class MealDataService {
   private _endpoint = Endpoint.meals;
 
   constructor(
     private _batchService: BatchService,
-    private _dataService: DataService,
-  ) { }
+    private _dataService: DataService
+  ) {}
 
   public getMeal(id: string): Observable<MealDto | undefined> {
     return this._dataService.getOne<MealDto>(this._endpoint, id);
   }
 
   public getMeals(uid: string): Observable<MealDto[]> {
-    return this._dataService.getMany<MealDto>(this._endpoint, uid).pipe(
-      map(mealDtos => sort(mealDtos, mealDto => lower(mealDto.name)))
-    );
+    return this._dataService
+      .getMany<MealDto>(this._endpoint, uid)
+      .pipe(
+        map((mealDtos) => sort(mealDtos, (mealDto) => lower(mealDto.name)))
+      );
   }
 
   public async createMeal(
@@ -50,7 +52,7 @@ export class MealDataService {
           initialDishIds: [],
           finalDishIds: meal.dishIds,
           entityId: id,
-        }),
+        })
       );
     }
     if (meal.tagIds) {
@@ -60,17 +62,14 @@ export class MealDataService {
           initialTagIds: [],
           finalTagIds: meal.tagIds,
           entityId: id,
-        }),
+        })
       );
     }
     await batch.commit();
     return id;
   }
 
-  public async updateMeal(
-    meal: Meal,
-    data: Partial<MealDto>
-  ): Promise<void> {
+  public async updateMeal(meal: Meal, data: Partial<MealDto>): Promise<void> {
     const batch = this._batchService.createBatch();
     batch.update({
       endpoint: this._endpoint,
@@ -81,20 +80,20 @@ export class MealDataService {
       batch.updateMultiple(
         this._batchService.getDishUpdates({
           key: 'mealIds',
-          initialDishIds: meal.dishes.map(dish => dish.id),
+          initialDishIds: meal.dishes.map((dish) => dish.id),
           finalDishIds: data.dishIds,
           entityId: meal.id,
-        }),
+        })
       );
     }
     if (data.tagIds) {
       batch.updateMultiple(
         this._batchService.getTagUpdates({
           key: 'mealIds',
-          initialTagIds: meal.tags.map(tag => tag.id),
+          initialTagIds: meal.tags.map((tag) => tag.id),
           finalTagIds: data.tagIds,
           entityId: meal.id,
-        }),
+        })
       );
     }
     await batch.commit();
@@ -102,22 +101,20 @@ export class MealDataService {
 
   public async deleteMeal(meal: Meal): Promise<void> {
     const batch = this._batchService.createBatch();
-    batch
-      .delete(this._endpoint, meal.id)
-      .updateMultiple([
-        ...this._batchService.getDishUpdates({
-          key: 'mealIds',
-          initialDishIds: meal.dishes.map(dish => dish.id),
-          finalDishIds: [],
-          entityId: meal.id,
-        }),
-        ...this._batchService.getTagUpdates({
-          key: 'mealIds',
-          initialTagIds: meal.tags.map(tag => tag.id),
-          finalTagIds: [],
-          entityId: meal.id,
-        }),
-      ]);
+    batch.delete(this._endpoint, meal.id).updateMultiple([
+      ...this._batchService.getDishUpdates({
+        key: 'mealIds',
+        initialDishIds: meal.dishes.map((dish) => dish.id),
+        finalDishIds: [],
+        entityId: meal.id,
+      }),
+      ...this._batchService.getTagUpdates({
+        key: 'mealIds',
+        initialTagIds: meal.tags.map((tag) => tag.id),
+        finalTagIds: [],
+        entityId: meal.id,
+      }),
+    ]);
     await batch.commit();
   }
 }

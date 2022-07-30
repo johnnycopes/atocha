@@ -1,4 +1,3 @@
-
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { distinctUntilChanged, shareReplay } from 'rxjs/operators';
@@ -6,7 +5,7 @@ import { distinctUntilChanged, shareReplay } from 'rxjs/operators';
 import { PlannerView } from '@models/planner-view.type';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class LocalStorageService {
   private _prefix = 'MENU_MATRIARCH_';
@@ -14,7 +13,8 @@ export class LocalStorageService {
   private _plannerView$ = new BehaviorSubject<PlannerView>('dishes');
 
   public getPlannerView(): PlannerView {
-    const view = (window.localStorage.getItem(this._prefix + 'PLANNER_VIEW') ?? 'dishes') as PlannerView;
+    const view = (window.localStorage.getItem(this._prefix + 'PLANNER_VIEW') ??
+      'dishes') as PlannerView;
     this._plannerView$.next(view);
     return view;
   }
@@ -23,7 +23,7 @@ export class LocalStorageService {
     this.getPlannerView();
     return this._plannerView$.pipe(
       shareReplay({ bufferSize: 1, refCount: true }),
-      distinctUntilChanged(),
+      distinctUntilChanged()
     );
   }
 
@@ -42,7 +42,7 @@ export class LocalStorageService {
     this.getMenuId();
     return this._menuId$.pipe(
       shareReplay({ bufferSize: 1, refCount: true }),
-      distinctUntilChanged(),
+      distinctUntilChanged()
     );
   }
 

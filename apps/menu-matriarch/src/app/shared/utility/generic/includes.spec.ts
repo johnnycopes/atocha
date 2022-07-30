@@ -1,4 +1,4 @@
-import { includes } from "./includes";
+import { includes } from './includes';
 
 describe('includes', () => {
   it('returns false if collection is empty, regardless of value', () => {

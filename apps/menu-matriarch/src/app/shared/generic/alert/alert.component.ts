@@ -1,4 +1,10 @@
-import { Component, Input, ChangeDetectionStrategy, HostBinding, ViewEncapsulation } from '@angular/core';
+import {
+  Component,
+  Input,
+  ChangeDetectionStrategy,
+  HostBinding,
+  ViewEncapsulation,
+} from '@angular/core';
 
 type Alert = 'success' | 'warning' | 'error';
 
@@ -20,7 +26,7 @@ export class AlertComponent {
       'app-alert--success': this.type === 'success',
       'app-alert--warning': this.type === 'warning',
       'app-alert--error': this.type === 'error',
-      'app-alert--large': this.large
+      'app-alert--large': this.large,
     };
   }
 }

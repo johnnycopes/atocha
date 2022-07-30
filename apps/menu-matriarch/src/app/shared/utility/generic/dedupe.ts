@@ -3,5 +3,5 @@ export function dedupe<T>(...arrays: T[][]): T[] {
   for (const arr of arrays) {
     allItems.push(...arr);
   }
-  return [...new Set(allItems)]
+  return [...new Set(allItems)];
 }

@@ -1,5 +1,16 @@
-import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy, TemplateRef } from '@angular/core';
-import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import {
+  Component,
+  Input,
+  Output,
+  EventEmitter,
+  ChangeDetectionStrategy,
+  TemplateRef,
+} from '@angular/core';
+import {
+  CdkDragDrop,
+  moveItemInArray,
+  transferArrayItem,
+} from '@angular/cdk/drag-drop';
 import { faEllipsisH } from '@fortawesome/free-solid-svg-icons';
 import { Dictionary } from 'lodash';
 import { trackByFactory } from '@utility/generic/track-by-factory';
@@ -26,7 +37,7 @@ export interface IKanbanBoardItemMove {
   selector: 'app-kanban-board-column',
   templateUrl: './kanban-board-column.component.html',
   styleUrls: ['../kanban-board.scss', './kanban-board-column.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class KanbanBoardColumnComponent<TItem> {
   @Input() id = '';
@@ -39,7 +50,8 @@ export class KanbanBoardColumnComponent<TItem> {
   @Input() moving = false;
   @Output() itemAdd: EventEmitter<IKanbanBoardItemAdd> = new EventEmitter();
   @Output() itemMove: EventEmitter<IKanbanBoardItemMove> = new EventEmitter();
-  @Output() actionClick: EventEmitter<IKanbanBoardActionClick> = new EventEmitter();
+  @Output() actionClick: EventEmitter<IKanbanBoardActionClick> =
+    new EventEmitter();
   @Output() movingChange: EventEmitter<boolean> = new EventEmitter();
   public readonly menuIcon = faEllipsisH;
   public hoverStatesDict: Dictionary<boolean> = {};
@@ -50,18 +62,29 @@ export class KanbanBoardColumnComponent<TItem> {
   }
 
   public onDropItem(event: CdkDragDrop<TItem[]>): void {
-    const { item, previousIndex, currentIndex, previousContainer, container }: CdkDragDrop<TItem[]> = event;
+    const {
+      item,
+      previousIndex,
+      currentIndex,
+      previousContainer,
+      container,
+    }: CdkDragDrop<TItem[]> = event;
     if (previousContainer.id === container.id) {
       moveItemInArray(container.data, previousIndex, currentIndex);
     } else {
-      transferArrayItem(previousContainer.data, container.data, previousIndex, currentIndex);
+      transferArrayItem(
+        previousContainer.data,
+        container.data,
+        previousIndex,
+        currentIndex
+      );
     }
     this.itemMove.emit({
       itemId: this.getItemId(item.data.item),
       previousColumnId: item.data.columnId,
       currentColumnId: this.id,
       previousIndex,
-      currentIndex
+      currentIndex,
     });
     this.movingChange.emit(false);
   }
@@ -69,15 +92,14 @@ export class KanbanBoardColumnComponent<TItem> {
   public onActionClick(action: string): void {
     this.actionClick.emit({
       action,
-      columnId: this.id
+      columnId: this.id,
     });
   }
 
   public onItemAdd(newItemName: string): void {
     this.itemAdd.emit({
       item: newItemName,
-      columnId: this.id
+      columnId: this.id,
     });
   }
-
 }

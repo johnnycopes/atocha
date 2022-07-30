@@ -5,7 +5,7 @@ interface RangeContext {
 }
 
 @Directive({
-  selector: '[appRange]'
+  selector: '[appRange]',
 })
 export class RangeDirective {
   private _range: number[] = [];
@@ -14,14 +14,17 @@ export class RangeDirective {
   set range(value: number[]) {
     this.vcr.clear();
     this._range = this._generateRange(value[0], value[1]);
-    this._range.forEach(num => {
+    this._range.forEach((num) => {
       this.vcr.createEmbeddedView(this.tpl, {
-        $implicit: num
+        $implicit: num,
       });
     });
   }
 
-  constructor(private vcr: ViewContainerRef, private tpl: TemplateRef<RangeContext>) { }
+  constructor(
+    private vcr: ViewContainerRef,
+    private tpl: TemplateRef<RangeContext>
+  ) {}
 
   private _generateRange(from: number, to: number): number[] {
     const arr = [];

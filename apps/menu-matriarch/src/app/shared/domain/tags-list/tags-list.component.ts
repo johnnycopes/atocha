@@ -1,4 +1,10 @@
-import { Component, ChangeDetectionStrategy, Input, TemplateRef, ContentChild } from '@angular/core';
+import {
+  Component,
+  ChangeDetectionStrategy,
+  Input,
+  TemplateRef,
+  ContentChild,
+} from '@angular/core';
 
 import { Tag } from '@models/tag.interface';
 import { trackByFactory } from '@shared/utility/generic/track-by-factory';
@@ -8,7 +14,7 @@ import { TagDefContext, TagDefDirective } from './tag-def.directive';
   selector: 'app-tags-list',
   templateUrl: './tags-list.component.html',
   styleUrls: ['./tags-list.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TagsListComponent<T extends Tag> {
   @Input() tags: T[] = [];

@@ -23,36 +23,80 @@ import { TagsComponent } from './features/tags/tags.component';
 import { WelcomeComponent } from './features/welcome/welcome.component';
 
 const routes: Routes = [
-  { path: 'welcome', component: WelcomeComponent, canActivate: [LoggedInAuthGuard], data: { state: Route.welcome } },
-  { path: '', component: ShellComponent, canActivate: [AuthGuard], children: [
-    { path: 'demo', component: DemoComponent, data: { state: Route.demo } },
-    { path: 'planner/:menuId', component: PlannerComponent, data: { state: Route.planner } },
-    { path: 'planner', component: PlannerComponent, canActivate: [PlannerGuard], data: { state: Route.planner } },
-    { path: 'menus', component: MenusComponent, data: { state: Route.menus } },
-    { path: 'tags', component: TagsComponent, data: { state: Route.tags } },
-    { path: 'meals', component: MealsComponent, data: { state: Route.meals }, children: [
-      { path: '', component: MealPlaceholderComponent, pathMatch: 'full' },
-      { path: 'new', component: MealEditComponent },
-      { path: ':id', component: MealDetailsComponent },
-      { path: ':id/edit', component: MealEditComponent },
-    ]},
-    { path: 'dishes', component: DishesComponent, data: { state: Route.dishes }, children: [
-      { path: '', component: DishPlaceholderComponent, pathMatch: 'full' },
-      { path: 'new', component: DishEditComponent },
-      { path: ':id', component: DishDetailsComponent },
-      { path: ':id/edit', component: DishEditComponent },
-    ]},
-    { path: '', redirectTo: 'planner', pathMatch: 'full', data: { state: Route.planner } },
-    { path: 'settings', component: SettingsComponent, data: { state: Route.settings } },
-  ]},
+  {
+    path: 'welcome',
+    component: WelcomeComponent,
+    canActivate: [LoggedInAuthGuard],
+    data: { state: Route.welcome },
+  },
+  {
+    path: '',
+    component: ShellComponent,
+    canActivate: [AuthGuard],
+    children: [
+      { path: 'demo', component: DemoComponent, data: { state: Route.demo } },
+      {
+        path: 'planner/:menuId',
+        component: PlannerComponent,
+        data: { state: Route.planner },
+      },
+      {
+        path: 'planner',
+        component: PlannerComponent,
+        canActivate: [PlannerGuard],
+        data: { state: Route.planner },
+      },
+      {
+        path: 'menus',
+        component: MenusComponent,
+        data: { state: Route.menus },
+      },
+      { path: 'tags', component: TagsComponent, data: { state: Route.tags } },
+      {
+        path: 'meals',
+        component: MealsComponent,
+        data: { state: Route.meals },
+        children: [
+          { path: '', component: MealPlaceholderComponent, pathMatch: 'full' },
+          { path: 'new', component: MealEditComponent },
+          { path: ':id', component: MealDetailsComponent },
+          { path: ':id/edit', component: MealEditComponent },
+        ],
+      },
+      {
+        path: 'dishes',
+        component: DishesComponent,
+        data: { state: Route.dishes },
+        children: [
+          { path: '', component: DishPlaceholderComponent, pathMatch: 'full' },
+          { path: 'new', component: DishEditComponent },
+          { path: ':id', component: DishDetailsComponent },
+          { path: ':id/edit', component: DishEditComponent },
+        ],
+      },
+      {
+        path: '',
+        redirectTo: 'planner',
+        pathMatch: 'full',
+        data: { state: Route.planner },
+      },
+      {
+        path: 'settings',
+        component: SettingsComponent,
+        data: { state: Route.settings },
+      },
+    ],
+  },
   { path: '**', component: PageNotFoundComponent, canActivate: [AuthGuard] },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {
-    preloadingStrategy: PreloadAllModules,
-    scrollPositionRestoration: 'enabled',
-  })],
-  exports: [RouterModule]
+  imports: [
+    RouterModule.forRoot(routes, {
+      preloadingStrategy: PreloadAllModules,
+      scrollPositionRestoration: 'enabled',
+    }),
+  ],
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

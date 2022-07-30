@@ -1,4 +1,4 @@
-@import "main";
+@import 'main';
 
 :host {
   display: flex;
@@ -12,7 +12,7 @@
   @include small-caps;
 }
 
-::ng-deep input[type="text"] {
+::ng-deep input[type='text'] {
   height: 40px;
   padding: spacing(8);
   border: none;
@@ -54,7 +54,7 @@
   margin-right: spacing(16);
 }
 
-::ng-deep input[type="radio"] {
+::ng-deep input[type='radio'] {
   margin: 0;
   margin-right: spacing(8);
   height: 20px;

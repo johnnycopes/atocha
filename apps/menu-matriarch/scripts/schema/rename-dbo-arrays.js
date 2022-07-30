@@ -13,7 +13,7 @@ Promise.all([
   db.collection('dishes').get(),
   db.collection('tags').get(),
 ]).then(([meals, dishes, tags]) => {
-  meals.forEach(doc => {
+  meals.forEach((doc) => {
     const data = doc.data();
     batch.set(doc.ref, {
       id: data.id,
@@ -25,7 +25,7 @@ Promise.all([
     });
   });
 
-  dishes.forEach(doc => {
+  dishes.forEach((doc) => {
     const data = doc.data();
     batch.set(doc.ref, {
       id: data.id,
@@ -44,7 +44,7 @@ Promise.all([
     });
   });
 
-  tags.forEach(doc => {
+  tags.forEach((doc) => {
     const data = doc.data();
     batch.set(doc.ref, {
       id: data.id,

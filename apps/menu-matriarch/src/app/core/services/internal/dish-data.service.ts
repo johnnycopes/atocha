@@ -12,29 +12,34 @@ import { BatchService } from './batch.service';
 import { DataService } from './data.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class DishDataService {
   private _endpoint = Endpoint.dishes;
 
   constructor(
     private _batchService: BatchService,
-    private _dataService: DataService,
-  ) { }
+    private _dataService: DataService
+  ) {}
 
   public getDish(id: string): Observable<DishDto | undefined> {
     return this._dataService.getOne<DishDto>(this._endpoint, id);
   }
 
   public getDishes(uid: string): Observable<DishDto[]> {
-    return this._dataService.getMany<DishDto>(this._endpoint, uid).pipe(
-      map(dishDtos => sort(dishDtos, dishDto => lower(dishDto.name)))
-    );
+    return this._dataService
+      .getMany<DishDto>(this._endpoint, uid)
+      .pipe(
+        map((dishDtos) => sort(dishDtos, (dishDto) => lower(dishDto.name)))
+      );
   }
 
-  public async createDish({ uid, dish }: {
-    uid: string,
-    dish: Partial<Omit<DishDto, 'id' | 'uid'>>
+  public async createDish({
+    uid,
+    dish,
+  }: {
+    uid: string;
+    dish: Partial<Omit<DishDto, 'id' | 'uid'>>;
   }): Promise<string> {
     const id = this._dataService.createId();
     const batch = this._batchService.createBatch();
@@ -50,7 +55,7 @@ export class DishDataService {
           initialTagIds: [],
           finalTagIds: dish.tagIds,
           entityId: id,
-        }),
+        })
       );
     }
     await batch.commit();
@@ -71,10 +76,10 @@ export class DishDataService {
       batch.updateMultiple(
         this._batchService.getTagUpdates({
           key: 'dishIds',
-          initialTagIds: dish.tags.map(tag => tag.id),
+          initialTagIds: dish.tags.map((tag) => tag.id),
           finalTagIds: data.tagIds,
           entityId: dish.id,
-        }),
+        })
       );
     }
     await batch.commit();
@@ -82,27 +87,25 @@ export class DishDataService {
 
   public async deleteDish(dish: Dish): Promise<void> {
     const batch = this._batchService.createBatch();
-    batch
-      .delete(this._endpoint, dish.id)
-      .updateMultiple([
-        ...this._batchService.getMenuContentsUpdates({
-          menuIds: dish.menuIds,
-          dishIds: [dish.id],
-          change: 'remove',
-        }),
-        ...this._batchService.getMealUpdates({
-          key: 'dishIds',
-          initialMealIds: dish.mealIds,
-          finalMealIds: [],
-          entityId: dish.id,
-        }),
-        ...this._batchService.getTagUpdates({
-          key: 'dishIds',
-          initialTagIds: dish.tags.map(tag => tag.id),
-          finalTagIds: [],
-          entityId: dish.id,
-        }),
-      ]);
+    batch.delete(this._endpoint, dish.id).updateMultiple([
+      ...this._batchService.getMenuContentsUpdates({
+        menuIds: dish.menuIds,
+        dishIds: [dish.id],
+        change: 'remove',
+      }),
+      ...this._batchService.getMealUpdates({
+        key: 'dishIds',
+        initialMealIds: dish.mealIds,
+        finalMealIds: [],
+        entityId: dish.id,
+      }),
+      ...this._batchService.getTagUpdates({
+        key: 'dishIds',
+        initialTagIds: dish.tags.map((tag) => tag.id),
+        finalTagIds: [],
+        entityId: dish.id,
+      }),
+    ]);
     await batch.commit();
   }
 }

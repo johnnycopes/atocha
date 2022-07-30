@@ -1,4 +1,10 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+} from '@angular/core';
 import { NgForm } from '@angular/forms';
 
 @Component({
@@ -13,7 +19,7 @@ export class InlineNameEditComponent {
   @Output() save = new EventEmitter<string>();
 
   public onCancel(): void {
-    this.cancel.emit()
+    this.cancel.emit();
   }
 
   public onSave(form: NgForm): void {

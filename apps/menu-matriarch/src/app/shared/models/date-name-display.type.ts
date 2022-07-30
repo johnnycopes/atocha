@@ -1,2 +1,1 @@
-export type DayNameDisplay =
-  'full';
+export type DayNameDisplay = 'full';

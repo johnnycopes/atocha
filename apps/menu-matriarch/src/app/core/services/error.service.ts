@@ -4,7 +4,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 type AppError = 'invalidMenuId';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ErrorService {
   private _error$ = new BehaviorSubject<AppError | undefined>(undefined);

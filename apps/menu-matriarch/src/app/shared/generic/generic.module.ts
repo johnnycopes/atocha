@@ -29,15 +29,8 @@ import { SmallCapsLabelComponent } from './small-caps-label/small-caps-label.com
 import { TabComponent } from './tabset/tab/tab.component';
 import { TabsetComponent } from './tabset/tabset.component';
 
-
-
 @NgModule({
-  imports: [
-    CommonModule,
-    DragDropModule,
-    FontAwesomeModule,
-    FormsModule,
-  ],
+  imports: [CommonModule, DragDropModule, FontAwesomeModule, FormsModule],
   declarations: [
     AlertComponent,
     AutofocusDirective,
@@ -89,6 +82,6 @@ import { TabsetComponent } from './tabset/tabset.component';
     SmallCapsLabelComponent,
     TabComponent,
     TabsetComponent,
-  ]
+  ],
 })
-export class GenericModule { }
+export class GenericModule {}

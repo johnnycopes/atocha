@@ -6,4 +6,4 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   styleUrls: ['./dish-placeholder.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DishPlaceholderComponent { }
+export class DishPlaceholderComponent {}

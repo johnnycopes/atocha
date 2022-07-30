@@ -1,4 +1,4 @@
-@import "main";
+@import 'main';
 
 .cdk-drag-preview {
   box-shadow: box-shadow(heaviest) !important;
@@ -10,7 +10,7 @@
   color: color($yellow, 9);
 
   &::after {
-    content: "";
+    content: '';
     position: absolute;
     top: 0;
     left: 0;

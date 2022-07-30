@@ -1,4 +1,9 @@
-import { Component, Input, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import {
+  Component,
+  Input,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+} from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
@@ -6,11 +11,13 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
   templateUrl: './checkbox.component.html',
   styleUrls: ['./checkbox.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [{
-    provide: NG_VALUE_ACCESSOR,
-    useExisting: CheckboxComponent,
-    multi: true
-  }]
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: CheckboxComponent,
+      multi: true,
+    },
+  ],
 })
 export class CheckboxComponent implements ControlValueAccessor {
   @Input() disabled = false;
@@ -20,7 +27,7 @@ export class CheckboxComponent implements ControlValueAccessor {
   public checked = false;
   private _onChangeFn: (value: boolean) => void = () => undefined;
 
-  constructor(private _changeDetectorRef: ChangeDetectorRef) { }
+  constructor(private _changeDetectorRef: ChangeDetectorRef) {}
 
   writeValue(value: boolean): void {
     this.checked = value;

@@ -9,16 +9,22 @@ export interface BatchUpdate {
 }
 
 export class Batch {
-
   constructor(
     private _batch: firebase.firestore.WriteBatch,
-    private _getDocRef: <T>(endpoint: string, id: string) => DocumentReference<T>,
-  ) { }
+    private _getDocRef: <T>(
+      endpoint: string,
+      id: string
+    ) => DocumentReference<T>
+  ) {}
 
-  public set<T>({ endpoint, id, data }: {
-    endpoint: string,
-    id: string,
-    data: T,
+  public set<T>({
+    endpoint,
+    id,
+    data,
+  }: {
+    endpoint: string;
+    id: string;
+    data: T;
   }): Batch {
     const docRef = this._getDocRef<T>(endpoint, id);
     this._batch.set<T>(docRef, data);
@@ -32,7 +38,9 @@ export class Batch {
   }
 
   public updateMultiple(updates: BatchUpdate[]): Batch {
-    updates.forEach(({ endpoint, id, data }) => this.update({ endpoint, id, data }));
+    updates.forEach(({ endpoint, id, data }) =>
+      this.update({ endpoint, id, data })
+    );
     return this;
   }
 

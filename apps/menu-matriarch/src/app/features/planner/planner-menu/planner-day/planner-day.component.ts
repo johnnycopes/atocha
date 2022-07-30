@@ -1,4 +1,11 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+} from '@angular/core';
 import { faPlusSquare, faTimes } from '@fortawesome/free-solid-svg-icons';
 
 import { Dish } from '@models/dish.interface';
@@ -16,10 +23,12 @@ export class PlannerDayComponent implements OnInit {
   @Input() day: Day | undefined;
   @Input()
   set dishes(value: Dish[]) {
-    this.dishIds = JSON.stringify(value.map(dish => dish.id));
+    this.dishIds = JSON.stringify(value.map((dish) => dish.id));
     this._dishes = value;
   }
-  get dishes(): Dish[] { return this._dishes; }
+  get dishes(): Dish[] {
+    return this._dishes;
+  }
   @Input() fallbackText = '';
   @Input() orientation: Orientation = 'horizontal';
   @Output() clear = new EventEmitter<void>();

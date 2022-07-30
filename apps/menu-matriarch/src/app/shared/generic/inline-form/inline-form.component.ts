@@ -1,4 +1,12 @@
-import { Component, ChangeDetectionStrategy, EventEmitter, Output, ViewEncapsulation, HostBinding, Input } from '@angular/core';
+import {
+  Component,
+  ChangeDetectionStrategy,
+  EventEmitter,
+  Output,
+  ViewEncapsulation,
+  HostBinding,
+  Input,
+} from '@angular/core';
 import { faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
 
 @Component({

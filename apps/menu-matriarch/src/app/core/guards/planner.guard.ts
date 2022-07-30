@@ -6,18 +6,19 @@ import { first, map } from 'rxjs/operators';
 import { RouterService } from '@services/router.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class PlannerGuard implements CanActivate {
-  constructor(
-    private _router: Router,
-    private _routerService: RouterService
-  ) { }
+  constructor(private _router: Router, private _routerService: RouterService) {}
 
-  canActivate(): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+  canActivate():
+    | Observable<boolean | UrlTree>
+    | Promise<boolean | UrlTree>
+    | boolean
+    | UrlTree {
     return this._routerService.getPlannerRoute().pipe(
       first(),
-      map(route => {
+      map((route) => {
         if (route.length > 1) {
           return this._router.createUrlTree(route);
         }

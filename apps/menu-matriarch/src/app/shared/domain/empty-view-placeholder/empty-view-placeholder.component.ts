@@ -4,7 +4,7 @@ import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
   selector: 'app-empty-view-placeholder',
   templateUrl: './empty-view-placeholder.component.html',
   styleUrls: ['./empty-view-placeholder.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class EmptyViewPlaceholderComponent {
   @Input() headerText = '';

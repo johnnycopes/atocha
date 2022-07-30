@@ -1,4 +1,10 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+} from '@angular/core';
 
 import { Menu } from '@models/menu.interface';
 import { Day } from '@models/day.type';
@@ -13,11 +19,11 @@ export class PlannerDishesComponent {
   @Input() menu: Menu | undefined;
   @Output() nameDblClick = new EventEmitter<void>();
 
-  constructor(private _menuService: MenuService) { }
+  constructor(private _menuService: MenuService) {}
 
   public async onDayChange(
     menu: Menu | undefined,
-    { id, day, selected }: { id: string, day: Day, selected: boolean }
+    { id, day, selected }: { id: string; day: Day; selected: boolean }
   ): Promise<void> {
     if (!menu) {
       return;
@@ -26,7 +32,7 @@ export class PlannerDishesComponent {
       menu,
       dishIds: [id],
       day,
-      selected
+      selected,
     });
   }
 }

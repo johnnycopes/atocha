@@ -16,21 +16,21 @@ import { RouterService } from '@services/router.service';
 export class PlannerComponent {
   public view$ = this._routerService.activePlannerView$;
   public menu$ = this._route.paramMap.pipe(
-    map(paramMap => paramMap.get('menuId')),
-    switchMap(menuId => {
+    map((paramMap) => paramMap.get('menuId')),
+    switchMap((menuId) => {
       if (!menuId) {
         return of<'INVALID'>('INVALID');
       }
-      return this._menuService.getMenu(menuId)
+      return this._menuService.getMenu(menuId);
     }),
-    map(menu => menu ? menu : 'INVALID')
+    map((menu) => (menu ? menu : 'INVALID'))
   );
 
   constructor(
     private _route: ActivatedRoute,
     private _menuService: MenuService,
-    private _routerService: RouterService,
-  ) { }
+    private _routerService: RouterService
+  ) {}
 
   public updatePlannerView(view: PlannerView): void {
     this._routerService.updatePlannerView(view);

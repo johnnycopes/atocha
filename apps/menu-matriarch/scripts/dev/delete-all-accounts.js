@@ -5,7 +5,7 @@ const { TEST_UID } = require('../../cypress.env.json');
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
-  databaseURL: 'https://menu-matriarch-dev.firebaseio.com'
+  databaseURL: 'https://menu-matriarch-dev.firebaseio.com',
 });
 
 function deleteAllUserAccounts(nextPageToken) {
@@ -13,7 +13,9 @@ function deleteAllUserAccounts(nextPageToken) {
     throw new Error('STOP! This script is targeting the wrong environment.');
   }
 
-  admin.auth().listUsers(100, nextPageToken)
+  admin
+    .auth()
+    .listUsers(100, nextPageToken)
     .then((listUsersResult) => {
       listUsersResult.users.forEach((userRecord) => {
         const uid = userRecord.toJSON().uid;

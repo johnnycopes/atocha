@@ -14,7 +14,7 @@ import { trackBySelf } from '@utility/domain/track-by-functions';
 })
 export class DishDetailsComponent {
   private _id$ = this._route.paramMap.pipe(
-    map(paramMap => paramMap.get('id'))
+    map((paramMap) => paramMap.get('id'))
   );
   public dish$ = this._route.params.pipe(
     switchMap(({ id }) => {
@@ -30,18 +30,20 @@ export class DishDetailsComponent {
     private _route: ActivatedRoute,
     private _router: Router,
     private _dishService: DishService
-  ) { }
+  ) {}
 
   public onDelete(): void {
-    this._id$.pipe(
-      first(),
-      concatMap(id => {
-        if (!id) {
-          return of(undefined);
-        }
-        return this._dishService.deleteDish(id);
-      }),
-      tap(() => this._router.navigate(['..'], { relativeTo: this._route }))
-    ).subscribe();
+    this._id$
+      .pipe(
+        first(),
+        concatMap((id) => {
+          if (!id) {
+            return of(undefined);
+          }
+          return this._dishService.deleteDish(id);
+        }),
+        tap(() => this._router.navigate(['..'], { relativeTo: this._route }))
+      )
+      .subscribe();
   }
 }

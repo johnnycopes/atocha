@@ -4,7 +4,10 @@ import { Dish } from '@models/dish.interface';
 import { FilteredDishesGroup } from '@models/filtered-dishes.interface';
 import { Orientation } from '@models/orientation.type';
 import { getDishTypes } from '@utility/domain/get-dish-types';
-import { dishTrackByFn, groupTrackByFn } from '@utility/domain/track-by-functions';
+import {
+  dishTrackByFn,
+  groupTrackByFn,
+} from '@utility/domain/track-by-functions';
 
 @Component({
   selector: 'app-meal-summary',
@@ -15,9 +18,9 @@ import { dishTrackByFn, groupTrackByFn } from '@utility/domain/track-by-function
 export class MealSummaryComponent {
   @Input()
   set dishes(dishes: Dish[]) {
-    this.dishesGroups = getDishTypes().map(type => ({
+    this.dishesGroups = getDishTypes().map((type) => ({
       type,
-      dishes: dishes.filter(dish => dish.type === type),
+      dishes: dishes.filter((dish) => dish.type === type),
     }));
     this.showFallback = !dishes.length;
   }
@@ -27,5 +30,5 @@ export class MealSummaryComponent {
   public dishesGroups: FilteredDishesGroup[] = [];
   public showFallback = true;
   public readonly groupTrackByFn = groupTrackByFn;
-  public readonly dishTrackByFn = dishTrackByFn
+  public readonly dishTrackByFn = dishTrackByFn;
 }

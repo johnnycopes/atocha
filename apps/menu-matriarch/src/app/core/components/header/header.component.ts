@@ -9,12 +9,12 @@ import { RouterService } from '@services/router.service';
   selector: 'header[app-header]',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderComponent {
   public Route: typeof Route = Route;
   public showDemo = !environment.production;
   public plannerRoute$ = this._routerService.getPlannerRoute();
 
-  constructor(private _routerService: RouterService) { }
+  constructor(private _routerService: RouterService) {}
 }

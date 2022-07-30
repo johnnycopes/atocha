@@ -1,4 +1,10 @@
-import { Component, Input, ChangeDetectionStrategy, HostBinding, ViewEncapsulation } from '@angular/core';
+import {
+  Component,
+  Input,
+  ChangeDetectionStrategy,
+  HostBinding,
+  ViewEncapsulation,
+} from '@angular/core';
 import { IconDefinition } from '@fortawesome/fontawesome-common-types';
 
 type ButtonStyle = 'primary' | 'secondary' | 'ternary' | 'danger';

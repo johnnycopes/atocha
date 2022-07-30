@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  OnDestroy,
+  OnInit,
+} from '@angular/core';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { debounceTime, switchMap, takeUntil } from 'rxjs/operators';
@@ -26,15 +31,17 @@ export class SettingsComponent implements OnInit, OnDestroy {
   constructor(
     private _router: Router,
     private _authService: AuthService,
-    private _userService: UserService,
-  ) { }
+    private _userService: UserService
+  ) {}
 
   public ngOnInit(): void {
-    this.updateAction$.pipe(
-      debounceTime(200),
-      switchMap(update => this._userService.updatePreferences(update)),
-      takeUntil(this._destroy$),
-    ).subscribe();
+    this.updateAction$
+      .pipe(
+        debounceTime(200),
+        switchMap((update) => this._userService.updatePreferences(update)),
+        takeUntil(this._destroy$)
+      )
+      .subscribe();
   }
 
   public ngOnDestroy(): void {

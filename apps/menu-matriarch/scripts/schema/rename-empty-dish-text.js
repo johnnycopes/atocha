@@ -10,8 +10,8 @@ const batch = db.batch();
 
 db.collection('users')
   .get()
-  .then(snapshot => {
-    snapshot.forEach(doc => {
+  .then((snapshot) => {
+    snapshot.forEach((doc) => {
       const data = doc.data();
       const preferences = data.preferences;
       batch.update(doc.ref, {
@@ -27,6 +27,6 @@ db.collection('users')
     });
     batch.commit();
   })
-  .catch(err => {
-    console.log('error getting users', err)
+  .catch((err) => {
+    console.log('error getting users', err);
   });

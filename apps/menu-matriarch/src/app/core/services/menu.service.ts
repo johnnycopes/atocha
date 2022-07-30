@@ -15,17 +15,16 @@ import { MenuDataService } from './internal/menu-data.service';
 import { UserService } from './user.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class MenuService {
-
   constructor(
     private _authService: AuthService,
     private _dishService: DishService,
     private _localStorageService: LocalStorageService,
     private _menuDataService: MenuDataService,
-    private _userService: UserService,
-  ) { }
+    private _userService: UserService
+  ) {}
 
   public getMenu(id: string): Observable<Menu | undefined> {
     return combineLatest([
@@ -45,7 +44,7 @@ export class MenuService {
   public getMenus(): Observable<Menu[]> {
     return this._authService.uid$.pipe(
       first(),
-      concatMap(uid => {
+      concatMap((uid) => {
         if (uid) {
           return combineLatest([
             this._menuDataService.getMenus(uid),
@@ -56,8 +55,10 @@ export class MenuService {
               if (!preferences) {
                 return [];
               }
-              return menuDtos.map(menuDto => this._transformDto({ menuDto, dishes, preferences }));
-            }),
+              return menuDtos.map((menuDto) =>
+                this._transformDto({ menuDto, dishes, preferences })
+              );
+            })
           );
         }
         return of([]);
@@ -65,10 +66,12 @@ export class MenuService {
     );
   }
 
-  public createMenu(menu: Partial<Omit<MenuDto, 'id' | 'uid' | 'startDay'>>): Observable<string | undefined> {
+  public createMenu(
+    menu: Partial<Omit<MenuDto, 'id' | 'uid' | 'startDay'>>
+  ): Observable<string | undefined> {
     return this._userService.getUser().pipe(
       first(),
-      concatMap(async user => {
+      concatMap(async (user) => {
         if (user) {
           const id = await this._menuDataService.createMenu({
             uid: user.uid,
@@ -91,29 +94,41 @@ export class MenuService {
     return this._menuDataService.updateMenu(id, { startDay });
   }
 
-  public updateMenuContents({ menu, day, dishIds, selected }: {
-    menu: Menu,
-    day: Day,
-    dishIds: string[],
-    selected: boolean,
+  public updateMenuContents({
+    menu,
+    day,
+    dishIds,
+    selected,
+  }: {
+    menu: Menu;
+    day: Day;
+    dishIds: string[];
+    selected: boolean;
   }): Promise<void> {
-    return this._menuDataService.updateMenuContents({ menu, day, dishIds, selected });
+    return this._menuDataService.updateMenuContents({
+      menu,
+      day,
+      dishIds,
+      selected,
+    });
   }
 
   public async deleteMenu(id?: string): Promise<void> {
     if (id) {
-      this.getMenu(id).pipe(
-        first(),
-        tap(async menu => {
-          if (!menu) {
-            return;
-          }
-          await this._menuDataService.deleteMenu(menu);
-          if (id === this._localStorageService.getMenuId()) {
-            this._localStorageService.deleteMenuId();
-          }
-        })
-      ).subscribe();
+      this.getMenu(id)
+        .pipe(
+          first(),
+          tap(async (menu) => {
+            if (!menu) {
+              return;
+            }
+            await this._menuDataService.deleteMenu(menu);
+            if (id === this._localStorageService.getMenuId()) {
+              this._localStorageService.deleteMenuId();
+            }
+          })
+        )
+        .subscribe();
     }
   }
 
@@ -121,19 +136,23 @@ export class MenuService {
     return this._menuDataService.deleteMenuContents(menu, day);
   }
 
-  private _transformDto({ menuDto, dishes, preferences }: {
-    menuDto: MenuDto,
-    dishes: Dish[],
-    preferences: UserPreferences,
+  private _transformDto({
+    menuDto,
+    dishes,
+    preferences,
+  }: {
+    menuDto: MenuDto;
+    dishes: Dish[];
+    preferences: UserPreferences;
   }): Menu {
     return {
       ...menuDto,
-      entries: getDays(menuDto.startDay)
-        .map(day => ({
-          day,
-          dishes: dishes.filter(dish => menuDto.contents[day].includes(dish.id)),
-        })
-      ),
+      entries: getDays(menuDto.startDay).map((day) => ({
+        day,
+        dishes: dishes.filter((dish) =>
+          menuDto.contents[day].includes(dish.id)
+        ),
+      })),
       orientation: preferences?.mealOrientation ?? 'horizontal',
       fallbackText: preferences?.emptyMealText ?? '',
     };

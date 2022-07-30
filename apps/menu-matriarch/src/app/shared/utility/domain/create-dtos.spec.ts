@@ -1,4 +1,10 @@
-import { createDishDto, createMealDto, createMenuDto, createTagDto, createUserDto } from "./create-dtos";
+import {
+  createDishDto,
+  createMealDto,
+  createMenuDto,
+  createTagDto,
+  createUserDto,
+} from './create-dtos';
 
 describe('createDtos', () => {
   describe('createUserDto', () => {
@@ -13,8 +19,8 @@ describe('createDtos', () => {
           dayNameDisplay: 'full',
           defaultMenuStartDay: 'Monday',
           emptyMealText: 'undecided',
-          mealOrientation: 'horizontal'
-        }
+          mealOrientation: 'horizontal',
+        },
       });
     });
 
@@ -28,7 +34,7 @@ describe('createDtos', () => {
           dayNameDisplay: 'full',
           defaultMenuStartDay: 'Wednesday',
           emptyMealText: 'nothing',
-          mealOrientation: 'vertical'
+          mealOrientation: 'vertical',
         },
       });
       expect(user).toEqual({
@@ -40,7 +46,7 @@ describe('createDtos', () => {
           dayNameDisplay: 'full',
           defaultMenuStartDay: 'Wednesday',
           emptyMealText: 'nothing',
-          mealOrientation: 'vertical'
+          mealOrientation: 'vertical',
         },
       });
     });
@@ -75,7 +81,13 @@ describe('createDtos', () => {
         favorited: true,
         startDay: 'Saturday',
         contents: {
-          Monday: [], Tuesday: ['1'], Wednesday: [], Thursday: ['2'], Friday: [], Saturday: [], Sunday: ['3']
+          Monday: [],
+          Tuesday: ['1'],
+          Wednesday: [],
+          Thursday: ['2'],
+          Friday: [],
+          Saturday: [],
+          Sunday: ['3'],
         },
       });
       expect(menu).toEqual({
@@ -85,8 +97,14 @@ describe('createDtos', () => {
         favorited: true,
         startDay: 'Saturday',
         contents: {
-          Monday: [], Tuesday: ['1'], Wednesday: [], Thursday: ['2'], Friday: [], Saturday: [], Sunday: ['3'],
-        }
+          Monday: [],
+          Tuesday: ['1'],
+          Wednesday: [],
+          Thursday: ['2'],
+          Friday: [],
+          Saturday: [],
+          Sunday: ['3'],
+        },
       });
     });
   });

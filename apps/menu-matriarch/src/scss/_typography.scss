@@ -1,6 +1,7 @@
-$font-stack: "Krub", frutiger, "Frutiger Linotype", univers, calibri, "Gill Sans",
-  "Gill Sans MT", "Myriad Pro", myriad, "DejaVu Sans Condensed", "Liberation Sans",
-  "Nimbus Sans L", tahoma, geneva, "Helvetica Neue", helvetica, arial, sans-serif;
+$font-stack: 'Krub', frutiger, 'Frutiger Linotype', univers, calibri,
+  'Gill Sans', 'Gill Sans MT', 'Myriad Pro', myriad, 'DejaVu Sans Condensed',
+  'Liberation Sans', 'Nimbus Sans L', tahoma, geneva, 'Helvetica Neue',
+  helvetica, arial, sans-serif;
 
 /*
 Use these values for font-sizing. A hand-crafted type scale
@@ -9,7 +10,8 @@ Use these values for font-sizing. A hand-crafted type scale
 $font-size: (
   12: 12px,
   14: 14px,
-  16: 16px, // <=== base value
+  16: 16px,
+  // <=== base value
   18: 18px,
   20: 20px,
   24: 24px,
@@ -19,19 +21,19 @@ $font-size: (
   60: 60px,
   72: 72px,
   96: 96px,
-  128: 128px
+  128: 128px,
 );
 
 $font-weight: (
   normal: 400,
   semibold: 600,
-  bold: 700
+  bold: 700,
 );
 
 $line-height: (
   small: 1,
   normal: 1.25,
-  large: 1.5
+  large: 1.5,
 );
 
 @mixin small-caps() {

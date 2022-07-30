@@ -14,6 +14,6 @@ export class AppComponent {
 
   constructor(
     private _errorService: ErrorService,
-    private _routerService: RouterService,
-  ) { }
+    private _routerService: RouterService
+  ) {}
 }

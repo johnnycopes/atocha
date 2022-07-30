@@ -1,10 +1,15 @@
-import { UserDto } from "@models/dtos/user-dto.interface";
-import { MenuDto } from "@models/dtos/menu-dto.interface";
-import { MealDto } from "@models/dtos/meal-dto.interface";
-import { DishDto } from "@models/dtos/dish-dto.interface";
-import { TagDto } from "@models/dtos/tag-dto.interface";
+import { UserDto } from '@models/dtos/user-dto.interface';
+import { MenuDto } from '@models/dtos/menu-dto.interface';
+import { MealDto } from '@models/dtos/meal-dto.interface';
+import { DishDto } from '@models/dtos/dish-dto.interface';
+import { TagDto } from '@models/dtos/tag-dto.interface';
 
-export function createUserDto({ uid, name, email, preferences }: Partial<UserDto>): UserDto {
+export function createUserDto({
+  uid,
+  name,
+  email,
+  preferences,
+}: Partial<UserDto>): UserDto {
   return {
     uid: uid ?? '',
     name: name ?? '',
@@ -16,10 +21,17 @@ export function createUserDto({ uid, name, email, preferences }: Partial<UserDto
       emptyMealText: preferences?.emptyMealText ?? 'undecided',
       mealOrientation: preferences?.mealOrientation ?? 'horizontal',
     },
-  }
+  };
 }
 
-export function createMenuDto({ id, uid, name, favorited, startDay, contents }: Partial<MenuDto>): MenuDto {
+export function createMenuDto({
+  id,
+  uid,
+  name,
+  favorited,
+  startDay,
+  contents,
+}: Partial<MenuDto>): MenuDto {
   return {
     id: id ?? '',
     uid: uid ?? '',
@@ -38,9 +50,14 @@ export function createMenuDto({ id, uid, name, favorited, startDay, contents }: 
   };
 }
 
-export function createMealDto(
-  { id, uid, name, description, dishIds, tagIds }: Partial<MealDto>
-): MealDto {
+export function createMealDto({
+  id,
+  uid,
+  name,
+  description,
+  dishIds,
+  tagIds,
+}: Partial<MealDto>): MealDto {
   return {
     id: id ?? '',
     uid: uid ?? '',
@@ -51,9 +68,21 @@ export function createMealDto(
   };
 }
 
-export function createDishDto(
-  { id, uid, type, name, favorited, description, link, notes, usages, menuIds, mealIds, ingredientIds, tagIds }: Partial<DishDto>
-): DishDto {
+export function createDishDto({
+  id,
+  uid,
+  type,
+  name,
+  favorited,
+  description,
+  link,
+  notes,
+  usages,
+  menuIds,
+  mealIds,
+  ingredientIds,
+  tagIds,
+}: Partial<DishDto>): DishDto {
   return {
     id: id ?? '',
     uid: uid ?? '',
@@ -71,7 +100,14 @@ export function createDishDto(
   };
 }
 
-export function createTagDto({ id, uid, name, color, mealIds, dishIds }: Partial<TagDto>): TagDto {
+export function createTagDto({
+  id,
+  uid,
+  name,
+  color,
+  mealIds,
+  dishIds,
+}: Partial<TagDto>): TagDto {
   return {
     id: id ?? '',
     uid: uid ?? '',

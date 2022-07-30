@@ -1,4 +1,4 @@
-@import "main";
+@import 'main';
 
 :host {
   display: inline-block;
@@ -14,7 +14,7 @@
 
   // Default checkmark (unchecked)
   &::after {
-    content: "";
+    content: '';
     position: absolute;
     display: none;
   }

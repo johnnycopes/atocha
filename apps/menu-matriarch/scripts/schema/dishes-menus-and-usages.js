@@ -10,13 +10,13 @@ const batch = db.batch();
 
 let menus = [];
 let dishes = [];
-let usagesDict =  {};
+let usagesDict = {};
 let menusDict = {};
 
 db.collection('menus')
   .get()
-  .then(snapshot => {
-    snapshot.forEach(doc => {
+  .then((snapshot) => {
+    snapshot.forEach((doc) => {
       menus.push(doc.data());
     });
 
@@ -26,21 +26,21 @@ db.collection('menus')
           usagesDict[id] = usagesDict[id] + 1 || 1;
           if (!menusDict[id]) {
             menusDict[id] = [menu.id];
-          } else if (!(menusDict[id].includes(menu.id))) {
+          } else if (!menusDict[id].includes(menu.id)) {
             menusDict[id] = [...menusDict[id], menu.id];
           }
         }
       }
     }
   })
-  .catch(err => {
-    console.log('error getting menus', err)
+  .catch((err) => {
+    console.log('error getting menus', err);
   });
 
 db.collection('dishes')
   .get()
-  .then(snapshot => {
-    snapshot.forEach(doc => {
+  .then((snapshot) => {
+    snapshot.forEach((doc) => {
       batch.update(doc.ref, {
         menus: menusDict[doc.id] || [],
         usages: usagesDict[doc.id] || 0,
@@ -48,6 +48,6 @@ db.collection('dishes')
     });
     batch.commit();
   })
-  .catch(err => {
-    console.log('error getting dishes', err)
+  .catch((err) => {
+    console.log('error getting dishes', err);
   });

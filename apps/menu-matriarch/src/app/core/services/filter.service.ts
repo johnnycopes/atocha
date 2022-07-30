@@ -15,7 +15,7 @@ interface State {
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class FilterService {
   private _state$ = new BehaviorSubject<State>({
@@ -29,76 +29,100 @@ export class FilterService {
   }
 
   public togglePanel(): void {
-    this._state$.pipe(
-      first(),
-    ).subscribe(state => this._state$.next({ ...state, panel: !state.panel }));
+    this._state$
+      .pipe(first())
+      .subscribe((state) =>
+        this._state$.next({ ...state, panel: !state.panel })
+      );
   }
 
   public updateTagIds(tagIds: string[]): void {
-    this._state$.pipe(
-      first(),
-    ).subscribe(state => this._state$.next({ ...state, tagIds }));
+    this._state$
+      .pipe(first())
+      .subscribe((state) => this._state$.next({ ...state, tagIds }));
   }
 
   public updateText(text: string): void {
-    this._state$.pipe(
-      first(),
-    ).subscribe(state => this._state$.next({ ...state, text }));
+    this._state$
+      .pipe(first())
+      .subscribe((state) => this._state$.next({ ...state, text }));
   }
 
-  public filterMeals({ meals, text, tagIds }: {
-    meals: Meal[],
-    text: string,
-    tagIds: string[],
+  public filterMeals({
+    meals,
+    text,
+    tagIds,
+  }: {
+    meals: Meal[];
+    text: string;
+    tagIds: string[];
   }): Meal[] {
-    return meals.filter(meal => {
-      return this._filterEntity({
-        entityName: meal.name,
-        entityDescription: meal.description,
-        entityTagIds: meal.tags.map(({ id }) => id),
-        filterText: text,
-        filterTagIds: tagIds,
-      }) || meal.dishes.some(dish => this._filterEntity({
-        entityName: dish.name,
-        entityDescription: dish.description,
-        entityTagIds: [],
-        filterText: text,
-        filterTagIds: tagIds,
-      }));
+    return meals.filter((meal) => {
+      return (
+        this._filterEntity({
+          entityName: meal.name,
+          entityDescription: meal.description,
+          entityTagIds: meal.tags.map(({ id }) => id),
+          filterText: text,
+          filterTagIds: tagIds,
+        }) ||
+        meal.dishes.some((dish) =>
+          this._filterEntity({
+            entityName: dish.name,
+            entityDescription: dish.description,
+            entityTagIds: [],
+            filterText: text,
+            filterTagIds: tagIds,
+          })
+        )
+      );
     });
   }
 
-  public filterDishes({ dishes, text, tagIds }: {
-    dishes: Dish[],
-    text: string,
-    tagIds: string[],
+  public filterDishes({
+    dishes,
+    text,
+    tagIds,
+  }: {
+    dishes: Dish[];
+    text: string;
+    tagIds: string[];
   }): FilteredDishesGroup[] {
-    return getDishTypes().map(type => ({
+    return getDishTypes().map((type) => ({
       type,
-      dishes: dishes.filter(dish =>
-        dish.type === type && this._filterEntity({
-          entityName: dish.name,
-          entityDescription: dish.description,
-          entityTagIds: dish.tags.map(({ id }) => id),
-          filterText: text,
-          filterTagIds: tagIds,
-        })
+      dishes: dishes.filter(
+        (dish) =>
+          dish.type === type &&
+          this._filterEntity({
+            entityName: dish.name,
+            entityDescription: dish.description,
+            entityTagIds: dish.tags.map(({ id }) => id),
+            filterText: text,
+            filterTagIds: tagIds,
+          })
       ),
-      placeholderText: `No ${type !== 'dessert'
-        ? `${type} dishes`
-        : `${type}s`} to display`,
+      placeholderText: `No ${
+        type !== 'dessert' ? `${type} dishes` : `${type}s`
+      } to display`,
     }));
   }
 
-  private _filterEntity({ entityName, entityDescription, entityTagIds, filterText, filterTagIds }: {
-    entityName: string,
-    entityDescription: string,
-    entityTagIds: string[],
-    filterText: string,
-    filterTagIds: string[],
+  private _filterEntity({
+    entityName,
+    entityDescription,
+    entityTagIds,
+    filterText,
+    filterTagIds,
+  }: {
+    entityName: string;
+    entityDescription: string;
+    entityTagIds: string[];
+    filterText: string;
+    filterTagIds: string[];
   }): boolean {
     const entityHasText = includes([entityName, entityDescription], filterText);
-    const entityHasTags = filterTagIds.length === 0 || includes(filterTagIds, entityTagIds);
+    const entityHasTags =
+      filterTagIds.length === 0 || includes(filterTagIds, entityTagIds);
     return entityHasText && entityHasTags;
   }
 }

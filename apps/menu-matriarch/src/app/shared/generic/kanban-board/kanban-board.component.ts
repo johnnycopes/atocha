@@ -1,7 +1,18 @@
-import { Component, Input, ChangeDetectionStrategy, Output, EventEmitter, TemplateRef } from '@angular/core';
+import {
+  Component,
+  Input,
+  ChangeDetectionStrategy,
+  Output,
+  EventEmitter,
+  TemplateRef,
+} from '@angular/core';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 
-import { IKanbanBoardItemAdd, IKanbanBoardActionClick, IKanbanBoardItemMove } from './kanban-board-column/kanban-board-column.component';
+import {
+  IKanbanBoardItemAdd,
+  IKanbanBoardActionClick,
+  IKanbanBoardItemMove,
+} from './kanban-board-column/kanban-board-column.component';
 import { trackByFactory } from '@utility/generic/track-by-factory';
 
 export interface KanbanBoard<TColumn, TItem> {
@@ -21,7 +32,7 @@ export interface KanbanColumnMove {
   selector: 'app-kanban-board',
   templateUrl: './kanban-board.component.html',
   styleUrls: ['./kanban-board.scss', './kanban-board.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class KanbanBoardComponent<TColumn, TItem> {
   @Input() columns: TColumn[] = [];
@@ -39,7 +50,8 @@ export class KanbanBoardComponent<TColumn, TItem> {
   @Output() columnMove: EventEmitter<KanbanColumnMove> = new EventEmitter();
   @Output() itemAdd: EventEmitter<IKanbanBoardItemAdd> = new EventEmitter();
   @Output() itemMove: EventEmitter<IKanbanBoardItemMove> = new EventEmitter();
-  @Output() actionClick: EventEmitter<IKanbanBoardActionClick> = new EventEmitter();
+  @Output() actionClick: EventEmitter<IKanbanBoardActionClick> =
+    new EventEmitter();
   public moving = false;
   public trackByFn = trackByFactory(this.config.getColumnId);
 
@@ -52,7 +64,12 @@ export class KanbanBoardComponent<TColumn, TItem> {
   }
 
   public onDropColumn(event: CdkDragDrop<TColumn[]>): void {
-    const { item, previousIndex, currentIndex, container }: CdkDragDrop<TColumn[]> = event;
+    const {
+      item,
+      previousIndex,
+      currentIndex,
+      container,
+    }: CdkDragDrop<TColumn[]> = event;
     moveItemInArray(container.data, previousIndex, currentIndex);
     this.columnMove.emit({
       columnId: item.data,

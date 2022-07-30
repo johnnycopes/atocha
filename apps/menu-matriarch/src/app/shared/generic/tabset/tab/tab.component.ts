@@ -1,4 +1,11 @@
-import { Component, EventEmitter, Input, ChangeDetectionStrategy, ChangeDetectorRef, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Output,
+} from '@angular/core';
 
 import { fadeInAnimation } from '@utility/domain/animations';
 
@@ -6,7 +13,7 @@ import { fadeInAnimation } from '@utility/domain/animations';
   selector: 'app-tab',
   templateUrl: './tab.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  animations: [fadeInAnimation]
+  animations: [fadeInAnimation],
 })
 export class TabComponent {
   @Input()
@@ -15,7 +22,9 @@ export class TabComponent {
     this.nameChange.emit(value);
     this._changeDetectorRef.markForCheck();
   }
-  get name(): string { return this._name; }
+  get name(): string {
+    return this._name;
+  }
   private _name = '';
 
   @Input()
@@ -24,11 +33,13 @@ export class TabComponent {
     this.selectedChange.emit(value);
     this._changeDetectorRef.markForCheck();
   }
-  get selected(): boolean { return this._selected; }
+  get selected(): boolean {
+    return this._selected;
+  }
   private _selected = false;
 
   @Output() nameChange = new EventEmitter<string>();
   @Output() selectedChange = new EventEmitter<boolean>();
 
-  constructor(private _changeDetectorRef: ChangeDetectorRef) { }
+  constructor(private _changeDetectorRef: ChangeDetectorRef) {}
 }

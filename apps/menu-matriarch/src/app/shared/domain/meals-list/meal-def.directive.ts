@@ -11,10 +11,8 @@ export interface MealDefContext {
 }
 
 @Directive({
-  selector: '[appMealDef]'
+  selector: '[appMealDef]',
 })
 export class MealDefDirective {
-
-  constructor(public template: TemplateRef<MealDefContext>) { }
-
+  constructor(public template: TemplateRef<MealDefContext>) {}
 }

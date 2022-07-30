@@ -11,6 +11,6 @@ admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
 });
 
-(async function() {
+(async function () {
   deleteData(admin, uid);
 })();

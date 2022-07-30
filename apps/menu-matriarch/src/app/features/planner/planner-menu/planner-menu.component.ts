@@ -18,8 +18,8 @@ export class PlannerMenuComponent {
 
   constructor(
     private _menuService: MenuService,
-    private _printService: PrintService,
-  ) { }
+    private _printService: PrintService
+  ) {}
 
   public onPrint(): void {
     if (!this.menu) {

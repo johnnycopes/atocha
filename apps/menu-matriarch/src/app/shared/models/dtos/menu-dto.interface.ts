@@ -1,4 +1,4 @@
-import { Day } from "../day.type";
+import { Day } from '../day.type';
 
 export interface MenuDto {
   id: string;

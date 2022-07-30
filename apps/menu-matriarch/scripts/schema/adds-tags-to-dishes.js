@@ -10,14 +10,14 @@ const batch = db.batch();
 
 db.collection('dishes')
   .get()
-  .then(snapshot => {
-    snapshot.forEach(doc => {
+  .then((snapshot) => {
+    snapshot.forEach((doc) => {
       batch.update(doc.ref, {
         tags: [],
       });
     });
     batch.commit();
   })
-  .catch(err => {
-    console.log('error getting dishes', err)
+  .catch((err) => {
+    console.log('error getting dishes', err);
   });

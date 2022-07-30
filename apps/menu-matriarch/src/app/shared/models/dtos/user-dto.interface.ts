@@ -1,4 +1,4 @@
-import { UserPreferences } from "../user-preferences.interface";
+import { UserPreferences } from '../user-preferences.interface';
 
 export interface UserDto {
   uid: string;

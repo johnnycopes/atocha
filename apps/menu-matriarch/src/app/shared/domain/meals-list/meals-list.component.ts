@@ -1,4 +1,11 @@
-import { Component, ChangeDetectionStrategy, ContentChild, TemplateRef, EventEmitter, Output } from '@angular/core';
+import {
+  Component,
+  ChangeDetectionStrategy,
+  ContentChild,
+  TemplateRef,
+  EventEmitter,
+  Output,
+} from '@angular/core';
 import { combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -15,7 +22,7 @@ import { Meal } from '@models/meal.interface';
   selector: 'app-meals-list',
   templateUrl: './meals-list.component.html',
   styleUrls: ['./meals-list.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MealsListComponent {
   @Output() nameDblClick = new EventEmitter<void>();
@@ -28,11 +35,13 @@ export class MealsListComponent {
   ]).pipe(
     map(([meals, tags, preferences, filterState, activeMealId]) => {
       const filteredMeals = this._filterService.filterMeals({
-        meals, text: filterState.text, tagIds: filterState.tagIds,
+        meals,
+        text: filterState.text,
+        tagIds: filterState.tagIds,
       });
       return {
         filteredMeals,
-        activeMeal: meals.find(meal => meal.id === activeMealId),
+        activeMeal: meals.find((meal) => meal.id === activeMealId),
         tags,
         preferences,
         searchText: filterState.text,
@@ -56,6 +65,6 @@ export class MealsListComponent {
     private _mealService: MealService,
     private _routerService: RouterService,
     private _tagService: TagService,
-    private _userService: UserService,
-  ) { }
+    private _userService: UserService
+  ) {}
 }

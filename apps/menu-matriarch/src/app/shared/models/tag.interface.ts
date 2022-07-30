@@ -1,3 +1,3 @@
-import { TagDto } from "./dtos/tag-dto.interface";
+import { TagDto } from './dtos/tag-dto.interface';
 
 export type Tag = TagDto;

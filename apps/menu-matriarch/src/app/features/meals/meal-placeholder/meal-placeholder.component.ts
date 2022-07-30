@@ -4,6 +4,6 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
   selector: 'app-meal-placeholder',
   templateUrl: './meal-placeholder.component.html',
   styleUrls: ['./meal-placeholder.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MealPlaceholderComponent {}

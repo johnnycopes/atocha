@@ -1,4 +1,4 @@
-import { recordToArray } from "./record-to-array";
+import { recordToArray } from './record-to-array';
 
 describe('recordToArray', () => {
   it('converts an empty record to an empty array', () => {
@@ -6,18 +6,22 @@ describe('recordToArray', () => {
   });
 
   it('converts a record of strings to an array of strings', () => {
-    expect(recordToArray({
-      'pepperoni': false,
-      'onions': true,
-      'anchovies': false,
-    })).toEqual(['onions']);
+    expect(
+      recordToArray({
+        pepperoni: false,
+        onions: true,
+        anchovies: false,
+      })
+    ).toEqual(['onions']);
   });
 
   it('converts a record of numbers to an array of strings', () => {
-    expect(recordToArray({
-      1: true,
-      2: true,
-      3: false,
-    })).toEqual(['1', '2']);
+    expect(
+      recordToArray({
+        1: true,
+        2: true,
+        3: false,
+      })
+    ).toEqual(['1', '2']);
   });
 });

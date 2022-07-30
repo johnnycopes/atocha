@@ -1,24 +1,33 @@
 import { Injectable } from '@angular/core';
 
 import { Endpoint } from '@models/endpoint.enum';
-import { createDishDto, createMealDto, createMenuDto, createTagDto, createUserDto } from '@utility/domain/create-dtos';
+import {
+  createDishDto,
+  createMealDto,
+  createMenuDto,
+  createTagDto,
+  createUserDto,
+} from '@utility/domain/create-dtos';
 import { BatchService } from './internal/batch.service';
 import { DataService } from './internal/data.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class SeedDataService {
-
   constructor(
     private _batchService: BatchService,
-    private _dataService: DataService,
-  ) { }
+    private _dataService: DataService
+  ) {}
 
-  public async createUserData({ uid, name, email }: {
-    uid: string,
-    name: string,
-    email: string,
+  public async createUserData({
+    uid,
+    name,
+    email,
+  }: {
+    uid: string;
+    name: string;
+    email: string;
   }): Promise<string> {
     const menuId = this._dataService.createId();
     const southernClassicMealId = this._dataService.createId();
@@ -51,15 +60,20 @@ export class SeedDataService {
       .set({
         endpoint: Endpoint.menus,
         id: menuId,
-        data: createMenuDto({ id: menuId, uid, name: 'Menu #1', contents: {
-          Monday: [enchiladasDishId],
-          Tuesday: [sushiDishId, misoSoupDishId],
-          Wednesday: [salmonBurgersDishId, sweetPotatoFriesDishId],
-          Thursday: [redLentilSoupDishId],
-          Friday: [pizzaDishId, tiramisuDishId],
-          Saturday: [thaiCurryDishId, tiramisuDishId],
-          Sunday: [friedChickenDishId, cornbreadDishId, macAndCheeseDishId],
-        }}),
+        data: createMenuDto({
+          id: menuId,
+          uid,
+          name: 'Menu #1',
+          contents: {
+            Monday: [enchiladasDishId],
+            Tuesday: [sushiDishId, misoSoupDishId],
+            Wednesday: [salmonBurgersDishId, sweetPotatoFriesDishId],
+            Thursday: [redLentilSoupDishId],
+            Friday: [pizzaDishId, tiramisuDishId],
+            Saturday: [thaiCurryDishId, tiramisuDishId],
+            Sunday: [friedChickenDishId, cornbreadDishId, macAndCheeseDishId],
+          },
+        }),
       })
       .set({
         endpoint: Endpoint.meals,
@@ -69,7 +83,7 @@ export class SeedDataService {
           uid,
           name: 'Southern Classic',
           dishIds: [cornbreadDishId, friedChickenDishId, macAndCheeseDishId],
-        })
+        }),
       })
       .set({
         endpoint: Endpoint.meals,
@@ -80,7 +94,7 @@ export class SeedDataService {
           name: 'Sushi Dinner',
           dishIds: [sushiDishId, misoSoupDishId],
           tagIds: [pescatarianTagId],
-        })
+        }),
       })
       .set({
         endpoint: Endpoint.dishes,
@@ -96,7 +110,7 @@ export class SeedDataService {
           mealIds: [southernClassicMealId],
           tagIds: [vegetarianTagId],
           usages: 1,
-        })
+        }),
       })
       .set({
         endpoint: Endpoint.dishes,
@@ -108,7 +122,7 @@ export class SeedDataService {
           link: 'https://cooking.nytimes.com/recipes/1018152-enchiladas-con-carne',
           menuIds: [menuId],
           usages: 1,
-        })
+        }),
       })
       .set({
         endpoint: Endpoint.dishes,
@@ -121,7 +135,7 @@ export class SeedDataService {
           menuIds: [menuId],
           mealIds: [southernClassicMealId],
           usages: 1,
-        })
+        }),
       })
       .set({
         endpoint: Endpoint.dishes,
@@ -131,7 +145,7 @@ export class SeedDataService {
           uid,
           name: 'Greek Salad',
           tagIds: [vegetarianTagId],
-        })
+        }),
       })
       .set({
         endpoint: Endpoint.dishes,
@@ -147,7 +161,7 @@ export class SeedDataService {
           mealIds: [southernClassicMealId],
           tagIds: [vegetarianTagId],
           usages: 1,
-        })
+        }),
       })
       .set({
         endpoint: Endpoint.dishes,
@@ -161,7 +175,7 @@ export class SeedDataService {
           mealIds: [sushiDinnerMealId],
           tagIds: [veganTagId, vegetarianTagId],
           usages: 1,
-        })
+        }),
       })
       .set({
         endpoint: Endpoint.dishes,
@@ -175,7 +189,7 @@ export class SeedDataService {
           menuIds: [menuId],
           tagIds: [vegetarianTagId],
           usages: 1,
-        })
+        }),
       })
       .set({
         endpoint: Endpoint.dishes,
@@ -188,7 +202,7 @@ export class SeedDataService {
           menuIds: [menuId],
           tagIds: [veganTagId, vegetarianTagId],
           usages: 1,
-        })
+        }),
       })
       .set({
         endpoint: Endpoint.dishes,
@@ -200,7 +214,7 @@ export class SeedDataService {
           link: 'https://cooking.nytimes.com/recipes/7588-roasted-cauliflower',
           type: 'side',
           tagIds: [easyTagId, veganTagId, vegetarianTagId],
-        })
+        }),
       })
       .set({
         endpoint: Endpoint.dishes,
@@ -278,7 +292,7 @@ export class SeedDataService {
           id: easyTagId,
           uid,
           name: 'Easy',
-          dishIds: [roastedCauliflowerDishId, thaiCurryDishId]
+          dishIds: [roastedCauliflowerDishId, thaiCurryDishId],
         }),
       })
       .set({
@@ -295,28 +309,38 @@ export class SeedDataService {
       .set({
         endpoint: Endpoint.tags,
         id: veganTagId,
-        data: createTagDto({ id: veganTagId, uid, name: 'Vegan', dishIds: [
-          misoSoupDishId,
-          redLentilSoupDishId,
-          roastedCauliflowerDishId,
-          sweetPotatoFriesDishId,
-          thaiCurryDishId
-        ]}),
+        data: createTagDto({
+          id: veganTagId,
+          uid,
+          name: 'Vegan',
+          dishIds: [
+            misoSoupDishId,
+            redLentilSoupDishId,
+            roastedCauliflowerDishId,
+            sweetPotatoFriesDishId,
+            thaiCurryDishId,
+          ],
+        }),
       })
       .set({
         endpoint: Endpoint.tags,
         id: vegetarianTagId,
-        data: createTagDto({ id: vegetarianTagId, uid, name: 'Vegetarian', dishIds: [
-          cornbreadDishId,
-          greekSaladDishId,
-          macAndCheeseDishId,
-          misoSoupDishId,
-          pizzaDishId,
-          redLentilSoupDishId,
-          roastedCauliflowerDishId,
-          sweetPotatoFriesDishId,
-          thaiCurryDishId
-        ]}),
+        data: createTagDto({
+          id: vegetarianTagId,
+          uid,
+          name: 'Vegetarian',
+          dishIds: [
+            cornbreadDishId,
+            greekSaladDishId,
+            macAndCheeseDishId,
+            misoSoupDishId,
+            pizzaDishId,
+            redLentilSoupDishId,
+            roastedCauliflowerDishId,
+            sweetPotatoFriesDishId,
+            thaiCurryDishId,
+          ],
+        }),
       });
     await batch.commit();
     return menuId;

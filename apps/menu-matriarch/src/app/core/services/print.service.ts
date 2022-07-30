@@ -7,19 +7,24 @@ import { MenuEntry } from '@models/menu-entry.interface';
 import { Orientation } from '@models/orientation.type';
 import { getDishTypes } from '@utility/domain/get-dish-types';
 
-type PrintMenu = Pick<Menu,
+type PrintMenu = Pick<
+  Menu,
   'name' | 'entries' | 'fallbackText' | 'orientation'
 >;
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class PrintService {
   private _popupWindow: Window | null = null;
 
   public printMenu(menu: PrintMenu): void {
     if (this._popupWindow == null || this._popupWindow.closed) {
-      this._popupWindow = window.open(undefined, '_blank', 'resizable,scrollbars,status');
+      this._popupWindow = window.open(
+        undefined,
+        '_blank',
+        'resizable,scrollbars,status'
+      );
       this._popupWindow?.document.open();
       this._popupWindow?.document.write(this._createDocument(menu));
       this._popupWindow?.document.close();
@@ -28,7 +33,12 @@ export class PrintService {
     }
   }
 
-  private _createDocument({ name, entries, fallbackText, orientation }: PrintMenu): string {
+  private _createDocument({
+    name,
+    entries,
+    fallbackText,
+    orientation,
+  }: PrintMenu): string {
     return `
       <html>
         <head>
@@ -40,21 +50,28 @@ export class PrintService {
         <body onload="window.print()">
           <h1 class="menu-name">${name}</h1>
           ${entries
-            .map(entry => this._createEntry({
-              entry,
-              fallbackText,
-              orientation,
-            }))
-            .join('')
-          }
+            .map((entry) =>
+              this._createEntry({
+                entry,
+                fallbackText,
+                orientation,
+              })
+            )
+            .join('')}
         </body>
       </html>
     `;
   }
 
-  private _createEntry({ entry, fallbackText, orientation }:
-    { entry: MenuEntry, fallbackText: string, orientation: Orientation }
-  ): string {
+  private _createEntry({
+    entry,
+    fallbackText,
+    orientation,
+  }: {
+    entry: MenuEntry;
+    fallbackText: string;
+    orientation: Orientation;
+  }): string {
     const content = entry.dishes.length
       ? this._createDishesList(entry.dishes, orientation)
       : `<p class="fallback">${fallbackText}</p>`;
@@ -68,17 +85,27 @@ export class PrintService {
 
   private _createDishesList(dishes: Dish[], orientation: Orientation) {
     return getDishTypes()
-      .map(type =>
-        `<ul class="dishes ${type} ${orientation}">
+      .map(
+        (type) =>
+          `<ul class="dishes ${type} ${orientation}">
           ${this._createDishes(dishes, type, orientation)}
-        </ul>`)
+        </ul>`
+      )
       .join('');
   }
 
-  private _createDishes(dishes: Dish[], type: DishType, orientation: Orientation): string {
+  private _createDishes(
+    dishes: Dish[],
+    type: DishType,
+    orientation: Orientation
+  ): string {
     return dishes
-      .filter(dish => dish.type === type)
-      .map((dish, index) => (orientation === 'vertical' || index === 0 ? '' : '&nbsp') + `<li>${dish.name}</li>`)
+      .filter((dish) => dish.type === type)
+      .map(
+        (dish, index) =>
+          (orientation === 'vertical' || index === 0 ? '' : '&nbsp') +
+          `<li>${dish.name}</li>`
+      )
       .join(orientation === 'vertical' ? '' : ',');
   }
 

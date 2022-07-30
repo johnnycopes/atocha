@@ -18,18 +18,14 @@ export class MenusComponent {
   public finishAdd$ = new Subject<void>();
   public adding$ = merge(
     this.startAdd$.pipe(mapTo(true)),
-    this.finishAdd$.pipe(mapTo(false)),
-  ).pipe(
-    shareReplay({ refCount: true, bufferSize: 1 })
-  );
+    this.finishAdd$.pipe(mapTo(false))
+  ).pipe(shareReplay({ refCount: true, bufferSize: 1 }));
   public readonly trackByFn = trackByFactory<Menu>(({ id }) => id);
 
-  constructor(private _menuService: MenuService) { }
+  constructor(private _menuService: MenuService) {}
 
   public onSave(name: string): void {
-    this._menuService
-      .createMenu({ name })
-      .subscribe();
+    this._menuService.createMenu({ name }).subscribe();
     this.finishAdd$.next();
   }
 }

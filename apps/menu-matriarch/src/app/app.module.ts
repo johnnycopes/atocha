@@ -1,14 +1,14 @@
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
-import { DragDropModule } from "@angular/cdk/drag-drop";
+import { DragDropModule } from '@angular/cdk/drag-drop';
 import { EditorModule } from '@tinymce/tinymce-angular';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { FormsModule } from "@angular/forms";
+import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
-import { OverlayModule } from "@angular/cdk/overlay";
-import { PortalModule } from "@angular/cdk/portal";
+import { OverlayModule } from '@angular/cdk/overlay';
+import { PortalModule } from '@angular/cdk/portal';
 
 import { environment } from '@env/environment';
 
@@ -89,13 +89,13 @@ import { WelcomeComponent } from './features/welcome/welcome.component';
     EditorModule,
     FontAwesomeModule,
     FormsModule,
-		OverlayModule,
+    OverlayModule,
     PortalModule,
     AppRoutingModule,
     DomainModule,
     GenericModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

@@ -8,7 +8,7 @@ import { Tag } from '@models/tag.interface';
   selector: 'app-meal-card',
   templateUrl: './meal-card.component.html',
   styleUrls: ['./meal-card.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MealCardComponent {
   @Input() id = '';

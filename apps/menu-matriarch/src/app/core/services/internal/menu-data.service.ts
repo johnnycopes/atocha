@@ -14,30 +14,36 @@ import { BatchService } from './batch.service';
 import { DataService } from './data.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class MenuDataService {
   private _endpoint = Endpoint.menus;
 
   constructor(
     private _batchService: BatchService,
-    private _dataService: DataService,
-  ) { }
+    private _dataService: DataService
+  ) {}
 
   public getMenu(id: string): Observable<MenuDto | undefined> {
     return this._dataService.getOne<MenuDto>(this._endpoint, id);
   }
 
   public getMenus(uid: string): Observable<MenuDto[]> {
-    return this._dataService.getMany<MenuDto>(this._endpoint, uid).pipe(
-      map(menuDtos => sort(menuDtos, menuDto => lower(menuDto.name))),
-    );
+    return this._dataService
+      .getMany<MenuDto>(this._endpoint, uid)
+      .pipe(
+        map((menuDtos) => sort(menuDtos, (menuDto) => lower(menuDto.name)))
+      );
   }
 
-  public async createMenu({ uid, menu, startDay }: {
-    uid: string,
-    menu: Partial<Omit<MenuDto, 'id' | 'uid' | 'startDay'>>,
-    startDay: Day,
+  public async createMenu({
+    uid,
+    menu,
+    startDay,
+  }: {
+    uid: string;
+    menu: Partial<Omit<MenuDto, 'id' | 'uid' | 'startDay'>>;
+    startDay: Day;
   }): Promise<string> {
     const id = this._dataService.createId();
     await this._dataService.create<MenuDto>(
@@ -48,7 +54,7 @@ export class MenuDataService {
         id,
         uid,
         startDay,
-      }),
+      })
     );
     return id;
   }
@@ -58,12 +64,15 @@ export class MenuDataService {
   }
 
   public async updateMenuContents({
-    menu, dishIds, day, selected
+    menu,
+    dishIds,
+    day,
+    selected,
   }: {
-    menu: Menu,
-    dishIds: string[],
-    day: Day,
-    selected: boolean,
+    menu: Menu;
+    dishIds: string[];
+    day: Day;
+    selected: boolean;
   }): Promise<void> {
     const batch = this._batchService.createBatch();
     batch.updateMultiple([
@@ -84,15 +93,13 @@ export class MenuDataService {
 
   public async deleteMenu(menu: Menu): Promise<void> {
     const batch = this._batchService.createBatch();
-    batch
-      .delete(this._endpoint, menu.id)
-      .updateMultiple(
-        this._batchService.getDishCountersUpdates({
-          dishIds: flattenValues(menu.contents),
-          menu,
-          change: 'clear',
-        }),
-      );
+    batch.delete(this._endpoint, menu.id).updateMultiple(
+      this._batchService.getDishCountersUpdates({
+        dishIds: flattenValues(menu.contents),
+        menu,
+        change: 'clear',
+      })
+    );
     await batch.commit();
   }
 

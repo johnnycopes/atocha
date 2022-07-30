@@ -33,8 +33,8 @@ export class MenuCardComponent {
 
   constructor(
     private _menuService: MenuService,
-    private _printService: PrintService,
-  ) { }
+    private _printService: PrintService
+  ) {}
 
   public onPrint(): void {
     this._printService.printMenu({

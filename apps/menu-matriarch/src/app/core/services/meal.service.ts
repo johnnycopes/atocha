@@ -12,16 +12,15 @@ import { MealDataService } from './internal/meal-data.service';
 import { TagService } from './tag.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class MealService {
-
   constructor(
     private _authService: AuthService,
     private _dishService: DishService,
     private _mealDataService: MealDataService,
-    private _tagService: TagService,
-  ) { }
+    private _tagService: TagService
+  ) {}
 
   public getMeal(id: string): Observable<Meal | undefined> {
     return combineLatest([
@@ -41,7 +40,7 @@ export class MealService {
   public getMeals(): Observable<Meal[]> {
     return this._authService.uid$.pipe(
       first(),
-      concatMap(uid => {
+      concatMap((uid) => {
         if (uid) {
           return combineLatest([
             this._mealDataService.getMeals(uid),
@@ -49,7 +48,9 @@ export class MealService {
             this._tagService.getTags(),
           ]).pipe(
             map(([mealDtos, dishes, tags]) =>
-              mealDtos.map(mealDto => this._transformDto({ mealDto, dishes, tags }))
+              mealDtos.map((mealDto) =>
+                this._transformDto({ mealDto, dishes, tags })
+              )
             )
           );
         }
@@ -58,10 +59,12 @@ export class MealService {
     );
   }
 
-  public createMeal(meal: Partial<Omit<MealDto, 'id' | 'uid'>>): Observable<string | undefined> {
+  public createMeal(
+    meal: Partial<Omit<MealDto, 'id' | 'uid'>>
+  ): Observable<string | undefined> {
     return this._authService.uid$.pipe(
       first(),
-      concatMap(async uid => {
+      concatMap(async (uid) => {
         if (uid) {
           const id = await this._mealDataService.createMeal(uid, meal);
           return id;
@@ -78,7 +81,7 @@ export class MealService {
   ): Observable<Meal | undefined> {
     return this.getMeal(id).pipe(
       first(),
-      tap(async meal => {
+      tap(async (meal) => {
         if (!meal) {
           return;
         }
@@ -90,7 +93,7 @@ export class MealService {
   public deleteMeal(id: string): Observable<Meal | undefined> {
     return this.getMeal(id).pipe(
       first(),
-      tap(async meal => {
+      tap(async (meal) => {
         if (!meal) {
           return;
         }
@@ -99,18 +102,22 @@ export class MealService {
     );
   }
 
-  private _transformDto({ mealDto, dishes, tags }: {
-    mealDto: MealDto,
-    dishes: Dish[],
-    tags: Tag[]
+  private _transformDto({
+    mealDto,
+    dishes,
+    tags,
+  }: {
+    mealDto: MealDto;
+    dishes: Dish[];
+    tags: Tag[];
   }): Meal {
     return {
       id: mealDto.id,
       uid: mealDto.uid,
       name: mealDto.name,
       description: mealDto.description,
-      dishes: dishes.filter(dish => mealDto.dishIds.includes(dish.id)),
-      tags: tags.filter(tag => mealDto.tagIds.includes(tag.id)),
+      dishes: dishes.filter((dish) => mealDto.dishIds.includes(dish.id)),
+      tags: tags.filter((tag) => mealDto.tagIds.includes(tag.id)),
     };
   }
 }

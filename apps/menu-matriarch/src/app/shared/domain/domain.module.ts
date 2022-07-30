@@ -23,8 +23,6 @@ import { TagComponent } from './tag/tag.component';
 import { TagDefDirective } from './tags-list/tag-def.directive';
 import { TagsListComponent } from './tags-list/tags-list.component';
 
-
-
 @NgModule({
   declarations: [
     CountComponent,
@@ -68,6 +66,6 @@ import { TagsListComponent } from './tags-list/tags-list.component';
     FormsModule,
     RouterModule,
     GenericModule,
-  ]
+  ],
 })
-export class DomainModule { }
+export class DomainModule {}
