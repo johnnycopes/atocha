@@ -6,9 +6,13 @@
     "start": "nx serve",
     "build": "nx build",
     "test": "nx test",
+    "postinstall": "ngcc --properties es2020 browser module main",
     "deploy-staging:gt": "netlify deploy ./apps/globetrotter",
     "deploy-prod:gt": "netlify deploy --prod ./apps/globetrotter",
-    "postinstall": "ngcc --properties es2020 browser module main"
+    "db:delete-account": "node ./apps/menu-matriarch/scripts/dev/delete-account.js",
+    "db:delete-data": "node ./apps/menu-matriarch/scripts/dev/delete-data.js",
+    "db:seed-data": "ts-node ./apps/menu-matriarch/scripts/dev/seed-data.ts",
+    "db:reset": "node ./apps/menu-matriarch/scripts/dev/delete-all-accounts.js"
   },
   "private": true,
   "devDependencies": {
@@ -47,6 +51,8 @@
     "eslint": "~8.15.0",
     "eslint-config-prettier": "8.1.0",
     "eslint-plugin-cypress": "^2.10.3",
+    "firebase-admin": "^10.0.0",
+    "firebase-tools": "^9.0.0",
     "jest": "27.5.1",
     "jest-preset-angular": "~11.1.2",
     "nx": "14.3.6",
