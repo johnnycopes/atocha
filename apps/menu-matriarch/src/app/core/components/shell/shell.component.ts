@@ -12,6 +12,6 @@ import { routerTransition } from './router-transition';
 })
 export class ShellComponent {
   public getState(outlet: RouterOutlet): string | undefined {
-    return outlet?.activatedRouteData?.state;
+    return outlet?.activatedRouteData['state'];
   }
 }
