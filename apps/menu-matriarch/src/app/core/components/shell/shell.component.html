@@ -1,0 +1,12 @@
+<header app-header></header>
+
+<main class="content"
+  cdkScrollable
+  >
+  <div class="wrapper"
+    [@routerTransition]="getState(outlet)"
+  >
+    <router-outlet #outlet="outlet">
+    </router-outlet>
+  </div>
+</main>

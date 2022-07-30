@@ -1,0 +1,79 @@
+@import "main";
+
+$size: 40px;
+
+@mixin box-shadow($color) {
+  box-shadow: 0 2px 0 #{$color};
+}
+
+@mixin button-style($background, $hover, $box-shadow, $disabled) {
+  background: $background;
+  color: $white;
+  @include box-shadow($box-shadow);
+
+  &:hover {
+    background: $hover;
+  }
+
+  &:disabled {
+    background: $disabled;
+    cursor: default;
+    @include box-shadow($hover);
+  }
+}
+
+.app-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: border(radius);
+  padding: 0 spacing(16);
+  height: $size;
+  cursor: pointer;
+  outline: none;
+  font-size: font-size(14);
+  font-family: $font-stack;
+  font-weight: 700;
+  color: $white;
+  @include small-caps;
+
+  &:hover {
+    color: $white;
+  }
+
+  &--primary {
+    @include button-style(color($pink, 7), color($pink, 6), color($pink, 5), color($pink, 8));
+  }
+
+  &--secondary {
+    @include button-style(color($neutral, 5), color($neutral, 4), color($neutral, 1), color($neutral, 8));
+  }
+
+  &--ternary {
+    background: transparent;
+    color: color($neutral, 4);
+
+    &:hover {
+      color: color($neutral, 3);
+      background: color($neutral, 10);
+      @include box-shadow(color($neutral, 9));
+    }
+
+    &:disabled {
+      color: color($neutral, 7);
+      background: none;
+      box-shadow: none;
+      cursor: default;
+    }
+  }
+
+  &--danger {
+    @include button-style(color($red, 7), color($red, 6), color($red, 6), color($red, 9));
+  }
+
+  fa-icon {
+    margin-left: spacing(4);
+    pointer-events: none;
+  }
+}

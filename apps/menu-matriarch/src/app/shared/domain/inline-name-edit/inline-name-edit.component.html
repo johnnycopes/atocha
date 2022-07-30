@@ -1,0 +1,18 @@
+<form app-inline-form
+  #form="ngForm"
+  [disabled]="!name.length"
+  (cancel)="onCancel()"
+  (save)="onSave(form)"
+>
+  <app-input>
+    <input
+      type="text"
+      name="name"
+      required
+      [(ngModel)]="name"
+      (keydown.enter)="onSave(form)"
+      (keydown.escape)="onCancel()"
+      appAutofocus
+    />
+  </app-input>
+</form>

@@ -1,0 +1,11 @@
+<ul class="tags"
+  [class.tags--interactive]="interactive"
+>
+  <li *ngFor="let tag of tags; trackBy: trackByFn">
+    <ng-container
+      [ngTemplateOutlet]="tagTemplate"
+      [ngTemplateOutletContext]="{ $implicit: tag }"
+    ></ng-container>
+  </li>
+  <ng-content></ng-content>
+</ul>

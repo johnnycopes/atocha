@@ -1,0 +1,50 @@
+@import "main";
+
+:host {
+  display: grid;
+  grid-template-rows:
+    [tabs] max-content
+    [content] 1fr;
+  height: 100%;
+}
+
+.tabs {
+  grid-row: tabs;
+  display: flex;
+  justify-content: center;
+  max-height: 100%;
+  padding: 0 spacing(16);
+  gap: 8px;
+  font-size: font-size(16);
+  cursor: pointer;
+}
+
+.tab {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  padding: spacing(12);
+  background: $white;
+  border-bottom: border(thin) solid color($neutral, 9);
+  border-top-left-radius: border(radius);
+  border-top-right-radius: border(radius);
+  color: color($neutral, 6);
+  @include small-caps;
+
+  &:hover {
+    background: color($neutral, 10);
+  }
+
+  &--selected {
+    font-weight: font-weight(bold);
+    border-color: color($neutral, 4);
+    color: color($neutral, 4);
+  }
+}
+
+.content {
+  grid-row: content;
+  padding: spacing(8) spacing(16) spacing(16);
+  overflow: auto;
+}

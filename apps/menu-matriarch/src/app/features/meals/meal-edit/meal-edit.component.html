@@ -1,0 +1,116 @@
+<ng-container *ngIf="vm$ | async as vm">
+  <form #form="ngForm"
+    (keydown.enter)="$event.preventDefault()"
+    (ngSubmit)="onSave(form)"
+  >
+    <app-dishes-list class="dishes"
+      ngModelGroup="dishes"
+    >
+      <app-card *appDishDef="let dish">
+        <app-dish-summary
+          [id]="dish.id"
+          [name]="dish.name"
+          [description]="dish.description"
+          [link]="dish.link"
+          [tags]="dish.tags"
+          [menuIds]="dish.menuIds"
+          [mealIds]="dish.mealIds"
+          [usages]="dish.usages"
+        ></app-dish-summary>
+        <app-checkbox class="included"
+          [name]="dish.id"
+          [ngModel]="vm.dishesModel.includes(dish.id)"
+          (ngModelChange)="onDishChange(form.value.dishes)"
+        >
+          Include in meal
+        </app-checkbox>
+      </app-card>
+    </app-dishes-list>
+
+    <app-section>
+      <div class="app-section__toolbar">
+        <a app-button
+          buttonStyle="secondary"
+          routerLink=".."
+        >
+          Cancel
+        </a>
+        <!-- TODO: create form validator -->
+        <button app-button
+          buttonStyle="primary"
+          type="submit"
+          [disabled]="!form.valid || !vm.dishesModel.length"
+        >
+          Save
+        </button>
+      </div>
+      <div class="app-section__content">
+        <app-input
+          label="name"
+        >
+          <input
+            id="name"
+            type="text"
+            name="name"
+            required
+            [ngModel]="vm.name"
+            #name="ngModel"
+            appAutofocus
+          />
+        </app-input>
+        <app-input
+          label="description"
+        >
+          <input
+            id="description"
+            type="text"
+            name="description"
+            [ngModel]="vm.description"
+            #description="ngModel"
+          />
+        </app-input>
+        <app-input
+          label="tags"
+        >
+          <app-tags-list
+            *ngIf="vm.tags.length; else noTagsPlaceholder"
+            class="tags"
+            ngModelGroup="tags"
+            [tags]="vm.tags"
+            [interactive]="true"
+          >
+            <ng-container *appTagDef="let tag">
+              <app-checkbox
+                [name]="tag.id"
+                [ngModel]="tag.checked"
+              >
+                <app-tag
+                  [id]="tag.id"
+                  [name]="tag.name"
+                ></app-tag>
+              </app-checkbox>
+            </ng-container>
+          </app-tags-list>
+          <ng-template #noTagsPlaceholder>
+            <div class="placeholder">
+              <p>No tags to display</p>
+              <a app-button
+                routerLink="/tags"
+              >
+                New Tag
+              </a>
+            </div>
+          </ng-template>
+        </app-input>
+        <div class="details">
+          <app-meal-summary
+            [dishes]="vm.dishes"
+            [fallbackText]="vm.fallbackText"
+            [orientation]="vm.orientation"
+            boundaries="labeled"
+          ></app-meal-summary>
+        </div>
+      </div>
+    </app-section>
+  </form>
+</ng-container>

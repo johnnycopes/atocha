@@ -1,0 +1,15 @@
+<app-dishes-list (nameDblClick)="nameDblClick.emit()">
+  <app-planner-dish *appDishDef="let dish"
+    [id]="dish.id"
+    [type]="dish.type"
+    [name]="dish.name"
+    [description]="dish.description"
+    [link]="dish.link"
+    [tags]="dish.tags"
+    [menuIds]="dish.menuIds"
+    [mealIds]="dish.mealIds"
+    [usages]="dish.usages"
+    [menu]="menu"
+    (dayChange)="onDayChange(menu, $event)"
+  ></app-planner-dish>
+</app-dishes-list>

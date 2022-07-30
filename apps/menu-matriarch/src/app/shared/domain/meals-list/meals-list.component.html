@@ -1,0 +1,27 @@
+<app-filterable-list *ngIf="vm$ | async as vm"
+  [total]="vm.total"
+  entity="Meal"
+  newRoute="/meals/new"
+  (nameDblClick)="nameDblClick.emit()"
+>
+  <ul *ngIf="vm.total; else noMealsPlaceholder"
+    class="app-section__content"
+    >
+    <li *ngFor="let meal of vm.filteredMeals; trackBy: trackByFn">
+      <ng-container
+        [ngTemplateOutlet]="mealTemplate"
+        [ngTemplateOutletContext]="{
+          $implicit: meal,
+          activeMeal: vm.activeMeal,
+          fallbackText: vm.preferences?.emptyMealText ?? '',
+          orientation: vm.preferences?.mealOrientation ?? 'horizontal'
+        }"
+      ></ng-container>
+    </li>
+  </ul>
+  <ng-template #noMealsPlaceholder>
+    <div class="placeholder">
+      No meals to display
+    </div>
+  </ng-template>
+</app-filterable-list>

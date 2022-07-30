@@ -1,0 +1,31 @@
+@import "main";
+
+@mixin type($background, $color) {
+  background: $background;
+  color: $color;
+}
+
+.app-alert {
+  display: block;
+  padding: spacing(8);
+  border-radius: border(radius);
+  font-weight: font-weight(bold);
+  font-size: font-size(16);
+
+  &--success {
+    @include type(color($indigo, 9), color($indigo, 4));
+  }
+
+  &--warning {
+    @include type(color($yellow, 9), color($yellow, 3));
+  }
+
+  &--error {
+    @include type(color($red, 9), color($red, 4));
+  }
+
+  &--large {
+    padding: spacing(16);
+    font-size: font-size(20);
+  }
+}

@@ -1,0 +1,42 @@
+@import "main";
+
+app-card {
+  height: 100%;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: spacing(16);
+}
+
+.start-day-form {
+  margin-bottom: spacing(32);
+}
+
+.name {
+  font-weight: font-weight(bold);
+  @include hover;
+}
+
+.entry {
+  display: flex;
+
+  &:not(:last-of-type) {
+    margin-bottom: spacing(8);
+  }
+}
+
+.day {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: spacing(16);
+  width: spacing(64);
+}
+
+.meal {
+  width: 100%;
+}

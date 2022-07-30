@@ -1,0 +1,34 @@
+@import "main";
+
+.app-section__toolbar {
+  justify-content: flex-end;
+
+  [app-button] {
+    margin-left: spacing(8);
+  }
+}
+
+.name {
+  font-size: font-size(36);
+  margin-bottom: spacing(16);
+}
+
+.description {
+  margin-bottom: spacing(16);
+}
+
+.details {
+  border-top: border(thin) solid color($neutral, 9);
+  margin-top: spacing(16);
+  padding-top: spacing(16);
+
+  & > *:not(:last-of-type) {
+    margin-bottom: spacing(8);
+  }
+}
+
+app-small-caps-label {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: spacing(8);
+}

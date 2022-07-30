@@ -1,0 +1,15 @@
+@import "main";
+
+app-input {
+  position: relative;
+}
+
+fa-icon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: spacing(8);
+  color: color($neutral, 5);
+  font-size: 16px;
+  cursor: pointer;
+}

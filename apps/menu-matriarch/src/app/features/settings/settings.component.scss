@@ -1,0 +1,34 @@
+@import "main";
+
+:host {
+  display: block;
+}
+
+.app-section__content {
+  display: grid;
+  grid-template-columns: spacing(512) spacing(512);
+  grid-template-rows: auto;
+  grid-gap: spacing(16);
+  margin: 0 auto;
+}
+
+.account {
+  grid-column: 1;
+}
+
+.settings {
+  grid-column: 2;
+}
+
+.title {
+  font-weight: font-weight(bold);
+  color: color($neutral, 4);
+  padding: spacing(16) 0;
+}
+
+app-card,
+form {
+  & > *:not(:last-child) {
+    margin-bottom: spacing(32);
+  }
+}

@@ -1,0 +1,24 @@
+<app-small-caps-label class="day">
+  <h3>
+    {{ day }}
+  </h3>
+  <div *ngIf="dishes.length">
+    <a class="icon"
+      routerLink="/meals/new"
+      [queryParams]="{ dishes: dishIds }"
+    >
+      <fa-icon [icon]="addIcon">
+      </fa-icon>
+    </a>
+    <fa-icon class="icon"
+      [icon]="clearIcon"
+      (click)="clear.emit()"
+    ></fa-icon>
+  </div>
+</app-small-caps-label>
+
+<app-meal-summary class="meal"
+  [dishes]="dishes"
+  [fallbackText]="fallbackText"
+  [orientation]="orientation"
+></app-meal-summary>

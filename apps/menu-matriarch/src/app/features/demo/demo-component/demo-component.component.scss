@@ -1,0 +1,41 @@
+@import "main";
+
+h1 {
+  font-weight: 700;
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+h2 {
+  margin-bottom: 20px;
+}
+
+strong {
+  font-weight: bold;
+}
+
+em {
+  font-style: italic;
+  color: color($neutral, 6);
+}
+
+hr {
+  width: 100%;
+  color: color($neutral, 10);
+  margin: 30px 0;
+}
+
+.wrapper {
+  &::ng-deep {
+    display: flex;
+    flex-direction: column;
+
+    & > * {
+      margin-bottom: 20px;
+    }
+  }
+
+  &--limited-width {
+    width: 400px;
+  }
+}

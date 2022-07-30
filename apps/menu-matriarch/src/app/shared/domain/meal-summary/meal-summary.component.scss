@@ -1,0 +1,53 @@
+@import "main";
+
+:host {
+  display: flex;
+  flex-direction: column;
+}
+
+.dishes {
+  display: flex;
+
+  &--labeled {
+    margin-bottom: spacing(8);
+    padding: spacing(4) spacing(8);
+  }
+
+  &--unlabeled {
+    &:not(:first-of-type) {
+      padding-top: spacing(4);
+    }
+
+    &:not(:last-of-type) {
+      padding-bottom: spacing(4);
+      border-bottom: 1px solid color($neutral, 9);
+    }
+  }
+
+  &--horizontal {
+    flex-wrap: wrap;
+  }
+
+  &--vertical {
+    flex-direction: column;
+  }
+}
+
+.dish-type {
+  margin-bottom: spacing(8);
+}
+
+.main {
+  font-weight: font-weight(semibold);
+  @include hover;
+}
+
+.dessert {
+  font-style: italic;
+}
+
+.fallback {
+  min-height: spacing(24);
+  color: color($neutral, 6);
+  font-style: italic;
+}

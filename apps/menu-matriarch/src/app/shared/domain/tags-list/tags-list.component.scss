@@ -1,0 +1,16 @@
+@import "main";
+
+:host {
+  display: block;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: spacing(8);
+  row-gap: spacing(8);
+
+  &--interactive {
+    column-gap: spacing(16);
+  }
+}

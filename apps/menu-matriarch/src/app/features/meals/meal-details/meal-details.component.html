@@ -1,0 +1,45 @@
+<ng-container *ngIf="vm$ | async as vm">
+  <app-section *ngIf="vm.meal as meal">
+    <div class="app-section__toolbar">
+      <button app-button
+        buttonStyle="danger"
+        (click)="onDelete()"
+      >
+        Delete
+      </button>
+      <a app-button
+        buttonStyle="secondary"
+        routerLink="edit"
+      >
+        Edit
+      </a>
+    </div>
+    <div class="app-section__content">
+      <h2 class="name">
+        {{ meal.name }}
+      </h2>
+      <p *ngIf="meal.description"
+        class="description"
+      >
+        {{ meal.description }}
+      </p>
+      <app-tags-list
+        *ngIf="meal.tags.length"
+        [tags]="meal.tags"
+      >
+        <app-tag *appTagDef="let tag"
+          [id]="tag.id"
+          [name]="tag.name"
+        ></app-tag>
+      </app-tags-list>
+      <div class="details">
+        <app-meal-summary
+          [dishes]="meal.dishes"
+          [fallbackText]="vm.fallbackText"
+          [orientation]="vm.orientation"
+          boundaries="labeled"
+        ></app-meal-summary>
+      </div>
+    </div>
+  </app-section>
+</ng-container>

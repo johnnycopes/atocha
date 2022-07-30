@@ -1,0 +1,38 @@
+<app-section *ngIf="vm$ | async as vm"
+  class="dishes"
+>
+  <div class="app-section__toolbar">
+    <div class="controls">
+      <h2 class="title"
+        (dblclick)="nameDblClick.emit()"
+      >
+        {{ entity | appPlural : 0 : pluralEntity }} ({{ total }})
+      </h2>
+      <app-search-input
+        [text]="vm.searchText"
+        (textChange)="onSearchTextChange($event)"
+      ></app-search-input>
+      <app-filters-button class="button"
+        [count]="vm.filters.length"
+        [open]="vm.filterPanel"
+        (clicked)="onFiltersButtonClick()"
+      ></app-filters-button>
+      <a app-button
+        class="button"
+        [routerLink]="newRoute"
+      >
+        New {{ entity }}
+      </a>
+    </div>
+    <app-filters *ngIf="vm.filterPanel"
+      class="filters"
+      [tags]="vm.tags"
+      [selected]="vm.filters"
+      (selectedChange)="onFiltersChange($event)"
+      (selectedClear)="onFiltersChange([])"
+    ></app-filters>
+  </div>
+  <div class="app-section__content">
+    <ng-content></ng-content>
+  </div>
+</app-section>

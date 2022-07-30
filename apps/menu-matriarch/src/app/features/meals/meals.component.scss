@@ -1,0 +1,19 @@
+@import "main";
+
+:host {
+  display: grid;
+  grid-template-columns:
+    [list] 50%
+    [details] 50%;
+  height: 100%;
+}
+
+.meals {
+  grid-column: list;
+}
+
+section {
+  grid-column: details;
+  background: $white;
+  overflow: hidden;
+}

@@ -1,0 +1,31 @@
+<app-filterable-list *ngIf="vm$ | async as vm"
+  [total]="vm.total"
+  entity="Dish"
+  pluralEntity="Dishes"
+  newRoute="/dishes/new"
+  (nameDblClick)="nameDblClick.emit()"
+>
+  <app-tabset>
+    <app-tab *ngFor="let group of vm.filteredDishes; trackBy: groupTrackByFn"
+      name="{{ group.type + 's' }} ({{ group.dishes.length }})"
+      [selected]="vm.initialTab === group.type"
+    >
+      <ul *ngIf="group.dishes.length; else noDishesPlaceholder">
+        <li *ngFor="let dish of group.dishes; trackBy: dishTrackByFn">
+          <ng-container
+            [ngTemplateOutlet]="dishTemplate"
+            [ngTemplateOutletContext]="{
+              $implicit: dish,
+              activeDish: vm.activeDish
+            }"
+          ></ng-container>
+        </li>
+      </ul>
+      <ng-template #noDishesPlaceholder>
+        <div class="placeholder">
+          {{ group.placeholderText }}
+        </div>
+      </ng-template>
+    </app-tab>
+  </app-tabset>
+</app-filterable-list>

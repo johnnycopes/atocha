@@ -1,0 +1,18 @@
+@import "main";
+
+:host {
+  display: grid;
+  place-items: center;
+  height: 100%;
+}
+
+.content {
+  display: grid;
+  place-items: center;
+  margin-bottom: 5%;
+}
+
+h1 {
+  font-size: font-size(48);
+  margin-bottom: spacing(32);
+}

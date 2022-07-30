@@ -1,0 +1,62 @@
+<app-section *ngIf="dish$ | async as dish">
+  <div class="app-section__toolbar">
+    <button app-button
+      buttonStyle="danger"
+      (click)="onDelete()"
+    >
+      Delete
+    </button>
+    <a app-button
+      buttonStyle="secondary"
+      routerLink="edit"
+    >
+      Edit
+    </a>
+  </div>
+  <div class="app-section__content">
+    <h2 class="name">
+      {{ dish.name }}
+    </h2>
+    <p *ngIf="dish.description"
+      class="description"
+    >
+      {{ dish.description }}
+    </p>
+    <a *ngIf="dish.link"
+      [href]="dish.link"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      {{ dish.link }}
+    </a>
+    <div class="details">
+      <p>{{ dish.type | uppercase }}</p>
+      <p>
+        Included {{ dish.usages }} {{ 'time' | appPlural : dish.usages }} in
+        {{ dish.menuIds.length }} different {{ 'menu' | appPlural : dish.menuIds.length }}.
+        Included in {{ dish.mealIds.length }} {{ 'meal' | appPlural : dish.mealIds.length}}.
+      </p>
+    </div>
+    <div class="details">
+      <app-tags-list
+        *ngIf="dish.tags.length"
+        [tags]="dish.tags"
+      >
+        <app-tag *appTagDef="let tag"
+          [id]="tag.id"
+          [name]="tag.name"
+        ></app-tag>
+      </app-tags-list>
+    </div>
+    <div *ngIf="dish?.notes"
+      class="details notes"
+    >
+      <div [innerHTML]="dish.notes | safe : 'html'"></div>
+    </div>
+    <ul *ngIf="dish.ingredients.length">
+      <li *ngFor="let ingredient of dish.ingredients; trackBy: ingredientTrackByFn">
+        {{ ingredient }}
+      </li>
+    </ul>
+  </div>
+</app-section>

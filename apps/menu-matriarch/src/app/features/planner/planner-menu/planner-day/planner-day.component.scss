@@ -1,0 +1,18 @@
+@import "main";
+
+.day {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: spacing(8);
+}
+
+.icon {
+  margin-left: spacing(16);
+  cursor: pointer;
+  @include hover;
+}
+
+.meal {
+  margin-bottom: spacing(8);
+  padding: spacing(4) spacing(8);
+}

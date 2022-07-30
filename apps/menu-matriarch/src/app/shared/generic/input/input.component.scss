@@ -1,0 +1,70 @@
+@import "main";
+
+:host {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  margin-bottom: spacing(4);
+  font-size: font-size(14);
+  color: color($neutral, 5);
+  @include small-caps;
+}
+
+::ng-deep input[type="text"] {
+  height: 40px;
+  padding: spacing(8);
+  border: none;
+  border-bottom: border(thin) solid color($neutral, 7);
+  font-family: $font-stack;
+  font-size: font-size(20);
+  outline: none;
+
+  &:focus {
+    border-color: color($neutral, 4);
+  }
+
+  &:disabled {
+    background: color($neutral, 10);
+    color: color($neutral, 5);
+    border-bottom: border(thin) solid color($neutral, 8);
+    cursor: not-allowed;
+  }
+}
+
+::ng-deep select {
+  padding: spacing(8);
+  border: border(thin) solid color($neutral, 7);
+  font-family: $font-stack;
+  font-size: font-size(20);
+  outline: none;
+  background: $white;
+}
+
+::ng-deep .radio-container {
+  display: flex;
+  align-items: center;
+  margin-top: spacing(8);
+}
+
+::ng-deep .radio-button {
+  display: inline-flex;
+  align-items: center;
+  margin-right: spacing(16);
+}
+
+::ng-deep input[type="radio"] {
+  margin: 0;
+  margin-right: spacing(8);
+  height: 20px;
+  width: 20px;
+}
+
+::ng-deep editor {
+  margin-top: spacing(8);
+}
+
+.error {
+  margin-top: spacing(8);
+}

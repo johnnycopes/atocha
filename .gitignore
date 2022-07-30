@@ -40,5 +40,8 @@ Thumbs.db
 
 .angular
 
+# Firebase
+firebase-admin-*.json
+
 # Local Netlify folder
 .netlify

@@ -1,0 +1,22 @@
+@import "main";
+
+.top {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: spacing(16);
+}
+
+.name {
+  font-weight: font-weight(bold);
+  @include hover;
+}
+
+.description {
+  font-size: 14px;
+  color: color($neutral, 6);
+  margin-top: spacing(8);
+}
+
+.tags {
+  margin-top: spacing(8);
+}

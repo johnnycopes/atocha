@@ -1,0 +1,15 @@
+@import "main";
+
+.app-inline-form {
+  display: flex;
+  align-items: center;
+
+  &__button {
+    margin-left: spacing(8);
+    width: 42px; // TODO: create dedicated icon-button component where this style would live
+  }
+
+  app-input {
+    width: 100%;
+  }
+}

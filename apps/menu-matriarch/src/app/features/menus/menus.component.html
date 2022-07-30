@@ -1,0 +1,31 @@
+<app-section *ngIf="menus$ | async as menus">
+  <div class="app-section__toolbar">
+    <h2 class="title">
+      Menus ({{ menus.length }})
+    </h2>
+    <button app-button
+      buttonStyle="primary"
+      [disabled]="adding$ | async"
+      (click)="startAdd$.next()"
+    >
+      New Menu
+    </button>
+    <app-inline-name-edit class="form"
+      *ngIf="adding$ | async"
+      (cancel)="finishAdd$.next()"
+      (save)="onSave($event)"
+    ></app-inline-name-edit>
+  </div>
+  <ul class="app-section__content menus">
+    <li app-menu-card
+      *ngFor="let menu of menus; trackBy: trackByFn"
+      [id]="menu.id"
+      [name]="menu.name"
+      [startDay]="menu.startDay"
+      [entries]="menu.entries"
+      [canDelete]="menus.length > 1"
+      [fallbackText]="menu.fallbackText"
+      [orientation]="menu.orientation"
+    ></li>
+  </ul>
+</app-section>

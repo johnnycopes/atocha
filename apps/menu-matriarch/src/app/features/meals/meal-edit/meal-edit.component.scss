@@ -1,0 +1,40 @@
+@import "main";
+
+.dishes {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: color($neutral, 9);
+}
+
+.included {
+  margin-top: spacing(8);
+}
+
+.app-section__toolbar {
+  justify-content: flex-end;
+
+  [app-button] {
+    margin-left: spacing(8);
+  }
+}
+
+app-input {
+  margin-bottom: spacing(32);
+}
+
+.tags {
+  margin-top: spacing(8);
+}
+
+.placeholder {
+  display: flex;
+  align-items: center;
+  margin-top: spacing(8);
+
+  p {
+    margin-right: spacing(8);
+  }
+}

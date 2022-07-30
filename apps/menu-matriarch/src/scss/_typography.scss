@@ -1,0 +1,53 @@
+$font-stack: "Krub", frutiger, "Frutiger Linotype", univers, calibri, "Gill Sans",
+  "Gill Sans MT", "Myriad Pro", myriad, "DejaVu Sans Condensed", "Liberation Sans",
+  "Nimbus Sans L", tahoma, geneva, "Helvetica Neue", helvetica, arial, sans-serif;
+
+/*
+Use these values for font-sizing. A hand-crafted type scale
+(source: Refactoring UI, page 105)
+*/
+$font-size: (
+  12: 12px,
+  14: 14px,
+  16: 16px, // <=== base value
+  18: 18px,
+  20: 20px,
+  24: 24px,
+  30: 30px,
+  36: 36px,
+  48: 48px,
+  60: 60px,
+  72: 72px,
+  96: 96px,
+  128: 128px
+);
+
+$font-weight: (
+  normal: 400,
+  semibold: 600,
+  bold: 700
+);
+
+$line-height: (
+  small: 1,
+  normal: 1.25,
+  large: 1.5
+);
+
+@mixin small-caps() {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: map-get($font-weight, bold);
+}
+
+@function font-size($size) {
+  @return map-get($font-size, $size);
+}
+
+@function font-weight($weight) {
+  @return map-get($font-weight, $weight);
+}
+
+@function line-height($size) {
+  @return map-get($line-height, $size);
+}

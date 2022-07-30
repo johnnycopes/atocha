@@ -1,0 +1,51 @@
+@import "main";
+
+:host {
+  display: flex;
+  height: app-size(header);
+  background: color($neutral, 5);
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  padding: 0 spacing(16);
+  width: 100%;
+}
+
+.home {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: spacing(16);
+}
+
+.logo {
+  position: relative;
+  top: spacing(12);
+  width: font-size(72);
+  z-index: z-index(positive);
+}
+
+.link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: spacing(128);
+  height: 100%;
+  font-size: font-size(16);
+  color: color($neutral, 10);
+
+  &:hover {
+    color: color($neutral, 10);
+    background: color($neutral, 4);
+  }
+
+  &:last-of-type {
+    margin-left: auto;
+  }
+
+  &--active {
+    background: color($neutral, 3);
+  }
+}

@@ -1,0 +1,22 @@
+@import "main";
+
+:host {
+  display: block;
+  height: 100%;
+  overflow: auto;
+}
+
+.app-section__content {
+  padding: unset;
+}
+
+li:not(:last-of-type) {
+  margin-bottom: spacing(8);
+  flex-shrink: 0;
+}
+
+.placeholder {
+  display: grid;
+  place-items: center;
+  margin-top: spacing(24);
+}
