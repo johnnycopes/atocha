@@ -1,6 +1,6 @@
 # Atocha
 
-This is monorepo that contains several of my own libraries and application. Technologies used:
+This is a monorepo containing several of my own libraries and application. Technologies used:
 
 1. [Nx](https://nx.dev/) (monorepo)
 2. [TypeScript](https://www.typescriptlang.org/) (language)
@@ -20,7 +20,7 @@ This is monorepo that contains several of my own libraries and application. Tech
 - Live site: https://globetrotter.rocks
 - [Original repo](https://github.com/johnnycopes/globetrotter)
 
-This is a geography app containing a country explorer and a configurable quiz. Test yourself on national flags, capitals, or country names from any part(s) of the world that you choose and receive a score based on your performance.
+A geography app containing a country explorer and a configurable quiz. Test yourself on national flags, capitals, or country names from any part(s) of the world you like and receive a score based on your performance.
 
 Globetrotter has no back-end (at least for now), but uses both the [REST Countries API](https://restcountries.com/) for country data and the [MediaWiki API](https://www.mediawiki.org/wiki/API:Main_page) for country summary data.
 
@@ -37,7 +37,7 @@ _Migration from original repo to Atocha is underway._
 
 ### Core
 
-Generic, well-tested collections of code. Minimally opnionated for maximum reusability.
+Generic, well-tested collections of code. Minimally opinionated for maximum reusability.
 
 1. **core/utility**: collection of framework-agnostic TypeScript functions/classes.
 2. **core/ui**: collection of customizable Angular components.
