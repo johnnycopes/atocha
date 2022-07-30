@@ -18,6 +18,9 @@
           "apps/menu-matriarch/src/assets"
         ],
         "styles": ["apps/menu-matriarch/src/styles.scss"],
+        "stylePreprocessorOptions": {
+          "includePaths": ["apps/menu-matriarch/src/scss"]
+        },
         "scripts": []
       },
       "configurations": {
