@@ -1,6 +1,6 @@
 # Atocha
 
-This is a monorepo containing several of my own libraries and application. Technologies used:
+This is a monorepo containing several of my applications and libraries. Technologies used:
 
 1. [Nx](https://nx.dev/) (monorepo)
 2. [TypeScript](https://www.typescriptlang.org/) (language)
