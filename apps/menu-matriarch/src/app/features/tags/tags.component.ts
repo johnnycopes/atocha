@@ -3,7 +3,8 @@ import { merge, Subject } from 'rxjs';
 import { mapTo, shareReplay } from 'rxjs/operators';
 
 import { TagService } from '@services/tag.service';
-import { trackById } from '@utility/domain/track-by-functions';
+import { Tag } from '@models/tag.interface';
+import { trackByFactory } from '@shared/utility/generic/track-by-factory';
 
 @Component({
   selector: 'app-tags',
@@ -21,7 +22,7 @@ export class TagsComponent {
   ).pipe(
     shareReplay({ refCount: true, bufferSize: 1 })
   );
-  public readonly trackByFn = trackById;
+  public readonly trackByFn = trackByFactory<Tag>(({ id }) => id);
 
   constructor(private _tagService: TagService) { }
 

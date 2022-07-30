@@ -7,7 +7,7 @@ import { MenuEntry } from '@models/menu-entry.interface';
 import { Orientation } from '@models/orientation.type';
 import { MenuService } from '@services/menu.service';
 import { PrintService } from '@services/print.service';
-import { entryTrackBy } from '@utility/domain/track-by-functions';
+import { menuEntryTrackByFn } from '@utility/domain/track-by-functions';
 
 type State = 'default' | 'renaming' | 'changingStartDay';
 
@@ -29,7 +29,7 @@ export class MenuCardComponent {
   private _state$ = new BehaviorSubject<State>('default');
   public state$ = this._state$.asObservable();
   public readonly menuToggleIcon = faEllipsisV;
-  public readonly trackByFn = entryTrackBy;
+  public readonly trackByFn = menuEntryTrackByFn;
 
   constructor(
     private _menuService: MenuService,

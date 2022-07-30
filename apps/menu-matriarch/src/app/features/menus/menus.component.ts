@@ -3,7 +3,8 @@ import { merge, Subject } from 'rxjs';
 import { mapTo, shareReplay } from 'rxjs/operators';
 
 import { MenuService } from '@services/menu.service';
-import { trackById } from '@utility/domain/track-by-functions';
+import { Menu } from '@models/menu.interface';
+import { trackByFactory } from '@shared/utility/generic/track-by-factory';
 
 @Component({
   selector: 'app-menus',
@@ -21,7 +22,7 @@ export class MenusComponent {
   ).pipe(
     shareReplay({ refCount: true, bufferSize: 1 })
   );
-  public readonly trackByFn = trackById;
+  public readonly trackByFn = trackByFactory<Menu>(({ id }) => id);
 
   constructor(private _menuService: MenuService) { }
 

@@ -4,7 +4,6 @@ import { faPlusSquare, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { Dish } from '@models/dish.interface';
 import { Day } from '@models/day.type';
 import { Orientation } from '@models/orientation.type';
-import { trackById } from '@utility/domain/track-by-functions';
 
 @Component({
   // eslint-disable-next-line @angular-eslint/component-selector
@@ -26,7 +25,6 @@ export class PlannerDayComponent implements OnInit {
   @Output() clear = new EventEmitter<void>();
   public readonly addIcon = faPlusSquare;
   public readonly clearIcon = faTimes;
-  public readonly trackByFn = trackById;
   public dishIds = '';
   private _dishes: Dish[] = [];
 

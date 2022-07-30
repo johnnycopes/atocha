@@ -11,7 +11,7 @@ import { MealService } from '@services/meal.service';
 import { TagService } from '@services/tag.service';
 import { UserService } from '@services/user.service';
 import { getDishTypes } from '@utility/domain/get-dish-types';
-import { trackById, trackBySelf } from '@utility/domain/track-by-functions';
+import { dishTrackByFn, trackBySelf } from '@utility/domain/track-by-functions';
 import { recordToArray } from '@utility/generic/record-to-array';
 
 interface MealEditForm {
@@ -86,7 +86,7 @@ export class MealEditComponent {
   );
   public readonly dishTypes = getDishTypes();
   public readonly typeTrackByFn = trackBySelf;
-  public readonly dishTrackByFn = trackById;
+  public readonly dishTrackByFn = dishTrackByFn;
 
   constructor(
     private _route: ActivatedRoute,

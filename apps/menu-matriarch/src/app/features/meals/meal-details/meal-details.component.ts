@@ -5,7 +5,7 @@ import { concatMap, first, map, switchMap, tap } from 'rxjs/operators';
 
 import { MealService } from '@services/meal.service';
 import { UserService } from '@services/user.service';
-import { trackById, trackBySelf } from '@utility/domain/track-by-functions';
+import { dishTrackByFn, trackBySelf } from '@utility/domain/track-by-functions';
 import { getDishTypes } from '@utility/domain/get-dish-types';
 
 @Component({
@@ -37,7 +37,7 @@ export class MealDetailsComponent {
   );
   public readonly dishTypes = getDishTypes();
   public readonly typeTrackByFn = trackBySelf;
-  public readonly dishTrackByFn = trackById;
+  public readonly dishTrackByFn = dishTrackByFn;
 
   constructor(
     private _route: ActivatedRoute,

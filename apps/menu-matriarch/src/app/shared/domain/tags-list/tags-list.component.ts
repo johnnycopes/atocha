@@ -1,7 +1,7 @@
 import { Component, ChangeDetectionStrategy, Input, TemplateRef, ContentChild } from '@angular/core';
 
 import { Tag } from '@models/tag.interface';
-import { trackById } from '@utility/domain/track-by-functions';
+import { trackByFactory } from '@shared/utility/generic/track-by-factory';
 import { TagDefContext, TagDefDirective } from './tag-def.directive';
 
 @Component({
@@ -13,7 +13,7 @@ import { TagDefContext, TagDefDirective } from './tag-def.directive';
 export class TagsListComponent<T extends Tag> {
   @Input() tags: T[] = [];
   @Input() interactive = false;
-  public readonly trackByFn = trackById;
+  public readonly trackByFn = trackByFactory<Tag>(({ id }) => id);
 
   @ContentChild(TagDefDirective)
   public tagDef: TagDefDirective<T> | undefined;
