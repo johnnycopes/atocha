@@ -6,7 +6,7 @@ import { DishService } from '@services/dish.service';
 import { FilterService } from '@services/filter.service';
 import { RouterService } from '@services/router.service';
 import { TagService } from '@services/tag.service';
-import { trackByDishType, trackById } from '@utility/domain/track-by-functions';
+import { groupTrackBy, trackById } from '@utility/domain/track-by-functions';
 import { DishContext, DishDefDirective } from './dish-def.directive';
 
 @Component({
@@ -40,7 +40,7 @@ export class DishesListComponent {
       };
     })
   );
-  public readonly groupTrackByFn = trackByDishType;
+  public readonly groupTrackByFn = groupTrackBy;
   public readonly dishTrackByFn = trackById;
 
   @ContentChild(DishDefDirective)

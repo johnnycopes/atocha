@@ -4,7 +4,7 @@ import { Dish } from '@models/dish.interface';
 import { FilteredDishesGroup } from '@models/filtered-dishes.interface';
 import { Orientation } from '@models/orientation.type';
 import { getDishTypes } from '@utility/domain/get-dish-types';
-import { trackByDishType, trackById } from '@utility/domain/track-by-functions';
+import { groupTrackBy, trackById } from '@utility/domain/track-by-functions';
 
 @Component({
   selector: 'app-meal-summary',
@@ -26,6 +26,6 @@ export class MealSummaryComponent {
   @Input() orientation: Orientation = 'horizontal';
   public dishesGroups: FilteredDishesGroup[] = [];
   public showFallback = true;
-  public readonly groupTrackByFn = trackByDishType;
+  public readonly groupTrackByFn = groupTrackBy;
   public readonly dishTrackByFn = trackById;
 }
