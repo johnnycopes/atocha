@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
-import { Route } from '@models/route.enum';
+import { Route } from '@atocha/menu-matriarch/types';
 import { AuthGuard } from './core/guards/auth.guard';
 import { LoggedInAuthGuard } from './core/guards/logged-in-auth.guard';
 import { PlannerGuard } from './core/guards/planner.guard';

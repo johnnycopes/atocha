@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { Endpoint } from '@models/endpoint.enum';
+import { Endpoint } from '@atocha/menu-matriarch/types';
 import {
   createDishDto,
   createMealDto,

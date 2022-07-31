@@ -4,7 +4,7 @@ import { map } from 'rxjs/operators';
 
 import { flattenValues, lower, sort } from '@atocha/core/util';
 import { Day } from '@models/day.type';
-import { Endpoint } from '@models/endpoint.enum';
+import { Endpoint } from '@atocha/menu-matriarch/types';
 import { Menu } from '@models/menu.interface';
 import { MenuDto } from '@models/dtos/menu-dto.interface';
 import { createMenuDto } from '@utility/domain/create-dtos';

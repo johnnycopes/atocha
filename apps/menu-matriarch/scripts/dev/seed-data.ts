@@ -2,7 +2,7 @@
 
 import * as admin from 'firebase-admin';
 
-import { Endpoint } from '../../src/app/shared/models/endpoint.enum';
+import { Endpoint } from '@atocha/menu-matriarch/types';
 import {
   createDishDto,
   createMealDto,

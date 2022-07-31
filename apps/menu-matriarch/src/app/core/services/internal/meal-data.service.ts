@@ -4,7 +4,7 @@ import { map } from 'rxjs/operators';
 
 import { lower, sort } from '@atocha/core/util';
 import { MealDto } from '@models/dtos/meal-dto.interface';
-import { Endpoint } from '@models/endpoint.enum';
+import { Endpoint } from '@atocha/menu-matriarch/types';
 import { Meal } from '@models/meal.interface';
 import { createMealDto } from '@utility/domain/create-dtos';
 import { BatchService } from './batch.service';
