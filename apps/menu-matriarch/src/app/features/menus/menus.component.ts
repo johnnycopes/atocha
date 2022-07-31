@@ -2,9 +2,9 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { merge, Subject } from 'rxjs';
 import { mapTo, shareReplay } from 'rxjs/operators';
 
+import { trackByFactory } from '@atocha/core/ui';
 import { MenuService } from '@services/menu.service';
 import { Menu } from '@models/menu.interface';
-import { trackByFactory } from '@shared/utility/generic/track-by-factory';
 
 @Component({
   selector: 'app-menus',

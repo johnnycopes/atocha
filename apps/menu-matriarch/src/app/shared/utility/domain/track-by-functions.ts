@@ -1,4 +1,4 @@
-import { trackByFactory } from '../generic/track-by-factory';
+import { trackByFactory } from '@atocha/core/ui';
 import { FilteredDishesGroup } from '@models/filtered-dishes.interface';
 import { MenuEntry } from '@models/menu-entry.interface';
 import { Dish } from '@models/dish.interface';
