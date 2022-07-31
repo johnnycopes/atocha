@@ -30,7 +30,8 @@
         "libs/globetrotter/feature-shell/src/index.ts"
       ],
       "@atocha/globetrotter/types": ["libs/globetrotter/types/src/index.ts"],
-      "@atocha/globetrotter/ui": ["libs/globetrotter/ui/src/index.ts"]
+      "@atocha/globetrotter/ui": ["libs/globetrotter/ui/src/index.ts"],
+      "@atocha/menu-matriarch/types": ["libs/menu-matriarch/types/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
