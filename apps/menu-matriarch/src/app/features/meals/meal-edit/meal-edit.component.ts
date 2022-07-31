@@ -11,7 +11,7 @@ import {
   tap,
 } from 'rxjs/operators';
 
-import { recordToArray } from '@atocha/core/util';
+import { recordToArray } from '@atocha/core/util-ts';
 import { Dish } from '@models/dish.interface';
 import { TagModel } from '@models/tag-model.interface';
 import { DishService } from '@services/dish.service';

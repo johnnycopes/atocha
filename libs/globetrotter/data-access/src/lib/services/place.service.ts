@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, shareReplay } from 'rxjs';
 import { groupBy } from 'lodash-es';
 
-import { sort } from '@atocha/core/util';
+import { sort } from '@atocha/core/util-ts';
 import {
   Country,
   mapCountryDtoToCountry,

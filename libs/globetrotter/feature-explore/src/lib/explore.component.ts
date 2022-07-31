@@ -9,7 +9,7 @@ import {
   distinctUntilChanged,
 } from 'rxjs/operators';
 
-import { includes } from '@atocha/core/util';
+import { includes } from '@atocha/core/util-ts';
 import { fadeInAnimation } from '@atocha/globetrotter/ui';
 import { PlaceService } from '@atocha/globetrotter/data-access';
 import { Country } from '@atocha/globetrotter/types';

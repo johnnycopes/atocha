@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { lower, sort } from '@atocha/core/util';
+import { lower, sort } from '@atocha/core/util-ts';
 import { Dish } from '@models/dish.interface';
 import { DishDto } from '@models/dtos/dish-dto.interface';
 import { Endpoint } from '@models/endpoint.enum';

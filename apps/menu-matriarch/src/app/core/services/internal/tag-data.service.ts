@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { lower, sort } from '@atocha/core/util';
+import { lower, sort } from '@atocha/core/util-ts';
 import { Endpoint } from '@models/endpoint.enum';
 import { Tag } from '@models/tag.interface';
 import { TagDto } from '@models/dtos/tag-dto.interface';

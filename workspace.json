@@ -4,7 +4,7 @@
   "projects": {
     "core-ui": "libs/core/ui",
     "core-ui-e2e": "apps/core-ui-e2e",
-    "core-util": "libs/core/util",
+    "core-util-ts": "libs/core/util-ts",
     "globetrotter": "apps/globetrotter",
     "globetrotter-data-access": "libs/globetrotter/data-access",
     "globetrotter-e2e": "apps/globetrotter-e2e",
