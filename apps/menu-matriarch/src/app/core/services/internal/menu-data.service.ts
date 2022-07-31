@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { flattenValues, lower, sort } from '@atocha/core/util-ts';
+import { flattenValues, lower, sort } from '@atocha/core/util';
 import { Day } from '@models/day.type';
 import { Endpoint } from '@models/endpoint.enum';
 import { Menu } from '@models/menu.interface';

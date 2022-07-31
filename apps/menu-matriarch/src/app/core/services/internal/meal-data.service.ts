@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { lower, sort } from '@atocha/core/util-ts';
+import { lower, sort } from '@atocha/core/util';
 import { MealDto } from '@models/dtos/meal-dto.interface';
 import { Endpoint } from '@models/endpoint.enum';
 import { Meal } from '@models/meal.interface';

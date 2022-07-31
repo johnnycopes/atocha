@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { first } from 'rxjs/operators';
 
-import { includes } from '@atocha/core/util-ts';
+import { includes } from '@atocha/core/util';
 import { Dish } from '@models/dish.interface';
 import { FilteredDishesGroup } from '@models/filtered-dishes.interface';
 import { Meal } from '@models/meal.interface';

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { filter, map, shareReplay } from 'rxjs/operators';
 
-import { Quiz, QuizState } from '@atocha/core/util-ts';
+import { Quiz, QuizState } from '@atocha/core/util';
 import { Route, Country, Selection } from '@atocha/globetrotter/types';
 import { PlaceService } from './place.service';
 import { RouterService } from './router.service';

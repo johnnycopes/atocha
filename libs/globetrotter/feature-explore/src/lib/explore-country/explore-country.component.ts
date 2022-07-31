@@ -10,7 +10,7 @@ import {
   SimpleChanges,
 } from '@angular/core';
 
-import { pluralize } from '@atocha/core/util-ts';
+import { pluralize } from '@atocha/core/util';
 import { Country } from '@atocha/globetrotter/types';
 
 interface TableContent {

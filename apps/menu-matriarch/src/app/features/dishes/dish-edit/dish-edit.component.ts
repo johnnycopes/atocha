@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { combineLatest, of } from 'rxjs';
 import { concatMap, first, map, tap } from 'rxjs/operators';
 
-import { recordToArray } from '@atocha/core/util-ts';
+import { recordToArray } from '@atocha/core/util';
 import { DishType } from '@models/dish-type.type';
 import { TagModel } from '@models/tag-model.interface';
 import { DishService } from '@services/dish.service';
