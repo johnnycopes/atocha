@@ -2,12 +2,11 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
+import { lower, sort } from '@atocha/core/util';
 import { Endpoint } from '@models/endpoint.enum';
 import { Tag } from '@models/tag.interface';
 import { TagDto } from '@models/dtos/tag-dto.interface';
 import { createTagDto } from '@utility/domain/create-dtos';
-import { lower } from '@utility/generic/format';
-import { sort } from '@utility/generic/sort';
 import { BatchService } from './batch.service';
 import { DataService } from './data.service';
 

@@ -16,6 +16,7 @@
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
+      "@atocha/core/util": ["../../libs/core/util/src/index.ts"],
       "@env/*": ["src/environments/*"],
       "@models/*": ["src/app/shared/models/*"],
       "@services/*": ["src/app/core/services/*"],

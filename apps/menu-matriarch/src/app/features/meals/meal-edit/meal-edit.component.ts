@@ -11,6 +11,7 @@ import {
   tap,
 } from 'rxjs/operators';
 
+import { recordToArray } from '@atocha/core/util';
 import { Dish } from '@models/dish.interface';
 import { TagModel } from '@models/tag-model.interface';
 import { DishService } from '@services/dish.service';
@@ -19,7 +20,6 @@ import { TagService } from '@services/tag.service';
 import { UserService } from '@services/user.service';
 import { getDishTypes } from '@utility/domain/get-dish-types';
 import { dishTrackByFn, trackBySelf } from '@utility/domain/track-by-functions';
-import { recordToArray } from '@utility/generic/record-to-array';
 
 interface MealEditForm {
   name: string;

@@ -4,13 +4,13 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { combineLatest, of } from 'rxjs';
 import { concatMap, first, map, tap } from 'rxjs/operators';
 
+import { recordToArray } from '@atocha/core/util';
 import { DishType } from '@models/dish-type.type';
 import { TagModel } from '@models/tag-model.interface';
 import { DishService } from '@services/dish.service';
 import { TagService } from '@services/tag.service';
 import { getDishTypes } from '@utility/domain/get-dish-types';
 import { trackBySelf } from '@utility/domain/track-by-functions';
-import { recordToArray } from '@utility/generic/record-to-array';
 
 interface DishEditForm {
   name: string;
