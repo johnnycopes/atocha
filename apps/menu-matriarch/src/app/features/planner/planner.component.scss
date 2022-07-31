@@ -1,0 +1,25 @@
+@import 'main';
+
+$toolbar-height: spacing(48);
+
+:host {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+}
+
+.left {
+  display: block;
+  width: 50%;
+  height: 100%;
+}
+
+.right {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 100%;
+  background: $white;
+}

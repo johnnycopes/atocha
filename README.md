@@ -13,8 +13,6 @@ This is a monorepo containing several of my applications and libraries. Technolo
 
 ## Applications
 
----
-
 ### Globetrotter
 
 - Live site: https://globetrotter.rocks
@@ -32,8 +30,6 @@ Globetrotter has no back-end (at least for now), but uses both the [REST Countri
 _Migration from original repo to Atocha is underway._
 
 ## Libraries
-
----
 
 ### Core
 

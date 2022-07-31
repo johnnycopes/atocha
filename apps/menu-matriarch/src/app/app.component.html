@@ -1,1 +1,15 @@
-<app-nx-welcome></app-nx-welcome> <router-outlet></router-outlet>
+<!-- TODO: future loading component -->
+<!-- <div *ngIf="loading$ | async">
+</div> -->
+
+<!--
+  <app-error *ngIf="error$ | async">
+  </app-error> -->
+
+  <!-- TODO: make routing transitions work even if loader shows first -->
+<!-- <ng-container *ngIf="
+  (loading$ | async) === false &&
+  (error$ | async) === undefined"
+> -->
+  <router-outlet></router-outlet>
+<!-- </ng-container> -->

@@ -1,0 +1,28 @@
+<app-card [active]="active">
+  <div class="top">
+    <a routerLink="/meals/{{ id }}">
+      <h3 class="name">
+        {{ name }}
+      </h3>
+    </a>
+    <p *ngIf="description"
+      class="description"
+    >
+      {{ description }}
+    </p>
+    <app-tags-list *ngIf="tags.length"
+      class="tags"
+      [tags]="tags"
+    >
+      <app-tag *appTagDef="let tag"
+        [id]="tag.id"
+        [name]="tag.name"
+      ></app-tag>
+    </app-tags-list>
+  </div>
+  <app-meal-summary
+    [dishes]="dishes"
+    [fallbackText]="fallbackText"
+    [orientation]="orientation"
+  ></app-meal-summary>
+</app-card>

@@ -1,0 +1,8 @@
+@import 'main';
+
+.panel {
+  background: $white;
+  padding: spacing(16);
+  border-radius: border(radius);
+  box-shadow: box-shadow(lightest);
+}

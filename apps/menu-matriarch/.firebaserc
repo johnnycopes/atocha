@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "menu-matriarch": {
+      "hosting": {
+        "menu-matriarch": [
+          "menu-matriarch"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "menu-matriarch"
+  }
+}

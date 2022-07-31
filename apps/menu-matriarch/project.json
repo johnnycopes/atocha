@@ -18,6 +18,9 @@
           "apps/menu-matriarch/src/assets"
         ],
         "styles": ["apps/menu-matriarch/src/styles.scss"],
+        "stylePreprocessorOptions": {
+          "includePaths": ["apps/menu-matriarch/src/scss"]
+        },
         "scripts": []
       },
       "configurations": {
@@ -26,7 +29,7 @@
             {
               "type": "initial",
               "maximumWarning": "500kb",
-              "maximumError": "1mb"
+              "maximumError": "2mb"
             },
             {
               "type": "anyComponentStyle",

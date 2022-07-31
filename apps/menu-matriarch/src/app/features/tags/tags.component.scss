@@ -1,0 +1,27 @@
+@import 'main';
+
+:host {
+  display: block;
+}
+
+.form {
+  margin-left: spacing(16);
+}
+
+.app-section__toolbar {
+  display: flex;
+  align-items: center;
+}
+
+.title {
+  margin-right: spacing(16);
+  font-weight: font-weight(bold);
+  color: color($neutral, 4);
+}
+
+.tags {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto;
+  grid-gap: spacing(16);
+}

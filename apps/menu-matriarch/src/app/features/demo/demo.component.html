@@ -1,0 +1,195 @@
+<app-panel>
+  <div class="container">
+    <app-demo-component name="AlertComponent"
+      description="Eye-catching message intended to convey key information"
+      [limitWidth]="true"
+      >
+      <app-alert type="success">
+        This is a success message
+      </app-alert>
+      <app-alert type="warning">
+        This is a warning message
+      </app-alert>
+      <app-alert>
+        This is an error message
+      </app-alert>
+      <app-alert type="success"
+        [large]="true"
+        >
+        This is a large message
+      </app-alert>
+    </app-demo-component>
+
+    <app-demo-component name="AutofocusDirective"
+      description="Sets focus state on an input on app initialization"
+      [limitWidth]="true"
+      >
+      <app-input label="Autofocus Example">
+        <input type="text"
+          placeholder="I have focus on page load"
+          appAutofocus
+        />
+      </app-input>
+    </app-demo-component>
+
+    <app-demo-component name="ButtonComponent"
+      description="It's your basic button"
+      [limitWidth]="true"
+      >
+      <button app-button
+        (click)="onButtonClick()"
+        >
+        primary
+      </button>
+      <button app-button
+        buttonStyle="secondary"
+        (click)="onButtonClick()"
+        >
+        secondary
+      </button>
+      <button app-button
+        buttonStyle="ternary"
+        (click)="onButtonClick()"
+        >
+        ternary
+      </button>
+      <p>button clicks: {{counter}}</p>
+    </app-demo-component>
+
+    <app-demo-component name="CheckboxComponent"
+      description="Simple checkbox with three possible states: checked, unchecked, or indeterminate"
+      >
+      <app-checkbox
+        [(ngModel)]="checkboxState1"
+      >
+        This is {{ checkboxState1 ? 'a checked' : 'an unchecked' }} checkbox
+      </app-checkbox>
+
+      <app-checkbox
+        [disabled]="true"
+        [(ngModel)]="checkboxState2"
+      >
+        This is a disabled checkbox
+      </app-checkbox>
+    </app-demo-component>
+
+    <app-demo-component name="FontAwesomeComponent"
+      description="FontAwesome provides an official component to make it easy to use its icons in an Angular app"
+      [dependencies]="['FontAwesomeModule']"
+      >
+      <h2><a href="https://www.npmjs.com/package/@fortawesome/angular-fontawesome" target="_blank">Official API docs here (click me)</a></h2>
+      <h2>FA icons can be imported at a component level as needed.</h2>
+      <div><code>faApple</code>: <fa-icon [icon]="faApple"></fa-icon></div>
+      <h2>Alternatively, they can be registered at a module level and then used freely within components of said module. See
+        shared module constructor for an example.</h2>
+    </app-demo-component>
+
+    <app-demo-component name="HoverDirective"
+      description="Easily manage a boolean to signal if an element is being hovered on"
+      [limitWidth]="true"
+      >
+      <div class="container-1"
+        [class.container-1--hover]="hoverState"
+        >
+        <div class="container-2">
+          <div class="container-3">
+            <p (appHover)="hoverState">I'm a deeply-nested paragraph tag. Hovering on me will change my outermost container without the need for specific CSS rules.</p>
+          </div>
+        </div>
+      </div>
+    </app-demo-component>
+
+    <app-demo-component name="InputComponent"
+      [limitWidth]="true"
+      >
+      <app-input label="Normal input">
+        <input
+          type="text"
+        />
+      </app-input>
+      <app-input
+        label="With error"
+        errorMessage="I'm here unless you type something"
+        [showError]="!inputModel.length"
+        >
+        <input #errorInput
+          type="text"
+          [(ngModel)]="inputModel"
+        />
+      </app-input>
+      <app-input label="Disabled input">
+        <input
+          type="text"
+          [disabled]="true"
+        />
+      </app-input>
+    </app-demo-component>
+
+    <app-demo-component name="KanbanBoardComponent"
+      description="Series of columns/items that can be dragged and dropped. Leverages the Angular CDK"
+      [dependencies]="['DragDropModule']"
+      >
+      <app-kanban-board
+        [columns]="kitchenLocations"
+        [config]="kanbanBoardConfig"
+        >
+      </app-kanban-board>
+    </app-demo-component>
+
+    <app-demo-component name="OptionsMenuComponent"
+      description="Context menu with clickable options. Leverages the Angular CDK."
+      [dependencies]="['OptionsMenuComponent']"
+      >
+      <!-- <button
+        app-button
+        cdkOverlayOrigin
+        #trigger="cdkOverlayOrigin"
+        (click)="isOptionsMenuOpen = !isOptionsMenuOpen"
+      >
+        Open Menu ({{isOptionsMenuOpen}})
+      </button>
+
+      <ng-template
+        cdkConnectedOverlay
+        [cdkConnectedOverlayOrigin]="trigger"
+        [cdkConnectedOverlayOpen]="isOptionsMenuOpen"
+        (overlayOutsideClick)="isOptionsMenuOpen = false"
+      >
+        <ul app-options-menu>
+          <li app-options-menu-item>
+            Delete user
+          </li>
+          <li app-options-menu-item>
+            Decorative option
+          </li>
+      </ul>
+      </ng-template> -->
+
+      <button app-button
+        [appOptionsMenuTrigger]="optionsMenu"
+      >
+        Click
+      </button>
+
+      <app-options-menu #optionsMenu>
+        <li app-options-menu-item>
+          Delete user
+        </li>
+        <li app-options-menu-item>
+          Decorative option
+        </li>
+      </app-options-menu>
+    </app-demo-component>
+
+    <app-demo-component name="PanelComponent"
+      description="It's your basic container"
+      >
+      <div class="panel-container">
+        <app-panel>
+          I'm a panel!<br><br>
+          <em>Note that this entire demo section is also in a panel.</em>
+        </app-panel>
+      </div>
+    </app-demo-component>
+  </div>
+</app-panel>

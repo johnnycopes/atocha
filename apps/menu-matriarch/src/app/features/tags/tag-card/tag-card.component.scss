@@ -1,0 +1,24 @@
+@import 'main';
+
+app-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+}
+
+app-count {
+  margin-left: spacing(12);
+}
+
+button {
+  margin-left: spacing(8);
+}
+
+button:first-of-type {
+  margin-left: spacing(12);
+}

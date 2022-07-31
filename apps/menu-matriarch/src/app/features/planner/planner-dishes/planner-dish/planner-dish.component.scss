@@ -1,0 +1,19 @@
+@import 'main';
+
+:host {
+  display: block;
+}
+
+app-card {
+  padding: spacing(16);
+}
+
+.schedule {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: spacing(8);
+
+  app-checkbox {
+    margin-right: spacing(16);
+  }
+}

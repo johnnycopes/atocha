@@ -1,0 +1,43 @@
+<div class="toolbar">
+  <h2 class="name">
+    {{name}}
+  </h2>
+  <fa-icon class="menu-icon"
+    *ngIf="actions"
+    [icon]="menuIcon"
+    >
+  </fa-icon>
+</div>
+<ul class="list"
+  cdkDropList
+  [cdkDropListData]="items"
+  (cdkDropListDropped)="onDropItem($event)"
+  >
+  <li class="list-item"
+    [class.list-item--moving]="moving"
+    *ngFor="let item of items; trackBy: trackByFn"
+    cdkDrag
+    [cdkDragData]="{
+      columnId: id,
+      item: item
+    }"
+    (cdkDragStarted)="onDragItem()"
+    >
+    <ng-container
+      [ngTemplateOutlet]="itemTemplate ? itemTemplate : defaultTemplate"
+      [ngTemplateOutletContext]="{ $implicit: item }"
+      >
+    </ng-container>
+  </li>
+</ul>
+<app-kanban-board-form
+  [name]="itemUnit"
+  (add)="onItemAdd($event)"
+  >
+</app-kanban-board-form>
+
+<ng-template #defaultTemplate
+  let-item
+  >
+  {{getItemId(item)}}
+</ng-template>

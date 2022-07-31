@@ -1,0 +1,83 @@
+<app-section *ngIf="user$ | async as user">
+  <div class="app-section__content">
+    <div class="account">
+      <h2 class="title">
+        Account
+      </h2>
+      <app-card>
+        <h4 class="name">
+          {{ user.name }}
+        </h4>
+        <p class="email">
+          {{ user.email }}
+        </p>
+        <button app-button
+          (click)="signOut()"
+        >
+          Sign Out
+        </button>
+      </app-card>
+    </div>
+
+    <div class="settings">
+      <h2 class="title">
+        Settings
+      </h2>
+      <app-card>
+        <form #form="ngForm">
+          <app-input label="Default Menu Start Day">
+            <select id="Default Menu Start Day"
+              name="menuStartDay"
+              [ngModel]="user.preferences?.defaultMenuStartDay"
+              (ngModelChange)="updateAction$.next({ defaultMenuStartDay: $event })"
+            >
+              <option *ngFor="let day of days; trackBy: trackByFn"
+                [ngValue]="day"
+              >
+                {{ day }}
+              </option>
+            </select>
+          </app-input>
+          <app-input
+            label="Empty Meal Text"
+          >
+            <input
+              id="Empty Meal Text"
+              type="text"
+              name="emptyMealText"
+              [ngModel]="user?.preferences?.emptyMealText"
+              (ngModelChange)="updateAction$.next({ emptyMealText: $event })"
+              appAutofocus
+            />
+          </app-input>
+          <app-input
+            label="Meal Orientation"
+          >
+            <div class="radio-container">
+              <label class="radio-button">
+                <input
+                  type="radio"
+                  name="mealOrientation"
+                  value="horizontal"
+                  [ngModel]="user.preferences?.mealOrientation"
+                  (ngModelChange)="updateAction$.next({ mealOrientation: $event })"
+                />
+                Horizontal
+              </label>
+              <label class="radio-button">
+                <input
+                  type="radio"
+                  name="mealOrientation"
+                  value="vertical"
+                  [ngModel]="user.preferences?.mealOrientation"
+                  (ngModelChange)="updateAction$.next({ mealOrientation: $event })"
+                />
+                Vertical
+              </label>
+            </div>
+          </app-input>
+        </form>
+      </app-card>
+    </div>
+  </div>
+</app-section>

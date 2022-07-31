@@ -1,0 +1,17 @@
+@import 'main';
+
+:host {
+  display: block;
+  padding: spacing(8) spacing(16);
+
+  &:hover {
+    background: color($neutral, 10);
+    cursor: pointer;
+  }
+}
+
+:host(.disabled) {
+  background: color($neutral, 10);
+  color: color($neutral, 6);
+  pointer-events: none;
+}

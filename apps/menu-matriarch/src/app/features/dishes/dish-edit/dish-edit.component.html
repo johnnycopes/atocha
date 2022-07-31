@@ -1,0 +1,120 @@
+<app-section *ngIf="vm$ | async as vm">
+  <div class="app-section__toolbar">
+    <a app-button
+      buttonStyle="secondary"
+      routerLink=".."
+    >
+      Cancel
+    </a>
+    <button app-button
+      buttonStyle="primary"
+      type="submit"
+      form="ngForm"
+      [disabled]="!form.valid"
+    >
+      Save
+    </button>
+  </div>
+  <form class="app-section__content"
+    id="ngForm"
+    #form="ngForm"
+    (keydown.enter)="$event.preventDefault()"
+    (ngSubmit)="onSave(form)"
+  >
+    <app-input
+      label="name"
+    >
+      <input
+        id="name"
+        type="text"
+        name="name"
+        required
+        [ngModel]="vm.name"
+        #name="ngModel"
+        appAutofocus
+      />
+    </app-input>
+    <app-input
+      label="description"
+    >
+      <input
+        id="description"
+        type="text"
+        name="description"
+        [ngModel]="vm.description"
+        #description="ngModel"
+      />
+    </app-input>
+    <app-input
+      label="link"
+    >
+      <input
+        id="link"
+        type="text"
+        name="link"
+        [ngModel]="vm.link"
+        #link="ngModel"
+      />
+    </app-input>
+    <app-input
+      label="dish type"
+    >
+      <div class="radio-container">
+        <label *ngFor="let dishType of dishTypes; trackBy: typeTrackByFn"
+          class="radio-button"
+        >
+          <input
+            type="radio"
+            name="type"
+            [value]="dishType"
+            [ngModel]="vm.type"
+          />
+          {{ dishType | titlecase }}
+        </label>
+      </div>
+    </app-input>
+    <app-input
+      label="tags"
+    >
+      <app-tags-list
+        *ngIf="vm.tags.length; else noTagsPlaceholder"
+        class="tags"
+        ngModelGroup="tags"
+        [tags]="vm.tags"
+        [interactive]="true"
+      >
+        <ng-container *appTagDef="let tag">
+          <app-checkbox
+            [name]="tag.id"
+            [ngModel]="tag.checked"
+          >
+            <app-tag
+              [id]="tag.id"
+              [name]="tag.name"
+            ></app-tag>
+          </app-checkbox>
+        </ng-container>
+      </app-tags-list>
+      <ng-template #noTagsPlaceholder>
+        <div class="placeholder">
+          <p>No tags to display</p>
+          <a app-button
+            routerLink="/tags"
+          >
+            New Tag
+          </a>
+        </div>
+      </ng-template>
+    </app-input>
+    <app-input
+      label="notes"
+    >
+      <editor
+        name="notes"
+        apiKey="4yfx3pv3xaz2njb6vj43b4grlu0qfmodc0l9xvuw4elb3ijx"
+        [init]="tinyMceConfig"
+        [ngModel]="vm.notes"
+      ></editor>
+    </app-input>
+  </form>
+</app-section>

@@ -1,0 +1,25 @@
+@import 'main';
+
+.app-section__toolbar {
+  align-items: center;
+  justify-content: flex-end;
+
+  .title {
+    margin-right: auto;
+    font-weight: font-weight(bold);
+    color: color($neutral, 4);
+  }
+
+  [app-button]:not(:first-child) {
+    margin-left: spacing(8);
+  }
+}
+
+.app-section__content {
+  display: flex;
+  flex-direction: column;
+
+  li[app-planner-day] {
+    flex-basis: 100%;
+  }
+}

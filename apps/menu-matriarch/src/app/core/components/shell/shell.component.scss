@@ -1,0 +1,23 @@
+@import 'main';
+
+:host {
+  display: grid;
+  grid-template-rows:
+    [header] app-size(header)
+    [content] 1fr;
+  height: 100%;
+}
+
+header {
+  grid-row: header;
+}
+
+.content {
+  grid-row: content;
+  overflow: auto;
+}
+
+.wrapper {
+  position: relative;
+  height: 100%;
+}

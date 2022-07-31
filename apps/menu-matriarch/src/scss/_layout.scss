@@ -1,0 +1,68 @@
+/*
+Use these values for spacing and sizing. A hand-crafted type scale
+(source: Refactoring UI, page 73)
+*/
+$spacing: (
+  2: 2px,
+  4: 4px,
+  8: 8px,
+  12: 12px,
+  16: 16px,
+  24: 24px,
+  32: 32px,
+  48: 48px,
+  64: 64px,
+  96: 96px,
+  128: 128px,
+  192: 192px,
+  256: 256px,
+  384: 384px,
+  512: 512px,
+  640: 640px,
+  768: 768px,
+);
+
+$z-index: (
+  modal: 100,
+  positive: 1,
+  none: 0,
+  negative: -1,
+);
+
+$box-shadow: (
+  lightest: 0 1px 3px hsla(0deg, 0%, 0%, 20%),
+  light: 0 4px 6px hsla(0deg, 0%, 0%, 20%),
+  medium: 0 5px 15px hsla(0deg, 0%, 0%, 20%),
+  heavy: 0 10px 24px hsla(0deg, 0%, 0%, 20%),
+  heaviest: 0 15px 35px hsla(0deg, 0%, 0%, 20%),
+);
+
+$border: (
+  thin: 2px,
+  normal: 5px,
+  radius: 5px,
+);
+
+@function z-index($value) {
+  @return map-get($z-index, $value);
+}
+
+@function spacing($size) {
+  @return map-get($spacing, $size);
+}
+
+@function border($size) {
+  @return map-get($border, $size);
+}
+
+@function box-shadow($intensity) {
+  @return map-get($box-shadow, $intensity);
+}
+
+$app: (
+  header: spacing(64),
+);
+
+@function app-size($value) {
+  @return map-get($app, $value);
+}
