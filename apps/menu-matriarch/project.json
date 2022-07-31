@@ -29,7 +29,7 @@
             {
               "type": "initial",
               "maximumWarning": "500kb",
-              "maximumError": "2mb" // TODO: change this back after modularization
+              "maximumError": "2mb"
             },
             {
               "type": "anyComponentStyle",
