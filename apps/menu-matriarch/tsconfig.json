@@ -22,7 +22,6 @@
       "@env/*": ["src/environments/*"],
       "@services/*": ["src/app/core/services/*"],
       "@shared/*": ["src/app/shared/*"],
-      "@utility/*": ["src/app/shared/utility/*"]
     },
     "target": "es2020",
     "forceConsistentCasingInFileNames": true,
