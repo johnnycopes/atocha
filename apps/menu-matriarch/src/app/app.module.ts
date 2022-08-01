@@ -16,6 +16,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { CoreUiModule } from '@atocha/core/ui';
 import { DomainModule } from '@shared/domain/domain.module';
 import { GenericModule } from '@shared/generic/generic.module';
+import { MenuMatriarchUiModule } from '@atocha/menu-matriarch/ui';
 
 import { AppComponent } from './app.component';
 import { DemoComponent } from './features/demo/demo.component';
@@ -96,6 +97,7 @@ import { WelcomeComponent } from './features/welcome/welcome.component';
     CoreUiModule,
     DomainModule,
     GenericModule,
+    MenuMatriarchUiModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

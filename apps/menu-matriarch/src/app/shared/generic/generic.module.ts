@@ -5,8 +5,9 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FormsModule } from '@angular/forms';
 
 import { CoreUiModule } from '@atocha/core/ui';
+import { MenuMatriarchUiModule } from '@atocha/menu-matriarch/ui';
+
 import { AlertComponent } from './alert/alert.component';
-import { ButtonComponent } from './button/button.component';
 import { CardComponent } from './card/card.component';
 import { CheckboxComponent } from './checkbox/checkbox.component';
 import { HoverDirective } from './hover/hover.directive';
@@ -28,10 +29,9 @@ import { TabComponent } from './tabset/tab/tab.component';
 import { TabsetComponent } from './tabset/tabset.component';
 
 @NgModule({
-  imports: [CommonModule, DragDropModule, FontAwesomeModule, FormsModule, CoreUiModule],
+  imports: [CommonModule, DragDropModule, FontAwesomeModule, FormsModule, CoreUiModule, MenuMatriarchUiModule],
   declarations: [
     AlertComponent,
-    ButtonComponent,
     CardComponent,
     CheckboxComponent,
     HoverDirective,
@@ -54,7 +54,6 @@ import { TabsetComponent } from './tabset/tabset.component';
   ],
   exports: [
     AlertComponent,
-    ButtonComponent,
     CardComponent,
     CheckboxComponent,
     HoverDirective,

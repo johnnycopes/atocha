@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 import { CoreUiModule } from '@atocha/core/ui';
+import { MenuMatriarchUiModule } from '@atocha/menu-matriarch/ui';
 import { GenericModule } from '@shared/generic/generic.module';
 
 import { CountComponent } from './count/count.component';
@@ -67,6 +68,7 @@ import { TagsListComponent } from './tags-list/tags-list.component';
     FormsModule,
     RouterModule,
     CoreUiModule,
+    MenuMatriarchUiModule,
     GenericModule,
   ],
 })
