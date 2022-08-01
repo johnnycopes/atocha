@@ -7,8 +7,7 @@ import {
 } from '@angular/core';
 
 import { trackBySelf } from '@atocha/core/ui';
-import { Day } from '@atocha/menu-matriarch/types';
-import { getDays } from '@utility/domain/get-days';
+import { Day, getDays } from '@atocha/menu-matriarch/types';
 
 @Component({
   selector: 'app-inline-day-select',

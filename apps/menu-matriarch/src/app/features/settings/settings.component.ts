@@ -9,10 +9,9 @@ import { Subject } from 'rxjs';
 import { debounceTime, switchMap, takeUntil } from 'rxjs/operators';
 
 import { trackBySelf } from '@atocha/core/ui';
-import { UserPreferences } from '@atocha/menu-matriarch/types';
+import { UserPreferences, getDays } from '@atocha/menu-matriarch/types';
 import { AuthService } from '@services/auth.service';
 import { UserService } from '@services/user.service';
-import { getDays } from '@utility/domain/get-days';
 
 @Component({
   selector: 'app-settings',

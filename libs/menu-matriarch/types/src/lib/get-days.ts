@@ -1,4 +1,4 @@
-import { Day } from "@atocha/menu-matriarch/types";
+import { Day } from "./day.type";
 
 export function getDays(startDay: Day = 'Monday'): readonly Day[] {
   switch (startDay) {
