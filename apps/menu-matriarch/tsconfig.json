@@ -18,10 +18,12 @@
     "paths": {
       "@atocha/core/ui": ["../../libs/core/ui/src/index.ts"],
       "@atocha/core/util": ["../../libs/core/util/src/index.ts"],
-      "@atocha/menu-matriarch/types": ["../../libs/menu-matriarch/types/src/index.ts"],
+      "@atocha/menu-matriarch/types": [
+        "../../libs/menu-matriarch/types/src/index.ts"
+      ],
       "@env/*": ["src/environments/*"],
       "@services/*": ["src/app/core/services/*"],
-      "@shared/*": ["src/app/shared/*"],
+      "@shared/*": ["src/app/shared/*"]
     },
     "target": "es2020",
     "forceConsistentCasingInFileNames": true,

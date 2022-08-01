@@ -3,7 +3,12 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { lower, sort } from '@atocha/core/util';
-import { Dish, DishDto, Endpoint, createDishDto } from '@atocha/menu-matriarch/types';
+import {
+  Dish,
+  DishDto,
+  Endpoint,
+  createDishDto,
+} from '@atocha/menu-matriarch/types';
 import { BatchService } from './batch.service';
 import { DataService } from './data.service';
 

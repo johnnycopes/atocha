@@ -3,7 +3,12 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { first } from 'rxjs/operators';
 
 import { includes } from '@atocha/core/util';
-import { Dish, FilteredDishesGroup, Meal, getDishTypes } from '@atocha/menu-matriarch/types';
+import {
+  Dish,
+  FilteredDishesGroup,
+  Meal,
+  getDishTypes,
+} from '@atocha/menu-matriarch/types';
 
 interface State {
   panel: boolean;

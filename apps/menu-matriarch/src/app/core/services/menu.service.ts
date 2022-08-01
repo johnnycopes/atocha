@@ -2,7 +2,14 @@ import { Injectable } from '@angular/core';
 import { combineLatest, Observable, of } from 'rxjs';
 import { concatMap, first, map, tap } from 'rxjs/operators';
 
-import { Day, Dish, Menu, MenuDto, UserPreferences, getDays } from '@atocha/menu-matriarch/types';
+import {
+  Day,
+  Dish,
+  Menu,
+  MenuDto,
+  UserPreferences,
+  getDays,
+} from '@atocha/menu-matriarch/types';
 import { AuthService } from './auth.service';
 import { DishService } from './dish.service';
 import { LocalStorageService } from './internal/local-storage.service';

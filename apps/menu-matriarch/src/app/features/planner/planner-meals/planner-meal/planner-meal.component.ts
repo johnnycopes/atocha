@@ -7,7 +7,13 @@ import {
 } from '@angular/core';
 
 import { trackByFactory } from '@atocha/core/ui';
-import { Day, Dish, Menu, Orientation, Tag } from '@atocha/menu-matriarch/types';
+import {
+  Day,
+  Dish,
+  Menu,
+  Orientation,
+  Tag,
+} from '@atocha/menu-matriarch/types';
 
 interface EntryModel {
   day: Day;

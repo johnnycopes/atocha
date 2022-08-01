@@ -1,5 +1,5 @@
-import { Day } from "./day.type";
-import { Orientation } from "./orientation.type";
+import { Day } from './day.type';
+import { Orientation } from './orientation.type';
 
 export type DayNameDisplay = 'full';
 
