@@ -13,12 +13,11 @@ import {
 
 import { recordToArray } from '@atocha/core/util';
 import { trackBySelf } from '@atocha/core/ui';
-import { Dish, TagModel } from '@atocha/menu-matriarch/types';
+import { Dish, TagModel, getDishTypes } from '@atocha/menu-matriarch/types';
 import { DishService } from '@services/dish.service';
 import { MealService } from '@services/meal.service';
 import { TagService } from '@services/tag.service';
 import { UserService } from '@services/user.service';
-import { getDishTypes } from '@utility/domain/get-dish-types';
 import { dishTrackByFn } from '@utility/domain/track-by-functions';
 
 interface MealEditForm {

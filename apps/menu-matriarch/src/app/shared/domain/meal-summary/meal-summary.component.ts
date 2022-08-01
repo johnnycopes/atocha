@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
-import { Dish, FilteredDishesGroup, Orientation } from '@atocha/menu-matriarch/types';
-import { getDishTypes } from '@utility/domain/get-dish-types';
+import { Dish, FilteredDishesGroup, Orientation, getDishTypes } from '@atocha/menu-matriarch/types';
 import {
   dishTrackByFn,
   groupTrackByFn,

@@ -6,10 +6,9 @@ import { concatMap, first, map, tap } from 'rxjs/operators';
 
 import { recordToArray } from '@atocha/core/util';
 import { trackBySelf } from '@atocha/core/ui';
-import { DishType, TagModel } from '@atocha/menu-matriarch/types';
+import { DishType, TagModel, getDishTypes } from '@atocha/menu-matriarch/types';
 import { DishService } from '@services/dish.service';
 import { TagService } from '@services/tag.service';
-import { getDishTypes } from '@utility/domain/get-dish-types';
 
 interface DishEditForm {
   name: string;
