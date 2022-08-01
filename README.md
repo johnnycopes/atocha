@@ -35,5 +35,5 @@ _Migration from original repo to Atocha is underway._
 
 Generic, well-tested collections of code. Minimally opinionated for maximum reusability.
 
-1. **core/utility**: collection of framework-agnostic TypeScript functions/classes.
 2. **core/ui**: collection of customizable Angular components.
+1. **core/util**: collection of framework-agnostic TypeScript functions/classes.
