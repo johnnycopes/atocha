@@ -6,7 +6,7 @@ import {
 } from '@angular/core';
 
 @Component({
-  selector: 'app-section',
+  selector: 'ui-section',
   templateUrl: './section.component.html',
   styleUrls: ['./section.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -14,5 +14,5 @@ import {
 })
 export class SectionComponent {
   @HostBinding('class')
-  public hostClass = 'app-section';
+  public hostClass = 'ui-section';
 }

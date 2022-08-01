@@ -1,5 +1,5 @@
-<app-section *ngIf="tags$ | async as tags">
-  <div class="app-section__toolbar">
+<ui-section *ngIf="tags$ | async as tags">
+  <div class="ui-section__toolbar">
     <h2 class="title">
       Tags ({{ tags.length }})
     </h2>
@@ -16,7 +16,7 @@
       (save)="onNewTagSave($event)"
     ></app-inline-name-edit>
   </div>
-  <ul class="app-section__content tags">
+  <ul class="ui-section__content tags">
     <li app-tag-card
       *ngFor="let tag of tags; trackBy: trackByFn"
       [id]="tag.id"
@@ -29,4 +29,4 @@
       {{ tag.name }}
     </li>
   </ul>
-</app-section>
+</ui-section>

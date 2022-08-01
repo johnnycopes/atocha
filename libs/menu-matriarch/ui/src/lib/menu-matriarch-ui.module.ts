@@ -4,6 +4,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { AlertComponent } from './alert/alert.component';
 import { ButtonComponent } from './button/button.component';
+import { SectionComponent } from './section/section.component';
 import { SmallCapsLabelComponent } from './small-caps-label/small-caps-label.component';
 import { TabsetComponent } from './tabset/tabset.component';
 import { TabComponent } from './tabset/tab/tab.component';
@@ -13,6 +14,7 @@ import { TabComponent } from './tabset/tab/tab.component';
   declarations: [
     AlertComponent,
     ButtonComponent,
+    SectionComponent,
     SmallCapsLabelComponent,
     TabsetComponent,
     TabComponent,
@@ -20,6 +22,7 @@ import { TabComponent } from './tabset/tab/tab.component';
   exports: [
     AlertComponent,
     ButtonComponent,
+    SectionComponent,
     SmallCapsLabelComponent,
     TabsetComponent,
     TabComponent,

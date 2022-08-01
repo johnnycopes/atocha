@@ -19,7 +19,6 @@ import { OptionsMenuItemComponent } from './options-menu/options-menu-item/optio
 import { OptionsMenuTriggerDirective } from './options-menu/options-menu-trigger.directive';
 import { PanelComponent } from './panel/panel.component';
 import { SearchInputComponent } from './search-input/search-input.component';
-import { SectionComponent } from './section/section.component';
 
 @NgModule({
   imports: [CommonModule, DragDropModule, FontAwesomeModule, FormsModule, CoreUiModule, MenuMatriarchUiModule],
@@ -36,7 +35,6 @@ import { SectionComponent } from './section/section.component';
     OptionsMenuTriggerDirective,
     PanelComponent,
     SearchInputComponent,
-    SectionComponent,
   ],
   exports: [
     CardComponent,
@@ -51,7 +49,6 @@ import { SectionComponent } from './section/section.component';
     OptionsMenuTriggerDirective,
     PanelComponent,
     SearchInputComponent,
-    SectionComponent,
   ],
 })
 export class GenericModule {}

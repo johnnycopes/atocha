@@ -1,5 +1,5 @@
-<app-section *ngIf="vm$ | async as vm">
-  <div class="app-section__toolbar">
+<ui-section *ngIf="vm$ | async as vm">
+  <div class="ui-section__toolbar">
     <a ui-button
       buttonStyle="secondary"
       routerLink=".."
@@ -15,7 +15,7 @@
       Save
     </button>
   </div>
-  <form class="app-section__content"
+  <form class="ui-section__content"
     id="ngForm"
     #form="ngForm"
     (keydown.enter)="$event.preventDefault()"
@@ -117,4 +117,4 @@
       ></editor>
     </app-input>
   </form>
-</app-section>
+</ui-section>

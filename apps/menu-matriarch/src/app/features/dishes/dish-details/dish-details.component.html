@@ -1,5 +1,5 @@
-<app-section *ngIf="dish$ | async as dish">
-  <div class="app-section__toolbar">
+<ui-section *ngIf="dish$ | async as dish">
+  <div class="ui-section__toolbar">
     <button ui-button
       buttonStyle="danger"
       (click)="onDelete()"
@@ -13,7 +13,7 @@
       Edit
     </a>
   </div>
-  <div class="app-section__content">
+  <div class="ui-section__content">
     <h2 class="name">
       {{ dish.name }}
     </h2>
@@ -59,4 +59,4 @@
       </li>
     </ul>
   </div>
-</app-section>
+</ui-section>

@@ -1,5 +1,5 @@
-<app-section *ngIf="menus$ | async as menus">
-  <div class="app-section__toolbar">
+<ui-section *ngIf="menus$ | async as menus">
+  <div class="ui-section__toolbar">
     <h2 class="title">
       Menus ({{ menus.length }})
     </h2>
@@ -16,7 +16,7 @@
       (save)="onSave($event)"
     ></app-inline-name-edit>
   </div>
-  <ul class="app-section__content menus">
+  <ul class="ui-section__content menus">
     <li app-menu-card
       *ngFor="let menu of menus; trackBy: trackByFn"
       [id]="menu.id"
@@ -28,4 +28,4 @@
       [orientation]="menu.orientation"
     ></li>
   </ul>
-</app-section>
+</ui-section>

@@ -5,7 +5,7 @@
   (nameDblClick)="nameDblClick.emit()"
 >
   <ul *ngIf="vm.total; else noMealsPlaceholder"
-    class="app-section__content"
+    class="ui-section__content"
     >
     <li *ngFor="let meal of vm.filteredMeals; trackBy: trackByFn">
       <ng-container
