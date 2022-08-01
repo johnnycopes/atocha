@@ -17,7 +17,6 @@ import { KanbanBoardFormComponent } from './kanban-board/kanban-board-form/kanba
 import { OptionsMenuComponent } from './options-menu/options-menu.component';
 import { OptionsMenuItemComponent } from './options-menu/options-menu-item/options-menu-item.component';
 import { OptionsMenuTriggerDirective } from './options-menu/options-menu-trigger.directive';
-import { PanelComponent } from './panel/panel.component';
 import { SearchInputComponent } from './search-input/search-input.component';
 
 @NgModule({
@@ -33,7 +32,6 @@ import { SearchInputComponent } from './search-input/search-input.component';
     OptionsMenuComponent,
     OptionsMenuItemComponent,
     OptionsMenuTriggerDirective,
-    PanelComponent,
     SearchInputComponent,
   ],
   exports: [
@@ -47,7 +45,6 @@ import { SearchInputComponent } from './search-input/search-input.component';
     OptionsMenuComponent,
     OptionsMenuItemComponent,
     OptionsMenuTriggerDirective,
-    PanelComponent,
     SearchInputComponent,
   ],
 })
