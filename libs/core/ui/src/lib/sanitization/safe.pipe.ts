@@ -8,10 +8,10 @@ import {
 type SafeValue = 'html' | 'style' | 'resourceUrl';
 
 @Pipe({
-  name: 'safe',
+  name: 'coreSafe',
 })
 export class SafePipe implements PipeTransform {
-  constructor(protected sanitize: DomSanitizer) {}
+  constructor(private _sanitizer: DomSanitizer) {}
 
   public transform(
     value: string | undefined,
@@ -22,11 +22,11 @@ export class SafePipe implements PipeTransform {
     }
     switch (type) {
       case 'html':
-        return this.sanitize.bypassSecurityTrustHtml(value);
+        return this._sanitizer.bypassSecurityTrustHtml(value);
       case 'style':
-        return this.sanitize.bypassSecurityTrustStyle(value);
+        return this._sanitizer.bypassSecurityTrustStyle(value);
       case 'resourceUrl':
-        return this.sanitize.bypassSecurityTrustResourceUrl(value);
+        return this._sanitizer.bypassSecurityTrustResourceUrl(value);
       default:
         throw new Error(`Invalid safe type specified: ${type}`);
     }

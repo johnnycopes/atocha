@@ -18,7 +18,6 @@ import { OptionsMenuComponent } from './options-menu/options-menu.component';
 import { OptionsMenuItemComponent } from './options-menu/options-menu-item/options-menu-item.component';
 import { OptionsMenuTriggerDirective } from './options-menu/options-menu-trigger.directive';
 import { PanelComponent } from './panel/panel.component';
-import { SafePipe } from './safe/safe.pipe';
 import { SearchInputComponent } from './search-input/search-input.component';
 import { SectionComponent } from './section/section.component';
 import { SmallCapsLabelComponent } from './small-caps-label/small-caps-label.component';
@@ -39,7 +38,6 @@ import { TabsetComponent } from './tabset/tabset.component';
     OptionsMenuItemComponent,
     OptionsMenuTriggerDirective,
     PanelComponent,
-    SafePipe,
     SearchInputComponent,
     SectionComponent,
     SmallCapsLabelComponent,
@@ -58,7 +56,6 @@ import { TabsetComponent } from './tabset/tabset.component';
     OptionsMenuItemComponent,
     OptionsMenuTriggerDirective,
     PanelComponent,
-    SafePipe,
     SearchInputComponent,
     SectionComponent,
     SmallCapsLabelComponent,

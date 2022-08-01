@@ -51,7 +51,7 @@
     <div *ngIf="dish?.notes"
       class="details notes"
     >
-      <div [innerHTML]="dish.notes | safe : 'html'"></div>
+      <div [innerHTML]="dish.notes | coreSafe : 'html'"></div>
     </div>
     <ul *ngIf="dish.ingredients.length">
       <li *ngFor="let ingredient of dish.ingredients; trackBy: ingredientTrackByFn">
