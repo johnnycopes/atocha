@@ -1,13 +1,12 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
-import { Dish } from '@models/dish.interface';
-import { FilteredDishesGroup } from '@models/filtered-dishes.interface';
-import { Orientation } from '@models/orientation.type';
-import { getDishTypes } from '@utility/domain/get-dish-types';
 import {
-  dishTrackByFn,
-  groupTrackByFn,
-} from '@utility/domain/track-by-functions';
+  Dish,
+  FilteredDishesGroup,
+  Orientation,
+  getDishTypes,
+} from '@atocha/menu-matriarch/types';
+import { dishTrackByFn, groupTrackByFn } from '@shared/track-by-functions';
 
 @Component({
   selector: 'app-meal-summary',

@@ -6,11 +6,8 @@ import {
   Output,
 } from '@angular/core';
 
-import { Menu } from '@models/menu.interface';
-import { Tag } from '@models/tag.interface';
-import { DishType } from '@models/dish-type.type';
-import { Day } from '@models/day.type';
-import { trackByFactory } from '@shared/utility/generic/track-by-factory';
+import { trackByFactory } from '@atocha/core/ui';
+import { Day, DishType, Menu, Tag } from '@atocha/menu-matriarch/types';
 
 interface EntryModel {
   day: Day;

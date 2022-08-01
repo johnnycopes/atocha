@@ -11,15 +11,14 @@ import {
   tap,
 } from 'rxjs/operators';
 
-import { Dish } from '@models/dish.interface';
-import { TagModel } from '@models/tag-model.interface';
+import { recordToArray } from '@atocha/core/util';
+import { trackBySelf } from '@atocha/core/ui';
+import { Dish, TagModel, getDishTypes } from '@atocha/menu-matriarch/types';
 import { DishService } from '@services/dish.service';
 import { MealService } from '@services/meal.service';
 import { TagService } from '@services/tag.service';
 import { UserService } from '@services/user.service';
-import { getDishTypes } from '@utility/domain/get-dish-types';
-import { dishTrackByFn, trackBySelf } from '@utility/domain/track-by-functions';
-import { recordToArray } from '@utility/generic/record-to-array';
+import { dishTrackByFn } from '@shared/track-by-functions';
 
 interface MealEditForm {
   name: string;

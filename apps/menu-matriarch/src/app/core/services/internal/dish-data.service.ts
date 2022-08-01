@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { Dish } from '@models/dish.interface';
-import { DishDto } from '@models/dtos/dish-dto.interface';
-import { Endpoint } from '@models/endpoint.enum';
-import { createDishDto } from '@utility/domain/create-dtos';
-import { sort } from '@utility/generic/sort';
-import { lower } from '@utility/generic/format';
+import { lower, sort } from '@atocha/core/util';
+import {
+  Dish,
+  DishDto,
+  Endpoint,
+  createDishDto,
+} from '@atocha/menu-matriarch/types';
 import { BatchService } from './batch.service';
 import { DataService } from './data.service';
 

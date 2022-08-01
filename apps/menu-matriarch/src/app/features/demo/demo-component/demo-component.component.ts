@@ -1,5 +1,6 @@
 import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
-import { trackBySelf } from '@utility/domain/track-by-functions';
+
+import { trackBySelf } from '@atocha/core/ui';
 
 @Component({
   selector: 'app-demo-component',

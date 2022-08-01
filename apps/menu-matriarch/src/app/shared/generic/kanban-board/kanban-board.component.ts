@@ -8,12 +8,12 @@ import {
 } from '@angular/core';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 
+import { trackByFactory } from '@atocha/core/ui';
 import {
   IKanbanBoardItemAdd,
   IKanbanBoardActionClick,
   IKanbanBoardItemMove,
 } from './kanban-board-column/kanban-board-column.component';
-import { trackByFactory } from '@utility/generic/track-by-factory';
 
 export interface KanbanBoard<TColumn, TItem> {
   getColumnId(node: TColumn): string;

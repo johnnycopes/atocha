@@ -2,14 +2,14 @@
 
 import * as admin from 'firebase-admin';
 
-import { Endpoint } from '../../src/app/shared/models/endpoint.enum';
 import {
   createDishDto,
   createMealDto,
   createMenuDto,
   createTagDto,
   createUserDto,
-} from '../../src/app/shared/utility/domain/create-dtos';
+  Endpoint,
+} from '@atocha/menu-matriarch/types';
 
 const serviceAccount = require('../../firebase-admin-dev.json');
 const uid = process.argv.slice(2)?.[0];

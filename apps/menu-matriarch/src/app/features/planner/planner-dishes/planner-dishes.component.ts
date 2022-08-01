@@ -6,8 +6,7 @@ import {
   Output,
 } from '@angular/core';
 
-import { Menu } from '@models/menu.interface';
-import { Day } from '@models/day.type';
+import { Day, Menu } from '@atocha/menu-matriarch/types';
 import { MenuService } from '@services/menu.service';
 
 @Component({

@@ -9,8 +9,7 @@ import {
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map, filter, tap, distinctUntilChanged } from 'rxjs/operators';
 
-import { PlannerView } from '@models/planner-view.type';
-import { Route } from '@models/route.enum';
+import { PlannerView, Route } from '@atocha/menu-matriarch/types';
 import { LocalStorageService } from './internal/local-storage.service';
 
 // interface IRouterState {

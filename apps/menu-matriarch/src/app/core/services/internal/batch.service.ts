@@ -1,15 +1,13 @@
 import { Injectable } from '@angular/core';
 
-import { Day } from '@models/day.type';
-import { Menu } from '@models/menu.interface';
-import { Endpoint } from '@models/endpoint.enum';
 import {
   calculateTallyChange,
+  flattenValues,
+  tally,
   TallyChange,
-} from '@utility/generic/calculate-tally-change';
-import { flattenValues } from '@utility/generic/flatten-values';
-import { tally } from '@utility/generic/tally';
-import { uniqueDiff } from '@utility/generic/unique-diff';
+  uniqueDiff,
+} from '@atocha/core/util';
+import { Day, Menu, Endpoint } from '@atocha/menu-matriarch/types';
 import { Batch, BatchUpdate } from './batch';
 import { FirestoreService } from './firestore.service';
 

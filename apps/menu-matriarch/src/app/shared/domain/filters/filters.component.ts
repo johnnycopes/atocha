@@ -6,7 +6,7 @@ import {
   EventEmitter,
 } from '@angular/core';
 
-import { Tag } from '@models/tag.interface';
+import { Tag } from '@atocha/menu-matriarch/types';
 
 @Component({
   selector: 'app-filters',

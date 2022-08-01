@@ -6,8 +6,8 @@ import {
   ContentChild,
 } from '@angular/core';
 
-import { Tag } from '@models/tag.interface';
-import { trackByFactory } from '@shared/utility/generic/track-by-factory';
+import { trackByFactory } from '@atocha/core/ui';
+import { Tag } from '@atocha/menu-matriarch/types';
 import { TagDefContext, TagDefDirective } from './tag-def.directive';
 
 @Component({

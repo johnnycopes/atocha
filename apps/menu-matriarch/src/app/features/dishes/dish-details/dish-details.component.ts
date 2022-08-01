@@ -3,8 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { of } from 'rxjs';
 import { concatMap, first, map, switchMap, tap } from 'rxjs/operators';
 
+import { trackBySelf } from '@atocha/core/ui';
 import { DishService } from '@services/dish.service';
-import { trackBySelf } from '@utility/domain/track-by-functions';
 
 @Component({
   selector: 'app-dish-details',

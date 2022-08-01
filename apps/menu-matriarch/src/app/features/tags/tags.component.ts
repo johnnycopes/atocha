@@ -2,9 +2,9 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { merge, Subject } from 'rxjs';
 import { mapTo, shareReplay } from 'rxjs/operators';
 
+import { trackByFactory } from '@atocha/core/ui';
+import { Tag } from '@atocha/menu-matriarch/types';
 import { TagService } from '@services/tag.service';
-import { Tag } from '@models/tag.interface';
-import { trackByFactory } from '@shared/utility/generic/track-by-factory';
 
 @Component({
   selector: 'app-tags',

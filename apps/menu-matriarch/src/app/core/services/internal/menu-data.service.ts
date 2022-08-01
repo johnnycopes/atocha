@@ -2,14 +2,14 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { Day } from '@models/day.type';
-import { Endpoint } from '@models/endpoint.enum';
-import { Menu } from '@models/menu.interface';
-import { MenuDto } from '@models/dtos/menu-dto.interface';
-import { createMenuDto } from '@utility/domain/create-dtos';
-import { flattenValues } from '@utility/generic/flatten-values';
-import { lower } from '@utility/generic/format';
-import { sort } from '@utility/generic/sort';
+import { flattenValues, lower, sort } from '@atocha/core/util';
+import {
+  Day,
+  Menu,
+  MenuDto,
+  Endpoint,
+  createMenuDto,
+} from '@atocha/menu-matriarch/types';
 import { BatchService } from './batch.service';
 import { DataService } from './data.service';
 

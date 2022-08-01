@@ -7,6 +7,8 @@ import {
   ChangeDetectionStrategy,
   TemplateRef,
 } from '@angular/core';
+
+import { trackByFactory } from '@atocha/core/ui';
 import {
   CdkDragDrop,
   moveItemInArray,
@@ -14,7 +16,6 @@ import {
 } from '@angular/cdk/drag-drop';
 import { faEllipsisH } from '@fortawesome/free-solid-svg-icons';
 import { Dictionary } from 'lodash';
-import { trackByFactory } from '@utility/generic/track-by-factory';
 
 export interface IKanbanBoardActionClick {
   action: string;

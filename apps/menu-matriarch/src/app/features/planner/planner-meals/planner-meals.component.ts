@@ -6,8 +6,7 @@ import {
   EventEmitter,
 } from '@angular/core';
 
-import { Day } from '@models/day.type';
-import { Menu } from '@models/menu.interface';
+import { Day, Menu } from '@atocha/menu-matriarch/types';
 import { MenuService } from '@services/menu.service';
 
 @Component({

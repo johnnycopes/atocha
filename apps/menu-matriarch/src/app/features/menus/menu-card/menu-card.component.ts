@@ -2,12 +2,10 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 import { BehaviorSubject } from 'rxjs';
 
-import { Day } from '@models/day.type';
-import { MenuEntry } from '@models/menu-entry.interface';
-import { Orientation } from '@models/orientation.type';
+import { Day, MenuEntry, Orientation } from '@atocha/menu-matriarch/types';
 import { MenuService } from '@services/menu.service';
 import { PrintService } from '@services/print.service';
-import { menuEntryTrackByFn } from '@utility/domain/track-by-functions';
+import { menuEntryTrackByFn } from '@shared/track-by-functions';
 
 type State = 'default' | 'renaming' | 'changingStartDay';
 

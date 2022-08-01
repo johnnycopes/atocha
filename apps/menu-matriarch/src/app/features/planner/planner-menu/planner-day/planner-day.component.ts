@@ -8,9 +8,7 @@ import {
 } from '@angular/core';
 import { faPlusSquare, faTimes } from '@fortawesome/free-solid-svg-icons';
 
-import { Dish } from '@models/dish.interface';
-import { Day } from '@models/day.type';
-import { Orientation } from '@models/orientation.type';
+import { Day, Dish, Orientation } from '@atocha/menu-matriarch/types';
 
 @Component({
   // eslint-disable-next-line @angular-eslint/component-selector
