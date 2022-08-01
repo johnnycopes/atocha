@@ -5,7 +5,6 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FormsModule } from '@angular/forms';
 
 import { AlertComponent } from './alert/alert.component';
-import { AutofocusDirective } from './autofocus/autofocus.directive';
 import { ButtonComponent } from './button/button.component';
 import { CardComponent } from './card/card.component';
 import { CheckboxComponent } from './checkbox/checkbox.component';
@@ -33,7 +32,6 @@ import { TabsetComponent } from './tabset/tabset.component';
   imports: [CommonModule, DragDropModule, FontAwesomeModule, FormsModule],
   declarations: [
     AlertComponent,
-    AutofocusDirective,
     ButtonComponent,
     CardComponent,
     CheckboxComponent,
@@ -59,7 +57,6 @@ import { TabsetComponent } from './tabset/tabset.component';
   ],
   exports: [
     AlertComponent,
-    AutofocusDirective,
     ButtonComponent,
     CardComponent,
     CheckboxComponent,

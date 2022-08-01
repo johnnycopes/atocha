@@ -47,7 +47,7 @@
               name="emptyMealText"
               [ngModel]="user?.preferences?.emptyMealText"
               (ngModelChange)="updateAction$.next({ emptyMealText: $event })"
-              appAutofocus
+              coreAutofocus
             />
           </app-input>
           <app-input

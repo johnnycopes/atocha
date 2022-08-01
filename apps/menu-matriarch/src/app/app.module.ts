@@ -13,6 +13,7 @@ import { PortalModule } from '@angular/cdk/portal';
 import { environment } from '@env/environment';
 
 import { AppRoutingModule } from './app-routing.module';
+import { CoreUiModule } from '@atocha/core/ui';
 import { DomainModule } from '@shared/domain/domain.module';
 import { GenericModule } from '@shared/generic/generic.module';
 
@@ -92,6 +93,7 @@ import { WelcomeComponent } from './features/welcome/welcome.component';
     OverlayModule,
     PortalModule,
     AppRoutingModule,
+    CoreUiModule,
     DomainModule,
     GenericModule,
   ],
