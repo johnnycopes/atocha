@@ -8,11 +8,11 @@ import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { debounceTime, switchMap, takeUntil } from 'rxjs/operators';
 
+import { trackBySelf } from '@atocha/core/ui';
 import { UserPreferences } from '@atocha/menu-matriarch/types';
 import { AuthService } from '@services/auth.service';
 import { UserService } from '@services/user.service';
 import { getDays } from '@utility/domain/get-days';
-import { trackBySelf } from '@utility/domain/track-by-functions';
 
 @Component({
   selector: 'app-settings',

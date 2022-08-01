@@ -5,3 +5,5 @@ export function trackByFactory<TItem>(getId: (item: TItem) => string): TrackByFu
     return getId(item);
   };
 }
+
+export const trackBySelf = trackByFactory<string>(item => item);

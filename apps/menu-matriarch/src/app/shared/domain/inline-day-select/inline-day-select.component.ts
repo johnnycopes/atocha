@@ -6,9 +6,9 @@ import {
   EventEmitter,
 } from '@angular/core';
 
+import { trackBySelf } from '@atocha/core/ui';
 import { Day } from '@atocha/menu-matriarch/types';
 import { getDays } from '@utility/domain/get-days';
-import { trackBySelf } from '@utility/domain/track-by-functions';
 
 @Component({
   selector: 'app-inline-day-select',

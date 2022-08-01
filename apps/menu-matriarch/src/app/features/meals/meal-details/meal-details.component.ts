@@ -5,7 +5,8 @@ import { concatMap, first, map, switchMap, tap } from 'rxjs/operators';
 
 import { MealService } from '@services/meal.service';
 import { UserService } from '@services/user.service';
-import { dishTrackByFn, trackBySelf } from '@utility/domain/track-by-functions';
+import { trackBySelf } from '@atocha/core/ui';
+import { dishTrackByFn } from '@utility/domain/track-by-functions';
 import { getDishTypes } from '@utility/domain/get-dish-types';
 
 @Component({
