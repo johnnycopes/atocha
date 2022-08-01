@@ -4,6 +4,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
+import { CoreUiModule } from '@atocha/core/ui';
 import { GenericModule } from '@shared/generic/generic.module';
 
 import { CountComponent } from './count/count.component';
@@ -65,6 +66,7 @@ import { TagsListComponent } from './tags-list/tags-list.component';
     FontAwesomeModule,
     FormsModule,
     RouterModule,
+    CoreUiModule,
     GenericModule,
   ],
 })

@@ -19,7 +19,6 @@ import { OptionsMenuComponent } from './options-menu/options-menu.component';
 import { OptionsMenuItemComponent } from './options-menu/options-menu-item/options-menu-item.component';
 import { OptionsMenuTriggerDirective } from './options-menu/options-menu-trigger.directive';
 import { PanelComponent } from './panel/panel.component';
-import { PluralPipe } from './plural/plural.pipe';
 import { RangeDirective } from './range/range.directive';
 import { SafePipe } from './safe/safe.pipe';
 import { SearchInputComponent } from './search-input/search-input.component';
@@ -45,7 +44,6 @@ import { TabsetComponent } from './tabset/tabset.component';
     OptionsMenuItemComponent,
     OptionsMenuTriggerDirective,
     PanelComponent,
-    PluralPipe,
     RangeDirective,
     SafePipe,
     SearchInputComponent,
@@ -69,7 +67,6 @@ import { TabsetComponent } from './tabset/tabset.component';
     OptionsMenuItemComponent,
     OptionsMenuTriggerDirective,
     PanelComponent,
-    PluralPipe,
     RangeDirective,
     SafePipe,
     SearchInputComponent,

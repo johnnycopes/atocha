@@ -6,7 +6,7 @@
       <h2 class="title"
         (dblclick)="nameDblClick.emit()"
       >
-        {{ entity | appPlural : 0 : pluralEntity }} ({{ total }})
+        {{ 0 | corePlural : entity : pluralEntity }} ({{ total }})
       </h2>
       <app-search-input
         [text]="vm.searchText"
