@@ -4,6 +4,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FormsModule } from '@angular/forms';
 
+import { CoreUiModule } from '@atocha/core/ui';
 import { AlertComponent } from './alert/alert.component';
 import { ButtonComponent } from './button/button.component';
 import { CardComponent } from './card/card.component';
@@ -28,7 +29,7 @@ import { TabComponent } from './tabset/tab/tab.component';
 import { TabsetComponent } from './tabset/tabset.component';
 
 @NgModule({
-  imports: [CommonModule, DragDropModule, FontAwesomeModule, FormsModule],
+  imports: [CommonModule, DragDropModule, FontAwesomeModule, FormsModule, CoreUiModule],
   declarations: [
     AlertComponent,
     ButtonComponent,
