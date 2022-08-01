@@ -1,3 +1,3 @@
-export * from './endpoint.enum';
-export * from './planner-view.type';
-export * from './route.enum';
+export * from './lib/endpoint.enum';
+export * from './lib/planner-view.type';
+export * from './lib/route.enum';
