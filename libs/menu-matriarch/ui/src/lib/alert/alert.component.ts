@@ -9,7 +9,7 @@ import {
 type Alert = 'success' | 'warning' | 'error';
 
 @Component({
-  selector: 'app-alert',
+  selector: 'ui-alert',
   templateUrl: './alert.component.html',
   styleUrls: ['./alert.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

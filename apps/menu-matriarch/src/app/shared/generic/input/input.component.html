@@ -4,9 +4,11 @@
   >
   {{label}}
 </label>
+
 <ng-content></ng-content>
-<app-alert class="error"
+
+<ui-alert class="error"
   *ngIf="showError && errorMessage"
-  >
+>
   {{errorMessage}}
-</app-alert>
+</ui-alert>

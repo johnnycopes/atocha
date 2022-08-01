@@ -7,7 +7,6 @@ import { FormsModule } from '@angular/forms';
 import { CoreUiModule } from '@atocha/core/ui';
 import { MenuMatriarchUiModule } from '@atocha/menu-matriarch/ui';
 
-import { AlertComponent } from './alert/alert.component';
 import { CardComponent } from './card/card.component';
 import { CheckboxComponent } from './checkbox/checkbox.component';
 import { InlineFormComponent } from './inline-form/inline-form.component';
@@ -29,7 +28,6 @@ import { TabsetComponent } from './tabset/tabset.component';
 @NgModule({
   imports: [CommonModule, DragDropModule, FontAwesomeModule, FormsModule, CoreUiModule, MenuMatriarchUiModule],
   declarations: [
-    AlertComponent,
     CardComponent,
     CheckboxComponent,
     InlineFormComponent,
@@ -49,7 +47,6 @@ import { TabsetComponent } from './tabset/tabset.component';
     TabsetComponent,
   ],
   exports: [
-    AlertComponent,
     CardComponent,
     CheckboxComponent,
     InlineFormComponent,
