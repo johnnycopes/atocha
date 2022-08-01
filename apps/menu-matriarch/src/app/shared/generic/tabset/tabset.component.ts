@@ -19,7 +19,7 @@ import { AnimatedComponent } from '@atocha/core/ui';
 import {
   fadeInAnimation,
   visibilityAnimation,
-} from '@utility/domain/animations';
+} from '@shared/animations';
 import { TabComponent } from './tab/tab.component';
 
 export type TabsetContentVisibility = 'visible' | 'invisible';

@@ -16,7 +16,7 @@ import { TagService } from '@services/tag.service';
 import {
   dishTrackByFn,
   groupTrackByFn,
-} from '@utility/domain/track-by-functions';
+} from '@shared/track-by-functions';
 import { DishContext, DishDefDirective } from './dish-def.directive';
 
 @Component({

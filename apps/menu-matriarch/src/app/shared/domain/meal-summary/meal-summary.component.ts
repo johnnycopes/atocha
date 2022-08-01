@@ -4,7 +4,7 @@ import { Dish, FilteredDishesGroup, Orientation, getDishTypes } from '@atocha/me
 import {
   dishTrackByFn,
   groupTrackByFn,
-} from '@utility/domain/track-by-functions';
+} from '@shared/track-by-functions';
 
 @Component({
   selector: 'app-meal-summary',

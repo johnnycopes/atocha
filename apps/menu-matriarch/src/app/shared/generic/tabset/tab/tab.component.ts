@@ -7,7 +7,7 @@ import {
   Output,
 } from '@angular/core';
 
-import { fadeInAnimation } from '@utility/domain/animations';
+import { fadeInAnimation } from '@shared/animations';
 
 @Component({
   selector: 'app-tab',

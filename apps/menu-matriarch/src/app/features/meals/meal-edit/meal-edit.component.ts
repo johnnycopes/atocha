@@ -18,7 +18,7 @@ import { DishService } from '@services/dish.service';
 import { MealService } from '@services/meal.service';
 import { TagService } from '@services/tag.service';
 import { UserService } from '@services/user.service';
-import { dishTrackByFn } from '@utility/domain/track-by-functions';
+import { dishTrackByFn } from '@shared/track-by-functions';
 
 interface MealEditForm {
   name: string;
