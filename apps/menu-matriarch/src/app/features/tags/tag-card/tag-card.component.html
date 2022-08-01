@@ -21,14 +21,14 @@
       type="dishes"
       [count]="dishes.length"
     ></app-count>
-    <button app-button
+    <button ui-button
       class="edit"
       buttonStyle="danger"
       (click)="delete.emit()"
     >
       Delete
     </button>
-    <button app-button
+    <button ui-button
       class="edit"
       buttonStyle="secondary"
       (click)="startEdit$.next()"

@@ -1,12 +1,12 @@
 <app-section *ngIf="dish$ | async as dish">
   <div class="app-section__toolbar">
-    <button app-button
+    <button ui-button
       buttonStyle="danger"
       (click)="onDelete()"
     >
       Delete
     </button>
-    <a app-button
+    <a ui-button
       buttonStyle="secondary"
       routerLink="edit"
     >

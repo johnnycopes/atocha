@@ -1,9 +1,9 @@
 <button class="new-button"
   *ngIf="!adding; else addFormTemplate"
-  app-button
+  ui-button
   buttonStyle="secondary"
   (click)="adding = true"
-  >
+>
   <fa-icon [icon]="addNewIcon">
   </fa-icon>
   New {{name}}
@@ -20,16 +20,16 @@
         [(ngModel)]="model"
       />
     </app-input>
-    <button app-button
+    <button ui-button
       type="submit"
       [disabled]="!model"
-      >
+    >
       Add
     </button>
-    <button app-button
+    <button ui-button
       buttonStyle="ternary"
       (click)="resetForm(form)"
-      >
+    >
       Cancel
     </button>
   </form>

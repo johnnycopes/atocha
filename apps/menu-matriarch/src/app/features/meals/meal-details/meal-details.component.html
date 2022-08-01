@@ -1,13 +1,13 @@
 <ng-container *ngIf="vm$ | async as vm">
   <app-section *ngIf="vm.meal as meal">
     <div class="app-section__toolbar">
-      <button app-button
+      <button ui-button
         buttonStyle="danger"
         (click)="onDelete()"
       >
         Delete
       </button>
-      <a app-button
+      <a ui-button
         buttonStyle="secondary"
         routerLink="edit"
       >

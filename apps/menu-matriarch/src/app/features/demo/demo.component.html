@@ -36,21 +36,21 @@
       description="It's your basic button"
       [limitWidth]="true"
       >
-      <button app-button
+      <button ui-button
         (click)="onButtonClick()"
-        >
+      >
         primary
       </button>
-      <button app-button
+      <button ui-button
         buttonStyle="secondary"
         (click)="onButtonClick()"
-        >
+      >
         secondary
       </button>
-      <button app-button
+      <button ui-button
         buttonStyle="ternary"
         (click)="onButtonClick()"
-        >
+      >
         ternary
       </button>
       <p>button clicks: {{counter}}</p>
@@ -141,7 +141,7 @@
       [dependencies]="['OptionsMenuComponent']"
       >
       <!-- <button
-        app-button
+        ui-button
         cdkOverlayOrigin
         #trigger="cdkOverlayOrigin"
         (click)="isOptionsMenuOpen = !isOptionsMenuOpen"
@@ -165,7 +165,7 @@
       </ul>
       </ng-template> -->
 
-      <button app-button
+      <button ui-button
         [appOptionsMenuTrigger]="optionsMenu"
       >
         Click

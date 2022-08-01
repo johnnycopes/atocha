@@ -3,7 +3,7 @@
     <h2 class="title">
       Tags ({{ tags.length }})
     </h2>
-    <button app-button
+    <button ui-button
       buttonStyle="primary"
       [disabled]="adding$ | async"
       (click)="startAdd$.next()"

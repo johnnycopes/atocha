@@ -29,14 +29,14 @@
 
     <app-section>
       <div class="app-section__toolbar">
-        <a app-button
+        <a ui-button
           buttonStyle="secondary"
           routerLink=".."
         >
           Cancel
         </a>
         <!-- TODO: create form validator -->
-        <button app-button
+        <button ui-button
           buttonStyle="primary"
           type="submit"
           [disabled]="!form.valid || !vm.dishesModel.length"
@@ -94,7 +94,7 @@
           <ng-template #noTagsPlaceholder>
             <div class="placeholder">
               <p>No tags to display</p>
-              <a app-button
+              <a ui-button
                 routerLink="/tags"
               >
                 New Tag

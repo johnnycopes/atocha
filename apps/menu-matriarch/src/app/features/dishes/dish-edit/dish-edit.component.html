@@ -1,12 +1,12 @@
 <app-section *ngIf="vm$ | async as vm">
   <div class="app-section__toolbar">
-    <a app-button
+    <a ui-button
       buttonStyle="secondary"
       routerLink=".."
     >
       Cancel
     </a>
-    <button app-button
+    <button ui-button
       buttonStyle="primary"
       type="submit"
       form="ngForm"
@@ -98,7 +98,7 @@
       <ng-template #noTagsPlaceholder>
         <div class="placeholder">
           <p>No tags to display</p>
-          <a app-button
+          <a ui-button
             routerLink="/tags"
           >
             New Tag
