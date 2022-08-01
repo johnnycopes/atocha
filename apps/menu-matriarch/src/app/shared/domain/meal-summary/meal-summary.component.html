@@ -7,11 +7,11 @@
 <ng-template #mealTemplate>
   <ng-container *ngFor="let group of dishesGroups; trackBy: groupTrackByFn">
     <ng-container *ngIf="group.dishes.length">
-      <app-small-caps-label *ngIf="boundaries === 'labeled'"
+      <ui-small-caps-label *ngIf="boundaries === 'labeled'"
         class="dish-type"
       >
         {{ group.type + 's' }} ({{ group.dishes.length }})
-      </app-small-caps-label>
+      </ui-small-caps-label>
       <ul class="dishes"
         [class.dishes--labeled]="boundaries === 'labeled'"
         [class.dishes--unlabeled]="boundaries === 'unlabeled'"

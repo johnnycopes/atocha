@@ -20,7 +20,6 @@ import { OptionsMenuTriggerDirective } from './options-menu/options-menu-trigger
 import { PanelComponent } from './panel/panel.component';
 import { SearchInputComponent } from './search-input/search-input.component';
 import { SectionComponent } from './section/section.component';
-import { SmallCapsLabelComponent } from './small-caps-label/small-caps-label.component';
 import { TabComponent } from './tabset/tab/tab.component';
 import { TabsetComponent } from './tabset/tabset.component';
 
@@ -40,7 +39,6 @@ import { TabsetComponent } from './tabset/tabset.component';
     PanelComponent,
     SearchInputComponent,
     SectionComponent,
-    SmallCapsLabelComponent,
     TabComponent,
     TabsetComponent,
   ],
@@ -58,7 +56,6 @@ import { TabsetComponent } from './tabset/tabset.component';
     PanelComponent,
     SearchInputComponent,
     SectionComponent,
-    SmallCapsLabelComponent,
     TabComponent,
     TabsetComponent,
   ],
