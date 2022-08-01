@@ -10,7 +10,6 @@ import { MenuMatriarchUiModule } from '@atocha/menu-matriarch/ui';
 import { AlertComponent } from './alert/alert.component';
 import { CardComponent } from './card/card.component';
 import { CheckboxComponent } from './checkbox/checkbox.component';
-import { HoverDirective } from './hover/hover.directive';
 import { InlineFormComponent } from './inline-form/inline-form.component';
 import { InputComponent } from './input/input.component';
 import { KanbanBoardColumnComponent } from './kanban-board/kanban-board-column/kanban-board-column.component';
@@ -33,7 +32,6 @@ import { TabsetComponent } from './tabset/tabset.component';
     AlertComponent,
     CardComponent,
     CheckboxComponent,
-    HoverDirective,
     InlineFormComponent,
     InputComponent,
     KanbanBoardColumnComponent,
@@ -54,7 +52,6 @@ import { TabsetComponent } from './tabset/tabset.component';
     AlertComponent,
     CardComponent,
     CheckboxComponent,
-    HoverDirective,
     InlineFormComponent,
     InputComponent,
     KanbanBoardColumnComponent,

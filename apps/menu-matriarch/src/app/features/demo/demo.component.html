@@ -84,21 +84,6 @@
         shared module constructor for an example.</h2>
     </app-demo-component>
 
-    <app-demo-component name="HoverDirective"
-      description="Easily manage a boolean to signal if an element is being hovered on"
-      [limitWidth]="true"
-      >
-      <div class="container-1"
-        [class.container-1--hover]="hoverState"
-        >
-        <div class="container-2">
-          <div class="container-3">
-            <p (appHover)="hoverState">I'm a deeply-nested paragraph tag. Hovering on me will change my outermost container without the need for specific CSS rules.</p>
-          </div>
-        </div>
-      </div>
-    </app-demo-component>
-
     <app-demo-component name="InputComponent"
       [limitWidth]="true"
       >
