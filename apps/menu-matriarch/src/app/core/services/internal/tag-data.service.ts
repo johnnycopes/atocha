@@ -3,8 +3,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { lower, sort } from '@atocha/core/util';
-import { Tag, TagDto, Endpoint } from '@atocha/menu-matriarch/types';
-import { createTagDto } from '@utility/domain/create-dtos';
+import { Tag, TagDto, Endpoint, createTagDto } from '@atocha/menu-matriarch/types';
 import { BatchService } from './batch.service';
 import { DataService } from './data.service';
 

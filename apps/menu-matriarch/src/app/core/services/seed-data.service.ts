@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 
-import { Endpoint } from '@atocha/menu-matriarch/types';
 import {
   createDishDto,
   createMealDto,
   createMenuDto,
   createTagDto,
   createUserDto,
-} from '@utility/domain/create-dtos';
+  Endpoint,
+} from '@atocha/menu-matriarch/types';
 import { BatchService } from './internal/batch.service';
 import { DataService } from './internal/data.service';
 

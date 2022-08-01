@@ -1,3 +1,5 @@
+export * from './lib/create-dtos';
+
 export * from './lib/dish.interface';
 export * from './lib/meal.interface';
 export * from './lib/menu.interface';
