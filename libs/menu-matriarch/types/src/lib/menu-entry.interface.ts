@@ -1,5 +1,5 @@
 import { Day } from './day.type';
-import { Dish } from './dish.interface';
+import { Dish } from './entities/dish.interface';
 
 export interface MenuEntry {
   day: Day;

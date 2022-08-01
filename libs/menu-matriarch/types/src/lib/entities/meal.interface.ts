@@ -1,4 +1,4 @@
-import { MealDto } from './dtos/meal-dto.interface';
+import { MealDto } from '../dtos/meal-dto.interface';
 import { Dish } from './dish.interface';
 import { Tag } from './tag.interface';
 
