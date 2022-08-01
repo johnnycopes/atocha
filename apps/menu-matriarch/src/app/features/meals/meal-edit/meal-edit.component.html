@@ -45,7 +45,7 @@
         </button>
       </div>
       <div class="ui-section__content">
-        <app-input
+        <ui-input
           label="name"
         >
           <input
@@ -57,8 +57,8 @@
             #name="ngModel"
             coreAutofocus
           />
-        </app-input>
-        <app-input
+        </ui-input>
+        <ui-input
           label="description"
         >
           <input
@@ -68,8 +68,8 @@
             [ngModel]="vm.description"
             #description="ngModel"
           />
-        </app-input>
-        <app-input
+        </ui-input>
+        <ui-input
           label="tags"
         >
           <app-tags-list
@@ -101,7 +101,7 @@
               </a>
             </div>
           </ng-template>
-        </app-input>
+        </ui-input>
         <div class="details">
           <app-meal-summary
             [dishes]="vm.dishes"

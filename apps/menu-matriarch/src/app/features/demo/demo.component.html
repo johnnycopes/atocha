@@ -1,17 +1,5 @@
 <div class="container">
 
-  <app-demo-component name="AutofocusDirective"
-    description="Sets focus state on an input on app initialization"
-    [limitWidth]="true"
-    >
-    <app-input label="Autofocus Example">
-      <input type="text"
-        placeholder="I have focus on page load"
-        coreAutofocus
-      />
-    </app-input>
-  </app-demo-component>
-
   <app-demo-component name="ButtonComponent"
     description="It's your basic button"
     [limitWidth]="true"
@@ -62,32 +50,6 @@
     <div><code>faApple</code>: <fa-icon [icon]="faApple"></fa-icon></div>
     <h2>Alternatively, they can be registered at a module level and then used freely within components of said module. See
       shared module constructor for an example.</h2>
-  </app-demo-component>
-
-  <app-demo-component name="InputComponent"
-    [limitWidth]="true"
-    >
-    <app-input label="Normal input">
-      <input
-        type="text"
-      />
-    </app-input>
-    <app-input
-      label="With error"
-      errorMessage="I'm here unless you type something"
-      [showError]="!inputModel.length"
-      >
-      <input #errorInput
-        type="text"
-        [(ngModel)]="inputModel"
-      />
-    </app-input>
-    <app-input label="Disabled input">
-      <input
-        type="text"
-        [disabled]="true"
-      />
-    </app-input>
   </app-demo-component>
 
   <app-demo-component name="KanbanBoardComponent"

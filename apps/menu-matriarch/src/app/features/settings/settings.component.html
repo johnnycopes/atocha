@@ -25,7 +25,7 @@
       </h2>
       <app-card>
         <form #form="ngForm">
-          <app-input label="Default Menu Start Day">
+          <ui-input label="Default Menu Start Day">
             <select id="Default Menu Start Day"
               name="menuStartDay"
               [ngModel]="user.preferences?.defaultMenuStartDay"
@@ -37,8 +37,8 @@
                 {{ day }}
               </option>
             </select>
-          </app-input>
-          <app-input
+          </ui-input>
+          <ui-input
             label="Empty Meal Text"
           >
             <input
@@ -49,8 +49,8 @@
               (ngModelChange)="updateAction$.next({ emptyMealText: $event })"
               coreAutofocus
             />
-          </app-input>
-          <app-input
+          </ui-input>
+          <ui-input
             label="Meal Orientation"
           >
             <div class="radio-container">
@@ -75,7 +75,7 @@
                 Vertical
               </label>
             </div>
-          </app-input>
+          </ui-input>
         </form>
       </app-card>
     </div>

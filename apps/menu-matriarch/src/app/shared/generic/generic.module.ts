@@ -10,7 +10,6 @@ import { MenuMatriarchUiModule } from '@atocha/menu-matriarch/ui';
 import { CardComponent } from './card/card.component';
 import { CheckboxComponent } from './checkbox/checkbox.component';
 import { InlineFormComponent } from './inline-form/inline-form.component';
-import { InputComponent } from './input/input.component';
 import { KanbanBoardColumnComponent } from './kanban-board/kanban-board-column/kanban-board-column.component';
 import { KanbanBoardComponent } from './kanban-board/kanban-board.component';
 import { KanbanBoardFormComponent } from './kanban-board/kanban-board-form/kanban-board-form.component';
@@ -25,7 +24,6 @@ import { SearchInputComponent } from './search-input/search-input.component';
     CardComponent,
     CheckboxComponent,
     InlineFormComponent,
-    InputComponent,
     KanbanBoardColumnComponent,
     KanbanBoardComponent,
     KanbanBoardFormComponent,
@@ -38,7 +36,6 @@ import { SearchInputComponent } from './search-input/search-input.component';
     CardComponent,
     CheckboxComponent,
     InlineFormComponent,
-    InputComponent,
     KanbanBoardColumnComponent,
     KanbanBoardComponent,
     KanbanBoardFormComponent,

@@ -3,7 +3,7 @@
   (cancel)="cancel.emit()"
   (save)="save.emit(form.value.startDay)"
 >
-  <app-input>
+  <ui-input>
     <select
       name="startDay"
       [ngModel]="startDay"
@@ -16,5 +16,5 @@
         {{ day }}
       </option>
     </select>
-  </app-input>
+  </ui-input>
 </form>

@@ -12,14 +12,14 @@
   <form #form="ngForm"
     (ngSubmit)="submitForm(form)"
     >
-    <app-input>
+    <ui-input>
       <input type="text"
         coreAutofocus
         required
         [name]="name"
         [(ngModel)]="model"
       />
-    </app-input>
+    </ui-input>
     <button ui-button
       type="submit"
       [disabled]="!model"
