@@ -1,5 +1,6 @@
-export * from './lib/create-dtos';
-export * from './lib/get-days';
+export * from './lib/functions/create-dtos';
+export * from './lib/functions/get-days';
+export * from './lib/functions/get-dish-types';
 
 export * from './lib/dish.interface';
 export * from './lib/meal.interface';

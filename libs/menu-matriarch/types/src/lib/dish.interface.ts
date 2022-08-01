@@ -28,7 +28,3 @@ export interface FilteredDishesGroup {
   dishes: Dish[];
   placeholderText?: string;
 }
-
-export function getDishTypes(): readonly DishType[] {
-  return ['main', 'side', 'dessert'];
-}

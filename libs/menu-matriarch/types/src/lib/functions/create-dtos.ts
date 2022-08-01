@@ -1,8 +1,8 @@
-import { DishDto } from "./dish.interface";
-import { MealDto } from "./meal.interface";
-import { MenuDto } from "./menu.interface";
-import { TagDto } from "./tag.interface";
-import { UserDto } from "./user.interface";
+import { DishDto } from "../dish.interface";
+import { MealDto } from "../meal.interface";
+import { MenuDto } from "../menu.interface";
+import { TagDto } from "../tag.interface";
+import { UserDto } from "../user.interface";
 
 export function createUserDto({
   uid,
