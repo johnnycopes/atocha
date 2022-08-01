@@ -32,9 +32,9 @@
     <div class="details">
       <p>{{ dish.type | uppercase }}</p>
       <p>
-        Included {{ dish.usages }} {{ 'time' | appPlural : dish.usages }} in
-        {{ dish.menuIds.length }} different {{ 'menu' | appPlural : dish.menuIds.length }}.
-        Included in {{ dish.mealIds.length }} {{ 'meal' | appPlural : dish.mealIds.length}}.
+        Included {{ dish.usages }} {{ dish.usages | corePlural : 'time' }} in
+        {{ dish.menuIds.length }} different {{  dish.menuIds.length | corePlural : 'menu' }}.
+        Included in {{ dish.mealIds.length }} {{ dish.mealIds.length | corePlural : 'meal' }}.
       </p>
     </div>
     <div class="details">
