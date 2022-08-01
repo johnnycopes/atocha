@@ -2,10 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { UserDto } from '@models/dtos/user-dto.interface';
-import { Endpoint } from '@atocha/menu-matriarch/types';
-import { User } from '@models/user.interface';
-import { UserPreferences } from '@models/user-preferences.interface';
+import { User, UserDto, UserPreferences, Endpoint } from '@atocha/menu-matriarch/types';
 import { DataService } from './data.service';
 
 @Injectable({

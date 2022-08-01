@@ -12,8 +12,7 @@ import {
 } from 'rxjs/operators';
 
 import { recordToArray } from '@atocha/core/util';
-import { Dish } from '@models/dish.interface';
-import { TagModel } from '@models/tag-model.interface';
+import { Dish, TagModel } from '@atocha/menu-matriarch/types';
 import { DishService } from '@services/dish.service';
 import { MealService } from '@services/meal.service';
 import { TagService } from '@services/tag.service';

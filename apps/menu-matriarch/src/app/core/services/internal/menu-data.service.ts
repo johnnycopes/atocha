@@ -3,10 +3,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { flattenValues, lower, sort } from '@atocha/core/util';
-import { Day } from '@models/day.type';
-import { Endpoint } from '@atocha/menu-matriarch/types';
-import { Menu } from '@models/menu.interface';
-import { MenuDto } from '@models/dtos/menu-dto.interface';
+import { Day, Menu, MenuDto, Endpoint } from '@atocha/menu-matriarch/types';
 import { createMenuDto } from '@utility/domain/create-dtos';
 import { BatchService } from './batch.service';
 import { DataService } from './data.service';

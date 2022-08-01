@@ -3,8 +3,8 @@ import { merge, Subject } from 'rxjs';
 import { mapTo, shareReplay } from 'rxjs/operators';
 
 import { trackByFactory } from '@atocha/core/ui';
+import { Menu } from '@atocha/menu-matriarch/types';
 import { MenuService } from '@services/menu.service';
-import { Menu } from '@models/menu.interface';
 
 @Component({
   selector: 'app-menus',

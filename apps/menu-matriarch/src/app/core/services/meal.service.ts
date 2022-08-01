@@ -2,10 +2,7 @@ import { Injectable } from '@angular/core';
 import { combineLatest, Observable, of } from 'rxjs';
 import { concatMap, first, map, tap } from 'rxjs/operators';
 
-import { MealDto } from '@models/dtos/meal-dto.interface';
-import { Dish } from '@models/dish.interface';
-import { Meal } from '@models/meal.interface';
-import { Tag } from '@models/tag.interface';
+import { MealDto, Dish, Tag, Meal } from '@atocha/menu-matriarch/types';
 import { AuthService } from './auth.service';
 import { DishService } from './dish.service';
 import { MealDataService } from './internal/meal-data.service';

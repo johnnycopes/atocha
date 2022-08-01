@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { calculateTallyChange, flattenValues, tally, TallyChange, uniqueDiff } from '@atocha/core/util';
-import { Day } from '@models/day.type';
-import { Menu } from '@models/menu.interface';
-import { Endpoint } from '@atocha/menu-matriarch/types';
+import { Day, Menu, Endpoint } from '@atocha/menu-matriarch/types';
 import { Batch, BatchUpdate } from './batch';
 import { FirestoreService } from './firestore.service';
 

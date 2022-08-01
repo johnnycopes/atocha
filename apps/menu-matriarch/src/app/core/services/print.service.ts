@@ -1,10 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { Dish } from '@models/dish.interface';
-import { DishType } from '@models/dish-type.type';
-import { Menu } from '@models/menu.interface';
-import { MenuEntry } from '@models/menu-entry.interface';
-import { Orientation } from '@models/orientation.type';
+import { DishType, Dish, Menu, MenuEntry, Orientation } from '@atocha/menu-matriarch/types';
 import { getDishTypes } from '@utility/domain/get-dish-types';
 
 type PrintMenu = Pick<

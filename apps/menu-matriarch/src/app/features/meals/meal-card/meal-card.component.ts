@@ -1,8 +1,5 @@
 import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
-
-import { Dish } from '@models/dish.interface';
-import { Orientation } from '@models/orientation.type';
-import { Tag } from '@models/tag.interface';
+import { Dish, Orientation, Tag } from '@atocha/menu-matriarch/types';
 
 @Component({
   selector: 'app-meal-card',

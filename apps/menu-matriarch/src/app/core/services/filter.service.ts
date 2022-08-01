@@ -3,9 +3,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { first } from 'rxjs/operators';
 
 import { includes } from '@atocha/core/util';
-import { Dish } from '@models/dish.interface';
-import { FilteredDishesGroup } from '@models/filtered-dishes.interface';
-import { Meal } from '@models/meal.interface';
+import { Dish, FilteredDishesGroup, Meal } from '@atocha/menu-matriarch/types';
 import { getDishTypes } from '@utility/domain/get-dish-types';
 
 interface State {

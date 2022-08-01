@@ -1,7 +1,5 @@
 import { trackByFactory } from '@atocha/core/ui';
-import { FilteredDishesGroup } from '@models/filtered-dishes.interface';
-import { MenuEntry } from '@models/menu-entry.interface';
-import { Dish } from '@models/dish.interface';
+import { Dish, FilteredDishesGroup, MenuEntry } from '@atocha/menu-matriarch/types';
 
 export const trackBySelf = trackByFactory<string>((item) => item);
 export const dishTrackByFn = trackByFactory<Dish>(({ id }) => id);

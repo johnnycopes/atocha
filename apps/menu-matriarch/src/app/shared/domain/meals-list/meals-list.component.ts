@@ -10,13 +10,13 @@ import { combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { trackByFactory } from '@atocha/core/ui';
+import { Meal } from '@atocha/menu-matriarch/types';
 import { FilterService } from '@services/filter.service';
 import { MealService } from '@services/meal.service';
 import { RouterService } from '@services/router.service';
 import { TagService } from '@services/tag.service';
 import { UserService } from '@services/user.service';
 import { MealDefContext, MealDefDirective } from './meal-def.directive';
-import { Meal } from '@models/meal.interface';
 
 @Component({
   selector: 'app-meals-list',

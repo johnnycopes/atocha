@@ -5,13 +5,9 @@ import {
   Output,
   EventEmitter,
 } from '@angular/core';
-import { Day } from '@models/day.type';
 
 import { trackByFactory } from '@atocha/core/ui';
-import { Dish } from '@models/dish.interface';
-import { Menu } from '@models/menu.interface';
-import { Orientation } from '@models/orientation.type';
-import { Tag } from '@models/tag.interface';
+import { Day, Dish, Menu, Orientation, Tag } from '@atocha/menu-matriarch/types';
 
 interface EntryModel {
   day: Day;

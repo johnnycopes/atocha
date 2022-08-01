@@ -1,8 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
-import { Dish } from '@models/dish.interface';
-import { FilteredDishesGroup } from '@models/filtered-dishes.interface';
-import { Orientation } from '@models/orientation.type';
+import { Dish, FilteredDishesGroup, Orientation } from '@atocha/menu-matriarch/types';
 import { getDishTypes } from '@utility/domain/get-dish-types';
 import {
   dishTrackByFn,

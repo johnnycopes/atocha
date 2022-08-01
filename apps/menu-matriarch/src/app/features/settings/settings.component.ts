@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { debounceTime, switchMap, takeUntil } from 'rxjs/operators';
 
-import { UserPreferences } from '@models/user-preferences.interface';
+import { UserPreferences } from '@atocha/menu-matriarch/types';
 import { AuthService } from '@services/auth.service';
 import { UserService } from '@services/user.service';
 import { getDays } from '@utility/domain/get-days';
