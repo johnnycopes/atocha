@@ -20,7 +20,6 @@
       "@atocha/core/util": ["../../libs/core/util/src/index.ts"],
       "@atocha/menu-matriarch/types": ["../../libs/menu-matriarch/types/src/index.ts"],
       "@env/*": ["src/environments/*"],
-      "@models/*": ["src/app/shared/models/*"],
       "@services/*": ["src/app/core/services/*"],
       "@shared/*": ["src/app/shared/*"],
       "@utility/*": ["src/app/shared/utility/*"]
