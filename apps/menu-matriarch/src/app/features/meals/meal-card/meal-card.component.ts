@@ -1,4 +1,5 @@
 import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
+
 import { Dish, Orientation, Tag } from '@atocha/menu-matriarch/types';
 
 @Component({
