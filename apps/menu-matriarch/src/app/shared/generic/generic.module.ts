@@ -20,8 +20,6 @@ import { OptionsMenuTriggerDirective } from './options-menu/options-menu-trigger
 import { PanelComponent } from './panel/panel.component';
 import { SearchInputComponent } from './search-input/search-input.component';
 import { SectionComponent } from './section/section.component';
-import { TabComponent } from './tabset/tab/tab.component';
-import { TabsetComponent } from './tabset/tabset.component';
 
 @NgModule({
   imports: [CommonModule, DragDropModule, FontAwesomeModule, FormsModule, CoreUiModule, MenuMatriarchUiModule],
@@ -39,8 +37,6 @@ import { TabsetComponent } from './tabset/tabset.component';
     PanelComponent,
     SearchInputComponent,
     SectionComponent,
-    TabComponent,
-    TabsetComponent,
   ],
   exports: [
     CardComponent,
@@ -56,8 +52,6 @@ import { TabsetComponent } from './tabset/tabset.component';
     PanelComponent,
     SearchInputComponent,
     SectionComponent,
-    TabComponent,
-    TabsetComponent,
   ],
 })
 export class GenericModule {}

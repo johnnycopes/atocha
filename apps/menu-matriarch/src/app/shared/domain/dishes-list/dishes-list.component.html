@@ -5,8 +5,8 @@
   newRoute="/dishes/new"
   (nameDblClick)="nameDblClick.emit()"
 >
-  <app-tabset>
-    <app-tab *ngFor="let group of vm.filteredDishes; trackBy: groupTrackByFn"
+  <ui-tabset>
+    <ui-tab *ngFor="let group of vm.filteredDishes; trackBy: groupTrackByFn"
       name="{{ group.type + 's' }} ({{ group.dishes.length }})"
       [selected]="vm.initialTab === group.type"
     >
@@ -26,6 +26,6 @@
           {{ group.placeholderText }}
         </div>
       </ng-template>
-    </app-tab>
-  </app-tabset>
+    </ui-tab>
+  </ui-tabset>
 </app-filterable-list>

@@ -16,13 +16,13 @@ import { takeUntil, tap } from 'rxjs/operators';
 
 import { trackByFactory } from '@atocha/core/ui';
 import { AnimatedComponent } from '@atocha/core/ui';
-import { fadeInAnimation, visibilityAnimation } from '@shared/animations';
+import { fadeInAnimation, visibilityAnimation } from '../animations';
 import { TabComponent } from './tab/tab.component';
 
 export type TabsetContentVisibility = 'visible' | 'invisible';
 
 @Component({
-  selector: 'app-tabset',
+  selector: 'ui-tabset',
   templateUrl: './tabset.component.html',
   styleUrls: ['./tabset.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

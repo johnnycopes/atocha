@@ -7,10 +7,10 @@ import {
   Output,
 } from '@angular/core';
 
-import { fadeInAnimation } from '@shared/animations';
+import { fadeInAnimation } from '../../animations';
 
 @Component({
-  selector: 'app-tab',
+  selector: 'ui-tab',
   templateUrl: './tab.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [fadeInAnimation],

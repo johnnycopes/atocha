@@ -5,18 +5,24 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AlertComponent } from './alert/alert.component';
 import { ButtonComponent } from './button/button.component';
 import { SmallCapsLabelComponent } from './small-caps-label/small-caps-label.component';
+import { TabsetComponent } from './tabset/tabset.component';
+import { TabComponent } from './tabset/tab/tab.component';
 
 @NgModule({
   imports: [CommonModule, FontAwesomeModule],
   declarations: [
     AlertComponent,
     ButtonComponent,
-    SmallCapsLabelComponent
+    SmallCapsLabelComponent,
+    TabsetComponent,
+    TabComponent,
   ],
   exports: [
     AlertComponent,
     ButtonComponent,
-    SmallCapsLabelComponent
+    SmallCapsLabelComponent,
+    TabsetComponent,
+    TabComponent,
   ],
 })
 export class MenuMatriarchUiModule {}
