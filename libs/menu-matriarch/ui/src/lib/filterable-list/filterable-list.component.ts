@@ -9,7 +9,7 @@ import {
 import { Tag } from '@atocha/menu-matriarch/types';
 
 @Component({
-  selector: 'app-filterable-list',
+  selector: 'ui-filterable-list',
   templateUrl: './filterable-list.component.html',
   styleUrls: ['./filterable-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

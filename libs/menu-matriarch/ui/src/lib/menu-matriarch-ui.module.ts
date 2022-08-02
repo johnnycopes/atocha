@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
+import { CoreUiModule } from '@atocha/core/ui';
+
 import { AlertComponent } from './_generic/alert/alert.component';
 import { ButtonComponent } from './_generic/button/button.component';
 import { CardComponent } from './_generic/card/card.component';
@@ -11,6 +13,7 @@ import { CheckboxComponent } from './_generic/checkbox/checkbox.component';
 import { CountComponent } from './count/count.component';
 import { DishSummaryComponent } from './dish-summary/dish-summary.component';
 import { EmptyViewPlaceholderComponent } from './empty-view-placeholder/empty-view-placeholder.component';
+import { FilterableListComponent } from './filterable-list/filterable-list.component';
 import { FiltersButtonComponent } from './filters-button/filters-button.component';
 import { FiltersComponent } from './filters/filters.component';
 import { InlineDaySelectComponent } from './inline-day-select/inline-day-select.component';
@@ -31,7 +34,7 @@ import { TagDefDirective } from './tags/tags-list/tag-def.directive';
 import { TagsListComponent } from './tags/tags-list/tags-list.component';
 
 @NgModule({
-  imports: [CommonModule, FormsModule, RouterModule, FontAwesomeModule],
+  imports: [CommonModule, FormsModule, RouterModule, FontAwesomeModule, CoreUiModule],
   declarations: [
     AlertComponent,
     ButtonComponent,
@@ -42,6 +45,7 @@ import { TagsListComponent } from './tags/tags-list/tags-list.component';
     EmptyViewPlaceholderComponent,
     FiltersButtonComponent,
     FiltersComponent,
+    FilterableListComponent,
     InlineDaySelectComponent,
     InlineFormComponent,
     InlineNameEditComponent,
@@ -69,6 +73,7 @@ import { TagsListComponent } from './tags/tags-list/tags-list.component';
     EmptyViewPlaceholderComponent,
     FiltersButtonComponent,
     FiltersComponent,
+    FilterableListComponent,
     InlineDaySelectComponent,
     InlineFormComponent,
     InlineNameEditComponent,

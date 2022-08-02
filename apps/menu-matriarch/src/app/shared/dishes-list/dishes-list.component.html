@@ -1,4 +1,4 @@
-<app-filterable-list *ngIf="vm$ | async as vm"
+<ui-filterable-list *ngIf="vm$ | async as vm"
   [total]="vm.total"
   [searchText]="vm.searchText"
   [filters]="vm.filters"
@@ -35,4 +35,4 @@
       </ng-template>
     </ui-tab>
   </ui-tabset>
-</app-filterable-list>
+</ui-filterable-list>

@@ -9,7 +9,6 @@ import { MenuMatriarchUiModule } from '@atocha/menu-matriarch/ui';
 
 import { DishDefDirective } from './dishes-list/dish-def.directive';
 import { DishesListComponent } from './dishes-list/dishes-list.component';
-import { FilterableListComponent } from './filterable-list/filterable-list.component';
 import { MealDefDirective } from './meals-list/meal-def.directive';
 import { MealsListComponent } from './meals-list/meals-list.component';
 
@@ -17,14 +16,12 @@ import { MealsListComponent } from './meals-list/meals-list.component';
   declarations: [
     DishDefDirective,
     DishesListComponent,
-    FilterableListComponent,
     MealDefDirective,
     MealsListComponent,
   ],
   exports: [
     DishDefDirective,
     DishesListComponent,
-    FilterableListComponent,
     MealDefDirective,
     MealsListComponent,
   ],
