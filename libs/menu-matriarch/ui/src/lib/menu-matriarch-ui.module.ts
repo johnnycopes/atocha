@@ -8,6 +8,7 @@ import { ButtonComponent } from './_generic/button/button.component';
 import { CardComponent } from './_generic/card/card.component';
 import { CheckboxComponent } from './_generic/checkbox/checkbox.component';
 import { CountComponent } from './count/count.component';
+import { EmptyViewPlaceholderComponent } from './empty-view-placeholder/empty-view-placeholder.component';
 import { InlineFormComponent } from './_generic/inline-form/inline-form.component';
 import { InputComponent } from './_generic/input/input.component';
 import { OptionsMenuComponent } from './_generic/options-menu/options-menu.component';
@@ -30,6 +31,7 @@ import { TagsListComponent } from './tags/tags-list/tags-list.component';
     CardComponent,
     CheckboxComponent,
     CountComponent,
+    EmptyViewPlaceholderComponent,
     InlineFormComponent,
     InputComponent,
     OptionsMenuComponent,
@@ -50,6 +52,7 @@ import { TagsListComponent } from './tags/tags-list/tags-list.component';
     CardComponent,
     CheckboxComponent,
     CountComponent,
+    EmptyViewPlaceholderComponent,
     InlineFormComponent,
     InputComponent,
     OptionsMenuComponent,
