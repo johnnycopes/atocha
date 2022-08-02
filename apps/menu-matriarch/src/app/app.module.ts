@@ -18,8 +18,6 @@ import { DomainModule } from '@shared/domain/domain.module';
 import { MenuMatriarchUiModule } from '@atocha/menu-matriarch/ui';
 
 import { AppComponent } from './app.component';
-import { DemoComponent } from './features/demo/demo.component';
-import { DemoComponentComponent } from './features/demo/demo-component/demo-component.component';
 import { DishCardComponent } from './features/dishes/dish-card/dish-card.component';
 import { DishDetailsComponent } from './features/dishes/dish-details/dish-details.component';
 import { DishEditComponent } from './features/dishes/dish-edit/dish-edit.component';
@@ -51,8 +49,6 @@ import { WelcomeComponent } from './features/welcome/welcome.component';
 @NgModule({
   declarations: [
     AppComponent,
-    DemoComponent,
-    DemoComponentComponent,
     DishCardComponent,
     DishDetailsComponent,
     DishEditComponent,

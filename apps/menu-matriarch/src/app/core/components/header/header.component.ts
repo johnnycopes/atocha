@@ -1,6 +1,5 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 
-import { environment } from '@env/environment';
 import { Route } from '@atocha/menu-matriarch/types';
 import { RouterService } from '@services/router.service';
 
@@ -13,7 +12,6 @@ import { RouterService } from '@services/router.service';
 })
 export class HeaderComponent {
   public Route: typeof Route = Route;
-  public showDemo = !environment.production;
   public plannerRoute$ = this._routerService.getPlannerRoute();
 
   constructor(private _routerService: RouterService) {}
