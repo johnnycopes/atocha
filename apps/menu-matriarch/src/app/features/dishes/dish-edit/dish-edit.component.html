@@ -84,7 +84,7 @@
         [interactive]="true"
       >
         <ng-container *appTagDef="let tag">
-          <app-checkbox
+          <ui-checkbox
             [name]="tag.id"
             [ngModel]="tag.checked"
           >
@@ -92,7 +92,7 @@
               [id]="tag.id"
               [name]="tag.name"
             ></app-tag>
-          </app-checkbox>
+          </ui-checkbox>
         </ng-container>
       </app-tags-list>
       <ng-template #noTagsPlaceholder>

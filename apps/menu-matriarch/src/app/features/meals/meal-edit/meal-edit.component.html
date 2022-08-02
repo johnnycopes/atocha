@@ -17,13 +17,13 @@
           [mealIds]="dish.mealIds"
           [usages]="dish.usages"
         ></app-dish-summary>
-        <app-checkbox class="included"
+        <ui-checkbox class="included"
           [name]="dish.id"
           [ngModel]="vm.dishesModel.includes(dish.id)"
           (ngModelChange)="onDishChange(form.value.dishes)"
         >
           Include in meal
-        </app-checkbox>
+        </ui-checkbox>
       </ui-card>
     </app-dishes-list>
 
@@ -80,7 +80,7 @@
             [interactive]="true"
           >
             <ng-container *appTagDef="let tag">
-              <app-checkbox
+              <ui-checkbox
                 [name]="tag.id"
                 [ngModel]="tag.checked"
               >
@@ -88,7 +88,7 @@
                   [id]="tag.id"
                   [name]="tag.name"
                 ></app-tag>
-              </app-checkbox>
+              </ui-checkbox>
             </ng-container>
           </app-tags-list>
           <ng-template #noTagsPlaceholder>

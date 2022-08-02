@@ -7,7 +7,6 @@ import { FormsModule } from '@angular/forms';
 import { CoreUiModule } from '@atocha/core/ui';
 import { MenuMatriarchUiModule } from '@atocha/menu-matriarch/ui';
 
-import { CheckboxComponent } from './checkbox/checkbox.component';
 import { InlineFormComponent } from './inline-form/inline-form.component';
 import { KanbanBoardColumnComponent } from './kanban-board/kanban-board-column/kanban-board-column.component';
 import { KanbanBoardComponent } from './kanban-board/kanban-board.component';
@@ -20,7 +19,6 @@ import { SearchInputComponent } from './search-input/search-input.component';
 @NgModule({
   imports: [CommonModule, DragDropModule, FontAwesomeModule, FormsModule, CoreUiModule, MenuMatriarchUiModule],
   declarations: [
-    CheckboxComponent,
     InlineFormComponent,
     KanbanBoardColumnComponent,
     KanbanBoardComponent,
@@ -31,7 +29,6 @@ import { SearchInputComponent } from './search-input/search-input.component';
     SearchInputComponent,
   ],
   exports: [
-    CheckboxComponent,
     InlineFormComponent,
     KanbanBoardColumnComponent,
     KanbanBoardComponent,

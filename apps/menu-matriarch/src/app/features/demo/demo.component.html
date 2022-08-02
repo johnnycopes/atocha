@@ -27,18 +27,18 @@
   <app-demo-component name="CheckboxComponent"
     description="Simple checkbox with three possible states: checked, unchecked, or indeterminate"
     >
-    <app-checkbox
+    <ui-checkbox
       [(ngModel)]="checkboxState1"
     >
       This is {{ checkboxState1 ? 'a checked' : 'an unchecked' }} checkbox
-    </app-checkbox>
+    </ui-checkbox>
 
-    <app-checkbox
+    <ui-checkbox
       [disabled]="true"
       [(ngModel)]="checkboxState2"
     >
       This is a disabled checkbox
-    </app-checkbox>
+    </ui-checkbox>
   </app-demo-component>
 
   <app-demo-component name="FontAwesomeComponent"

@@ -6,7 +6,7 @@
     [interactive]="true"
   >
     <ng-container *appTagDef="let tag">
-      <app-checkbox
+      <ui-checkbox
         [name]="tag.id"
         [ngModel]="selected.includes(tag.id)"
         (ngModelChange)="onTagChange(tag.id, $event)"
@@ -15,7 +15,7 @@
           [id]="tag.id"
           [name]="tag.name"
         ></app-tag>
-      </app-checkbox>
+      </ui-checkbox>
     </ng-container>
     <li>
       <button ui-button
