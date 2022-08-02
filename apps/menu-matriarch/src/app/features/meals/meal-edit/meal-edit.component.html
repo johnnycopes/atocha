@@ -6,7 +6,7 @@
     <app-dishes-list class="dishes"
       ngModelGroup="dishes"
     >
-      <app-card *appDishDef="let dish">
+      <ui-card *appDishDef="let dish">
         <app-dish-summary
           [id]="dish.id"
           [name]="dish.name"
@@ -24,7 +24,7 @@
         >
           Include in meal
         </app-checkbox>
-      </app-card>
+      </ui-card>
     </app-dishes-list>
 
     <ui-section>

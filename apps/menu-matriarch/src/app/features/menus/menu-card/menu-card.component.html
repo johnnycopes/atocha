@@ -1,4 +1,4 @@
-<app-card *ngIf="state$ | async as state">
+<ui-card *ngIf="state$ | async as state">
   <div class="top">
     <app-inline-name-edit
       *ngIf="state === 'renaming'; else toolbarTemplate"
@@ -71,4 +71,4 @@
       ></app-meal-summary>
     </li>
   </ul>
-</app-card>
+</ui-card>

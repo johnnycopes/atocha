@@ -1,11 +1,11 @@
-<app-card>
+<ui-card>
   <app-inline-name-edit *ngIf="editing$ | async; else detailsTemplate"
     class="form"
     [name]="name"
     (cancel)="finishEdit$.next()"
     (save)="onSave($event)"
   ></app-inline-name-edit>
-</app-card>
+</ui-card>
 
 <ng-template #detailsTemplate>
   <app-tag

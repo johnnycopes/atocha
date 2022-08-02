@@ -1,4 +1,4 @@
-<app-card>
+<ui-card>
   <app-tags-list
     *ngIf="tags.length; else noTagsTemplate"
     class="tags"
@@ -30,4 +30,4 @@
   <ng-template #noTagsTemplate>
     <p>No filters to display</p>
   </ng-template>
-</app-card>
+</ui-card>
