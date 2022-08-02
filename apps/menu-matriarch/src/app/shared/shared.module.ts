@@ -11,7 +11,6 @@ import { DishDefDirective } from './dishes-list/dish-def.directive';
 import { DishesListComponent } from './dishes-list/dishes-list.component';
 import { DishSummaryComponent } from './dish-summary/dish-summary.component';
 import { FilterableListComponent } from './filterable-list/filterable-list.component';
-import { FiltersButtonComponent } from './filters-button/filters-button.component';
 import { FiltersComponent } from './filters/filters.component';
 import { MealDefDirective } from './meals-list/meal-def.directive';
 import { MealsListComponent } from './meals-list/meals-list.component';
@@ -23,7 +22,6 @@ import { MealSummaryComponent } from './meal-summary/meal-summary.component';
     DishesListComponent,
     DishSummaryComponent,
     FilterableListComponent,
-    FiltersButtonComponent,
     FiltersComponent,
     MealDefDirective,
     MealsListComponent,
@@ -34,7 +32,6 @@ import { MealSummaryComponent } from './meal-summary/meal-summary.component';
     DishesListComponent,
     DishSummaryComponent,
     FilterableListComponent,
-    FiltersButtonComponent,
     FiltersComponent,
     MealDefDirective,
     MealsListComponent,

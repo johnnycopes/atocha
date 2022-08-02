@@ -8,7 +8,7 @@ import {
 import { faCaretDown, faCaretUp } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
-  selector: 'app-filters-button',
+  selector: 'ui-filters-button',
   templateUrl: './filters-button.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

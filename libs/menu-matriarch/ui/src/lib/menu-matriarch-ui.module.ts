@@ -9,6 +9,7 @@ import { CardComponent } from './_generic/card/card.component';
 import { CheckboxComponent } from './_generic/checkbox/checkbox.component';
 import { CountComponent } from './count/count.component';
 import { EmptyViewPlaceholderComponent } from './empty-view-placeholder/empty-view-placeholder.component';
+import { FiltersButtonComponent } from './filters-button/filters-button.component';
 import { InlineDaySelectComponent } from './inline-day-select/inline-day-select.component';
 import { InlineFormComponent } from './_generic/inline-form/inline-form.component';
 import { InlineNameEditComponent } from './inline-name-edit/inline-name-edit.component';
@@ -34,6 +35,7 @@ import { TagsListComponent } from './tags/tags-list/tags-list.component';
     CheckboxComponent,
     CountComponent,
     EmptyViewPlaceholderComponent,
+    FiltersButtonComponent,
     InlineDaySelectComponent,
     InlineFormComponent,
     InlineNameEditComponent,
@@ -57,6 +59,7 @@ import { TagsListComponent } from './tags/tags-list/tags-list.component';
     CheckboxComponent,
     CountComponent,
     EmptyViewPlaceholderComponent,
+    FiltersButtonComponent,
     InlineDaySelectComponent,
     InlineFormComponent,
     InlineNameEditComponent,
