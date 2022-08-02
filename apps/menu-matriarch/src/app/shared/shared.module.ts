@@ -14,7 +14,6 @@ import { FilterableListComponent } from './filterable-list/filterable-list.compo
 import { FiltersButtonComponent } from './filters-button/filters-button.component';
 import { FiltersComponent } from './filters/filters.component';
 import { InlineDaySelectComponent } from './inline-day-select/inline-day-select.component';
-import { InlineNameEditComponent } from './inline-name-edit/inline-name-edit.component';
 import { MealDefDirective } from './meals-list/meal-def.directive';
 import { MealsListComponent } from './meals-list/meals-list.component';
 import { MealSummaryComponent } from './meal-summary/meal-summary.component';
@@ -28,7 +27,6 @@ import { MealSummaryComponent } from './meal-summary/meal-summary.component';
     FiltersButtonComponent,
     FiltersComponent,
     InlineDaySelectComponent,
-    InlineNameEditComponent,
     MealDefDirective,
     MealsListComponent,
     MealSummaryComponent,
@@ -41,7 +39,6 @@ import { MealSummaryComponent } from './meal-summary/meal-summary.component';
     FiltersButtonComponent,
     FiltersComponent,
     InlineDaySelectComponent,
-    InlineNameEditComponent,
     MealDefDirective,
     MealsListComponent,
     MealSummaryComponent,

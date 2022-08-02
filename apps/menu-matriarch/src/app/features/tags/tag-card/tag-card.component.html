@@ -1,10 +1,10 @@
 <ui-card>
-  <app-inline-name-edit *ngIf="editing$ | async; else detailsTemplate"
+  <ui-inline-name-edit *ngIf="editing$ | async; else detailsTemplate"
     class="form"
     [name]="name"
     (cancel)="finishEdit$.next()"
     (save)="onSave($event)"
-  ></app-inline-name-edit>
+  ></ui-inline-name-edit>
 </ui-card>
 
 <ng-template #detailsTemplate>

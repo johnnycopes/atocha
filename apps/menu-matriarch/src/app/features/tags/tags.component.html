@@ -10,11 +10,11 @@
     >
       New Tag
     </button>
-    <app-inline-name-edit class="form"
+    <ui-inline-name-edit class="form"
       *ngIf="adding$ | async"
       (cancel)="finishAdd$.next()"
       (save)="onNewTagSave($event)"
-    ></app-inline-name-edit>
+    ></ui-inline-name-edit>
   </div>
   <ul class="ui-section__content tags">
     <li ui-tag-card

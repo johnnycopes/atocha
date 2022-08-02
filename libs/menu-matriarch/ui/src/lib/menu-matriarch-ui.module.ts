@@ -10,6 +10,7 @@ import { CheckboxComponent } from './_generic/checkbox/checkbox.component';
 import { CountComponent } from './count/count.component';
 import { EmptyViewPlaceholderComponent } from './empty-view-placeholder/empty-view-placeholder.component';
 import { InlineFormComponent } from './_generic/inline-form/inline-form.component';
+import { InlineNameEditComponent } from './inline-name-edit/inline-name-edit.component';
 import { InputComponent } from './_generic/input/input.component';
 import { OptionsMenuComponent } from './_generic/options-menu/options-menu.component';
 import { OptionsMenuItemComponent } from './_generic/options-menu/options-menu-item/options-menu-item.component';
@@ -33,6 +34,7 @@ import { TagsListComponent } from './tags/tags-list/tags-list.component';
     CountComponent,
     EmptyViewPlaceholderComponent,
     InlineFormComponent,
+    InlineNameEditComponent,
     InputComponent,
     OptionsMenuComponent,
     OptionsMenuItemComponent,
@@ -54,6 +56,7 @@ import { TagsListComponent } from './tags/tags-list/tags-list.component';
     CountComponent,
     EmptyViewPlaceholderComponent,
     InlineFormComponent,
+    InlineNameEditComponent,
     InputComponent,
     OptionsMenuComponent,
     OptionsMenuItemComponent,

@@ -1,11 +1,11 @@
 <ui-card *ngIf="state$ | async as state">
   <div class="top">
-    <app-inline-name-edit
+    <ui-inline-name-edit
       *ngIf="state === 'renaming'; else toolbarTemplate"
       [name]="name"
       (cancel)="onCancel()"
       (save)="onRenameSave($event)"
-    ></app-inline-name-edit>
+    ></ui-inline-name-edit>
     <ng-template #toolbarTemplate>
       <a routerLink="/planner/{{ id }}">
         <h3 class="name">

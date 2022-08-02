@@ -8,7 +8,7 @@ import {
 import { NgForm } from '@angular/forms';
 
 @Component({
-  selector: 'app-inline-name-edit',
+  selector: 'ui-inline-name-edit',
   templateUrl: './inline-name-edit.component.html',
   styleUrls: ['./inline-name-edit.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
