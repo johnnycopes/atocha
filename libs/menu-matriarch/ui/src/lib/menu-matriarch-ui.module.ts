@@ -7,6 +7,7 @@ import { AlertComponent } from './alert/alert.component';
 import { ButtonComponent } from './button/button.component';
 import { CardComponent } from './card/card.component';
 import { CheckboxComponent } from './checkbox/checkbox.component';
+import { InlineFormComponent } from './inline-form/inline-form.component';
 import { InputComponent } from './input/input.component';
 import { SectionComponent } from './section/section.component';
 import { SmallCapsLabelComponent } from './small-caps-label/small-caps-label.component';
@@ -20,6 +21,7 @@ import { TabComponent } from './tabset/tab/tab.component';
     ButtonComponent,
     CardComponent,
     CheckboxComponent,
+    InlineFormComponent,
     InputComponent,
     SectionComponent,
     SmallCapsLabelComponent,
@@ -31,6 +33,7 @@ import { TabComponent } from './tabset/tab/tab.component';
     ButtonComponent,
     CardComponent,
     CheckboxComponent,
+    InlineFormComponent,
     InputComponent,
     SectionComponent,
     SmallCapsLabelComponent,

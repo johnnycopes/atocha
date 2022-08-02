@@ -11,7 +11,7 @@ import { faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   // eslint-disable-next-line @angular-eslint/component-selector
-  selector: 'form[app-inline-form]',
+  selector: 'form[ui-inline-form]',
   templateUrl: './inline-form.component.html',
   styleUrls: ['./inline-form.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -25,5 +25,5 @@ export class InlineFormComponent {
   public readonly saveIcon = faCheck;
 
   @HostBinding('class')
-  public hostClass = 'app-inline-form';
+  public hostClass = 'ui-inline-form';
 }
