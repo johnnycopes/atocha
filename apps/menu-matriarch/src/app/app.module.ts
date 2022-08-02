@@ -14,7 +14,7 @@ import { environment } from '@env/environment';
 
 import { AppRoutingModule } from './app-routing.module';
 import { CoreUiModule } from '@atocha/core/ui';
-import { DomainModule } from '@shared/domain/domain.module';
+import { DomainModule } from '@shared/domain.module';
 import { MenuMatriarchUiModule } from '@atocha/menu-matriarch/ui';
 
 import { AppComponent } from './app.component';
