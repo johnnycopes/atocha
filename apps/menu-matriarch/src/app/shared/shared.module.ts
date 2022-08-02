@@ -12,7 +12,6 @@ import { DishesListComponent } from './dishes-list/dishes-list.component';
 import { FilterableListComponent } from './filterable-list/filterable-list.component';
 import { MealDefDirective } from './meals-list/meal-def.directive';
 import { MealsListComponent } from './meals-list/meals-list.component';
-import { MealSummaryComponent } from './meal-summary/meal-summary.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +20,6 @@ import { MealSummaryComponent } from './meal-summary/meal-summary.component';
     FilterableListComponent,
     MealDefDirective,
     MealsListComponent,
-    MealSummaryComponent,
   ],
   exports: [
     DishDefDirective,
@@ -29,7 +27,6 @@ import { MealSummaryComponent } from './meal-summary/meal-summary.component';
     FilterableListComponent,
     MealDefDirective,
     MealsListComponent,
-    MealSummaryComponent,
   ],
   imports: [
     CommonModule,

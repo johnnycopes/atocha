@@ -9,7 +9,7 @@ import {
 import { dishTrackByFn, groupTrackByFn } from '@atocha/menu-matriarch/ui';
 
 @Component({
-  selector: 'app-meal-summary',
+  selector: 'ui-meal-summary',
   templateUrl: './meal-summary.component.html',
   styleUrls: ['./meal-summary.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

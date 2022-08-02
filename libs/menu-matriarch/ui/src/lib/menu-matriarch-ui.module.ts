@@ -17,6 +17,7 @@ import { InlineDaySelectComponent } from './inline-day-select/inline-day-select.
 import { InlineFormComponent } from './_generic/inline-form/inline-form.component';
 import { InlineNameEditComponent } from './inline-name-edit/inline-name-edit.component';
 import { InputComponent } from './_generic/input/input.component';
+import { MealSummaryComponent } from './meal-summary/meal-summary.component';
 import { OptionsMenuComponent } from './_generic/options-menu/options-menu.component';
 import { OptionsMenuItemComponent } from './_generic/options-menu/options-menu-item/options-menu-item.component';
 import { OptionsMenuTriggerDirective } from './_generic/options-menu/options-menu-trigger.directive';
@@ -45,6 +46,7 @@ import { TagsListComponent } from './tags/tags-list/tags-list.component';
     InlineFormComponent,
     InlineNameEditComponent,
     InputComponent,
+    MealSummaryComponent,
     OptionsMenuComponent,
     OptionsMenuItemComponent,
     OptionsMenuTriggerDirective,
@@ -71,6 +73,7 @@ import { TagsListComponent } from './tags/tags-list/tags-list.component';
     InlineFormComponent,
     InlineNameEditComponent,
     InputComponent,
+    MealSummaryComponent,
     OptionsMenuComponent,
     OptionsMenuItemComponent,
     OptionsMenuTriggerDirective,
