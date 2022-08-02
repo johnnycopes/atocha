@@ -58,4 +58,4 @@ import { MealSummaryComponent } from './meal-summary/meal-summary.component';
     MenuMatriarchUiModule,
   ],
 })
-export class DomainModule {}
+export class SharedModule {}

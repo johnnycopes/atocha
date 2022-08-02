@@ -14,8 +14,8 @@ import { environment } from '@env/environment';
 
 import { AppRoutingModule } from './app-routing.module';
 import { CoreUiModule } from '@atocha/core/ui';
-import { DomainModule } from '@shared/domain.module';
 import { MenuMatriarchUiModule } from '@atocha/menu-matriarch/ui';
+import { SharedModule } from '@shared/shared.module';
 
 import { AppComponent } from './app.component';
 import { DishCardComponent } from './features/dishes/dish-card/dish-card.component';
@@ -90,8 +90,8 @@ import { WelcomeComponent } from './features/welcome/welcome.component';
     PortalModule,
     AppRoutingModule,
     CoreUiModule,
-    DomainModule,
     MenuMatriarchUiModule,
+    SharedModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
