@@ -6,7 +6,7 @@ import {
   Orientation,
   getDishTypes,
 } from '@atocha/menu-matriarch/types';
-import { dishTrackByFn, groupTrackByFn } from '@shared/track-by-functions';
+import { dishTrackByFn, groupTrackByFn } from '@atocha/menu-matriarch/ui';
 
 @Component({
   selector: 'app-meal-summary',

@@ -9,11 +9,11 @@ import {
 import { combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
 
+import { dishTrackByFn, groupTrackByFn } from '@atocha/menu-matriarch/ui';
 import { DishService } from '@services/dish.service';
 import { FilterService } from '@services/filter.service';
 import { RouterService } from '@services/router.service';
 import { TagService } from '@services/tag.service';
-import { dishTrackByFn, groupTrackByFn } from '@shared/track-by-functions';
 import { DishContext, DishDefDirective } from './dish-def.directive';
 
 @Component({
