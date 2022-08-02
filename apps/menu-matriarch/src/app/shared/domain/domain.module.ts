@@ -6,7 +6,6 @@ import { RouterModule } from '@angular/router';
 
 import { CoreUiModule } from '@atocha/core/ui';
 import { MenuMatriarchUiModule } from '@atocha/menu-matriarch/ui';
-import { GenericModule } from '@shared/generic/generic.module';
 
 import { CountComponent } from './count/count.component';
 import { DishDefDirective } from './dishes-list/dish-def.directive';
@@ -69,7 +68,6 @@ import { TagsListComponent } from './tags-list/tags-list.component';
     RouterModule,
     CoreUiModule,
     MenuMatriarchUiModule,
-    GenericModule,
   ],
 })
 export class DomainModule {}
