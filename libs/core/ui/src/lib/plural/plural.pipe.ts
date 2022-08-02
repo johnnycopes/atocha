@@ -5,11 +5,7 @@ import { pluralize } from '@atocha/core/util';
   name: 'corePlural',
 })
 export class PluralPipe implements PipeTransform {
-  transform(
-    count: number,
-    name: string,
-    plural?: string
-  ): string {
+  transform(count: number, name: string, plural?: string): string {
     return pluralize(count, name, plural);
   }
 }

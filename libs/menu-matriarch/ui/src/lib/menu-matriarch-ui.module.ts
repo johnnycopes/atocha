@@ -34,7 +34,13 @@ import { TagDefDirective } from './tags/tags-list/tag-def.directive';
 import { TagsListComponent } from './tags/tags-list/tags-list.component';
 
 @NgModule({
-  imports: [CommonModule, FormsModule, RouterModule, FontAwesomeModule, CoreUiModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    RouterModule,
+    FontAwesomeModule,
+    CoreUiModule,
+  ],
   declarations: [
     AlertComponent,
     ButtonComponent,

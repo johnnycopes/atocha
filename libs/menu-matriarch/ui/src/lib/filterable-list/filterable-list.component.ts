@@ -17,7 +17,7 @@ import { Tag } from '@atocha/menu-matriarch/types';
 export class FilterableListComponent {
   @Input() total = 0;
   @Input() searchText = '';
-  @Input() filters: string[] = []
+  @Input() filters: string[] = [];
   @Input() isPanelOpen = false;
   @Input() tags: Tag[] = [];
   @Input() entity = 'Item';
