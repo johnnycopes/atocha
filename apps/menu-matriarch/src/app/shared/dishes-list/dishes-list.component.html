@@ -1,8 +1,15 @@
 <app-filterable-list *ngIf="vm$ | async as vm"
   [total]="vm.total"
+  [searchText]="vm.searchText"
+  [filters]="vm.filters"
+  [isPanelOpen]="vm.filterPanel"
+  [tags]="vm.tags"
   entity="Dish"
   pluralEntity="Dishes"
   newRoute="/dishes/new"
+  (searchTextChange)="onSearchTextChange($event)"
+  (filtersChange)="onFiltersChange($event)"
+  (filtersButtonClick)="onFiltersButtonClick()"
   (nameDblClick)="nameDblClick.emit()"
 >
   <ui-tabset>

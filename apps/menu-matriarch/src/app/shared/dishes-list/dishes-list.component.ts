@@ -30,20 +30,20 @@ export class DishesListComponent {
     this._filterService.state$,
     this._routerService.activeDishId$,
   ]).pipe(
-    map(([dishes, tags, filterState, activeDishId]) => {
+    map(([dishes, tags, { text, tagIds, panel }, activeDishId]) => {
       const activeDish = dishes.find((dish) => dish.id === activeDishId);
       const filteredDishes = this._filterService.filterDishes({
         dishes,
-        text: filterState.text,
-        tagIds: filterState.tagIds,
+        text,
+        tagIds,
       });
       return {
         filteredDishes,
         activeDish,
         tags,
-        searchText: filterState.text,
-        filters: filterState.tagIds,
-        filterPanel: filterState.panel,
+        searchText: text,
+        filters: tagIds,
+        filterPanel: panel,
         initialTab: activeDish?.type ?? 'main',
         total: filteredDishes.reduce(
           (total, { dishes }) => total + dishes.length,
@@ -68,4 +68,16 @@ export class DishesListComponent {
     private _routerService: RouterService,
     private _tagService: TagService
   ) {}
+
+  onSearchTextChange(text: string): void {
+    this._filterService.updateText(text);
+  }
+
+  onFiltersButtonClick(): void {
+    this._filterService.togglePanel();
+  }
+
+  onFiltersChange(filters: string[]): void {
+    this._filterService.updateTagIds(filters);
+  }
 }

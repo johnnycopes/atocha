@@ -33,20 +33,20 @@ export class MealsListComponent {
     this._filterService.state$,
     this._routerService.activeMealId$,
   ]).pipe(
-    map(([meals, tags, preferences, filterState, activeMealId]) => {
+    map(([meals, tags, preferences, { text, tagIds, panel }, activeMealId]) => {
       const filteredMeals = this._filterService.filterMeals({
         meals,
-        text: filterState.text,
-        tagIds: filterState.tagIds,
+        text,
+        tagIds,
       });
       return {
         filteredMeals,
         activeMeal: meals.find((meal) => meal.id === activeMealId),
         tags,
         preferences,
-        searchText: filterState.text,
-        filters: filterState.tagIds,
-        filterPanel: filterState.panel,
+        searchText: text,
+        filters: tagIds,
+        filterPanel: panel,
         total: filteredMeals.length,
       };
     })
@@ -67,4 +67,16 @@ export class MealsListComponent {
     private _tagService: TagService,
     private _userService: UserService
   ) {}
+
+  onSearchTextChange(text: string): void {
+    this._filterService.updateText(text);
+  }
+
+  onFiltersButtonClick(): void {
+    this._filterService.togglePanel();
+  }
+
+  onFiltersChange(filters: string[]): void {
+    this._filterService.updateTagIds(filters);
+  }
 }
