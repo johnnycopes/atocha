@@ -10,9 +10,6 @@ import { MenuMatriarchUiModule } from '@atocha/menu-matriarch/ui';
 import { KanbanBoardColumnComponent } from './kanban-board/kanban-board-column/kanban-board-column.component';
 import { KanbanBoardComponent } from './kanban-board/kanban-board.component';
 import { KanbanBoardFormComponent } from './kanban-board/kanban-board-form/kanban-board-form.component';
-import { OptionsMenuComponent } from './options-menu/options-menu.component';
-import { OptionsMenuItemComponent } from './options-menu/options-menu-item/options-menu-item.component';
-import { OptionsMenuTriggerDirective } from './options-menu/options-menu-trigger.directive';
 
 @NgModule({
   imports: [CommonModule, DragDropModule, FontAwesomeModule, FormsModule, CoreUiModule, MenuMatriarchUiModule],
@@ -20,17 +17,11 @@ import { OptionsMenuTriggerDirective } from './options-menu/options-menu-trigger
     KanbanBoardColumnComponent,
     KanbanBoardComponent,
     KanbanBoardFormComponent,
-    OptionsMenuComponent,
-    OptionsMenuItemComponent,
-    OptionsMenuTriggerDirective,
   ],
   exports: [
     KanbanBoardColumnComponent,
     KanbanBoardComponent,
     KanbanBoardFormComponent,
-    OptionsMenuComponent,
-    OptionsMenuItemComponent,
-    OptionsMenuTriggerDirective,
   ],
 })
 export class GenericModule {}

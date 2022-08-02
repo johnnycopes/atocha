@@ -16,36 +16,36 @@
         buttonStyle="ternary"
         [icon]="menuToggleIcon"
         [disabled]="state !== 'default'"
-        [appOptionsMenuTrigger]="optionsMenu"
+        [uiOptionsMenuTrigger]="optionsMenu"
       ></button>
-      <app-options-menu #optionsMenu>
-        <li app-options-menu-item
+      <ui-options-menu #optionsMenu>
+        <li ui-options-menu-item
           (click)="onPrint()"
         >
           Print
         </li>
-        <li app-options-menu-item
+        <li ui-options-menu-item
           (click)="onRename()"
         >
           Rename
         </li>
-        <li app-options-menu-item
+        <li ui-options-menu-item
           (click)="onChangeStartDay()"
         >
           Change Start Day
         </li>
-        <a app-options-menu-item
+        <a ui-options-menu-item
           routerLink="/planner/{{ id }}"
         >
           Plan Meals
         </a>
-        <li app-options-menu-item
+        <li ui-options-menu-item
           *ngIf="canDelete"
           (click)="onDelete()"
         >
           Delete
         </li>
-      </app-options-menu>
+      </ui-options-menu>
     </ng-template>
   </div>
   <app-inline-day-select class="start-day-form"

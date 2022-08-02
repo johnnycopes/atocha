@@ -7,7 +7,7 @@ import {
 
 @Component({
   // eslint-disable-next-line @angular-eslint/component-selector
-  selector: '[app-options-menu-item]',
+  selector: '[ui-options-menu-item]',
   templateUrl: './options-menu-item.component.html',
   styleUrls: ['./options-menu-item.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

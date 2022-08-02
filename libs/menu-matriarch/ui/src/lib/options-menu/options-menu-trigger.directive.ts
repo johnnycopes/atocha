@@ -13,10 +13,10 @@ import { takeUntil } from 'rxjs/operators';
 import { OptionsMenuComponent } from './options-menu.component';
 
 @Directive({
-  selector: '[appOptionsMenuTrigger]',
+  selector: '[uiOptionsMenuTrigger]',
 })
 export class OptionsMenuTriggerDirective implements AfterViewInit, OnDestroy {
-  @Input('appOptionsMenuTrigger') menu: OptionsMenuComponent | undefined;
+  @Input('uiOptionsMenuTrigger') menu: OptionsMenuComponent | undefined;
   private _templatePortal: TemplatePortal<unknown> | undefined;
   private _overlayRef: OverlayRef | undefined;
   private _destroy$ = new Subject<void>();

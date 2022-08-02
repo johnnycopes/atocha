@@ -82,29 +82,29 @@
       [cdkConnectedOverlayOpen]="isOptionsMenuOpen"
       (overlayOutsideClick)="isOptionsMenuOpen = false"
     >
-      <ul app-options-menu>
-        <li app-options-menu-item>
+      <ul ui-options-menu>
+        <li ui-options-menu-item>
           Delete user
         </li>
-        <li app-options-menu-item>
+        <li ui-options-menu-item>
           Decorative option
         </li>
     </ul>
     </ng-template> -->
 
     <button ui-button
-      [appOptionsMenuTrigger]="optionsMenu"
+      [uiOptionsMenuTrigger]="optionsMenu"
     >
       Click
     </button>
 
-    <app-options-menu #optionsMenu>
-      <li app-options-menu-item>
+    <ui-options-menu #optionsMenu>
+      <li ui-options-menu-item>
         Delete user
       </li>
-      <li app-options-menu-item>
+      <li ui-options-menu-item>
         Decorative option
       </li>
-    </app-options-menu>
+    </ui-options-menu>
   </app-demo-component>
 </div>
