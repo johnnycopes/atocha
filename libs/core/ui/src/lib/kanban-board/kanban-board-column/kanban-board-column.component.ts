@@ -8,7 +8,7 @@ import {
   TemplateRef,
 } from '@angular/core';
 
-import { trackByFactory } from '@atocha/core/ui';
+import { trackByFactory } from '../../performance/track-by';
 import {
   CdkDragDrop,
   moveItemInArray,

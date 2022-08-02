@@ -5,8 +5,8 @@ import {
   EventEmitter,
   ChangeDetectionStrategy,
 } from '@angular/core';
-import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { NgForm } from '@angular/forms';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'core-kanban-board-form',

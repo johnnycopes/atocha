@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 
-import { trackByFactory } from '@atocha/core/ui';
+import { trackByFactory } from '../performance/track-by';
 import {
   IKanbanBoardItemAdd,
   IKanbanBoardActionClick,
