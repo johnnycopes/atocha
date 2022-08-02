@@ -1,6 +1,4 @@
-<ui-section *ngIf="vm$ | async as vm"
-  class="dishes"
->
+<ui-section class="dishes">
   <div class="ui-section__toolbar">
     <div class="controls">
       <h2 class="title"
@@ -9,13 +7,13 @@
         {{ 0 | corePlural : entity : pluralEntity }} ({{ total }})
       </h2>
       <ui-search-input
-        [text]="vm.searchText"
-        (textChange)="onSearchTextChange($event)"
+        [text]="searchText"
+        (textChange)="searchTextChange.emit($event)"
       ></ui-search-input>
       <ui-filters-button class="button"
-        [count]="vm.filters.length"
-        [open]="vm.filterPanel"
-        (clicked)="onFiltersButtonClick()"
+        [count]="filters.length"
+        [open]="isPanelOpen"
+        (clicked)="filtersButtonClick.emit()"
       ></ui-filters-button>
       <a ui-button
         class="button"
@@ -24,12 +22,12 @@
         New {{ entity }}
       </a>
     </div>
-    <ui-filters *ngIf="vm.filterPanel"
+    <ui-filters *ngIf="isPanelOpen"
       class="filters"
-      [tags]="vm.tags"
-      [selected]="vm.filters"
-      (selectedChange)="onFiltersChange($event)"
-      (selectedClear)="onFiltersChange([])"
+      [tags]="tags"
+      [selected]="filters"
+      (selectedChange)="filtersChange.emit($event)"
+      (selectedClear)="filtersChange.emit([])"
     ></ui-filters>
   </div>
   <div class="ui-section__content">
