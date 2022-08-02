@@ -11,7 +11,7 @@ import { Tag } from '@atocha/menu-matriarch/types';
 import { TagDefContext, TagDefDirective } from './tag-def.directive';
 
 @Component({
-  selector: 'app-tags-list',
+  selector: 'ui-tags-list',
   templateUrl: './tags-list.component.html',
   styleUrls: ['./tags-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

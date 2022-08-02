@@ -7,7 +7,7 @@ export interface TagDefContext<T extends Tag> {
 }
 
 @Directive({
-  selector: '[appTagDef]',
+  selector: '[uiTagDef]',
 })
 export class TagDefDirective<T extends Tag> {
   constructor(public template: TemplateRef<TagDefContext<T>>) {}

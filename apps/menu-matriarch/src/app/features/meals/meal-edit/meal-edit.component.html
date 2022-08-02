@@ -72,25 +72,25 @@
         <ui-input
           label="tags"
         >
-          <app-tags-list
+          <ui-tags-list
             *ngIf="vm.tags.length; else noTagsPlaceholder"
             class="tags"
             ngModelGroup="tags"
             [tags]="vm.tags"
             [interactive]="true"
           >
-            <ng-container *appTagDef="let tag">
+            <ng-container *uiTagDef="let tag">
               <ui-checkbox
                 [name]="tag.id"
                 [ngModel]="tag.checked"
               >
-                <app-tag
+                <ui-tag
                   [id]="tag.id"
                   [name]="tag.name"
-                ></app-tag>
+                ></ui-tag>
               </ui-checkbox>
             </ng-container>
-          </app-tags-list>
+          </ui-tags-list>
           <ng-template #noTagsPlaceholder>
             <div class="placeholder">
               <p>No tags to display</p>

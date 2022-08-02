@@ -1,7 +1,7 @@
 import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-tag',
+  selector: 'ui-tag',
   templateUrl: './tag.component.html',
   styleUrls: ['./tag.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

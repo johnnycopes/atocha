@@ -18,6 +18,9 @@ import { SectionComponent } from './_generic/section/section.component';
 import { SmallCapsLabelComponent } from './_generic/small-caps-label/small-caps-label.component';
 import { TabComponent } from './_generic/tabset/tab/tab.component';
 import { TabsetComponent } from './_generic/tabset/tabset.component';
+import { TagComponent } from './tags/tag/tag.component';
+import { TagDefDirective } from './tags/tags-list/tag-def.directive';
+import { TagsListComponent } from './tags/tags-list/tags-list.component';
 
 @NgModule({
   imports: [CommonModule, FormsModule, FontAwesomeModule],
@@ -37,6 +40,9 @@ import { TabsetComponent } from './_generic/tabset/tabset.component';
     SmallCapsLabelComponent,
     TabsetComponent,
     TabComponent,
+    TagComponent,
+    TagDefDirective,
+    TagsListComponent,
   ],
   exports: [
     AlertComponent,
@@ -54,6 +60,9 @@ import { TabsetComponent } from './_generic/tabset/tabset.component';
     SmallCapsLabelComponent,
     TabsetComponent,
     TabComponent,
+    TagComponent,
+    TagDefDirective,
+    TagsListComponent,
   ],
 })
 export class MenuMatriarchUiModule {}

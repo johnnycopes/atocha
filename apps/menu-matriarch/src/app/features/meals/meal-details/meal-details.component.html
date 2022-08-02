@@ -23,15 +23,15 @@
       >
         {{ meal.description }}
       </p>
-      <app-tags-list
+      <ui-tags-list
         *ngIf="meal.tags.length"
         [tags]="meal.tags"
       >
-        <app-tag *appTagDef="let tag"
+        <ui-tag *uiTagDef="let tag"
           [id]="tag.id"
           [name]="tag.name"
-        ></app-tag>
-      </app-tags-list>
+        ></ui-tag>
+      </ui-tags-list>
       <div class="details">
         <app-meal-summary
           [dishes]="meal.dishes"

@@ -19,9 +19,6 @@ import { InlineNameEditComponent } from './inline-name-edit/inline-name-edit.com
 import { MealDefDirective } from './meals-list/meal-def.directive';
 import { MealsListComponent } from './meals-list/meals-list.component';
 import { MealSummaryComponent } from './meal-summary/meal-summary.component';
-import { TagComponent } from './tag/tag.component';
-import { TagDefDirective } from './tags-list/tag-def.directive';
-import { TagsListComponent } from './tags-list/tags-list.component';
 
 @NgModule({
   declarations: [
@@ -37,9 +34,6 @@ import { TagsListComponent } from './tags-list/tags-list.component';
     MealDefDirective,
     MealsListComponent,
     MealSummaryComponent,
-    TagComponent,
-    TagDefDirective,
-    TagsListComponent,
   ],
   exports: [
     DishDefDirective,
@@ -54,9 +48,6 @@ import { TagsListComponent } from './tags-list/tags-list.component';
     MealDefDirective,
     MealsListComponent,
     MealSummaryComponent,
-    TagComponent,
-    TagDefDirective,
-    TagsListComponent,
   ],
   imports: [
     CommonModule,

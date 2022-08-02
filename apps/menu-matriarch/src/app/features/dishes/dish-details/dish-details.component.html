@@ -38,15 +38,15 @@
       </p>
     </div>
     <div class="details">
-      <app-tags-list
+      <ui-tags-list
         *ngIf="dish.tags.length"
         [tags]="dish.tags"
       >
-        <app-tag *appTagDef="let tag"
+        <ui-tag *uiTagDef="let tag"
           [id]="tag.id"
           [name]="tag.name"
-        ></app-tag>
-      </app-tags-list>
+        ></ui-tag>
+      </ui-tags-list>
     </div>
     <div *ngIf="dish?.notes"
       class="details notes"

@@ -1,20 +1,20 @@
 <ui-card>
-  <app-tags-list
+  <ui-tags-list
     *ngIf="tags.length; else noTagsTemplate"
     class="tags"
     [tags]="tags"
     [interactive]="true"
   >
-    <ng-container *appTagDef="let tag">
+    <ng-container *uiTagDef="let tag">
       <ui-checkbox
         [name]="tag.id"
         [ngModel]="selected.includes(tag.id)"
         (ngModelChange)="onTagChange(tag.id, $event)"
       >
-        <app-tag
+        <ui-tag
           [id]="tag.id"
           [name]="tag.name"
-        ></app-tag>
+        ></ui-tag>
       </ui-checkbox>
     </ng-container>
     <li>
@@ -26,7 +26,7 @@
         Clear All
       </button>
     </li>
-  </app-tags-list>
+  </ui-tags-list>
   <ng-template #noTagsTemplate>
     <p>No filters to display</p>
   </ng-template>
