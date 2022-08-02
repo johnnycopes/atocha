@@ -8,10 +8,10 @@
       >
         {{ 0 | corePlural : entity : pluralEntity }} ({{ total }})
       </h2>
-      <app-search-input
+      <ui-search-input
         [text]="vm.searchText"
         (textChange)="onSearchTextChange($event)"
-      ></app-search-input>
+      ></ui-search-input>
       <app-filters-button class="button"
         [count]="vm.filters.length"
         [open]="vm.filterPanel"

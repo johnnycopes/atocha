@@ -13,7 +13,6 @@ import { KanbanBoardFormComponent } from './kanban-board/kanban-board-form/kanba
 import { OptionsMenuComponent } from './options-menu/options-menu.component';
 import { OptionsMenuItemComponent } from './options-menu/options-menu-item/options-menu-item.component';
 import { OptionsMenuTriggerDirective } from './options-menu/options-menu-trigger.directive';
-import { SearchInputComponent } from './search-input/search-input.component';
 
 @NgModule({
   imports: [CommonModule, DragDropModule, FontAwesomeModule, FormsModule, CoreUiModule, MenuMatriarchUiModule],
@@ -24,7 +23,6 @@ import { SearchInputComponent } from './search-input/search-input.component';
     OptionsMenuComponent,
     OptionsMenuItemComponent,
     OptionsMenuTriggerDirective,
-    SearchInputComponent,
   ],
   exports: [
     KanbanBoardColumnComponent,
@@ -33,7 +31,6 @@ import { SearchInputComponent } from './search-input/search-input.component';
     OptionsMenuComponent,
     OptionsMenuItemComponent,
     OptionsMenuTriggerDirective,
-    SearchInputComponent,
   ],
 })
 export class GenericModule {}
