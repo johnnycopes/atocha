@@ -7,7 +7,7 @@ import {
   Output,
 } from '@angular/core';
 
-import { fadeInAnimation } from '../../animations';
+import { fadeInAnimation } from '../../../animations';
 
 @Component({
   selector: 'ui-tab',

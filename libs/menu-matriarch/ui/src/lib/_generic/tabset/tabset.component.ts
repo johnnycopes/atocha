@@ -16,7 +16,7 @@ import { takeUntil, tap } from 'rxjs/operators';
 
 import { trackByFactory } from '@atocha/core/ui';
 import { AnimatedComponent } from '@atocha/core/ui';
-import { fadeInAnimation, visibilityAnimation } from '../animations';
+import { fadeInAnimation, visibilityAnimation } from '../../animations';
 import { TabComponent } from './tab/tab.component';
 
 export type TabsetContentVisibility = 'visible' | 'invisible';
