@@ -1,12 +1,12 @@
-<app-section *ngIf="vm$ | async as vm">
-  <div class="app-section__toolbar">
-    <a app-button
+<ui-section *ngIf="vm$ | async as vm">
+  <div class="ui-section__toolbar">
+    <a ui-button
       buttonStyle="secondary"
       routerLink=".."
     >
       Cancel
     </a>
-    <button app-button
+    <button ui-button
       buttonStyle="primary"
       type="submit"
       form="ngForm"
@@ -15,13 +15,13 @@
       Save
     </button>
   </div>
-  <form class="app-section__content"
+  <form class="ui-section__content"
     id="ngForm"
     #form="ngForm"
     (keydown.enter)="$event.preventDefault()"
     (ngSubmit)="onSave(form)"
   >
-    <app-input
+    <ui-input
       label="name"
     >
       <input
@@ -31,10 +31,10 @@
         required
         [ngModel]="vm.name"
         #name="ngModel"
-        appAutofocus
+        coreAutofocus
       />
-    </app-input>
-    <app-input
+    </ui-input>
+    <ui-input
       label="description"
     >
       <input
@@ -44,8 +44,8 @@
         [ngModel]="vm.description"
         #description="ngModel"
       />
-    </app-input>
-    <app-input
+    </ui-input>
+    <ui-input
       label="link"
     >
       <input
@@ -55,8 +55,8 @@
         [ngModel]="vm.link"
         #link="ngModel"
       />
-    </app-input>
-    <app-input
+    </ui-input>
+    <ui-input
       label="dish type"
     >
       <div class="radio-container">
@@ -72,41 +72,41 @@
           {{ dishType | titlecase }}
         </label>
       </div>
-    </app-input>
-    <app-input
+    </ui-input>
+    <ui-input
       label="tags"
     >
-      <app-tags-list
+      <ui-tags-list
         *ngIf="vm.tags.length; else noTagsPlaceholder"
         class="tags"
         ngModelGroup="tags"
         [tags]="vm.tags"
         [interactive]="true"
       >
-        <ng-container *appTagDef="let tag">
-          <app-checkbox
+        <ng-container *uiTagDef="let tag">
+          <ui-checkbox
             [name]="tag.id"
             [ngModel]="tag.checked"
           >
-            <app-tag
+            <ui-tag
               [id]="tag.id"
               [name]="tag.name"
-            ></app-tag>
-          </app-checkbox>
+            ></ui-tag>
+          </ui-checkbox>
         </ng-container>
-      </app-tags-list>
+      </ui-tags-list>
       <ng-template #noTagsPlaceholder>
         <div class="placeholder">
           <p>No tags to display</p>
-          <a app-button
+          <a ui-button
             routerLink="/tags"
           >
             New Tag
           </a>
         </div>
       </ng-template>
-    </app-input>
-    <app-input
+    </ui-input>
+    <ui-input
       label="notes"
     >
       <editor
@@ -115,6 +115,6 @@
         [init]="tinyMceConfig"
         [ngModel]="vm.notes"
       ></editor>
-    </app-input>
+    </ui-input>
   </form>
-</app-section>
+</ui-section>

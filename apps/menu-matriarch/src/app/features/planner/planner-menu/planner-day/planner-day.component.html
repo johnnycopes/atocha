@@ -1,4 +1,4 @@
-<app-small-caps-label class="day">
+<ui-small-caps-label class="day">
   <h3>
     {{ day }}
   </h3>
@@ -15,10 +15,10 @@
       (click)="clear.emit()"
     ></fa-icon>
   </div>
-</app-small-caps-label>
+</ui-small-caps-label>
 
-<app-meal-summary class="meal"
+<ui-meal-summary class="meal"
   [dishes]="dishes"
   [fallbackText]="fallbackText"
   [orientation]="orientation"
-></app-meal-summary>
+></ui-meal-summary>

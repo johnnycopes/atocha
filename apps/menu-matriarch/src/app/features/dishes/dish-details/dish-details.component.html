@@ -1,19 +1,19 @@
-<app-section *ngIf="dish$ | async as dish">
-  <div class="app-section__toolbar">
-    <button app-button
+<ui-section *ngIf="dish$ | async as dish">
+  <div class="ui-section__toolbar">
+    <button ui-button
       buttonStyle="danger"
       (click)="onDelete()"
     >
       Delete
     </button>
-    <a app-button
+    <a ui-button
       buttonStyle="secondary"
       routerLink="edit"
     >
       Edit
     </a>
   </div>
-  <div class="app-section__content">
+  <div class="ui-section__content">
     <h2 class="name">
       {{ dish.name }}
     </h2>
@@ -32,26 +32,26 @@
     <div class="details">
       <p>{{ dish.type | uppercase }}</p>
       <p>
-        Included {{ dish.usages }} {{ 'time' | appPlural : dish.usages }} in
-        {{ dish.menuIds.length }} different {{ 'menu' | appPlural : dish.menuIds.length }}.
-        Included in {{ dish.mealIds.length }} {{ 'meal' | appPlural : dish.mealIds.length}}.
+        Included {{ dish.usages }} {{ dish.usages | corePlural : 'time' }} in
+        {{ dish.menuIds.length }} different {{  dish.menuIds.length | corePlural : 'menu' }}.
+        Included in {{ dish.mealIds.length }} {{ dish.mealIds.length | corePlural : 'meal' }}.
       </p>
     </div>
     <div class="details">
-      <app-tags-list
+      <ui-tags-list
         *ngIf="dish.tags.length"
         [tags]="dish.tags"
       >
-        <app-tag *appTagDef="let tag"
+        <ui-tag *uiTagDef="let tag"
           [id]="tag.id"
           [name]="tag.name"
-        ></app-tag>
-      </app-tags-list>
+        ></ui-tag>
+      </ui-tags-list>
     </div>
     <div *ngIf="dish?.notes"
       class="details notes"
     >
-      <div [innerHTML]="dish.notes | safe : 'html'"></div>
+      <div [innerHTML]="dish.notes | coreSafe : 'html'"></div>
     </div>
     <ul *ngIf="dish.ingredients.length">
       <li *ngFor="let ingredient of dish.ingredients; trackBy: ingredientTrackByFn">
@@ -59,4 +59,4 @@
       </li>
     </ul>
   </div>
-</app-section>
+</ui-section>

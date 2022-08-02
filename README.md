@@ -18,7 +18,7 @@ This is a monorepo containing several of my applications and libraries. Technolo
 - Live site: https://globetrotter.rocks
 - [Original repo](https://github.com/johnnycopes/globetrotter)
 
-A geography app containing a country explorer and a configurable quiz. Test yourself on national flags, capitals, or country names from any part(s) of the world you like and receive a score based on your performance.
+A geography app featuring a country explorer and a configurable quiz. Test yourself on national flags, capitals, or country names from any part(s) of the world you like and receive a score based on your performance.
 
 Globetrotter has no back-end (at least for now), but uses both the [REST Countries API](https://restcountries.com/) for country data and the [MediaWiki API](https://www.mediawiki.org/wiki/API:Main_page) for country summary data.
 
@@ -35,5 +35,5 @@ _Migration from original repo to Atocha is underway._
 
 Generic, well-tested collections of code. Minimally opinionated for maximum reusability.
 
-1. **core/utility**: collection of framework-agnostic TypeScript functions/classes.
 2. **core/ui**: collection of customizable Angular components.
+1. **core/util**: collection of framework-agnostic TypeScript functions/classes.

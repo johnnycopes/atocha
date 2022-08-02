@@ -13,12 +13,11 @@ import { PortalModule } from '@angular/cdk/portal';
 import { environment } from '@env/environment';
 
 import { AppRoutingModule } from './app-routing.module';
-import { DomainModule } from '@shared/domain/domain.module';
-import { GenericModule } from '@shared/generic/generic.module';
+import { CoreUiModule } from '@atocha/core/ui';
+import { MenuMatriarchUiModule } from '@atocha/menu-matriarch/ui';
+import { SharedModule } from '@shared/shared.module';
 
 import { AppComponent } from './app.component';
-import { DemoComponent } from './features/demo/demo.component';
-import { DemoComponentComponent } from './features/demo/demo-component/demo-component.component';
 import { DishCardComponent } from './features/dishes/dish-card/dish-card.component';
 import { DishDetailsComponent } from './features/dishes/dish-details/dish-details.component';
 import { DishEditComponent } from './features/dishes/dish-edit/dish-edit.component';
@@ -50,8 +49,6 @@ import { WelcomeComponent } from './features/welcome/welcome.component';
 @NgModule({
   declarations: [
     AppComponent,
-    DemoComponent,
-    DemoComponentComponent,
     DishCardComponent,
     DishDetailsComponent,
     DishEditComponent,
@@ -92,8 +89,9 @@ import { WelcomeComponent } from './features/welcome/welcome.component';
     OverlayModule,
     PortalModule,
     AppRoutingModule,
-    DomainModule,
-    GenericModule,
+    CoreUiModule,
+    MenuMatriarchUiModule,
+    SharedModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

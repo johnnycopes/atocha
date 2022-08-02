@@ -1,0 +1,20 @@
+<form ui-inline-form
+  #form="ngForm"
+  (cancel)="cancel.emit()"
+  (save)="save.emit(form.value.startDay)"
+>
+  <ui-input>
+    <select
+      name="startDay"
+      [ngModel]="startDay"
+      (keydown.enter)="save.emit(form.value.startDay)"
+      (keydown.escape)="cancel.emit()"
+    >
+      <option *ngFor="let day of days; trackBy: dayTrackByFn"
+        [ngValue]="day"
+      >
+        {{ day }}
+      </option>
+    </select>
+  </ui-input>
+</form>

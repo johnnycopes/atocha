@@ -1,0 +1,11 @@
+<ui-input>
+  <input type="text"
+    #input
+    [ngModel]="text"
+    (ngModelChange)="textChange.emit($event)"
+  />
+  <fa-icon *ngIf="text"
+    [icon]="faTimes"
+    (click)="onClear()"
+  ></fa-icon>
+</ui-input>

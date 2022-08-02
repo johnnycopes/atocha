@@ -1,0 +1,48 @@
+<div class="container">
+  <a class="dish-link"
+    routerLink="/dishes/{{ id }}"
+  >
+    <h3 class="name">
+      {{ name }}
+    </h3>
+  </a>
+  <div class="details">
+    <a *ngIf="link"
+      class="external-link"
+      [href]="link"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <fa-icon [icon]="faLink">
+      </fa-icon>
+    </a>
+    <ui-count
+      type="days"
+      [count]="usages"
+    ></ui-count>
+    <ui-count
+      type="menus"
+      [count]="menuIds.length"
+    ></ui-count>
+    <ui-count
+      type="meals"
+      [count]="mealIds.length"
+    ></ui-count>
+  </div>
+</div>
+
+<p *ngIf="description"
+  class="description"
+>
+  {{ description }}
+</p>
+
+<ui-tags-list *ngIf="tags.length"
+  class="tags"
+  [tags]="tags"
+>
+  <ui-tag *uiTagDef="let tag"
+    [id]="tag.id"
+    [name]="tag.name"
+  ></ui-tag>
+</ui-tags-list>

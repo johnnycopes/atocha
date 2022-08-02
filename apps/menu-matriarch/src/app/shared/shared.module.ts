@@ -1,0 +1,37 @@
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+
+import { CoreUiModule } from '@atocha/core/ui';
+import { MenuMatriarchUiModule } from '@atocha/menu-matriarch/ui';
+
+import { DishDefDirective } from './dishes-list/dish-def.directive';
+import { DishesListComponent } from './dishes-list/dishes-list.component';
+import { MealDefDirective } from './meals-list/meal-def.directive';
+import { MealsListComponent } from './meals-list/meals-list.component';
+
+@NgModule({
+  declarations: [
+    DishDefDirective,
+    DishesListComponent,
+    MealDefDirective,
+    MealsListComponent,
+  ],
+  exports: [
+    DishDefDirective,
+    DishesListComponent,
+    MealDefDirective,
+    MealsListComponent,
+  ],
+  imports: [
+    CommonModule,
+    FontAwesomeModule,
+    FormsModule,
+    RouterModule,
+    CoreUiModule,
+    MenuMatriarchUiModule,
+  ],
+})
+export class SharedModule {}

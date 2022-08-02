@@ -1,21 +1,21 @@
-<app-section *ngIf="menu">
-  <div class="app-section__toolbar">
+<ui-section *ngIf="menu">
+  <div class="ui-section__toolbar">
     <h2 class="title">
       {{ menu.name }}
     </h2>
-    <button app-button
+    <button ui-button
       buttonStyle="secondary"
       (click)="onClearAll()"
     >
       Clear All
     </button>
-    <button app-button
+    <button ui-button
       (click)="onPrint()"
     >
       Print
     </button>
   </div>
-  <ul class="app-section__content">
+  <ul class="ui-section__content">
     <li app-planner-day
       *ngFor="let entry of menu.entries; trackBy: trackByFn"
       [day]="entry.day"
@@ -25,4 +25,4 @@
       (clear)="onClearDay(entry)"
     ></li>
   </ul>
-</app-section>
+</ui-section>

@@ -10,7 +10,7 @@ import { mapTo, shareReplay } from 'rxjs/operators';
 
 @Component({
   // eslint-disable-next-line @angular-eslint/component-selector
-  selector: '[app-tag-card]',
+  selector: '[ui-tag-card]',
   templateUrl: './tag-card.component.html',
   styleUrls: ['./tag-card.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

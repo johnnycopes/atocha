@@ -1,4 +1,4 @@
-<app-card>
+<ui-card>
   <div class="top">
     <a routerLink="/meals/{{ id }}">
       <h3 class="name">
@@ -10,25 +10,25 @@
     >
       {{ description }}
     </p>
-    <app-tags-list *ngIf="tags.length"
+    <ui-tags-list *ngIf="tags.length"
       class="tags"
       [tags]="tags"
     >
-      <app-tag *appTagDef="let tag"
+      <ui-tag *uiTagDef="let tag"
         [id]="tag.id"
         [name]="tag.name"
-      ></app-tag>
-    </app-tags-list>
+      ></ui-tag>
+    </ui-tags-list>
   </div>
-  <app-meal-summary
+  <ui-meal-summary
     [dishes]="dishes"
     [fallbackText]="fallbackText"
     [orientation]="orientation"
-  ></app-meal-summary>
+  ></ui-meal-summary>
   <div *ngIf="entryModels.length"
     class="schedule"
   >
-    <app-checkbox *ngFor="let model of entryModels; trackBy: trackByFn"
+    <ui-checkbox *ngFor="let model of entryModels; trackBy: trackByFn"
       [indeterminate]="model.indeterminate"
       [ngModel]="model.checked"
       (ngModelChange)="dayChange.emit({
@@ -38,6 +38,6 @@
       })"
     >
       {{ model.day | slice : 0 : 3 }}
-    </app-checkbox>
+    </ui-checkbox>
   </div>
-</app-card>
+</ui-card>

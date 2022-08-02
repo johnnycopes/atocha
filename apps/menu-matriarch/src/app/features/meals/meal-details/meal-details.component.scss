@@ -1,9 +1,9 @@
 @import 'main';
 
-.app-section__toolbar {
+.ui-section__toolbar {
   justify-content: flex-end;
 
-  [app-button] {
+  [ui-button] {
     margin-left: spacing(8);
   }
 }
@@ -27,7 +27,7 @@
   }
 }
 
-app-small-caps-label {
+ui-small-caps-label {
   display: flex;
   justify-content: space-between;
   margin-bottom: spacing(8);

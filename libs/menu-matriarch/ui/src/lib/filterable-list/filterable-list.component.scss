@@ -1,0 +1,35 @@
+@import 'main';
+
+.ui-section__toolbar {
+  flex-direction: column;
+
+  .controls {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    .title {
+      margin-right: auto;
+      font-weight: font-weight(bold);
+      color: color($neutral, 4);
+      user-select: none;
+    }
+
+    ui-search-input {
+      position: relative;
+      top: spacing(2);
+    }
+
+    .button:not(:first-child) {
+      margin-left: spacing(8);
+    }
+  }
+
+  .filters {
+    margin-top: spacing(16);
+  }
+}
+
+.ui-section__content {
+  padding: unset;
+}

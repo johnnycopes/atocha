@@ -15,6 +15,7 @@
     "globetrotter-ui": "libs/globetrotter/ui",
     "menu-matriarch": "apps/menu-matriarch",
     "menu-matriarch-e2e": "apps/menu-matriarch-e2e",
-    "menu-matriarch-types": "libs/menu-matriarch/types"
+    "menu-matriarch-types": "libs/menu-matriarch/types",
+    "menu-matriarch-ui": "libs/menu-matriarch/ui"
   }
 }

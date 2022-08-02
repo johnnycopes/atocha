@@ -1,0 +1,14 @@
+<ng-content></ng-content>
+<button ui-button
+  class="ui-inline-form__button"
+  buttonStyle="secondary"
+  [icon]="cancelIcon"
+  (click)="cancel.emit()"
+></button>
+<button ui-button
+  class="ui-inline-form__button"
+  buttonStyle="primary"
+  [disabled]="disabled"
+  [icon]="saveIcon"
+  (click)="save.emit()"
+></button>

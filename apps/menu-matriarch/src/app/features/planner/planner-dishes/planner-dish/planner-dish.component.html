@@ -1,5 +1,5 @@
-<app-card>
-  <app-dish-summary
+<ui-card>
+  <ui-dish-summary
     [id]="id"
     [name]="name"
     [description]="description"
@@ -8,15 +8,15 @@
     [menuIds]="menuIds"
     [mealIds]="mealIds"
     [usages]="usages"
-  ></app-dish-summary>
+  ></ui-dish-summary>
   <div *ngIf="entryModels.length"
     class="schedule"
   >
-    <app-checkbox *ngFor="let model of entryModels; trackBy: trackByFn"
+    <ui-checkbox *ngFor="let model of entryModels; trackBy: trackByFn"
       [ngModel]="model.checked"
       (ngModelChange)="dayChange.emit({ id, day: model.day, selected: $event })"
     >
       {{ model.day | slice : 0 : 3 }}
-    </app-checkbox>
+    </ui-checkbox>
   </div>
-</app-card>
+</ui-card>

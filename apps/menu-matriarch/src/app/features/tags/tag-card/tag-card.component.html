@@ -1,34 +1,34 @@
-<app-card>
-  <app-inline-name-edit *ngIf="editing$ | async; else detailsTemplate"
+<ui-card>
+  <ui-inline-name-edit *ngIf="editing$ | async; else detailsTemplate"
     class="form"
     [name]="name"
     (cancel)="finishEdit$.next()"
     (save)="onSave($event)"
-  ></app-inline-name-edit>
-</app-card>
+  ></ui-inline-name-edit>
+</ui-card>
 
 <ng-template #detailsTemplate>
-  <app-tag
+  <ui-tag
     [id]="id"
     [name]="name"
-  ></app-tag>
+  ></ui-tag>
   <div class="container">
-    <app-count
+    <ui-count
       type="meals"
       [count]="meals.length"
-    ></app-count>
-    <app-count
+    ></ui-count>
+    <ui-count
       type="dishes"
       [count]="dishes.length"
-    ></app-count>
-    <button app-button
+    ></ui-count>
+    <button ui-button
       class="edit"
       buttonStyle="danger"
       (click)="delete.emit()"
     >
       Delete
     </button>
-    <button app-button
+    <button ui-button
       class="edit"
       buttonStyle="secondary"
       (click)="startEdit$.next()"

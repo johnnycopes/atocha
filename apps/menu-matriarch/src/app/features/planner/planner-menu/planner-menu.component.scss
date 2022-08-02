@@ -1,6 +1,6 @@
 @import 'main';
 
-.app-section__toolbar {
+.ui-section__toolbar {
   align-items: center;
   justify-content: flex-end;
 
@@ -10,12 +10,12 @@
     color: color($neutral, 4);
   }
 
-  [app-button]:not(:first-child) {
+  [ui-button]:not(:first-child) {
     margin-left: spacing(8);
   }
 }
 
-.app-section__content {
+.ui-section__content {
   display: flex;
   flex-direction: column;
 

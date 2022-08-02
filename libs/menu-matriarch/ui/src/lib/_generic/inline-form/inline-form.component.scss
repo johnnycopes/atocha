@@ -1,0 +1,15 @@
+@import 'main';
+
+.ui-inline-form {
+  display: flex;
+  align-items: center;
+
+  &__button {
+    margin-left: spacing(8);
+    width: 42px; // TODO: create dedicated icon-button component where this style would live
+  }
+
+  ui-input {
+    width: 100%;
+  }
+}

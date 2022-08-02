@@ -1,74 +1,74 @@
-<app-card *ngIf="state$ | async as state">
+<ui-card *ngIf="state$ | async as state">
   <div class="top">
-    <app-inline-name-edit
+    <ui-inline-name-edit
       *ngIf="state === 'renaming'; else toolbarTemplate"
       [name]="name"
       (cancel)="onCancel()"
       (save)="onRenameSave($event)"
-    ></app-inline-name-edit>
+    ></ui-inline-name-edit>
     <ng-template #toolbarTemplate>
       <a routerLink="/planner/{{ id }}">
         <h3 class="name">
           {{ name }}
         </h3>
       </a>
-      <button app-button
+      <button ui-button
         buttonStyle="ternary"
         [icon]="menuToggleIcon"
         [disabled]="state !== 'default'"
-        [appOptionsMenuTrigger]="optionsMenu"
+        [uiOptionsMenuTrigger]="optionsMenu"
       ></button>
-      <app-options-menu #optionsMenu>
-        <li app-options-menu-item
+      <ui-options-menu #optionsMenu>
+        <li ui-options-menu-item
           (click)="onPrint()"
         >
           Print
         </li>
-        <li app-options-menu-item
+        <li ui-options-menu-item
           (click)="onRename()"
         >
           Rename
         </li>
-        <li app-options-menu-item
+        <li ui-options-menu-item
           (click)="onChangeStartDay()"
         >
           Change Start Day
         </li>
-        <a app-options-menu-item
+        <a ui-options-menu-item
           routerLink="/planner/{{ id }}"
         >
           Plan Meals
         </a>
-        <li app-options-menu-item
+        <li ui-options-menu-item
           *ngIf="canDelete"
           (click)="onDelete()"
         >
           Delete
         </li>
-      </app-options-menu>
+      </ui-options-menu>
     </ng-template>
   </div>
-  <app-inline-day-select class="start-day-form"
+  <ui-inline-day-select class="start-day-form"
     *ngIf="state === 'changingStartDay'"
     [startDay]="startDay"
     (cancel)="onCancel()"
     (save)="onChangeStartDaySave($event)"
-  ></app-inline-day-select>
+  ></ui-inline-day-select>
   <ul>
     <li class="entry"
       *ngFor="let entry of entries; trackBy: trackByFn"
     >
-      <app-small-caps-label class="day">
+      <ui-small-caps-label class="day">
         <h4>
           {{ entry.day | slice : 0 : 3 }}
         </h4>
-      </app-small-caps-label>
+      </ui-small-caps-label>
 
-      <app-meal-summary class="meal"
+      <ui-meal-summary class="meal"
         [dishes]="entry.dishes"
         [fallbackText]="fallbackText"
         [orientation]="orientation"
-      ></app-meal-summary>
+      ></ui-meal-summary>
     </li>
   </ul>
-</app-card>
+</ui-card>

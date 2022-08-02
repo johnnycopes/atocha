@@ -1,14 +1,14 @@
 @import 'main';
 
-.app-section__toolbar {
+.ui-section__toolbar {
   justify-content: flex-end;
 
-  [app-button] {
+  [ui-button] {
     margin-left: spacing(8);
   }
 }
 
-app-input {
+ui-input {
   margin-bottom: spacing(32);
 }
 

@@ -1,0 +1,36 @@
+<ui-section class="dishes">
+  <div class="ui-section__toolbar">
+    <div class="controls">
+      <h2 class="title"
+        (dblclick)="nameDblClick.emit()"
+      >
+        {{ 0 | corePlural : entity : pluralEntity }} ({{ total }})
+      </h2>
+      <ui-search-input
+        [text]="searchText"
+        (textChange)="searchTextChange.emit($event)"
+      ></ui-search-input>
+      <ui-filters-button class="button"
+        [count]="filters.length"
+        [open]="isPanelOpen"
+        (clicked)="filtersButtonClick.emit()"
+      ></ui-filters-button>
+      <a ui-button
+        class="button"
+        [routerLink]="newRoute"
+      >
+        New {{ entity }}
+      </a>
+    </div>
+    <ui-filters *ngIf="isPanelOpen"
+      class="filters"
+      [tags]="tags"
+      [selected]="filters"
+      (selectedChange)="filtersChange.emit($event)"
+      (selectedClear)="filtersChange.emit([])"
+    ></ui-filters>
+  </div>
+  <div class="ui-section__content">
+    <ng-content></ng-content>
+  </div>
+</ui-section>

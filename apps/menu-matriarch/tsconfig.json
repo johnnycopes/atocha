@@ -18,6 +18,9 @@
     "paths": {
       "@atocha/core/ui": ["../../libs/core/ui/src/index.ts"],
       "@atocha/core/util": ["../../libs/core/util/src/index.ts"],
+      "@atocha/menu-matriarch/ui": [
+        "../../libs/menu-matriarch/ui/src/index.ts"
+      ],
       "@atocha/menu-matriarch/types": [
         "../../libs/menu-matriarch/types/src/index.ts"
       ],

@@ -5,7 +5,6 @@ import { Route } from '@atocha/menu-matriarch/types';
 import { AuthGuard } from './core/guards/auth.guard';
 import { LoggedInAuthGuard } from './core/guards/logged-in-auth.guard';
 import { PlannerGuard } from './core/guards/planner.guard';
-import { DemoComponent } from './features/demo/demo.component';
 import { DishDetailsComponent } from './features/dishes/dish-details/dish-details.component';
 import { DishEditComponent } from './features/dishes/dish-edit/dish-edit.component';
 import { DishesComponent } from './features/dishes/dishes.component';
@@ -34,7 +33,6 @@ const routes: Routes = [
     component: ShellComponent,
     canActivate: [AuthGuard],
     children: [
-      { path: 'demo', component: DemoComponent, data: { state: Route.demo } },
       {
         path: 'planner/:menuId',
         component: PlannerComponent,

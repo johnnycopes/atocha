@@ -1,31 +1,31 @@
-<app-section *ngIf="user$ | async as user">
-  <div class="app-section__content">
+<ui-section *ngIf="user$ | async as user">
+  <div class="ui-section__content">
     <div class="account">
       <h2 class="title">
         Account
       </h2>
-      <app-card>
+      <ui-card>
         <h4 class="name">
           {{ user.name }}
         </h4>
         <p class="email">
           {{ user.email }}
         </p>
-        <button app-button
+        <button ui-button
           (click)="signOut()"
         >
           Sign Out
         </button>
-      </app-card>
+      </ui-card>
     </div>
 
     <div class="settings">
       <h2 class="title">
         Settings
       </h2>
-      <app-card>
+      <ui-card>
         <form #form="ngForm">
-          <app-input label="Default Menu Start Day">
+          <ui-input label="Default Menu Start Day">
             <select id="Default Menu Start Day"
               name="menuStartDay"
               [ngModel]="user.preferences?.defaultMenuStartDay"
@@ -37,8 +37,8 @@
                 {{ day }}
               </option>
             </select>
-          </app-input>
-          <app-input
+          </ui-input>
+          <ui-input
             label="Empty Meal Text"
           >
             <input
@@ -47,10 +47,10 @@
               name="emptyMealText"
               [ngModel]="user?.preferences?.emptyMealText"
               (ngModelChange)="updateAction$.next({ emptyMealText: $event })"
-              appAutofocus
+              coreAutofocus
             />
-          </app-input>
-          <app-input
+          </ui-input>
+          <ui-input
             label="Meal Orientation"
           >
             <div class="radio-container">
@@ -75,9 +75,9 @@
                 Vertical
               </label>
             </div>
-          </app-input>
+          </ui-input>
         </form>
-      </app-card>
+      </ui-card>
     </div>
   </div>
-</app-section>
+</ui-section>

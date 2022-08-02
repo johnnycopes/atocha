@@ -1,0 +1,35 @@
+@import 'main';
+
+.container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.dish-link {
+  width: 100%;
+}
+
+.external-link {
+  margin-right: spacing(4);
+  font-size: font-size(14);
+  @include hover;
+}
+
+.details {
+  display: flex;
+  align-items: center;
+
+  ui-count {
+    margin-left: spacing(12);
+  }
+}
+
+.description {
+  font-size: 14px;
+  color: color($neutral, 6);
+  margin-top: spacing(8);
+}
+
+.tags {
+  margin-top: spacing(8);
+}

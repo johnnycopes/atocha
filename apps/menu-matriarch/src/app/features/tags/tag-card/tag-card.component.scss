@@ -1,6 +1,6 @@
 @import 'main';
 
-app-card {
+ui-card {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -11,7 +11,7 @@ app-card {
   align-items: center;
 }
 
-app-count {
+ui-count {
   margin-left: spacing(12);
 }
 

@@ -1,4 +1,4 @@
-<app-card [active]="active">
+<ui-card [active]="active">
   <div class="top">
     <a routerLink="/meals/{{ id }}">
       <h3 class="name">
@@ -10,19 +10,19 @@
     >
       {{ description }}
     </p>
-    <app-tags-list *ngIf="tags.length"
+    <ui-tags-list *ngIf="tags.length"
       class="tags"
       [tags]="tags"
     >
-      <app-tag *appTagDef="let tag"
+      <ui-tag *uiTagDef="let tag"
         [id]="tag.id"
         [name]="tag.name"
-      ></app-tag>
-    </app-tags-list>
+      ></ui-tag>
+    </ui-tags-list>
   </div>
-  <app-meal-summary
+  <ui-meal-summary
     [dishes]="dishes"
     [fallbackText]="fallbackText"
     [orientation]="orientation"
-  ></app-meal-summary>
-</app-card>
+  ></ui-meal-summary>
+</ui-card>
