@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { faAppleAlt, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 
-import { IKitchenLocation, KanbanBoardConfig } from './kitchen-location';
-import { KanbanBoard } from '@shared/generic/kanban-board/kanban-board.component';
+// import { IKitchenLocation, KanbanBoardConfig } from './kitchen-location';
+// import { KanbanBoard } from '@shared/generic/kanban-board/kanban-board.component';
 
 @Component({
   selector: 'app-demo',
@@ -46,31 +46,31 @@ export class DemoComponent {
   public inputModel = '';
 
   // KanbanBoardComponent
-  public kitchenLocations: IKitchenLocation[] = [
-    {
-      id: '01',
-      name: 'Refrigerator',
-      items: ['Salmon', 'Cheese', 'Oat milk', 'Mustard'],
-    },
-    {
-      id: '02',
-      name: 'Freezer',
-      items: ['Chicken', 'Mixed veggies'],
-    },
-    {
-      id: '03',
-      name: 'Pantry',
-      items: [
-        'Avocados',
-        'Tomatoes',
-        'Bell peppers',
-        'Red onions',
-        'Sweet pototoes',
-      ],
-    },
-  ];
-  public kanbanBoardConfig: KanbanBoard<IKitchenLocation, string> =
-    new KanbanBoardConfig();
+  // public kitchenLocations: IKitchenLocation[] = [
+  //   {
+  //     id: '01',
+  //     name: 'Refrigerator',
+  //     items: ['Salmon', 'Cheese', 'Oat milk', 'Mustard'],
+  //   },
+  //   {
+  //     id: '02',
+  //     name: 'Freezer',
+  //     items: ['Chicken', 'Mixed veggies'],
+  //   },
+  //   {
+  //     id: '03',
+  //     name: 'Pantry',
+  //     items: [
+  //       'Avocados',
+  //       'Tomatoes',
+  //       'Bell peppers',
+  //       'Red onions',
+  //       'Sweet pototoes',
+  //     ],
+  //   },
+  // ];
+  // public kanbanBoardConfig: KanbanBoard<IKitchenLocation, string> =
+  //   new KanbanBoardConfig();
 
   // OptionsMenuComponent
   public isOptionsMenuOpen = false;

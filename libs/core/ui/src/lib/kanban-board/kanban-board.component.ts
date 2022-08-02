@@ -29,7 +29,7 @@ export interface KanbanColumnMove {
 }
 
 @Component({
-  selector: 'app-kanban-board',
+  selector: 'core-kanban-board',
   templateUrl: './kanban-board.component.html',
   styleUrls: ['./kanban-board.scss', './kanban-board.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

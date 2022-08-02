@@ -36,7 +36,7 @@ export interface IKanbanBoardItemMove {
 }
 
 @Component({
-  selector: 'app-kanban-board-column',
+  selector: 'core-kanban-board-column',
   templateUrl: './kanban-board-column.component.html',
   styleUrls: ['../kanban-board.scss', './kanban-board-column.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

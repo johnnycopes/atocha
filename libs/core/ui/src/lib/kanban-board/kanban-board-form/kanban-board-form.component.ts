@@ -9,7 +9,7 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { NgForm } from '@angular/forms';
 
 @Component({
-  selector: 'app-kanban-board-form',
+  selector: 'core-kanban-board-form',
   templateUrl: './kanban-board-form.component.html',
   styleUrls: ['./kanban-board-form.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
