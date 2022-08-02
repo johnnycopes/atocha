@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { AlertComponent } from './_generic/alert/alert.component';
@@ -8,6 +9,7 @@ import { ButtonComponent } from './_generic/button/button.component';
 import { CardComponent } from './_generic/card/card.component';
 import { CheckboxComponent } from './_generic/checkbox/checkbox.component';
 import { CountComponent } from './count/count.component';
+import { DishSummaryComponent } from './dish-summary/dish-summary.component';
 import { EmptyViewPlaceholderComponent } from './empty-view-placeholder/empty-view-placeholder.component';
 import { FiltersButtonComponent } from './filters-button/filters-button.component';
 import { FiltersComponent } from './filters/filters.component';
@@ -28,13 +30,14 @@ import { TagDefDirective } from './tags/tags-list/tag-def.directive';
 import { TagsListComponent } from './tags/tags-list/tags-list.component';
 
 @NgModule({
-  imports: [CommonModule, FormsModule, FontAwesomeModule],
+  imports: [CommonModule, FormsModule, RouterModule, FontAwesomeModule],
   declarations: [
     AlertComponent,
     ButtonComponent,
     CardComponent,
     CheckboxComponent,
     CountComponent,
+    DishSummaryComponent,
     EmptyViewPlaceholderComponent,
     FiltersButtonComponent,
     FiltersComponent,
@@ -60,6 +63,7 @@ import { TagsListComponent } from './tags/tags-list/tags-list.component';
     CardComponent,
     CheckboxComponent,
     CountComponent,
+    DishSummaryComponent,
     EmptyViewPlaceholderComponent,
     FiltersButtonComponent,
     FiltersComponent,

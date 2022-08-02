@@ -7,7 +7,7 @@
       ngModelGroup="dishes"
     >
       <ui-card *appDishDef="let dish">
-        <app-dish-summary
+        <ui-dish-summary
           [id]="dish.id"
           [name]="dish.name"
           [description]="dish.description"
@@ -16,7 +16,7 @@
           [menuIds]="dish.menuIds"
           [mealIds]="dish.mealIds"
           [usages]="dish.usages"
-        ></app-dish-summary>
+        ></ui-dish-summary>
         <ui-checkbox class="included"
           [name]="dish.id"
           [ngModel]="vm.dishesModel.includes(dish.id)"

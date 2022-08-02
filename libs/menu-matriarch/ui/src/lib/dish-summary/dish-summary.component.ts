@@ -4,7 +4,7 @@ import { faLink } from '@fortawesome/free-solid-svg-icons';
 import { Tag } from '@atocha/menu-matriarch/types';
 
 @Component({
-  selector: 'app-dish-summary',
+  selector: 'ui-dish-summary',
   templateUrl: './dish-summary.component.html',
   styleUrls: ['./dish-summary.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
