@@ -7,7 +7,6 @@ import { RouterModule } from '@angular/router';
 import { CoreUiModule } from '@atocha/core/ui';
 import { MenuMatriarchUiModule } from '@atocha/menu-matriarch/ui';
 
-import { CountComponent } from './count/count.component';
 import { DishDefDirective } from './dishes-list/dish-def.directive';
 import { DishesListComponent } from './dishes-list/dishes-list.component';
 import { DishSummaryComponent } from './dish-summary/dish-summary.component';
@@ -26,7 +25,6 @@ import { TagsListComponent } from './tags-list/tags-list.component';
 
 @NgModule({
   declarations: [
-    CountComponent,
     DishDefDirective,
     DishesListComponent,
     DishSummaryComponent,
@@ -44,7 +42,6 @@ import { TagsListComponent } from './tags-list/tags-list.component';
     TagsListComponent,
   ],
   exports: [
-    CountComponent,
     DishDefDirective,
     DishesListComponent,
     DishSummaryComponent,

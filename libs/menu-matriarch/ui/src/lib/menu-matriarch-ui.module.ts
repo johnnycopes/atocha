@@ -7,6 +7,7 @@ import { AlertComponent } from './alert/alert.component';
 import { ButtonComponent } from './button/button.component';
 import { CardComponent } from './card/card.component';
 import { CheckboxComponent } from './checkbox/checkbox.component';
+import { CountComponent } from './count/count.component';
 import { InlineFormComponent } from './inline-form/inline-form.component';
 import { InputComponent } from './input/input.component';
 import { OptionsMenuComponent } from './options-menu/options-menu.component';
@@ -25,6 +26,7 @@ import { TabsetComponent } from './tabset/tabset.component';
     ButtonComponent,
     CardComponent,
     CheckboxComponent,
+    CountComponent,
     InlineFormComponent,
     InputComponent,
     OptionsMenuComponent,
@@ -41,6 +43,7 @@ import { TabsetComponent } from './tabset/tabset.component';
     ButtonComponent,
     CardComponent,
     CheckboxComponent,
+    CountComponent,
     InlineFormComponent,
     InputComponent,
     OptionsMenuComponent,

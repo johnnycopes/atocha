@@ -10,7 +10,7 @@ import { faMap } from '@fortawesome/free-regular-svg-icons';
 type CountType = 'days' | 'dishes' | 'meals' | 'menus';
 
 @Component({
-  selector: 'app-count',
+  selector: 'ui-count',
   templateUrl: './count.component.html',
   styleUrls: ['./count.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
