@@ -10,7 +10,7 @@ import { trackBySelf } from '@atocha/core/ui';
 import { Day, getDays } from '@atocha/menu-matriarch/types';
 
 @Component({
-  selector: 'app-inline-day-select',
+  selector: 'ui-inline-day-select',
   templateUrl: './inline-day-select.component.html',
   styleUrls: ['./inline-day-select.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

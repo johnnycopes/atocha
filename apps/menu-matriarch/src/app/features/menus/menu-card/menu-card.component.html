@@ -48,12 +48,12 @@
       </ui-options-menu>
     </ng-template>
   </div>
-  <app-inline-day-select class="start-day-form"
+  <ui-inline-day-select class="start-day-form"
     *ngIf="state === 'changingStartDay'"
     [startDay]="startDay"
     (cancel)="onCancel()"
     (save)="onChangeStartDaySave($event)"
-  ></app-inline-day-select>
+  ></ui-inline-day-select>
   <ul>
     <li class="entry"
       *ngFor="let entry of entries; trackBy: trackByFn"
