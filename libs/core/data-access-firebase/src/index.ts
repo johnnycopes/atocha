@@ -1,1 +1,1 @@
-export * from './lib/core-data-access-firebase.module';
+export * from './lib/firestore.service';
