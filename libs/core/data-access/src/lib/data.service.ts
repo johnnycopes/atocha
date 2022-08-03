@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { FirestoreService } from '@atocha/core/data-access';
+import { FirestoreService } from './firestore.service';
 
 @Injectable({
   providedIn: 'root',
