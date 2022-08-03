@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { DataService } from '@atocha/core/data-access-firebase';
+import { DataService } from '@atocha/core/data-access';
 import {
   User,
   UserDto,
@@ -26,10 +26,7 @@ export class UserDataService {
     return this.getUser(uid).pipe(map((user) => user?.preferences));
   }
 
-  updatePreferences(
-    user: User,
-    data: Partial<UserPreferences>
-  ): Promise<void> {
+  updatePreferences(user: User, data: Partial<UserPreferences>): Promise<void> {
     const { uid, preferences } = user;
     return this._dataService.update<UserDto>(this._endpoint, uid, {
       preferences: {

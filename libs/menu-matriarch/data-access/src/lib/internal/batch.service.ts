@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { Batch, BatchUpdate, FirestoreService } from '@atocha/core/data-access-firebase';
+import { Batch, BatchUpdate, FirestoreService } from '@atocha/core/data-access';
 import {
   calculateTallyChange,
   flattenValues,

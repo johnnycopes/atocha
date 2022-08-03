@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { FirestoreService } from '@atocha/core/data-access-firebase';
+import { FirestoreService } from '@atocha/core/data-access';
 
 @Injectable({
   providedIn: 'root',
@@ -21,11 +21,7 @@ export class DataService {
     return this._firestoreService.getMany(endpoint, uid);
   }
 
-  async create<T>(
-    endpoint: string,
-    id: string,
-    details: T
-  ): Promise<void> {
+  async create<T>(endpoint: string, id: string, details: T): Promise<void> {
     return this._firestoreService.create(endpoint, id, details);
   }
 

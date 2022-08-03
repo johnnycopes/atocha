@@ -1,6 +1,6 @@
 /* eslint-disable */
 export default {
-  displayName: 'core-data-access-firebase',
+  displayName: 'core-data-access',
   preset: '../../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
@@ -9,7 +9,7 @@ export default {
       stringifyContentPathRegex: '\\.(html|svg)$',
     },
   },
-  coverageDirectory: '../../../coverage/libs/core/data-access-firebase',
+  coverageDirectory: '../../../coverage/libs/core/data-access',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': 'jest-preset-angular',
   },

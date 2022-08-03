@@ -1,13 +1,14 @@
 {
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
-  "sourceRoot": "libs/core/data-access-firebase/src",
+  "sourceRoot": "libs/core/data-access/src",
   "prefix": "atocha",
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/core/data-access-firebase"],
+      "outputs": ["coverage/libs/core/data-access"],
       "options": {
-        "jestConfig": "libs/core/data-access-firebase/jest.config.ts",
+        "jestConfig": "libs/core/data-access/jest.config.ts",
         "passWithNoTests": true
       }
     },
@@ -15,8 +16,8 @@
       "executor": "@nrwl/linter:eslint",
       "options": {
         "lintFilePatterns": [
-          "libs/core/data-access-firebase/**/*.ts",
-          "libs/core/data-access-firebase/**/*.html"
+          "libs/core/data-access/**/*.ts",
+          "libs/core/data-access/**/*.html"
         ]
       }
     }

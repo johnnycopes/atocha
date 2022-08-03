@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { combineLatest, Observable, of } from 'rxjs';
 import { concatMap, first, map, tap } from 'rxjs/operators';
 
-import { AuthService } from '@atocha/core/data-access-firebase';
+import { AuthService } from '@atocha/core/data-access';
 import { MealDto, Dish, Tag, Meal } from '@atocha/menu-matriarch/types';
 import { DishService } from './dish.service';
 import { MealDataService } from './internal/meal-data.service';
@@ -72,10 +72,7 @@ export class MealService {
     );
   }
 
-  updateMeal(
-    id: string,
-    data: Partial<MealDto>
-  ): Observable<Meal | undefined> {
+  updateMeal(id: string, data: Partial<MealDto>): Observable<Meal | undefined> {
     return this.getMeal(id).pipe(
       first(),
       tap(async (meal) => {

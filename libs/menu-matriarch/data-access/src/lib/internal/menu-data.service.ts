@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { DataService } from '@atocha/core/data-access-firebase';
+import { DataService } from '@atocha/core/data-access';
 import { flattenValues, lower, sort } from '@atocha/core/util';
 import {
   Day,

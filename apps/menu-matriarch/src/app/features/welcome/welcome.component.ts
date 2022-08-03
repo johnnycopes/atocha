@@ -2,8 +2,11 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { first, tap } from 'rxjs/operators';
 
-import { AuthService } from '@atocha/core/data-access-firebase';
-import { RouterService, SeedDataService } from '@atocha/menu-matriarch/data-access';
+import { AuthService } from '@atocha/core/data-access';
+import {
+  RouterService,
+  SeedDataService,
+} from '@atocha/menu-matriarch/data-access';
 
 @Component({
   selector: 'app-welcome',

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { DataService } from '@atocha/core/data-access-firebase';
+import { DataService } from '@atocha/core/data-access';
 import {
   createDishDto,
   createMealDto,
