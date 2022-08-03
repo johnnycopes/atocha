@@ -35,5 +35,6 @@ _Migration from original repo to Atocha is underway._
 
 Generic, well-tested collections of code. Minimally opinionated for maximum reusability.
 
-2. **core/ui**: collection of customizable Angular components.
-1. **core/util**: collection of framework-agnostic TypeScript functions/classes.
+1. **core/data-access**: abstractions for interacting with Firebase.
+1. **core/ui**: generic, customizable Angular components.
+1. **core/util**: framework-agnostic TypeScript functions/classes.
