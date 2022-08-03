@@ -9,7 +9,12 @@ import {
 import { combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { DishService, FilterService, RouterService, TagService } from '@atocha/menu-matriarch/data-access';
+import {
+  DishService,
+  FilterService,
+  RouterService,
+  TagService,
+} from '@atocha/menu-matriarch/data-access';
 import { dishTrackByFn, groupTrackByFn } from '@atocha/menu-matriarch/ui';
 import { DishContext, DishDefDirective } from './dish-def.directive';
 

@@ -1,6 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
-import { ErrorService, RouterService } from '@atocha/menu-matriarch/data-access';
+import {
+  ErrorService,
+  RouterService,
+} from '@atocha/menu-matriarch/data-access';
 
 @Component({
   selector: 'app-root',

@@ -11,7 +11,13 @@ import { map } from 'rxjs/operators';
 
 import { trackByFactory } from '@atocha/core/ui';
 import { Meal } from '@atocha/menu-matriarch/types';
-import { FilterService, MealService, RouterService, TagService, UserService } from '@atocha/menu-matriarch/data-access';
+import {
+  FilterService,
+  MealService,
+  RouterService,
+  TagService,
+  UserService,
+} from '@atocha/menu-matriarch/data-access';
 import { MealDefContext, MealDefDirective } from './meal-def.directive';
 
 @Component({
