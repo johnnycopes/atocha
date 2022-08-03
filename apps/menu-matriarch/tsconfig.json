@@ -28,7 +28,6 @@
       "@atocha/menu-matriarch/types": [
         "../../libs/menu-matriarch/types/src/index.ts"
       ],
-      "@env/*": ["src/environments/*"],
     },
     "target": "es2020",
     "forceConsistentCasingInFileNames": true,
