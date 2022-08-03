@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { combineLatest, Observable, of } from 'rxjs';
 import { concatMap, first, map, tap } from 'rxjs/operators';
 
+import { AuthService } from '@atocha/core/data-access-firebase';
 import {
   Day,
   Dish,
@@ -10,7 +11,6 @@ import {
   UserPreferences,
   getDays,
 } from '@atocha/menu-matriarch/types';
-import { AuthService } from './auth.service';
 import { DishService } from './dish.service';
 import { LocalStorageService } from './internal/local-storage.service';
 import { MenuDataService } from './internal/menu-data.service';

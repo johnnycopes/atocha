@@ -10,21 +10,21 @@ import { map, shareReplay } from 'rxjs/operators';
 export class AuthService {
   constructor(private _auth: AngularFireAuth) {}
 
-  public get uid$(): Observable<string | undefined> {
+  get uid$(): Observable<string | undefined> {
     return this._auth.user.pipe(
       map((user) => user?.uid),
       shareReplay({ bufferSize: 1, refCount: true })
     );
   }
 
-  public get loggedIn$(): Observable<boolean> {
+  get loggedIn$(): Observable<boolean> {
     return this._auth.user.pipe(
       map(Boolean),
       shareReplay({ bufferSize: 1, refCount: true })
     );
   }
 
-  public async login(): Promise<{ name: string; email: string } | void> {
+  async login(): Promise<{ name: string; email: string } | void> {
     const loginInfo = await this._auth.signInWithPopup(
       new firebase.auth.GoogleAuthProvider()
     );
@@ -35,7 +35,7 @@ export class AuthService {
     }
   }
 
-  public async logout(): Promise<void> {
+  async logout(): Promise<void> {
     await this._auth.signOut();
   }
 }

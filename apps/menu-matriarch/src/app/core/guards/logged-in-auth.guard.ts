@@ -3,7 +3,7 @@ import { CanActivate, Router, UrlTree } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { first, map, switchMap } from 'rxjs/operators';
 
-import { AuthService } from '@services/auth.service';
+import { AuthService } from '@atocha/core/data-access-firebase';
 import { RouterService } from '@services/router.service';
 
 @Injectable({

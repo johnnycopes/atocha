@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { combineLatest, Observable, of } from 'rxjs';
 import { concatMap, first, map, tap } from 'rxjs/operators';
 
+import { AuthService } from '@atocha/core/data-access-firebase';
 import { MealDto, Dish, Tag, Meal } from '@atocha/menu-matriarch/types';
-import { AuthService } from './auth.service';
 import { DishService } from './dish.service';
 import { MealDataService } from './internal/meal-data.service';
 import { TagService } from './tag.service';
