@@ -1,0 +1,25 @@
+{
+  "projectType": "library",
+  "sourceRoot": "libs/menu-matriarch/data-access/src",
+  "prefix": "atocha",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/menu-matriarch/data-access"],
+      "options": {
+        "jestConfig": "libs/menu-matriarch/data-access/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/menu-matriarch/data-access/**/*.ts",
+          "libs/menu-matriarch/data-access/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

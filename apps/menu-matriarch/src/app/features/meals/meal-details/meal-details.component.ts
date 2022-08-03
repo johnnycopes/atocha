@@ -3,9 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { combineLatest, of } from 'rxjs';
 import { concatMap, first, map, switchMap, tap } from 'rxjs/operators';
 
-import { MealService } from '@services/meal.service';
-import { UserService } from '@services/user.service';
 import { trackBySelf } from '@atocha/core/ui';
+import { MealService, UserService } from '@atocha/menu-matriarch/data-access';
 import { getDishTypes } from '@atocha/menu-matriarch/types';
 import { dishTrackByFn } from '@atocha/menu-matriarch/ui';
 

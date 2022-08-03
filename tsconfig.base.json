@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@atocha/core/data-access": ["libs/core/data-access/src/index.ts"],
       "@atocha/core/ui": ["libs/core/ui/src/index.ts"],
       "@atocha/core/util": ["libs/core/util/src/index.ts"],
       "@atocha/globetrotter/data-access": [
@@ -31,6 +32,9 @@
       ],
       "@atocha/globetrotter/types": ["libs/globetrotter/types/src/index.ts"],
       "@atocha/globetrotter/ui": ["libs/globetrotter/ui/src/index.ts"],
+      "@atocha/menu-matriarch/data-access": [
+        "libs/menu-matriarch/data-access/src/index.ts"
+      ],
       "@atocha/menu-matriarch/types": [
         "libs/menu-matriarch/types/src/index.ts"
       ],

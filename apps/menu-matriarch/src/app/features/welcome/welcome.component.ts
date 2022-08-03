@@ -2,9 +2,11 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { first, tap } from 'rxjs/operators';
 
-import { AuthService } from '@services/auth.service';
-import { RouterService } from '@services/router.service';
-import { SeedDataService } from '@services/seed-data.service';
+import { AuthService } from '@atocha/core/data-access';
+import {
+  RouterService,
+  SeedDataService,
+} from '@atocha/menu-matriarch/data-access';
 
 @Component({
   selector: 'app-welcome',

@@ -2,8 +2,7 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 import { Menu, MenuEntry } from '@atocha/menu-matriarch/types';
 import { menuEntryTrackByFn } from '@atocha/menu-matriarch/ui';
-import { MenuService } from '@services/menu.service';
-import { PrintService } from '@services/print.service';
+import { MenuService, PrintService } from '@atocha/menu-matriarch/data-access';
 
 @Component({
   selector: 'app-planner-menu',

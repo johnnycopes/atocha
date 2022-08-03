@@ -3,9 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { of } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 
+import { MenuService, RouterService } from '@atocha/menu-matriarch/data-access';
 import { PlannerView } from '@atocha/menu-matriarch/types';
-import { MenuService } from '@services/menu.service';
-import { RouterService } from '@services/router.service';
 
 @Component({
   selector: 'app-planner',

@@ -3,7 +3,7 @@ import { CanActivate, Router, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
 import { first, map } from 'rxjs/operators';
 
-import { AuthService } from '@services/auth.service';
+import { AuthService } from '@atocha/core/data-access';
 
 @Injectable({
   providedIn: 'root',

@@ -2,6 +2,7 @@
   "$schema": "./node_modules/nx/schemas/workspace-schema.json",
   "version": 2,
   "projects": {
+    "core-data-access": "libs/core/data-access",
     "core-ui": "libs/core/ui",
     "core-ui-e2e": "apps/core-ui-e2e",
     "core-util": "libs/core/util",
@@ -14,6 +15,7 @@
     "globetrotter-types": "libs/globetrotter/types",
     "globetrotter-ui": "libs/globetrotter/ui",
     "menu-matriarch": "apps/menu-matriarch",
+    "menu-matriarch-data-access": "libs/menu-matriarch/data-access",
     "menu-matriarch-e2e": "apps/menu-matriarch-e2e",
     "menu-matriarch-types": "libs/menu-matriarch/types",
     "menu-matriarch-ui": "libs/menu-matriarch/ui"

@@ -4,7 +4,7 @@ import { of } from 'rxjs';
 import { concatMap, first, map, switchMap, tap } from 'rxjs/operators';
 
 import { trackBySelf } from '@atocha/core/ui';
-import { DishService } from '@services/dish.service';
+import { DishService } from '@atocha/menu-matriarch/data-access';
 
 @Component({
   selector: 'app-dish-details',
