@@ -29,7 +29,6 @@
         "../../libs/menu-matriarch/types/src/index.ts"
       ],
       "@env/*": ["src/environments/*"],
-      "@shared/*": ["src/app/shared/*"]
     },
     "target": "es2020",
     "forceConsistentCasingInFileNames": true,
