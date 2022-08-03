@@ -34,6 +34,9 @@
       ],
       "@atocha/globetrotter/types": ["libs/globetrotter/types/src/index.ts"],
       "@atocha/globetrotter/ui": ["libs/globetrotter/ui/src/index.ts"],
+      "@atocha/menu-matriarch/data-access": [
+        "libs/menu-matriarch/data-access/src/index.ts"
+      ],
       "@atocha/menu-matriarch/types": [
         "libs/menu-matriarch/types/src/index.ts"
       ],

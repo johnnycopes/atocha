@@ -19,6 +19,9 @@
       "@atocha/core/data-access-firebase": ["../../libs/core/data-access-firebase/src/index.ts"],
       "@atocha/core/ui": ["../../libs/core/ui/src/index.ts"],
       "@atocha/core/util": ["../../libs/core/util/src/index.ts"],
+      "@atocha/menu-matriarch/data-access": [
+        "../../libs/menu-matriarch/data-access/src/index.ts"
+      ],
       "@atocha/menu-matriarch/ui": [
         "../../libs/menu-matriarch/ui/src/index.ts"
       ],
