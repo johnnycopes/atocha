@@ -2,6 +2,7 @@
   "$schema": "./node_modules/nx/schemas/workspace-schema.json",
   "version": 2,
   "projects": {
+    "core-data-access-firebase": "libs/core/data-access-firebase",
     "core-ui": "libs/core/ui",
     "core-ui-e2e": "apps/core-ui-e2e",
     "core-util": "libs/core/util",
