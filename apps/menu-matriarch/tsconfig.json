@@ -29,7 +29,6 @@
         "../../libs/menu-matriarch/types/src/index.ts"
       ],
       "@env/*": ["src/environments/*"],
-      "@services/*": ["src/app/core/services/*"],
       "@shared/*": ["src/app/shared/*"]
     },
     "target": "es2020",
