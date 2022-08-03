@@ -14,21 +14,6 @@
     }
   ],
   "compilerOptions": {
-    "baseUrl": "./",
-    "paths": {
-      "@atocha/core/data-access": ["../../libs/core/data-access/src/index.ts"],
-      "@atocha/core/ui": ["../../libs/core/ui/src/index.ts"],
-      "@atocha/core/util": ["../../libs/core/util/src/index.ts"],
-      "@atocha/menu-matriarch/data-access": [
-        "../../libs/menu-matriarch/data-access/src/index.ts"
-      ],
-      "@atocha/menu-matriarch/ui": [
-        "../../libs/menu-matriarch/ui/src/index.ts"
-      ],
-      "@atocha/menu-matriarch/types": [
-        "../../libs/menu-matriarch/types/src/index.ts"
-      ],
-    },
     "target": "es2020",
     "forceConsistentCasingInFileNames": true,
     "strict": true,
