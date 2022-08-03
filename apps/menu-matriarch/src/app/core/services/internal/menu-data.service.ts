@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
+import { DataService } from '@atocha/core/data-access-firebase';
 import { flattenValues, lower, sort } from '@atocha/core/util';
 import {
   Day,
@@ -11,7 +12,6 @@ import {
   createMenuDto,
 } from '@atocha/menu-matriarch/types';
 import { BatchService } from './batch.service';
-import { DataService } from './data.service';
 
 @Injectable({
   providedIn: 'root',

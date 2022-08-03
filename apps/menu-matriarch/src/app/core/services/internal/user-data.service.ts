@@ -2,13 +2,13 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
+import { DataService } from '@atocha/core/data-access-firebase';
 import {
   User,
   UserDto,
   UserPreferences,
   Endpoint,
 } from '@atocha/menu-matriarch/types';
-import { DataService } from './data.service';
 
 @Injectable({
   providedIn: 'root',

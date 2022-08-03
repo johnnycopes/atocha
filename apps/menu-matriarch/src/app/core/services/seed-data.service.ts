@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 
+import { DataService } from '@atocha/core/data-access-firebase';
 import {
   createDishDto,
   createMealDto,
@@ -9,7 +10,6 @@ import {
   Endpoint,
 } from '@atocha/menu-matriarch/types';
 import { BatchService } from './internal/batch.service';
-import { DataService } from './internal/data.service';
 
 @Injectable({
   providedIn: 'root',
