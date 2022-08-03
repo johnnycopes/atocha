@@ -28,7 +28,7 @@ export class MenuService {
     private _userService: UserService
   ) {}
 
-  public getMenu(id: string): Observable<Menu | undefined> {
+  getMenu(id: string): Observable<Menu | undefined> {
     return combineLatest([
       this._menuDataService.getMenu(id),
       this._dishService.getDishes(),
@@ -43,7 +43,7 @@ export class MenuService {
     );
   }
 
-  public getMenus(): Observable<Menu[]> {
+  getMenus(): Observable<Menu[]> {
     return this._authService.uid$.pipe(
       first(),
       concatMap((uid) => {
@@ -68,7 +68,7 @@ export class MenuService {
     );
   }
 
-  public createMenu(
+  createMenu(
     menu: Partial<Omit<MenuDto, 'id' | 'uid' | 'startDay'>>
   ): Observable<string | undefined> {
     return this._userService.getUser().pipe(
@@ -88,15 +88,15 @@ export class MenuService {
     );
   }
 
-  public updateMenuName(id: string, name: string): Promise<void> {
+  updateMenuName(id: string, name: string): Promise<void> {
     return this._menuDataService.updateMenu(id, { name });
   }
 
-  public updateMenuStartDay(id: string, startDay: Day): Promise<void> {
+  updateMenuStartDay(id: string, startDay: Day): Promise<void> {
     return this._menuDataService.updateMenu(id, { startDay });
   }
 
-  public updateMenuContents({
+  updateMenuContents({
     menu,
     day,
     dishIds,
@@ -115,7 +115,7 @@ export class MenuService {
     });
   }
 
-  public async deleteMenu(id?: string): Promise<void> {
+  async deleteMenu(id?: string): Promise<void> {
     if (id) {
       this.getMenu(id)
         .pipe(
@@ -134,7 +134,7 @@ export class MenuService {
     }
   }
 
-  public deleteMenuContents(menu: Menu, day?: Day): Promise<void> {
+  deleteMenuContents(menu: Menu, day?: Day): Promise<void> {
     return this._menuDataService.deleteMenuContents(menu, day);
   }
 

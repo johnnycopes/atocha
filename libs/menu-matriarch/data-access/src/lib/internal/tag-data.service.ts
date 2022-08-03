@@ -23,17 +23,17 @@ export class TagDataService {
     private _dataService: DataService
   ) {}
 
-  public getTag(id: string): Observable<TagDto | undefined> {
+  getTag(id: string): Observable<TagDto | undefined> {
     return this._dataService.getOne<TagDto>(this._endpoint, id);
   }
 
-  public getTags(uid: string): Observable<TagDto[]> {
+  getTags(uid: string): Observable<TagDto[]> {
     return this._dataService
       .getMany<TagDto>(this._endpoint, uid)
       .pipe(map((tags) => sort(tags, (tag) => lower(tag.name))));
   }
 
-  public async createTag({
+  async createTag({
     uid,
     tag,
   }: {
@@ -49,11 +49,11 @@ export class TagDataService {
     return id;
   }
 
-  public updateTag(id: string, data: Partial<TagDto>): Promise<void> {
+  updateTag(id: string, data: Partial<TagDto>): Promise<void> {
     return this._dataService.update<TagDto>(this._endpoint, id, data);
   }
 
-  public async deleteTag(tag: Tag): Promise<void> {
+  async deleteTag(tag: Tag): Promise<void> {
     const batch = this._batchService.createBatch();
     batch.delete(this._endpoint, tag.id).updateMultiple([
       ...this._batchService.getMealUpdates({

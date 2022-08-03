@@ -28,19 +28,19 @@ export class RouterService {
     filter((e): e is NavigationEnd => e instanceof NavigationEnd)
   );
 
-  public get loading$(): Observable<boolean> {
+  get loading$(): Observable<boolean> {
     return this._loading$;
   }
 
-  public get activePlannerView$(): Observable<PlannerView> {
+  get activePlannerView$(): Observable<PlannerView> {
     return this._localStorageService.watchPlannerView();
   }
 
-  public get activeMealId$(): Observable<string> {
+  get activeMealId$(): Observable<string> {
     return this._activeMealId$.pipe(distinctUntilChanged());
   }
 
-  public get activeDishId$(): Observable<string> {
+  get activeDishId$(): Observable<string> {
     return this._activeDishId$.pipe(distinctUntilChanged());
   }
 
@@ -100,7 +100,7 @@ export class RouterService {
       .subscribe();
   }
 
-  public getPlannerRoute(): Observable<string[]> {
+  getPlannerRoute(): Observable<string[]> {
     return this._localStorageService.watchMenuId().pipe(
       map((menuId) => {
         if (!menuId) {
@@ -111,7 +111,7 @@ export class RouterService {
     );
   }
 
-  public updatePlannerView(view: PlannerView): void {
+  updatePlannerView(view: PlannerView): void {
     this._localStorageService.setPlannerView(view);
   }
 }

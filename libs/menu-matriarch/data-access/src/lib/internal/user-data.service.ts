@@ -18,15 +18,15 @@ export class UserDataService {
 
   constructor(private _dataService: DataService) {}
 
-  public getUser(uid: string): Observable<User | undefined> {
+  getUser(uid: string): Observable<User | undefined> {
     return this._dataService.getOne<UserDto>(this._endpoint, uid);
   }
 
-  public getPreferences(uid: string): Observable<UserPreferences | undefined> {
+  getPreferences(uid: string): Observable<UserPreferences | undefined> {
     return this.getUser(uid).pipe(map((user) => user?.preferences));
   }
 
-  public updatePreferences(
+  updatePreferences(
     user: User,
     data: Partial<UserPreferences>
   ): Promise<void> {

@@ -15,7 +15,7 @@ export class UserService {
     private _userDataService: UserDataService
   ) {}
 
-  public getUser(): Observable<User | undefined> {
+  getUser(): Observable<User | undefined> {
     return this._authService.uid$.pipe(
       first(),
       concatMap((uid) => {
@@ -27,7 +27,7 @@ export class UserService {
     );
   }
 
-  public getPreferences(): Observable<UserPreferences | undefined> {
+  getPreferences(): Observable<UserPreferences | undefined> {
     return this._authService.uid$.pipe(
       first(),
       concatMap((uid) => {
@@ -39,7 +39,7 @@ export class UserService {
     );
   }
 
-  public updatePreferences(
+  updatePreferences(
     data: Partial<UserPreferences>
   ): Observable<User | undefined> {
     return this.getUser().pipe(

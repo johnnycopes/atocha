@@ -26,11 +26,11 @@ export class FilterService {
     text: '',
   });
 
-  public get state$(): Observable<State> {
+  get state$(): Observable<State> {
     return this._state$.asObservable();
   }
 
-  public togglePanel(): void {
+  togglePanel(): void {
     this._state$
       .pipe(first())
       .subscribe((state) =>
@@ -38,19 +38,19 @@ export class FilterService {
       );
   }
 
-  public updateTagIds(tagIds: string[]): void {
+  updateTagIds(tagIds: string[]): void {
     this._state$
       .pipe(first())
       .subscribe((state) => this._state$.next({ ...state, tagIds }));
   }
 
-  public updateText(text: string): void {
+  updateText(text: string): void {
     this._state$
       .pipe(first())
       .subscribe((state) => this._state$.next({ ...state, text }));
   }
 
-  public filterMeals({
+  filterMeals({
     meals,
     text,
     tagIds,
@@ -81,7 +81,7 @@ export class FilterService {
     });
   }
 
-  public filterDishes({
+  filterDishes({
     dishes,
     text,
     tagIds,

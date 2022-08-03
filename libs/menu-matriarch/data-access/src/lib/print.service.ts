@@ -20,7 +20,7 @@ type PrintMenu = Pick<
 export class PrintService {
   private _popupWindow: Window | null = null;
 
-  public printMenu(menu: PrintMenu): void {
+  printMenu(menu: PrintMenu): void {
     if (this._popupWindow == null || this._popupWindow.closed) {
       this._popupWindow = window.open(
         undefined,

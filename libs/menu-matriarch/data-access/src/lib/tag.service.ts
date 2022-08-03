@@ -15,11 +15,11 @@ export class TagService {
     private _tagDataService: TagDataService
   ) {}
 
-  public getTag(id: string): Observable<Tag | undefined> {
+  getTag(id: string): Observable<Tag | undefined> {
     return this._tagDataService.getTag(id);
   }
 
-  public getTags(): Observable<Tag[]> {
+  getTags(): Observable<Tag[]> {
     return this._authService.uid$.pipe(
       first(),
       concatMap((uid) => {
@@ -31,7 +31,7 @@ export class TagService {
     );
   }
 
-  public createTag(
+  createTag(
     tag: Partial<Omit<TagDto, 'id' | 'uid'>>
   ): Observable<string | undefined> {
     return this._authService.uid$.pipe(
@@ -47,11 +47,11 @@ export class TagService {
     );
   }
 
-  public updateTag(id: string, data: Partial<TagDto>): Promise<void> {
+  updateTag(id: string, data: Partial<TagDto>): Promise<void> {
     return this._tagDataService.updateTag(id, data);
   }
 
-  public deleteTag(id: string): Observable<Tag | undefined> {
+  deleteTag(id: string): Observable<Tag | undefined> {
     return this.getTag(id).pipe(
       first(),
       tap(async (tag) => {

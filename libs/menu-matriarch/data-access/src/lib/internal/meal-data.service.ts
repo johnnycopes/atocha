@@ -23,11 +23,11 @@ export class MealDataService {
     private _dataService: DataService
   ) {}
 
-  public getMeal(id: string): Observable<MealDto | undefined> {
+  getMeal(id: string): Observable<MealDto | undefined> {
     return this._dataService.getOne<MealDto>(this._endpoint, id);
   }
 
-  public getMeals(uid: string): Observable<MealDto[]> {
+  getMeals(uid: string): Observable<MealDto[]> {
     return this._dataService
       .getMany<MealDto>(this._endpoint, uid)
       .pipe(
@@ -35,7 +35,7 @@ export class MealDataService {
       );
   }
 
-  public async createMeal(
+  async createMeal(
     uid: string,
     meal: Partial<Omit<MealDto, 'id' | 'uid'>>
   ): Promise<string> {
@@ -70,7 +70,7 @@ export class MealDataService {
     return id;
   }
 
-  public async updateMeal(meal: Meal, data: Partial<MealDto>): Promise<void> {
+  async updateMeal(meal: Meal, data: Partial<MealDto>): Promise<void> {
     const batch = this._batchService.createBatch();
     batch.update({
       endpoint: this._endpoint,
@@ -100,7 +100,7 @@ export class MealDataService {
     await batch.commit();
   }
 
-  public async deleteMeal(meal: Meal): Promise<void> {
+  async deleteMeal(meal: Meal): Promise<void> {
     const batch = this._batchService.createBatch();
     batch.delete(this._endpoint, meal.id).updateMultiple([
       ...this._batchService.getDishUpdates({

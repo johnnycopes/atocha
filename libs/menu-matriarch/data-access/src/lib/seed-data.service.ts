@@ -20,7 +20,7 @@ export class SeedDataService {
     private _dataService: DataService
   ) {}
 
-  public async createUserData({
+  async createUserData({
     uid,
     name,
     email,

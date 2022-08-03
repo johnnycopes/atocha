@@ -17,7 +17,7 @@ export class DishService {
     private _tagService: TagService
   ) {}
 
-  public getDish(id: string): Observable<Dish | undefined> {
+  getDish(id: string): Observable<Dish | undefined> {
     return combineLatest([
       this._dishDataService.getDish(id),
       this._tagService.getTags(),
@@ -31,7 +31,7 @@ export class DishService {
     );
   }
 
-  public getDishes(): Observable<Dish[]> {
+  getDishes(): Observable<Dish[]> {
     return this._authService.uid$.pipe(
       first(),
       concatMap((uid) => {
@@ -50,7 +50,7 @@ export class DishService {
     );
   }
 
-  public createDish(
+  createDish(
     dish: Partial<Omit<DishDto, 'id' | 'uid'>>
   ): Observable<string | undefined> {
     return this._authService.uid$.pipe(
@@ -66,7 +66,7 @@ export class DishService {
     );
   }
 
-  public updateDish(
+  updateDish(
     id: string,
     data: Partial<Omit<DishDto, 'usages' | 'menus'>>
   ): Observable<Dish | undefined> {
@@ -81,7 +81,7 @@ export class DishService {
     );
   }
 
-  public deleteDish(id: string): Observable<Dish | undefined> {
+  deleteDish(id: string): Observable<Dish | undefined> {
     return this.getDish(id).pipe(
       first(),
       tap(async (dish) => {

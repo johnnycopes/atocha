@@ -13,11 +13,11 @@ export class ErrorService {
     return this._error$.asObservable();
   }
 
-  public set(error: AppError): void {
+  set(error: AppError): void {
     this._error$.next(error);
   }
 
-  public clear(): void {
+  clear(): void {
     this._error$.next(undefined);
   }
 }

@@ -23,11 +23,11 @@ export class DishDataService {
     private _dataService: DataService
   ) {}
 
-  public getDish(id: string): Observable<DishDto | undefined> {
+  getDish(id: string): Observable<DishDto | undefined> {
     return this._dataService.getOne<DishDto>(this._endpoint, id);
   }
 
-  public getDishes(uid: string): Observable<DishDto[]> {
+  getDishes(uid: string): Observable<DishDto[]> {
     return this._dataService
       .getMany<DishDto>(this._endpoint, uid)
       .pipe(
@@ -35,7 +35,7 @@ export class DishDataService {
       );
   }
 
-  public async createDish({
+  async createDish({
     uid,
     dish,
   }: {
@@ -63,7 +63,7 @@ export class DishDataService {
     return id;
   }
 
-  public async updateDish(
+  async updateDish(
     dish: Dish,
     data: Partial<Omit<DishDto, 'usages' | 'menus'>>
   ): Promise<void> {
@@ -86,7 +86,7 @@ export class DishDataService {
     await batch.commit();
   }
 
-  public async deleteDish(dish: Dish): Promise<void> {
+  async deleteDish(dish: Dish): Promise<void> {
     const batch = this._batchService.createBatch();
     batch.delete(this._endpoint, dish.id).updateMultiple([
       ...this._batchService.getMenuContentsUpdates({

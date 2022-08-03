@@ -16,13 +16,13 @@ import { Day, Menu, Endpoint } from '@atocha/menu-matriarch/types';
 export class BatchService {
   constructor(private _firestoreService: FirestoreService) {}
 
-  public createBatch(): Batch {
+  createBatch(): Batch {
     return new Batch(this._firestoreService.createBatch(), (endpoint, id) =>
       this._firestoreService.getDocRef(endpoint, id)
     );
   }
 
-  public getMenuContentsUpdates({
+  getMenuContentsUpdates({
     menuIds,
     dishIds,
     day,
@@ -51,7 +51,7 @@ export class BatchService {
     }));
   }
 
-  public getMealUpdates({
+  getMealUpdates({
     key,
     initialMealIds,
     finalMealIds,
@@ -71,7 +71,7 @@ export class BatchService {
     });
   }
 
-  public getDishUpdates({
+  getDishUpdates({
     key,
     initialDishIds,
     finalDishIds,
@@ -91,7 +91,7 @@ export class BatchService {
     });
   }
 
-  public getDishCountersUpdates({
+  getDishCountersUpdates({
     dishIds,
     menu,
     change,
@@ -124,7 +124,7 @@ export class BatchService {
     });
   }
 
-  public getTagUpdates({
+  getTagUpdates({
     key,
     initialTagIds,
     finalTagIds,
