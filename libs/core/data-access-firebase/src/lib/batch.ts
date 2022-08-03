@@ -17,7 +17,7 @@ export class Batch {
     ) => DocumentReference<T>
   ) {}
 
-  public set<T>({
+  set<T>({
     endpoint,
     id,
     data,
@@ -31,26 +31,26 @@ export class Batch {
     return this;
   }
 
-  public update({ endpoint, id, data }: BatchUpdate): Batch {
+  update({ endpoint, id, data }: BatchUpdate): Batch {
     const docRef = this._getDocRef(endpoint, id);
     this._batch.update(docRef, data);
     return this;
   }
 
-  public updateMultiple(updates: BatchUpdate[]): Batch {
+  updateMultiple(updates: BatchUpdate[]): Batch {
     updates.forEach(({ endpoint, id, data }) =>
       this.update({ endpoint, id, data })
     );
     return this;
   }
 
-  public delete(endpoint: string, id: string): Batch {
+  delete(endpoint: string, id: string): Batch {
     const docRef = this._getDocRef(endpoint, id);
     this._batch.delete(docRef);
     return this;
   }
 
-  public commit(): Promise<void> {
+  commit(): Promise<void> {
     return this._batch.commit();
   }
 }
