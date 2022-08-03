@@ -3,8 +3,7 @@ import { Router } from '@angular/router';
 import { first, tap } from 'rxjs/operators';
 
 import { AuthService } from '@atocha/core/data-access-firebase';
-import { RouterService } from '@services/router.service';
-import { SeedDataService } from '@services/seed-data.service';
+import { RouterService, SeedDataService } from '@atocha/menu-matriarch/data-access';
 
 @Component({
   selector: 'app-welcome',

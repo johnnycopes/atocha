@@ -1,7 +1,7 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 import { Route } from '@atocha/menu-matriarch/types';
-import { RouterService } from '@services/router.service';
+import { RouterService } from '@atocha/menu-matriarch/data-access';
 
 @Component({
   // eslint-disable-next-line @angular-eslint/component-selector

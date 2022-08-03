@@ -3,8 +3,8 @@ import { merge, Subject } from 'rxjs';
 import { mapTo, shareReplay } from 'rxjs/operators';
 
 import { trackByFactory } from '@atocha/core/ui';
+import { TagService } from '@atocha/menu-matriarch/data-access';
 import { Tag } from '@atocha/menu-matriarch/types';
-import { TagService } from '@services/tag.service';
 
 @Component({
   selector: 'app-tags',

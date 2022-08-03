@@ -10,8 +10,8 @@ import { debounceTime, switchMap, takeUntil } from 'rxjs/operators';
 
 import { AuthService } from '@atocha/core/data-access-firebase';
 import { trackBySelf } from '@atocha/core/ui';
+import { UserService } from '@atocha/menu-matriarch/data-access';
 import { UserPreferences, getDays } from '@atocha/menu-matriarch/types';
-import { UserService } from '@services/user.service';
 
 @Component({
   selector: 'app-settings',

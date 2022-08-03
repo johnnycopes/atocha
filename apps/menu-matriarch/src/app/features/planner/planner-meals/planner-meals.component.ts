@@ -6,8 +6,8 @@ import {
   EventEmitter,
 } from '@angular/core';
 
+import { MenuService } from '@atocha/menu-matriarch/data-access';
 import { Day, Menu } from '@atocha/menu-matriarch/types';
-import { MenuService } from '@services/menu.service';
 
 @Component({
   selector: 'app-planner-meals',
