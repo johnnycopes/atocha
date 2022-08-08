@@ -5,10 +5,6 @@ import { Route } from '@atocha/menu-matriarch/types';
 import { AuthGuard } from './core/guards/auth.guard';
 import { LoggedInAuthGuard } from './core/guards/logged-in-auth.guard';
 import { PlannerGuard } from './core/guards/planner.guard';
-import { DishDetailsComponent } from './features/dishes/dish-details/dish-details.component';
-import { DishEditComponent } from './features/dishes/dish-edit/dish-edit.component';
-import { DishesComponent } from './features/dishes/dishes.component';
-import { DishPlaceholderComponent } from './features/dishes/dish-placeholder/dish-placeholder.component';
 import { MealDetailsComponent } from './features/meals/meal-details/meal-details.component';
 import { MealEditComponent } from './features/meals/meal-edit/meal-edit.component';
 import { MealPlaceholderComponent } from './features/meals/meal-placeholder/meal-placeholder.component';
@@ -67,14 +63,10 @@ const routes: Routes = [
       },
       {
         path: 'dishes',
-        component: DishesComponent,
-        data: { state: Route.dishes },
-        children: [
-          { path: '', component: DishPlaceholderComponent, pathMatch: 'full' },
-          { path: 'new', component: DishEditComponent },
-          { path: ':id', component: DishDetailsComponent },
-          { path: ':id/edit', component: DishEditComponent },
-        ],
+        loadChildren: () =>
+          import('@atocha/menu-matriarch/feature-dishes').then(
+            (m) => m.MenuMatriarchFeatureDishesModule
+          ),
       },
       {
         path: '',

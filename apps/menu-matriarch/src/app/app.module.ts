@@ -3,7 +3,6 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { DragDropModule } from '@angular/cdk/drag-drop';
-import { EditorModule } from '@tinymce/tinymce-angular';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
@@ -14,18 +13,12 @@ import { environment } from '../environments/environment';
 
 import { AppRoutingModule } from './app-routing.module';
 import { CoreUiModule } from '@atocha/core/ui';
+import { MenuMatriarchFeatureDishesModule } from '@atocha/menu-matriarch/feature-dishes';
 import { MenuMatriarchFeatureSettingsModule } from '@atocha/menu-matriarch/feature-settings';
 import { MenuMatriarchFeatureTagsModule } from '@atocha/menu-matriarch/feature-tags';
 import { MenuMatriarchUiModule } from '@atocha/menu-matriarch/ui';
 
 import { AppComponent } from './app.component';
-import { DishCardComponent } from './features/dishes/dish-card/dish-card.component';
-import { DishDefDirective } from './features/dishes/dishes-list/dish-def.directive';
-import { DishDetailsComponent } from './features/dishes/dish-details/dish-details.component';
-import { DishEditComponent } from './features/dishes/dish-edit/dish-edit.component';
-import { DishesComponent } from './features/dishes/dishes.component';
-import { DishesListComponent } from './features/dishes/dishes-list/dishes-list.component';
-import { DishPlaceholderComponent } from './features/dishes/dish-placeholder/dish-placeholder.component';
 import { ErrorComponent } from './core/components/error/error.component';
 import { HeaderComponent } from './core/components/header/header.component';
 import { MealCardComponent } from './features/meals/meal-card/meal-card.component';
@@ -51,13 +44,6 @@ import { WelcomeComponent } from './features/welcome/welcome.component';
 @NgModule({
   declarations: [
     AppComponent,
-    DishCardComponent,
-    DishDefDirective,
-    DishDetailsComponent,
-    DishEditComponent,
-    DishesComponent,
-    DishesListComponent,
-    DishPlaceholderComponent,
     ErrorComponent,
     HeaderComponent,
     MealCardComponent,
@@ -86,13 +72,13 @@ import { WelcomeComponent } from './features/welcome/welcome.component';
     BrowserAnimationsModule,
     BrowserModule,
     DragDropModule,
-    EditorModule,
     FontAwesomeModule,
     FormsModule,
     OverlayModule,
     PortalModule,
     AppRoutingModule,
     CoreUiModule,
+    MenuMatriarchFeatureDishesModule,
     MenuMatriarchFeatureSettingsModule,
     MenuMatriarchFeatureTagsModule,
     MenuMatriarchUiModule,
