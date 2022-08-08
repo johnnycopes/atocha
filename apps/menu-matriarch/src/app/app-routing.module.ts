@@ -6,7 +6,6 @@ import { AuthGuard } from './core/guards/auth.guard';
 import { LoggedInAuthGuard } from './core/guards/logged-in-auth.guard';
 import { PlannerGuard } from './core/guards/planner.guard';
 import { PageNotFoundComponent } from './core/components/page-not-found/page-not-found.component';
-import { PlannerComponent } from './features/planner/planner.component';
 import { ShellComponent } from './core/components/shell/shell.component';
 import { WelcomeComponent } from './features/welcome/welcome.component';
 
@@ -24,14 +23,17 @@ const routes: Routes = [
     children: [
       {
         path: 'planner/:menuId',
-        component: PlannerComponent,
-        data: { state: Route.planner },
+        loadChildren: () =>
+          import('@atocha/menu-matriarch/feature-planner').then(
+            (m) => m.MenuMatriarchFeaturePlannerModule
+          ),
       },
       {
         path: 'planner',
-        component: PlannerComponent,
         canActivate: [PlannerGuard],
-        data: { state: Route.planner },
+        loadChildren: () => import('@atocha/menu-matriarch/feature-planner').then(
+            (m) => m.MenuMatriarchFeaturePlannerModule
+          ),
       },
       {
         path: 'menus',

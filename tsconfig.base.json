@@ -38,6 +38,9 @@
       "@atocha/menu-matriarch/feature-dishes": [
         "libs/menu-matriarch/feature-dishes/src/index.ts"
       ],
+      "@atocha/menu-matriarch/feature-entities": [
+        "libs/menu-matriarch/feature-entities/src/index.ts"
+      ],
       "@atocha/menu-matriarch/feature-meals": [
         "libs/menu-matriarch/feature-meals/src/index.ts"
       ],
