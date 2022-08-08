@@ -41,6 +41,9 @@
       "@atocha/menu-matriarch/feature-meals": [
         "libs/menu-matriarch/feature-meals/src/index.ts"
       ],
+      "@atocha/menu-matriarch/feature-menus": [
+        "libs/menu-matriarch/feature-menus/src/index.ts"
+      ],
       "@atocha/menu-matriarch/feature-settings": [
         "libs/menu-matriarch/feature-settings/src/index.ts"
       ],
