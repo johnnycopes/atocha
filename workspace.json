@@ -18,6 +18,7 @@
     "menu-matriarch-data-access": "libs/menu-matriarch/data-access",
     "menu-matriarch-e2e": "apps/menu-matriarch-e2e",
     "menu-matriarch-feature-dishes": "libs/menu-matriarch/feature-dishes",
+    "menu-matriarch-feature-meals": "libs/menu-matriarch/feature-meals",
     "menu-matriarch-feature-settings": "libs/menu-matriarch/feature-settings",
     "menu-matriarch-feature-tags": "libs/menu-matriarch/feature-tags",
     "menu-matriarch-types": "libs/menu-matriarch/types",
