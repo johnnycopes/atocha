@@ -20,11 +20,11 @@ import { UserPreferences, getDays } from '@atocha/menu-matriarch/types';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SettingsComponent implements OnInit, OnDestroy {
-  public user$ = this._userService.getUser();
-  public preferences$ = this._userService.getPreferences();
-  public updateAction$ = new Subject<Partial<UserPreferences>>();
-  public readonly trackByFn = trackBySelf;
-  public readonly days = getDays();
+  user$ = this._userService.getUser();
+  preferences$ = this._userService.getPreferences();
+  updateAction$ = new Subject<Partial<UserPreferences>>();
+  readonly trackByFn = trackBySelf;
+  readonly days = getDays();
   private _destroy$ = new Subject<void>();
 
   constructor(
@@ -33,7 +33,7 @@ export class SettingsComponent implements OnInit, OnDestroy {
     private _userService: UserService
   ) {}
 
-  public ngOnInit(): void {
+  ngOnInit(): void {
     this.updateAction$
       .pipe(
         debounceTime(200),
@@ -43,12 +43,12 @@ export class SettingsComponent implements OnInit, OnDestroy {
       .subscribe();
   }
 
-  public ngOnDestroy(): void {
+  ngOnDestroy(): void {
     this._destroy$.next();
     this._destroy$.complete();
   }
 
-  public async signOut(): Promise<void> {
+  async signOut(): Promise<void> {
     try {
       await this._authService.logout();
       this._router.navigate(['/welcome']);
