@@ -53,6 +53,9 @@
       "@atocha/menu-matriarch/feature-settings": [
         "libs/menu-matriarch/feature-settings/src/index.ts"
       ],
+      "@atocha/menu-matriarch/feature-shell": [
+        "libs/menu-matriarch/feature-shell/src/index.ts"
+      ],
       "@atocha/menu-matriarch/feature-tags": [
         "libs/menu-matriarch/feature-tags/src/index.ts"
       ],
