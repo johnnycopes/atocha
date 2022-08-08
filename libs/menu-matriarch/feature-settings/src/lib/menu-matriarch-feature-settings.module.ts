@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 import { MenuMatriarchUiModule } from '@atocha/menu-matriarch/ui';
-import { SettingsComponent } from './settings/settings.component';
+import { SettingsComponent } from './settings.component';
 
 @NgModule({
   declarations: [
