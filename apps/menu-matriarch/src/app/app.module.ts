@@ -14,6 +14,7 @@ import { environment } from '../environments/environment';
 
 import { AppRoutingModule } from './app-routing.module';
 import { CoreUiModule } from '@atocha/core/ui';
+import { MenuMatriarchFeatureTagsModule } from '@atocha/menu-matriarch/feature-tags';
 import { MenuMatriarchUiModule } from '@atocha/menu-matriarch/ui';
 
 import { AppComponent } from './app.component';
@@ -45,8 +46,6 @@ import { PlannerMealsComponent } from './features/planner/planner-meals/planner-
 import { PlannerMenuComponent } from './features/planner/planner-menu/planner-menu.component';
 import { SettingsComponent } from './features/settings/settings.component';
 import { ShellComponent } from './core/components/shell/shell.component';
-import { TagCardComponent } from './features/tags/tag-card/tag-card.component';
-import { TagsComponent } from './features/tags/tags.component';
 import { WelcomeComponent } from './features/welcome/welcome.component';
 
 @NgModule({
@@ -80,8 +79,6 @@ import { WelcomeComponent } from './features/welcome/welcome.component';
     PlannerMenuComponent,
     SettingsComponent,
     ShellComponent,
-    TagCardComponent,
-    TagsComponent,
     WelcomeComponent,
   ],
   imports: [
@@ -97,6 +94,7 @@ import { WelcomeComponent } from './features/welcome/welcome.component';
     PortalModule,
     AppRoutingModule,
     CoreUiModule,
+    MenuMatriarchFeatureTagsModule,
     MenuMatriarchUiModule,
   ],
   providers: [],

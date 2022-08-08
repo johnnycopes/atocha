@@ -17,7 +17,7 @@
     ></ui-inline-name-edit>
   </div>
   <ul class="ui-section__content tags">
-    <li ui-tag-card
+    <li app-tag-card
       *ngFor="let tag of tags; trackBy: trackByFn"
       [id]="tag.id"
       [name]="tag.name"

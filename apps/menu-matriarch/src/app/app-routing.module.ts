@@ -18,7 +18,6 @@ import { PageNotFoundComponent } from './core/components/page-not-found/page-not
 import { PlannerComponent } from './features/planner/planner.component';
 import { SettingsComponent } from './features/settings/settings.component';
 import { ShellComponent } from './core/components/shell/shell.component';
-import { TagsComponent } from './features/tags/tags.component';
 import { WelcomeComponent } from './features/welcome/welcome.component';
 
 const routes: Routes = [
@@ -49,7 +48,13 @@ const routes: Routes = [
         component: MenusComponent,
         data: { state: Route.menus },
       },
-      { path: 'tags', component: TagsComponent, data: { state: Route.tags } },
+      {
+        path: 'tags',
+        loadChildren: () =>
+          import('@atocha/menu-matriarch/feature-tags').then(
+            (m) => m.MenuMatriarchFeatureTagsModule
+          ),
+      },
       {
         path: 'meals',
         component: MealsComponent,
