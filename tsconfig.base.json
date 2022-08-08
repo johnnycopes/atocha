@@ -35,6 +35,9 @@
       "@atocha/menu-matriarch/data-access": [
         "libs/menu-matriarch/data-access/src/index.ts"
       ],
+      "@atocha/menu-matriarch/feature-tags": [
+        "libs/menu-matriarch/feature-tags/src/index.ts"
+      ],
       "@atocha/menu-matriarch/types": [
         "libs/menu-matriarch/types/src/index.ts"
       ],

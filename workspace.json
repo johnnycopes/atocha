@@ -17,6 +17,7 @@
     "menu-matriarch": "apps/menu-matriarch",
     "menu-matriarch-data-access": "libs/menu-matriarch/data-access",
     "menu-matriarch-e2e": "apps/menu-matriarch-e2e",
+    "menu-matriarch-feature-tags": "libs/menu-matriarch/feature-tags",
     "menu-matriarch-types": "libs/menu-matriarch/types",
     "menu-matriarch-ui": "libs/menu-matriarch/ui"
   }
