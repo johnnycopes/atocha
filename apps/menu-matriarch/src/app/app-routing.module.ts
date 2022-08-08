@@ -5,7 +5,6 @@ import { Route } from '@atocha/menu-matriarch/types';
 import { AuthGuard } from './core/guards/auth.guard';
 import { LoggedInAuthGuard } from './core/guards/logged-in-auth.guard';
 import { PlannerGuard } from './core/guards/planner.guard';
-import { MenusComponent } from './features/menus/menus.component';
 import { PageNotFoundComponent } from './core/components/page-not-found/page-not-found.component';
 import { PlannerComponent } from './features/planner/planner.component';
 import { ShellComponent } from './core/components/shell/shell.component';
@@ -36,8 +35,10 @@ const routes: Routes = [
       },
       {
         path: 'menus',
-        component: MenusComponent,
-        data: { state: Route.menus },
+        loadChildren: () =>
+          import('@atocha/menu-matriarch/feature-menus').then(
+            (m) => m.MenuMatriarchFeatureMenusModule
+          ),
       },
       {
         path: 'tags',

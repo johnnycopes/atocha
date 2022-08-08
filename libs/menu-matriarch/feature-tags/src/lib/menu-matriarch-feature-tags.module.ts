@@ -12,9 +12,9 @@ import { TagsComponent } from './tags/tags.component';
     TagsComponent,
   ],
   imports: [
+    MenuMatriarchUiModule,
     CommonModule,
     RouterModule.forChild([{ path: '', component: TagsComponent }]),
-    MenuMatriarchUiModule,
   ],
 })
 export class MenuMatriarchFeatureTagsModule {}
