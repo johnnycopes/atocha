@@ -14,6 +14,7 @@ import { environment } from '../environments/environment';
 
 import { AppRoutingModule } from './app-routing.module';
 import { CoreUiModule } from '@atocha/core/ui';
+import { MenuMatriarchFeatureSettingsModule } from '@atocha/menu-matriarch/feature-settings';
 import { MenuMatriarchFeatureTagsModule } from '@atocha/menu-matriarch/feature-tags';
 import { MenuMatriarchUiModule } from '@atocha/menu-matriarch/ui';
 
@@ -44,7 +45,6 @@ import { PlannerDishesComponent } from './features/planner/planner-dishes/planne
 import { PlannerMealComponent } from './features/planner/planner-meals/planner-meal/planner-meal.component';
 import { PlannerMealsComponent } from './features/planner/planner-meals/planner-meals.component';
 import { PlannerMenuComponent } from './features/planner/planner-menu/planner-menu.component';
-import { SettingsComponent } from './features/settings/settings.component';
 import { ShellComponent } from './core/components/shell/shell.component';
 import { WelcomeComponent } from './features/welcome/welcome.component';
 
@@ -77,7 +77,6 @@ import { WelcomeComponent } from './features/welcome/welcome.component';
     PlannerMealComponent,
     PlannerMealsComponent,
     PlannerMenuComponent,
-    SettingsComponent,
     ShellComponent,
     WelcomeComponent,
   ],
@@ -94,6 +93,7 @@ import { WelcomeComponent } from './features/welcome/welcome.component';
     PortalModule,
     AppRoutingModule,
     CoreUiModule,
+    MenuMatriarchFeatureSettingsModule,
     MenuMatriarchFeatureTagsModule,
     MenuMatriarchUiModule,
   ],

@@ -28,7 +28,7 @@
           <ui-input label="Default Menu Start Day">
             <select id="Default Menu Start Day"
               name="menuStartDay"
-              [ngModel]="user.preferences?.defaultMenuStartDay"
+              [ngModel]="user.preferences.defaultMenuStartDay"
               (ngModelChange)="updateAction$.next({ defaultMenuStartDay: $event })"
             >
               <option *ngFor="let day of days; trackBy: trackByFn"
@@ -59,7 +59,7 @@
                   type="radio"
                   name="mealOrientation"
                   value="horizontal"
-                  [ngModel]="user.preferences?.mealOrientation"
+                  [ngModel]="user.preferences.mealOrientation"
                   (ngModelChange)="updateAction$.next({ mealOrientation: $event })"
                 />
                 Horizontal
@@ -69,7 +69,7 @@
                   type="radio"
                   name="mealOrientation"
                   value="vertical"
-                  [ngModel]="user.preferences?.mealOrientation"
+                  [ngModel]="user.preferences.mealOrientation"
                   (ngModelChange)="updateAction$.next({ mealOrientation: $event })"
                 />
                 Vertical

@@ -16,7 +16,6 @@ import { MealsComponent } from './features/meals/meals.component';
 import { MenusComponent } from './features/menus/menus.component';
 import { PageNotFoundComponent } from './core/components/page-not-found/page-not-found.component';
 import { PlannerComponent } from './features/planner/planner.component';
-import { SettingsComponent } from './features/settings/settings.component';
 import { ShellComponent } from './core/components/shell/shell.component';
 import { WelcomeComponent } from './features/welcome/welcome.component';
 
@@ -85,8 +84,10 @@ const routes: Routes = [
       },
       {
         path: 'settings',
-        component: SettingsComponent,
-        data: { state: Route.settings },
+        loadChildren: () =>
+          import('@atocha/menu-matriarch/feature-settings').then(
+            (m) => m.MenuMatriarchFeatureSettingsModule
+          ),
       },
     ],
   },
