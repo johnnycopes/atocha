@@ -20,6 +20,7 @@
     "menu-matriarch-feature-dishes": "libs/menu-matriarch/feature-dishes",
     "menu-matriarch-feature-meals": "libs/menu-matriarch/feature-meals",
     "menu-matriarch-feature-menus": "libs/menu-matriarch/feature-menus",
+    "menu-matriarch-feature-planner": "libs/menu-matriarch/feature-planner",
     "menu-matriarch-feature-settings": "libs/menu-matriarch/feature-settings",
     "menu-matriarch-feature-tags": "libs/menu-matriarch/feature-tags",
     "menu-matriarch-types": "libs/menu-matriarch/types",
