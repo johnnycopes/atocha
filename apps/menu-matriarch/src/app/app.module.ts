@@ -14,6 +14,7 @@ import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { CoreUiModule } from '@atocha/core/ui';
 import { MenuMatriarchFeatureDishesModule } from '@atocha/menu-matriarch/feature-dishes';
+import { MenuMatriarchFeatureMealsModule } from '@atocha/menu-matriarch/feature-meals';
 import { MenuMatriarchFeatureSettingsModule } from '@atocha/menu-matriarch/feature-settings';
 import { MenuMatriarchFeatureTagsModule } from '@atocha/menu-matriarch/feature-tags';
 import { MenuMatriarchUiModule } from '@atocha/menu-matriarch/ui';
@@ -21,13 +22,6 @@ import { MenuMatriarchUiModule } from '@atocha/menu-matriarch/ui';
 import { AppComponent } from './app.component';
 import { ErrorComponent } from './core/components/error/error.component';
 import { HeaderComponent } from './core/components/header/header.component';
-import { MealCardComponent } from './features/meals/meal-card/meal-card.component';
-import { MealDefDirective } from './features/meals/meals-list/meal-def.directive';
-import { MealDetailsComponent } from './features/meals/meal-details/meal-details.component';
-import { MealEditComponent } from './features/meals/meal-edit/meal-edit.component';
-import { MealPlaceholderComponent } from './features/meals/meal-placeholder/meal-placeholder.component';
-import { MealsComponent } from './features/meals/meals.component';
-import { MealsListComponent } from './features/meals/meals-list/meals-list.component';
 import { MenuCardComponent } from './features/menus/menu-card/menu-card.component';
 import { MenusComponent } from './features/menus/menus.component';
 import { PageNotFoundComponent } from './core/components/page-not-found/page-not-found.component';
@@ -46,13 +40,6 @@ import { WelcomeComponent } from './features/welcome/welcome.component';
     AppComponent,
     ErrorComponent,
     HeaderComponent,
-    MealCardComponent,
-    MealDefDirective,
-    MealDetailsComponent,
-    MealEditComponent,
-    MealPlaceholderComponent,
-    MealsComponent,
-    MealsListComponent,
     MenuCardComponent,
     MenusComponent,
     PageNotFoundComponent,
@@ -79,6 +66,7 @@ import { WelcomeComponent } from './features/welcome/welcome.component';
     AppRoutingModule,
     CoreUiModule,
     MenuMatriarchFeatureDishesModule,
+    MenuMatriarchFeatureMealsModule,
     MenuMatriarchFeatureSettingsModule,
     MenuMatriarchFeatureTagsModule,
     MenuMatriarchUiModule,
