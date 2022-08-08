@@ -7,9 +7,7 @@ import { MenuMatriarchUiModule } from '@atocha/menu-matriarch/ui';
 import { SettingsComponent } from './settings.component';
 
 @NgModule({
-  declarations: [
-    SettingsComponent,
-  ],
+  declarations: [SettingsComponent],
   imports: [
     CommonModule,
     FormsModule,

@@ -27,12 +27,16 @@ import { DishPlaceholderComponent } from './dish-placeholder/dish-placeholder.co
     FormsModule,
     EditorModule,
     RouterModule.forChild([
-      { path: '', component: DishesComponent, children: [
-        { path: '', component: DishPlaceholderComponent, pathMatch: 'full' },
-        { path: 'new', component: DishEditComponent },
-        { path: ':id', component: DishDetailsComponent },
-        { path: ':id/edit', component: DishEditComponent },
-      ] }
+      {
+        path: '',
+        component: DishesComponent,
+        children: [
+          { path: '', component: DishPlaceholderComponent, pathMatch: 'full' },
+          { path: 'new', component: DishEditComponent },
+          { path: ':id', component: DishDetailsComponent },
+          { path: ':id/edit', component: DishEditComponent },
+        ],
+      },
     ]),
   ],
 })

@@ -31,7 +31,8 @@ const routes: Routes = [
       {
         path: 'planner',
         canActivate: [PlannerGuard],
-        loadChildren: () => import('@atocha/menu-matriarch/feature-planner').then(
+        loadChildren: () =>
+          import('@atocha/menu-matriarch/feature-planner').then(
             (m) => m.MenuMatriarchFeaturePlannerModule
           ),
       },
@@ -52,7 +53,7 @@ const routes: Routes = [
       {
         path: 'meals',
         loadChildren: () =>
-        import('@atocha/menu-matriarch/feature-meals').then(
+          import('@atocha/menu-matriarch/feature-meals').then(
             (m) => m.MenuMatriarchFeatureMealsModule
           ),
       },

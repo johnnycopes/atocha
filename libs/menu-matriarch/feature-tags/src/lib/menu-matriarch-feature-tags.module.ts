@@ -7,10 +7,7 @@ import { TagCardComponent } from './tag-card/tag-card.component';
 import { TagsComponent } from './tags.component';
 
 @NgModule({
-  declarations: [
-    TagCardComponent,
-    TagsComponent,
-  ],
+  declarations: [TagCardComponent, TagsComponent],
   imports: [
     MenuMatriarchUiModule,
     CommonModule,

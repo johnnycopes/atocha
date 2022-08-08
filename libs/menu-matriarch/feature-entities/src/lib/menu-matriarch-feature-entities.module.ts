@@ -20,9 +20,6 @@ import { MealsListComponent } from './meals-list/meals-list.component';
     MealDefDirective,
     MealsListComponent,
   ],
-  imports: [
-    MenuMatriarchUiModule,
-    CommonModule,
-  ],
+  imports: [MenuMatriarchUiModule, CommonModule],
 })
 export class MenuMatriarchFeatureEntitiesModule {}

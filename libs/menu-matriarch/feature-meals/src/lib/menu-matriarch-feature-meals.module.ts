@@ -25,12 +25,16 @@ import { MealsComponent } from './meals.component';
     CommonModule,
     FormsModule,
     RouterModule.forChild([
-      { path: '', component: MealsComponent, children: [
-        { path: '', component: MealPlaceholderComponent, pathMatch: 'full' },
+      {
+        path: '',
+        component: MealsComponent,
+        children: [
+          { path: '', component: MealPlaceholderComponent, pathMatch: 'full' },
           { path: 'new', component: MealEditComponent },
           { path: ':id', component: MealDetailsComponent },
           { path: ':id/edit', component: MealEditComponent },
-      ] }
+        ],
+      },
     ]),
   ],
 })

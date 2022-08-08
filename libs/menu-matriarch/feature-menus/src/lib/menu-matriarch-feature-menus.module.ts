@@ -7,10 +7,7 @@ import { MenusComponent } from './menus.component';
 import { MenuCardComponent } from './menu-card/menu-card.component';
 
 @NgModule({
-  declarations: [
-    MenuCardComponent,
-    MenusComponent,
-  ],
+  declarations: [MenuCardComponent, MenusComponent],
   imports: [
     MenuMatriarchUiModule,
     CommonModule,
