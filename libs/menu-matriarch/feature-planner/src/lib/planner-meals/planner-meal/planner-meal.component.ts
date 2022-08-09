@@ -40,15 +40,15 @@ export class PlannerMealComponent {
   @Input()
   set menu(menu: Menu | undefined) {
     this.entryModels =
-      menu?.entries.map((entry) => {
-        const mealDishIds = this.dishes.map((dish) => dish.id);
-        const entryDishIds = entry.dishes.map((dish) => dish.id);
+      menu?.entries.map(({ day, dishes }) => {
+        const mealDishIds = this.dishes.map(({ id }) => id);
+        const entryDishIds = dishes.map(({ id }) => id);
         const { checked, indeterminate } = this._compare(
           mealDishIds,
           entryDishIds
         );
         return {
-          day: entry.day,
+          day,
           dishIds: indeterminate
             ? mealDishIds.filter((id) => !entryDishIds.includes(id))
             : mealDishIds,
