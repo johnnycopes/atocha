@@ -4,11 +4,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { environment } from '../environments/environment';
-
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { CoreUiModule } from '@atocha/core/ui';
+import { environment } from '../environments/environment';
 import { MenuMatriarchFeatureDishesModule } from '@atocha/menu-matriarch/feature-dishes';
 import { MenuMatriarchFeatureMealsModule } from '@atocha/menu-matriarch/feature-meals';
 import { MenuMatriarchFeatureMenusModule } from '@atocha/menu-matriarch/feature-menus';
