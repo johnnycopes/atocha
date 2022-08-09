@@ -19,8 +19,8 @@
         [class.dishes--vertical]="orientation === 'vertical'"
       >
         <li *ngFor="let dish of group.dishes; let last = last; trackBy: dishTrackByFn">
-          <a routerLink="/dishes/{{ dish.id }}"
-            [class]="group.type"
+          <a class="dish-link {{ group.type }}"
+            (click)="dishClick.emit(dish.id)"
           >
             {{ dish.name }}<span *ngIf="orientation === 'horizontal' && !last">,&nbsp;</span>
           </a>
