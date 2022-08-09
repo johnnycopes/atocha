@@ -1,25 +1,17 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
+import {
+  AuthGuard,
+  LoggedInAuthGuard,
+  PlannerGuard,
+} from '@atocha/menu-matriarch/data-access';
+import {
+  PageNotFoundComponent,
+  ShellComponent,
+  WelcomeComponent,
+} from '@atocha/menu-matriarch/feature-shell';
 import { Route } from '@atocha/menu-matriarch/types';
-import { AuthGuard } from './core/guards/auth.guard';
-import { LoggedInAuthGuard } from './core/guards/logged-in-auth.guard';
-import { PlannerGuard } from './core/guards/planner.guard';
-import { DishDetailsComponent } from './features/dishes/dish-details/dish-details.component';
-import { DishEditComponent } from './features/dishes/dish-edit/dish-edit.component';
-import { DishesComponent } from './features/dishes/dishes.component';
-import { DishPlaceholderComponent } from './features/dishes/dish-placeholder/dish-placeholder.component';
-import { MealDetailsComponent } from './features/meals/meal-details/meal-details.component';
-import { MealEditComponent } from './features/meals/meal-edit/meal-edit.component';
-import { MealPlaceholderComponent } from './features/meals/meal-placeholder/meal-placeholder.component';
-import { MealsComponent } from './features/meals/meals.component';
-import { MenusComponent } from './features/menus/menus.component';
-import { PageNotFoundComponent } from './core/components/page-not-found/page-not-found.component';
-import { PlannerComponent } from './features/planner/planner.component';
-import { SettingsComponent } from './features/settings/settings.component';
-import { ShellComponent } from './core/components/shell/shell.component';
-import { TagsComponent } from './features/tags/tags.component';
-import { WelcomeComponent } from './features/welcome/welcome.component';
 
 const routes: Routes = [
   {
@@ -35,42 +27,46 @@ const routes: Routes = [
     children: [
       {
         path: 'planner/:menuId',
-        component: PlannerComponent,
-        data: { state: Route.planner },
+        loadChildren: () =>
+          import('@atocha/menu-matriarch/feature-planner').then(
+            (m) => m.MenuMatriarchFeaturePlannerModule
+          ),
       },
       {
         path: 'planner',
-        component: PlannerComponent,
         canActivate: [PlannerGuard],
-        data: { state: Route.planner },
+        loadChildren: () =>
+          import('@atocha/menu-matriarch/feature-planner').then(
+            (m) => m.MenuMatriarchFeaturePlannerModule
+          ),
       },
       {
         path: 'menus',
-        component: MenusComponent,
-        data: { state: Route.menus },
+        loadChildren: () =>
+          import('@atocha/menu-matriarch/feature-menus').then(
+            (m) => m.MenuMatriarchFeatureMenusModule
+          ),
       },
-      { path: 'tags', component: TagsComponent, data: { state: Route.tags } },
+      {
+        path: 'tags',
+        loadChildren: () =>
+          import('@atocha/menu-matriarch/feature-tags').then(
+            (m) => m.MenuMatriarchFeatureTagsModule
+          ),
+      },
       {
         path: 'meals',
-        component: MealsComponent,
-        data: { state: Route.meals },
-        children: [
-          { path: '', component: MealPlaceholderComponent, pathMatch: 'full' },
-          { path: 'new', component: MealEditComponent },
-          { path: ':id', component: MealDetailsComponent },
-          { path: ':id/edit', component: MealEditComponent },
-        ],
+        loadChildren: () =>
+          import('@atocha/menu-matriarch/feature-meals').then(
+            (m) => m.MenuMatriarchFeatureMealsModule
+          ),
       },
       {
         path: 'dishes',
-        component: DishesComponent,
-        data: { state: Route.dishes },
-        children: [
-          { path: '', component: DishPlaceholderComponent, pathMatch: 'full' },
-          { path: 'new', component: DishEditComponent },
-          { path: ':id', component: DishDetailsComponent },
-          { path: ':id/edit', component: DishEditComponent },
-        ],
+        loadChildren: () =>
+          import('@atocha/menu-matriarch/feature-dishes').then(
+            (m) => m.MenuMatriarchFeatureDishesModule
+          ),
       },
       {
         path: '',
@@ -80,8 +76,10 @@ const routes: Routes = [
       },
       {
         path: 'settings',
-        component: SettingsComponent,
-        data: { state: Route.settings },
+        loadChildren: () =>
+          import('@atocha/menu-matriarch/feature-settings').then(
+            (m) => m.MenuMatriarchFeatureSettingsModule
+          ),
       },
     ],
   },

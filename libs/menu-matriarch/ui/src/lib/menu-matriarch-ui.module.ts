@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
-import { CoreUiModule } from '@atocha/core/ui';
+import { CoreUiModule, PluralPipe, SafePipe } from '@atocha/core/ui';
 
 import { AlertComponent } from './_generic/alert/alert.component';
 import { ButtonComponent } from './_generic/button/button.component';
@@ -88,6 +88,8 @@ import { TagsListComponent } from './tags/tags-list/tags-list.component';
     OptionsMenuComponent,
     OptionsMenuItemComponent,
     OptionsMenuTriggerDirective,
+    PluralPipe,
+    SafePipe,
     SearchInputComponent,
     SectionComponent,
     SmallCapsLabelComponent,

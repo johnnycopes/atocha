@@ -1,0 +1,25 @@
+{
+  "projectType": "library",
+  "sourceRoot": "libs/menu-matriarch/feature-dishes/src",
+  "prefix": "app",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/menu-matriarch/feature-dishes"],
+      "options": {
+        "jestConfig": "libs/menu-matriarch/feature-dishes/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/menu-matriarch/feature-dishes/**/*.ts",
+          "libs/menu-matriarch/feature-dishes/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

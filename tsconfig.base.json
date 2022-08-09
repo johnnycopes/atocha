@@ -35,6 +35,30 @@
       "@atocha/menu-matriarch/data-access": [
         "libs/menu-matriarch/data-access/src/index.ts"
       ],
+      "@atocha/menu-matriarch/feature-dishes": [
+        "libs/menu-matriarch/feature-dishes/src/index.ts"
+      ],
+      "@atocha/menu-matriarch/feature-entities": [
+        "libs/menu-matriarch/feature-entities/src/index.ts"
+      ],
+      "@atocha/menu-matriarch/feature-meals": [
+        "libs/menu-matriarch/feature-meals/src/index.ts"
+      ],
+      "@atocha/menu-matriarch/feature-menus": [
+        "libs/menu-matriarch/feature-menus/src/index.ts"
+      ],
+      "@atocha/menu-matriarch/feature-planner": [
+        "libs/menu-matriarch/feature-planner/src/index.ts"
+      ],
+      "@atocha/menu-matriarch/feature-settings": [
+        "libs/menu-matriarch/feature-settings/src/index.ts"
+      ],
+      "@atocha/menu-matriarch/feature-shell": [
+        "libs/menu-matriarch/feature-shell/src/index.ts"
+      ],
+      "@atocha/menu-matriarch/feature-tags": [
+        "libs/menu-matriarch/feature-tags/src/index.ts"
+      ],
       "@atocha/menu-matriarch/types": [
         "libs/menu-matriarch/types/src/index.ts"
       ],
