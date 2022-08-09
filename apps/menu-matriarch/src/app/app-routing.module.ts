@@ -26,14 +26,16 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     children: [
       {
-        path: 'planner/:menuId',
+        path: `${Route.planner}/:menuId`,
+        data: { state: Route.planner },
         loadChildren: () =>
           import('@atocha/menu-matriarch/feature-planner').then(
             (m) => m.MenuMatriarchFeaturePlannerModule
           ),
       },
       {
-        path: 'planner',
+        path: Route.planner,
+        data: { state: Route.planner },
         canActivate: [PlannerGuard],
         loadChildren: () =>
           import('@atocha/menu-matriarch/feature-planner').then(
@@ -41,45 +43,50 @@ const routes: Routes = [
           ),
       },
       {
-        path: 'menus',
+        path: Route.menus,
+        // data: { state: Route.menus },
         loadChildren: () =>
           import('@atocha/menu-matriarch/feature-menus').then(
             (m) => m.MenuMatriarchFeatureMenusModule
           ),
       },
       {
-        path: 'tags',
+        path: Route.tags,
+        data: { state: Route.tags },
         loadChildren: () =>
           import('@atocha/menu-matriarch/feature-tags').then(
             (m) => m.MenuMatriarchFeatureTagsModule
           ),
       },
       {
-        path: 'meals',
+        path: Route.meals,
+        data: { state: Route.meals },
         loadChildren: () =>
           import('@atocha/menu-matriarch/feature-meals').then(
             (m) => m.MenuMatriarchFeatureMealsModule
           ),
       },
       {
-        path: 'dishes',
+        path: Route.dishes,
+        data: { state: Route.dishes },
         loadChildren: () =>
           import('@atocha/menu-matriarch/feature-dishes').then(
             (m) => m.MenuMatriarchFeatureDishesModule
           ),
       },
       {
-        path: '',
-        redirectTo: 'planner',
-        pathMatch: 'full',
-        data: { state: Route.planner },
-      },
-      {
-        path: 'settings',
+        path: Route.settings,
+        data: { state: Route.settings },
         loadChildren: () =>
           import('@atocha/menu-matriarch/feature-settings').then(
             (m) => m.MenuMatriarchFeatureSettingsModule
           ),
+      },
+      {
+        path: '',
+        redirectTo: Route.planner,
+        pathMatch: 'full',
+        data: { state: Route.planner },
       },
     ],
   },
