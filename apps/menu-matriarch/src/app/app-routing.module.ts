@@ -2,14 +2,16 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 import {
+  AuthGuard,
+  LoggedInAuthGuard,
+  PlannerGuard,
+} from '@atocha/menu-matriarch/data-access';
+import {
   PageNotFoundComponent,
   ShellComponent,
   WelcomeComponent,
 } from '@atocha/menu-matriarch/feature-shell';
 import { Route } from '@atocha/menu-matriarch/types';
-import { AuthGuard } from './core/guards/auth.guard';
-import { LoggedInAuthGuard } from './core/guards/logged-in-auth.guard';
-import { PlannerGuard } from './core/guards/planner.guard';
 
 const routes: Routes = [
   {

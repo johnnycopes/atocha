@@ -4,7 +4,7 @@ import { Observable, of } from 'rxjs';
 import { first, map, switchMap } from 'rxjs/operators';
 
 import { AuthService } from '@atocha/core/data-access';
-import { RouterService } from '@atocha/menu-matriarch/data-access';
+import { RouterService } from './router.service';
 
 @Injectable({
   providedIn: 'root',
