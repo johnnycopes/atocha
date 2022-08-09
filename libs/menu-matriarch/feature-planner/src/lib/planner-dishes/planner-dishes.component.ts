@@ -20,7 +20,7 @@ export class PlannerDishesComponent {
 
   constructor(private _menuService: MenuService) {}
 
-  public async onDayChange(
+  async onDayChange(
     menu: Menu | undefined,
     { id, day, selected }: { id: string; day: Day; selected: boolean }
   ): Promise<void> {

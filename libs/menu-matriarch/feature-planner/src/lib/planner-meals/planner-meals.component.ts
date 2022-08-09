@@ -20,7 +20,7 @@ export class PlannerMealsComponent {
 
   constructor(private _menuService: MenuService) {}
 
-  public async onDayChange(
+  async onDayChange(
     menu: Menu | undefined,
     {
       dishIds,

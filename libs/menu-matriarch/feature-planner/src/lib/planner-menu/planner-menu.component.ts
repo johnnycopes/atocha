@@ -12,14 +12,14 @@ import { MenuService, PrintService } from '@atocha/menu-matriarch/data-access';
 })
 export class PlannerMenuComponent {
   @Input() menu: Menu | undefined;
-  public readonly trackByFn = menuEntryTrackByFn;
+  readonly trackByFn = menuEntryTrackByFn;
 
   constructor(
     private _menuService: MenuService,
     private _printService: PrintService
   ) {}
 
-  public onPrint(): void {
+  onPrint(): void {
     if (!this.menu) {
       return;
     }
@@ -32,14 +32,14 @@ export class PlannerMenuComponent {
     });
   }
 
-  public async onClearDay({ day }: MenuEntry): Promise<void> {
+  async onClearDay({ day }: MenuEntry): Promise<void> {
     if (!this.menu) {
       return;
     }
     return this._menuService.deleteMenuContents(this.menu, day);
   }
 
-  public async onClearAll(): Promise<void> {
+  async onClearAll(): Promise<void> {
     if (!this.menu) {
       return;
     }

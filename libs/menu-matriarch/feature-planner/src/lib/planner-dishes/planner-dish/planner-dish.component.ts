@@ -34,9 +34,9 @@ export class PlannerDishComponent {
   @Input()
   set menu(menu: Menu | undefined) {
     this.entryModels =
-      menu?.entries.map((entry) => ({
-        day: entry.day,
-        checked: !!entry.dishes.find((dish) => dish.id === this.id),
+      menu?.entries.map(({ day, dishes }) => ({
+        day,
+        checked: !!dishes.find(({ id }) => id === this.id),
       })) ?? [];
   }
   @Output() dayChange = new EventEmitter<{

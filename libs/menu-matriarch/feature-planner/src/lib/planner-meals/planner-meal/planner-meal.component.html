@@ -30,6 +30,7 @@
     class="schedule"
   >
     <ui-checkbox *ngFor="let model of entryModels; trackBy: trackByFn"
+      class="checkbox"
       [indeterminate]="model.indeterminate"
       [ngModel]="model.checked"
       (ngModelChange)="dayChange.emit({
