@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 import { AutofocusDirective } from './autofocus/autofocus.directive';
 import { CheckboxComponent } from './checkbox/checkbox.component';
@@ -12,7 +13,7 @@ import { SafePipe } from './sanitization/safe.pipe';
 import { TreeComponent } from './tree/tree.component';
 
 @NgModule({
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, DragDropModule],
   declarations: [
     AutofocusDirective,
     CheckboxComponent,
