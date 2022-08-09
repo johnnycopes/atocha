@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/member-ordering */
-
 import {
   Component,
   Input,
