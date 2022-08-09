@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { OverlayModule } from '@angular/cdk/overlay';
+import { PortalModule } from '@angular/cdk/portal';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { CoreUiModule, PluralPipe, SafePipe } from '@atocha/core/ui';
@@ -37,7 +38,8 @@ import { TagsListComponent } from './tags/tags-list/tags-list.component';
   imports: [
     CommonModule,
     FormsModule,
-    RouterModule,
+    OverlayModule,
+    PortalModule,
     FontAwesomeModule,
     CoreUiModule,
   ],

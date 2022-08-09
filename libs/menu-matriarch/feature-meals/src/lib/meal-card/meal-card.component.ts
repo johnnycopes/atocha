@@ -1,4 +1,5 @@
 import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { Dish, Orientation, Tag } from '@atocha/menu-matriarch/types';
 
@@ -17,4 +18,10 @@ export class MealCardComponent {
   @Input() active = false;
   @Input() fallbackText = '';
   @Input() orientation: Orientation = 'horizontal';
+
+  constructor(private _router: Router) {}
+
+  onDishClick(id: string): void {
+    this._router.navigate(['dishes', id]);
+  }
 }

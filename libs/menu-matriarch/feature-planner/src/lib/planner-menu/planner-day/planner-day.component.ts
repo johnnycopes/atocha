@@ -9,6 +9,7 @@ import {
 import { faPlusSquare, faTimes } from '@fortawesome/free-solid-svg-icons';
 
 import { Day, Dish, Orientation } from '@atocha/menu-matriarch/types';
+import { Router } from '@angular/router';
 
 @Component({
   // eslint-disable-next-line @angular-eslint/component-selector
@@ -30,14 +31,20 @@ export class PlannerDayComponent implements OnInit {
   @Input() fallbackText = '';
   @Input() orientation: Orientation = 'horizontal';
   @Output() clear = new EventEmitter<void>();
-  public readonly addIcon = faPlusSquare;
-  public readonly clearIcon = faTimes;
-  public dishIds = '';
+  dishIds = '';
+  readonly addIcon = faPlusSquare;
+  readonly clearIcon = faTimes;
   private _dishes: Dish[] = [];
 
-  public ngOnInit(): void {
+  constructor(private _router: Router) {}
+
+  ngOnInit(): void {
     if (!this.day) {
       throw new Error('DayComponent must have an assigned "day" property');
     }
+  }
+
+  onDishClick(id: string): void {
+    this._router.navigate(['dishes', id]);
   }
 }

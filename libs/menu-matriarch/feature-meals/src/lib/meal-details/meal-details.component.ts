@@ -18,7 +18,7 @@ export class MealDetailsComponent {
   private _id$ = this._route.paramMap.pipe(
     map((paramMap) => paramMap.get('id'))
   );
-  public vm$ = combineLatest([
+  vm$ = combineLatest([
     this._route.params.pipe(
       switchMap(({ id }) => {
         if (!id) {
@@ -35,9 +35,9 @@ export class MealDetailsComponent {
       orientation: preferences?.mealOrientation ?? 'horizontal',
     }))
   );
-  public readonly dishTypes = getDishTypes();
-  public readonly typeTrackByFn = trackBySelf;
-  public readonly dishTrackByFn = dishTrackByFn;
+  readonly dishTypes = getDishTypes();
+  readonly typeTrackByFn = trackBySelf;
+  readonly dishTrackByFn = dishTrackByFn;
 
   constructor(
     private _route: ActivatedRoute,
@@ -46,7 +46,7 @@ export class MealDetailsComponent {
     private _userService: UserService
   ) {}
 
-  public onDelete(): void {
+  onDelete(): void {
     this._id$
       .pipe(
         first(),
@@ -59,5 +59,9 @@ export class MealDetailsComponent {
         tap(() => this._router.navigate(['..'], { relativeTo: this._route }))
       )
       .subscribe();
+  }
+
+  onDishClick(id: string): void {
+    this._router.navigate(['dishes', id]);
   }
 }

@@ -17,7 +17,7 @@
       ></ui-filters-button>
       <a ui-button
         class="button"
-        [routerLink]="newRoute"
+        (click)="newButtonClick.emit()"
       >
         New {{ entity }}
       </a>

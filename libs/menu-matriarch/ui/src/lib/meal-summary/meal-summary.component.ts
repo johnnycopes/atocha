@@ -1,4 +1,10 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+} from '@angular/core';
 
 import {
   Dish,
@@ -17,17 +23,19 @@ import { dishTrackByFn, groupTrackByFn } from '../track-by-functions';
 export class MealSummaryComponent {
   @Input()
   set dishes(dishes: Dish[]) {
-    this.dishesGroups = getDishTypes().map((type) => ({
-      type,
-      dishes: dishes.filter((dish) => dish.type === type),
+    this.dishesGroups = getDishTypes().map((dishType) => ({
+      type: dishType,
+      dishes: dishes.filter(({ type }) => type === dishType),
     }));
     this.showFallback = !dishes.length;
   }
   @Input() boundaries: 'labeled' | 'unlabeled' = 'unlabeled';
   @Input() fallbackText = '';
   @Input() orientation: Orientation = 'horizontal';
-  public dishesGroups: FilteredDishesGroup[] = [];
-  public showFallback = true;
-  public readonly groupTrackByFn = groupTrackByFn;
-  public readonly dishTrackByFn = dishTrackByFn;
+  @Output() dishClick = new EventEmitter<string>();
+
+  dishesGroups: FilteredDishesGroup[] = [];
+  showFallback = true;
+  readonly groupTrackByFn = groupTrackByFn;
+  readonly dishTrackByFn = dishTrackByFn;
 }

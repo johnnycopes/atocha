@@ -16,6 +16,7 @@
           [menuIds]="dish.menuIds"
           [mealIds]="dish.mealIds"
           [usages]="dish.usages"
+          (nameClick)="onDishClick($event)"
         ></ui-dish-summary>
         <ui-checkbox class="included"
           [name]="dish.id"
@@ -107,6 +108,7 @@
             [dishes]="vm.dishes"
             [fallbackText]="vm.fallbackText"
             [orientation]="vm.orientation"
+            (dishClick)="onDishClick($event)"
             boundaries="labeled"
           ></ui-meal-summary>
         </div>

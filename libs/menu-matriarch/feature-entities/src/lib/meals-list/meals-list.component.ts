@@ -6,6 +6,7 @@ import {
   EventEmitter,
   Output,
 } from '@angular/core';
+import { Router } from '@angular/router';
 import { combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -28,7 +29,7 @@ import { MealDefContext, MealDefDirective } from './meal-def.directive';
 })
 export class MealsListComponent {
   @Output() nameDblClick = new EventEmitter<void>();
-  public vm$ = combineLatest([
+  vm$ = combineLatest([
     this._mealService.getMeals(),
     this._tagService.getTags(),
     this._userService.getPreferences(),
@@ -53,12 +54,12 @@ export class MealsListComponent {
       };
     })
   );
-  public readonly trackByFn = trackByFactory<Meal>(({ id }) => id);
+  readonly trackByFn = trackByFactory<Meal>(({ id }) => id);
 
   @ContentChild(MealDefDirective)
-  public mealDef: MealDefDirective | undefined;
+  mealDef: MealDefDirective | undefined;
 
-  public get mealTemplate(): TemplateRef<MealDefContext> | null {
+  get mealTemplate(): TemplateRef<MealDefContext> | null {
     return this.mealDef?.template ?? null;
   }
 
@@ -66,12 +67,17 @@ export class MealsListComponent {
     private _filterService: FilterService,
     private _mealService: MealService,
     private _routerService: RouterService,
+    private _router: Router,
     private _tagService: TagService,
     private _userService: UserService
   ) {}
 
   onSearchTextChange(text: string): void {
     this._filterService.updateText(text);
+  }
+
+  onNewButtonClick(): void {
+    this._router.navigate(['meals', 'new']);
   }
 
   onFiltersButtonClick(): void {

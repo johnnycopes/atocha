@@ -5,6 +5,7 @@ import {
   Output,
   EventEmitter,
 } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { trackByFactory } from '@atocha/core/ui';
 import {
@@ -37,7 +38,7 @@ export class PlannerMealComponent {
   @Input() fallbackText = '';
   @Input() orientation: Orientation = 'horizontal';
   @Input()
-  public set menu(menu: Menu | undefined) {
+  set menu(menu: Menu | undefined) {
     this.entryModels =
       menu?.entries.map((entry) => {
         const mealDishIds = this.dishes.map((dish) => dish.id);
@@ -61,8 +62,14 @@ export class PlannerMealComponent {
     day: Day;
     selected: boolean;
   }>();
-  public entryModels: EntryModel[] = [];
-  public readonly trackByFn = trackByFactory<EntryModel>(({ day }) => day);
+  entryModels: EntryModel[] = [];
+  readonly trackByFn = trackByFactory<EntryModel>(({ day }) => day);
+
+  constructor(private _router: Router) {}
+
+  onDishClick(id: string): void {
+    this._router.navigate(['dishes', id]);
+  }
 
   private _compare(
     mealDishIds: string[],

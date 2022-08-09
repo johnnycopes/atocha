@@ -2,18 +2,12 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
-import { DragDropModule } from '@angular/cdk/drag-drop';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
-import { OverlayModule } from '@angular/cdk/overlay';
-import { PortalModule } from '@angular/cdk/portal';
-
-import { environment } from '../environments/environment';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { CoreUiModule } from '@atocha/core/ui';
+import { environment } from '../environments/environment';
 import { MenuMatriarchFeatureDishesModule } from '@atocha/menu-matriarch/feature-dishes';
 import { MenuMatriarchFeatureMealsModule } from '@atocha/menu-matriarch/feature-meals';
 import { MenuMatriarchFeatureMenusModule } from '@atocha/menu-matriarch/feature-menus';
@@ -30,11 +24,6 @@ import { MenuMatriarchUiModule } from '@atocha/menu-matriarch/ui';
     AngularFirestoreModule,
     BrowserAnimationsModule,
     BrowserModule,
-    DragDropModule,
-    FontAwesomeModule,
-    FormsModule,
-    OverlayModule,
-    PortalModule,
     AppRoutingModule,
     CoreUiModule,
     MenuMatriarchFeatureDishesModule,

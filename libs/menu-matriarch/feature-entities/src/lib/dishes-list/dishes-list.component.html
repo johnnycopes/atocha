@@ -6,10 +6,10 @@
   [tags]="vm.tags"
   entity="Dish"
   pluralEntity="Dishes"
-  newRoute="/dishes/new"
   (searchTextChange)="onSearchTextChange($event)"
   (filtersChange)="onFiltersChange($event)"
   (filtersButtonClick)="onFiltersButtonClick()"
+  (newButtonClick)="onNewButtonClick()"
   (nameDblClick)="nameDblClick.emit()"
 >
   <ui-tabset>

@@ -5,6 +5,7 @@ import {
   Input,
   Output,
 } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { trackByFactory } from '@atocha/core/ui';
 import { Day, DishType, Menu, Tag } from '@atocha/menu-matriarch/types';
@@ -31,7 +32,7 @@ export class PlannerDishComponent {
   @Input() mealIds: string[] = [];
   @Input() usages = 0;
   @Input()
-  public set menu(menu: Menu | undefined) {
+  set menu(menu: Menu | undefined) {
     this.entryModels =
       menu?.entries.map((entry) => ({
         day: entry.day,
@@ -44,6 +45,12 @@ export class PlannerDishComponent {
     selected: boolean;
   }>();
 
-  public entryModels: EntryModel[] = [];
-  public readonly trackByFn = trackByFactory<EntryModel>(({ day }) => day);
+  entryModels: EntryModel[] = [];
+  readonly trackByFn = trackByFactory<EntryModel>(({ day }) => day);
+
+  constructor(private _router: Router) {}
+
+  onClick(id: string): void {
+    this._router.navigate(['dishes', id]);
+  }
 }

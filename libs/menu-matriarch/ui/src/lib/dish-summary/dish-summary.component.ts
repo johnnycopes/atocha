@@ -1,4 +1,10 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+} from '@angular/core';
 import { faLink } from '@fortawesome/free-solid-svg-icons';
 
 import { Tag } from '@atocha/menu-matriarch/types';
@@ -18,5 +24,6 @@ export class DishSummaryComponent {
   @Input() menuIds: string[] = [];
   @Input() mealIds: string[] = [];
   @Input() usages = 0;
-  public readonly faLink = faLink;
+  @Output() nameClick = new EventEmitter<string>();
+  readonly faLink = faLink;
 }
