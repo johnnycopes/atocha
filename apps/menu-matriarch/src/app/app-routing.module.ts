@@ -44,7 +44,7 @@ const routes: Routes = [
       },
       {
         path: Route.menus,
-        // data: { state: Route.menus },
+        data: { state: Route.menus },
         loadChildren: () =>
           import('@atocha/menu-matriarch/feature-menus').then(
             (m) => m.MenuMatriarchFeatureMenusModule
@@ -86,7 +86,6 @@ const routes: Routes = [
         path: '',
         redirectTo: Route.planner,
         pathMatch: 'full',
-        data: { state: Route.planner },
       },
     ],
   },
