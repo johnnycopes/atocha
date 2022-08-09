@@ -22,7 +22,7 @@ export class WelcomeComponent {
     private _seedDataService: SeedDataService
   ) {}
 
-  public async login(): Promise<void> {
+  async login(): Promise<void> {
     try {
       const user = await this._authService.login();
       if (user) {

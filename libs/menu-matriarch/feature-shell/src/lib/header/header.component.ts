@@ -11,8 +11,8 @@ import { RouterService } from '@atocha/menu-matriarch/data-access';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderComponent {
-  public Route: typeof Route = Route;
-  public plannerRoute$ = this._routerService.getPlannerRoute();
+  Route: typeof Route = Route;
+  plannerRoute$ = this._routerService.getPlannerRoute();
 
   constructor(private _routerService: RouterService) {}
 }
