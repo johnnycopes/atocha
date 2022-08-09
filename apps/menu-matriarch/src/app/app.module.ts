@@ -11,6 +11,7 @@ import { PortalModule } from '@angular/cdk/portal';
 
 import { environment } from '../environments/environment';
 
+import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { CoreUiModule } from '@atocha/core/ui';
 import { MenuMatriarchFeatureDishesModule } from '@atocha/menu-matriarch/feature-dishes';
@@ -18,24 +19,14 @@ import { MenuMatriarchFeatureMealsModule } from '@atocha/menu-matriarch/feature-
 import { MenuMatriarchFeatureMenusModule } from '@atocha/menu-matriarch/feature-menus';
 import { MenuMatriarchFeaturePlannerModule } from '@atocha/menu-matriarch/feature-planner';
 import { MenuMatriarchFeatureSettingsModule } from '@atocha/menu-matriarch/feature-settings';
+import { MenuMatriarchFeatureShellModule } from '@atocha/menu-matriarch/feature-shell';
 import { MenuMatriarchFeatureTagsModule } from '@atocha/menu-matriarch/feature-tags';
 import { MenuMatriarchUiModule } from '@atocha/menu-matriarch/ui';
 
-import { AppComponent } from './app.component';
-import { ErrorComponent } from './core/components/error/error.component';
-import { HeaderComponent } from './core/components/header/header.component';
-import { PageNotFoundComponent } from './core/components/page-not-found/page-not-found.component';
-import { ShellComponent } from './core/components/shell/shell.component';
-import { WelcomeComponent } from './features/welcome/welcome.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ErrorComponent,
-    HeaderComponent,
-    PageNotFoundComponent,
-    ShellComponent,
-    WelcomeComponent,
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebaseConfig),
@@ -54,10 +45,10 @@ import { WelcomeComponent } from './features/welcome/welcome.component';
     MenuMatriarchFeatureMenusModule,
     MenuMatriarchFeaturePlannerModule,
     MenuMatriarchFeatureSettingsModule,
+    MenuMatriarchFeatureShellModule,
     MenuMatriarchFeatureTagsModule,
     MenuMatriarchUiModule,
   ],
-  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

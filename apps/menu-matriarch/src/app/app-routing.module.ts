@@ -1,13 +1,11 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
+import { PageNotFoundComponent, ShellComponent, WelcomeComponent } from '@atocha/menu-matriarch/feature-shell';
 import { Route } from '@atocha/menu-matriarch/types';
 import { AuthGuard } from './core/guards/auth.guard';
 import { LoggedInAuthGuard } from './core/guards/logged-in-auth.guard';
 import { PlannerGuard } from './core/guards/planner.guard';
-import { PageNotFoundComponent } from './core/components/page-not-found/page-not-found.component';
-import { ShellComponent } from './core/components/shell/shell.component';
-import { WelcomeComponent } from './features/welcome/welcome.component';
 
 const routes: Routes = [
   {
