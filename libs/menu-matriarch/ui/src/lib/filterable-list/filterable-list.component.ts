@@ -22,9 +22,9 @@ export class FilterableListComponent {
   @Input() tags: Tag[] = [];
   @Input() entity = 'Item';
   @Input() pluralEntity: string | undefined;
-  @Input() newRoute = '';
   @Output() searchTextChange = new EventEmitter<string>();
   @Output() filtersChange = new EventEmitter<string[]>();
   @Output() filtersButtonClick = new EventEmitter<void>();
+  @Output() newButtonClick = new EventEmitter<void>();
   @Output() nameDblClick = new EventEmitter<void>();
 }
