@@ -31,14 +31,14 @@ export class PlannerDayComponent implements OnInit {
   @Input() fallbackText = '';
   @Input() orientation: Orientation = 'horizontal';
   @Output() clear = new EventEmitter<void>();
-  public readonly addIcon = faPlusSquare;
-  public readonly clearIcon = faTimes;
-  public dishIds = '';
+  dishIds = '';
+  readonly addIcon = faPlusSquare;
+  readonly clearIcon = faTimes;
   private _dishes: Dish[] = [];
 
   constructor(private _router: Router) {}
 
-  public ngOnInit(): void {
+  ngOnInit(): void {
     if (!this.day) {
       throw new Error('DayComponent must have an assigned "day" property');
     }
