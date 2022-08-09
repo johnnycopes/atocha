@@ -1,6 +1,6 @@
 <div class="container">
   <a class="dish-link"
-    routerLink="/dishes/{{ id }}"
+    (click)="nameClick.emit(id)"
   >
     <h3 class="name">
       {{ name }}
