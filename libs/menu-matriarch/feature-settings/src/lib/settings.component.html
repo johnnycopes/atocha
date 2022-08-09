@@ -4,7 +4,7 @@
       <h2 class="title">
         Account
       </h2>
-      <ui-card>
+      <ui-card class="card">
         <h4 class="name">
           {{ user.name }}
         </h4>
@@ -23,8 +23,10 @@
       <h2 class="title">
         Settings
       </h2>
-      <ui-card>
-        <form #form="ngForm">
+      <ui-card class="card">
+        <form #form="ngForm"
+          class="form"
+        >
           <ui-input label="Default Menu Start Day">
             <select id="Default Menu Start Day"
               name="menuStartDay"

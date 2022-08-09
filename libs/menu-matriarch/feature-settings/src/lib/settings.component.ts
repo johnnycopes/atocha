@@ -8,8 +8,8 @@ import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { debounceTime, switchMap, takeUntil } from 'rxjs/operators';
 
-import { AuthService } from '@atocha/core/data-access';
 import { trackBySelf } from '@atocha/core/ui';
+import { AuthService } from '@atocha/core/data-access';
 import { UserService } from '@atocha/menu-matriarch/data-access';
 import { UserPreferences, getDays } from '@atocha/menu-matriarch/types';
 
@@ -51,7 +51,7 @@ export class SettingsComponent implements OnInit, OnDestroy {
   async signOut(): Promise<void> {
     try {
       await this._authService.logout();
-      this._router.navigate(['/welcome']);
+      this._router.navigate(['welcome']);
     } catch (e) {
       console.error(e);
     }
