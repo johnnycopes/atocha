@@ -32,7 +32,7 @@ export class MenuCardComponent {
   constructor(
     private _menuService: MenuService,
     private _printService: PrintService,
-    private _router: Router,
+    private _router: Router
   ) {}
 
   onPrint(): void {
