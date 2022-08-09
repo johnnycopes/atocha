@@ -6,8 +6,6 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
-import { OverlayModule } from '@angular/cdk/overlay';
-import { PortalModule } from '@angular/cdk/portal';
 
 import { environment } from '../environments/environment';
 
@@ -33,8 +31,6 @@ import { MenuMatriarchUiModule } from '@atocha/menu-matriarch/ui';
     DragDropModule,
     FontAwesomeModule,
     FormsModule,
-    OverlayModule,
-    PortalModule,
     AppRoutingModule,
     CoreUiModule,
     MenuMatriarchFeatureDishesModule,
