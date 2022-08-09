@@ -6,6 +6,7 @@ import {
   Output,
   EventEmitter,
 } from '@angular/core';
+import { Router } from '@angular/router';
 import { combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -26,7 +27,7 @@ import { DishContext, DishDefDirective } from './dish-def.directive';
 })
 export class DishesListComponent {
   @Output() nameDblClick = new EventEmitter<void>();
-  public vm$ = combineLatest([
+  vm$ = combineLatest([
     this._dishService.getDishes(),
     this._tagService.getTags(),
     this._filterService.state$,
@@ -54,13 +55,13 @@ export class DishesListComponent {
       };
     })
   );
-  public readonly groupTrackByFn = groupTrackByFn;
-  public readonly dishTrackByFn = dishTrackByFn;
+  readonly groupTrackByFn = groupTrackByFn;
+  readonly dishTrackByFn = dishTrackByFn;
 
   @ContentChild(DishDefDirective)
-  public dishDef: DishDefDirective | undefined;
+  dishDef: DishDefDirective | undefined;
 
-  public get dishTemplate(): TemplateRef<DishContext> | null {
+  get dishTemplate(): TemplateRef<DishContext> | null {
     return this.dishDef?.template ?? null;
   }
 
@@ -68,11 +69,16 @@ export class DishesListComponent {
     private _dishService: DishService,
     private _filterService: FilterService,
     private _routerService: RouterService,
+    private _router: Router,
     private _tagService: TagService
   ) {}
 
   onSearchTextChange(text: string): void {
     this._filterService.updateText(text);
+  }
+
+  onNewButtonClick(): void {
+    this._router.navigate(['dishes', 'new']);
   }
 
   onFiltersButtonClick(): void {
