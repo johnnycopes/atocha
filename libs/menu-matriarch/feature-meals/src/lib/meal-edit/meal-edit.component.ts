@@ -41,10 +41,10 @@ export class MealEditComponent {
   private _routeId = this._route.snapshot.paramMap.get('id');
   private _dishIds = this._route.snapshot.queryParamMap.get('dishes');
   private _formDishes$ = new Subject<FormDishes | null>();
-  public _meal$ = this._routeId
+  _meal$ = this._routeId
     ? this._mealService.getMeal(this._routeId)
     : of(undefined);
-  public vm$ = combineLatest([
+  vm$ = combineLatest([
     this._meal$,
     this._dishService.getDishes(),
     this._tagService.getTags(),
@@ -91,9 +91,9 @@ export class MealEditComponent {
       }
     })
   );
-  public readonly dishTypes = getDishTypes();
-  public readonly typeTrackByFn = trackBySelf;
-  public readonly dishTrackByFn = dishTrackByFn;
+  readonly dishTypes = getDishTypes();
+  readonly typeTrackByFn = trackBySelf;
+  readonly dishTrackByFn = dishTrackByFn;
 
   constructor(
     private _route: ActivatedRoute,
@@ -104,11 +104,15 @@ export class MealEditComponent {
     private _userService: UserService
   ) {}
 
-  public onDishChange(dishesModel: FormDishes): void {
+  onDishClick(id: string): void {
+    this._router.navigate(['dishes', id]);
+  }
+
+  onDishChange(dishesModel: FormDishes): void {
     this._formDishes$.next(dishesModel);
   }
 
-  public async onSave(form: NgForm): Promise<void> {
+  async onSave(form: NgForm): Promise<void> {
     const details: MealEditForm = {
       name: form.value.name,
       description: form.value.description,

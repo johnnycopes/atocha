@@ -68,6 +68,7 @@
         [dishes]="entry.dishes"
         [fallbackText]="fallbackText"
         [orientation]="orientation"
+        (dishClick)="onDishClick($event)"
       ></ui-meal-summary>
     </li>
   </ul>

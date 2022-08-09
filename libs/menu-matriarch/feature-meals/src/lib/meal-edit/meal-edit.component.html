@@ -107,6 +107,7 @@
             [dishes]="vm.dishes"
             [fallbackText]="vm.fallbackText"
             [orientation]="vm.orientation"
+            (dishClick)="onDishClick($event)"
             boundaries="labeled"
           ></ui-meal-summary>
         </div>
