@@ -6,7 +6,7 @@
   overflow: auto;
 }
 
-li:not(:last-of-type) {
+.meal:not(:last-of-type) {
   margin-bottom: spacing(8);
   flex-shrink: 0;
 }
