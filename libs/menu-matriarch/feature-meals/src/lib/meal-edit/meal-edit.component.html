@@ -31,6 +31,7 @@
     <ui-section>
       <div class="ui-section__toolbar">
         <a ui-button
+          class="button"
           buttonStyle="secondary"
           routerLink=".."
         >
@@ -38,6 +39,7 @@
         </a>
         <!-- TODO: create form validator -->
         <button ui-button
+          class="button"
           buttonStyle="primary"
           type="submit"
           [disabled]="!form.valid || !vm.dishesModel.length"
@@ -46,7 +48,7 @@
         </button>
       </div>
       <div class="ui-section__content">
-        <ui-input
+        <ui-input class="input"
           label="name"
         >
           <input
@@ -59,7 +61,7 @@
             coreAutofocus
           />
         </ui-input>
-        <ui-input
+        <ui-input class="input"
           label="description"
         >
           <input
@@ -70,7 +72,7 @@
             #description="ngModel"
           />
         </ui-input>
-        <ui-input
+        <ui-input class="input"
           label="tags"
         >
           <ui-tags-list
@@ -96,6 +98,7 @@
             <div class="placeholder">
               <p>No tags to display</p>
               <a ui-button
+                class="button"
                 routerLink="/tags"
               >
                 New Tag
