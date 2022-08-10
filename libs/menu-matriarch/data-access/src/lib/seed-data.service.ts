@@ -51,6 +51,7 @@ export class SeedDataService {
     const veganTagId = this._dataService.createId();
     const vegetarianTagId = this._dataService.createId();
     const batch = this._batchService.createBatch();
+
     batch
       .set({
         endpoint: Endpoint.users,
@@ -342,6 +343,7 @@ export class SeedDataService {
           ],
         }),
       });
+
     await batch.commit();
     return menuId;
   }

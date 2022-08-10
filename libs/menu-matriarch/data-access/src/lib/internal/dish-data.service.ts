@@ -31,7 +31,7 @@ export class DishDataService {
     return this._dataService
       .getMany<DishDto>(this._endpoint, uid)
       .pipe(
-        map((dishDtos) => sort(dishDtos, (dishDto) => lower(dishDto.name)))
+        map((dishDtos) => sort(dishDtos, ({ name }) => lower(name)))
       );
   }
 
@@ -44,6 +44,7 @@ export class DishDataService {
   }): Promise<string> {
     const id = this._dataService.createId();
     const batch = this._batchService.createBatch();
+
     batch.set({
       endpoint: this._endpoint,
       id,
@@ -59,6 +60,7 @@ export class DishDataService {
         })
       );
     }
+
     await batch.commit();
     return id;
   }
@@ -68,6 +70,7 @@ export class DishDataService {
     data: Partial<Omit<DishDto, 'usages' | 'menus'>>
   ): Promise<void> {
     const batch = this._batchService.createBatch();
+
     batch.update({
       endpoint: this._endpoint,
       id: dish.id,
@@ -77,17 +80,19 @@ export class DishDataService {
       batch.updateMultiple(
         this._batchService.getTagUpdates({
           key: 'dishIds',
-          initialTagIds: dish.tags.map((tag) => tag.id),
+          initialTagIds: dish.tags.map(({ id }) => id),
           finalTagIds: data.tagIds,
           entityId: dish.id,
         })
       );
     }
+
     await batch.commit();
   }
 
   async deleteDish(dish: Dish): Promise<void> {
     const batch = this._batchService.createBatch();
+
     batch.delete(this._endpoint, dish.id).updateMultiple([
       ...this._batchService.getMenuContentsUpdates({
         menuIds: dish.menuIds,
@@ -102,11 +107,12 @@ export class DishDataService {
       }),
       ...this._batchService.getTagUpdates({
         key: 'dishIds',
-        initialTagIds: dish.tags.map((tag) => tag.id),
+        initialTagIds: dish.tags.map(({ id }) => id),
         finalTagIds: [],
         entityId: dish.id,
       }),
     ]);
+
     await batch.commit();
   }
 }

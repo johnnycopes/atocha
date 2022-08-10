@@ -31,7 +31,7 @@ export class MealDataService {
     return this._dataService
       .getMany<MealDto>(this._endpoint, uid)
       .pipe(
-        map((mealDtos) => sort(mealDtos, (mealDto) => lower(mealDto.name)))
+        map((mealDtos) => sort(mealDtos, ({ name }) => lower(name)))
       );
   }
 
@@ -41,6 +41,7 @@ export class MealDataService {
   ): Promise<string> {
     const id = this._dataService.createId();
     const batch = this._batchService.createBatch();
+
     batch.set({
       endpoint: this._endpoint,
       id,
@@ -66,12 +67,14 @@ export class MealDataService {
         })
       );
     }
+
     await batch.commit();
     return id;
   }
 
   async updateMeal(meal: Meal, data: Partial<MealDto>): Promise<void> {
     const batch = this._batchService.createBatch();
+
     batch.update({
       endpoint: this._endpoint,
       id: meal.id,
@@ -81,7 +84,7 @@ export class MealDataService {
       batch.updateMultiple(
         this._batchService.getDishUpdates({
           key: 'mealIds',
-          initialDishIds: meal.dishes.map((dish) => dish.id),
+          initialDishIds: meal.dishes.map(({ id }) => id),
           finalDishIds: data.dishIds,
           entityId: meal.id,
         })
@@ -91,31 +94,34 @@ export class MealDataService {
       batch.updateMultiple(
         this._batchService.getTagUpdates({
           key: 'mealIds',
-          initialTagIds: meal.tags.map((tag) => tag.id),
+          initialTagIds: meal.tags.map(({ id }) => id),
           finalTagIds: data.tagIds,
           entityId: meal.id,
         })
       );
     }
+
     await batch.commit();
   }
 
   async deleteMeal(meal: Meal): Promise<void> {
     const batch = this._batchService.createBatch();
+
     batch.delete(this._endpoint, meal.id).updateMultiple([
       ...this._batchService.getDishUpdates({
         key: 'mealIds',
-        initialDishIds: meal.dishes.map((dish) => dish.id),
+        initialDishIds: meal.dishes.map(({ id }) => id),
         finalDishIds: [],
         entityId: meal.id,
       }),
       ...this._batchService.getTagUpdates({
         key: 'mealIds',
-        initialTagIds: meal.tags.map((tag) => tag.id),
+        initialTagIds: meal.tags.map(({ id }) => id),
         finalTagIds: [],
         entityId: meal.id,
       }),
     ]);
+
     await batch.commit();
   }
 }
