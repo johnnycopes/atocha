@@ -4,7 +4,7 @@
   display: block;
 }
 
-ui-card {
+.card {
   padding: spacing(16);
 }
 
@@ -13,7 +13,7 @@ ui-card {
   flex-wrap: wrap;
   margin-top: spacing(8);
 
-  ui-checkbox {
+  .checkbox {
     margin-right: spacing(16);
   }
 }

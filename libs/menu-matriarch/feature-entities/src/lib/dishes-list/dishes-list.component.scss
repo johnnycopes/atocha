@@ -10,7 +10,7 @@
   padding: unset;
 }
 
-li:not(:last-of-type) {
+.dish:not(:last-of-type) {
   margin-bottom: spacing(8);
   flex-shrink: 0;
 }

@@ -19,12 +19,12 @@ import { TagDefContext, TagDefDirective } from './tag-def.directive';
 export class TagsListComponent<T extends Tag> {
   @Input() tags: T[] = [];
   @Input() interactive = false;
-  public readonly trackByFn = trackByFactory<Tag>(({ id }) => id);
+  readonly trackByFn = trackByFactory<Tag>(({ id }) => id);
 
   @ContentChild(TagDefDirective)
-  public tagDef: TagDefDirective<T> | undefined;
+  tagDef: TagDefDirective<T> | undefined;
 
-  public get tagTemplate(): TemplateRef<TagDefContext<T>> | null {
+  get tagTemplate(): TemplateRef<TagDefContext<T>> | null {
     return this.tagDef?.template ?? null;
   }
 }

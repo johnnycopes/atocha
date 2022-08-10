@@ -26,8 +26,8 @@
   padding: spacing(16) 0;
 }
 
-ui-card,
-form {
+.card,
+.form {
   & > *:not(:last-child) {
     margin-bottom: spacing(32);
   }

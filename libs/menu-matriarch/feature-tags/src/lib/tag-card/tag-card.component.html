@@ -14,22 +14,24 @@
   ></ui-tag>
   <div class="container">
     <ui-count
+      class="count"
       type="meals"
       [count]="meals.length"
     ></ui-count>
     <ui-count
+      class="count"
       type="dishes"
       [count]="dishes.length"
     ></ui-count>
     <button ui-button
-      class="edit"
+      class="button"
       buttonStyle="danger"
       (click)="delete.emit()"
     >
       Delete
     </button>
     <button ui-button
-      class="edit"
+      class="button"
       buttonStyle="secondary"
       (click)="startEdit$.next()"
     >

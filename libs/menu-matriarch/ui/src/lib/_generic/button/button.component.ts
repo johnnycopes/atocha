@@ -23,10 +23,10 @@ export class ButtonComponent {
 
   @Input()
   @HostBinding('attr.type')
-  public type: 'submit' | 'button' | 'reset' = 'button';
+  type: 'submit' | 'button' | 'reset' = 'button';
 
   @HostBinding('class')
-  public get hostClasses(): { [key: string]: boolean } {
+  get hostClasses(): { [key: string]: boolean } {
     return {
       'ui-button': true,
       [`ui-button--${this.buttonStyle}`]: true,

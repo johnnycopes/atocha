@@ -2,12 +2,14 @@
   <ui-section *ngIf="vm.meal as meal">
     <div class="ui-section__toolbar">
       <button ui-button
+        class="button"
         buttonStyle="danger"
         (click)="onDelete()"
       >
         Delete
       </button>
       <a ui-button
+        class="button"
         buttonStyle="secondary"
         routerLink="edit"
       >

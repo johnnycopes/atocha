@@ -3,7 +3,7 @@
 .ui-section__toolbar {
   justify-content: flex-end;
 
-  [ui-button] {
+  .button {
     margin-left: spacing(8);
   }
 }
@@ -25,10 +25,4 @@
   & > *:not(:last-of-type) {
     margin-bottom: spacing(8);
   }
-}
-
-ui-small-caps-label {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: spacing(8);
 }

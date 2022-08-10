@@ -1,12 +1,14 @@
 <ui-section *ngIf="vm$ | async as vm">
   <div class="ui-section__toolbar">
     <a ui-button
+      class="button"
       buttonStyle="secondary"
       routerLink=".."
     >
       Cancel
     </a>
     <button ui-button
+      class="button"
       buttonStyle="primary"
       type="submit"
       form="ngForm"
@@ -21,7 +23,7 @@
     (keydown.enter)="$event.preventDefault()"
     (ngSubmit)="onSave(form)"
   >
-    <ui-input
+    <ui-input class="input"
       label="name"
     >
       <input
@@ -34,7 +36,7 @@
         coreAutofocus
       />
     </ui-input>
-    <ui-input
+    <ui-input class="input"
       label="description"
     >
       <input
@@ -45,7 +47,7 @@
         #description="ngModel"
       />
     </ui-input>
-    <ui-input
+    <ui-input class="input"
       label="link"
     >
       <input
@@ -56,7 +58,7 @@
         #link="ngModel"
       />
     </ui-input>
-    <ui-input
+    <ui-input class="input"
       label="dish type"
     >
       <div class="radio-container">
@@ -73,7 +75,7 @@
         </label>
       </div>
     </ui-input>
-    <ui-input
+    <ui-input class="input"
       label="tags"
     >
       <ui-tags-list
@@ -99,6 +101,7 @@
         <div class="placeholder">
           <p>No tags to display</p>
           <a ui-button
+            class="button"
             routerLink="/tags"
           >
             New Tag
@@ -106,7 +109,7 @@
         </div>
       </ng-template>
     </ui-input>
-    <ui-input
+    <ui-input class="input"
       label="notes"
     >
       <editor

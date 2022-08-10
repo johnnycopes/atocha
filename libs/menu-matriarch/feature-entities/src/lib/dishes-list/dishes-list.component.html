@@ -18,7 +18,9 @@
       [selected]="vm.initialTab === group.type"
     >
       <ul *ngIf="group.dishes.length; else noDishesPlaceholder">
-        <li *ngFor="let dish of group.dishes; trackBy: dishTrackByFn">
+        <li *ngFor="let dish of group.dishes; trackBy: dishTrackByFn"
+          class="dish"
+        >
           <ng-container
             [ngTemplateOutlet]="dishTemplate"
             [ngTemplateOutletContext]="{

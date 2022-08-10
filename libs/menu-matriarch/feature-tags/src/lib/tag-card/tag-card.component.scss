@@ -11,14 +11,14 @@ ui-card {
   align-items: center;
 }
 
-ui-count {
+.count {
   margin-left: spacing(12);
 }
 
-button {
+.button {
   margin-left: spacing(8);
-}
 
-button:first-of-type {
-  margin-left: spacing(12);
+  &:first-of-type {
+    margin-left: spacing(12);
+  }
 }

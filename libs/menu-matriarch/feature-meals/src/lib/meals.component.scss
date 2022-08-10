@@ -8,11 +8,11 @@
   height: 100%;
 }
 
-.meals {
+.list {
   grid-column: list;
 }
 
-section {
+.details {
   grid-column: details;
   background: $white;
   overflow: hidden;

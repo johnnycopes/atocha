@@ -150,14 +150,16 @@ export class MealEditComponent {
     formDishes: Record<string, boolean>
   ): Dish[] {
     const dishes: Dish[] = [];
+
     for (const dishId in formDishes) {
       if (formDishes[dishId]) {
-        const dish = allDishes.find((dish) => dish.id === dishId);
+        const dish = allDishes.find(({ id }) => id === dishId);
         if (dish) {
           dishes.push(dish);
         }
       }
     }
+
     return dishes;
   }
 

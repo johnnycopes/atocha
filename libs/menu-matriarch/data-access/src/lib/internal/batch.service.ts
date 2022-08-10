@@ -38,12 +38,14 @@ export class BatchService {
         "A 'change' argument is needed in order to modify the menus' dishes"
       );
     }
+
     let updatedDishIds: string[] = [];
     if (change === 'add') {
       updatedDishIds = this._firestoreService.addToArray(...dishIds);
     } else if (change === 'remove') {
       updatedDishIds = this._firestoreService.removeFromArray(...dishIds);
     }
+
     return menuIds.map((menuId) => ({
       endpoint: Endpoint.menus,
       id: menuId,
@@ -101,6 +103,7 @@ export class BatchService {
     change: TallyChange;
   }): BatchUpdate[] {
     const dishCounts = tally(flattenValues(menu.contents));
+
     return dishIds.map((dishId) => {
       const menusChange = calculateTallyChange({
         tally: dishCounts,
@@ -111,6 +114,7 @@ export class BatchService {
         menusChange > 0
           ? this._firestoreService.addToArray(menu.id)
           : this._firestoreService.removeFromArray(menu.id);
+
       return {
         endpoint: Endpoint.dishes,
         id: dishId,
@@ -170,6 +174,7 @@ export class BatchService {
         data: { [key]: this._firestoreService.removeFromArray(entityId) },
       })),
     ];
+
     return batchUpdates;
   }
 

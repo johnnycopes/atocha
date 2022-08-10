@@ -26,13 +26,14 @@ export class OptionsMenuTriggerDirective implements AfterViewInit, OnDestroy {
     private _overlay: Overlay
   ) {}
 
-  public ngAfterViewInit(): void {
+  ngAfterViewInit(): void {
     if (this.menu?.templateRef) {
       this._templatePortal = new TemplatePortal(
         this.menu.templateRef,
         this._viewContainerRef
       );
     }
+
     this._overlayRef = this._overlay.create({
       disposeOnNavigation: true,
       scrollStrategy: this._overlay.scrollStrategies.close(),
@@ -48,9 +49,11 @@ export class OptionsMenuTriggerDirective implements AfterViewInit, OnDestroy {
           },
         ]),
     });
+
     this.menu?.closed
       .pipe(takeUntil(this._destroy$))
       .subscribe(() => this._overlayRef?.detach());
+
     this._overlayRef
       .outsidePointerEvents()
       .pipe(takeUntil(this._destroy$))
@@ -59,6 +62,7 @@ export class OptionsMenuTriggerDirective implements AfterViewInit, OnDestroy {
           this._overlayRef?.detach();
         }
       });
+
     fromEvent<MouseEvent>(this._viewContainerRef.element.nativeElement, 'click')
       .pipe(takeUntil(this._destroy$))
       .subscribe(() => {
@@ -70,7 +74,7 @@ export class OptionsMenuTriggerDirective implements AfterViewInit, OnDestroy {
       });
   }
 
-  public ngOnDestroy(): void {
+  ngOnDestroy(): void {
     this._destroy$.next();
     this._destroy$.complete();
     this._overlayRef?.dispose();

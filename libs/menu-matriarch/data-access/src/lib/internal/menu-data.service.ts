@@ -31,9 +31,7 @@ export class MenuDataService {
   getMenus(uid: string): Observable<MenuDto[]> {
     return this._dataService
       .getMany<MenuDto>(this._endpoint, uid)
-      .pipe(
-        map((menuDtos) => sort(menuDtos, (menuDto) => lower(menuDto.name)))
-      );
+      .pipe(map((menuDtos) => sort(menuDtos, ({ name }) => lower(name))));
   }
 
   async createMenu({
@@ -46,6 +44,7 @@ export class MenuDataService {
     startDay: Day;
   }): Promise<string> {
     const id = this._dataService.createId();
+
     await this._dataService.create<MenuDto>(
       this._endpoint,
       id,
@@ -56,6 +55,7 @@ export class MenuDataService {
         startDay,
       })
     );
+
     return id;
   }
 
@@ -75,6 +75,7 @@ export class MenuDataService {
     selected: boolean;
   }): Promise<void> {
     const batch = this._batchService.createBatch();
+
     batch.updateMultiple([
       ...this._batchService.getDishCountersUpdates({
         dishIds,
@@ -88,11 +89,13 @@ export class MenuDataService {
         change: selected ? 'add' : 'remove',
       }),
     ]);
+
     await batch.commit();
   }
 
   async deleteMenu(menu: Menu): Promise<void> {
     const batch = this._batchService.createBatch();
+
     batch.delete(this._endpoint, menu.id).updateMultiple(
       this._batchService.getDishCountersUpdates({
         dishIds: flattenValues(menu.contents),
@@ -100,11 +103,13 @@ export class MenuDataService {
         change: 'clear',
       })
     );
+
     await batch.commit();
   }
 
   async deleteMenuContents(menu: Menu, day?: Day): Promise<void> {
     const batch = this._batchService.createBatch();
+
     // Clear a single day's contents
     if (day) {
       batch.updateMultiple([
@@ -134,6 +139,7 @@ export class MenuDataService {
         }),
       ]);
     }
+
     await batch.commit();
   }
 }

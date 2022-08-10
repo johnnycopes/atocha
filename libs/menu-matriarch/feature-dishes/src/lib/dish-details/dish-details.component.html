@@ -1,12 +1,14 @@
 <ui-section *ngIf="dish$ | async as dish">
   <div class="ui-section__toolbar">
     <button ui-button
+      class="button"
       buttonStyle="danger"
       (click)="onDelete()"
     >
       Delete
     </button>
     <a ui-button
+      class="button"
       buttonStyle="secondary"
       routerLink="edit"
     >

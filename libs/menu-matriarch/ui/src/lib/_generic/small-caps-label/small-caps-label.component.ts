@@ -14,5 +14,5 @@ import {
 })
 export class SmallCapsLabelComponent {
   @HostBinding('class')
-  public hostClass = 'app-small-caps-label';
+  hostClass = 'app-small-caps-label';
 }

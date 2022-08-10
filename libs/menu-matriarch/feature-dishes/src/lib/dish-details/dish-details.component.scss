@@ -3,7 +3,7 @@
 .ui-section__toolbar {
   justify-content: flex-end;
 
-  [ui-button] {
+  .button {
     margin-left: spacing(8);
   }
 }

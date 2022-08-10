@@ -10,7 +10,7 @@
     color: color($neutral, 4);
   }
 
-  [ui-button]:not(:first-child) {
+  .button:not(:first-child) {
     margin-left: spacing(8);
   }
 }

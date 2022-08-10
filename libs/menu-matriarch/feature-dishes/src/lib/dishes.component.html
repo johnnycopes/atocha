@@ -1,4 +1,4 @@
-<app-dishes-list>
+<app-dishes-list class="list">
   <app-dish-card *appDishDef=" let dish; let activeDish = activeDish"
     [id]="dish.id"
     [name]="dish.name"
@@ -15,6 +15,6 @@
   ></app-dish-card>
 </app-dishes-list>
 
-<section>
+<section class="details">
   <router-outlet></router-outlet>
 </section>

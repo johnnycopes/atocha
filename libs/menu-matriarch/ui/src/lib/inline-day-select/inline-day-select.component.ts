@@ -19,6 +19,6 @@ export class InlineDaySelectComponent {
   @Input() startDay: Day = 'Monday';
   @Output() cancel = new EventEmitter<void>();
   @Output() save = new EventEmitter<Day>();
-  public readonly days = getDays();
-  public readonly dayTrackByFn = trackBySelf;
+  readonly days = getDays();
+  readonly dayTrackByFn = trackBySelf;
 }
