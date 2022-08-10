@@ -30,9 +30,7 @@ export class DishDataService {
   getDishes(uid: string): Observable<DishDto[]> {
     return this._dataService
       .getMany<DishDto>(this._endpoint, uid)
-      .pipe(
-        map((dishDtos) => sort(dishDtos, ({ name }) => lower(name)))
-      );
+      .pipe(map((dishDtos) => sort(dishDtos, ({ name }) => lower(name))));
   }
 
   async createDish({

@@ -30,9 +30,7 @@ export class MealDataService {
   getMeals(uid: string): Observable<MealDto[]> {
     return this._dataService
       .getMany<MealDto>(this._endpoint, uid)
-      .pipe(
-        map((mealDtos) => sort(mealDtos, ({ name }) => lower(name)))
-      );
+      .pipe(map((mealDtos) => sort(mealDtos, ({ name }) => lower(name))));
   }
 
   async createMeal(

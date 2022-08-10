@@ -31,9 +31,7 @@ export class MenuDataService {
   getMenus(uid: string): Observable<MenuDto[]> {
     return this._dataService
       .getMany<MenuDto>(this._endpoint, uid)
-      .pipe(
-        map((menuDtos) => sort(menuDtos, ({ name }) => lower(name)))
-      );
+      .pipe(map((menuDtos) => sort(menuDtos, ({ name }) => lower(name))));
   }
 
   async createMenu({
