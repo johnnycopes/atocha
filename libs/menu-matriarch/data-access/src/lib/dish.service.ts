@@ -3,7 +3,7 @@ import { combineLatest, Observable, of } from 'rxjs';
 import { concatMap, first, map, tap } from 'rxjs/operators';
 
 import { AuthService } from '@atocha/core/data-access';
-import { Dish, DishDto, Tag } from '@atocha/menu-matriarch/types';
+import { Dish, DishDto, mapDishDtoToDish } from '@atocha/menu-matriarch/types';
 import { DishDataService } from './internal/dish-data.service';
 import { TagService } from './tag.service';
 
@@ -26,7 +26,7 @@ export class DishService {
         if (!dishDto) {
           return undefined;
         }
-        return this._transformDto(dishDto, tags);
+        return mapDishDtoToDish(dishDto, tags);
       })
     );
   }
@@ -41,7 +41,7 @@ export class DishService {
             this._tagService.getTags(),
           ]).pipe(
             map(([dishDtos, tags]) =>
-              dishDtos.map((dishDto) => this._transformDto(dishDto, tags))
+              dishDtos.map((dishDto) => mapDishDtoToDish(dishDto, tags))
             )
           );
         }
@@ -91,23 +91,5 @@ export class DishService {
         await this._dishDataService.deleteDish(dish);
       })
     );
-  }
-
-  private _transformDto(dishDto: DishDto, tags: Tag[]): Dish {
-    return {
-      id: dishDto.id,
-      uid: dishDto.uid,
-      name: dishDto.name,
-      description: dishDto.description,
-      favorited: dishDto.favorited,
-      link: dishDto.link,
-      notes: dishDto.notes,
-      type: dishDto.type,
-      usages: dishDto.usages,
-      mealIds: dishDto.mealIds,
-      menuIds: dishDto.menuIds,
-      ingredients: [],
-      tags: tags.filter((tag) => dishDto.tagIds.includes(tag.id)),
-    };
   }
 }
