@@ -1,7 +1,7 @@
-import { Dish } from "../dish.interface";
-import { getDays } from "../functions/get-days";
-import { MenuDto, Menu } from "../menu.interface";
-import { UserPreferences } from "../user.interface";
+import { Dish } from '../dish.interface';
+import { getDays } from '../functions/get-days';
+import { MenuDto, Menu } from '../menu.interface';
+import { UserPreferences } from '../user.interface';
 
 export function mapMenuDtoToMenu({
   menuDto,
@@ -16,9 +16,7 @@ export function mapMenuDtoToMenu({
     ...menuDto,
     entries: getDays(menuDto.startDay).map((day) => ({
       day,
-      dishes: dishes.filter(({ id }) =>
-        menuDto.contents[day].includes(id)
-      ),
+      dishes: dishes.filter(({ id }) => menuDto.contents[day].includes(id)),
     })),
     orientation: preferences?.mealOrientation ?? 'horizontal',
     fallbackText: preferences?.emptyMealText ?? '',

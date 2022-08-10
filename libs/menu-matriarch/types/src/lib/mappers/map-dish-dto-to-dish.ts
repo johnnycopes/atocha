@@ -1,5 +1,5 @@
-import { Dish, DishDto } from "../dish.interface";
-import { Tag } from "../tag.interface";
+import { Dish, DishDto } from '../dish.interface';
+import { Tag } from '../tag.interface';
 
 export function mapDishDtoToDish(dishDto: DishDto, tags: Tag[]): Dish {
   return {

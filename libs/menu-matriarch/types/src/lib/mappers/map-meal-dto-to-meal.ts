@@ -1,6 +1,6 @@
-import { Dish } from "../dish.interface";
-import { Meal, MealDto } from "../meal.interface";
-import { Tag } from "../tag.interface";
+import { Dish } from '../dish.interface';
+import { Meal, MealDto } from '../meal.interface';
+import { Tag } from '../tag.interface';
 
 export function mapMealDtoToMeal({
   mealDto,
