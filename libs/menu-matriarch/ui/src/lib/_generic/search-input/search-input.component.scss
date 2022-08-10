@@ -1,10 +1,10 @@
 @import 'main';
 
-ui-input {
+.container {
   position: relative;
 }
 
-fa-icon {
+.clear {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);

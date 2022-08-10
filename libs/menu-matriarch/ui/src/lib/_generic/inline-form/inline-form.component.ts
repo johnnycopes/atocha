@@ -21,9 +21,9 @@ export class InlineFormComponent {
   @Input() disabled = false;
   @Output() cancel = new EventEmitter<void>();
   @Output() save = new EventEmitter<void>();
-  public readonly cancelIcon = faTimes;
-  public readonly saveIcon = faCheck;
+  readonly cancelIcon = faTimes;
+  readonly saveIcon = faCheck;
 
   @HostBinding('class')
-  public hostClass = 'ui-inline-form';
+  hostClass = 'ui-inline-form';
 }

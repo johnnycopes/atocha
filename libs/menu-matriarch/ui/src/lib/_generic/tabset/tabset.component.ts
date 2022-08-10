@@ -35,19 +35,19 @@ export class TabsetComponent
   @Input() controlsTemplate: TemplateRef<unknown> | undefined;
   @Input() contentVisibility: TabsetContentVisibility = 'visible';
   @ContentChildren(TabComponent)
-  public tabs: QueryList<TabComponent> | undefined;
-  public trackByFn = trackByFactory<TabComponent>((tab) => tab.name);
+  tabs: QueryList<TabComponent> | undefined;
+  trackByFn = trackByFactory<TabComponent>(({ name }) => name);
   private _destroy$ = new Subject<void>();
 
   @ViewChild('tabsElement')
-  public tabsElement: ElementRef | undefined;
+  tabsElement: ElementRef | undefined;
 
   constructor(private _changeDetectorRef: ChangeDetectorRef) {
     super();
   }
 
-  public ngAfterContentInit(): void {
-    const selectedTab = this.tabs?.find((tab) => tab.selected);
+  ngAfterContentInit(): void {
+    const selectedTab = this.tabs?.find(({ selected }) => selected);
 
     if (!selectedTab && this.tabs?.first) {
       this.tabs.first.selected = true;
@@ -55,8 +55,8 @@ export class TabsetComponent
 
     if (this.tabs) {
       merge(
-        ...this.tabs.map((tab) => tab.nameChange),
-        ...this.tabs.map((tab) => tab.selectedChange)
+        ...this.tabs.map(({ nameChange }) => nameChange),
+        ...this.tabs.map(({ selectedChange }) => selectedChange)
       )
         .pipe(
           takeUntil(this._destroy$),
@@ -66,12 +66,12 @@ export class TabsetComponent
     }
   }
 
-  public ngOnDestroy(): void {
+  ngOnDestroy(): void {
     this._destroy$.next();
     this._destroy$.complete();
   }
 
-  public onSelectTab(tab: TabComponent): void {
+  onSelectTab(tab: TabComponent): void {
     this.tabs?.forEach((tab) => (tab.selected = false));
     tab.selected = true;
   }

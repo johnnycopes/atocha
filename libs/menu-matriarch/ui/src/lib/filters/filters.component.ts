@@ -19,13 +19,15 @@ export class FiltersComponent {
   @Output() selectedChange = new EventEmitter<string[]>();
   @Output() selectedClear = new EventEmitter<void>();
 
-  public onTagChange(id: string, state: boolean): void {
+  onTagChange(id: string, state: boolean): void {
     let updated: string[] = [];
+
     if (state) {
       updated = [...this.selected, id];
     } else {
       updated = this.selected.filter((currentId) => currentId !== id);
     }
+
     this.selectedChange.emit(updated);
   }
 }

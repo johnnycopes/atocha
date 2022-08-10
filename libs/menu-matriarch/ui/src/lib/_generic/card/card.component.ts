@@ -14,5 +14,5 @@ import {
 export class CardComponent {
   @Input()
   @HostBinding('class.active')
-  public active = false;
+  active = false;
 }

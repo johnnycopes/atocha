@@ -18,11 +18,11 @@ export class InlineNameEditComponent {
   @Output() cancel = new EventEmitter<void>();
   @Output() save = new EventEmitter<string>();
 
-  public onCancel(): void {
+  onCancel(): void {
     this.cancel.emit();
   }
 
-  public onSave(form: NgForm): void {
+  onSave(form: NgForm): void {
     if (!form.valid) {
       return;
     }

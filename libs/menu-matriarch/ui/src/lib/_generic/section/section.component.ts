@@ -14,5 +14,5 @@ import {
 })
 export class SectionComponent {
   @HostBinding('class')
-  public hostClass = 'ui-section';
+  hostClass = 'ui-section';
 }
