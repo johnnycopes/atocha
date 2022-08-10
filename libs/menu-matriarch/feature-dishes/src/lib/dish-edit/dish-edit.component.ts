@@ -29,7 +29,7 @@ export class DishEditComponent {
   private _dish$ = this._routeId
     ? this._dishService.getDish(this._routeId)
     : of(undefined);
-  public vm$ = combineLatest([this._dish$, this._tagService.getTags()]).pipe(
+  vm$ = combineLatest([this._dish$, this._tagService.getTags()]).pipe(
     map(([dish, tags]) => {
       if (!dish) {
         return {
@@ -54,15 +54,15 @@ export class DishEditComponent {
       }
     })
   );
-  public readonly dishTypes = getDishTypes();
-  public readonly tinyMceConfig = {
+  readonly dishTypes = getDishTypes();
+  readonly tinyMceConfig = {
     height: 300,
     menubar: false,
     plugins: ['lists', 'searchreplace', 'wordcount'],
     toolbar: `undo redo | formatselect | bold italic underline forecolor backcolor |
       bullist numlist outdent indent | removeformat | help`,
   };
-  public readonly typeTrackByFn = trackBySelf;
+  readonly typeTrackByFn = trackBySelf;
 
   constructor(
     private _route: ActivatedRoute,
@@ -71,7 +71,7 @@ export class DishEditComponent {
     private _tagService: TagService
   ) {}
 
-  public async onSave(form: NgForm): Promise<void> {
+  async onSave(form: NgForm): Promise<void> {
     const details: DishEditForm = {
       name: form.value.name,
       description: form.value.description,

@@ -16,7 +16,7 @@ export class DishDetailsComponent {
   private _id$ = this._route.paramMap.pipe(
     map((paramMap) => paramMap.get('id'))
   );
-  public dish$ = this._route.params.pipe(
+  dish$ = this._route.params.pipe(
     switchMap(({ id }) => {
       if (!id) {
         return of(undefined);
@@ -24,7 +24,7 @@ export class DishDetailsComponent {
       return this._dishService.getDish(id);
     })
   );
-  public readonly ingredientTrackByFn = trackBySelf;
+  readonly ingredientTrackByFn = trackBySelf;
 
   constructor(
     private _route: ActivatedRoute,
@@ -32,7 +32,7 @@ export class DishDetailsComponent {
     private _dishService: DishService
   ) {}
 
-  public onDelete(): void {
+  onDelete(): void {
     this._id$
       .pipe(
         first(),
