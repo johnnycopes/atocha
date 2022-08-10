@@ -16,8 +16,8 @@ describe('mapDishDtoToDish', () => {
     createTagDto({
       id: 'tag-1',
       uid: 'abc',
-      dishIds: ['dish-1'],
       name: 'Vegetarian',
+      dishIds: ['dish-1'],
     }),
   ];
 
