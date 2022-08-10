@@ -5,11 +5,9 @@ import { concatMap, first, map, tap } from 'rxjs/operators';
 import { AuthService } from '@atocha/core/data-access';
 import {
   Day,
-  Dish,
   Menu,
   MenuDto,
-  UserPreferences,
-  getDays,
+  mapMenuDtoToMenu,
 } from '@atocha/menu-matriarch/types';
 import { DishService } from './dish.service';
 import { LocalStorageService } from './internal/local-storage.service';
@@ -38,7 +36,7 @@ export class MenuService {
         if (!menuDto || !preferences) {
           return undefined;
         }
-        return this._transformDto({ menuDto, dishes, preferences });
+        return mapMenuDtoToMenu({ menuDto, dishes, preferences });
       })
     );
   }
@@ -58,7 +56,7 @@ export class MenuService {
                 return [];
               }
               return menuDtos.map((menuDto) =>
-                this._transformDto({ menuDto, dishes, preferences })
+                mapMenuDtoToMenu({ menuDto, dishes, preferences })
               );
             })
           );
@@ -136,27 +134,5 @@ export class MenuService {
 
   deleteMenuContents(menu: Menu, day?: Day): Promise<void> {
     return this._menuDataService.deleteMenuContents(menu, day);
-  }
-
-  private _transformDto({
-    menuDto,
-    dishes,
-    preferences,
-  }: {
-    menuDto: MenuDto;
-    dishes: Dish[];
-    preferences: UserPreferences;
-  }): Menu {
-    return {
-      ...menuDto,
-      entries: getDays(menuDto.startDay).map((day) => ({
-        day,
-        dishes: dishes.filter((dish) =>
-          menuDto.contents[day].includes(dish.id)
-        ),
-      })),
-      orientation: preferences?.mealOrientation ?? 'horizontal',
-      fallbackText: preferences?.emptyMealText ?? '',
-    };
   }
 }
