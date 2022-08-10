@@ -1,28 +1,9 @@
-import { createDishDto, createTagDto } from '../functions/create-dtos';
 import { mapDishDtoToDish } from './map-dish-dto-to-dish';
+import { PIZZA_DTO, TAG_DTOS } from './mock-data';
 
 describe('mapDishDtoToDish', () => {
-  const dishDto = createDishDto({
-    id: 'dish-1',
-    uid: 'abc',
-    name: 'Pizza',
-    description: 'Delicious round vessel from Italy',
-    link: 'https://cooking.nytimes.com/guides/1-how-to-make-pizza',
-    menuIds: [],
-    tagIds: ['tag-1'],
-    usages: 2,
-  });
-  const tags = [
-    createTagDto({
-      id: 'tag-1',
-      uid: 'abc',
-      name: 'Vegetarian',
-      dishIds: ['dish-1'],
-    }),
-  ];
-
   it('returns a dish when passed a dishDto and tags', () => {
-    expect(mapDishDtoToDish(dishDto, tags)).toEqual({
+    expect(mapDishDtoToDish(PIZZA_DTO, TAG_DTOS)).toEqual({
       description: 'Delicious round vessel from Italy',
       favorited: false,
       id: 'dish-1',
@@ -35,9 +16,9 @@ describe('mapDishDtoToDish', () => {
       tags: [
         {
           color: '',
-          dishIds: ['dish-1'],
+          dishIds: ['dish-1', 'dish-2'],
           id: 'tag-1',
-          mealIds: [],
+          mealIds: ['meal-1'],
           name: 'Vegetarian',
           uid: 'abc',
         },
