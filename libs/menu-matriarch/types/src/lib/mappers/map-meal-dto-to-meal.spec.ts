@@ -4,7 +4,7 @@ import { mapMealDtoToMeal } from './map-meal-dto-to-meal';
 import { MEAL_DTO, PIZZA_DTO, SALAD_DTO, TAG_DTOS } from './mock-data';
 
 describe('mapMealDtoToMeal', () => {
-  it('returns a meal when passed a mealDto and tags', () => {
+  it('returns a meal when passed a mealDto, dishes, and tags', () => {
     expect(
       mapMealDtoToMeal({
         mealDto: MEAL_DTO,
