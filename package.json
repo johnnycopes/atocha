@@ -11,7 +11,6 @@
     "deploy-prod:gt": "netlify deploy --prod ./apps/globetrotter",
     "db:delete-account": "node ./apps/menu-matriarch/scripts/dev/delete-account.js",
     "db:delete-data": "node ./apps/menu-matriarch/scripts/dev/delete-data.js",
-    "db:seed-data": "ts-node ./apps/menu-matriarch/scripts/dev/seed-data.ts",
     "db:reset": "node ./apps/menu-matriarch/scripts/dev/delete-all-accounts.js"
   },
   "private": true,
