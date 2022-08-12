@@ -7,7 +7,8 @@
       "executor": "@nrwl/cypress:cypress",
       "options": {
         "cypressConfig": "apps/globetrotter-e2e/cypress.json",
-        "devServerTarget": "globetrotter:serve:development"
+        "devServerTarget": "globetrotter:serve:development",
+        "port": 4201
       },
       "configurations": {
         "production": {

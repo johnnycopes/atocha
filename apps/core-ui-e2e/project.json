@@ -7,7 +7,8 @@
       "executor": "@nrwl/cypress:cypress",
       "options": {
         "cypressConfig": "apps/core-ui-e2e/cypress.json",
-        "devServerTarget": "core-ui:storybook"
+        "devServerTarget": "core-ui:storybook",
+        "port": 4200
       },
       "configurations": {
         "ci": {
