@@ -1,7 +1,6 @@
 const admin = require('firebase-admin');
 const serviceAccount = require('../../firebase-admin-dev.json');
 const { deleteAccount } = require('./utility');
-const { TEST_UID } = require('../../cypress.env.json');
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
@@ -19,10 +18,6 @@ function deleteAllUserAccounts(nextPageToken) {
     .then((listUsersResult) => {
       listUsersResult.users.forEach((userRecord) => {
         const uid = userRecord.toJSON().uid;
-        if (uid === TEST_UID) {
-          console.log(`Skipping test user ${uid}.`);
-          return;
-        }
         deleteAccount(admin, uid);
       });
       if (listUsersResult.pageToken) {
