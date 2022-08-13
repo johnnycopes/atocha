@@ -10,6 +10,7 @@
     "gt:deploy-staging": "netlify deploy ./apps/globetrotter",
     "gt:deploy-prod": "netlify deploy --prod ./apps/globetrotter",
     "mm:deploy-dev": "nx build menu-matriarch --configuration=development && firebase deploy --project=menu-matriarch-dev --only=hosting",
+    "mm:deploy-prod": "nx build menu-matriarch && firebase deploy --project=menu-matriarch",
     "db:delete-account": "node ./apps/menu-matriarch/scripts/dev/delete-account.js",
     "db:delete-data": "node ./apps/menu-matriarch/scripts/dev/delete-data.js",
     "db:reset": "node ./apps/menu-matriarch/scripts/dev/delete-all-accounts.js"

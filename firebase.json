@@ -10,6 +10,6 @@
     ]
   },
   "firestore": {
-    "rules": "firestore.rules"
+    "rules": "./apps/menu-matriarch/firestore.rules"
   }
 }
