@@ -9,7 +9,7 @@
     "postinstall": "ngcc --properties es2020 browser module main",
     "gt:deploy-staging": "netlify deploy ./apps/globetrotter",
     "gt:deploy-prod": "netlify deploy --prod ./apps/globetrotter",
-    "mm:deploy-dev": "firebase deploy --project menu-matriarch-dev --only hosting",
+    "mm:deploy-dev": "nx build menu-matriarch --configuration=development && firebase deploy --project=menu-matriarch-dev --only=hosting",
     "db:delete-account": "node ./apps/menu-matriarch/scripts/dev/delete-account.js",
     "db:delete-data": "node ./apps/menu-matriarch/scripts/dev/delete-data.js",
     "db:reset": "node ./apps/menu-matriarch/scripts/dev/delete-all-accounts.js"
