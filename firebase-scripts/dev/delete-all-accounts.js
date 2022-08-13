@@ -1,5 +1,5 @@
 const admin = require('firebase-admin');
-const serviceAccount = require('../../../../firebase-admin-dev.json');
+const serviceAccount = require('../../firebase-admin-dev.json');
 const { deleteAccount } = require('./utility');
 
 admin.initializeApp({
