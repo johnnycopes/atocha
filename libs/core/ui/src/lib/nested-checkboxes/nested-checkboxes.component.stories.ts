@@ -11,7 +11,7 @@ import {
   CheckboxStates,
   NestedCheckboxesComponent,
 } from './nested-checkboxes.component';
-import { CheckboxComponent } from '../checkbox/checkbox.component';
+import { CheckboxComponent, CheckboxSize } from '../checkbox/checkbox.component';
 import { TreeComponent } from '../tree/tree.component';
 import { StorybookWrapperComponent } from '../../../.storybook/storybook-wrapper/storybook-wrapper.component';
 import {
@@ -25,7 +25,7 @@ import {
 
 type NestedCheckboxesArgs = Pick<
   NestedCheckboxesComponent<TestItem>,
-  'indentation' | 'states'
+  'indentation' | 'states' | 'size'
 > & {
   className: string;
   onClick: InputType | undefined;
@@ -46,6 +46,10 @@ export default {
     componentWrapperDecorator(StorybookWrapperComponent),
   ],
   argTypes: {
+    size: {
+      control: { type: 'select' },
+      options: ['normal', 'large'],
+    },
     onClick: { action: 'clicked' },
   },
 } as Meta<NestedCheckboxesArgs>;
@@ -53,6 +57,7 @@ export default {
 const Template: Story<NestedCheckboxesArgs> = ({
   indentation,
   states,
+  size,
   className,
   onClick,
 }: NestedCheckboxesArgs) => ({
@@ -62,6 +67,7 @@ const Template: Story<NestedCheckboxesArgs> = ({
     getChildren,
     indentation,
     states,
+    size,
     className,
     onClick,
   },
@@ -72,6 +78,7 @@ const Template: Story<NestedCheckboxesArgs> = ({
       [getId]="getId"
       [getChildren]="getChildren"
       [indentation]="indentation"
+      [size]="size"
       [ngModel]="states"
       (ngModelChange)="states = $event; onClick($event)"
     ></core-nested-checkboxes>
@@ -96,17 +103,20 @@ allSelected.args = createArgs({
 export const withCustomStyling = Template.bind({});
 withCustomStyling.args = createArgs({
   states: SOME_SELECTED,
+  size: 'large',
   className: 'custom-nested-checkboxes',
 });
 
 function createArgs({
   indentation = 24,
   states = {},
+  size = 'normal',
   className = '',
 }: {
   indentation?: number;
   states?: CheckboxStates;
+  size?: CheckboxSize;
   className?: string;
 }) {
-  return { indentation, states, className };
+  return { indentation, states, size, className };
 }

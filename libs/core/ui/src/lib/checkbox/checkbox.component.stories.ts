@@ -7,7 +7,7 @@ import {
 } from '@storybook/angular';
 
 import { StorybookWrapperComponent } from '../../../.storybook/storybook-wrapper/storybook-wrapper.component';
-import { CheckboxComponent } from './checkbox.component';
+import { CheckboxComponent, CheckboxSize } from './checkbox.component';
 
 type CheckboxArgs = CheckboxComponent & { slot: string };
 
@@ -22,6 +22,10 @@ export default {
     componentWrapperDecorator(StorybookWrapperComponent),
   ],
   argTypes: {
+    size: {
+      control: { type: 'select' },
+      options: ['normal', 'large'],
+    },
     onClick: { action: 'clicked' },
   },
 } as Meta;
@@ -33,6 +37,7 @@ const Template: Story<CheckboxArgs> = (args: CheckboxArgs) => ({
       [class]="className"
       [indeterminate]="indeterminate"
       [disabled]="disabled"
+      [size]="size"
       [ngModel]="checked"
       (ngModelChange)="checked = $event; onClick($event)"
     >
@@ -58,6 +63,7 @@ function createArgs({
   checked = false,
   disabled = false,
   indeterminate = false,
+  size = 'normal' as CheckboxSize,
 } = {}) {
-  return { slot, className, checked, disabled, indeterminate };
+  return { slot, className, checked, disabled, indeterminate, size };
 }
