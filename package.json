@@ -7,11 +7,13 @@
     "build": "nx build",
     "test": "nx test",
     "postinstall": "ngcc --properties es2020 browser module main",
-    "deploy-staging:gt": "netlify deploy ./apps/globetrotter",
-    "deploy-prod:gt": "netlify deploy --prod ./apps/globetrotter",
-    "db:delete-account": "node ./apps/menu-matriarch/scripts/dev/delete-account.js",
-    "db:delete-data": "node ./apps/menu-matriarch/scripts/dev/delete-data.js",
-    "db:reset": "node ./apps/menu-matriarch/scripts/dev/delete-all-accounts.js"
+    "gt:deploy-staging": "netlify deploy ./apps/globetrotter",
+    "gt:deploy-prod": "netlify deploy --prod ./apps/globetrotter",
+    "mm:deploy-dev": "nx build menu-matriarch --configuration=development && firebase deploy --project=menu-matriarch-dev --only=hosting",
+    "mm:deploy-prod": "nx build menu-matriarch && firebase deploy --project=menu-matriarch",
+    "mm:delete-account": "node ./firebase/scripts/dev/delete-account.js",
+    "mm:delete-data": "node ./firebase/scripts/dev/delete-data.js",
+    "mm:reset": "node ./firebase/scripts/dev/delete-all-accounts.js"
   },
   "private": true,
   "devDependencies": {

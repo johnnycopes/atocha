@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist/menu-matriarch",
+    "public": "./dist/apps/menu-matriarch",
     "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
     "rewrites": [
       {
@@ -10,6 +10,6 @@
     ]
   },
   "firestore": {
-    "rules": "firestore.rules"
+    "rules": "./apps/menu-matriarch/firestore.rules"
   }
 }

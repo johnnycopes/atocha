@@ -41,6 +41,7 @@ Thumbs.db
 .angular
 
 # Firebase
+.firebase
 firebase-admin-*.json
 serviceAccount.json
 cypress.env.json
