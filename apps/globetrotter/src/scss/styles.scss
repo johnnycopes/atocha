@@ -44,7 +44,6 @@ sup {
   }
 
   .core-checkbox {
-    --checkbox-size: #{map-get($font-size, 20)};
     --hover-color: #{map-get($color, medium)};
     --label-margin: #{map-get($spacing, 12)};
   }

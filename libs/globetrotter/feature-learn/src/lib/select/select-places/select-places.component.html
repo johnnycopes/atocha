@@ -33,6 +33,7 @@
         [getChildren]="getChildren"
         [getLeafItemCount]="getNumberOfCountries"
         [itemTemplate]="label"
+        size="large"
         [ngModel]="state"
         (ngModelChange)="onStateChange($event)"
         (selectedChange)="onSelectedChange(regionState, $event)"
