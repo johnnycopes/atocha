@@ -13,6 +13,7 @@ import {
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 
 import { getItemsRecursively } from '@atocha/core/util';
+import { CheckboxSize } from '../checkbox/checkbox.component';
 
 export type CheckboxState = 'checked' | 'indeterminate';
 export type CheckboxStates = Record<string, CheckboxState>;
@@ -48,6 +49,7 @@ export class NestedCheckboxesComponent<T>
   @Input() getId: (item: T) => string = () => '';
   @Input() getChildren: (item: T) => T[] = () => [];
   @Input() itemTemplate: TemplateRef<unknown> | undefined;
+  @Input() size: CheckboxSize = 'normal';
   @Input() indentation = 24;
   states: CheckboxStates = {};
   private _itemsKeyedById: ItemsRecord<T> = {};

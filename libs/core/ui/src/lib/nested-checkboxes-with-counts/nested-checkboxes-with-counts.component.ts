@@ -15,6 +15,7 @@ import {
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { reduce } from 'lodash-es';
 
+import { CheckboxSize } from '../checkbox/checkbox.component';
 import { CheckboxStates } from '../nested-checkboxes/nested-checkboxes.component';
 
 type Counts = Record<string, number>;
@@ -45,6 +46,7 @@ export class NestedCheckboxesWithCountsComponent<T>
   @Input() getLeafItemCount: (item: T) => number = () => 0;
   @Input() itemTemplate: TemplateRef<unknown> | undefined;
   @Input() indentation = 24;
+  @Input() size: CheckboxSize = 'normal';
   @Output() selectedChange = new EventEmitter<number>();
   @Output() totalChange = new EventEmitter<number>();
   states: CheckboxStates = {};

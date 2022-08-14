@@ -8,6 +8,8 @@ import {
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
+export type CheckboxSize = 'normal' | 'large';
+
 @Component({
   selector: 'core-checkbox',
   templateUrl: './checkbox.component.html',
@@ -23,7 +25,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
   ],
 })
 export class CheckboxComponent implements ControlValueAccessor {
-  @Input() size: 'normal' | 'large' = 'normal';
+  @Input() size: CheckboxSize = 'normal';
   @Input() disabled = false;
   @Input() indeterminate = false;
   checked = false;
