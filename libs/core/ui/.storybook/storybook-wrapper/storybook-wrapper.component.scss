@@ -1,6 +1,5 @@
 :host::ng-deep {
   .custom-checkbox {
-    --checkbox-size: 20px;
     --hover-color: beige;
     --label-margin: 12px;
 
@@ -25,7 +24,6 @@
     --checkbox-margin: 8px;
 
     .core-checkbox {
-      --checkbox-size: 20px;
       --hover-color: beige;
       --label-margin: 12px;
     }
@@ -55,7 +53,6 @@
     }
 
     .core-checkbox {
-      --checkbox-size: 20px;
       --hover-color: beige;
       --label-margin: 12px;
     }

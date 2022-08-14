@@ -11,7 +11,10 @@ import {
   CheckboxStates,
   NestedCheckboxesComponent,
 } from '../nested-checkboxes/nested-checkboxes.component';
-import { CheckboxComponent } from '../checkbox/checkbox.component';
+import {
+  CheckboxComponent,
+  CheckboxSize,
+} from '../checkbox/checkbox.component';
 import { TreeComponent } from '../tree/tree.component';
 import { StorybookWrapperComponent } from '../../../.storybook/storybook-wrapper/storybook-wrapper.component';
 import {
@@ -27,7 +30,7 @@ import { NestedCheckboxesWithCountsComponent } from './nested-checkboxes-with-co
 
 type NestedCheckboxesWithCountsArgs = Pick<
   NestedCheckboxesComponent<TestItem>,
-  'indentation' | 'states'
+  'indentation' | 'states' | 'size'
 > & {
   className: string;
   onNgModelChange: InputType | undefined;
@@ -51,6 +54,10 @@ export default {
     componentWrapperDecorator(StorybookWrapperComponent),
   ],
   argTypes: {
+    size: {
+      control: { type: 'select' },
+      options: ['normal', 'large'],
+    },
     onNgModelChange: { action: 'ngModelChange' },
     onSelectedChange: { action: 'selectedChange' },
     onTotalChange: { action: 'totalChange' },
@@ -60,6 +67,7 @@ export default {
 const Template: Story<NestedCheckboxesWithCountsArgs> = ({
   indentation,
   states,
+  size,
   className,
   onNgModelChange,
   onSelectedChange,
@@ -72,6 +80,7 @@ const Template: Story<NestedCheckboxesWithCountsArgs> = ({
     getCounts,
     indentation,
     states,
+    size,
     className,
     onNgModelChange,
     onSelectedChange,
@@ -85,6 +94,7 @@ const Template: Story<NestedCheckboxesWithCountsArgs> = ({
       [getChildren]="getChildren"
       [getLeafItemCount]="getCounts"
       [indentation]="indentation"
+      [size]="size"
       [ngModel]="states"
       (ngModelChange)="states = $event; onNgModelChange($event)"
       (selectedChange)="onSelectedChange($event)"
@@ -111,17 +121,20 @@ allSelected.args = createArgs({
 export const withCustomStyling = Template.bind({});
 withCustomStyling.args = createArgs({
   states: SOME_SELECTED,
+  size: 'large',
   className: 'custom-nested-checkboxes-with-counts',
 });
 
 function createArgs({
   indentation = 24,
   states = {},
+  size = 'normal',
   className = '',
 }: {
   indentation?: number;
   states?: CheckboxStates;
+  size?: CheckboxSize;
   className?: string;
 }) {
-  return { indentation, states, className };
+  return { indentation, states, size, className };
 }
