@@ -195,10 +195,9 @@ strong {
   }
 }
 
-
 // Component styling overrides
-app-root {
 
+app-root {
   .core-checkbox {
     --checkbox-color: #{color($neutral, 7)};
     --checkmark-color: #{color($neutral, 3)};

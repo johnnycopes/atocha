@@ -38,32 +38,34 @@ sup {
 
 // Component styling overrides
 
-.core-nested-checkboxes-with-counts {
-  .core-nested-checkboxes {
-    --checkbox-margin: #{map-get($spacing, 8)};
-  }
+app-root {
+  .core-nested-checkboxes-with-counts {
+    .core-nested-checkboxes {
+      --checkbox-margin: #{map-get($spacing, 8)};
+    }
 
-  .core-checkbox {
-    --hover-color: #{map-get($color, medium)};
-    --label-margin: #{map-get($spacing, 12)};
-  }
+    .core-checkbox {
+      --hover-color: #{map-get($color, medium)};
+      --label-margin: #{map-get($spacing, 12)};
+    }
 
-  .core-nested-checkboxes__top.core-checkbox--checked,
-  .core-nested-checkboxes__top.core-checkbox--indeterminate {
-    --checkbox-color: #{map-get($color, lightest)};
-    --checkmark-color: #{map-get($color, darkest)};
-    --checkbox-background: #{map-get($color, lightest)};
-  }
+    .core-nested-checkboxes__top.core-checkbox--checked,
+    .core-nested-checkboxes__top.core-checkbox--indeterminate {
+      --checkbox-color: #{map-get($color, lightest)};
+      --checkmark-color: #{map-get($color, darkest)};
+      --checkbox-background: #{map-get($color, lightest)};
+    }
 
-  .core-checkbox--checked,
-  .core-checkbox--indeterminate {
-    --checkbox-color: #{map-get($color, lightest)};
-    --checkmark-color: #{map-get($color, lightest)};
-  }
+    .core-checkbox--checked,
+    .core-checkbox--indeterminate {
+      --checkbox-color: #{map-get($color, lightest)};
+      --checkmark-color: #{map-get($color, lightest)};
+    }
 
-  .core-checkbox--unchecked {
-    --checkbox-color: #{map-get($color, medium)};
-    --checkmark-color: #{map-get($color, medium)};
-    color: map-get($color, medium);
+    .core-checkbox--unchecked {
+      --checkbox-color: #{map-get($color, medium)};
+      --checkmark-color: #{map-get($color, medium)};
+      color: map-get($color, medium);
+    }
   }
 }

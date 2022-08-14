@@ -11,7 +11,10 @@ import {
   CheckboxStates,
   NestedCheckboxesComponent,
 } from './nested-checkboxes.component';
-import { CheckboxComponent, CheckboxSize } from '../checkbox/checkbox.component';
+import {
+  CheckboxComponent,
+  CheckboxSize,
+} from '../checkbox/checkbox.component';
 import { TreeComponent } from '../tree/tree.component';
 import { StorybookWrapperComponent } from '../../../.storybook/storybook-wrapper/storybook-wrapper.component';
 import {
