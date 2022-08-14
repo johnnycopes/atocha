@@ -29,7 +29,7 @@
   <div *ngIf="entryModels.length"
     class="schedule"
   >
-    <ui-checkbox *ngFor="let model of entryModels; trackBy: trackByFn"
+    <core-checkbox *ngFor="let model of entryModels; trackBy: trackByFn"
       class="checkbox"
       [indeterminate]="model.indeterminate"
       [ngModel]="model.checked"
@@ -40,6 +40,6 @@
       })"
     >
       {{ model.day | slice : 0 : 3 }}
-    </ui-checkbox>
+    </core-checkbox>
   </div>
 </ui-card>

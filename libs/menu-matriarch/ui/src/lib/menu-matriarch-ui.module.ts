@@ -7,6 +7,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import {
   AutofocusDirective,
+  CheckboxComponent,
   CoreUiModule,
   PluralPipe,
   SafePipe,
@@ -15,7 +16,6 @@ import {
 import { AlertComponent } from './_generic/alert/alert.component';
 import { ButtonComponent } from './_generic/button/button.component';
 import { CardComponent } from './_generic/card/card.component';
-import { CheckboxComponent } from './_generic/checkbox/checkbox.component';
 import { CountComponent } from './count/count.component';
 import { DishSummaryComponent } from './dish-summary/dish-summary.component';
 import { EmptyViewPlaceholderComponent } from './empty-view-placeholder/empty-view-placeholder.component';
@@ -52,7 +52,6 @@ import { TagsListComponent } from './tags/tags-list/tags-list.component';
     AlertComponent,
     ButtonComponent,
     CardComponent,
-    CheckboxComponent,
     CountComponent,
     DishSummaryComponent,
     EmptyViewPlaceholderComponent,
