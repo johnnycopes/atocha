@@ -18,14 +18,12 @@ import { TreeComponent } from './tree/tree.component';
     FormsModule,
     DragDropModule,
     AutofocusDirective,
-    MeasurementPipe,
-    PluralPipe,
-    SafePipe,
-  ],
-  declarations: [
     CheckboxComponent,
     NestedCheckboxesComponent,
     NestedCheckboxesWithCountsComponent,
+    MeasurementPipe,
+    PluralPipe,
+    SafePipe,
     TreeComponent,
   ],
   exports: [

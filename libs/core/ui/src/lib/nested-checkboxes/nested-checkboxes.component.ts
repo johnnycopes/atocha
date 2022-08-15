@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/member-ordering */
+import { CommonModule } from '@angular/common';
 import {
   Component,
   Input,
@@ -10,10 +11,11 @@ import {
   SimpleChanges,
   ViewEncapsulation,
 } from '@angular/core';
-import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
+import { NG_VALUE_ACCESSOR, ControlValueAccessor, FormsModule } from '@angular/forms';
 
 import { getItemsRecursively } from '@atocha/core/util';
-import { CheckboxSize } from '../checkbox/checkbox.component';
+import { CheckboxComponent, CheckboxSize } from '../checkbox/checkbox.component';
+import { TreeComponent } from '../tree/tree.component';
 
 export type CheckboxState = 'checked' | 'indeterminate';
 export type CheckboxStates = Record<string, CheckboxState>;
@@ -26,7 +28,9 @@ interface ItemsRecord<T> {
 }
 
 @Component({
+  standalone: true,
   selector: 'core-nested-checkboxes',
+  imports: [CommonModule, FormsModule, CheckboxComponent, TreeComponent],
   templateUrl: './nested-checkboxes.component.html',
   styleUrls: ['./nested-checkboxes.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
