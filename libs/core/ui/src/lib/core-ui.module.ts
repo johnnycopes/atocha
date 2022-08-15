@@ -13,15 +13,19 @@ import { SafePipe } from './sanitization/safe.pipe';
 import { TreeComponent } from './tree/tree.component';
 
 @NgModule({
-  imports: [CommonModule, FormsModule, DragDropModule],
-  declarations: [
+  imports: [
+    CommonModule,
+    FormsModule,
+    DragDropModule,
     AutofocusDirective,
-    CheckboxComponent,
     MeasurementPipe,
-    NestedCheckboxesComponent,
-    NestedCheckboxesWithCountsComponent,
     PluralPipe,
     SafePipe,
+  ],
+  declarations: [
+    CheckboxComponent,
+    NestedCheckboxesComponent,
+    NestedCheckboxesWithCountsComponent,
     TreeComponent,
   ],
   exports: [
