@@ -40,9 +40,7 @@ export default {
   decorators: [
     moduleMetadata({
       imports: [FormsModule, CheckboxComponent, TreeComponent],
-      declarations: [
-        StorybookWrapperComponent,
-      ],
+      declarations: [StorybookWrapperComponent],
     }),
     componentWrapperDecorator(StorybookWrapperComponent),
   ],
