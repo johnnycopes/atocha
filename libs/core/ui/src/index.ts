@@ -1,5 +1,3 @@
-export * from './lib/core-ui.module';
-
 export * from './lib/animations/animated-component.class';
 export * from './lib/autofocus/autofocus.directive';
 export * from './lib/checkbox/checkbox.component';
