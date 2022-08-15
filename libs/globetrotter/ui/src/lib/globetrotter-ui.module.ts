@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import {
-  CoreUiModule,
   AutofocusDirective,
   MeasurementPipe,
   NestedCheckboxesWithCountsComponent,
@@ -21,7 +20,13 @@ import { RadioButtonsComponent } from './radio-buttons/radio-buttons.component';
 import { SmallCapsComponent } from './small-caps/small-caps.component';
 
 @NgModule({
-  imports: [CommonModule, FormsModule, CoreUiModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    AutofocusDirective,
+    MeasurementPipe,
+    NestedCheckboxesWithCountsComponent,
+  ],
   declarations: [
     AlertComponent,
     ButtonComponent,

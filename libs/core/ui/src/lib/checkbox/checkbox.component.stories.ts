@@ -54,6 +54,7 @@ base.args = createArgs({
 export const withCustomStyling = Template.bind({});
 withCustomStyling.args = createArgs({
   slot: 'Click me!',
+  size: 'large',
   className: 'custom-checkbox',
 });
 

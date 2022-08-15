@@ -58,7 +58,8 @@ describe('TreeComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [TestHostComponent, TreeComponent],
+      imports: [TreeComponent],
+      declarations: [TestHostComponent],
     }).compileComponents();
   }));
 

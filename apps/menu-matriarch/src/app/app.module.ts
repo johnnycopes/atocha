@@ -6,7 +6,6 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { CoreUiModule } from '@atocha/core/ui';
 import { environment } from '../environments/environment';
 import { MenuMatriarchFeatureDishesModule } from '@atocha/menu-matriarch/feature-dishes';
 import { MenuMatriarchFeatureMealsModule } from '@atocha/menu-matriarch/feature-meals';
@@ -25,7 +24,6 @@ import { MenuMatriarchUiModule } from '@atocha/menu-matriarch/ui';
     BrowserAnimationsModule,
     BrowserModule,
     AppRoutingModule,
-    CoreUiModule,
     MenuMatriarchFeatureDishesModule,
     MenuMatriarchFeatureMealsModule,
     MenuMatriarchFeatureMenusModule,

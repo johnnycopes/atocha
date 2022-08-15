@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/member-ordering */
+import { CommonModule } from '@angular/common';
 import {
   Component,
   Input,
@@ -12,16 +13,25 @@ import {
   OnChanges,
   ViewEncapsulation,
 } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import {
+  ControlValueAccessor,
+  FormsModule,
+  NG_VALUE_ACCESSOR,
+} from '@angular/forms';
 import { reduce } from 'lodash-es';
 
 import { CheckboxSize } from '../checkbox/checkbox.component';
-import { CheckboxStates } from '../nested-checkboxes/nested-checkboxes.component';
+import {
+  CheckboxStates,
+  NestedCheckboxesComponent,
+} from '../nested-checkboxes/nested-checkboxes.component';
 
 type Counts = Record<string, number>;
 
 @Component({
+  standalone: true,
   selector: 'core-nested-checkboxes-with-counts',
+  imports: [CommonModule, FormsModule, NestedCheckboxesComponent],
   templateUrl: './nested-checkboxes-with-counts.component.html',
   styleUrls: ['./nested-checkboxes-with-counts.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

@@ -8,6 +8,7 @@ import {
 type SafeValue = 'html' | 'style' | 'resourceUrl';
 
 @Pipe({
+  standalone: true,
   name: 'coreSafe',
 })
 export class SafePipe implements PipeTransform {

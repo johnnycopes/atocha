@@ -2,6 +2,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { pluralize } from '@atocha/core/util';
 
 @Pipe({
+  standalone: true,
   name: 'corePlural',
 })
 export class PluralPipe implements PipeTransform {

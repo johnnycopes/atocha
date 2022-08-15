@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -13,7 +14,9 @@ interface TreeNodeContext<T> {
 }
 
 @Component({
+  standalone: true,
   selector: 'core-tree',
+  imports: [CommonModule],
   templateUrl: './tree.component.html',
   styleUrls: ['./tree.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
