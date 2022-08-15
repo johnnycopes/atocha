@@ -13,11 +13,18 @@ import {
   OnChanges,
   ViewEncapsulation,
 } from '@angular/core';
-import { ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
+import {
+  ControlValueAccessor,
+  FormsModule,
+  NG_VALUE_ACCESSOR,
+} from '@angular/forms';
 import { reduce } from 'lodash-es';
 
 import { CheckboxSize } from '../checkbox/checkbox.component';
-import { CheckboxStates, NestedCheckboxesComponent } from '../nested-checkboxes/nested-checkboxes.component';
+import {
+  CheckboxStates,
+  NestedCheckboxesComponent,
+} from '../nested-checkboxes/nested-checkboxes.component';
 
 type Counts = Record<string, number>;
 

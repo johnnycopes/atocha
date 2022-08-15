@@ -11,10 +11,17 @@ import {
   SimpleChanges,
   ViewEncapsulation,
 } from '@angular/core';
-import { NG_VALUE_ACCESSOR, ControlValueAccessor, FormsModule } from '@angular/forms';
+import {
+  NG_VALUE_ACCESSOR,
+  ControlValueAccessor,
+  FormsModule,
+} from '@angular/forms';
 
 import { getItemsRecursively } from '@atocha/core/util';
-import { CheckboxComponent, CheckboxSize } from '../checkbox/checkbox.component';
+import {
+  CheckboxComponent,
+  CheckboxSize,
+} from '../checkbox/checkbox.component';
 import { TreeComponent } from '../tree/tree.component';
 
 export type CheckboxState = 'checked' | 'indeterminate';
