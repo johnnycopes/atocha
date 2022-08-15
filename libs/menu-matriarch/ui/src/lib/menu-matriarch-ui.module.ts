@@ -8,7 +8,6 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {
   AutofocusDirective,
   CheckboxComponent,
-  CoreUiModule,
   PluralPipe,
   SafePipe,
 } from '@atocha/core/ui';
@@ -46,7 +45,10 @@ import { TagsListComponent } from './tags/tags-list/tags-list.component';
     OverlayModule,
     PortalModule,
     FontAwesomeModule,
-    CoreUiModule,
+    AutofocusDirective,
+    CheckboxComponent,
+    PluralPipe,
+    SafePipe,
   ],
   declarations: [
     AlertComponent,
