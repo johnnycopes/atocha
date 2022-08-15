@@ -39,11 +39,9 @@ export default {
   component: NestedCheckboxesComponent,
   decorators: [
     moduleMetadata({
-      imports: [FormsModule],
+      imports: [FormsModule, CheckboxComponent, TreeComponent],
       declarations: [
         StorybookWrapperComponent,
-        CheckboxComponent,
-        TreeComponent,
       ],
     }),
     componentWrapperDecorator(StorybookWrapperComponent),
