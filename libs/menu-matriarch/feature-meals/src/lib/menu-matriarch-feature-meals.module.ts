@@ -29,9 +29,6 @@ import { AutofocusDirective } from '@atocha/core/ui';
     InputComponent,
     MealSummaryComponent,
     MenuMatriarchFeatureEntitiesModule,
-    SectionComponent,
-    TagComponent,
-    TagsListComponent,
     RouterModule.forChild([
       {
         path: '',
@@ -44,6 +41,9 @@ import { AutofocusDirective } from '@atocha/core/ui';
         ],
       },
     ]),
+    SectionComponent,
+    TagComponent,
+    TagsListComponent,
   ],
 })
 export class MenuMatriarchFeatureMealsModule {}
