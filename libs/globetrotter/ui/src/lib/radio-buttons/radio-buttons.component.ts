@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import {
   Component,
   Input,
@@ -10,7 +11,6 @@ import {
   NG_VALUE_ACCESSOR,
 } from '@angular/forms';
 import { BreakpointObserver } from '@angular/cdk/layout';
-import { CommonModule } from '@angular/common';
 
 export interface RadioButtonsOption<T> {
   display: string;
