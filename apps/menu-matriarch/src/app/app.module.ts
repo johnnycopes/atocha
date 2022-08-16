@@ -7,13 +7,6 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { environment } from '../environments/environment';
-import { MenuMatriarchFeatureDishesModule } from '@atocha/menu-matriarch/feature-dishes';
-import { MenuMatriarchFeatureMealsModule } from '@atocha/menu-matriarch/feature-meals';
-import { MenuMatriarchFeatureMenusModule } from '@atocha/menu-matriarch/feature-menus';
-import { MenuMatriarchFeaturePlannerModule } from '@atocha/menu-matriarch/feature-planner';
-import { MenuMatriarchFeatureSettingsModule } from '@atocha/menu-matriarch/feature-settings';
-import { MenuMatriarchFeatureShellModule } from '@atocha/menu-matriarch/feature-shell';
-import { MenuMatriarchFeatureTagsModule } from '@atocha/menu-matriarch/feature-tags';
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,13 +16,6 @@ import { MenuMatriarchFeatureTagsModule } from '@atocha/menu-matriarch/feature-t
     BrowserAnimationsModule,
     BrowserModule,
     AppRoutingModule,
-    MenuMatriarchFeatureDishesModule,
-    MenuMatriarchFeatureMealsModule,
-    MenuMatriarchFeatureMenusModule,
-    MenuMatriarchFeaturePlannerModule,
-    MenuMatriarchFeatureSettingsModule,
-    MenuMatriarchFeatureShellModule,
-    MenuMatriarchFeatureTagsModule,
   ],
   bootstrap: [AppComponent],
 })
