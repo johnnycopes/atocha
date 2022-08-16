@@ -9,6 +9,7 @@ import {
 type Alert = 'success' | 'warning' | 'error';
 
 @Component({
+  standalone: true,
   selector: 'ui-alert',
   templateUrl: './alert.component.html',
   styleUrls: ['./alert.component.scss'],

@@ -7,10 +7,16 @@ import {
   ViewChild,
   ElementRef,
 } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
+import { InputComponent } from '../input/input.component';
+
 @Component({
+  standalone: true,
   selector: 'ui-search-input',
+  imports: [InputComponent, FormsModule, FontAwesomeModule],
   templateUrl: './search-input.component.html',
   styleUrls: ['./search-input.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

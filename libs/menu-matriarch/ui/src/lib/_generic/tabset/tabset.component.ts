@@ -22,6 +22,7 @@ import { TabComponent } from './tab/tab.component';
 export type TabsetContentVisibility = 'visible' | 'invisible';
 
 @Component({
+  standalone: true,
   selector: 'ui-tabset',
   templateUrl: './tabset.component.html',
   styleUrls: ['./tabset.component.scss'],

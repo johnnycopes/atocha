@@ -13,6 +13,7 @@ import { takeUntil } from 'rxjs/operators';
 import { OptionsMenuComponent } from './options-menu.component';
 
 @Directive({
+  standalone: true,
   selector: '[uiOptionsMenuTrigger]',
 })
 export class OptionsMenuTriggerDirective implements AfterViewInit, OnDestroy {

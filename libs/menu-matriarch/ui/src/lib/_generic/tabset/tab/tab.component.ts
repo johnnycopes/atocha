@@ -10,6 +10,7 @@ import {
 import { fadeInAnimation } from '../../../animations';
 
 @Component({
+  standalone: true,
   selector: 'ui-tab',
   templateUrl: './tab.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

@@ -10,6 +10,7 @@ import {
 import { optionsMenuAnimation } from './options-menu-animation';
 
 @Component({
+  standalone: true,
   selector: 'ui-options-menu',
   templateUrl: './options-menu.component.html',
   styleUrls: ['./options-menu.component.scss'],
