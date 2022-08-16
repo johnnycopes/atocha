@@ -1,5 +1,3 @@
-export * from './lib/menu-matriarch-ui.module';
-
 export * from './lib/track-by-functions';
 
 export * from './lib/_generic/alert/alert.component';
