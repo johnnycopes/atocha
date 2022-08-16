@@ -5,7 +5,7 @@ import { RouterModule } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { MenuMatriarchFeatureEntitiesModule } from '@atocha/menu-matriarch/feature-entities';
-import { MenuMatriarchUiModule } from '@atocha/menu-matriarch/ui';
+import { CardComponent, DishSummaryComponent, EmptyViewPlaceholderComponent, MealSummaryComponent, SmallCapsLabelComponent, TagComponent, TagsListComponent } from '@atocha/menu-matriarch/ui';
 import { PlannerComponent } from './planner.component';
 import { PlannerDishComponent } from './planner-dishes/planner-dish/planner-dish.component';
 import { PlannerDishesComponent } from './planner-dishes/planner-dishes.component';
@@ -25,12 +25,18 @@ import { PlannerMenuComponent } from './planner-menu/planner-menu.component';
     PlannerMenuComponent,
   ],
   imports: [
-    MenuMatriarchFeatureEntitiesModule,
-    MenuMatriarchUiModule,
+    CardComponent,
     CommonModule,
-    FormsModule,
-    RouterModule.forChild([{ path: '', component: PlannerComponent }]),
+    DishSummaryComponent,
     FontAwesomeModule,
+    EmptyViewPlaceholderComponent,
+    FormsModule,
+    MealSummaryComponent,
+    MenuMatriarchFeatureEntitiesModule,
+    RouterModule.forChild([{ path: '', component: PlannerComponent }]),
+    SmallCapsLabelComponent,
+    TagComponent,
+    TagsListComponent,
   ],
 })
 export class MenuMatriarchFeaturePlannerModule {}
