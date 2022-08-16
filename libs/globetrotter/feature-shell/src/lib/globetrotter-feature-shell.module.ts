@@ -10,12 +10,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { ShellComponent } from './shell/shell.component';
 
 @NgModule({
-  imports: [
-    ButtonComponent,
-    CommonModule,
-    IconComponent,
-    RouterModule
-  ],
+  imports: [ButtonComponent, CommonModule, IconComponent, RouterModule],
   declarations: [
     ErrorComponent,
     HomeComponent,
