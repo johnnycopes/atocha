@@ -6,11 +6,14 @@ import {
   faLayerGroup,
 } from '@fortawesome/free-solid-svg-icons';
 import { faMap } from '@fortawesome/free-regular-svg-icons';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 type CountType = 'days' | 'dishes' | 'meals' | 'menus';
 
 @Component({
+  standalone: true,
   selector: 'ui-count',
+  imports: [FontAwesomeModule],
   templateUrl: './count.component.html',
   styleUrls: ['./count.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

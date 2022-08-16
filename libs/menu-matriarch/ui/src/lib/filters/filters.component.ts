@@ -5,11 +5,18 @@ import {
   Output,
   EventEmitter,
 } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
+import { CheckboxComponent } from '@atocha/core/ui';
 import { Tag } from '@atocha/menu-matriarch/types';
+import { TagComponent } from '../tags/tag/tag.component';
+import { TagsListComponent } from '../tags/tags-list/tags-list.component';
+import { CardComponent } from '../_generic/card/card.component';
 
 @Component({
+  standalone: true,
   selector: 'ui-filters',
+  imports: [FormsModule, CardComponent, CheckboxComponent, TagComponent, TagsListComponent],
   templateUrl: './filters.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

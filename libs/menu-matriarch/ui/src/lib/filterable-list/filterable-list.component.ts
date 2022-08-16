@@ -6,10 +6,17 @@ import {
   Output,
 } from '@angular/core';
 
+import { PluralPipe } from '@atocha/core/ui';
 import { Tag } from '@atocha/menu-matriarch/types';
+import { FiltersButtonComponent } from '../filters-button/filters-button.component';
+import { FiltersComponent } from '../filters/filters.component';
+import { SearchInputComponent } from '../_generic/search-input/search-input.component';
+import { SectionComponent } from '../_generic/section/section.component';
 
 @Component({
+  standalone: true,
   selector: 'ui-filterable-list',
+  imports: [FiltersButtonComponent, FiltersComponent, PluralPipe, SearchInputComponent, SectionComponent],
   templateUrl: './filterable-list.component.html',
   styleUrls: ['./filterable-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

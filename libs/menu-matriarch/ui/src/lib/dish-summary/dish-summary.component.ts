@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -5,12 +6,18 @@ import {
   Input,
   Output,
 } from '@angular/core';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faLink } from '@fortawesome/free-solid-svg-icons';
 
 import { Tag } from '@atocha/menu-matriarch/types';
+import { CountComponent } from '../count/count.component';
+import { TagComponent } from '../tags/tag/tag.component';
+import { TagsListComponent } from '../tags/tags-list/tags-list.component';
 
 @Component({
+  standalone: true,
   selector: 'ui-dish-summary',
+  imports: [CommonModule, FontAwesomeModule, CountComponent, TagComponent, TagsListComponent],
   templateUrl: './dish-summary.component.html',
   styleUrls: ['./dish-summary.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

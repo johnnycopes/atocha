@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import {
   Component,
   ChangeDetectionStrategy,
@@ -11,7 +12,9 @@ import { Tag } from '@atocha/menu-matriarch/types';
 import { TagDefContext, TagDefDirective } from './tag-def.directive';
 
 @Component({
+  standalone: true,
   selector: 'ui-tags-list',
+  imports: [CommonModule],
   templateUrl: './tags-list.component.html',
   styleUrls: ['./tags-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
