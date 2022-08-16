@@ -3,7 +3,18 @@ import { CommonModule } from '@angular/common';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { RouterModule } from '@angular/router';
 
-import { ButtonComponent, CardComponent, InlineDaySelectComponent, InlineNameEditComponent, MealSummaryComponent, OptionsMenuComponent, OptionsMenuItemComponent, OptionsMenuTriggerDirective, SectionComponent, SmallCapsLabelComponent } from '@atocha/menu-matriarch/ui';
+import {
+  ButtonComponent,
+  CardComponent,
+  InlineDaySelectComponent,
+  InlineNameEditComponent,
+  MealSummaryComponent,
+  OptionsMenuComponent,
+  OptionsMenuItemComponent,
+  OptionsMenuTriggerDirective,
+  SectionComponent,
+  SmallCapsLabelComponent,
+} from '@atocha/menu-matriarch/ui';
 import { MenusComponent } from './menus.component';
 import { MenuCardComponent } from './menu-card/menu-card.component';
 

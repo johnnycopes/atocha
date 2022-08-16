@@ -6,7 +6,17 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { CheckboxComponent } from '@atocha/core/ui';
 import { MenuMatriarchFeatureEntitiesModule } from '@atocha/menu-matriarch/feature-entities';
-import { ButtonComponent, CardComponent, DishSummaryComponent, EmptyViewPlaceholderComponent, MealSummaryComponent, SectionComponent, SmallCapsLabelComponent, TagComponent, TagsListComponent } from '@atocha/menu-matriarch/ui';
+import {
+  ButtonComponent,
+  CardComponent,
+  DishSummaryComponent,
+  EmptyViewPlaceholderComponent,
+  MealSummaryComponent,
+  SectionComponent,
+  SmallCapsLabelComponent,
+  TagComponent,
+  TagsListComponent,
+} from '@atocha/menu-matriarch/ui';
 import { PlannerComponent } from './planner.component';
 import { PlannerDishComponent } from './planner-dishes/planner-dish/planner-dish.component';
 import { PlannerDishesComponent } from './planner-dishes/planner-dishes.component';

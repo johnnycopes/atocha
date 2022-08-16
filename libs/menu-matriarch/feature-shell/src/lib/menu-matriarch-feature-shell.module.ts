@@ -18,10 +18,6 @@ import { WelcomeComponent } from './welcome/welcome.component';
     WelcomeComponent,
   ],
   exports: [ErrorComponent],
-  imports: [
-    CommonModule,
-    EmptyViewPlaceholderComponent,
-    RouterModule,
-  ],
+  imports: [CommonModule, EmptyViewPlaceholderComponent, RouterModule],
 })
 export class MenuMatriarchFeatureShellModule {}

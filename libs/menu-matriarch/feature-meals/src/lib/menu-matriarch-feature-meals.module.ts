@@ -5,7 +5,17 @@ import { RouterModule } from '@angular/router';
 
 import { AutofocusDirective, CheckboxComponent } from '@atocha/core/ui';
 import { MenuMatriarchFeatureEntitiesModule } from '@atocha/menu-matriarch/feature-entities';
-import { ButtonComponent, CardComponent, DishSummaryComponent, InputComponent, MealSummaryComponent, SectionComponent, TagComponent, TagDefDirective, TagsListComponent } from '@atocha/menu-matriarch/ui';
+import {
+  ButtonComponent,
+  CardComponent,
+  DishSummaryComponent,
+  InputComponent,
+  MealSummaryComponent,
+  SectionComponent,
+  TagComponent,
+  TagDefDirective,
+  TagsListComponent,
+} from '@atocha/menu-matriarch/ui';
 import { MealCardComponent } from './meal-card/meal-card.component';
 import { MealDetailsComponent } from './meal-details/meal-details.component';
 import { MealEditComponent } from './meal-edit/meal-edit.component';

@@ -18,7 +18,14 @@ import { TagDefDirective } from '../tags/tags-list/tag-def.directive';
 @Component({
   standalone: true,
   selector: 'ui-dish-summary',
-  imports: [CommonModule, FontAwesomeModule, CountComponent, TagComponent, TagDefDirective, TagsListComponent],
+  imports: [
+    CommonModule,
+    FontAwesomeModule,
+    CountComponent,
+    TagComponent,
+    TagDefDirective,
+    TagsListComponent,
+  ],
   templateUrl: './dish-summary.component.html',
   styleUrls: ['./dish-summary.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

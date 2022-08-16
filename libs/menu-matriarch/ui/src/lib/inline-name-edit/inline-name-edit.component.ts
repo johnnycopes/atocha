@@ -14,7 +14,12 @@ import { InputComponent } from '../_generic/input/input.component';
 @Component({
   standalone: true,
   selector: 'ui-inline-name-edit',
-  imports: [AutofocusDirective, FormsModule, InlineFormComponent, InputComponent],
+  imports: [
+    AutofocusDirective,
+    FormsModule,
+    InlineFormComponent,
+    InputComponent,
+  ],
   templateUrl: './inline-name-edit.component.html',
   styleUrls: ['./inline-name-edit.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

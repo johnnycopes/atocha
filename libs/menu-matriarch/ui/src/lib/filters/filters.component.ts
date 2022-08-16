@@ -27,7 +27,7 @@ import { TagsListComponent } from '../tags/tags-list/tags-list.component';
     FormsModule,
     TagComponent,
     TagDefDirective,
-    TagsListComponent
+    TagsListComponent,
   ],
   templateUrl: './filters.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

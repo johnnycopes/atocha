@@ -3,7 +3,12 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
-import { ButtonComponent, CardComponent, InputComponent, SectionComponent } from '@atocha/menu-matriarch/ui';
+import {
+  ButtonComponent,
+  CardComponent,
+  InputComponent,
+  SectionComponent,
+} from '@atocha/menu-matriarch/ui';
 import { SettingsComponent } from './settings.component';
 
 @NgModule({
