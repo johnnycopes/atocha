@@ -4,8 +4,9 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
+import { CheckboxComponent } from '@atocha/core/ui';
 import { MenuMatriarchFeatureEntitiesModule } from '@atocha/menu-matriarch/feature-entities';
-import { CardComponent, DishSummaryComponent, EmptyViewPlaceholderComponent, MealSummaryComponent, SmallCapsLabelComponent, TagComponent, TagsListComponent } from '@atocha/menu-matriarch/ui';
+import { CardComponent, DishSummaryComponent, EmptyViewPlaceholderComponent, MealSummaryComponent, SectionComponent, SmallCapsLabelComponent, TagComponent, TagsListComponent } from '@atocha/menu-matriarch/ui';
 import { PlannerComponent } from './planner.component';
 import { PlannerDishComponent } from './planner-dishes/planner-dish/planner-dish.component';
 import { PlannerDishesComponent } from './planner-dishes/planner-dishes.component';
@@ -27,6 +28,7 @@ import { PlannerMenuComponent } from './planner-menu/planner-menu.component';
   imports: [
     CardComponent,
     CommonModule,
+    CheckboxComponent,
     DishSummaryComponent,
     FontAwesomeModule,
     EmptyViewPlaceholderComponent,
@@ -34,6 +36,7 @@ import { PlannerMenuComponent } from './planner-menu/planner-menu.component';
     MealSummaryComponent,
     MenuMatriarchFeatureEntitiesModule,
     RouterModule.forChild([{ path: '', component: PlannerComponent }]),
+    SectionComponent,
     SmallCapsLabelComponent,
     TagComponent,
     TagsListComponent,

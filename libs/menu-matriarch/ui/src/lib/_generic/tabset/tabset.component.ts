@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import {
   Component,
   AfterContentInit,
@@ -24,6 +25,7 @@ export type TabsetContentVisibility = 'visible' | 'invisible';
 @Component({
   standalone: true,
   selector: 'ui-tabset',
+  imports: [CommonModule],
   templateUrl: './tabset.component.html',
   styleUrls: ['./tabset.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
