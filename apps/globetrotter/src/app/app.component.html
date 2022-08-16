@@ -1,8 +1,8 @@
 <ui-loader *ngIf="loading$ | async">
 </ui-loader>
 
-<app-error *ngIf="error$ | async">
-</app-error>
+<ui-error *ngIf="error$ | async">
+</ui-error>
 
 <ng-container *ngIf="
   (loading$ | async) === false &&
