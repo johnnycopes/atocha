@@ -1,6 +1,5 @@
-export * from './lib/globetrotter-ui.module';
-
 export * from './lib/animations';
+
 export * from './lib/alert/alert.component';
 export * from './lib/button/button.component';
 export * from './lib/container/container.component';
