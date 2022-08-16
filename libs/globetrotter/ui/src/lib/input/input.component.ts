@@ -1,7 +1,12 @@
+import { CommonModule } from '@angular/common';
 import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 
+import { AlertComponent } from '../alert/alert.component';
+
 @Component({
+  standalone: true,
   selector: 'ui-input',
+  imports: [AlertComponent, CommonModule],
   templateUrl: './input.component.html',
   styleUrls: ['./input.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

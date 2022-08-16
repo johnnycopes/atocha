@@ -6,6 +6,7 @@ import { positionAnimation } from '../animations';
 export type FixedSlideablePanelPosition = 'offscreen' | 'header' | 'fullscreen';
 
 @Component({
+  standalone: true,
   selector: 'ui-fixed-slideable-panel',
   templateUrl: './fixed-slideable-panel.component.html',
   styleUrls: ['./fixed-slideable-panel.component.scss'],

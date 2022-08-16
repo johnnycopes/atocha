@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import {
   Component,
   Input,
@@ -10,7 +11,9 @@ import {
 } from '@angular/core';
 
 @Component({
+  standalone: true,
   selector: 'ui-icon',
+  imports: [CommonModule],
   templateUrl: './icon.component.html',
   styleUrls: ['./icon.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
