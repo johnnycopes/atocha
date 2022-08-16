@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 import { MenuMatriarchFeatureEntitiesModule } from '@atocha/menu-matriarch/feature-entities';
-import { CardComponent, DishSummaryComponent, InputComponent, MealSummaryComponent, SectionComponent, TagComponent, TagsListComponent } from '@atocha/menu-matriarch/ui';
+import { ButtonComponent, CardComponent, DishSummaryComponent, InputComponent, MealSummaryComponent, SectionComponent, TagComponent, TagsListComponent } from '@atocha/menu-matriarch/ui';
 import { MealCardComponent } from './meal-card/meal-card.component';
 import { MealDetailsComponent } from './meal-details/meal-details.component';
 import { MealEditComponent } from './meal-edit/meal-edit.component';
@@ -22,6 +22,7 @@ import { AutofocusDirective } from '@atocha/core/ui';
   ],
   imports: [
     AutofocusDirective,
+    ButtonComponent,
     CardComponent,
     CommonModule,
     DishSummaryComponent,

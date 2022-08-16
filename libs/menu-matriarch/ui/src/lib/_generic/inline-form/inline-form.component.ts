@@ -18,7 +18,7 @@ import { ButtonComponent } from '../button/button.component';
   standalone: true,
   // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'form[ui-inline-form]',
-  imports: [CommonModule, FormsModule, FontAwesomeModule, ButtonComponent],
+  imports: [ButtonComponent, CommonModule, FormsModule, FontAwesomeModule, ButtonComponent],
   templateUrl: './inline-form.component.html',
   styleUrls: ['./inline-form.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

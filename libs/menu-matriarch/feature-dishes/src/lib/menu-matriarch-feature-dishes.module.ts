@@ -6,7 +6,7 @@ import { EditorModule } from '@tinymce/tinymce-angular';
 
 import { AutofocusDirective, PluralPipe, SafePipe } from '@atocha/core/ui';
 import { MenuMatriarchFeatureEntitiesModule } from '@atocha/menu-matriarch/feature-entities';
-import { CardComponent, DishSummaryComponent, InputComponent, SectionComponent, TagComponent, TagsListComponent } from '@atocha/menu-matriarch/ui';
+import { ButtonComponent, CardComponent, DishSummaryComponent, InputComponent, SectionComponent, TagComponent, TagsListComponent } from '@atocha/menu-matriarch/ui';
 import { DishCardComponent } from './dish-card/dish-card.component';
 import { DishDetailsComponent } from './dish-details/dish-details.component';
 import { DishEditComponent } from './dish-edit/dish-edit.component';
@@ -23,6 +23,7 @@ import { DishPlaceholderComponent } from './dish-placeholder/dish-placeholder.co
   ],
   imports: [
     AutofocusDirective,
+    ButtonComponent,
     CardComponent,
     CommonModule,
     DishSummaryComponent,
