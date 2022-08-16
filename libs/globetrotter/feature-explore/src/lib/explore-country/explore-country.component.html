@@ -22,7 +22,9 @@
       {{ tableDatum?.content }}
     </ui-small-caps>
   </div>
-  <p class="summary">
+  <p *ngIf="summary"
+    class="summary"
+  >
     {{ summary }}
   </p>
 
