@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import {
   Component,
   ChangeDetectionStrategy,
@@ -7,11 +8,23 @@ import {
   HostBinding,
   Input,
 } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
 
+import { ButtonComponent } from '../button/button.component';
+
 @Component({
+  standalone: true,
   // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'form[ui-inline-form]',
+  imports: [
+    ButtonComponent,
+    CommonModule,
+    FormsModule,
+    FontAwesomeModule,
+    ButtonComponent,
+  ],
   templateUrl: './inline-form.component.html',
   styleUrls: ['./inline-form.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

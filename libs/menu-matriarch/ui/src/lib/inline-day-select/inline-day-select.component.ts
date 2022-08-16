@@ -5,12 +5,17 @@ import {
   Output,
   EventEmitter,
 } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 import { trackBySelf } from '@atocha/core/ui';
 import { Day, getDays } from '@atocha/menu-matriarch/types';
+import { InlineFormComponent } from '../_generic/inline-form/inline-form.component';
+import { InputComponent } from '../_generic/input/input.component';
 
 @Component({
+  standalone: true,
   selector: 'ui-inline-day-select',
+  imports: [FormsModule, InlineFormComponent, InputComponent],
   templateUrl: './inline-day-select.component.html',
   styleUrls: ['./inline-day-select.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

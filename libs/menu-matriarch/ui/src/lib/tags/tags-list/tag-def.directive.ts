@@ -7,6 +7,7 @@ export interface TagDefContext<T extends Tag> {
 }
 
 @Directive({
+  standalone: true,
   selector: '[uiTagDef]',
 })
 export class TagDefDirective<T extends Tag> {

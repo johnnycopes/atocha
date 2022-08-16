@@ -4,8 +4,23 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { EditorModule } from '@tinymce/tinymce-angular';
 
+import {
+  AutofocusDirective,
+  CheckboxComponent,
+  PluralPipe,
+  SafePipe,
+} from '@atocha/core/ui';
 import { MenuMatriarchFeatureEntitiesModule } from '@atocha/menu-matriarch/feature-entities';
-import { MenuMatriarchUiModule } from '@atocha/menu-matriarch/ui';
+import {
+  ButtonComponent,
+  CardComponent,
+  DishSummaryComponent,
+  InputComponent,
+  SectionComponent,
+  TagComponent,
+  TagDefDirective,
+  TagsListComponent,
+} from '@atocha/menu-matriarch/ui';
 import { DishCardComponent } from './dish-card/dish-card.component';
 import { DishDetailsComponent } from './dish-details/dish-details.component';
 import { DishEditComponent } from './dish-edit/dish-edit.component';
@@ -21,11 +36,17 @@ import { DishPlaceholderComponent } from './dish-placeholder/dish-placeholder.co
     DishPlaceholderComponent,
   ],
   imports: [
-    MenuMatriarchFeatureEntitiesModule,
-    MenuMatriarchUiModule,
+    AutofocusDirective,
+    ButtonComponent,
+    CardComponent,
+    CheckboxComponent,
     CommonModule,
-    FormsModule,
+    DishSummaryComponent,
     EditorModule,
+    FormsModule,
+    InputComponent,
+    MenuMatriarchFeatureEntitiesModule,
+    PluralPipe,
     RouterModule.forChild([
       {
         path: '',
@@ -38,6 +59,11 @@ import { DishPlaceholderComponent } from './dish-placeholder/dish-placeholder.co
         ],
       },
     ]),
+    SafePipe,
+    SectionComponent,
+    TagComponent,
+    TagDefDirective,
+    TagsListComponent,
   ],
 })
 export class MenuMatriarchFeatureDishesModule {}

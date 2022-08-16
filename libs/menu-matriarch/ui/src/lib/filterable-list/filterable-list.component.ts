@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import {
   Component,
   ChangeDetectionStrategy,
@@ -6,10 +7,26 @@ import {
   Output,
 } from '@angular/core';
 
+import { ButtonComponent } from '../_generic/button/button.component';
+import { FiltersButtonComponent } from '../filters-button/filters-button.component';
+import { FiltersComponent } from '../filters/filters.component';
+import { PluralPipe } from '@atocha/core/ui';
+import { SearchInputComponent } from '../_generic/search-input/search-input.component';
+import { SectionComponent } from '../_generic/section/section.component';
 import { Tag } from '@atocha/menu-matriarch/types';
 
 @Component({
+  standalone: true,
   selector: 'ui-filterable-list',
+  imports: [
+    ButtonComponent,
+    CommonModule,
+    FiltersButtonComponent,
+    FiltersComponent,
+    PluralPipe,
+    SearchInputComponent,
+    SectionComponent,
+  ],
   templateUrl: './filterable-list.component.html',
   styleUrls: ['./filterable-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

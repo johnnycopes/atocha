@@ -6,6 +6,7 @@ import {
 } from '@angular/core';
 
 @Component({
+  standalone: true,
   selector: 'ui-section',
   templateUrl: './section.component.html',
   styleUrls: ['./section.component.scss'],

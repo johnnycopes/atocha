@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -13,9 +14,12 @@ import {
   getDishTypes,
 } from '@atocha/menu-matriarch/types';
 import { dishTrackByFn, groupTrackByFn } from '../track-by-functions';
+import { SmallCapsLabelComponent } from '../_generic/small-caps-label/small-caps-label.component';
 
 @Component({
+  standalone: true,
   selector: 'ui-meal-summary',
+  imports: [CommonModule, SmallCapsLabelComponent],
   templateUrl: './meal-summary.component.html',
   styleUrls: ['./meal-summary.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

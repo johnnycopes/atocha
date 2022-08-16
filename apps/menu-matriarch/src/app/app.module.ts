@@ -14,7 +14,6 @@ import { MenuMatriarchFeaturePlannerModule } from '@atocha/menu-matriarch/featur
 import { MenuMatriarchFeatureSettingsModule } from '@atocha/menu-matriarch/feature-settings';
 import { MenuMatriarchFeatureShellModule } from '@atocha/menu-matriarch/feature-shell';
 import { MenuMatriarchFeatureTagsModule } from '@atocha/menu-matriarch/feature-tags';
-import { MenuMatriarchUiModule } from '@atocha/menu-matriarch/ui';
 
 @NgModule({
   declarations: [AppComponent],
@@ -31,7 +30,6 @@ import { MenuMatriarchUiModule } from '@atocha/menu-matriarch/ui';
     MenuMatriarchFeatureSettingsModule,
     MenuMatriarchFeatureShellModule,
     MenuMatriarchFeatureTagsModule,
-    MenuMatriarchUiModule,
   ],
   bootstrap: [AppComponent],
 })

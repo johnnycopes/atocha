@@ -6,6 +6,7 @@ import {
 } from '@angular/core';
 
 @Component({
+  standalone: true,
   // eslint-disable-next-line @angular-eslint/component-selector
   selector: '[ui-options-menu-item]',
   templateUrl: './options-menu-item.component.html',

@@ -3,8 +3,19 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
+import { AutofocusDirective, CheckboxComponent } from '@atocha/core/ui';
 import { MenuMatriarchFeatureEntitiesModule } from '@atocha/menu-matriarch/feature-entities';
-import { MenuMatriarchUiModule } from '@atocha/menu-matriarch/ui';
+import {
+  ButtonComponent,
+  CardComponent,
+  DishSummaryComponent,
+  InputComponent,
+  MealSummaryComponent,
+  SectionComponent,
+  TagComponent,
+  TagDefDirective,
+  TagsListComponent,
+} from '@atocha/menu-matriarch/ui';
 import { MealCardComponent } from './meal-card/meal-card.component';
 import { MealDetailsComponent } from './meal-details/meal-details.component';
 import { MealEditComponent } from './meal-edit/meal-edit.component';
@@ -20,10 +31,16 @@ import { MealsComponent } from './meals.component';
     MealsComponent,
   ],
   imports: [
-    MenuMatriarchFeatureEntitiesModule,
-    MenuMatriarchUiModule,
+    AutofocusDirective,
+    ButtonComponent,
+    CardComponent,
+    CheckboxComponent,
     CommonModule,
+    DishSummaryComponent,
     FormsModule,
+    InputComponent,
+    MealSummaryComponent,
+    MenuMatriarchFeatureEntitiesModule,
     RouterModule.forChild([
       {
         path: '',
@@ -36,6 +53,10 @@ import { MealsComponent } from './meals.component';
         ],
       },
     ]),
+    SectionComponent,
+    TagComponent,
+    TagDefDirective,
+    TagsListComponent,
   ],
 })
 export class MenuMatriarchFeatureMealsModule {}

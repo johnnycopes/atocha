@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import {
   Component,
   EventEmitter,
@@ -10,7 +11,9 @@ import {
 import { fadeInAnimation } from '../../../animations';
 
 @Component({
+  standalone: true,
   selector: 'ui-tab',
+  imports: [CommonModule],
   templateUrl: './tab.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [fadeInAnimation],
