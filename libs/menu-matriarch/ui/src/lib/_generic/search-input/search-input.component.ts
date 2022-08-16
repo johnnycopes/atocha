@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import {
   Component,
   ChangeDetectionStrategy,
@@ -16,7 +17,7 @@ import { InputComponent } from '../input/input.component';
 @Component({
   standalone: true,
   selector: 'ui-search-input',
-  imports: [InputComponent, FormsModule, FontAwesomeModule],
+  imports: [CommonModule, InputComponent, FormsModule, FontAwesomeModule],
   templateUrl: './search-input.component.html',
   styleUrls: ['./search-input.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

@@ -13,11 +13,12 @@ import { Tag } from '@atocha/menu-matriarch/types';
 import { CountComponent } from '../count/count.component';
 import { TagComponent } from '../tags/tag/tag.component';
 import { TagsListComponent } from '../tags/tags-list/tags-list.component';
+import { TagDefDirective } from '../tags/tags-list/tag-def.directive';
 
 @Component({
   standalone: true,
   selector: 'ui-dish-summary',
-  imports: [CommonModule, FontAwesomeModule, CountComponent, TagComponent, TagsListComponent],
+  imports: [CommonModule, FontAwesomeModule, CountComponent, TagComponent, TagDefDirective, TagsListComponent],
   templateUrl: './dish-summary.component.html',
   styleUrls: ['./dish-summary.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

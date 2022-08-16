@@ -28,11 +28,11 @@ import { PlannerMenuComponent } from './planner-menu/planner-menu.component';
   imports: [
     ButtonComponent,
     CardComponent,
-    CommonModule,
     CheckboxComponent,
+    CommonModule,
     DishSummaryComponent,
-    FontAwesomeModule,
     EmptyViewPlaceholderComponent,
+    FontAwesomeModule,
     FormsModule,
     MealSummaryComponent,
     MenuMatriarchFeatureEntitiesModule,

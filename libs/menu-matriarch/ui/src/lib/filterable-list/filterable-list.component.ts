@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import {
   Component,
   ChangeDetectionStrategy,
@@ -17,7 +18,7 @@ import { Tag } from '@atocha/menu-matriarch/types';
 @Component({
   standalone: true,
   selector: 'ui-filterable-list',
-  imports: [ButtonComponent, FiltersButtonComponent, FiltersComponent, PluralPipe, SearchInputComponent, SectionComponent],
+  imports: [ButtonComponent, CommonModule, FiltersButtonComponent, FiltersComponent, PluralPipe, SearchInputComponent, SectionComponent],
   templateUrl: './filterable-list.component.html',
   styleUrls: ['./filterable-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

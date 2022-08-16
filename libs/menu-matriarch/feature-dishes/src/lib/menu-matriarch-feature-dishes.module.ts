@@ -4,9 +4,9 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { EditorModule } from '@tinymce/tinymce-angular';
 
-import { AutofocusDirective, PluralPipe, SafePipe } from '@atocha/core/ui';
+import { AutofocusDirective, CheckboxComponent, PluralPipe, SafePipe } from '@atocha/core/ui';
 import { MenuMatriarchFeatureEntitiesModule } from '@atocha/menu-matriarch/feature-entities';
-import { ButtonComponent, CardComponent, DishSummaryComponent, InputComponent, SectionComponent, TagComponent, TagsListComponent } from '@atocha/menu-matriarch/ui';
+import { ButtonComponent, CardComponent, DishSummaryComponent, InputComponent, SectionComponent, TagComponent, TagDefDirective, TagsListComponent } from '@atocha/menu-matriarch/ui';
 import { DishCardComponent } from './dish-card/dish-card.component';
 import { DishDetailsComponent } from './dish-details/dish-details.component';
 import { DishEditComponent } from './dish-edit/dish-edit.component';
@@ -25,6 +25,7 @@ import { DishPlaceholderComponent } from './dish-placeholder/dish-placeholder.co
     AutofocusDirective,
     ButtonComponent,
     CardComponent,
+    CheckboxComponent,
     CommonModule,
     DishSummaryComponent,
     EditorModule,
@@ -47,6 +48,7 @@ import { DishPlaceholderComponent } from './dish-placeholder/dish-placeholder.co
     SafePipe,
     SectionComponent,
     TagComponent,
+    TagDefDirective,
     TagsListComponent,
   ],
 })

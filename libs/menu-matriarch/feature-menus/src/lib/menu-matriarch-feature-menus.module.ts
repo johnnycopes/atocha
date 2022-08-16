@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { OverlayModule } from '@angular/cdk/overlay';
 import { RouterModule } from '@angular/router';
 
-import { ButtonComponent, CardComponent, InlineDaySelectComponent, InlineNameEditComponent, MealSummaryComponent, OptionsMenuComponent, OptionsMenuTriggerDirective, SectionComponent, SmallCapsLabelComponent } from '@atocha/menu-matriarch/ui';
+import { ButtonComponent, CardComponent, InlineDaySelectComponent, InlineNameEditComponent, MealSummaryComponent, OptionsMenuComponent, OptionsMenuItemComponent, OptionsMenuTriggerDirective, SectionComponent, SmallCapsLabelComponent } from '@atocha/menu-matriarch/ui';
 import { MenusComponent } from './menus.component';
 import { MenuCardComponent } from './menu-card/menu-card.component';
 
@@ -16,7 +17,9 @@ import { MenuCardComponent } from './menu-card/menu-card.component';
     InlineNameEditComponent,
     MealSummaryComponent,
     OptionsMenuComponent,
+    OptionsMenuItemComponent,
     OptionsMenuTriggerDirective,
+    OverlayModule,
     RouterModule.forChild([{ path: '', component: MenusComponent }]),
     SectionComponent,
     SmallCapsLabelComponent,
