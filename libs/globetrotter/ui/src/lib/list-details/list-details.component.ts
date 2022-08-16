@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/member-ordering */
 
+import { CommonModule } from '@angular/common';
 import {
   Component,
   OnInit,
@@ -16,6 +17,7 @@ import {
   ChangeDetectorRef,
   HostListener,
 } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 import { InputComponent } from '../input/input.component';
 
@@ -25,7 +27,9 @@ export interface ListDetailsStyles {
 }
 
 @Component({
+  standalone: true,
   selector: 'ui-list-details',
+  imports: [CommonModule, FormsModule, InputComponent],
   templateUrl: './list-details.component.html',
   styleUrls: ['./list-details.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

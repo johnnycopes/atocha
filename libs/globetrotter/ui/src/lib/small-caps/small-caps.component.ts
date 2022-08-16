@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import {
   Component,
   Input,
@@ -6,7 +7,9 @@ import {
 } from '@angular/core';
 
 @Component({
+  standalone: true,
   selector: 'ui-small-caps',
+  imports: [CommonModule],
   templateUrl: './small-caps.component.html',
   styleUrls: ['./small-caps.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

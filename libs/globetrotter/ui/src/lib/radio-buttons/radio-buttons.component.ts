@@ -4,8 +4,9 @@ import {
   ChangeDetectorRef,
   ChangeDetectionStrategy,
 } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { BreakpointObserver } from '@angular/cdk/layout';
+import { CommonModule } from '@angular/common';
 
 export interface RadioButtonsOption<T> {
   display: string;
@@ -13,7 +14,9 @@ export interface RadioButtonsOption<T> {
 }
 
 @Component({
+  standalone: true,
   selector: 'ui-radio-buttons',
+  imports: [CommonModule, FormsModule],
   templateUrl: './radio-buttons.component.html',
   styleUrls: ['./radio-buttons.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

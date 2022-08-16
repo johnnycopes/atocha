@@ -10,6 +10,7 @@ import {
 } from '@angular/core';
 
 @Component({
+  standalone: true,
   selector: 'ui-icon',
   templateUrl: './icon.component.html',
   styleUrls: ['./icon.component.scss'],

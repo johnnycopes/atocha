@@ -17,6 +17,7 @@ export type FlipCardSide = 'front' | 'back';
 export type FlipCardGuess = 'correct' | 'incorrect' | 'none';
 
 @Component({
+  standalone: true,
   selector: 'ui-flip-card',
   templateUrl: './flip-card.component.html',
   styleUrls: ['./flip-card.component.scss'],
