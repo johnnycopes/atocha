@@ -6,7 +6,7 @@ import { AlertComponent } from '../alert/alert.component';
 @Component({
   standalone: true,
   selector: 'ui-input',
-  imports: [CommonModule, AlertComponent],
+  imports: [AlertComponent, CommonModule],
   templateUrl: './input.component.html',
   styleUrls: ['./input.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
