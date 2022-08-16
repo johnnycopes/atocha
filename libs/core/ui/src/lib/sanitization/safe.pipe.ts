@@ -14,7 +14,7 @@ type SafeValue = 'html' | 'style' | 'resourceUrl';
 export class SafePipe implements PipeTransform {
   constructor(private _sanitizer: DomSanitizer) {}
 
-  public transform(
+  transform(
     value: string | undefined,
     type: SafeValue
   ): SafeResourceUrl | SafeStyle {

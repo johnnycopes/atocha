@@ -37,7 +37,7 @@ interface ItemsRecord<T> {
 @Component({
   standalone: true,
   selector: 'core-nested-checkboxes',
-  imports: [CommonModule, FormsModule, CheckboxComponent, TreeComponent],
+  imports: [CheckboxComponent, CommonModule, FormsModule, TreeComponent],
   templateUrl: './nested-checkboxes.component.html',
   styleUrls: ['./nested-checkboxes.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

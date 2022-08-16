@@ -23,7 +23,6 @@ import { ButtonComponent } from '../button/button.component';
     CommonModule,
     FormsModule,
     FontAwesomeModule,
-    ButtonComponent,
   ],
   templateUrl: './inline-form.component.html',
   styleUrls: ['./inline-form.component.scss'],

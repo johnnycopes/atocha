@@ -17,7 +17,7 @@ import { InputComponent } from '../input/input.component';
 @Component({
   standalone: true,
   selector: 'ui-search-input',
-  imports: [CommonModule, InputComponent, FormsModule, FontAwesomeModule],
+  imports: [CommonModule, FormsModule, FontAwesomeModule, InputComponent],
   templateUrl: './search-input.component.html',
   styleUrls: ['./search-input.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
