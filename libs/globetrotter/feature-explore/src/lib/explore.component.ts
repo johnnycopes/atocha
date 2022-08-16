@@ -35,7 +35,7 @@ export class ExploreComponent {
   private _summary$ = this._selectedCountryChange.pipe(
     switchMap((country) => {
       if (!country) {
-        return of(undefined);
+        return of('');
       }
       return this._placeService.getSummary(country.name);
     }),
@@ -64,17 +64,12 @@ export class ExploreComponent {
     this._searchTerm$,
     this._summary$,
   ]).pipe(
-    map(([filteredCountries, selectedCountry, searchTerm, summary]) => {
-      if (!filteredCountries.length || !summary) {
-        return undefined;
-      }
-      return {
-        filteredCountries,
-        selectedCountry,
-        searchTerm,
-        summary,
-      };
-    })
+    map(([filteredCountries, selectedCountry, searchTerm, summary]) => ({
+      filteredCountries,
+      selectedCountry,
+      searchTerm,
+      summary,
+    }))
   );
 
   constructor(private _placeService: PlaceService) {}

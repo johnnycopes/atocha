@@ -20,8 +20,8 @@ import { TagDefDirective } from '../tags/tags-list/tag-def.directive';
   selector: 'ui-dish-summary',
   imports: [
     CommonModule,
-    FontAwesomeModule,
     CountComponent,
+    FontAwesomeModule,
     TagComponent,
     TagDefDirective,
     TagsListComponent,
