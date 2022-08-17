@@ -47,7 +47,7 @@ export class RouterService {
         distinctUntilChanged()
       )
       .subscribe((loading) => {
-        this._loaderService.setShellLoader(loading)
+        this._loaderService.setShellLoader(loading);
       });
   }
 }

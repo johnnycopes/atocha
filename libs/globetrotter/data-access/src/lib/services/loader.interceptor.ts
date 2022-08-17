@@ -12,7 +12,7 @@ import { LoaderService } from './loader.service';
 export class LoaderInterceptor implements HttpInterceptor {
   private _totalRequests = 0;
 
-  constructor(private _loaderService: LoaderService) { }
+  constructor(private _loaderService: LoaderService) {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler) {
     // TODO: strengthen this

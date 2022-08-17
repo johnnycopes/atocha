@@ -31,7 +31,10 @@ export class ShellComponent {
     }))
   );
 
-  constructor(private _loaderService: LoaderService, private _quizService: QuizService) {}
+  constructor(
+    private _loaderService: LoaderService,
+    private _quizService: QuizService
+  ) {}
 
   onNavReady(): void {
     this._navReadySubject.next(true);
