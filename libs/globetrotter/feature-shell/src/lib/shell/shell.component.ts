@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { BehaviorSubject, combineLatest } from 'rxjs';
-import { map, distinctUntilChanged } from 'rxjs/operators';
+import { map, tap, distinctUntilChanged } from 'rxjs/operators';
 
-import { QuizService } from '@atocha/globetrotter/data-access';
+import { LoaderService, QuizService } from '@atocha/globetrotter/data-access';
 
 @Component({
   selector: 'app-shell',
@@ -17,14 +17,21 @@ export class ShellComponent {
     map((quiz) => quiz?.isComplete ?? false),
     distinctUntilChanged()
   );
-  vm$ = combineLatest([this._showContent$, this._quizComplete$]).pipe(
-    map(([showContent, quizComplete]) => ({
-      showContent,
+  private _loading$ = this._loaderService.shell$;
+
+  vm$ = combineLatest([
+    this._showContent$,
+    this._quizComplete$,
+    this._loading$,
+  ]).pipe(
+    map(([showContent, quizComplete, loading]) => ({
+      loading: showContent && loading,
+      ready: showContent && !loading,
       quizComplete,
     }))
   );
 
-  constructor(private _quizService: QuizService) {}
+  constructor(private _loaderService: LoaderService, private _quizService: QuizService) {}
 
   onNavigationReady(): void {
     this._showContentSubject.next(true);

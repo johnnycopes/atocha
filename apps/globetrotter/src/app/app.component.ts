@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { map } from 'rxjs/operators';
 
-import { ErrorService, RouterService } from '@atocha/globetrotter/data-access';
+import { ErrorService, LoaderService } from '@atocha/globetrotter/data-access';
 
 @Component({
   selector: 'app-root',
@@ -10,11 +10,11 @@ import { ErrorService, RouterService } from '@atocha/globetrotter/data-access';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
-  loading$ = this._routerService.loading$;
+  loading$ = this._loaderService.global$;
   error$ = this._errorService.errors$.pipe(map(({ global }) => !!global));
 
   constructor(
-    private _routerService: RouterService,
+    private _loaderService: LoaderService,
     private _errorService: ErrorService
   ) {}
 }

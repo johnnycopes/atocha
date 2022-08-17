@@ -9,22 +9,20 @@ import {
 import { BehaviorSubject } from 'rxjs';
 import { map, filter, distinctUntilChanged, shareReplay } from 'rxjs/operators';
 
+import { LoaderService } from './loader.service';
+
 @Injectable({
   providedIn: 'root',
 })
 export class RouterService {
   private _routeSubject = new BehaviorSubject<string>('');
-  private _loadingSubject = new BehaviorSubject<boolean>(false);
   route$ = this._routeSubject.pipe(
     distinctUntilChanged(),
     shareReplay({ bufferSize: 1, refCount: true })
   );
-  loading$ = this._loadingSubject.pipe(
-    distinctUntilChanged(),
-    shareReplay({ bufferSize: 1, refCount: true })
-  );
+  loading$ = this._loaderService.shell$;
 
-  constructor(private _router: Router) {
+  constructor(private _router: Router, private _loaderService: LoaderService) {
     this._router.events
       .pipe(
         filter((e): e is NavigationEnd => e instanceof NavigationEnd),
@@ -48,6 +46,8 @@ export class RouterService {
         }),
         distinctUntilChanged()
       )
-      .subscribe((loading) => this._loadingSubject.next(loading));
+      .subscribe((loading) => {
+        this._loaderService.setShellLoader(loading)
+      });
   }
 }

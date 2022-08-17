@@ -6,4 +6,9 @@
   message="Please check your connection and try reloading."
 ></ui-error>
 
-<router-outlet></router-outlet>
+<ng-container *ngIf="
+  (loading$ | async) === false &&
+  (error$ | async) === false
+">
+  <router-outlet></router-outlet>
+</ng-container>
