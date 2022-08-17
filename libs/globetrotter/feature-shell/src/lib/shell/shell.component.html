@@ -10,7 +10,7 @@
     class="content"
   >
     <div class="content__wrapper"
-      [class]="{'content__wrapper--no-scroll': vm.quizComplete}"
+      [class.content__wrapper--no-scroll]="vm.quizComplete"
     >
       <router-outlet></router-outlet>
     </div>
