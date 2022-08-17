@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { map } from 'rxjs/operators';
 
 import { ErrorService, LoaderService } from '@atocha/globetrotter/data-access';
 
@@ -11,7 +10,7 @@ import { ErrorService, LoaderService } from '@atocha/globetrotter/data-access';
 })
 export class AppComponent {
   loading$ = this._loaderService.global$;
-  error$ = this._errorService.errors$.pipe(map(({ global }) => !!global));
+  error$ = this._errorService.global$;
 
   constructor(
     private _loaderService: LoaderService,

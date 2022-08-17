@@ -27,7 +27,7 @@ export class ApiService {
       tap(() => this._loaderService.setGlobalLoader(false)),
       shareReplay({ bufferSize: 1, refCount: true }),
       catchError((error: { message: string }) => {
-        this._errorService.setGlobalError(error.message);
+        this._errorService.setGlobalError(!!error);
         return of([]);
       })
     );
