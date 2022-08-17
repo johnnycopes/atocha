@@ -5,7 +5,6 @@ import { ErrorService, LoaderService } from '@atocha/globetrotter/data-access';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
