@@ -2,6 +2,8 @@
 
 :host {
   @include full-screen-page;
+  background: map-get($color, darkest);
+  z-index: 1;
 }
 
 .loader {
