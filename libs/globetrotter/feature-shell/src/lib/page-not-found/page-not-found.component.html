@@ -1,6 +1,10 @@
 <ui-error
   header="Page Not Found"
   message="Please check the URL and try again."
-  action="Home"
-  (actionClick)="onHomeClick()"
-></ui-error>
+>
+  <ui-button
+    class="action"
+    buttonText="Home"
+    (click)="onHomeClick()"
+  ></ui-button>
+</ui-error>

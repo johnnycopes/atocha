@@ -16,5 +16,10 @@
 }
 
 .action {
-  margin-top: map-get($spacing, 32);
+  display: none;
+
+  &:not(:empty) {
+    display: block;
+    margin-top: map-get($spacing, 32);
+  }
 }

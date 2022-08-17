@@ -4,12 +4,11 @@
   <h1 class="header">
     {{ header }}
   </h1>
-  <p class="message">
+  <p class="message"
+  >
     {{ message }}
   </p>
-  <ui-button *ngIf="action"
-    class="action"
-    [buttonText]="action"
-    (click)="actionClick.emit()"
-  ></ui-button>
+  <div class="action">
+    <ng-content></ng-content>
+  </div>
 </div>
