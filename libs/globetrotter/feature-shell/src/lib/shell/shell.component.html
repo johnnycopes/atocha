@@ -1,18 +1,18 @@
 <ng-container *ngIf="vm$ | async as vm">
-  <app-navigation (animationFinished)="onNavigationReady()">
+  <app-navigation (animationFinished)="onNavReady()">
   </app-navigation>
 
   <ui-loader *ngIf="vm.loading"
     class="loader"
   ></ui-loader>
 
-  <div class="content">
+  <div *ngIf="vm.ready"
+    class="content"
+  >
     <div class="content__wrapper"
       [class]="{'content__wrapper--no-scroll': vm.quizComplete}"
     >
-      <ng-container *ngIf="vm.ready">
-        <router-outlet></router-outlet>
-      </ng-container>
+      <router-outlet></router-outlet>
     </div>
   </div>
 </ng-container>
