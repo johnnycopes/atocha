@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { ErrorComponent, LoaderComponent } from '@atocha/globetrotter/ui';
@@ -15,7 +14,6 @@ import { AppRoutingModule } from './app-routing.module';
     ErrorComponent,
     HttpClientModule,
     LoaderComponent,
-    RouterModule,
   ],
   bootstrap: [AppComponent],
 })

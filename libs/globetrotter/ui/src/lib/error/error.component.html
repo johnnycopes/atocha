@@ -2,9 +2,13 @@
   @fadeIn
 >
   <h1 class="header">
-    Server Error
+    {{ header }}
   </h1>
-  <p class="message">
-    Please check your connection and try reloading.
+  <p class="message"
+  >
+    {{ message }}
   </p>
+  <div class="action">
+    <ng-content></ng-content>
+  </div>
 </div>

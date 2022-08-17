@@ -2,6 +2,8 @@
 
 :host {
   @include full-screen-page;
+  background: map-get($color, darkest);
+  z-index: 1;
 }
 
 .content {
@@ -11,4 +13,13 @@
 .header {
   font-size: map-get($font-size, 48);
   margin-bottom: map-get($spacing, 24);
+}
+
+.action {
+  display: none;
+
+  &:not(:empty) {
+    display: block;
+    margin-top: map-get($spacing, 32);
+  }
 }

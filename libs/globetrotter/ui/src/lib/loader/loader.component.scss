@@ -3,7 +3,6 @@
 :host {
   @include full-screen-page;
 }
-
 .loader {
   width: map-get($spacing, 128);
   height: map-get($spacing, 128);

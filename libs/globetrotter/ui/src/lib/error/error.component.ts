@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
 
 import { fadeInAnimation } from '../animations';
 
@@ -10,4 +10,7 @@ import { fadeInAnimation } from '../animations';
   changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [fadeInAnimation],
 })
-export class ErrorComponent {}
+export class ErrorComponent {
+  @Input() header = '';
+  @Input() message = '';
+}
