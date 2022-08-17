@@ -4,9 +4,4 @@
 <ui-error *ngIf="error$ | async">
 </ui-error>
 
-<ng-container *ngIf="
-  (loading$ | async) === false &&
-  (error$ | async) === false
-">
-  <router-outlet></router-outlet>
-</ng-container>
+<router-outlet></router-outlet>
