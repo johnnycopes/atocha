@@ -20,7 +20,6 @@ export class RouterService {
     distinctUntilChanged(),
     shareReplay({ bufferSize: 1, refCount: true })
   );
-  loading$ = this._loaderService.shell$;
 
   constructor(private _router: Router, private _loaderService: LoaderService) {
     this._router.events
