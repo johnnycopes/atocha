@@ -27,7 +27,7 @@ export class ErrorService {
         first(),
         map((errors) => ({ ...errors, global: error }))
       )
-      .subscribe();
+      .subscribe(this._errorsSubject);
   }
 
   setLoginError(error: string): void {
@@ -36,7 +36,7 @@ export class ErrorService {
         first(),
         map((errors) => ({ ...errors, login: error }))
       )
-      .subscribe();
+      .subscribe(this._errorsSubject);
   }
 
   setRegisterError(error: string): void {
@@ -45,6 +45,6 @@ export class ErrorService {
         first(),
         map((errors) => ({ ...errors, register: error }))
       )
-      .subscribe();
+      .subscribe(this._errorsSubject);
   }
 }
