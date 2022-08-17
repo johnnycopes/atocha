@@ -2,9 +2,14 @@
   @fadeIn
 >
   <h1 class="header">
-    Server Error
+    {{ header }}
   </h1>
   <p class="message">
-    Please check your connection and try reloading.
+    {{ message }}
   </p>
+  <ui-button *ngIf="action"
+    class="action"
+    [buttonText]="action"
+    (click)="actionClick.emit()"
+  ></ui-button>
 </div>
