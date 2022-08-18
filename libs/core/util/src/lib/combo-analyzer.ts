@@ -81,12 +81,7 @@ export class ComboAnalyzer<T> {
     allOptions: [T1[], T2[], T3[], T4[], T5[]],
     isValidCombo?: (options: [T1, T2, T3, T4, T5]) => boolean
   ): [T1, T2, T3, T4, T5][];
-  getPossibleCombos<
-    T1 extends T,
-    T2 extends T,
-    T3 extends T,
-    T4 extends T
-  >(
+  getPossibleCombos<T1 extends T, T2 extends T, T3 extends T, T4 extends T>(
     allOptions: [T1[], T2[], T3[], T4[]],
     isValidCombo?: (options: [T1, T2, T3, T4]) => boolean
   ): [T1, T2, T3, T4][];
