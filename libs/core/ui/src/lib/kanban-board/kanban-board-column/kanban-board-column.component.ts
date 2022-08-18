@@ -55,15 +55,15 @@ export class KanbanBoardColumnComponent<TItem> {
   @Output() actionClick: EventEmitter<IKanbanBoardActionClick> =
     new EventEmitter();
   @Output() movingChange: EventEmitter<boolean> = new EventEmitter();
-  public readonly menuIcon = faEllipsisH;
-  public hoverStatesDict: Dictionary<boolean> = {};
-  public trackByFn = trackByFactory(this.getItemId);
+  readonly menuIcon = faEllipsisH;
+  hoverStatesDict: Dictionary<boolean> = {};
+  trackByFn = trackByFactory(this.getItemId);
 
-  public onDragItem(): void {
+  onDragItem(): void {
     this.movingChange.emit(true);
   }
 
-  public onDropItem(event: CdkDragDrop<TItem[]>): void {
+  onDropItem(event: CdkDragDrop<TItem[]>): void {
     const {
       item,
       previousIndex,
@@ -91,14 +91,14 @@ export class KanbanBoardColumnComponent<TItem> {
     this.movingChange.emit(false);
   }
 
-  public onActionClick(action: string): void {
+  onActionClick(action: string): void {
     this.actionClick.emit({
       action,
       columnId: this.id,
     });
   }
 
-  public onItemAdd(newItemName: string): void {
+  onItemAdd(newItemName: string): void {
     this.itemAdd.emit({
       item: newItemName,
       columnId: this.id,

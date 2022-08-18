@@ -52,18 +52,18 @@ export class KanbanBoardComponent<TColumn, TItem> {
   @Output() itemMove: EventEmitter<IKanbanBoardItemMove> = new EventEmitter();
   @Output() actionClick: EventEmitter<IKanbanBoardActionClick> =
     new EventEmitter();
-  public moving = false;
-  public trackByFn = trackByFactory(this.config.getColumnId);
+  moving = false;
+  trackByFn = trackByFactory(this.config.getColumnId);
 
-  public onColumnAdd(newColumnName: string): void {
+  onColumnAdd(newColumnName: string): void {
     this.columnAdd.emit(newColumnName);
   }
 
-  public onDragColumn(): void {
+  onDragColumn(): void {
     this.moving = true;
   }
 
-  public onDropColumn(event: CdkDragDrop<TColumn[]>): void {
+  onDropColumn(event: CdkDragDrop<TColumn[]>): void {
     const {
       item,
       previousIndex,
@@ -79,15 +79,15 @@ export class KanbanBoardComponent<TColumn, TItem> {
     this.moving = false;
   }
 
-  public onItemAdd(event: IKanbanBoardItemAdd): void {
+  onItemAdd(event: IKanbanBoardItemAdd): void {
     this.itemAdd.emit(event);
   }
 
-  public onItemMove(event: IKanbanBoardItemMove): void {
+  onItemMove(event: IKanbanBoardItemMove): void {
     this.itemMove.emit(event);
   }
 
-  public onActionClick(event: IKanbanBoardActionClick): void {
+  onActionClick(event: IKanbanBoardActionClick): void {
     this.actionClick.emit(event);
   }
 }

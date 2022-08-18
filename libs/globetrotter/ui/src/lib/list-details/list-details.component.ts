@@ -67,7 +67,7 @@ export class ListDetailsComponent<T>
   private _selectedItemIndex = 0;
   private _listItemHeight = 0;
 
-  public trackByFn = (index: number, item: T): string => {
+  trackByFn = (index: number, item: T): string => {
     return this.getItemUniqueId(item);
   };
 

@@ -17,16 +17,16 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons';
 export class KanbanBoardFormComponent {
   @Input() name = '';
   @Output() add: EventEmitter<string> = new EventEmitter();
-  public readonly addNewIcon = faPlus;
-  public adding = false;
-  public model = '';
+  readonly addNewIcon = faPlus;
+  adding = false;
+  model = '';
 
-  public submitForm(form: NgForm): void {
+  submitForm(form: NgForm): void {
     this.add.emit(this.model);
     this.resetForm(form);
   }
 
-  public resetForm(form: NgForm): void {
+  resetForm(form: NgForm): void {
     form.resetForm();
     this.adding = false;
   }

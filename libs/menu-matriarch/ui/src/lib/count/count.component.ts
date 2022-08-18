@@ -21,7 +21,7 @@ type CountType = 'days' | 'dishes' | 'meals' | 'menus';
 export class CountComponent {
   @Input() count = 0;
   @Input()
-  public set type(value: CountType) {
+  set type(value: CountType) {
     switch (value) {
       case 'days':
         this.icon = faCalendarDay;
@@ -37,5 +37,5 @@ export class CountComponent {
         break;
     }
   }
-  public icon: IconDefinition = faMap;
+  icon: IconDefinition = faMap;
 }

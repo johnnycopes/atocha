@@ -12,8 +12,8 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
-  public error$ = this._errorService.errors$;
-  public loading$ = this._routerService.loading$;
+  error$ = this._errorService.errors$;
+  loading$ = this._routerService.loading$;
 
   constructor(
     private _errorService: ErrorService,
