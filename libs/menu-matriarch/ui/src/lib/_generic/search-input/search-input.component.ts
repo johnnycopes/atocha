@@ -25,12 +25,12 @@ import { InputComponent } from '../input/input.component';
 export class SearchInputComponent {
   @Input() text = '';
   @Output() textChange = new EventEmitter<string>();
-  public readonly faTimes = faTimes;
+  readonly faTimes = faTimes;
 
   @ViewChild('input')
-  public inputField: ElementRef | undefined;
+  inputField: ElementRef | undefined;
 
-  public onClear(): void {
+  onClear(): void {
     this.textChange.emit('');
     this.inputField?.nativeElement.focus();
   }

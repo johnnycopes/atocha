@@ -31,7 +31,7 @@ export class QuizComponent implements OnInit {
     private _quizService: QuizService
   ) {}
 
-  public ngOnInit(): void {
+  ngOnInit(): void {
     this._route.queryParamMap.subscribe((queryParams) => {
       const params: SelectionParams = {
         type: queryParams.get('type') || '',
