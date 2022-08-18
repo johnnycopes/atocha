@@ -10,7 +10,6 @@ import {
   FormsModule,
   NG_VALUE_ACCESSOR,
 } from '@angular/forms';
-import { BreakpointObserver } from '@angular/cdk/layout';
 
 export interface RadioButtonsOption<T> {
   display: string;
@@ -38,14 +37,11 @@ export class RadioButtonsComponent<T> implements ControlValueAccessor {
   model: RadioButtonsOption<T> | undefined;
   private _onChangeFn: (model: RadioButtonsOption<T>) => void = () => undefined;
 
-  constructor(
-    public changeDetectorRef: ChangeDetectorRef,
-    public breakpointObserver: BreakpointObserver
-  ) {}
+  constructor(private _changeDetectorRef: ChangeDetectorRef) {}
 
   writeValue(obj: RadioButtonsOption<T>): void {
     this.model = obj;
-    this.changeDetectorRef.markForCheck();
+    this._changeDetectorRef.markForCheck();
   }
 
   registerOnChange(fn: () => void): void {
