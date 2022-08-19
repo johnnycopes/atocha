@@ -64,7 +64,6 @@ export class CheckboxComponent implements ControlValueAccessor {
     fn;
   }
 
-  // TODO: set this up
   setDisabledState?(isDisabled: boolean): void;
 
   onChange(value: boolean): void {

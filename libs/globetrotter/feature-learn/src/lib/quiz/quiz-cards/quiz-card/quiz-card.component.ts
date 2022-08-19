@@ -80,7 +80,7 @@ export class QuizCardComponent implements OnInit {
       }
     }
 
-    // after flip animation is complete, the card is flipped back over and the guess is reset
+    // After flip animation is complete, the card is flipped back over and the guess is reset
     else if (triggerName === 'guess') {
       if (toState === 'correct' || toState === 'incorrect') {
         await wait(Duration.cardFlipDisplay);
@@ -90,7 +90,7 @@ export class QuizCardComponent implements OnInit {
       }
     }
 
-    // disabled is only reached after country is correctly guessed
+    // Disabled is only reached after country is correctly guessed
     else if (triggerName === 'disabled' && toState === 'disabled') {
       await this._updateQuiz();
     }

@@ -27,7 +27,7 @@ Globetrotter has no back-end (at least for now), but uses both the [REST Countri
 - Live site: https://menu-matriarch.web.app
 - [Original repo](https://github.com/johnnycopes/menu-matriarch)
 
-_Migration from original repo to Atocha is underway._
+A kitchen management app where you can add your favorite dishes, group them into meals, and plan your weekly menus. Menu Matriarch uses Firebase for authentication and the database.
 
 ## Libraries
 
