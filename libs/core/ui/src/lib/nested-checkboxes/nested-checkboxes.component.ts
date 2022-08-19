@@ -132,7 +132,7 @@ export class NestedCheckboxesComponent<T>
     states: CheckboxStates
   ): CheckboxStates {
     const ancestors = getItemsRecursively(item, this._getParent);
-    ancestors.shift(); // TODO: make this unnecessary
+    ancestors.shift();
 
     ancestors.forEach((ancestor) => {
       const ancestorId = this.getId(ancestor);

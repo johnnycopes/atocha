@@ -12,11 +12,6 @@ import { map, filter, tap, distinctUntilChanged } from 'rxjs/operators';
 import { PlannerView, Route } from '@atocha/menu-matriarch/types';
 import { LocalStorageService } from './internal/local-storage.service';
 
-// interface IRouterState {
-//   currentRoute: string;
-//   loading: boolean;
-// }
-
 @Injectable({
   providedIn: 'root',
 })

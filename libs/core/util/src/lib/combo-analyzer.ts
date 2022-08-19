@@ -115,11 +115,8 @@ export class ComboAnalyzer<T> {
     allOptionsIndex = 0,
     currentCombo: T[] = []
   ): T[][] {
-    // Check if combo is complete
     if (allOptionsIndex === allOptionsLibrary.length) {
-      // Check if valid combo
       if (isValidCombo(currentCombo)) {
-        // Add combo
         possibleCombos.push([...currentCombo]);
       }
     } else {
