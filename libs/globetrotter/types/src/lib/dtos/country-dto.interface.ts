@@ -1,3 +1,5 @@
+// Source: https://restcountries.com/#api-endpoints-v3
+
 export interface CountryDto {
   altSpellings: string[];
   /** Area in km² */

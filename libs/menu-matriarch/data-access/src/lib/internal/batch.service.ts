@@ -122,7 +122,7 @@ export class BatchService {
           usages: this._firestoreService.changeCounter(
             change === 'increment' ? 1 : -1
           ),
-          ...(menusChange !== 0 && { menuIds }), // only include `menuIds` if `menusChange` isn't 0
+          ...(menusChange !== 0 && { menuIds }), // Only include `menuIds` if `menusChange` isn't 0
         },
       };
     });
