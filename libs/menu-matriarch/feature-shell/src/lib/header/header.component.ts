@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 
-import { Route } from '@atocha/menu-matriarch/types';
+import { Route } from '@atocha/menu-matriarch/util';
 import { RouterService } from '@atocha/menu-matriarch/data-access';
 
 @Component({

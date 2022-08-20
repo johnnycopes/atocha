@@ -3,7 +3,7 @@ import { Observable, of } from 'rxjs';
 import { concatMap, first, tap } from 'rxjs/operators';
 
 import { AuthService } from '@atocha/core/data-access';
-import { Tag, TagDto } from '@atocha/menu-matriarch/types';
+import { Tag, TagDto } from '@atocha/menu-matriarch/util';
 import { TagDataService } from './internal/tag-data.service';
 
 @Injectable({

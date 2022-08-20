@@ -3,7 +3,7 @@ import {
   Dish,
   FilteredDishesGroup,
   MenuEntry,
-} from '@atocha/menu-matriarch/types';
+} from '@atocha/menu-matriarch/util';
 
 export const dishTrackByFn = trackByFactory<Dish>(({ id }) => id);
 export const menuEntryTrackByFn = trackByFactory<MenuEntry>(({ day }) => day);

@@ -11,7 +11,7 @@ import { debounceTime, switchMap, takeUntil } from 'rxjs/operators';
 import { trackBySelf } from '@atocha/core/ui';
 import { AuthService } from '@atocha/core/data-access';
 import { UserService } from '@atocha/menu-matriarch/data-access';
-import { UserPreferences, getDays } from '@atocha/menu-matriarch/types';
+import { UserPreferences, getDays } from '@atocha/menu-matriarch/util';
 
 @Component({
   selector: 'app-settings',

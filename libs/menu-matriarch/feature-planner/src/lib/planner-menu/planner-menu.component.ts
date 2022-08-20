@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
-import { Menu, MenuEntry } from '@atocha/menu-matriarch/types';
+import { Menu, MenuEntry } from '@atocha/menu-matriarch/util';
 import { menuEntryTrackByFn } from '@atocha/menu-matriarch/ui';
 import { MenuService, PrintService } from '@atocha/menu-matriarch/data-access';
 

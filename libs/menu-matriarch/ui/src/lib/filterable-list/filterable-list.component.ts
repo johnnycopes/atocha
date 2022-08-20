@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 
 import { PluralPipe } from '@atocha/core/ui';
-import { Tag } from '@atocha/menu-matriarch/types';
+import { Tag } from '@atocha/menu-matriarch/util';
 import { ButtonComponent } from '../_generic/button/button.component';
 import { FiltersButtonComponent } from '../filters-button/filters-button.component';
 import { FiltersComponent } from '../filters/filters.component';

@@ -3,7 +3,7 @@ import { combineLatest, Observable, of } from 'rxjs';
 import { concatMap, first, map, tap } from 'rxjs/operators';
 
 import { AuthService } from '@atocha/core/data-access';
-import { Dish, DishDto, mapDishDtoToDish } from '@atocha/menu-matriarch/types';
+import { Dish, DishDto, mapDishDtoToDish } from '@atocha/menu-matriarch/util';
 import { DishDataService } from './internal/dish-data.service';
 import { TagService } from './tag.service';
 

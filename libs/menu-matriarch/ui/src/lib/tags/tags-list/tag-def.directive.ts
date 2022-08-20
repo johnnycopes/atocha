@@ -1,6 +1,6 @@
 import { Directive, TemplateRef } from '@angular/core';
 
-import { Tag } from '@atocha/menu-matriarch/types';
+import { Tag } from '@atocha/menu-matriarch/util';
 
 export interface TagDefContext<T extends Tag> {
   $implicit: T;

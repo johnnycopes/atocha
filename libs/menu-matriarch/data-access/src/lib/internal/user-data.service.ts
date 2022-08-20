@@ -8,7 +8,7 @@ import {
   UserDto,
   UserPreferences,
   Endpoint,
-} from '@atocha/menu-matriarch/types';
+} from '@atocha/menu-matriarch/util';
 
 @Injectable({
   providedIn: 'root',

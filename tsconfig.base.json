@@ -59,10 +59,8 @@
       "@atocha/menu-matriarch/feature-tags": [
         "libs/menu-matriarch/feature-tags/src/index.ts"
       ],
-      "@atocha/menu-matriarch/types": [
-        "libs/menu-matriarch/types/src/index.ts"
-      ],
-      "@atocha/menu-matriarch/ui": ["libs/menu-matriarch/ui/src/index.ts"]
+      "@atocha/menu-matriarch/ui": ["libs/menu-matriarch/ui/src/index.ts"],
+      "@atocha/menu-matriarch/util": ["libs/menu-matriarch/util/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

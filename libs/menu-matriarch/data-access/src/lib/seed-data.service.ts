@@ -8,7 +8,7 @@ import {
   createTagDto,
   createUserDto,
   Endpoint,
-} from '@atocha/menu-matriarch/types';
+} from '@atocha/menu-matriarch/util';
 import { BatchService } from './internal/batch.service';
 
 @Injectable({

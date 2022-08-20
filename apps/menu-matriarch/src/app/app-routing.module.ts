@@ -11,7 +11,7 @@ import {
   ShellComponent,
   WelcomeComponent,
 } from '@atocha/menu-matriarch/feature-shell';
-import { Route } from '@atocha/menu-matriarch/types';
+import { Route } from '@atocha/menu-matriarch/util';
 
 const routes: Routes = [
   {

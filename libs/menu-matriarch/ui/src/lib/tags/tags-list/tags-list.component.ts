@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 
 import { trackByFactory } from '@atocha/core/ui';
-import { Tag } from '@atocha/menu-matriarch/types';
+import { Tag } from '@atocha/menu-matriarch/util';
 import { TagDefContext, TagDefDirective } from './tag-def.directive';
 
 @Component({

@@ -1,6 +1,6 @@
 import { Directive, TemplateRef } from '@angular/core';
 
-import { Meal, Orientation } from '@atocha/menu-matriarch/types';
+import { Meal, Orientation } from '@atocha/menu-matriarch/util';
 
 export interface MealDefContext {
   $implicit: Meal;

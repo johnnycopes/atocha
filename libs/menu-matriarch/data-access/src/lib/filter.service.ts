@@ -8,7 +8,7 @@ import {
   FilteredDishesGroup,
   Meal,
   getDishTypes,
-} from '@atocha/menu-matriarch/types';
+} from '@atocha/menu-matriarch/util';
 
 interface State {
   panel: boolean;

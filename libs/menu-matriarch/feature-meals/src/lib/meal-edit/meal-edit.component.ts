@@ -19,7 +19,7 @@ import {
   TagService,
   UserService,
 } from '@atocha/menu-matriarch/data-access';
-import { Dish, TagModel, getDishTypes } from '@atocha/menu-matriarch/types';
+import { Dish, TagModel, getDishTypes } from '@atocha/menu-matriarch/util';
 import { dishTrackByFn } from '@atocha/menu-matriarch/ui';
 
 interface MealEditForm {

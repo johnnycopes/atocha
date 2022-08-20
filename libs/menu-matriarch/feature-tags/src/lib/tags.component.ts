@@ -4,7 +4,7 @@ import { mapTo, shareReplay } from 'rxjs/operators';
 
 import { trackByFactory } from '@atocha/core/ui';
 import { TagService } from '@atocha/menu-matriarch/data-access';
-import { Tag } from '@atocha/menu-matriarch/types';
+import { Tag } from '@atocha/menu-matriarch/util';
 
 @Component({
   selector: 'app-tags',

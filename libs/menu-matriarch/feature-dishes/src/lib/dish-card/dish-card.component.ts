@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { Tag, DishType } from '@atocha/menu-matriarch/types';
+import { Tag, DishType } from '@atocha/menu-matriarch/util';
 
 @Component({
   selector: 'app-dish-card',

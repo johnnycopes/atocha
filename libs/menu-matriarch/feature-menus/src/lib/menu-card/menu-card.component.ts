@@ -4,7 +4,7 @@ import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 import { BehaviorSubject } from 'rxjs';
 
 import { MenuService, PrintService } from '@atocha/menu-matriarch/data-access';
-import { Day, MenuEntry, Orientation } from '@atocha/menu-matriarch/types';
+import { Day, MenuEntry, Orientation } from '@atocha/menu-matriarch/util';
 import { menuEntryTrackByFn } from '@atocha/menu-matriarch/ui';
 
 type State = 'default' | 'renaming' | 'changingStartDay';
