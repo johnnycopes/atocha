@@ -4,7 +4,7 @@ import { combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { QuizService, SelectService } from '@atocha/globetrotter/data-access';
-import { Route, SelectionParams } from '@atocha/globetrotter/types';
+import { Route, SelectionParams } from '@atocha/globetrotter/util';
 
 @Component({
   selector: 'app-quiz',

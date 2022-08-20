@@ -3,7 +3,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { of } from 'rxjs';
 import { shuffle } from 'lodash-es';
 
-import { QuizType } from '@atocha/globetrotter/types';
+import { QuizType } from '@atocha/globetrotter/util';
 import { QuizService } from './quiz.service';
 import { PlaceService } from './place.service';
 import {

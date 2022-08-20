@@ -7,7 +7,7 @@ import {
 } from '@angular/core';
 
 import { RadioButtonsOption } from '@atocha/globetrotter/ui';
-import { QuizType } from '@atocha/globetrotter/types';
+import { QuizType } from '@atocha/globetrotter/util';
 
 @Component({
   selector: 'app-select-type',

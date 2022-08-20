@@ -7,7 +7,7 @@ import {
   Country,
   mapCountryDtoToCountry,
   Region,
-} from '@atocha/globetrotter/types';
+} from '@atocha/globetrotter/util';
 import { ApiService } from './api.service';
 import { COUNTRY_SUMMARY_NAMES } from '../data/country-modifications';
 

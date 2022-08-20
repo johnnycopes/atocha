@@ -4,7 +4,7 @@ import { combineLatest } from 'rxjs';
 import { first, map } from 'rxjs/operators';
 
 import { fadeInAnimation } from '@atocha/globetrotter/ui';
-import { Route, QuizType, PlaceSelection } from '@atocha/globetrotter/types';
+import { Route, QuizType, PlaceSelection } from '@atocha/globetrotter/util';
 import { PlaceService, SelectService } from '@atocha/globetrotter/data-access';
 
 @Component({

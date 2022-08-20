@@ -12,7 +12,7 @@ import {
 import { includes } from '@atocha/core/util';
 import { fadeInAnimation } from '@atocha/globetrotter/ui';
 import { PlaceService } from '@atocha/globetrotter/data-access';
-import { Country } from '@atocha/globetrotter/types';
+import { Country } from '@atocha/globetrotter/util';
 
 @Component({
   selector: 'app-explore',

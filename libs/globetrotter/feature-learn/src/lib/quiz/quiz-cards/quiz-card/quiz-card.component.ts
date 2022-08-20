@@ -17,7 +17,7 @@ import {
   FlipCardSide,
 } from '@atocha/globetrotter/ui';
 import { wait } from '@atocha/core/util';
-import { Country, Duration, QuizType } from '@atocha/globetrotter/types';
+import { Country, Duration, QuizType } from '@atocha/globetrotter/util';
 
 type CardTemplate = Record<FlipCardSide, TemplateRef<unknown> | undefined>;
 

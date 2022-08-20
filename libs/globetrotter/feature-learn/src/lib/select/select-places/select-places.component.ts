@@ -14,7 +14,7 @@ import {
   isRegion,
   mapRegionsToPlaceSelection,
   Region,
-} from '@atocha/globetrotter/types';
+} from '@atocha/globetrotter/util';
 
 interface RegionState {
   region: Place;

@@ -10,7 +10,7 @@ import {
 import { AnimationEvent } from '@angular/animations';
 
 import { FixedSlideablePanelPosition } from '@atocha/globetrotter/ui';
-import { Country, QuizType } from '@atocha/globetrotter/types';
+import { Country, QuizType } from '@atocha/globetrotter/util';
 
 @Component({
   selector: 'app-quiz-menu',

@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
-import { Route } from '@atocha/globetrotter/types';
+import { Route } from '@atocha/globetrotter/util';
 import { LearnComponent } from './learn.component';
 
 import { QuizModule } from './quiz/quiz.module';
