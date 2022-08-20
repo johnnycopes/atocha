@@ -11,7 +11,7 @@ import { combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { trackByFactory } from '@atocha/core/ui';
-import { Meal } from '@atocha/menu-matriarch/types';
+import { Meal } from '@atocha/menu-matriarch/util';
 import {
   FilterService,
   MealService,

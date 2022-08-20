@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { distinctUntilChanged, shareReplay } from 'rxjs/operators';
 
-import { PlannerView } from '@atocha/menu-matriarch/types';
+import { PlannerView } from '@atocha/menu-matriarch/util';
 
 @Injectable({
   providedIn: 'root',

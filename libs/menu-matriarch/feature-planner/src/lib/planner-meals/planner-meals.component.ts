@@ -7,7 +7,7 @@ import {
 } from '@angular/core';
 
 import { MenuService } from '@atocha/menu-matriarch/data-access';
-import { Day, Menu } from '@atocha/menu-matriarch/types';
+import { Day, Menu } from '@atocha/menu-matriarch/util';
 
 @Component({
   selector: 'app-planner-meals',

@@ -12,8 +12,8 @@
     "globetrotter-feature-explore": "libs/globetrotter/feature-explore",
     "globetrotter-feature-learn": "libs/globetrotter/feature-learn",
     "globetrotter-feature-shell": "libs/globetrotter/feature-shell",
-    "globetrotter-types": "libs/globetrotter/types",
     "globetrotter-ui": "libs/globetrotter/ui",
+    "globetrotter-util": "libs/globetrotter/util",
     "menu-matriarch": "apps/menu-matriarch",
     "menu-matriarch-data-access": "libs/menu-matriarch/data-access",
     "menu-matriarch-e2e": "apps/menu-matriarch-e2e",
@@ -25,7 +25,7 @@
     "menu-matriarch-feature-settings": "libs/menu-matriarch/feature-settings",
     "menu-matriarch-feature-shell": "libs/menu-matriarch/feature-shell",
     "menu-matriarch-feature-tags": "libs/menu-matriarch/feature-tags",
-    "menu-matriarch-types": "libs/menu-matriarch/types",
-    "menu-matriarch-ui": "libs/menu-matriarch/ui"
+    "menu-matriarch-ui": "libs/menu-matriarch/ui",
+    "menu-matriarch-util": "libs/menu-matriarch/util"
   }
 }

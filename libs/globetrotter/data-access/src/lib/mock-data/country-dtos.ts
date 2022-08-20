@@ -1,4 +1,4 @@
-import { CountryDto } from '@atocha/globetrotter/types';
+import { CountryDto } from '@atocha/globetrotter/util';
 
 export const DJIBOUTI_DTO: CountryDto = {
   name: {

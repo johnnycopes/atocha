@@ -9,7 +9,7 @@ import {
 import { shuffle } from 'lodash-es';
 
 import { staggerAnimation, fadeInAnimation } from '@atocha/globetrotter/ui';
-import { Country, QuizType } from '@atocha/globetrotter/types';
+import { Country, QuizType } from '@atocha/globetrotter/util';
 
 @Component({
   selector: 'app-quiz-cards',

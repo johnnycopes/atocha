@@ -4,7 +4,7 @@ import { of } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 
 import { MenuService, RouterService } from '@atocha/menu-matriarch/data-access';
-import { PlannerView } from '@atocha/menu-matriarch/types';
+import { PlannerView } from '@atocha/menu-matriarch/util';
 
 @Component({
   selector: 'app-planner',

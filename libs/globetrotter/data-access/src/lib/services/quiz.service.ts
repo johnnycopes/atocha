@@ -3,7 +3,7 @@ import { BehaviorSubject } from 'rxjs';
 import { filter, map, shareReplay } from 'rxjs/operators';
 
 import { Quiz, QuizState } from '@atocha/core/util';
-import { Route, Country, Selection } from '@atocha/globetrotter/types';
+import { Route, Country, Selection } from '@atocha/globetrotter/util';
 import { PlaceService } from './place.service';
 import { RouterService } from './router.service';
 import { shuffle } from 'lodash-es';

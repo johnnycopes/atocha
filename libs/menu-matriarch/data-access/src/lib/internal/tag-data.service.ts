@@ -9,7 +9,7 @@ import {
   TagDto,
   Endpoint,
   createTagDto,
-} from '@atocha/menu-matriarch/types';
+} from '@atocha/menu-matriarch/util';
 import { BatchService } from './batch.service';
 
 @Injectable({

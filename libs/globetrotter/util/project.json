@@ -1,30 +1,30 @@
 {
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "libs/menu-matriarch/types/src",
+  "sourceRoot": "libs/globetrotter/util/src",
   "projectType": "library",
   "targets": {
     "build": {
       "executor": "@nrwl/js:swc",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/libs/menu-matriarch/types",
-        "main": "libs/menu-matriarch/types/src/index.ts",
-        "tsConfig": "libs/menu-matriarch/types/tsconfig.lib.json",
-        "assets": ["libs/menu-matriarch/types/*.md"]
+        "outputPath": "dist/libs/globetrotter/util",
+        "main": "libs/globetrotter/util/src/index.ts",
+        "tsConfig": "libs/globetrotter/util/tsconfig.lib.json",
+        "assets": ["libs/globetrotter/util/*.md"]
       }
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["libs/menu-matriarch/types/**/*.ts"]
+        "lintFilePatterns": ["libs/globetrotter/util/**/*.ts"]
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/menu-matriarch/types"],
+      "outputs": ["coverage/libs/globetrotter/util"],
       "options": {
-        "jestConfig": "libs/menu-matriarch/types/jest.config.ts",
+        "jestConfig": "libs/globetrotter/util/jest.config.ts",
         "passWithNoTests": true
       }
     }

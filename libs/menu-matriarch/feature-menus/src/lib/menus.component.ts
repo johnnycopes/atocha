@@ -4,7 +4,7 @@ import { mapTo, shareReplay } from 'rxjs/operators';
 
 import { trackByFactory } from '@atocha/core/ui';
 import { MenuService } from '@atocha/menu-matriarch/data-access';
-import { Menu } from '@atocha/menu-matriarch/types';
+import { Menu } from '@atocha/menu-matriarch/util';
 
 @Component({
   selector: 'app-menus',

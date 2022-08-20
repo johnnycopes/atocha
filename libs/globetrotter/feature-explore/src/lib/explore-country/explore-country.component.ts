@@ -11,7 +11,7 @@ import {
 } from '@angular/core';
 
 import { pluralize } from '@atocha/core/util';
-import { Country } from '@atocha/globetrotter/types';
+import { Country } from '@atocha/globetrotter/util';
 
 interface TableContent {
   header: string;

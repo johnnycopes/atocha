@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 import { faPlusSquare, faTimes } from '@fortawesome/free-solid-svg-icons';
 
-import { Day, Dish, Orientation } from '@atocha/menu-matriarch/types';
+import { Day, Dish, Orientation } from '@atocha/menu-matriarch/util';
 import { Router } from '@angular/router';
 
 @Component({

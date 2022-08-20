@@ -9,7 +9,7 @@ import {
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faLink } from '@fortawesome/free-solid-svg-icons';
 
-import { Tag } from '@atocha/menu-matriarch/types';
+import { Tag } from '@atocha/menu-matriarch/util';
 import { CountComponent } from '../count/count.component';
 import { TagComponent } from '../tags/tag/tag.component';
 import { TagsListComponent } from '../tags/tags-list/tags-list.component';

@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { Observable, of } from 'rxjs';
 
-import { CountryDto } from '@atocha/globetrotter/types';
+import { CountryDto } from '@atocha/globetrotter/util';
 import { PlaceService } from './place.service';
 import { ApiService } from './api.service';
 import {

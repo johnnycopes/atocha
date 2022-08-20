@@ -1,5 +1,5 @@
 {
-  "name": "@atocha/globetrotter-types",
+  "name": "@atocha/globetrotter/util",
   "version": "0.0.1",
   "type": "commonjs"
 }

@@ -8,7 +8,7 @@ import {
   Menu,
   MenuDto,
   mapMenuDtoToMenu,
-} from '@atocha/menu-matriarch/types';
+} from '@atocha/menu-matriarch/util';
 import { DishService } from './dish.service';
 import { LocalStorageService } from './internal/local-storage.service';
 import { MenuDataService } from './internal/menu-data.service';

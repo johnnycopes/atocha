@@ -8,7 +8,7 @@ import {
   TallyChange,
   uniqueDiff,
 } from '@atocha/core/util';
-import { Day, Menu, Endpoint } from '@atocha/menu-matriarch/types';
+import { Day, Menu, Endpoint } from '@atocha/menu-matriarch/util';
 
 @Injectable({
   providedIn: 'root',

@@ -1,6 +1,6 @@
 import { Directive, TemplateRef } from '@angular/core';
 
-import { Dish } from '@atocha/menu-matriarch/types';
+import { Dish } from '@atocha/menu-matriarch/util';
 
 export interface DishContext {
   $implicit: Dish;

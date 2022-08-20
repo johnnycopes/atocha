@@ -9,7 +9,7 @@ import {
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map, filter, tap, distinctUntilChanged } from 'rxjs/operators';
 
-import { PlannerView, Route } from '@atocha/menu-matriarch/types';
+import { PlannerView, Route } from '@atocha/menu-matriarch/util';
 import { LocalStorageService } from './internal/local-storage.service';
 
 @Injectable({
