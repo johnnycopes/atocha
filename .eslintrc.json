@@ -11,6 +11,7 @@
           {
             "enforceBuildableLibDependency": true,
             "allow": [],
+            "banTransitiveDependencies": true,
             "depConstraints": [
               {
                 "sourceTag": "scope:core",
