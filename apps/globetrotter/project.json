@@ -14,7 +14,6 @@
         "tsConfig": "apps/globetrotter/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "assets": [
-          "apps/globetrotter/src/favicon.ico",
           "apps/globetrotter/src/assets"
         ],
         "styles": [
