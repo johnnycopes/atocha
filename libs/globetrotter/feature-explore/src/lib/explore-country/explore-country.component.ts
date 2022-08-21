@@ -9,8 +9,8 @@ import {
   ChangeDetectorRef,
   SimpleChanges,
 } from '@angular/core';
-import { trackByFactory, trackBySelf } from '@atocha/core/ui';
 
+import { trackByFactory, trackBySelf } from '@atocha/core/ui';
 import { pluralize } from '@atocha/core/util';
 import { Country } from '@atocha/globetrotter/util';
 

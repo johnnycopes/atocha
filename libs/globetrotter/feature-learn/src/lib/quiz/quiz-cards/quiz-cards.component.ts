@@ -8,9 +8,9 @@ import {
 } from '@angular/core';
 import { shuffle } from 'lodash-es';
 
+import { trackByFactory } from '@atocha/core/ui';
 import { staggerAnimation, fadeInAnimation } from '@atocha/globetrotter/ui';
 import { Country, QuizType } from '@atocha/globetrotter/util';
-import { trackByFactory } from '@atocha/core/ui';
 
 @Component({
   selector: 'app-quiz-cards',
