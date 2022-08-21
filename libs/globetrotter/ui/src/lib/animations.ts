@@ -78,7 +78,6 @@ export const disabledAnimation = trigger('disabled', [
     'disabled',
     style({
       filter: 'grayscale(100%)',
-      cursor: 'not-allowed',
     })
   ),
   transition('* => disabled', animate(`${Duration.cardAnimation}ms ease-in`)),

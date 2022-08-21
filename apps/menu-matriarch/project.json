@@ -13,10 +13,7 @@
         "polyfills": "apps/menu-matriarch/src/polyfills.ts",
         "tsConfig": "apps/menu-matriarch/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
-        "assets": [
-          "apps/menu-matriarch/src/favicon.ico",
-          "apps/menu-matriarch/src/assets"
-        ],
+        "assets": ["apps/menu-matriarch/src/assets"],
         "styles": ["apps/menu-matriarch/src/styles.scss"],
         "stylePreprocessorOptions": {
           "includePaths": ["apps/menu-matriarch/src/scss"]
