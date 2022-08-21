@@ -38,7 +38,9 @@ export class ExploreCountryComponent implements OnChanges, AfterViewInit {
     | undefined;
   @ViewChild('list') listTemplate: TemplateRef<unknown> | undefined;
   tableData: TableData[] = [];
-  readonly tableDataTrackByFn = trackByFactory<TableData>(({ header }) => header);
+  readonly tableDataTrackByFn = trackByFactory<TableData>(
+    ({ header }) => header
+  );
   readonly itemTrackByFn = trackBySelf;
 
   constructor(private _changeDetectorRef: ChangeDetectorRef) {}
