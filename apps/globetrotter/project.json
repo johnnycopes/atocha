@@ -105,5 +105,5 @@
       }
     }
   },
-  "tags": []
+  "tags": ["scope:globetrotter", "type:app"]
 }

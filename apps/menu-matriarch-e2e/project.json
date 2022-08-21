@@ -23,6 +23,6 @@
       }
     }
   },
-  "tags": [],
+  "tags": ["scope:menu-matriarch", "type:app"],
   "implicitDependencies": ["menu-matriarch"]
 }
