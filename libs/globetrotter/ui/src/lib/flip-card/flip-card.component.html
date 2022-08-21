@@ -1,5 +1,6 @@
 <div
   class="flip-card"
+  [class.flip-card--disabled]="disabled"
   [@flip]="side"
   (@flip.start)="onAnimationStart($event)"
   (@flip.done)="onAnimationFinish($event)"

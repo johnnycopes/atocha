@@ -11,6 +11,7 @@
   width: map-get($app, card-width);
   height: map-get($app, card-width);
   transform-style: preserve-3d;
+  cursor: pointer;
 
   &__side {
     position: absolute;
@@ -22,7 +23,6 @@
     justify-content: center;
     align-items: center;
     backface-visibility: hidden;
-    cursor: pointer;
     user-select: none;
     padding: map-get($border, thick);
     border-radius: map-get($border, radius);
@@ -36,5 +36,9 @@
   &__back {
     background: map-get($color, lightest);
     transform: rotateY(180deg);
+  }
+
+  &--disabled {
+    cursor: not-allowed;
   }
 }
