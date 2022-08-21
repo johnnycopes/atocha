@@ -14,7 +14,7 @@
     />
   </div>
   <div class="table">
-    <ui-small-caps *ngFor="let tableDatum of tableData"
+    <ui-small-caps *ngFor="let tableDatum of tableData; trackBy: tableDataTrackByFn"
       class="table-header"
       [header]="tableDatum.header"
       [template]="tableDatum?.template"
@@ -58,7 +58,7 @@
   <ng-template #list
     let-items="items"
   >
-    <span *ngFor="let item of items; last as last">
+    <span *ngFor="let item of items; last as last; trackBy: itemTrackByFn">
       {{ item }}{{ !last ? ',' : '' }}
     </span>
   </ng-template>

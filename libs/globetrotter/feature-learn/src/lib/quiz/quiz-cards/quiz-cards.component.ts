@@ -8,6 +8,7 @@ import {
 } from '@angular/core';
 import { shuffle } from 'lodash-es';
 
+import { trackByFactory } from '@atocha/core/ui';
 import { staggerAnimation, fadeInAnimation } from '@atocha/globetrotter/ui';
 import { Country, QuizType } from '@atocha/globetrotter/util';
 
@@ -25,6 +26,7 @@ export class QuizCardsComponent implements OnInit {
   @Output() guessed = new EventEmitter<boolean>();
   shuffledCountries: readonly Country[] = [];
   canFlipCards = true;
+  readonly trackByFn = trackByFactory<Country>(({ id }) => id);
 
   ngOnInit(): void {
     this.shuffledCountries = shuffle(this.countries);

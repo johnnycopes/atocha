@@ -19,7 +19,7 @@ import {
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
-import { AutofocusDirective } from '@atocha/core/ui';
+import { AutofocusDirective, trackByFactory } from '@atocha/core/ui';
 import { InputComponent } from '../input/input.component';
 
 export interface ListDetailsStyles {
@@ -64,12 +64,9 @@ export class ListDetailsComponent<T>
   gap = '12px';
   containerHeight = '';
   toolbarHeight = '';
+  readonly trackByFn = trackByFactory(this.getItemUniqueId);
   private _selectedItemIndex = 0;
   private _listItemHeight = 0;
-
-  trackByFn = (index: number, item: T): string => {
-    return this.getItemUniqueId(item);
-  };
 
   @HostListener('window:keydown.arrowUp', ['$event'])
   onArrowUp(event: KeyboardEvent): void {

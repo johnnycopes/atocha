@@ -21,7 +21,7 @@
   </div>
   <div class="regions">
     <div class="region"
-      *ngFor="let regionState of regionStates"
+      *ngFor="let regionState of regionStates; trackBy: trackByFn"
     >
       <ui-icon class="region__image"
         [icon]="regionState.region.name"

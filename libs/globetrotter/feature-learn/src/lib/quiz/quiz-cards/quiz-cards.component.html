@@ -2,7 +2,7 @@
   @stagger
 >
   <app-quiz-card
-    *ngFor="let country of shuffledCountries"
+    *ngFor="let country of shuffledCountries; trackBy: trackByFn"
     @fadeIn
     [type]="type"
     [country]="country"

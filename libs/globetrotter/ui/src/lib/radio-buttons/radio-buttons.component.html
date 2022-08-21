@@ -2,7 +2,7 @@
   <div class="options" [class.options--stacked]="stacked">
     <div
       class="option"
-      *ngFor="let option of options"
+      *ngFor="let option of options; trackBy: trackByFn"
       [class.option--stacked]="stacked"
     >
       <input

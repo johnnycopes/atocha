@@ -5,8 +5,9 @@ import {
   Input,
   OnInit,
   TemplateRef,
-  TrackByFunction,
 } from '@angular/core';
+
+import { trackByFactory } from '../performance/track-by';
 
 interface TreeNodeContext<T> {
   $implicit: T;
@@ -46,7 +47,8 @@ export class TreeComponent<T> implements OnInit {
    */
   @Input() getChildren: (node: T) => T[] = () => [];
 
-  trackById: TrackByFunction<T> = (index, node) => this.getId(node);
+  // eslint-disable-next-line @typescript-eslint/member-ordering
+  trackByFn = trackByFactory(this.getId);
 
   ngOnInit(): void {
     if (!this.node) {

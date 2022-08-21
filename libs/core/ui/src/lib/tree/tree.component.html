@@ -8,7 +8,7 @@
 
 <ng-container *ngIf="getChildren(node)?.length">
   <core-tree
-    *ngFor="let child of getChildren(node); trackBy: trackById"
+    *ngFor="let child of getChildren(node); trackBy: trackByFn"
     [node]="child"
     [template]="template ? template : defaultTemplate"
     [level]="level + 1"

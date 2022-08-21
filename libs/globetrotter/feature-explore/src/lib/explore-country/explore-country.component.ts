@@ -10,10 +10,11 @@ import {
   SimpleChanges,
 } from '@angular/core';
 
+import { trackByFactory, trackBySelf } from '@atocha/core/ui';
 import { pluralize } from '@atocha/core/util';
 import { Country } from '@atocha/globetrotter/util';
 
-interface TableContent {
+interface TableData {
   header: string;
   content?: string;
   template?: TemplateRef<unknown>;
@@ -36,7 +37,11 @@ export class ExploreCountryComponent implements OnChanges, AfterViewInit {
     | TemplateRef<unknown>
     | undefined;
   @ViewChild('list') listTemplate: TemplateRef<unknown> | undefined;
-  tableData: TableContent[] = [];
+  tableData: TableData[] = [];
+  readonly tableDataTrackByFn = trackByFactory<TableData>(
+    ({ header }) => header
+  );
+  readonly itemTrackByFn = trackBySelf;
 
   constructor(private _changeDetectorRef: ChangeDetectorRef) {}
 
