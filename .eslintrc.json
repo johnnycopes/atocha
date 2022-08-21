@@ -9,9 +9,9 @@
         "@nrwl/nx/enforce-module-boundaries": [
           "error",
           {
+            "banTransitiveDependencies": true,
             "enforceBuildableLibDependency": true,
             "allow": [],
-            "banTransitiveDependencies": true,
             "depConstraints": [
               {
                 "sourceTag": "scope:core",
