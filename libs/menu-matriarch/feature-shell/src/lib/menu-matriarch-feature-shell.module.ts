@@ -2,7 +2,10 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
-import { ButtonComponent, EmptyViewPlaceholderComponent } from '@atocha/menu-matriarch/ui';
+import {
+  ButtonComponent,
+  EmptyViewPlaceholderComponent,
+} from '@atocha/menu-matriarch/ui';
 import { ErrorComponent } from './error/error.component';
 import { HeaderComponent } from './header/header.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
@@ -18,6 +21,11 @@ import { WelcomeComponent } from './welcome/welcome.component';
     WelcomeComponent,
   ],
   exports: [ErrorComponent],
-  imports: [ButtonComponent, CommonModule, EmptyViewPlaceholderComponent, RouterModule],
+  imports: [
+    ButtonComponent,
+    CommonModule,
+    EmptyViewPlaceholderComponent,
+    RouterModule,
+  ],
 })
 export class MenuMatriarchFeatureShellModule {}

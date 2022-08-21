@@ -13,9 +13,7 @@
         "polyfills": "apps/globetrotter/src/polyfills.ts",
         "tsConfig": "apps/globetrotter/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
-        "assets": [
-          "apps/globetrotter/src/assets"
-        ],
+        "assets": ["apps/globetrotter/src/assets"],
         "styles": [
           "apps/globetrotter/src/scss/reset.scss",
           "apps/globetrotter/src/scss/styles.scss"
