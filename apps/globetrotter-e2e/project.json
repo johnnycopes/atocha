@@ -23,6 +23,6 @@
       }
     }
   },
-  "tags": [],
+  "tags": ["scope:globetrotter", "type:app"],
   "implicitDependencies": ["globetrotter"]
 }

@@ -27,5 +27,15 @@
     "menu-matriarch-feature-tags": "libs/menu-matriarch/feature-tags",
     "menu-matriarch-ui": "libs/menu-matriarch/ui",
     "menu-matriarch-util": "libs/menu-matriarch/util"
-  }
+  },
+  "tags": [
+    "scope:core",
+    "scope:globetrotter",
+    "scope:menu-matriarch",
+    "type:app",
+    "type:data-access",
+    "type:feature",
+    "type:ui",
+    "type:util"
+  ]
 }
