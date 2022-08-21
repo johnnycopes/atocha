@@ -12,7 +12,7 @@
     ></ui-icon>
   </a>
   <a class="link"
-    *ngFor="let link of links"
+    *ngFor="let link of links; trackBy: trackByFn"
     routerLink="/{{link.route}}"
     routerLinkActive="link--active"
     [routerLinkActiveOptions]="{exact: link.exactPathMatch}"

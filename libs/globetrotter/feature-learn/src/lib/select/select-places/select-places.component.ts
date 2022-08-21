@@ -6,7 +6,7 @@ import {
   EventEmitter,
 } from '@angular/core';
 
-import { CheckboxStates } from '@atocha/core/ui';
+import { CheckboxStates, trackByFactory } from '@atocha/core/ui';
 import {
   Place,
   PlaceSelection,
@@ -52,6 +52,7 @@ export class SelectPlacesComponent {
   regionStates: RegionState[] = [];
   overallSelected = 0;
   overallTotal = 0;
+  readonly trackByFn = trackByFactory<RegionState>(({ region }) => region.name);
   private _allSelectedState: PlaceSelection = {};
 
   getId = ({ name }: Place) => name;

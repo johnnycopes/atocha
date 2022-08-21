@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 
-import { AnimatedComponent } from '@atocha/core/ui';
+import { AnimatedComponent, trackByFactory } from '@atocha/core/ui';
 import { positionAnimation } from '@atocha/globetrotter/ui';
 import { Route } from '@atocha/globetrotter/util';
 
@@ -38,4 +38,5 @@ export class NavigationComponent extends AnimatedComponent {
       exactPathMatch: false,
     },
   ];
+  readonly trackByFn = trackByFactory<NavigationLink>(({ name }) => name);
 }

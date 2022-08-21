@@ -10,6 +10,7 @@ import {
   FormsModule,
   NG_VALUE_ACCESSOR,
 } from '@angular/forms';
+import { trackByFactory } from '@atocha/core/ui';
 
 export interface RadioButtonsOption<T> {
   display: string;
@@ -35,6 +36,7 @@ export class RadioButtonsComponent<T> implements ControlValueAccessor {
   @Input() options: RadioButtonsOption<T>[] = [];
   @Input() stacked = false;
   model: RadioButtonsOption<T> | undefined;
+  readonly trackByFn = trackByFactory<RadioButtonsOption<T>>(({ display }) => display);
   private _onChangeFn: (model: RadioButtonsOption<T>) => void = () => undefined;
 
   constructor(private _changeDetectorRef: ChangeDetectorRef) {}
