@@ -9,7 +9,7 @@ type SimpleVeggie = string;
 
 describe('trackBy', () => {
   describe('trackByFactory', () => {
-    it('returns the item itself (a string value) as the key to track by', () => {
+    it('returns a specific property of an item (a string value) as the key to track by', () => {
       const veggies: ComplexVeggie[] = [
         { id: '1', name: 'broccoli' },
         { id: '2', name: 'spinach' },
@@ -21,11 +21,11 @@ describe('trackBy', () => {
       ) => id;
       const idTrackByFn = trackByFactory<ComplexVeggie>(({ id }) => id);
 
-      const trackByFnVeggies = veggies.map((vegetable, index) =>
-        defaultTrackByFn(index, vegetable)
+      const trackByFnVeggies = veggies.map((veggie, index) =>
+        defaultTrackByFn(index, veggie)
       );
-      const trackByIdVeggies = veggies.map((vegetable, index) =>
-        idTrackByFn(index, vegetable)
+      const trackByIdVeggies = veggies.map((veggie, index) =>
+        idTrackByFn(index, veggie)
       );
 
       expect(trackByFnVeggies).toEqual(trackByIdVeggies);
@@ -33,18 +33,17 @@ describe('trackBy', () => {
   });
 
   describe('trackBySelf', () => {
-    it('returns a specific property of an item (a string value) as the key to track by', () => {
-      const veggies = ['broccoli', 'spinach', 'cucumber'];
-      const defaultTrackByFn: TrackByFunction<SimpleVeggie> = (
-        index: number,
-        item: string
-      ) => item;
+    it('returns the item itself (a string value) as the key to track by', () => {
+      const veggies: SimpleVeggie[] = ['broccoli', 'spinach', 'cucumber'];
 
-      const trackByFnVeggies = veggies.map((vegetable, index) =>
-        defaultTrackByFn(index, vegetable)
+      const defaultTrackByFn: TrackByFunction<SimpleVeggie> = (index, item) =>
+        item;
+
+      const trackByFnVeggies = veggies.map((veggie, index) =>
+        defaultTrackByFn(index, veggie)
       );
-      const trackBySelfVeggies = veggies.map((vegetable, index) =>
-        trackBySelf(index, vegetable)
+      const trackBySelfVeggies = veggies.map((veggie, index) =>
+        trackBySelf(index, veggie)
       );
 
       expect(trackByFnVeggies).toEqual(trackBySelfVeggies);
