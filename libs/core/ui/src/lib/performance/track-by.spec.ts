@@ -33,7 +33,7 @@ describe('trackBy', () => {
   });
 
   describe('trackBySelf', () => {
-    it('returns the item itself (a string value) as the key to track by', () => {
+    it('returns a specific property of an item (a string value) as the key to track by', () => {
       const veggies = ['broccoli', 'spinach', 'cucumber'];
       const defaultTrackByFn: TrackByFunction<SimpleVeggie> = (
         index: number,
