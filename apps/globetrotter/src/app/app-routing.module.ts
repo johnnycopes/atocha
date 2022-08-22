@@ -15,10 +15,12 @@ const routes: Routes = [
     children: [
       {
         path: Route.home,
+        title: 'Globetrotter',
         component: HomeComponent,
       },
       {
         path: Route.explore,
+        title: 'Globetrotter | Explore',
         loadChildren: () =>
           import('@atocha/globetrotter/feature-explore').then(
             (m) => m.GlobetrotterFeatureExploreModule
@@ -26,6 +28,7 @@ const routes: Routes = [
       },
       {
         path: Route.learn,
+        title: 'Globetrotter | Learn',
         loadChildren: () =>
           import('@atocha/globetrotter/feature-learn').then(
             (m) => m.GlobetrotterFeatureLearnModule
