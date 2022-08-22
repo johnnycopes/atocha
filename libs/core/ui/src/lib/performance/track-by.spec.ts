@@ -24,11 +24,11 @@ describe('trackBy', () => {
       const trackByFnVeggies = veggies.map((vegetable, index) =>
         defaultTrackByFn(index, vegetable)
       );
-      const trackBySelfVeggies = veggies.map((vegetable, index) =>
+      const trackByIdVeggies = veggies.map((vegetable, index) =>
         idTrackByFn(index, vegetable)
       );
 
-      expect(trackByFnVeggies).toEqual(trackBySelfVeggies);
+      expect(trackByFnVeggies).toEqual(trackByIdVeggies);
     });
   });
 
