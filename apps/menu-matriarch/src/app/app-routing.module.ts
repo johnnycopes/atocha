@@ -16,6 +16,7 @@ import { Route } from '@atocha/menu-matriarch/util';
 const routes: Routes = [
   {
     path: 'welcome',
+    title: 'Menu Matriarch | Welcome',
     component: WelcomeComponent,
     canActivate: [LoggedInAuthGuard],
     data: { state: Route.welcome },
@@ -27,6 +28,7 @@ const routes: Routes = [
     children: [
       {
         path: `${Route.planner}/:menuId`,
+        title: 'Menu Matriarch | Planner',
         data: { state: Route.planner },
         loadChildren: () =>
           import('@atocha/menu-matriarch/feature-planner').then(
@@ -35,6 +37,7 @@ const routes: Routes = [
       },
       {
         path: Route.planner,
+        title: 'Menu Matriarch | Planner',
         data: { state: Route.planner },
         canActivate: [PlannerGuard],
         loadChildren: () =>
@@ -44,6 +47,7 @@ const routes: Routes = [
       },
       {
         path: Route.menus,
+        title: 'Menu Matriarch | Menus',
         data: { state: Route.menus },
         loadChildren: () =>
           import('@atocha/menu-matriarch/feature-menus').then(
@@ -51,15 +55,8 @@ const routes: Routes = [
           ),
       },
       {
-        path: Route.tags,
-        data: { state: Route.tags },
-        loadChildren: () =>
-          import('@atocha/menu-matriarch/feature-tags').then(
-            (m) => m.MenuMatriarchFeatureTagsModule
-          ),
-      },
-      {
         path: Route.meals,
+        title: 'Menu Matriarch | Meals',
         data: { state: Route.meals },
         loadChildren: () =>
           import('@atocha/menu-matriarch/feature-meals').then(
@@ -68,6 +65,7 @@ const routes: Routes = [
       },
       {
         path: Route.dishes,
+        title: 'Menu Matriarch | Dishes',
         data: { state: Route.dishes },
         loadChildren: () =>
           import('@atocha/menu-matriarch/feature-dishes').then(
@@ -75,7 +73,17 @@ const routes: Routes = [
           ),
       },
       {
+        path: Route.tags,
+        title: 'Menu Matriarch | Tags',
+        data: { state: Route.tags },
+        loadChildren: () =>
+          import('@atocha/menu-matriarch/feature-tags').then(
+            (m) => m.MenuMatriarchFeatureTagsModule
+          ),
+      },
+      {
         path: Route.settings,
+        title: 'Menu Matriarch | Settings',
         data: { state: Route.settings },
         loadChildren: () =>
           import('@atocha/menu-matriarch/feature-settings').then(
