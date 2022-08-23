@@ -1,4 +1,4 @@
-import { actRecursively } from './act-recursively';
+import { actRecursively } from './reduce-recursively';
 
 interface Item {
   name: string;
