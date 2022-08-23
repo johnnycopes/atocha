@@ -17,7 +17,7 @@ import {
   FormsModule,
 } from '@angular/forms';
 
-import { getItemsRecursively } from '@atocha/core/util';
+import { actRecursively, getItemsRecursively } from '@atocha/core/util';
 import {
   CheckboxComponent,
   CheckboxSize,
@@ -74,6 +74,7 @@ export class NestedCheckboxesComponent<T>
 
   ngOnChanges({ item }: SimpleChanges): void {
     if (item) {
+      console.log(item);
       this._itemsKeyedById = this._createdItemsRecord(item.currentValue);
     }
   }
@@ -166,30 +167,16 @@ export class NestedCheckboxesComponent<T>
   }
 
   private _createdItemsRecord(item: T): ItemsRecord<T> {
-    const output: ItemsRecord<T> = {
-      [this.getId(item)]: {
-        item,
-        parentId: undefined,
-      },
-    };
-    const items = [item];
+    const recorder = (accumulator: ItemsRecord<T>, item: T, parent?: T) => ({
+      ...accumulator,
+      [this.getId(item)]: { item, parentId: parent ? this.getId(parent) : undefined },
+    });
 
-    while (items.length) {
-      const current = items.shift();
-      if (current) {
-        const children = this.getChildren(current);
-        if (children.length) {
-          children.forEach((child) => {
-            output[this.getId(child)] = {
-              item: child,
-              parentId: this.getId(current),
-            };
-            items.push(child);
-          });
-        }
-      }
-    }
-
-    return output;
+    return actRecursively({
+      item,
+      getChildren: this.getChildren,
+      reducer: recorder,
+      accumulator: {},
+    });
   }
 }

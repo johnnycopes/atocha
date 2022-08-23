@@ -1,3 +1,4 @@
+export * from './lib/act-recursively';
 export * from './lib/calculate-tally-change';
 export * from './lib/combo-analyzer';
 export * from './lib/create-array';
