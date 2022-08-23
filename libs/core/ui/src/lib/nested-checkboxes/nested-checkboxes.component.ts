@@ -27,12 +27,7 @@ import { TreeComponent } from '../tree/tree.component';
 export type CheckboxState = 'checked' | 'indeterminate';
 export type CheckboxStates = Record<string, CheckboxState>;
 
-interface ItemsRecord<T> {
-  [id: string]: {
-    item: T;
-    parentId: string | undefined;
-  };
-}
+type ItemsRecord<T> = Record<string, { item: T; parentId: string | undefined; }>;
 
 @Component({
   standalone: true,
@@ -74,7 +69,6 @@ export class NestedCheckboxesComponent<T>
 
   ngOnChanges({ item }: SimpleChanges): void {
     if (item) {
-      console.log(item);
       this._itemsKeyedById = this._createdItemsRecord(item.currentValue);
     }
   }
@@ -167,7 +161,7 @@ export class NestedCheckboxesComponent<T>
   }
 
   private _createdItemsRecord(item: T): ItemsRecord<T> {
-    const recorder = (accumulator: ItemsRecord<T>, item: T, parent?: T) => ({
+    const reducer = (accumulator: ItemsRecord<T>, item: T, parent?: T): ItemsRecord<T> => ({
       ...accumulator,
       [this.getId(item)]: { item, parentId: parent ? this.getId(parent) : undefined },
     });
@@ -175,7 +169,7 @@ export class NestedCheckboxesComponent<T>
     return actRecursively({
       item,
       getChildren: this.getChildren,
-      reducer: recorder,
+      reducer,
       accumulator: {},
     });
   }
