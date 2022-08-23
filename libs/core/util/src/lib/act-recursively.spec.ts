@@ -16,12 +16,14 @@ describe('actRecursively', () => {
   it('returns a array of only the item when it has no children', () => {
     const pusher = (accumulator: Item[], item: Item) => [...accumulator, item];
 
-    expect(actRecursively({
-      item: { name: 'Item 1' },
-      getChildren,
-      reducer: pusher,
-      accumulator: [],
-    })).toEqual([{ name: 'Item 1' }]);
+    expect(
+      actRecursively({
+        item: { name: 'Item 1' },
+        getChildren,
+        reducer: pusher,
+        accumulator: [],
+      })
+    ).toEqual([{ name: 'Item 1' }]);
 
     expect(
       actRecursively({
@@ -44,12 +46,14 @@ describe('actRecursively', () => {
     };
     const pusher = (accumulator: Item[], item: Item) => [...accumulator, item];
 
-    expect(actRecursively({
-      item,
-      getChildren,
-      reducer: pusher,
-      accumulator: [],
-    })).toEqual([
+    expect(
+      actRecursively({
+        item,
+        getChildren,
+        reducer: pusher,
+        accumulator: [],
+      })
+    ).toEqual([
       {
         name: 'Item 1',
         children: [
@@ -74,20 +78,19 @@ describe('actRecursively', () => {
         { name: 'Item 1C', children: [{ name: 'Item 1C.1' }] },
       ],
     };
-    const pusher = (accumulator: string[], item: Item) => [...accumulator, item.name];
+    const pusher = (accumulator: string[], item: Item) => [
+      ...accumulator,
+      item.name,
+    ];
 
-    expect(actRecursively({
-      item,
-      getChildren,
-      reducer: pusher,
-      accumulator: [],
-    })).toEqual([
-      'Item 1',
-      'Item 1A',
-      'Item 1B',
-      'Item 1C',
-      'Item 1C.1',
-    ]);
+    expect(
+      actRecursively({
+        item,
+        getChildren,
+        reducer: pusher,
+        accumulator: [],
+      })
+    ).toEqual(['Item 1', 'Item 1A', 'Item 1B', 'Item 1C', 'Item 1C.1']);
   });
 
   it('returns an object of all items keyed by item description', () => {
@@ -99,26 +102,28 @@ describe('actRecursively', () => {
         { name: 'Item 1B', description: 'First item B' },
         {
           name: 'Item 1C',
-          children: [{ name: 'Item 1C.1', description: 'First item C.1' }]
+          children: [{ name: 'Item 1C.1', description: 'First item C.1' }],
         },
       ],
     };
-    const recorder = (
-      accumulator: Record<string, string>,
-      item: Item
-    ) => ({ ...accumulator, [item.name]: item.description ?? 'No description' });
+    const recorder = (accumulator: Record<string, string>, item: Item) => ({
+      ...accumulator,
+      [item.name]: item.description ?? 'No description',
+    });
 
-    expect(actRecursively({
-      item,
-      getChildren,
-      reducer: recorder,
-      accumulator: {},
-    })).toEqual({
-      "Item 1": "First item",
-      "Item 1A": "First item A",
-      "Item 1B": "First item B",
-      "Item 1C": "No description",
-      "Item 1C.1": "First item C.1",
+    expect(
+      actRecursively({
+        item,
+        getChildren,
+        reducer: recorder,
+        accumulator: {},
+      })
+    ).toEqual({
+      'Item 1': 'First item',
+      'Item 1A': 'First item A',
+      'Item 1B': 'First item B',
+      'Item 1C': 'No description',
+      'Item 1C.1': 'First item C.1',
     });
   });
 });

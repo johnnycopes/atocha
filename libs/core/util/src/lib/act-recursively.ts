@@ -1,10 +1,13 @@
 export function actRecursively<TItem, TAccumulator>({
-  item, getChildren, reducer, accumulator
+  item,
+  getChildren,
+  reducer,
+  accumulator,
 }: {
-  item: TItem,
-  getChildren: (item: TItem) => TItem[],
-  reducer: (accumulator: TAccumulator, item: TItem) => TAccumulator,
-  accumulator: TAccumulator,
+  item: TItem;
+  getChildren: (item: TItem) => TItem[];
+  reducer: (accumulator: TAccumulator, item: TItem) => TAccumulator;
+  accumulator: TAccumulator;
 }): TAccumulator {
   const items = [item];
 
@@ -25,10 +28,6 @@ export function actRecursively<TItem, TAccumulator>({
 
   return accumulator;
 }
-
-
-
-
 
 // const output: ItemsRecord<T> = {
 //   [this.getId(item)]: {
