@@ -5,7 +5,7 @@ export function actRecursively<TItem, TAccumulator>({
   getChildren: (item: TItem) => TItem[],
   reducer: (accumulator: TAccumulator, item: TItem) => TAccumulator,
   accumulator: TAccumulator,
-}): unknown {
+}): TAccumulator {
   const items = [item];
 
   while (items.length) {

@@ -1,19 +1,19 @@
 import { actRecursively } from './act-recursively';
 
-interface TestItem {
+interface Item {
   name: string;
-  children?: TestItem[];
+  children?: Item[];
 }
 
 describe('actRecursively', () => {
-  let getChildren: (item: TestItem) => TestItem[];
+  let getChildren: (item: Item) => Item[];
 
   beforeEach(() => {
     getChildren = (item) => item?.children ?? [];
   });
 
   it('returns a array of only the item when it has no children', () => {
-    const pusher = (accumulator: TestItem[], item: TestItem) => [...accumulator, item];
+    const pusher = (accumulator: Item[], item: Item) => [...accumulator, item];
 
     expect(actRecursively({
       item: { name: 'Item 1' },
@@ -33,7 +33,7 @@ describe('actRecursively', () => {
   });
 
   it('returns an array of nested items', () => {
-    const item: TestItem = {
+    const item: Item = {
       name: 'Item 1',
       children: [
         { name: 'Item 1A' },
@@ -41,7 +41,7 @@ describe('actRecursively', () => {
         { name: 'Item 1C', children: [{ name: 'Item 1C.1' }] },
       ],
     };
-    const pusher = (accumulator: TestItem[], item: TestItem) => [...accumulator, item];
+    const pusher = (accumulator: Item[], item: Item) => [...accumulator, item];
 
     expect(actRecursively({
       item,
@@ -65,7 +65,7 @@ describe('actRecursively', () => {
   });
 
   it('returns an array of a property on all items', () => {
-    const item: TestItem = {
+    const item: Item = {
       name: 'Item 1',
       children: [
         { name: 'Item 1A' },
@@ -73,7 +73,7 @@ describe('actRecursively', () => {
         { name: 'Item 1C', children: [{ name: 'Item 1C.1' }] },
       ],
     };
-    const pusher = (accumulator: string[], item: TestItem) => [...accumulator, item.name];
+    const pusher = (accumulator: string[], item: Item) => [...accumulator, item.name];
 
     expect(actRecursively({
       item,
