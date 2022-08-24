@@ -10,7 +10,7 @@ export const LEADERS: Leader[] = [
   {
     name: "Alfonso I d'Este",
     requirement: '10 coins and max 1 servant',
-    ability: 'Each time you take a Character Card, receive 2 servants',
+    ability: 'Each time you take a Character Card, gain 2 servants',
     type: 'permanent',
   },
   {
@@ -48,7 +48,7 @@ export const LEADERS: Leader[] = [
   {
     name: "Cosimo de' Medici",
     requirement: '2 Character Cards and 4 Building Cards',
-    ability: 'Receive 3 servants and gain 1 Victory Point',
+    ability: 'Gain 3 servants and 1 Victory Point',
     type: 'once per round',
   },
   {
@@ -74,7 +74,7 @@ export const LEADERS: Leader[] = [
   {
     name: "Ferdinando d'Aragona",
     requirement: '8 coins, 8 servants, and max 1 combined wood and stone',
-    ability: 'Each time you take a Venture Card, receive 1 wood and 1 stone',
+    ability: 'Each time you take a Venture Card, gain 1 wood and 1 stone',
     type: 'permanent',
   },
   {
@@ -93,7 +93,7 @@ export const LEADERS: Leader[] = [
   {
     name: 'Giovanni dalle Bande Nere',
     requirement: '12 Military Points',
-    ability: 'Receive 1 wood, 1 coin, and 1 stone',
+    ability: 'Gain 1 wood, 1 coin, and 1 stone',
     type: 'once per round',
   },
   {
@@ -119,7 +119,7 @@ export const LEADERS: Leader[] = [
     name: 'Jacopo Salivate',
     requirement: '3 Building Cards and 8 Military Points',
     ability:
-      'Whenever you receive 1 or more Council Privileges, take 1 additional Council Privelege of any type',
+      'Whenever you take 1 or more Council Priveleges, take 1 additional Council Privelege of any type',
     type: 'permanent',
   },
   {
@@ -171,7 +171,7 @@ export const LEADERS: Leader[] = [
   {
     name: 'Ludovico III Gonzaga',
     requirement: '15 servants',
-    ability: 'Receive 1 Council Privilege',
+    ability: 'Take 1 Council Privilege',
     type: 'once per round',
   },
   {
@@ -199,13 +199,13 @@ export const LEADERS: Leader[] = [
     name: "Massimilano I d'Asburgo",
     requirement: '4 Territory Cards and 4 Building Cards',
     ability:
-      'When you place one of your Family Members here, receive 3 Special Tokens and gain 5 Victory Points',
+      'When you place one of your Family Members here, gain 3 Special Tokens and 5 Victory Points',
     type: 'action',
   },
   {
     name: 'Michelangelo Buonarroti',
     requirement: '10 stone',
-    ability: 'Receive 3 coins',
+    ability: 'Gain 3 coins',
     type: 'once per round',
   },
   {
@@ -238,14 +238,14 @@ export const LEADERS: Leader[] = [
     name: 'Piero della Francesca',
     requirement: '4 Special Tokens and 10 Victory Points',
     ability:
-      'When you place one of your Family Members here, receive 3 Special Tokens',
+      'When you place one of your Family Members here, gain 3 Special Tokens',
     type: 'action',
   },
   {
     name: 'Pietro Bembo',
     requirement: '3 Character Cards and 3 Faith Points',
     ability:
-      'When you place one of your Family Members here, receive 3 coins and 3 servants',
+      'When you place one of your Family Members here, gain 3 coins and 3 servants',
     type: 'action',
   },
   {
@@ -265,7 +265,7 @@ export const LEADERS: Leader[] = [
     name: 'Santa Rita',
     requirement: '8 Faith Points',
     ability:
-      'Each time you receive wood, stone, coin, or servants as an immediate effect from Development Cards (not from an action space), you receive the resources twice',
+      'Each time you gain wood, stone, coin, or servants as an immediate effect from Development Cards (not from an action space), you gain the resources twice',
     type: 'permanent',
   },
   {
@@ -279,7 +279,7 @@ export const LEADERS: Leader[] = [
     name: 'Sisto IV',
     requirement: '6 stone, 6 wood, 6 servants, and 6 coins',
     ability:
-      'You gain 5 additional Victory Points when you support the Church in a Vatican Report',
+      'Gain 5 additional Victory Points when you support the Church in a Vatican Report',
     type: 'permanent',
   },
   {
