@@ -108,7 +108,7 @@ export class NestedCheckboxesComponent<T>
   }): CheckboxStates {
     const itemAndDescendantsIds = reduceRecursively({
       item,
-      getChildren: this.getChildren,
+      getItems: this.getChildren,
       initialValue: [] as string[],
       reducer: (accum, item) => [...accum, this.getId(item)],
     });
@@ -130,7 +130,7 @@ export class NestedCheckboxesComponent<T>
   ): CheckboxStates {
     const ancestors = reduceRecursively({
       item,
-      getChildren: this._getParent,
+      getItems: this._getParent,
       initialValue: [] as T[],
       reducer: (accum, curr) => this.getId(item) === this.getId(curr) ? [...accum] : [...accum, curr],
     });
@@ -174,7 +174,7 @@ export class NestedCheckboxesComponent<T>
 
     return reduceRecursively({
       item,
-      getChildren: this.getChildren,
+      getItems: this.getChildren,
       reducer,
       initialValue: {},
     });

@@ -7,10 +7,10 @@ interface Item {
 }
 
 describe('reduceRecursively', () => {
-  let getChildren: (item: Item) => Item[];
+  let getItems: (item: Item) => Item[];
 
   beforeEach(() => {
-    getChildren = (item) => item?.children ?? [];
+    getItems = (item) => item?.children ?? [];
   });
 
   it('returns a array of only the item when it has no children', () => {
@@ -19,7 +19,7 @@ describe('reduceRecursively', () => {
     expect(
       reduceRecursively({
         item: { name: 'Item 1' },
-        getChildren,
+        getItems,
         initialValue: [],
         reducer: pusher,
       })
@@ -28,7 +28,7 @@ describe('reduceRecursively', () => {
     expect(
       reduceRecursively({
         item: { name: 'Item 2', children: [] },
-        getChildren,
+        getItems,
         initialValue: [],
         reducer: pusher,
       })
@@ -48,7 +48,7 @@ describe('reduceRecursively', () => {
     expect(
       reduceRecursively({
         item,
-        getChildren,
+        getItems,
         initialValue: [] as Item[],
         reducer: (accumulator, item) => [...accumulator, item],
       })
@@ -81,7 +81,7 @@ describe('reduceRecursively', () => {
     expect(
       reduceRecursively<Item, string[]>({
         item,
-        getChildren,
+        getItems,
         initialValue: [],
         reducer: (accumulator, item) => [ ...accumulator, item.name ],
       })
@@ -105,7 +105,7 @@ describe('reduceRecursively', () => {
     expect(
       reduceRecursively({
         item,
-        getChildren,
+        getItems,
         initialValue: {} as Record<string, string>,
         reducer: (accumulator, item) => ({
           ...accumulator,
