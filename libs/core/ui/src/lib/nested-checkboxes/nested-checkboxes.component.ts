@@ -69,7 +69,7 @@ export class NestedCheckboxesComponent<T>
 
   ngOnChanges({ item }: SimpleChanges): void {
     if (item) {
-      this._itemsKeyedById = this._createdItemsRecord(item.currentValue);
+      this._itemsKeyedById = this._createItemsRecord(item.currentValue);
     }
   }
 
@@ -167,23 +167,17 @@ export class NestedCheckboxesComponent<T>
     return states;
   }
 
-  private _createdItemsRecord(item: T): ItemsRecord<T> {
-    const reducer = (
-      accumulator: ItemsRecord<T>,
-      item: T,
-      parent?: T
-    ): ItemsRecord<T> => ({
-      ...accumulator,
-      [this.getId(item)]: {
-        item,
-        parentId: parent ? this.getId(parent) : undefined,
-      },
-    });
-
-    return reduceRecursively({
+  private _createItemsRecord(item: T): ItemsRecord<T> {
+    return reduceRecursively<T, ItemsRecord<T>>({
       item,
       getItems: this.getChildren,
-      reducer,
+      reducer: (accumulator, item, parent) => ({
+        ...accumulator,
+        [this.getId(item)]: {
+          item,
+          parentId: parent ? this.getId(parent) : undefined,
+        },
+      }),
       initialValue: {},
     });
   }
