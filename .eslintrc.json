@@ -22,6 +22,10 @@
                 "onlyDependOnLibsWithTags": ["scope:core", "scope:globetrotter"]
               },
               {
+                "sourceTag": "scope:lorenzo",
+                "onlyDependOnLibsWithTags": ["scope:core", "scope:lorenzo"]
+              },
+              {
                 "sourceTag": "scope:menu-matriarch",
                 "onlyDependOnLibsWithTags": [
                   "scope:core",
