@@ -17,7 +17,7 @@ import {
   FormsModule,
 } from '@angular/forms';
 
-import { reduceRecursively, getItemsRecursively } from '@atocha/core/util';
+import { reduceRecursively } from '@atocha/core/util';
 import {
   CheckboxComponent,
   CheckboxSize,
@@ -128,8 +128,12 @@ export class NestedCheckboxesComponent<T>
     item: T,
     states: CheckboxStates
   ): CheckboxStates {
-    const ancestors = getItemsRecursively(item, this._getParent);
-    ancestors.shift();
+    const ancestors = reduceRecursively({
+      item,
+      getChildren: this._getParent,
+      initialValue: [] as T[],
+      reducer: (accum, curr) => this.getId(item) === this.getId(curr) ? [...accum] : [...accum, curr],
+    });
 
     ancestors.forEach((ancestor) => {
       const ancestorId = this.getId(ancestor);
