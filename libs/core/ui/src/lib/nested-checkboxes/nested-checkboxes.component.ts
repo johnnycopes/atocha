@@ -17,7 +17,7 @@ import {
   FormsModule,
 } from '@angular/forms';
 
-import { getItemsRecursively } from '@atocha/core/util';
+import { reduceRecursively } from '@atocha/core/util';
 import {
   CheckboxComponent,
   CheckboxSize,
@@ -27,12 +27,7 @@ import { TreeComponent } from '../tree/tree.component';
 export type CheckboxState = 'checked' | 'indeterminate';
 export type CheckboxStates = Record<string, CheckboxState>;
 
-interface ItemsRecord<T> {
-  [id: string]: {
-    item: T;
-    parentId: string | undefined;
-  };
-}
+type ItemsRecord<T> = Record<string, { item: T; parentId: string | undefined }>;
 
 @Component({
   standalone: true,
@@ -74,7 +69,7 @@ export class NestedCheckboxesComponent<T>
 
   ngOnChanges({ item }: SimpleChanges): void {
     if (item) {
-      this._itemsKeyedById = this._createdItemsRecord(item.currentValue);
+      this._itemsKeyedById = this._createItemsRecord(item.currentValue);
     }
   }
 
@@ -111,10 +106,12 @@ export class NestedCheckboxesComponent<T>
     checked: boolean;
     states: CheckboxStates;
   }): CheckboxStates {
-    const itemAndDescendantsIds = getItemsRecursively(
+    const itemAndDescendantsIds = reduceRecursively({
       item,
-      this.getChildren
-    ).map((item) => this.getId(item));
+      getItems: this.getChildren,
+      initialValue: [] as string[],
+      reducer: (accum, item) => [...accum, this.getId(item)],
+    });
 
     itemAndDescendantsIds.forEach((id) => {
       if (checked) {
@@ -131,8 +128,13 @@ export class NestedCheckboxesComponent<T>
     item: T,
     states: CheckboxStates
   ): CheckboxStates {
-    const ancestors = getItemsRecursively(item, this._getParent);
-    ancestors.shift();
+    const ancestors = reduceRecursively({
+      item,
+      getItems: this._getParent,
+      initialValue: [] as T[],
+      reducer: (accum, curr) =>
+        this.getId(item) === this.getId(curr) ? [...accum] : [...accum, curr],
+    });
 
     ancestors.forEach((ancestor) => {
       const ancestorId = this.getId(ancestor);
@@ -165,31 +167,18 @@ export class NestedCheckboxesComponent<T>
     return states;
   }
 
-  private _createdItemsRecord(item: T): ItemsRecord<T> {
-    const output: ItemsRecord<T> = {
-      [this.getId(item)]: {
-        item,
-        parentId: undefined,
-      },
-    };
-    const items = [item];
-
-    while (items.length) {
-      const current = items.shift();
-      if (current) {
-        const children = this.getChildren(current);
-        if (children.length) {
-          children.forEach((child) => {
-            output[this.getId(child)] = {
-              item: child,
-              parentId: this.getId(current),
-            };
-            items.push(child);
-          });
-        }
-      }
-    }
-
-    return output;
+  private _createItemsRecord(item: T): ItemsRecord<T> {
+    return reduceRecursively<T, ItemsRecord<T>>({
+      item,
+      getItems: this.getChildren,
+      reducer: (accumulator, item, parent) => ({
+        ...accumulator,
+        [this.getId(item)]: {
+          item,
+          parentId: parent ? this.getId(parent) : undefined,
+        },
+      }),
+      initialValue: {},
+    });
   }
 }
