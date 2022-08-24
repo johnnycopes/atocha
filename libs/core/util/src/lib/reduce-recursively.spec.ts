@@ -20,8 +20,8 @@ describe('actRecursively', () => {
       reduceRecursively({
         item: { name: 'Item 1' },
         getChildren,
-        reducer: pusher,
         initialValue: [],
+        reducer: pusher,
       })
     ).toEqual([{ name: 'Item 1' }]);
 
@@ -29,8 +29,8 @@ describe('actRecursively', () => {
       reduceRecursively({
         item: { name: 'Item 2', children: [] },
         getChildren,
-        reducer: pusher,
         initialValue: [],
+        reducer: pusher,
       })
     ).toEqual([{ name: 'Item 2', children: [] }]);
   });
@@ -44,14 +44,13 @@ describe('actRecursively', () => {
         { name: 'Item 1C', children: [{ name: 'Item 1C.1' }] },
       ],
     };
-    const pusher = (accumulator: Item[], item: Item) => [...accumulator, item];
 
     expect(
       reduceRecursively({
         item,
         getChildren,
-        reducer: pusher,
-        initialValue: [],
+        initialValue: [] as Item[],
+        reducer: (accumulator, item) => [...accumulator, item],
       })
     ).toEqual([
       {
@@ -78,17 +77,13 @@ describe('actRecursively', () => {
         { name: 'Item 1C', children: [{ name: 'Item 1C.1' }] },
       ],
     };
-    const pusher = (accumulator: string[], item: Item) => [
-      ...accumulator,
-      item.name,
-    ];
 
     expect(
-      reduceRecursively({
+      reduceRecursively<Item, string[]>({
         item,
         getChildren,
-        reducer: pusher,
         initialValue: [],
+        reducer: (accumulator, item) => [ ...accumulator, item.name ],
       })
     ).toEqual(['Item 1', 'Item 1A', 'Item 1B', 'Item 1C', 'Item 1C.1']);
   });
@@ -106,17 +101,16 @@ describe('actRecursively', () => {
         },
       ],
     };
-    const recorder = (accumulator: Record<string, string>, item: Item) => ({
-      ...accumulator,
-      [item.name]: item.description ?? 'No description',
-    });
 
     expect(
       reduceRecursively({
         item,
         getChildren,
-        reducer: recorder,
-        initialValue: {},
+        initialValue: {} as Record<string, string>,
+        reducer: (accumulator, item) => ({
+          ...accumulator,
+          [item.name]: item.description ?? 'No description',
+        }),
       })
     ).toEqual({
       'Item 1': 'First item',

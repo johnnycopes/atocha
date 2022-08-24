@@ -6,8 +6,8 @@ export function reduceRecursively<T, U>({
 }: {
   item: T;
   getChildren: (item: T) => T[];
-  reducer: (initialValue: U, item: T, parent?: T) => U;
   initialValue: U;
+  reducer: (accumulator: U, item: T, parent?: T) => U;
 }): U {
   const items = [item];
   let value = reducer(initialValue, item);
