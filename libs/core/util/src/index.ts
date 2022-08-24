@@ -5,7 +5,6 @@ export * from './lib/dedupe';
 export * from './lib/flatten-values';
 export * from './lib/format';
 export * from './lib/get-dynamic-value';
-export * from './lib/get-items-recursively';
 export * from './lib/includes';
 export * from './lib/pluralize';
 export * from './lib/quiz';
