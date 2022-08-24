@@ -17,7 +17,7 @@ import {
   FormsModule,
 } from '@angular/forms';
 
-import { actRecursively, getItemsRecursively } from '@atocha/core/util';
+import { reduceRecursively, getItemsRecursively } from '@atocha/core/util';
 import {
   CheckboxComponent,
   CheckboxSize,
@@ -166,7 +166,7 @@ export class NestedCheckboxesComponent<T>
       [this.getId(item)]: { item, parentId: parent ? this.getId(parent) : undefined },
     });
 
-    return actRecursively({
+    return reduceRecursively({
       item,
       getChildren: this.getChildren,
       reducer,

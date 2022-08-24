@@ -1,4 +1,4 @@
-export function actRecursively<T, U>({
+export function reduceRecursively<T, U>({
   item,
   getChildren,
   reducer,

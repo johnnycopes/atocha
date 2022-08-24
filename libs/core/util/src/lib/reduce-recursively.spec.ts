@@ -1,4 +1,4 @@
-import { actRecursively } from './reduce-recursively';
+import { reduceRecursively } from './reduce-recursively';
 
 interface Item {
   name: string;
@@ -17,7 +17,7 @@ describe('actRecursively', () => {
     const pusher = (accumulator: Item[], item: Item) => [...accumulator, item];
 
     expect(
-      actRecursively({
+      reduceRecursively({
         item: { name: 'Item 1' },
         getChildren,
         reducer: pusher,
@@ -26,7 +26,7 @@ describe('actRecursively', () => {
     ).toEqual([{ name: 'Item 1' }]);
 
     expect(
-      actRecursively({
+      reduceRecursively({
         item: { name: 'Item 2', children: [] },
         getChildren,
         reducer: pusher,
@@ -47,7 +47,7 @@ describe('actRecursively', () => {
     const pusher = (accumulator: Item[], item: Item) => [...accumulator, item];
 
     expect(
-      actRecursively({
+      reduceRecursively({
         item,
         getChildren,
         reducer: pusher,
@@ -84,7 +84,7 @@ describe('actRecursively', () => {
     ];
 
     expect(
-      actRecursively({
+      reduceRecursively({
         item,
         getChildren,
         reducer: pusher,
@@ -112,7 +112,7 @@ describe('actRecursively', () => {
     });
 
     expect(
-      actRecursively({
+      reduceRecursively({
         item,
         getChildren,
         reducer: recorder,
