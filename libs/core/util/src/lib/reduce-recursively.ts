@@ -1,16 +1,16 @@
-export function actRecursively<TItem, TAccumulator>({
+export function actRecursively<T, U>({
   item,
   getChildren,
   reducer,
-  accumulator,
+  initialValue,
 }: {
-  item: TItem;
-  getChildren: (item: TItem) => TItem[];
-  reducer: (accumulator: TAccumulator, item: TItem, parent?: TItem) => TAccumulator;
-  accumulator: TAccumulator;
-}): TAccumulator {
+  item: T;
+  getChildren: (item: T) => T[];
+  reducer: (initialValue: U, item: T, parent?: T) => U;
+  initialValue: U;
+}): U {
   const items = [item];
-  let reducedValue = reducer(accumulator, item);
+  let value = reducer(initialValue, item);
 
   while (items.length) {
     const current = items.shift();
@@ -20,12 +20,12 @@ export function actRecursively<TItem, TAccumulator>({
 
       if (children.length) {
         children.forEach((child) => {
-          reducedValue = reducer(reducedValue, child, current);
+          value = reducer(value, child, current);
           items.push(child);
         });
       }
     }
   }
 
-  return reducedValue;
+  return value;
 }

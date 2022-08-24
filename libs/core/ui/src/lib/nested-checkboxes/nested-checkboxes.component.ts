@@ -170,7 +170,7 @@ export class NestedCheckboxesComponent<T>
       item,
       getChildren: this.getChildren,
       reducer,
-      accumulator: {},
+      initialValue: {},
     });
   }
 }

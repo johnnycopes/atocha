@@ -21,7 +21,7 @@ describe('actRecursively', () => {
         item: { name: 'Item 1' },
         getChildren,
         reducer: pusher,
-        accumulator: [],
+        initialValue: [],
       })
     ).toEqual([{ name: 'Item 1' }]);
 
@@ -30,7 +30,7 @@ describe('actRecursively', () => {
         item: { name: 'Item 2', children: [] },
         getChildren,
         reducer: pusher,
-        accumulator: [],
+        initialValue: [],
       })
     ).toEqual([{ name: 'Item 2', children: [] }]);
   });
@@ -51,7 +51,7 @@ describe('actRecursively', () => {
         item,
         getChildren,
         reducer: pusher,
-        accumulator: [],
+        initialValue: [],
       })
     ).toEqual([
       {
@@ -88,7 +88,7 @@ describe('actRecursively', () => {
         item,
         getChildren,
         reducer: pusher,
-        accumulator: [],
+        initialValue: [],
       })
     ).toEqual(['Item 1', 'Item 1A', 'Item 1B', 'Item 1C', 'Item 1C.1']);
   });
@@ -116,7 +116,7 @@ describe('actRecursively', () => {
         item,
         getChildren,
         reducer: recorder,
-        accumulator: {},
+        initialValue: {},
       })
     ).toEqual({
       'Item 1': 'First item',
