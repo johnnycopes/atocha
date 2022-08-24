@@ -6,7 +6,7 @@ interface Item {
   children?: Item[];
 }
 
-describe('actRecursively', () => {
+describe('reduceRecursively', () => {
   let getChildren: (item: Item) => Item[];
 
   beforeEach(() => {
