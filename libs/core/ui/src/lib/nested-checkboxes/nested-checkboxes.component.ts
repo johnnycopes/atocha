@@ -106,10 +106,12 @@ export class NestedCheckboxesComponent<T>
     checked: boolean;
     states: CheckboxStates;
   }): CheckboxStates {
-    const itemAndDescendantsIds = getItemsRecursively(
+    const itemAndDescendantsIds = reduceRecursively({
       item,
-      this.getChildren
-    ).map((item) => this.getId(item));
+      getChildren: this.getChildren,
+      initialValue: [] as string[],
+      reducer: (accum, item) => [...accum, this.getId(item)],
+    });
 
     itemAndDescendantsIds.forEach((id) => {
       if (checked) {
