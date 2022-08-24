@@ -1,6 +1,6 @@
 import { Leader } from './leader.interface';
 
-export const LEADERS: Leader[] = [
+export const LEADERS: readonly Leader[] = [
   {
     name: "Alfonso V d'Aragona",
     requirement: '6 Military Points and 0 Faith Points',
@@ -119,7 +119,7 @@ export const LEADERS: Leader[] = [
     name: 'Jacopo Salivate',
     requirement: '3 Building Cards and 8 Military Points',
     ability:
-      'Whenever you take 1 or more Council Priveleges, take 1 additional Council Privelege of any type',
+      'Whenever you take 1 or more Council Privileges, take 1 additional Council Privilege of any type',
     type: 'permanent',
   },
   {
