@@ -27,7 +27,7 @@ import { TreeComponent } from '../tree/tree.component';
 export type CheckboxState = 'checked' | 'indeterminate';
 export type CheckboxStates = Record<string, CheckboxState>;
 
-type ItemsRecord<T> = Record<string, { item: T; parentId: string | undefined; }>;
+type ItemsRecord<T> = Record<string, { item: T; parentId: string | undefined }>;
 
 @Component({
   standalone: true,
@@ -132,7 +132,8 @@ export class NestedCheckboxesComponent<T>
       item,
       getItems: this._getParent,
       initialValue: [] as T[],
-      reducer: (accum, curr) => this.getId(item) === this.getId(curr) ? [...accum] : [...accum, curr],
+      reducer: (accum, curr) =>
+        this.getId(item) === this.getId(curr) ? [...accum] : [...accum, curr],
     });
 
     ancestors.forEach((ancestor) => {
@@ -167,9 +168,16 @@ export class NestedCheckboxesComponent<T>
   }
 
   private _createdItemsRecord(item: T): ItemsRecord<T> {
-    const reducer = (accumulator: ItemsRecord<T>, item: T, parent?: T): ItemsRecord<T> => ({
+    const reducer = (
+      accumulator: ItemsRecord<T>,
+      item: T,
+      parent?: T
+    ): ItemsRecord<T> => ({
       ...accumulator,
-      [this.getId(item)]: { item, parentId: parent ? this.getId(parent) : undefined },
+      [this.getId(item)]: {
+        item,
+        parentId: parent ? this.getId(parent) : undefined,
+      },
     });
 
     return reduceRecursively({

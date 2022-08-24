@@ -83,7 +83,7 @@ describe('reduceRecursively', () => {
         item,
         getItems,
         initialValue: [],
-        reducer: (accumulator, item) => [ ...accumulator, item.name ],
+        reducer: (accumulator, item) => [...accumulator, item.name],
       })
     ).toEqual(['Item 1', 'Item 1A', 'Item 1B', 'Item 1C', 'Item 1C.1']);
   });
