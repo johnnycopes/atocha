@@ -192,8 +192,8 @@ export const DEVELOPMENTS: readonly Development[] = [
   {
     number: 25,
     period: 1,
-    deck: '',
-    type: '',
+    deck: 'building',
+    type: 'building',
     cost: '',
     immediateEffect: '',
     permanentEffect: ''
@@ -201,8 +201,8 @@ export const DEVELOPMENTS: readonly Development[] = [
   {
     number: 26,
     period: 1,
-    deck: '',
-    type: '',
+    deck: 'building',
+    type: 'building',
     cost: '',
     immediateEffect: '',
     permanentEffect: ''
@@ -210,8 +210,8 @@ export const DEVELOPMENTS: readonly Development[] = [
   {
     number: 27,
     period: 1,
-    deck: '',
-    type: '',
+    deck: 'building',
+    type: 'building',
     cost: '',
     immediateEffect: '',
     permanentEffect: ''
@@ -219,8 +219,8 @@ export const DEVELOPMENTS: readonly Development[] = [
   {
     number: 28,
     period: 1,
-    deck: '',
-    type: '',
+    deck: 'building',
+    type: 'building',
     cost: '',
     immediateEffect: '',
     permanentEffect: ''
@@ -228,8 +228,8 @@ export const DEVELOPMENTS: readonly Development[] = [
   {
     number: 29,
     period: 1,
-    deck: '',
-    type: '',
+    deck: 'building',
+    type: 'building',
     cost: '',
     immediateEffect: '',
     permanentEffect: ''
@@ -237,8 +237,8 @@ export const DEVELOPMENTS: readonly Development[] = [
   {
     number: 30,
     period: 1,
-    deck: '',
-    type: '',
+    deck: 'building',
+    type: 'building',
     cost: '',
     immediateEffect: '',
     permanentEffect: ''
@@ -246,8 +246,8 @@ export const DEVELOPMENTS: readonly Development[] = [
   {
     number: 31,
     period: 1,
-    deck: '',
-    type: '',
+    deck: 'building',
+    type: 'building',
     cost: '',
     immediateEffect: '',
     permanentEffect: ''
@@ -255,152 +255,152 @@ export const DEVELOPMENTS: readonly Development[] = [
   {
     number: 32,
     period: 1,
-    deck: '',
-    type: '',
+    deck: 'building',
+    type: 'building',
     cost: '',
     immediateEffect: '',
     permanentEffect: ''
   },
   {
     number: 33,
-    period: 1,
-    deck: '',
-    type: '',
+    period: 2,
+    deck: 'building',
+    type: 'building',
     cost: '',
     immediateEffect: '',
     permanentEffect: ''
   },
   {
     number: 34,
-    period: 1,
-    deck: '',
-    type: '',
+    period: 2,
+    deck: 'building',
+    type: 'building',
     cost: '',
     immediateEffect: '',
     permanentEffect: ''
   },
   {
     number: 35,
-    period: 1,
-    deck: '',
-    type: '',
+    period: 2,
+    deck: 'building',
+    type: 'building',
     cost: '',
     immediateEffect: '',
     permanentEffect: ''
   },
   {
     number: 36,
-    period: 1,
-    deck: '',
-    type: '',
+    period: 2,
+    deck: 'building',
+    type: 'building',
     cost: '',
     immediateEffect: '',
     permanentEffect: ''
   },
   {
     number: 37,
-    period: 1,
-    deck: '',
-    type: '',
+    period: 2,
+    deck: 'building',
+    type: 'building',
     cost: '',
     immediateEffect: '',
     permanentEffect: ''
   },
   {
     number: 38,
-    period: 1,
-    deck: '',
-    type: '',
+    period: 2,
+    deck: 'building',
+    type: 'building',
     cost: '',
     immediateEffect: '',
     permanentEffect: ''
   },
   {
     number: 39,
-    period: 1,
-    deck: '',
-    type: '',
+    period: 2,
+    deck: 'building',
+    type: 'building',
     cost: '',
     immediateEffect: '',
     permanentEffect: ''
   },
   {
     number: 40,
-    period: 1,
-    deck: '',
-    type: '',
+    period: 2,
+    deck: 'building',
+    type: 'building',
     cost: '',
     immediateEffect: '',
     permanentEffect: ''
   },
   {
     number: 41,
-    period: 1,
-    deck: '',
-    type: '',
+    period: 3,
+    deck: 'building',
+    type: 'building',
     cost: '',
     immediateEffect: '',
     permanentEffect: ''
   },
   {
     number: 42,
-    period: 1,
-    deck: '',
-    type: '',
+    period: 3,
+    deck: 'building',
+    type: 'building',
     cost: '',
     immediateEffect: '',
     permanentEffect: ''
   },
   {
     number: 43,
-    period: 1,
-    deck: '',
-    type: '',
+    period: 3,
+    deck: 'building',
+    type: 'building',
     cost: '',
     immediateEffect: '',
     permanentEffect: ''
   },
   {
     number: 44,
-    period: 1,
-    deck: '',
-    type: '',
+    period: 3,
+    deck: 'building',
+    type: 'building',
     cost: '',
     immediateEffect: '',
     permanentEffect: ''
   },
   {
     number: 45,
-    period: 1,
-    deck: '',
-    type: '',
+    period: 3,
+    deck: 'building',
+    type: 'building',
     cost: '',
     immediateEffect: '',
     permanentEffect: ''
   },
   {
     number: 46,
-    period: 1,
-    deck: '',
-    type: '',
+    period: 3,
+    deck: 'building',
+    type: 'building',
     cost: '',
     immediateEffect: '',
     permanentEffect: ''
   },
   {
     number: 47,
-    period: 1,
-    deck: '',
-    type: '',
+    period: 3,
+    deck: 'building',
+    type: 'building',
     cost: '',
     immediateEffect: '',
     permanentEffect: ''
   },
   {
     number: 48,
-    period: 1,
-    deck: '',
-    type: '',
+    period: 3,
+    deck: 'building',
+    type: 'building',
     cost: '',
     immediateEffect: '',
     permanentEffect: ''
@@ -1141,7 +1141,7 @@ export const DEVELOPMENTS: readonly Development[] = [
   {
     number: 135,
     period: 1,
-    deck: 'venture',
+    deck: 'special',
     type: 'venture',
     cost: '2 wood and 1 stone',
     immediateEffect: 'Gain 3 servants',
@@ -1331,8 +1331,8 @@ export const DEVELOPMENTS: readonly Development[] = [
   {
     number: 157,
     period: 1,
-    deck: '',
-    type: '',
+    deck: 'building',
+    type: 'building',
     cost: '',
     immediateEffect: '',
     permanentEffect: ''
@@ -1340,44 +1340,44 @@ export const DEVELOPMENTS: readonly Development[] = [
   {
     number: 158,
     period: 1,
-    deck: '',
-    type: '',
+    deck: 'building',
+    type: 'building',
     cost: '',
     immediateEffect: '',
     permanentEffect: ''
   },
   {
     number: 159,
-    period: 1,
-    deck: '',
-    type: '',
+    period: 2,
+    deck: 'building',
+    type: 'building',
     cost: '',
     immediateEffect: '',
     permanentEffect: ''
   },
   {
     number: 160,
-    period: 1,
-    deck: '',
-    type: '',
+    period: 2,
+    deck: 'building',
+    type: 'building',
     cost: '',
     immediateEffect: '',
     permanentEffect: ''
   },
   {
     number: 161,
-    period: 1,
-    deck: '',
-    type: '',
+    period: 3,
+    deck: 'building',
+    type: 'building',
     cost: '',
     immediateEffect: '',
     permanentEffect: ''
   },
   {
     number: 162,
-    period: 1,
-    deck: '',
-    type: '',
+    period: 3,
+    deck: 'building',
+    type: 'building',
     cost: '',
     immediateEffect: '',
     permanentEffect: ''
