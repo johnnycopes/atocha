@@ -1,0 +1,90 @@
+{
+  "projectType": "application",
+  "sourceRoot": "apps/lorenzo/src",
+  "prefix": "atocha",
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/lorenzo",
+        "index": "apps/lorenzo/src/index.html",
+        "main": "apps/lorenzo/src/main.ts",
+        "polyfills": "apps/lorenzo/src/polyfills.ts",
+        "tsConfig": "apps/lorenzo/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": ["apps/lorenzo/src/favicon.ico", "apps/lorenzo/src/assets"],
+        "styles": ["apps/lorenzo/src/styles.scss"],
+        "scripts": []
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "fileReplacements": [
+            {
+              "replace": "apps/lorenzo/src/environments/environment.ts",
+              "with": "apps/lorenzo/src/environments/environment.prod.ts"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "browserTarget": "lorenzo:build:production"
+        },
+        "development": {
+          "browserTarget": "lorenzo:build:development"
+        }
+      },
+      "defaultConfiguration": "development",
+      "options": {
+        "port": 4500
+      }
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "lorenzo:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["apps/lorenzo/**/*.ts", "apps/lorenzo/**/*.html"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/lorenzo"],
+      "options": {
+        "jestConfig": "apps/lorenzo/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": ["scope:lorenzo type:app"]
+}
