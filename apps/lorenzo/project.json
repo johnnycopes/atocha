@@ -86,5 +86,5 @@
       }
     }
   },
-  "tags": ["scope:lorenzo type:app"]
+  "tags": ["scope:lorenzo", "type:app"]
 }
