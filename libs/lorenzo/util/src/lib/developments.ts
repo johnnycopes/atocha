@@ -67,128 +67,127 @@ export const DEVELOPMENTS: readonly Development[] = [
     period: 2,
     deck: 'territory',
     type: 'territory',
-    immediateEffect: '',
-    permanentEffect: ''
+    immediateEffect: 'Gain 1 coin',
+    permanentEffect: 'Harvest action of value 1 or more: gain 2 coins'
   },
   {
     number: 10,
     period: 2,
     deck: 'territory',
     type: 'territory',
-    immediateEffect: '',
-    permanentEffect: ''
+    immediateEffect: 'Gain 1 servant',
+    permanentEffect: 'Harvest action of value 3 or more: gain 1 Military Point and 2 wood'
   },
   {
     number: 11,
     period: 2,
     deck: 'territory',
     type: 'territory',
-    immediateEffect: '',
-    permanentEffect: ''
+    immediateEffect: 'Gain 2 servants and 1 stone',
+    permanentEffect: 'Harvest action of value 4 or more: gain 1 servant and 2 stone'
   },
   {
     number: 12,
     period: 2,
     deck: 'territory',
     type: 'territory',
-    immediateEffect: '',
-    permanentEffect: ''
+    immediateEffect: 'Gain 1 wood',
+    permanentEffect: 'Harvest action of value 3 or more: gain 3 stone'
   },
   {
     number: 13,
     period: 2,
     deck: 'territory',
     type: 'territory',
-    immediateEffect: '',
-    permanentEffect: ''
+    immediateEffect: 'Gain 2 servants and 1 wood',
+    permanentEffect: 'Harvest action of value 4 or more: gain 1 coin and 2 wood'
   },
   {
     number: 14,
     period: 2,
     deck: 'territory',
     type: 'territory',
-    immediateEffect: '',
-    permanentEffect: ''
+    immediateEffect: 'Gain 1 Faith Point',
+    permanentEffect: 'Harvest action of value 2 or more: gain 1 Faith Point'
   },
   {
     number: 15,
     period: 2,
     deck: 'territory',
     type: 'territory',
-    immediateEffect: '',
-    permanentEffect: ''
+    permanentEffect: 'Harvest action of value 5 or more: gain 2 Military Points and 2 servants'
   },
   {
     number: 16,
     period: 2,
     deck: 'territory',
     type: 'territory',
-    immediateEffect: '',
-    permanentEffect: ''
+    immediateEffect: 'Gain 4 coins',
+    permanentEffect: 'Harvest action of value 6 or more: gain 1 coin, 1 stone, and 2 wood'
   },
   {
     number: 17,
     period: 3,
     deck: 'territory',
     type: 'territory',
-    immediateEffect: '',
-    permanentEffect: ''
+    immediateEffect: 'Gain 1 coin and 1 servant',
+    permanentEffect: 'Harvest action of value 1 or more: gain 3 coins'
   },
   {
     number: 18,
     period: 3,
     deck: 'territory',
     type: 'territory',
-    immediateEffect: '',
-    permanentEffect: ''
+    immediateEffect: 'Gain 1 Victory Point and 1 wood',
+    permanentEffect: 'Harvest action of value 3 or more: gain 2 Victory Points and 2 wood'
   },
   {
     number: 19,
     period: 3,
     deck: 'territory',
     type: 'territory',
-    immediateEffect: '',
-    permanentEffect: ''
+    immediateEffect: 'Gain 2 Military Points',
+    permanentEffect: 'Harvest action of value 5 or more: gain 4 Victory Points and 1 wood'
   },
   {
     number: 20,
     period: 3,
     deck: 'territory',
     type: 'territory',
-    immediateEffect: '',
-    permanentEffect: ''
+    immediateEffect: 'Gain 3 Victory Points',
+    permanentEffect: 'Harvest action of value 2 or more: gain 1 Victory Point and 2 stone'
   },
   {
     number: 21,
     period: 3,
     deck: 'territory',
     type: 'territory',
-    immediateEffect: '',
-    permanentEffect: ''
+    immediateEffect: 'Take 1 Council Privilege and gain 1 stone',
+    permanentEffect: 'Harvest action of value 6 or more: gain 4 Victory Points and 1 stone'
   },
   {
     number: 22,
     period: 3,
     deck: 'territory',
     type: 'territory',
-    immediateEffect: '',
-    permanentEffect: ''
+    immediateEffect: 'Gain 1 Faith Point',
+    permanentEffect: 'Harvest action of value 1 or more: gain 1 coin and 1 Faith Point'
   },
   {
     number: 23,
     period: 3,
     deck: 'territory',
     type: 'territory',
-    immediateEffect: '',
-    permanentEffect: ''
+    immediateEffect: 'Gain 2 Victory Points and 2 coins',
+    permanentEffect: 'Harvest action of value 4 or more: gain 3 Military Points and 1 servant'
   },
   {
     number: 24,
     period: 3,
     deck: 'territory',
     type: 'territory',
-    immediateEffect: '',
-    permanentEffect: ''
+    immediateEffect: 'Gain 2 Military Points and 1 servant',
+    permanentEffect: 'Harvest action of value 2 or more: gain 1 Military Point and 2 servants'
   },
   {
     number: 25,
@@ -575,7 +574,7 @@ export const DEVELOPMENTS: readonly Development[] = [
     deck: 'character',
     type: 'character',
     cost: '',
-    immediateEffect: 'Perform a Harvest action at level 4 and gain 2 Faith Points',
+    immediateEffect: 'Perform a Harvest action at value 4 and gain 2 Faith Points',
   },
   {
     number: 70,
@@ -583,7 +582,7 @@ export const DEVELOPMENTS: readonly Development[] = [
     deck: 'character',
     type: 'character',
     cost: '5 coins',
-    immediateEffect: 'Perform a Production action at level 4 and gain 1 Faith Point',
+    immediateEffect: 'Perform a Production action at value 4 and gain 1 Faith Point',
   },
   {
     number: 71,
@@ -1270,32 +1269,32 @@ export const DEVELOPMENTS: readonly Development[] = [
     period: 2,
     deck: 'territory',
     type: 'territory',
-    immediateEffect: '',
-    permanentEffect: ''
+    immediateEffect: 'Gain 1 wood and 1 servant',
+    permanentEffect: 'Harvest action of value 5 or more: gain 3 wood OR 3 servants'
   },
   {
     number: 148,
     period: 2,
     deck: 'territory',
     type: 'territory',
-    immediateEffect: '',
-    permanentEffect: ''
+    immediateEffect: 'Gain 1 Military Point and 1 Faith Point',
+    permanentEffect: 'Harvest action of value 4 or more: gain 2 Military Points OR 1 Faith Point'
   },
   {
     number: 149,
     period: 3,
     deck: 'territory',
     type: 'territory',
-    immediateEffect: '',
-    permanentEffect: ''
+    immediateEffect: 'Gain 2 wood and 2 stone',
+    permanentEffect: 'Harvest action of value 4 or more: gain 3 stone OR 3 wood'
   },
   {
     number: 150,
     period: 3,
     deck: 'territory',
     type: 'territory',
-    immediateEffect: '',
-    permanentEffect: ''
+    immediateEffect: 'Gain 2 coins and 2 servants',
+    permanentEffect: 'Harvest action of value 5 or more: gain 1 Victory Point and 3 Faith Points'
   },
   {
     number: 151,
@@ -1321,7 +1320,7 @@ export const DEVELOPMENTS: readonly Development[] = [
     deck: 'character',
     type: 'character',
     cost: '5 coins',
-    immediateEffect: 'Perform a Production action at value 3 using the Buildings belonging to another player of your choosing (spending your own resources)',
+    immediateEffect: 'Perform a Production action at value 3 using the Building cards belonging to another player of your choosing (spending your own resources)',
     permanentEffect: 'Increase Production action value by 1'
   },
   {
@@ -1330,7 +1329,7 @@ export const DEVELOPMENTS: readonly Development[] = [
     deck: 'character',
     type: 'character',
     cost: '6 coins',
-    immediateEffect: 'Perform a Harvest action at value 2 using the Territories belonging to another player of your choosing (spending your own resources)',
+    immediateEffect: 'Perform a Harvest action at value 2 using the Territory cards belonging to another player of your choosing (spending your own resources)',
     permanentEffect: 'Increase Harvest action value by 1'
   },
   {
