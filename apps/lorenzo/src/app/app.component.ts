@@ -1,9 +1,19 @@
-import { ChangeDetectionStrategy, Component, ElementRef, ViewChild } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ElementRef,
+  ViewChild,
+} from '@angular/core';
 
 import { trackByFactory } from '@atocha/core/ui';
 import { includes } from '@atocha/core/util';
 
-import { Development, DEVELOPMENTS, Leader, LEADERS } from '@atocha/lorenzo/util';
+import {
+  Development,
+  DEVELOPMENTS,
+  Leader,
+  LEADERS,
+} from '@atocha/lorenzo/util';
 import { BehaviorSubject, combineLatest, of } from 'rxjs';
 import { distinctUntilChanged, map } from 'rxjs/operators';
 
@@ -15,9 +25,7 @@ import { distinctUntilChanged, map } from 'rxjs/operators';
 })
 export class AppComponent {
   private _textSubject = new BehaviorSubject<string>('');
-  text$ = this._textSubject.pipe(
-    distinctUntilChanged(),
-  );
+  text$ = this._textSubject.pipe(distinctUntilChanged());
   showLeaders = true;
   showDevelopments = true;
   readonly leaders = LEADERS;
@@ -26,16 +34,10 @@ export class AppComponent {
   @ViewChild('input')
   inputField: ElementRef | undefined;
 
-  vm$ = combineLatest([
-    this.text$,
-    of(LEADERS),
-    of(DEVELOPMENTS),
-  ]).pipe(
+  vm$ = combineLatest([this.text$, of(LEADERS), of(DEVELOPMENTS)]).pipe(
     map(([text, leaders, developments]) => ({
       text,
-      filteredLeaders: leaders.filter(({ name }) =>
-        includes([name], text)
-      ),
+      filteredLeaders: leaders.filter(({ name }) => includes([name], text)),
       filteredDevelopments: developments.filter(({ id }) =>
         includes([id.toString()], text)
       ),
@@ -54,4 +56,3 @@ export class AppComponent {
     this.inputField?.nativeElement.focus();
   }
 }
-

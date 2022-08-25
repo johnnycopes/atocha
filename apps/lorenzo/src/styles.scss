@@ -1,6 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: inherit;
 }
 
@@ -25,7 +27,13 @@ input {
   padding: 4px;
 }
 
-h1, h2, h3, h4, h5, h6, p {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
   margin: 0;
 }
 
