@@ -4,216 +4,189 @@ export const DEVELOPMENTS: readonly Development[] = [
   {
     number: 1,
     period: 1,
-    deck: '',
-    type: '',
-    cost: '',
-    immediateEffect: '',
-    permanentEffect: ''
+    deck: 'territory',
+    type: 'territory',
+    permanentEffect: 'Harvest action of value 1 or more: gain 1 coin'
   },
   {
     number: 2,
     period: 1,
-    deck: '',
-    type: '',
-    cost: '',
-    immediateEffect: '',
-    permanentEffect: ''
+    deck: 'territory',
+    type: 'territory',
+    immediateEffect: 'Gain 1 wood',
+    permanentEffect: 'Harvest action of value 2 or more: gain 1 wood'
   },
   {
     number: 3,
     period: 1,
-    deck: '',
-    type: '',
-    cost: '',
-    immediateEffect: '',
-    permanentEffect: ''
+    deck: 'territory',
+    type: 'territory',
+    permanentEffect: 'Harvest action of value 3 or more: gain 1 coin and 1 servant'
   },
   {
     number: 4,
     period: 1,
-    deck: '',
-    type: '',
-    cost: '',
-    immediateEffect: '',
-    permanentEffect: ''
+    deck: 'territory',
+    type: 'territory',
+    immediateEffect: 'Gain 2 stone',
+    permanentEffect: 'Harvest action of value 4 or more: lose 2 Victory Points'
   },
   {
     number: 5,
     period: 1,
-    deck: '',
-    type: '',
-    cost: '',
-    immediateEffect: '',
-    permanentEffect: ''
+    deck: 'territory',
+    type: 'territory',
+    immediateEffect: 'Gain 1 wood',
+    permanentEffect: 'Harvest action of value 5 or more: gain 3 wood'
   },
   {
     number: 6,
     period: 1,
-    deck: '',
-    type: '',
-    cost: '',
-    immediateEffect: '',
-    permanentEffect: ''
+    deck: 'territory',
+    type: 'territory',
+    immediateEffect: 'Gain 2 Military Points and 1 servant',
+    permanentEffect: 'Harvest action of value 5 or more: gain 1 Faith Point and 1 stone'
   },
   {
     number: 7,
     period: 1,
-    deck: '',
-    type: '',
-    cost: '',
-    immediateEffect: '',
-    permanentEffect: ''
+    deck: 'territory',
+    type: 'territory',
+    permanentEffect: 'Harvest action of value 5 or more: gain 2 Military Points and 1 stone'
   },
   {
     number: 8,
     period: 1,
-    deck: '',
-    type: '',
-    cost: '',
-    immediateEffect: '',
-    permanentEffect: ''
+    deck: 'territory',
+    type: 'territory',
+    immediateEffect: 'Gain 3 coins',
+    permanentEffect: 'Harvest action of value 6 or more: take 1 Council Privilege'
   },
   {
     number: 9,
-    period: 1,
-    deck: '',
-    type: '',
-    cost: '',
+    period: 2,
+    deck: 'territory',
+    type: 'territory',
     immediateEffect: '',
     permanentEffect: ''
   },
   {
     number: 10,
-    period: 1,
-    deck: '',
-    type: '',
-    cost: '',
+    period: 2,
+    deck: 'territory',
+    type: 'territory',
     immediateEffect: '',
     permanentEffect: ''
   },
   {
     number: 11,
-    period: 1,
-    deck: '',
-    type: '',
-    cost: '',
+    period: 2,
+    deck: 'territory',
+    type: 'territory',
     immediateEffect: '',
     permanentEffect: ''
   },
   {
     number: 12,
-    period: 1,
-    deck: '',
-    type: '',
-    cost: '',
+    period: 2,
+    deck: 'territory',
+    type: 'territory',
     immediateEffect: '',
     permanentEffect: ''
   },
   {
     number: 13,
-    period: 1,
-    deck: '',
-    type: '',
-    cost: '',
+    period: 2,
+    deck: 'territory',
+    type: 'territory',
     immediateEffect: '',
     permanentEffect: ''
   },
   {
     number: 14,
-    period: 1,
-    deck: '',
-    type: '',
-    cost: '',
+    period: 2,
+    deck: 'territory',
+    type: 'territory',
     immediateEffect: '',
     permanentEffect: ''
   },
   {
     number: 15,
-    period: 1,
-    deck: '',
-    type: '',
-    cost: '',
+    period: 2,
+    deck: 'territory',
+    type: 'territory',
     immediateEffect: '',
     permanentEffect: ''
   },
   {
     number: 16,
-    period: 1,
-    deck: '',
-    type: '',
-    cost: '',
+    period: 2,
+    deck: 'territory',
+    type: 'territory',
     immediateEffect: '',
     permanentEffect: ''
   },
   {
     number: 17,
-    period: 1,
-    deck: '',
-    type: '',
-    cost: '',
+    period: 3,
+    deck: 'territory',
+    type: 'territory',
     immediateEffect: '',
     permanentEffect: ''
   },
   {
     number: 18,
-    period: 1,
-    deck: '',
-    type: '',
-    cost: '',
+    period: 3,
+    deck: 'territory',
+    type: 'territory',
     immediateEffect: '',
     permanentEffect: ''
   },
   {
     number: 19,
-    period: 1,
-    deck: '',
-    type: '',
-    cost: '',
+    period: 3,
+    deck: 'territory',
+    type: 'territory',
     immediateEffect: '',
     permanentEffect: ''
   },
   {
     number: 20,
-    period: 1,
-    deck: '',
-    type: '',
-    cost: '',
+    period: 3,
+    deck: 'territory',
+    type: 'territory',
     immediateEffect: '',
     permanentEffect: ''
   },
   {
     number: 21,
-    period: 1,
-    deck: '',
-    type: '',
-    cost: '',
+    period: 3,
+    deck: 'territory',
+    type: 'territory',
     immediateEffect: '',
     permanentEffect: ''
   },
   {
     number: 22,
-    period: 1,
-    deck: '',
-    type: '',
-    cost: '',
+    period: 3,
+    deck: 'territory',
+    type: 'territory',
     immediateEffect: '',
     permanentEffect: ''
   },
   {
     number: 23,
-    period: 1,
-    deck: '',
-    type: '',
-    cost: '',
+    period: 3,
+    deck: 'territory',
+    type: 'territory',
     immediateEffect: '',
     permanentEffect: ''
   },
   {
     number: 24,
-    period: 1,
-    deck: '',
-    type: '',
-    cost: '',
+    period: 3,
+    deck: 'territory',
+    type: 'territory',
     immediateEffect: '',
     permanentEffect: ''
   },
@@ -498,7 +471,7 @@ export const DEVELOPMENTS: readonly Development[] = [
     deck: 'character',
     type: 'character',
     cost: '3 coins',
-    immediateEffect: 'Buy any type of card at value 4 and gain 1 Faith Point',
+    immediateEffect: 'Buy any type of card up to value 4 and gain 1 Faith Point',
   },
   {
     number: 57,
@@ -506,7 +479,7 @@ export const DEVELOPMENTS: readonly Development[] = [
     deck: 'character',
     type: 'character',
     cost: '4 coins',
-    immediateEffect: 'Buy a Territory card at value 6 and gain 2 Military Points',
+    immediateEffect: 'Buy a Territory card up to value 6 and gain 2 Military Points',
   },
   {
     number: 58,
@@ -514,7 +487,7 @@ export const DEVELOPMENTS: readonly Development[] = [
     deck: 'character',
     type: 'character',
     cost: '4 coins',
-    immediateEffect: 'Buy a Building card at value 6 with a discount of 1 wood/stone',
+    immediateEffect: 'Buy a Building card up to value 6 with a discount of 1 wood/stone',
   },
   {
     number: 59,
@@ -522,7 +495,7 @@ export const DEVELOPMENTS: readonly Development[] = [
     deck: 'character',
     type: 'character',
     cost: '3 coins',
-    immediateEffect: 'Buy a Character card at value 6 with a discount of 2 coins',
+    immediateEffect: 'Buy a Character card up to value 6 with a discount of 2 coins',
   },
   {
     number: 60,
@@ -530,7 +503,7 @@ export const DEVELOPMENTS: readonly Development[] = [
     deck: 'character',
     type: 'character',
     cost: '4 coins',
-    immediateEffect: 'Buy a Venture card at value 6 and take 1 Council Privilege',
+    immediateEffect: 'Buy a Venture card up to value 6 and take 1 Council Privilege',
   },
   {
     number: 61,
@@ -626,7 +599,7 @@ export const DEVELOPMENTS: readonly Development[] = [
     deck: 'character',
     type: 'character',
     cost: '6 coins',
-    immediateEffect: 'Buy any type of card at value 7 and take 1 Council Privilege',
+    immediateEffect: 'Buy any type of card up to value 7 and take 1 Council Privilege',
   },
   {
     number: 73,
@@ -1279,54 +1252,48 @@ export const DEVELOPMENTS: readonly Development[] = [
   {
     number: 145,
     period: 1,
-    deck: '',
-    type: '',
-    cost: '',
-    immediateEffect: '',
-    permanentEffect: ''
+    deck: 'territory',
+    type: 'territory',
+    immediateEffect: 'Gain 5 coins',
+    permanentEffect: 'Harvest action of value 3 or more: lose 1 Victory Point'
   },
   {
     number: 146,
     period: 1,
-    deck: '',
-    type: '',
-    cost: '',
-    immediateEffect: '',
-    permanentEffect: ''
+    deck: 'territory',
+    type: 'territory',
+    immediateEffect: 'Gain 3 wood and 3 stone',
+    permanentEffect: 'Harvest action of value 4 or more: lose 2 Victory Points'
   },
   {
     number: 147,
-    period: 1,
-    deck: '',
-    type: '',
-    cost: '',
+    period: 2,
+    deck: 'territory',
+    type: 'territory',
     immediateEffect: '',
     permanentEffect: ''
   },
   {
     number: 148,
-    period: 1,
-    deck: '',
-    type: '',
-    cost: '',
+    period: 2,
+    deck: 'territory',
+    type: 'territory',
     immediateEffect: '',
     permanentEffect: ''
   },
   {
     number: 149,
-    period: 1,
-    deck: '',
-    type: '',
-    cost: '',
+    period: 3,
+    deck: 'territory',
+    type: 'territory',
     immediateEffect: '',
     permanentEffect: ''
   },
   {
     number: 150,
-    period: 1,
-    deck: '',
-    type: '',
-    cost: '',
+    period: 3,
+    deck: 'territory',
+    type: 'territory',
     immediateEffect: '',
     permanentEffect: ''
   },

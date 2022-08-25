@@ -5,7 +5,7 @@ export interface Development {
   period: 1 | 2 | 3;
   deck: Type | 'special';
   type: Type;
-  cost: string;
+  cost?: string;
   immediateEffect?: string;
   permanentEffect?: string;
 }
