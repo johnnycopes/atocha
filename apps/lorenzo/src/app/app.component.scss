@@ -2,6 +2,29 @@
   font-style: italic;
 }
 
+.controls {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 48px;
+  padding: 16px;
+  background: #232221;
+  color: #fff;
+
+  .section {
+    max-width: 768px;
+  }
+
+  h1 {
+    font-size: 24px;
+    margin-right: 16px;
+  }
+
+  input {
+    width: 512px;
+  }
+}
+
 .content {
   padding: 16px;
   overflow: auto;
@@ -16,6 +39,7 @@
     align-items: center;
 
     h2 {
+      font-size: 20px;
       margin-bottom: 8px;
       font-weight: 700;
     }
@@ -27,10 +51,10 @@
 
   .cards {
     margin: 0;
-    padding-left: 16px;
 
     .card {
       margin-bottom: 8px;
+      padding: 4px;
 
       h4 {
         margin-bottom: 4px;
@@ -40,15 +64,30 @@
       p {
         margin-bottom: 4px;
       }
+
+      .prop {
+        color: #4d4b49;
+      }
+
+      &--leader {
+        background: #e3c297;
+      }
+
+      &--territory {
+        background: #a3f4a8;
+      }
+
+      &--building {
+        background: #f1f176;
+      }
+
+      &--character {
+        background: #ddcbfe;
+      }
+
+      &--venture {
+        background: lavender;
+      }
     }
   }
-}
-
-.controls {
-  width: 100%;
-  height: 48px;
-  padding: 16px;
-  background: lightgreen;
-  display: flex;
-  align-items: center;
 }

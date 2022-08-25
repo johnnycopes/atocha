@@ -1,4 +1,14 @@
 <ng-container *ngIf="vm$ | async as vm">
+  <nav class="controls">
+    <h1>Lorenzo il Magnifico</h1>
+    <input type="text"
+      coreAutofocus
+      placeholder="Search by Leader Card name or Development Card number"
+      [ngModel]="vm.text"
+      (ngModelChange)="search($event)"
+    />
+  </nav>
+
   <div class="content">
     <div class="section leaders">
       <div class="header">
@@ -11,11 +21,17 @@
         class="cards"
       >
         <li *ngFor="let leader of vm.filteredLeaders; trackBy: leaderTrackByFn"
-          class="card"
+          class="card card--leader"
         >
           <h4>{{ leader.name }}</h4>
-          <p>Requirement: {{ leader.requirement }}</p>
-          <p>Ability: <span class="leader-ability">{{ leader.type }}</span> {{ leader.ability }}</p>
+          <p>
+            <span class="prop">Requirement: </span>
+            {{ leader.requirement }}
+          </p>
+          <p>
+            <span class="prop">Ability (<span class="leader-ability">{{ leader.type }}</span>): </span>
+            {{ leader.ability }}
+          </p>
         </li>
       </ul>
     </div>
@@ -32,22 +48,38 @@
       >
         <li *ngFor="let development of vm.filteredDevelopments; trackBy: developmentTrackByFn"
           class="card"
+          [class.card--territory]="development.type === 'territory'"
+          [class.card--building]="development.type === 'building'"
+          [class.card--character]="development.type === 'character'"
+          [class.card--venture]="development.type === 'venture'"
         >
           <h4>{{ development.id }}</h4>
-          <p>Type: {{ development.type }}</p>
-          <p>Cost: {{ development?.cost ?? 'Free' }}</p>
-          <p>Immediate effect: {{ development.immediateEffect }}</p>
-          <p>Permanent effect: {{ development.permanentEffect }}</p>
+          <p>
+            <span class="prop">
+              Type:
+            </span>
+            {{ development.type }}
+          </p>
+          <p>
+            <span class="prop">
+              Cost:
+            </span>
+            {{ development?.cost ?? 'Free' }}
+          </p>
+          <p>
+            <span class="prop">
+              Immediate effect:
+            </span>
+            {{ development.immediateEffect }}
+          </p>
+          <p>
+            <span class="prop">
+              Permanent effect:
+            </span>
+            {{ development.permanentEffect }}
+          </p>
         </li>
       </ul>
     </div>
   </div>
-
-  <nav class="controls">
-    <input type="text"
-      coreAutofocus
-      [ngModel]="vm.text"
-      (ngModelChange)="search($event)"
-    />
-  </nav>
 </ng-container>
