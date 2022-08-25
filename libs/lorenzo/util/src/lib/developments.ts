@@ -603,218 +603,218 @@ export const DEVELOPMENTS: readonly Development[] = [
   {
     number: 73,
     period: 1,
-    deck: '',
-    type: '',
-    cost: '',
-    immediateEffect: '',
-    permanentEffect: ''
+    deck: 'venture',
+    type: 'venture',
+    cost: '4 coins',
+    immediateEffect: 'Gain 5 Military Points',
+    permanentEffect: 'End of game: gain 4 Victory Points'
   },
   {
     number: 74,
     period: 1,
-    deck: '',
-    type: '',
-    cost: '',
-    immediateEffect: '',
-    permanentEffect: ''
+    deck: 'venture',
+    type: 'venture',
+    cost: '1 coin, 1 wood, and 1 stone',
+    immediateEffect: 'Gain 1 Faith Point',
+    permanentEffect: 'End of game: gain 5 Victory Points'
   },
   {
     number: 75,
     period: 1,
-    deck: '',
-    type: '',
-    cost: '',
-    immediateEffect: '',
-    permanentEffect: ''
+    deck: 'venture',
+    type: 'venture',
+    cost: '3 stone',
+    immediateEffect: 'Gain 2 Military Points and 1 Council Privilege',
+    permanentEffect: 'End of game: gain 3 Victory Points'
   },
   {
     number: 76,
     period: 1,
-    deck: '',
-    type: '',
-    cost: '',
-    immediateEffect: '',
-    permanentEffect: ''
+    deck: 'venture',
+    type: 'venture',
+    cost: '2 wood and 2 stone',
+    immediateEffect: 'Take 2 unique Council Privileges',
+    permanentEffect: 'End of game: gain 4 Victory Points'
   },
   {
     number: 77,
     period: 1,
-    deck: '',
-    type: '',
-    cost: '',
-    immediateEffect: '',
-    permanentEffect: ''
+    deck: 'venture',
+    type: 'venture',
+    cost: '2 Military Points (you must have at least 3)',
+    immediateEffect: 'Gain 3 coins',
+    permanentEffect: 'End of game: gain 5 Victory Points'
   },
   {
     number: 78,
     period: 1,
-    deck: '',
-    type: '',
-    cost: '',
-    immediateEffect: '',
-    permanentEffect: ''
+    deck: 'venture',
+    type: 'venture',
+    cost: '3 wood',
+    immediateEffect: 'Gain 4 servants',
+    permanentEffect: 'End of game: gain 4 Victory Points'
   },
   {
     number: 79,
     period: 1,
-    deck: '',
-    type: '',
-    cost: '',
-    immediateEffect: '',
-    permanentEffect: ''
+    deck: 'venture',
+    type: 'venture',
+    cost: '3 Military Points (you must have at least 5)',
+    immediateEffect: 'Gain 2 Faith Points',
+    permanentEffect: 'End of game: gain 5 Victory Points'
   },
   {
     number: 80,
     period: 1,
-    deck: '',
-    type: '',
-    cost: '',
-    immediateEffect: '',
-    permanentEffect: ''
+    deck: 'venture',
+    type: 'venture',
+    cost: '2 Military Points (you must have at least 2)',
+    immediateEffect: 'Gain 3 Faith Points',
+    permanentEffect: 'End of game: gain 1 Victory Point'
   },
   {
     number: 81,
-    period: 1,
-    deck: '',
-    type: '',
-    cost: '',
-    immediateEffect: '',
-    permanentEffect: ''
+    period: 2,
+    deck: 'venture',
+    type: 'venture',
+    cost: '6 coins',
+    immediateEffect: 'Gain 6 Military Points',
+    permanentEffect: 'End of game: gain 5 Victory Points'
   },
   {
     number: 82,
-    period: 1,
-    deck: '',
-    type: '',
-    cost: '',
-    immediateEffect: '',
-    permanentEffect: ''
+    period: 2,
+    deck: 'venture',
+    type: 'venture',
+    cost: '2 coins, 2 wood, and 2 stone',
+    immediateEffect: 'Gain 2 Faith Points',
+    permanentEffect: 'End of game: gain 6 Victory Points'
   },
   {
     number: 83,
-    period: 1,
-    deck: '',
-    type: '',
-    cost: '',
-    immediateEffect: '',
-    permanentEffect: ''
+    period: 2,
+    deck: 'venture',
+    type: 'venture',
+    cost: '4 stone',
+    immediateEffect: 'Gain 3 Military Points and take 1 Council Privilege',
+    permanentEffect: 'End of game: gain 2 Victory Points'
   },
   {
     number: 84,
-    period: 1,
-    deck: '',
-    type: '',
-    cost: '',
-    immediateEffect: '',
-    permanentEffect: ''
+    period: 2,
+    deck: 'venture',
+    type: 'venture',
+    cost: '3 Military Points (you must have at least 6)',
+    immediateEffect: 'Gain 5 coins and take 1 Council Privilege',
+    permanentEffect: 'End of game: gain 3 Victory Points'
   },
   {
     number: 85,
-    period: 1,
-    deck: '',
-    type: '',
-    cost: '',
-    immediateEffect: '',
-    permanentEffect: ''
+    period: 2,
+    deck: 'venture',
+    type: 'venture',
+    cost: '2 servants and 3 coins',
+    immediateEffect: 'Perform a Harvest action at value 4',
+    permanentEffect: 'End of game: gain 5 Victory Points'
   },
   {
     number: 86,
-    period: 1,
-    deck: '',
-    type: '',
-    cost: '',
-    immediateEffect: '',
-    permanentEffect: ''
+    period: 2,
+    deck: 'venture',
+    type: 'venture',
+    cost: '4 wood',
+    immediateEffect: 'Gain 5 servants',
+    permanentEffect: 'End of game: gain 4 Victory Points'
   },
   {
     number: 87,
-    period: 1,
-    deck: '',
-    type: '',
-    cost: '',
-    immediateEffect: '',
-    permanentEffect: ''
+    period: 2,
+    deck: 'venture',
+    type: 'venture',
+    cost: '4 Military Points (you must have at least 8)',
+    immediateEffect: 'Gain 5 coins and 1 Faith Point',
+    permanentEffect: 'End of game: gain 5 Victory Points'
   },
   {
     number: 88,
-    period: 1,
-    deck: '',
-    type: '',
-    cost: '',
-    immediateEffect: '',
-    permanentEffect: ''
+    period: 2,
+    deck: 'venture',
+    type: 'venture',
+    cost: '4 Military Points (you must have at least 7)',
+    immediateEffect: 'Gain 3 Faith Points',
+    permanentEffect: 'End of game: gain 4 Victory Points'
   },
   {
     number: 89,
-    period: 1,
-    deck: '',
-    type: '',
+    period: 3,
+    deck: 'venture',
+    type: 'venture',
     cost: '',
     immediateEffect: '',
-    permanentEffect: ''
+    permanentEffect: 'End of game:'
   },
   {
     number: 90,
-    period: 1,
-    deck: '',
-    type: '',
+    period: 3,
+    deck: 'venture',
+    type: 'venture',
     cost: '',
     immediateEffect: '',
-    permanentEffect: ''
+    permanentEffect: 'End of game:'
   },
   {
     number: 91,
-    period: 1,
-    deck: '',
-    type: '',
+    period: 3,
+    deck: 'venture',
+    type: 'venture',
     cost: '',
     immediateEffect: '',
-    permanentEffect: ''
+    permanentEffect: 'End of game:'
   },
   {
     number: 92,
-    period: 1,
-    deck: '',
-    type: '',
+    period: 3,
+    deck: 'venture',
+    type: 'venture',
     cost: '',
     immediateEffect: '',
-    permanentEffect: ''
+    permanentEffect: 'End of game:'
   },
   {
     number: 93,
-    period: 1,
-    deck: '',
-    type: '',
+    period: 3,
+    deck: 'venture',
+    type: 'venture',
     cost: '',
     immediateEffect: '',
-    permanentEffect: ''
+    permanentEffect: 'End of game:'
   },
   {
     number: 94,
-    period: 1,
-    deck: '',
-    type: '',
+    period: 3,
+    deck: 'venture',
+    type: 'venture',
     cost: '',
     immediateEffect: '',
-    permanentEffect: ''
+    permanentEffect: 'End of game:'
   },
   {
     number: 95,
-    period: 1,
-    deck: '',
-    type: '',
+    period: 3,
+    deck: 'venture',
+    type: 'venture',
     cost: '',
     immediateEffect: '',
-    permanentEffect: ''
+    permanentEffect: 'End of game:'
   },
   {
     number: 96,
-    period: 1,
-    deck: '',
-    type: '',
+    period: 3,
+    deck: 'venture',
+    type: 'venture',
     cost: '',
     immediateEffect: '',
-    permanentEffect: ''
+    permanentEffect: 'End of game:'
   },
   {
     number: 97,
@@ -1161,11 +1161,11 @@ export const DEVELOPMENTS: readonly Development[] = [
   {
     number: 135,
     period: 1,
-    deck: '',
-    type: '',
-    cost: '',
-    immediateEffect: '',
-    permanentEffect: ''
+    deck: 'venture',
+    type: 'venture',
+    cost: '2 wood and 1 stone',
+    immediateEffect: 'Gain 3 servants',
+    permanentEffect: 'End of game: gain 1 Victory Point times your number of servants (max 12)'
   },
   {
     number: 136,
@@ -1405,38 +1405,38 @@ export const DEVELOPMENTS: readonly Development[] = [
   {
     number: 163,
     period: 1,
-    deck: '',
-    type: '',
-    cost: '',
-    immediateEffect: '',
-    permanentEffect: ''
+    deck: 'venture',
+    type: 'venture',
+    cost: '1 Military Point times the number of your opponents',
+    immediateEffect: 'Each of your opponents must give you 1 wood OR 1 stone OR 1 coin OR 1 servant',
+    permanentEffect: 'End of game: gain 4 Victory Points'
   },
   {
     number: 164,
     period: 1,
-    deck: '',
-    type: '',
-    cost: '',
-    immediateEffect: '',
-    permanentEffect: ''
+    deck: 'venture',
+    type: 'venture',
+    cost: '3 coins and 2 servants',
+    immediateEffect: 'Draw 2 Leader cards',
+    permanentEffect: 'End of game: gain 2 Victory Points times your played Leader cards'
   },
   {
     number: 165,
-    period: 1,
-    deck: '',
-    type: '',
-    cost: '',
-    immediateEffect: '',
-    permanentEffect: ''
+    period: 2,
+    deck: 'venture',
+    type: 'venture',
+    cost: '2 Military Points times the number of your opponents',
+    immediateEffect: 'Each of your opponents must give you 2 wood OR 2 stone OR 2 coins OR 2 servants',
+    permanentEffect: 'End of game: gain 6 Victory Points'
   },
   {
     number: 166,
-    period: 1,
-    deck: '',
-    type: '',
-    cost: '',
-    immediateEffect: '',
-    permanentEffect: ''
+    period: 2,
+    deck: 'venture',
+    type: 'venture',
+    cost: '5 wood',
+    immediateEffect: 'Gain 3 coins',
+    permanentEffect: 'End of game: gain 2 Victory Points times your number of Building cards'
   },
   {
     number: 167,
