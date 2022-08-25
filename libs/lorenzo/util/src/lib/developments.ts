@@ -412,7 +412,7 @@ export const DEVELOPMENTS: readonly Development[] = [
     type: 'character',
     cost: '2 coins',
     immediateEffect: 'Gain 3 Military Points',
-    permanentEffect: 'When buying a Territory card, increase the value by 2'
+    permanentEffect: 'When buying a Territory Card, increase the value by 2'
   },
   {
     number: 50,
@@ -420,7 +420,7 @@ export const DEVELOPMENTS: readonly Development[] = [
     deck: 'character',
     type: 'character',
     cost: '4 coins',
-    permanentEffect: 'When buying a Building card, increase the value by 2 and decrease the cost by 1 wood OR 1 stone'
+    permanentEffect: 'When buying a Building Card, increase the value by 2 and decrease the cost by 1 wood OR 1 stone'
   },
   {
     number: 51,
@@ -428,7 +428,7 @@ export const DEVELOPMENTS: readonly Development[] = [
     deck: 'character',
     type: 'character',
     cost: '4 coins',
-    permanentEffect: 'When buying a Character card, increase the value by 2 and decrease the cost by 1 coin'
+    permanentEffect: 'When buying a Character Card, increase the value by 2 and decrease the cost by 1 coin'
   },
   {
     number: 52,
@@ -437,7 +437,7 @@ export const DEVELOPMENTS: readonly Development[] = [
     type: 'character',
     cost: '2 coins',
     immediateEffect: 'Take 1 Council Privilege',
-    permanentEffect: 'When buying a Venture card, increase the value by 2'
+    permanentEffect: 'When buying a Venture Card, increase the value by 2'
   },
   {
     number: 53,
@@ -478,7 +478,7 @@ export const DEVELOPMENTS: readonly Development[] = [
     deck: 'character',
     type: 'character',
     cost: '4 coins',
-    immediateEffect: 'Buy a Territory card up to value 6 and gain 2 Military Points',
+    immediateEffect: 'Buy a Territory Card up to value 6 and gain 2 Military Points',
   },
   {
     number: 58,
@@ -486,7 +486,7 @@ export const DEVELOPMENTS: readonly Development[] = [
     deck: 'character',
     type: 'character',
     cost: '4 coins',
-    immediateEffect: 'Buy a Building card up to value 6 with a discount of 1 wood/stone',
+    immediateEffect: 'Buy a Building Card up to value 6 with a discount of 1 wood/stone',
   },
   {
     number: 59,
@@ -494,7 +494,7 @@ export const DEVELOPMENTS: readonly Development[] = [
     deck: 'character',
     type: 'character',
     cost: '3 coins',
-    immediateEffect: 'Buy a Character card up to value 6 with a discount of 2 coins',
+    immediateEffect: 'Buy a Character Card up to value 6 with a discount of 2 coins',
   },
   {
     number: 60,
@@ -502,7 +502,7 @@ export const DEVELOPMENTS: readonly Development[] = [
     deck: 'character',
     type: 'character',
     cost: '4 coins',
-    immediateEffect: 'Buy a Venture card up to value 6 and take 1 Council Privilege',
+    immediateEffect: 'Buy a Venture Card up to value 6 and take 1 Council Privilege',
   },
   {
     number: 61,
@@ -542,7 +542,7 @@ export const DEVELOPMENTS: readonly Development[] = [
     deck: 'character',
     type: 'character',
     cost: '6 coins',
-    immediateEffect: 'Gain 2 Victory Points times your number of Territory cards',
+    immediateEffect: 'Gain 2 Victory Points times your number of Territory Cards',
   },
   {
     number: 66,
@@ -550,7 +550,7 @@ export const DEVELOPMENTS: readonly Development[] = [
     deck: 'character',
     type: 'character',
     cost: '6 coins',
-    immediateEffect: 'Gain 2 Victory Points times your number of Building cards',
+    immediateEffect: 'Gain 2 Victory Points times your number of Building Cards',
   },
   {
     number: 67,
@@ -558,7 +558,7 @@ export const DEVELOPMENTS: readonly Development[] = [
     deck: 'character',
     type: 'character',
     cost: '7 coins',
-    immediateEffect: 'Gain 2 Victory Points times your number of Character cards',
+    immediateEffect: 'Gain 2 Victory Points times your number of Character Cards',
   },
   {
     number: 68,
@@ -566,7 +566,7 @@ export const DEVELOPMENTS: readonly Development[] = [
     deck: 'character',
     type: 'character',
     cost: '6 coins',
-    immediateEffect: 'Gain 2 Victory Points times your number of Venture cards',
+    immediateEffect: 'Gain 2 Victory Points times your number of Venture Cards',
   },
   {
     number: 69,
@@ -819,38 +819,31 @@ export const DEVELOPMENTS: readonly Development[] = [
   {
     number: 97,
     period: 1,
-    deck: '',
-    type: '',
-    cost: '',
-    immediateEffect: '',
-    permanentEffect: ''
+    deck: 'special',
+    type: 'territory',
+    permanentEffect: 'Harvest action of value 2 or more: gain 1 Special Token'
   },
   {
     number: 98,
     period: 1,
-    deck: '',
-    type: '',
-    cost: '',
-    immediateEffect: '',
-    permanentEffect: ''
+    deck: 'special',
+    type: 'territory',
+    immediateEffect: 'Gain 1 Special Token',
+    permanentEffect: 'Place a Special Token face up here. On a Harvest action of value 2 or more, gain/perform whatever is shown on the Special Token'
   },
   {
     number: 99,
     period: 1,
-    deck: '',
-    type: '',
-    cost: '',
-    immediateEffect: '',
-    permanentEffect: ''
+    deck: 'special',
+    type: 'territory',
+    permanentEffect: 'Harvest action of value N: gain 1 wood times your number of Venture Cards (max N times)'
   },
   {
     number: 100,
     period: 1,
-    deck: '',
-    type: '',
-    cost: '',
-    immediateEffect: '',
-    permanentEffect: ''
+    deck: 'special',
+    type: 'territory',
+    permanentEffect: 'Harvest action of value N: gain 1 stone times your number of Character Cards (max N times)'
   },
   {
     number: 101,
@@ -927,38 +920,38 @@ export const DEVELOPMENTS: readonly Development[] = [
   {
     number: 109,
     period: 1,
-    deck: '',
-    type: '',
-    cost: '',
-    immediateEffect: '',
-    permanentEffect: ''
+    deck: 'special',
+    type: 'building',
+    cost: 'Gain 1 wood and 1 stone',
+    immediateEffect: 'Gain 2 Victory Points',
+    permanentEffect: 'Production action of value 1 or more: exchange 1 coin for 1 Special Token'
   },
   {
     number: 110,
     period: 1,
-    deck: '',
-    type: '',
-    cost: '',
-    immediateEffect: '',
-    permanentEffect: ''
+    deck: 'special',
+    type: 'building',
+    cost: '2 coins and 2 wood',
+    immediateEffect: 'Gain 4 Victory Points',
+    permanentEffect: 'Production action of value 5 or more: Gain 1 Special Token OR exchange 3 Special Tokens to play a Leader Card for free'
   },
   {
     number: 111,
     period: 1,
-    deck: '',
-    type: '',
-    cost: '',
-    immediateEffect: '',
-    permanentEffect: ''
+    deck: 'special',
+    type: 'building',
+    cost: '1 coin and 2 stone',
+    immediateEffect: 'Gain 2 Victory Points',
+    permanentEffect: 'Production action of value N: exchange 1 stone for 1 coin and 1 Victory Point up to N times'
   },
   {
     number: 112,
     period: 1,
-    deck: '',
-    type: '',
-    cost: '',
-    immediateEffect: '',
-    permanentEffect: ''
+    deck: 'special',
+    type: 'building',
+    cost: '2 wood',
+    immediateEffect: 'Gain 2 Victory Points',
+    permanentEffect: 'Production action of value N: exchange 1 wood for 1 coin and 1 Victory Point up to N times'
   },
   {
     number: 113,
@@ -1035,38 +1028,36 @@ export const DEVELOPMENTS: readonly Development[] = [
   {
     number: 121,
     period: 1,
-    deck: '',
-    type: '',
-    cost: '',
-    immediateEffect: '',
-    permanentEffect: ''
+    deck: 'special',
+    type: 'character',
+    cost: '2 coins',
+    immediateEffect: 'Gain 1 Leader Card and 1 Faith Point',
   },
   {
     number: 122,
     period: 1,
-    deck: '',
-    type: '',
-    cost: '',
-    immediateEffect: '',
-    permanentEffect: ''
+    deck: 'special',
+    type: 'character',
+    cost: '2 coins',
+    immediateEffect: 'Gain 2 Leader Cards',
   },
   {
     number: 123,
     period: 1,
-    deck: '',
-    type: '',
-    cost: '',
-    immediateEffect: '',
-    permanentEffect: ''
+    deck: 'special',
+    type: 'character',
+    cost: '3 coins',
+    immediateEffect: 'Gain 1 Special Token',
+    permanentEffect: 'Increase both Production action and Harvest action values by 1'
   },
   {
     number: 124,
     period: 1,
-    deck: '',
-    type: '',
-    cost: '',
-    immediateEffect: '',
-    permanentEffect: ''
+    deck: 'special',
+    type: 'character',
+    cost: '3 coins',
+    immediateEffect: 'Gain 1 Special Token',
+    permanentEffect: 'Whenever you play a Leader Card, gain a Special Token'
   },
   {
     number: 125,
@@ -1143,20 +1134,20 @@ export const DEVELOPMENTS: readonly Development[] = [
   {
     number: 133,
     period: 1,
-    deck: '',
-    type: '',
-    cost: '',
-    immediateEffect: '',
-    permanentEffect: ''
+    deck: 'special',
+    type: 'venture',
+    cost: '2 coins and 2 stone',
+    immediateEffect: 'Gain 2 Special Tokens',
+    permanentEffect: 'End of game: gain 2 Victory Points times your number of Special Tokens (max 12 points)'
   },
   {
     number: 134,
     period: 1,
-    deck: '',
-    type: '',
-    cost: '',
-    immediateEffect: '',
-    permanentEffect: ''
+    deck: 'special',
+    type: 'venture',
+    cost: '2 Military Points (you must have at least 2)',
+    immediateEffect: 'Gain 2 wood and 2 stone',
+    permanentEffect: 'End of game: gain 2 Victory Points times each 1 wood and 1 stone you have (max 12 points)'
   },
   {
     number: 135,
@@ -1165,16 +1156,16 @@ export const DEVELOPMENTS: readonly Development[] = [
     type: 'venture',
     cost: '2 wood and 1 stone',
     immediateEffect: 'Gain 3 servants',
-    permanentEffect: 'End of game: gain 1 Victory Point times your number of servants (max 12)'
+    permanentEffect: 'End of game: gain 1 Victory Point times your number of servants (max 12 points)'
   },
   {
     number: 136,
     period: 1,
-    deck: '',
-    type: '',
-    cost: '',
-    immediateEffect: '',
-    permanentEffect: ''
+    deck: 'special',
+    type: 'venture',
+    cost: '1 coin and 3 wood',
+    immediateEffect: "If you aren't currently first on the Military Track, move your marker to the same position as the highest marker",
+    permanentEffect: 'End of game: gain 5 victory points'
   },
   {
     number: 137,
@@ -1320,7 +1311,7 @@ export const DEVELOPMENTS: readonly Development[] = [
     deck: 'character',
     type: 'character',
     cost: '5 coins',
-    immediateEffect: 'Perform a Production action at value 3 using the Building cards belonging to another player of your choosing (spending your own resources)',
+    immediateEffect: 'Perform a Production action at value 3 using the Building Cards belonging to another player of your choosing (spending your own resources)',
     permanentEffect: 'Increase Production action value by 1'
   },
   {
@@ -1329,7 +1320,7 @@ export const DEVELOPMENTS: readonly Development[] = [
     deck: 'character',
     type: 'character',
     cost: '6 coins',
-    immediateEffect: 'Perform a Harvest action at value 2 using the Territory cards belonging to another player of your choosing (spending your own resources)',
+    immediateEffect: 'Perform a Harvest action at value 2 using the Territory Cards belonging to another player of your choosing (spending your own resources)',
     permanentEffect: 'Increase Harvest action value by 1'
   },
   {
@@ -1338,7 +1329,7 @@ export const DEVELOPMENTS: readonly Development[] = [
     deck: 'character',
     type: 'character',
     cost: '5 coins',
-    immediateEffect: 'Gain 3 Victory Points and each of your oppornents must discard 1 Building card OR 1 Territory card of their choosing',
+    immediateEffect: 'Gain 3 Victory Points and each of your oppornents must discard 1 Building Card OR 1 Territory Card of their choosing',
   },
   {
     number: 156,
@@ -1346,7 +1337,7 @@ export const DEVELOPMENTS: readonly Development[] = [
     deck: 'character',
     type: 'character',
     cost: '7 coins',
-    immediateEffect: 'Gain 2 Council Privileges and each of your opponents must discard 1 Character card OR 1 Venture card of their choosing',
+    immediateEffect: 'Gain 2 Council Privileges and each of your opponents must discard 1 Character Card OR 1 Venture Card of their choosing',
   },
   {
     number: 157,
@@ -1417,8 +1408,8 @@ export const DEVELOPMENTS: readonly Development[] = [
     deck: 'venture',
     type: 'venture',
     cost: '3 coins and 2 servants',
-    immediateEffect: 'Draw 2 Leader cards',
-    permanentEffect: 'End of game: gain 2 Victory Points times your played Leader cards'
+    immediateEffect: 'Draw 2 Leader Cards',
+    permanentEffect: 'End of game: gain 2 Victory Points times your played Leader Cards'
   },
   {
     number: 165,
@@ -1436,7 +1427,7 @@ export const DEVELOPMENTS: readonly Development[] = [
     type: 'venture',
     cost: '5 wood',
     immediateEffect: 'Gain 3 coins',
-    permanentEffect: 'End of game: gain 2 Victory Points times your number of Building cards'
+    permanentEffect: 'End of game: gain 2 Victory Points times your number of Building Cards'
   },
   {
     number: 167,
