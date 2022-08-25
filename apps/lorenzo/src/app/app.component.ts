@@ -18,6 +18,8 @@ export class AppComponent {
   text$ = this._textSubject.pipe(
     distinctUntilChanged(),
   );
+  showLeaders = true;
+  showDevelopments = true;
   readonly leaders = LEADERS;
   readonly developments = DEVELOPMENTS;
 
