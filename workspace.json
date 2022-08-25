@@ -14,6 +14,8 @@
     "globetrotter-feature-shell": "libs/globetrotter/feature-shell",
     "globetrotter-ui": "libs/globetrotter/ui",
     "globetrotter-util": "libs/globetrotter/util",
+    "lorenzo": "apps/lorenzo",
+    "lorenzo-e2e": "apps/lorenzo-e2e",
     "lorenzo-util": "libs/lorenzo/util",
     "menu-matriarch": "apps/menu-matriarch",
     "menu-matriarch-data-access": "libs/menu-matriarch/data-access",

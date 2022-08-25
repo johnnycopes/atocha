@@ -29,5 +29,5 @@
       }
     }
   },
-  "tags": ["scope:lorenzo"]
+  "tags": ["scope:lorenzo", "type:util"]
 }
