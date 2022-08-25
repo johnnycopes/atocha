@@ -880,32 +880,32 @@ export const DEVELOPMENTS: readonly Development[] = [
     period: 3,
     deck: 'special',
     type: 'territory',
-    immediateEffect: '',
-    permanentEffect: ''
+    immediateEffect: 'Gain 2 Special Tokens',
+    permanentEffect: 'Harvest action of value 6 or more: gain 1 Faith Point, 2 Victory Points, and 2 coins'
   },
   {
     number: 106,
     period: 3,
     deck: 'special',
     type: 'territory',
-    immediateEffect: '',
-    permanentEffect: ''
+    immediateEffect: 'Gain 2 wood, 2 stone, and 2 coins',
+    permanentEffect: 'Harvest action of value 5 or more: gain 3 Victory Points'
   },
   {
     number: 107,
     period: 3,
     deck: 'special',
     type: 'territory',
-    immediateEffect: '',
-    permanentEffect: ''
+    immediateEffect: 'Gain 2 Faith Points',
+    permanentEffect: 'Harvest action of value N: gain 1 Victory Point times your number of Building Cards (max N times)'
   },
   {
     number: 108,
     period: 3,
     deck: 'special',
     type: 'territory',
-    immediateEffect: '',
-    permanentEffect: ''
+    immediateEffect: 'Gain 3 Victory Points',
+    permanentEffect: 'Harvest action of value 7 or more: gain 2 wood, 2 stone, and 2 coins'
   },
   {
     number: 109,
@@ -984,36 +984,36 @@ export const DEVELOPMENTS: readonly Development[] = [
     period: 3,
     deck: 'special',
     type: 'building',
-    cost: '',
-    immediateEffect: '',
-    permanentEffect: ''
+    cost: '2 coins, 1 wood, and 4 stone',
+    immediateEffect: 'Gain 7 Victory Points',
+    permanentEffect: 'Production action of value 6 or more: 2 Victory Points times your number of played Leader Cards'
   },
   {
     number: 118,
     period: 3,
     deck: 'special',
     type: 'building',
-    cost: '',
-    immediateEffect: '',
-    permanentEffect: ''
+    cost: '1 servant, 4 wood, and 3 stone',
+    immediateEffect: 'Gain 2 Victory Points',
+    permanentEffect: 'Production action of value 7 or more: gain 7 Victory Points'
   },
   {
     number: 119,
     period: 3,
     deck: 'special',
     type: 'building',
-    cost: '',
-    immediateEffect: '',
-    permanentEffect: ''
+    cost: '3 coins, 4 wood, and 3 stone',
+    immediateEffect: 'Gain 15 Victory Points',
+    permanentEffect: 'Production action of value 1 or more: lose 3 Victory Points'
   },
   {
     number: 120,
     period: 3,
     deck: 'special',
     type: 'building',
-    cost: '',
-    immediateEffect: '',
-    permanentEffect: ''
+    cost: '2 servants, 3 wood, and 3 stone',
+    immediateEffect: 'Gain 8 Victory Points',
+    permanentEffect: 'Production action of value 5 or more: gain 3 Faith Points'
   },
   {
     number: 121,
@@ -1089,36 +1089,32 @@ export const DEVELOPMENTS: readonly Development[] = [
     period: 3,
     deck: 'special',
     type: 'character',
-    cost: '',
-    immediateEffect: '',
-    permanentEffect: ''
+    cost: '6 coins',
+    immediateEffect: '3 Victory Points times your number of played Leader Cards',
   },
   {
     number: 130,
     period: 3,
     deck: 'special',
     type: 'character',
-    cost: '',
-    immediateEffect: '',
-    permanentEffect: ''
+    cost: '5 coins',
+    immediateEffect: 'Take a discarded card of any type (except Special Development) for free',
   },
   {
     number: 131,
     period: 3,
     deck: 'special',
     type: 'character',
-    cost: '',
-    immediateEffect: '',
-    permanentEffect: ''
+    cost: '7 coins',
+    immediateEffect: 'Gain 1 Victory Point times your number of Faith Points',
   },
   {
     number: 132,
     period: 3,
     deck: 'special',
     type: 'character',
-    cost: '',
-    immediateEffect: '',
-    permanentEffect: ''
+    cost: '7 coins',
+    immediateEffect: 'Take a discarded Venture Card (not from the Special Development deck) for free',
   },
   {
     number: 133,
@@ -1197,36 +1193,36 @@ export const DEVELOPMENTS: readonly Development[] = [
     period: 3,
     deck: 'special',
     type: 'venture',
-    cost: '',
-    immediateEffect: '',
-    permanentEffect: ''
+    cost: '10 coins OR 5 Special Tokens',
+    immediateEffect: 'Gain 2 Military Points',
+    permanentEffect: 'End of game: gain 15 Victory Points'
   },
   {
     number: 142,
     period: 3,
     deck: 'special',
     type: 'venture',
-    cost: '',
-    immediateEffect: '',
-    permanentEffect: ''
+    cost: '8 wood and 8 stone',
+    immediateEffect: 'Gain 3 Special Tokens',
+    permanentEffect: 'End of game: gain 12 Victory Points'
   },
   {
     number: 143,
     period: 3,
     deck: 'special',
     type: 'venture',
-    cost: '',
-    immediateEffect: '',
-    permanentEffect: ''
+    cost: '6 Military Points (you must have at least 12) and 6 coins',
+    immediateEffect: 'Gain 4 Faith Points',
+    permanentEffect: 'End of game: gain 10 Victory Points'
   },
   {
     number: 144,
     period: 3,
     deck: 'special',
     type: 'venture',
-    cost: '',
-    immediateEffect: '',
-    permanentEffect: ''
+    cost: '7 Military Points (you must have at least 14) and 5 servants',
+    immediateEffect: 'Activate 2 of your Building Cards, ignoring their values',
+    permanentEffect: 'End of game: gain 12 Victory Points'
   },
   {
     number: 145,
