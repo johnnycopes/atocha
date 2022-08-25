@@ -32,6 +32,7 @@
       ],
       "@atocha/globetrotter/ui": ["libs/globetrotter/ui/src/index.ts"],
       "@atocha/globetrotter/util": ["libs/globetrotter/util/src/index.ts"],
+      "@atocha/lorenzo/util": ["libs/lorenzo/util/src/index.ts"],
       "@atocha/menu-matriarch/data-access": [
         "libs/menu-matriarch/data-access/src/index.ts"
       ],

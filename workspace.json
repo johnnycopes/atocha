@@ -14,6 +14,7 @@
     "globetrotter-feature-shell": "libs/globetrotter/feature-shell",
     "globetrotter-ui": "libs/globetrotter/ui",
     "globetrotter-util": "libs/globetrotter/util",
+    "lorenzo-util": "libs/lorenzo/util",
     "menu-matriarch": "apps/menu-matriarch",
     "menu-matriarch-data-access": "libs/menu-matriarch/data-access",
     "menu-matriarch-e2e": "apps/menu-matriarch-e2e",
@@ -31,6 +32,7 @@
   "tags": [
     "scope:core",
     "scope:globetrotter",
+    "scope:lorenzo",
     "scope:menu-matriarch",
     "type:app",
     "type:data-access",
