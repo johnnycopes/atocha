@@ -13,7 +13,8 @@
     "mm:deploy-prod": "nx build menu-matriarch && firebase deploy --project=menu-matriarch",
     "mm:delete-account": "node ./firebase/scripts/dev/delete-account.js",
     "mm:delete-data": "node ./firebase/scripts/dev/delete-data.js",
-    "mm:reset": "node ./firebase/scripts/dev/delete-all-accounts.js"
+    "mm:reset": "node ./firebase/scripts/dev/delete-all-accounts.js",
+    "lo:deploy-dev": "nx build lorenzo && cd ./dist/apps/lorenzo && mv index.html 200.html && surge . --domain=https://lorenzo-ref.surge.sh"
   },
   "private": true,
   "devDependencies": {
