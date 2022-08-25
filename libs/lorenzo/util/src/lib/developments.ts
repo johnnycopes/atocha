@@ -440,7 +440,7 @@ export const DEVELOPMENTS: readonly Development[] = [
     type: 'character',
     cost: '2 coins',
     immediateEffect: 'Gain 3 Military Points',
-    permanentEffect: 'When buying a Territory card, increase the die value by 2'
+    permanentEffect: 'When buying a Territory card, increase the value by 2'
   },
   {
     number: 50,
@@ -448,7 +448,7 @@ export const DEVELOPMENTS: readonly Development[] = [
     deck: 'character',
     type: 'character',
     cost: '4 coins',
-    permanentEffect: 'When buying a Building card, increase the die value by 2 and decrease the cost by 1 wood OR 1 stone'
+    permanentEffect: 'When buying a Building card, increase the value by 2 and decrease the cost by 1 wood OR 1 stone'
   },
   {
     number: 51,
@@ -456,7 +456,7 @@ export const DEVELOPMENTS: readonly Development[] = [
     deck: 'character',
     type: 'character',
     cost: '4 coins',
-    permanentEffect: 'When buying a Character card, increase the die value by 2 and decrease the cost by 1 coin'
+    permanentEffect: 'When buying a Character card, increase the value by 2 and decrease the cost by 1 coin'
   },
   {
     number: 52,
@@ -465,7 +465,7 @@ export const DEVELOPMENTS: readonly Development[] = [
     type: 'character',
     cost: '2 coins',
     immediateEffect: 'Take 1 Council Privilege',
-    permanentEffect: 'When buying a Venture card, increase the die value by 2'
+    permanentEffect: 'When buying a Venture card, increase the value by 2'
   },
   {
     number: 53,
@@ -473,7 +473,7 @@ export const DEVELOPMENTS: readonly Development[] = [
     deck: 'character',
     type: 'character',
     cost: '3 coins',
-    permanentEffect: 'During Harvest, increase the die value by 2'
+    permanentEffect: 'Increase Harvest action value by 2'
   },
   {
     number: 54,
@@ -481,7 +481,7 @@ export const DEVELOPMENTS: readonly Development[] = [
     deck: 'character',
     type: 'character',
     cost: '3 coins',
-    permanentEffect: 'During Production, increase the die value by 2'
+    permanentEffect: 'Increase Production action value by 2'
   },
   {
     number: 55,
@@ -494,155 +494,139 @@ export const DEVELOPMENTS: readonly Development[] = [
   },
   {
     number: 56,
-    period: 1,
+    period: 1 ,
     deck: 'character',
     type: 'character',
     cost: '3 coins',
-    immediateEffect: 'Purchase any type of card up to level 4 and gain 1 Faith Point',
+    immediateEffect: 'Buy any type of card at value 4 and gain 1 Faith Point',
   },
   {
     number: 57,
-    period: 1,
-    deck: '',
-    type: '',
-    cost: '',
-    immediateEffect: '',
-    permanentEffect: ''
+    period: 2,
+    deck: 'character',
+    type: 'character',
+    cost: '4 coins',
+    immediateEffect: 'Buy a Territory card at value 6 and gain 2 Military Points',
   },
   {
     number: 58,
-    period: 1,
-    deck: '',
-    type: '',
-    cost: '',
-    immediateEffect: '',
-    permanentEffect: ''
+    period: 2,
+    deck: 'character',
+    type: 'character',
+    cost: '4 coins',
+    immediateEffect: 'Buy a Building card at value 6 with a discount of 1 wood/stone',
   },
   {
     number: 59,
-    period: 1,
-    deck: '',
-    type: '',
-    cost: '',
-    immediateEffect: '',
-    permanentEffect: ''
+    period: 2,
+    deck: 'character',
+    type: 'character',
+    cost: '3 coins',
+    immediateEffect: 'Buy a Character card at value 6 with a discount of 2 coins',
   },
   {
     number: 60,
-    period: 1,
-    deck: '',
-    type: '',
-    cost: '',
-    immediateEffect: '',
-    permanentEffect: ''
+    period: 2,
+    deck: 'character',
+    type: 'character',
+    cost: '4 coins',
+    immediateEffect: 'Buy a Venture card at value 6 and take 1 Council Privilege',
   },
   {
     number: 61,
-    period: 1,
-    deck: '',
-    type: '',
-    cost: '',
-    immediateEffect: '',
-    permanentEffect: ''
+    period: 2,
+    deck: 'character',
+    type: 'character',
+    cost: '4 coins',
+    permanentEffect: 'Increase Harvest action value by 3'
   },
   {
     number: 62,
-    period: 1,
-    deck: '',
-    type: '',
-    cost: '',
-    immediateEffect: '',
-    permanentEffect: ''
+    period: 2,
+    deck: 'character',
+    type: 'character',
+    cost: '4 coins',
+    permanentEffect: 'Increase Production action value by 3'
   },
   {
     number: 63,
-    period: 1,
-    deck: '',
-    type: '',
-    cost: '',
-    immediateEffect: '',
-    permanentEffect: ''
+    period: 2,
+    deck: 'character',
+    type: 'character',
+    cost: '5 coins',
+    immediateEffect: '3 Faith Points',
   },
   {
     number: 64,
-    period: 1,
-    deck: '',
-    type: '',
-    cost: '',
-    immediateEffect: '',
-    permanentEffect: ''
+    period: 2,
+    deck: 'character',
+    type: 'character',
+    cost: '5 coins',
+    immediateEffect: 'Take 3 unique Council Privileges',
   },
   {
     number: 65,
-    period: 1,
-    deck: '',
-    type: '',
-    cost: '',
-    immediateEffect: '',
-    permanentEffect: ''
+    period: 3,
+    deck: 'character',
+    type: 'character',
+    cost: '6 coins',
+    immediateEffect: 'Gain 2 Victory Points times your number of Territory cards',
   },
   {
     number: 66,
-    period: 1,
-    deck: '',
-    type: '',
-    cost: '',
-    immediateEffect: '',
-    permanentEffect: ''
+    period: 3,
+    deck: 'character',
+    type: 'character',
+    cost: '6 coins',
+    immediateEffect: 'Gain 2 Victory Points times your number of Building cards',
   },
   {
     number: 67,
-    period: 1,
-    deck: '',
-    type: '',
-    cost: '',
-    immediateEffect: '',
-    permanentEffect: ''
+    period: 3,
+    deck: 'character',
+    type: 'character',
+    cost: '7 coins',
+    immediateEffect: 'Gain 2 Victory Points times your number of Character cards',
   },
   {
     number: 68,
-    period: 1,
-    deck: '',
-    type: '',
-    cost: '',
-    immediateEffect: '',
-    permanentEffect: ''
+    period: 3,
+    deck: 'character',
+    type: 'character',
+    cost: '6 coins',
+    immediateEffect: 'Gain 2 Victory Points times your number of Venture cards',
   },
   {
     number: 69,
-    period: 1,
-    deck: '',
-    type: '',
+    period: 3,
+    deck: 'character',
+    type: 'character',
     cost: '',
-    immediateEffect: '',
-    permanentEffect: ''
+    immediateEffect: 'Perform a Harvest action at level 4 and gain 2 Faith Points',
   },
   {
     number: 70,
-    period: 1,
-    deck: '',
-    type: '',
-    cost: '',
-    immediateEffect: '',
-    permanentEffect: ''
+    period: 3,
+    deck: 'character',
+    type: 'character',
+    cost: '5 coins',
+    immediateEffect: 'Perform a Production action at level 4 and gain 1 Faith Point',
   },
   {
     number: 71,
-    period: 1,
-    deck: '',
-    type: '',
-    cost: '',
-    immediateEffect: '',
-    permanentEffect: ''
+    period: 3,
+    deck: 'character',
+    type: 'character',
+    cost: '5 coins',
+    immediateEffect: 'Gain 1 Victory Point times every 2 of your Military Points',
   },
   {
     number: 72,
-    period: 1,
-    deck: '',
-    type: '',
-    cost: '',
-    immediateEffect: '',
-    permanentEffect: ''
+    period: 3,
+    deck: 'character',
+    type: 'character',
+    cost: '6 coins',
+    immediateEffect: 'Buy any type of card at value 7 and take 1 Council Privilege',
   },
   {
     number: 73,
@@ -1366,39 +1350,37 @@ export const DEVELOPMENTS: readonly Development[] = [
   },
   {
     number: 153,
-    period: 1,
-    deck: '',
-    type: '',
-    cost: '',
-    immediateEffect: '',
-    permanentEffect: ''
+    period: 2,
+    deck: 'character',
+    type: 'character',
+    cost: '5 coins',
+    immediateEffect: 'Perform a Production action at value 3 using the Buildings belonging to another player of your choosing (spending your own resources)',
+    permanentEffect: 'Increase Production action value by 1'
   },
   {
     number: 154,
-    period: 1,
-    deck: '',
-    type: '',
-    cost: '',
-    immediateEffect: '',
-    permanentEffect: ''
+    period: 2,
+    deck: 'character',
+    type: 'character',
+    cost: '6 coins',
+    immediateEffect: 'Perform a Harvest action at value 2 using the Territories belonging to another player of your choosing (spending your own resources)',
+    permanentEffect: 'Increase Harvest action value by 1'
   },
   {
     number: 155,
-    period: 1,
-    deck: '',
-    type: '',
-    cost: '',
-    immediateEffect: '',
-    permanentEffect: ''
+    period: 3,
+    deck: 'character',
+    type: 'character',
+    cost: '5 coins',
+    immediateEffect: 'Gain 3 Victory Points and each of your oppornents must discard 1 Building card OR 1 Territory card of their choosing',
   },
   {
     number: 156,
-    period: 1,
-    deck: '',
-    type: '',
-    cost: '',
-    immediateEffect: '',
-    permanentEffect: ''
+    period: 3,
+    deck: 'character',
+    type: 'character',
+    cost: '7 coins',
+    immediateEffect: 'Gain 2 Council Privileges and each of your opponents must discard 1 Character card OR 1 Venture card of their choosing',
   },
   {
     number: 157,
