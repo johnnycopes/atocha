@@ -1,12 +1,21 @@
 <ng-container *ngIf="vm$ | async as vm">
   <nav class="controls">
     <h1>Lorenzo il Magnifico</h1>
-    <input type="text"
-      coreAutofocus
-      placeholder="Search by leader name or card number"
-      [ngModel]="vm.text"
-      (ngModelChange)="search($event)"
-    />
+    <div class="search">
+      <input type="text"
+        #input
+        coreAutofocus
+        placeholder="Search by leader name or card number"
+        [ngModel]="vm.text"
+        (ngModelChange)="search($event)"
+      />
+      <button class="clear"
+        #input
+        (click)="clear()"
+      >
+        Clear
+      </button>
+    </div>
   </nav>
 
   <div class="content">
@@ -32,6 +41,9 @@
             <span class="prop">Ability (<span class="leader-ability">{{ leader.type }}</span>): </span>
             {{ leader.ability }}
           </p>
+        </li>
+        <li *ngIf="!vm.filteredLeaders.length">
+          No matching cards
         </li>
       </ul>
     </div>
@@ -78,6 +90,9 @@
             </span>
             {{ development.permanentEffect }}
           </p>
+        </li>
+        <li *ngIf="!vm.filteredDevelopments.length">
+          No matching cards
         </li>
       </ul>
     </div>

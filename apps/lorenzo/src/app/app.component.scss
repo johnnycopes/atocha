@@ -20,9 +20,22 @@
     margin-right: 16px;
   }
 
-  input {
-    width: 512px;
+
+  .search {
+    position: relative;
+
+    input {
+      width: 512px;
+    }
+
+    .clear {
+      position: absolute;
+      right: 8px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
   }
+
 }
 
 .content {
