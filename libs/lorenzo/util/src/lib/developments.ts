@@ -749,72 +749,72 @@ export const DEVELOPMENTS: readonly Development[] = [
     period: 3,
     deck: 'venture',
     type: 'venture',
-    cost: '',
-    immediateEffect: '',
-    permanentEffect: 'End of game:'
+    cost: '8 coins',
+    immediateEffect: 'Gain 7 Military Points',
+    permanentEffect: 'End of game: gain 6 Victory Points'
   },
   {
     number: 90,
     period: 3,
     deck: 'venture',
     type: 'venture',
-    cost: '',
-    immediateEffect: '',
-    permanentEffect: 'End of game:'
+    cost: '3 coins, 3 wood, and 3 stone',
+    immediateEffect: 'Buy any type of card up to value 7 and gain 1 Faith Point',
+    permanentEffect: 'End of game: gain 5 Victory Points'
   },
   {
     number: 91,
     period: 3,
     deck: 'venture',
     type: 'venture',
-    cost: '',
-    immediateEffect: '',
-    permanentEffect: 'End of game:'
+    cost: '6 stone',
+    immediateEffect: 'Gain 4 Military Points and take 1 Council Privilege',
+    permanentEffect: 'End of game: gain 4 Victory Points'
   },
   {
     number: 92,
     period: 3,
     deck: 'venture',
     type: 'venture',
-    cost: '',
-    immediateEffect: '',
-    permanentEffect: 'End of game:'
+    cost: '6 wood',
+    immediateEffect: 'Gain 3 Faith Points',
+    permanentEffect: 'End of game: gain 3 Victory Points'
   },
   {
     number: 93,
     period: 3,
     deck: 'venture',
     type: 'venture',
-    cost: '',
-    immediateEffect: '',
-    permanentEffect: 'End of game:'
+    cost: '6 Military Points (you must have at least 12)',
+    immediateEffect: '3 wood, 3 stone, and 3 coins',
+    permanentEffect: 'End of game: gain 7 Victory Points'
   },
   {
     number: 94,
     period: 3,
     deck: 'venture',
     type: 'venture',
-    cost: '',
-    immediateEffect: '',
-    permanentEffect: 'End of game:'
+    cost: '3 servants and 4 coins',
+    immediateEffect: 'Perform a Production action at value 3',
+    permanentEffect: 'End of game: gain 5 Victory Points'
   },
   {
     number: 95,
     period: 3,
     deck: 'venture',
     type: 'venture',
-    cost: '',
-    immediateEffect: '',
-    permanentEffect: 'End of game:'
+    cost: '8 Military Points (you must have at least 15)',
+    immediateEffect: 'Gain 4 Faith Points',
+    permanentEffect: 'End of game: gain 8 Victory Points'
   },
   {
     number: 96,
     period: 3,
     deck: 'venture',
     type: 'venture',
-    cost: '',
-    immediateEffect: '',
-    permanentEffect: 'End of game:'
+    cost: '5 Military Points (you must have at least 10) OR 3 wood, 3 stone, and 4 coins',
+    immediateEffect: 'Gain 2 Faith Points',
+    permanentEffect: 'End of game: gain 10 Victory Points'
   },
   {
     number: 97,
@@ -1440,20 +1440,20 @@ export const DEVELOPMENTS: readonly Development[] = [
   },
   {
     number: 167,
-    period: 1,
-    deck: '',
-    type: '',
-    cost: '',
-    immediateEffect: '',
-    permanentEffect: ''
+    period: 3,
+    deck: 'venture',
+    type: 'venture',
+    cost: '3 Military Points times the number of your opponents',
+    immediateEffect: 'Each of your opponents must give you 3 wood OR 3 stone OR 3 coins OR 3 servants',
+    permanentEffect: 'End of game: gain 8 Victory Points'
   },
   {
     number: 168,
-    period: 1,
-    deck: '',
-    type: '',
-    cost: '',
-    immediateEffect: '',
-    permanentEffect: ''
+    period: 3,
+    deck: 'venture',
+    type: 'venture',
+    cost: '7 wood OR 7 stone',
+    immediateEffect: 'Buy any type of card up to value 7',
+    permanentEffect: 'End of game: gain 7 Victory Points'
   }
 ];
