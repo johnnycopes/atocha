@@ -1,14 +1,18 @@
 <ng-container *ngIf="vm$ | async as vm">
   <div class="content">
-    <div class="leaders">
+    <div class="section leaders">
       <div class="header">
         <h2>Leader Cards ({{ vm.filteredLeaders.length }} / {{ leaders.length }})</h2>
         <button (click)="showLeaders = !showLeaders">
           {{ showLeaders ? 'Collapse' : 'Expand' }}
         </button>
       </div>
-      <ul [hidden]="!showLeaders">
-        <li *ngFor="let leader of vm.filteredLeaders; trackBy: leaderTrackByFn">
+      <ul [hidden]="!showLeaders"
+        class="cards"
+      >
+        <li *ngFor="let leader of vm.filteredLeaders; trackBy: leaderTrackByFn"
+          class="card"
+        >
           <h4>{{ leader.name }}</h4>
           <p>Requirement: {{ leader.requirement }}</p>
           <p>Ability: <span class="leader-ability">{{ leader.type }}</span> {{ leader.ability }}</p>
@@ -16,15 +20,19 @@
       </ul>
     </div>
 
-    <div class="developments">
+    <div class="section developments">
       <div class="header">
         <h2>Development Cards ({{ vm.filteredDevelopments.length }} / {{ developments.length }})</h2>
         <button (click)="showDevelopments = !showDevelopments">
           {{ showDevelopments ? 'Collapse' : 'Expand' }}
         </button>
       </div>
-      <ul [hidden]="!showDevelopments">
-        <li *ngFor="let development of vm.filteredDevelopments; trackBy: developmentTrackByFn">
+      <ul [hidden]="!showDevelopments"
+        class="cards"
+      >
+        <li *ngFor="let development of vm.filteredDevelopments; trackBy: developmentTrackByFn"
+          class="card"
+        >
           <h4>{{ development.id }}</h4>
           <p>Type: {{ development.type }}</p>
           <p>Cost: {{ development?.cost ?? 'Free' }}</p>

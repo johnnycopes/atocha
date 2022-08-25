@@ -8,12 +8,39 @@
   height: calc(100% - 48px);
 }
 
-.header {
-  display: flex;
-  align-items: center;
+.section {
+  margin-bottom: 16px;
 
-  button {
-    margin-left: 16px;
+  .header {
+    display: flex;
+    align-items: center;
+
+    h2 {
+      margin-bottom: 8px;
+      font-weight: 700;
+    }
+
+    button {
+      margin-left: 16px;
+    }
+  }
+
+  .cards {
+    margin: 0;
+    padding-left: 16px;
+
+    .card {
+      margin-bottom: 8px;
+
+      h4 {
+        margin-bottom: 4px;
+        font-weight: 700;
+      }
+
+      p {
+        margin-bottom: 4px;
+      }
+    }
   }
 }
 
