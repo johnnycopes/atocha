@@ -194,72 +194,72 @@ export const DEVELOPMENTS: readonly Development[] = [
     period: 1,
     deck: 'building',
     type: 'building',
-    cost: '',
-    immediateEffect: '',
-    permanentEffect: ''
+    cost: '1 wood and 3 stone',
+    immediateEffect: 'Gain 5 Victory Points',
+    permanentEffect: 'Production action of value 5 or more: gain 1 coin times your number of Building Cards'
   },
   {
     number: 26,
     period: 1,
     deck: 'building',
     type: 'building',
-    cost: '',
-    immediateEffect: '',
-    permanentEffect: ''
+    cost: '3 wood and 1 stone',
+    immediateEffect: 'Gain 5 Victory Points',
+    permanentEffect: 'Production action of value 5 or more: gain 1 coin times your number of Territory Cards'
   },
   {
     number: 27,
     period: 1,
     deck: 'building',
     type: 'building',
-    cost: '',
-    immediateEffect: '',
-    permanentEffect: ''
+    cost: '2 coins and 2 stone',
+    immediateEffect: 'Gain 6 Victory Points',
+    permanentEffect: 'Production action of value 6 or more: gain 1 Victory Point times your number of Venture Cards'
   },
   {
     number: 28,
     period: 1,
     deck: 'building',
     type: 'building',
-    cost: '',
-    immediateEffect: '',
-    permanentEffect: ''
+    cost: '2 coins and 2 wood',
+    immediateEffect: 'Gain 6 Victory Points',
+    permanentEffect: 'Production action of value 6 or more: gain 1 Victory Point times your number of Character Cards'
   },
   {
     number: 29,
     period: 1,
     deck: 'building',
     type: 'building',
-    cost: '',
-    immediateEffect: '',
-    permanentEffect: ''
+    cost: '1 coin and 2 wood',
+    immediateEffect: 'Gain 3 Victory Points',
+    permanentEffect: 'Production action of value 4 or more: exchange 1 wood for 3 coins OR 2 wood for 5 coins'
   },
   {
     number: 30,
     period: 1,
     deck: 'building',
     type: 'building',
-    cost: '',
-    immediateEffect: '',
-    permanentEffect: ''
+    cost: '1 coin and 2 stone',
+    immediateEffect: 'Gain 2 Victory Points',
+    permanentEffect: 'Production action of value 3 or more: exchange 1 stone for 3 coins OR 2 stone for 5 coins'
   },
   {
     number: 31,
     period: 1,
     deck: 'building',
     type: 'building',
-    cost: '',
-    immediateEffect: '',
-    permanentEffect: ''
+    cost: '2 wood',
+    immediateEffect: 'Gain 1 Faith Point',
+    permanentEffect: 'Production action of value 2 or more: exchange 1 coin for 1 Faith Point'
   },
   {
     number: 32,
     period: 1,
     deck: 'building',
     type: 'building',
-    cost: '',
-    immediateEffect: '',
-    permanentEffect: ''
+    cost: '2 stone',
+    immediateEffect: 'Gain 1 Victory Point',
+    permanentEffect: 'Production action of value 1 or more: exchange 1 coin for 1 Council Privilege'
   },
   {
     number: 33,
@@ -1322,25 +1322,25 @@ export const DEVELOPMENTS: readonly Development[] = [
     deck: 'character',
     type: 'character',
     cost: '7 coins',
-    immediateEffect: 'Gain 2 Council Privileges and each of your opponents must discard 1 Character Card OR 1 Venture Card of their choosing',
+    immediateEffect: 'Take 2 Council Privileges and each of your opponents must discard 1 Character Card OR 1 Venture Card of their choosing',
   },
   {
     number: 157,
     period: 1,
     deck: 'building',
     type: 'building',
-    cost: '',
-    immediateEffect: '',
-    permanentEffect: ''
+    cost: '1 coin, 1 wood, and 1 stone',
+    immediateEffect: 'Gain 3 Victory Points',
+    permanentEffect: 'Production action of value 2 or more: exchange 1 Victory Point for 1 Council Privilege'
   },
   {
     number: 158,
     period: 1,
     deck: 'building',
     type: 'building',
-    cost: '',
-    immediateEffect: '',
-    permanentEffect: ''
+    cost: '1 servant, 1 coin, and 2 wood',
+    immediateEffect: 'Take 2 Council Privileges',
+    permanentEffect: 'Production action of value 6 or more: lose 1 Victory Point times your number of opponents and each opponent must give you 2 coins OR 3 Victory Points (they choose)'
   },
   {
     number: 159,
