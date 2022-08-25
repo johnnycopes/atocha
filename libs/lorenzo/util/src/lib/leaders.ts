@@ -29,7 +29,7 @@ export const LEADERS: readonly Leader[] = [
     name: 'Bramante',
     requirement: '4 Venture Cards, 4 servants, 4 wood, and 4 coins',
     ability:
-      "When placing one of your Family Members here, perform a Harvest action OR a Production action at the placed Family Member's value. You can increase this action value",
+      "When placing one of your Family Members here, perform a Harvest action OR a Production action at the placed Family Member's value. You may increase this value",
     type: 'action',
   },
   {

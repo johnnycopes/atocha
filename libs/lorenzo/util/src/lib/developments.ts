@@ -1047,7 +1047,7 @@ export const DEVELOPMENTS: readonly Development[] = [
     type: 'character',
     cost: '3 coins',
     immediateEffect: 'Gain 1 Special Token',
-    permanentEffect: 'Whenever you play a Leader Card, gain a Special Token'
+    permanentEffect: 'When playing a Leader Card, gain a Special Token'
   },
   {
     id: 125,
@@ -1073,7 +1073,7 @@ export const DEVELOPMENTS: readonly Development[] = [
     type: 'character',
     cost: '6 coins and 1 Special Token',
     immediateEffect: 'Gain 2 Victory Points',
-    permanentEffect: 'Whenever you play a Leader Card, ignore 1 of its requirements'
+    permanentEffect: 'When playing a Leader Card, ignore 1 of its requirements'
   },
   {
     id: 128,
@@ -1082,7 +1082,7 @@ export const DEVELOPMENTS: readonly Development[] = [
     type: 'character',
     cost: '5 coins',
     immediateEffect: 'Gain 2 Special Tokens',
-    permanentEffect: 'Place 1 of your Special Tokens faceup here. Whenever you occupy a Market action space, gain/perform whatever is shown on the Special Token'
+    permanentEffect: 'Place 1 of your Special Tokens faceup here. When occupying a Market action space, gain/perform whatever is shown on the Special Token'
   },
   {
     id: 129,
@@ -1149,7 +1149,7 @@ export const DEVELOPMENTS: readonly Development[] = [
     deck: 'special',
     type: 'venture',
     cost: '1 coin and 3 wood',
-    immediateEffect: "If you aren't currently first on the Military Track, move your marker to the same position as the highest marker",
+    immediateEffect: "If you aren't currently ranked first on the Military Track, move your marker to the same position as the highest marker",
     permanentEffect: 'End of game: gain 5 victory points'
   },
   {
