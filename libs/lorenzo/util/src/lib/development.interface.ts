@@ -1,7 +1,7 @@
 type Type = 'territory' | 'building' | 'character' | 'venture';
 
 export interface Development {
-  number: number;
+  id: number;
   period: 1 | 2 | 3;
   deck: Type | 'special';
   type: Type;
