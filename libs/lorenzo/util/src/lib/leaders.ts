@@ -81,7 +81,7 @@ export const LEADERS: readonly Leader[] = [
     name: 'Filippo Brunelleschi',
     requirement: '5 Building Cards',
     ability:
-      "Ignore the 3 coin occupied tower penalty when placing your Family Members",
+      'Ignore the 3 coin occupied tower penalty when placing your Family Members',
     type: 'permanent',
   },
   {
@@ -211,8 +211,7 @@ export const LEADERS: readonly Leader[] = [
   {
     name: 'Niccoló Machiavelli',
     requirement: '3 Territory Cards, 20 Victory Points, and 1 Leader',
-    ability:
-      'When gaining Victory Points, gain 1 additional Victory Point',
+    ability: 'When gaining Victory Points, gain 1 additional Victory Point',
     type: 'permanent',
   },
   {
@@ -231,7 +230,7 @@ export const LEADERS: readonly Leader[] = [
     name: 'Pico della Mirandola',
     requirement: '4 Venture Cards and 2 Building Cards',
     ability:
-      "When taking Development Cards, reduce the cost of the cards by 3 coins (this does not cover the occupied tower penalty)",
+      'When taking Development Cards, reduce the cost of the cards by 3 coins (this does not cover the occupied tower penalty)',
     type: 'permanent',
   },
   {
