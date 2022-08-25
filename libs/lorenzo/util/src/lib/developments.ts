@@ -462,7 +462,7 @@ export const DEVELOPMENTS: readonly Development[] = [
     type: 'character',
     cost: '2 coins',
     immediateEffect: 'Gain 4 Faith Points',
-    permanentEffect: 'No bonus when you buy a card from the 3rd and 4th floors of the towers'
+    permanentEffect: 'No bonus when buying a card from the 3rd and 4th floors of the towers'
   },
   {
     id: 56,
@@ -1064,7 +1064,7 @@ export const DEVELOPMENTS: readonly Development[] = [
     type: 'character',
     cost: '5 coins',
     immediateEffect: 'Gain 1 Special Token',
-    permanentEffect: 'Ignore the 3 coin occupied tower cost when entering the Special Tower'
+    permanentEffect: 'Ignore the 3 coin occupied tower penalty when entering the Special Tower'
   },
   {
     id: 127,
