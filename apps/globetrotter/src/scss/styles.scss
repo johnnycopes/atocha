@@ -68,4 +68,15 @@ app-root {
       color: map-get($color, medium);
     }
   }
+
+  .core-search-input {
+    .core-search-input__input {
+      padding-right: map-get($spacing, 32);
+    }
+
+    .core-search-input__clear {
+      width: map-get($spacing, 32);
+      color: map-get($color, medium);
+    }
+  }
 }

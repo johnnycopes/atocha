@@ -17,9 +17,8 @@ import {
   ChangeDetectorRef,
   HostListener,
 } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 
-import { AutofocusDirective, trackByFactory } from '@atocha/core/ui';
+import { SearchInputComponent, trackByFactory } from '@atocha/core/ui';
 import { InputComponent } from '../input/input.component';
 
 export interface ListDetailsStyles {
@@ -30,7 +29,7 @@ export interface ListDetailsStyles {
 @Component({
   standalone: true,
   selector: 'ui-list-details',
-  imports: [AutofocusDirective, CommonModule, FormsModule, InputComponent],
+  imports: [CommonModule, InputComponent, SearchInputComponent],
   templateUrl: './list-details.component.html',
   styleUrls: ['./list-details.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

@@ -1,0 +1,13 @@
+<input type="text"
+  class="core-search-input__input"
+  #input
+  coreAutofocus
+  [placeholder]="placeholder"
+  [ngModel]="text"
+  (ngModelChange)="textChange.emit($event)"
+/>
+<fa-icon *ngIf="text"
+  class="core-search-input__clear"
+  [icon]="clearIcon"
+  (click)="onClear()"
+></fa-icon>

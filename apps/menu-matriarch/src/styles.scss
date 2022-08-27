@@ -207,4 +207,16 @@ app-root {
       font-size: font-size(14);
     }
   }
+
+  .core-search-input {
+    top: spacing(2);
+
+    .core-search-input__input {
+      padding-right: spacing(24);
+    }
+
+    .core-search-input__clear {
+      color: color($neutral, 5);
+    }
+  }
 }

@@ -1,31 +1,37 @@
-import { CommonModule } from '@angular/common';
 import {
-  Component,
   ChangeDetectionStrategy,
+  Component,
+  ElementRef,
+  EventEmitter,
   Input,
   Output,
-  EventEmitter,
   ViewChild,
-  ElementRef,
+  ViewEncapsulation,
 } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import { FormsModule } from '@angular/forms';
 
-import { InputComponent } from '../input/input.component';
+import { AutofocusDirective } from '../autofocus/autofocus.directive';
 
 @Component({
   standalone: true,
-  selector: 'ui-search-input',
-  imports: [CommonModule, FormsModule, FontAwesomeModule, InputComponent],
+  selector: 'core-search-input',
+  imports: [AutofocusDirective, CommonModule, FormsModule, FontAwesomeModule],
   templateUrl: './search-input.component.html',
   styleUrls: ['./search-input.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
+  host: {
+    class: 'core-search-input',
+  },
 })
 export class SearchInputComponent {
+  @Input() placeholder = '';
   @Input() text = '';
   @Output() textChange = new EventEmitter<string>();
-  readonly faTimes = faTimes;
+  readonly clearIcon = faTimes;
 
   @ViewChild('input')
   inputField: ElementRef | undefined;
