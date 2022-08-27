@@ -1,13 +1,11 @@
 <div class="container" [style.grid-template-rows]="containerHeight">
   <nav class="toolbar">
     <ui-input [style.margin-bottom]="styles.gap">
-      <input
-        type="text"
-        coreAutofocus
+      <core-search-input
         [placeholder]="placeholderText"
-        [ngModel]="searchTerm"
-        (ngModelChange)="onSearch($event)"
-      />
+        [text]="searchTerm"
+        (textChange)="onSearch($event)"
+      ></core-search-input>
     </ui-input>
     <ul class="list" #list [style.maxHeight]="toolbarHeight">
       <li

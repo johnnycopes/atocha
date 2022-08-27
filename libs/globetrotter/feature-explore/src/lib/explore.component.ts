@@ -5,7 +5,6 @@ import {
   tap,
   switchMap,
   startWith,
-  debounceTime,
   distinctUntilChanged,
 } from 'rxjs/operators';
 
@@ -43,7 +42,6 @@ export class ExploreComponent {
   );
   private _searchTerm$ = this._searchTermChange.pipe(
     startWith(''),
-    debounceTime(100),
     distinctUntilChanged()
   );
   private _filteredCountries$ = this._searchTerm$.pipe(
