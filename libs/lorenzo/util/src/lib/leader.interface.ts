@@ -6,5 +6,7 @@ export interface Leader {
   /** What happens when the card is played */
   ability: string;
   /** The card's ability type */
-  type: 'permanent' | 'once per round' | 'action' | 'immediate';
+  type: LeaderType;
 }
+
+export type LeaderType = 'permanent' | 'once per round' | 'action' | 'immediate';

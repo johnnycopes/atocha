@@ -19,19 +19,12 @@
       <ul [hidden]="!showLeaders"
         class="cards"
       >
-        <li *ngFor="let leader of vm.filteredLeaders; trackBy: leaderTrackByFn"
-          class="card card--leader"
-        >
-          <h4>{{ leader.name }}</h4>
-          <p>
-            <span class="prop">Requirement: </span>
-            {{ leader.requirement }}
-          </p>
-          <p>
-            <span class="prop">Ability (<span class="leader-ability">{{ leader.type }}</span>): </span>
-            {{ leader.ability }}
-          </p>
-        </li>
+        <li ui-leader
+          *ngFor="let leader of vm.filteredLeaders; trackBy: leaderTrackByFn"
+          class="card leader"
+          [name]="leader.name"
+          [requirement]="leader.requirement"
+        ></li>
         <li *ngIf="!vm.filteredLeaders.length">
           No matching cards
         </li>
