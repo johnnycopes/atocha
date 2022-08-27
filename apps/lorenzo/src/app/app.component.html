@@ -1,21 +1,11 @@
 <ng-container *ngIf="vm$ | async as vm">
   <nav class="controls">
     <h1>Lorenzo il Magnifico</h1>
-    <div class="search">
-      <input type="text"
-        #input
-        coreAutofocus
-        placeholder="Enter name or number"
-        [ngModel]="vm.text"
-        (ngModelChange)="search($event)"
-      />
-      <button class="clear"
-        #input
-        (click)="clear()"
-      >
-        Clear
-      </button>
-    </div>
+    <core-search-input class="search"
+      placeholder="Enter name or number"
+      [text]="vm.text"
+      (textChange)="search($event)"
+    ></core-search-input>
   </nav>
 
   <div class="content">

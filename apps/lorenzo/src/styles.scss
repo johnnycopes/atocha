@@ -41,3 +41,13 @@ ul {
   padding: 0;
   list-style: none;
 }
+
+// Component styling overrides
+
+app-root {
+  .core-search-input {
+    .core-search-input__input {
+      width: 100%;
+    }
+  }
+}
