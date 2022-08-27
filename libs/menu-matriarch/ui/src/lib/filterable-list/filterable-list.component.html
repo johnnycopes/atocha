@@ -9,6 +9,7 @@
       <ui-input>
         <core-search-input
           class="search-input"
+          [autofocus]="false"
           [text]="searchText"
           (textChange)="searchTextChange.emit($event)"
         ></core-search-input>
