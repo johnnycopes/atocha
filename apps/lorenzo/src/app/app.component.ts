@@ -1,7 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 import { trackByFactory } from '@atocha/core/ui';
 import { includes } from '@atocha/core/util';
