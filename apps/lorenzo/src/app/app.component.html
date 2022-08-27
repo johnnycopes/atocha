@@ -62,19 +62,19 @@
             </span>
             {{ development.type }}
           </p>
-          <p>
+          <p *ngIf="development.cost">
             <span class="prop">
               Cost:
             </span>
-            {{ development?.cost ?? 'Free' }}
+            {{ development.cost }}
           </p>
-          <p>
+          <p *ngIf="development.immediateEffect">
             <span class="prop">
               Immediate effect:
             </span>
             {{ development.immediateEffect }}
           </p>
-          <p>
+          <p *ngIf="development.permanentEffect">
             <span class="prop">
               Permanent effect:
             </span>
