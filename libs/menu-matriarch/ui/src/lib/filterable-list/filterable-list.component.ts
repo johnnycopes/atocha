@@ -7,12 +7,12 @@ import {
   Output,
 } from '@angular/core';
 
-import { PluralPipe } from '@atocha/core/ui';
+import { PluralPipe, SearchInputComponent } from '@atocha/core/ui';
 import { Tag } from '@atocha/menu-matriarch/util';
 import { ButtonComponent } from '../_generic/button/button.component';
 import { FiltersButtonComponent } from '../filters-button/filters-button.component';
 import { FiltersComponent } from '../filters/filters.component';
-import { SearchInputComponent } from '../_generic/search-input/search-input.component';
+import { InputComponent } from '../_generic/input/input.component';
 import { SectionComponent } from '../_generic/section/section.component';
 
 @Component({
@@ -24,6 +24,7 @@ import { SectionComponent } from '../_generic/section/section.component';
     FiltersButtonComponent,
     FiltersComponent,
     PluralPipe,
+    InputComponent,
     SearchInputComponent,
     SectionComponent,
   ],

@@ -6,11 +6,13 @@
       >
         {{ 0 | corePlural : entity : pluralEntity }} ({{ total }})
       </h2>
-      <ui-search-input
-        class="search-input"
-        [text]="searchText"
-        (textChange)="searchTextChange.emit($event)"
-      ></ui-search-input>
+      <ui-input>
+        <core-search-input
+          class="search-input"
+          [text]="searchText"
+          (textChange)="searchTextChange.emit($event)"
+        ></core-search-input>
+      </ui-input>
       <ui-filters-button class="button"
         [count]="filters.length"
         [open]="isPanelOpen"
