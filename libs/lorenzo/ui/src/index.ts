@@ -1,1 +1,1 @@
-export * from './lib/lorenzo-ui.module';
+export * from './lib/leader/leader.component';
