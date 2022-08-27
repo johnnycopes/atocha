@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LeaderType } from '@atocha/lorenzo/util';
+import { Leader } from '@atocha/lorenzo/util';
 
 @Component({
   // eslint-disable-next-line @angular-eslint/component-selector
@@ -12,8 +12,5 @@ import { LeaderType } from '@atocha/lorenzo/util';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LeaderComponent {
-  @Input() name = '';
-  @Input() requirement = '';
-  @Input() ability = '';
-  @Input() type: LeaderType = 'permanent';
+  @Input() data: Leader | undefined;
 }

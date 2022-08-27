@@ -22,10 +22,7 @@
         <li ui-leader
           *ngFor="let leader of vm.filteredLeaders; trackBy: leaderTrackByFn"
           class="card leader"
-          [name]="leader.name"
-          [requirement]="leader.requirement"
-          [ability]="leader.ability"
-          [type]="leader.type"
+          [data]="leader"
         ></li>
         <li *ngIf="!vm.filteredLeaders.length">
           No matching cards
@@ -43,9 +40,9 @@
       <ul [hidden]="!showDevelopments"
         class="cards"
       >
-        <li *ngFor="let development of vm.filteredDevelopments; trackBy: developmentTrackByFn"
+        <li ui-development
+          *ngFor="let development of vm.filteredDevelopments; trackBy: developmentTrackByFn"
           class="card"
-          ui-development
           [data]="development"
         ></li>
         <li *ngIf="!vm.filteredDevelopments.length">
