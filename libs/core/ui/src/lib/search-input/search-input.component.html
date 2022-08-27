@@ -1,7 +1,7 @@
 <input type="text"
   class="core-search-input__input"
   #input
-  coreAutofocus
+  [coreAutofocus]="autofocus"
   [placeholder]="placeholder"
   [ngModel]="text"
   (ngModelChange)="textChange.emit($event)"

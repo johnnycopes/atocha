@@ -1,9 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  ElementRef,
-  ViewChild,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 import { trackByFactory } from '@atocha/core/ui';
 import { includes } from '@atocha/core/util';
@@ -31,9 +26,6 @@ export class AppComponent {
   readonly leaders = LEADERS;
   readonly developments = DEVELOPMENTS;
 
-  @ViewChild('input')
-  inputField: ElementRef | undefined;
-
   vm$ = combineLatest([this.text$, of(LEADERS), of(DEVELOPMENTS)]).pipe(
     map(([text, leaders, developments]) => ({
       text,
@@ -53,6 +45,5 @@ export class AppComponent {
 
   clear(): void {
     this._textSubject.next('');
-    this.inputField?.nativeElement.focus();
   }
 }
