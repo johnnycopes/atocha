@@ -32,6 +32,7 @@ const Template: Story<SearchInputArgs> = (args: SearchInputArgs) => ({
   props: args,
   template: `
     <core-search-input
+      [class]="className"
       [placeholder]="placeholder"
       [text]="text"
       (textChange)="text = $event; onClick($event)"
@@ -41,19 +42,19 @@ const Template: Story<SearchInputArgs> = (args: SearchInputArgs) => ({
 
 export const base = Template.bind({});
 base.args = createArgs({
-  text: 'This is a search term',
+  text: 'Something',
 });
 
-// export const withCustomStyling = Template.bind({});
-// withCustomStyling.args = createArgs({
-//   slot: 'Click me!',
-//   size: 'large',
-//   className: 'custom-checkbox',
-// });
+export const withCustomStyling = Template.bind({});
+withCustomStyling.args = createArgs({
+  text: 'This looks totally different',
+  className: 'custom-search-input',
+});
 
 function createArgs({
+  className = '',
   text = '',
   placeholder = 'Type words here...',
 } = {}) {
-  return { text, placeholder };
+  return { className, text, placeholder };
 }
