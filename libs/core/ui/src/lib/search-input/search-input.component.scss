@@ -1,10 +1,9 @@
 .core-search-input {
-  --clear-icon-color: gray;
-  --clear-icon-width: 24px;
+  display: inline-block;
   position: relative;
 
   &__input {
-    padding-right: var(--clear-icon-width);
+    padding-right: 24px;
   }
 
   &__clear {
@@ -14,9 +13,10 @@
     right: 0px;
     display: flex;
     justify-content: center;
-    width: var(--clear-icon-width);
+    align-items: center;
+    width: 24px;
     height: 100%;
-    color: var(--clear-icon-color);
+    color: gray;
     font-size: 16px;
     cursor: pointer;
   }
