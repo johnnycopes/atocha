@@ -1,0 +1,23 @@
+:host {
+  display: block;
+}
+
+:host-context(.territory) {
+  background: #a3f4a8;
+}
+
+:host-context(.building) {
+  background: #f1f176;
+}
+
+:host-context(.character) {
+  background: #b5e9f5;
+}
+
+:host-context(.venture) {
+  background: #e0c9ed;
+}
+
+.prop {
+  color: #4d4b49;
+}

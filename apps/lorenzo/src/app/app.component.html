@@ -24,6 +24,8 @@
           class="card leader"
           [name]="leader.name"
           [requirement]="leader.requirement"
+          [ability]="leader.ability"
+          [type]="leader.type"
         ></li>
         <li *ngIf="!vm.filteredLeaders.length">
           No matching cards
@@ -43,37 +45,9 @@
       >
         <li *ngFor="let development of vm.filteredDevelopments; trackBy: developmentTrackByFn"
           class="card"
-          [class.card--territory]="development.type === 'territory'"
-          [class.card--building]="development.type === 'building'"
-          [class.card--character]="development.type === 'character'"
-          [class.card--venture]="development.type === 'venture'"
-        >
-          <h4>{{ development.id }}</h4>
-          <p>
-            <span class="prop">
-              Type:
-            </span>
-            {{ development.type }}
-          </p>
-          <p *ngIf="development.cost">
-            <span class="prop">
-              Cost:
-            </span>
-            {{ development.cost }}
-          </p>
-          <p *ngIf="development.immediateEffect">
-            <span class="prop">
-              Immediate effect:
-            </span>
-            {{ development.immediateEffect }}
-          </p>
-          <p *ngIf="development.permanentEffect">
-            <span class="prop">
-              Permanent effect:
-            </span>
-            {{ development.permanentEffect }}
-          </p>
-        </li>
+          ui-development
+          [data]="development"
+        ></li>
         <li *ngIf="!vm.filteredDevelopments.length">
           No matching cards
         </li>

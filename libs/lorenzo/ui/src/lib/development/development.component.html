@@ -1,0 +1,27 @@
+<ng-container *ngIf="data">
+  <h4>{{ data.id }}</h4>
+  <p>
+    <span class="prop">
+      Type:
+    </span>
+    {{ data.type }}
+  </p>
+  <p *ngIf="data.cost">
+    <span class="prop">
+      Cost:
+    </span>
+    {{ data.cost }}
+  </p>
+  <p *ngIf="data.immediateEffect">
+    <span class="prop">
+      Immediate effect:
+    </span>
+    {{ data.immediateEffect }}
+  </p>
+  <p *ngIf="data.permanentEffect">
+    <span class="prop">
+      Permanent effect:
+    </span>
+    {{ data.permanentEffect }}
+  </p>
+</ng-container>
