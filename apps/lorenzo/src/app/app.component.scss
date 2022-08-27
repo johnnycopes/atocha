@@ -21,20 +21,7 @@
   }
 
   .search {
-    position: relative;
     width: 100%;
-
-    input {
-      width: 100%;
-      padding-right: 58px;
-    }
-
-    .clear {
-      position: absolute;
-      right: 8px;
-      top: 50%;
-      transform: translateY(-50%);
-    }
   }
 }
 
