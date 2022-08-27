@@ -1,0 +1,23 @@
+.core-search-input {
+  --clear-icon-color: gray;
+  --clear-icon-width: 24px;
+  position: relative;
+
+  &__input {
+    padding-right: var(--clear-icon-width);
+  }
+
+  &__clear {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0px;
+    display: flex;
+    justify-content: center;
+    width: var(--clear-icon-width);
+    height: 100%;
+    color: var(--clear-icon-color);
+    font-size: 16px;
+    cursor: pointer;
+  }
+}
