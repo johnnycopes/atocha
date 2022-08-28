@@ -18,14 +18,4 @@ import { Development } from '@atocha/lorenzo/util';
 })
 export class DevelopmentComponent {
   @Input() data: Development | undefined;
-
-  @HostBinding('class')
-  get hostClasses(): Record<string, boolean> {
-    return {
-      territory: this.data?.type === 'territory',
-      building: this.data?.type === 'building',
-      character: this.data?.type === 'character',
-      venture: this.data?.type === 'venture',
-    };
-  }
 }

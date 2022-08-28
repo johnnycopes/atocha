@@ -1,27 +1,25 @@
 <ng-container *ngIf="data">
-  <h4>{{ data.id }}</h4>
-  <p>
-    <span class="prop">
-      Type:
+  <div class="section header"
+    [class.territory]="data.type === 'territory'"
+    [class.building]="data.type === 'building'"
+    [class.character]="data.type === 'character'"
+    [class.venture]="data.type === 'venture'"
+  >
+    <h4 class="number">
+      #{{ data.id }}
+    </h4>
+    | {{ data.cost ? 'Costs ' + data.cost : 'Free' }}
+  </div>
+  <p class="section immediate">
+    <span class="label effect">
+      Immediate:
     </span>
-    {{ data.type }}
+    {{ data.immediateEffect ?? 'None' }}
   </p>
-  <p *ngIf="data.cost">
-    <span class="prop">
-      Cost:
+  <p class="section permanent">
+    <span class="label effect">
+      Permanent:
     </span>
-    {{ data.cost }}
-  </p>
-  <p *ngIf="data.immediateEffect">
-    <span class="prop">
-      Immediate effect:
-    </span>
-    {{ data.immediateEffect }}
-  </p>
-  <p *ngIf="data.permanentEffect">
-    <span class="prop">
-      Permanent effect:
-    </span>
-    {{ data.permanentEffect }}
+    {{ data.permanentEffect ?? 'None' }}
   </p>
 </ng-container>

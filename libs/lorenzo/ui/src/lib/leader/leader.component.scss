@@ -1,27 +1,30 @@
 :host {
   display: block;
-  background: #ddd5cb;
 }
 
 .section {
-  padding: 4px 8px;
+  padding: 4px;
+}
+
+.label {
+  font-style: italic;
 }
 
 .name {
   background: #de830c;
   font-weight: 700;
+  border-bottom: 1px solid #232221;
+}
+
+.requirement {
+  background: #ddd5cb;
 }
 
 .ability {
   color: #fff;
   background: #654f32;
-
-  .type {
-    color: #ddd5cb;
-    font-style: italic;
-  }
 }
 
-.prop {
-  color: #4d4b49;
+.type {
+  color: #ddd5cb;
 }

@@ -2,22 +2,47 @@
   display: block;
 }
 
-:host-context(.territory) {
-  background: #a3f4a8;
+.section {
+  padding: 4px;
 }
 
-:host-context(.building) {
-  background: #f1f176;
+.label {
+  font-style: italic;
 }
 
-:host-context(.character) {
-  background: #b5e9f5;
+.header {
+  border-bottom: 1px solid #232221;
+
+  &.territory {
+    background: #4ae262;
+  }
+
+  &.building {
+    background: #ede021;
+  }
+
+  &.character {
+    background: #6bcce2;
+  }
+
+  &.venture {
+    background: #c679f1;
+  }
 }
 
-:host-context(.venture) {
-  background: #e0c9ed;
+.number {
+  display: inline-block;
+  font-weight: 700;
 }
 
-.prop {
-  color: #4d4b49;
+.effect {
+  color: #654f32;
+}
+
+.immediate {
+  background: #c8c1b7;
+}
+
+.permanent {
+  background: #ddd5cb;
 }
