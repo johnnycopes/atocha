@@ -1,0 +1,19 @@
+<div *ngIf="data"
+  class="card"
+>
+  <h4 class="header name">
+    {{ data.name }}
+  </h4>
+  <p class="section requirement">
+    <span class="label requires">
+      Requires:
+    </span>
+    {{ data.requirement }}
+  </p>
+  <p class="section ability">
+    <span class="label type">
+      {{ data.type | titlecase }}:
+    </span>
+    {{ data.ability }}
+  </p>
+</div>

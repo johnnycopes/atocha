@@ -1,0 +1,27 @@
+<div *ngIf="data"
+  class="card"
+>
+  <div class="header"
+    [class.territory]="data.type === 'territory'"
+    [class.building]="data.type === 'building'"
+    [class.character]="data.type === 'character'"
+    [class.venture]="data.type === 'venture'"
+  >
+    <h4 class="number">
+      #{{ data.id }}
+    </h4>
+    | {{ data.cost ? 'Costs ' + data.cost : 'Free' }}
+  </div>
+  <p class="section immediate">
+    <span class="label effect">
+      Immediate:
+    </span>
+    {{ data.immediateEffect ?? 'None' }}
+  </p>
+  <p class="section permanent">
+    <span class="label effect">
+      Permanent:
+    </span>
+    {{ data.permanentEffect ?? 'None' }}
+  </p>
+</div>
