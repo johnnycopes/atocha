@@ -1,0 +1,56 @@
+.controls {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 48px;
+  padding: 16px;
+  background: var(--font-color);
+  color: #fff;
+
+  .section {
+    max-width: 768px;
+  }
+
+  h1 {
+    font-size: 16px;
+    margin-right: 16px;
+  }
+
+  .search {
+    width: 100%;
+  }
+}
+
+.content {
+  padding: 16px;
+  overflow: auto;
+  height: calc(100% - 48px);
+}
+
+.section {
+  margin-bottom: 16px;
+
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+
+    h2 {
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    button {
+      margin-left: 16px;
+    }
+  }
+
+  .cards {
+    margin: 0;
+
+    & > li {
+      margin-bottom: 16px;
+    }
+  }
+}

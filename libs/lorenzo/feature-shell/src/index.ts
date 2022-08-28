@@ -1,1 +1,1 @@
-export * from './lib/lorenzo-feature-shell.module';
+export * from './lib/shell/shell.component';

@@ -1,7 +1,7 @@
 {
   "projectType": "library",
   "sourceRoot": "libs/lorenzo/feature-shell/src",
-  "prefix": "atocha",
+  "prefix": "app",
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
@@ -21,5 +21,5 @@
       }
     }
   },
-  "tags": ["scope:lorenzo tag:feature"]
+  "tags": ["scope:lorenzo", "type:feature"]
 }
