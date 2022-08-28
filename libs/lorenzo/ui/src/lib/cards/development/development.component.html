@@ -1,5 +1,7 @@
-<ng-container *ngIf="data">
-  <div class="section header"
+<div *ngIf="data"
+  class="card"
+>
+  <div class="header"
     [class.territory]="data.type === 'territory'"
     [class.building]="data.type === 'building'"
     [class.character]="data.type === 'character'"
@@ -22,4 +24,4 @@
     </span>
     {{ data.permanentEffect ?? 'None' }}
   </p>
-</ng-container>
+</div>

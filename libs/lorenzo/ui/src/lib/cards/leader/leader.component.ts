@@ -8,7 +8,7 @@ import { Leader } from '@atocha/lorenzo/util';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './leader.component.html',
-  styleUrls: ['./leader.component.scss'],
+  styleUrls: ['../cards.scss', './leader.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LeaderComponent {

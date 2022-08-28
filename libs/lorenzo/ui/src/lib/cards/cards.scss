@@ -1,0 +1,19 @@
+.card {
+  border-radius: var(--border-radius);
+
+  .header {
+    padding: 4px;
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+  }
+  .section {
+    padding: 4px;
+
+    &:last-of-type {
+      border-radius: 0 0 var(--border-radius) var(--border-radius);
+    }
+  }
+
+  .label {
+    font-style: italic;
+  }
+}

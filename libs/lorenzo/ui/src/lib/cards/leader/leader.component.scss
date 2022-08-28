@@ -2,22 +2,22 @@
   display: block;
 }
 
-.section {
-  padding: 4px;
-}
-
-.label {
-  font-style: italic;
-}
-
 .name {
   background: var(--leader-name);
   font-weight: 700;
   border-bottom: 1px solid var(--font-color);
 }
 
+.requires {
+  color: var(--leader-ability);
+}
+
 .requirement {
   background: var(--card-bg-light);
+}
+
+.type {
+  color: var(--card-bg-light);
 }
 
 .ability {
@@ -25,6 +25,3 @@
   background: var(--leader-ability);
 }
 
-.type {
-  color: var(--card-bg-light);
-}

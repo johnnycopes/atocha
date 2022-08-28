@@ -1,7 +1,6 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  HostBinding,
   Input,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -13,7 +12,7 @@ import { Development } from '@atocha/lorenzo/util';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './development.component.html',
-  styleUrls: ['./development.component.scss'],
+  styleUrls: ['../cards.scss', './development.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DevelopmentComponent {
