@@ -1,0 +1,10 @@
+:host {
+  display: block;
+  height: 100%;
+}
+
+.content {
+  padding: 16px;
+  overflow: auto;
+  height: calc(100% - 48px);
+}

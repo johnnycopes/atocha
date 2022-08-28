@@ -1,1 +1,1 @@
-export * from './lib/lorenzo-feature-browse.module';
+export * from './lib/browse/browse.component';

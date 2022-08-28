@@ -1,5 +1,4 @@
-.content {
-  padding: 16px;
-  overflow: auto;
-  height: calc(100% - 48px);
+:host {
+  display: block;
+  height: 100%;
 }
