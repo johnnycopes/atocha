@@ -7,14 +7,16 @@ import { SearchInputComponent } from '@atocha/core/ui';
 import { includes } from '@atocha/core/util';
 import { LEADERS, DEVELOPMENTS } from '@atocha/lorenzo/util';
 import { CardsComponent } from '../cards/cards.component';
+import { HeaderComponent } from '../header/header.component';
 
 @Component({
   standalone: true,
   selector: 'app-shell',
   imports: [
-    CommonModule,
-    RouterModule,
     CardsComponent,
+    CommonModule,
+    HeaderComponent,
+    RouterModule,
     SearchInputComponent,
   ],
   templateUrl: './shell.component.html',
@@ -37,11 +39,7 @@ export class ShellComponent {
     }))
   );
 
-  search(text: string): void {
+  onSearch(text: string): void {
     this._textSubject.next(text);
-  }
-
-  clear(): void {
-    this._textSubject.next('');
   }
 }
