@@ -19,7 +19,7 @@ body {
   margin: 0;
   font-family: 'Merriweather', sans-serif;
   font-size: 16px;
-  color: #232221;
+  color: var(--font-color);
 }
 
 input {
@@ -40,6 +40,20 @@ p {
 ul {
   padding: 0;
   list-style: none;
+}
+
+// Global CSS variables
+
+:root {
+  --font-color: #232221;
+  --card-bg-light: #ddd5cb;
+  --card-bg-dark: #c8c1b7;
+  --leader-name: #de830c;
+  --leader-ability: #654f32;
+  --territory: #4ae262;
+  --building: #ede021;
+  --character: #6bcce2;
+  --venture: #c679f1;
 }
 
 // Component styling overrides

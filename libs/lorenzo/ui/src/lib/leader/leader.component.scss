@@ -11,20 +11,20 @@
 }
 
 .name {
-  background: #de830c;
+  background: var(--leader-name);
   font-weight: 700;
-  border-bottom: 1px solid #232221;
+  border-bottom: 1px solid var(--font-color);
 }
 
 .requirement {
-  background: #ddd5cb;
+  background: var(--card-bg-light);
 }
 
 .ability {
   color: #fff;
-  background: #654f32;
+  background: var(--leader-ability);
 }
 
 .type {
-  color: #ddd5cb;
+  color: var(--card-bg-light);
 }

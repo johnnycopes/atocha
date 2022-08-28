@@ -11,22 +11,22 @@
 }
 
 .header {
-  border-bottom: 1px solid #232221;
+  border-bottom: 1px solid var(--font-color);
 
   &.territory {
-    background: #4ae262;
+    background: var(--territory);
   }
 
   &.building {
-    background: #ede021;
+    background: var(--building);
   }
 
   &.character {
-    background: #6bcce2;
+    background: var(--character);
   }
 
   &.venture {
-    background: #c679f1;
+    background: var(--venture);
   }
 }
 
@@ -40,9 +40,9 @@
 }
 
 .immediate {
-  background: #c8c1b7;
+  background: var(--card-bg-dark);
 }
 
 .permanent {
-  background: #ddd5cb;
+  background: var(--card-bg-light);
 }
