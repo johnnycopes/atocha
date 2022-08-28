@@ -1,21 +1,20 @@
+import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { BehaviorSubject, distinctUntilChanged, combineLatest, of, map } from 'rxjs';
 
-import { SearchInputComponent, trackByFactory } from '@atocha/core/ui';
+import { SearchInputComponent } from '@atocha/core/ui';
 import { includes } from '@atocha/core/util';
-import { DevelopmentComponent, LeaderComponent } from '@atocha/lorenzo/ui';
-import { LEADERS, DEVELOPMENTS, Leader, Development } from '@atocha/lorenzo/util';
-import { CommonModule } from '@angular/common';
+import { LEADERS, DEVELOPMENTS } from '@atocha/lorenzo/util';
+import { CardsComponent } from '../cards/cards.component';
 
 @Component({
   standalone: true,
   selector: 'app-shell',
   imports: [
     CommonModule,
-    DevelopmentComponent,
-    LeaderComponent,
     RouterModule,
+    CardsComponent,
     SearchInputComponent,
   ],
   templateUrl: './shell.component.html',
@@ -25,8 +24,6 @@ import { CommonModule } from '@angular/common';
 export class ShellComponent {
   private _textSubject = new BehaviorSubject<string>('');
   text$ = this._textSubject.pipe(distinctUntilChanged());
-  showLeaders = true;
-  showDevelopments = true;
   readonly leaders = LEADERS;
   readonly developments = DEVELOPMENTS;
 
@@ -39,9 +36,6 @@ export class ShellComponent {
       ),
     }))
   );
-
-  leaderTrackByFn = trackByFactory<Leader>(({ name }) => name);
-  developmentTrackByFn = trackByFactory<Development>(({ id }) => id.toString());
 
   search(text: string): void {
     this._textSubject.next(text);
