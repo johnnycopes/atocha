@@ -1,6 +1,25 @@
 :host {
   display: block;
-  background: #e3c297;
+  background: #ddd5cb;
+}
+
+.section {
+  padding: 4px 8px;
+}
+
+.name {
+  background: #de830c;
+  font-weight: 700;
+}
+
+.ability {
+  color: #fff;
+  background: #654f32;
+
+  .type {
+    color: #ddd5cb;
+    font-style: italic;
+  }
 }
 
 .prop {

@@ -1,11 +1,14 @@
 <ng-container *ngIf="data">
-  <h4>{{ data.name }}</h4>
-  <p>
-    <span class="prop">Requirement: </span>
+  <h4 class="section name">
+    {{ data.name }}
+  </h4>
+  <p class="section requirement">
     {{ data.requirement }}
   </p>
-  <p>
-    <span class="prop">Ability (<span class="leader-ability">{{ data.type }}</span>): </span>
+  <p class="section ability">
+    <span class="type">
+      {{ data.type | titlecase }}:
+    </span>
     {{ data.ability }}
   </p>
 </ng-container>
