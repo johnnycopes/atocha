@@ -21,7 +21,6 @@
       >
         <li ui-leader
           *ngFor="let leader of vm.filteredLeaders; trackBy: leaderTrackByFn"
-          class="card leader"
           [data]="leader"
         ></li>
         <li *ngIf="!vm.filteredLeaders.length">
@@ -42,7 +41,6 @@
       >
         <li ui-development
           *ngFor="let development of vm.filteredDevelopments; trackBy: developmentTrackByFn"
-          class="card"
           [data]="development"
         ></li>
         <li *ngIf="!vm.filteredDevelopments.length">
