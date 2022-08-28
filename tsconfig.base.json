@@ -32,6 +32,9 @@
       ],
       "@atocha/globetrotter/ui": ["libs/globetrotter/ui/src/index.ts"],
       "@atocha/globetrotter/util": ["libs/globetrotter/util/src/index.ts"],
+      "@atocha/lorenzo/feature-browse": [
+        "libs/lorenzo/feature-browse/src/index.ts"
+      ],
       "@atocha/lorenzo/feature-shell": [
         "libs/lorenzo/feature-shell/src/index.ts"
       ],
