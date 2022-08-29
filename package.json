@@ -16,6 +16,11 @@
     "mm:reset": "node ./firebase/scripts/dev/delete-all-accounts.js",
     "lo:deploy-dev": "nx build lorenzo && cd ./dist/apps/lorenzo && mv index.html 200.html && surge . --domain=https://lorenzo-ref.surge.sh"
   },
+  "nx": {
+    "implicitDependencies": {
+      ".github/workflows/ci.yml": "*"
+    }
+  },
   "private": true,
   "devDependencies": {
     "@angular-devkit/build-angular": "14.1.1",
