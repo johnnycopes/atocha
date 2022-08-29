@@ -4,12 +4,12 @@
     (textChange)="onSearch($event)"
   ></app-header>
 
-  <div class="content">
+  <main class="content container">
     <app-cards
       [leaders]="vm.filteredLeaders"
       [developments]="vm.filteredDevelopments"
-      [totalLeaders]="leaders.length"
-      [totalDevelopments]="developments.length"
+      [totalLeaders]="vm.totalLeaders"
+      [totalDevelopments]="vm.totalDevelopments"
     ></app-cards>
-  </div>
+  </main>
 </ng-container>
