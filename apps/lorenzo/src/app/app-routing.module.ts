@@ -12,9 +12,9 @@ const routes: Routes = [
       {
         path: '',
         component: BrowseComponent,
-      }
+      },
     ],
-  }
+  },
 ];
 
 @NgModule({

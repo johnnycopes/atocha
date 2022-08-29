@@ -1,5 +1,11 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { BehaviorSubject, distinctUntilChanged, combineLatest, of, map } from 'rxjs';
+import {
+  BehaviorSubject,
+  distinctUntilChanged,
+  combineLatest,
+  of,
+  map,
+} from 'rxjs';
 
 import { includes } from '@atocha/core/util';
 import { LEADERS, DEVELOPMENTS } from '@atocha/lorenzo/util';

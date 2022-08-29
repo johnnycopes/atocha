@@ -5,10 +5,7 @@ import { RouterModule } from '@angular/router';
 @Component({
   standalone: true,
   selector: 'app-shell',
-  imports: [
-    CommonModule,
-    RouterModule,
-  ],
+  imports: [CommonModule, RouterModule],
   templateUrl: './shell.component.html',
   styleUrls: ['./shell.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
