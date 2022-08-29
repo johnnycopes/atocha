@@ -1,6 +1,10 @@
 <div class="section leaders">
   <div class="header">
-    <h2>Leader Cards ({{ leaders.length }} / {{ totalLeaders }})</h2>
+    <h2>Leader Cards
+      <span class="count">
+        ({{ leaders.length }} / {{ totalLeaders }})
+      </span>
+    </h2>
     <button (click)="showLeaders = !showLeaders">
       {{ showLeaders ? 'Collapse' : 'Expand' }}
     </button>
@@ -20,7 +24,11 @@
 
 <div class="section developments">
   <div class="header">
-    <h2>Development Cards ({{ developments.length }} / {{ totalDevelopments }})</h2>
+    <h2>Development Cards
+      <span class="count">
+        ({{ developments.length }} / {{ totalDevelopments }})
+      </span>
+    </h2>
     <button (click)="showDevelopments = !showDevelopments">
       {{ showDevelopments ? 'Collapse' : 'Expand' }}
     </button>
