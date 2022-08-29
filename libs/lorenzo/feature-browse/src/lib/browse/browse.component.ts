@@ -1,17 +1,16 @@
+import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import {
   BehaviorSubject,
   distinctUntilChanged,
   combineLatest,
-  of,
   map,
 } from 'rxjs';
 
 import { includes } from '@atocha/core/util';
-import { LEADERS, DEVELOPMENTS } from '@atocha/lorenzo/util';
+import { CardService } from '@atocha/lorenzo/data-access';
 import { CardsComponent } from './cards/cards.component';
 import { HeaderComponent } from './header/header.component';
-import { CommonModule } from '@angular/common';
 
 @Component({
   standalone: true,
@@ -24,16 +23,22 @@ import { CommonModule } from '@angular/common';
 export class BrowseComponent {
   private _textSubject = new BehaviorSubject<string>('');
   text$ = this._textSubject.pipe(distinctUntilChanged());
-  readonly leaders = LEADERS;
-  readonly developments = DEVELOPMENTS;
 
-  vm$ = combineLatest([this.text$, of(LEADERS), of(DEVELOPMENTS)]).pipe(
+  constructor(private _cardService: CardService) {}
+
+  vm$ = combineLatest([
+    this.text$,
+    this._cardService.leaders$,
+    this._cardService.developments$,
+  ]).pipe(
     map(([text, leaders, developments]) => ({
       text,
       filteredLeaders: leaders.filter(({ name }) => includes([name], text)),
       filteredDevelopments: developments.filter(({ id }) =>
         includes([id.toString()], text)
       ),
+      totalLeaders: leaders.length,
+      totalDevelopments: developments.length,
     }))
   );
 
