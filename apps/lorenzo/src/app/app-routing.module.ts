@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { BrowseComponent } from '@atocha/lorenzo/feature-browse';
+import { BrowseComponent, FavoritesComponent, SettingsComponent } from '@atocha/lorenzo/feature-browse';
 import { ShellComponent } from '@atocha/lorenzo/feature-shell';
 
 const routes: Routes = [
@@ -13,6 +13,14 @@ const routes: Routes = [
         path: '',
         component: BrowseComponent,
       },
+      {
+        path: 'favorites',
+        component: FavoritesComponent
+      },
+      {
+        path: 'settings',
+        component: SettingsComponent,
+      }
     ],
   },
 ];
