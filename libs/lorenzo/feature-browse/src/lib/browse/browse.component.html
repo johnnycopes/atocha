@@ -1,0 +1,15 @@
+<ng-container *ngIf="vm$ | async as vm">
+  <app-header
+    [text]="vm.text"
+    (textChange)="onSearch($event)"
+  ></app-header>
+
+  <div class="content">
+    <app-cards
+      [leaders]="vm.filteredLeaders"
+      [developments]="vm.filteredDevelopments"
+      [totalLeaders]="leaders.length"
+      [totalDevelopments]="developments.length"
+    ></app-cards>
+  </div>
+</ng-container>

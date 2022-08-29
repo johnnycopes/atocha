@@ -1,18 +1,12 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { SearchInputComponent } from '@atocha/core/ui';
-import { DevelopmentComponent, LeaderComponent } from '@atocha/lorenzo/ui';
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [
-    BrowserModule,
-    DevelopmentComponent,
-    LeaderComponent,
-    SearchInputComponent,
-  ],
+  imports: [AppRoutingModule, BrowserModule],
   providers: [],
   bootstrap: [AppComponent],
 })
