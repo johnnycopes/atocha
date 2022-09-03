@@ -1,22 +1,50 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { faStar as faStarFull } from '@fortawesome/free-solid-svg-icons';
+import { faStar as faStarEmpty } from '@fortawesome/free-regular-svg-icons';
 
 @Component({
   standalone: true,
   selector: 'ui-card-header',
-  imports: [CommonModule],
+  imports: [CommonModule, FontAwesomeModule],
   template: `
-    <ng-content></ng-content>
+    <div>
+      <ng-content></ng-content>
+    </div>
+    <fa-icon *ngIf="canFavorite"
+      class="favorite"
+      [icon]="icon"
+    ></fa-icon>
   `,
   styles: [`
     :host {
-      display: block;
+      display: flex;
+      justify-content: space-between;
       padding: 4px;
       border-radius: var(--border-radius) var(--border-radius) 0 0;
       border-bottom: 1px solid var(--font-color);
+    }
+
+    .favorite {
+      display: flex;
+      justify-content: flex-end;
+      width: 40px;
+      padding-top: 2px;
     }
   `],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CardHeaderComponent {
+  @Input() canFavorite = false;
+
+  @Input()
+  set favorite(value: boolean) {
+    this.icon = value ? faStarFull : faStarEmpty;
+  };
+
+  @Output() favoriteChange = new EventEmitter<boolean>();
+
+  icon = faStarFull;
 }

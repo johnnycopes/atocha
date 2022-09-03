@@ -1,7 +1,9 @@
 <ui-card *ngIf="data">
-  <ui-card-header class="name">
+  <ui-card-header class="name"
+    [canFavorite]="canFavorite"
+  >
     <h4>
-      {{ data.name }} | {{ canFavorite }}
+      {{ data.name }}
     </h4>
   </ui-card-header>
 

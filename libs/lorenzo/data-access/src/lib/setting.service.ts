@@ -7,7 +7,7 @@ import { Settings } from '@atocha/lorenzo/util';
 @Injectable({ providedIn: 'root' })
 export class SettingService {
   private _settings = new BehaviorSubject<Settings>({
-    showFavorites: false
+    showFavorites: true
   });
 
   state$ = this._settings.pipe(
