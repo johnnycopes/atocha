@@ -1,14 +1,17 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
 import { Development } from '@atocha/lorenzo/util';
+import { CardComponent } from '../card/card.component';
+import { CardHeaderComponent } from '../card/card-header.component';
 
 @Component({
   // eslint-disable-next-line @angular-eslint/component-selector
   selector: '[ui-development]',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CardComponent, CardHeaderComponent, CommonModule],
   templateUrl: './development.component.html',
-  styleUrls: ['../cards.scss', './development.component.scss'],
+  styleUrls: ['./development.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DevelopmentComponent {

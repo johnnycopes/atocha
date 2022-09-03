@@ -1,19 +1,20 @@
-<div *ngIf="data"
-  class="card"
->
-  <h4 class="header name">
-    {{ data.name }} | {{ canFavorite }}
-  </h4>
-  <p class="section requirement">
-    <span class="label requires">
+<ui-card *ngIf="data">
+  <ui-card-header class="name">
+    <h4>
+      {{ data.name }} | {{ canFavorite }}
+    </h4>
+  </ui-card-header>
+
+  <p class="ui-card-section requirement">
+    <span class="ui-card-label requires">
       Requires:
     </span>
     {{ data.requirement }}
   </p>
-  <p class="section ability">
-    <span class="label type">
+  <p class="ui-card-section ability">
+    <span class="ui-card-label type">
       {{ data.type | titlecase }}:
     </span>
     {{ data.ability }}
   </p>
-</div>
+</ui-card>

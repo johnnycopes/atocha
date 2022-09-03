@@ -2,24 +2,20 @@
   display: block;
 }
 
-.header {
-  border-bottom: 1px solid var(--font-color);
+.territory {
+  background: var(--territory);
+}
 
-  &.territory {
-    background: var(--territory);
-  }
+.building {
+  background: var(--building);
+}
 
-  &.building {
-    background: var(--building);
-  }
+.character {
+  background: var(--character);
+}
 
-  &.character {
-    background: var(--character);
-  }
-
-  &.venture {
-    background: var(--venture);
-  }
+.venture {
+  background: var(--venture);
 }
 
 .number {

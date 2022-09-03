@@ -1,7 +1,5 @@
-<div *ngIf="data"
-  class="card"
->
-  <div class="header"
+<ui-card *ngIf="data">
+  <ui-card-header
     [class.territory]="data.type === 'territory'"
     [class.building]="data.type === 'building'"
     [class.character]="data.type === 'character'"
@@ -11,17 +9,18 @@
       #{{ data.id }}
     </h4>
     | {{ data.cost ? 'Costs ' + data.cost : 'Free' }} | {{ canFavorite }}
-  </div>
-  <p class="section immediate">
-    <span class="label effect">
+  </ui-card-header>
+
+  <p class="ui-card-section immediate">
+    <span class="ui-card-label effect">
       Immediate:
     </span>
     {{ data.immediateEffect ?? 'None' }}
   </p>
-  <p class="section permanent">
-    <span class="label effect">
+  <p class="ui-card-section permanent">
+    <span class="ui-card-label effect">
       Permanent:
     </span>
     {{ data.permanentEffect ?? 'None' }}
   </p>
-</div>
+</ui-card>

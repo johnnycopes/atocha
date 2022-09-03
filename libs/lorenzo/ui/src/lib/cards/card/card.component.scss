@@ -1,0 +1,16 @@
+:host {
+  display: block;
+  border-radius: var(--border-radius);
+}
+
+.ui-card-section {
+  padding: 4px;
+
+  &:last-of-type {
+    border-radius: 0 0 var(--border-radius) var(--border-radius);
+  }
+}
+
+.ui-card-label {
+  font-style: italic;
+}
