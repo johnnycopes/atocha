@@ -17,7 +17,7 @@
       [data]="leader"
       [canFavorite]="showFavorites"
       [favorite]="false"
-      (favoriteChange)="onFavoriteChange(leader.name, $event)"
+      (favoriteChange)="favoriteChange.emit([leader.name, $event])"
     ></li>
     <li *ngIf="!leaders.length">
       No matching cards
@@ -44,7 +44,7 @@
       [data]="development"
       [canFavorite]="showFavorites"
       [favorite]="false"
-      (favoriteChange)="onFavoriteChange(development.id.toString(), $event)"
+      (favoriteChange)="favoriteChange.emit([development.id.toString(), $event])"
     ></li>
     <li *ngIf="!developments.length">
       No matching cards

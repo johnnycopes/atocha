@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 
 import { trackByFactory } from '@atocha/core/ui';
 import { Leader, Development } from '@atocha/lorenzo/util';
@@ -19,13 +19,11 @@ export class CardsComponent {
   @Input() developments: Development[] = [];
   @Input() totalDevelopments = 0;
   @Input() showFavorites = false;
+  @Input() favorites: string[] = [];
+  @Output() favoriteChange = new EventEmitter<[string, boolean]>();
+
   showLeaders = true;
   showDevelopments = true;
-
   leaderTrackByFn = trackByFactory<Leader>(({ name }) => name);
   developmentTrackByFn = trackByFactory<Development>(({ id }) => id.toString());
-
-  onFavoriteChange(id: string, favorite: boolean): void {
-    console.log(id, favorite);
-  }
 }

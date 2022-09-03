@@ -11,6 +11,7 @@
       [totalLeaders]="vm.totalLeaders"
       [totalDevelopments]="vm.totalDevelopments"
       [showFavorites]="vm.showFavorites"
+      (favoriteChange)="onFavoriteChange($event)"
     ></app-cards>
   </main>
 </ng-container>
