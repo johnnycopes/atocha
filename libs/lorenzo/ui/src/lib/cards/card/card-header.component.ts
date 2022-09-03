@@ -15,7 +15,8 @@ import { faStar as faStarEmpty } from '@fortawesome/free-regular-svg-icons';
     </div>
     <fa-icon *ngIf="canFavorite"
       class="favorite"
-      [icon]="icon"
+      [icon]="favorite ? favoriteIcon : notFavoriteIcon"
+      (click)="favoriteChange.emit(!favorite)"
     ></fa-icon>
   `,
   styles: [`
@@ -38,13 +39,9 @@ import { faStar as faStarEmpty } from '@fortawesome/free-regular-svg-icons';
 })
 export class CardHeaderComponent {
   @Input() canFavorite = false;
-
-  @Input()
-  set favorite(value: boolean) {
-    this.icon = value ? faStarFull : faStarEmpty;
-  };
-
+  @Input() favorite = false;
   @Output() favoriteChange = new EventEmitter<boolean>();
 
-  icon = faStarFull;
+  favoriteIcon = faStarFull;
+  notFavoriteIcon = faStarEmpty;
 }

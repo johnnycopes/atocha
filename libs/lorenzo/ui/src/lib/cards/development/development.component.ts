@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { Development } from '@atocha/lorenzo/util';
@@ -17,4 +17,6 @@ import { CardHeaderComponent } from '../card/card-header.component';
 export class DevelopmentComponent {
   @Input() data: Development | undefined;
   @Input() canFavorite = false;
+  @Input() favorite = false;
+  @Output() favoriteChange = new EventEmitter<boolean>();
 }

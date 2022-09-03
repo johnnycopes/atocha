@@ -16,6 +16,8 @@
       *ngFor="let leader of leaders; trackBy: leaderTrackByFn"
       [data]="leader"
       [canFavorite]="showFavorites"
+      [favorite]="false"
+      (favoriteChange)="onFavoriteChange(leader.name, $event)"
     ></li>
     <li *ngIf="!leaders.length">
       No matching cards
@@ -41,6 +43,8 @@
       *ngFor="let development of developments; trackBy: developmentTrackByFn"
       [data]="development"
       [canFavorite]="showFavorites"
+      [favorite]="false"
+      (favoriteChange)="onFavoriteChange(development.id.toString(), $event)"
     ></li>
     <li *ngIf="!developments.length">
       No matching cards

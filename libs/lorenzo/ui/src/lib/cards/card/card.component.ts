@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, Input, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, ViewEncapsulation } from '@angular/core';
 
 import { CardHeaderComponent } from './card-header.component';
 
@@ -14,4 +14,6 @@ import { CardHeaderComponent } from './card-header.component';
 })
 export class CardComponent {
   @Input() canFavorite = false;
+  @Input() favorite = false;
+  @Output() favoriteChange = new EventEmitter<boolean>();
 }

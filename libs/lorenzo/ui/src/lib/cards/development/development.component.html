@@ -5,6 +5,8 @@
     [class.character]="data.type === 'character'"
     [class.venture]="data.type === 'venture'"
     [canFavorite]="canFavorite"
+    [favorite]="favorite"
+    (favoriteChange)="favoriteChange.emit($event)"
   >
     <h4 class="number">
       #{{ data.id }}

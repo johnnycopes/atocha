@@ -24,4 +24,8 @@ export class CardsComponent {
 
   leaderTrackByFn = trackByFactory<Leader>(({ name }) => name);
   developmentTrackByFn = trackByFactory<Development>(({ id }) => id.toString());
+
+  onFavoriteChange(id: string, favorite: boolean): void {
+    console.log(id, favorite);
+  }
 }

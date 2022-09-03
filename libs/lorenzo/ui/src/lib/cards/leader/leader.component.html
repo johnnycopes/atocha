@@ -1,6 +1,8 @@
 <ui-card *ngIf="data">
   <ui-card-header class="name"
     [canFavorite]="canFavorite"
+    [favorite]="favorite"
+    (favoriteChange)="favoriteChange.emit($event)"
   >
     <h4>
       {{ data.name }}
