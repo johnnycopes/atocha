@@ -10,7 +10,7 @@
     <h4 class="number">
       #{{ data.id }}
     </h4>
-    | {{ data.cost ? 'Costs ' + data.cost : 'Free' }}
+    | {{ data.cost ? 'Costs ' + data.cost : 'Free' }} | {{ canFavorite }}
   </div>
   <p class="section immediate">
     <span class="label effect">

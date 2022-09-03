@@ -18,6 +18,7 @@ export class CardsComponent {
   @Input() totalLeaders = 0;
   @Input() developments: Development[] = [];
   @Input() totalDevelopments = 0;
+  @Input() showFavorites = false;
   showLeaders = true;
   showDevelopments = true;
 

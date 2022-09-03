@@ -13,4 +13,5 @@ import { Leader } from '@atocha/lorenzo/util';
 })
 export class LeaderComponent {
   @Input() data: Leader | undefined;
+  @Input() canFavorite = false;
 }

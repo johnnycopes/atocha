@@ -15,6 +15,7 @@
     <li ui-leader
       *ngFor="let leader of leaders; trackBy: leaderTrackByFn"
       [data]="leader"
+      [canFavorite]="showFavorites"
     ></li>
     <li *ngIf="!leaders.length">
       No matching cards
@@ -39,6 +40,7 @@
     <li ui-development
       *ngFor="let development of developments; trackBy: developmentTrackByFn"
       [data]="development"
+      [canFavorite]="showFavorites"
     ></li>
     <li *ngIf="!developments.length">
       No matching cards

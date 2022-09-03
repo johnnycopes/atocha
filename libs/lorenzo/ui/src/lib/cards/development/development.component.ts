@@ -13,4 +13,5 @@ import { Development } from '@atocha/lorenzo/util';
 })
 export class DevelopmentComponent {
   @Input() data: Development | undefined;
+  @Input() canFavorite = false;
 }
