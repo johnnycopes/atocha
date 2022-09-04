@@ -15,7 +15,6 @@
     <li ui-leader
       *ngFor="let leader of leaders; trackBy: leaderTrackByFn"
       [data]="leader"
-      [canFavorite]="showFavorites"
       [favorite]="!!favoriteLeaders.get(leader.name)"
       (favoriteChange)="favoriteLeaderChange.emit([leader.name, $event])"
     ></li>
@@ -42,7 +41,6 @@
     <li ui-development
       *ngFor="let development of developments; trackBy: developmentTrackByFn"
       [data]="development"
-      [canFavorite]="showFavorites"
       [favorite]="!!favoriteDevelopments.get(development.id.toString())"
       (favoriteChange)="favoriteDevelopmentChange.emit([development.id.toString(), $event])"
     ></li>

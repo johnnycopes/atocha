@@ -8,7 +8,7 @@ import {
 } from 'rxjs';
 
 import { includes } from '@atocha/core/util';
-import { CardService, SettingService } from '@atocha/lorenzo/data-access';
+import { CardService } from '@atocha/lorenzo/data-access';
 import { CardsComponent } from './cards/cards.component';
 import { HeaderComponent } from './header/header.component';
 
@@ -24,10 +24,7 @@ export class BrowseComponent {
   private _textSubject = new BehaviorSubject<string>('');
   text$ = this._textSubject.pipe(distinctUntilChanged());
 
-  constructor(
-    private _cardService: CardService,
-    private _settingService: SettingService,
-  ) {}
+  constructor(private _cardService: CardService) {}
 
   vm$ = combineLatest([
     this.text$,
@@ -35,9 +32,8 @@ export class BrowseComponent {
     this._cardService.developments$,
     this._cardService.favoriteLeaders$,
     this._cardService.favoriteDevelopments$,
-    this._settingService.state$,
   ]).pipe(
-    map(([text, leaders, developments, favoriteLeaders, favoriteDevelopments, { showFavorites }]) => ({
+    map(([text, leaders, developments, favoriteLeaders, favoriteDevelopments]) => ({
       text,
       filteredLeaders: leaders.filter(({ name }) => includes([name], text)),
       filteredDevelopments: developments.filter(({ id }) =>
@@ -47,7 +43,6 @@ export class BrowseComponent {
       totalDevelopments: developments.length,
       favoriteLeaders,
       favoriteDevelopments,
-      showFavorites,
     }))
   );
 

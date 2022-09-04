@@ -14,7 +14,6 @@ import { faStar as faStarEmpty } from '@fortawesome/free-regular-svg-icons';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CardHeaderComponent {
-  @Input() canFavorite = false;
   @Input() favorite = false;
   @Output() favoriteChange = new EventEmitter<boolean>();
   favoriteIcon = faStarFull;

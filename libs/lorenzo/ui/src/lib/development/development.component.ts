@@ -16,7 +16,6 @@ import { CardHeaderComponent } from '../card/card-header/card-header.component';
 })
 export class DevelopmentComponent {
   @Input() data: Development | undefined;
-  @Input() canFavorite = false;
   @Input() favorite = false;
   @Output() favoriteChange = new EventEmitter<boolean>();
 }
