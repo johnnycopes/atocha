@@ -6,8 +6,8 @@ import { Development, DEVELOPMENTS, Leader, LEADERS } from '@atocha/lorenzo/util
 
 @Injectable({ providedIn: 'root' })
 export class CardService {
-  private _favoriteLeaderIdsSubject = new BehaviorSubject(new Map<string, boolean>());
-  private _favoriteDevelopmentIdsSubject = new BehaviorSubject(new Map<string, boolean>());
+  private _favoriteLeaderIdsSubject = new BehaviorSubject(new Set<string>());
+  private _favoriteDevelopmentIdsSubject = new BehaviorSubject(new Set<string>());
   favoriteLeaderIds$ = this._favoriteLeaderIdsSubject.pipe(
     shareReplay({ bufferSize: 1, refCount: true }),
   );
@@ -22,13 +22,13 @@ export class CardService {
     this.favoriteLeaderIds$,
     this.leaders$,
   ]).pipe(
-    map(([ids, leaders]) => leaders.filter(leader => !!ids.get(leader.name)))
+    map(([ids, leaders]) => leaders.filter(leader => ids.has(leader.name)))
   );
   favoriteDevelopments$: Observable<readonly Development[]> = combineLatest([
     this.favoriteDevelopmentIds$,
     this.developments$,
   ]).pipe(
-    map(([ids, developments]) => developments.filter(development => !!ids.get(development.id.toString())))
+    map(([ids, developments]) => developments.filter(development => ids.has(development.id.toString())))
   );
 
   constructor() {
@@ -40,23 +40,23 @@ export class CardService {
 
   updateFavoriteLeader(id: string): void {
     this._favoriteLeaderIdsSubject.pipe(first()).subscribe(
-      favorites => this._favoriteLeaderIdsSubject.next(this._updateMap(favorites, id))
+      favorites => this._favoriteLeaderIdsSubject.next(this._updateSet(favorites, id))
     );
   }
 
   updateFavoriteDevelopment(id: string): void {
     this._favoriteDevelopmentIdsSubject.pipe(first()).subscribe(
-      favorites => this._favoriteDevelopmentIdsSubject.next(this._updateMap(favorites, id))
+      favorites => this._favoriteDevelopmentIdsSubject.next(this._updateSet(favorites, id))
     );
   }
 
-  private _updateMap(map: Map<string, boolean>, key: string): Map<string, boolean> {
-    if (map.has(key)) {
-      const newMap = new Map(map);
-      newMap.delete(key);
-      return newMap;
+  private _updateSet(set: Set<string>, key: string): Set<string> {
+    if (set.has(key)) {
+      const newSet = new Set(set);
+      newSet.delete(key);
+      return newSet;
     } else {
-      return map.set(key, true);
+      return set.add(key);
     }
   }
 }

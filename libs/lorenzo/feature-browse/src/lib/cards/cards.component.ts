@@ -18,8 +18,8 @@ export class CardsComponent {
   @Input() totalLeaders = 0;
   @Input() developments: Development[] = [];
   @Input() totalDevelopments = 0;
-  @Input() favoriteLeaders = new Map<string, boolean>();
-  @Input() favoriteDevelopments = new Map<string, boolean>();
+  @Input() favoriteLeaders = new Set<string>();
+  @Input() favoriteDevelopments = new Set<string>();
   @Output() favoriteLeaderChange = new EventEmitter<string>();
   @Output() favoriteDevelopmentChange = new EventEmitter<string>();
   showLeaders = true;

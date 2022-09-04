@@ -15,7 +15,7 @@
     <li ui-leader
       *ngFor="let leader of leaders; trackBy: leaderTrackByFn"
       [data]="leader"
-      [favorite]="!!favoriteLeaders.has(leader.name)"
+      [favorite]="favoriteLeaders.has(leader.name)"
       (favoriteChange)="favoriteLeaderChange.emit(leader.name)"
     ></li>
     <li *ngIf="!leaders.length">
@@ -41,7 +41,7 @@
     <li ui-development
       *ngFor="let development of developments; trackBy: developmentTrackByFn"
       [data]="development"
-      [favorite]="!!favoriteDevelopments.has(development.id.toString())"
+      [favorite]="favoriteDevelopments.has(development.id.toString())"
       (favoriteChange)="favoriteDevelopmentChange.emit(development.id.toString())"
     ></li>
     <li *ngIf="!developments.length">
