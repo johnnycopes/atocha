@@ -10,7 +10,8 @@ import { SearchInputComponent } from '@atocha/core/ui';
 
 @Component({
   standalone: true,
-  selector: 'app-header',
+  // eslint-disable-next-line @angular-eslint/component-selector
+  selector: 'header[app-header]',
   imports: [SearchInputComponent],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],

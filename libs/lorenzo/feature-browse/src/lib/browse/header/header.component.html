@@ -1,7 +1,18 @@
-<nav class="controls container">
-  <core-search-input class="search"
-    placeholder="Enter name or number"
-    [text]="text"
-    (textChange)="textChange.emit($event)"
-  ></core-search-input>
+<nav class="top">
+  <h1 class="title">
+    Lorenzo il Magnifico
+  </h1>
+  <ul class="views">
+    <li>
+      All
+    </li>
+    <li>
+      Favorites
+    </li>
+  </ul>
 </nav>
+<core-search-input class="search"
+  placeholder="Enter name or number"
+  [text]="text"
+  (textChange)="textChange.emit($event)"
+></core-search-input>
