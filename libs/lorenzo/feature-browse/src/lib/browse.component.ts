@@ -25,20 +25,13 @@ export class BrowseComponent {
   text$ = this._textSubject.pipe(distinctUntilChanged());
   allLeaders$ = this._cardService.leaders$;
   allDevelopments$ = this._cardService.developments$;
-  favoriteLeaders$ = combineLatest([
-    this.allLeaders$,
-    this._cardService.favoriteLeaderIds$,
-  ]).pipe(
-    map(([leaders, favorites]) => leaders.filter(leader => !!favorites.get(leader.name)))
-  ).subscribe(console.log);
-  favoriteDevelopments$ = combineLatest([
-    this.allDevelopments$,
-    this._cardService.favoriteDevelopmentIds$,
-  ]).pipe(
-    map(([developments, favorites]) => developments.filter(development => !!favorites.get(development.id.toString())))
-  ).subscribe(console.log);
+  favoriteLeaders$ = this._cardService.favoriteLeaders$;
+  favoriteDevelopments$ = this._cardService.favoriteDevelopments$;
 
-  constructor(private _cardService: CardService) {}
+  constructor(private _cardService: CardService) {
+    this._cardService.favoriteLeaders$.subscribe(console.log);
+    this._cardService.favoriteDevelopments$.subscribe(console.log);
+  }
 
   vm$ = combineLatest([
     this.text$,
