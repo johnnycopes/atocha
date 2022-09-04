@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import {
   Component,
   ChangeDetectionStrategy,
@@ -15,7 +16,7 @@ import { InputComponent } from '../_generic/input/input.component';
 @Component({
   standalone: true,
   selector: 'ui-inline-day-select',
-  imports: [FormsModule, InlineFormComponent, InputComponent],
+  imports: [CommonModule, FormsModule, InlineFormComponent, InputComponent],
   templateUrl: './inline-day-select.component.html',
   styleUrls: ['./inline-day-select.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
