@@ -8,7 +8,7 @@ import {
 } from 'rxjs';
 
 import { includes } from '@atocha/core/util';
-import { CardService, FavoriteService, SettingService } from '@atocha/lorenzo/data-access';
+import { CardService, SettingService } from '@atocha/lorenzo/data-access';
 import { CardsComponent } from './cards/cards.component';
 import { HeaderComponent } from './header/header.component';
 
@@ -26,19 +26,17 @@ export class BrowseComponent {
 
   constructor(
     private _cardService: CardService,
-    private _favoriteService: FavoriteService,
     private _settingService: SettingService,
-  ) {
-    this._favoriteService.state$.subscribe(console.log)
-  }
+  ) {}
 
   vm$ = combineLatest([
     this.text$,
     this._cardService.leaders$,
     this._cardService.developments$,
+    this._cardService.favorites$,
     this._settingService.state$,
   ]).pipe(
-    map(([text, leaders, developments, { showFavorites }]) => ({
+    map(([text, leaders, developments, favorites, { showFavorites }]) => ({
       text,
       filteredLeaders: leaders.filter(({ name }) => includes([name], text)),
       filteredDevelopments: developments.filter(({ id }) =>
@@ -46,6 +44,7 @@ export class BrowseComponent {
       ),
       totalLeaders: leaders.length,
       totalDevelopments: developments.length,
+      favorites,
       showFavorites,
     }))
   );
@@ -55,6 +54,6 @@ export class BrowseComponent {
   }
 
   onFavoriteChange([id, state]: [string, boolean]): void {
-    this._favoriteService.updateFavorites(id, state);
+    this._cardService.updateFavorite(id, state);
   }
 }
