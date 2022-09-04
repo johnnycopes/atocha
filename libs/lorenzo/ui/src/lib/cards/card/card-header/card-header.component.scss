@@ -1,0 +1,14 @@
+:host {
+  display: flex;
+  justify-content: space-between;
+  padding: 4px;
+  border-radius: var(--border-radius) var(--border-radius) 0 0;
+  border-bottom: 1px solid var(--font-color);
+}
+
+.favorite {
+  display: flex;
+  justify-content: flex-end;
+  width: 40px;
+  padding-top: 2px;
+}

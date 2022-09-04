@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { Development } from '@atocha/lorenzo/util';
 import { CardComponent } from '../card/card.component';
-import { CardHeaderComponent } from '../card/card-header.component';
+import { CardHeaderComponent } from '../card/card-header/card-header.component';
 
 @Component({
   // eslint-disable-next-line @angular-eslint/component-selector

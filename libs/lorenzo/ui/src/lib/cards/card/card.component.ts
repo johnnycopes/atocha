@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, ViewEncapsulation } from '@angular/core';
 
-import { CardHeaderComponent } from './card-header.component';
+import { CardHeaderComponent } from './card-header/card-header.component';
 
 @Component({
   standalone: true,

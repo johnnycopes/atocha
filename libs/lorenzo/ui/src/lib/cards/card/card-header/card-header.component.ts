@@ -9,39 +9,14 @@ import { faStar as faStarEmpty } from '@fortawesome/free-regular-svg-icons';
   standalone: true,
   selector: 'ui-card-header',
   imports: [CommonModule, FontAwesomeModule],
-  template: `
-    <div>
-      <ng-content></ng-content>
-    </div>
-    <fa-icon *ngIf="canFavorite"
-      class="favorite"
-      [icon]="favorite ? favoriteIcon : notFavoriteIcon"
-      (click)="favoriteChange.emit(!favorite)"
-    ></fa-icon>
-  `,
-  styles: [`
-    :host {
-      display: flex;
-      justify-content: space-between;
-      padding: 4px;
-      border-radius: var(--border-radius) var(--border-radius) 0 0;
-      border-bottom: 1px solid var(--font-color);
-    }
-
-    .favorite {
-      display: flex;
-      justify-content: flex-end;
-      width: 40px;
-      padding-top: 2px;
-    }
-  `],
+  templateUrl: './card-header.component.html',
+  styleUrls: ['./card-header.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CardHeaderComponent {
   @Input() canFavorite = false;
   @Input() favorite = false;
   @Output() favoriteChange = new EventEmitter<boolean>();
-
   favoriteIcon = faStarFull;
   notFavoriteIcon = faStarEmpty;
 }
