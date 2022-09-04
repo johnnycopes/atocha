@@ -40,13 +40,23 @@ export class CardService {
 
   updateFavoriteLeader(id: string, state: boolean): void {
     this._favoriteLeaderIdsSubject.pipe(first()).subscribe(
-      favorites => this._favoriteLeaderIdsSubject.next(favorites.set(id, state))
+      favorites => this._favoriteLeaderIdsSubject.next(this._updateMap(favorites, id))
     );
   }
 
   updateFavoriteDevelopment(id: string, state: boolean): void {
     this._favoriteDevelopmentIdsSubject.pipe(first()).subscribe(
-      favorites => this._favoriteDevelopmentIdsSubject.next(favorites.set(id, state))
+      favorites => this._favoriteDevelopmentIdsSubject.next(this._updateMap(favorites, id))
     );
+  }
+
+  private _updateMap(map: Map<string, boolean>, key: string): Map<string, boolean> {
+    if (map.has(key)) {
+      const newMap = new Map(map);
+      newMap.delete(key);
+      return newMap;
+    } else {
+      return map.set(key, true);
+    }
   }
 }
