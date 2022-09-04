@@ -12,10 +12,27 @@ export class CardService {
     shareReplay({ bufferSize: 1, refCount: true })
   );
 
-  favorites$ = of(new Map<string, boolean>());
+  favoriteLeaders$ = of(new Map<string, boolean>());
+  favoriteDevelopments$ = of(new Map<string, boolean>());
 
-  updateFavorite(id: string, state: boolean): void {
-    this.favorites$.pipe(first()).subscribe(
+  constructor() {
+    this.favoriteDevelopments$.pipe(first()).subscribe(
+      favorites => {
+        favorites.set('4', true);
+        favorites.set('5', true);
+        favorites.set('6', true);
+      }
+    )
+  }
+
+  updateFavoriteLeader(id: string, state: boolean): void {
+    this.favoriteLeaders$.pipe(first()).subscribe(
+      favorites => favorites.set(id, state)
+    );
+  }
+
+  updateFavoriteDevelopment(id: string, state: boolean): void {
+    this.favoriteDevelopments$.pipe(first()).subscribe(
       favorites => favorites.set(id, state)
     );
   }

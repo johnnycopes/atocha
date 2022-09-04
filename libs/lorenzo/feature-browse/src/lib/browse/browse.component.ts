@@ -33,10 +33,11 @@ export class BrowseComponent {
     this.text$,
     this._cardService.leaders$,
     this._cardService.developments$,
-    this._cardService.favorites$,
+    this._cardService.favoriteLeaders$,
+    this._cardService.favoriteDevelopments$,
     this._settingService.state$,
   ]).pipe(
-    map(([text, leaders, developments, favorites, { showFavorites }]) => ({
+    map(([text, leaders, developments, favoriteLeaders, favoriteDevelopments, { showFavorites }]) => ({
       text,
       filteredLeaders: leaders.filter(({ name }) => includes([name], text)),
       filteredDevelopments: developments.filter(({ id }) =>
@@ -44,7 +45,8 @@ export class BrowseComponent {
       ),
       totalLeaders: leaders.length,
       totalDevelopments: developments.length,
-      favorites,
+      favoriteLeaders,
+      favoriteDevelopments,
       showFavorites,
     }))
   );
@@ -53,7 +55,11 @@ export class BrowseComponent {
     this._textSubject.next(text);
   }
 
-  onFavoriteChange([id, state]: [string, boolean]): void {
-    this._cardService.updateFavorite(id, state);
+  onFavoriteLeaderChange([id, state]: [string, boolean]): void {
+    this._cardService.updateFavoriteLeader(id, state);
+  }
+
+  onFavoriteDevelopmentChange([id, state]: [string, boolean]): void {
+    this._cardService.updateFavoriteDevelopment(id, state);
   }
 }
