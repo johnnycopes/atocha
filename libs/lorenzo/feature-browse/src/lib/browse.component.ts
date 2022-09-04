@@ -23,6 +23,20 @@ import { HeaderComponent } from './header/header.component';
 export class BrowseComponent {
   private _textSubject = new BehaviorSubject<string>('');
   text$ = this._textSubject.pipe(distinctUntilChanged());
+  allLeaders$ = this._cardService.leaders$;
+  allDevelopments$ = this._cardService.developments$;
+  favoriteLeaders$ = combineLatest([
+    this.allLeaders$,
+    this._cardService.favoriteLeaderIds$,
+  ]).pipe(
+    map(([leaders, favorites]) => leaders.filter(leader => !!favorites.get(leader.name)))
+  ).subscribe(console.log);
+  favoriteDevelopments$ = combineLatest([
+    this.allDevelopments$,
+    this._cardService.favoriteDevelopmentIds$,
+  ]).pipe(
+    map(([developments, favorites]) => developments.filter(development => !!favorites.get(development.id.toString())))
+  ).subscribe(console.log);
 
   constructor(private _cardService: CardService) {}
 
@@ -30,8 +44,8 @@ export class BrowseComponent {
     this.text$,
     this._cardService.leaders$,
     this._cardService.developments$,
-    this._cardService.favoriteLeaders$,
-    this._cardService.favoriteDevelopments$,
+    this._cardService.favoriteLeaderIds$,
+    this._cardService.favoriteDevelopmentIds$,
   ]).pipe(
     map(([text, leaders, developments, favoriteLeaders, favoriteDevelopments]) => ({
       text,
