@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Leader } from '@atocha/lorenzo/util';
 
+import { Leader } from '@atocha/lorenzo/util';
 import { CardComponent } from '../card/card.component';
 import { CardHeaderComponent } from '../card/card-header/card-header.component';
 
