@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, combineLatest, of } from 'rxjs';
+import { BehaviorSubject, combineLatest, Observable, of } from 'rxjs';
 import { first, map, shareReplay } from 'rxjs/operators';
 
-import { DEVELOPMENTS, LEADERS } from '@atocha/lorenzo/util';
+import { Development, DEVELOPMENTS, Leader, LEADERS } from '@atocha/lorenzo/util';
 
 @Injectable({ providedIn: 'root' })
 export class CardService {
@@ -18,13 +18,13 @@ export class CardService {
   developments$ = of(DEVELOPMENTS).pipe(
     shareReplay({ bufferSize: 1, refCount: true })
   );
-  favoriteLeaders$ = combineLatest([
+  favoriteLeaders$: Observable<readonly Leader[]> = combineLatest([
     this.favoriteLeaderIds$,
     this.leaders$,
   ]).pipe(
     map(([ids, leaders]) => leaders.filter(leader => !!ids.get(leader.name)))
   );
-  favoriteDevelopments$ = combineLatest([
+  favoriteDevelopments$: Observable<readonly Development[]> = combineLatest([
     this.favoriteDevelopmentIds$,
     this.developments$,
   ]).pipe(

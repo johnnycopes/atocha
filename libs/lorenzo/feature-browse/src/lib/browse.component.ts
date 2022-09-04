@@ -5,12 +5,14 @@ import {
   distinctUntilChanged,
   combineLatest,
   map,
+  switchMap,
 } from 'rxjs';
 
 import { includes } from '@atocha/core/util';
 import { CardService } from '@atocha/lorenzo/data-access';
 import { CardsComponent } from './cards/cards.component';
 import { HeaderComponent } from './header/header.component';
+import { View } from './mode.type';
 
 @Component({
   standalone: true,
@@ -23,25 +25,31 @@ import { HeaderComponent } from './header/header.component';
 export class BrowseComponent {
   private _textSubject = new BehaviorSubject<string>('');
   text$ = this._textSubject.pipe(distinctUntilChanged());
-  allLeaders$ = this._cardService.leaders$;
-  allDevelopments$ = this._cardService.developments$;
-  favoriteLeaders$ = this._cardService.favoriteLeaders$;
-  favoriteDevelopments$ = this._cardService.favoriteDevelopments$;
 
-  constructor(private _cardService: CardService) {
-    this._cardService.favoriteLeaders$.subscribe(console.log);
-    this._cardService.favoriteDevelopments$.subscribe(console.log);
-  }
+  private _viewSubject = new BehaviorSubject<View>('all');
+  view$ = this._viewSubject.pipe(distinctUntilChanged());
+
+  leaders$ = this._viewSubject.pipe(
+    switchMap(view => view === 'all' ? this._cardService.leaders$ : this._cardService.favoriteLeaders$)
+  );
+
+  developments$ = this._viewSubject.pipe(
+    switchMap(view => view === 'all' ? this._cardService.developments$ : this._cardService.favoriteDevelopments$)
+  );
+
+  constructor(private _cardService: CardService) {}
 
   vm$ = combineLatest([
     this.text$,
-    this._cardService.leaders$,
-    this._cardService.developments$,
+    this.view$,
+    this.leaders$,
+    this.developments$,
     this._cardService.favoriteLeaderIds$,
     this._cardService.favoriteDevelopmentIds$,
   ]).pipe(
-    map(([text, leaders, developments, favoriteLeaders, favoriteDevelopments]) => ({
+    map(([text, view, leaders, developments, favoriteLeaders, favoriteDevelopments]) => ({
       text,
+      view,
       filteredLeaders: leaders.filter(({ name }) => includes([name], text)),
       filteredDevelopments: developments.filter(({ id }) =>
         includes([id.toString()], text)
@@ -55,6 +63,10 @@ export class BrowseComponent {
 
   onSearch(text: string): void {
     this._textSubject.next(text);
+  }
+
+  onViewChange(view: View): void {
+    this._viewSubject.next(view);
   }
 
   onFavoriteLeaderChange([id, state]: [string, boolean]): void {

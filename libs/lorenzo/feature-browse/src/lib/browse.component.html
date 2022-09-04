@@ -1,6 +1,8 @@
 <ng-container *ngIf="vm$ | async as vm">
   <header app-header
+    [view]="vm.view"
     [text]="vm.text"
+    (viewChange)="onViewChange($event)"
     (textChange)="onSearch($event)"
   ></header>
 

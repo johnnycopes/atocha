@@ -3,10 +3,10 @@
     Lorenzo il Magnifico
   </h1>
   <ul class="views">
-    <li>
+    <li (click)="viewChange.emit('all')">
       All
     </li>
-    <li>
+    <li (click)="viewChange.emit('favorites')">
       Favorites
     </li>
   </ul>

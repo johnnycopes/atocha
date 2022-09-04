@@ -7,6 +7,7 @@ import {
 } from '@angular/core';
 
 import { SearchInputComponent } from '@atocha/core/ui';
+import { View } from '../mode.type';
 
 @Component({
   standalone: true,
@@ -18,6 +19,8 @@ import { SearchInputComponent } from '@atocha/core/ui';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderComponent {
+  @Input() view: View = 'all';
   @Input() text = '';
+  @Output() viewChange = new EventEmitter<View>();
   @Output() textChange = new EventEmitter<string>();
 }
