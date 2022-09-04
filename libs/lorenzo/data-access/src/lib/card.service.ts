@@ -32,19 +32,19 @@ export class CardService {
   );
 
   constructor() {
-    this.updateFavoriteLeader('Bartolomeo Colleoni', true);
-    this.updateFavoriteDevelopment('4', true);
-    this.updateFavoriteDevelopment('5', true);
-    this.updateFavoriteDevelopment('6', true);
+    this.updateFavoriteLeader('Bartolomeo Colleoni');
+    this.updateFavoriteDevelopment('4');
+    this.updateFavoriteDevelopment('5');
+    this.updateFavoriteDevelopment('6');
   }
 
-  updateFavoriteLeader(id: string, state: boolean): void {
+  updateFavoriteLeader(id: string): void {
     this._favoriteLeaderIdsSubject.pipe(first()).subscribe(
       favorites => this._favoriteLeaderIdsSubject.next(this._updateMap(favorites, id))
     );
   }
 
-  updateFavoriteDevelopment(id: string, state: boolean): void {
+  updateFavoriteDevelopment(id: string): void {
     this._favoriteDevelopmentIdsSubject.pipe(first()).subscribe(
       favorites => this._favoriteDevelopmentIdsSubject.next(this._updateMap(favorites, id))
     );

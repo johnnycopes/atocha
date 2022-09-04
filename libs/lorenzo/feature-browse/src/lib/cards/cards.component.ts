@@ -20,8 +20,8 @@ export class CardsComponent {
   @Input() totalDevelopments = 0;
   @Input() favoriteLeaders = new Map<string, boolean>();
   @Input() favoriteDevelopments = new Map<string, boolean>();
-  @Output() favoriteLeaderChange = new EventEmitter<[string, boolean]>();
-  @Output() favoriteDevelopmentChange = new EventEmitter<[string, boolean]>();
+  @Output() favoriteLeaderChange = new EventEmitter<string>();
+  @Output() favoriteDevelopmentChange = new EventEmitter<string>();
   showLeaders = true;
   showDevelopments = true;
   leaderTrackByFn = trackByFactory<Leader>(({ name }) => name);

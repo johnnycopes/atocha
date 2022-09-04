@@ -69,11 +69,11 @@ export class BrowseComponent {
     this._viewSubject.next(view);
   }
 
-  onFavoriteLeaderChange([id, state]: [string, boolean]): void {
-    this._cardService.updateFavoriteLeader(id, state);
+  onFavoriteLeaderChange(id: string): void {
+    this._cardService.updateFavoriteLeader(id);
   }
 
-  onFavoriteDevelopmentChange([id, state]: [string, boolean]): void {
-    this._cardService.updateFavoriteDevelopment(id, state);
+  onFavoriteDevelopmentChange(id: string): void {
+    this._cardService.updateFavoriteDevelopment(id);
   }
 }
