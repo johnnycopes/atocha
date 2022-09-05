@@ -1,20 +1,20 @@
 import { Injectable } from '@angular/core';
-import { combineLatest, Observable, of } from 'rxjs';
-import { map, shareReplay } from 'rxjs/operators';
+import { combineLatest, Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
-import { Development, DEVELOPMENTS, Leader, LEADERS } from '@atocha/lorenzo/util';
+import { Development, Leader } from '@atocha/lorenzo/util';
 import { LocalStorageService } from './local-storage.service';
+import { CardService } from './card.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BrowseService {
+  leaders$ = this._cardService.leaders$;
+  developments$ = this._cardService.developments$;
   favoriteLeaderIds$ = this._localStorageService.favoriteLeaderIds$;
   favoriteDevelopmentIds$ = this._localStorageService.favoriteDevelopmentIds$;
-  leaders$ = of(LEADERS).pipe(shareReplay({ bufferSize: 1, refCount: true }));
-  developments$ = of(DEVELOPMENTS).pipe(
-    shareReplay({ bufferSize: 1, refCount: true })
-  );
+
   favoriteLeaders$: Observable<readonly Leader[]> = combineLatest([
     this.favoriteLeaderIds$,
     this.leaders$,
@@ -28,7 +28,10 @@ export class BrowseService {
     map(([ids, developments]) => developments.filter(development => ids.has(development.id.toString())))
   );
 
-  constructor(private _localStorageService: LocalStorageService) {}
+  constructor(
+    private _cardService: CardService,
+    private _localStorageService: LocalStorageService
+  ) {}
 
   clearFavorites() {
     this._localStorageService.clearFavorites();
