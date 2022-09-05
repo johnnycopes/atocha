@@ -12,6 +12,7 @@ import { CardService } from './card.service';
 export class BrowseService {
   leaders$ = this._cardService.leaders$;
   developments$ = this._cardService.developments$;
+
   favoriteLeaderIds$ = this._localStorageService.favoriteLeaderIds$;
   favoriteDevelopmentIds$ = this._localStorageService.favoriteDevelopmentIds$;
 
