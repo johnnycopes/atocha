@@ -3,10 +3,16 @@
     Lorenzo il Magnifico
   </h1>
   <ul class="views">
-    <li (click)="viewChange.emit('all')">
+    <li class="view"
+      [class.view--selected]="view === 'all'"
+      (click)="viewChange.emit('all')"
+    >
       All
     </li>
-    <li (click)="viewChange.emit('favorites')">
+    <li class="view"
+      [class.view--selected]="view === 'favorites'"
+      (click)="viewChange.emit('favorites')"
+    >
       Favorites
     </li>
   </ul>

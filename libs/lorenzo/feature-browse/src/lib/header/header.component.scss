@@ -8,20 +8,28 @@
 .top {
   display: flex;
   justify-content: space-between;
-  padding: 2px 0;
+  padding: 2px 0 4px;;
+}
 
-  .title {
-    font-size: 16px;
-  }
+.title {
+  font-size: 16px;
+}
 
-  .views {
-    display: flex;
-    align-items: center;
-    font-size: 14px;
+.views {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+}
 
-    li {
-      margin-left: 16px;
-    }
+.view {
+  margin-left: 4px;
+  padding: 0 8px;
+  cursor: pointer;
+
+  &--selected {
+    background: #fff;
+    color: var(--font-color);
+    border-radius: var(--border-radius);
   }
 }
 
