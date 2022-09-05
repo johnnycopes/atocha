@@ -9,7 +9,7 @@ import {
 } from 'rxjs';
 
 import { includes } from '@atocha/core/util';
-import { CardService } from '@atocha/lorenzo/data-access';
+import { BrowseService } from '@atocha/lorenzo/data-access';
 import { CardsComponent } from './cards/cards.component';
 import { HeaderComponent } from './header/header.component';
 import { View } from './mode.type';
@@ -30,22 +30,22 @@ export class BrowseComponent {
   view$ = this._viewSubject.pipe(distinctUntilChanged());
 
   leaders$ = this._viewSubject.pipe(
-    switchMap(view => view === 'all' ? this._cardService.leaders$ : this._cardService.favoriteLeaders$)
+    switchMap(view => view === 'all' ? this._browseService.leaders$ : this._browseService.favoriteLeaders$)
   );
 
   developments$ = this._viewSubject.pipe(
-    switchMap(view => view === 'all' ? this._cardService.developments$ : this._cardService.favoriteDevelopments$)
+    switchMap(view => view === 'all' ? this._browseService.developments$ : this._browseService.favoriteDevelopments$)
   );
 
-  constructor(private _cardService: CardService) {}
+  constructor(private _browseService: BrowseService) {}
 
   vm$ = combineLatest([
     this.text$,
     this.view$,
     this.leaders$,
     this.developments$,
-    this._cardService.favoriteLeaderIds$,
-    this._cardService.favoriteDevelopmentIds$,
+    this._browseService.favoriteLeaderIds$,
+    this._browseService.favoriteDevelopmentIds$,
   ]).pipe(
     map(([text, view, leaders, developments, favoriteLeaders, favoriteDevelopments]) => ({
       text,
@@ -62,7 +62,7 @@ export class BrowseComponent {
   );
 
   clearFavorites(): void {
-    this._cardService.clearFavorites();
+    this._browseService.clearFavorites();
   }
 
   search(text: string): void {
@@ -75,10 +75,10 @@ export class BrowseComponent {
   }
 
   updateFavoriteLeader(id: string): void {
-    this._cardService.updateFavoriteLeader(id);
+    this._browseService.updateFavoriteLeader(id);
   }
 
   updateFavoriteDevelopment(id: string): void {
-    this._cardService.updateFavoriteDevelopment(id);
+    this._browseService.updateFavoriteDevelopment(id);
   }
 }

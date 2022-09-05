@@ -8,7 +8,7 @@ import { LocalStorageService } from './local-storage.service';
 @Injectable({
   providedIn: 'root'
 })
-export class CardService {
+export class BrowseService {
   favoriteLeaderIds$ = this._localStorageService.favoriteLeaderIds$;
   favoriteDevelopmentIds$ = this._localStorageService.favoriteDevelopmentIds$;
   leaders$ = of(LEADERS).pipe(shareReplay({ bufferSize: 1, refCount: true }));
