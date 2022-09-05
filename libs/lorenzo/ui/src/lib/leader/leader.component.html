@@ -1,0 +1,23 @@
+<ui-card *ngIf="data">
+  <ui-card-header class="name"
+    [favorite]="favorite"
+    (favoriteChange)="favoriteChange.emit($event)"
+  >
+    <h4>
+      {{ data.name }}
+    </h4>
+  </ui-card-header>
+
+  <p class="ui-card-section requirement">
+    <span class="ui-card-label requires">
+      Requires:
+    </span>
+    {{ data.requirement }}
+  </p>
+  <p class="ui-card-section ability">
+    <span class="ui-card-label type">
+      {{ data.type | titlecase }}:
+    </span>
+    {{ data.ability }}
+  </p>
+</ui-card>

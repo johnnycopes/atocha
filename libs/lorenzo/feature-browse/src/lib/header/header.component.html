@@ -1,0 +1,24 @@
+<nav class="top">
+  <h1 class="title">
+    Lorenzo il Magnifico
+  </h1>
+  <ul class="views">
+    <li class="view"
+      [class.view--selected]="view === 'all'"
+      (click)="viewChange.emit('all')"
+    >
+      All
+    </li>
+    <li class="view"
+      [class.view--selected]="view === 'favorites'"
+      (click)="viewChange.emit('favorites')"
+    >
+      Favorites
+    </li>
+  </ul>
+</nav>
+<core-search-input class="search"
+  placeholder="Enter name or number"
+  [text]="text"
+  (textChange)="textChange.emit($event)"
+></core-search-input>

@@ -1,0 +1,25 @@
+:host {
+  display: block;
+}
+
+.name {
+  background: var(--leader-name);
+  font-weight: 700;
+}
+
+.requires {
+  color: var(--leader-ability);
+}
+
+.requirement {
+  background: var(--card-bg-light);
+}
+
+.type {
+  color: var(--card-bg-light);
+}
+
+.ability {
+  color: #fff;
+  background: var(--leader-ability);
+}

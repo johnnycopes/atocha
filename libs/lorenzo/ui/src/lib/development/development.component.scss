@@ -1,0 +1,36 @@
+:host {
+  display: block;
+}
+
+.territory {
+  background: var(--territory);
+}
+
+.building {
+  background: var(--building);
+}
+
+.character {
+  background: var(--character);
+}
+
+.venture {
+  background: var(--venture);
+}
+
+.number {
+  display: inline-block;
+  font-weight: 700;
+}
+
+.effect {
+  color: var(--leader-ability);
+}
+
+.immediate {
+  background: var(--card-bg-dark);
+}
+
+.permanent {
+  background: var(--card-bg-light);
+}

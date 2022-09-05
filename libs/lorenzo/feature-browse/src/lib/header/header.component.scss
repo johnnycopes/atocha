@@ -1,0 +1,38 @@
+:host {
+  height: 64px;
+  padding: 0 8px;
+  background: var(--font-color);
+  color: #fff;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  padding: 2px 0 4px;
+}
+
+.title {
+  font-size: 16px;
+}
+
+.views {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+}
+
+.view {
+  margin-left: 4px;
+  padding: 0 8px;
+  cursor: pointer;
+
+  &--selected {
+    background: #fff;
+    color: var(--font-color);
+    border-radius: var(--border-radius);
+  }
+}
+
+.search {
+  display: block;
+}

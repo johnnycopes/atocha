@@ -33,6 +33,8 @@ h3,
 h4,
 h5,
 h6,
+ul,
+li,
 p {
   margin: 0;
 }
@@ -68,6 +70,8 @@ app-root {
     .core-search-input__input {
       width: 100%;
       height: 100%;
+      font-size: 14px;
+      outline: 0;
     }
   }
 }

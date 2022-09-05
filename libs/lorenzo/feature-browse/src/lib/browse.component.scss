@@ -1,0 +1,18 @@
+:host {
+  display: block;
+  height: 100%;
+}
+
+.content {
+  overflow: auto;
+  height: calc(100% - 64px);
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+
+.overview {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}

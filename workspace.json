@@ -18,7 +18,6 @@
     "lorenzo-data-access": "libs/lorenzo/data-access",
     "lorenzo-e2e": "apps/lorenzo-e2e",
     "lorenzo-feature-browse": "libs/lorenzo/feature-browse",
-    "lorenzo-feature-shell": "libs/lorenzo/feature-shell",
     "lorenzo-ui": "libs/lorenzo/ui",
     "lorenzo-util": "libs/lorenzo/util",
     "menu-matriarch": "apps/menu-matriarch",
