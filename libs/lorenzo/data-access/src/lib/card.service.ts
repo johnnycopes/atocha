@@ -1,19 +1,16 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, combineLatest, Observable, of } from 'rxjs';
-import { first, map, shareReplay } from 'rxjs/operators';
+import { combineLatest, Observable, of } from 'rxjs';
+import { map, shareReplay } from 'rxjs/operators';
 
 import { Development, DEVELOPMENTS, Leader, LEADERS } from '@atocha/lorenzo/util';
+import { LocalStorageService } from './local-storage.service';
 
-@Injectable({ providedIn: 'root' })
+@Injectable({
+  providedIn: 'root'
+})
 export class CardService {
-  private _favoriteLeaderIdsSubject = new BehaviorSubject<Set<string>>(new Set());
-  private _favoriteDevelopmentIdsSubject = new BehaviorSubject<Set<string>>(new Set());
-  favoriteLeaderIds$ = this._favoriteLeaderIdsSubject.pipe(
-    shareReplay({ bufferSize: 1, refCount: true }),
-  );
-  favoriteDevelopmentIds$ = this._favoriteDevelopmentIdsSubject.pipe(
-    shareReplay({ bufferSize: 1, refCount: true }),
-  );
+  favoriteLeaderIds$ = this._localStorageService.favoriteLeaderIds$;
+  favoriteDevelopmentIds$ = this._localStorageService.favoriteDevelopmentIds$;
   leaders$ = of(LEADERS).pipe(shareReplay({ bufferSize: 1, refCount: true }));
   developments$ = of(DEVELOPMENTS).pipe(
     shareReplay({ bufferSize: 1, refCount: true })
@@ -31,37 +28,17 @@ export class CardService {
     map(([ids, developments]) => developments.filter(development => ids.has(development.id.toString())))
   );
 
-  constructor() {
-    this.updateFavoriteLeader('Bartolomeo Colleoni');
-    this.updateFavoriteDevelopment('4');
-    this.updateFavoriteDevelopment('5');
-    this.updateFavoriteDevelopment('6');
-  }
+  constructor(private _localStorageService: LocalStorageService) {}
 
   clearFavorites() {
-    this._favoriteLeaderIdsSubject.next(new Set());
-    this._favoriteDevelopmentIdsSubject.next(new Set());
+    this._localStorageService.clearFavorites();
   }
 
   updateFavoriteLeader(id: string): void {
-    this._favoriteLeaderIdsSubject.pipe(first()).subscribe(
-      favorites => this._favoriteLeaderIdsSubject.next(this._updateSet(favorites, id))
-    );
+    this._localStorageService.updateFavoriteLeader(id);
   }
 
   updateFavoriteDevelopment(id: string): void {
-    this._favoriteDevelopmentIdsSubject.pipe(first()).subscribe(
-      favorites => this._favoriteDevelopmentIdsSubject.next(this._updateSet(favorites, id))
-    );
-  }
-
-  private _updateSet(set: Set<string>, key: string): Set<string> {
-    if (set.has(key)) {
-      const newSet = new Set(set);
-      newSet.delete(key);
-      return newSet;
-    } else {
-      return set.add(key);
-    }
+    this._localStorageService.updateFavoriteDevelopment(id);
   }
 }

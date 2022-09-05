@@ -71,6 +71,7 @@ export class BrowseComponent {
 
   changeView(view: View): void {
     this._viewSubject.next(view);
+    window.scroll(0, 0);
   }
 
   updateFavoriteLeader(id: string): void {
