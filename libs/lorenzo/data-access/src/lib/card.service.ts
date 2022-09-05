@@ -4,7 +4,7 @@ import { of, shareReplay } from 'rxjs';
 import { LEADERS, DEVELOPMENTS } from '@atocha/lorenzo/util';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CardService {
   leaders$ = of(LEADERS).pipe(shareReplay({ bufferSize: 1, refCount: true }));

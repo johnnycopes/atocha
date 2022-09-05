@@ -9,40 +9,40 @@ export class LocalStorageService {
   private _prefix = 'LORENZO_';
   private _leadersKey = this._prefix + 'LEADER_IDS';
   private _developmentsKey = this._prefix + 'DEVELOPMENT_IDS';
-  private _favoriteLeaderIdsSubject = new BehaviorSubject<Set<string>>(this._getIds(this._leadersKey));
-  private _favoriteDevelopmentIdsSubject = new BehaviorSubject<Set<string>>(this._getIds(this._developmentsKey));
+  private _favoriteLeaderIdsSubject = new BehaviorSubject<Set<string>>(
+    this._getIds(this._leadersKey)
+  );
+  private _favoriteDevelopmentIdsSubject = new BehaviorSubject<Set<string>>(
+    this._getIds(this._developmentsKey)
+  );
   favoriteLeaderIds$ = this._favoriteLeaderIdsSubject.pipe(
-    shareReplay({ bufferSize: 1, refCount: true }),
+    shareReplay({ bufferSize: 1, refCount: true })
   );
   favoriteDevelopmentIds$ = this._favoriteDevelopmentIdsSubject.pipe(
-    shareReplay({ bufferSize: 1, refCount: true }),
+    shareReplay({ bufferSize: 1, refCount: true })
   );
 
   updateFavoriteLeader(id: string): void {
-    this._favoriteLeaderIdsSubject.pipe(first()).subscribe(
-      favorites => {
-        const newFavorites = this._updateSet(favorites, id);
-        this._favoriteLeaderIdsSubject.next(newFavorites);
-        this._setIds(this._leadersKey, newFavorites);
-      }
-    );
+    this._favoriteLeaderIdsSubject.pipe(first()).subscribe((favorites) => {
+      const newFavorites = this._updateSet(favorites, id);
+      this._favoriteLeaderIdsSubject.next(newFavorites);
+      this._setIds(this._leadersKey, newFavorites);
+    });
   }
 
   updateFavoriteDevelopment(id: string): void {
-    this._favoriteDevelopmentIdsSubject.pipe(first()).subscribe(
-      favorites => {
-        const newFavorites = this._updateSet(favorites, id);
-        this._favoriteLeaderIdsSubject.next(newFavorites);
-        this._setIds(this._developmentsKey, newFavorites);
-      }
-    );
+    this._favoriteDevelopmentIdsSubject.pipe(first()).subscribe((favorites) => {
+      const newFavorites = this._updateSet(favorites, id);
+      this._favoriteLeaderIdsSubject.next(newFavorites);
+      this._setIds(this._developmentsKey, newFavorites);
+    });
   }
 
   clearFavorites() {
     const emptyLeaders = new Set<string>();
     const emptyDevelopments = new Set<string>();
     this._favoriteLeaderIdsSubject.next(emptyLeaders);
-    this._favoriteDevelopmentIdsSubject.next(emptyDevelopments)
+    this._favoriteDevelopmentIdsSubject.next(emptyDevelopments);
     this._setIds(this._leadersKey, emptyLeaders);
     this._setIds(this._developmentsKey, emptyDevelopments);
   }

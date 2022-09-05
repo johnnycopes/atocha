@@ -30,11 +30,19 @@ export class BrowseComponent {
   view$ = this._viewSubject.pipe(distinctUntilChanged());
 
   leaders$ = this._viewSubject.pipe(
-    switchMap(view => view === 'all' ? this._browseService.leaders$ : this._browseService.favoriteLeaders$)
+    switchMap((view) =>
+      view === 'all'
+        ? this._browseService.leaders$
+        : this._browseService.favoriteLeaders$
+    )
   );
 
   developments$ = this._viewSubject.pipe(
-    switchMap(view => view === 'all' ? this._browseService.developments$ : this._browseService.favoriteDevelopments$)
+    switchMap((view) =>
+      view === 'all'
+        ? this._browseService.developments$
+        : this._browseService.favoriteDevelopments$
+    )
   );
 
   constructor(private _browseService: BrowseService) {}
@@ -47,18 +55,27 @@ export class BrowseComponent {
     this._browseService.favoriteLeaderIds$,
     this._browseService.favoriteDevelopmentIds$,
   ]).pipe(
-    map(([text, view, leaders, developments, favoriteLeaders, favoriteDevelopments]) => ({
-      text,
-      view,
-      filteredLeaders: leaders.filter(({ name }) => includes([name], text)),
-      filteredDevelopments: developments.filter(({ id }) =>
-        includes([id.toString()], text)
-      ),
-      totalLeaders: leaders.length,
-      totalDevelopments: developments.length,
-      favoriteLeaders,
-      favoriteDevelopments,
-    }))
+    map(
+      ([
+        text,
+        view,
+        leaders,
+        developments,
+        favoriteLeaders,
+        favoriteDevelopments,
+      ]) => ({
+        text,
+        view,
+        filteredLeaders: leaders.filter(({ name }) => includes([name], text)),
+        filteredDevelopments: developments.filter(({ id }) =>
+          includes([id.toString()], text)
+        ),
+        totalLeaders: leaders.length,
+        totalDevelopments: developments.length,
+        favoriteLeaders,
+        favoriteDevelopments,
+      })
+    )
   );
 
   clearFavorites(): void {

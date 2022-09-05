@@ -7,7 +7,7 @@ import { LocalStorageService } from './local-storage.service';
 import { CardService } from './card.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class BrowseService {
   leaders$ = this._cardService.leaders$;
@@ -19,13 +19,15 @@ export class BrowseService {
     this.favoriteLeaderIds$,
     this.leaders$,
   ]).pipe(
-    map(([ids, leaders]) => leaders.filter(leader => ids.has(leader.name)))
+    map(([ids, leaders]) => leaders.filter((leader) => ids.has(leader.name)))
   );
   favoriteDevelopments$: Observable<readonly Development[]> = combineLatest([
     this.favoriteDevelopmentIds$,
     this.developments$,
   ]).pipe(
-    map(([ids, developments]) => developments.filter(development => ids.has(development.id.toString())))
+    map(([ids, developments]) =>
+      developments.filter((development) => ids.has(development.id.toString()))
+    )
   );
 
   constructor(
