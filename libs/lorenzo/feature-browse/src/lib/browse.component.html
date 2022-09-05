@@ -2,11 +2,21 @@
   <header app-header
     [view]="vm.view"
     [text]="vm.text"
-    (viewChange)="onViewChange($event)"
-    (textChange)="onSearch($event)"
+    (viewChange)="changeView($event)"
+    (textChange)="search($event)"
   ></header>
 
   <main class="content container">
+    <div *ngIf="vm.view === 'favorites'"
+      class="overview"
+    >
+      <p>
+        {{ vm.favoriteLeaders.size + vm.favoriteDevelopments.size }} favorites
+      </p>
+      <button (click)="clearFavorites()">
+        Clear Favorites
+      </button>
+    </div>
     <app-cards
       [leaders]="vm.filteredLeaders"
       [developments]="vm.filteredDevelopments"
@@ -14,8 +24,8 @@
       [totalDevelopments]="vm.totalDevelopments"
       [favoriteLeaders]="vm.favoriteLeaders"
       [favoriteDevelopments]="vm.favoriteDevelopments"
-      (favoriteLeaderChange)="onFavoriteLeaderChange($event)"
-      (favoriteDevelopmentChange)="onFavoriteDevelopmentChange($event)"
+      (favoriteLeaderChange)="updateFavoriteLeader($event)"
+      (favoriteDevelopmentChange)="updateFavoriteDevelopment($event)"
     ></app-cards>
   </main>
 </ng-container>

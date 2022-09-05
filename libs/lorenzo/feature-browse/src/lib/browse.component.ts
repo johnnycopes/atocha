@@ -61,19 +61,23 @@ export class BrowseComponent {
     }))
   );
 
-  onSearch(text: string): void {
+  clearFavorites(): void {
+    this._cardService.clearFavorites();
+  }
+
+  search(text: string): void {
     this._textSubject.next(text);
   }
 
-  onViewChange(view: View): void {
+  changeView(view: View): void {
     this._viewSubject.next(view);
   }
 
-  onFavoriteLeaderChange(id: string): void {
+  updateFavoriteLeader(id: string): void {
     this._cardService.updateFavoriteLeader(id);
   }
 
-  onFavoriteDevelopmentChange(id: string): void {
+  updateFavoriteDevelopment(id: string): void {
     this._cardService.updateFavoriteDevelopment(id);
   }
 }

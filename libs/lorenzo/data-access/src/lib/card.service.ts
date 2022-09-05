@@ -6,8 +6,8 @@ import { Development, DEVELOPMENTS, Leader, LEADERS } from '@atocha/lorenzo/util
 
 @Injectable({ providedIn: 'root' })
 export class CardService {
-  private _favoriteLeaderIdsSubject = new BehaviorSubject(new Set<string>());
-  private _favoriteDevelopmentIdsSubject = new BehaviorSubject(new Set<string>());
+  private _favoriteLeaderIdsSubject = new BehaviorSubject<Set<string>>(new Set());
+  private _favoriteDevelopmentIdsSubject = new BehaviorSubject<Set<string>>(new Set());
   favoriteLeaderIds$ = this._favoriteLeaderIdsSubject.pipe(
     shareReplay({ bufferSize: 1, refCount: true }),
   );
@@ -36,6 +36,11 @@ export class CardService {
     this.updateFavoriteDevelopment('4');
     this.updateFavoriteDevelopment('5');
     this.updateFavoriteDevelopment('6');
+  }
+
+  clearFavorites() {
+    this._favoriteLeaderIdsSubject.next(new Set());
+    this._favoriteDevelopmentIdsSubject.next(new Set());
   }
 
   updateFavoriteLeader(id: string): void {
