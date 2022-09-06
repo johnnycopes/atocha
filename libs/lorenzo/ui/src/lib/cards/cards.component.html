@@ -1,0 +1,35 @@
+<section class="section developments">
+  <div class="header">
+    <h2>Development Cards
+      <span class="count">
+        ({{ cards.length }} / {{ total }})
+      </span>
+    </h2>
+    <button (click)="showCards = !showCards">
+      {{ showCards ? 'Collapse' : 'Expand' }}
+    </button>
+  </div>
+  <ul [hidden]="!showCards"
+    class="cards"
+  >
+    <li *ngFor="let card of cards"
+      class="card"
+    >
+      <ng-container
+        [ngTemplateOutlet]="cardTemplate"
+        [ngTemplateOutletContext]="{
+          $implicit: card
+        }"
+      ></ng-container>
+    </li>
+    <li *ngIf="!cards.length">
+      No matching cards
+    </li>
+    <!-- <li ui-development
+      *ngFor="let development of developments; trackBy: developmentTrackByFn"
+      [data]="development"
+      [favorite]="favoriteDevelopments.has(development.id.toString())"
+      (favoriteChange)="favoriteDevelopmentChange.emit(development.id.toString())"
+    ></li> -->
+  </ul>
+</section>

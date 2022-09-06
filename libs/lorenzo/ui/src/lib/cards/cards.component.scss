@@ -1,0 +1,31 @@
+.section {
+  margin-bottom: 16px;
+
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+
+    h2 {
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .count {
+      font-weight: 400;
+    }
+
+    button {
+      margin-left: 16px;
+    }
+  }
+
+  .cards {
+    margin: 0;
+  }
+
+  .card {
+    margin-bottom: 16px;
+  }
+}
