@@ -1,16 +1,19 @@
-import { Directive, Input } from '@angular/core';
+import { Directive, Input, TemplateRef } from '@angular/core';
 
 interface CardTemplateContext<T> {
   $implicit: T;
+  uiCard: T;
 }
 
 @Directive({
   standalone: true,
-  selector: 'ng-template[uiCard]',
+  selector: '[uiCard]',
 })
 export class CardTemplateDirective<TCard> {
   // eslint-disable-next-line @angular-eslint/no-input-rename
   @Input('uiCard') card: TCard[] = [];
+
+  constructor(public template: TemplateRef<TCard>) {}
 
   static ngTemplateContextGuard<TContextItem>(
     dir: CardTemplateDirective<TContextItem>,
