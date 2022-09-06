@@ -1,0 +1,25 @@
+<section class="section leaders">
+  <div class="header">
+    <h2>Leader Cards
+      <span class="count">
+        ({{ leaders.length }} / {{ totalLeaders }})
+      </span>
+    </h2>
+    <button (click)="showLeaders = !showLeaders">
+      {{ showLeaders ? 'Collapse' : 'Expand' }}
+    </button>
+  </div>
+  <ul [hidden]="!showLeaders"
+    class="cards"
+  >
+    <li ui-leader
+      *ngFor="let leader of leaders; trackBy: leaderTrackByFn"
+      [data]="leader"
+      [favorite]="favoriteLeaders.has(leader.name)"
+      (favoriteChange)="favoriteLeaderChange.emit(leader.name)"
+    ></li>
+    <li *ngIf="!leaders.length">
+      No matching cards
+    </li>
+  </ul>
+</section>
