@@ -12,17 +12,20 @@ import { includes } from '@atocha/core/util';
 import { BrowseService } from '@atocha/lorenzo/data-access';
 import { HeaderComponent } from './header/header.component';
 import { View } from './mode.type';
-import { LeadersComponent } from './leaders/leaders.component';
 import { DevelopmentsComponent } from './developments/developments.component';
+import { CardsComponent, LeaderComponent } from '@atocha/lorenzo/ui';
+import { trackByFactory } from '@atocha/core/ui';
+import { Development, Leader } from '@atocha/lorenzo/util';
 
 @Component({
   standalone: true,
   selector: 'app-browse',
   imports: [
+    CardsComponent,
     CommonModule,
     DevelopmentsComponent,
     HeaderComponent,
-    LeadersComponent,
+    LeaderComponent,
   ],
   templateUrl: './browse.component.html',
   styleUrls: ['./browse.component.scss'],
@@ -50,6 +53,9 @@ export class BrowseComponent {
         : this._browseService.favoriteDevelopments$
     )
   );
+
+  developmentTrackByFn = trackByFactory<Development>(({ id }) => id.toString());
+  leaderTrackByFn = trackByFactory<Leader>(({ name }) => name);
 
   constructor(private _browseService: BrowseService) {}
 

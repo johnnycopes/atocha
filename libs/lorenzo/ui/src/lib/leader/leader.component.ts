@@ -12,8 +12,7 @@ import { CardComponent } from '../card/card.component';
 import { CardHeaderComponent } from '../card/card-header/card-header.component';
 
 @Component({
-  // eslint-disable-next-line @angular-eslint/component-selector
-  selector: '[ui-leader]',
+  selector: 'ui-leader',
   standalone: true,
   imports: [CardComponent, CardHeaderComponent, CommonModule],
   templateUrl: './leader.component.html',

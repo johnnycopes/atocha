@@ -17,12 +17,24 @@
         Clear Favorites
       </button>
     </div>
-    <app-leaders
-      [leaders]="vm.filteredLeaders"
-      [totalLeaders]="vm.totalLeaders"
-      [favoriteLeaders]="vm.favoriteLeaders"
-      (favoriteLeaderChange)="updateFavoriteLeader($event)"
-    ></app-leaders>
+    <ui-cards
+      type="Leader"
+      [cards]="vm.filteredLeaders"
+      [total]="vm.totalLeaders"
+      [favorites]="vm.favoriteLeaders"
+      [trackByFn]="leaderTrackByFn"
+    >
+      <ng-template #cardTemplate
+        let-leader
+      >
+        <ui-leader
+          [data]="leader"
+          [favorite]="vm.favoriteLeaders.has(leader.name)"
+          (favoriteChange)="updateFavoriteLeader(leader.name)"
+        ></ui-leader>
+      </ng-template>
+    </ui-cards>
+
     <app-developments
       [developments]="vm.filteredDevelopments"
       [totalDevelopments]="vm.totalDevelopments"
