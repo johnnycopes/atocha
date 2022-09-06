@@ -18,7 +18,8 @@
       <ng-container
         [ngTemplateOutlet]="cardTemplate"
         [ngTemplateOutletContext]="{
-          $implicit: card
+          $implicit: card,
+          uiCard: card
         }"
       ></ng-container>
     </li>
