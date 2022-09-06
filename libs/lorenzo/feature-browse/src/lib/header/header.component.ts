@@ -7,7 +7,7 @@ import {
 } from '@angular/core';
 
 import { SearchInputComponent } from '@atocha/core/ui';
-import { View } from '../mode.type';
+import { View } from '../view.type';
 
 @Component({
   standalone: true,

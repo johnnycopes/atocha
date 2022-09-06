@@ -18,8 +18,8 @@ import {
   LeaderComponent,
 } from '@atocha/lorenzo/ui';
 import { Development, Leader } from '@atocha/lorenzo/util';
-import { View } from './mode.type';
 import { HeaderComponent } from './header/header.component';
+import { View } from './view.type';
 
 @Component({
   standalone: true,
