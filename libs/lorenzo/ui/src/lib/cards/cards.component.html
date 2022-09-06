@@ -1,0 +1,30 @@
+<section class="section developments">
+  <div class="header">
+    <h2>{{ type }} Cards
+      <span class="count">
+        ({{ cards.length }} / {{ total }})
+      </span>
+    </h2>
+    <button (click)="showCards = !showCards">
+      {{ showCards ? 'Collapse' : 'Expand' }}
+    </button>
+  </div>
+  <ul [hidden]="!showCards"
+    class="cards"
+  >
+    <li *ngFor="let card of cards; trackBy: trackByFn"
+      class="card"
+    >
+      <ng-container
+        [ngTemplateOutlet]="cardTemplate"
+        [ngTemplateOutletContext]="{
+          $implicit: card,
+          uiCard: card
+        }"
+      ></ng-container>
+    </li>
+    <li *ngIf="!cards.length">
+      No matching cards
+    </li>
+  </ul>
+</section>

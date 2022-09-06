@@ -23,9 +23,9 @@
 
   .cards {
     margin: 0;
+  }
 
-    & > li {
-      margin-bottom: 16px;
-    }
+  .card {
+    margin-bottom: 16px;
   }
 }

@@ -7,13 +7,11 @@ import {
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { CardComponent, CardHeaderComponent } from '@atocha/lorenzo/ui';
 import { Development } from '@atocha/lorenzo/util';
-import { CardComponent } from '../card/card.component';
-import { CardHeaderComponent } from '../card/card-header/card-header.component';
 
 @Component({
-  // eslint-disable-next-line @angular-eslint/component-selector
-  selector: '[ui-development]',
+  selector: 'app-development',
   standalone: true,
   imports: [CardComponent, CardHeaderComponent, CommonModule],
   templateUrl: './development.component.html',

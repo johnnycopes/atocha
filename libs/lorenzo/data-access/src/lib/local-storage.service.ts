@@ -33,7 +33,7 @@ export class LocalStorageService {
   updateFavoriteDevelopment(id: string): void {
     this._favoriteDevelopmentIdsSubject.pipe(first()).subscribe((favorites) => {
       const newFavorites = this._updateSet(favorites, id);
-      this._favoriteLeaderIdsSubject.next(newFavorites);
+      this._favoriteDevelopmentIdsSubject.next(newFavorites);
       this._setIds(this._developmentsKey, newFavorites);
     });
   }

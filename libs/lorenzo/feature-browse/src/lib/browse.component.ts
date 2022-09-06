@@ -8,16 +8,27 @@ import {
   switchMap,
 } from 'rxjs';
 
+import { trackByFactory } from '@atocha/core/ui';
 import { includes } from '@atocha/core/util';
 import { BrowseService } from '@atocha/lorenzo/data-access';
-import { CardsComponent } from './cards/cards.component';
+import { CardsComponent, CardTemplateDirective } from '@atocha/lorenzo/ui';
+import { Development, Leader } from '@atocha/lorenzo/util';
 import { HeaderComponent } from './header/header.component';
-import { View } from './mode.type';
+import { DevelopmentComponent } from './cards/development/development.component';
+import { LeaderComponent } from './cards/leader/leader.component';
+import { View } from './view.type';
 
 @Component({
   standalone: true,
   selector: 'app-browse',
-  imports: [CardsComponent, CommonModule, HeaderComponent],
+  imports: [
+    CardTemplateDirective,
+    CardsComponent,
+    CommonModule,
+    DevelopmentComponent,
+    HeaderComponent,
+    LeaderComponent,
+  ],
   templateUrl: './browse.component.html',
   styleUrls: ['./browse.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -44,6 +55,9 @@ export class BrowseComponent {
         : this._browseService.favoriteDevelopments$
     )
   );
+
+  developmentTrackByFn = trackByFactory<Development>(({ id }) => id.toString());
+  leaderTrackByFn = trackByFactory<Leader>(({ name }) => name);
 
   constructor(private _browseService: BrowseService) {}
 
