@@ -25,7 +25,7 @@
       [favorites]="vm.favoriteLeaders"
       [trackByFn]="leaderTrackByFn"
     >
-      <ng-template uiCard
+      <ng-template [uiCard]="vm.filteredLeaders"
         let-leader
       >
         <ui-leader
@@ -43,7 +43,7 @@
       [favorites]="vm.favoriteDevelopments"
       [trackByFn]="developmentTrackByFn"
     >
-      <ng-template uiCard
+      <ng-template [uiCard]="vm.filteredDevelopments"
         let-development
       >
         <ui-development
