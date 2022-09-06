@@ -21,5 +21,5 @@ import { Leader } from '@atocha/lorenzo/util';
 export class LeaderComponent {
   @Input() data: Leader | undefined;
   @Input() favorite = false;
-  @Output() favoriteChange = new EventEmitter <boolean>();
+  @Output() favoriteChange = new EventEmitter<boolean>();
 }
