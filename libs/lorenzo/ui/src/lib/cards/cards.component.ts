@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/member-ordering */
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, ContentChild, EventEmitter, Input, Output, TemplateRef } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ContentChild, Input, TemplateRef, TrackByFunction } from '@angular/core';
 
 @Component({
   standalone: true,
@@ -11,14 +11,12 @@ import { ChangeDetectionStrategy, Component, ContentChild, EventEmitter, Input, 
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CardsComponent<T> {
+  @Input() type = '';
   @Input() cards: T[] = [];
-  @Input() getId: (data: T) => string = () => '';
   @Input() total = 0;
   @Input() favorites = new Set<string>();
-  @Output() favoritesChange = new EventEmitter<string>();
+  @Input() trackByFn: TrackByFunction<T> = (_, index) => index;
   showCards = true;
-
-  // cardsTrackByF = trackByFactory<Development>(({ id }) => id.toString());
 
   @ContentChild('cardTemplate')
   cardTemplate: TemplateRef<T> | null = null;

@@ -1,6 +1,6 @@
 <section class="section developments">
   <div class="header">
-    <h2>Development Cards
+    <h2>{{ type }} Cards
       <span class="count">
         ({{ cards.length }} / {{ total }})
       </span>
@@ -12,7 +12,7 @@
   <ul [hidden]="!showCards"
     class="cards"
   >
-    <li *ngFor="let card of cards"
+    <li *ngFor="let card of cards; trackBy: trackByFn"
       class="card"
     >
       <ng-container
@@ -25,11 +25,5 @@
     <li *ngIf="!cards.length">
       No matching cards
     </li>
-    <!-- <li ui-development
-      *ngFor="let development of developments; trackBy: developmentTrackByFn"
-      [data]="development"
-      [favorite]="favoriteDevelopments.has(development.id.toString())"
-      (favoriteChange)="favoriteDevelopmentChange.emit(development.id.toString())"
-    ></li> -->
   </ul>
 </section>
