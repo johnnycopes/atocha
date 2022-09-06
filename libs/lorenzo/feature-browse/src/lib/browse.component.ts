@@ -11,7 +11,12 @@ import {
 import { trackByFactory } from '@atocha/core/ui';
 import { includes } from '@atocha/core/util';
 import { BrowseService } from '@atocha/lorenzo/data-access';
-import { CardsComponent, CardTemplateDirective, DevelopmentComponent, LeaderComponent } from '@atocha/lorenzo/ui';
+import {
+  CardsComponent,
+  CardTemplateDirective,
+  DevelopmentComponent,
+  LeaderComponent,
+} from '@atocha/lorenzo/ui';
 import { Development, Leader } from '@atocha/lorenzo/util';
 import { View } from './mode.type';
 import { HeaderComponent } from './header/header.component';

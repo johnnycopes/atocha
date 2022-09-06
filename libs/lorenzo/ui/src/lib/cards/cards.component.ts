@@ -1,6 +1,13 @@
 /* eslint-disable @typescript-eslint/member-ordering */
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, ContentChild, Input, TemplateRef, TrackByFunction } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ContentChild,
+  Input,
+  TemplateRef,
+  TrackByFunction,
+} from '@angular/core';
 
 import { CardTemplateDirective } from './card-template.directive';
 
