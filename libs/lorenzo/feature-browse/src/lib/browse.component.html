@@ -25,11 +25,11 @@
       [favorites]="vm.favoriteLeaders"
       [trackByFn]="leaderTrackByFn"
     >
-      <ui-leader *uiCard="vm.filteredLeaders as leader"
+      <app-leader *uiCard="vm.filteredLeaders as leader"
         [data]="leader"
         [favorite]="vm.favoriteLeaders.has(leader.name)"
         (favoriteChange)="updateFavoriteLeader(leader.name)"
-      ></ui-leader>
+      ></app-leader>
     </ui-cards>
 
     <ui-cards
@@ -39,11 +39,11 @@
       [favorites]="vm.favoriteDevelopments"
       [trackByFn]="developmentTrackByFn"
     >
-      <ui-development *uiCard="vm.filteredDevelopments as development"
+      <app-development *uiCard="vm.filteredDevelopments as development"
         [data]="development"
         [favorite]="vm.favoriteDevelopments.has(development.id.toString())"
         (favoriteChange)="updateFavoriteDevelopment(development.id.toString())"
-      ></ui-development>
+      ></app-development>
     </ui-cards>
   </main>
 </ng-container>

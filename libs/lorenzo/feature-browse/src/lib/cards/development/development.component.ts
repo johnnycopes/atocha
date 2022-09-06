@@ -7,20 +7,19 @@ import {
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { Leader } from '@atocha/lorenzo/util';
-import { CardComponent } from '../card/card.component';
-import { CardHeaderComponent } from '../card/card-header/card-header.component';
+import { CardComponent, CardHeaderComponent } from '@atocha/lorenzo/ui';
+import { Development } from '@atocha/lorenzo/util';
 
 @Component({
-  selector: 'ui-leader',
+  selector: 'app-development',
   standalone: true,
   imports: [CardComponent, CardHeaderComponent, CommonModule],
-  templateUrl: './leader.component.html',
-  styleUrls: ['./leader.component.scss'],
+  templateUrl: './development.component.html',
+  styleUrls: ['./development.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class LeaderComponent {
-  @Input() data: Leader | undefined;
+export class DevelopmentComponent {
+  @Input() data: Development | undefined;
   @Input() favorite = false;
   @Output() favoriteChange = new EventEmitter<boolean>();
 }
