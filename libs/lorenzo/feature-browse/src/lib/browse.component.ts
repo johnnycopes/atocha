@@ -12,8 +12,7 @@ import { includes } from '@atocha/core/util';
 import { BrowseService } from '@atocha/lorenzo/data-access';
 import { HeaderComponent } from './header/header.component';
 import { View } from './mode.type';
-import { DevelopmentsComponent } from './developments/developments.component';
-import { CardsComponent, LeaderComponent } from '@atocha/lorenzo/ui';
+import { CardsComponent, DevelopmentComponent, LeaderComponent } from '@atocha/lorenzo/ui';
 import { trackByFactory } from '@atocha/core/ui';
 import { Development, Leader } from '@atocha/lorenzo/util';
 
@@ -23,7 +22,7 @@ import { Development, Leader } from '@atocha/lorenzo/util';
   imports: [
     CardsComponent,
     CommonModule,
-    DevelopmentsComponent,
+    DevelopmentComponent,
     HeaderComponent,
     LeaderComponent,
   ],

@@ -17,6 +17,7 @@
         Clear Favorites
       </button>
     </div>
+
     <ui-cards
       type="Leader"
       [cards]="vm.filteredLeaders"
@@ -35,11 +36,22 @@
       </ng-template>
     </ui-cards>
 
-    <app-developments
-      [developments]="vm.filteredDevelopments"
-      [totalDevelopments]="vm.totalDevelopments"
-      [favoriteDevelopments]="vm.favoriteDevelopments"
-      (favoriteDevelopmentChange)="updateFavoriteDevelopment($event)"
-    ></app-developments>
+    <ui-cards
+      type="Development"
+      [cards]="vm.filteredDevelopments"
+      [total]="vm.totalDevelopments"
+      [favorites]="vm.favoriteDevelopments"
+      [trackByFn]="developmentTrackByFn"
+    >
+      <ng-template #cardTemplate
+        let-development
+      >
+        <ui-development
+          [data]="development"
+          [favorite]="vm.favoriteDevelopments.has(development.id.toString())"
+          (favoriteChange)="updateFavoriteDevelopment(development.id.toString())"
+        ></ui-development>
+      </ng-template>
+    </ui-cards>
   </main>
 </ng-container>
