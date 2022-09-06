@@ -2,6 +2,8 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, ContentChild, Input, TemplateRef, TrackByFunction } from '@angular/core';
 
+import { CardTemplateDirective } from './card-template.directive';
+
 @Component({
   standalone: true,
   selector: 'ui-cards',
@@ -18,6 +20,6 @@ export class CardsComponent<T> {
   @Input() trackByFn: TrackByFunction<T> = (_, index) => index;
   showCards = true;
 
-  @ContentChild('cardTemplate')
+  @ContentChild(CardTemplateDirective, { read: TemplateRef })
   cardTemplate: TemplateRef<T> | null = null;
 }

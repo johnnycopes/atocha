@@ -8,18 +8,19 @@ import {
   switchMap,
 } from 'rxjs';
 
+import { trackByFactory } from '@atocha/core/ui';
 import { includes } from '@atocha/core/util';
 import { BrowseService } from '@atocha/lorenzo/data-access';
-import { HeaderComponent } from './header/header.component';
-import { View } from './mode.type';
-import { CardsComponent, DevelopmentComponent, LeaderComponent } from '@atocha/lorenzo/ui';
-import { trackByFactory } from '@atocha/core/ui';
+import { CardsComponent, CardTemplateDirective, DevelopmentComponent, LeaderComponent } from '@atocha/lorenzo/ui';
 import { Development, Leader } from '@atocha/lorenzo/util';
+import { View } from './mode.type';
+import { HeaderComponent } from './header/header.component';
 
 @Component({
   standalone: true,
   selector: 'app-browse',
   imports: [
+    CardTemplateDirective,
     CardsComponent,
     CommonModule,
     DevelopmentComponent,
