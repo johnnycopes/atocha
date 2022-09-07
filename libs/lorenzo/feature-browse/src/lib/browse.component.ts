@@ -12,9 +12,10 @@ import { trackByFactory } from '@atocha/core/ui';
 import { includes } from '@atocha/core/util';
 import { BrowseService } from '@atocha/lorenzo/data-access';
 import { CardsComponent, CardTemplateDirective } from '@atocha/lorenzo/ui';
-import { Development, Leader } from '@atocha/lorenzo/util';
+import { Development, Family, Leader } from '@atocha/lorenzo/util';
 import { HeaderComponent } from './header/header.component';
 import { DevelopmentComponent } from './cards/development/development.component';
+import { FamilyComponent } from './cards/family/family.component';
 import { LeaderComponent } from './cards/leader/leader.component';
 import { View } from './view.type';
 
@@ -27,6 +28,7 @@ import { View } from './view.type';
     CommonModule,
     DevelopmentComponent,
     HeaderComponent,
+    FamilyComponent,
     LeaderComponent,
   ],
   templateUrl: './browse.component.html',
@@ -56,8 +58,17 @@ export class BrowseComponent {
     )
   );
 
-  developmentTrackByFn = trackByFactory<Development>(({ id }) => id.toString());
+  families$ = this._viewSubject.pipe(
+    switchMap((view) =>
+      view === 'all'
+        ? this._browseService.families$
+        : this._browseService.favoriteFamilies$
+    )
+  );
+
   leaderTrackByFn = trackByFactory<Leader>(({ name }) => name);
+  familyTrackByFn = trackByFactory<Family>(({ name }) => name);
+  developmentTrackByFn = trackByFactory<Development>(({ id }) => id.toString());
 
   constructor(private _browseService: BrowseService) {}
 
@@ -66,8 +77,10 @@ export class BrowseComponent {
     this.view$,
     this.leaders$,
     this.developments$,
+    this.families$,
     this._browseService.favoriteLeaderIds$,
     this._browseService.favoriteDevelopmentIds$,
+    this._browseService.favoriteFamilyIds$,
   ]).pipe(
     map(
       ([
@@ -75,8 +88,10 @@ export class BrowseComponent {
         view,
         leaders,
         developments,
+        families,
         favoriteLeaders,
         favoriteDevelopments,
+        favoriteFamilies,
       ]) => ({
         text,
         view,
@@ -84,10 +99,13 @@ export class BrowseComponent {
         filteredDevelopments: developments.filter(({ id }) =>
           includes([id.toString()], text)
         ),
+        filteredFamilies: families.filter(({ name }) => includes([name], text)),
         totalLeaders: leaders.length,
         totalDevelopments: developments.length,
+        totalFamilies: families.length,
         favoriteLeaders,
         favoriteDevelopments,
+        favoriteFamilies,
       })
     )
   );
@@ -105,11 +123,15 @@ export class BrowseComponent {
     window.scroll(0, 0);
   }
 
-  updateFavoriteLeader(id: string): void {
-    this._browseService.updateFavoriteLeader(id);
-  }
-
   updateFavoriteDevelopment(id: string): void {
     this._browseService.updateFavoriteDevelopment(id);
+  }
+
+  updateFavoriteFamily(id: string): void {
+    this._browseService.updateFavoriteFamily(id);
+  }
+
+  updateFavoriteLeader(id: string): void {
+    this._browseService.updateFavoriteLeader(id);
   }
 }

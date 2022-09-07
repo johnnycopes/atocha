@@ -11,12 +11,26 @@
       class="overview"
     >
       <p>
-        {{ vm.favoriteLeaders.size + vm.favoriteDevelopments.size }} favorites
+        {{ vm.favoriteLeaders.size + vm.favoriteDevelopments.size + vm.favoriteFamilies.size }} favorites
       </p>
       <button (click)="clearFavorites()">
         Clear Favorites
       </button>
     </div>
+
+    <ui-cards
+      type="Family"
+      [cards]="vm.filteredFamilies"
+      [total]="vm.totalFamilies"
+      [favorites]="vm.favoriteFamilies"
+      [trackByFn]="familyTrackByFn"
+    >
+      <app-family *uiCard="vm.filteredFamilies as family"
+        [data]="family"
+        [favorite]="vm.favoriteFamilies.has(family.name)"
+        (favoriteChange)="updateFavoriteFamily(family.name)"
+      ></app-family>
+    </ui-cards>
 
     <ui-cards
       type="Leader"

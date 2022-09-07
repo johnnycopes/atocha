@@ -1,0 +1,16 @@
+:host {
+  display: block;
+}
+
+.name {
+  background: var(--card-bg-dark);
+  font-weight: 700;
+}
+
+.privilege {
+  background: var(--card-bg-light);
+}
+
+.privilege-label {
+  color: var(--leader-ability);
+}
