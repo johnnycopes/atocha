@@ -91,7 +91,7 @@ export class BrowseComponent {
         families,
         favoriteLeaders,
         favoriteDevelopments,
-        favoriteFamilies
+        favoriteFamilies,
       ]) => ({
         text,
         view,

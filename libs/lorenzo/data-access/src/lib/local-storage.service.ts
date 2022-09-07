@@ -62,7 +62,7 @@ export class LocalStorageService {
     this._favoriteFamilyIdsSubject.next(emptyFamilies);
     this._setIds(this._leadersKey, emptyLeaders);
     this._setIds(this._developmentsKey, emptyDevelopments);
-    this._setIds(this._familiesKey, emptyDevelopments);
+    this._setIds(this._familiesKey, emptyFamilies);
   }
 
   private _getIds(key: string): Set<string> {

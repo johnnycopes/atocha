@@ -13,7 +13,5 @@ export class CardService {
     shareReplay({ bufferSize: 1, refCount: true })
   );
 
-  families$ = of(FAMILIES).pipe(
-    shareReplay({ bufferSize: 1, refCount: true })
-  );
+  families$ = of(FAMILIES).pipe(shareReplay({ bufferSize: 1, refCount: true }));
 }

@@ -21,9 +21,7 @@ export class BrowseService {
   favoriteLeaders$: Observable<readonly Leader[]> = combineLatest([
     this.favoriteLeaderIds$,
     this.leaders$,
-  ]).pipe(
-    map(([ids, leaders]) => leaders.filter(({ name }) => ids.has(name)))
-  );
+  ]).pipe(map(([ids, leaders]) => leaders.filter(({ name }) => ids.has(name))));
   favoriteDevelopments$: Observable<readonly Development[]> = combineLatest([
     this.favoriteDevelopmentIds$,
     this.developments$,
@@ -36,9 +34,7 @@ export class BrowseService {
     this.favoriteFamilyIds$,
     this.families$,
   ]).pipe(
-    map(([ids, families]) =>
-      families.filter(({ name }) => ids.has(name))
-    )
+    map(([ids, families]) => families.filter(({ name }) => ids.has(name)))
   );
 
   constructor(
