@@ -16,7 +16,7 @@ export class LocalStorageService {
     window.localStorage.removeItem(key);
   }
 
-  removeAllItems(): void {
+  clear(): void {
     window.localStorage.clear();
   }
 }
