@@ -8,7 +8,7 @@ import {
   switchMap,
 } from 'rxjs';
 
-import { trackByFactory } from '@atocha/core/ui';
+import { PluralPipe, trackByFactory } from '@atocha/core/ui';
 import { includes } from '@atocha/core/util';
 import { BrowseService } from '@atocha/lorenzo/data-access';
 import { CardsComponent, CardTemplateDirective } from '@atocha/lorenzo/ui';
@@ -30,6 +30,7 @@ import { View } from './view.type';
     HeaderComponent,
     FamilyComponent,
     LeaderComponent,
+    PluralPipe,
   ],
   templateUrl: './browse.component.html',
   styleUrls: ['./browse.component.scss'],
