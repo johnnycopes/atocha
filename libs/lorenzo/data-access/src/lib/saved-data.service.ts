@@ -5,7 +5,7 @@ import { first, shareReplay } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root',
 })
-export class LocalStorageService {
+export class SavedDataService {
   private _prefix = 'LORENZO_';
   private _leadersKey = this._prefix + 'LEADER_IDS';
   private _developmentsKey = this._prefix + 'DEVELOPMENT_IDS';
