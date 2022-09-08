@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { first, shareReplay } from 'rxjs/operators';
 
+import { LocalStorageService } from '@atocha/core/data-access';
+
 @Injectable({
   providedIn: 'root',
 })
@@ -28,6 +30,8 @@ export class SavedDataService {
   favoriteFamilyIds$ = this._favoriteFamilyIdsSubject.pipe(
     shareReplay({ bufferSize: 1, refCount: true })
   );
+
+  constructor(private _localStorageService: LocalStorageService) {}
 
   updateFavoriteLeader(id: string): void {
     this._favoriteLeaderIdsSubject.pipe(first()).subscribe((favorites) => {
@@ -66,12 +70,12 @@ export class SavedDataService {
   }
 
   private _getIds(key: string): Set<string> {
-    const ids = window.localStorage.getItem(key);
+    const ids = this._localStorageService.getItem(key);
     return new Set<string>(ids ? JSON.parse(ids) : '');
   }
 
   private _setIds(key: string, ids: Set<string>): void {
-    window.localStorage.setItem(key, JSON.stringify(Array.from(ids)));
+    this._localStorageService.setItem(key, JSON.stringify(Array.from(ids)));
   }
 
   private _updateSet(set: Set<string>, key: string): Set<string> {
