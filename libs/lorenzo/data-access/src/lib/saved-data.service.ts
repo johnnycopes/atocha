@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { first, shareReplay } from 'rxjs/operators';
+import { first, shareReplay, tap } from 'rxjs/operators';
 
 import { LocalStorageService } from '@atocha/core/data-access';
 
@@ -22,12 +22,15 @@ export class SavedDataService {
     this._getIds(this._familiesKey)
   );
   favoriteLeaderIds$ = this._favoriteLeaderIdsSubject.pipe(
+    tap(ids => this._setIds(this._leadersKey, ids)),
     shareReplay({ bufferSize: 1, refCount: true })
-  );
+    );
   favoriteDevelopmentIds$ = this._favoriteDevelopmentIdsSubject.pipe(
+    tap(ids => this._setIds(this._developmentsKey, ids)),
     shareReplay({ bufferSize: 1, refCount: true })
   );
   favoriteFamilyIds$ = this._favoriteFamilyIdsSubject.pipe(
+    tap(ids => this._setIds(this._familiesKey, ids)),
     shareReplay({ bufferSize: 1, refCount: true })
   );
 
@@ -37,7 +40,6 @@ export class SavedDataService {
     this._favoriteLeaderIdsSubject.pipe(first()).subscribe((favorites) => {
       const newFavorites = this._updateSet(favorites, id);
       this._favoriteLeaderIdsSubject.next(newFavorites);
-      this._setIds(this._leadersKey, newFavorites);
     });
   }
 
@@ -45,7 +47,6 @@ export class SavedDataService {
     this._favoriteDevelopmentIdsSubject.pipe(first()).subscribe((favorites) => {
       const newFavorites = this._updateSet(favorites, id);
       this._favoriteDevelopmentIdsSubject.next(newFavorites);
-      this._setIds(this._developmentsKey, newFavorites);
     });
   }
 
@@ -53,7 +54,6 @@ export class SavedDataService {
     this._favoriteFamilyIdsSubject.pipe(first()).subscribe((favorites) => {
       const newFavorites = this._updateSet(favorites, id);
       this._favoriteFamilyIdsSubject.next(newFavorites);
-      this._setIds(this._familiesKey, newFavorites);
     });
   }
 
