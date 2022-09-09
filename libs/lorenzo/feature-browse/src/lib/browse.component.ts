@@ -46,9 +46,7 @@ export class BrowseComponent {
   vm$ = combineLatest([
     this._textSubject.pipe(distinctUntilChanged()),
     this._browseService.view$,
-    this._browseService.developments$,
-    this._browseService.families$,
-    this._browseService.leaders$,
+    this._browseService.cards$,
     this._browseService.favoriteDevelopmentIds$,
     this._browseService.favoriteFamilyIds$,
     this._browseService.favoriteLeaderIds$,
@@ -57,9 +55,7 @@ export class BrowseComponent {
       ([
         text,
         view,
-        developments,
-        families,
-        leaders,
+        { developments, families, leaders },
         favoriteDevelopments,
         favoriteFamilies,
         favoriteLeaders,

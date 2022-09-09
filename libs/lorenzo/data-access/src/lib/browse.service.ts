@@ -12,23 +12,26 @@ import { ViewService } from './view.service';
 })
 export class BrowseService {
   view$ = this._viewService.view$;
-  developments$ = this.view$.pipe(
-    switchMap((view) =>
-      view === 'all'
-        ? this._developments$
-        : this._favoriteDevelopments$
-    )
-  );
-  families$ = this.view$.pipe(
-    switchMap((view) =>
-      view === 'all' ? this._families$ : this._favoriteFamilies$
-    )
-  );
-  leaders$ = this.view$.pipe(
-    switchMap((view) =>
-      view === 'all' ? this._leaders$ : this._favoriteLeaders$
-    )
-  );
+  cards$ = combineLatest([
+    this.view$.pipe(
+      switchMap((view) =>
+        view === 'all'
+          ? this._developments$
+          : this._favoriteDevelopments$
+      )
+    ),
+    this.view$.pipe(
+      switchMap((view) =>
+        view === 'all' ? this._families$ : this._favoriteFamilies$
+      )
+    ),
+    this.view$.pipe(
+      switchMap((view) =>
+        view === 'all' ? this._leaders$ : this._favoriteLeaders$
+      )
+    )]).pipe(
+      map(([developments, families, leaders]) => ({ developments, families, leaders }))
+    );
   favoriteDevelopmentIds$ = this._favoriteService.ids$.pipe(
     map(({ developments }) => developments)
   );
@@ -38,10 +41,10 @@ export class BrowseService {
   favoriteLeaderIds$ = this._favoriteService.ids$.pipe(
     map(({ leaders }) => leaders)
   );
+
   private _developments$ = this._cardService.cards$.pipe(
     map(({ developments }) => developments)
   );
-
   private _families$ = this._cardService.cards$.pipe(
     map(({ families }) => families)
   );
