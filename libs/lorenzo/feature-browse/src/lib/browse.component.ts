@@ -5,19 +5,17 @@ import {
   distinctUntilChanged,
   combineLatest,
   map,
-  switchMap,
 } from 'rxjs';
 
 import { PluralPipe, trackByFactory } from '@atocha/core/ui';
 import { includes } from '@atocha/core/util';
 import { BrowseService } from '@atocha/lorenzo/data-access';
 import { CardsComponent, CardTemplateDirective } from '@atocha/lorenzo/ui';
-import { Development, Family, Leader } from '@atocha/lorenzo/util';
+import { Development, Family, Leader, View } from '@atocha/lorenzo/util';
 import { HeaderComponent } from './header/header.component';
 import { DevelopmentComponent } from './cards/development/development.component';
 import { FamilyComponent } from './cards/family/family.component';
 import { LeaderComponent } from './cards/leader/leader.component';
-import { View } from './view.type';
 
 @Component({
   standalone: true,
@@ -38,34 +36,6 @@ import { View } from './view.type';
 })
 export class BrowseComponent {
   private _textSubject = new BehaviorSubject<string>('');
-  text$ = this._textSubject.pipe(distinctUntilChanged());
-
-  private _viewSubject = new BehaviorSubject<View>('all');
-  view$ = this._viewSubject.pipe(distinctUntilChanged());
-
-  leaders$ = this._viewSubject.pipe(
-    switchMap((view) =>
-      view === 'all'
-        ? this._browseService.leaders$
-        : this._browseService.favoriteLeaders$
-    )
-  );
-
-  developments$ = this._viewSubject.pipe(
-    switchMap((view) =>
-      view === 'all'
-        ? this._browseService.developments$
-        : this._browseService.favoriteDevelopments$
-    )
-  );
-
-  families$ = this._viewSubject.pipe(
-    switchMap((view) =>
-      view === 'all'
-        ? this._browseService.families$
-        : this._browseService.favoriteFamilies$
-    )
-  );
 
   leaderTrackByFn = trackByFactory<Leader>(({ name }) => name);
   familyTrackByFn = trackByFactory<Family>(({ name }) => name);
@@ -74,39 +44,39 @@ export class BrowseComponent {
   constructor(private _browseService: BrowseService) {}
 
   vm$ = combineLatest([
-    this.text$,
-    this.view$,
-    this.leaders$,
-    this.developments$,
-    this.families$,
-    this._browseService.favoriteLeaderIds$,
+    this._textSubject.pipe(distinctUntilChanged()),
+    this._browseService.view$,
+    this._browseService.developments$,
+    this._browseService.families$,
+    this._browseService.leaders$,
     this._browseService.favoriteDevelopmentIds$,
     this._browseService.favoriteFamilyIds$,
+    this._browseService.favoriteLeaderIds$,
   ]).pipe(
     map(
       ([
         text,
         view,
-        leaders,
         developments,
         families,
-        favoriteLeaders,
+        leaders,
         favoriteDevelopments,
         favoriteFamilies,
+        favoriteLeaders,
       ]) => ({
         text,
         view,
-        filteredLeaders: leaders.filter(({ name }) => includes([name], text)),
         filteredDevelopments: developments.filter(({ id }) =>
           includes([id.toString()], text)
         ),
         filteredFamilies: families.filter(({ name }) => includes([name], text)),
-        totalLeaders: leaders.length,
+        filteredLeaders: leaders.filter(({ name }) => includes([name], text)),
         totalDevelopments: developments.length,
         totalFamilies: families.length,
-        favoriteLeaders,
+        totalLeaders: leaders.length,
         favoriteDevelopments,
         favoriteFamilies,
+        favoriteLeaders,
       })
     )
   );
@@ -120,19 +90,19 @@ export class BrowseComponent {
   }
 
   changeView(view: View): void {
-    this._viewSubject.next(view);
+    this._browseService.updateView(view);
     window.scroll(0, 0);
   }
 
-  updateFavoriteDevelopment(id: string): void {
-    this._browseService.updateFavoriteDevelopment(id);
+  toggleFavoriteDevelopment(id: string): void {
+    this._browseService.toggleFavoriteDevelopment(id);
   }
 
-  updateFavoriteFamily(id: string): void {
-    this._browseService.updateFavoriteFamily(id);
+  toggleFavoriteFamily(id: string): void {
+    this._browseService.toggleFavoriteFamily(id);
   }
 
-  updateFavoriteLeader(id: string): void {
-    this._browseService.updateFavoriteLeader(id);
+  toggleFavoriteLeader(id: string): void {
+    this._browseService.toggleFavoriteLeader(id);
   }
 }
