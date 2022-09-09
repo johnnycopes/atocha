@@ -37,24 +37,21 @@ export class SavedDataService {
   constructor(private _localStorageService: LocalStorageService) {}
 
   updateFavoriteLeader(id: string): void {
-    this._favoriteLeaderIdsSubject.pipe(first()).subscribe((favorites) => {
-      const newFavorites = this._updateSet(favorites, id);
-      this._favoriteLeaderIdsSubject.next(newFavorites);
-    });
+    this._favoriteLeaderIdsSubject.pipe(first()).subscribe(
+      (favorites) => this._favoriteLeaderIdsSubject.next(this._updateSet(favorites, id))
+    );
   }
 
   updateFavoriteDevelopment(id: string): void {
-    this._favoriteDevelopmentIdsSubject.pipe(first()).subscribe((favorites) => {
-      const newFavorites = this._updateSet(favorites, id);
-      this._favoriteDevelopmentIdsSubject.next(newFavorites);
-    });
+    this._favoriteDevelopmentIdsSubject.pipe(first()).subscribe(
+      (favorites) => this._favoriteDevelopmentIdsSubject.next(this._updateSet(favorites, id))
+    );
   }
 
   updateFavoriteFamily(id: string): void {
-    this._favoriteFamilyIdsSubject.pipe(first()).subscribe((favorites) => {
-      const newFavorites = this._updateSet(favorites, id);
-      this._favoriteFamilyIdsSubject.next(newFavorites);
-    });
+    this._favoriteFamilyIdsSubject.pipe(first()).subscribe(
+      (favorites) => this._favoriteFamilyIdsSubject.next(this._updateSet(favorites, id))
+    );
   }
 
   clearFavorites() {
