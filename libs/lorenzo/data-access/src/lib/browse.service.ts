@@ -3,25 +3,27 @@ import { combineLatest, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { Development, Family, Leader } from '@atocha/lorenzo/util';
-import { LocalStorageService } from './local-storage.service';
 import { CardService } from './card.service';
+import { SavedDataService } from './saved-data.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class BrowseService {
-  leaders$ = this._cardService.leaders$;
   developments$ = this._cardService.developments$;
   families$ = this._cardService.families$;
+  leaders$ = this._cardService.leaders$;
 
-  favoriteLeaderIds$ = this._localStorageService.favoriteLeaderIds$;
-  favoriteDevelopmentIds$ = this._localStorageService.favoriteDevelopmentIds$;
-  favoriteFamilyIds$ = this._localStorageService.favoriteFamilyIds$;
+  favoriteDevelopmentIds$ = this._savedDataService.favoriteIds$.pipe(
+    map(({ developments }) => developments)
+  );
+  favoriteFamilyIds$ = this._savedDataService.favoriteIds$.pipe(
+    map(({ families }) => families)
+  );
+  favoriteLeaderIds$ = this._savedDataService.favoriteIds$.pipe(
+    map(({ leaders }) => leaders)
+  );
 
-  favoriteLeaders$: Observable<readonly Leader[]> = combineLatest([
-    this.favoriteLeaderIds$,
-    this.leaders$,
-  ]).pipe(map(([ids, leaders]) => leaders.filter(({ name }) => ids.has(name))));
   favoriteDevelopments$: Observable<readonly Development[]> = combineLatest([
     this.favoriteDevelopmentIds$,
     this.developments$,
@@ -36,25 +38,29 @@ export class BrowseService {
   ]).pipe(
     map(([ids, families]) => families.filter(({ name }) => ids.has(name)))
   );
+  favoriteLeaders$: Observable<readonly Leader[]> = combineLatest([
+    this.favoriteLeaderIds$,
+    this.leaders$,
+  ]).pipe(map(([ids, leaders]) => leaders.filter(({ name }) => ids.has(name))));
 
   constructor(
     private _cardService: CardService,
-    private _localStorageService: LocalStorageService
+    private _savedDataService: SavedDataService
   ) {}
 
   clearFavorites() {
-    this._localStorageService.clearFavorites();
-  }
-
-  updateFavoriteLeader(id: string): void {
-    this._localStorageService.updateFavoriteLeader(id);
+    this._savedDataService.clearFavorites();
   }
 
   updateFavoriteDevelopment(id: string): void {
-    this._localStorageService.updateFavoriteDevelopment(id);
+    this._savedDataService.updateFavoriteId(id, 'development');
   }
 
   updateFavoriteFamily(id: string): void {
-    this._localStorageService.updateFavoriteFamily(id);
+    this._savedDataService.updateFavoriteId(id, 'family');
+  }
+
+  updateFavoriteLeader(id: string): void {
+    this._savedDataService.updateFavoriteId(id, 'leader');
   }
 }
