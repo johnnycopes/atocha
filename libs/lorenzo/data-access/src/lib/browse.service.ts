@@ -12,6 +12,27 @@ import { ViewService } from './view.service';
 })
 export class BrowseService {
   view$ = this._viewService.view$;
+  developments$ = this.view$.pipe(
+    switchMap((view) =>
+      view === 'all'
+        ? this._developments$
+        : this._favoriteDevelopments$
+    )
+  );
+  families$ = this.view$.pipe(
+    switchMap((view) =>
+      view === 'all'
+        ? this._families$
+        : this._favoriteFamilies$
+    )
+  );
+  leaders$ = this.view$.pipe(
+    switchMap((view) =>
+      view === 'all'
+        ? this._leaders$
+        : this._favoriteLeaders$
+    )
+  );
   favoriteDevelopmentIds$ = this._favoriteService.ids$.pipe(
     map(({ developments }) => developments)
   );
@@ -21,7 +42,6 @@ export class BrowseService {
   favoriteLeaderIds$ = this._favoriteService.ids$.pipe(
     map(({ leaders }) => leaders)
   );
-
   private _developments$ = this._cardService.developments$;
   private _families$ = this._cardService.families$;
   private _leaders$ = this._cardService.leaders$;
@@ -43,30 +63,6 @@ export class BrowseService {
     this.favoriteLeaderIds$,
     this._leaders$,
   ]).pipe(map(([ids, leaders]) => leaders.filter(({ name }) => ids.has(name))));
-
-  leaders$ = this.view$.pipe(
-    switchMap((view) =>
-      view === 'all'
-        ? this._leaders$
-        : this._favoriteLeaders$
-    )
-  );
-
-  developments$ = this.view$.pipe(
-    switchMap((view) =>
-      view === 'all'
-        ? this._developments$
-        : this._favoriteDevelopments$
-    )
-  );
-
-  families$ = this.view$.pipe(
-    switchMap((view) =>
-      view === 'all'
-        ? this._families$
-        : this._favoriteFamilies$
-    )
-  );
 
   constructor(
     private _cardService: CardService,
