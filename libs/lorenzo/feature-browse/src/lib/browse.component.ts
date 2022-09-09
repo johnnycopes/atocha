@@ -36,14 +36,6 @@ import { LeaderComponent } from './cards/leader/leader.component';
 })
 export class BrowseComponent {
   private _textSubject = new BehaviorSubject<string>('');
-  text$ = this._textSubject.pipe(distinctUntilChanged());
-  view$ = this._browseService.view$;
-
-  leaders$ = this._browseService.leaders$;
-
-  developments$ = this._browseService.developments$;
-
-  families$ = this._browseService.families$;
 
   leaderTrackByFn = trackByFactory<Leader>(({ name }) => name);
   familyTrackByFn = trackByFactory<Family>(({ name }) => name);
@@ -52,11 +44,11 @@ export class BrowseComponent {
   constructor(private _browseService: BrowseService) {}
 
   vm$ = combineLatest([
-    this.text$,
-    this.view$,
-    this.leaders$,
-    this.developments$,
-    this.families$,
+    this._textSubject.pipe(distinctUntilChanged()),
+    this._browseService.view$,
+    this._browseService.leaders$,
+    this._browseService.developments$,
+    this._browseService.families$,
     this._browseService.favoriteLeaderIds$,
     this._browseService.favoriteDevelopmentIds$,
     this._browseService.favoriteFamilyIds$,
