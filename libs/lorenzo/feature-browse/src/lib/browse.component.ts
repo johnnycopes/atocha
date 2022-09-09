@@ -12,12 +12,11 @@ import { PluralPipe, trackByFactory } from '@atocha/core/ui';
 import { includes } from '@atocha/core/util';
 import { BrowseService } from '@atocha/lorenzo/data-access';
 import { CardsComponent, CardTemplateDirective } from '@atocha/lorenzo/ui';
-import { Development, Family, Leader } from '@atocha/lorenzo/util';
+import { Development, Family, Leader, View } from '@atocha/lorenzo/util';
 import { HeaderComponent } from './header/header.component';
 import { DevelopmentComponent } from './cards/development/development.component';
 import { FamilyComponent } from './cards/family/family.component';
 import { LeaderComponent } from './cards/leader/leader.component';
-import { View } from './view.type';
 
 @Component({
   standalone: true,
@@ -39,11 +38,9 @@ import { View } from './view.type';
 export class BrowseComponent {
   private _textSubject = new BehaviorSubject<string>('');
   text$ = this._textSubject.pipe(distinctUntilChanged());
+  view$ = this._browseService.view$;
 
-  private _viewSubject = new BehaviorSubject<View>('all');
-  view$ = this._viewSubject.pipe(distinctUntilChanged());
-
-  leaders$ = this._viewSubject.pipe(
+  leaders$ = this.view$.pipe(
     switchMap((view) =>
       view === 'all'
         ? this._browseService.leaders$
@@ -51,7 +48,7 @@ export class BrowseComponent {
     )
   );
 
-  developments$ = this._viewSubject.pipe(
+  developments$ = this.view$.pipe(
     switchMap((view) =>
       view === 'all'
         ? this._browseService.developments$
@@ -59,7 +56,7 @@ export class BrowseComponent {
     )
   );
 
-  families$ = this._viewSubject.pipe(
+  families$ = this.view$.pipe(
     switchMap((view) =>
       view === 'all'
         ? this._browseService.families$
@@ -120,7 +117,7 @@ export class BrowseComponent {
   }
 
   changeView(view: View): void {
-    this._viewSubject.next(view);
+    this._browseService.updateView(view);
     window.scroll(0, 0);
   }
 

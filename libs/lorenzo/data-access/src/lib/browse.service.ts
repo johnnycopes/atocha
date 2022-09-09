@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { combineLatest, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { Development, Family, Leader } from '@atocha/lorenzo/util';
+import { Development, Family, Leader, View } from '@atocha/lorenzo/util';
 import { CardService } from './card.service';
 import { SavedDataService } from './saved-data.service';
 
@@ -10,6 +10,7 @@ import { SavedDataService } from './saved-data.service';
   providedIn: 'root',
 })
 export class BrowseService {
+  view$ = this._savedDataService.view$;
   developments$ = this._cardService.developments$;
   families$ = this._cardService.families$;
   leaders$ = this._cardService.leaders$;
@@ -48,8 +49,8 @@ export class BrowseService {
     private _savedDataService: SavedDataService
   ) {}
 
-  clearFavorites() {
-    this._savedDataService.clearFavorites();
+  updateView(view: View): void {
+    this._savedDataService.updateView(view);
   }
 
   updateFavoriteDevelopment(id: string): void {
@@ -62,5 +63,9 @@ export class BrowseService {
 
   updateFavoriteLeader(id: string): void {
     this._savedDataService.updateFavoriteId(id, 'leader');
+  }
+
+  clearFavorites() {
+    this._savedDataService.clearFavorites();
   }
 }
