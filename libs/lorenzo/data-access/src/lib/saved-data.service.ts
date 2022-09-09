@@ -4,60 +4,76 @@ import { first, shareReplay, tap } from 'rxjs/operators';
 
 import { LocalStorageService } from '@atocha/core/data-access';
 
+interface FavoriteIds {
+  developments: Set<string>;
+  families: Set<string>;
+  leaders: Set<string>;
+}
+
+type CardType = 'development' | 'family' | 'leader';
+
 @Injectable({
   providedIn: 'root',
 })
 export class SavedDataService {
   private _prefix = 'LORENZO_';
-  private _leadersKey = this._prefix + 'LEADER_IDS';
   private _developmentsKey = this._prefix + 'DEVELOPMENT_IDS';
   private _familiesKey = this._prefix + 'FAMILY_IDS';
-  private _favoriteLeaderIdsSubject = new BehaviorSubject<Set<string>>(
-    this._getIds(this._leadersKey)
-  );
-  private _favoriteDevelopmentIdsSubject = new BehaviorSubject<Set<string>>(
-    this._getIds(this._developmentsKey)
-  );
-  private _favoriteFamilyIdsSubject = new BehaviorSubject<Set<string>>(
-    this._getIds(this._familiesKey)
-  );
-  favoriteLeaderIds$ = this._favoriteLeaderIdsSubject.pipe(
-    tap(ids => this._setIds(this._leadersKey, ids)),
-    shareReplay({ bufferSize: 1, refCount: true })
-    );
-  favoriteDevelopmentIds$ = this._favoriteDevelopmentIdsSubject.pipe(
-    tap(ids => this._setIds(this._developmentsKey, ids)),
-    shareReplay({ bufferSize: 1, refCount: true })
-  );
-  favoriteFamilyIds$ = this._favoriteFamilyIdsSubject.pipe(
-    tap(ids => this._setIds(this._familiesKey, ids)),
+  private _leadersKey = this._prefix + 'LEADER_IDS';
+
+  private _favoriteIdsSubject = new BehaviorSubject<FavoriteIds>({
+    developments: this._getIds(this._developmentsKey),
+    families: this._getIds(this._familiesKey),
+    leaders: this._getIds(this._leadersKey),
+  });
+
+  favoriteIds$ = this._favoriteIdsSubject.pipe(
+    tap(({ families, developments, leaders}) => {
+      this._setIds(this._developmentsKey, developments);
+      this._setIds(this._familiesKey, families);
+      this._setIds(this._leadersKey, leaders);
+    }),
     shareReplay({ bufferSize: 1, refCount: true })
   );
 
   constructor(private _localStorageService: LocalStorageService) {}
 
-  updateFavoriteLeader(id: string): void {
-    this._favoriteLeaderIdsSubject.pipe(first()).subscribe(
-      (favorites) => this._favoriteLeaderIdsSubject.next(this._updateSet(favorites, id))
-    );
-  }
-
-  updateFavoriteDevelopment(id: string): void {
-    this._favoriteDevelopmentIdsSubject.pipe(first()).subscribe(
-      (favorites) => this._favoriteDevelopmentIdsSubject.next(this._updateSet(favorites, id))
-    );
-  }
-
-  updateFavoriteFamily(id: string): void {
-    this._favoriteFamilyIdsSubject.pipe(first()).subscribe(
-      (favorites) => this._favoriteFamilyIdsSubject.next(this._updateSet(favorites, id))
+  updateFavoriteId(id: string, type: CardType): void {
+    this._favoriteIdsSubject.pipe(first()).subscribe(
+      (favorites) => {
+        switch (type) {
+          case 'development': {
+            this._favoriteIdsSubject.next({
+              ...favorites,
+              developments: this._updateSet(favorites.developments, id),
+            });
+            break;
+          }
+          case 'family': {
+            this._favoriteIdsSubject.next({
+              ...favorites,
+              families: this._updateSet(favorites.families, id),
+            });
+            break;
+          }
+          case 'leader': {
+            this._favoriteIdsSubject.next({
+              ...favorites,
+              leaders: this._updateSet(favorites.leaders, id),
+            });
+            break;
+          }
+        }
+      }
     );
   }
 
   clearFavorites() {
-    this._favoriteLeaderIdsSubject.next(new Set());
-    this._favoriteDevelopmentIdsSubject.next(new Set());
-    this._favoriteFamilyIdsSubject.next(new Set());
+    this._favoriteIdsSubject.next({
+      developments: new Set(),
+      families: new Set(),
+      leaders: new Set(),
+    });
   }
 
   private _getIds(key: string): Set<string> {

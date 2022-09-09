@@ -14,9 +14,15 @@ export class BrowseService {
   developments$ = this._cardService.developments$;
   families$ = this._cardService.families$;
 
-  favoriteLeaderIds$ = this._savedDataService.favoriteLeaderIds$;
-  favoriteDevelopmentIds$ = this._savedDataService.favoriteDevelopmentIds$;
-  favoriteFamilyIds$ = this._savedDataService.favoriteFamilyIds$;
+  favoriteLeaderIds$ = this._savedDataService.favoriteIds$.pipe(
+    map(({ leaders }) => leaders)
+  );
+  favoriteDevelopmentIds$ = this._savedDataService.favoriteIds$.pipe(
+    map(({ developments }) => developments)
+  );
+  favoriteFamilyIds$ = this._savedDataService.favoriteIds$.pipe(
+    map(({ families }) => families)
+  );
 
   favoriteLeaders$: Observable<readonly Leader[]> = combineLatest([
     this.favoriteLeaderIds$,
@@ -47,14 +53,14 @@ export class BrowseService {
   }
 
   updateFavoriteLeader(id: string): void {
-    this._savedDataService.updateFavoriteLeader(id);
+    this._savedDataService.updateFavoriteId(id, 'leader');
   }
 
   updateFavoriteDevelopment(id: string): void {
-    this._savedDataService.updateFavoriteDevelopment(id);
+    this._savedDataService.updateFavoriteId(id, 'development');
   }
 
   updateFavoriteFamily(id: string): void {
-    this._savedDataService.updateFavoriteFamily(id);
+    this._savedDataService.updateFavoriteId(id, 'family');
   }
 }
