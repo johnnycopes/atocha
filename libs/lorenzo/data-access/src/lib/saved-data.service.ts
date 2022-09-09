@@ -17,21 +17,23 @@ type CardType = 'development' | 'family' | 'leader';
 })
 export class SavedDataService {
   private _prefix = 'LORENZO_';
-  private _developmentsKey = this._prefix + 'DEVELOPMENT_IDS';
-  private _familiesKey = this._prefix + 'FAMILY_IDS';
-  private _leadersKey = this._prefix + 'LEADER_IDS';
+  private _keys: Record<CardType, string> = {
+    development: this._prefix + 'DEVELOPMENT_IDS',
+    family: this._prefix + 'FAMILY_IDS',
+    leader: this._prefix + 'LEADER_IDS',
+  };
 
   private _favoriteIdsSubject = new BehaviorSubject<FavoriteIds>({
-    developments: this._getIds(this._developmentsKey),
-    families: this._getIds(this._familiesKey),
-    leaders: this._getIds(this._leadersKey),
+    developments: this._getIds(this._keys.development),
+    families: this._getIds(this._keys.family),
+    leaders: this._getIds(this._keys.leader),
   });
 
   favoriteIds$ = this._favoriteIdsSubject.pipe(
     tap(({ families, developments, leaders }) => {
-      this._setIds(this._developmentsKey, developments);
-      this._setIds(this._familiesKey, families);
-      this._setIds(this._leadersKey, leaders);
+      this._setIds(this._keys.development, developments);
+      this._setIds(this._keys.family, families);
+      this._setIds(this._keys.leader, leaders);
     }),
     shareReplay({ bufferSize: 1, refCount: true })
   );
