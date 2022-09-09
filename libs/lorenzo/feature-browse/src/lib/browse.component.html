@@ -29,7 +29,7 @@
       <app-family *uiCard="vm.filteredFamilies as family"
         [data]="family"
         [favorite]="vm.favoriteFamilies.has(family.name)"
-        (favoriteChange)="updateFavoriteFamily(family.name)"
+        (favoriteChange)="toggleFavoriteFamily(family.name)"
       ></app-family>
     </ui-cards>
 
@@ -43,7 +43,7 @@
       <app-leader *uiCard="vm.filteredLeaders as leader"
         [data]="leader"
         [favorite]="vm.favoriteLeaders.has(leader.name)"
-        (favoriteChange)="updateFavoriteLeader(leader.name)"
+        (favoriteChange)="toggleFavoriteLeader(leader.name)"
       ></app-leader>
     </ui-cards>
 
@@ -57,7 +57,7 @@
       <app-development *uiCard="vm.filteredDevelopments as development"
         [data]="development"
         [favorite]="vm.favoriteDevelopments.has(development.id.toString())"
-        (favoriteChange)="updateFavoriteDevelopment(development.id.toString())"
+        (favoriteChange)="toggleFavoriteDevelopment(development.id.toString())"
       ></app-development>
     </ui-cards>
   </main>

@@ -121,15 +121,15 @@ export class BrowseComponent {
     window.scroll(0, 0);
   }
 
-  updateFavoriteDevelopment(id: string): void {
-    this._browseService.updateFavoriteDevelopment(id);
+  toggleFavoriteDevelopment(id: string): void {
+    this._browseService.toggleFavoriteDevelopment(id);
   }
 
-  updateFavoriteFamily(id: string): void {
-    this._browseService.updateFavoriteFamily(id);
+  toggleFavoriteFamily(id: string): void {
+    this._browseService.toggleFavoriteFamily(id);
   }
 
-  updateFavoriteLeader(id: string): void {
-    this._browseService.updateFavoriteLeader(id);
+  toggleFavoriteLeader(id: string): void {
+    this._browseService.toggleFavoriteLeader(id);
   }
 }

@@ -55,15 +55,15 @@ export class BrowseService {
     this._viewService.updateView(view);
   }
 
-  updateFavoriteDevelopment(id: string): void {
+  toggleFavoriteDevelopment(id: string): void {
     this._favoriteService.toggleId(id, 'development');
   }
 
-  updateFavoriteFamily(id: string): void {
+  toggleFavoriteFamily(id: string): void {
     this._favoriteService.toggleId(id, 'family');
   }
 
-  updateFavoriteLeader(id: string): void {
+  toggleFavoriteLeader(id: string): void {
     this._favoriteService.toggleId(id, 'leader');
   }
 
