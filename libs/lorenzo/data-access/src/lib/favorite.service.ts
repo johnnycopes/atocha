@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
-import { first, shareReplay, tap } from 'rxjs/operators';
+import { BehaviorSubject, first, shareReplay, tap } from 'rxjs';
 
 import { LocalStorageService } from '@atocha/core/data-access';
-import { View } from '@atocha/lorenzo/util';
 
 interface FavoriteIds {
   developments: Set<string>;
@@ -13,14 +11,11 @@ interface FavoriteIds {
 
 type CardType = 'development' | 'family' | 'leader';
 
-
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
-export class SavedDataService {
+export class FavoriteService {
   private _prefix = 'LORENZO_';
-  private _viewKey = this._prefix + 'VIEW';
-  private _viewSubject = new BehaviorSubject<View>((this._localStorageService.getItem(this._viewKey) ?? 'all') as View);
   private _keys: Record<CardType, string> = {
     development: this._prefix + 'DEVELOPMENT_IDS',
     family: this._prefix + 'FAMILY_IDS',
@@ -32,10 +27,6 @@ export class SavedDataService {
     leaders: this._getIds(this._keys.leader),
   });
 
-  view$ = this._viewSubject.pipe(
-    tap(view => this._localStorageService.setItem(this._viewKey, view)),
-    shareReplay({ bufferSize: 1, refCount: true })
-  );
   favoriteIds$ = this._favoriteIdsSubject.pipe(
     tap(({ families, developments, leaders }) => {
       this._setIds(this._keys.development, developments);
@@ -46,10 +37,6 @@ export class SavedDataService {
   );
 
   constructor(private _localStorageService: LocalStorageService) {}
-
-  updateView(view: View): void {
-    this._viewSubject.next(view);
-  }
 
   updateFavoriteId(id: string, type: CardType): void {
     this._favoriteIdsSubject.pipe(first()).subscribe((favorites) => {
@@ -105,4 +92,5 @@ export class SavedDataService {
       return set.add(key);
     }
   }
+
 }

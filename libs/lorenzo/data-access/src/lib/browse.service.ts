@@ -4,24 +4,25 @@ import { map } from 'rxjs/operators';
 
 import { Development, Family, Leader, View } from '@atocha/lorenzo/util';
 import { CardService } from './card.service';
-import { SavedDataService } from './saved-data.service';
+import { FavoriteService } from './favorite.service';
+import { ViewService } from './view.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class BrowseService {
-  view$ = this._savedDataService.view$;
+  view$ = this._viewService.view$;
   developments$ = this._cardService.developments$;
   families$ = this._cardService.families$;
   leaders$ = this._cardService.leaders$;
 
-  favoriteDevelopmentIds$ = this._savedDataService.favoriteIds$.pipe(
+  favoriteDevelopmentIds$ = this._favoriteService.favoriteIds$.pipe(
     map(({ developments }) => developments)
   );
-  favoriteFamilyIds$ = this._savedDataService.favoriteIds$.pipe(
+  favoriteFamilyIds$ = this._favoriteService.favoriteIds$.pipe(
     map(({ families }) => families)
   );
-  favoriteLeaderIds$ = this._savedDataService.favoriteIds$.pipe(
+  favoriteLeaderIds$ = this._favoriteService.favoriteIds$.pipe(
     map(({ leaders }) => leaders)
   );
 
@@ -46,26 +47,27 @@ export class BrowseService {
 
   constructor(
     private _cardService: CardService,
-    private _savedDataService: SavedDataService
+    private _favoriteService: FavoriteService,
+    private _viewService: ViewService,
   ) {}
 
   updateView(view: View): void {
-    this._savedDataService.updateView(view);
+    this._viewService.updateView(view);
   }
 
   updateFavoriteDevelopment(id: string): void {
-    this._savedDataService.updateFavoriteId(id, 'development');
+    this._favoriteService.updateFavoriteId(id, 'development');
   }
 
   updateFavoriteFamily(id: string): void {
-    this._savedDataService.updateFavoriteId(id, 'family');
+    this._favoriteService.updateFavoriteId(id, 'family');
   }
 
   updateFavoriteLeader(id: string): void {
-    this._savedDataService.updateFavoriteId(id, 'leader');
+    this._favoriteService.updateFavoriteId(id, 'leader');
   }
 
   clearFavorites() {
-    this._savedDataService.clearFavorites();
+    this._favoriteService.clearFavorites();
   }
 }
