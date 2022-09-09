@@ -1,3 +1,4 @@
+export * from './lib/card.type';
 export * from './lib/development.interface';
 export * from './lib/family.interface';
 export * from './lib/leader.interface';

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, first, shareReplay, tap } from 'rxjs';
 
 import { LocalStorageService } from '@atocha/core/data-access';
+import { Card } from '@atocha/lorenzo/util';
 
 interface FavoriteIds {
   developments: Set<string>;
@@ -9,14 +10,12 @@ interface FavoriteIds {
   leaders: Set<string>;
 }
 
-type CardType = 'development' | 'family' | 'leader';
-
 @Injectable({
   providedIn: 'root',
 })
 export class FavoriteService {
   private _prefix = 'LORENZO_';
-  private _keys: Record<CardType, string> = {
+  private _keys: Record<Card, string> = {
     development: this._prefix + 'DEVELOPMENT_IDS',
     family: this._prefix + 'FAMILY_IDS',
     leader: this._prefix + 'LEADER_IDS',
@@ -38,7 +37,7 @@ export class FavoriteService {
 
   constructor(private _localStorageService: LocalStorageService) {}
 
-  toggleId(id: string, type: CardType): void {
+  toggleId(id: string, type: Card): void {
     this._idsSubject.pipe(first()).subscribe((favorites) => {
       switch (type) {
         case 'development': {
@@ -66,7 +65,7 @@ export class FavoriteService {
     });
   }
 
-  clearIds() {
+  clearIds(): void {
     this._idsSubject.next({
       developments: new Set(),
       families: new Set(),
