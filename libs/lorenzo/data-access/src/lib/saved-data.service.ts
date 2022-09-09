@@ -55,15 +55,9 @@ export class SavedDataService {
   }
 
   clearFavorites() {
-    const emptyLeaders = new Set<string>();
-    const emptyDevelopments = new Set<string>();
-    const emptyFamilies = new Set<string>();
-    this._favoriteLeaderIdsSubject.next(emptyLeaders);
-    this._favoriteDevelopmentIdsSubject.next(emptyDevelopments);
-    this._favoriteFamilyIdsSubject.next(emptyFamilies);
-    this._setIds(this._leadersKey, emptyLeaders);
-    this._setIds(this._developmentsKey, emptyDevelopments);
-    this._setIds(this._familiesKey, emptyFamilies);
+    this._favoriteLeaderIdsSubject.next(new Set());
+    this._favoriteDevelopmentIdsSubject.next(new Set());
+    this._favoriteFamilyIdsSubject.next(new Set());
   }
 
   private _getIds(key: string): Set<string> {
