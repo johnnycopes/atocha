@@ -16,13 +16,13 @@ export class BrowseService {
   families$ = this._cardService.families$;
   leaders$ = this._cardService.leaders$;
 
-  favoriteDevelopmentIds$ = this._favoriteService.favoriteIds$.pipe(
+  favoriteDevelopmentIds$ = this._favoriteService.ids$.pipe(
     map(({ developments }) => developments)
   );
-  favoriteFamilyIds$ = this._favoriteService.favoriteIds$.pipe(
+  favoriteFamilyIds$ = this._favoriteService.ids$.pipe(
     map(({ families }) => families)
   );
-  favoriteLeaderIds$ = this._favoriteService.favoriteIds$.pipe(
+  favoriteLeaderIds$ = this._favoriteService.ids$.pipe(
     map(({ leaders }) => leaders)
   );
 
@@ -56,18 +56,18 @@ export class BrowseService {
   }
 
   updateFavoriteDevelopment(id: string): void {
-    this._favoriteService.updateFavoriteId(id, 'development');
+    this._favoriteService.toggleId(id, 'development');
   }
 
   updateFavoriteFamily(id: string): void {
-    this._favoriteService.updateFavoriteId(id, 'family');
+    this._favoriteService.toggleId(id, 'family');
   }
 
   updateFavoriteLeader(id: string): void {
-    this._favoriteService.updateFavoriteId(id, 'leader');
+    this._favoriteService.toggleId(id, 'leader');
   }
 
   clearFavorites() {
-    this._favoriteService.clearFavorites();
+    this._favoriteService.clearIds();
   }
 }
