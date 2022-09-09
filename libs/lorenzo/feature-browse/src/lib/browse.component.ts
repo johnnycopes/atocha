@@ -46,37 +46,37 @@ export class BrowseComponent {
   vm$ = combineLatest([
     this._textSubject.pipe(distinctUntilChanged()),
     this._browseService.view$,
-    this._browseService.leaders$,
     this._browseService.developments$,
     this._browseService.families$,
-    this._browseService.favoriteLeaderIds$,
+    this._browseService.leaders$,
     this._browseService.favoriteDevelopmentIds$,
     this._browseService.favoriteFamilyIds$,
+    this._browseService.favoriteLeaderIds$,
   ]).pipe(
     map(
       ([
         text,
         view,
-        leaders,
         developments,
         families,
-        favoriteLeaders,
+        leaders,
         favoriteDevelopments,
         favoriteFamilies,
+        favoriteLeaders,
       ]) => ({
         text,
         view,
-        filteredLeaders: leaders.filter(({ name }) => includes([name], text)),
         filteredDevelopments: developments.filter(({ id }) =>
           includes([id.toString()], text)
         ),
         filteredFamilies: families.filter(({ name }) => includes([name], text)),
-        totalLeaders: leaders.length,
+        filteredLeaders: leaders.filter(({ name }) => includes([name], text)),
         totalDevelopments: developments.length,
         totalFamilies: families.length,
-        favoriteLeaders,
+        totalLeaders: leaders.length,
         favoriteDevelopments,
         favoriteFamilies,
+        favoriteLeaders,
       })
     )
   );
