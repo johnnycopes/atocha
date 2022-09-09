@@ -15,18 +15,18 @@ export class BrowseService {
   developments$ = this.view$.pipe(
     switchMap((view) =>
       view === 'all'
-        ? this._cardService.developments$
+        ? this._developments$
         : this._favoriteDevelopments$
     )
   );
   families$ = this.view$.pipe(
     switchMap((view) =>
-      view === 'all' ? this._cardService.families$ : this._favoriteFamilies$
+      view === 'all' ? this._families$ : this._favoriteFamilies$
     )
   );
   leaders$ = this.view$.pipe(
     switchMap((view) =>
-      view === 'all' ? this._cardService.leaders$ : this._favoriteLeaders$
+      view === 'all' ? this._leaders$ : this._favoriteLeaders$
     )
   );
   favoriteDevelopmentIds$ = this._favoriteService.ids$.pipe(
@@ -38,10 +38,20 @@ export class BrowseService {
   favoriteLeaderIds$ = this._favoriteService.ids$.pipe(
     map(({ leaders }) => leaders)
   );
+  private _developments$ = this._cardService.cards$.pipe(
+    map(({ developments }) => developments)
+  );
+
+  private _families$ = this._cardService.cards$.pipe(
+    map(({ families }) => families)
+  );
+  private _leaders$ = this._cardService.cards$.pipe(
+    map(({ leaders }) => leaders)
+  );
   private _favoriteDevelopments$: Observable<readonly Development[]> =
     combineLatest([
       this.favoriteDevelopmentIds$,
-      this._cardService.developments$,
+      this._developments$,
     ]).pipe(
       map(([ids, developments]) =>
         developments.filter(({ id }) => ids.has(id.toString()))
@@ -49,13 +59,13 @@ export class BrowseService {
     );
   private _favoriteFamilies$: Observable<readonly Family[]> = combineLatest([
     this.favoriteFamilyIds$,
-    this._cardService.families$,
+    this._families$,
   ]).pipe(
     map(([ids, families]) => families.filter(({ name }) => ids.has(name)))
   );
   private _favoriteLeaders$: Observable<readonly Leader[]> = combineLatest([
     this.favoriteLeaderIds$,
-    this._cardService.leaders$,
+    this._leaders$,
   ]).pipe(map(([ids, leaders]) => leaders.filter(({ name }) => ids.has(name))));
 
   constructor(
