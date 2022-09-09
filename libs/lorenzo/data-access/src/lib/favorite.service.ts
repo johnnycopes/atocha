@@ -12,7 +12,7 @@ interface FavoriteIds {
 type CardType = 'development' | 'family' | 'leader';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class FavoriteService {
   private _prefix = 'LORENZO_';
@@ -92,5 +92,4 @@ export class FavoriteService {
       return set.add(key);
     }
   }
-
 }

@@ -5,15 +5,17 @@ import { LocalStorageService } from '@atocha/core/data-access';
 import { View } from '@atocha/lorenzo/util';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ViewService {
   private _prefix = 'LORENZO_';
   private _viewKey = this._prefix + 'VIEW';
-  private _viewSubject = new BehaviorSubject<View>((this._localStorageService.getItem(this._viewKey) ?? 'all') as View);
+  private _viewSubject = new BehaviorSubject<View>(
+    (this._localStorageService.getItem(this._viewKey) ?? 'all') as View
+  );
 
   view$ = this._viewSubject.pipe(
-    tap(view => this._localStorageService.setItem(this._viewKey, view)),
+    tap((view) => this._localStorageService.setItem(this._viewKey, view)),
     shareReplay({ bufferSize: 1, refCount: true })
   );
 

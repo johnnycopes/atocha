@@ -21,16 +21,12 @@ export class BrowseService {
   );
   families$ = this.view$.pipe(
     switchMap((view) =>
-      view === 'all'
-        ? this._cardService.families$
-        : this._favoriteFamilies$
+      view === 'all' ? this._cardService.families$ : this._favoriteFamilies$
     )
   );
   leaders$ = this.view$.pipe(
     switchMap((view) =>
-      view === 'all'
-        ? this._cardService.leaders$
-        : this._favoriteLeaders$
+      view === 'all' ? this._cardService.leaders$ : this._favoriteLeaders$
     )
   );
   favoriteDevelopmentIds$ = this._favoriteService.ids$.pipe(
@@ -42,14 +38,15 @@ export class BrowseService {
   favoriteLeaderIds$ = this._favoriteService.ids$.pipe(
     map(({ leaders }) => leaders)
   );
-  private _favoriteDevelopments$: Observable<readonly Development[]> = combineLatest([
-    this.favoriteDevelopmentIds$,
-    this._cardService.developments$,
-  ]).pipe(
-    map(([ids, developments]) =>
-      developments.filter(({ id }) => ids.has(id.toString()))
-    )
-  );
+  private _favoriteDevelopments$: Observable<readonly Development[]> =
+    combineLatest([
+      this.favoriteDevelopmentIds$,
+      this._cardService.developments$,
+    ]).pipe(
+      map(([ids, developments]) =>
+        developments.filter(({ id }) => ids.has(id.toString()))
+      )
+    );
   private _favoriteFamilies$: Observable<readonly Family[]> = combineLatest([
     this.favoriteFamilyIds$,
     this._cardService.families$,
@@ -64,7 +61,7 @@ export class BrowseService {
   constructor(
     private _cardService: CardService,
     private _favoriteService: FavoriteService,
-    private _viewService: ViewService,
+    private _viewService: ViewService
   ) {}
 
   updateView(view: View): void {
