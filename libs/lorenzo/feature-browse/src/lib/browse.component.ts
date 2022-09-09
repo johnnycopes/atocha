@@ -5,7 +5,6 @@ import {
   distinctUntilChanged,
   combineLatest,
   map,
-  switchMap,
 } from 'rxjs';
 
 import { PluralPipe, trackByFactory } from '@atocha/core/ui';
@@ -40,29 +39,11 @@ export class BrowseComponent {
   text$ = this._textSubject.pipe(distinctUntilChanged());
   view$ = this._browseService.view$;
 
-  leaders$ = this.view$.pipe(
-    switchMap((view) =>
-      view === 'all'
-        ? this._browseService.leaders$
-        : this._browseService.favoriteLeaders$
-    )
-  );
+  leaders$ = this._browseService.leaders$;
 
-  developments$ = this.view$.pipe(
-    switchMap((view) =>
-      view === 'all'
-        ? this._browseService.developments$
-        : this._browseService.favoriteDevelopments$
-    )
-  );
+  developments$ = this._browseService.developments$;
 
-  families$ = this.view$.pipe(
-    switchMap((view) =>
-      view === 'all'
-        ? this._browseService.families$
-        : this._browseService.favoriteFamilies$
-    )
-  );
+  families$ = this._browseService.families$;
 
   leaderTrackByFn = trackByFactory<Leader>(({ name }) => name);
   familyTrackByFn = trackByFactory<Family>(({ name }) => name);

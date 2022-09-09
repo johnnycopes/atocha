@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { combineLatest, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, switchMap } from 'rxjs/operators';
 
 import { Development, Family, Leader, View } from '@atocha/lorenzo/util';
 import { CardService } from './card.service';
@@ -12,10 +12,6 @@ import { ViewService } from './view.service';
 })
 export class BrowseService {
   view$ = this._viewService.view$;
-  developments$ = this._cardService.developments$;
-  families$ = this._cardService.families$;
-  leaders$ = this._cardService.leaders$;
-
   favoriteDevelopmentIds$ = this._favoriteService.ids$.pipe(
     map(({ developments }) => developments)
   );
@@ -26,24 +22,51 @@ export class BrowseService {
     map(({ leaders }) => leaders)
   );
 
-  favoriteDevelopments$: Observable<readonly Development[]> = combineLatest([
+  private _developments$ = this._cardService.developments$;
+  private _families$ = this._cardService.families$;
+  private _leaders$ = this._cardService.leaders$;
+  private _favoriteDevelopments$: Observable<readonly Development[]> = combineLatest([
     this.favoriteDevelopmentIds$,
-    this.developments$,
+    this._cardService.developments$,
   ]).pipe(
     map(([ids, developments]) =>
       developments.filter(({ id }) => ids.has(id.toString()))
     )
   );
-  favoriteFamilies$: Observable<readonly Family[]> = combineLatest([
+  private _favoriteFamilies$: Observable<readonly Family[]> = combineLatest([
     this.favoriteFamilyIds$,
-    this.families$,
+    this._families$,
   ]).pipe(
     map(([ids, families]) => families.filter(({ name }) => ids.has(name)))
   );
-  favoriteLeaders$: Observable<readonly Leader[]> = combineLatest([
+  private _favoriteLeaders$: Observable<readonly Leader[]> = combineLatest([
     this.favoriteLeaderIds$,
-    this.leaders$,
+    this._leaders$,
   ]).pipe(map(([ids, leaders]) => leaders.filter(({ name }) => ids.has(name))));
+
+  leaders$ = this.view$.pipe(
+    switchMap((view) =>
+      view === 'all'
+        ? this._leaders$
+        : this._favoriteLeaders$
+    )
+  );
+
+  developments$ = this.view$.pipe(
+    switchMap((view) =>
+      view === 'all'
+        ? this._developments$
+        : this._favoriteDevelopments$
+    )
+  );
+
+  families$ = this.view$.pipe(
+    switchMap((view) =>
+      view === 'all'
+        ? this._families$
+        : this._favoriteFamilies$
+    )
+  );
 
   constructor(
     private _cardService: CardService,
