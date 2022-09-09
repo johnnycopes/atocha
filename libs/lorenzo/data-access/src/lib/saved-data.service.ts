@@ -28,7 +28,7 @@ export class SavedDataService {
   });
 
   favoriteIds$ = this._favoriteIdsSubject.pipe(
-    tap(({ families, developments, leaders}) => {
+    tap(({ families, developments, leaders }) => {
       this._setIds(this._developmentsKey, developments);
       this._setIds(this._familiesKey, families);
       this._setIds(this._leadersKey, leaders);
@@ -39,33 +39,31 @@ export class SavedDataService {
   constructor(private _localStorageService: LocalStorageService) {}
 
   updateFavoriteId(id: string, type: CardType): void {
-    this._favoriteIdsSubject.pipe(first()).subscribe(
-      (favorites) => {
-        switch (type) {
-          case 'development': {
-            this._favoriteIdsSubject.next({
-              ...favorites,
-              developments: this._updateSet(favorites.developments, id),
-            });
-            break;
-          }
-          case 'family': {
-            this._favoriteIdsSubject.next({
-              ...favorites,
-              families: this._updateSet(favorites.families, id),
-            });
-            break;
-          }
-          case 'leader': {
-            this._favoriteIdsSubject.next({
-              ...favorites,
-              leaders: this._updateSet(favorites.leaders, id),
-            });
-            break;
-          }
+    this._favoriteIdsSubject.pipe(first()).subscribe((favorites) => {
+      switch (type) {
+        case 'development': {
+          this._favoriteIdsSubject.next({
+            ...favorites,
+            developments: this._updateSet(favorites.developments, id),
+          });
+          break;
+        }
+        case 'family': {
+          this._favoriteIdsSubject.next({
+            ...favorites,
+            families: this._updateSet(favorites.families, id),
+          });
+          break;
+        }
+        case 'leader': {
+          this._favoriteIdsSubject.next({
+            ...favorites,
+            leaders: this._updateSet(favorites.leaders, id),
+          });
+          break;
         }
       }
-    );
+    });
   }
 
   clearFavorites() {
