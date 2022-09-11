@@ -11,19 +11,11 @@ import { ViewService } from './view.service';
   providedIn: 'root',
 })
 export class BrowseService {
-  view$ = this._viewService.view$;
   cards$ = this._viewService.view$.pipe(
     switchMap(view => view === 'all' ? this._cardService.cards$ : this._favoriteCards$)
   );
-  favoriteDevelopmentIds$ = this._favoriteService.ids$.pipe(
-    map(({ developments }) => developments)
-  );
-  favoriteFamilyIds$ = this._favoriteService.ids$.pipe(
-    map(({ families }) => families)
-  );
-  favoriteLeaderIds$ = this._favoriteService.ids$.pipe(
-    map(({ leaders }) => leaders)
-  );
+  favoriteCardIds$ = this._favoriteService.ids$;
+  view$ = this._viewService.view$;
 
   private _favoriteCards$ = combineLatest([
     this._cardService.cards$,

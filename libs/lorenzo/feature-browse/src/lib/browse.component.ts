@@ -47,18 +47,18 @@ export class BrowseComponent {
     this._textSubject.pipe(distinctUntilChanged()),
     this._browseService.view$,
     this._browseService.cards$,
-    this._browseService.favoriteDevelopmentIds$,
-    this._browseService.favoriteFamilyIds$,
-    this._browseService.favoriteLeaderIds$,
+    this._browseService.favoriteCardIds$,
   ]).pipe(
     map(
       ([
         text,
         view,
         { developments, families, leaders },
-        favoriteDevelopments,
-        favoriteFamilies,
-        favoriteLeaders,
+        {
+          developments: developmentIds,
+          families: familyIds,
+          leaders: leaderIds,
+        },
       ]) => ({
         text,
         view,
@@ -70,9 +70,9 @@ export class BrowseComponent {
         totalDevelopments: developments.length,
         totalFamilies: families.length,
         totalLeaders: leaders.length,
-        favoriteDevelopments,
-        favoriteFamilies,
-        favoriteLeaders,
+        developmentIds,
+        familyIds,
+        leaderIds,
       })
     )
   );

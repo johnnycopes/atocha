@@ -11,8 +11,8 @@
       class="overview"
     >
       <p>
-        {{ vm.favoriteLeaders.size + vm.favoriteDevelopments.size + vm.favoriteFamilies.size }}
-        {{ vm.favoriteLeaders.size + vm.favoriteDevelopments.size + vm.favoriteFamilies.size | corePlural : 'favorite' }}
+        {{ vm.leaderIds.size + vm.developmentIds.size + vm.familyIds.size }}
+        {{ vm.leaderIds.size + vm.developmentIds.size + vm.familyIds.size | corePlural : 'favorite' }}
       </p>
       <button (click)="clearFavorites()">
         Clear Favorites
@@ -23,12 +23,12 @@
       type="Family"
       [cards]="vm.filteredFamilies"
       [total]="vm.totalFamilies"
-      [favorites]="vm.favoriteFamilies"
+      [favorites]="vm.familyIds"
       [trackByFn]="familyTrackByFn"
     >
       <app-family *uiCard="vm.filteredFamilies as family"
         [data]="family"
-        [favorite]="vm.favoriteFamilies.has(family.name)"
+        [favorite]="vm.familyIds.has(family.name)"
         (favoriteChange)="toggleFavoriteFamily(family.name)"
       ></app-family>
     </ui-cards>
@@ -37,12 +37,12 @@
       type="Leader"
       [cards]="vm.filteredLeaders"
       [total]="vm.totalLeaders"
-      [favorites]="vm.favoriteLeaders"
+      [favorites]="vm.leaderIds"
       [trackByFn]="leaderTrackByFn"
     >
       <app-leader *uiCard="vm.filteredLeaders as leader"
         [data]="leader"
-        [favorite]="vm.favoriteLeaders.has(leader.name)"
+        [favorite]="vm.leaderIds.has(leader.name)"
         (favoriteChange)="toggleFavoriteLeader(leader.name)"
       ></app-leader>
     </ui-cards>
@@ -51,12 +51,12 @@
       type="Development"
       [cards]="vm.filteredDevelopments"
       [total]="vm.totalDevelopments"
-      [favorites]="vm.favoriteDevelopments"
+      [favorites]="vm.developmentIds"
       [trackByFn]="developmentTrackByFn"
     >
       <app-development *uiCard="vm.filteredDevelopments as development"
         [data]="development"
-        [favorite]="vm.favoriteDevelopments.has(development.id.toString())"
+        [favorite]="vm.developmentIds.has(development.id.toString())"
         (favoriteChange)="toggleFavoriteDevelopment(development.id.toString())"
       ></app-development>
     </ui-cards>
