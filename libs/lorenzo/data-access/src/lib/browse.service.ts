@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { combineLatest } from 'rxjs';
+import { combineLatest, Observable } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 
 import { View } from '@atocha/lorenzo/util';
-import { CardService } from './card.service';
+import { Cards, CardService } from './card.service';
 import { FavoriteService } from './favorite.service';
 import { ViewService } from './view.service';
 
@@ -17,14 +17,14 @@ export class BrowseService {
   favoriteCardIds$ = this._favoriteService.ids$;
   view$ = this._viewService.view$;
 
-  private _favoriteCards$ = combineLatest([
+  private _favoriteCards$: Observable<Cards> = combineLatest([
     this._cardService.cards$,
     this._favoriteService.ids$,
   ]).pipe(
     map(([cards, ids]) => ({
-      developments: cards.developments.filter(({ id }) => ids.development.has(id.toString())),
-      families: cards.families.filter(({ name }) => ids.family.has(name)),
-      leaders: cards.leaders.filter(({ name }) => ids.leader.has(name)),
+      development: cards.development.filter(({ id }) => ids.development.has(id.toString())),
+      family: cards.family.filter(({ name }) => ids.family.has(name)),
+      leader: cards.leader.filter(({ name }) => ids.leader.has(name)),
     }))
   );
 

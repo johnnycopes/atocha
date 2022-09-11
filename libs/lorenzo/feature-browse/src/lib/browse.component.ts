@@ -53,7 +53,11 @@ export class BrowseComponent {
       ([
         text,
         view,
-        { developments, families, leaders },
+        {
+          development: developments,
+          family: families,
+          leader: leaders,
+        },
         {
           development: developmentIds,
           family: familyIds,
