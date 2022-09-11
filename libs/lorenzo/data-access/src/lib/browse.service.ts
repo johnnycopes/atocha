@@ -2,7 +2,12 @@ import { Injectable } from '@angular/core';
 import { combineLatest, Observable } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 
-import { View } from '@atocha/lorenzo/util';
+import {
+  getDevelopmentId,
+  getFamilyId,
+  getLeaderId,
+  View,
+} from '@atocha/lorenzo/util';
 import { Cards, CardService } from './card.service';
 import { FavoriteService } from './favorite.service';
 import { ViewService } from './view.service';
@@ -24,11 +29,15 @@ export class BrowseService {
     this._favoriteService.ids$,
   ]).pipe(
     map(([cards, ids]) => ({
-      development: cards.development.filter(({ id }) =>
-        ids.development.has(id.toString())
+      development: cards.development.filter((development) =>
+        ids.development.has(getDevelopmentId(development))
       ),
-      family: cards.family.filter(({ name }) => ids.family.has(name)),
-      leader: cards.leader.filter(({ name }) => ids.leader.has(name)),
+      family: cards.family.filter((family) =>
+        ids.family.has(getFamilyId(family))
+      ),
+      leader: cards.leader.filter((leader) =>
+        ids.leader.has(getLeaderId(leader))
+      ),
     }))
   );
 
