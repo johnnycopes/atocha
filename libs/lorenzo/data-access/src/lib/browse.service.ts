@@ -12,7 +12,9 @@ import { ViewService } from './view.service';
 })
 export class BrowseService {
   cards$ = this._viewService.view$.pipe(
-    switchMap(view => view === 'all' ? this._cardService.cards$ : this._favoriteCards$)
+    switchMap((view) =>
+      view === 'all' ? this._cardService.cards$ : this._favoriteCards$
+    )
   );
   favoriteCardIds$ = this._favoriteService.ids$;
   view$ = this._viewService.view$;
@@ -22,7 +24,9 @@ export class BrowseService {
     this._favoriteService.ids$,
   ]).pipe(
     map(([cards, ids]) => ({
-      development: cards.development.filter(({ id }) => ids.development.has(id.toString())),
+      development: cards.development.filter(({ id }) =>
+        ids.development.has(id.toString())
+      ),
       family: cards.family.filter(({ name }) => ids.family.has(name)),
       leader: cards.leader.filter(({ name }) => ids.leader.has(name)),
     }))

@@ -53,16 +53,8 @@ export class BrowseComponent {
       ([
         text,
         view,
-        {
-          development: developments,
-          family: families,
-          leader: leaders,
-        },
-        {
-          development: developmentIds,
-          family: familyIds,
-          leader: leaderIds,
-        },
+        { development: developments, family: families, leader: leaders },
+        { development: developmentIds, family: familyIds, leader: leaderIds },
       ]) => ({
         text,
         view,
