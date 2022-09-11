@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { combineLatest, Observable } from 'rxjs';
+import { combineLatest } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 
-import { Development, Family, Leader, View } from '@atocha/lorenzo/util';
+import { View } from '@atocha/lorenzo/util';
 import { CardService } from './card.service';
 import { FavoriteService } from './favorite.service';
 import { ViewService } from './view.service';
@@ -12,26 +12,9 @@ import { ViewService } from './view.service';
 })
 export class BrowseService {
   view$ = this._viewService.view$;
-  cards$ = combineLatest([
-    this.view$.pipe(
-      switchMap((view) =>
-        view === 'all'
-          ? this._developments$
-          : this._favoriteDevelopments$
-      )
-    ),
-    this.view$.pipe(
-      switchMap((view) =>
-        view === 'all' ? this._families$ : this._favoriteFamilies$
-      )
-    ),
-    this.view$.pipe(
-      switchMap((view) =>
-        view === 'all' ? this._leaders$ : this._favoriteLeaders$
-      )
-    )]).pipe(
-      map(([developments, families, leaders]) => ({ developments, families, leaders }))
-    );
+  cards$ = this._viewService.view$.pipe(
+    switchMap(view => view === 'all' ? this._cardService.cards$ : this._favoriteCards$)
+  );
   favoriteDevelopmentIds$ = this._favoriteService.ids$.pipe(
     map(({ developments }) => developments)
   );
@@ -42,34 +25,16 @@ export class BrowseService {
     map(({ leaders }) => leaders)
   );
 
-  private _developments$ = this._cardService.cards$.pipe(
-    map(({ developments }) => developments)
-  );
-  private _families$ = this._cardService.cards$.pipe(
-    map(({ families }) => families)
-  );
-  private _leaders$ = this._cardService.cards$.pipe(
-    map(({ leaders }) => leaders)
-  );
-  private _favoriteDevelopments$: Observable<readonly Development[]> =
-    combineLatest([
-      this.favoriteDevelopmentIds$,
-      this._developments$,
-    ]).pipe(
-      map(([ids, developments]) =>
-        developments.filter(({ id }) => ids.has(id.toString()))
-      )
-    );
-  private _favoriteFamilies$: Observable<readonly Family[]> = combineLatest([
-    this.favoriteFamilyIds$,
-    this._families$,
+  private _favoriteCards$ = combineLatest([
+    this._cardService.cards$,
+    this._favoriteService.ids$,
   ]).pipe(
-    map(([ids, families]) => families.filter(({ name }) => ids.has(name)))
+    map(([cards, ids]) => ({
+      developments: cards.developments.filter(({ id }) => ids.developments.has(id.toString())),
+      families: cards.families.filter(({ name }) => ids.families.has(name)),
+      leaders: cards.leaders.filter(({ name }) => ids.leaders.has(name)),
+    }))
   );
-  private _favoriteLeaders$: Observable<readonly Leader[]> = combineLatest([
-    this.favoriteLeaderIds$,
-    this._leaders$,
-  ]).pipe(map(([ids, leaders]) => leaders.filter(({ name }) => ids.has(name))));
 
   constructor(
     private _cardService: CardService,
