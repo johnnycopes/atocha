@@ -55,9 +55,9 @@ export class BrowseComponent {
         view,
         { developments, families, leaders },
         {
-          developments: developmentIds,
-          families: familyIds,
-          leaders: leaderIds,
+          development: developmentIds,
+          family: familyIds,
+          leader: leaderIds,
         },
       ]) => ({
         text,

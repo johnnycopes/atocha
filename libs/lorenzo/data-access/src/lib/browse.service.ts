@@ -22,9 +22,9 @@ export class BrowseService {
     this._favoriteService.ids$,
   ]).pipe(
     map(([cards, ids]) => ({
-      developments: cards.developments.filter(({ id }) => ids.developments.has(id.toString())),
-      families: cards.families.filter(({ name }) => ids.families.has(name)),
-      leaders: cards.leaders.filter(({ name }) => ids.leaders.has(name)),
+      developments: cards.developments.filter(({ id }) => ids.development.has(id.toString())),
+      families: cards.families.filter(({ name }) => ids.family.has(name)),
+      leaders: cards.leaders.filter(({ name }) => ids.leader.has(name)),
     }))
   );
 
