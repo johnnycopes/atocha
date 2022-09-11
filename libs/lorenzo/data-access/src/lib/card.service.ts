@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, shareReplay } from 'rxjs';
+import { of, shareReplay } from 'rxjs';
 
 import {
   LEADERS,
@@ -21,7 +21,7 @@ export type Cards = {
   providedIn: 'root',
 })
 export class CardService {
-  private _cardSubject = new BehaviorSubject<Cards>({
+  private _cardSubject = of<Cards>({
     development: DEVELOPMENTS,
     family: FAMILIES,
     leader: LEADERS,
