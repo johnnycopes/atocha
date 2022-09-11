@@ -4,12 +4,6 @@ import { BehaviorSubject, first, shareReplay, tap } from 'rxjs';
 import { LocalStorageService } from '@atocha/core/data-access';
 import { Card } from '@atocha/lorenzo/util';
 
-interface FavoriteIds {
-  developments: Set<string>;
-  families: Set<string>;
-  leaders: Set<string>;
-}
-
 @Injectable({
   providedIn: 'root',
 })
@@ -20,7 +14,7 @@ export class FavoriteService {
     family: this._prefix + 'FAMILY_IDS',
     leader: this._prefix + 'LEADER_IDS',
   };
-  private _idsSubject = new BehaviorSubject<FavoriteIds>({
+  private _idsSubject = new BehaviorSubject({
     developments: this._getIds(this._keys.development),
     families: this._getIds(this._keys.family),
     leaders: this._getIds(this._keys.leader),
