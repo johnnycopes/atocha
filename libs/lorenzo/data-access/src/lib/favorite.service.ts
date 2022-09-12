@@ -2,63 +2,56 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, first, shareReplay, tap } from 'rxjs';
 
 import { LocalStorageService } from '@atocha/core/data-access';
-
-interface FavoriteIds {
-  developments: Set<string>;
-  families: Set<string>;
-  leaders: Set<string>;
-}
-
-type CardType = 'development' | 'family' | 'leader';
+import { Card } from '@atocha/lorenzo/util';
 
 @Injectable({
   providedIn: 'root',
 })
 export class FavoriteService {
   private _prefix = 'LORENZO_';
-  private _keys: Record<CardType, string> = {
+  private _keys: Record<Card, string> = {
     development: this._prefix + 'DEVELOPMENT_IDS',
     family: this._prefix + 'FAMILY_IDS',
     leader: this._prefix + 'LEADER_IDS',
   };
-  private _idsSubject = new BehaviorSubject<FavoriteIds>({
-    developments: this._getIds(this._keys.development),
-    families: this._getIds(this._keys.family),
-    leaders: this._getIds(this._keys.leader),
+  private _idsSubject = new BehaviorSubject<Record<Card, Set<string>>>({
+    development: this._getIds(this._keys.development),
+    family: this._getIds(this._keys.family),
+    leader: this._getIds(this._keys.leader),
   });
 
   ids$ = this._idsSubject.pipe(
-    tap(({ families, developments, leaders }) => {
-      this._setIds(this._keys.development, developments);
-      this._setIds(this._keys.family, families);
-      this._setIds(this._keys.leader, leaders);
+    tap(({ development, family, leader }) => {
+      this._setIds(this._keys.development, development);
+      this._setIds(this._keys.family, family);
+      this._setIds(this._keys.leader, leader);
     }),
     shareReplay({ bufferSize: 1, refCount: true })
   );
 
   constructor(private _localStorageService: LocalStorageService) {}
 
-  toggleId(id: string, type: CardType): void {
+  toggleId(id: string, type: Card): void {
     this._idsSubject.pipe(first()).subscribe((favorites) => {
       switch (type) {
         case 'development': {
           this._idsSubject.next({
             ...favorites,
-            developments: this._updateSet(favorites.developments, id),
+            development: this._updateSet(favorites.development, id),
           });
           break;
         }
         case 'family': {
           this._idsSubject.next({
             ...favorites,
-            families: this._updateSet(favorites.families, id),
+            family: this._updateSet(favorites.family, id),
           });
           break;
         }
         case 'leader': {
           this._idsSubject.next({
             ...favorites,
-            leaders: this._updateSet(favorites.leaders, id),
+            leader: this._updateSet(favorites.leader, id),
           });
           break;
         }
@@ -66,11 +59,11 @@ export class FavoriteService {
     });
   }
 
-  clearIds() {
+  clearIds(): void {
     this._idsSubject.next({
-      developments: new Set(),
-      families: new Set(),
-      leaders: new Set(),
+      development: new Set(),
+      family: new Set(),
+      leader: new Set(),
     });
   }
 

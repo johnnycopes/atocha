@@ -11,7 +11,15 @@ import { PluralPipe, trackByFactory } from '@atocha/core/ui';
 import { includes } from '@atocha/core/util';
 import { BrowseService } from '@atocha/lorenzo/data-access';
 import { CardsComponent, CardTemplateDirective } from '@atocha/lorenzo/ui';
-import { Development, Family, Leader, View } from '@atocha/lorenzo/util';
+import {
+  Development,
+  Family,
+  getDevelopmentId,
+  getFamilyId,
+  getLeaderId,
+  Leader,
+  View,
+} from '@atocha/lorenzo/util';
 import { HeaderComponent } from './header/header.component';
 import { DevelopmentComponent } from './cards/development/development.component';
 import { FamilyComponent } from './cards/family/family.component';
@@ -37,46 +45,42 @@ import { LeaderComponent } from './cards/leader/leader.component';
 export class BrowseComponent {
   private _textSubject = new BehaviorSubject<string>('');
 
-  leaderTrackByFn = trackByFactory<Leader>(({ name }) => name);
-  familyTrackByFn = trackByFactory<Family>(({ name }) => name);
-  developmentTrackByFn = trackByFactory<Development>(({ id }) => id.toString());
+  developmentTrackByFn = trackByFactory<Development>(getDevelopmentId);
+  familyTrackByFn = trackByFactory<Family>(getFamilyId);
+  leaderTrackByFn = trackByFactory<Leader>(getLeaderId);
 
   constructor(private _browseService: BrowseService) {}
 
   vm$ = combineLatest([
     this._textSubject.pipe(distinctUntilChanged()),
     this._browseService.view$,
-    this._browseService.developments$,
-    this._browseService.families$,
-    this._browseService.leaders$,
-    this._browseService.favoriteDevelopmentIds$,
-    this._browseService.favoriteFamilyIds$,
-    this._browseService.favoriteLeaderIds$,
+    this._browseService.cards$,
+    this._browseService.favoriteCardIds$,
   ]).pipe(
     map(
       ([
         text,
         view,
-        developments,
-        families,
-        leaders,
-        favoriteDevelopments,
-        favoriteFamilies,
-        favoriteLeaders,
+        { development: developments, family: families, leader: leaders },
+        { development: developmentIds, family: familyIds, leader: leaderIds },
       ]) => ({
         text,
         view,
-        filteredDevelopments: developments.filter(({ id }) =>
-          includes([id.toString()], text)
+        filteredDevelopments: developments.filter((development) =>
+          includes([getDevelopmentId(development)], text)
         ),
-        filteredFamilies: families.filter(({ name }) => includes([name], text)),
-        filteredLeaders: leaders.filter(({ name }) => includes([name], text)),
+        filteredFamilies: families.filter((family) =>
+          includes([getFamilyId(family)], text)
+        ),
+        filteredLeaders: leaders.filter((leader) =>
+          includes([getLeaderId(leader)], text)
+        ),
         totalDevelopments: developments.length,
         totalFamilies: families.length,
         totalLeaders: leaders.length,
-        favoriteDevelopments,
-        favoriteFamilies,
-        favoriteLeaders,
+        developmentIds,
+        familyIds,
+        leaderIds,
       })
     )
   );
