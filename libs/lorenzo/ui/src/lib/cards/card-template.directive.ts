@@ -11,7 +11,7 @@ interface CardTemplateContext<T> {
 })
 export class CardTemplateDirective<TCard> {
   // eslint-disable-next-line @angular-eslint/no-input-rename
-  @Input('uiCard') card: TCard[] = [];
+  @Input('uiCard') card: readonly TCard[] = [];
 
   static ngTemplateContextGuard<TContextItem>(
     dir: CardTemplateDirective<TContextItem>,

@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, TrackByFunction } from '@angular/core';
 import {
   BehaviorSubject,
   distinctUntilChanged,
@@ -12,12 +12,10 @@ import { includes } from '@atocha/core/util';
 import { BrowseService } from '@atocha/lorenzo/data-access';
 import { CardsComponent, CardTemplateDirective } from '@atocha/lorenzo/ui';
 import {
-  Development,
-  Family,
+  Card,
   getDevelopmentId,
   getFamilyId,
   getLeaderId,
-  Leader,
   View,
 } from '@atocha/lorenzo/util';
 import { HeaderComponent } from './header/header.component';
@@ -45,10 +43,6 @@ import { LeaderComponent } from './cards/leader/leader.component';
 export class BrowseComponent {
   private _textSubject = new BehaviorSubject<string>('');
 
-  developmentTrackByFn = trackByFactory<Development>(getDevelopmentId);
-  familyTrackByFn = trackByFactory<Family>(getFamilyId);
-  leaderTrackByFn = trackByFactory<Leader>(getLeaderId);
-
   constructor(private _browseService: BrowseService) {}
 
   vm$ = combineLatest([
@@ -66,21 +60,27 @@ export class BrowseComponent {
       ]) => ({
         text,
         view,
-        filteredDevelopments: developments.filter((development) =>
-          includes([getDevelopmentId(development)], text)
-        ),
-        filteredFamilies: families.filter((family) =>
-          includes([getFamilyId(family)], text)
-        ),
-        filteredLeaders: leaders.filter((leader) =>
-          includes([getLeaderId(leader)], text)
-        ),
-        totalDevelopments: developments.length,
-        totalFamilies: families.length,
-        totalLeaders: leaders.length,
-        developmentIds,
-        familyIds,
-        leaderIds,
+        families: this._createData({
+          type: 'family',
+          cards: families,
+          searchText: text,
+          favoriteIds: familyIds,
+          getId: getFamilyId,
+        }),
+        leaders: this._createData({
+          type: 'leader',
+          cards: leaders,
+          searchText: text,
+          favoriteIds: leaderIds,
+          getId: getLeaderId,
+        }),
+        developments: this._createData({
+          type: 'development',
+          cards: developments,
+          searchText: text,
+          favoriteIds: developmentIds,
+          getId: getDevelopmentId,
+        }),
       })
     )
   );
@@ -98,15 +98,31 @@ export class BrowseComponent {
     window.scroll(0, 0);
   }
 
-  toggleFavoriteDevelopment(id: string): void {
-    this._browseService.toggleFavoriteDevelopment(id);
-  }
-
-  toggleFavoriteFamily(id: string): void {
-    this._browseService.toggleFavoriteFamily(id);
-  }
-
-  toggleFavoriteLeader(id: string): void {
-    this._browseService.toggleFavoriteLeader(id);
+  private _createData<T>({ type, cards, searchText, favoriteIds, getId }: {
+    type: Card,
+    cards: readonly T[],
+    searchText: string,
+    favoriteIds: Set<string>,
+    getId: (card: T) => string,
+  }): {
+    type: Card,
+    totalCards: number,
+    filteredCards: readonly T[],
+    favoriteIds: Set<string>,
+    getId: (card: T) => string,
+    toggleId: (id: string) => void
+    trackByFn: TrackByFunction<T>,
+  } {
+    return {
+      type,
+      totalCards: cards.length,
+      filteredCards: cards.filter((card) =>
+        includes([getId(card)], searchText)
+      ),
+      favoriteIds,
+      getId,
+      toggleId: (id) => this._browseService.toggleFavoriteId(id, type),
+      trackByFn: trackByFactory<T>(getId),
+    };
   }
 }

@@ -21,7 +21,7 @@ import { CardTemplateDirective } from './card-template.directive';
 })
 export class CardsComponent<T> {
   @Input() type = '';
-  @Input() cards: T[] = [];
+  @Input() cards: readonly T[] = [];
   @Input() total = 0;
   @Input() favorites = new Set<string>();
   @Input() trackByFn: TrackByFunction<T> = (_, index) => index;

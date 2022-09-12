@@ -10,54 +10,54 @@
     <div *ngIf="vm.view === 'favorites'"
       class="overview"
     >
-      <p>
+      <!-- <p>
         {{ vm.leaderIds.size + vm.developmentIds.size + vm.familyIds.size }}
         {{ vm.leaderIds.size + vm.developmentIds.size + vm.familyIds.size | corePlural : 'favorite' }}
-      </p>
+      </p> -->
       <button (click)="clearFavorites()">
         Clear Favorites
       </button>
     </div>
 
     <ui-cards
-      type="Family"
-      [cards]="vm.filteredFamilies"
-      [total]="vm.totalFamilies"
-      [favorites]="vm.familyIds"
-      [trackByFn]="familyTrackByFn"
+      type="{{ vm.families.type | titlecase }}"
+      [cards]="vm.families.filteredCards"
+      [total]="vm.families.totalCards"
+      [favorites]="vm.families.favoriteIds"
+      [trackByFn]="vm.families.trackByFn"
     >
-      <app-family *uiCard="vm.filteredFamilies as family"
+      <app-family *uiCard="vm.families.filteredCards as family"
         [data]="family"
-        [favorite]="vm.familyIds.has(family.name)"
-        (favoriteChange)="toggleFavoriteFamily(family.name)"
+        [favorite]="vm.families.favoriteIds.has(vm.families.getId(family))"
+        (favoriteChange)="vm.families.toggleId(vm.families.getId(family))"
       ></app-family>
     </ui-cards>
 
     <ui-cards
-      type="Leader"
-      [cards]="vm.filteredLeaders"
-      [total]="vm.totalLeaders"
-      [favorites]="vm.leaderIds"
-      [trackByFn]="leaderTrackByFn"
+      type="{{ vm.leaders.type | titlecase }}"
+      [cards]="vm.leaders.filteredCards"
+      [total]="vm.leaders.totalCards"
+      [favorites]="vm.leaders.favoriteIds"
+      [trackByFn]="vm.leaders.trackByFn"
     >
-      <app-leader *uiCard="vm.filteredLeaders as leader"
+      <app-leader *uiCard="vm.leaders.filteredCards as leader"
         [data]="leader"
-        [favorite]="vm.leaderIds.has(leader.name)"
-        (favoriteChange)="toggleFavoriteLeader(leader.name)"
+        [favorite]="vm.leaders.favoriteIds.has(vm.leaders.getId(leader))"
+        (favoriteChange)="vm.leaders.toggleId(vm.leaders.getId(leader))"
       ></app-leader>
     </ui-cards>
 
     <ui-cards
-      type="Development"
-      [cards]="vm.filteredDevelopments"
-      [total]="vm.totalDevelopments"
-      [favorites]="vm.developmentIds"
-      [trackByFn]="developmentTrackByFn"
+      type="{{ vm.developments.type | titlecase }}"
+      [cards]="vm.developments.filteredCards"
+      [total]="vm.developments.totalCards"
+      [favorites]="vm.developments.favoriteIds"
+      [trackByFn]="vm.leaders.trackByFn"
     >
-      <app-development *uiCard="vm.filteredDevelopments as development"
+      <app-development *uiCard="vm.developments.filteredCards as development"
         [data]="development"
-        [favorite]="vm.developmentIds.has(development.id.toString())"
-        (favoriteChange)="toggleFavoriteDevelopment(development.id.toString())"
+        [favorite]="vm.developments.favoriteIds.has(vm.developments.getId(development))"
+        (favoriteChange)="vm.developments.toggleId(vm.developments.getId(development))"
       ></app-development>
     </ui-cards>
   </main>
