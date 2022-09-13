@@ -10,10 +10,10 @@
     <div *ngIf="vm.view === 'favorites'"
       class="overview"
     >
-      <!-- <p>
-        {{ vm.leaderIds.size + vm.developmentIds.size + vm.familyIds.size }}
-        {{ vm.leaderIds.size + vm.developmentIds.size + vm.familyIds.size | corePlural : 'favorite' }}
-      </p> -->
+      <p>
+        {{ vm.totalFavorites }}
+        {{ vm.totalFavorites | corePlural : 'favorite' }}
+      </p>
       <button (click)="clearFavorites()">
         Clear Favorites
       </button>

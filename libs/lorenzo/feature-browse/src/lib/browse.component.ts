@@ -81,6 +81,7 @@ export class BrowseComponent {
           ),
           favoriteIds: developmentIds,
         },
+        totalFavorites: familyIds.size + leaderIds.size + developmentIds.size,
       })
     )
   );
