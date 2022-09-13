@@ -23,21 +23,21 @@
       [families]="vm.families.filteredCards"
       [total]="vm.families.totalCards"
       [favoriteIds]="vm.families.favoriteIds"
-      (toggleId)="vm.families.toggleId($event)"
+      (toggleId)="toggleId($event, 'family')"
     ></app-families>
 
     <app-leaders
       [leaders]="vm.leaders.filteredCards"
       [total]="vm.leaders.totalCards"
       [favoriteIds]="vm.leaders.favoriteIds"
-      (toggleId)="vm.leaders.toggleId($event)"
+      (toggleId)="toggleId($event, 'leader')"
     ></app-leaders>
 
     <app-developments
       [developments]="vm.developments.filteredCards"
       [total]="vm.developments.totalCards"
       [favoriteIds]="vm.developments.favoriteIds"
-      (toggleId)="vm.developments.toggleId($event)"
+      (toggleId)="toggleId($event, 'development')"
     ></app-developments>
   </main>
 </ng-container>

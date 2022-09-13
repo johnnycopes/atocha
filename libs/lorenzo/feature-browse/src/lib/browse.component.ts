@@ -60,69 +60,45 @@ export class BrowseComponent {
       ]) => ({
         text,
         view,
-        families: this._createData({
-          type: 'family',
-          cards: families,
-          searchText: text,
+        families: {
+          totalCards: families.length,
+          filteredCards: families.filter((card) =>
+            includes([getFamilyId(card)], text)
+          ),
           favoriteIds: familyIds,
-          getId: getFamilyId,
-        }),
-        leaders: this._createData({
-          type: 'leader',
-          cards: leaders,
-          searchText: text,
+        },
+        leaders: {
+          totalCards: leaders.length,
+          filteredCards: leaders.filter((card) =>
+            includes([getLeaderId(card)], text)
+          ),
           favoriteIds: leaderIds,
-          getId: getLeaderId,
-        }),
-        developments: this._createData({
-          type: 'development',
-          cards: developments,
-          searchText: text,
+        },
+        developments: {
+          totalCards: developments.length,
+          filteredCards: developments.filter((card) =>
+            includes([getDevelopmentId(card)], text)
+          ),
           favoriteIds: developmentIds,
-          getId: getDevelopmentId,
-        }),
+        },
       })
     )
   );
-
-  clearFavorites(): void {
-    this._browseService.clearFavorites();
-  }
-
-  search(text: string): void {
-    this._textSubject.next(text);
-  }
 
   changeView(view: View): void {
     this._browseService.updateView(view);
     window.scroll(0, 0);
   }
 
-  private _createData<T>({ type, cards, searchText, favoriteIds, getId }: {
-    type: Card,
-    cards: readonly T[],
-    searchText: string,
-    favoriteIds: Set<string>,
-    getId: (card: T) => string,
-  }): {
-    type: Card,
-    totalCards: number,
-    filteredCards: readonly T[],
-    favoriteIds: Set<string>,
-    getId: (card: T) => string,
-    toggleId: (id: string) => void
-    trackByFn: TrackByFunction<T>,
-  } {
-    return {
-      type,
-      totalCards: cards.length,
-      filteredCards: cards.filter((card) =>
-        includes([getId(card)], searchText)
-      ),
-      favoriteIds,
-      getId,
-      toggleId: (id) => this._browseService.toggleFavoriteId(id, type),
-      trackByFn: trackByFactory<T>(getId),
-    };
+  search(text: string): void {
+    this._textSubject.next(text);
+  }
+
+  clearFavorites(): void {
+    this._browseService.clearFavorites();
+  }
+
+  toggleId(id: string, type: Card): void {
+    this._browseService.toggleFavoriteId(id, type);
   }
 }
