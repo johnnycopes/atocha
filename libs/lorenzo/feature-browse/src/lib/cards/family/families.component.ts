@@ -1,5 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+} from '@angular/core';
 
 import { trackByFactory } from '@atocha/core/ui';
 import { CardsComponent, CardTemplateDirective } from '@atocha/lorenzo/ui';
@@ -9,7 +15,12 @@ import { FamilyComponent } from './family.component';
 @Component({
   standalone: true,
   selector: 'app-families',
-  imports: [CardsComponent, CardTemplateDirective, CommonModule, FamilyComponent],
+  imports: [
+    CardsComponent,
+    CardTemplateDirective,
+    CommonModule,
+    FamilyComponent,
+  ],
   template: `
     <ui-cards
       type="Family"
@@ -17,8 +28,9 @@ import { FamilyComponent } from './family.component';
       [total]="total"
       [favorites]="favoriteIds"
       [trackByFn]="trackByFn"
-      >
-      <app-family *uiCard="families as family"
+    >
+      <app-family
+        *uiCard="families as family"
         [data]="family"
         [favorite]="favoriteIds.has(getId(family))"
         (favoriteChange)="toggleId.emit(getId(family))"
