@@ -20,9 +20,10 @@ import {
 } from '@atocha/lorenzo/util';
 import { HeaderComponent } from './header/header.component';
 import { DevelopmentComponent } from './cards/development/development.component';
-import { FamilyComponent } from './cards/family/family.component';
-import { LeaderComponent } from './cards/leader/leader.component';
 import { FamiliesComponent } from './cards/family/families.component';
+import { FamilyComponent } from './cards/family/family.component';
+import { LeadersComponent } from './cards/leader/leaders.component';
+import { LeaderComponent } from './cards/leader/leader.component';
 
 @Component({
   standalone: true,
@@ -35,6 +36,7 @@ import { FamiliesComponent } from './cards/family/families.component';
     HeaderComponent,
     FamiliesComponent,
     FamilyComponent,
+    LeadersComponent,
     LeaderComponent,
     PluralPipe,
   ],

@@ -26,18 +26,12 @@
       (toggleId)="vm.families.toggleId($event)"
     ></app-families>
 
-    <ui-cards
-      type="{{ vm.leaders.type | titlecase }}"
-      [cards]="vm.leaders.filteredCards"
+    <app-leaders
+      [leaders]="vm.leaders.filteredCards"
       [total]="vm.leaders.totalCards"
-      [favorites]="vm.leaders.favoriteIds"
-    >
-      <app-leader *uiCard="vm.leaders.filteredCards as leader"
-        [data]="leader"
-        [favorite]="vm.leaders.favoriteIds.has(vm.leaders.getId(leader))"
-        (favoriteChange)="vm.leaders.toggleId(vm.leaders.getId(leader))"
-      ></app-leader>
-    </ui-cards>
+      [favoriteIds]="vm.leaders.favoriteIds"
+      (toggleId)="vm.leaders.toggleId($event)"
+    ></app-leaders>
 
     <ui-cards
       type="{{ vm.developments.type | titlecase }}"
