@@ -74,6 +74,13 @@ button {
   border-radius: var(--border-radius);
   outline: none;
   cursor: pointer;
+
+  &:disabled {
+    background: var(--card-bg-light);
+    border-color: var(--card-bg-dark);
+    font-style: italic;
+    cursor: unset;
+  }
 }
 
 // Component styling overrides

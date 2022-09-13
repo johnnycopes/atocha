@@ -7,58 +7,35 @@
   ></header>
 
   <main class="content container">
-    <div *ngIf="vm.view === 'favorites'"
-      class="overview"
-    >
-      <p>
-        {{ vm.leaderIds.size + vm.developmentIds.size + vm.familyIds.size }}
-        {{ vm.leaderIds.size + vm.developmentIds.size + vm.familyIds.size | corePlural : 'favorite' }}
-      </p>
-      <button (click)="clearFavorites()">
-        Clear Favorites
-      </button>
+    <app-favorites-counter
+      *ngIf="vm.view === 'favorites'"
+      [count]="vm.totalFavorites"
+      (clear)="clearFavorites()"
+    ></app-favorites-counter>
+    <div class="cards">
+      <app-developments
+        [style.order]="vm.developments.order"
+        [developments]="vm.developments.filteredCards"
+        [total]="vm.developments.totalCards"
+        [favoriteIds]="vm.developments.favoriteIds"
+        (toggleId)="toggleId($event, 'development')"
+      ></app-developments>
+
+      <app-families
+        [style.order]="vm.families.order"
+        [families]="vm.families.filteredCards"
+        [total]="vm.families.totalCards"
+        [favoriteIds]="vm.families.favoriteIds"
+        (toggleId)="toggleId($event, 'family')"
+      ></app-families>
+
+      <app-leaders
+        [style.order]="vm.leaders.order"
+        [leaders]="vm.leaders.filteredCards"
+        [total]="vm.leaders.totalCards"
+        [favoriteIds]="vm.leaders.favoriteIds"
+        (toggleId)="toggleId($event, 'leader')"
+      ></app-leaders>
     </div>
-
-    <ui-cards
-      type="Family"
-      [cards]="vm.filteredFamilies"
-      [total]="vm.totalFamilies"
-      [favorites]="vm.familyIds"
-      [trackByFn]="familyTrackByFn"
-    >
-      <app-family *uiCard="vm.filteredFamilies as family"
-        [data]="family"
-        [favorite]="vm.familyIds.has(family.name)"
-        (favoriteChange)="toggleFavoriteFamily(family.name)"
-      ></app-family>
-    </ui-cards>
-
-    <ui-cards
-      type="Leader"
-      [cards]="vm.filteredLeaders"
-      [total]="vm.totalLeaders"
-      [favorites]="vm.leaderIds"
-      [trackByFn]="leaderTrackByFn"
-    >
-      <app-leader *uiCard="vm.filteredLeaders as leader"
-        [data]="leader"
-        [favorite]="vm.leaderIds.has(leader.name)"
-        (favoriteChange)="toggleFavoriteLeader(leader.name)"
-      ></app-leader>
-    </ui-cards>
-
-    <ui-cards
-      type="Development"
-      [cards]="vm.filteredDevelopments"
-      [total]="vm.totalDevelopments"
-      [favorites]="vm.developmentIds"
-      [trackByFn]="developmentTrackByFn"
-    >
-      <app-development *uiCard="vm.filteredDevelopments as development"
-        [data]="development"
-        [favorite]="vm.developmentIds.has(development.id.toString())"
-        (favoriteChange)="toggleFavoriteDevelopment(development.id.toString())"
-      ></app-development>
-    </ui-cards>
   </main>
 </ng-container>

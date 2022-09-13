@@ -3,6 +3,7 @@ import { combineLatest, Observable } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 
 import {
+  Card,
   getDevelopmentId,
   getFamilyId,
   getLeaderId,
@@ -51,16 +52,8 @@ export class BrowseService {
     this._viewService.updateView(view);
   }
 
-  toggleFavoriteDevelopment(id: string): void {
-    this._favoriteService.toggleId(id, 'development');
-  }
-
-  toggleFavoriteFamily(id: string): void {
-    this._favoriteService.toggleId(id, 'family');
-  }
-
-  toggleFavoriteLeader(id: string): void {
-    this._favoriteService.toggleId(id, 'leader');
+  toggleFavoriteId(id: string, type: Card): void {
+    this._favoriteService.toggleId(id, type);
   }
 
   clearFavorites() {

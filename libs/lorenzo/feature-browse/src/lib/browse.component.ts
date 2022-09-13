@@ -7,36 +7,31 @@ import {
   map,
 } from 'rxjs';
 
-import { PluralPipe, trackByFactory } from '@atocha/core/ui';
 import { includes } from '@atocha/core/util';
 import { BrowseService } from '@atocha/lorenzo/data-access';
-import { CardsComponent, CardTemplateDirective } from '@atocha/lorenzo/ui';
 import {
-  Development,
-  Family,
+  Card,
   getDevelopmentId,
   getFamilyId,
   getLeaderId,
-  Leader,
   View,
 } from '@atocha/lorenzo/util';
 import { HeaderComponent } from './header/header.component';
-import { DevelopmentComponent } from './cards/development/development.component';
-import { FamilyComponent } from './cards/family/family.component';
-import { LeaderComponent } from './cards/leader/leader.component';
+import { DevelopmentsComponent } from './cards/development/developments.component';
+import { FamiliesComponent } from './cards/family/families.component';
+import { FavoritesCounterComponent } from './favorites-counter/favorites-counter.component';
+import { LeadersComponent } from './cards/leader/leaders.component';
 
 @Component({
   standalone: true,
   selector: 'app-browse',
   imports: [
-    CardTemplateDirective,
-    CardsComponent,
     CommonModule,
-    DevelopmentComponent,
+    DevelopmentsComponent,
+    FamiliesComponent,
+    FavoritesCounterComponent,
     HeaderComponent,
-    FamilyComponent,
-    LeaderComponent,
-    PluralPipe,
+    LeadersComponent,
   ],
   templateUrl: './browse.component.html',
   styleUrls: ['./browse.component.scss'],
@@ -44,10 +39,6 @@ import { LeaderComponent } from './cards/leader/leader.component';
 })
 export class BrowseComponent {
   private _textSubject = new BehaviorSubject<string>('');
-
-  developmentTrackByFn = trackByFactory<Development>(getDevelopmentId);
-  familyTrackByFn = trackByFactory<Family>(getFamilyId);
-  leaderTrackByFn = trackByFactory<Leader>(getLeaderId);
 
   constructor(private _browseService: BrowseService) {}
 
@@ -66,47 +57,49 @@ export class BrowseComponent {
       ]) => ({
         text,
         view,
-        filteredDevelopments: developments.filter((development) =>
-          includes([getDevelopmentId(development)], text)
-        ),
-        filteredFamilies: families.filter((family) =>
-          includes([getFamilyId(family)], text)
-        ),
-        filteredLeaders: leaders.filter((leader) =>
-          includes([getLeaderId(leader)], text)
-        ),
-        totalDevelopments: developments.length,
-        totalFamilies: families.length,
-        totalLeaders: leaders.length,
-        developmentIds,
-        familyIds,
-        leaderIds,
+        developments: {
+          order: 3,
+          totalCards: developments.length,
+          filteredCards: developments.filter((card) =>
+            includes([getDevelopmentId(card)], text)
+          ),
+          favoriteIds: developmentIds,
+        },
+        families: {
+          order: 1,
+          totalCards: families.length,
+          filteredCards: families.filter((card) =>
+            includes([getFamilyId(card)], text)
+          ),
+          favoriteIds: familyIds,
+        },
+        leaders: {
+          order: 2,
+          totalCards: leaders.length,
+          filteredCards: leaders.filter((card) =>
+            includes([getLeaderId(card)], text)
+          ),
+          favoriteIds: leaderIds,
+        },
+        totalFavorites: familyIds.size + leaderIds.size + developmentIds.size,
       })
     )
   );
-
-  clearFavorites(): void {
-    this._browseService.clearFavorites();
-  }
-
-  search(text: string): void {
-    this._textSubject.next(text);
-  }
 
   changeView(view: View): void {
     this._browseService.updateView(view);
     window.scroll(0, 0);
   }
 
-  toggleFavoriteDevelopment(id: string): void {
-    this._browseService.toggleFavoriteDevelopment(id);
+  search(text: string): void {
+    this._textSubject.next(text);
   }
 
-  toggleFavoriteFamily(id: string): void {
-    this._browseService.toggleFavoriteFamily(id);
+  clearFavorites(): void {
+    this._browseService.clearFavorites();
   }
 
-  toggleFavoriteLeader(id: string): void {
-    this._browseService.toggleFavoriteLeader(id);
+  toggleId(id: string, type: Card): void {
+    this._browseService.toggleFavoriteId(id, type);
   }
 }
