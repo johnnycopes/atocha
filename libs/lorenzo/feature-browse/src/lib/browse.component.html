@@ -7,7 +7,7 @@
   ></header>
 
   <main class="content container">
-    <app-favorites-counter
+    <app-favorites-counter class="favorites-counter"
       *ngIf="vm.view === 'favorites'"
       [count]="vm.totalFavorites"
       (clear)="clearFavorites()"
