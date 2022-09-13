@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, TrackByFunction } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import {
   BehaviorSubject,
   distinctUntilChanged,
@@ -7,7 +7,7 @@ import {
   map,
 } from 'rxjs';
 
-import { PluralPipe, trackByFactory } from '@atocha/core/ui';
+import { PluralPipe } from '@atocha/core/ui';
 import { includes } from '@atocha/core/util';
 import { BrowseService } from '@atocha/lorenzo/data-access';
 import { CardsComponent, CardTemplateDirective } from '@atocha/lorenzo/ui';
