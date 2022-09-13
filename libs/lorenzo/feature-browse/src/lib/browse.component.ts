@@ -20,26 +20,20 @@ import {
 } from '@atocha/lorenzo/util';
 import { HeaderComponent } from './header/header.component';
 import { DevelopmentsComponent } from './cards/development/developments.component';
-import { DevelopmentComponent } from './cards/development/development.component';
 import { FamiliesComponent } from './cards/family/families.component';
-import { FamilyComponent } from './cards/family/family.component';
 import { LeadersComponent } from './cards/leader/leaders.component';
-import { LeaderComponent } from './cards/leader/leader.component';
 
 @Component({
   standalone: true,
   selector: 'app-browse',
   imports: [
-    CardTemplateDirective,
     CardsComponent,
+    CardTemplateDirective,
     CommonModule,
     DevelopmentsComponent,
-    DevelopmentComponent,
-    HeaderComponent,
     FamiliesComponent,
-    FamilyComponent,
+    HeaderComponent,
     LeadersComponent,
-    LeaderComponent,
     PluralPipe,
   ],
   templateUrl: './browse.component.html',
