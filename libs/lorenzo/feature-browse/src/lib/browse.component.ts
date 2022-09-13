@@ -45,6 +45,7 @@ export class BrowseComponent {
   vm$ = combineLatest([
     this._textSubject.pipe(distinctUntilChanged()),
     this._browseService.view$,
+    this._browseService.ordinal$,
     this._browseService.cards$,
     this._browseService.favoriteCardIds$,
   ]).pipe(
@@ -52,13 +53,14 @@ export class BrowseComponent {
       ([
         text,
         view,
+        { development: developmentOrdinal, family: familyOrdinal, leader: leaderOrdinal },
         { development: developments, family: families, leader: leaders },
         { development: developmentIds, family: familyIds, leader: leaderIds },
       ]) => ({
         text,
         view,
         developments: {
-          order: 3,
+          order: developmentOrdinal,
           totalCards: developments.length,
           filteredCards: developments.filter((card) =>
             includes([getDevelopmentId(card)], text)
@@ -66,7 +68,7 @@ export class BrowseComponent {
           favoriteIds: developmentIds,
         },
         families: {
-          order: 1,
+          order: familyOrdinal,
           totalCards: families.length,
           filteredCards: families.filter((card) =>
             includes([getFamilyId(card)], text)
@@ -74,7 +76,7 @@ export class BrowseComponent {
           favoriteIds: familyIds,
         },
         leaders: {
-          order: 2,
+          order: leaderOrdinal,
           totalCards: leaders.length,
           filteredCards: leaders.filter((card) =>
             includes([getLeaderId(card)], text)
