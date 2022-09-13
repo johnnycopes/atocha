@@ -60,7 +60,7 @@ export class BrowseComponent {
         text,
         view,
         developments: {
-          order: developmentOrdinal,
+          ordinal: developmentOrdinal,
           totalCards: developments.length,
           filteredCards: developments.filter((card) =>
             includes([getDevelopmentId(card)], text)
@@ -68,7 +68,7 @@ export class BrowseComponent {
           favoriteIds: developmentIds,
         },
         families: {
-          order: familyOrdinal,
+          ordinal: familyOrdinal,
           totalCards: families.length,
           filteredCards: families.filter((card) =>
             includes([getFamilyId(card)], text)
@@ -76,7 +76,7 @@ export class BrowseComponent {
           favoriteIds: familyIds,
         },
         leaders: {
-          order: leaderOrdinal,
+          ordinal: leaderOrdinal,
           totalCards: leaders.length,
           filteredCards: leaders.filter((card) =>
             includes([getLeaderId(card)], text)

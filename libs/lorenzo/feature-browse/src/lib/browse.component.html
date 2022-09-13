@@ -14,7 +14,7 @@
     ></app-favorites-counter>
     <div class="cards">
       <app-developments
-        [style.order]="vm.developments.order"
+        [style.order]="vm.developments.ordinal"
         [developments]="vm.developments.filteredCards"
         [total]="vm.developments.totalCards"
         [favoriteIds]="vm.developments.favoriteIds"
@@ -22,7 +22,7 @@
       ></app-developments>
 
       <app-families
-        [style.order]="vm.families.order"
+        [style.order]="vm.families.ordinal"
         [families]="vm.families.filteredCards"
         [total]="vm.families.totalCards"
         [favoriteIds]="vm.families.favoriteIds"
@@ -30,7 +30,7 @@
       ></app-families>
 
       <app-leaders
-        [style.order]="vm.leaders.order"
+        [style.order]="vm.leaders.ordinal"
         [leaders]="vm.leaders.filteredCards"
         [total]="vm.leaders.totalCards"
         [favoriteIds]="vm.leaders.favoriteIds"
