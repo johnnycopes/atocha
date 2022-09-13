@@ -60,7 +60,16 @@ export class BrowseComponent {
       ]) => ({
         text,
         view,
+        developments: {
+          order: 3,
+          totalCards: developments.length,
+          filteredCards: developments.filter((card) =>
+            includes([getDevelopmentId(card)], text)
+          ),
+          favoriteIds: developmentIds,
+        },
         families: {
+          order: 1,
           totalCards: families.length,
           filteredCards: families.filter((card) =>
             includes([getFamilyId(card)], text)
@@ -68,18 +77,12 @@ export class BrowseComponent {
           favoriteIds: familyIds,
         },
         leaders: {
+          order: 2,
           totalCards: leaders.length,
           filteredCards: leaders.filter((card) =>
             includes([getLeaderId(card)], text)
           ),
           favoriteIds: leaderIds,
-        },
-        developments: {
-          totalCards: developments.length,
-          filteredCards: developments.filter((card) =>
-            includes([getDevelopmentId(card)], text)
-          ),
-          favoriteIds: developmentIds,
         },
         totalFavorites: familyIds.size + leaderIds.size + developmentIds.size,
       })
