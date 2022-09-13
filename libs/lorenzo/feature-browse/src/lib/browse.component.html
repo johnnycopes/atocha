@@ -7,17 +7,11 @@
   ></header>
 
   <main class="content container">
-    <div *ngIf="vm.view === 'favorites'"
-      class="overview"
-    >
-      <p>
-        {{ vm.totalFavorites }}
-        {{ vm.totalFavorites | corePlural : 'favorite' }}
-      </p>
-      <button (click)="clearFavorites()">
-        Clear Favorites
-      </button>
-    </div>
+    <app-favorites-counter
+      *ngIf="vm.view === 'favorites'"
+      [count]="vm.totalFavorites"
+      (clear)="clearFavorites()"
+    ></app-favorites-counter>
     <div class="cards">
       <app-developments
         [style.order]="vm.developments.order"
