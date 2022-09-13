@@ -31,21 +31,29 @@ export class OrdinalService {
 
   incrementOrdinal(type: Card): void {
     this._ordinalSubject.pipe(first()).subscribe(ordinals => {
-      this._ordinalSubject.next({
-        development: ordinals.development + 1 as Ordinal,
-        family: ordinals.family + 1 as Ordinal,
-        leader: ordinals.leader + 1 as Ordinal,
-      })
+      const currentOrdinal = ordinals[type];
+      const target = Object.entries(ordinals).find(([_, ordinal]) => ordinal === currentOrdinal + 1);
+      if (target) {
+        this._ordinalSubject.next({
+          ...ordinals,
+          [target[0]]: currentOrdinal,
+          [type]: target[1]
+        })
+      }
     })
   }
 
   decrementOrdinal(type: Card): void {
     this._ordinalSubject.pipe(first()).subscribe(ordinals => {
-      this._ordinalSubject.next({
-        development: ordinals.development - 1 as Ordinal,
-        family: ordinals.family - 1 as Ordinal,
-        leader: ordinals.leader - 1 as Ordinal,
-      })
+      const currentOrdinal = ordinals[type];
+      const target = Object.entries(ordinals).find(([_, ordinal]) => ordinal === currentOrdinal - 1);
+      if (target) {
+        this._ordinalSubject.next({
+          ...ordinals,
+          [target[0]]: currentOrdinal,
+          [type]: target[1]
+        })
+      }
     })
   }
 
