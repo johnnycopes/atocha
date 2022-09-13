@@ -1,14 +1,12 @@
 <section class="section developments">
   <div class="header">
-    <button (click)="showCards = !showCards">
-      <h2>
-        {{ showCards ? '↓' : '↑' }}
-        {{ type }} | {{ ordinal }}
-        <span class="count">
-          ({{ cards.length }} / {{ total }})
-        </span>
-      </h2>
-    </button>
+    <h2 (click)="showCards = !showCards">
+      {{ showCards ? '↓' : '↑' }}
+      {{ type }}
+      <span class="count">
+        ({{ cards.length }} / {{ total }})
+      </span>
+    </h2>
     <div class="ordinals">
       <button *ngIf="showMoveUp"
         (click)="moveUp.emit()"
