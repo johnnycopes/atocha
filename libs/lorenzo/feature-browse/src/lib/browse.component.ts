@@ -93,6 +93,10 @@ export class BrowseComponent {
     window.scroll(0, 0);
   }
 
+  changeOrdinal(direction: 'up' | 'down', type: Card): void {
+    console.log(direction, type);
+  }
+
   search(text: string): void {
     this._textSubject.next(text);
   }

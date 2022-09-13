@@ -9,7 +9,7 @@ import {
 
 import { trackByFactory } from '@atocha/core/ui';
 import { CardsComponent, CardTemplateDirective } from '@atocha/lorenzo/ui';
-import { Family, getFamilyId } from '@atocha/lorenzo/util';
+import { Family, getFamilyId, Ordinal } from '@atocha/lorenzo/util';
 import { FamilyComponent } from './family.component';
 
 @Component({
@@ -23,11 +23,14 @@ import { FamilyComponent } from './family.component';
   ],
   template: `
     <ui-cards
-      type="Family"
+      type="Families"
       [cards]="families"
       [total]="total"
+      [ordinal]="ordinal"
       [favorites]="favoriteIds"
       [trackByFn]="trackByFn"
+      (moveUp)="moveUp.emit()"
+      (moveDown)="moveDown.emit()"
     >
       <app-family
         *uiCard="families as family"
@@ -42,8 +45,11 @@ import { FamilyComponent } from './family.component';
 export class FamiliesComponent {
   @Input() families: readonly Family[] = [];
   @Input() total = 0;
+  @Input() ordinal: Ordinal = '1';
   @Input() favoriteIds = new Set<string>();
   @Output() toggleId = new EventEmitter<string>();
+  @Output() moveUp = new EventEmitter<void>();
+  @Output() moveDown = new EventEmitter<void>();
   getId = getFamilyId;
   trackByFn = trackByFactory(this.getId);
 }

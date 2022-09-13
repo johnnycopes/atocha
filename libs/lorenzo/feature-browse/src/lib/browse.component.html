@@ -17,24 +17,33 @@
         [style.order]="vm.developments.ordinal"
         [developments]="vm.developments.filteredCards"
         [total]="vm.developments.totalCards"
+        [ordinal]="vm.developments.ordinal"
         [favoriteIds]="vm.developments.favoriteIds"
         (toggleId)="toggleId($event, 'development')"
+        (moveUp)="changeOrdinal('up', 'development')"
+        (moveDown)="changeOrdinal('down', 'development')"
       ></app-developments>
 
       <app-families
         [style.order]="vm.families.ordinal"
         [families]="vm.families.filteredCards"
         [total]="vm.families.totalCards"
+        [ordinal]="vm.families.ordinal"
         [favoriteIds]="vm.families.favoriteIds"
         (toggleId)="toggleId($event, 'family')"
+        (moveUp)="changeOrdinal('up', 'family')"
+        (moveDown)="changeOrdinal('down', 'family')"
       ></app-families>
 
       <app-leaders
         [style.order]="vm.leaders.ordinal"
         [leaders]="vm.leaders.filteredCards"
         [total]="vm.leaders.totalCards"
+        [ordinal]="vm.leaders.ordinal"
         [favoriteIds]="vm.leaders.favoriteIds"
         (toggleId)="toggleId($event, 'leader')"
+        (moveUp)="changeOrdinal('up', 'leader')"
+        (moveDown)="changeOrdinal('down', 'leader')"
       ></app-leaders>
     </div>
   </main>
