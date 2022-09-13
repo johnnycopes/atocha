@@ -10,7 +10,21 @@ import { FamilyComponent } from './family.component';
   standalone: true,
   selector: 'app-families',
   imports: [CardsComponent, CardTemplateDirective, CommonModule, FamilyComponent],
-  templateUrl: './families.component.html',
+  template: `
+    <ui-cards
+      type="Family"
+      [cards]="families"
+      [total]="total"
+      [favorites]="favoriteIds"
+      [trackByFn]="trackByFn"
+      >
+      <app-family *uiCard="families as family"
+        [data]="family"
+        [favorite]="favoriteIds.has(getId(family))"
+        (favoriteChange)="toggleId.emit(getId(family))"
+      ></app-family>
+    </ui-cards>
+  `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FamiliesComponent {

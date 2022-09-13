@@ -10,7 +10,20 @@ import { LeaderComponent } from './leader.component';
   standalone: true,
   selector: 'app-leaders',
   imports: [CardsComponent, CardTemplateDirective, CommonModule, LeaderComponent],
-  templateUrl: './leaders.component.html',
+  template: `
+    <ui-cards
+      type="Leader"
+      [cards]="leaders"
+      [total]="total"
+      [favorites]="favoriteIds"
+    >
+      <app-leader *uiCard="leaders as leader"
+        [data]="leader"
+        [favorite]="favoriteIds.has(getId(leader))"
+        (favoriteChange)="toggleId.emit(getId(leader))"
+      ></app-leader>
+    </ui-cards>
+  `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LeadersComponent {

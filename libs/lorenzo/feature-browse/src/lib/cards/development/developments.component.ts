@@ -10,7 +10,20 @@ import { DevelopmentComponent } from './development.component';
   standalone: true,
   selector: 'app-developments',
   imports: [CardsComponent, CardTemplateDirective, CommonModule, DevelopmentComponent],
-  templateUrl: './developments.component.html',
+  template: `
+    <ui-cards
+      type="Development"
+      [cards]="developments"
+      [total]="total"
+      [favorites]="favoriteIds"
+    >
+      <app-development *uiCard="developments as development"
+        [data]="development"
+        [favorite]="favoriteIds.has(getId(development))"
+        (favoriteChange)="toggleId.emit(getId(development))"
+      ></app-development>
+    </ui-cards>
+  `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DevelopmentsComponent {
