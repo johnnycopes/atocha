@@ -20,8 +20,8 @@
         [ordinal]="vm.developments.ordinal"
         [favoriteIds]="vm.developments.favoriteIds"
         (toggleId)="toggleId($event, 'development')"
-        (moveUp)="changeOrdinal('up', 'development')"
-        (moveDown)="changeOrdinal('down', 'development')"
+        (moveUp)="moveUp('development')"
+        (moveDown)="moveDown('development')"
       ></app-developments>
 
       <app-families
@@ -31,8 +31,8 @@
         [ordinal]="vm.families.ordinal"
         [favoriteIds]="vm.families.favoriteIds"
         (toggleId)="toggleId($event, 'family')"
-        (moveUp)="changeOrdinal('up', 'family')"
-        (moveDown)="changeOrdinal('down', 'family')"
+        (moveUp)="moveUp('family')"
+        (moveDown)="moveDown('family')"
       ></app-families>
 
       <app-leaders
@@ -42,8 +42,8 @@
         [ordinal]="vm.leaders.ordinal"
         [favoriteIds]="vm.leaders.favoriteIds"
         (toggleId)="toggleId($event, 'leader')"
-        (moveUp)="changeOrdinal('up', 'leader')"
-        (moveDown)="changeOrdinal('down', 'leader')"
+        (moveUp)="moveUp('leader')"
+        (moveDown)="moveDown('leader')"
       ></app-leaders>
     </div>
   </main>

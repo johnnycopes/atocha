@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, shareReplay, tap } from 'rxjs';
+import { BehaviorSubject, first, shareReplay, tap } from 'rxjs';
 
 import { LocalStorageService } from '@atocha/core/data-access';
 import { Card, Ordinal } from '@atocha/lorenzo/util';
@@ -28,6 +28,26 @@ export class OrdinalService {
     }),
     shareReplay({ bufferSize: 1, refCount: true })
   );
+
+  incrementOrdinal(type: Card): void {
+    this._ordinalSubject.pipe(first()).subscribe(ordinals => {
+      this._ordinalSubject.next({
+        development: ordinals.development + 1 as Ordinal,
+        family: ordinals.family + 1 as Ordinal,
+        leader: ordinals.leader + 1 as Ordinal,
+      })
+    })
+  }
+
+  decrementOrdinal(type: Card): void {
+    this._ordinalSubject.pipe(first()).subscribe(ordinals => {
+      this._ordinalSubject.next({
+        development: ordinals.development - 1 as Ordinal,
+        family: ordinals.family - 1 as Ordinal,
+        leader: ordinals.leader - 1 as Ordinal,
+      })
+    })
+  }
 
   constructor(private _localStorageService: LocalStorageService) {}
 

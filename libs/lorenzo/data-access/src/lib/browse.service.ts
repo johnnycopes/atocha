@@ -59,7 +59,15 @@ export class BrowseService {
     this._favoriteService.toggleId(id, type);
   }
 
-  clearFavorites() {
+  clearFavorites(): void {
     this._favoriteService.clearIds();
+  }
+
+  incrementOrdinal(type: Card): void {
+    this._ordinalService.incrementOrdinal(type);
+  }
+
+  decrementOrdinal(type: Card): void {
+    this._ordinalService.decrementOrdinal(type);
   }
 }
