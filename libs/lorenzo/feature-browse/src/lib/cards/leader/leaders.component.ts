@@ -11,7 +11,6 @@ import { LeaderComponent } from './leader.component';
   selector: 'app-leaders',
   imports: [CardsComponent, CardTemplateDirective, CommonModule, LeaderComponent],
   templateUrl: './leaders.component.html',
-  styleUrls: ['./leaders.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LeadersComponent {

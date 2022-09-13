@@ -11,7 +11,6 @@ import { FamilyComponent } from './family.component';
   selector: 'app-families',
   imports: [CardsComponent, CardTemplateDirective, CommonModule, FamilyComponent],
   templateUrl: './families.component.html',
-  styleUrls: ['./families.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FamiliesComponent {

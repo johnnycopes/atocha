@@ -11,7 +11,6 @@ import { DevelopmentComponent } from './development.component';
   selector: 'app-developments',
   imports: [CardsComponent, CardTemplateDirective, CommonModule, DevelopmentComponent],
   templateUrl: './developments.component.html',
-  styleUrls: ['./developments.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DevelopmentsComponent {
