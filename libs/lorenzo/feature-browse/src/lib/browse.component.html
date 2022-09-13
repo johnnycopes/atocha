@@ -33,17 +33,11 @@
       (toggleId)="vm.leaders.toggleId($event)"
     ></app-leaders>
 
-    <ui-cards
-      type="{{ vm.developments.type | titlecase }}"
-      [cards]="vm.developments.filteredCards"
+    <app-developments
+      [developments]="vm.developments.filteredCards"
       [total]="vm.developments.totalCards"
-      [favorites]="vm.developments.favoriteIds"
-    >
-      <app-development *uiCard="vm.developments.filteredCards as development"
-        [data]="development"
-        [favorite]="vm.developments.favoriteIds.has(vm.developments.getId(development))"
-        (favoriteChange)="vm.developments.toggleId(vm.developments.getId(development))"
-      ></app-development>
-    </ui-cards>
+      [favoriteIds]="vm.developments.favoriteIds"
+      (toggleId)="vm.developments.toggleId($event)"
+    ></app-developments>
   </main>
 </ng-container>

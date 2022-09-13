@@ -19,6 +19,7 @@ import {
   View,
 } from '@atocha/lorenzo/util';
 import { HeaderComponent } from './header/header.component';
+import { DevelopmentsComponent } from './cards/development/developments.component';
 import { DevelopmentComponent } from './cards/development/development.component';
 import { FamiliesComponent } from './cards/family/families.component';
 import { FamilyComponent } from './cards/family/family.component';
@@ -32,6 +33,7 @@ import { LeaderComponent } from './cards/leader/leader.component';
     CardTemplateDirective,
     CardsComponent,
     CommonModule,
+    DevelopmentsComponent,
     DevelopmentComponent,
     HeaderComponent,
     FamiliesComponent,
