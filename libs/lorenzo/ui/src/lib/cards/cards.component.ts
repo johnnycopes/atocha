@@ -30,7 +30,7 @@ export class CardsComponent<T> implements OnChanges {
   @Input() cards: readonly T[] = [];
   @Input() total = 0;
   @Input() favorites = new Set<string>();
-  @Input() ordinal: Ordinal = '1';
+  @Input() ordinal: Ordinal = 1;
   @Input() trackByFn: TrackByFunction<T> = (_, index) => index;
   @Output() moveUp = new EventEmitter<void>();
   @Output() moveDown = new EventEmitter<void>();
@@ -44,9 +44,8 @@ export class CardsComponent<T> implements OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
     const ordinal: Ordinal | undefined = changes['ordinal']?.currentValue;
     if (ordinal) {
-      const ordinalAsNumber = parseInt(ordinal, 10);
-      this.showMoveUp = ordinalAsNumber > 1;
-      this.showMoveDown = ordinalAsNumber < 3;
+      this.showMoveUp = ordinal > 1;
+      this.showMoveDown = ordinal < 3;
     }
   }
 }

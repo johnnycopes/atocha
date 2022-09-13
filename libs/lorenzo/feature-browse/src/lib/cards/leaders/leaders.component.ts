@@ -44,7 +44,7 @@ import { LeaderComponent } from './leader.component';
 export class LeadersComponent {
   @Input() leaders: readonly Leader[] = [];
   @Input() total = 0;
-  @Input() ordinal: Ordinal = '1';
+  @Input() ordinal: Ordinal = 1;
   @Input() favoriteIds = new Set<string>();
   @Output() toggleId = new EventEmitter<string>();
   @Output() moveUp = new EventEmitter<void>();

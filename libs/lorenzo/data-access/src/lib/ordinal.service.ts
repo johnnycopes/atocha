@@ -15,9 +15,9 @@ export class OrdinalService {
     leader: this._prefix + 'LEADER_ORDINAL',
   };
   private _ordinalSubject = new BehaviorSubject<Record<Card, Ordinal>>({
-    development: this._getOrdinal(this._keys.development, '3'),
-    family: this._getOrdinal(this._keys.family, '1'),
-    leader: this._getOrdinal(this._keys.leader, '2'),
+    development: this._getOrdinal(this._keys.development, 3),
+    family: this._getOrdinal(this._keys.family, 1),
+    leader: this._getOrdinal(this._keys.leader, 2),
   });
 
   ordinal$ = this._ordinalSubject.pipe(
@@ -33,10 +33,10 @@ export class OrdinalService {
 
   private _getOrdinal(key: string, backup: Ordinal): Ordinal {
     const ordinal = this._localStorageService.getItem(key);
-    return ordinal ? ordinal as Ordinal : backup;
+    return ordinal ? parseInt(ordinal, 10) as Ordinal : backup;
   }
 
-  private _setOrdinal(key: string, ordinal: string): void {
-    this._localStorageService.setItem(key, ordinal);
+  private _setOrdinal(key: string, ordinal: Ordinal): void {
+    this._localStorageService.setItem(key, ordinal.toString());
   }
 }

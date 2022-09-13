@@ -45,7 +45,7 @@ import { FamilyComponent } from './family.component';
 export class FamiliesComponent {
   @Input() families: readonly Family[] = [];
   @Input() total = 0;
-  @Input() ordinal: Ordinal = '1';
+  @Input() ordinal: Ordinal = 1;
   @Input() favoriteIds = new Set<string>();
   @Output() toggleId = new EventEmitter<string>();
   @Output() moveUp = new EventEmitter<void>();
