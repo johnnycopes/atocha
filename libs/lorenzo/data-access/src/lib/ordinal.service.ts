@@ -5,7 +5,7 @@ import { LocalStorageService } from '@atocha/core/data-access';
 import { Card, Ordinal } from '@atocha/lorenzo/util';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class OrdinalService {
   private _prefix = 'LORENZO_';
@@ -30,38 +30,42 @@ export class OrdinalService {
   );
 
   incrementOrdinal(type: Card): void {
-    this._ordinalSubject.pipe(first()).subscribe(ordinals => {
+    this._ordinalSubject.pipe(first()).subscribe((ordinals) => {
       const currentOrdinal = ordinals[type];
-      const target = Object.entries(ordinals).find(([_, ordinal]) => ordinal === currentOrdinal + 1);
+      const target = Object.entries(ordinals).find(
+        ([_, ordinal]) => ordinal === currentOrdinal + 1
+      );
       if (target) {
         this._ordinalSubject.next({
           ...ordinals,
           [target[0]]: currentOrdinal,
-          [type]: target[1]
-        })
+          [type]: target[1],
+        });
       }
-    })
+    });
   }
 
   decrementOrdinal(type: Card): void {
-    this._ordinalSubject.pipe(first()).subscribe(ordinals => {
+    this._ordinalSubject.pipe(first()).subscribe((ordinals) => {
       const currentOrdinal = ordinals[type];
-      const target = Object.entries(ordinals).find(([_, ordinal]) => ordinal === currentOrdinal - 1);
+      const target = Object.entries(ordinals).find(
+        ([_, ordinal]) => ordinal === currentOrdinal - 1
+      );
       if (target) {
         this._ordinalSubject.next({
           ...ordinals,
           [target[0]]: currentOrdinal,
-          [type]: target[1]
-        })
+          [type]: target[1],
+        });
       }
-    })
+    });
   }
 
   constructor(private _localStorageService: LocalStorageService) {}
 
   private _getOrdinal(key: string, backup: Ordinal): Ordinal {
     const ordinal = this._localStorageService.getItem(key);
-    return ordinal ? parseInt(ordinal, 10) as Ordinal : backup;
+    return ordinal ? (parseInt(ordinal, 10) as Ordinal) : backup;
   }
 
   private _setOrdinal(key: string, ordinal: Ordinal): void {
