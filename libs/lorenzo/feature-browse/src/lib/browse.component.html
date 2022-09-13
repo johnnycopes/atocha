@@ -19,26 +19,18 @@
       </button>
     </div>
 
-    <ui-cards
-      type="{{ vm.families.type | titlecase }}"
-      [cards]="vm.families.filteredCards"
+    <app-families
+      [families]="vm.families.filteredCards"
       [total]="vm.families.totalCards"
-      [favorites]="vm.families.favoriteIds"
-      [trackByFn]="vm.families.trackByFn"
-    >
-      <app-family *uiCard="vm.families.filteredCards as family"
-        [data]="family"
-        [favorite]="vm.families.favoriteIds.has(vm.families.getId(family))"
-        (favoriteChange)="vm.families.toggleId(vm.families.getId(family))"
-      ></app-family>
-    </ui-cards>
+      [favoriteIds]="vm.families.favoriteIds"
+      (toggleId)="vm.families.toggleId($event)"
+    ></app-families>
 
     <ui-cards
       type="{{ vm.leaders.type | titlecase }}"
       [cards]="vm.leaders.filteredCards"
       [total]="vm.leaders.totalCards"
       [favorites]="vm.leaders.favoriteIds"
-      [trackByFn]="vm.leaders.trackByFn"
     >
       <app-leader *uiCard="vm.leaders.filteredCards as leader"
         [data]="leader"
@@ -52,7 +44,6 @@
       [cards]="vm.developments.filteredCards"
       [total]="vm.developments.totalCards"
       [favorites]="vm.developments.favoriteIds"
-      [trackByFn]="vm.leaders.trackByFn"
     >
       <app-development *uiCard="vm.developments.filteredCards as development"
         [data]="development"

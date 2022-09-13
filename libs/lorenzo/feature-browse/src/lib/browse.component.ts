@@ -22,6 +22,7 @@ import { HeaderComponent } from './header/header.component';
 import { DevelopmentComponent } from './cards/development/development.component';
 import { FamilyComponent } from './cards/family/family.component';
 import { LeaderComponent } from './cards/leader/leader.component';
+import { FamiliesComponent } from './cards/family/families.component';
 
 @Component({
   standalone: true,
@@ -32,6 +33,7 @@ import { LeaderComponent } from './cards/leader/leader.component';
     CommonModule,
     DevelopmentComponent,
     HeaderComponent,
+    FamiliesComponent,
     FamilyComponent,
     LeaderComponent,
     PluralPipe,
