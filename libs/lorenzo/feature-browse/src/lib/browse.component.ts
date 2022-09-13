@@ -17,10 +17,10 @@ import {
   View,
 } from '@atocha/lorenzo/util';
 import { HeaderComponent } from './header/header.component';
-import { DevelopmentsComponent } from './cards/development/developments.component';
-import { FamiliesComponent } from './cards/family/families.component';
+import { DevelopmentsComponent } from './cards/developments/developments.component';
+import { FamiliesComponent } from './cards/families/families.component';
 import { FavoritesCounterComponent } from './favorites-counter/favorites-counter.component';
-import { LeadersComponent } from './cards/leader/leaders.component';
+import { LeadersComponent } from './cards/leaders/leaders.component';
 
 @Component({
   standalone: true,
