@@ -9,7 +9,7 @@ import {
 
 import { trackByFactory } from '@atocha/core/ui';
 import { CardsComponent, CardTemplateDirective } from '@atocha/lorenzo/ui';
-import { getLeaderId, Leader } from '@atocha/lorenzo/util';
+import { getLeaderId, Leader, Ordinal } from '@atocha/lorenzo/util';
 import { LeaderComponent } from './leader.component';
 
 @Component({
@@ -23,10 +23,13 @@ import { LeaderComponent } from './leader.component';
   ],
   template: `
     <ui-cards
-      type="Leader"
+      type="Leaders"
       [cards]="leaders"
       [total]="total"
+      [ordinal]="ordinal"
       [favorites]="favoriteIds"
+      (moveUp)="moveUp.emit()"
+      (moveDown)="moveDown.emit()"
     >
       <app-leader
         *uiCard="leaders as leader"
@@ -41,8 +44,11 @@ import { LeaderComponent } from './leader.component';
 export class LeadersComponent {
   @Input() leaders: readonly Leader[] = [];
   @Input() total = 0;
+  @Input() ordinal: Ordinal = 1;
   @Input() favoriteIds = new Set<string>();
   @Output() toggleId = new EventEmitter<string>();
+  @Output() moveUp = new EventEmitter<void>();
+  @Output() moveDown = new EventEmitter<void>();
   getId = getLeaderId;
   trackByFn = trackByFactory(this.getId);
 }

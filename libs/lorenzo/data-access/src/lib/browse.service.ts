@@ -11,6 +11,7 @@ import {
 } from '@atocha/lorenzo/util';
 import { Cards, CardService } from './card.service';
 import { FavoriteService } from './favorite.service';
+import { OrdinalService } from './ordinal.service';
 import { ViewService } from './view.service';
 
 @Injectable({
@@ -23,6 +24,7 @@ export class BrowseService {
     )
   );
   favoriteCardIds$ = this._favoriteService.ids$;
+  ordinal$ = this._ordinalService.ordinal$;
   view$ = this._viewService.view$;
 
   private _favoriteCards$: Observable<Cards> = combineLatest([
@@ -45,6 +47,7 @@ export class BrowseService {
   constructor(
     private _cardService: CardService,
     private _favoriteService: FavoriteService,
+    private _ordinalService: OrdinalService,
     private _viewService: ViewService
   ) {}
 
@@ -56,7 +59,15 @@ export class BrowseService {
     this._favoriteService.toggleId(id, type);
   }
 
-  clearFavorites() {
+  clearFavorites(): void {
     this._favoriteService.clearIds();
+  }
+
+  moveUp(type: Card): void {
+    this._ordinalService.decrementOrdinal(type);
+  }
+
+  moveDown(type: Card): void {
+    this._ordinalService.incrementOrdinal(type);
   }
 }

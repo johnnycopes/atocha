@@ -7,17 +7,25 @@
     justify-content: space-between;
     margin-bottom: 8px;
 
-    h2 {
+    .caret {
+      font-size: 14px;
+      color: var(--card-bg-dark);
+    }
+
+    .type {
       font-size: 16px;
       font-weight: 700;
+      cursor: pointer;
     }
 
     .count {
       font-weight: 400;
     }
 
-    button {
-      margin-left: 16px;
+    .ordinals {
+      button {
+        margin-left: 8px;
+      }
     }
   }
 

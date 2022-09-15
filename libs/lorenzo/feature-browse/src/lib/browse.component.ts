@@ -45,6 +45,7 @@ export class BrowseComponent {
   vm$ = combineLatest([
     this._textSubject.pipe(distinctUntilChanged()),
     this._browseService.view$,
+    this._browseService.ordinal$,
     this._browseService.cards$,
     this._browseService.favoriteCardIds$,
   ]).pipe(
@@ -52,13 +53,18 @@ export class BrowseComponent {
       ([
         text,
         view,
+        {
+          development: developmentOrdinal,
+          family: familyOrdinal,
+          leader: leaderOrdinal,
+        },
         { development: developments, family: families, leader: leaders },
         { development: developmentIds, family: familyIds, leader: leaderIds },
       ]) => ({
         text,
         view,
         developments: {
-          order: 3,
+          ordinal: developmentOrdinal,
           totalCards: developments.length,
           filteredCards: developments.filter((card) =>
             includes([getDevelopmentId(card)], text)
@@ -66,7 +72,7 @@ export class BrowseComponent {
           favoriteIds: developmentIds,
         },
         families: {
-          order: 1,
+          ordinal: familyOrdinal,
           totalCards: families.length,
           filteredCards: families.filter((card) =>
             includes([getFamilyId(card)], text)
@@ -74,7 +80,7 @@ export class BrowseComponent {
           favoriteIds: familyIds,
         },
         leaders: {
-          order: 2,
+          ordinal: leaderOrdinal,
           totalCards: leaders.length,
           filteredCards: leaders.filter((card) =>
             includes([getLeaderId(card)], text)
@@ -89,6 +95,14 @@ export class BrowseComponent {
   changeView(view: View): void {
     this._browseService.updateView(view);
     window.scroll(0, 0);
+  }
+
+  moveDown(type: Card): void {
+    this._browseService.moveDown(type);
+  }
+
+  moveUp(type: Card): void {
+    this._browseService.moveUp(type);
   }
 
   search(text: string): void {
