@@ -1,7 +1,11 @@
 <section class="section developments">
   <div class="header">
-    <h2 (click)="showCards = !showCards">
-      {{ showCards ? '↓' : '↑' }}
+    <h2 class="type"
+      (click)="showCards = !showCards"
+    >
+      <span class="caret">
+        {{ showCards ? '▼' : '▲' }}
+      </span>
       {{ type }}
       <span class="count">
         ({{ cards.length }} / {{ total }})
