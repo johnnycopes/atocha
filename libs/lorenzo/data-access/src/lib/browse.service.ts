@@ -63,11 +63,11 @@ export class BrowseService {
     this._favoriteService.clearIds();
   }
 
-  incrementOrdinal(type: Card): void {
-    this._ordinalService.incrementOrdinal(type);
+  moveUp(type: Card): void {
+    this._ordinalService.decrementOrdinal(type);
   }
 
-  decrementOrdinal(type: Card): void {
-    this._ordinalService.decrementOrdinal(type);
+  moveDown(type: Card): void {
+    this._ordinalService.incrementOrdinal(type);
   }
 }

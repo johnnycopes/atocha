@@ -98,11 +98,11 @@ export class BrowseComponent {
   }
 
   moveDown(type: Card): void {
-    this._browseService.incrementOrdinal(type);
+    this._browseService.moveDown(type);
   }
 
   moveUp(type: Card): void {
-    this._browseService.decrementOrdinal(type);
+    this._browseService.moveUp(type);
   }
 
   search(text: string): void {

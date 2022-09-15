@@ -63,9 +63,9 @@ export class OrdinalService {
 
   constructor(private _localStorageService: LocalStorageService) {}
 
-  private _getOrdinal(key: string, backup: Ordinal): Ordinal {
+  private _getOrdinal(key: string, fallback: Ordinal): Ordinal {
     const ordinal = this._localStorageService.getItem(key);
-    return ordinal ? (parseInt(ordinal, 10) as Ordinal) : backup;
+    return ordinal ? (parseInt(ordinal, 10) as Ordinal) : fallback;
   }
 
   private _setOrdinal(key: string, ordinal: Ordinal): void {
