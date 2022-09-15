@@ -12,15 +12,14 @@ import {
   TemplateRef,
   TrackByFunction,
 } from '@angular/core';
-import { Ordinal } from '@atocha/lorenzo/util';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
+import { Ordinal } from '@atocha/lorenzo/util';
 import { CardTemplateDirective } from './card-template.directive';
 
 @Component({
   standalone: true,
   selector: 'ui-cards',
-  imports: [CommonModule, FontAwesomeModule],
+  imports: [CommonModule],
   templateUrl: './cards.component.html',
   styleUrls: ['./cards.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
