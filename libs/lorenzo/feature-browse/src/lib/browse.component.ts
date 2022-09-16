@@ -25,25 +25,13 @@ import { LeadersComponent } from './cards/leaders/leaders.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BrowseComponent {
-
   constructor(private _browseService: BrowseService) {}
 
   vm$ = this._browseService.vm$;
   ordinal$ = this._browseService.ordinal$;
-
-  moveDown(type: Card): void {
-    this._browseService.moveDown(type);
-  }
-
-  moveUp(type: Card): void {
-    this._browseService.moveUp(type);
-  }
+  totalFavorites$ = this._browseService.totalFavorites$;
 
   clearFavorites(): void {
     this._browseService.clearFavorites();
-  }
-
-  toggleId(id: string, type: Card): void {
-    this._browseService.toggleFavoriteId(id, type);
   }
 }

@@ -4,9 +4,10 @@
   <main class="content container">
     <app-favorites-counter class="favorites-counter"
       *ngIf="vm.view === 'favorites'"
-      [count]="vm.totalFavorites"
+      [count]="(totalFavorites$ | async) ?? 0"
       (clear)="clearFavorites()"
     ></app-favorites-counter>
+
     <div *ngIf="ordinal$ | async as ordinal"
       class="cards"
     >
