@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { of, shareReplay } from 'rxjs';
+import { combineLatest, map, Observable, of, shareReplay } from 'rxjs';
 
 import {
   LEADERS,
@@ -9,9 +9,13 @@ import {
   Development,
   Family,
   Leader,
+  getDevelopmentId,
+  getFamilyId,
+  getLeaderId,
 } from '@atocha/lorenzo/util';
+import { FavoriteService } from './favorite.service';
 
-export type Cards = {
+type Cards = {
   [key in Extract<Card, 'development'>]: readonly Development[];
 } & { [key in Extract<Card, 'family'>]: readonly Family[] } & {
   [key in Extract<Card, 'leader'>]: readonly Leader[];
@@ -27,7 +31,27 @@ export class CardService {
     leader: LEADERS,
   });
 
-  cards$ = this._cardSubject.pipe(
+  cards$: Observable<Cards> = this._cardSubject.pipe(
     shareReplay({ bufferSize: 1, refCount: true })
   );
+
+  favoriteCards$: Observable<Cards> = combineLatest([
+    this.cards$,
+    this._favoriteService.ids$,
+  ]).pipe(
+    map(([cards, ids]) => ({
+      development: cards.development.filter((development) =>
+        ids.development.has(getDevelopmentId(development))
+      ),
+      family: cards.family.filter((family) =>
+        ids.family.has(getFamilyId(family))
+      ),
+      leader: cards.leader.filter((leader) =>
+        ids.leader.has(getLeaderId(leader))
+      ),
+    })),
+    shareReplay({ bufferSize: 1, refCount: true })
+  );
+
+  constructor(private _favoriteService: FavoriteService) {}
 }
