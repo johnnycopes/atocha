@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { combineLatest, Observable } from 'rxjs';
-import { map, switchMap } from 'rxjs/operators';
+import { map, shareReplay, switchMap, tap } from 'rxjs/operators';
 
 import { includes } from '@atocha/core/util';
 import {
@@ -60,32 +60,30 @@ export class CardStateService {
         { development: developments, family: families, leader: leaders },
         { development: developmentIds, family: familyIds, leader: leaderIds },
       ]) => ({
-        development: {
+        development: this._createState({
           ordinal: developmentOrdinal,
-          totalCards: developments.length,
-          filteredCards: developments.filter((card) =>
-            includes([getDevelopmentId(card)], text)
-          ),
           favoriteIds: developmentIds,
-        },
-        family: {
+          cards: developments,
+          getId: getDevelopmentId,
+          text,
+        }),
+        family: this._createState({
           ordinal: familyOrdinal,
-          totalCards: families.length,
-          filteredCards: families.filter((card) =>
-            includes([getFamilyId(card)], text)
-          ),
           favoriteIds: familyIds,
-        },
-        leader: {
+          cards: families,
+          getId: getFamilyId,
+          text,
+        }),
+        leader: this._createState({
           ordinal: leaderOrdinal,
-          totalCards: leaders.length,
-          filteredCards: leaders.filter((card) =>
-            includes([getLeaderId(card)], text)
-          ),
           favoriteIds: leaderIds,
-        },
+          cards: leaders,
+          getId: getLeaderId,
+          text,
+        }),
       })
-    )
+    ),
+    shareReplay({ bufferSize: 1, refCount: true }),
   );
 
   developments$ = this._state$.pipe(map(({ development }) => development));
@@ -115,5 +113,22 @@ export class CardStateService {
 
   moveDown(type: Card): void {
     this._ordinalService.incrementOrdinal(type);
+  }
+
+  private _createState<T>({ ordinal, favoriteIds, cards, getId, text }: {
+    ordinal: Ordinal,
+    favoriteIds: Set<string>,
+    cards: readonly T[],
+    getId: (card: T) => string,
+    text: string,
+  }): State<T> {
+    return {
+      ordinal,
+      favoriteIds,
+      totalCards: cards.length,
+      filteredCards: cards.filter((card) =>
+        includes([getId(card)], text)
+      ),
+    };
   }
 }
