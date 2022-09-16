@@ -2,10 +2,9 @@
   <header app-header></header>
 
   <main class="content container">
-    <app-favorites-counter class="favorites-counter"
+    <app-favorites-counter
       *ngIf="vm.view === 'favorites'"
-      [count]="(totalFavorites$ | async) ?? 0"
-      (clear)="clearFavorites()"
+      class="favorites-counter"
     ></app-favorites-counter>
 
     <div *ngIf="ordinal$ | async as ordinal"

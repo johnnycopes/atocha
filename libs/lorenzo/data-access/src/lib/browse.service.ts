@@ -92,10 +92,6 @@ export class BrowseService {
 
   ordinal$ = this._ordinalService.ordinal$;
 
-  totalFavorites$ = this._favoriteService.ids$.pipe(
-    map(ids => Object.values(ids).reduce((accum, curr) => accum + curr.size, 0))
-  );
-
   developments$ = this.vm$.pipe(
     map(({ developments }) => developments)
   );
@@ -117,10 +113,6 @@ export class BrowseService {
 
   toggleFavoriteId(id: string, type: Card): void {
     this._favoriteService.toggleId(id, type);
-  }
-
-  clearFavorites(): void {
-    this._favoriteService.clearIds();
   }
 
   moveUp(type: Card): void {

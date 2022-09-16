@@ -29,9 +29,4 @@ export class BrowseComponent {
 
   vm$ = this._browseService.vm$;
   ordinal$ = this._browseService.ordinal$;
-  totalFavorites$ = this._browseService.totalFavorites$;
-
-  clearFavorites(): void {
-    this._browseService.clearFavorites();
-  }
 }
