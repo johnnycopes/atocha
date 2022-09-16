@@ -14,15 +14,7 @@
       <app-families [style.order]="vm.families.ordinal"
       ></app-families>
 
-      <app-leaders
-        [style.order]="vm.leaders.ordinal"
-        [leaders]="vm.leaders.filteredCards"
-        [total]="vm.leaders.totalCards"
-        [ordinal]="vm.leaders.ordinal"
-        [favoriteIds]="vm.leaders.favoriteIds"
-        (toggleId)="toggleId($event, 'leader')"
-        (moveUp)="moveUp('leader')"
-        (moveDown)="moveDown('leader')"
+      <app-leaders [style.order]="vm.leaders.ordinal"
       ></app-leaders>
     </div>
   </main>
