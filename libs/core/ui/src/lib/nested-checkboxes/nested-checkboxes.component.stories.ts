@@ -5,15 +5,9 @@ import {
   Meta,
   componentWrapperDecorator,
 } from '@storybook/angular';
-import { InputType } from 'zlib';
 
 import {
-  CheckboxStates,
-  NestedCheckboxesComponent,
-} from './nested-checkboxes.component';
-import {
   CheckboxComponent,
-  CheckboxSize,
 } from '../checkbox/checkbox.component';
 import { TreeComponent } from '../tree/tree.component';
 import { StorybookWrapperComponent } from '../../../.storybook/storybook-wrapper/storybook-wrapper.component';
@@ -21,18 +15,12 @@ import {
   ALL_SELECTED,
   getChildren,
   getId,
-  TestItem,
   AFRICA,
   SOME_SELECTED,
+  TestItem,
 } from '../../../.storybook/mock-data/nested-checkboxes';
-
-type NestedCheckboxesArgs = Pick<
-  NestedCheckboxesComponent<TestItem>,
-  'indentation' | 'states' | 'size'
-> & {
-  className: string;
-  onClick: InputType | undefined;
-};
+import { NestedCheckboxesComponent } from './nested-checkboxes.component';
+import { InputType } from 'zlib';
 
 export default {
   title: 'NestedCheckboxesComponent',
@@ -51,15 +39,15 @@ export default {
     },
     onClick: { action: 'clicked' },
   },
-} as Meta<NestedCheckboxesArgs>;
+} as Meta<NestedCheckboxesComponent<TestItem>>;
 
-const Template: Story<NestedCheckboxesArgs> = ({
+const Template: Story<NestedCheckboxesComponent<TestItem>> = ({
   indentation,
   states,
   size,
   className,
   onClick,
-}: NestedCheckboxesArgs) => ({
+}: Args) => ({
   props: {
     item: AFRICA,
     getId,
@@ -106,16 +94,16 @@ withCustomStyling.args = createArgs({
   className: 'custom-nested-checkboxes',
 });
 
+type Args = Partial<NestedCheckboxesComponent<TestItem>> & {
+  className?: string;
+  onClick?: InputType;
+};
+
 function createArgs({
   indentation = 24,
   states = {},
   size = 'normal',
   className = '',
-}: {
-  indentation?: number;
-  states?: CheckboxStates;
-  size?: CheckboxSize;
-  className?: string;
-}) {
+} = {} as Args): Args {
   return { indentation, states, size, className };
 }
