@@ -5,6 +5,7 @@ import {
   Story,
   componentWrapperDecorator,
 } from '@storybook/angular';
+import { InputType } from 'zlib';
 
 import { StorybookWrapperComponent } from '../../../.storybook/storybook-wrapper/storybook-wrapper.component';
 import { CheckboxComponent, CheckboxSize } from './checkbox.component';
@@ -58,13 +59,20 @@ withCustomStyling.args = createArgs({
   className: 'custom-checkbox',
 });
 
-function createArgs({
-  slot = '',
-  className = '',
-  checked = false,
-  disabled = false,
-  indeterminate = false,
-  size = 'normal' as CheckboxSize,
-} = {}) {
+type Args = Partial<CheckboxComponent> & {
+  slot?: string;
+  className?: string;
+};
+
+function createArgs(
+  {
+    slot = '',
+    className = '',
+    checked = false,
+    disabled = false,
+    indeterminate = false,
+    size = 'normal' as CheckboxSize,
+  } = {} as Args
+): Args {
   return { slot, className, checked, disabled, indeterminate, size };
 }
