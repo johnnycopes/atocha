@@ -18,15 +18,34 @@ import { ViewService } from './view.service';
   providedIn: 'root',
 })
 export class BrowseService {
+  private _cards$ = this._viewService.view$.pipe(
+    switchMap((view) =>
+      view === 'all' ? this._cardService.cards$ : this._favoriteCards$
+    )
+  );
+
+  private _favoriteCards$: Observable<Cards> = combineLatest([
+    this._cardService.cards$,
+    this._favoriteService.ids$,
+  ]).pipe(
+    map(([cards, ids]) => ({
+      development: cards.development.filter((development) =>
+        ids.development.has(getDevelopmentId(development))
+      ),
+      family: cards.family.filter((family) =>
+        ids.family.has(getFamilyId(family))
+      ),
+      leader: cards.leader.filter((leader) =>
+        ids.leader.has(getLeaderId(leader))
+      ),
+    }))
+  );
+
   vm$ = combineLatest([
     this._viewService.text$,
     this._viewService.view$,
     this._ordinalService.ordinal$,
-    this._viewService.view$.pipe(
-      switchMap((view) =>
-        view === 'all' ? this._cardService.cards$ : this._favoriteCards$
-      )
-    ),
+    this._cards$,
     this._favoriteService.ids$,
   ]).pipe(
     map(
@@ -69,23 +88,6 @@ export class BrowseService {
         totalFavorites: familyIds.size + leaderIds.size + developmentIds.size,
       })
     )
-  );
-
-  private _favoriteCards$: Observable<Cards> = combineLatest([
-    this._cardService.cards$,
-    this._favoriteService.ids$,
-  ]).pipe(
-    map(([cards, ids]) => ({
-      development: cards.development.filter((development) =>
-        ids.development.has(getDevelopmentId(development))
-      ),
-      family: cards.family.filter((family) =>
-        ids.family.has(getFamilyId(family))
-      ),
-      leader: cards.leader.filter((leader) =>
-        ids.leader.has(getLeaderId(leader))
-      ),
-    }))
   );
 
   constructor(
