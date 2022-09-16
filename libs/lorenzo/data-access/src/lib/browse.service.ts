@@ -90,6 +90,18 @@ export class BrowseService {
     )
   );
 
+  developments$ = this.vm$.pipe(
+    map(({ developments }) => developments)
+  );
+
+  families$ = this.vm$.pipe(
+    map(({ families }) => families)
+  );
+
+  leaders$ = this.vm$.pipe(
+    map(({ leaders }) => leaders)
+  );
+
   constructor(
     private _cardService: CardService,
     private _favoriteService: FavoriteService,

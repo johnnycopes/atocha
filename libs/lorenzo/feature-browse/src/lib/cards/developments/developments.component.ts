@@ -1,15 +1,10 @@
 import { CommonModule } from '@angular/common';
-import {
-  ChangeDetectionStrategy,
-  Component,
-  EventEmitter,
-  Input,
-  Output,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 import { trackByFactory } from '@atocha/core/ui';
+import { BrowseService } from '@atocha/lorenzo/data-access';
 import { CardsComponent, CardTemplateDirective } from '@atocha/lorenzo/ui';
-import { Development, getDevelopmentId, Ordinal } from '@atocha/lorenzo/util';
+import { getDevelopmentId } from '@atocha/lorenzo/util';
 import { DevelopmentComponent } from './development.component';
 
 @Component({
@@ -22,33 +17,41 @@ import { DevelopmentComponent } from './development.component';
     DevelopmentComponent,
   ],
   template: `
-    <ui-cards
+    <ui-cards *ngIf="developments$ | async as data"
       type="Developments"
-      [cards]="developments"
-      [total]="total"
-      [ordinal]="ordinal"
-      [favorites]="favoriteIds"
-      (moveUp)="moveUp.emit()"
-      (moveDown)="moveDown.emit()"
+      [cards]="data.filteredCards"
+      [total]="data.totalCards"
+      [ordinal]="data.ordinal"
+      [favorites]="data.favoriteIds"
+      (moveUp)="moveUp()"
+      (moveDown)="moveDown()"
     >
       <app-development
-        *uiCard="developments as development"
+        *uiCard="data.filteredCards as development"
         [data]="development"
-        [favorite]="favoriteIds.has(getId(development))"
-        (favoriteChange)="toggleId.emit(getId(development))"
+        [favorite]="data.favoriteIds.has(getId(development))"
+        (favoriteChange)="toggleId(getId(development))"
       ></app-development>
     </ui-cards>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DevelopmentsComponent {
-  @Input() developments: readonly Development[] = [];
-  @Input() total = 0;
-  @Input() ordinal: Ordinal = 1;
-  @Input() favoriteIds = new Set<string>();
-  @Output() toggleId = new EventEmitter<string>();
-  @Output() moveUp = new EventEmitter<void>();
-  @Output() moveDown = new EventEmitter<void>();
   getId = getDevelopmentId;
   trackByFn = trackByFactory(this.getId);
+  developments$ = this._browseService.developments$;
+
+  constructor(private _browseService: BrowseService) {}
+
+  moveDown(): void {
+    this._browseService.moveDown('development');
+  }
+
+  moveUp(): void {
+    this._browseService.moveUp('development');
+  }
+
+  toggleId(id: string): void {
+    this._browseService.toggleFavoriteId(id, 'development');
+  }
 }

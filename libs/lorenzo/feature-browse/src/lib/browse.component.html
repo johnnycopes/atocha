@@ -8,15 +8,7 @@
       (clear)="clearFavorites()"
     ></app-favorites-counter>
     <div class="cards">
-      <app-developments
-        [style.order]="vm.developments.ordinal"
-        [developments]="vm.developments.filteredCards"
-        [total]="vm.developments.totalCards"
-        [ordinal]="vm.developments.ordinal"
-        [favoriteIds]="vm.developments.favoriteIds"
-        (toggleId)="toggleId($event, 'development')"
-        (moveUp)="moveUp('development')"
-        (moveDown)="moveDown('development')"
+      <app-developments [style.order]="vm.developments.ordinal"
       ></app-developments>
 
       <app-families

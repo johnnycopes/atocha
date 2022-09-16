@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
-import { BrowseService } from '@atocha/lorenzo/data-access';
+import { BrowseService, OrdinalService } from '@atocha/lorenzo/data-access';
 import { Card } from '@atocha/lorenzo/util';
 import { HeaderComponent } from './header/header.component';
 import { DevelopmentsComponent } from './cards/developments/developments.component';
@@ -26,9 +26,13 @@ import { LeadersComponent } from './cards/leaders/leaders.component';
 })
 export class BrowseComponent {
 
-  constructor(private _browseService: BrowseService) {}
+  constructor(
+    private _browseService: BrowseService,
+    private _ordinalService: OrdinalService,
+  ) {}
 
   vm$ = this._browseService.vm$;
+  ordinal$ = this._ordinalService.ordinal$;
 
   moveDown(type: Card): void {
     this._browseService.moveDown(type);
