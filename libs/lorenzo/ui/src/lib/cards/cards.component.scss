@@ -1,5 +1,4 @@
 .section {
-  margin-bottom: 16px;
 
   .header {
     display: flex;
@@ -33,7 +32,7 @@
     margin: 0;
   }
 
-  .card {
+  .card:not(:last-of-type) {
     margin-bottom: 16px;
   }
 }
