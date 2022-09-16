@@ -7,15 +7,17 @@
       [count]="vm.totalFavorites"
       (clear)="clearFavorites()"
     ></app-favorites-counter>
-    <div class="cards">
-      <app-developments [style.order]="vm.developments.ordinal"
-      ></app-developments>
+    <div *ngIf="ordinal$ | async as ordinal"
+      class="cards"
+    >
+      <app-developments [style.order]="ordinal.development">
+      </app-developments>
 
-      <app-families [style.order]="vm.families.ordinal"
-      ></app-families>
+      <app-families [style.order]="ordinal.family">
+      </app-families>
 
-      <app-leaders [style.order]="vm.leaders.ordinal"
-      ></app-leaders>
+      <app-leaders [style.order]="ordinal.leader">
+      </app-leaders>
     </div>
   </main>
 </ng-container>

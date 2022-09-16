@@ -90,6 +90,8 @@ export class BrowseService {
     )
   );
 
+  ordinal$ = this._ordinalService.ordinal$;
+
   developments$ = this.vm$.pipe(
     map(({ developments }) => developments)
   );
