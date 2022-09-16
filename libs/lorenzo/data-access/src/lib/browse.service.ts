@@ -7,7 +7,6 @@ import {
   getDevelopmentId,
   getFamilyId,
   getLeaderId,
-  View,
 } from '@atocha/lorenzo/util';
 import { Cards, CardService } from './card.service';
 import { FavoriteService } from './favorite.service';
@@ -51,14 +50,6 @@ export class BrowseService {
     private _ordinalService: OrdinalService,
     private _viewService: ViewService
   ) {}
-
-  updateView(view: View): void {
-    this._viewService.updateView(view);
-  }
-
-  updateText(text: string): void {
-    this._viewService.updateText(text);
-  }
 
   toggleFavoriteId(id: string, type: Card): void {
     this._favoriteService.toggleId(id, type);

@@ -54,7 +54,6 @@ export class BrowseComponent {
         { development: developments, family: families, leader: leaders },
         { development: developmentIds, family: familyIds, leader: leaderIds },
       ]) => ({
-        text,
         view,
         developments: {
           ordinal: developmentOrdinal,
