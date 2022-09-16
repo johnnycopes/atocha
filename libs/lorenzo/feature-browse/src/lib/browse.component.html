@@ -7,16 +7,14 @@
       class="favorites-counter"
     ></app-favorites-counter>
 
-    <div *ngIf="ordinal$ | async as ordinal"
-      class="cards"
-    >
-      <app-developments [style.order]="ordinal.development">
+    <div class="cards">
+      <app-developments [style.order]="vm.ordinal.development">
       </app-developments>
 
-      <app-families [style.order]="ordinal.family">
+      <app-families [style.order]="vm.ordinal.family">
       </app-families>
 
-      <app-leaders [style.order]="ordinal.leader">
+      <app-leaders [style.order]="vm.ordinal.leader">
       </app-leaders>
     </div>
   </main>

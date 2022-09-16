@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { combineLatest, map } from 'rxjs';
 
-import { BrowseService } from '@atocha/lorenzo/data-access';
-import { Card } from '@atocha/lorenzo/util';
+import { OrdinalService, ViewService } from '@atocha/lorenzo/data-access';
 import { HeaderComponent } from './header/header.component';
 import { DevelopmentsComponent } from './cards/developments/developments.component';
 import { FamiliesComponent } from './cards/families/families.component';
@@ -25,8 +25,15 @@ import { LeadersComponent } from './cards/leaders/leaders.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BrowseComponent {
-  constructor(private _browseService: BrowseService) {}
+  constructor(
+    private _ordinalService: OrdinalService,
+    private _viewService: ViewService,
+  ) {}
 
-  vm$ = this._browseService.vm$;
-  ordinal$ = this._browseService.ordinal$;
+  vm$ = combineLatest([
+    this._ordinalService.ordinal$,
+    this._viewService.view$,
+  ]).pipe(
+    map(([ordinal, view]) => ({ ordinal, view }))
+  );
 }
