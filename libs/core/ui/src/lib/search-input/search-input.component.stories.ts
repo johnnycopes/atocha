@@ -53,10 +53,8 @@ type Args = Partial<SearchInputComponent> & {
   className?: string;
 };
 
-function createArgs({
-  text = '',
-  placeholder = 'Type words here...',
-  className = '',
-} = {} as Args): Args {
+function createArgs(
+  { text = '', placeholder = 'Type words here...', className = '' } = {} as Args
+): Args {
   return { text, placeholder, className };
 }

@@ -7,8 +7,7 @@ import {
 } from '@storybook/angular';
 import { InputType } from 'zlib';
 
-import { NestedCheckboxesComponent,
-} from '../nested-checkboxes/nested-checkboxes.component';
+import { NestedCheckboxesComponent } from '../nested-checkboxes/nested-checkboxes.component';
 import { CheckboxComponent } from '../checkbox/checkbox.component';
 import { TreeComponent } from '../tree/tree.component';
 import { StorybookWrapperComponent } from '../../../.storybook/storybook-wrapper/storybook-wrapper.component';
@@ -117,11 +116,13 @@ type Args = Partial<NestedCheckboxesWithCountsComponent<TestItem>> & {
   onTotalChange?: InputType;
 };
 
-function createArgs({
-  indentation = 24,
-  states = {},
-  size = 'normal',
-  className = '',
-} = {} as Args): Args {
+function createArgs(
+  {
+    indentation = 24,
+    states = {},
+    size = 'normal',
+    className = '',
+  } = {} as Args
+): Args {
   return { indentation, states, size, className };
 }

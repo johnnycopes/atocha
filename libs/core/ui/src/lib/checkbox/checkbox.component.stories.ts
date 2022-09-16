@@ -64,13 +64,15 @@ type Args = Partial<CheckboxComponent> & {
   className?: string;
 };
 
-function createArgs({
-  slot = '',
-  className = '',
-  checked = false,
-  disabled = false,
-  indeterminate = false,
-  size = 'normal' as CheckboxSize,
-} = {} as Args): Args {
+function createArgs(
+  {
+    slot = '',
+    className = '',
+    checked = false,
+    disabled = false,
+    indeterminate = false,
+    size = 'normal' as CheckboxSize,
+  } = {} as Args
+): Args {
   return { slot, className, checked, disabled, indeterminate, size };
 }

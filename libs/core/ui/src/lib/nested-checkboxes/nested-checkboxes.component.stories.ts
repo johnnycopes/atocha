@@ -6,9 +6,7 @@ import {
   componentWrapperDecorator,
 } from '@storybook/angular';
 
-import {
-  CheckboxComponent,
-} from '../checkbox/checkbox.component';
+import { CheckboxComponent } from '../checkbox/checkbox.component';
 import { TreeComponent } from '../tree/tree.component';
 import { StorybookWrapperComponent } from '../../../.storybook/storybook-wrapper/storybook-wrapper.component';
 import {
@@ -99,11 +97,13 @@ type Args = Partial<NestedCheckboxesComponent<TestItem>> & {
   onClick?: InputType;
 };
 
-function createArgs({
-  indentation = 24,
-  states = {},
-  size = 'normal',
-  className = '',
-} = {} as Args): Args {
+function createArgs(
+  {
+    indentation = 24,
+    states = {},
+    size = 'normal',
+    className = '',
+  } = {} as Args
+): Args {
   return { indentation, states, size, className };
 }
