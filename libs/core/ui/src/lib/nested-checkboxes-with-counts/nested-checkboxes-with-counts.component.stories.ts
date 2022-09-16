@@ -7,14 +7,9 @@ import {
 } from '@storybook/angular';
 import { InputType } from 'zlib';
 
-import {
-  CheckboxStates,
-  NestedCheckboxesComponent,
+import { NestedCheckboxesComponent,
 } from '../nested-checkboxes/nested-checkboxes.component';
-import {
-  CheckboxComponent,
-  CheckboxSize,
-} from '../checkbox/checkbox.component';
+import { CheckboxComponent } from '../checkbox/checkbox.component';
 import { TreeComponent } from '../tree/tree.component';
 import { StorybookWrapperComponent } from '../../../.storybook/storybook-wrapper/storybook-wrapper.component';
 import {
@@ -27,16 +22,6 @@ import {
   SOME_SELECTED,
 } from '../../../.storybook/mock-data/nested-checkboxes';
 import { NestedCheckboxesWithCountsComponent } from './nested-checkboxes-with-counts.component';
-
-type NestedCheckboxesWithCountsArgs = Pick<
-  NestedCheckboxesComponent<TestItem>,
-  'indentation' | 'states' | 'size'
-> & {
-  className: string;
-  onNgModelChange: InputType | undefined;
-  onSelectedChange: InputType | undefined;
-  onTotalChange: InputType | undefined;
-};
 
 export default {
   title: 'NestedCheckboxesWithCountsComponent',
@@ -62,9 +47,9 @@ export default {
     onSelectedChange: { action: 'selectedChange' },
     onTotalChange: { action: 'totalChange' },
   },
-} as Meta<NestedCheckboxesWithCountsArgs>;
+} as Meta<NestedCheckboxesWithCountsComponent<TestItem>>;
 
-const Template: Story<NestedCheckboxesWithCountsArgs> = ({
+const Template: Story<NestedCheckboxesWithCountsComponent<TestItem>> = ({
   indentation,
   states,
   size,
@@ -72,7 +57,7 @@ const Template: Story<NestedCheckboxesWithCountsArgs> = ({
   onNgModelChange,
   onSelectedChange,
   onTotalChange,
-}: NestedCheckboxesWithCountsArgs) => ({
+}: Args) => ({
   props: {
     item: AFRICA,
     getId,
@@ -125,16 +110,18 @@ withCustomStyling.args = createArgs({
   className: 'custom-nested-checkboxes-with-counts',
 });
 
+type Args = Partial<NestedCheckboxesWithCountsComponent<TestItem>> & {
+  className?: string;
+  onNgModelChange?: InputType;
+  onSelectedChange?: InputType;
+  onTotalChange?: InputType;
+};
+
 function createArgs({
   indentation = 24,
   states = {},
   size = 'normal',
   className = '',
-}: {
-  indentation?: number;
-  states?: CheckboxStates;
-  size?: CheckboxSize;
-  className?: string;
-}) {
+} = {} as Args): Args {
   return { indentation, states, size, className };
 }
