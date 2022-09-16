@@ -22,7 +22,7 @@ export class ViewService {
 
   text$ = this._textSubject.pipe(
     distinctUntilChanged(),
-    shareReplay({ bufferSize: 1, refCount: true }),
+    shareReplay({ bufferSize: 1, refCount: true })
   );
 
   constructor(private _localStorageService: LocalStorageService) {}

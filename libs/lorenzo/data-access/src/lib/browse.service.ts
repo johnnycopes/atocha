@@ -20,7 +20,9 @@ import { ViewService } from './view.service';
 export class BrowseService {
   private _cards$ = this._viewService.view$.pipe(
     switchMap((view) =>
-      view === 'all' ? this._cardService.cards$ : this._cardService.favoriteCards$
+      view === 'all'
+        ? this._cardService.cards$
+        : this._cardService.favoriteCards$
     )
   );
 
@@ -69,17 +71,11 @@ export class BrowseService {
     )
   );
 
-  developments$ = this._data$.pipe(
-    map(({ developments }) => developments)
-  );
+  developments$ = this._data$.pipe(map(({ developments }) => developments));
 
-  families$ = this._data$.pipe(
-    map(({ families }) => families)
-  );
+  families$ = this._data$.pipe(map(({ families }) => families));
 
-  leaders$ = this._data$.pipe(
-    map(({ leaders }) => leaders)
-  );
+  leaders$ = this._data$.pipe(map(({ leaders }) => leaders));
 
   constructor(
     private _cardService: CardService,

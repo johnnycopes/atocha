@@ -17,7 +17,8 @@ import { LeaderComponent } from './leader.component';
     LeaderComponent,
   ],
   template: `
-    <ui-cards *ngIf="vm$ | async as vm"
+    <ui-cards
+      *ngIf="vm$ | async as vm"
       type="Leaders"
       [cards]="vm.filteredCards"
       [total]="vm.totalCards"

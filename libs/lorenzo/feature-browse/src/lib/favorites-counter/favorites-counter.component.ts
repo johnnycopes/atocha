@@ -15,12 +15,15 @@ import { FavoriteService } from '@atocha/lorenzo/data-access';
 })
 export class FavoritesCounterComponent {
   vm$ = this._favoriteService.ids$.pipe(
-    map(ids => {
-      const value = Object.values(ids).reduce((accum, curr) => accum + curr.size, 0);
+    map((ids) => {
+      const value = Object.values(ids).reduce(
+        (accum, curr) => accum + curr.size,
+        0
+      );
       return {
         display: value.toString(),
         value,
-      }
+      };
     })
   );
 

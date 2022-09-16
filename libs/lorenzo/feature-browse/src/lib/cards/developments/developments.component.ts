@@ -17,7 +17,8 @@ import { DevelopmentComponent } from './development.component';
     DevelopmentComponent,
   ],
   template: `
-    <ui-cards *ngIf="vm$ | async as vm"
+    <ui-cards
+      *ngIf="vm$ | async as vm"
       type="Developments"
       [cards]="vm.filteredCards"
       [total]="vm.totalCards"

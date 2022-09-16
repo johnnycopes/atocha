@@ -27,13 +27,11 @@ import { LeadersComponent } from './cards/leaders/leaders.component';
 export class BrowseComponent {
   constructor(
     private _ordinalService: OrdinalService,
-    private _viewService: ViewService,
+    private _viewService: ViewService
   ) {}
 
   vm$ = combineLatest([
     this._ordinalService.ordinal$,
     this._viewService.view$,
-  ]).pipe(
-    map(([ordinal, view]) => ({ ordinal, view }))
-  );
+  ]).pipe(map(([ordinal, view]) => ({ ordinal, view })));
 }

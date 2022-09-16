@@ -1,7 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { combineLatest, map } from 'rxjs';
 
 import { SearchInputComponent } from '@atocha/core/ui';
@@ -19,10 +16,7 @@ import { CommonModule } from '@angular/common';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderComponent {
-  vm$ = combineLatest([
-    this._viewService.view$,
-    this._viewService.text$
-  ]).pipe(
+  vm$ = combineLatest([this._viewService.view$, this._viewService.text$]).pipe(
     map(([view, text]) => ({ view, text }))
   );
 

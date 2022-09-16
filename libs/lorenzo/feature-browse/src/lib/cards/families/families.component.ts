@@ -17,7 +17,8 @@ import { FamilyComponent } from './family.component';
     FamilyComponent,
   ],
   template: `
-    <ui-cards *ngIf="vm$ | async as vm"
+    <ui-cards
+      *ngIf="vm$ | async as vm"
       type="Families"
       [cards]="vm.filteredCards"
       [total]="vm.totalCards"
