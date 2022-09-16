@@ -1,18 +1,35 @@
 import { Injectable } from '@angular/core';
-import { combineLatest } from 'rxjs';
+import { combineLatest, Observable } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 
 import { includes } from '@atocha/core/util';
 import {
   Card,
+  Development,
+  Family,
   getDevelopmentId,
   getFamilyId,
   getLeaderId,
+  Leader,
+  Ordinal,
 } from '@atocha/lorenzo/util';
 import { CardService } from './_state/card.service';
 import { FavoriteService } from './_state/favorite.service';
 import { OrdinalService } from './_state/ordinal.service';
 import { ViewService } from './_state/view.service';
+
+interface State<T> {
+  ordinal: Ordinal;
+  totalCards: number;
+  filteredCards: readonly T[];
+  favoriteIds: Set<string>;
+}
+
+type Data =
+  { [key in Extract<Card, 'development'>]: State<Development> } &
+  { [key in Extract<Card, 'family'>]: State<Family> } &
+  { [key in Extract<Card, 'leader'>]: State<Leader> }
+;
 
 @Injectable({
   providedIn: 'root',
@@ -26,7 +43,7 @@ export class CardStateService {
     )
   );
 
-  private _data$ = combineLatest([
+  private _state$: Observable<Data> = combineLatest([
     this._viewService.text$,
     this._ordinalService.ordinal$,
     this._cards$,
@@ -43,7 +60,7 @@ export class CardStateService {
         { development: developments, family: families, leader: leaders },
         { development: developmentIds, family: familyIds, leader: leaderIds },
       ]) => ({
-        developments: {
+        development: {
           ordinal: developmentOrdinal,
           totalCards: developments.length,
           filteredCards: developments.filter((card) =>
@@ -51,7 +68,7 @@ export class CardStateService {
           ),
           favoriteIds: developmentIds,
         },
-        families: {
+        family: {
           ordinal: familyOrdinal,
           totalCards: families.length,
           filteredCards: families.filter((card) =>
@@ -59,7 +76,7 @@ export class CardStateService {
           ),
           favoriteIds: familyIds,
         },
-        leaders: {
+        leader: {
           ordinal: leaderOrdinal,
           totalCards: leaders.length,
           filteredCards: leaders.filter((card) =>
@@ -71,9 +88,9 @@ export class CardStateService {
     )
   );
 
-  developments$ = this._data$.pipe(map(({ developments }) => developments));
-  families$ = this._data$.pipe(map(({ families }) => families));
-  leaders$ = this._data$.pipe(map(({ leaders }) => leaders));
+  developments$ = this._state$.pipe(map(({ development }) => development));
+  families$ = this._state$.pipe(map(({ family }) => family));
+  leaders$ = this._state$.pipe(map(({ leader }) => leader));
   favoriteIds$ = this._favoriteService.ids$;
   ordinal$ = this._ordinalService.ordinal$;
 
