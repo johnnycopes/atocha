@@ -25,11 +25,9 @@ interface State<T> {
   favoriteIds: Set<string>;
 }
 
-type Data =
-  { [key in Extract<Card, 'development'>]: State<Development> } &
-  { [key in Extract<Card, 'family'>]: State<Family> } &
-  { [key in Extract<Card, 'leader'>]: State<Leader> }
-;
+type Data = { [key in Extract<Card, 'development'>]: State<Development> } & {
+  [key in Extract<Card, 'family'>]: State<Family>;
+} & { [key in Extract<Card, 'leader'>]: State<Leader> };
 
 @Injectable({
   providedIn: 'root',
@@ -83,7 +81,7 @@ export class CardStateService {
         }),
       })
     ),
-    shareReplay({ bufferSize: 1, refCount: true }),
+    shareReplay({ bufferSize: 1, refCount: true })
   );
 
   developments$ = this._state$.pipe(map(({ development }) => development));
@@ -96,7 +94,7 @@ export class CardStateService {
     private _cardService: CardService,
     private _favoriteService: FavoriteService,
     private _filterService: FilterService,
-    private _ordinalService: OrdinalService,
+    private _ordinalService: OrdinalService
   ) {}
 
   toggleFavoriteId(id: string, type: Card): void {
@@ -115,20 +113,24 @@ export class CardStateService {
     this._ordinalService.incrementOrdinal(type);
   }
 
-  private _createState<T>({ ordinal, favoriteIds, cards, getId, text }: {
-    ordinal: Ordinal,
-    favoriteIds: Set<string>,
-    cards: readonly T[],
-    getId: (card: T) => string,
-    text: string,
+  private _createState<T>({
+    ordinal,
+    favoriteIds,
+    cards,
+    getId,
+    text,
+  }: {
+    ordinal: Ordinal;
+    favoriteIds: Set<string>;
+    cards: readonly T[];
+    getId: (card: T) => string;
+    text: string;
   }): State<T> {
     return {
       ordinal,
       favoriteIds,
       totalCards: cards.length,
-      filteredCards: cards.filter((card) =>
-        includes([getId(card)], text)
-      ),
+      filteredCards: cards.filter((card) => includes([getId(card)], text)),
     };
   }
 }

@@ -16,9 +16,10 @@ import { CommonModule } from '@angular/common';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderComponent {
-  vm$ = combineLatest([this._appStateService.view$, this._appStateService.text$]).pipe(
-    map(([view, text]) => ({ view, text }))
-  );
+  vm$ = combineLatest([
+    this._appStateService.view$,
+    this._appStateService.text$,
+  ]).pipe(map(([view, text]) => ({ view, text })));
 
   constructor(private _appStateService: AppStateService) {}
 

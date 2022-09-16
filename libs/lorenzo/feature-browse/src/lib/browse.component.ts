@@ -27,7 +27,7 @@ import { LeadersComponent } from './cards/leaders/leaders.component';
 export class BrowseComponent {
   constructor(
     private _appStateService: AppStateService,
-    private _cardStateService: CardStateService,
+    private _cardStateService: CardStateService
   ) {}
 
   vm$ = combineLatest([

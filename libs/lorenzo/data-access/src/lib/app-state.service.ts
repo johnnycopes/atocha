@@ -4,7 +4,7 @@ import { View } from '@atocha/lorenzo/util';
 import { FilterService } from './_state/filter.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AppStateService {
   view$ = this._filterService.view$;
