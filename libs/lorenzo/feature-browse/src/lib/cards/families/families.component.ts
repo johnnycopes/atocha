@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 import { trackByFactory } from '@atocha/core/ui';
-import { BrowseService } from '@atocha/lorenzo/data-access';
+import { CardStateService } from '@atocha/lorenzo/data-access';
 import { CardsComponent, CardTemplateDirective } from '@atocha/lorenzo/ui';
 import { getFamilyId } from '@atocha/lorenzo/util';
 import { FamilyComponent } from './family.component';
@@ -39,21 +39,21 @@ import { FamilyComponent } from './family.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FamiliesComponent {
-  vm$ = this._browseService.families$;
+  vm$ = this._cardStateService.families$;
   getId = getFamilyId;
   trackByFn = trackByFactory(this.getId);
 
-  constructor(private _browseService: BrowseService) {}
+  constructor(private _cardStateService: CardStateService) {}
 
   moveDown(): void {
-    this._browseService.moveDown('family');
+    this._cardStateService.moveDown('family');
   }
 
   moveUp(): void {
-    this._browseService.moveUp('family');
+    this._cardStateService.moveUp('family');
   }
 
   toggleId(id: string): void {
-    this._browseService.toggleFavoriteId(id, 'family');
+    this._cardStateService.toggleFavoriteId(id, 'family');
   }
 }

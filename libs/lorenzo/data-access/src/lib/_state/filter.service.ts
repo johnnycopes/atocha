@@ -7,12 +7,10 @@ import { View } from '@atocha/lorenzo/util';
 @Injectable({
   providedIn: 'root',
 })
-export class ViewService {
+export class FilterService {
   private _prefix = 'LORENZO_';
   private _viewKey = this._prefix + 'VIEW';
-  private _viewSubject = new BehaviorSubject<View>(
-    (this._localStorageService.getItem(this._viewKey) ?? 'all') as View
-  );
+  private _viewSubject = new BehaviorSubject<View>(this._getView());
   private _textSubject = new BehaviorSubject<string>('');
 
   view$ = this._viewSubject.pipe(
@@ -33,5 +31,9 @@ export class ViewService {
 
   updateText(text: string): void {
     this._textSubject.next(text);
+  }
+
+  private _getView(): View {
+    return (this._localStorageService.getItem(this._viewKey) ?? 'all') as View;
   }
 }

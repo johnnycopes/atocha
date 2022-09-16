@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 import { trackByFactory } from '@atocha/core/ui';
-import { BrowseService } from '@atocha/lorenzo/data-access';
+import { CardStateService } from '@atocha/lorenzo/data-access';
 import { CardsComponent, CardTemplateDirective } from '@atocha/lorenzo/ui';
 import { getLeaderId } from '@atocha/lorenzo/util';
 import { LeaderComponent } from './leader.component';
@@ -38,21 +38,21 @@ import { LeaderComponent } from './leader.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LeadersComponent {
-  vm$ = this._browseService.leaders$;
+  vm$ = this._cardStateService.leaders$;
   getId = getLeaderId;
   trackByFn = trackByFactory(this.getId);
 
-  constructor(private _browseService: BrowseService) {}
+  constructor(private _cardStateService: CardStateService) {}
 
   moveDown(): void {
-    this._browseService.moveDown('leader');
+    this._cardStateService.moveDown('leader');
   }
 
   moveUp(): void {
-    this._browseService.moveUp('leader');
+    this._cardStateService.moveUp('leader');
   }
 
   toggleId(id: string): void {
-    this._browseService.toggleFavoriteId(id, 'leader');
+    this._cardStateService.toggleFavoriteId(id, 'leader');
   }
 }

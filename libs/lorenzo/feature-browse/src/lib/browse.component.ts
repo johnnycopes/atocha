@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { combineLatest, map } from 'rxjs';
 
-import { OrdinalService, ViewService } from '@atocha/lorenzo/data-access';
+import { AppStateService, CardStateService } from '@atocha/lorenzo/data-access';
 import { HeaderComponent } from './header/header.component';
 import { DevelopmentsComponent } from './cards/developments/developments.component';
 import { FamiliesComponent } from './cards/families/families.component';
@@ -26,12 +26,12 @@ import { LeadersComponent } from './cards/leaders/leaders.component';
 })
 export class BrowseComponent {
   constructor(
-    private _ordinalService: OrdinalService,
-    private _viewService: ViewService
+    private _appStateService: AppStateService,
+    private _cardStateService: CardStateService
   ) {}
 
   vm$ = combineLatest([
-    this._ordinalService.ordinal$,
-    this._viewService.view$,
-  ]).pipe(map(([ordinal, view]) => ({ ordinal, view })));
+    this._appStateService.view$,
+    this._cardStateService.ordinal$,
+  ]).pipe(map(([view, ordinal]) => ({ view, ordinal })));
 }

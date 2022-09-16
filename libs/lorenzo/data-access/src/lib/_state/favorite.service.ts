@@ -14,13 +14,13 @@ export class FavoriteService {
     family: this._prefix + 'FAMILY_IDS',
     leader: this._prefix + 'LEADER_IDS',
   };
-  private _idsSubject = new BehaviorSubject<Record<Card, Set<string>>>({
+  private _idSubject = new BehaviorSubject<Record<Card, Set<string>>>({
     development: this._getIds(this._keys.development),
     family: this._getIds(this._keys.family),
     leader: this._getIds(this._keys.leader),
   });
 
-  ids$ = this._idsSubject.pipe(
+  ids$ = this._idSubject.pipe(
     tap(({ development, family, leader }) => {
       this._setIds(this._keys.development, development);
       this._setIds(this._keys.family, family);
@@ -32,24 +32,24 @@ export class FavoriteService {
   constructor(private _localStorageService: LocalStorageService) {}
 
   toggleId(id: string, type: Card): void {
-    this._idsSubject.pipe(first()).subscribe((favorites) => {
+    this._idSubject.pipe(first()).subscribe((favorites) => {
       switch (type) {
         case 'development': {
-          this._idsSubject.next({
+          this._idSubject.next({
             ...favorites,
             development: this._updateSet(favorites.development, id),
           });
           break;
         }
         case 'family': {
-          this._idsSubject.next({
+          this._idSubject.next({
             ...favorites,
             family: this._updateSet(favorites.family, id),
           });
           break;
         }
         case 'leader': {
-          this._idsSubject.next({
+          this._idSubject.next({
             ...favorites,
             leader: this._updateSet(favorites.leader, id),
           });
@@ -60,7 +60,7 @@ export class FavoriteService {
   }
 
   clearIds(): void {
-    this._idsSubject.next({
+    this._idSubject.next({
       development: new Set(),
       family: new Set(),
       leader: new Set(),
