@@ -1,10 +1,12 @@
-<p>
-  {{ count }}
-  {{ count | corePlural : 'favorite' }}
-</p>
-<button
-  [disabled]="!count"
-  (click)="clear.emit()"
->
-  Clear Favorites
-</button>
+<ng-container *ngIf="vm$ | async as vm">
+  <p>
+    {{ vm.display }}
+    {{ vm.value | corePlural : 'favorite' }}
+  </p>
+  <button
+    [disabled]="!vm.value"
+    (click)="onClear()"
+  >
+    Clear Favorites
+  </button>
+</ng-container>

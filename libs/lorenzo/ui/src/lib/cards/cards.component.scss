@@ -1,6 +1,4 @@
 .section {
-  margin-bottom: 16px;
-
   .header {
     display: flex;
     align-items: center;
@@ -33,7 +31,7 @@
     margin: 0;
   }
 
-  .card {
+  .card:not(:last-of-type) {
     margin-bottom: 16px;
   }
 }
