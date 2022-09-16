@@ -11,8 +11,6 @@ import {
 import { StorybookWrapperComponent } from '../../../.storybook/storybook-wrapper/storybook-wrapper.component';
 import { SearchInputComponent } from './search-input.component';
 
-type SearchInputArgs = SearchInputComponent;
-
 export default {
   title: 'Search Input',
   component: SearchInputComponent,
@@ -28,7 +26,7 @@ export default {
   },
 } as Meta;
 
-const Template: Story<SearchInputArgs> = (args: SearchInputArgs) => ({
+const Template: Story<SearchInputComponent> = (args: Args) => ({
   props: args,
   template: `
     <core-search-input
@@ -51,10 +49,14 @@ withCustomStyling.args = createArgs({
   className: 'custom-search-input',
 });
 
+type Args = Partial<SearchInputComponent> & {
+  className?: string;
+};
+
 function createArgs({
-  className = '',
   text = '',
   placeholder = 'Type words here...',
-} = {}) {
-  return { className, text, placeholder };
+  className = '',
+} = {} as Args): Args {
+  return { text, placeholder, className };
 }
