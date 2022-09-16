@@ -11,15 +11,7 @@
       <app-developments [style.order]="vm.developments.ordinal"
       ></app-developments>
 
-      <app-families
-        [style.order]="vm.families.ordinal"
-        [families]="vm.families.filteredCards"
-        [total]="vm.families.totalCards"
-        [ordinal]="vm.families.ordinal"
-        [favoriteIds]="vm.families.favoriteIds"
-        (toggleId)="toggleId($event, 'family')"
-        (moveUp)="moveUp('family')"
-        (moveDown)="moveDown('family')"
+      <app-families [style.order]="vm.families.ordinal"
       ></app-families>
 
       <app-leaders
