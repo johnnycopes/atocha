@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { combineLatest, map } from 'rxjs';
 
 import { SearchInputComponent } from '@atocha/core/ui';
-import { ViewService } from '@atocha/lorenzo/data-access';
+import { AppStateService } from '@atocha/lorenzo/data-access';
 import { View } from '@atocha/lorenzo/util';
 import { CommonModule } from '@angular/common';
 
@@ -16,18 +16,18 @@ import { CommonModule } from '@angular/common';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderComponent {
-  vm$ = combineLatest([this._viewService.view$, this._viewService.text$]).pipe(
+  vm$ = combineLatest([this._appStateService.view$, this._appStateService.text$]).pipe(
     map(([view, text]) => ({ view, text }))
   );
 
-  constructor(private _viewService: ViewService) {}
+  constructor(private _appStateService: AppStateService) {}
 
   onViewChange(view: View): void {
-    this._viewService.updateView(view);
+    this._appStateService.updateView(view);
     window.scroll(0, 0);
   }
 
   onTextChange(text: string): void {
-    this._viewService.updateText(text);
+    this._appStateService.updateText(text);
   }
 }

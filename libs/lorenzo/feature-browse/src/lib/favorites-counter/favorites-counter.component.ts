@@ -3,7 +3,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { map } from 'rxjs';
 
 import { PluralPipe } from '@atocha/core/ui';
-import { FavoriteService } from '@atocha/lorenzo/data-access';
+import { CardStateService } from '@atocha/lorenzo/data-access';
 
 @Component({
   standalone: true,
@@ -14,7 +14,7 @@ import { FavoriteService } from '@atocha/lorenzo/data-access';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FavoritesCounterComponent {
-  vm$ = this._favoriteService.ids$.pipe(
+  vm$ = this._cardStateService.favoriteIds$.pipe(
     map((ids) => {
       const value = Object.values(ids).reduce(
         (accum, curr) => accum + curr.size,
@@ -27,9 +27,9 @@ export class FavoritesCounterComponent {
     })
   );
 
-  constructor(private _favoriteService: FavoriteService) {}
+  constructor(private _cardStateService: CardStateService) {}
 
   onClear(): void {
-    this._favoriteService.clearIds();
+    this._cardStateService.clearFavoriteIds();
   }
 }

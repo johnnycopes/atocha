@@ -9,15 +9,15 @@ import {
   getFamilyId,
   getLeaderId,
 } from '@atocha/lorenzo/util';
-import { CardService } from './card.service';
-import { FavoriteService } from './favorite.service';
-import { OrdinalService } from './ordinal.service';
-import { ViewService } from './view.service';
+import { CardService } from './_state/card.service';
+import { FavoriteService } from './_state/favorite.service';
+import { OrdinalService } from './_state/ordinal.service';
+import { ViewService } from './_state/view.service';
 
 @Injectable({
   providedIn: 'root',
 })
-export class BrowseService {
+export class CardStateService {
   private _cards$ = this._viewService.view$.pipe(
     switchMap((view) =>
       view === 'all'
@@ -72,10 +72,10 @@ export class BrowseService {
   );
 
   developments$ = this._data$.pipe(map(({ developments }) => developments));
-
   families$ = this._data$.pipe(map(({ families }) => families));
-
   leaders$ = this._data$.pipe(map(({ leaders }) => leaders));
+  favoriteIds$ = this._favoriteService.ids$;
+  ordinal$ = this._ordinalService.ordinal$;
 
   constructor(
     private _cardService: CardService,
@@ -86,6 +86,10 @@ export class BrowseService {
 
   toggleFavoriteId(id: string, type: Card): void {
     this._favoriteService.toggleId(id, type);
+  }
+
+  clearFavoriteIds(): void {
+    this._favoriteService.clearIds();
   }
 
   moveUp(type: Card): void {
