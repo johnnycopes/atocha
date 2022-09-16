@@ -41,9 +41,8 @@ export class BrowseService {
     }))
   );
 
-  vm$ = combineLatest([
+  private _data$ = combineLatest([
     this._viewService.text$,
-    this._viewService.view$,
     this._ordinalService.ordinal$,
     this._cards$,
     this._favoriteService.ids$,
@@ -51,7 +50,6 @@ export class BrowseService {
     map(
       ([
         text,
-        view,
         {
           development: developmentOrdinal,
           family: familyOrdinal,
@@ -60,7 +58,6 @@ export class BrowseService {
         { development: developments, family: families, leader: leaders },
         { development: developmentIds, family: familyIds, leader: leaderIds },
       ]) => ({
-        view,
         developments: {
           ordinal: developmentOrdinal,
           totalCards: developments.length,
@@ -85,20 +82,19 @@ export class BrowseService {
           ),
           favoriteIds: leaderIds,
         },
-        totalFavorites: familyIds.size + leaderIds.size + developmentIds.size,
       })
     )
   );
 
-  developments$ = this.vm$.pipe(
+  developments$ = this._data$.pipe(
     map(({ developments }) => developments)
   );
 
-  families$ = this.vm$.pipe(
+  families$ = this._data$.pipe(
     map(({ families }) => families)
   );
 
-  leaders$ = this.vm$.pipe(
+  leaders$ = this._data$.pipe(
     map(({ leaders }) => leaders)
   );
 
