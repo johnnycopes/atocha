@@ -26,6 +26,7 @@ export class BrowseService {
   favoriteCardIds$ = this._favoriteService.ids$;
   ordinal$ = this._ordinalService.ordinal$;
   view$ = this._viewService.view$;
+  text$ = this._viewService.text$;
 
   private _favoriteCards$: Observable<Cards> = combineLatest([
     this._cardService.cards$,
@@ -53,6 +54,10 @@ export class BrowseService {
 
   updateView(view: View): void {
     this._viewService.updateView(view);
+  }
+
+  updateText(text: string): void {
+    this._viewService.updateText(text);
   }
 
   toggleFavoriteId(id: string, type: Card): void {

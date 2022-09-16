@@ -1,11 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import {
-  BehaviorSubject,
-  distinctUntilChanged,
-  combineLatest,
-  map,
-} from 'rxjs';
+import { combineLatest, map } from 'rxjs';
 
 import { includes } from '@atocha/core/util';
 import { BrowseService } from '@atocha/lorenzo/data-access';
@@ -38,12 +33,11 @@ import { LeadersComponent } from './cards/leaders/leaders.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BrowseComponent {
-  private _textSubject = new BehaviorSubject<string>('');
 
   constructor(private _browseService: BrowseService) {}
 
   vm$ = combineLatest([
-    this._textSubject.pipe(distinctUntilChanged()),
+    this._browseService.text$,
     this._browseService.view$,
     this._browseService.ordinal$,
     this._browseService.cards$,
@@ -106,7 +100,7 @@ export class BrowseComponent {
   }
 
   search(text: string): void {
-    this._textSubject.next(text);
+    this._browseService.updateText(text);
   }
 
   clearFavorites(): void {
