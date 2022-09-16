@@ -17,19 +17,19 @@ import { DevelopmentComponent } from './development.component';
     DevelopmentComponent,
   ],
   template: `
-    <ui-cards *ngIf="developments$ | async as data"
+    <ui-cards *ngIf="vm$ | async as vm"
       type="Developments"
-      [cards]="data.filteredCards"
-      [total]="data.totalCards"
-      [ordinal]="data.ordinal"
-      [favorites]="data.favoriteIds"
+      [cards]="vm.filteredCards"
+      [total]="vm.totalCards"
+      [ordinal]="vm.ordinal"
+      [favorites]="vm.favoriteIds"
       (moveUp)="moveUp()"
       (moveDown)="moveDown()"
     >
       <app-development
-        *uiCard="data.filteredCards as development"
+        *uiCard="vm.filteredCards as development"
         [data]="development"
-        [favorite]="data.favoriteIds.has(getId(development))"
+        [favorite]="vm.favoriteIds.has(getId(development))"
         (favoriteChange)="toggleId(getId(development))"
       ></app-development>
     </ui-cards>
@@ -37,9 +37,9 @@ import { DevelopmentComponent } from './development.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DevelopmentsComponent {
+  vm$ = this._browseService.developments$;
   getId = getDevelopmentId;
   trackByFn = trackByFactory(this.getId);
-  developments$ = this._browseService.developments$;
 
   constructor(private _browseService: BrowseService) {}
 

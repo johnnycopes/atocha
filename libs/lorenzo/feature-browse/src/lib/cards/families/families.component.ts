@@ -17,20 +17,20 @@ import { FamilyComponent } from './family.component';
     FamilyComponent,
   ],
   template: `
-    <ui-cards *ngIf="families$ | async as data"
+    <ui-cards *ngIf="vm$ | async as vm"
       type="Families"
-      [cards]="data.filteredCards"
-      [total]="data.totalCards"
-      [ordinal]="data.ordinal"
-      [favorites]="data.favoriteIds"
+      [cards]="vm.filteredCards"
+      [total]="vm.totalCards"
+      [ordinal]="vm.ordinal"
+      [favorites]="vm.favoriteIds"
       [trackByFn]="trackByFn"
       (moveUp)="moveUp()"
       (moveDown)="moveDown()"
     >
       <app-family
-        *uiCard="data.filteredCards as family"
+        *uiCard="vm.filteredCards as family"
         [data]="family"
-        [favorite]="data.favoriteIds.has(getId(family))"
+        [favorite]="vm.favoriteIds.has(getId(family))"
         (favoriteChange)="toggleId(getId(family))"
       ></app-family>
     </ui-cards>
@@ -38,9 +38,9 @@ import { FamilyComponent } from './family.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FamiliesComponent {
+  vm$ = this._browseService.families$;
   getId = getFamilyId;
   trackByFn = trackByFactory(this.getId);
-  families$ = this._browseService.families$;
 
   constructor(private _browseService: BrowseService) {}
 

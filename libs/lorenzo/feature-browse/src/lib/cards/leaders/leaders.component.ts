@@ -17,19 +17,19 @@ import { LeaderComponent } from './leader.component';
     LeaderComponent,
   ],
   template: `
-    <ui-cards *ngIf="leaders$ | async as data"
+    <ui-cards *ngIf="vm$ | async as vm"
       type="Leaders"
-      [cards]="data.filteredCards"
-      [total]="data.totalCards"
-      [ordinal]="data.ordinal"
-      [favorites]="data.favoriteIds"
+      [cards]="vm.filteredCards"
+      [total]="vm.totalCards"
+      [ordinal]="vm.ordinal"
+      [favorites]="vm.favoriteIds"
       (moveUp)="moveUp()"
       (moveDown)="moveDown()"
     >
       <app-leader
-        *uiCard="data.filteredCards as leader"
+        *uiCard="vm.filteredCards as leader"
         [data]="leader"
-        [favorite]="data.favoriteIds.has(getId(leader))"
+        [favorite]="vm.favoriteIds.has(getId(leader))"
         (favoriteChange)="toggleId(getId(leader))"
       ></app-leader>
     </ui-cards>
@@ -37,9 +37,9 @@ import { LeaderComponent } from './leader.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LeadersComponent {
+  vm$ = this._browseService.leaders$;
   getId = getLeaderId;
   trackByFn = trackByFactory(this.getId);
-  leaders$ = this._browseService.leaders$;
 
   constructor(private _browseService: BrowseService) {}
 

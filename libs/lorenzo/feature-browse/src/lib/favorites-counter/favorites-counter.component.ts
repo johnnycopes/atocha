@@ -14,7 +14,7 @@ import { FavoriteService } from '@atocha/lorenzo/data-access';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FavoritesCounterComponent {
-  count$ = this._favoriteService.ids$.pipe(
+  vm$ = this._favoriteService.ids$.pipe(
     map(ids => {
       const value = Object.values(ids).reduce((accum, curr) => accum + curr.size, 0);
       return {

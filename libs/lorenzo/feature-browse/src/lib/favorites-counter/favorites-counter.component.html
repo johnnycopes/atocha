@@ -1,10 +1,10 @@
-<ng-container *ngIf="count$ | async as count">
+<ng-container *ngIf="vm$ | async as vm">
   <p>
-    {{ count.display }}
-    {{ count.value | corePlural : 'favorite' }}
+    {{ vm.display }}
+    {{ vm.value | corePlural : 'favorite' }}
   </p>
   <button
-    [disabled]="!count"
+    [disabled]="!vm.value"
     (click)="onClear()"
   >
     Clear Favorites
