@@ -15,8 +15,8 @@ import {
 } from '@atocha/lorenzo/util';
 import { CardService } from './_state/card.service';
 import { FavoriteService } from './_state/favorite.service';
+import { FilterService } from './_state/filter.service';
 import { OrdinalService } from './_state/ordinal.service';
-import { ViewService } from './_state/view.service';
 
 interface State<T> {
   ordinal: Ordinal;
@@ -35,7 +35,7 @@ type Data =
   providedIn: 'root',
 })
 export class CardStateService {
-  private _cards$ = this._viewService.view$.pipe(
+  private _cards$ = this._filterService.view$.pipe(
     switchMap((view) =>
       view === 'all'
         ? this._cardService.cards$
@@ -44,7 +44,7 @@ export class CardStateService {
   );
 
   private _state$: Observable<Data> = combineLatest([
-    this._viewService.text$,
+    this._filterService.text$,
     this._ordinalService.ordinal$,
     this._cards$,
     this._favoriteService.ids$,
@@ -95,8 +95,8 @@ export class CardStateService {
   constructor(
     private _cardService: CardService,
     private _favoriteService: FavoriteService,
+    private _filterService: FilterService,
     private _ordinalService: OrdinalService,
-    private _viewService: ViewService
   ) {}
 
   toggleFavoriteId(id: string, type: Card): void {

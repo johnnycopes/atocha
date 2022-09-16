@@ -7,7 +7,7 @@ import { View } from '@atocha/lorenzo/util';
 @Injectable({
   providedIn: 'root',
 })
-export class ViewService {
+export class FilterService {
   private _prefix = 'LORENZO_';
   private _viewKey = this._prefix + 'VIEW';
   private _viewSubject = new BehaviorSubject<View>(
