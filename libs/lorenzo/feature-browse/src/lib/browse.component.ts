@@ -9,7 +9,6 @@ import {
   getDevelopmentId,
   getFamilyId,
   getLeaderId,
-  View,
 } from '@atocha/lorenzo/util';
 import { HeaderComponent } from './header/header.component';
 import { DevelopmentsComponent } from './cards/developments/developments.component';
@@ -86,21 +85,12 @@ export class BrowseComponent {
     )
   );
 
-  changeView(view: View): void {
-    this._browseService.updateView(view);
-    window.scroll(0, 0);
-  }
-
   moveDown(type: Card): void {
     this._browseService.moveDown(type);
   }
 
   moveUp(type: Card): void {
     this._browseService.moveUp(type);
-  }
-
-  search(text: string): void {
-    this._browseService.updateText(text);
   }
 
   clearFavorites(): void {

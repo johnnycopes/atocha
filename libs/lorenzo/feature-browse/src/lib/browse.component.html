@@ -1,10 +1,5 @@
 <ng-container *ngIf="vm$ | async as vm">
-  <header app-header
-    [view]="vm.view"
-    [text]="vm.text"
-    (viewChange)="changeView($event)"
-    (textChange)="search($event)"
-  ></header>
+  <header app-header></header>
 
   <main class="content container">
     <app-favorites-counter class="favorites-counter"
