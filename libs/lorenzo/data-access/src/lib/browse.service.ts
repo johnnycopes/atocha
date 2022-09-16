@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { combineLatest, Observable } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 
+import { includes } from '@atocha/core/util';
 import {
   Card,
   getDevelopmentId,
@@ -17,15 +18,58 @@ import { ViewService } from './view.service';
   providedIn: 'root',
 })
 export class BrowseService {
-  cards$ = this._viewService.view$.pipe(
-    switchMap((view) =>
-      view === 'all' ? this._cardService.cards$ : this._favoriteCards$
+  vm$ = combineLatest([
+    this._viewService.text$,
+    this._viewService.view$,
+    this._ordinalService.ordinal$,
+    this._viewService.view$.pipe(
+      switchMap((view) =>
+        view === 'all' ? this._cardService.cards$ : this._favoriteCards$
+      )
+    ),
+    this._favoriteService.ids$,
+  ]).pipe(
+    map(
+      ([
+        text,
+        view,
+        {
+          development: developmentOrdinal,
+          family: familyOrdinal,
+          leader: leaderOrdinal,
+        },
+        { development: developments, family: families, leader: leaders },
+        { development: developmentIds, family: familyIds, leader: leaderIds },
+      ]) => ({
+        view,
+        developments: {
+          ordinal: developmentOrdinal,
+          totalCards: developments.length,
+          filteredCards: developments.filter((card) =>
+            includes([getDevelopmentId(card)], text)
+          ),
+          favoriteIds: developmentIds,
+        },
+        families: {
+          ordinal: familyOrdinal,
+          totalCards: families.length,
+          filteredCards: families.filter((card) =>
+            includes([getFamilyId(card)], text)
+          ),
+          favoriteIds: familyIds,
+        },
+        leaders: {
+          ordinal: leaderOrdinal,
+          totalCards: leaders.length,
+          filteredCards: leaders.filter((card) =>
+            includes([getLeaderId(card)], text)
+          ),
+          favoriteIds: leaderIds,
+        },
+        totalFavorites: familyIds.size + leaderIds.size + developmentIds.size,
+      })
     )
   );
-  favoriteCardIds$ = this._favoriteService.ids$;
-  ordinal$ = this._ordinalService.ordinal$;
-  view$ = this._viewService.view$;
-  text$ = this._viewService.text$;
 
   private _favoriteCards$: Observable<Cards> = combineLatest([
     this._cardService.cards$,
