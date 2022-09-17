@@ -50,40 +50,32 @@ export class CardStateService {
     this._favoriteService.ids$,
     this._visibilityService.visibility$,
   ]).pipe(
-    map(
-      ([
+    map(([text, ordinal, cards, favoriteIds, visibility]) => ({
+      development: this._createState({
+        ordinal: ordinal.development,
+        visible: visibility.development,
+        favoriteIds: favoriteIds.development,
+        cards: cards.development,
+        getId: getDevelopmentId,
         text,
-        ordinal,
-        cards,
-        favoriteIds,
-        visibility,
-      ]) => ({
-        development: this._createState({
-          ordinal: ordinal.development,
-          visible: visibility.development,
-          favoriteIds: favoriteIds.development,
-          cards: cards.development,
-          getId: getDevelopmentId,
-          text,
-        }),
-        family: this._createState({
-          ordinal: ordinal.family,
-          visible: visibility.family,
-          favoriteIds: favoriteIds.family,
-          cards: cards.family,
-          getId: getFamilyId,
-          text,
-        }),
-        leader: this._createState({
-          ordinal: ordinal.leader,
-          visible: visibility.leader,
-          favoriteIds: favoriteIds.leader,
-          cards: cards.leader,
-          getId: getLeaderId,
-          text,
-        }),
-      })
-    ),
+      }),
+      family: this._createState({
+        ordinal: ordinal.family,
+        visible: visibility.family,
+        favoriteIds: favoriteIds.family,
+        cards: cards.family,
+        getId: getFamilyId,
+        text,
+      }),
+      leader: this._createState({
+        ordinal: ordinal.leader,
+        visible: visibility.leader,
+        favoriteIds: favoriteIds.leader,
+        cards: cards.leader,
+        getId: getLeaderId,
+        text,
+      }),
+    })),
     shareReplay({ bufferSize: 1, refCount: true })
   );
 
