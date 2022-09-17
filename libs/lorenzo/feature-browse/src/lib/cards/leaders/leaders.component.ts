@@ -23,9 +23,12 @@ import { LeaderComponent } from './leader.component';
       [cards]="vm.filteredCards"
       [total]="vm.totalCards"
       [ordinal]="vm.ordinal"
+      [visible]="vm.visible"
       [favorites]="vm.favoriteIds"
+      [trackByFn]="trackByFn"
       (moveUp)="moveUp()"
       (moveDown)="moveDown()"
+      (visibleChange)="toggleVisibility()"
     >
       <app-leader
         *uiCard="vm.filteredCards as leader"
@@ -43,6 +46,10 @@ export class LeadersComponent {
   trackByFn = trackByFactory(this.getId);
 
   constructor(private _cardStateService: CardStateService) {}
+
+  toggleVisibility(): void {
+    this._cardStateService.toggleVisibility('leader');
+  }
 
   moveDown(): void {
     this._cardStateService.moveDown('leader');
