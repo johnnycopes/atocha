@@ -14,7 +14,7 @@ export class FilterService {
   private _textSubject = new BehaviorSubject<string>('');
 
   view$ = this._viewSubject.pipe(
-    tap((view) => this._localStorageService.setItem(this._viewKey, view)),
+    tap((view) => this._setView(view)),
     shareReplay({ bufferSize: 1, refCount: true })
   );
 
@@ -35,5 +35,9 @@ export class FilterService {
 
   private _getView(): View {
     return (this._localStorageService.getItem(this._viewKey) ?? 'all') as View;
+  }
+
+  private _setView(view: View): void {
+    this._localStorageService.setItem(this._viewKey, view);
   }
 }
