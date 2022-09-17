@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, shareReplay } from 'rxjs';
+import { BehaviorSubject, first, shareReplay } from 'rxjs';
 
 import { LocalStorageService } from '@atocha/core/data-access';
 import { View } from '@atocha/lorenzo/util';
@@ -28,4 +28,13 @@ export class PositionService {
   );
 
   constructor(private _localStorageService: LocalStorageService) {}
+
+  updatePosition(position: number, view: View): void {
+    console.log(position, view);
+    this.position$.pipe(first()).subscribe(positions => this._positionSubject.next({
+      ...positions,
+      [view]: position,
+    }));
+    console.log(this._positionSubject.value);
+  }
 }

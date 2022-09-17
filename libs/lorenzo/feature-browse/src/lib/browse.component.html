@@ -4,6 +4,7 @@
 
   <main class="content container"
     [scrollTop]="vm.position"
+    (scroll)="onScroll($event, vm.view)"
   >
     <app-favorites-counter
       *ngIf="vm.view === 'favorites'"

@@ -24,4 +24,8 @@ export class AppStateService {
   updateText(text: string): void {
     this._filterService.updateText(text);
   }
+
+  updatePosition(position: number, view: View): void {
+    this._positionService.updatePosition(position, view);
+  }
 }
