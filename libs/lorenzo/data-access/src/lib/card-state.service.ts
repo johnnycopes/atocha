@@ -60,7 +60,11 @@ export class CardStateService {
         },
         { development: developments, family: families, leader: leaders },
         { development: developmentIds, family: familyIds, leader: leaderIds },
-        { development: developmentVisible, family: familyVisible, leader: leaderVisible }
+        {
+          development: developmentVisible,
+          family: familyVisible,
+          leader: leaderVisible,
+        },
       ]) => ({
         development: this._createState({
           ordinal: developmentOrdinal,
@@ -102,7 +106,7 @@ export class CardStateService {
     private _favoriteService: FavoriteService,
     private _filterService: FilterService,
     private _ordinalService: OrdinalService,
-    private _visibilityService: VisibilityService,
+    private _visibilityService: VisibilityService
   ) {}
 
   toggleFavoriteId(id: string, type: Card): void {

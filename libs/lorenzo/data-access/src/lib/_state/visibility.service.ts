@@ -5,7 +5,7 @@ import { Card } from '@atocha/lorenzo/util';
 import { BehaviorSubject, first, shareReplay, tap } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class VisibilityService {
   private _prefix = 'LORENZO_';
@@ -32,8 +32,8 @@ export class VisibilityService {
   constructor(private _localStorageService: LocalStorageService) {}
 
   toggleVisibility(type: Card): void {
-    this._visibilitySubject.pipe(first()).subscribe(
-      visibility => this._visibilitySubject.next({
+    this._visibilitySubject.pipe(first()).subscribe((visibility) =>
+      this._visibilitySubject.next({
         ...visibility,
         [type]: !visibility[type],
       })
