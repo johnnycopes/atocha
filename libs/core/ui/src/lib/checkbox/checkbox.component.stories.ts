@@ -5,12 +5,9 @@ import {
   Story,
   componentWrapperDecorator,
 } from '@storybook/angular';
-import { InputType } from 'zlib';
 
 import { StorybookWrapperComponent } from '../../../.storybook/storybook-wrapper/storybook-wrapper.component';
 import { CheckboxComponent, CheckboxSize } from './checkbox.component';
-
-type CheckboxArgs = CheckboxComponent & { slot: string };
 
 export default {
   title: 'Checkbox',
@@ -31,7 +28,7 @@ export default {
   },
 } as Meta;
 
-const Template: Story<CheckboxArgs> = (args: CheckboxArgs) => ({
+const Template: Story<CheckboxComponent> = (args: Args) => ({
   props: args,
   template: `
     <core-checkbox

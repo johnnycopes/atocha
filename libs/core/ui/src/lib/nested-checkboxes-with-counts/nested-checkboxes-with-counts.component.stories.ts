@@ -48,27 +48,15 @@ export default {
   },
 } as Meta<NestedCheckboxesWithCountsComponent<TestItem>>;
 
-const Template: Story<NestedCheckboxesWithCountsComponent<TestItem>> = ({
-  indentation,
-  states,
-  size,
-  className,
-  onNgModelChange,
-  onSelectedChange,
-  onTotalChange,
-}: Args) => ({
+const Template: Story<NestedCheckboxesWithCountsComponent<TestItem>> = (
+  args: Args
+) => ({
   props: {
+    ...args,
     item: AFRICA,
     getId,
     getChildren,
     getCounts,
-    indentation,
-    states,
-    size,
-    className,
-    onNgModelChange,
-    onSelectedChange,
-    onTotalChange,
   },
   template: `
     <core-nested-checkboxes-with-counts
@@ -111,9 +99,6 @@ withCustomStyling.args = createArgs({
 
 type Args = Partial<NestedCheckboxesWithCountsComponent<TestItem>> & {
   className?: string;
-  onNgModelChange?: InputType;
-  onSelectedChange?: InputType;
-  onTotalChange?: InputType;
 };
 
 function createArgs(

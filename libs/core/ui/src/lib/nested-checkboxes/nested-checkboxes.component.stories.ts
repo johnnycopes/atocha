@@ -18,7 +18,6 @@ import {
   TestItem,
 } from '../../../.storybook/mock-data/nested-checkboxes';
 import { NestedCheckboxesComponent } from './nested-checkboxes.component';
-import { InputType } from 'zlib';
 
 export default {
   title: 'NestedCheckboxesComponent',
@@ -39,22 +38,12 @@ export default {
   },
 } as Meta<NestedCheckboxesComponent<TestItem>>;
 
-const Template: Story<NestedCheckboxesComponent<TestItem>> = ({
-  indentation,
-  states,
-  size,
-  className,
-  onClick,
-}: Args) => ({
+const Template: Story<NestedCheckboxesComponent<TestItem>> = (args: Args) => ({
   props: {
+    ...args,
     item: AFRICA,
     getId,
     getChildren,
-    indentation,
-    states,
-    size,
-    className,
-    onClick,
   },
   template: `
     <core-nested-checkboxes
@@ -94,7 +83,6 @@ withCustomStyling.args = createArgs({
 
 type Args = Partial<NestedCheckboxesComponent<TestItem>> & {
   className?: string;
-  onClick?: InputType;
 };
 
 function createArgs(

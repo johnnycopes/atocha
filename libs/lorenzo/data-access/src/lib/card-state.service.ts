@@ -50,48 +50,32 @@ export class CardStateService {
     this._favoriteService.ids$,
     this._visibilityService.visibility$,
   ]).pipe(
-    map(
-      ([
+    map(([text, ordinal, cards, favoriteIds, visibility]) => ({
+      development: this._createState({
+        ordinal: ordinal.development,
+        visible: visibility.development,
+        favoriteIds: favoriteIds.development,
+        cards: cards.development,
+        getId: getDevelopmentId,
         text,
-        {
-          development: developmentOrdinal,
-          family: familyOrdinal,
-          leader: leaderOrdinal,
-        },
-        { development: developments, family: families, leader: leaders },
-        { development: developmentIds, family: familyIds, leader: leaderIds },
-        {
-          development: developmentVisible,
-          family: familyVisible,
-          leader: leaderVisible,
-        },
-      ]) => ({
-        development: this._createState({
-          ordinal: developmentOrdinal,
-          visible: developmentVisible,
-          favoriteIds: developmentIds,
-          cards: developments,
-          getId: getDevelopmentId,
-          text,
-        }),
-        family: this._createState({
-          ordinal: familyOrdinal,
-          visible: familyVisible,
-          favoriteIds: familyIds,
-          cards: families,
-          getId: getFamilyId,
-          text,
-        }),
-        leader: this._createState({
-          ordinal: leaderOrdinal,
-          visible: leaderVisible,
-          favoriteIds: leaderIds,
-          cards: leaders,
-          getId: getLeaderId,
-          text,
-        }),
-      })
-    ),
+      }),
+      family: this._createState({
+        ordinal: ordinal.family,
+        visible: visibility.family,
+        favoriteIds: favoriteIds.family,
+        cards: cards.family,
+        getId: getFamilyId,
+        text,
+      }),
+      leader: this._createState({
+        ordinal: ordinal.leader,
+        visible: visibility.leader,
+        favoriteIds: favoriteIds.leader,
+        cards: cards.leader,
+        getId: getLeaderId,
+        text,
+      }),
+    })),
     shareReplay({ bufferSize: 1, refCount: true })
   );
 

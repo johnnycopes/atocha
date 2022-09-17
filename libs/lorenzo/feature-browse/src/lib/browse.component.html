@@ -1,7 +1,10 @@
 <ng-container *ngIf="vm$ | async as vm">
   <header app-header></header>
 
-  <main class="content container">
+  <main class="content container"
+    [scrollTop]="vm.position"
+    (scroll)="onScroll($event, vm.view)"
+  >
     <app-favorites-counter
       *ngIf="vm.view === 'favorites'"
       class="favorites-counter"
