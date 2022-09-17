@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, first, shareReplay } from 'rxjs';
+import { BehaviorSubject, first, shareReplay, tap } from 'rxjs';
 
 import { LocalStorageService } from '@atocha/core/data-access';
 import { View } from '@atocha/lorenzo/util';
@@ -14,27 +14,33 @@ export class PositionService {
     favorites: this._prefix + 'FAVORITES_POSITION',
   };
   private _positionSubject = new BehaviorSubject<Record<View, number>>({
-    all: 877,
-    favorites: 86
+    all: this._getPosition(this._keys.all),
+    favorites: this._getPosition(this._keys.favorites),
   });
 
   position$ = this._positionSubject.pipe(
-    // tap(({ development, family, leader }) => {
-    //   this._setIds(this._keys.development, development);
-    //   this._setIds(this._keys.family, family);
-    //   this._setIds(this._keys.leader, leader);
-    // }),
+    tap(({ all, favorites }) => {
+      this._setPosition(this._keys.all, all);
+      this._setPosition(this._keys.favorites, favorites);
+    }),
     shareReplay({ bufferSize: 1, refCount: true })
   );
 
   constructor(private _localStorageService: LocalStorageService) {}
 
   updatePosition(position: number, view: View): void {
-    console.log(position, view);
     this.position$.pipe(first()).subscribe(positions => this._positionSubject.next({
       ...positions,
       [view]: position,
     }));
-    console.log(this._positionSubject.value);
+  }
+
+  private _getPosition(key: string): number {
+    const position = this._localStorageService.getItem(key);
+    return position ? parseInt(position, 10) : 0;
+  }
+
+  private _setPosition(key: string, value: number): void {
+    this._localStorageService.setItem(key, value.toString());
   }
 }
