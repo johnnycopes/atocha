@@ -1,9 +1,9 @@
 <ng-container *ngIf="vm$ | async as vm">
   <header app-header></header>
-  {{ position }}
+  {{ vm.position }}
 
   <main class="content container"
-    [scrollTop]="position"
+    [scrollTop]="vm.position"
   >
     <app-favorites-counter
       *ngIf="vm.view === 'favorites'"

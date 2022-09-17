@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
-import { combineLatest, map, tap, withLatestFrom } from 'rxjs';
+import { BehaviorSubject, combineLatest, map, tap, withLatestFrom } from 'rxjs';
 
 import { AppStateService, CardStateService } from '@atocha/lorenzo/data-access';
 import { HeaderComponent } from './header/header.component';
@@ -31,19 +31,20 @@ export class BrowseComponent {
     private _cdRef: ChangeDetectorRef,
   ) {}
 
+  private _positionSubject = new BehaviorSubject<number>(0);
+
   vm$ = combineLatest([
     this._appStateService.view$.pipe(
       withLatestFrom(this._appStateService.position$),
       tap(([view, position]) => {
         setTimeout(() => {
-          this.position = position[view];
+          this._positionSubject.next(position[view]);
           this._cdRef.markForCheck();
         });
       }),
       map(([view, _]) => view)
     ),
     this._cardStateService.ordinal$,
-  ]).pipe(map(([view, ordinal]) => ({ view, ordinal })));
-
-  position = 0;
+    this._positionSubject.asObservable(),
+  ]).pipe(map(([view, ordinal, position ]) => ({ view, ordinal, position })));
 }
