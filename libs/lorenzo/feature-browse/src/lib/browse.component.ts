@@ -1,6 +1,21 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
-import { BehaviorSubject, combineLatest, debounceTime, map, Subject, takeUntil, tap, withLatestFrom } from 'rxjs';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  OnDestroy,
+  OnInit,
+} from '@angular/core';
+import {
+  BehaviorSubject,
+  combineLatest,
+  debounceTime,
+  map,
+  Subject,
+  takeUntil,
+  tap,
+  withLatestFrom,
+} from 'rxjs';
 
 import { AppStateService, CardStateService } from '@atocha/lorenzo/data-access';
 import { View } from '@atocha/lorenzo/util';
@@ -27,7 +42,10 @@ import { LeadersComponent } from './cards/leaders/leaders.component';
 })
 export class BrowseComponent implements OnInit, OnDestroy {
   private _positionSubject = new BehaviorSubject<number>(0);
-  private _scrollActionSubject = new Subject<{ position: number, view: View }>();
+  private _scrollActionSubject = new Subject<{
+    position: number;
+    view: View;
+  }>();
   private _destroy$ = new Subject<void>();
 
   vm$ = combineLatest([
@@ -43,19 +61,20 @@ export class BrowseComponent implements OnInit, OnDestroy {
     ),
     this._cardStateService.ordinal$,
     this._positionSubject.asObservable(),
-  ]).pipe(map(([view, ordinal, position ]) => ({ view, ordinal, position })));
+  ]).pipe(map(([view, ordinal, position]) => ({ view, ordinal, position })));
 
   constructor(
     private _appStateService: AppStateService,
     private _cardStateService: CardStateService,
-    private _cdRef: ChangeDetectorRef,
+    private _cdRef: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
-    this._scrollActionSubject.pipe(
-      debounceTime(50),
-      takeUntil(this._destroy$)
-    ).subscribe(({ position, view }) => this._appStateService.updatePosition(position, view));
+    this._scrollActionSubject
+      .pipe(debounceTime(50), takeUntil(this._destroy$))
+      .subscribe(({ position, view }) =>
+        this._appStateService.updatePosition(position, view)
+      );
   }
 
   ngOnDestroy(): void {
@@ -66,7 +85,7 @@ export class BrowseComponent implements OnInit, OnDestroy {
   onScroll(event: Event, view: View): void {
     this._scrollActionSubject.next({
       position: (event.target as HTMLElement).scrollTop,
-      view
+      view,
     });
   }
 }

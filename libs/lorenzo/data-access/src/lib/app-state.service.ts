@@ -14,7 +14,7 @@ export class AppStateService {
 
   constructor(
     private _filterService: FilterService,
-    private _positionService: PositionService,
+    private _positionService: PositionService
   ) {}
 
   updateView(view: View): void {

@@ -5,7 +5,7 @@ import { LocalStorageService } from '@atocha/core/data-access';
 import { View } from '@atocha/lorenzo/util';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class PositionService {
   private _prefix = 'LORENZO_';
@@ -29,10 +29,12 @@ export class PositionService {
   constructor(private _localStorageService: LocalStorageService) {}
 
   updatePosition(position: number, view: View): void {
-    this.position$.pipe(first()).subscribe(positions => this._positionSubject.next({
-      ...positions,
-      [view]: position,
-    }));
+    this.position$.pipe(first()).subscribe((positions) =>
+      this._positionSubject.next({
+        ...positions,
+        [view]: position,
+      })
+    );
   }
 
   private _getPosition(key: string): number {
