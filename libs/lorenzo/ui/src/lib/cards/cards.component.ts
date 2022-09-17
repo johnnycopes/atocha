@@ -30,10 +30,11 @@ export class CardsComponent<T> implements OnChanges {
   @Input() total = 0;
   @Input() favorites = new Set<string>();
   @Input() ordinal: Ordinal = 1;
+  @Input() visible = true;
   @Input() trackByFn: TrackByFunction<T> = (_, index) => index;
+  @Output() visibleChange = new EventEmitter<boolean>();
   @Output() moveUp = new EventEmitter<void>();
   @Output() moveDown = new EventEmitter<void>();
-  showCards = true;
   showMoveUp = false;
   showMoveDown = false;
 

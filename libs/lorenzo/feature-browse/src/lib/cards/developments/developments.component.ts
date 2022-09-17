@@ -23,9 +23,12 @@ import { DevelopmentComponent } from './development.component';
       [cards]="vm.filteredCards"
       [total]="vm.totalCards"
       [ordinal]="vm.ordinal"
+      [visible]="vm.visible"
       [favorites]="vm.favoriteIds"
+      [trackByFn]="trackByFn"
       (moveUp)="moveUp()"
       (moveDown)="moveDown()"
+      (visibleChange)="toggleVisibility()"
     >
       <app-development
         *uiCard="vm.filteredCards as development"
@@ -43,6 +46,10 @@ export class DevelopmentsComponent {
   trackByFn = trackByFactory(this.getId);
 
   constructor(private _cardStateService: CardStateService) {}
+
+  toggleVisibility(): void {
+    this._cardStateService.toggleVisibility('development');
+  }
 
   moveDown(): void {
     this._cardStateService.moveDown('development');

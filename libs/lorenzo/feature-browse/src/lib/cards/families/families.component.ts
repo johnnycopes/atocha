@@ -23,10 +23,12 @@ import { FamilyComponent } from './family.component';
       [cards]="vm.filteredCards"
       [total]="vm.totalCards"
       [ordinal]="vm.ordinal"
+      [visible]="vm.visible"
       [favorites]="vm.favoriteIds"
       [trackByFn]="trackByFn"
       (moveUp)="moveUp()"
       (moveDown)="moveDown()"
+      (visibleChange)="toggleVisibility()"
     >
       <app-family
         *uiCard="vm.filteredCards as family"
@@ -44,6 +46,10 @@ export class FamiliesComponent {
   trackByFn = trackByFactory(this.getId);
 
   constructor(private _cardStateService: CardStateService) {}
+
+  toggleVisibility(): void {
+    this._cardStateService.toggleVisibility('family');
+  }
 
   moveDown(): void {
     this._cardStateService.moveDown('family');

@@ -17,12 +17,14 @@ import { CardService } from './_state/card.service';
 import { FavoriteService } from './_state/favorite.service';
 import { FilterService } from './_state/filter.service';
 import { OrdinalService } from './_state/ordinal.service';
+import { VisibilityService } from './_state/visibility.service';
 
-interface State<T> {
+export interface State<T> {
   ordinal: Ordinal;
   totalCards: number;
   filteredCards: readonly T[];
   favoriteIds: Set<string>;
+  visible: boolean;
 }
 
 type Data = { [key in Extract<Card, 'development'>]: State<Development> } & {
@@ -46,6 +48,7 @@ export class CardStateService {
     this._ordinalService.ordinal$,
     this._cards$,
     this._favoriteService.ids$,
+    this._visibilityService.visibility$,
   ]).pipe(
     map(
       ([
@@ -57,9 +60,15 @@ export class CardStateService {
         },
         { development: developments, family: families, leader: leaders },
         { development: developmentIds, family: familyIds, leader: leaderIds },
+        {
+          development: developmentVisible,
+          family: familyVisible,
+          leader: leaderVisible,
+        },
       ]) => ({
         development: this._createState({
           ordinal: developmentOrdinal,
+          visible: developmentVisible,
           favoriteIds: developmentIds,
           cards: developments,
           getId: getDevelopmentId,
@@ -67,6 +76,7 @@ export class CardStateService {
         }),
         family: this._createState({
           ordinal: familyOrdinal,
+          visible: familyVisible,
           favoriteIds: familyIds,
           cards: families,
           getId: getFamilyId,
@@ -74,6 +84,7 @@ export class CardStateService {
         }),
         leader: this._createState({
           ordinal: leaderOrdinal,
+          visible: leaderVisible,
           favoriteIds: leaderIds,
           cards: leaders,
           getId: getLeaderId,
@@ -94,7 +105,8 @@ export class CardStateService {
     private _cardService: CardService,
     private _favoriteService: FavoriteService,
     private _filterService: FilterService,
-    private _ordinalService: OrdinalService
+    private _ordinalService: OrdinalService,
+    private _visibilityService: VisibilityService
   ) {}
 
   toggleFavoriteId(id: string, type: Card): void {
@@ -103,6 +115,10 @@ export class CardStateService {
 
   clearFavoriteIds(): void {
     this._favoriteService.clearIds();
+  }
+
+  toggleVisibility(type: Card): void {
+    this._visibilityService.toggleVisibility(type);
   }
 
   moveUp(type: Card): void {
@@ -115,12 +131,14 @@ export class CardStateService {
 
   private _createState<T>({
     ordinal,
+    visible,
     favoriteIds,
     cards,
     getId,
     text,
   }: {
     ordinal: Ordinal;
+    visible: boolean;
     favoriteIds: Set<string>;
     cards: readonly T[];
     getId: (card: T) => string;
@@ -128,6 +146,7 @@ export class CardStateService {
   }): State<T> {
     return {
       ordinal,
+      visible,
       favoriteIds,
       totalCards: cards.length,
       filteredCards: cards.filter((card) => includes([getId(card)], text)),
