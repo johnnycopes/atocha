@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
-import { BehaviorSubject, combineLatest, map, Subject, tap, withLatestFrom } from 'rxjs';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
+import { BehaviorSubject, combineLatest, debounceTime, map, Subject, takeUntil, tap, withLatestFrom } from 'rxjs';
 
 import { AppStateService, CardStateService } from '@atocha/lorenzo/data-access';
 import { View } from '@atocha/lorenzo/util';
@@ -25,8 +25,10 @@ import { LeadersComponent } from './cards/leaders/leaders.component';
   styleUrls: ['./browse.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class BrowseComponent {
+export class BrowseComponent implements OnInit, OnDestroy {
   private _positionSubject = new BehaviorSubject<number>(0);
+  private _scrollActionSubject = new Subject<{ position: number, view: View }>();
+  private _destroy$ = new Subject<void>();
 
   vm$ = combineLatest([
     this._appStateService.view$.pipe(
@@ -49,7 +51,22 @@ export class BrowseComponent {
     private _cdRef: ChangeDetectorRef,
   ) {}
 
+  ngOnInit(): void {
+    this._scrollActionSubject.pipe(
+      debounceTime(50),
+      takeUntil(this._destroy$)
+    ).subscribe(({ position, view }) => this._appStateService.updatePosition(position, view));
+  }
+
+  ngOnDestroy(): void {
+    this._destroy$.next();
+    this._destroy$.complete();
+  }
+
   onScroll(event: Event, view: View): void {
-    this._appStateService.updatePosition((event.target as HTMLElement).scrollTop, view);
+    this._scrollActionSubject.next({
+      position: (event.target as HTMLElement).scrollTop,
+      view
+    });
   }
 }
