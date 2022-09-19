@@ -57,6 +57,7 @@ ul {
   --building: #ede021;
   --character: #6bcce2;
   --venture: #c679f1;
+  --header-height: 72px;
   --border-radius: 4px;
 }
 
@@ -65,7 +66,7 @@ ul {
 }
 
 button {
-  padding: 0 8px;
+  padding: 2px 8px;
   background: #fff;
   color: var(--font-color);
   font-family: var(--font-family);

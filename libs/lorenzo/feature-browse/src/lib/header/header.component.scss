@@ -1,5 +1,5 @@
 :host {
-  height: 64px;
+  height: var(--header-height);
   padding: 0 8px;
   background: var(--font-color);
   color: #fff;
@@ -8,7 +8,7 @@
 .top {
   display: flex;
   justify-content: space-between;
-  padding: 2px 0 4px;
+  padding: 4px 0 6px;
 }
 
 .title {
@@ -23,7 +23,7 @@
 
 .view {
   margin-left: 4px;
-  padding: 0 8px;
+  padding: 3px 8px;
   cursor: pointer;
 
   &--selected {

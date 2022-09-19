@@ -5,7 +5,7 @@
 
 .content {
   overflow: auto;
-  height: calc(100% - 64px);
+  height: calc(100% - var(--header-height));
   padding-top: 16px;
   padding-bottom: 16px;
 }
