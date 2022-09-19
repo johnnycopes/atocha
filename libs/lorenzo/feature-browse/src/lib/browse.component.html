@@ -5,10 +5,8 @@
     [scrollTop]="vm.position"
     (scroll)="onScroll($event, vm.view)"
   >
-    <app-favorites-counter
-      *ngIf="vm.view === 'favorites'"
-      class="favorites-counter"
-    ></app-favorites-counter>
+    <app-toolbar class="toolbar">
+    </app-toolbar>
 
     <div class="cards">
       <app-developments [style.order]="vm.ordinal.development">

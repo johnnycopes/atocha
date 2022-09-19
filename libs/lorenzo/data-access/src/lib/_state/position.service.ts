@@ -29,7 +29,7 @@ export class PositionService {
   constructor(private _localStorageService: LocalStorageService) {}
 
   updatePosition(position: number, view: View): void {
-    this.position$.pipe(first()).subscribe((positions) =>
+    this._positionSubject.pipe(first()).subscribe((positions) =>
       this._positionSubject.next({
         ...positions,
         [view]: position,

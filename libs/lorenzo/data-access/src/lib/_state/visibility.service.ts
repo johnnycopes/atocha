@@ -40,6 +40,22 @@ export class VisibilityService {
     );
   }
 
+  expandAll(): void {
+    this._visibilitySubject.next({
+      development: true,
+      family: true,
+      leader: true,
+    });
+  }
+
+  collapseAll(): void {
+    this._visibilitySubject.next({
+      development: false,
+      family: false,
+      leader: false,
+    });
+  }
+
   private _getVisiblity(key: string): boolean {
     const state = this._localStorageService.getItem(key) ?? 'false';
     return JSON.parse(state);
