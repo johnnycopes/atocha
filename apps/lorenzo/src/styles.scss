@@ -71,17 +71,10 @@ button {
   color: var(--font-color);
   font-family: var(--font-family);
   font-size: 12px;
-  border: 2px solid var(--font-color);
+  border: 2px solid var(--card-bg-dark);
   border-radius: var(--border-radius);
   outline: none;
   cursor: pointer;
-
-  &:disabled {
-    background: var(--card-bg-light);
-    border-color: var(--card-bg-dark);
-    font-style: italic;
-    cursor: unset;
-  }
 }
 
 // Component styling overrides
@@ -93,6 +86,10 @@ app-root {
       height: 100%;
       font-size: 16px;
       outline: 0;
+    }
+
+    .core-search-input__clear {
+      color: var(--font-color);
     }
   }
 }
