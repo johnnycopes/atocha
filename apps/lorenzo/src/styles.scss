@@ -59,7 +59,7 @@ ul {
   --venture: #c679f1;
   --header-height: 72px;
   --toolbar-height: 64px;
-  --footer-height: 48px;
+  --footer-height: 72px;
   --border-radius: 4px;
 }
 
@@ -73,6 +73,10 @@ button {
   border-radius: var(--border-radius);
   outline: none;
   cursor: pointer;
+}
+
+a {
+  color: #fff;
 }
 
 // Component styling overrides

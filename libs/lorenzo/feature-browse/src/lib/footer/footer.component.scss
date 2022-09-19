@@ -1,7 +1,16 @@
 :host {
-  height: var(--footer-height);
-  padding: 16px;
-  background: salmon;
   position: relative;
   bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: var(--footer-height);
+  background: var(--font-color);
+  color: var(--card-bg-dark);
+  font-size: 12px;
+}
+
+.project-credits {
+  margin-bottom: 8px;
 }
