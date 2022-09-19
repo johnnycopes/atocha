@@ -19,9 +19,10 @@ import {
 
 import { AppStateService, CardStateService } from '@atocha/lorenzo/data-access';
 import { View } from '@atocha/lorenzo/util';
-import { HeaderComponent } from './header/header.component';
 import { DevelopmentsComponent } from './cards/developments/developments.component';
 import { FamiliesComponent } from './cards/families/families.component';
+import { FooterComponent } from './footer/footer.component';
+import { HeaderComponent } from './header/header.component';
 import { LeadersComponent } from './cards/leaders/leaders.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 
@@ -32,6 +33,7 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
     CommonModule,
     DevelopmentsComponent,
     FamiliesComponent,
+    FooterComponent,
     HeaderComponent,
     LeadersComponent,
     ToolbarComponent,

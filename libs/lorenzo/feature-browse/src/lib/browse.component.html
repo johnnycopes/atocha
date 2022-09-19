@@ -1,14 +1,14 @@
 <ng-container *ngIf="vm$ | async as vm">
   <header app-header></header>
 
-  <main class="content container"
+  <main class="content"
     [scrollTop]="vm.position"
     (scroll)="onScroll($event, vm.view)"
   >
-    <app-toolbar class="toolbar">
+    <app-toolbar class="container">
     </app-toolbar>
 
-    <div class="cards">
+    <div class="cards container">
       <app-developments [style.order]="vm.ordinal.development">
       </app-developments>
 
@@ -18,5 +18,7 @@
       <app-leaders [style.order]="vm.ordinal.leader">
       </app-leaders>
     </div>
+
+    <footer app-footer></footer>
   </main>
 </ng-container>
