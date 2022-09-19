@@ -82,7 +82,6 @@ export class CardStateService {
   developments$ = this._state$.pipe(map(({ development }) => development));
   families$ = this._state$.pipe(map(({ family }) => family));
   leaders$ = this._state$.pipe(map(({ leader }) => leader));
-  favoriteIds$ = this._favoriteService.ids$;
   ordinal$ = this._ordinalService.ordinal$;
 
   constructor(
