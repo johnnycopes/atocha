@@ -105,6 +105,14 @@ export class CardStateService {
     this._visibilityService.toggleVisibility(type);
   }
 
+  expandAll(): void {
+    this._visibilityService.expandAll();
+  }
+
+  collapseAll(): void {
+    this._visibilityService.collapseAll();
+  }
+
   moveUp(type: Card): void {
     this._ordinalService.decrementOrdinal(type);
   }

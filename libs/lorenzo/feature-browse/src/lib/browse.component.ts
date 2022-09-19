@@ -20,10 +20,10 @@ import {
 import { AppStateService, CardStateService } from '@atocha/lorenzo/data-access';
 import { View } from '@atocha/lorenzo/util';
 import { HeaderComponent } from './header/header.component';
-import { FavoritesCounterComponent } from './favorites-counter/favorites-counter.component';
 import { DevelopmentsComponent } from './cards/developments/developments.component';
 import { FamiliesComponent } from './cards/families/families.component';
 import { LeadersComponent } from './cards/leaders/leaders.component';
+import { ToolbarComponent } from './toolbar/toolbar.component';
 
 @Component({
   standalone: true,
@@ -32,9 +32,9 @@ import { LeadersComponent } from './cards/leaders/leaders.component';
     CommonModule,
     DevelopmentsComponent,
     FamiliesComponent,
-    FavoritesCounterComponent,
     HeaderComponent,
     LeadersComponent,
+    ToolbarComponent,
   ],
   templateUrl: './browse.component.html',
   styleUrls: ['./browse.component.scss'],
