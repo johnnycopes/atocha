@@ -1,6 +1,8 @@
 :host {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  height: var(--toolbar-height);
 }
 
 .visibility {

@@ -6,8 +6,10 @@
 .content {
   overflow: auto;
   height: calc(100% - var(--header-height));
-  padding-top: 16px;
-  padding-bottom: 16px;
+}
+
+.container {
+  padding: 0 8px;
 }
 
 .overview {
@@ -17,15 +19,16 @@
   margin-bottom: 16px;
 }
 
-.toolbar {
-  margin-bottom: 16px;
-}
-
 .cards {
   display: flex;
   flex-direction: column;
+  min-height: calc(100% - var(--toolbar-height) - var(--footer-height));
 
   & > * {
     margin-bottom: 16px;
+  }
+
+  .last {
+    margin-bottom: 48px;
   }
 }
