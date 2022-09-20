@@ -18,7 +18,7 @@ import {
 } from 'rxjs';
 
 import { AppStateService, CardStateService } from '@atocha/lorenzo/data-access';
-import { View } from '@atocha/lorenzo/util';
+import { Card, View } from '@atocha/lorenzo/util';
 import { DevelopmentsComponent } from './cards/developments/developments.component';
 import { FamiliesComponent } from './cards/families/families.component';
 import { FooterComponent } from './footer/footer.component';
@@ -63,7 +63,12 @@ export class BrowseComponent implements OnInit, OnDestroy {
     ),
     this._cardStateService.ordinal$,
     this._positionSubject.asObservable(),
-  ]).pipe(map(([view, ordinal, position]) => ({ view, ordinal, position })));
+  ]).pipe(map(([view, ordinal, position]) => ({
+    view,
+    position,
+    ordinal,
+    lastCard: Object.entries(ordinal).find(([_cardType, ordinal], _index, entries) => ordinal === entries.length)?.[0] as (Card | undefined),
+  })));
 
   constructor(
     private _appStateService: AppStateService,

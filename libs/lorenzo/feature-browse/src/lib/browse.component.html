@@ -9,14 +9,20 @@
     </app-toolbar>
 
     <div class="cards container">
-      <app-developments [style.order]="vm.ordinal.development">
-      </app-developments>
+      <app-developments
+        [class.last]="vm.lastCard === 'development'"
+        [style.order]="vm.ordinal.development"
+      ></app-developments>
 
-      <app-families [style.order]="vm.ordinal.family">
-      </app-families>
+      <app-families
+        [class.last]="vm.lastCard === 'family'"
+        [style.order]="vm.ordinal.family"
+      ></app-families>
 
-      <app-leaders [style.order]="vm.ordinal.leader">
-      </app-leaders>
+      <app-leaders
+        [class.last]="vm.lastCard === 'leader'"
+        [style.order]="vm.ordinal.leader"
+      ></app-leaders>
     </div>
 
     <footer app-footer></footer>
