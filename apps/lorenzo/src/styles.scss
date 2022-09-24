@@ -84,11 +84,12 @@ a {
   padding: 0 8px;
   max-width: 1536px;
 
-  @media screen and (min-width: 512px) and (max-width: 1024px) {
+  @media screen and (min-width: 512px) {
     width: 90%;
   }
 
   @media screen and (min-width: 1024px) {
+    width: unset;
     padding: 0 16px;
   }
 }
