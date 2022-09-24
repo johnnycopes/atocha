@@ -79,6 +79,21 @@ a {
   color: #fff;
 }
 
+.container {
+  margin: 0 auto;
+  padding: 0 8px;
+  max-width: 1536px;
+
+  @media screen and (min-width: 512px) {
+    width: 90%;
+  }
+
+  @media screen and (min-width: 1024px) {
+    width: unset;
+    padding: 0 16px;
+  }
+}
+
 // Component styling overrides
 
 app-root {

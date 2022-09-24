@@ -24,6 +24,14 @@
       button {
         margin-left: 8px;
       }
+
+      @media screen and (min-width: 1024px) {
+        .left-arrow,
+        .right-arrow {
+          display: block;
+          transform: rotate(-90deg);
+        }
+      }
     }
   }
 

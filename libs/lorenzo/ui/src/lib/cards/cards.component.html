@@ -15,12 +15,16 @@
       <button *ngIf="showMoveUp"
         (click)="moveUp.emit()"
       >
-        ↑
+        <span class="left-arrow">
+          ↑
+        </span>
       </button>
       <button *ngIf="showMoveDown"
         (click)="moveDown.emit()"
       >
-        ↓
+        <span class="right-arrow">
+          ↓
+        </span>
       </button>
     </div>
   </div>
