@@ -1,4 +1,6 @@
-<ng-container *ngIf="vm$ | async as vm">
+<div *ngIf="vm$ | async as vm"
+  class="container"
+>
   <nav class="top">
     <h1 class="title">
       Lorenzo il Magnifico
@@ -23,4 +25,4 @@
     [text]="vm.text"
     (textChange)="onTextChange($event)"
   ></core-search-input>
-</ng-container>
+</div>

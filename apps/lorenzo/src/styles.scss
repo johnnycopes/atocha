@@ -79,6 +79,12 @@ a {
   color: #fff;
 }
 
+.container {
+  margin: 0 auto;
+  padding: 0 8px;
+  max-width: 768px;
+}
+
 // Component styling overrides
 
 app-root {
