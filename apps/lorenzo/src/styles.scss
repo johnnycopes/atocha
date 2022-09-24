@@ -85,8 +85,11 @@ a {
   max-width: 1536px;
 
   @media screen and (min-width: 512px) and (max-width: 1024px) {
-    padding: 0;
     width: 90%;
+  }
+
+  @media screen and (min-width: 1024px) {
+    padding: 0 16px;
   }
 }
 
