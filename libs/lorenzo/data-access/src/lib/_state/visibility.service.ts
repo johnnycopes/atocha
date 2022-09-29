@@ -57,7 +57,7 @@ export class VisibilityService {
   }
 
   private _getVisiblity(key: string): boolean {
-    const state = this._localStorageService.getItem(key) ?? 'false';
+    const state = this._localStorageService.getItem(key) ?? 'true';
     return JSON.parse(state);
   }
 

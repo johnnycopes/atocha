@@ -20,14 +20,20 @@ This is a monorepo containing several of my applications and libraries. Technolo
 
 A geography app featuring a country explorer and a configurable quiz. Test yourself on national flags, capitals, or country names from any part(s) of the world you like and receive a score based on your performance.
 
-Globetrotter has no back-end (at least for now), but uses both the [REST Countries API](https://restcountries.com/) for country data and the [MediaWiki API](https://www.mediawiki.org/wiki/API:Main_page) for country summary data.
+It has no back-end (at least for now), but uses both the [REST Countries API](https://restcountries.com/) for country data and the [MediaWiki API](https://www.mediawiki.org/wiki/API:Main_page) for country summary data.
 
 ### Menu Matriarch
 
 - Live site: https://menu-matriarch.web.app
 - [Original repo](https://github.com/johnnycopes/menu-matriarch)
 
-A kitchen management app where you can add your favorite dishes, group them into meals, and plan your weekly menus. Menu Matriarch uses Firebase for authentication and the database.
+A kitchen management app where you can add your favorite dishes, group them into meals, and plan your weekly menus. It uses Firebase for authentication and the database.
+
+### Lorenzo
+
+- Live site: https://lorenzo-ref.surge.sh
+
+A dictionary app for the board game [Lorenzo il Magnifico](https://boardgamegeek.com/boardgame/203993/lorenzo-il-magnifico). All the game data is hard-coded and it uses the browser's LocalStorage API for state management.
 
 ## Libraries
 
