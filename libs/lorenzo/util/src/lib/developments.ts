@@ -1545,7 +1545,7 @@ export const DEVELOPMENTS: readonly Development[] = [
     deck: 'territory',
     type: 'territory',
     immediateEffect: 'Gain 3 Military Points and 3 servants',
-    permanentEffect: 'Harvest action of value 2 or more: lose 1 Victory Point',
+    permanentEffect: 'Harvest action of value 2 or more: lose 1 Military Point',
   },
   {
     id: 'KS2',
@@ -1554,7 +1554,7 @@ export const DEVELOPMENTS: readonly Development[] = [
     type: 'character',
     cost: '3 coins',
     immediateEffect: 'Lose all your servants',
-    permanentEffect: 'Double any tower bonuses you take',
+    permanentEffect: 'Double any tower bonuses you gain',
   },
   {
     id: 'KS3',
@@ -1597,7 +1597,7 @@ export const DEVELOPMENTS: readonly Development[] = [
     period: 2,
     deck: 'building',
     type: 'building',
-    cost: '1 servant, 2 stone, and discard 1 of your Building Cards',
+    cost: '1 servant, 2 stone, and 1 of your Building Cards',
     immediateEffect: 'Gain 3 Victory Points',
     permanentEffect:
       'Production action of value 3 or more: gain 2 Victory Points and 3 Military Points',
@@ -1617,7 +1617,7 @@ export const DEVELOPMENTS: readonly Development[] = [
     period: 3,
     deck: 'territory',
     type: 'territory',
-    cost: 'Discard 1 of your Character Cards (you must have at least 1 in play)',
+    cost: '1 of your Character Cards (you must have at least 1 in play)',
     permanentEffect:
       'Harvest action of value 7 or more: gain 1 Leader Card from the board for free, even if it is in an occupied tower',
   },
@@ -1704,7 +1704,7 @@ export const DEVELOPMENTS: readonly Development[] = [
     cost: '4 coins',
     immediateEffect: 'Perform a Production action at value 3',
     permanentEffect:
-      'Each of your opponents has a -1 penalty on their Production actions',
+      'Each of your opponents has a -1 value penalty on their Production actions',
   },
   {
     id: 'KS19',
@@ -1732,7 +1732,7 @@ export const DEVELOPMENTS: readonly Development[] = [
     deck: 'territory',
     type: 'territory',
     permanentEffect:
-      'Harvest action of 3 or more: lose all of your servants and gain 6 Victory Points',
+      'Harvest action of 3 or more: lose all your servants and gain 6 Victory Points',
   },
   {
     id: 'KS22',
