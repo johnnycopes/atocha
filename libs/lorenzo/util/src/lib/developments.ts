@@ -987,7 +987,7 @@ export const DEVELOPMENTS: readonly Development[] = [
     cost: '2 coins and 2 wood',
     immediateEffect: 'Gain 4 Victory Points',
     permanentEffect:
-      'Production action of value 5 or more: Gain 1 Special Token OR exchange 3 Special Tokens to play a Leader Card for free',
+      'Production action of value 5 or more: gain 1 Special Token OR exchange 3 Special Tokens to play a Leader Card for free',
   },
   {
     id: '111',
@@ -1496,7 +1496,7 @@ export const DEVELOPMENTS: readonly Development[] = [
     deck: 'venture',
     type: 'venture',
     cost: '3 coins and 2 servants',
-    immediateEffect: 'Draw 2 Leader Cards',
+    immediateEffect: 'Gain 2 Leader Cards',
     permanentEffect:
       'End of game: gain 2 Victory Points times your played Leader Cards',
   },
@@ -1611,5 +1611,81 @@ export const DEVELOPMENTS: readonly Development[] = [
     immediateEffect: 'Gain 3 servants',
     permanentEffect:
       'End of game: gain 2 Victory Points times your number of Territory Cards',
+  },
+  {
+    id: 'KS9',
+    period: 3,
+    deck: 'territory',
+    type: 'territory',
+    cost: 'Discard 1 of your Character Cards (you must have at least 1 in play)',
+    permanentEffect:
+      'Harvest action of value 7 or more: gain 1 Leader Card from the board for free, even if it is in an occupied tower',
+  },
+  {
+    id: 'KS10',
+    period: 3,
+    deck: 'character',
+    type: 'character',
+    cost: '5 coins',
+    immediateEffect:
+      "Copy the immediate effect of 1 of your opponents' Character Cards",
+  },
+  {
+    id: 'KS11',
+    period: 3,
+    deck: 'building',
+    type: 'building',
+    cost: '2 servants, 3 wood, and 1 stone',
+    immediateEffect: 'Gain 3 Victory Points',
+    permanentEffect:
+      "Production action of value 7 or more: copy the immediate effect of 1 of your opponents' Character Cards. You cannot target the same Character more than once per turn",
+  },
+  {
+    id: 'KS12',
+    period: 3,
+    deck: 'venture',
+    type: 'venture',
+    cost: '5 coins and 5 wood',
+    immediateEffect: 'Gain 5 servants',
+    permanentEffect: 'End of game: gain 10 Victory Points',
+  },
+  {
+    id: 'KS13',
+    period: 1,
+    deck: 'territory',
+    type: 'territory',
+    immediateEffect: 'Gain 1 servant',
+    permanentEffect:
+      'Harvest action of value 6 or more: gain 1 Faith Point and 2 Victory Points',
+  },
+  {
+    id: 'KS14',
+    period: 1,
+    deck: 'character',
+    type: 'character',
+    cost: '2 coins and 1 Faith Point',
+    immediateEffect: 'Gain 2 Victory Points',
+    permanentEffect: 'When being excommunicated, gain 5 Victory Points',
+  },
+  {
+    id: 'KS15',
+    period: 1,
+    deck: 'building',
+    type: 'building',
+    cost: '1 coin and 2 stone',
+    immediateEffect: 'Gain 3 Victory Points',
+    permanentEffect:
+      'Production action of value 3 or more: exchange 1 servant for 1 Leader Card',
+  },
+  {
+    id: 'KS16',
+    period: 1,
+    deck: 'venture',
+    type: 'venture',
+    cost: '1 wood, 1 stone, and 2 servants',
+    immediateEffect:
+      'Gain 1 Faith Point and each of your opponents lose 1 Faith Point',
+    permanentEffect:
+      "End of game: gain 6 Victory Points if you haven't been excommunicated",
   },
 ];
