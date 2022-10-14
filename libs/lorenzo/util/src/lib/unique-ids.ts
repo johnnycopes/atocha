@@ -3,7 +3,7 @@ import { Family } from './family.interface';
 import { Leader } from './leader.interface';
 
 export function getDevelopmentId({ id }: Development): string {
-  return id.toString();
+  return id;
 }
 
 export function getFamilyId({ name }: Family): string {
