@@ -1539,4 +1539,77 @@ export const DEVELOPMENTS: readonly Development[] = [
     immediateEffect: 'Buy any type of card up to value 7',
     permanentEffect: 'End of game: gain 7 Victory Points',
   },
+  {
+    id: 'KS1',
+    period: 1,
+    deck: 'territory',
+    type: 'territory',
+    immediateEffect: 'Gain 3 Military Points and 3 servants',
+    permanentEffect: 'Harvest action of value 2 or more: lose 1 Victory Point',
+  },
+  {
+    id: 'KS2',
+    period: 1,
+    deck: 'character',
+    type: 'character',
+    cost: '3 coins',
+    immediateEffect: 'Lose all your servants',
+    permanentEffect: 'Double any tower bonuses you take',
+  },
+  {
+    id: 'KS3',
+    period: 1,
+    deck: 'building',
+    type: 'building',
+    cost: '1 wood and 1 stone',
+    immediateEffect: 'Gain 2 servants',
+    permanentEffect:
+      'Production action of value 3 or more: gain 1 Victory Point and 1 servant',
+  },
+  {
+    id: 'KS4',
+    period: 1,
+    deck: 'venture',
+    type: 'venture',
+    cost: '2 Faith Points',
+    immediateEffect: 'Gain 1 Leader Card',
+    permanentEffect: 'End of game: gain 8 Victory Points',
+  },
+  {
+    id: 'KS5',
+    period: 2,
+    deck: 'territory',
+    type: 'territory',
+    permanentEffect:
+      'Harvest action of value 4 or more: copy the Harvest effect of one of your other territories, ignoring its value',
+  },
+  {
+    id: 'KS6',
+    period: 2,
+    deck: 'character',
+    type: 'character',
+    cost: '4 coins',
+    immediateEffect:
+      'Gain 2 Faith Points and each of your opponents lose 2 Military Points',
+  },
+  {
+    id: 'KS7',
+    period: 2,
+    deck: 'building',
+    type: 'building',
+    cost: '1 servant, 2 stone, and discard 1 of your Building Cards',
+    immediateEffect: 'Gain 3 Victory Points',
+    permanentEffect:
+      'Production action of value 3 or more: gain 2 Victory Points and 3 Military Points',
+  },
+  {
+    id: 'KS8',
+    period: 2,
+    deck: 'venture',
+    type: 'venture',
+    cost: '5 stone',
+    immediateEffect: 'Gain 3 servants',
+    permanentEffect:
+      'End of game: gain 2 Victory Points times your number of Territory Cards',
+  },
 ];
