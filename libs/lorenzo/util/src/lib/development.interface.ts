@@ -2,7 +2,7 @@ type Type = 'territory' | 'building' | 'character' | 'venture';
 
 export interface Development {
   /** The unique number printed near the top right corner of the card */
-  id: number;
+  id: string;
   /** The large Roman numeral printed on the back of the card */
   period: 1 | 2 | 3;
   /** The type of deck the card belongs to, indicated by the color of the back of the card */

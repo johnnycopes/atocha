@@ -2,14 +2,14 @@ import { Development } from './development.interface';
 
 export const DEVELOPMENTS: readonly Development[] = [
   {
-    id: 1,
+    id: '1',
     period: 1,
     deck: 'territory',
     type: 'territory',
     permanentEffect: 'Harvest action of value 1 or more: gain 1 coin',
   },
   {
-    id: 2,
+    id: '2',
     period: 1,
     deck: 'territory',
     type: 'territory',
@@ -17,7 +17,7 @@ export const DEVELOPMENTS: readonly Development[] = [
     permanentEffect: 'Harvest action of value 2 or more: gain 1 wood',
   },
   {
-    id: 3,
+    id: '3',
     period: 1,
     deck: 'territory',
     type: 'territory',
@@ -25,7 +25,7 @@ export const DEVELOPMENTS: readonly Development[] = [
       'Harvest action of value 3 or more: gain 1 coin and 1 servant',
   },
   {
-    id: 4,
+    id: '4',
     period: 1,
     deck: 'territory',
     type: 'territory',
@@ -33,7 +33,7 @@ export const DEVELOPMENTS: readonly Development[] = [
     permanentEffect: 'Harvest action of value 4 or more: lose 2 Victory Points',
   },
   {
-    id: 5,
+    id: '5',
     period: 1,
     deck: 'territory',
     type: 'territory',
@@ -41,7 +41,7 @@ export const DEVELOPMENTS: readonly Development[] = [
     permanentEffect: 'Harvest action of value 5 or more: gain 3 wood',
   },
   {
-    id: 6,
+    id: '6',
     period: 1,
     deck: 'territory',
     type: 'territory',
@@ -50,7 +50,7 @@ export const DEVELOPMENTS: readonly Development[] = [
       'Harvest action of value 5 or more: gain 1 Faith Point and 1 stone',
   },
   {
-    id: 7,
+    id: '7',
     period: 1,
     deck: 'territory',
     type: 'territory',
@@ -58,7 +58,7 @@ export const DEVELOPMENTS: readonly Development[] = [
       'Harvest action of value 5 or more: gain 2 Military Points and 1 stone',
   },
   {
-    id: 8,
+    id: '8',
     period: 1,
     deck: 'territory',
     type: 'territory',
@@ -67,7 +67,7 @@ export const DEVELOPMENTS: readonly Development[] = [
       'Harvest action of value 6 or more: take 1 Council Privilege',
   },
   {
-    id: 9,
+    id: '9',
     period: 2,
     deck: 'territory',
     type: 'territory',
@@ -75,7 +75,7 @@ export const DEVELOPMENTS: readonly Development[] = [
     permanentEffect: 'Harvest action of value 1 or more: gain 2 coins',
   },
   {
-    id: 10,
+    id: '10',
     period: 2,
     deck: 'territory',
     type: 'territory',
@@ -84,7 +84,7 @@ export const DEVELOPMENTS: readonly Development[] = [
       'Harvest action of value 3 or more: gain 1 Military Point and 2 wood',
   },
   {
-    id: 11,
+    id: '11',
     period: 2,
     deck: 'territory',
     type: 'territory',
@@ -93,7 +93,7 @@ export const DEVELOPMENTS: readonly Development[] = [
       'Harvest action of value 4 or more: gain 1 servant and 2 stone',
   },
   {
-    id: 12,
+    id: '12',
     period: 2,
     deck: 'territory',
     type: 'territory',
@@ -101,7 +101,7 @@ export const DEVELOPMENTS: readonly Development[] = [
     permanentEffect: 'Harvest action of value 3 or more: gain 3 stone',
   },
   {
-    id: 13,
+    id: '13',
     period: 2,
     deck: 'territory',
     type: 'territory',
@@ -110,7 +110,7 @@ export const DEVELOPMENTS: readonly Development[] = [
       'Harvest action of value 4 or more: gain 1 coin and 2 wood',
   },
   {
-    id: 14,
+    id: '14',
     period: 2,
     deck: 'territory',
     type: 'territory',
@@ -118,7 +118,7 @@ export const DEVELOPMENTS: readonly Development[] = [
     permanentEffect: 'Harvest action of value 2 or more: gain 1 Faith Point',
   },
   {
-    id: 15,
+    id: '15',
     period: 2,
     deck: 'territory',
     type: 'territory',
@@ -126,7 +126,7 @@ export const DEVELOPMENTS: readonly Development[] = [
       'Harvest action of value 5 or more: gain 2 Military Points and 2 servants',
   },
   {
-    id: 16,
+    id: '16',
     period: 2,
     deck: 'territory',
     type: 'territory',
@@ -135,7 +135,7 @@ export const DEVELOPMENTS: readonly Development[] = [
       'Harvest action of value 6 or more: gain 1 coin, 1 stone, and 2 wood',
   },
   {
-    id: 17,
+    id: '17',
     period: 3,
     deck: 'territory',
     type: 'territory',
@@ -143,7 +143,7 @@ export const DEVELOPMENTS: readonly Development[] = [
     permanentEffect: 'Harvest action of value 1 or more: gain 3 coins',
   },
   {
-    id: 18,
+    id: '18',
     period: 3,
     deck: 'territory',
     type: 'territory',
@@ -152,7 +152,7 @@ export const DEVELOPMENTS: readonly Development[] = [
       'Harvest action of value 3 or more: gain 2 Victory Points and 2 wood',
   },
   {
-    id: 19,
+    id: '19',
     period: 3,
     deck: 'territory',
     type: 'territory',
@@ -161,7 +161,7 @@ export const DEVELOPMENTS: readonly Development[] = [
       'Harvest action of value 5 or more: gain 4 Victory Points and 1 wood',
   },
   {
-    id: 20,
+    id: '20',
     period: 3,
     deck: 'territory',
     type: 'territory',
@@ -170,7 +170,7 @@ export const DEVELOPMENTS: readonly Development[] = [
       'Harvest action of value 2 or more: gain 1 Victory Point and 2 stone',
   },
   {
-    id: 21,
+    id: '21',
     period: 3,
     deck: 'territory',
     type: 'territory',
@@ -179,7 +179,7 @@ export const DEVELOPMENTS: readonly Development[] = [
       'Harvest action of value 6 or more: gain 4 Victory Points and 1 stone',
   },
   {
-    id: 22,
+    id: '22',
     period: 3,
     deck: 'territory',
     type: 'territory',
@@ -188,7 +188,7 @@ export const DEVELOPMENTS: readonly Development[] = [
       'Harvest action of value 1 or more: gain 1 coin and 1 Faith Point',
   },
   {
-    id: 23,
+    id: '23',
     period: 3,
     deck: 'territory',
     type: 'territory',
@@ -197,7 +197,7 @@ export const DEVELOPMENTS: readonly Development[] = [
       'Harvest action of value 4 or more: gain 3 Military Points and 1 servant',
   },
   {
-    id: 24,
+    id: '24',
     period: 3,
     deck: 'territory',
     type: 'territory',
@@ -206,7 +206,7 @@ export const DEVELOPMENTS: readonly Development[] = [
       'Harvest action of value 2 or more: gain 1 Military Point and 2 servants',
   },
   {
-    id: 25,
+    id: '25',
     period: 1,
     deck: 'building',
     type: 'building',
@@ -216,7 +216,7 @@ export const DEVELOPMENTS: readonly Development[] = [
       'Production action of value 5 or more: gain 1 coin times your number of Building Cards',
   },
   {
-    id: 26,
+    id: '26',
     period: 1,
     deck: 'building',
     type: 'building',
@@ -226,7 +226,7 @@ export const DEVELOPMENTS: readonly Development[] = [
       'Production action of value 5 or more: gain 1 coin times your number of Territory Cards',
   },
   {
-    id: 27,
+    id: '27',
     period: 1,
     deck: 'building',
     type: 'building',
@@ -236,7 +236,7 @@ export const DEVELOPMENTS: readonly Development[] = [
       'Production action of value 6 or more: gain 1 Victory Point times your number of Venture Cards',
   },
   {
-    id: 28,
+    id: '28',
     period: 1,
     deck: 'building',
     type: 'building',
@@ -246,7 +246,7 @@ export const DEVELOPMENTS: readonly Development[] = [
       'Production action of value 6 or more: gain 1 Victory Point times your number of Character Cards',
   },
   {
-    id: 29,
+    id: '29',
     period: 1,
     deck: 'building',
     type: 'building',
@@ -256,7 +256,7 @@ export const DEVELOPMENTS: readonly Development[] = [
       'Production action of value 4 or more: exchange 1 wood for 3 coins OR 2 wood for 5 coins',
   },
   {
-    id: 30,
+    id: '30',
     period: 1,
     deck: 'building',
     type: 'building',
@@ -266,7 +266,7 @@ export const DEVELOPMENTS: readonly Development[] = [
       'Production action of value 3 or more: exchange 1 stone for 3 coins OR 2 stone for 5 coins',
   },
   {
-    id: 31,
+    id: '31',
     period: 1,
     deck: 'building',
     type: 'building',
@@ -276,7 +276,7 @@ export const DEVELOPMENTS: readonly Development[] = [
       'Production action of value 2 or more: exchange 1 coin for 1 Faith Point',
   },
   {
-    id: 32,
+    id: '32',
     period: 1,
     deck: 'building',
     type: 'building',
@@ -286,7 +286,7 @@ export const DEVELOPMENTS: readonly Development[] = [
       'Production action of value 1 or more: exchange 1 coin for 1 Council Privilege',
   },
   {
-    id: 33,
+    id: '33',
     period: 2,
     deck: 'building',
     type: 'building',
@@ -296,7 +296,7 @@ export const DEVELOPMENTS: readonly Development[] = [
       'Production action of value 3 or more: exchange 3 coins for 2 wood and 2 stone',
   },
   {
-    id: 34,
+    id: '34',
     period: 2,
     deck: 'building',
     type: 'building',
@@ -306,7 +306,7 @@ export const DEVELOPMENTS: readonly Development[] = [
       'Production action of value 3 or more: exchange 1 coin for 3 Victory Points OR 2 coins for 5 Victory Points',
   },
   {
-    id: 35,
+    id: '35',
     period: 2,
     deck: 'building',
     type: 'building',
@@ -316,7 +316,7 @@ export const DEVELOPMENTS: readonly Development[] = [
       'Production action of value 4 or more: exchange 1 wood for 3 Victory Points OR 3 wood for 7 Victory Points',
   },
   {
-    id: 36,
+    id: '36',
     period: 2,
     deck: 'building',
     type: 'building',
@@ -326,7 +326,7 @@ export const DEVELOPMENTS: readonly Development[] = [
       'Production action of value 5 or more: exchange 1 stone for 3 Victory Points OR 3 stone for 7 Victory Points',
   },
   {
-    id: 37,
+    id: '37',
     period: 2,
     deck: 'building',
     type: 'building',
@@ -336,7 +336,7 @@ export const DEVELOPMENTS: readonly Development[] = [
       'Production action of value 4 or more: exchange 1 servant, 1 wood, and 1 stone for 6 Victory Points',
   },
   {
-    id: 38,
+    id: '38',
     period: 2,
     deck: 'building',
     type: 'building',
@@ -346,7 +346,7 @@ export const DEVELOPMENTS: readonly Development[] = [
       'Production action of value 2 or more: exchange 1 Faith Point for 2 coins and 2 Victory Points',
   },
   {
-    id: 39,
+    id: '39',
     period: 2,
     deck: 'building',
     type: 'building',
@@ -356,7 +356,7 @@ export const DEVELOPMENTS: readonly Development[] = [
       'Production action of value 1 or more: exchange 1 servant for 3 Military Points',
   },
   {
-    id: 40,
+    id: '40',
     period: 2,
     deck: 'building',
     type: 'building',
@@ -366,7 +366,7 @@ export const DEVELOPMENTS: readonly Development[] = [
       'Production action of value 6 or more: gain 2 Military Points and 2 Victory Points',
   },
   {
-    id: 41,
+    id: '41',
     period: 3,
     deck: 'building',
     type: 'building',
@@ -375,7 +375,7 @@ export const DEVELOPMENTS: readonly Development[] = [
     permanentEffect: 'Production action of value 2 or more: gain 5 coins',
   },
   {
-    id: 42,
+    id: '42',
     period: 3,
     deck: 'building',
     type: 'building',
@@ -385,7 +385,7 @@ export const DEVELOPMENTS: readonly Development[] = [
       'Production action of value 4 or more: exchange 4 coins for 3 wood and 3 stone',
   },
   {
-    id: 43,
+    id: '43',
     period: 3,
     deck: 'building',
     type: 'building',
@@ -395,7 +395,7 @@ export const DEVELOPMENTS: readonly Development[] = [
       'Production action of value 1 or more: gain 3 Victory Points',
   },
   {
-    id: 44,
+    id: '44',
     period: 3,
     deck: 'building',
     type: 'building',
@@ -405,7 +405,7 @@ export const DEVELOPMENTS: readonly Development[] = [
       'Production action of value 5 or more: gain 2 Victory Points and 1 Council Privilege',
   },
   {
-    id: 45,
+    id: '45',
     period: 3,
     deck: 'building',
     type: 'building',
@@ -415,7 +415,7 @@ export const DEVELOPMENTS: readonly Development[] = [
       'Production action of value 6 or more: exchange 1 coin for 2 servants and 4 Victory Points',
   },
   {
-    id: 46,
+    id: '46',
     period: 3,
     deck: 'building',
     type: 'building',
@@ -425,7 +425,7 @@ export const DEVELOPMENTS: readonly Development[] = [
       'Production action of value 1 or more: exchange 1 wood OR 1 stone for 2 Faith Points',
   },
   {
-    id: 47,
+    id: '47',
     period: 3,
     deck: 'building',
     type: 'building',
@@ -435,7 +435,7 @@ export const DEVELOPMENTS: readonly Development[] = [
       'Production action of value 3 or more: exchange 1 servant for 3 Military Points and 1 Victory Point',
   },
   {
-    id: 48,
+    id: '48',
     period: 3,
     deck: 'building',
     type: 'building',
@@ -445,7 +445,7 @@ export const DEVELOPMENTS: readonly Development[] = [
       'Production action of value 2 or more: gain 1 Victory Point',
   },
   {
-    id: 49,
+    id: '49',
     period: 1,
     deck: 'character',
     type: 'character',
@@ -454,7 +454,7 @@ export const DEVELOPMENTS: readonly Development[] = [
     permanentEffect: 'When buying a Territory Card, increase the value by 2',
   },
   {
-    id: 50,
+    id: '50',
     period: 1,
     deck: 'character',
     type: 'character',
@@ -463,7 +463,7 @@ export const DEVELOPMENTS: readonly Development[] = [
       'When buying a Building Card, increase the value by 2 and decrease the cost by 1 wood OR 1 stone',
   },
   {
-    id: 51,
+    id: '51',
     period: 1,
     deck: 'character',
     type: 'character',
@@ -472,7 +472,7 @@ export const DEVELOPMENTS: readonly Development[] = [
       'When buying a Character Card, increase the value by 2 and decrease the cost by 1 coin',
   },
   {
-    id: 52,
+    id: '52',
     period: 1,
     deck: 'character',
     type: 'character',
@@ -481,7 +481,7 @@ export const DEVELOPMENTS: readonly Development[] = [
     permanentEffect: 'When buying a Venture Card, increase the value by 2',
   },
   {
-    id: 53,
+    id: '53',
     period: 1,
     deck: 'character',
     type: 'character',
@@ -489,7 +489,7 @@ export const DEVELOPMENTS: readonly Development[] = [
     permanentEffect: 'Increase Harvest action value by 2',
   },
   {
-    id: 54,
+    id: '54',
     period: 1,
     deck: 'character',
     type: 'character',
@@ -497,7 +497,7 @@ export const DEVELOPMENTS: readonly Development[] = [
     permanentEffect: 'Increase Production action value by 2',
   },
   {
-    id: 55,
+    id: '55',
     period: 1,
     deck: 'character',
     type: 'character',
@@ -507,7 +507,7 @@ export const DEVELOPMENTS: readonly Development[] = [
       'No bonus when buying a card from the 3rd and 4th floors of the towers',
   },
   {
-    id: 56,
+    id: '56',
     period: 1,
     deck: 'character',
     type: 'character',
@@ -516,7 +516,7 @@ export const DEVELOPMENTS: readonly Development[] = [
       'Buy any type of card up to value 4 and gain 1 Faith Point',
   },
   {
-    id: 57,
+    id: '57',
     period: 2,
     deck: 'character',
     type: 'character',
@@ -525,7 +525,7 @@ export const DEVELOPMENTS: readonly Development[] = [
       'Buy a Territory Card up to value 6 and gain 2 Military Points',
   },
   {
-    id: 58,
+    id: '58',
     period: 2,
     deck: 'character',
     type: 'character',
@@ -534,7 +534,7 @@ export const DEVELOPMENTS: readonly Development[] = [
       'Buy a Building Card up to value 6 with a discount of 1 wood/stone',
   },
   {
-    id: 59,
+    id: '59',
     period: 2,
     deck: 'character',
     type: 'character',
@@ -543,7 +543,7 @@ export const DEVELOPMENTS: readonly Development[] = [
       'Buy a Character Card up to value 6 with a discount of 2 coins',
   },
   {
-    id: 60,
+    id: '60',
     period: 2,
     deck: 'character',
     type: 'character',
@@ -552,7 +552,7 @@ export const DEVELOPMENTS: readonly Development[] = [
       'Buy a Venture Card up to value 6 and take 1 Council Privilege',
   },
   {
-    id: 61,
+    id: '61',
     period: 2,
     deck: 'character',
     type: 'character',
@@ -560,7 +560,7 @@ export const DEVELOPMENTS: readonly Development[] = [
     permanentEffect: 'Increase Harvest action value by 3',
   },
   {
-    id: 62,
+    id: '62',
     period: 2,
     deck: 'character',
     type: 'character',
@@ -568,7 +568,7 @@ export const DEVELOPMENTS: readonly Development[] = [
     permanentEffect: 'Increase Production action value by 3',
   },
   {
-    id: 63,
+    id: '63',
     period: 2,
     deck: 'character',
     type: 'character',
@@ -576,7 +576,7 @@ export const DEVELOPMENTS: readonly Development[] = [
     immediateEffect: '3 Faith Points',
   },
   {
-    id: 64,
+    id: '64',
     period: 2,
     deck: 'character',
     type: 'character',
@@ -584,7 +584,7 @@ export const DEVELOPMENTS: readonly Development[] = [
     immediateEffect: 'Take 3 unique Council Privileges',
   },
   {
-    id: 65,
+    id: '65',
     period: 3,
     deck: 'character',
     type: 'character',
@@ -593,7 +593,7 @@ export const DEVELOPMENTS: readonly Development[] = [
       'Gain 2 Victory Points times your number of Territory Cards',
   },
   {
-    id: 66,
+    id: '66',
     period: 3,
     deck: 'character',
     type: 'character',
@@ -602,7 +602,7 @@ export const DEVELOPMENTS: readonly Development[] = [
       'Gain 2 Victory Points times your number of Building Cards',
   },
   {
-    id: 67,
+    id: '67',
     period: 3,
     deck: 'character',
     type: 'character',
@@ -611,7 +611,7 @@ export const DEVELOPMENTS: readonly Development[] = [
       'Gain 2 Victory Points times your number of Character Cards',
   },
   {
-    id: 68,
+    id: '68',
     period: 3,
     deck: 'character',
     type: 'character',
@@ -619,7 +619,7 @@ export const DEVELOPMENTS: readonly Development[] = [
     immediateEffect: 'Gain 2 Victory Points times your number of Venture Cards',
   },
   {
-    id: 69,
+    id: '69',
     period: 3,
     deck: 'character',
     type: 'character',
@@ -628,7 +628,7 @@ export const DEVELOPMENTS: readonly Development[] = [
       'Perform a Harvest action at value 4 and gain 2 Faith Points',
   },
   {
-    id: 70,
+    id: '70',
     period: 3,
     deck: 'character',
     type: 'character',
@@ -637,7 +637,7 @@ export const DEVELOPMENTS: readonly Development[] = [
       'Perform a Production action at value 4 and gain 1 Faith Point',
   },
   {
-    id: 71,
+    id: '71',
     period: 3,
     deck: 'character',
     type: 'character',
@@ -646,7 +646,7 @@ export const DEVELOPMENTS: readonly Development[] = [
       'Gain 1 Victory Point times every 2 of your Military Points',
   },
   {
-    id: 72,
+    id: '72',
     period: 3,
     deck: 'character',
     type: 'character',
@@ -655,7 +655,7 @@ export const DEVELOPMENTS: readonly Development[] = [
       'Buy any type of card up to value 7 and take 1 Council Privilege',
   },
   {
-    id: 73,
+    id: '73',
     period: 1,
     deck: 'venture',
     type: 'venture',
@@ -664,7 +664,7 @@ export const DEVELOPMENTS: readonly Development[] = [
     permanentEffect: 'End of game: gain 4 Victory Points',
   },
   {
-    id: 74,
+    id: '74',
     period: 1,
     deck: 'venture',
     type: 'venture',
@@ -673,7 +673,7 @@ export const DEVELOPMENTS: readonly Development[] = [
     permanentEffect: 'End of game: gain 5 Victory Points',
   },
   {
-    id: 75,
+    id: '75',
     period: 1,
     deck: 'venture',
     type: 'venture',
@@ -682,7 +682,7 @@ export const DEVELOPMENTS: readonly Development[] = [
     permanentEffect: 'End of game: gain 3 Victory Points',
   },
   {
-    id: 76,
+    id: '76',
     period: 1,
     deck: 'venture',
     type: 'venture',
@@ -691,7 +691,7 @@ export const DEVELOPMENTS: readonly Development[] = [
     permanentEffect: 'End of game: gain 4 Victory Points',
   },
   {
-    id: 77,
+    id: '77',
     period: 1,
     deck: 'venture',
     type: 'venture',
@@ -700,7 +700,7 @@ export const DEVELOPMENTS: readonly Development[] = [
     permanentEffect: 'End of game: gain 5 Victory Points',
   },
   {
-    id: 78,
+    id: '78',
     period: 1,
     deck: 'venture',
     type: 'venture',
@@ -709,7 +709,7 @@ export const DEVELOPMENTS: readonly Development[] = [
     permanentEffect: 'End of game: gain 4 Victory Points',
   },
   {
-    id: 79,
+    id: '79',
     period: 1,
     deck: 'venture',
     type: 'venture',
@@ -718,7 +718,7 @@ export const DEVELOPMENTS: readonly Development[] = [
     permanentEffect: 'End of game: gain 5 Victory Points',
   },
   {
-    id: 80,
+    id: '80',
     period: 1,
     deck: 'venture',
     type: 'venture',
@@ -727,7 +727,7 @@ export const DEVELOPMENTS: readonly Development[] = [
     permanentEffect: 'End of game: gain 1 Victory Point',
   },
   {
-    id: 81,
+    id: '81',
     period: 2,
     deck: 'venture',
     type: 'venture',
@@ -736,7 +736,7 @@ export const DEVELOPMENTS: readonly Development[] = [
     permanentEffect: 'End of game: gain 5 Victory Points',
   },
   {
-    id: 82,
+    id: '82',
     period: 2,
     deck: 'venture',
     type: 'venture',
@@ -745,7 +745,7 @@ export const DEVELOPMENTS: readonly Development[] = [
     permanentEffect: 'End of game: gain 6 Victory Points',
   },
   {
-    id: 83,
+    id: '83',
     period: 2,
     deck: 'venture',
     type: 'venture',
@@ -754,7 +754,7 @@ export const DEVELOPMENTS: readonly Development[] = [
     permanentEffect: 'End of game: gain 2 Victory Points',
   },
   {
-    id: 84,
+    id: '84',
     period: 2,
     deck: 'venture',
     type: 'venture',
@@ -763,7 +763,7 @@ export const DEVELOPMENTS: readonly Development[] = [
     permanentEffect: 'End of game: gain 3 Victory Points',
   },
   {
-    id: 85,
+    id: '85',
     period: 2,
     deck: 'venture',
     type: 'venture',
@@ -772,7 +772,7 @@ export const DEVELOPMENTS: readonly Development[] = [
     permanentEffect: 'End of game: gain 5 Victory Points',
   },
   {
-    id: 86,
+    id: '86',
     period: 2,
     deck: 'venture',
     type: 'venture',
@@ -781,7 +781,7 @@ export const DEVELOPMENTS: readonly Development[] = [
     permanentEffect: 'End of game: gain 4 Victory Points',
   },
   {
-    id: 87,
+    id: '87',
     period: 2,
     deck: 'venture',
     type: 'venture',
@@ -790,7 +790,7 @@ export const DEVELOPMENTS: readonly Development[] = [
     permanentEffect: 'End of game: gain 5 Victory Points',
   },
   {
-    id: 88,
+    id: '88',
     period: 2,
     deck: 'venture',
     type: 'venture',
@@ -799,7 +799,7 @@ export const DEVELOPMENTS: readonly Development[] = [
     permanentEffect: 'End of game: gain 4 Victory Points',
   },
   {
-    id: 89,
+    id: '89',
     period: 3,
     deck: 'venture',
     type: 'venture',
@@ -808,7 +808,7 @@ export const DEVELOPMENTS: readonly Development[] = [
     permanentEffect: 'End of game: gain 6 Victory Points',
   },
   {
-    id: 90,
+    id: '90',
     period: 3,
     deck: 'venture',
     type: 'venture',
@@ -818,7 +818,7 @@ export const DEVELOPMENTS: readonly Development[] = [
     permanentEffect: 'End of game: gain 5 Victory Points',
   },
   {
-    id: 91,
+    id: '91',
     period: 3,
     deck: 'venture',
     type: 'venture',
@@ -827,7 +827,7 @@ export const DEVELOPMENTS: readonly Development[] = [
     permanentEffect: 'End of game: gain 4 Victory Points',
   },
   {
-    id: 92,
+    id: '92',
     period: 3,
     deck: 'venture',
     type: 'venture',
@@ -836,7 +836,7 @@ export const DEVELOPMENTS: readonly Development[] = [
     permanentEffect: 'End of game: gain 3 Victory Points',
   },
   {
-    id: 93,
+    id: '93',
     period: 3,
     deck: 'venture',
     type: 'venture',
@@ -845,7 +845,7 @@ export const DEVELOPMENTS: readonly Development[] = [
     permanentEffect: 'End of game: gain 7 Victory Points',
   },
   {
-    id: 94,
+    id: '94',
     period: 3,
     deck: 'venture',
     type: 'venture',
@@ -854,7 +854,7 @@ export const DEVELOPMENTS: readonly Development[] = [
     permanentEffect: 'End of game: gain 5 Victory Points',
   },
   {
-    id: 95,
+    id: '95',
     period: 3,
     deck: 'venture',
     type: 'venture',
@@ -863,7 +863,7 @@ export const DEVELOPMENTS: readonly Development[] = [
     permanentEffect: 'End of game: gain 8 Victory Points',
   },
   {
-    id: 96,
+    id: '96',
     period: 3,
     deck: 'venture',
     type: 'venture',
@@ -872,14 +872,14 @@ export const DEVELOPMENTS: readonly Development[] = [
     permanentEffect: 'End of game: gain 10 Victory Points',
   },
   {
-    id: 97,
+    id: '97',
     period: 1,
     deck: 'special',
     type: 'territory',
     permanentEffect: 'Harvest action of value 2 or more: gain 1 Special Token',
   },
   {
-    id: 98,
+    id: '98',
     period: 1,
     deck: 'special',
     type: 'territory',
@@ -888,7 +888,7 @@ export const DEVELOPMENTS: readonly Development[] = [
       'Place 1 of your Special Tokens faceup here. On a Harvest action of value 2 or more, gain/perform whatever is shown on the Special Token',
   },
   {
-    id: 99,
+    id: '99',
     period: 1,
     deck: 'special',
     type: 'territory',
@@ -896,7 +896,7 @@ export const DEVELOPMENTS: readonly Development[] = [
       'Harvest action of value N: gain 1 wood times your number of Venture Cards (max N times)',
   },
   {
-    id: 100,
+    id: '100',
     period: 1,
     deck: 'special',
     type: 'territory',
@@ -904,14 +904,14 @@ export const DEVELOPMENTS: readonly Development[] = [
       'Harvest action of value N: gain 1 stone times your number of Character Cards (max N times)',
   },
   {
-    id: 101,
+    id: '101',
     period: 2,
     deck: 'special',
     type: 'territory',
     permanentEffect: 'Harvest action of value 5 or more: gain 2 Faith Points',
   },
   {
-    id: 102,
+    id: '102',
     period: 2,
     deck: 'special',
     type: 'territory',
@@ -919,14 +919,14 @@ export const DEVELOPMENTS: readonly Development[] = [
     permanentEffect: 'Harvest action of value 3 or more: gain 2 Victory Points',
   },
   {
-    id: 103,
+    id: '103',
     period: 2,
     deck: 'special',
     type: 'territory',
     permanentEffect: 'Harvest action of value 7 or more: gain 5 Victory Points',
   },
   {
-    id: 104,
+    id: '104',
     period: 2,
     deck: 'special',
     type: 'territory',
@@ -935,7 +935,7 @@ export const DEVELOPMENTS: readonly Development[] = [
       'Harvest action of value 1 or more: gain 1 stone, 1 wood, 1 coin, and 1 servant',
   },
   {
-    id: 105,
+    id: '105',
     period: 3,
     deck: 'special',
     type: 'territory',
@@ -944,7 +944,7 @@ export const DEVELOPMENTS: readonly Development[] = [
       'Harvest action of value 6 or more: gain 1 Faith Point, 2 Victory Points, and 2 coins',
   },
   {
-    id: 106,
+    id: '106',
     period: 3,
     deck: 'special',
     type: 'territory',
@@ -952,7 +952,7 @@ export const DEVELOPMENTS: readonly Development[] = [
     permanentEffect: 'Harvest action of value 5 or more: gain 3 Victory Points',
   },
   {
-    id: 107,
+    id: '107',
     period: 3,
     deck: 'special',
     type: 'territory',
@@ -961,7 +961,7 @@ export const DEVELOPMENTS: readonly Development[] = [
       'Harvest action of value N: gain 1 Victory Point times your number of Building Cards (max N times)',
   },
   {
-    id: 108,
+    id: '108',
     period: 3,
     deck: 'special',
     type: 'territory',
@@ -970,7 +970,7 @@ export const DEVELOPMENTS: readonly Development[] = [
       'Harvest action of value 7 or more: gain 2 wood, 2 stone, and 2 coins',
   },
   {
-    id: 109,
+    id: '109',
     period: 1,
     deck: 'special',
     type: 'building',
@@ -980,7 +980,7 @@ export const DEVELOPMENTS: readonly Development[] = [
       'Production action of value 1 or more: exchange 1 coin for 1 Special Token',
   },
   {
-    id: 110,
+    id: '110',
     period: 1,
     deck: 'special',
     type: 'building',
@@ -990,7 +990,7 @@ export const DEVELOPMENTS: readonly Development[] = [
       'Production action of value 5 or more: Gain 1 Special Token OR exchange 3 Special Tokens to play a Leader Card for free',
   },
   {
-    id: 111,
+    id: '111',
     period: 1,
     deck: 'special',
     type: 'building',
@@ -1000,7 +1000,7 @@ export const DEVELOPMENTS: readonly Development[] = [
       'Production action of value N: exchange 1 stone for 1 coin and 1 Victory Point up to N times',
   },
   {
-    id: 112,
+    id: '112',
     period: 1,
     deck: 'special',
     type: 'building',
@@ -1010,7 +1010,7 @@ export const DEVELOPMENTS: readonly Development[] = [
       'Production action of value N: exchange 1 wood for 1 coin and 1 Victory Point up to N times',
   },
   {
-    id: 113,
+    id: '113',
     period: 2,
     deck: 'special',
     type: 'building',
@@ -1020,7 +1020,7 @@ export const DEVELOPMENTS: readonly Development[] = [
       'Production action of value 3 or more: activate 1 of your Building Cards, ignoring its value',
   },
   {
-    id: 114,
+    id: '114',
     period: 2,
     deck: 'special',
     type: 'building',
@@ -1030,7 +1030,7 @@ export const DEVELOPMENTS: readonly Development[] = [
       'Production action of value 5 or more: activate 1 of your Building or Territory Cards, ignoring its value',
   },
   {
-    id: 115,
+    id: '115',
     period: 2,
     deck: 'special',
     type: 'building',
@@ -1040,7 +1040,7 @@ export const DEVELOPMENTS: readonly Development[] = [
       'Production action of value 4 or more: exchange 1 Special Token for 5 Victory Points',
   },
   {
-    id: 116,
+    id: '116',
     period: 2,
     deck: 'special',
     type: 'building',
@@ -1050,7 +1050,7 @@ export const DEVELOPMENTS: readonly Development[] = [
       'Production action of value 7 or more: exchange 1 wood and 1 stone for 3 Faith Points',
   },
   {
-    id: 117,
+    id: '117',
     period: 3,
     deck: 'special',
     type: 'building',
@@ -1060,7 +1060,7 @@ export const DEVELOPMENTS: readonly Development[] = [
       'Production action of value 6 or more: 2 Victory Points times your number of played Leader Cards',
   },
   {
-    id: 118,
+    id: '118',
     period: 3,
     deck: 'special',
     type: 'building',
@@ -1070,7 +1070,7 @@ export const DEVELOPMENTS: readonly Development[] = [
       'Production action of value 7 or more: gain 7 Victory Points',
   },
   {
-    id: 119,
+    id: '119',
     period: 3,
     deck: 'special',
     type: 'building',
@@ -1080,7 +1080,7 @@ export const DEVELOPMENTS: readonly Development[] = [
       'Production action of value 1 or more: lose 3 Victory Points',
   },
   {
-    id: 120,
+    id: '120',
     period: 3,
     deck: 'special',
     type: 'building',
@@ -1090,7 +1090,7 @@ export const DEVELOPMENTS: readonly Development[] = [
       'Production action of value 5 or more: gain 3 Faith Points',
   },
   {
-    id: 121,
+    id: '121',
     period: 1,
     deck: 'special',
     type: 'character',
@@ -1098,7 +1098,7 @@ export const DEVELOPMENTS: readonly Development[] = [
     immediateEffect: 'Gain 1 Leader Card and 1 Faith Point',
   },
   {
-    id: 122,
+    id: '122',
     period: 1,
     deck: 'special',
     type: 'character',
@@ -1106,7 +1106,7 @@ export const DEVELOPMENTS: readonly Development[] = [
     immediateEffect: 'Gain 2 Leader Cards',
   },
   {
-    id: 123,
+    id: '123',
     period: 1,
     deck: 'special',
     type: 'character',
@@ -1116,7 +1116,7 @@ export const DEVELOPMENTS: readonly Development[] = [
       'Increase both Production action and Harvest action values by 1',
   },
   {
-    id: 124,
+    id: '124',
     period: 1,
     deck: 'special',
     type: 'character',
@@ -1125,7 +1125,7 @@ export const DEVELOPMENTS: readonly Development[] = [
     permanentEffect: 'When playing a Leader Card, gain a Special Token',
   },
   {
-    id: 125,
+    id: '125',
     period: 2,
     deck: 'special',
     type: 'character',
@@ -1133,7 +1133,7 @@ export const DEVELOPMENTS: readonly Development[] = [
     immediateEffect: 'Play a Leader Card for free',
   },
   {
-    id: 126,
+    id: '126',
     period: 2,
     deck: 'special',
     type: 'character',
@@ -1143,7 +1143,7 @@ export const DEVELOPMENTS: readonly Development[] = [
       'Ignore the 3 coin occupied tower penalty when entering the Special Tower',
   },
   {
-    id: 127,
+    id: '127',
     period: 2,
     deck: 'special',
     type: 'character',
@@ -1152,7 +1152,7 @@ export const DEVELOPMENTS: readonly Development[] = [
     permanentEffect: 'When playing a Leader Card, ignore 1 of its requirements',
   },
   {
-    id: 128,
+    id: '128',
     period: 2,
     deck: 'special',
     type: 'character',
@@ -1162,7 +1162,7 @@ export const DEVELOPMENTS: readonly Development[] = [
       'Place 1 of your Special Tokens faceup here. When occupying a Market action space, gain/perform whatever is shown on the Special Token',
   },
   {
-    id: 129,
+    id: '129',
     period: 3,
     deck: 'special',
     type: 'character',
@@ -1171,7 +1171,7 @@ export const DEVELOPMENTS: readonly Development[] = [
       '3 Victory Points times your number of played Leader Cards',
   },
   {
-    id: 130,
+    id: '130',
     period: 3,
     deck: 'special',
     type: 'character',
@@ -1180,7 +1180,7 @@ export const DEVELOPMENTS: readonly Development[] = [
       'Take a discarded card of any type (except Special Development) for free',
   },
   {
-    id: 131,
+    id: '131',
     period: 3,
     deck: 'special',
     type: 'character',
@@ -1188,7 +1188,7 @@ export const DEVELOPMENTS: readonly Development[] = [
     immediateEffect: 'Gain 1 Victory Point times your number of Faith Points',
   },
   {
-    id: 132,
+    id: '132',
     period: 3,
     deck: 'special',
     type: 'character',
@@ -1197,7 +1197,7 @@ export const DEVELOPMENTS: readonly Development[] = [
       'Take a discarded Venture Card (not from the Special Development deck) for free',
   },
   {
-    id: 133,
+    id: '133',
     period: 1,
     deck: 'special',
     type: 'venture',
@@ -1207,7 +1207,7 @@ export const DEVELOPMENTS: readonly Development[] = [
       'End of game: gain 2 Victory Points times your number of Special Tokens (max 12 points)',
   },
   {
-    id: 134,
+    id: '134',
     period: 1,
     deck: 'special',
     type: 'venture',
@@ -1217,7 +1217,7 @@ export const DEVELOPMENTS: readonly Development[] = [
       'End of game: gain 2 Victory Points times each 1 wood and 1 stone you have (max 12 points)',
   },
   {
-    id: 135,
+    id: '135',
     period: 1,
     deck: 'special',
     type: 'venture',
@@ -1227,7 +1227,7 @@ export const DEVELOPMENTS: readonly Development[] = [
       'End of game: gain 1 Victory Point times your number of servants (max 12 points)',
   },
   {
-    id: 136,
+    id: '136',
     period: 1,
     deck: 'special',
     type: 'venture',
@@ -1237,7 +1237,7 @@ export const DEVELOPMENTS: readonly Development[] = [
     permanentEffect: 'End of game: gain 5 victory points',
   },
   {
-    id: 137,
+    id: '137',
     period: 2,
     deck: 'special',
     type: 'venture',
@@ -1247,7 +1247,7 @@ export const DEVELOPMENTS: readonly Development[] = [
       'End of game: gain 1 Victory Point times every 2 of your Military Points',
   },
   {
-    id: 138,
+    id: '138',
     period: 2,
     deck: 'special',
     type: 'venture',
@@ -1256,7 +1256,7 @@ export const DEVELOPMENTS: readonly Development[] = [
     permanentEffect: 'End of game: gain 5 Victory Points',
   },
   {
-    id: 139,
+    id: '139',
     period: 2,
     deck: 'special',
     type: 'venture',
@@ -1265,7 +1265,7 @@ export const DEVELOPMENTS: readonly Development[] = [
     permanentEffect: 'End of game: gain 3 Victory Points',
   },
   {
-    id: 140,
+    id: '140',
     period: 2,
     deck: 'special',
     type: 'venture',
@@ -1275,7 +1275,7 @@ export const DEVELOPMENTS: readonly Development[] = [
     permanentEffect: 'End of game: gain 6 Victory Points',
   },
   {
-    id: 141,
+    id: '141',
     period: 3,
     deck: 'special',
     type: 'venture',
@@ -1284,7 +1284,7 @@ export const DEVELOPMENTS: readonly Development[] = [
     permanentEffect: 'End of game: gain 15 Victory Points',
   },
   {
-    id: 142,
+    id: '142',
     period: 3,
     deck: 'special',
     type: 'venture',
@@ -1293,7 +1293,7 @@ export const DEVELOPMENTS: readonly Development[] = [
     permanentEffect: 'End of game: gain 12 Victory Points',
   },
   {
-    id: 143,
+    id: '143',
     period: 3,
     deck: 'special',
     type: 'venture',
@@ -1302,7 +1302,7 @@ export const DEVELOPMENTS: readonly Development[] = [
     permanentEffect: 'End of game: gain 10 Victory Points',
   },
   {
-    id: 144,
+    id: '144',
     period: 3,
     deck: 'special',
     type: 'venture',
@@ -1311,7 +1311,7 @@ export const DEVELOPMENTS: readonly Development[] = [
     permanentEffect: 'End of game: gain 12 Victory Points',
   },
   {
-    id: 145,
+    id: '145',
     period: 1,
     deck: 'territory',
     type: 'territory',
@@ -1319,7 +1319,7 @@ export const DEVELOPMENTS: readonly Development[] = [
     permanentEffect: 'Harvest action of value 3 or more: lose 1 Victory Point',
   },
   {
-    id: 146,
+    id: '146',
     period: 1,
     deck: 'territory',
     type: 'territory',
@@ -1327,7 +1327,7 @@ export const DEVELOPMENTS: readonly Development[] = [
     permanentEffect: 'Harvest action of value 4 or more: lose 2 Victory Points',
   },
   {
-    id: 147,
+    id: '147',
     period: 2,
     deck: 'territory',
     type: 'territory',
@@ -1336,7 +1336,7 @@ export const DEVELOPMENTS: readonly Development[] = [
       'Harvest action of value 5 or more: gain 3 wood OR 3 servants',
   },
   {
-    id: 148,
+    id: '148',
     period: 2,
     deck: 'territory',
     type: 'territory',
@@ -1345,7 +1345,7 @@ export const DEVELOPMENTS: readonly Development[] = [
       'Harvest action of value 4 or more: gain 2 Military Points OR 1 Faith Point',
   },
   {
-    id: 149,
+    id: '149',
     period: 3,
     deck: 'territory',
     type: 'territory',
@@ -1354,7 +1354,7 @@ export const DEVELOPMENTS: readonly Development[] = [
       'Harvest action of value 4 or more: gain 3 stone OR 3 wood',
   },
   {
-    id: 150,
+    id: '150',
     period: 3,
     deck: 'territory',
     type: 'territory',
@@ -1363,7 +1363,7 @@ export const DEVELOPMENTS: readonly Development[] = [
       'Harvest action of value 5 or more: gain 1 Victory Point and 3 Faith Points',
   },
   {
-    id: 151,
+    id: '151',
     period: 1,
     deck: 'character',
     type: 'character',
@@ -1373,7 +1373,7 @@ export const DEVELOPMENTS: readonly Development[] = [
       'Ignore the -3 penalty when occupying the large Production action space',
   },
   {
-    id: 152,
+    id: '152',
     period: 1,
     deck: 'character',
     type: 'character',
@@ -1383,7 +1383,7 @@ export const DEVELOPMENTS: readonly Development[] = [
       'Ignore the -3 penalty when occupying the large Harvest action space',
   },
   {
-    id: 153,
+    id: '153',
     period: 2,
     deck: 'character',
     type: 'character',
@@ -1393,7 +1393,7 @@ export const DEVELOPMENTS: readonly Development[] = [
     permanentEffect: 'Increase Production action value by 1',
   },
   {
-    id: 154,
+    id: '154',
     period: 2,
     deck: 'character',
     type: 'character',
@@ -1403,7 +1403,7 @@ export const DEVELOPMENTS: readonly Development[] = [
     permanentEffect: 'Increase Harvest action value by 1',
   },
   {
-    id: 155,
+    id: '155',
     period: 3,
     deck: 'character',
     type: 'character',
@@ -1412,7 +1412,7 @@ export const DEVELOPMENTS: readonly Development[] = [
       'Gain 3 Victory Points and each of your opponents must discard 1 Building Card OR 1 Territory Card (they choose)',
   },
   {
-    id: 156,
+    id: '156',
     period: 3,
     deck: 'character',
     type: 'character',
@@ -1421,7 +1421,7 @@ export const DEVELOPMENTS: readonly Development[] = [
       'Take 2 Council Privileges and each of your opponents must discard 1 Character Card OR 1 Venture Card (they choose)',
   },
   {
-    id: 157,
+    id: '157',
     period: 1,
     deck: 'building',
     type: 'building',
@@ -1431,7 +1431,7 @@ export const DEVELOPMENTS: readonly Development[] = [
       'Production action of value 2 or more: exchange 1 Victory Point for 1 Council Privilege',
   },
   {
-    id: 158,
+    id: '158',
     period: 1,
     deck: 'building',
     type: 'building',
@@ -1441,7 +1441,7 @@ export const DEVELOPMENTS: readonly Development[] = [
       'Production action of value 6 or more: lose 1 Victory Point times your number of opponents and each opponent must give you 2 coins OR 3 Victory Points (they choose)',
   },
   {
-    id: 159,
+    id: '159',
     period: 2,
     deck: 'building',
     type: 'building',
@@ -1451,7 +1451,7 @@ export const DEVELOPMENTS: readonly Development[] = [
       'Production action of value 5 ore more: discard 1 of your Character Cards to gain 7 Victory Points',
   },
   {
-    id: 160,
+    id: '160',
     period: 2,
     deck: 'building',
     type: 'building',
@@ -1461,7 +1461,7 @@ export const DEVELOPMENTS: readonly Development[] = [
       'Production action of value 4 or more: lose 1 Military Point times your number of opponents and each opponent must give you 2 servants OR 3 Victory Points (they choose)',
   },
   {
-    id: 161,
+    id: '161',
     period: 3,
     deck: 'building',
     type: 'building',
@@ -1471,7 +1471,7 @@ export const DEVELOPMENTS: readonly Development[] = [
       'Production action of value 2 or more: gain the reward of an empty Market action space OR take 1 Council Privilege',
   },
   {
-    id: 162,
+    id: '162',
     period: 3,
     deck: 'building',
     type: 'building',
@@ -1481,7 +1481,7 @@ export const DEVELOPMENTS: readonly Development[] = [
       'Production action of value 4 or more: discard 1 played Leader Card and gain 6 Victory Points',
   },
   {
-    id: 163,
+    id: '163',
     period: 1,
     deck: 'venture',
     type: 'venture',
@@ -1491,7 +1491,7 @@ export const DEVELOPMENTS: readonly Development[] = [
     permanentEffect: 'End of game: gain 4 Victory Points',
   },
   {
-    id: 164,
+    id: '164',
     period: 1,
     deck: 'venture',
     type: 'venture',
@@ -1501,7 +1501,7 @@ export const DEVELOPMENTS: readonly Development[] = [
       'End of game: gain 2 Victory Points times your played Leader Cards',
   },
   {
-    id: 165,
+    id: '165',
     period: 2,
     deck: 'venture',
     type: 'venture',
@@ -1511,7 +1511,7 @@ export const DEVELOPMENTS: readonly Development[] = [
     permanentEffect: 'End of game: gain 6 Victory Points',
   },
   {
-    id: 166,
+    id: '166',
     period: 2,
     deck: 'venture',
     type: 'venture',
@@ -1521,7 +1521,7 @@ export const DEVELOPMENTS: readonly Development[] = [
       'End of game: gain 2 Victory Points times your number of Building Cards',
   },
   {
-    id: 167,
+    id: '167',
     period: 3,
     deck: 'venture',
     type: 'venture',
@@ -1531,7 +1531,7 @@ export const DEVELOPMENTS: readonly Development[] = [
     permanentEffect: 'End of game: gain 8 Victory Points',
   },
   {
-    id: 168,
+    id: '168',
     period: 3,
     deck: 'venture',
     type: 'venture',
