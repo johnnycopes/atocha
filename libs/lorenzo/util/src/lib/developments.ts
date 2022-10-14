@@ -1498,7 +1498,7 @@ export const DEVELOPMENTS: readonly Development[] = [
     cost: '3 coins and 2 servants',
     immediateEffect: 'Gain 2 Leader Cards',
     permanentEffect:
-      'End of game: gain 2 Victory Points times your played Leader Cards',
+      'End of game: gain 2 Victory Points times your number of played Leader Cards',
   },
   {
     id: '165',
@@ -1687,5 +1687,79 @@ export const DEVELOPMENTS: readonly Development[] = [
       'Gain 1 Faith Point and each of your opponents lose 1 Faith Point',
     permanentEffect:
       "End of game: gain 6 Victory Points if you haven't been excommunicated",
+  },
+  {
+    id: 'KS17',
+    period: 2,
+    deck: 'territory',
+    type: 'territory',
+    immediateEffect: 'Gain 1 coin and 2 stone',
+    permanentEffect: 'Harvest action of 3 or more: gain 2 coin and 2 stone',
+  },
+  {
+    id: 'KS18',
+    period: 2,
+    deck: 'character',
+    type: 'character',
+    cost: '4 coins',
+    immediateEffect: 'Perform a Production action at value 3',
+    permanentEffect:
+      'Each of your opponents has a -1 penalty on their Production actions',
+  },
+  {
+    id: 'KS19',
+    period: 2,
+    deck: 'building',
+    type: 'building',
+    cost: '3 wood and 1 stone',
+    immediateEffect: 'Gain 4 Victory Points and 1 Leader Card',
+    permanentEffect:
+      'Production action of 6 or more: gain 1 Faith Point times your number of played Leader Cards',
+  },
+  {
+    id: 'KS20',
+    period: 2,
+    deck: 'venture',
+    type: 'venture',
+    cost: '3 coin and 3 servants',
+    immediateEffect: 'Take 2 Council Privileges',
+    permanentEffect:
+      'End of game: gain 2 Victory Points times your number of played Character Cards',
+  },
+  {
+    id: 'KS21',
+    period: 3,
+    deck: 'territory',
+    type: 'territory',
+    permanentEffect:
+      'Harvest action of 3 or more: lose all of your servants and gain 6 Victory Points',
+  },
+  {
+    id: 'KS22',
+    period: 3,
+    deck: 'character',
+    type: 'character',
+    cost: '6 coins',
+    immediateEffect:
+      'Gain 1 Victory Point times the number of your Victory Points (rounding down)',
+  },
+  {
+    id: 'KS23',
+    period: 3,
+    deck: 'building',
+    type: 'building',
+    cost: '2 servants and 5 stone',
+    immediateEffect: 'Gain 6 Victory Points',
+    permanentEffect:
+      'Production action of 6 or more: copy the immediate effect of 1 of your Venture Cards',
+  },
+  {
+    id: 'KS24',
+    period: 3,
+    deck: 'venture',
+    type: 'venture',
+    cost: '5 coins and 5 stone',
+    immediateEffect: 'Take 3 Council Privileges',
+    permanentEffect: 'End of game: gain 10 Victory Points',
   },
 ];
