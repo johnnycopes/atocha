@@ -13,7 +13,7 @@
         "polyfills": "apps/lorenzo/src/polyfills.ts",
         "tsConfig": "apps/lorenzo/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
-        "assets": ["apps/lorenzo/src/favicon.ico", "apps/lorenzo/src/assets"],
+        "assets": ["apps/lorenzo/src/assets"],
         "styles": ["apps/lorenzo/src/styles.scss"],
         "scripts": []
       },
