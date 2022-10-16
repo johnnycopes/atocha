@@ -30,7 +30,7 @@ export const DEVELOPMENTS: readonly Development[] = [
     deck: 'territory',
     type: 'territory',
     immediateEffect: 'Gain 2 stone',
-    permanentEffect: 'Harvest action of value 4 or more: lose 2 Victory Points',
+    permanentEffect: 'Harvest action of value 4 or more: gain 2 stone',
   },
   {
     id: '5',
