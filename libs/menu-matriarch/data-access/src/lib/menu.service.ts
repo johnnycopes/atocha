@@ -127,7 +127,7 @@ export class MenuService {
               .pipe(first())
               .subscribe((menuId) => {
                 if (id === menuId) {
-                  this._localStateService.setMenuId(null);
+                  this._localStateService.updateMenuId(null);
                 }
               });
           })

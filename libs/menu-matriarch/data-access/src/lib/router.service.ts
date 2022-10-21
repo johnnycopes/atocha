@@ -66,7 +66,7 @@ export class RouterService {
           const divviedUrl = event.urlAfterRedirects.split('/');
           const menuId = divviedUrl[divviedUrl.length - 1];
           if (menuId !== Route.planner) {
-            this._localStateService.setMenuId(menuId);
+            this._localStateService.updateMenuId(menuId);
           }
         })
       )
@@ -107,6 +107,6 @@ export class RouterService {
   }
 
   updatePlannerView(view: PlannerView): void {
-    this._localStateService.setPlannerView(view);
+    this._localStateService.updatePlannerView(view);
   }
 }
