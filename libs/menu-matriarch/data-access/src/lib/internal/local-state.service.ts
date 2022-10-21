@@ -10,12 +10,12 @@ import { PlannerView } from '@atocha/menu-matriarch/util';
 })
 export class LocalStateService {
   private _menuId$ = new BehaviorSubject<string | null>(null);
-  private _plannerView$ = new BehaviorSubject<PlannerView>(
+  private _plannerViewSubject = new BehaviorSubject<PlannerView>(
     (this._localStorageService.getItem('PLANNER_VIEW') ??
       'dishes') as PlannerView
   );
 
-  plannerView$ = this._plannerView$.pipe(
+  plannerView$ = this._plannerViewSubject.pipe(
     tap((view) => this._localStorageService.setItem('PLANNER_VIEW', view)),
     shareReplay({ bufferSize: 1, refCount: true })
   );
@@ -23,7 +23,7 @@ export class LocalStateService {
   constructor(private _localStorageService: LocalStorageService) {}
 
   setPlannerView(view: PlannerView): void {
-    this._plannerView$.next(view);
+    this._plannerViewSubject.next(view);
   }
 
   getMenuId(): string | null {
