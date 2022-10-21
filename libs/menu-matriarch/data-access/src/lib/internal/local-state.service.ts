@@ -9,14 +9,20 @@ import { PlannerView } from '@atocha/menu-matriarch/util';
   providedIn: 'root',
 })
 export class LocalStateService {
+  private readonly _keys = {
+    plannerView: 'PLANNER_VIEW',
+    menuId: 'MENU_ID',
+  };
   private _menuIdSubject = new BehaviorSubject<string | null>(null);
   private _plannerViewSubject = new BehaviorSubject<PlannerView>(
-    (this._localStorageService.getItem('PLANNER_VIEW') ??
+    (this._localStorageService.getItem(this._keys.plannerView) ??
       'dishes') as PlannerView
   );
 
   plannerView$ = this._plannerViewSubject.pipe(
-    tap((view) => this._localStorageService.setItem('PLANNER_VIEW', view)),
+    tap((view) =>
+      this._localStorageService.setItem(this._keys.plannerView, view)
+    ),
     shareReplay({ bufferSize: 1, refCount: true })
   );
 
@@ -27,7 +33,7 @@ export class LocalStateService {
   }
 
   getMenuId(): string | null {
-    const id = this._localStorageService.getItem('MENU_ID');
+    const id = this._localStorageService.getItem(this._keys.menuId);
     this._menuIdSubject.next(id);
     return id;
   }
@@ -42,11 +48,11 @@ export class LocalStateService {
 
   setMenuId(id: string): void {
     this._menuIdSubject.next(id);
-    this._localStorageService.setItem('MENU_ID', id);
+    this._localStorageService.setItem(this._keys.menuId, id);
   }
 
   deleteMenuId(): void {
     this._menuIdSubject.next(null);
-    this._localStorageService.removeItem('MENU_ID');
+    this._localStorageService.removeItem(this._keys.menuId);
   }
 }
