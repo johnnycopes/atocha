@@ -6,18 +6,22 @@ export const APP_NAME_TOKEN = new InjectionToken<string>('appName');
   providedIn: 'root',
 })
 export class LocalStorageService {
-  constructor(@Inject(APP_NAME_TOKEN) private _appName: string) {}
+  private _prefix = '';
+
+  constructor(@Inject(APP_NAME_TOKEN) private _appName: string) {
+    this._prefix = this._appName + '_';
+  }
 
   getItem(key: string): string | null {
-    return window.localStorage.getItem(key);
+    return window.localStorage.getItem(this._prefix + key);
   }
 
   setItem(key: string, value: string): void {
-    window.localStorage.setItem(key, value);
+    window.localStorage.setItem(this._prefix + key, value);
   }
 
   removeItem(key: string): void {
-    window.localStorage.removeItem(key);
+    window.localStorage.removeItem(this._prefix + key);
   }
 
   clear(): void {

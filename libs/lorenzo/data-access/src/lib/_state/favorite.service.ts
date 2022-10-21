@@ -8,11 +8,10 @@ import { Card } from '@atocha/lorenzo/util';
   providedIn: 'root',
 })
 export class FavoriteService {
-  private _prefix = 'LORENZO_';
   private _keys: Record<Card, string> = {
-    development: this._prefix + 'DEVELOPMENT_IDS',
-    family: this._prefix + 'FAMILY_IDS',
-    leader: this._prefix + 'LEADER_IDS',
+    development: 'DEVELOPMENT_IDS',
+    family: 'FAMILY_IDS',
+    leader: 'LEADER_IDS',
   };
   private _idSubject = new BehaviorSubject<Record<Card, Set<string>>>({
     development: this._getIds(this._keys.development),

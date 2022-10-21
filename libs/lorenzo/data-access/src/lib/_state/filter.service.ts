@@ -8,8 +8,7 @@ import { View } from '@atocha/lorenzo/util';
   providedIn: 'root',
 })
 export class FilterService {
-  private _prefix = 'LORENZO_';
-  private _viewKey = this._prefix + 'VIEW';
+  private _viewKey = 'VIEW';
   private _viewSubject = new BehaviorSubject<View>(this._getView());
   private _textSubject = new BehaviorSubject<string>('');
 

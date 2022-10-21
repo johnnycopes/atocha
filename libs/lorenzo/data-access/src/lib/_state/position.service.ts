@@ -8,10 +8,9 @@ import { View } from '@atocha/lorenzo/util';
   providedIn: 'root',
 })
 export class PositionService {
-  private _prefix = 'LORENZO_';
   private _keys: Record<View, string> = {
-    all: this._prefix + 'ALL_POSITION',
-    favorites: this._prefix + 'FAVORITES_POSITION',
+    all: 'ALL_POSITION',
+    favorites: 'FAVORITES_POSITION',
   };
   private _positionSubject = new BehaviorSubject<Record<View, number>>({
     all: this._getPosition(this._keys.all),
