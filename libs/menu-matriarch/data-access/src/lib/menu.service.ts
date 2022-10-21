@@ -10,7 +10,7 @@ import {
   mapMenuDtoToMenu,
 } from '@atocha/menu-matriarch/util';
 import { DishService } from './dish.service';
-import { LocalStorageService } from './internal/local-storage.service';
+import { LocalStorageService } from './internal/local-state.service';
 import { MenuDataService } from './internal/menu-data.service';
 import { UserService } from './user.service';
 
