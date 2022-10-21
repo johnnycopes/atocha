@@ -96,7 +96,7 @@ export class RouterService {
   }
 
   getPlannerRoute(): Observable<string[]> {
-    return this._localStateService.watchMenuId().pipe(
+    return this._localStateService.menuId$.pipe(
       map((menuId) => {
         if (!menuId) {
           return [Route.planner];
