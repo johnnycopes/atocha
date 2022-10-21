@@ -8,11 +8,10 @@ import { BehaviorSubject, first, shareReplay, tap } from 'rxjs';
   providedIn: 'root',
 })
 export class VisibilityService {
-  private _prefix = 'LORENZO_';
   private _keys: Record<Card, string> = {
-    development: this._prefix + 'DEVELOPMENT_VISIBLE',
-    family: this._prefix + 'FAMILY_VISIBLE',
-    leader: this._prefix + 'LEADER_VISIBLE',
+    development: 'DEVELOPMENT_VISIBLE',
+    family: 'FAMILY_VISIBLE',
+    leader: 'LEADER_VISIBLE',
   };
   private _visibilitySubject = new BehaviorSubject<Record<Card, boolean>>({
     development: this._getVisiblity(this._keys.development),

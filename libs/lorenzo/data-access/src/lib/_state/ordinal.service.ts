@@ -8,11 +8,10 @@ import { Card, Ordinal } from '@atocha/lorenzo/util';
   providedIn: 'root',
 })
 export class OrdinalService {
-  private _prefix = 'LORENZO_';
   private _keys: Record<Card, string> = {
-    development: this._prefix + 'DEVELOPMENT_ORDINAL',
-    family: this._prefix + 'FAMILY_ORDINAL',
-    leader: this._prefix + 'LEADER_ORDINAL',
+    development: 'DEVELOPMENT_ORDINAL',
+    family: 'FAMILY_ORDINAL',
+    leader: 'LEADER_ORDINAL',
   };
   private _ordinalSubject = new BehaviorSubject<Record<Card, Ordinal>>({
     development: this._getOrdinal(this._keys.development, 3),

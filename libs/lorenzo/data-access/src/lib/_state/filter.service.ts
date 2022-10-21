@@ -8,8 +8,7 @@ import { View } from '@atocha/lorenzo/util';
   providedIn: 'root',
 })
 export class FilterService {
-  private _prefix = 'LORENZO_';
-  private _viewKey = this._prefix + 'VIEW';
+  private _key = 'VIEW';
   private _viewSubject = new BehaviorSubject<View>(this._getView());
   private _textSubject = new BehaviorSubject<string>('');
 
@@ -34,10 +33,10 @@ export class FilterService {
   }
 
   private _getView(): View {
-    return (this._localStorageService.getItem(this._viewKey) ?? 'all') as View;
+    return (this._localStorageService.getItem(this._key) ?? 'all') as View;
   }
 
   private _setView(view: View): void {
-    this._localStorageService.setItem(this._viewKey, view);
+    this._localStorageService.setItem(this._key, view);
   }
 }
