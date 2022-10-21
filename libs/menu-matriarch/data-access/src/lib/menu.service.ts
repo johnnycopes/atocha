@@ -10,7 +10,7 @@ import {
   mapMenuDtoToMenu,
 } from '@atocha/menu-matriarch/util';
 import { DishService } from './dish.service';
-import { LocalStorageService } from './internal/local-storage.service';
+import { LocalStateService } from './internal/local-state.service';
 import { MenuDataService } from './internal/menu-data.service';
 import { UserService } from './user.service';
 
@@ -21,7 +21,7 @@ export class MenuService {
   constructor(
     private _authService: AuthService,
     private _dishService: DishService,
-    private _localStorageService: LocalStorageService,
+    private _localStateService: LocalStateService,
     private _menuDataService: MenuDataService,
     private _userService: UserService
   ) {}
@@ -123,9 +123,13 @@ export class MenuService {
               return;
             }
             await this._menuDataService.deleteMenu(menu);
-            if (id === this._localStorageService.getMenuId()) {
-              this._localStorageService.deleteMenuId();
-            }
+            this._localStateService.menuId$
+              .pipe(first())
+              .subscribe((menuId) => {
+                if (id === menuId) {
+                  this._localStateService.updateMenuId(null);
+                }
+              });
           })
         )
         .subscribe();
