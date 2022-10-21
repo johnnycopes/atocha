@@ -123,9 +123,13 @@ export class MenuService {
               return;
             }
             await this._menuDataService.deleteMenu(menu);
-            if (id === this._localStateService.getMenuId()) {
-              this._localStateService.deleteMenuId();
-            }
+            this._localStateService.menuId$
+              .pipe(first())
+              .subscribe((menuId) => {
+                if (id === menuId) {
+                  this._localStateService.deleteMenuId();
+                }
+              });
           })
         )
         .subscribe();
