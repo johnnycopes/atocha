@@ -9,14 +9,13 @@ import { PlannerView } from '@atocha/menu-matriarch/util';
   providedIn: 'root',
 })
 export class LocalStateService {
-  private _prefix = 'MENU_MATRIARCH_';
   private _menuId$ = new BehaviorSubject<string | null>(null);
   private _plannerView$ = new BehaviorSubject<PlannerView>('dishes');
 
   constructor(private _localStorageService: LocalStorageService) {}
 
   getPlannerView(): PlannerView {
-    const view = (window.localStorage.getItem(this._prefix + 'PLANNER_VIEW') ??
+    const view = (this._localStorageService.getItem('PLANNER_VIEW') ??
       'dishes') as PlannerView;
     this._plannerView$.next(view);
     return view;
@@ -32,11 +31,11 @@ export class LocalStateService {
 
   setPlannerView(view: PlannerView): void {
     this._plannerView$.next(view);
-    window.localStorage.setItem(this._prefix + 'PLANNER_VIEW', view);
+    this._localStorageService.setItem('PLANNER_VIEW', view);
   }
 
   getMenuId(): string | null {
-    const id = window.localStorage.getItem(this._prefix + 'MENU_ID');
+    const id = this._localStorageService.getItem('MENU_ID');
     this._menuId$.next(id);
     return id;
   }
@@ -51,11 +50,11 @@ export class LocalStateService {
 
   setMenuId(id: string): void {
     this._menuId$.next(id);
-    window.localStorage.setItem(this._prefix + 'MENU_ID', id);
+    this._localStorageService.setItem('MENU_ID', id);
   }
 
   deleteMenuId(): void {
     this._menuId$.next(null);
-    window.localStorage.removeItem(this._prefix + 'MENU_ID');
+    this._localStorageService.removeItem('MENU_ID');
   }
 }
