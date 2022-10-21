@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { distinctUntilChanged, shareReplay } from 'rxjs/operators';
 
+import { LocalStorageService } from '@atocha/core/data-access';
 import { PlannerView } from '@atocha/menu-matriarch/util';
 
 @Injectable({
@@ -11,6 +12,8 @@ export class LocalStateService {
   private _prefix = 'MENU_MATRIARCH_';
   private _menuId$ = new BehaviorSubject<string | null>(null);
   private _plannerView$ = new BehaviorSubject<PlannerView>('dishes');
+
+  constructor(private _localStorageService: LocalStorageService) {}
 
   getPlannerView(): PlannerView {
     const view = (window.localStorage.getItem(this._prefix + 'PLANNER_VIEW') ??
