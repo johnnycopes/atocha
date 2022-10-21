@@ -9,7 +9,7 @@ import { PlannerView } from '@atocha/menu-matriarch/util';
   providedIn: 'root',
 })
 export class LocalStateService {
-  private _menuId$ = new BehaviorSubject<string | null>(null);
+  private _menuIdSubject = new BehaviorSubject<string | null>(null);
   private _plannerViewSubject = new BehaviorSubject<PlannerView>(
     (this._localStorageService.getItem('PLANNER_VIEW') ??
       'dishes') as PlannerView
@@ -28,25 +28,25 @@ export class LocalStateService {
 
   getMenuId(): string | null {
     const id = this._localStorageService.getItem('MENU_ID');
-    this._menuId$.next(id);
+    this._menuIdSubject.next(id);
     return id;
   }
 
   watchMenuId(): Observable<string | null> {
     this.getMenuId();
-    return this._menuId$.pipe(
+    return this._menuIdSubject.pipe(
       shareReplay({ bufferSize: 1, refCount: true }),
       distinctUntilChanged()
     );
   }
 
   setMenuId(id: string): void {
-    this._menuId$.next(id);
+    this._menuIdSubject.next(id);
     this._localStorageService.setItem('MENU_ID', id);
   }
 
   deleteMenuId(): void {
-    this._menuId$.next(null);
+    this._menuIdSubject.next(null);
     this._localStorageService.removeItem('MENU_ID');
   }
 }
