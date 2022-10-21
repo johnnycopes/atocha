@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { distinctUntilChanged, shareReplay, tap } from 'rxjs/operators';
+import { BehaviorSubject } from 'rxjs';
+import { shareReplay, tap } from 'rxjs/operators';
 
 import { LocalStorageService } from '@atocha/core/data-access';
 import { PlannerView } from '@atocha/menu-matriarch/util';
@@ -13,7 +13,9 @@ export class LocalStateService {
     plannerView: 'PLANNER_VIEW',
     menuId: 'MENU_ID',
   };
-  private _menuIdSubject = new BehaviorSubject<string | null>(null);
+  private _menuIdSubject = new BehaviorSubject<string | null>(
+    this._localStorageService.getItem(this._keys.menuId)
+  );
   private _plannerViewSubject = new BehaviorSubject<PlannerView>(
     (this._localStorageService.getItem(this._keys.plannerView) ??
       'dishes') as PlannerView
