@@ -45,12 +45,6 @@ export class LocalStateService {
     this._plannerViewSubject.next(view);
   }
 
-  getMenuId(): string | null {
-    const id = this._localStorageService.getItem(this._keys.menuId);
-    this._menuIdSubject.next(id);
-    return id;
-  }
-
   setMenuId(id: string): void {
     this._menuIdSubject.next(id);
     this._localStorageService.setItem(this._keys.menuId, id);
