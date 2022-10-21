@@ -41,17 +41,11 @@ export class LocalStateService {
 
   constructor(private _localStorageService: LocalStorageService) {}
 
+  setMenuId(id: string | null): void {
+    this._menuIdSubject.next(id);
+  }
+
   setPlannerView(view: PlannerView): void {
     this._plannerViewSubject.next(view);
-  }
-
-  setMenuId(id: string): void {
-    this._menuIdSubject.next(id);
-    this._localStorageService.setItem(this._keys.menuId, id);
-  }
-
-  deleteMenuId(): void {
-    this._menuIdSubject.next(null);
-    this._localStorageService.removeItem(this._keys.menuId);
   }
 }
