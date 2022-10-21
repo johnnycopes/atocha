@@ -19,6 +19,17 @@ export class LocalStateService {
       'dishes') as PlannerView
   );
 
+  menuId$ = this._menuIdSubject.pipe(
+    tap((id) => {
+      if (id) {
+        this._localStorageService.setItem(this._keys.menuId, id);
+      } else {
+        this._localStorageService.removeItem(this._keys.menuId);
+      }
+    }),
+    shareReplay({ bufferSize: 1, refCount: true })
+  );
+
   plannerView$ = this._plannerViewSubject.pipe(
     tap((view) =>
       this._localStorageService.setItem(this._keys.plannerView, view)
@@ -36,14 +47,6 @@ export class LocalStateService {
     const id = this._localStorageService.getItem(this._keys.menuId);
     this._menuIdSubject.next(id);
     return id;
-  }
-
-  watchMenuId(): Observable<string | null> {
-    this.getMenuId();
-    return this._menuIdSubject.pipe(
-      shareReplay({ bufferSize: 1, refCount: true }),
-      distinctUntilChanged()
-    );
   }
 
   setMenuId(id: string): void {
