@@ -21,7 +21,7 @@ export class MenuService {
   constructor(
     private _authService: AuthService,
     private _dishService: DishService,
-    private _localStorageService: LocalStateService,
+    private _localStateService: LocalStateService,
     private _menuDataService: MenuDataService,
     private _userService: UserService
   ) {}
@@ -123,8 +123,8 @@ export class MenuService {
               return;
             }
             await this._menuDataService.deleteMenu(menu);
-            if (id === this._localStorageService.getMenuId()) {
-              this._localStorageService.deleteMenuId();
+            if (id === this._localStateService.getMenuId()) {
+              this._localStateService.deleteMenuId();
             }
           })
         )

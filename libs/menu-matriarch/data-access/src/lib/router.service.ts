@@ -28,7 +28,7 @@ export class RouterService {
   }
 
   get activePlannerView$(): Observable<PlannerView> {
-    return this._localStorageService.watchPlannerView();
+    return this._localStateService.watchPlannerView();
   }
 
   get activeMealId$(): Observable<string> {
@@ -41,7 +41,7 @@ export class RouterService {
 
   constructor(
     private _router: Router,
-    private _localStorageService: LocalStateService
+    private _localStateService: LocalStateService
   ) {
     this._routerEvents$
       .pipe(
@@ -66,7 +66,7 @@ export class RouterService {
           const divviedUrl = event.urlAfterRedirects.split('/');
           const menuId = divviedUrl[divviedUrl.length - 1];
           if (menuId !== Route.planner) {
-            this._localStorageService.setMenuId(menuId);
+            this._localStateService.setMenuId(menuId);
           }
         })
       )
@@ -96,7 +96,7 @@ export class RouterService {
   }
 
   getPlannerRoute(): Observable<string[]> {
-    return this._localStorageService.watchMenuId().pipe(
+    return this._localStateService.watchMenuId().pipe(
       map((menuId) => {
         if (!menuId) {
           return [Route.planner];
@@ -107,6 +107,6 @@ export class RouterService {
   }
 
   updatePlannerView(view: PlannerView): void {
-    this._localStorageService.setPlannerView(view);
+    this._localStateService.setPlannerView(view);
   }
 }
