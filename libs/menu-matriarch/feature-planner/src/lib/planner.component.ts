@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { of } from 'rxjs';
-import { map, switchMap, tap } from 'rxjs/operators';
+import { map, switchMap } from 'rxjs/operators';
 
 import { MenuService, RouterService } from '@atocha/menu-matriarch/data-access';
 import { PlannerView } from '@atocha/menu-matriarch/util';
@@ -13,7 +13,7 @@ import { PlannerView } from '@atocha/menu-matriarch/util';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PlannerComponent {
-  view$ = this._routerService.activePlannerView$.pipe(tap(console.log));
+  view$ = this._routerService.activePlannerView$;
   menu$ = this._route.paramMap.pipe(
     map((paramMap) => paramMap.get('menuId')),
     switchMap((menuId) => {
