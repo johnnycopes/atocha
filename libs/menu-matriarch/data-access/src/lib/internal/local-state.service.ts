@@ -7,7 +7,7 @@ import { PlannerView } from '@atocha/menu-matriarch/util';
 @Injectable({
   providedIn: 'root',
 })
-export class LocalStorageService {
+export class LocalStateService {
   private _prefix = 'MENU_MATRIARCH_';
   private _menuId$ = new BehaviorSubject<string | null>(null);
   private _plannerView$ = new BehaviorSubject<PlannerView>('dishes');
