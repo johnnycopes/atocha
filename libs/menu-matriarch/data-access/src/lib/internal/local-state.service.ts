@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { distinctUntilChanged, shareReplay } from 'rxjs/operators';
+import { distinctUntilChanged, shareReplay, tap } from 'rxjs/operators';
 
 import { LocalStorageService } from '@atocha/core/data-access';
 import { PlannerView } from '@atocha/menu-matriarch/util';
@@ -10,28 +10,20 @@ import { PlannerView } from '@atocha/menu-matriarch/util';
 })
 export class LocalStateService {
   private _menuId$ = new BehaviorSubject<string | null>(null);
-  private _plannerView$ = new BehaviorSubject<PlannerView>('dishes');
+  private _plannerView$ = new BehaviorSubject<PlannerView>(
+    (this._localStorageService.getItem('PLANNER_VIEW') ??
+      'dishes') as PlannerView
+  );
+
+  plannerView$ = this._plannerView$.pipe(
+    tap((view) => this._localStorageService.setItem('PLANNER_VIEW', view)),
+    shareReplay({ bufferSize: 1, refCount: true })
+  );
 
   constructor(private _localStorageService: LocalStorageService) {}
 
-  getPlannerView(): PlannerView {
-    const view = (this._localStorageService.getItem('PLANNER_VIEW') ??
-      'dishes') as PlannerView;
-    this._plannerView$.next(view);
-    return view;
-  }
-
-  watchPlannerView(): Observable<PlannerView> {
-    this.getPlannerView();
-    return this._plannerView$.pipe(
-      shareReplay({ bufferSize: 1, refCount: true }),
-      distinctUntilChanged()
-    );
-  }
-
   setPlannerView(view: PlannerView): void {
     this._plannerView$.next(view);
-    this._localStorageService.setItem('PLANNER_VIEW', view);
   }
 
   getMenuId(): string | null {

@@ -28,7 +28,7 @@ export class RouterService {
   }
 
   get activePlannerView$(): Observable<PlannerView> {
-    return this._localStateService.watchPlannerView();
+    return this._localStateService.plannerView$;
   }
 
   get activeMealId$(): Observable<string> {
