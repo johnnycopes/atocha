@@ -16,4 +16,4 @@ bootstrapApplication(AppComponent, {
       useValue: 'LORENZO',
     },
   ],
-}).catch((err) => console.error(err));
+}).catch(console.error);
