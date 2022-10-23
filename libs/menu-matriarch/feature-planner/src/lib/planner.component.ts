@@ -6,7 +6,6 @@ import { map, switchMap } from 'rxjs/operators';
 import {
   MenuService,
   PlannerService,
-  RouterService,
 } from '@atocha/menu-matriarch/data-access';
 import { PlannerView } from '@atocha/menu-matriarch/util';
 
@@ -17,7 +16,7 @@ import { PlannerView } from '@atocha/menu-matriarch/util';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PlannerComponent {
-  view$ = this._routerService.activePlannerView$;
+  view$ = this._plannerService.activePlannerView$;
   menu$ = this._route.paramMap.pipe(
     map((paramMap) => paramMap.get('menuId')),
     switchMap((menuId) => {
@@ -32,8 +31,7 @@ export class PlannerComponent {
   constructor(
     private _route: ActivatedRoute,
     private _menuService: MenuService,
-    private _plannerService: PlannerService,
-    private _routerService: RouterService
+    private _plannerService: PlannerService
   ) {}
 
   updatePlannerView(view: PlannerView): void {
