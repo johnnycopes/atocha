@@ -17,7 +17,7 @@ export class AuthService {
     );
   }
 
-  get loggedIn$(): Observable<boolean> {
+  get oldLoggedIn$(): Observable<boolean> {
     return this._auth.user.pipe(
       map(Boolean),
       shareReplay({ bufferSize: 1, refCount: true })
