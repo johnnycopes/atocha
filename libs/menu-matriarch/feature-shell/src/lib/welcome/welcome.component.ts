@@ -27,7 +27,7 @@ export class WelcomeComponent {
       const user = await this._authService.login();
       if (user) {
         const { name, email } = user;
-        this._authService.uid$
+        this._authService.oldUid$
           .pipe(
             first(),
             tap(async (uid) => {

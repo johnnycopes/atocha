@@ -10,7 +10,7 @@ import { map, shareReplay } from 'rxjs/operators';
 export class AuthService {
   constructor(private _auth: AngularFireAuth) {}
 
-  get uid$(): Observable<string | undefined> {
+  get oldUid$(): Observable<string | undefined> {
     return this._auth.user.pipe(
       map((user) => user?.uid),
       shareReplay({ bufferSize: 1, refCount: true })

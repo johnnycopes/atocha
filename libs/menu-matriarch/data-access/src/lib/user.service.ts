@@ -16,7 +16,7 @@ export class UserService {
   ) {}
 
   getUser(): Observable<User | undefined> {
-    return this._authService.uid$.pipe(
+    return this._authService.oldUid$.pipe(
       first(),
       concatMap((uid) => {
         if (uid) {
@@ -28,7 +28,7 @@ export class UserService {
   }
 
   getPreferences(): Observable<UserPreferences | undefined> {
-    return this._authService.uid$.pipe(
+    return this._authService.oldUid$.pipe(
       first(),
       concatMap((uid) => {
         if (uid) {

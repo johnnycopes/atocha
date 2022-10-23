@@ -32,7 +32,7 @@ export class DishService {
   }
 
   getDishes(): Observable<Dish[]> {
-    return this._authService.uid$.pipe(
+    return this._authService.oldUid$.pipe(
       first(),
       concatMap((uid) => {
         if (uid) {
@@ -53,7 +53,7 @@ export class DishService {
   createDish(
     dish: Partial<Omit<DishDto, 'id' | 'uid'>>
   ): Observable<string | undefined> {
-    return this._authService.uid$.pipe(
+    return this._authService.oldUid$.pipe(
       first(),
       concatMap(async (uid) => {
         if (uid) {
