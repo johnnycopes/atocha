@@ -29,10 +29,6 @@ export class DishDataService {
     private _dataService: DataService
   ) {}
 
-  updateActiveDishId(id: string): void {
-    this._activeDishIdSubject.next(id);
-  }
-
   getDish(id: string): Observable<DishDto | undefined> {
     return this._dataService.getOne<DishDto>(this._endpoint, id);
   }
@@ -71,6 +67,10 @@ export class DishDataService {
 
     await batch.commit();
     return id;
+  }
+
+  updateActiveDishId(id: string): void {
+    this._activeDishIdSubject.next(id);
   }
 
   async updateDish(

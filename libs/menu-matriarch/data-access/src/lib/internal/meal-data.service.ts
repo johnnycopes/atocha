@@ -29,10 +29,6 @@ export class MealDataService {
     private _dataService: DataService
   ) {}
 
-  updateActiveMealId(id: string): void {
-    this._activeMealIdSubject.next(id);
-  }
-
   getMeal(id: string): Observable<MealDto | undefined> {
     return this._dataService.getOne<MealDto>(this._endpoint, id);
   }
@@ -78,6 +74,10 @@ export class MealDataService {
 
     await batch.commit();
     return id;
+  }
+
+  updateActiveMealId(id: string): void {
+    this._activeMealIdSubject.next(id);
   }
 
   async updateMeal(meal: Meal, data: Partial<MealDto>): Promise<void> {
