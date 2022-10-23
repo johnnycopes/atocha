@@ -34,16 +34,19 @@ export class RouterService {
     shareReplay({ bufferSize: 1, refCount: true })
   );
 
+  // DishDataService
   activeDishId$ = this._activeDishId$.pipe(
     distinctUntilChanged(),
     shareReplay({ bufferSize: 1, refCount: true })
   );
 
+  // MealDataService
   activeMealId$ = this._activeMealId$.pipe(
     distinctUntilChanged(),
     shareReplay({ bufferSize: 1, refCount: true })
   );
 
+  // PlannerService
   activePlannerView$ = this._localStateService.plannerView$;
 
   plannerRoute$ = this._localStateService.menuId$.pipe(

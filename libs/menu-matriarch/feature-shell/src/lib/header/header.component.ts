@@ -1,7 +1,7 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { PlannerService } from '@atocha/menu-matriarch/data-access';
 
 import { Route } from '@atocha/menu-matriarch/util';
-import { RouterService } from '@atocha/menu-matriarch/data-access';
 
 @Component({
   // eslint-disable-next-line @angular-eslint/component-selector
@@ -12,7 +12,7 @@ import { RouterService } from '@atocha/menu-matriarch/data-access';
 })
 export class HeaderComponent {
   Route: typeof Route = Route;
-  plannerRoute$ = this._routerService.plannerRoute$;
+  plannerRoute$ = this._plannerService.plannerRoute$;
 
-  constructor(private _routerService: RouterService) {}
+  constructor(private _plannerService: PlannerService) {}
 }
