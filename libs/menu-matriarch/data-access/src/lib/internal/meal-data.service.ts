@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { distinctUntilChanged, map, shareReplay } from 'rxjs/operators';
 
 import { DataService } from '@atocha/core/data-access';
 import { lower, sort } from '@atocha/core/util';
@@ -17,11 +17,21 @@ import { BatchService } from './batch.service';
 })
 export class MealDataService {
   private _endpoint = Endpoint.meals;
+  private _activeMealIdSubject = new BehaviorSubject<string>('');
+
+  activeMealId$ = this._activeMealIdSubject.pipe(
+    distinctUntilChanged(),
+    shareReplay({ bufferSize: 1, refCount: true })
+  );
 
   constructor(
     private _batchService: BatchService,
     private _dataService: DataService
   ) {}
+
+  updateActiveMealId(id: string): void {
+    this._activeMealIdSubject.next(id);
+  }
 
   getMeal(id: string): Observable<MealDto | undefined> {
     return this._dataService.getOne<MealDto>(this._endpoint, id);

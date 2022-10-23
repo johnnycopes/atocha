@@ -17,6 +17,8 @@ import {
 
 import { Route } from '@atocha/menu-matriarch/util';
 import { LocalStateService } from './internal/local-state.service';
+import { MealDataService } from './internal/meal-data.service';
+import { DishDataService } from './internal/dish-data.service';
 
 @Injectable({
   providedIn: 'root',
@@ -34,13 +36,11 @@ export class RouterService {
     shareReplay({ bufferSize: 1, refCount: true })
   );
 
-  // DishDataService
   activeDishId$ = this._activeDishId$.pipe(
     distinctUntilChanged(),
     shareReplay({ bufferSize: 1, refCount: true })
   );
 
-  // MealDataService
   activeMealId$ = this._activeMealId$.pipe(
     distinctUntilChanged(),
     shareReplay({ bufferSize: 1, refCount: true })
@@ -48,7 +48,9 @@ export class RouterService {
 
   constructor(
     private _router: Router,
-    private _localStateService: LocalStateService
+    private _dishDataService: DishDataService,
+    private _localStateService: LocalStateService,
+    private _mealDataService: MealDataService
   ) {
     this._routerEvents$
       .pipe(
@@ -86,6 +88,7 @@ export class RouterService {
           const divviedUrl = event.urlAfterRedirects.split('/');
           const mealId = divviedUrl[2];
           this._activeMealId$.next(mealId ?? '');
+          this._mealDataService.updateActiveMealId(mealId ?? '');
         })
       )
       .subscribe();
@@ -97,6 +100,7 @@ export class RouterService {
           const divviedUrl = event.urlAfterRedirects.split('/');
           const dishId = divviedUrl[2];
           this._activeDishId$.next(dishId ?? '');
+          this._dishDataService.updateActiveDishId(dishId ?? '');
         })
       )
       .subscribe();
