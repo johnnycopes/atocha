@@ -16,9 +16,9 @@ import {
 } from 'rxjs/operators';
 
 import { Route } from '@atocha/menu-matriarch/util';
-import { LocalStateService } from './internal/local-state.service';
-import { MealDataService } from './internal/meal-data.service';
-import { DishDataService } from './internal/dish-data.service';
+import { LocalStateService } from './local-state.service';
+import { MealDataService } from './meal-data.service';
+import { DishDataService } from './dish-data.service';
 
 @Injectable({
   providedIn: 'root',

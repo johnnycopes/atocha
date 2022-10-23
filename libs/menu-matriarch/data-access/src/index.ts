@@ -9,7 +9,6 @@ export * from './lib/menu.service';
 export * from './lib/planner.guard';
 export * from './lib/planner.service';
 export * from './lib/print.service';
-export * from './lib/router.service';
 export * from './lib/seed-data.service';
 export * from './lib/tag.service';
 export * from './lib/user.service';

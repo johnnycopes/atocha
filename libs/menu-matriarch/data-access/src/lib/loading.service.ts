@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { RouterService } from './router.service';
+
+import { RouterService } from './internal/router.service';
 
 @Injectable({
   providedIn: 'root',
