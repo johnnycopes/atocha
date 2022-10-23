@@ -15,7 +15,7 @@ import {
   shareReplay,
 } from 'rxjs/operators';
 
-import { PlannerView, Route } from '@atocha/menu-matriarch/util';
+import { Route } from '@atocha/menu-matriarch/util';
 import { LocalStateService } from './internal/local-state.service';
 
 @Injectable({
@@ -42,15 +42,6 @@ export class RouterService {
 
   // MealDataService
   activeMealId$ = this._activeMealId$.pipe(
-    distinctUntilChanged(),
-    shareReplay({ bufferSize: 1, refCount: true })
-  );
-
-  // PlannerService
-  activePlannerView$ = this._localStateService.plannerView$;
-
-  plannerRoute$ = this._localStateService.menuId$.pipe(
-    map((menuId) => (menuId ? [Route.planner, menuId] : [Route.planner])),
     distinctUntilChanged(),
     shareReplay({ bufferSize: 1, refCount: true })
   );
@@ -109,9 +100,5 @@ export class RouterService {
         })
       )
       .subscribe();
-  }
-
-  updatePlannerView(view: PlannerView): void {
-    this._localStateService.updatePlannerView(view);
   }
 }
