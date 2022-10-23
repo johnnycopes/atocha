@@ -46,6 +46,15 @@ export class RouterService {
 
   activePlannerView$ = this._localStateService.plannerView$;
 
+  plannerRoute$ = this._localStateService.menuId$.pipe(
+    map((menuId) => {
+      if (!menuId) {
+        return [Route.planner];
+      }
+      return [Route.planner, menuId];
+    })
+  );
+
   constructor(
     private _router: Router,
     private _localStateService: LocalStateService
