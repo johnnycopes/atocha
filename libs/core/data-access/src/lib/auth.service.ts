@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import firebase from 'firebase/compat/app';
-import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 
 @Injectable({
@@ -19,20 +18,6 @@ export class AuthService {
     map(Boolean),
     shareReplay({ bufferSize: 1, refCount: true })
   );
-
-  get oldUid$(): Observable<string | undefined> {
-    return this._auth.user.pipe(
-      map((user) => user?.uid),
-      shareReplay({ bufferSize: 1, refCount: true })
-    );
-  }
-
-  get oldLoggedIn$(): Observable<boolean> {
-    return this._auth.user.pipe(
-      map(Boolean),
-      shareReplay({ bufferSize: 1, refCount: true })
-    );
-  }
 
   async login(): Promise<{ name: string; email: string } | void> {
     const loginInfo = await this._auth.signInWithPopup(
