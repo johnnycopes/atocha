@@ -3,7 +3,10 @@ import { ActivatedRoute } from '@angular/router';
 import { of } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 
-import { MenuService, RouterService } from '@atocha/menu-matriarch/data-access';
+import {
+  MenuService,
+  PlannerService,
+} from '@atocha/menu-matriarch/data-access';
 import { PlannerView } from '@atocha/menu-matriarch/util';
 
 @Component({
@@ -13,7 +16,7 @@ import { PlannerView } from '@atocha/menu-matriarch/util';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PlannerComponent {
-  view$ = this._routerService.activePlannerView$;
+  view$ = this._plannerService.view$;
   menu$ = this._route.paramMap.pipe(
     map((paramMap) => paramMap.get('menuId')),
     switchMap((menuId) => {
@@ -28,10 +31,10 @@ export class PlannerComponent {
   constructor(
     private _route: ActivatedRoute,
     private _menuService: MenuService,
-    private _routerService: RouterService
+    private _plannerService: PlannerService
   ) {}
 
-  updatePlannerView(view: PlannerView): void {
-    this._routerService.updatePlannerView(view);
+  updateView(view: PlannerView): void {
+    this._plannerService.updateView(view);
   }
 }

@@ -11,6 +11,8 @@ import { TagService } from './tag.service';
   providedIn: 'root',
 })
 export class DishService {
+  activeDishId$ = this._dishDataService.activeDishId$;
+
   constructor(
     private _authService: AuthService,
     private _dishDataService: DishDataService,

@@ -15,16 +15,16 @@ import {
   shareReplay,
 } from 'rxjs/operators';
 
-import { PlannerView, Route } from '@atocha/menu-matriarch/util';
-import { LocalStateService } from './internal/local-state.service';
+import { Route } from '@atocha/menu-matriarch/util';
+import { LocalStateService } from './local-state.service';
+import { MealDataService } from './meal-data.service';
+import { DishDataService } from './dish-data.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class RouterService {
   private _loading$ = new BehaviorSubject<boolean>(true);
-  private _activeDishId$ = new BehaviorSubject<string>('');
-  private _activeMealId$ = new BehaviorSubject<string>('');
   private _routerEvents$ = this._router.events.pipe(
     filter((e): e is NavigationEnd => e instanceof NavigationEnd)
   );
@@ -34,27 +34,11 @@ export class RouterService {
     shareReplay({ bufferSize: 1, refCount: true })
   );
 
-  activeDishId$ = this._activeDishId$.pipe(
-    distinctUntilChanged(),
-    shareReplay({ bufferSize: 1, refCount: true })
-  );
-
-  activeMealId$ = this._activeMealId$.pipe(
-    distinctUntilChanged(),
-    shareReplay({ bufferSize: 1, refCount: true })
-  );
-
-  activePlannerView$ = this._localStateService.plannerView$;
-
-  plannerRoute$ = this._localStateService.menuId$.pipe(
-    map((menuId) => (menuId ? [Route.planner, menuId] : [Route.planner])),
-    distinctUntilChanged(),
-    shareReplay({ bufferSize: 1, refCount: true })
-  );
-
   constructor(
     private _router: Router,
-    private _localStateService: LocalStateService
+    private _dishDataService: DishDataService,
+    private _localStateService: LocalStateService,
+    private _mealDataService: MealDataService
   ) {
     this._routerEvents$
       .pipe(
@@ -91,7 +75,7 @@ export class RouterService {
         tap((event) => {
           const divviedUrl = event.urlAfterRedirects.split('/');
           const mealId = divviedUrl[2];
-          this._activeMealId$.next(mealId ?? '');
+          this._mealDataService.updateActiveMealId(mealId ?? '');
         })
       )
       .subscribe();
@@ -102,13 +86,9 @@ export class RouterService {
         tap((event) => {
           const divviedUrl = event.urlAfterRedirects.split('/');
           const dishId = divviedUrl[2];
-          this._activeDishId$.next(dishId ?? '');
+          this._dishDataService.updateActiveDishId(dishId ?? '');
         })
       )
       .subscribe();
-  }
-
-  updatePlannerView(view: PlannerView): void {
-    this._localStateService.updatePlannerView(view);
   }
 }

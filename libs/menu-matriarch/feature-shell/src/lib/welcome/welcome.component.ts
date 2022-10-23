@@ -4,7 +4,7 @@ import { first, tap } from 'rxjs/operators';
 
 import { AuthService } from '@atocha/core/data-access';
 import {
-  RouterService,
+  PlannerService,
   SeedDataService,
 } from '@atocha/menu-matriarch/data-access';
 
@@ -18,7 +18,7 @@ export class WelcomeComponent {
   constructor(
     private _router: Router,
     private _authService: AuthService,
-    private _routerService: RouterService,
+    private _plannerService: PlannerService,
     private _seedDataService: SeedDataService
   ) {}
 
@@ -44,7 +44,7 @@ export class WelcomeComponent {
           )
           .subscribe();
       } else {
-        this._routerService.plannerRoute$
+        this._plannerService.route$
           .pipe(tap((route) => this._router.navigate(route)))
           .subscribe();
       }

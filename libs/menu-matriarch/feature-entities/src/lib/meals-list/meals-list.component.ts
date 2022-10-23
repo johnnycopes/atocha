@@ -15,7 +15,6 @@ import { Meal } from '@atocha/menu-matriarch/util';
 import {
   FilterService,
   MealService,
-  RouterService,
   TagService,
   UserService,
 } from '@atocha/menu-matriarch/data-access';
@@ -34,7 +33,7 @@ export class MealsListComponent {
     this._tagService.getTags(),
     this._userService.getPreferences(),
     this._filterService.state$,
-    this._routerService.activeMealId$,
+    this._mealService.activeMealId$,
   ]).pipe(
     map(([meals, tags, preferences, { text, tagIds, panel }, activeMealId]) => {
       const filteredMeals = this._filterService.filterMeals({
@@ -66,7 +65,6 @@ export class MealsListComponent {
   constructor(
     private _filterService: FilterService,
     private _mealService: MealService,
-    private _routerService: RouterService,
     private _router: Router,
     private _tagService: TagService,
     private _userService: UserService

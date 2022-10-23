@@ -4,7 +4,7 @@ import { Observable, of } from 'rxjs';
 import { first, map, switchMap } from 'rxjs/operators';
 
 import { AuthService } from '@atocha/core/data-access';
-import { RouterService } from './router.service';
+import { PlannerService } from './planner.service';
 
 @Injectable({
   providedIn: 'root',
@@ -13,7 +13,7 @@ export class LoggedInAuthGuard implements CanActivate {
   constructor(
     private _router: Router,
     private _authService: AuthService,
-    private _routerService: RouterService
+    private _plannerService: PlannerService
   ) {}
 
   canActivate():
@@ -23,14 +23,13 @@ export class LoggedInAuthGuard implements CanActivate {
     | UrlTree {
     return this._authService.loggedIn$.pipe(
       first(),
-      switchMap((loggedIn) => {
-        if (loggedIn) {
-          return this._routerService.plannerRoute$.pipe(
-            map((route) => this._router.createUrlTree(route))
-          );
-        }
-        return of(true);
-      })
+      switchMap((loggedIn) =>
+        loggedIn
+          ? this._plannerService.route$.pipe(
+              map((route) => this._router.createUrlTree(route))
+            )
+          : of(true)
+      )
     );
   }
 }

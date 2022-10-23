@@ -13,7 +13,6 @@ import { map } from 'rxjs/operators';
 import {
   DishService,
   FilterService,
-  RouterService,
   TagService,
 } from '@atocha/menu-matriarch/data-access';
 import { dishTrackByFn, groupTrackByFn } from '@atocha/menu-matriarch/ui';
@@ -31,7 +30,7 @@ export class DishesListComponent {
     this._dishService.getDishes(),
     this._tagService.getTags(),
     this._filterService.state$,
-    this._routerService.activeDishId$,
+    this._dishService.activeDishId$,
   ]).pipe(
     map(([dishes, tags, { text, tagIds, panel }, activeDishId]) => {
       const activeDish = dishes.find((dish) => dish.id === activeDishId);
@@ -68,7 +67,6 @@ export class DishesListComponent {
   constructor(
     private _dishService: DishService,
     private _filterService: FilterService,
-    private _routerService: RouterService,
     private _router: Router,
     private _tagService: TagService
   ) {}

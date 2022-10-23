@@ -12,6 +12,8 @@ import { TagService } from './tag.service';
   providedIn: 'root',
 })
 export class MealService {
+  activeMealId$ = this._mealDataService.activeMealId$;
+
   constructor(
     private _authService: AuthService,
     private _dishService: DishService,
