@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { first } from 'rxjs/operators';
+import { BehaviorSubject } from 'rxjs';
+import { first, shareReplay } from 'rxjs/operators';
 
 import { includes } from '@atocha/core/util';
 import {
@@ -26,9 +26,7 @@ export class FilterService {
     text: '',
   });
 
-  get state$(): Observable<State> {
-    return this._state$.asObservable();
-  }
+  state$ = this._state$.pipe(shareReplay({ bufferSize: 1, refCount: true }));
 
   togglePanel(): void {
     this._state$
