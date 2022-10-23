@@ -12,7 +12,7 @@ import { RouterService } from '@atocha/menu-matriarch/data-access';
 })
 export class HeaderComponent {
   Route: typeof Route = Route;
-  plannerRoute$ = this._routerService.getPlannerRoute();
+  plannerRoute$ = this._routerService.plannerRoute$;
 
   constructor(private _routerService: RouterService) {}
 }

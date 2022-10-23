@@ -16,7 +16,7 @@ export class PlannerGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    return this._routerService.getPlannerRoute().pipe(
+    return this._routerService.plannerRoute$.pipe(
       first(),
       map((route) => {
         if (route.length > 1) {

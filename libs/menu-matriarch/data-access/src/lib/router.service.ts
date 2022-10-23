@@ -52,7 +52,9 @@ export class RouterService {
         return [Route.planner];
       }
       return [Route.planner, menuId];
-    })
+    }),
+    distinctUntilChanged(),
+    shareReplay({ bufferSize: 1, refCount: true })
   );
 
   constructor(
@@ -109,17 +111,6 @@ export class RouterService {
         })
       )
       .subscribe();
-  }
-
-  getPlannerRoute(): Observable<string[]> {
-    return this._localStateService.menuId$.pipe(
-      map((menuId) => {
-        if (!menuId) {
-          return [Route.planner];
-        }
-        return [Route.planner, menuId];
-      })
-    );
   }
 
   updatePlannerView(view: PlannerView): void {
