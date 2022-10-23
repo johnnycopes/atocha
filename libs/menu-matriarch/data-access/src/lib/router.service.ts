@@ -6,7 +6,7 @@ import {
   NavigationCancel,
   NavigationError,
 } from '@angular/router';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import {
   map,
   filter,
