@@ -7,7 +7,13 @@ import {
   NavigationError,
 } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { map, filter, tap, distinctUntilChanged } from 'rxjs/operators';
+import {
+  map,
+  filter,
+  tap,
+  distinctUntilChanged,
+  shareReplay,
+} from 'rxjs/operators';
 
 import { PlannerView, Route } from '@atocha/menu-matriarch/util';
 import { LocalStateService } from './internal/local-state.service';
@@ -23,21 +29,22 @@ export class RouterService {
     filter((e): e is NavigationEnd => e instanceof NavigationEnd)
   );
 
-  get loading$(): Observable<boolean> {
-    return this._loading$;
-  }
+  loading$ = this._loading$.pipe(
+    distinctUntilChanged(),
+    shareReplay({ bufferSize: 1, refCount: true })
+  );
 
-  get activePlannerView$(): Observable<PlannerView> {
-    return this._localStateService.plannerView$;
-  }
+  activeDishId$ = this._activeDishId$.pipe(
+    distinctUntilChanged(),
+    shareReplay({ bufferSize: 1, refCount: true })
+  );
 
-  get activeMealId$(): Observable<string> {
-    return this._activeMealId$.pipe(distinctUntilChanged());
-  }
+  activeMealId$ = this._activeMealId$.pipe(
+    distinctUntilChanged(),
+    shareReplay({ bufferSize: 1, refCount: true })
+  );
 
-  get activeDishId$(): Observable<string> {
-    return this._activeDishId$.pipe(distinctUntilChanged());
-  }
+  activePlannerView$ = this._localStateService.plannerView$;
 
   constructor(
     private _router: Router,
