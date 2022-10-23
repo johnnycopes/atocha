@@ -23,14 +23,13 @@ export class LoggedInAuthGuard implements CanActivate {
     | UrlTree {
     return this._authService.loggedIn$.pipe(
       first(),
-      switchMap((loggedIn) => {
-        if (loggedIn) {
-          return this._plannerService.route$.pipe(
-            map((route) => this._router.createUrlTree(route))
-          );
-        }
-        return of(true);
-      })
+      switchMap((loggedIn) =>
+        loggedIn
+          ? this._plannerService.route$.pipe(
+              map((route) => this._router.createUrlTree(route))
+            )
+          : of(true)
+      )
     );
   }
 }
