@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 import {
   ErrorService,
-  RouterService,
+  LoadingService,
 } from '@atocha/menu-matriarch/data-access';
 
 @Component({
@@ -13,10 +13,10 @@ import {
 })
 export class AppComponent {
   error$ = this._errorService.errors$;
-  loading$ = this._routerService.loading$;
+  loading$ = this._loadingService.loading$;
 
   constructor(
     private _errorService: ErrorService,
-    private _routerService: RouterService
+    private _loadingService: LoadingService
   ) {}
 }
