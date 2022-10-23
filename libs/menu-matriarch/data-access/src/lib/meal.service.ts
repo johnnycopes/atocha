@@ -35,7 +35,7 @@ export class MealService {
   }
 
   getMeals(): Observable<Meal[]> {
-    return this._authService.oldUid$.pipe(
+    return this._authService.uid$.pipe(
       first(),
       concatMap((uid) => {
         if (uid) {
@@ -59,7 +59,7 @@ export class MealService {
   createMeal(
     meal: Partial<Omit<MealDto, 'id' | 'uid'>>
   ): Observable<string | undefined> {
-    return this._authService.oldUid$.pipe(
+    return this._authService.uid$.pipe(
       first(),
       concatMap(async (uid) => {
         if (uid) {

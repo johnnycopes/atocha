@@ -20,7 +20,7 @@ export class TagService {
   }
 
   getTags(): Observable<Tag[]> {
-    return this._authService.oldUid$.pipe(
+    return this._authService.uid$.pipe(
       first(),
       concatMap((uid) => {
         if (uid) {
@@ -34,7 +34,7 @@ export class TagService {
   createTag(
     tag: Partial<Omit<TagDto, 'id' | 'uid'>>
   ): Observable<string | undefined> {
-    return this._authService.oldUid$.pipe(
+    return this._authService.uid$.pipe(
       first(),
       concatMap(async (uid) => {
         if (uid) {

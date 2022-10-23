@@ -42,7 +42,7 @@ export class MenuService {
   }
 
   getMenus(): Observable<Menu[]> {
-    return this._authService.oldUid$.pipe(
+    return this._authService.uid$.pipe(
       first(),
       concatMap((uid) => {
         if (uid) {
