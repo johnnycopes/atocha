@@ -47,12 +47,7 @@ export class RouterService {
   activePlannerView$ = this._localStateService.plannerView$;
 
   plannerRoute$ = this._localStateService.menuId$.pipe(
-    map((menuId) => {
-      if (!menuId) {
-        return [Route.planner];
-      }
-      return [Route.planner, menuId];
-    }),
+    map((menuId) => (menuId ? [Route.planner, menuId] : [Route.planner])),
     distinctUntilChanged(),
     shareReplay({ bufferSize: 1, refCount: true })
   );
