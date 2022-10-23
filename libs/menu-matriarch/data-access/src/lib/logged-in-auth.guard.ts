@@ -25,9 +25,9 @@ export class LoggedInAuthGuard implements CanActivate {
       first(),
       switchMap((loggedIn) => {
         if (loggedIn) {
-          return this._routerService
-            .getPlannerRoute()
-            .pipe(map((route) => this._router.createUrlTree(route)));
+          return this._routerService.plannerRoute$.pipe(
+            map((route) => this._router.createUrlTree(route))
+          );
         }
         return of(true);
       })

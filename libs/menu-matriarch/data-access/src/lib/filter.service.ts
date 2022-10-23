@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { first } from 'rxjs/operators';
+import { BehaviorSubject } from 'rxjs';
+import { first, shareReplay } from 'rxjs/operators';
 
 import { includes } from '@atocha/core/util';
 import {
@@ -20,34 +20,34 @@ interface State {
   providedIn: 'root',
 })
 export class FilterService {
-  private _state$ = new BehaviorSubject<State>({
+  private _stateSubject = new BehaviorSubject<State>({
     panel: false,
     tagIds: [],
     text: '',
   });
 
-  get state$(): Observable<State> {
-    return this._state$.asObservable();
-  }
+  state$ = this._stateSubject.pipe(
+    shareReplay({ bufferSize: 1, refCount: true })
+  );
 
   togglePanel(): void {
-    this._state$
+    this._stateSubject
       .pipe(first())
       .subscribe((state) =>
-        this._state$.next({ ...state, panel: !state.panel })
+        this._stateSubject.next({ ...state, panel: !state.panel })
       );
   }
 
   updateTagIds(tagIds: string[]): void {
-    this._state$
+    this._stateSubject
       .pipe(first())
-      .subscribe((state) => this._state$.next({ ...state, tagIds }));
+      .subscribe((state) => this._stateSubject.next({ ...state, tagIds }));
   }
 
   updateText(text: string): void {
-    this._state$
+    this._stateSubject
       .pipe(first())
-      .subscribe((state) => this._state$.next({ ...state, text }));
+      .subscribe((state) => this._stateSubject.next({ ...state, text }));
   }
 
   filterMeals({
