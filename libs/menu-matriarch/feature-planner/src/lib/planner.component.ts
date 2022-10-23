@@ -16,7 +16,7 @@ import { PlannerView } from '@atocha/menu-matriarch/util';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PlannerComponent {
-  view$ = this._plannerService.activePlannerView$;
+  view$ = this._plannerService.view$;
   menu$ = this._route.paramMap.pipe(
     map((paramMap) => paramMap.get('menuId')),
     switchMap((menuId) => {
@@ -34,7 +34,7 @@ export class PlannerComponent {
     private _plannerService: PlannerService
   ) {}
 
-  updatePlannerView(view: PlannerView): void {
-    this._plannerService.updatePlannerView(view);
+  updateView(view: PlannerView): void {
+    this._plannerService.updateView(view);
   }
 }

@@ -10,15 +10,15 @@ import { LocalStateService } from './internal/local-state.service';
 export class PlannerService {
   constructor(private _localStateService: LocalStateService) {}
 
-  activePlannerView$ = this._localStateService.plannerView$;
-
-  plannerRoute$ = this._localStateService.menuId$.pipe(
+  route$ = this._localStateService.menuId$.pipe(
     map((menuId) => (menuId ? [Route.planner, menuId] : [Route.planner])),
     distinctUntilChanged(),
     shareReplay({ bufferSize: 1, refCount: true })
   );
 
-  updatePlannerView(view: PlannerView): void {
+  view$ = this._localStateService.plannerView$;
+
+  updateView(view: PlannerView): void {
     this._localStateService.updatePlannerView(view);
   }
 }

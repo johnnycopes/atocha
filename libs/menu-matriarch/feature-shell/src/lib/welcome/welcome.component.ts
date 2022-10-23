@@ -44,7 +44,7 @@ export class WelcomeComponent {
           )
           .subscribe();
       } else {
-        this._plannerService.plannerRoute$
+        this._plannerService.route$
           .pipe(tap((route) => this._router.navigate(route)))
           .subscribe();
       }
