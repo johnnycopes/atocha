@@ -25,23 +25,11 @@ import { DishDataService } from './internal/dish-data.service';
 })
 export class RouterService {
   private _loading$ = new BehaviorSubject<boolean>(true);
-  private _activeDishId$ = new BehaviorSubject<string>('');
-  private _activeMealId$ = new BehaviorSubject<string>('');
   private _routerEvents$ = this._router.events.pipe(
     filter((e): e is NavigationEnd => e instanceof NavigationEnd)
   );
 
   loading$ = this._loading$.pipe(
-    distinctUntilChanged(),
-    shareReplay({ bufferSize: 1, refCount: true })
-  );
-
-  activeDishId$ = this._activeDishId$.pipe(
-    distinctUntilChanged(),
-    shareReplay({ bufferSize: 1, refCount: true })
-  );
-
-  activeMealId$ = this._activeMealId$.pipe(
     distinctUntilChanged(),
     shareReplay({ bufferSize: 1, refCount: true })
   );
@@ -87,7 +75,6 @@ export class RouterService {
         tap((event) => {
           const divviedUrl = event.urlAfterRedirects.split('/');
           const mealId = divviedUrl[2];
-          this._activeMealId$.next(mealId ?? '');
           this._mealDataService.updateActiveMealId(mealId ?? '');
         })
       )
@@ -99,7 +86,6 @@ export class RouterService {
         tap((event) => {
           const divviedUrl = event.urlAfterRedirects.split('/');
           const dishId = divviedUrl[2];
-          this._activeDishId$.next(dishId ?? '');
           this._dishDataService.updateActiveDishId(dishId ?? '');
         })
       )
