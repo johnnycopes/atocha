@@ -1,7 +1,13 @@
 import { Injectable } from '@angular/core';
-import { distinctUntilChanged, map, shareReplay } from 'rxjs/operators';
+import { BehaviorSubject } from 'rxjs';
+import { distinctUntilChanged, map, shareReplay, tap } from 'rxjs/operators';
 
-import { PlannerView, Route } from '@atocha/menu-matriarch/util';
+import { LocalStorageService } from '@atocha/core/data-access';
+import {
+  LocalStorageKey,
+  PlannerView,
+  Route,
+} from '@atocha/menu-matriarch/util';
 import { LocalStateService } from './internal/local-state.service';
 import { MenuService } from './menu.service';
 
@@ -9,10 +15,18 @@ import { MenuService } from './menu.service';
   providedIn: 'root',
 })
 export class PlannerService {
-  constructor(
-    private _localStateService: LocalStateService,
-    private _menuService: MenuService
-  ) {}
+  private _viewSubject = new BehaviorSubject<PlannerView>(
+    (this._localStorageService.getItem(LocalStorageKey.plannerView) ??
+      'dishes') as PlannerView
+  );
+
+  view$ = this._viewSubject.pipe(
+    tap((view) =>
+      this._localStorageService.setItem(LocalStorageKey.plannerView, view)
+    ),
+    distinctUntilChanged(),
+    shareReplay({ bufferSize: 1, refCount: true })
+  );
 
   route$ = this._menuService.activeMenuId$.pipe(
     map((menuId) => (menuId ? [Route.planner, menuId] : [Route.planner])),
@@ -20,9 +34,13 @@ export class PlannerService {
     shareReplay({ bufferSize: 1, refCount: true })
   );
 
-  view$ = this._localStateService.plannerView$;
+  constructor(
+    private _localStateService: LocalStateService,
+    private _localStorageService: LocalStorageService,
+    private _menuService: MenuService
+  ) {}
 
   updateView(view: PlannerView): void {
-    this._localStateService.updatePlannerView(view);
+    this._viewSubject.next(view);
   }
 }
