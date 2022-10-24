@@ -17,7 +17,7 @@ import {
 
 import { Route } from '@atocha/menu-matriarch/util';
 import { DishService } from '../dish.service';
-import { MealDataService } from './meal-data.service';
+import { MealService } from '../meal.service';
 import { MenuDataService } from './menu-data.service';
 
 @Injectable({
@@ -37,7 +37,7 @@ export class RouterService {
   constructor(
     private _router: Router,
     private _dishService: DishService,
-    private _mealDataService: MealDataService,
+    private _mealService: MealService,
     private _menuDataService: MenuDataService
   ) {
     this._routerEvents$
@@ -75,7 +75,7 @@ export class RouterService {
         tap((event) => {
           const divviedUrl = event.urlAfterRedirects.split('/');
           const mealId = divviedUrl[2];
-          this._mealDataService.updateActiveMealId(mealId ?? '');
+          this._mealService.updateActiveMealId(mealId ?? '');
         })
       )
       .subscribe();

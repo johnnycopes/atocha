@@ -1,6 +1,13 @@
 import { Injectable } from '@angular/core';
-import { combineLatest, Observable, of } from 'rxjs';
-import { concatMap, first, map, tap } from 'rxjs/operators';
+import { BehaviorSubject, combineLatest, Observable, of } from 'rxjs';
+import {
+  concatMap,
+  distinctUntilChanged,
+  first,
+  map,
+  shareReplay,
+  tap,
+} from 'rxjs/operators';
 
 import { AuthService } from '@atocha/core/data-access';
 import { MealDto, Meal, mapMealDtoToMeal } from '@atocha/menu-matriarch/util';
@@ -12,7 +19,12 @@ import { TagService } from './tag.service';
   providedIn: 'root',
 })
 export class MealService {
-  activeMealId$ = this._mealDataService.activeMealId$;
+  private _activeMealIdSubject = new BehaviorSubject<string>('');
+
+  activeMealId$ = this._activeMealIdSubject.pipe(
+    distinctUntilChanged(),
+    shareReplay({ bufferSize: 1, refCount: true })
+  );
 
   constructor(
     private _authService: AuthService,
@@ -84,6 +96,10 @@ export class MealService {
         await this._mealDataService.updateMeal(meal, data);
       })
     );
+  }
+
+  updateActiveMealId(id: string): void {
+    this._activeMealIdSubject.next(id);
   }
 
   deleteMeal(id: string): Observable<Meal | undefined> {
