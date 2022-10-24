@@ -17,7 +17,6 @@ import {
 
 import { Route } from '@atocha/menu-matriarch/util';
 import { DishDataService } from './dish-data.service';
-import { LocalStateService } from './local-state.service';
 import { MealDataService } from './meal-data.service';
 import { MenuDataService } from './menu-data.service';
 
@@ -38,7 +37,6 @@ export class RouterService {
   constructor(
     private _router: Router,
     private _dishDataService: DishDataService,
-    private _localStateService: LocalStateService,
     private _mealDataService: MealDataService,
     private _menuDataService: MenuDataService
   ) {

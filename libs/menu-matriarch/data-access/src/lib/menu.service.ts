@@ -10,7 +10,6 @@ import {
   mapMenuDtoToMenu,
 } from '@atocha/menu-matriarch/util';
 import { DishService } from './dish.service';
-import { LocalStateService } from './internal/local-state.service';
 import { MenuDataService } from './internal/menu-data.service';
 import { UserService } from './user.service';
 
@@ -23,7 +22,6 @@ export class MenuService {
   constructor(
     private _authService: AuthService,
     private _dishService: DishService,
-    private _localStateService: LocalStateService,
     private _menuDataService: MenuDataService,
     private _userService: UserService
   ) {}

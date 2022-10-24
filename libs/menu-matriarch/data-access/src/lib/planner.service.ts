@@ -8,7 +8,6 @@ import {
   PlannerView,
   Route,
 } from '@atocha/menu-matriarch/util';
-import { LocalStateService } from './internal/local-state.service';
 import { MenuService } from './menu.service';
 
 @Injectable({
@@ -35,7 +34,6 @@ export class PlannerService {
   );
 
   constructor(
-    private _localStateService: LocalStateService,
     private _localStorageService: LocalStorageService,
     private _menuService: MenuService
   ) {}
