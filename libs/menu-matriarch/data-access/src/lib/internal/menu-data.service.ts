@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { distinctUntilChanged, map, shareReplay, tap } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
-import { DataService, LocalStorageService } from '@atocha/core/data-access';
+import { DataService } from '@atocha/core/data-access';
 import { flattenValues, lower, sort } from '@atocha/core/util';
 import {
   Day,
@@ -10,7 +10,6 @@ import {
   MenuDto,
   Endpoint,
   createMenuDto,
-  LocalStorageKey,
 } from '@atocha/menu-matriarch/util';
 import { BatchService } from './batch.service';
 
@@ -19,26 +18,10 @@ import { BatchService } from './batch.service';
 })
 export class MenuDataService {
   private _endpoint = Endpoint.menus;
-  private _activeMenuIdSubject = new BehaviorSubject<string | null>(
-    this._localStorageService.getItem(LocalStorageKey.menuId)
-  );
-
-  activeMenuId$ = this._activeMenuIdSubject.pipe(
-    tap((id) => {
-      if (id) {
-        this._localStorageService.setItem(LocalStorageKey.menuId, id);
-      } else {
-        this._localStorageService.removeItem(LocalStorageKey.menuId);
-      }
-    }),
-    distinctUntilChanged(),
-    shareReplay({ bufferSize: 1, refCount: true })
-  );
 
   constructor(
     private _batchService: BatchService,
-    private _dataService: DataService,
-    private _localStorageService: LocalStorageService
+    private _dataService: DataService
   ) {}
 
   getMenu(id: string): Observable<MenuDto | undefined> {
