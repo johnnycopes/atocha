@@ -16,7 +16,7 @@ import {
 } from 'rxjs/operators';
 
 import { Route } from '@atocha/menu-matriarch/util';
-import { DishDataService } from './dish-data.service';
+import { DishService } from '../dish.service';
 import { MealDataService } from './meal-data.service';
 import { MenuDataService } from './menu-data.service';
 
@@ -36,7 +36,7 @@ export class RouterService {
 
   constructor(
     private _router: Router,
-    private _dishDataService: DishDataService,
+    private _dishService: DishService,
     private _mealDataService: MealDataService,
     private _menuDataService: MenuDataService
   ) {
@@ -86,7 +86,7 @@ export class RouterService {
         tap((event) => {
           const divviedUrl = event.urlAfterRedirects.split('/');
           const dishId = divviedUrl[2];
-          this._dishDataService.updateActiveDishId(dishId ?? '');
+          this._dishService.updateActiveDishId(dishId ?? '');
         })
       )
       .subscribe();

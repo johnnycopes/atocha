@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { distinctUntilChanged, map, shareReplay } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 import { DataService } from '@atocha/core/data-access';
 import { lower, sort } from '@atocha/core/util';
@@ -17,12 +17,6 @@ import { BatchService } from './batch.service';
 })
 export class DishDataService {
   private _endpoint = Endpoint.dishes;
-  private _activeDishIdSubject = new BehaviorSubject<string>('');
-
-  activeDishId$ = this._activeDishIdSubject.pipe(
-    distinctUntilChanged(),
-    shareReplay({ bufferSize: 1, refCount: true })
-  );
 
   constructor(
     private _batchService: BatchService,
@@ -67,10 +61,6 @@ export class DishDataService {
 
     await batch.commit();
     return id;
-  }
-
-  updateActiveDishId(id: string): void {
-    this._activeDishIdSubject.next(id);
   }
 
   async updateDish(
