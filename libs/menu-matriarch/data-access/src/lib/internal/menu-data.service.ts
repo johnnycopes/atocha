@@ -110,10 +110,6 @@ export class MenuDataService {
     await batch.commit();
   }
 
-  updateActiveMenuId(id: string | null): void {
-    this._activeMenuIdSubject.next(id);
-  }
-
   async deleteMenu(menu: Menu): Promise<void> {
     const batch = this._batchService.createBatch();
 
