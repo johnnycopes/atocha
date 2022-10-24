@@ -18,6 +18,8 @@ import { UserService } from './user.service';
   providedIn: 'root',
 })
 export class MenuService {
+  activeMenuId$ = this._menuDataService.activeMenuId$;
+
   constructor(
     private _authService: AuthService,
     private _dishService: DishService,
@@ -123,13 +125,11 @@ export class MenuService {
               return;
             }
             await this._menuDataService.deleteMenu(menu);
-            this._localStateService.menuId$
-              .pipe(first())
-              .subscribe((menuId) => {
-                if (id === menuId) {
-                  this._localStateService.updateMenuId(null);
-                }
-              });
+            this.activeMenuId$.pipe(first()).subscribe((menuId) => {
+              if (id === menuId) {
+                this._menuDataService.updateActiveMenuId(null);
+              }
+            });
           })
         )
         .subscribe();
