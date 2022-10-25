@@ -19,6 +19,13 @@ import {
 import { LocalStorageService } from '@atocha/core/data-access';
 import { LocalStorageKey, Route } from '@atocha/menu-matriarch/util';
 
+interface State {
+  loading: boolean;
+  activeMealId: string;
+  activeMenuId: string | null;
+  activeDishId: string;
+}
+
 @Injectable({
   providedIn: 'root',
 })
@@ -27,7 +34,7 @@ export class RouterService {
     filter((e): e is NavigationEnd => e instanceof NavigationEnd)
   );
 
-  private _stateSubject = new BehaviorSubject({
+  private _stateSubject = new BehaviorSubject<State>({
     loading: true,
     activeMealId: '',
     activeMenuId: this._localStorageService.getItem(LocalStorageKey.menuId),
@@ -81,13 +88,7 @@ export class RouterService {
           }
           return true;
         }),
-        tap((loading) => {
-          this._stateSubject
-            .pipe(first())
-            .subscribe((state) =>
-              this._stateSubject.next({ ...state, loading })
-            );
-        })
+        tap((loading) => this._updateState('loading', loading))
       )
       .subscribe();
 
@@ -98,12 +99,7 @@ export class RouterService {
           const divviedUrl = event.urlAfterRedirects.split('/');
           const menuId = divviedUrl[divviedUrl.length - 1];
           if (menuId !== Route.planner) {
-            this._stateSubject.pipe(first()).subscribe((state) =>
-              this._stateSubject.next({
-                ...state,
-                activeMenuId: menuId,
-              })
-            );
+            this._updateState('activeMenuId', menuId);
           }
         })
       )
@@ -115,12 +111,7 @@ export class RouterService {
         tap((event) => {
           const divviedUrl = event.urlAfterRedirects.split('/');
           const mealId = divviedUrl[2];
-          this._stateSubject.pipe(first()).subscribe((state) =>
-            this._stateSubject.next({
-              ...state,
-              activeMealId: mealId ?? '',
-            })
-          );
+          this._updateState('activeMealId', mealId ?? '');
         })
       )
       .subscribe();
@@ -131,14 +122,17 @@ export class RouterService {
         tap((event) => {
           const divviedUrl = event.urlAfterRedirects.split('/');
           const dishId = divviedUrl[2];
-          this._stateSubject.pipe(first()).subscribe((state) =>
-            this._stateSubject.next({
-              ...state,
-              activeDishId: dishId ?? '',
-            })
-          );
+          this._updateState('activeDishId', dishId ?? '');
         })
       )
       .subscribe();
+  }
+
+  private _updateState<T>(key: keyof State, value: T): void {
+    this._stateSubject
+      .pipe(first())
+      .subscribe((state) =>
+        this._stateSubject.next({ ...state, [key]: value })
+      );
   }
 }
