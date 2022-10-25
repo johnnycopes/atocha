@@ -1,51 +1,30 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, combineLatest, Observable, of } from 'rxjs';
-import {
-  concatMap,
-  distinctUntilChanged,
-  first,
-  map,
-  shareReplay,
-  tap,
-} from 'rxjs/operators';
+import { combineLatest, Observable, of } from 'rxjs';
+import { concatMap, first, map, tap } from 'rxjs/operators';
 
-import { AuthService, LocalStorageService } from '@atocha/core/data-access';
+import { AuthService } from '@atocha/core/data-access';
 import {
   Day,
   Menu,
   MenuDto,
   mapMenuDtoToMenu,
-  LocalStorageKey,
 } from '@atocha/menu-matriarch/util';
 import { DishService } from './dish.service';
 import { MenuDataService } from './internal/menu-data.service';
+import { RouterService } from './internal/router.service';
 import { UserService } from './user.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class MenuService {
-  private _activeMenuIdSubject = new BehaviorSubject<string | null>(
-    this._localStorageService.getItem(LocalStorageKey.menuId)
-  );
-
-  activeMenuId$ = this._activeMenuIdSubject.pipe(
-    tap((id) => {
-      if (id) {
-        this._localStorageService.setItem(LocalStorageKey.menuId, id);
-      } else {
-        this._localStorageService.removeItem(LocalStorageKey.menuId);
-      }
-    }),
-    distinctUntilChanged(),
-    shareReplay({ bufferSize: 1, refCount: true })
-  );
+  activeMenuId$ = this._routerService.activeMenuId$;
 
   constructor(
     private _authService: AuthService,
     private _dishService: DishService,
-    private _localStorageService: LocalStorageService,
     private _menuDataService: MenuDataService,
+    private _routerService: RouterService,
     private _userService: UserService
   ) {}
 
@@ -109,10 +88,6 @@ export class MenuService {
     );
   }
 
-  updateActiveMenuId(id: string | null): void {
-    this._activeMenuIdSubject.next(id);
-  }
-
   updateMenuName(id: string, name: string): Promise<void> {
     return this._menuDataService.updateMenu(id, { name });
   }
@@ -150,11 +125,6 @@ export class MenuService {
               return;
             }
             await this._menuDataService.deleteMenu(menu);
-            this.activeMenuId$.pipe(first()).subscribe((menuId) => {
-              if (id === menuId) {
-                this.updateActiveMenuId(null);
-              }
-            });
           })
         )
         .subscribe();

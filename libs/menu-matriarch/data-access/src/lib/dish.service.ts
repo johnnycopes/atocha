@@ -1,33 +1,23 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, combineLatest, Observable, of } from 'rxjs';
-import {
-  concatMap,
-  distinctUntilChanged,
-  first,
-  map,
-  shareReplay,
-  tap,
-} from 'rxjs/operators';
+import { combineLatest, Observable, of } from 'rxjs';
+import { concatMap, first, map, tap } from 'rxjs/operators';
 
 import { AuthService } from '@atocha/core/data-access';
 import { Dish, DishDto, mapDishDtoToDish } from '@atocha/menu-matriarch/util';
 import { DishDataService } from './internal/dish-data.service';
+import { RouterService } from './internal/router.service';
 import { TagService } from './tag.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class DishService {
-  private _activeDishIdSubject = new BehaviorSubject<string>('');
-
-  activeDishId$ = this._activeDishIdSubject.pipe(
-    distinctUntilChanged(),
-    shareReplay({ bufferSize: 1, refCount: true })
-  );
+  activeDishId$ = this._routerService.activeDishId$;
 
   constructor(
     private _authService: AuthService,
     private _dishDataService: DishDataService,
+    private _routerService: RouterService,
     private _tagService: TagService
   ) {}
 
@@ -93,10 +83,6 @@ export class DishService {
         await this._dishDataService.updateDish(dish, data);
       })
     );
-  }
-
-  updateActiveDishId(id: string): void {
-    this._activeDishIdSubject.next(id);
   }
 
   deleteDish(id: string): Observable<Dish | undefined> {

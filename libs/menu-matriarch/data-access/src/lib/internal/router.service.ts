@@ -13,32 +13,61 @@ import {
   tap,
   distinctUntilChanged,
   shareReplay,
+  first,
 } from 'rxjs/operators';
 
-import { Route } from '@atocha/menu-matriarch/util';
-import { DishService } from '../dish.service';
-import { MealService } from '../meal.service';
-import { MenuService } from '../menu.service';
+import { LocalStorageService } from '@atocha/core/data-access';
+import { LocalStorageKey, Route } from '@atocha/menu-matriarch/util';
 
 @Injectable({
   providedIn: 'root',
 })
 export class RouterService {
-  private _loading$ = new BehaviorSubject<boolean>(true);
   private _routerEvents$ = this._router.events.pipe(
     filter((e): e is NavigationEnd => e instanceof NavigationEnd)
   );
 
-  loading$ = this._loading$.pipe(
+  private _stateSubject = new BehaviorSubject({
+    loading: true,
+    activeMealId: '',
+    activeMenuId: this._localStorageService.getItem(LocalStorageKey.menuId),
+    activeDishId: '',
+  });
+
+  loading$ = this._stateSubject.pipe(
+    map(({ loading }) => loading),
+    distinctUntilChanged(),
+    shareReplay({ bufferSize: 1, refCount: true })
+  );
+
+  activeMealId$ = this._stateSubject.pipe(
+    map(({ activeMealId }) => activeMealId),
+    distinctUntilChanged(),
+    shareReplay({ bufferSize: 1, refCount: true })
+  );
+
+  activeMenuId$ = this._stateSubject.pipe(
+    map(({ activeMenuId }) => activeMenuId),
+    tap((id) => {
+      if (id) {
+        this._localStorageService.setItem(LocalStorageKey.menuId, id);
+      } else {
+        this._localStorageService.removeItem(LocalStorageKey.menuId);
+      }
+    }),
+    distinctUntilChanged(),
+    shareReplay({ bufferSize: 1, refCount: true })
+  );
+
+  activeDishId$ = this._stateSubject.pipe(
+    map(({ activeDishId }) => activeDishId),
     distinctUntilChanged(),
     shareReplay({ bufferSize: 1, refCount: true })
   );
 
   constructor(
     private _router: Router,
-    private _dishService: DishService,
-    private _mealService: MealService,
-    private _menuService: MenuService
+    private _localStorageService: LocalStorageService
   ) {
     this._routerEvents$
       .pipe(
@@ -52,7 +81,13 @@ export class RouterService {
           }
           return true;
         }),
-        tap((loading) => this._loading$.next(loading))
+        tap((loading) => {
+          this._stateSubject
+            .pipe(first())
+            .subscribe((state) =>
+              this._stateSubject.next({ ...state, loading })
+            );
+        })
       )
       .subscribe();
 
@@ -63,7 +98,12 @@ export class RouterService {
           const divviedUrl = event.urlAfterRedirects.split('/');
           const menuId = divviedUrl[divviedUrl.length - 1];
           if (menuId !== Route.planner) {
-            this._menuService.updateActiveMenuId(menuId);
+            this._stateSubject.pipe(first()).subscribe((state) =>
+              this._stateSubject.next({
+                ...state,
+                activeMenuId: menuId,
+              })
+            );
           }
         })
       )
@@ -75,7 +115,12 @@ export class RouterService {
         tap((event) => {
           const divviedUrl = event.urlAfterRedirects.split('/');
           const mealId = divviedUrl[2];
-          this._mealService.updateActiveMealId(mealId ?? '');
+          this._stateSubject.pipe(first()).subscribe((state) =>
+            this._stateSubject.next({
+              ...state,
+              activeMealId: mealId ?? '',
+            })
+          );
         })
       )
       .subscribe();
@@ -86,7 +131,12 @@ export class RouterService {
         tap((event) => {
           const divviedUrl = event.urlAfterRedirects.split('/');
           const dishId = divviedUrl[2];
-          this._dishService.updateActiveDishId(dishId ?? '');
+          this._stateSubject.pipe(first()).subscribe((state) =>
+            this._stateSubject.next({
+              ...state,
+              activeDishId: dishId ?? '',
+            })
+          );
         })
       )
       .subscribe();
