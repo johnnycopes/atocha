@@ -5,17 +5,19 @@ import { concatMap, first, map, tap } from 'rxjs/operators';
 import { AuthService } from '@atocha/core/data-access';
 import { Dish, DishDto, mapDishDtoToDish } from '@atocha/menu-matriarch/util';
 import { DishDataService } from './internal/dish-data.service';
+import { RouterService } from './internal/router.service';
 import { TagService } from './tag.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class DishService {
-  activeDishId$ = this._dishDataService.activeDishId$;
+  activeDishId$ = this._routerService.activeDishId$;
 
   constructor(
     private _authService: AuthService,
     private _dishDataService: DishDataService,
+    private _routerService: RouterService,
     private _tagService: TagService
   ) {}
 

@@ -13,32 +13,68 @@ import {
   tap,
   distinctUntilChanged,
   shareReplay,
+  first,
 } from 'rxjs/operators';
 
-import { Route } from '@atocha/menu-matriarch/util';
-import { LocalStateService } from './local-state.service';
-import { MealDataService } from './meal-data.service';
-import { DishDataService } from './dish-data.service';
+import { LocalStorageService } from '@atocha/core/data-access';
+import { LocalStorageKey, Route } from '@atocha/menu-matriarch/util';
+
+interface State {
+  loading: boolean;
+  activeMealId: string;
+  activeMenuId: string | null;
+  activeDishId: string;
+}
 
 @Injectable({
   providedIn: 'root',
 })
 export class RouterService {
-  private _loading$ = new BehaviorSubject<boolean>(true);
   private _routerEvents$ = this._router.events.pipe(
     filter((e): e is NavigationEnd => e instanceof NavigationEnd)
   );
 
-  loading$ = this._loading$.pipe(
+  private _stateSubject = new BehaviorSubject<State>({
+    loading: true,
+    activeMealId: '',
+    activeMenuId: this._localStorageService.getItem(LocalStorageKey.menuId),
+    activeDishId: '',
+  });
+
+  loading$ = this._stateSubject.pipe(
+    map(({ loading }) => loading),
+    distinctUntilChanged(),
+    shareReplay({ bufferSize: 1, refCount: true })
+  );
+
+  activeMealId$ = this._stateSubject.pipe(
+    map(({ activeMealId }) => activeMealId),
+    distinctUntilChanged(),
+    shareReplay({ bufferSize: 1, refCount: true })
+  );
+
+  activeMenuId$ = this._stateSubject.pipe(
+    map(({ activeMenuId }) => activeMenuId),
+    tap((id) => {
+      if (id) {
+        this._localStorageService.setItem(LocalStorageKey.menuId, id);
+      } else {
+        this._localStorageService.removeItem(LocalStorageKey.menuId);
+      }
+    }),
+    distinctUntilChanged(),
+    shareReplay({ bufferSize: 1, refCount: true })
+  );
+
+  activeDishId$ = this._stateSubject.pipe(
+    map(({ activeDishId }) => activeDishId),
     distinctUntilChanged(),
     shareReplay({ bufferSize: 1, refCount: true })
   );
 
   constructor(
     private _router: Router,
-    private _dishDataService: DishDataService,
-    private _localStateService: LocalStateService,
-    private _mealDataService: MealDataService
+    private _localStorageService: LocalStorageService
   ) {
     this._routerEvents$
       .pipe(
@@ -52,7 +88,7 @@ export class RouterService {
           }
           return true;
         }),
-        tap((loading) => this._loading$.next(loading))
+        tap((loading) => this._updateState('loading', loading))
       )
       .subscribe();
 
@@ -63,7 +99,7 @@ export class RouterService {
           const divviedUrl = event.urlAfterRedirects.split('/');
           const menuId = divviedUrl[divviedUrl.length - 1];
           if (menuId !== Route.planner) {
-            this._localStateService.updateMenuId(menuId);
+            this._updateState('activeMenuId', menuId);
           }
         })
       )
@@ -75,7 +111,7 @@ export class RouterService {
         tap((event) => {
           const divviedUrl = event.urlAfterRedirects.split('/');
           const mealId = divviedUrl[2];
-          this._mealDataService.updateActiveMealId(mealId ?? '');
+          this._updateState('activeMealId', mealId ?? '');
         })
       )
       .subscribe();
@@ -86,9 +122,17 @@ export class RouterService {
         tap((event) => {
           const divviedUrl = event.urlAfterRedirects.split('/');
           const dishId = divviedUrl[2];
-          this._dishDataService.updateActiveDishId(dishId ?? '');
+          this._updateState('activeDishId', dishId ?? '');
         })
       )
       .subscribe();
+  }
+
+  private _updateState<K extends keyof State>(key: K, value: State[K]): void {
+    this._stateSubject
+      .pipe(first())
+      .subscribe((state) =>
+        this._stateSubject.next({ ...state, [key]: value })
+      );
   }
 }
