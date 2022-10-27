@@ -128,7 +128,7 @@ export class RouterService {
       .subscribe();
   }
 
-  private _updateState<T>(key: keyof State, value: T): void {
+  private _updateState<K extends keyof State>(key: K, value: State[K]): void {
     this._stateSubject
       .pipe(first())
       .subscribe((state) =>
