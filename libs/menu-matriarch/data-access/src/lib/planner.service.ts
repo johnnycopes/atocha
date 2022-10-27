@@ -28,9 +28,7 @@ export class PlannerService {
   );
 
   route$ = this._menuService.activeMenuId$.pipe(
-    map((menuId) => (menuId ? [Route.planner, menuId] : [Route.planner])),
-    distinctUntilChanged(),
-    shareReplay({ bufferSize: 1, refCount: true })
+    map((menuId) => (menuId ? [Route.planner, menuId] : [Route.planner]))
   );
 
   constructor(
