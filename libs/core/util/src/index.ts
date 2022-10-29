@@ -13,6 +13,7 @@ export * from './lib/reduce-recursively';
 export * from './lib/select-random';
 export * from './lib/snake-case';
 export * from './lib/sort';
+export * from './lib/state';
 export * from './lib/tally';
 export * from './lib/unique-diff';
 export * from './lib/wait';
