@@ -7,7 +7,7 @@ import {
   shareReplay,
 } from 'rxjs';
 
-export class Store<T extends object> {
+export class State<T extends object> {
   private _stateSubject: BehaviorSubject<T>;
   private _state$: Observable<T>;
 
