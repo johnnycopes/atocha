@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, shareReplay } from 'rxjs';
+import { Observable } from 'rxjs';
 import { groupBy } from 'lodash-es';
 
-import { sort } from '@atocha/core/util';
+import { sort, State } from '@atocha/core/util';
 import {
   Country,
   mapCountryDtoToCountry,
@@ -21,14 +21,12 @@ interface Places {
   providedIn: 'root',
 })
 export class PlaceService {
-  private readonly _placesSubject = new BehaviorSubject<Places>({
+  private readonly _state = new State<Places>({
     countries: [],
     countriesBySubregion: {},
     regions: [],
   });
-  places$ = this._placesSubject.pipe(
-    shareReplay({ bufferSize: 1, refCount: true })
-  );
+  places$ = this._state.get();
 
   constructor(private _apiService: ApiService) {
     this._apiService.fetchCountries().subscribe((countryDtos) => {
@@ -48,7 +46,7 @@ export class PlaceService {
         countriesBySubregion,
         subregionsByRegion
       );
-      this._placesSubject.next({
+      this._state.update({
         countries,
         countriesBySubregion,
         regions,
