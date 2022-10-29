@@ -6,20 +6,21 @@ import {
   NavigationCancel,
   NavigationError,
 } from '@angular/router';
-import { BehaviorSubject } from 'rxjs';
-import { map, filter, distinctUntilChanged, shareReplay } from 'rxjs/operators';
+import { map, filter, distinctUntilChanged } from 'rxjs/operators';
 
+import { State } from '@atocha/core/util';
 import { LoaderService } from './loader.service';
+
+interface RouterState {
+  currentRoute: string;
+}
 
 @Injectable({
   providedIn: 'root',
 })
 export class RouterService {
-  private _routeSubject = new BehaviorSubject<string>('');
-  route$ = this._routeSubject.pipe(
-    distinctUntilChanged(),
-    shareReplay({ bufferSize: 1, refCount: true })
-  );
+  private _state = new State<RouterState>({ currentRoute: '' });
+  route$ = this._state.getProp('currentRoute');
 
   constructor(private _router: Router, private _loaderService: LoaderService) {
     this._router.events
@@ -28,7 +29,9 @@ export class RouterService {
         map((navigationEnd: NavigationEnd) => navigationEnd.urlAfterRedirects),
         distinctUntilChanged()
       )
-      .subscribe((currentRoute) => this._routeSubject.next(currentRoute));
+      .subscribe((currentRoute) =>
+        this._state.updateProp('currentRoute', currentRoute)
+      );
 
     this._router.events
       .pipe(
