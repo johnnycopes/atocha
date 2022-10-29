@@ -7,22 +7,22 @@ import {
   shareReplay,
 } from 'rxjs';
 
-export class Store<State extends object> {
-  private _stateSubject: BehaviorSubject<State>;
-  private _state$: Observable<State>;
+export class Store<T extends object> {
+  private _stateSubject: BehaviorSubject<T>;
+  private _state$: Observable<T>;
 
-  constructor(state: State) {
+  constructor(state: T) {
     this._stateSubject = new BehaviorSubject(state);
     this._state$ = this._stateSubject.pipe(
       shareReplay({ bufferSize: 1, refCount: true })
     );
   }
 
-  get(): Observable<State> {
+  get(): Observable<T> {
     return this._state$;
   }
 
-  getProp<K extends keyof State>(key: K): Observable<State[K]> {
+  getProp<K extends keyof T>(key: K): Observable<T[K]> {
     return this._state$.pipe(
       map((state) => state[key]),
       distinctUntilChanged(),
@@ -30,11 +30,11 @@ export class Store<State extends object> {
     );
   }
 
-  update(value: State): void {
+  update(value: T): void {
     this._stateSubject.next(value);
   }
 
-  updateProp<K extends keyof State>(key: K, value: State[K]): void {
+  updateProp<K extends keyof T>(key: K, value: T[K]): void {
     this._state$.pipe(first()).subscribe((state) => {
       this._stateSubject.next({ ...state, [key]: value });
     });
