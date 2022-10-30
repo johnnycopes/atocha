@@ -6,20 +6,13 @@ import {
   NavigationCancel,
   NavigationError,
 } from '@angular/router';
-import { BehaviorSubject } from 'rxjs';
-import {
-  map,
-  filter,
-  tap,
-  distinctUntilChanged,
-  shareReplay,
-  first,
-} from 'rxjs/operators';
+import { map, filter, tap } from 'rxjs/operators';
 
 import { LocalStorageService } from '@atocha/core/data-access';
+import { State } from '@atocha/core/util';
 import { LocalStorageKey, Route } from '@atocha/menu-matriarch/util';
 
-interface State {
+interface RouterState {
   loading: boolean;
   activeMealId: string;
   activeMenuId: string | null;
@@ -33,44 +26,25 @@ export class RouterService {
   private _routerEvents$ = this._router.events.pipe(
     filter((e): e is NavigationEnd => e instanceof NavigationEnd)
   );
-
-  private _stateSubject = new BehaviorSubject<State>({
+  private _state = new State<RouterState>({
     loading: true,
     activeMealId: '',
     activeMenuId: this._localStorageService.getItem(LocalStorageKey.menuId),
     activeDishId: '',
   });
 
-  loading$ = this._stateSubject.pipe(
-    map(({ loading }) => loading),
-    distinctUntilChanged(),
-    shareReplay({ bufferSize: 1, refCount: true })
-  );
-
-  activeMealId$ = this._stateSubject.pipe(
-    map(({ activeMealId }) => activeMealId),
-    distinctUntilChanged(),
-    shareReplay({ bufferSize: 1, refCount: true })
-  );
-
-  activeMenuId$ = this._stateSubject.pipe(
-    map(({ activeMenuId }) => activeMenuId),
+  loading$ = this._state.getProp('loading');
+  activeMealId$ = this._state.getProp('activeMealId');
+  activeMenuId$ = this._state.getProp('activeMenuId').pipe(
     tap((id) => {
       if (id) {
         this._localStorageService.setItem(LocalStorageKey.menuId, id);
       } else {
         this._localStorageService.removeItem(LocalStorageKey.menuId);
       }
-    }),
-    distinctUntilChanged(),
-    shareReplay({ bufferSize: 1, refCount: true })
+    })
   );
-
-  activeDishId$ = this._stateSubject.pipe(
-    map(({ activeDishId }) => activeDishId),
-    distinctUntilChanged(),
-    shareReplay({ bufferSize: 1, refCount: true })
-  );
+  activeDishId$ = this._state.getProp('activeDishId');
 
   constructor(
     private _router: Router,
@@ -88,7 +62,7 @@ export class RouterService {
           }
           return true;
         }),
-        tap((loading) => this._updateState('loading', loading))
+        tap((loading) => this._state.updateProp('loading', loading))
       )
       .subscribe();
 
@@ -99,7 +73,7 @@ export class RouterService {
           const divviedUrl = event.urlAfterRedirects.split('/');
           const menuId = divviedUrl[divviedUrl.length - 1];
           if (menuId !== Route.planner) {
-            this._updateState('activeMenuId', menuId);
+            this._state.updateProp('activeMenuId', menuId);
           }
         })
       )
@@ -111,7 +85,7 @@ export class RouterService {
         tap((event) => {
           const divviedUrl = event.urlAfterRedirects.split('/');
           const mealId = divviedUrl[2];
-          this._updateState('activeMealId', mealId ?? '');
+          this._state.updateProp('activeMealId', mealId ?? '');
         })
       )
       .subscribe();
@@ -122,17 +96,9 @@ export class RouterService {
         tap((event) => {
           const divviedUrl = event.urlAfterRedirects.split('/');
           const dishId = divviedUrl[2];
-          this._updateState('activeDishId', dishId ?? '');
+          this._state.updateProp('activeDishId', dishId ?? '');
         })
       )
       .subscribe();
-  }
-
-  private _updateState<K extends keyof State>(key: K, value: State[K]): void {
-    this._stateSubject
-      .pipe(first())
-      .subscribe((state) =>
-        this._stateSubject.next({ ...state, [key]: value })
-      );
   }
 }
