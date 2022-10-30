@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { first } from 'rxjs/operators';
 
 import { includes, State } from '@atocha/core/util';
 import {
@@ -28,9 +27,7 @@ export class FilterService {
   state$ = this._state.get();
 
   togglePanel(): void {
-    this.state$
-      .pipe(first())
-      .subscribe(({ panel }) => this._state.updateProp('panel', !panel));
+    this._state.transformProp('panel', (open) => !open);
   }
 
   updateTagIds(tagIds: string[]): void {

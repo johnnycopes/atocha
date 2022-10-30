@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { first, tap } from 'rxjs';
+import { tap } from 'rxjs';
 
 import { LocalStorageService } from '@atocha/core/data-access';
 import { Card } from '@atocha/lorenzo/util';
@@ -33,9 +33,7 @@ export class VisibilityService {
   constructor(private _localStorageService: LocalStorageService) {}
 
   toggleVisibility(type: Card): void {
-    this.visibility$.pipe(first()).subscribe((visibility) => {
-      this._visibility.updateProp(type, !visibility[type]);
-    });
+    this._visibility.transformProp(type, (visibility) => !visibility);
   }
 
   expandAll(): void {
