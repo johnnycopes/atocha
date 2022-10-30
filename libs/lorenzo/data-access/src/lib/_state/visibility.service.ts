@@ -1,8 +1,11 @@
 import { Injectable } from '@angular/core';
-import { LocalStorageService } from '@atocha/core/data-access';
+import { first, tap } from 'rxjs';
 
+import { LocalStorageService } from '@atocha/core/data-access';
 import { Card } from '@atocha/lorenzo/util';
-import { BehaviorSubject, first, shareReplay, tap } from 'rxjs';
+import { State } from '@atocha/core/util';
+
+export type Visibility = Record<Card, boolean>;
 
 @Injectable({
   providedIn: 'root',
@@ -13,34 +16,36 @@ export class VisibilityService {
     family: 'FAMILY_VISIBLE',
     leader: 'LEADER_VISIBLE',
   };
-  private _visibilitySubject = new BehaviorSubject<Record<Card, boolean>>({
+  private _visibility = new State<Visibility>({
     development: this._getVisiblity(this._keys.development),
     family: this._getVisiblity(this._keys.family),
     leader: this._getVisiblity(this._keys.leader),
   });
 
-  visibility$ = this._visibilitySubject.pipe(
+  visibility$ = this._visibility.get().pipe(
     tap(({ development, family, leader }) => {
       this._setVisibility(this._keys.development, development);
       this._setVisibility(this._keys.family, family);
       this._setVisibility(this._keys.leader, leader);
-    }),
-    shareReplay({ bufferSize: 1, refCount: true })
+    })
   );
 
   constructor(private _localStorageService: LocalStorageService) {}
 
   toggleVisibility(type: Card): void {
-    this._visibilitySubject.pipe(first()).subscribe((visibility) =>
-      this._visibilitySubject.next({
-        ...visibility,
-        [type]: !visibility[type],
-      })
-    );
+    this._visibility
+      .get()
+      .pipe(first())
+      .subscribe((visibility) =>
+        this._visibility.update({
+          ...visibility,
+          [type]: !visibility[type],
+        })
+      );
   }
 
   expandAll(): void {
-    this._visibilitySubject.next({
+    this._visibility.update({
       development: true,
       family: true,
       leader: true,
@@ -48,7 +53,7 @@ export class VisibilityService {
   }
 
   collapseAll(): void {
-    this._visibilitySubject.next({
+    this._visibility.update({
       development: false,
       family: false,
       leader: false,
