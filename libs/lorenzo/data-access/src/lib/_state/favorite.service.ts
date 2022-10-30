@@ -35,10 +35,10 @@ export class FavoriteService {
 
   toggleId(id: string, type: Card): void {
     this._ids
-      .get()
+      .getProp(type)
       .pipe(first())
       .subscribe((favorites) => {
-        this._ids.updateProp(type, this._updateSet(favorites[type], id));
+        this._ids.updateProp(type, this._updateSet(favorites, id));
       });
   }
 
