@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { first, shareReplay, tap } from 'rxjs';
+import { first, tap } from 'rxjs';
 
 import { LocalStorageService } from '@atocha/core/data-access';
 import { State } from '@atocha/core/util';
@@ -27,46 +27,39 @@ export class OrdinalService {
       this._setOrdinal(this._keys.development, development);
       this._setOrdinal(this._keys.family, family);
       this._setOrdinal(this._keys.leader, leader);
-    }),
-    shareReplay({ bufferSize: 1, refCount: true })
+    })
   );
 
   incrementOrdinal(type: Card): void {
-    this._ordinals
-      .get()
-      .pipe(first())
-      .subscribe((ordinals) => {
-        const currentOrdinal = ordinals[type];
-        const target = Object.entries(ordinals).find(
-          ([_, ordinal]) => ordinal === currentOrdinal + 1
-        );
-        if (target) {
-          this._ordinals.update({
-            ...ordinals,
-            [target[0]]: currentOrdinal,
-            [type]: target[1],
-          });
-        }
-      });
+    this.ordinal$.pipe(first()).subscribe((ordinals) => {
+      const currentOrdinal = ordinals[type];
+      const target = Object.entries(ordinals).find(
+        ([_, ordinal]) => ordinal === currentOrdinal + 1
+      );
+      if (target) {
+        this._ordinals.update({
+          ...ordinals,
+          [target[0]]: currentOrdinal,
+          [type]: target[1],
+        });
+      }
+    });
   }
 
   decrementOrdinal(type: Card): void {
-    this._ordinals
-      .get()
-      .pipe(first())
-      .subscribe((ordinals) => {
-        const currentOrdinal = ordinals[type];
-        const target = Object.entries(ordinals).find(
-          ([_, ordinal]) => ordinal === currentOrdinal - 1
-        );
-        if (target) {
-          this._ordinals.update({
-            ...ordinals,
-            [target[0]]: currentOrdinal,
-            [type]: target[1],
-          });
-        }
-      });
+    this.ordinal$.pipe(first()).subscribe((ordinals) => {
+      const currentOrdinal = ordinals[type];
+      const target = Object.entries(ordinals).find(
+        ([_, ordinal]) => ordinal === currentOrdinal - 1
+      );
+      if (target) {
+        this._ordinals.update({
+          ...ordinals,
+          [target[0]]: currentOrdinal,
+          [type]: target[1],
+        });
+      }
+    });
   }
 
   constructor(private _localStorageService: LocalStorageService) {}

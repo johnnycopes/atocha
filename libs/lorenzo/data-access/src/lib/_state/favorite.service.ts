@@ -34,12 +34,9 @@ export class FavoriteService {
   constructor(private _localStorageService: LocalStorageService) {}
 
   toggleId(id: string, type: Card): void {
-    this._ids
-      .getProp(type)
-      .pipe(first())
-      .subscribe((favorites) => {
-        this._ids.updateProp(type, this._updateSet(favorites, id));
-      });
+    this.ids$.pipe(first()).subscribe((favorites) => {
+      this._ids.updateProp(type, this._updateSet(favorites[type], id));
+    });
   }
 
   clearIds(): void {

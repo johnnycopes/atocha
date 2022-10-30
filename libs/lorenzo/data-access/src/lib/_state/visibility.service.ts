@@ -33,12 +33,9 @@ export class VisibilityService {
   constructor(private _localStorageService: LocalStorageService) {}
 
   toggleVisibility(type: Card): void {
-    this._visibility
-      .getProp(type)
-      .pipe(first())
-      .subscribe((visible) => {
-        this._visibility.updateProp(type, !visible);
-      });
+    this.visibility$.pipe(first()).subscribe((visibility) => {
+      this._visibility.updateProp(type, !visibility[type]);
+    });
   }
 
   expandAll(): void {
