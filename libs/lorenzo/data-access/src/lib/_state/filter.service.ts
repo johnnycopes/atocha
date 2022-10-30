@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { tap } from 'rxjs';
 
 import { LocalStorageService } from '@atocha/core/data-access';
-import { View } from '@atocha/lorenzo/util';
 import { State } from '@atocha/core/util';
+import { View } from '@atocha/lorenzo/util';
 
 interface Filters {
   view: View;
@@ -15,22 +15,24 @@ interface Filters {
 })
 export class FilterService {
   private _key = 'VIEW';
-  private _state = new State<Filters>({
+  private _filters = new State<Filters>({
     view: this._getView(),
     text: '',
   });
 
-  view$ = this._state.getProp('view').pipe(tap((view) => this._setView(view)));
-  text$ = this._state.getProp('text');
+  view$ = this._filters
+    .getProp('view')
+    .pipe(tap((view) => this._setView(view)));
+  text$ = this._filters.getProp('text');
 
   constructor(private _localStorageService: LocalStorageService) {}
 
   updateView(view: View): void {
-    this._state.updateProp('view', view);
+    this._filters.updateProp('view', view);
   }
 
   updateText(text: string): void {
-    this._state.updateProp('text', text);
+    this._filters.updateProp('text', text);
   }
 
   private _getView(): View {
