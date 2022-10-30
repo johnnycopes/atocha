@@ -1,46 +1,41 @@
 import { Injectable } from '@angular/core';
-import { LocalStorageService } from '@atocha/core/data-access';
+import { tap } from 'rxjs';
 
+import { LocalStorageService } from '@atocha/core/data-access';
+import { State } from '@atocha/core/util';
 import { Card } from '@atocha/lorenzo/util';
-import { BehaviorSubject, first, shareReplay, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class VisibilityService {
-  private _keys: Record<Card, string> = {
+  private readonly _keys: Record<Card, string> = {
     development: 'DEVELOPMENT_VISIBLE',
     family: 'FAMILY_VISIBLE',
     leader: 'LEADER_VISIBLE',
   };
-  private _visibilitySubject = new BehaviorSubject<Record<Card, boolean>>({
+  private readonly _visibility = new State<Record<Card, boolean>>({
     development: this._getVisiblity(this._keys.development),
     family: this._getVisiblity(this._keys.family),
     leader: this._getVisiblity(this._keys.leader),
   });
 
-  visibility$ = this._visibilitySubject.pipe(
+  visibility$ = this._visibility.get().pipe(
     tap(({ development, family, leader }) => {
       this._setVisibility(this._keys.development, development);
       this._setVisibility(this._keys.family, family);
       this._setVisibility(this._keys.leader, leader);
-    }),
-    shareReplay({ bufferSize: 1, refCount: true })
+    })
   );
 
   constructor(private _localStorageService: LocalStorageService) {}
 
   toggleVisibility(type: Card): void {
-    this._visibilitySubject.pipe(first()).subscribe((visibility) =>
-      this._visibilitySubject.next({
-        ...visibility,
-        [type]: !visibility[type],
-      })
-    );
+    this._visibility.transformProp(type, (visibility) => !visibility);
   }
 
   expandAll(): void {
-    this._visibilitySubject.next({
+    this._visibility.update({
       development: true,
       family: true,
       leader: true,
@@ -48,7 +43,7 @@ export class VisibilityService {
   }
 
   collapseAll(): void {
-    this._visibilitySubject.next({
+    this._visibility.update({
       development: false,
       family: false,
       leader: false,

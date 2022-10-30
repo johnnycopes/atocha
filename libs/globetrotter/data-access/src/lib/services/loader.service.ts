@@ -1,27 +1,24 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
-import { distinctUntilChanged, shareReplay } from 'rxjs/operators';
+
+import { State } from '@atocha/core/util';
 
 @Injectable({
   providedIn: 'root',
 })
 export class LoaderService {
-  private readonly _globalSubject = new BehaviorSubject<boolean>(false);
-  private readonly _shellSubject = new BehaviorSubject<boolean>(false);
-  global$ = this._globalSubject.pipe(
-    distinctUntilChanged(),
-    shareReplay({ bufferSize: 1, refCount: true })
-  );
-  shell$ = this._shellSubject.pipe(
-    distinctUntilChanged(),
-    shareReplay({ bufferSize: 1, refCount: true })
-  );
+  private readonly _state = new State({
+    global: false,
+    shell: false,
+  });
+
+  global$ = this._state.getProp('global');
+  shell$ = this._state.getProp('shell');
 
   setGlobalLoader(loading: boolean): void {
-    this._globalSubject.next(loading);
+    this._state.updateProp('global', loading);
   }
 
   setShellLoader(loading: boolean): void {
-    this._shellSubject.next(loading);
+    this._state.updateProp('shell', loading);
   }
 }

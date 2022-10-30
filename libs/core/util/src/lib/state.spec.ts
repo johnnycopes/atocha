@@ -44,4 +44,15 @@ describe(State, () => {
       done();
     });
   });
+
+  it('transforms an individual state object property', (done) => {
+    const person = new State({ name: 'Billy', age: 19 });
+    const incrementer = (age: number) => age + 1;
+    person.transformProp('age', incrementer);
+
+    person.getProp('age').subscribe((value) => {
+      expect(value).toEqual(20);
+      done();
+    });
+  });
 });

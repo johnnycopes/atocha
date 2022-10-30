@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
-import { first, map, shareReplay } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 
+import { State } from '@atocha/core/util';
 import {
   QuizType,
   Selection,
@@ -16,18 +16,17 @@ import { PlaceService } from './place.service';
   providedIn: 'root',
 })
 export class SelectService {
-  private _paramDict: Record<PlaceSelectionState, string> = {
-    checked: '_c',
-    indeterminate: '_i',
-  };
-  private _selectionSubject = new BehaviorSubject<Selection>({
+  private readonly _state = new State<Selection>({
     type: QuizType.flagsCountries,
     quantity: 5,
     places: {},
   });
-  selection$ = this._selectionSubject.pipe(
-    shareReplay({ bufferSize: 1, refCount: true })
-  );
+  private readonly _paramDict: Record<PlaceSelectionState, string> = {
+    checked: '_c',
+    indeterminate: '_i',
+  };
+
+  selection$ = this._state.get();
 
   constructor(private _placeService: PlaceService) {
     this._placeService.places$
@@ -38,34 +37,19 @@ export class SelectService {
   }
 
   updateSelection(selection: Selection): void {
-    this._selectionSubject.next(selection);
+    this._state.update(selection);
   }
 
   updateType(type: QuizType): void {
-    this._selectionSubject
-      .pipe(
-        first(),
-        map((selection) => ({ ...selection, type }))
-      )
-      .subscribe((selection) => this._selectionSubject.next(selection));
+    this._state.updateProp('type', type);
   }
 
   updateQuantity(quantity: number): void {
-    this._selectionSubject
-      .pipe(
-        first(),
-        map((selection) => ({ ...selection, quantity }))
-      )
-      .subscribe((selection) => this._selectionSubject.next(selection));
+    this._state.updateProp('quantity', quantity);
   }
 
   updatePlaces(places: PlaceSelection): void {
-    this._selectionSubject
-      .pipe(
-        first(),
-        map((selection) => ({ ...selection, places }))
-      )
-      .subscribe((selection) => this._selectionSubject.next(selection));
+    this._state.updateProp('places', places);
   }
 
   mapSelectionToQueryParams(selection: Selection): SelectionParams {

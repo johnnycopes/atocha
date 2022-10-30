@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
-import { first, shareReplay } from 'rxjs/operators';
 
-import { includes } from '@atocha/core/util';
+import { includes, State } from '@atocha/core/util';
 import {
   Dish,
   FilteredDishesGroup,
@@ -10,44 +8,32 @@ import {
   getDishTypes,
 } from '@atocha/menu-matriarch/util';
 
-interface State {
-  panel: boolean;
-  tagIds: string[];
-  text: string;
-}
-
 @Injectable({
   providedIn: 'root',
 })
 export class FilterService {
-  private _stateSubject = new BehaviorSubject<State>({
+  private readonly _state = new State<{
+    panel: boolean;
+    tagIds: string[];
+    text: string;
+  }>({
     panel: false,
     tagIds: [],
     text: '',
   });
 
-  state$ = this._stateSubject.pipe(
-    shareReplay({ bufferSize: 1, refCount: true })
-  );
+  state$ = this._state.get();
 
   togglePanel(): void {
-    this._stateSubject
-      .pipe(first())
-      .subscribe((state) =>
-        this._stateSubject.next({ ...state, panel: !state.panel })
-      );
+    this._state.transformProp('panel', (open) => !open);
   }
 
   updateTagIds(tagIds: string[]): void {
-    this._stateSubject
-      .pipe(first())
-      .subscribe((state) => this._stateSubject.next({ ...state, tagIds }));
+    this._state.updateProp('tagIds', tagIds);
   }
 
   updateText(text: string): void {
-    this._stateSubject
-      .pipe(first())
-      .subscribe((state) => this._stateSubject.next({ ...state, text }));
+    this._state.updateProp('text', text);
   }
 
   filterMeals({
