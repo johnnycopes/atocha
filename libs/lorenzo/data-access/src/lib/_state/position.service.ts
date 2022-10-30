@@ -5,11 +5,6 @@ import { LocalStorageService } from '@atocha/core/data-access';
 import { State } from '@atocha/core/util';
 import { View } from '@atocha/lorenzo/util';
 
-interface Position {
-  all: number;
-  favorites: number;
-}
-
 @Injectable({
   providedIn: 'root',
 })
@@ -18,7 +13,7 @@ export class PositionService {
     all: 'ALL_POSITION',
     favorites: 'FAVORITES_POSITION',
   };
-  private _positions = new State<Position>({
+  private _positions = new State<Record<View, number>>({
     all: this._getPosition(this._keys.all),
     favorites: this._getPosition(this._keys.favorites),
   });

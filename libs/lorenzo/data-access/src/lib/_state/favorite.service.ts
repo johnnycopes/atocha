@@ -5,8 +5,6 @@ import { LocalStorageService } from '@atocha/core/data-access';
 import { State } from '@atocha/core/util';
 import { Card } from '@atocha/lorenzo/util';
 
-type Ids = Record<Card, Set<string>>;
-
 @Injectable({
   providedIn: 'root',
 })
@@ -16,8 +14,7 @@ export class FavoriteService {
     family: 'FAMILY_IDS',
     leader: 'LEADER_IDS',
   };
-
-  private _ids = new State<Ids>({
+  private _ids = new State<Record<Card, Set<string>>>({
     development: this._getIds(this._keys.development),
     family: this._getIds(this._keys.family),
     leader: this._getIds(this._keys.leader),

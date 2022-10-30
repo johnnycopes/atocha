@@ -20,7 +20,6 @@ export class SelectService {
     checked: '_c',
     indeterminate: '_i',
   };
-
   private _state = new State<Selection>({
     type: QuizType.flagsCountries,
     quantity: 5,

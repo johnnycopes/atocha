@@ -2,19 +2,18 @@ import { Injectable } from '@angular/core';
 
 import { State } from '@atocha/core/util';
 
-interface Loaders {
-  global: boolean;
-  shell: boolean;
-}
-
 @Injectable({
   providedIn: 'root',
 })
 export class LoaderService {
-  private readonly _state = new State<Loaders>({
+  private readonly _state = new State<{
+    global: boolean;
+    shell: boolean;
+  }>({
     global: false,
     shell: false,
   });
+
   global$ = this._state.getProp('global');
   shell$ = this._state.getProp('shell');
 

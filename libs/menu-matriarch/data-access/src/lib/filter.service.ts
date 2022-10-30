@@ -8,17 +8,15 @@ import {
   getDishTypes,
 } from '@atocha/menu-matriarch/util';
 
-interface FilterState {
-  panel: boolean;
-  tagIds: string[];
-  text: string;
-}
-
 @Injectable({
   providedIn: 'root',
 })
 export class FilterService {
-  private _state = new State<FilterState>({
+  private _state = new State<{
+    panel: boolean;
+    tagIds: string[];
+    text: string;
+  }>({
     panel: false,
     tagIds: [],
     text: '',

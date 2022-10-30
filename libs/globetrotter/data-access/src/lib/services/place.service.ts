@@ -11,22 +11,20 @@ import {
 import { ApiService } from './api.service';
 import { COUNTRY_SUMMARY_NAMES } from '../data/country-modifications';
 
-interface Places {
-  countries: Country[];
-  countriesBySubregion: Record<string, Country[]>;
-  regions: Region[];
-}
-
 @Injectable({
   providedIn: 'root',
 })
 export class PlaceService {
-  private readonly _state = new State<Places>({
+  private readonly _places = new State<{
+    countries: Country[];
+    countriesBySubregion: Record<string, Country[]>;
+    regions: Region[];
+  }>({
     countries: [],
     countriesBySubregion: {},
     regions: [],
   });
-  places$ = this._state.get();
+  places$ = this._places.get();
 
   constructor(private _apiService: ApiService) {
     this._apiService.fetchCountries().subscribe((countryDtos) => {
@@ -46,7 +44,7 @@ export class PlaceService {
         countriesBySubregion,
         subregionsByRegion
       );
-      this._state.update({
+      this._places.update({
         countries,
         countriesBySubregion,
         regions,

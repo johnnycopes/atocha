@@ -5,17 +5,15 @@ import { LocalStorageService } from '@atocha/core/data-access';
 import { State } from '@atocha/core/util';
 import { View } from '@atocha/lorenzo/util';
 
-interface Filters {
-  view: View;
-  text: string;
-}
-
 @Injectable({
   providedIn: 'root',
 })
 export class FilterService {
   private _key = 'VIEW';
-  private _filters = new State<Filters>({
+  private _filters = new State<{
+    view: View;
+    text: string;
+  }>({
     view: this._getView(),
     text: '',
   });

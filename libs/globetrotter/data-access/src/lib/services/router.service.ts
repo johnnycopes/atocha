@@ -11,15 +11,13 @@ import { map, filter, distinctUntilChanged } from 'rxjs/operators';
 import { State } from '@atocha/core/util';
 import { LoaderService } from './loader.service';
 
-interface RouterState {
-  currentRoute: string;
-}
-
 @Injectable({
   providedIn: 'root',
 })
 export class RouterService {
-  private _state = new State<RouterState>({ currentRoute: '' });
+  private _state = new State<{
+    currentRoute: string;
+  }>({ currentRoute: '' });
   route$ = this._state.getProp('currentRoute');
 
   constructor(private _router: Router, private _loaderService: LoaderService) {

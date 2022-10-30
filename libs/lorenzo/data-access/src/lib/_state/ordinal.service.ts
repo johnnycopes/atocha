@@ -5,8 +5,6 @@ import { LocalStorageService } from '@atocha/core/data-access';
 import { State } from '@atocha/core/util';
 import { Card, Ordinal } from '@atocha/lorenzo/util';
 
-type Ordinals = Record<Card, Ordinal>;
-
 @Injectable({
   providedIn: 'root',
 })
@@ -16,7 +14,7 @@ export class OrdinalService {
     family: 'FAMILY_ORDINAL',
     leader: 'LEADER_ORDINAL',
   };
-  private _ordinals = new State<Ordinals>({
+  private _ordinals = new State<Record<Card, Ordinal>>({
     development: this._getOrdinal(this._keys.development, 3),
     family: this._getOrdinal(this._keys.family, 1),
     leader: this._getOrdinal(this._keys.leader, 2),

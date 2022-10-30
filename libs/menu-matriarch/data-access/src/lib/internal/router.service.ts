@@ -12,13 +12,6 @@ import { LocalStorageService } from '@atocha/core/data-access';
 import { State } from '@atocha/core/util';
 import { LocalStorageKey, Route } from '@atocha/menu-matriarch/util';
 
-interface RouterState {
-  loading: boolean;
-  activeMealId: string;
-  activeMenuId: string | null;
-  activeDishId: string;
-}
-
 @Injectable({
   providedIn: 'root',
 })
@@ -26,7 +19,12 @@ export class RouterService {
   private _routerEvents$ = this._router.events.pipe(
     filter((e): e is NavigationEnd => e instanceof NavigationEnd)
   );
-  private _state = new State<RouterState>({
+  private _state = new State<{
+    loading: boolean;
+    activeMealId: string;
+    activeMenuId: string | null;
+    activeDishId: string;
+  }>({
     loading: true,
     activeMealId: '',
     activeMenuId: this._localStorageService.getItem(LocalStorageKey.menuId),

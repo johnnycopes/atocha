@@ -7,16 +7,15 @@ import { PlaceService } from './place.service';
 import { RouterService } from './router.service';
 import { shuffle } from 'lodash-es';
 
-interface QuizServiceState {
-  quiz: QuizState<Country> | undefined;
-}
-
 @Injectable({
   providedIn: 'root',
 })
 export class QuizService {
   private _quiz: Quiz<Country> | undefined = undefined;
-  private _state = new State<QuizServiceState>({ quiz: undefined });
+  private _state = new State<{
+    quiz: QuizState<Country> | undefined;
+  }>({ quiz: undefined });
+
   quiz$ = this._state.getProp('quiz');
 
   constructor(

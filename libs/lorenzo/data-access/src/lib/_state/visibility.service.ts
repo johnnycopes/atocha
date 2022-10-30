@@ -2,10 +2,8 @@ import { Injectable } from '@angular/core';
 import { tap } from 'rxjs';
 
 import { LocalStorageService } from '@atocha/core/data-access';
-import { Card } from '@atocha/lorenzo/util';
 import { State } from '@atocha/core/util';
-
-export type Visibility = Record<Card, boolean>;
+import { Card } from '@atocha/lorenzo/util';
 
 @Injectable({
   providedIn: 'root',
@@ -16,7 +14,7 @@ export class VisibilityService {
     family: 'FAMILY_VISIBLE',
     leader: 'LEADER_VISIBLE',
   };
-  private _visibility = new State<Visibility>({
+  private _visibility = new State<Record<Card, boolean>>({
     development: this._getVisiblity(this._keys.development),
     family: this._getVisiblity(this._keys.family),
     leader: this._getVisiblity(this._keys.leader),
