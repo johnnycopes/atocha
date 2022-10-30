@@ -1,8 +1,11 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, first, shareReplay, tap } from 'rxjs';
+import { first, tap } from 'rxjs';
 
 import { LocalStorageService } from '@atocha/core/data-access';
+import { State } from '@atocha/core/util';
 import { Card } from '@atocha/lorenzo/util';
+
+type Ids = Record<Card, Set<string>>;
 
 @Injectable({
   providedIn: 'root',
@@ -13,53 +16,56 @@ export class FavoriteService {
     family: 'FAMILY_IDS',
     leader: 'LEADER_IDS',
   };
-  private _idSubject = new BehaviorSubject<Record<Card, Set<string>>>({
+
+  private _ids = new State<Ids>({
     development: this._getIds(this._keys.development),
     family: this._getIds(this._keys.family),
     leader: this._getIds(this._keys.leader),
   });
 
-  ids$ = this._idSubject.pipe(
+  ids$ = this._ids.get().pipe(
     tap(({ development, family, leader }) => {
       this._setIds(this._keys.development, development);
       this._setIds(this._keys.family, family);
       this._setIds(this._keys.leader, leader);
-    }),
-    shareReplay({ bufferSize: 1, refCount: true })
+    })
   );
 
   constructor(private _localStorageService: LocalStorageService) {}
 
   toggleId(id: string, type: Card): void {
-    this._idSubject.pipe(first()).subscribe((favorites) => {
-      switch (type) {
-        case 'development': {
-          this._idSubject.next({
-            ...favorites,
-            development: this._updateSet(favorites.development, id),
-          });
-          break;
+    this._ids
+      .get()
+      .pipe(first())
+      .subscribe((favorites) => {
+        switch (type) {
+          case 'development': {
+            this._ids.updateProp(
+              'development',
+              this._updateSet(favorites.development, id)
+            );
+            break;
+          }
+          case 'family': {
+            this._ids.updateProp(
+              'family',
+              this._updateSet(favorites.family, id)
+            );
+            break;
+          }
+          case 'leader': {
+            this._ids.updateProp(
+              'leader',
+              this._updateSet(favorites.leader, id)
+            );
+            break;
+          }
         }
-        case 'family': {
-          this._idSubject.next({
-            ...favorites,
-            family: this._updateSet(favorites.family, id),
-          });
-          break;
-        }
-        case 'leader': {
-          this._idSubject.next({
-            ...favorites,
-            leader: this._updateSet(favorites.leader, id),
-          });
-          break;
-        }
-      }
-    });
+      });
   }
 
   clearIds(): void {
-    this._idSubject.next({
+    this._ids.update({
       development: new Set(),
       family: new Set(),
       leader: new Set(),
