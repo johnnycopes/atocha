@@ -34,14 +34,11 @@ export class VisibilityService {
 
   toggleVisibility(type: Card): void {
     this._visibility
-      .get()
+      .getProp(type)
       .pipe(first())
-      .subscribe((visibility) =>
-        this._visibility.update({
-          ...visibility,
-          [type]: !visibility[type],
-        })
-      );
+      .subscribe((visible) => {
+        this._visibility.updateProp(type, !visible);
+      });
   }
 
   expandAll(): void {
