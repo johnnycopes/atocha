@@ -38,29 +38,7 @@ export class FavoriteService {
       .get()
       .pipe(first())
       .subscribe((favorites) => {
-        switch (type) {
-          case 'development': {
-            this._ids.updateProp(
-              'development',
-              this._updateSet(favorites.development, id)
-            );
-            break;
-          }
-          case 'family': {
-            this._ids.updateProp(
-              'family',
-              this._updateSet(favorites.family, id)
-            );
-            break;
-          }
-          case 'leader': {
-            this._ids.updateProp(
-              'leader',
-              this._updateSet(favorites.leader, id)
-            );
-            break;
-          }
-        }
+        this._ids.updateProp(type, this._updateSet(favorites[type], id));
       });
   }
 
