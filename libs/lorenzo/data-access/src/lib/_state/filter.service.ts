@@ -1,35 +1,36 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, distinctUntilChanged, shareReplay, tap } from 'rxjs';
+import { tap } from 'rxjs';
 
 import { LocalStorageService } from '@atocha/core/data-access';
 import { View } from '@atocha/lorenzo/util';
+import { State } from '@atocha/core/util';
+
+interface Filters {
+  view: View;
+  text: string;
+}
 
 @Injectable({
   providedIn: 'root',
 })
 export class FilterService {
   private _key = 'VIEW';
-  private _viewSubject = new BehaviorSubject<View>(this._getView());
-  private _textSubject = new BehaviorSubject<string>('');
+  private _state = new State<Filters>({
+    view: this._getView(),
+    text: '',
+  });
 
-  view$ = this._viewSubject.pipe(
-    tap((view) => this._setView(view)),
-    shareReplay({ bufferSize: 1, refCount: true })
-  );
-
-  text$ = this._textSubject.pipe(
-    distinctUntilChanged(),
-    shareReplay({ bufferSize: 1, refCount: true })
-  );
+  view$ = this._state.getProp('view').pipe(tap((view) => this._setView(view)));
+  text$ = this._state.getProp('text');
 
   constructor(private _localStorageService: LocalStorageService) {}
 
   updateView(view: View): void {
-    this._viewSubject.next(view);
+    this._state.updateProp('view', view);
   }
 
   updateText(text: string): void {
-    this._textSubject.next(text);
+    this._state.updateProp('text', text);
   }
 
   private _getView(): View {
