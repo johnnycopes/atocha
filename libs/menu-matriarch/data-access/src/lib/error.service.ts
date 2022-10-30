@@ -1,21 +1,20 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, shareReplay } from 'rxjs';
 
-type AppError = 'invalidMenuId';
+import { State } from '@atocha/core/util';
+
+interface Errors {
+  invalidMenuId: boolean;
+}
 
 @Injectable({
   providedIn: 'root',
 })
 export class ErrorService {
-  private _error$ = new BehaviorSubject<AppError | undefined>(undefined);
+  private _errors = new State<Errors>({ invalidMenuId: false });
 
-  errors$ = this._error$.pipe(shareReplay({ bufferSize: 1, refCount: true }));
+  errors$ = this._errors.get();
 
-  set(error: AppError): void {
-    this._error$.next(error);
-  }
-
-  clear(): void {
-    this._error$.next(undefined);
+  set(type: keyof Errors, error: boolean): void {
+    this._errors.updateProp(type, error);
   }
 }
