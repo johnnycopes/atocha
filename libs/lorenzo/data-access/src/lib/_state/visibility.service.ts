@@ -9,12 +9,12 @@ import { Card } from '@atocha/lorenzo/util';
   providedIn: 'root',
 })
 export class VisibilityService {
-  private _keys: Record<Card, string> = {
+  private readonly _keys: Record<Card, string> = {
     development: 'DEVELOPMENT_VISIBLE',
     family: 'FAMILY_VISIBLE',
     leader: 'LEADER_VISIBLE',
   };
-  private _visibility = new State<Record<Card, boolean>>({
+  private readonly _visibility = new State<Record<Card, boolean>>({
     development: this._getVisiblity(this._keys.development),
     family: this._getVisiblity(this._keys.family),
     leader: this._getVisiblity(this._keys.leader),

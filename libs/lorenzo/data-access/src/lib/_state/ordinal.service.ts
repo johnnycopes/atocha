@@ -9,12 +9,12 @@ import { Card, Ordinal } from '@atocha/lorenzo/util';
   providedIn: 'root',
 })
 export class OrdinalService {
-  private _keys: Record<Card, string> = {
+  private readonly _keys: Record<Card, string> = {
     development: 'DEVELOPMENT_ORDINAL',
     family: 'FAMILY_ORDINAL',
     leader: 'LEADER_ORDINAL',
   };
-  private _ordinals = new State<Record<Card, Ordinal>>({
+  private readonly _ordinals = new State<Record<Card, Ordinal>>({
     development: this._getOrdinal(this._keys.development, 3),
     family: this._getOrdinal(this._keys.family, 1),
     leader: this._getOrdinal(this._keys.leader, 2),

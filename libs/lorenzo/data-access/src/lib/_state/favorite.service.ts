@@ -9,12 +9,12 @@ import { Card } from '@atocha/lorenzo/util';
   providedIn: 'root',
 })
 export class FavoriteService {
-  private _keys: Record<Card, string> = {
+  private readonly _keys: Record<Card, string> = {
     development: 'DEVELOPMENT_IDS',
     family: 'FAMILY_IDS',
     leader: 'LEADER_IDS',
   };
-  private _ids = new State<Record<Card, Set<string>>>({
+  private readonly _ids = new State<Record<Card, Set<string>>>({
     development: this._getIds(this._keys.development),
     family: this._getIds(this._keys.family),
     leader: this._getIds(this._keys.leader),

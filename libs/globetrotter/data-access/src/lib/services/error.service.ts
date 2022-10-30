@@ -6,9 +6,7 @@ import { State } from '@atocha/core/util';
   providedIn: 'root',
 })
 export class ErrorService {
-  private readonly _errors = new State<{
-    global: boolean;
-  }>({ global: false });
+  private readonly _errors = new State({ global: false });
   global$ = this._errors.getProp('global');
 
   setGlobalError(error: boolean): void {

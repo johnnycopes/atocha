@@ -11,10 +11,10 @@ import { shuffle } from 'lodash-es';
   providedIn: 'root',
 })
 export class QuizService {
-  private _quiz: Quiz<Country> | undefined = undefined;
-  private _state = new State<{
+  private readonly _state = new State<{
     quiz: QuizState<Country> | undefined;
   }>({ quiz: undefined });
+  private _quiz: Quiz<Country> | undefined = undefined;
 
   quiz$ = this._state.getProp('quiz');
 

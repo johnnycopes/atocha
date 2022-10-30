@@ -9,11 +9,11 @@ import { View } from '@atocha/lorenzo/util';
   providedIn: 'root',
 })
 export class PositionService {
-  private _keys: Record<View, string> = {
+  private readonly _keys: Record<View, string> = {
     all: 'ALL_POSITION',
     favorites: 'FAVORITES_POSITION',
   };
-  private _positions = new State<Record<View, number>>({
+  private readonly _positions = new State<Record<View, number>>({
     all: this._getPosition(this._keys.all),
     favorites: this._getPosition(this._keys.favorites),
   });

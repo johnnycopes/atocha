@@ -9,11 +9,8 @@ import { View } from '@atocha/lorenzo/util';
   providedIn: 'root',
 })
 export class FilterService {
-  private _key = 'VIEW';
-  private _filters = new State<{
-    view: View;
-    text: string;
-  }>({
+  private readonly _key = 'VIEW';
+  private readonly _filters = new State({
     view: this._getView(),
     text: '',
   });

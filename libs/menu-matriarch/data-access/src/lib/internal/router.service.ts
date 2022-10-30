@@ -16,20 +16,15 @@ import { LocalStorageKey, Route } from '@atocha/menu-matriarch/util';
   providedIn: 'root',
 })
 export class RouterService {
-  private _routerEvents$ = this._router.events.pipe(
-    filter((e): e is NavigationEnd => e instanceof NavigationEnd)
-  );
-  private _state = new State<{
-    loading: boolean;
-    activeMealId: string;
-    activeMenuId: string | null;
-    activeDishId: string;
-  }>({
+  private readonly _state = new State({
     loading: true,
     activeMealId: '',
     activeMenuId: this._localStorageService.getItem(LocalStorageKey.menuId),
     activeDishId: '',
   });
+  private _routerEvents$ = this._router.events.pipe(
+    filter((e): e is NavigationEnd => e instanceof NavigationEnd)
+  );
 
   loading$ = this._state.getProp('loading');
   activeMealId$ = this._state.getProp('activeMealId');

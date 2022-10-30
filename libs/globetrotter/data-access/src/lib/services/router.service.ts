@@ -15,9 +15,7 @@ import { LoaderService } from './loader.service';
   providedIn: 'root',
 })
 export class RouterService {
-  private _state = new State<{
-    currentRoute: string;
-  }>({ currentRoute: '' });
+  private readonly _state = new State({ currentRoute: '' });
   route$ = this._state.getProp('currentRoute');
 
   constructor(private _router: Router, private _loaderService: LoaderService) {

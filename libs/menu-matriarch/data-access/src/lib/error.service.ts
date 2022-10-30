@@ -6,9 +6,7 @@ import { State } from '@atocha/core/util';
   providedIn: 'root',
 })
 export class ErrorService {
-  private _errors = new State<{
-    invalidMenuId: boolean;
-  }>({ invalidMenuId: false });
+  private readonly _errors = new State({ invalidMenuId: false });
 
   errors$ = this._errors.get();
 

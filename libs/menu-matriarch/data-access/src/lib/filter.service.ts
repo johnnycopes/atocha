@@ -12,7 +12,7 @@ import {
   providedIn: 'root',
 })
 export class FilterService {
-  private _state = new State<{
+  private readonly _state = new State<{
     panel: boolean;
     tagIds: string[];
     text: string;

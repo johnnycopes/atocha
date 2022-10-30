@@ -6,10 +6,7 @@ import { State } from '@atocha/core/util';
   providedIn: 'root',
 })
 export class LoaderService {
-  private readonly _state = new State<{
-    global: boolean;
-    shell: boolean;
-  }>({
+  private readonly _state = new State({
     global: false,
     shell: false,
   });

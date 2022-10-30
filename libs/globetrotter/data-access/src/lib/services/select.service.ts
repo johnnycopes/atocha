@@ -16,15 +16,15 @@ import { PlaceService } from './place.service';
   providedIn: 'root',
 })
 export class SelectService {
-  private _paramDict: Record<PlaceSelectionState, string> = {
-    checked: '_c',
-    indeterminate: '_i',
-  };
-  private _state = new State<Selection>({
+  private readonly _state = new State<Selection>({
     type: QuizType.flagsCountries,
     quantity: 5,
     places: {},
   });
+  private readonly _paramDict: Record<PlaceSelectionState, string> = {
+    checked: '_c',
+    indeterminate: '_i',
+  };
 
   selection$ = this._state.get();
 
