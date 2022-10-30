@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { first, tap } from 'rxjs';
+import { tap } from 'rxjs';
 
 import { LocalStorageService } from '@atocha/core/data-access';
 import { State } from '@atocha/core/util';
@@ -34,9 +34,9 @@ export class FavoriteService {
   constructor(private _localStorageService: LocalStorageService) {}
 
   toggleId(id: string, type: Card): void {
-    this.ids$.pipe(first()).subscribe((favorites) => {
-      this._ids.updateProp(type, this._updateSet(favorites[type], id));
-    });
+    this._ids.transformProp(type, (ids: Set<string>) =>
+      this._updateSet(ids, id)
+    );
   }
 
   clearIds(): void {
