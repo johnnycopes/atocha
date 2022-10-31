@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { first, tap } from 'rxjs';
+import { tap } from 'rxjs';
 
 import { LocalStorageService } from '@atocha/core/data-access';
 import { State } from '@atocha/core/util';
@@ -28,39 +28,41 @@ export class OrdinalService {
     })
   );
 
+  constructor(private _localStorageService: LocalStorageService) {}
+
   incrementOrdinal(type: Card): void {
-    this.ordinal$.pipe(first()).subscribe((ordinals) => {
+    this._ordinals.transform((ordinals) => {
       const currentOrdinal = ordinals[type];
       const target = Object.entries(ordinals).find(
         ([_, ordinal]) => ordinal === currentOrdinal + 1
       );
-      if (target) {
-        this._ordinals.update({
-          ...ordinals,
-          [target[0]]: currentOrdinal,
-          [type]: target[1],
-        });
-      }
+
+      return target
+        ? {
+            ...ordinals,
+            [target[0]]: currentOrdinal,
+            [type]: target[1],
+          }
+        : ordinals;
     });
   }
 
   decrementOrdinal(type: Card): void {
-    this.ordinal$.pipe(first()).subscribe((ordinals) => {
+    this._ordinals.transform((ordinals) => {
       const currentOrdinal = ordinals[type];
       const target = Object.entries(ordinals).find(
         ([_, ordinal]) => ordinal === currentOrdinal - 1
       );
-      if (target) {
-        this._ordinals.update({
-          ...ordinals,
-          [target[0]]: currentOrdinal,
-          [type]: target[1],
-        });
-      }
+
+      return target
+        ? {
+            ...ordinals,
+            [target[0]]: currentOrdinal,
+            [type]: target[1],
+          }
+        : ordinals;
     });
   }
-
-  constructor(private _localStorageService: LocalStorageService) {}
 
   private _getOrdinal(key: string, fallback: Ordinal): Ordinal {
     const ordinal = this._localStorageService.getItem(key);
