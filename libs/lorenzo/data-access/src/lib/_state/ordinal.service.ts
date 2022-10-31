@@ -31,37 +31,40 @@ export class OrdinalService {
   constructor(private _localStorageService: LocalStorageService) {}
 
   incrementOrdinal(type: Card): void {
-    this._ordinals.transform((ordinals) => {
-      const currentOrdinal = ordinals[type];
-      const target = Object.entries(ordinals).find(
-        ([_, ordinal]) => ordinal === currentOrdinal + 1
-      );
-
-      return target
-        ? {
-            ...ordinals,
-            [target[0]]: currentOrdinal,
-            [type]: target[1],
-          }
-        : ordinals;
-    });
+    this._ordinals.transform((ordinals) =>
+      this._modifyOrdinal({ ordinals, type, modification: 'increment' })
+    );
   }
 
   decrementOrdinal(type: Card): void {
-    this._ordinals.transform((ordinals) => {
-      const currentOrdinal = ordinals[type];
-      const target = Object.entries(ordinals).find(
-        ([_, ordinal]) => ordinal === currentOrdinal - 1
-      );
+    this._ordinals.transform((ordinals) =>
+      this._modifyOrdinal({ ordinals, type, modification: 'decrement' })
+    );
+  }
 
-      return target
-        ? {
-            ...ordinals,
-            [target[0]]: currentOrdinal,
-            [type]: target[1],
-          }
-        : ordinals;
-    });
+  private _modifyOrdinal({
+    ordinals,
+    type,
+    modification,
+  }: {
+    ordinals: Record<Card, Ordinal>;
+    type: Card;
+    modification: 'increment' | 'decrement';
+  }): Record<Card, Ordinal> {
+    const currentOrdinal = ordinals[type];
+    const targetOrdinal =
+      modification === 'increment' ? currentOrdinal + 1 : currentOrdinal - 1;
+    const targetEntry = Object.entries(ordinals).find(
+      ([_, ordinal]) => ordinal === targetOrdinal
+    );
+
+    return !targetEntry
+      ? ordinals
+      : {
+          ...ordinals,
+          [targetEntry[0]]: currentOrdinal,
+          [type]: targetOrdinal,
+        };
   }
 
   private _getOrdinal(key: string, fallback: Ordinal): Ordinal {
