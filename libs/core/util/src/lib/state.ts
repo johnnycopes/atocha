@@ -40,6 +40,12 @@ export class State<T extends object> {
     });
   }
 
+  transform(transformer: (value: T) => T): void {
+    this._state$.pipe(first()).subscribe((state) => {
+      this._stateSubject.next(transformer(state));
+    });
+  }
+
   transformProp<K extends keyof T>(
     key: K,
     transformer: (value: T[K]) => T[K]
