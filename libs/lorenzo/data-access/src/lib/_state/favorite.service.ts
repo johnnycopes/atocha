@@ -31,9 +31,14 @@ export class FavoriteService {
   constructor(private _localStorageService: LocalStorageService) {}
 
   toggleId(id: string, type: Card): void {
-    this._ids.transformProp(type, (ids: Set<string>) =>
-      this._updateSet(ids, id)
-    );
+    this._ids.transformProp(type, (ids: Set<string>) => {
+      if (ids.has(id)) {
+        ids.delete(id);
+      } else {
+        ids.add(id);
+      }
+      return ids;
+    });
   }
 
   clearIds(): void {
@@ -51,15 +56,5 @@ export class FavoriteService {
 
   private _setIds(key: string, ids: Set<string>): void {
     this._localStorageService.setItem(key, JSON.stringify(Array.from(ids)));
-  }
-
-  private _updateSet(set: Set<string>, key: string): Set<string> {
-    if (set.has(key)) {
-      const newSet = new Set(set);
-      newSet.delete(key);
-      return newSet;
-    } else {
-      return set.add(key);
-    }
   }
 }
