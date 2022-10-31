@@ -45,10 +45,25 @@ describe(State, () => {
     });
   });
 
+  it('transforms the entire state object', (done) => {
+    const person = new State({ name: 'Billy', age: 19 });
+    person.transform(({ name, age }) => ({
+      name: `Mr. ${name}`,
+      age: age + 10,
+    }));
+
+    person.get().subscribe((value) => {
+      expect(value).toEqual({
+        name: 'Mr. Billy',
+        age: 29,
+      });
+      done();
+    });
+  });
+
   it('transforms an individual state object property', (done) => {
     const person = new State({ name: 'Billy', age: 19 });
-    const incrementer = (age: number) => age + 1;
-    person.transformProp('age', incrementer);
+    person.transformProp('age', (age) => age + 1);
 
     person.getProp('age').subscribe((value) => {
       expect(value).toEqual(20);
