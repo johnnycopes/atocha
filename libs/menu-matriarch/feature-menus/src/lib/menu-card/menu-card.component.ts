@@ -3,9 +3,7 @@ import {
   Component,
   EventEmitter,
   Input,
-  OnChanges,
   Output,
-  SimpleChanges,
 } from '@angular/core';
 import { Router } from '@angular/router';
 import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
@@ -23,7 +21,7 @@ type State = 'default' | 'renaming' | 'changingStartDay';
   styleUrls: ['./menu-card.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class MenuCardComponent implements OnChanges {
+export class MenuCardComponent {
   @Input() id = '';
   @Input() name = '';
   @Input() startDay: Day = 'Monday';
@@ -36,39 +34,37 @@ export class MenuCardComponent implements OnChanges {
   @Output() startDayChange = new EventEmitter<Day>();
   @Output() delete = new EventEmitter<string>();
 
-  private _state$ = new BehaviorSubject<State>('default');
-  state$ = this._state$.asObservable();
+  private _stateSubject = new BehaviorSubject<State>('default');
+  state$ = this._stateSubject.asObservable();
   readonly menuToggleIcon = faEllipsisV;
   readonly trackByFn = menuEntryTrackByFn;
 
   constructor(private _router: Router) {}
 
-  ngOnChanges(changes: SimpleChanges): void {
-    const name = changes['name'];
-    if (name && !name.firstChange && name.currentValue !== name.previousValue) {
-      this._state$.next('default');
-    }
-
-    const startDay = changes['startDay'];
-    if (
-      startDay &&
-      !startDay.firstChange &&
-      startDay.currentValue !== startDay.previousValue
-    ) {
-      this._state$.next('default');
-    }
+  onRename(): void {
+    this._stateSubject.next('renaming');
   }
 
-  onRename(): void {
-    this._state$.next('renaming');
+  onRenameSave(name: string): void {
+    if (name !== this.name) {
+      this.rename.emit(name);
+    }
+    this._stateSubject.next('default');
   }
 
   onChangeStartDay(): void {
-    this._state$.next('changingStartDay');
+    this._stateSubject.next('changingStartDay');
+  }
+
+  onChangeStartDaySave(day: Day): void {
+    if (day !== this.startDay) {
+      this.startDayChange.emit(day);
+    }
+    this._stateSubject.next('default');
   }
 
   onCancel(): void {
-    this._state$.next('default');
+    this._stateSubject.next('default');
   }
 
   onDishClick(id: string): void {
