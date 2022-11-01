@@ -3,7 +3,7 @@ import { merge, Subject } from 'rxjs';
 import { mapTo, shareReplay } from 'rxjs/operators';
 
 import { trackByFactory } from '@atocha/core/ui';
-import { MenuService } from '@atocha/menu-matriarch/data-access';
+import { MenuService, PrintService } from '@atocha/menu-matriarch/data-access';
 import { Menu } from '@atocha/menu-matriarch/util';
 
 @Component({
@@ -22,10 +22,22 @@ export class MenusComponent {
   ).pipe(shareReplay({ refCount: true, bufferSize: 1 }));
   readonly trackByFn = trackByFactory<Menu>(({ id }) => id);
 
-  constructor(private _menuService: MenuService) {}
+  constructor(
+    private _menuService: MenuService,
+    private _printService: PrintService
+  ) {}
 
   onSave(name: string): void {
     this._menuService.createMenu({ name }).subscribe();
     this.finishAdd$.next();
+  }
+
+  onPrint({ name, entries, orientation, fallbackText }: Menu): void {
+    this._printService.printMenu({
+      name,
+      orientation,
+      entries,
+      fallbackText,
+    });
   }
 }

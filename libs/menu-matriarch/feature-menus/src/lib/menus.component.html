@@ -26,6 +26,7 @@
       [canDelete]="menus.length > 1"
       [fallbackText]="menu.fallbackText"
       [orientation]="menu.orientation"
+      (print)="onPrint(menu)"
     ></li>
   </ul>
 </ui-section>

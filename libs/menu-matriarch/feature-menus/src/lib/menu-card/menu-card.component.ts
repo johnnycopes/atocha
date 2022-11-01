@@ -1,9 +1,15 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+} from '@angular/core';
 import { Router } from '@angular/router';
 import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 import { BehaviorSubject } from 'rxjs';
 
-import { MenuService, PrintService } from '@atocha/menu-matriarch/data-access';
+import { MenuService } from '@atocha/menu-matriarch/data-access';
 import { Day, MenuEntry, Orientation } from '@atocha/menu-matriarch/util';
 import { menuEntryTrackByFn } from '@atocha/menu-matriarch/ui';
 
@@ -24,25 +30,13 @@ export class MenuCardComponent {
   @Input() orientation: Orientation = 'horizontal';
   @Input() fallbackText = '';
   @Input() canDelete = true;
+  @Output() print = new EventEmitter<void>();
   private _state$ = new BehaviorSubject<State>('default');
   state$ = this._state$.asObservable();
   readonly menuToggleIcon = faEllipsisV;
   readonly trackByFn = menuEntryTrackByFn;
 
-  constructor(
-    private _menuService: MenuService,
-    private _printService: PrintService,
-    private _router: Router
-  ) {}
-
-  onPrint(): void {
-    this._printService.printMenu({
-      name: this.name,
-      entries: this.entries,
-      fallbackText: this.fallbackText,
-      orientation: this.orientation,
-    });
-  }
+  constructor(private _menuService: MenuService, private _router: Router) {}
 
   onRename(): void {
     this._state$.next('renaming');
