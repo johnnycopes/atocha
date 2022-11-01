@@ -1,9 +1,14 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+} from '@angular/core';
 import { Router } from '@angular/router';
 import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 import { BehaviorSubject } from 'rxjs';
 
-import { MenuService, PrintService } from '@atocha/menu-matriarch/data-access';
 import { Day, MenuEntry, Orientation } from '@atocha/menu-matriarch/util';
 import { menuEntryTrackByFn } from '@atocha/menu-matriarch/ui';
 
@@ -24,50 +29,43 @@ export class MenuCardComponent {
   @Input() orientation: Orientation = 'horizontal';
   @Input() fallbackText = '';
   @Input() canDelete = true;
-  private _state$ = new BehaviorSubject<State>('default');
-  state$ = this._state$.asObservable();
+  @Input() active = false;
+  @Output() print = new EventEmitter<void>();
+  @Output() rename = new EventEmitter<string>();
+  @Output() startDayChange = new EventEmitter<Day>();
+  @Output() delete = new EventEmitter<void>();
+
+  private _stateSubject = new BehaviorSubject<State>('default');
+  state$ = this._stateSubject.asObservable();
   readonly menuToggleIcon = faEllipsisV;
   readonly trackByFn = menuEntryTrackByFn;
 
-  constructor(
-    private _menuService: MenuService,
-    private _printService: PrintService,
-    private _router: Router
-  ) {}
-
-  onPrint(): void {
-    this._printService.printMenu({
-      name: this.name,
-      entries: this.entries,
-      fallbackText: this.fallbackText,
-      orientation: this.orientation,
-    });
-  }
+  constructor(private _router: Router) {}
 
   onRename(): void {
-    this._state$.next('renaming');
+    this._stateSubject.next('renaming');
   }
 
-  async onRenameSave(name: string): Promise<void> {
-    await this._menuService.updateMenuName(this.id, name);
-    this._state$.next('default');
+  onRenameSave(name: string): void {
+    if (name !== this.name) {
+      this.rename.emit(name);
+    }
+    this._stateSubject.next('default');
   }
 
   onChangeStartDay(): void {
-    this._state$.next('changingStartDay');
+    this._stateSubject.next('changingStartDay');
   }
 
-  async onChangeStartDaySave(startDay: Day): Promise<void> {
-    await this._menuService.updateMenuStartDay(this.id, startDay);
-    this._state$.next('default');
+  onChangeStartDaySave(day: Day): void {
+    if (day !== this.startDay) {
+      this.startDayChange.emit(day);
+    }
+    this._stateSubject.next('default');
   }
 
   onCancel(): void {
-    this._state$.next('default');
-  }
-
-  onDelete(): void {
-    this._menuService.deleteMenu(this.id);
+    this._stateSubject.next('default');
   }
 
   onDishClick(id: string): void {

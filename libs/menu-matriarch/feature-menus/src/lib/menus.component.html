@@ -1,31 +1,36 @@
-<ui-section *ngIf="menus$ | async as menus">
+<ui-section *ngIf="vm$ | async as vm">
   <div class="ui-section__toolbar">
     <h2 class="title">
-      Menus ({{ menus.length }})
+      Menus ({{ vm.menus.length }})
     </h2>
     <button ui-button
       buttonStyle="primary"
-      [disabled]="adding$ | async"
-      (click)="startAdd$.next()"
+      [disabled]="vm.adding"
+      (click)="addingSubject.next(true)"
     >
       New Menu
     </button>
     <ui-inline-name-edit class="form"
-      *ngIf="adding$ | async"
-      (cancel)="finishAdd$.next()"
+      *ngIf="vm.adding"
+      (cancel)="addingSubject.next(false)"
       (save)="onSave($event)"
     ></ui-inline-name-edit>
   </div>
   <ul class="ui-section__content menus">
     <li app-menu-card
-      *ngFor="let menu of menus; trackBy: trackByFn"
+      *ngFor="let menu of vm.menus; trackBy: trackByFn"
       [id]="menu.id"
       [name]="menu.name"
       [startDay]="menu.startDay"
       [entries]="menu.entries"
-      [canDelete]="menus.length > 1"
       [fallbackText]="menu.fallbackText"
       [orientation]="menu.orientation"
+      [canDelete]="vm.menus.length > 1"
+      [active]="menu.id === vm.activeMenuId"
+      (print)="onPrint(menu)"
+      (rename)="onRename(menu.id, $event)"
+      (startDayChange)="onStartDayChange(menu.id, $event)"
+      (delete)="onDelete(menu.id)"
     ></li>
   </ul>
 </ui-section>
