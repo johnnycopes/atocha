@@ -11,7 +11,7 @@
   cdkDropList
   [cdkDropListData]="items"
   (cdkDropListDropped)="onDropItem($event)"
-  >
+>
   <li class="list-item"
     [class.list-item--moving]="moving"
     *ngFor="let item of items; trackBy: trackByFn"

@@ -32,7 +32,13 @@ export default {
     }),
     componentWrapperDecorator(StorybookWrapperComponent),
   ],
-  argTypes: {},
+  argTypes: {
+    onColumnAdd: { action: 'columnAdd' },
+    onColumnMove: { action: 'columnMov' },
+    onItemAdd: { action: 'itemAdd' },
+    onItemMove: { action: 'itemMov' },
+    actionClick: { action: 'actionClick' },
+  },
 } as Meta;
 
 const Template: Story<KanbanBoardComponent<IKitchenLocation, string>> = (
@@ -43,6 +49,12 @@ const Template: Story<KanbanBoardComponent<IKitchenLocation, string>> = (
     <core-kanban-board
       [columns]="columns"
       [config]="config"
+      [actions]="actions"
+      (columnAdd)="onColumnAdd($event)"
+      (columnMove)="onColumnMove($event)"
+      (itemAdd)="onItemAdd($event)"
+      (itemMove)="onItemMove($event)"
+      (actionClick)="onActionClick($event)"
     ></core-kanban-board>
   `,
 });
@@ -80,7 +92,8 @@ function createArgs(
       },
     ],
     config = new KanbanBoardConfig(),
+    actions = ['Export', 'Print'],
   } = {} as Args
 ): Args {
-  return { columns, config };
+  return { columns, config, actions };
 }
