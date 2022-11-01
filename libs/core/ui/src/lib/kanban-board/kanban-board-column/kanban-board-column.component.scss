@@ -1,26 +1,31 @@
-@import 'main';
+// @import 'main';
 
 :host {
-  margin-right: spacing(8);
-  padding: spacing(8);
-  padding-bottom: spacing(12);
-  background-color: color($neutral, 8);
-  border-radius: border(radius);
-  box-shadow: box-shadow(lightest);
+  margin-right: 8px;
+  padding: 8px;
+  padding-bottom: 12px;
+  // background-color: color($neutral, 8);
+  background-color: darkslateblue;
+  border-radius: 2px;
+  box-shadow: 0 1px 3px hsla(0deg, 0%, 0%, 20%);
 }
 
 .toolbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: spacing(8);
-  padding: 0 spacing(8);
-  color: color($neutral, 3);
+  margin-bottom: 8px;
+  padding: 0 8px;
+  // color: color($neutral, 3);
+  color: cadetblue;
 }
 
 .name {
   font-size: font-size(16);
-  @include small-caps;
+  // @include small-caps;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 700;
 }
 
 .menu-icon {
@@ -28,16 +33,16 @@
 }
 
 .list {
-  min-height: spacing(8);
-  padding-bottom: spacing(8);
+  min-height: 8px;
+  padding-bottom: 8px;
 }
 
 .list-item {
-  margin-bottom: spacing(8);
-  padding: spacing(16) spacing(8);
-  background: $white;
-  border-radius: border(radius);
-  box-shadow: box-shadow(lightest);
+  margin-bottom: 8px;
+  padding: 16px 8px;
+  background: #fff;
+  border-radius: 2px;
+  box-shadow: 0 1px 3px hsla(0deg, 0%, 0%, 20%);
 
   &:last-child {
     margin: 0;

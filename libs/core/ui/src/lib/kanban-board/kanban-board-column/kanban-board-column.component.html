@@ -3,10 +3,9 @@
     {{name}}
   </h2>
   <fa-icon class="menu-icon"
-    *ngIf="actions"
+    *ngIf="actions.length"
     [icon]="menuIcon"
-    >
-  </fa-icon>
+  ></fa-icon>
 </div>
 <ul class="list"
   cdkDropList
@@ -23,21 +22,20 @@
     }"
     (cdkDragStarted)="onDragItem()"
     >
-    <ng-container
-      [ngTemplateOutlet]="itemTemplate ? itemTemplate : defaultTemplate"
-      [ngTemplateOutletContext]="{ $implicit: item }"
-      >
-    </ng-container>
+      <ng-container
+        [ngTemplateOutlet]="itemTemplate ? itemTemplate : defaultTemplate"
+        [ngTemplateOutletContext]="{ $implicit: item }"
+      ></ng-container>
   </li>
 </ul>
-<app-kanban-board-form
+<!-- <app-kanban-board-form
   [name]="itemUnit"
   (add)="onItemAdd($event)"
   >
-</app-kanban-board-form>
+</app-kanban-board-form> -->
 
 <ng-template #defaultTemplate
   let-item
-  >
+>
   {{getItemId(item)}}
 </ng-template>

@@ -6,14 +6,20 @@ import {
   EventEmitter,
   TemplateRef,
 } from '@angular/core';
-import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
+import {
+  CdkDragDrop,
+  DragDropModule,
+  moveItemInArray,
+} from '@angular/cdk/drag-drop';
 
 import { trackByFactory } from '../performance/track-by';
 import {
   IKanbanBoardItemAdd,
   IKanbanBoardActionClick,
   IKanbanBoardItemMove,
+  KanbanBoardColumnComponent,
 } from './kanban-board-column/kanban-board-column.component';
+import { CommonModule } from '@angular/common';
 
 export interface KanbanBoard<TColumn, TItem> {
   getColumnId(node: TColumn): string;
@@ -29,7 +35,9 @@ export interface KanbanColumnMove {
 }
 
 @Component({
+  standalone: true,
   selector: 'core-kanban-board',
+  imports: [CommonModule, DragDropModule, KanbanBoardColumnComponent],
   templateUrl: './kanban-board.component.html',
   styleUrls: ['./kanban-board.scss', './kanban-board.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

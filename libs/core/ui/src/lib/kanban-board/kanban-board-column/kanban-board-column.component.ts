@@ -11,11 +11,14 @@ import {
 import { trackByFactory } from '../../performance/track-by';
 import {
   CdkDragDrop,
+  DragDropModule,
   moveItemInArray,
   transferArrayItem,
 } from '@angular/cdk/drag-drop';
 import { faEllipsisH } from '@fortawesome/free-solid-svg-icons';
 import { Dictionary } from 'lodash';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { CommonModule } from '@angular/common';
 
 export interface IKanbanBoardActionClick {
   action: string;
@@ -36,7 +39,9 @@ export interface IKanbanBoardItemMove {
 }
 
 @Component({
+  standalone: true,
   selector: 'core-kanban-board-column',
+  imports: [CommonModule, DragDropModule, FontAwesomeModule],
   templateUrl: './kanban-board-column.component.html',
   styleUrls: ['../kanban-board.scss', './kanban-board-column.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
