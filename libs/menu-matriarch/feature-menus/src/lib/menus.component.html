@@ -27,6 +27,8 @@
       [fallbackText]="menu.fallbackText"
       [orientation]="menu.orientation"
       (print)="onPrint(menu)"
+      (rename)="onRename(menu.id, $event)"
+      (startDayChange)="onStartDayChange(menu.id, $event)"
     ></li>
   </ul>
 </ui-section>

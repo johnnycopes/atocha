@@ -4,7 +4,7 @@
       *ngIf="state === 'renaming'; else toolbarTemplate"
       [name]="name"
       (cancel)="onCancel()"
-      (save)="onRenameSave($event)"
+      (save)="rename.emit($event)"
     ></ui-inline-name-edit>
     <ng-template #toolbarTemplate>
       <a routerLink="/planner/{{ id }}">
@@ -52,7 +52,7 @@
     *ngIf="state === 'changingStartDay'"
     [startDay]="startDay"
     (cancel)="onCancel()"
-    (save)="onChangeStartDaySave($event)"
+    (save)="startDayChange.emit($event)"
   ></ui-inline-day-select>
   <ul>
     <li class="entry"

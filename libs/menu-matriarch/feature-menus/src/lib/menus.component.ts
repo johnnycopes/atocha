@@ -4,7 +4,7 @@ import { mapTo, shareReplay } from 'rxjs/operators';
 
 import { trackByFactory } from '@atocha/core/ui';
 import { MenuService, PrintService } from '@atocha/menu-matriarch/data-access';
-import { Menu } from '@atocha/menu-matriarch/util';
+import { Day, Menu } from '@atocha/menu-matriarch/util';
 
 @Component({
   selector: 'app-menus',
@@ -39,5 +39,13 @@ export class MenusComponent {
       entries,
       fallbackText,
     });
+  }
+
+  async onRename(id: string, name: string): Promise<void> {
+    await this._menuService.updateMenuName(id, name);
+  }
+
+  async onStartDayChange(id: string, startDay: Day): Promise<void> {
+    await this._menuService.updateMenuStartDay(id, startDay);
   }
 }
