@@ -11,7 +11,6 @@ import { Router } from '@angular/router';
 import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 import { BehaviorSubject } from 'rxjs';
 
-import { MenuService } from '@atocha/menu-matriarch/data-access';
 import { Day, MenuEntry, Orientation } from '@atocha/menu-matriarch/util';
 import { menuEntryTrackByFn } from '@atocha/menu-matriarch/ui';
 
@@ -35,13 +34,14 @@ export class MenuCardComponent implements OnChanges {
   @Output() print = new EventEmitter<void>();
   @Output() rename = new EventEmitter<string>();
   @Output() startDayChange = new EventEmitter<Day>();
+  @Output() delete = new EventEmitter<string>();
 
   private _state$ = new BehaviorSubject<State>('default');
   state$ = this._state$.asObservable();
   readonly menuToggleIcon = faEllipsisV;
   readonly trackByFn = menuEntryTrackByFn;
 
-  constructor(private _menuService: MenuService, private _router: Router) {}
+  constructor(private _router: Router) {}
 
   ngOnChanges(changes: SimpleChanges): void {
     const name = changes['name'];
@@ -69,10 +69,6 @@ export class MenuCardComponent implements OnChanges {
 
   onCancel(): void {
     this._state$.next('default');
-  }
-
-  onDelete(): void {
-    this._menuService.deleteMenu(this.id);
   }
 
   onDishClick(id: string): void {

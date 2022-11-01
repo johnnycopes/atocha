@@ -41,11 +41,15 @@ export class MenusComponent {
     });
   }
 
-  async onRename(id: string, name: string): Promise<void> {
-    await this._menuService.updateMenuName(id, name);
+  onRename(id: string, name: string): void {
+    this._menuService.updateMenuName(id, name);
   }
 
-  async onStartDayChange(id: string, startDay: Day): Promise<void> {
-    await this._menuService.updateMenuStartDay(id, startDay);
+  onStartDayChange(id: string, startDay: Day): void {
+    this._menuService.updateMenuStartDay(id, startDay);
+  }
+
+  onDelete(id: string): void {
+    this._menuService.deleteMenu(id);
   }
 }

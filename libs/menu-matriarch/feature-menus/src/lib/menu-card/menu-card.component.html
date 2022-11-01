@@ -41,7 +41,7 @@
         </a>
         <li ui-options-menu-item
           *ngIf="canDelete"
-          (click)="onDelete()"
+          (click)="delete.emit(id)"
         >
           Delete
         </li>
