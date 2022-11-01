@@ -29,6 +29,7 @@ export class MenuCardComponent {
   @Input() orientation: Orientation = 'horizontal';
   @Input() fallbackText = '';
   @Input() canDelete = true;
+  @Input() active = false;
   @Output() print = new EventEmitter<void>();
   @Output() rename = new EventEmitter<string>();
   @Output() startDayChange = new EventEmitter<Day>();

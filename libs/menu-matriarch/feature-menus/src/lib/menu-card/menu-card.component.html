@@ -1,4 +1,6 @@
-<ui-card *ngIf="state$ | async as state">
+<ui-card *ngIf="state$ | async as state"
+  [active]="active"
+>
   <div class="top">
     <ui-inline-name-edit
       *ngIf="state === 'renaming'; else toolbarTemplate"

@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { merge, Subject } from 'rxjs';
-import { mapTo, shareReplay } from 'rxjs/operators';
+import { combineLatest, merge, Subject } from 'rxjs';
+import { map, mapTo, shareReplay } from 'rxjs/operators';
 
 import { trackByFactory } from '@atocha/core/ui';
 import { MenuService, PrintService } from '@atocha/menu-matriarch/data-access';
@@ -13,7 +13,10 @@ import { Day, Menu } from '@atocha/menu-matriarch/util';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MenusComponent {
-  menus$ = this._menuService.getMenus();
+  vm$ = combineLatest([
+    this._menuService.getMenus(),
+    this._menuService.activeMenuId$,
+  ]).pipe(map(([menus, activeMenuId]) => ({ menus, activeMenuId })));
   startAdd$ = new Subject<void>();
   finishAdd$ = new Subject<void>();
   adding$ = merge(
