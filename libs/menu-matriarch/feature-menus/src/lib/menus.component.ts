@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { combineLatest, merge, Subject } from 'rxjs';
-import { map, mapTo, shareReplay } from 'rxjs/operators';
+import { BehaviorSubject, combineLatest } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 import { trackByFactory } from '@atocha/core/ui';
 import { MenuService, PrintService } from '@atocha/menu-matriarch/data-access';
@@ -13,16 +13,16 @@ import { Day, Menu } from '@atocha/menu-matriarch/util';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MenusComponent {
+  addingSubject = new BehaviorSubject<boolean>(false);
+
   vm$ = combineLatest([
     this._menuService.getMenus(),
     this._menuService.activeMenuId$,
-  ]).pipe(map(([menus, activeMenuId]) => ({ menus, activeMenuId })));
-  startAdd$ = new Subject<void>();
-  finishAdd$ = new Subject<void>();
-  adding$ = merge(
-    this.startAdd$.pipe(mapTo(true)),
-    this.finishAdd$.pipe(mapTo(false))
-  ).pipe(shareReplay({ refCount: true, bufferSize: 1 }));
+    this.addingSubject.asObservable(),
+  ]).pipe(
+    map(([menus, activeMenuId, adding]) => ({ menus, activeMenuId, adding }))
+  );
+
   readonly trackByFn = trackByFactory<Menu>(({ id }) => id);
 
   constructor(
@@ -32,7 +32,7 @@ export class MenusComponent {
 
   onSave(name: string): void {
     this._menuService.createMenu({ name }).subscribe();
-    this.finishAdd$.next();
+    this.addingSubject.next(false);
   }
 
   onPrint({ name, entries, orientation, fallbackText }: Menu): void {
