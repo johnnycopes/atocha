@@ -19,6 +19,7 @@ import { faEllipsisH } from '@fortawesome/free-solid-svg-icons';
 import { Dictionary } from 'lodash';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CommonModule } from '@angular/common';
+import { KanbanBoardFormComponent } from '../kanban-board-form/kanban-board-form.component';
 
 export interface IKanbanBoardActionClick {
   action: string;
@@ -41,7 +42,12 @@ export interface IKanbanBoardItemMove {
 @Component({
   standalone: true,
   selector: 'core-kanban-board-column',
-  imports: [CommonModule, DragDropModule, FontAwesomeModule],
+  imports: [
+    CommonModule,
+    DragDropModule,
+    FontAwesomeModule,
+    KanbanBoardFormComponent,
+  ],
   templateUrl: './kanban-board-column.component.html',
   styleUrls: ['../kanban-board.scss', './kanban-board-column.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

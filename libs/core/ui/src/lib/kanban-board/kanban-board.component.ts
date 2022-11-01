@@ -20,6 +20,7 @@ import {
   KanbanBoardColumnComponent,
 } from './kanban-board-column/kanban-board-column.component';
 import { CommonModule } from '@angular/common';
+import { KanbanBoardFormComponent } from './kanban-board-form/kanban-board-form.component';
 
 export interface KanbanBoard<TColumn, TItem> {
   getColumnId(node: TColumn): string;
@@ -37,7 +38,12 @@ export interface KanbanColumnMove {
 @Component({
   standalone: true,
   selector: 'core-kanban-board',
-  imports: [CommonModule, DragDropModule, KanbanBoardColumnComponent],
+  imports: [
+    CommonModule,
+    DragDropModule,
+    KanbanBoardColumnComponent,
+    KanbanBoardFormComponent,
+  ],
   templateUrl: './kanban-board.component.html',
   styleUrls: ['./kanban-board.scss', './kanban-board.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
