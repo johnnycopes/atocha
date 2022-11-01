@@ -33,7 +33,7 @@ export class MenuCardComponent {
   @Output() print = new EventEmitter<void>();
   @Output() rename = new EventEmitter<string>();
   @Output() startDayChange = new EventEmitter<Day>();
-  @Output() delete = new EventEmitter<string>();
+  @Output() delete = new EventEmitter<void>();
 
   private _stateSubject = new BehaviorSubject<State>('default');
   state$ = this._stateSubject.asObservable();
