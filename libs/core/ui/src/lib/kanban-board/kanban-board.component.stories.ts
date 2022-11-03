@@ -34,9 +34,9 @@ export default {
   ],
   argTypes: {
     onColumnAdd: { action: 'columnAdd' },
-    onColumnMove: { action: 'columnMov' },
+    onColumnMove: { action: 'columnMove' },
     onItemAdd: { action: 'itemAdd' },
-    onItemMove: { action: 'itemMov' },
+    onItemMove: { action: 'itemMove' },
     actionClick: { action: 'actionClick' },
   },
 } as Meta;
