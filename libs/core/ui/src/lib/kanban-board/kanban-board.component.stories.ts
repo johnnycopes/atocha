@@ -7,20 +7,18 @@ import {
 } from '@storybook/angular';
 
 import { StorybookWrapperComponent } from '../../../.storybook/storybook-wrapper/storybook-wrapper.component';
-import { KanbanBoard, KanbanBoardComponent } from './kanban-board.component';
+import { KanbanBoardComponent } from './kanban-board.component';
 
-export interface IKitchenLocation {
+export interface KitchenLocation {
   id: string;
   name: string;
-  items: string[];
+  foods: string[];
 }
 
-class KanbanBoardConfig implements KanbanBoard<IKitchenLocation, string> {
-  getColumnId = (node: IKitchenLocation): string => node.id;
-  getColumnName = (node: IKitchenLocation): string => node.name;
-  getColumnItems = (node: IKitchenLocation): string[] => node.items;
-  getItemId = (node: string): string => node;
-}
+const getColumnId = ({ id }: KitchenLocation): string => id;
+const getColumnName = ({ name }: KitchenLocation): string => name;
+const getColumnItems = ({ foods }: KitchenLocation): string[] => foods;
+const getItemId = (food: string): string => food;
 
 export default {
   title: 'Kanban Board',
@@ -41,15 +39,24 @@ export default {
   },
 } as Meta;
 
-const Template: Story<KanbanBoardComponent<IKitchenLocation, string>> = (
+const Template: Story<KanbanBoardComponent<KitchenLocation, string>> = (
   args: Args
 ) => ({
-  props: args,
+  props: {
+    ...args,
+    getColumnId,
+    getColumnName,
+    getColumnItems,
+    getItemId,
+  },
   template: `
     <core-kanban-board
       [columns]="columns"
-      [config]="config"
       [actions]="actions"
+      [getColumnId]="getColumnId"
+      [getColumnName]="getColumnName"
+      [getColumnItems]="getColumnItems"
+      [getItemId]="getItemId"
       (columnAdd)="onColumnAdd($event)"
       (columnMove)="onColumnMove($event)"
       (itemAdd)="onItemAdd($event)"
@@ -62,7 +69,7 @@ const Template: Story<KanbanBoardComponent<IKitchenLocation, string>> = (
 export const base = Template.bind({});
 base.args = createArgs();
 
-type Args = Partial<KanbanBoardComponent<IKitchenLocation, string>> & {
+type Args = Partial<KanbanBoardComponent<KitchenLocation, string>> & {
   className?: string;
 };
 
@@ -72,17 +79,17 @@ function createArgs(
       {
         id: '01',
         name: 'Refrigerator',
-        items: ['Salmon', 'Cheese', 'Oat milk', 'Mustard'],
+        foods: ['Salmon', 'Cheese', 'Oat milk', 'Mustard'],
       },
       {
         id: '02',
         name: 'Freezer',
-        items: ['Chicken', 'Mixed veggies'],
+        foods: ['Chicken', 'Mixed veggies'],
       },
       {
         id: '03',
         name: 'Pantry',
-        items: [
+        foods: [
           'Avocados',
           'Tomatoes',
           'Bell peppers',
@@ -91,9 +98,11 @@ function createArgs(
         ],
       },
     ],
-    config = new KanbanBoardConfig(),
     actions = ['Export', 'Print'],
   } = {} as Args
 ): Args {
-  return { columns, config, actions };
+  return {
+    columns,
+    actions,
+  };
 }

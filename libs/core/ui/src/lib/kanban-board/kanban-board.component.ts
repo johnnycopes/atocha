@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/member-ordering */
+import { CommonModule } from '@angular/common';
 import {
   Component,
   Input,
@@ -19,15 +21,7 @@ import {
   IKanbanBoardItemMove,
   KanbanBoardColumnComponent,
 } from './kanban-board-column/kanban-board-column.component';
-import { CommonModule } from '@angular/common';
 import { KanbanBoardFormComponent } from './kanban-board-form/kanban-board-form.component';
-
-export interface KanbanBoard<TColumn, TItem> {
-  getColumnId(node: TColumn): string;
-  getColumnName(node: TColumn): string;
-  getColumnItems(node: TColumn): TItem[];
-  getItemId(node: TItem): string;
-}
 
 export interface KanbanColumnMove {
   columnId: string;
@@ -50,16 +44,14 @@ export interface KanbanColumnMove {
 })
 export class KanbanBoardComponent<TColumn, TItem> {
   @Input() columns: TColumn[] = [];
-  @Input() config: KanbanBoard<TColumn, TItem> = {
-    getColumnId: () => '',
-    getColumnName: () => '',
-    getColumnItems: () => [],
-    getItemId: () => '',
-  };
   @Input() itemTemplate: TemplateRef<unknown> | undefined;
   @Input() actions: string[] = [];
   @Input() columnUnit = 'Column';
   @Input() itemUnit = 'Item';
+  @Input() getColumnId: (node: TColumn) => string = () => '';
+  @Input() getColumnName: (node: TColumn) => string = () => '';
+  @Input() getColumnItems: (node: TColumn) => TItem[] = () => [];
+  @Input() getItemId: (node: TItem) => string = () => '';
   @Output() columnAdd: EventEmitter<string> = new EventEmitter();
   @Output() columnMove: EventEmitter<KanbanColumnMove> = new EventEmitter();
   @Output() itemAdd: EventEmitter<IKanbanBoardItemAdd> = new EventEmitter();
@@ -67,7 +59,7 @@ export class KanbanBoardComponent<TColumn, TItem> {
   @Output() actionClick: EventEmitter<IKanbanBoardActionClick> =
     new EventEmitter();
   moving = false;
-  trackByFn = trackByFactory(this.config.getColumnId);
+  trackByFn = trackByFactory(this.getColumnId);
 
   onColumnAdd(newColumnName: string): void {
     this.columnAdd.emit(newColumnName);
