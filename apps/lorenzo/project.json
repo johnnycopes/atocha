@@ -84,6 +84,30 @@
         "jestConfig": "apps/lorenzo/jest.config.ts",
         "passWithNoTests": true
       }
+    },
+    "deploy": {
+      "executor": "nx:run-commands",
+      "outputs": [],
+      "options": {
+        "parallel": false
+      },
+      "configurations": {
+        "production": {
+          "commands": [
+            "nx build lorenzo",
+            "cd ./dist/apps/lorenzo && mv index.html 200.html",
+            "surge ./dist/apps/lorenzo --domain=https://lorenzo-ref.surge.sh"
+          ]
+        },
+        "development": {
+          "commands": [
+            "nx build lorenzo",
+            "cd ./dist/apps/lorenzo && mv index.html 200.html",
+            "surge ./dist/apps/lorenzo --domain=https://lorenzo-ref-wip.surge.sh"
+          ]
+        }
+      },
+      "defaultConfiguration": "development"
     }
   },
   "tags": ["scope:lorenzo", "type:app"]
