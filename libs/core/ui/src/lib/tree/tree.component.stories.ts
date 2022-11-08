@@ -36,7 +36,7 @@ const getId = ({ id }: Item) => id;
 const getChildren = ({ children }: Item) => children ?? [];
 
 export default {
-  title: 'TreeComponent',
+  title: 'Tree',
   component: TreeComponent,
   decorators: [
     moduleMetadata({

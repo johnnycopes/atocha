@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/member-ordering */
+import { CommonModule } from '@angular/common';
 import {
   Component,
   Input,
@@ -6,28 +7,31 @@ import {
   EventEmitter,
   ChangeDetectionStrategy,
   TemplateRef,
+  ViewEncapsulation,
 } from '@angular/core';
-
-import { trackByFactory } from '../../performance/track-by';
 import {
   CdkDragDrop,
+  DragDropModule,
   moveItemInArray,
   transferArrayItem,
 } from '@angular/cdk/drag-drop';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faEllipsisH } from '@fortawesome/free-solid-svg-icons';
-import { Dictionary } from 'lodash';
 
-export interface IKanbanBoardActionClick {
+import { trackByFactory } from '../../performance/track-by';
+import { KanbanBoardFormComponent } from '../kanban-board-form/kanban-board-form.component';
+
+export interface KanbanBoardActionClick {
   action: string;
   columnId: string;
 }
 
-export interface IKanbanBoardItemAdd {
+export interface KanbanBoardItemAdd {
   item: string;
   columnId: string;
 }
 
-export interface IKanbanBoardItemMove {
+export interface KanbanBoardItemMove {
   itemId: string;
   currentColumnId: string;
   previousColumnId: string;
@@ -36,10 +40,21 @@ export interface IKanbanBoardItemMove {
 }
 
 @Component({
+  standalone: true,
   selector: 'core-kanban-board-column',
+  imports: [
+    CommonModule,
+    DragDropModule,
+    FontAwesomeModule,
+    KanbanBoardFormComponent,
+  ],
   templateUrl: './kanban-board-column.component.html',
   styleUrls: ['../kanban-board.scss', './kanban-board-column.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
+  host: {
+    class: 'core-kbc',
+  },
 })
 export class KanbanBoardColumnComponent<TItem> {
   @Input() id = '';
@@ -50,13 +65,13 @@ export class KanbanBoardColumnComponent<TItem> {
   @Input() getItemId: (item: TItem) => string = () => '';
   @Input() actions: string[] = [];
   @Input() moving = false;
-  @Output() itemAdd: EventEmitter<IKanbanBoardItemAdd> = new EventEmitter();
-  @Output() itemMove: EventEmitter<IKanbanBoardItemMove> = new EventEmitter();
-  @Output() actionClick: EventEmitter<IKanbanBoardActionClick> =
+  @Output() itemAdd: EventEmitter<KanbanBoardItemAdd> = new EventEmitter();
+  @Output() itemMove: EventEmitter<KanbanBoardItemMove> = new EventEmitter();
+  @Output() actionClick: EventEmitter<KanbanBoardActionClick> =
     new EventEmitter();
   @Output() movingChange: EventEmitter<boolean> = new EventEmitter();
   readonly menuIcon = faEllipsisH;
-  hoverStatesDict: Dictionary<boolean> = {};
+  hoverStatesDict: Record<string, boolean> = {};
   trackByFn = trackByFactory(this.getItemId);
 
   onDragItem(): void {

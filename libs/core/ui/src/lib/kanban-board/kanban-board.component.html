@@ -1,20 +1,20 @@
-<main class="container"
+<main class="core-kb__container"
   cdkDropList
   cdkDropListOrientation="horizontal"
   [cdkDropListData]="columns"
   (cdkDropListDropped)="onDropColumn($event)"
-  >
-  <div class="columns"
+>
+  <div class="core-kb__columns"
     cdkDropListGroup
-    >
-    <app-kanban-board-column class="column"
+  >
+    <core-kanban-board-column class="core-kb__column"
       *ngFor="let column of columns; trackBy: trackByFn"
       cdkDrag
-      [cdkDragData]="config.getColumnId(column)"
-      [id]="config.getColumnId(column)"
-      [name]="config.getColumnName(column)"
-      [items]="config.getColumnItems(column)"
-      [getItemId]="config.getItemId"
+      [cdkDragData]="getColumnId(column)"
+      [id]="getColumnId(column)"
+      [name]="getColumnName(column)"
+      [items]="getColumnItems(column)"
+      [getItemId]="getItemId"
       [itemUnit]="itemUnit"
       [itemTemplate]="itemTemplate"
       [actions]="actions"
@@ -23,12 +23,10 @@
       (itemMove)="onItemMove($event)"
       (cdkDragStarted)="onDragColumn()"
       [(moving)]="moving"
-      >
-    </app-kanban-board-column>
-    <app-kanban-board-form class="column"
+    ></core-kanban-board-column>
+    <core-kanban-board-form class="core-kb__column"
       [name]="columnUnit"
       (add)="onColumnAdd($event)"
-      >
-    </app-kanban-board-form>
+    ></core-kanban-board-form>
   </div>
 </main>

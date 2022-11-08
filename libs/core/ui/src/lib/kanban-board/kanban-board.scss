@@ -1,13 +1,15 @@
-@import 'main';
+// @import 'main';
 
 .cdk-drag-preview {
-  box-shadow: box-shadow(heaviest) !important;
+  box-shadow: 0 15px 35px hsla(0deg, 0%, 0%, 20%) !important;
 }
 
 .cdk-drag-placeholder {
   position: relative;
-  background: color($yellow, 9);
-  color: color($yellow, 9);
+  background: goldenrod;
+  color: goldenrod;
+  // background: color($yellow, 9);
+  // color: color($yellow, 9);
 
   &::after {
     content: '';
@@ -16,9 +18,10 @@
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: z-index(positive);
-    background: color($yellow, 8);
-    border-radius: border(radius);
+    z-index: 1;
+    // background: color($yellow, 8);
+    background: goldenrod;
+    border-radius: 2px;
   }
 }
 

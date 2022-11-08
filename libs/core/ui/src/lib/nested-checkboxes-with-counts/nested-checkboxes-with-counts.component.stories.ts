@@ -5,7 +5,6 @@ import {
   Meta,
   componentWrapperDecorator,
 } from '@storybook/angular';
-import { InputType } from 'zlib';
 
 import { NestedCheckboxesComponent } from '../nested-checkboxes/nested-checkboxes.component';
 import { CheckboxComponent } from '../checkbox/checkbox.component';
@@ -23,7 +22,7 @@ import {
 import { NestedCheckboxesWithCountsComponent } from './nested-checkboxes-with-counts.component';
 
 export default {
-  title: 'NestedCheckboxesWithCountsComponent',
+  title: 'Nested Checkboxes With Counts',
   component: NestedCheckboxesWithCountsComponent,
   decorators: [
     moduleMetadata({
