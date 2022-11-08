@@ -98,7 +98,10 @@
       "executor": "nx:run-commands",
       "outputs": [],
       "options": {
-        "commands": ["nx build globetrotter", "netlify deploy ./apps/globetrotter"],
+        "commands": [
+          "nx build globetrotter",
+          "netlify deploy ./apps/globetrotter"
+        ],
         "parallel": false
       }
     }
