@@ -7,8 +7,6 @@
     "build": "nx build",
     "test": "nx test",
     "postinstall": "ngcc --properties es2020 browser module main",
-    "mm:deploy-dev": "nx build menu-matriarch --configuration=development && firebase deploy --project=menu-matriarch-dev --only=hosting",
-    "mm:deploy-prod": "nx build menu-matriarch && firebase deploy --project=menu-matriarch",
     "mm:delete-account": "node ./firebase/scripts/dev/delete-account.js",
     "mm:delete-data": "node ./firebase/scripts/dev/delete-data.js",
     "mm:reset": "node ./firebase/scripts/dev/delete-all-accounts.js",
