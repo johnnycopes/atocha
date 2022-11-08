@@ -94,27 +94,27 @@
         "passWithNoTests": true
       }
     },
-    "staging": {
+    "deploy": {
       "executor": "nx:run-commands",
       "outputs": [],
       "options": {
-        "commands": [
-          "nx build globetrotter",
-          "netlify deploy --auth=${NETLIFY_AUTH_TOKEN} --site=${GLOBETROTTER_SITE_ID} --message='Via command \"nx staging globetrotter\"'"
-        ],
         "parallel": false
-      }
-    },
-    "prod": {
-      "executor": "nx:run-commands",
-      "outputs": [],
-      "options": {
-        "commands": [
-          "nx build globetrotter",
-          "netlify deploy --prod --auth=${NETLIFY_AUTH_TOKEN} --site=${GLOBETROTTER_SITE_ID} --message='Via command \"nx prod globetrotter\"'"
-        ],
-        "parallel": false
-      }
+      },
+      "configurations": {
+        "production": {
+          "commands": [
+            "nx build globetrotter",
+            "netlify deploy --prod --auth=${NETLIFY_AUTH_TOKEN} --site=${GLOBETROTTER_SITE_ID} --message='Via Nx command'"
+          ]
+        },
+        "development": {
+          "commands": [
+            "nx build globetrotter",
+            "netlify deploy --auth=${NETLIFY_AUTH_TOKEN} --site=${GLOBETROTTER_SITE_ID} --message='Via Nx command'"
+          ]
+        }
+      },
+      "defaultConfiguration": "development"
     }
   },
   "tags": ["scope:globetrotter", "type:app"]
