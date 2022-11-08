@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/member-ordering */
+import { CommonModule } from '@angular/common';
 import {
   Component,
   Input,
@@ -8,18 +9,16 @@ import {
   TemplateRef,
   ViewEncapsulation,
 } from '@angular/core';
-
-import { trackByFactory } from '../../performance/track-by';
 import {
   CdkDragDrop,
   DragDropModule,
   moveItemInArray,
   transferArrayItem,
 } from '@angular/cdk/drag-drop';
-import { faEllipsisH } from '@fortawesome/free-solid-svg-icons';
-import { Dictionary } from 'lodash';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { CommonModule } from '@angular/common';
+import { faEllipsisH } from '@fortawesome/free-solid-svg-icons';
+
+import { trackByFactory } from '../../performance/track-by';
 import { KanbanBoardFormComponent } from '../kanban-board-form/kanban-board-form.component';
 
 export interface KanbanBoardActionClick {
@@ -72,7 +71,7 @@ export class KanbanBoardColumnComponent<TItem> {
     new EventEmitter();
   @Output() movingChange: EventEmitter<boolean> = new EventEmitter();
   readonly menuIcon = faEllipsisH;
-  hoverStatesDict: Dictionary<boolean> = {};
+  hoverStatesDict: Record<string, boolean> = {};
   trackByFn = trackByFactory(this.getItemId);
 
   onDragItem(): void {
