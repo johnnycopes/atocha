@@ -12,11 +12,11 @@ describe('NestedCheckboxesWithCountsComponent', () => {
     checkboxSelector = '[data-test="core-nested-checkbox"]';
     stories = {
       noneSelected:
-        '/iframe.html?id=nestedcheckboxeswithcountscomponent--none-selected',
+        '/iframe.html?id=nested-checkboxes-with-counts--none-selected',
       someSelected:
-        '/iframe.html?id=nestedcheckboxeswithcountscomponent--some-selected',
+        '/iframe.html?id=nested-checkboxes-with-counts--some-selected',
       allSelected:
-        '/iframe.html?id=nestedcheckboxeswithcountscomponent--all-selected',
+        '/iframe.html?id=nested-checkboxes-with-counts--all-selected',
     };
   });
 

@@ -20,7 +20,7 @@ import {
 import { NestedCheckboxesComponent } from './nested-checkboxes.component';
 
 export default {
-  title: 'NestedCheckboxesComponent',
+  title: 'Nested Checkboxes',
   component: NestedCheckboxesComponent,
   decorators: [
     moduleMetadata({
