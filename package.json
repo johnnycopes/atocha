@@ -7,14 +7,9 @@
     "build": "nx build",
     "test": "nx test",
     "postinstall": "ngcc --properties es2020 browser module main",
-    "gt:deploy-dev": "nx build globetrotter && netlify deploy ./apps/globetrotter",
-    "gt:deploy-prod": "nx build globetrotter && netlify deploy --prod ./apps/globetrotter",
-    "mm:deploy-dev": "nx build menu-matriarch --configuration=development && firebase deploy --project=menu-matriarch-dev --only=hosting",
-    "mm:deploy-prod": "nx build menu-matriarch && firebase deploy --project=menu-matriarch",
     "mm:delete-account": "node ./firebase/scripts/dev/delete-account.js",
     "mm:delete-data": "node ./firebase/scripts/dev/delete-data.js",
-    "mm:reset": "node ./firebase/scripts/dev/delete-all-accounts.js",
-    "lo:deploy-prod": "nx build lorenzo && cd ./dist/apps/lorenzo && mv index.html 200.html && surge . --domain=https://lorenzo-ref.surge.sh"
+    "mm:reset": "node ./firebase/scripts/dev/delete-all-accounts.js"
   },
   "nx": {
     "implicitDependencies": {
