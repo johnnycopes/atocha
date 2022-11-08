@@ -22,17 +22,17 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CommonModule } from '@angular/common';
 import { KanbanBoardFormComponent } from '../kanban-board-form/kanban-board-form.component';
 
-export interface IKanbanBoardActionClick {
+export interface KanbanBoardActionClick {
   action: string;
   columnId: string;
 }
 
-export interface IKanbanBoardItemAdd {
+export interface KanbanBoardItemAdd {
   item: string;
   columnId: string;
 }
 
-export interface IKanbanBoardItemMove {
+export interface KanbanBoardItemMove {
   itemId: string;
   currentColumnId: string;
   previousColumnId: string;
@@ -66,9 +66,9 @@ export class KanbanBoardColumnComponent<TItem> {
   @Input() getItemId: (item: TItem) => string = () => '';
   @Input() actions: string[] = [];
   @Input() moving = false;
-  @Output() itemAdd: EventEmitter<IKanbanBoardItemAdd> = new EventEmitter();
-  @Output() itemMove: EventEmitter<IKanbanBoardItemMove> = new EventEmitter();
-  @Output() actionClick: EventEmitter<IKanbanBoardActionClick> =
+  @Output() itemAdd: EventEmitter<KanbanBoardItemAdd> = new EventEmitter();
+  @Output() itemMove: EventEmitter<KanbanBoardItemMove> = new EventEmitter();
+  @Output() actionClick: EventEmitter<KanbanBoardActionClick> =
     new EventEmitter();
   @Output() movingChange: EventEmitter<boolean> = new EventEmitter();
   readonly menuIcon = faEllipsisH;

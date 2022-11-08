@@ -17,9 +17,9 @@ import {
 
 import { trackByFactory } from '../performance/track-by';
 import {
-  IKanbanBoardItemAdd,
-  IKanbanBoardActionClick,
-  IKanbanBoardItemMove,
+  KanbanBoardItemAdd,
+  KanbanBoardActionClick,
+  KanbanBoardItemMove,
   KanbanBoardColumnComponent,
 } from './kanban-board-column/kanban-board-column.component';
 import { KanbanBoardFormComponent } from './kanban-board-form/kanban-board-form.component';
@@ -59,9 +59,9 @@ export class KanbanBoardComponent<TColumn, TItem> {
   @Input() getItemId: (node: TItem) => string = () => '';
   @Output() columnAdd: EventEmitter<string> = new EventEmitter();
   @Output() columnMove: EventEmitter<KanbanColumnMove> = new EventEmitter();
-  @Output() itemAdd: EventEmitter<IKanbanBoardItemAdd> = new EventEmitter();
-  @Output() itemMove: EventEmitter<IKanbanBoardItemMove> = new EventEmitter();
-  @Output() actionClick: EventEmitter<IKanbanBoardActionClick> =
+  @Output() itemAdd: EventEmitter<KanbanBoardItemAdd> = new EventEmitter();
+  @Output() itemMove: EventEmitter<KanbanBoardItemMove> = new EventEmitter();
+  @Output() actionClick: EventEmitter<KanbanBoardActionClick> =
     new EventEmitter();
   moving = false;
   trackByFn = trackByFactory(this.getColumnId);
@@ -90,15 +90,15 @@ export class KanbanBoardComponent<TColumn, TItem> {
     this.moving = false;
   }
 
-  onItemAdd(event: IKanbanBoardItemAdd): void {
+  onItemAdd(event: KanbanBoardItemAdd): void {
     this.itemAdd.emit(event);
   }
 
-  onItemMove(event: IKanbanBoardItemMove): void {
+  onItemMove(event: KanbanBoardItemMove): void {
     this.itemMove.emit(event);
   }
 
-  onActionClick(event: IKanbanBoardActionClick): void {
+  onActionClick(event: KanbanBoardActionClick): void {
     this.actionClick.emit(event);
   }
 }
