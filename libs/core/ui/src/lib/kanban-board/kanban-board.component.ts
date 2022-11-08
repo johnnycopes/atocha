@@ -7,6 +7,7 @@ import {
   Output,
   EventEmitter,
   TemplateRef,
+  ViewEncapsulation,
 } from '@angular/core';
 import {
   CdkDragDrop,
@@ -41,6 +42,10 @@ export interface KanbanColumnMove {
   templateUrl: './kanban-board.component.html',
   styleUrls: ['./kanban-board.scss', './kanban-board.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
+  host: {
+    class: 'core-kb',
+  },
 })
 export class KanbanBoardComponent<TColumn, TItem> {
   @Input() columns: TColumn[] = [];

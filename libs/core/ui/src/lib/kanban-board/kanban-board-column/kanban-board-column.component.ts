@@ -6,6 +6,7 @@ import {
   EventEmitter,
   ChangeDetectionStrategy,
   TemplateRef,
+  ViewEncapsulation,
 } from '@angular/core';
 
 import { trackByFactory } from '../../performance/track-by';
@@ -51,6 +52,10 @@ export interface IKanbanBoardItemMove {
   templateUrl: './kanban-board-column.component.html',
   styleUrls: ['../kanban-board.scss', './kanban-board-column.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
+  host: {
+    class: 'core-kbc',
+  },
 })
 export class KanbanBoardColumnComponent<TItem> {
   @Input() id = '';

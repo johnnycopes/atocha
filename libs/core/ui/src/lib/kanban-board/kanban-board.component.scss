@@ -1,13 +1,14 @@
-// @import 'main';
+.core-kb {
 
-.columns {
-  display: flex;
-  align-items: flex-start;
-}
+  &__columns {
+    display: flex;
+    align-items: flex-start;
+  }
 
-.column {
-  flex: 1;
-  max-width: 384px;
+  &__column {
+    flex: 1;
+    max-width: 384px;
+  }
 }
 
 .cdk-drop-list-dragging ::ng-deep:not(.cdk-drag-placeholder) {
