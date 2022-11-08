@@ -90,6 +90,28 @@
         "jestConfig": "apps/menu-matriarch/jest.config.ts",
         "passWithNoTests": true
       }
+    },
+    "deploy": {
+      "executor": "nx:run-commands",
+      "outputs": [],
+      "options": {
+        "parallel": false
+      },
+      "configurations": {
+        "production": {
+          "commands": [
+            "nx build menu-matriarch",
+            "firebase deploy --project=menu-matriarch"
+          ]
+        },
+        "development": {
+          "commands": [
+            "nx build menu-matriarch --configuration=development",
+            "firebase deploy --project=menu-matriarch-dev --only=hosting"
+          ]
+        }
+      },
+      "defaultConfiguration": "development"
     }
   },
   "tags": ["scope:menu-matriarch", "type:app"]
