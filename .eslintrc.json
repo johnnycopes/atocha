@@ -33,6 +33,13 @@
                 ]
               },
               {
+                "sourceTag": "scope:spirit-islander",
+                "onlyDependOnLibsWithTags": [
+                  "scope:core",
+                  "scope:spirit-islander"
+                ]
+              },
+              {
                 "sourceTag": "type:app",
                 "onlyDependOnLibsWithTags": [
                   "type:data-access",
