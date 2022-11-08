@@ -100,7 +100,7 @@
       "options": {
         "commands": [
           "nx build globetrotter",
-          "netlify deploy ./apps/globetrotter"
+          "netlify deploy dist=./apps/globetrotter --auth=${NETLIFY_TOKEN} --site=${NETLIFY_SITE_ID}"
         ],
         "parallel": false
       }
