@@ -9,7 +9,7 @@
     "postinstall": "ngcc --properties es2020 browser module main",
     "mm:delete-account": "node ./firebase/scripts/dev/delete-account.js",
     "mm:delete-data": "node ./firebase/scripts/dev/delete-data.js",
-    "mm:reset": "node ./firebase/scripts/dev/delete-all-accounts.js",
+    "mm:reset": "node ./firebase/scripts/dev/delete-all-accounts.js"
   },
   "nx": {
     "implicitDependencies": {
