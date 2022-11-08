@@ -90,6 +90,28 @@
         "jestConfig": "apps/spirit-islander/jest.config.ts",
         "passWithNoTests": true
       }
+    },
+    "deploy": {
+      "executor": "nx:run-commands",
+      "outputs": [],
+      "options": {
+        "parallel": false
+      },
+      "configurations": {
+        "production": {
+          "commands": [
+            "nx build spirit-islander",
+            "netlify deploy --prod --auth=${NETLIFY_AUTH_TOKEN} --site=${SPIRIT_ISLANDER_SITE_ID} --message='Via Nx command'"
+          ]
+        },
+        "development": {
+          "commands": [
+            "nx build spirit-islander",
+            "netlify deploy --auth=${NETLIFY_AUTH_TOKEN} --site=${SPIRIT_ISLANDER_SITE_ID} --message='Via Nx command'"
+          ]
+        }
+      },
+      "defaultConfiguration": "development"
     }
   },
   "tags": ["scope:spirit-islander", "type:app"]
