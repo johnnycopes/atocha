@@ -95,10 +95,11 @@
       }
     },
     "deploy": {
-      "executor": "@netlify-builder/deploy:deploy",
+      "executor": "nx:run-commands",
+      "outputs": [],
       "options": {
-        "outputPath": "dist/apps/globetrotter",
-        "siteId": "faabf44d-1d2f-45d5-96fc-3cce8b6d0060"
+        "commands": ["nx build globetrotter", "netlify deploy ./apps/globetrotter"],
+        "parallel": false
       }
     }
   },
