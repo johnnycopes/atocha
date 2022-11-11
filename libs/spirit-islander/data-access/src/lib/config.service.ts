@@ -14,7 +14,7 @@ import {
   providedIn: 'root',
 })
 export class ConfigService {
-  _config = new State<Config>({
+  private _config = new State<Config>({
     expansions: [],
     players: 1,
     difficultyRange: [0, 1],
