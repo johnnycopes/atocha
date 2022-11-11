@@ -1,14 +1,11 @@
-import type { Players } from './models/game/players';
-import type { Difficulty } from './models/game/difficulty';
-import type { MapName } from './models/game/maps';
-import type { BalancedBoardName } from './models/game/board';
-import type { ExpansionName } from './models/game/expansions';
-import type { SpiritName } from './models/game/spirits';
-import type {
-  AdversaryName,
-  AdversaryLevelId,
-} from './models/game/adversaries';
-import type { ScenarioName } from './models/game/scenarios';
+import type { Players } from './game/players';
+import type { Difficulty } from './game/difficulty';
+import type { MapName } from './game/maps';
+import type { BalancedBoardName } from './game/board';
+import type { ExpansionName } from './game/expansions';
+import type { SpiritName } from './game/spirits';
+import type { AdversaryName, AdversaryLevelId } from './game/adversaries';
+import type { ScenarioName } from './game/scenarios';
 
 /**
  * Collection of selected options that a user either
