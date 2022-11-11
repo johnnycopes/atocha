@@ -1,0 +1,9 @@
+import type { ExpansionName } from '../types/game/expansions';
+
+export const EXPANSIONS: ExpansionName[] = [
+  'Branch & Claw',
+  'Horizons',
+  'Jagged Earth',
+  'Promo Pack 1',
+  'Promo Pack 2',
+];
