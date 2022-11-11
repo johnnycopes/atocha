@@ -7,11 +7,11 @@ const { exclude: _, ...swcJestConfig } = JSON.parse(
   readFileSync(`${__dirname}/.lib.swcrc`, 'utf-8')
 );
 export default {
-  displayName: 'spirit-islander-new-util',
+  displayName: 'spirit-islander-util',
   preset: '../../../jest.preset.js',
   transform: {
     '^.+\\.[tj]s$': ['@swc/jest', swcJestConfig],
   },
   moduleFileExtensions: ['ts', 'js', 'html'],
-  coverageDirectory: '../../../coverage/libs/spirit-islander/new-util',
+  coverageDirectory: '../../../coverage/libs/spirit-islander/util',
 };
