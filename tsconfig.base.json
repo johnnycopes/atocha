@@ -69,8 +69,7 @@
       "@atocha/menu-matriarch/util": ["libs/menu-matriarch/util/src/index.ts"],
       "@atocha/spirit-islander/new-util": [
         "libs/spirit-islander/new-util/src/index.ts"
-      ],
-      "@atocha/spirit-islander/util": ["libs/spirit-islander/util/src/index.ts"]
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]
