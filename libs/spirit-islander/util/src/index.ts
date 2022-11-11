@@ -22,3 +22,13 @@ export * from './lib/types/game/option';
 export * from './lib/types/game/players';
 export * from './lib/types/game/scenarios';
 export * from './lib/types/game/spirits';
+
+// Functions
+export * from './lib/functions/create-game-setup';
+export * from './lib/functions/create-model';
+export * from './lib/functions/get-adversary-by-id';
+export * from './lib/functions/get-difficulty';
+export * from './lib/functions/get-options';
+export * from './lib/functions/get-valid-combos';
+export * from './lib/functions/select-boards';
+export * from './lib/functions/update-model';
