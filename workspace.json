@@ -34,7 +34,8 @@
     "menu-matriarch-ui": "libs/menu-matriarch/ui",
     "menu-matriarch-util": "libs/menu-matriarch/util",
     "spirit-islander": "apps/spirit-islander",
-    "spirit-islander-e2e": "apps/spirit-islander-e2e"
+    "spirit-islander-e2e": "apps/spirit-islander-e2e",
+    "spirit-islander-util": "libs/spirit-islander/util"
   },
   "tags": [
     "scope:core",
