@@ -66,7 +66,8 @@
         "libs/menu-matriarch/feature-tags/src/index.ts"
       ],
       "@atocha/menu-matriarch/ui": ["libs/menu-matriarch/ui/src/index.ts"],
-      "@atocha/menu-matriarch/util": ["libs/menu-matriarch/util/src/index.ts"]
+      "@atocha/menu-matriarch/util": ["libs/menu-matriarch/util/src/index.ts"],
+      "@atocha/spirit-islander/util": ["libs/spirit-islander/util/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
