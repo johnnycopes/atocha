@@ -1,4 +1,4 @@
-import type { Adversary } from '../models/game/adversaries';
+import type { Adversary } from '../types/game/adversaries';
 
 export const ADVERSARIES: Adversary[] = [
   {

@@ -1,4 +1,4 @@
-import type { Spirit } from '../models/game/spirits';
+import type { Spirit } from '../types/game/spirits';
 
 export const SPIRITS: Spirit[] = [
   { name: 'A Spread of Rampant Green' },

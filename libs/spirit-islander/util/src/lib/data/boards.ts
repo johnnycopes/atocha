@@ -1,4 +1,4 @@
-import type { Board } from '../models/game/board';
+import type { Board } from '../types/game/board';
 
 export const BOARDS: Board[] = [
   {

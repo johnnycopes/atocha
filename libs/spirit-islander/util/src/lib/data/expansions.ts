@@ -1,4 +1,4 @@
-import type { ExpansionName } from '../models/game/expansions';
+import type { ExpansionName } from '../types/game/expansions';
 
 export const EXPANSIONS: ExpansionName[] = [
   'Branch & Claw',

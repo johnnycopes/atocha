@@ -1,4 +1,4 @@
-import type { Map } from '../models/game/maps';
+import type { Map } from '../types/game/maps';
 
 export const MAPS: Map[] = [
   {

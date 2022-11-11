@@ -1,4 +1,4 @@
-import type { Scenario } from '../models/game/scenarios';
+import type { Scenario } from '../types/game/scenarios';
 
 export const SCENARIOS: Scenario[] = [
   {
