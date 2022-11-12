@@ -13,7 +13,7 @@ bootstrapApplication(AppComponent, {
   providers: [
     {
       provide: APP_NAME_TOKEN,
-      useValue: 'LORENZO',
+      useValue: 'SPIRIT_ISLANDER',
     },
   ],
 }).catch(console.error);
