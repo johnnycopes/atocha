@@ -3,16 +3,6 @@
   "sourceRoot": "libs/globetrotter/util/src",
   "projectType": "library",
   "targets": {
-    "build": {
-      "executor": "@nrwl/js:swc",
-      "outputs": ["{options.outputPath}"],
-      "options": {
-        "outputPath": "dist/libs/globetrotter/util",
-        "main": "libs/globetrotter/util/src/index.ts",
-        "tsConfig": "libs/globetrotter/util/tsconfig.lib.json",
-        "assets": ["libs/globetrotter/util/*.md"]
-      }
-    },
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],
