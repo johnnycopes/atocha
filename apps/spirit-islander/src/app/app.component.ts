@@ -1,6 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+
 import { State } from '@atocha/core/util';
+import {
+  FooterComponent,
+  HeaderComponent,
+} from '@atocha/spirit-islander/shell';
 import {
   Combo,
   Config,
@@ -23,7 +28,7 @@ interface AppState {
 @Component({
   standalone: true,
   selector: 'app-root',
-  imports: [CommonModule],
+  imports: [CommonModule, FooterComponent, HeaderComponent],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
