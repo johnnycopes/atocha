@@ -6,6 +6,7 @@ import {
   FooterComponent,
   HeaderComponent,
 } from '@atocha/spirit-islander/shell';
+import { PageComponent } from '@atocha/spirit-islander/ui';
 import {
   Combo,
   Config,
@@ -28,7 +29,7 @@ interface AppState {
 @Component({
   standalone: true,
   selector: 'app-root',
-  imports: [CommonModule, FooterComponent, HeaderComponent],
+  imports: [CommonModule, FooterComponent, HeaderComponent, PageComponent],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
