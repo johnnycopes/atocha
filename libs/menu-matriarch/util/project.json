@@ -3,16 +3,6 @@
   "sourceRoot": "libs/menu-matriarch/util/src",
   "projectType": "library",
   "targets": {
-    "build": {
-      "executor": "@nrwl/js:swc",
-      "outputs": ["{options.outputPath}"],
-      "options": {
-        "outputPath": "dist/libs/menu-matriarch/util",
-        "main": "libs/menu-matriarch/util/src/index.ts",
-        "tsConfig": "libs/menu-matriarch/util/tsconfig.lib.json",
-        "assets": ["libs/menu-matriarch/util/*.md"]
-      }
-    },
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],
