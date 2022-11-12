@@ -1,1 +1,117 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  --font: 'Inconsolata', monospace;
+  --header-height: 64px;
+  --footer-height: 96px;
+  --border-radius: 2px;
+  --downward-box-shadow: 0px 1px 2px hsla(0, 0%, 0%, 0.2);
+  --white: #fff;
+  --gray-50: hsl(192, 10%, 12%);
+  --gray-100: hsl(192, 10%, 16%);
+  --gray-200: hsl(192, 10%, 22%);
+  --gray-300: hsl(192, 10%, 31%);
+  --gray-400: hsl(192, 10%, 44%);
+  --gray-500: hsl(192, 10%, 51%);
+  --gray-600: hsl(192, 10%, 81%);
+  --red-100: hsl(3, 60%, 37%);
+  --red-200: hsl(3, 60%, 82%);
+  --blue-100: hsl(192, 70%, 35%);
+  --blue-200: hsl(192, 70%, 41%);
+  --blue-300: hsl(192, 70%, 46%);
+  --purple-100: hsl(262, 16%, 76%);
+  --brown-100: hsl(48, 24%, 35%);
+  --yellow-100: hsl(55, 89%, 79%);
+  --orange-100: hsl(25, 81%, 65%);
+  --green-100: hsl(85, 40%, 53%);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  height: 100%;
+}
+
+body {
+  background-color: var(--gray-100);
+  color: var(--white);
+  font-family: var(--font);
+  font-weight: 400;
+  font-size: 16px;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-weight: 400;
+}
+
+h1 {
+  font-size: 24px;
+}
+h2 {
+  font-size: 20px;
+}
+h3 {
+  font-size: 16px;
+}
+
+ul {
+  list-style: none;
+}
+
+li:not(:last-child) {
+  margin-bottom: 4px;
+}
+
+html,
+body,
+h1,
+h2,
+h3,
+h4,
+ul,
+ol,
+li,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+@media screen and (min-width: 768px) {
+  h1 {
+    font-size: 30px;
+  }
+  h2 {
+    font-size: 24px;
+  }
+  h3 {
+    font-size: 20px;
+  }
+
+  body {
+    font-size: 20px;
+  }
+}
+
+/* Custom scrollbar */
+body::-webkit-scrollbar-track {
+  background-color: var(--gray-100);
+  border-radius: var(--border-radius);
+}
+
+body::-webkit-scrollbar {
+  width: 10px;
+  background-color: var(--gray-100);
+  border-radius: var(--border-radius);
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: var(--gray-400);
+  border-radius: var(--border-radius);
+}
