@@ -3,16 +3,6 @@
   "sourceRoot": "libs/lorenzo/util/src",
   "projectType": "library",
   "targets": {
-    "build": {
-      "executor": "@nrwl/js:swc",
-      "outputs": ["{options.outputPath}"],
-      "options": {
-        "outputPath": "dist/libs/lorenzo/util",
-        "main": "libs/lorenzo/util/src/index.ts",
-        "tsConfig": "libs/lorenzo/util/tsconfig.lib.json",
-        "assets": ["libs/lorenzo/util/*.md"]
-      }
-    },
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],
