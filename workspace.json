@@ -37,6 +37,7 @@
     "spirit-islander-data-access": "libs/spirit-islander/data-access",
     "spirit-islander-e2e": "apps/spirit-islander-e2e",
     "spirit-islander-shell": "libs/spirit-islander/shell",
+    "spirit-islander-ui": "libs/spirit-islander/ui",
     "spirit-islander-util": "libs/spirit-islander/util"
   },
   "tags": [
