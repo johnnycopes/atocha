@@ -1,10 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { NxWelcomeComponent } from './nx-welcome.component';
 
 @Component({
   standalone: true,
   selector: 'app-root',
-  imports: [NxWelcomeComponent],
+  imports: [],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
