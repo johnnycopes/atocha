@@ -13,10 +13,7 @@
         "polyfills": "apps/spirit-islander/src/polyfills.ts",
         "tsConfig": "apps/spirit-islander/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
-        "assets": [
-          "apps/spirit-islander/src/favicon.ico",
-          "apps/spirit-islander/src/assets"
-        ],
+        "assets": ["apps/spirit-islander/src/assets"],
         "styles": ["apps/spirit-islander/src/styles.scss"],
         "scripts": []
       },
