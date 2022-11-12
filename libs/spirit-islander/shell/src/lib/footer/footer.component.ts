@@ -1,16 +1,15 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+
+import { ExternalLinkDirective } from '@atocha/core/ui';
 
 @Component({
-  selector: 'app-footer',
+  // eslint-disable-next-line @angular-eslint/component-selector
+  selector: 'footer[app-footer]',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, ExternalLinkDirective],
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FooterComponent implements OnInit {
-  constructor() {}
-
-  ngOnInit(): void {}
-}
+export class FooterComponent {}
