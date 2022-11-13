@@ -1,15 +1,6 @@
 <main ui-page
   *ngIf="setup"
 >
-  <ui-card>
-    <h3 class="ui-card-header">
-      Setup
-    </h3>
-    <div class="ui-card-content">
-      {{ setup | json }}
-    </div>
-  </ui-card>
-
   <ui-card name="expansions">
     <h3 class="ui-card-header">
       {{ setup.expansions.length | corePlural : 'Expansion' }}
