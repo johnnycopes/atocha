@@ -17,6 +17,7 @@ import {
   createMapsModel,
   createScenariosModel,
   createSpiritsModel,
+  ExpansionName,
   GameSetup,
   getValidCombos,
   Page,
@@ -44,15 +45,16 @@ interface AppState {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
+  _expansions: ExpansionName[] = ['Horizons', 'Jagged Earth', 'Branch & Claw'];
   _config: Config = {
-    expansions: ['Horizons', 'Jagged Earth', 'Branch & Claw'],
-    players: 1,
-    difficultyRange: [0, 1],
-    spiritNames: createSpiritsModel(),
-    mapNames: createMapsModel(),
-    boardNames: createBoardsModel(),
-    scenarioNames: createScenariosModel(),
-    adversaryNamesAndIds: createAdversariesModel(),
+    expansions: this._expansions,
+    players: 3,
+    difficultyRange: [0, 8],
+    spiritNames: createSpiritsModel(this._expansions),
+    mapNames: createMapsModel(['Horizons']),
+    boardNames: createBoardsModel(this._expansions),
+    scenarioNames: createScenariosModel(this._expansions),
+    adversaryNamesAndIds: createAdversariesModel(this._expansions),
   };
   _state = new State<AppState>({
     page: Page.GameSetup,
