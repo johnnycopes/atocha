@@ -12,7 +12,7 @@
     padding-bottom: 64px;
   }
 
-  :global(.card-group) {
+  .ui-card-group {
     margin-bottom: 36px;
 
     @media screen and (min-width: 768px) {
@@ -20,11 +20,11 @@
     }
   }
 
-  .page-content {
+  .ui-page-content {
     display: flex;
     flex-direction: column;
   }
-  .page-buttons {
+  .ui-page-buttons {
     display: flex;
     justify-content: center;
 

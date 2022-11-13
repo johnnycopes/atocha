@@ -1,39 +1,46 @@
 <main ui-page
   *ngIf="setup"
 >
-  <ui-card name="expansions">
-    <h3 class="ui-card-header">
-      {{ setup.expansions.length | corePlural : 'Expansion' }}
-    </h3>
-    <ul class="ui-card-content">
-      <li *ngIf="!setup.expansions.length; else expansionsTemplate">
-        No Expansions
-      </li>
-      <ng-template #expansionsTemplate>
-        <li *ngFor="let expansion of setup.expansions"
-          class="datum"
-        >
-          {{ expansion }}
-        </li>
-      </ng-template>
-    </ul>
-  </ui-card>
+  <div class="ui-page-content game-setup">
+    <ui-card-group
+      name="Setup"
+      description="Details of your generated game setup"
+    >
+      <ui-card name="expansions">
+        <h3 class="ui-card-header">
+          {{ setup.expansions.length | corePlural : 'Expansion' }}
+        </h3>
+        <ul class="ui-card-content">
+          <li *ngIf="!setup.expansions.length; else expansionsTemplate">
+            No Expansions
+          </li>
+          <ng-template #expansionsTemplate>
+            <li *ngFor="let expansion of setup.expansions"
+              class="datum"
+            >
+              {{ expansion }}
+            </li>
+          </ng-template>
+        </ul>
+      </ui-card>
 
-  <ui-card name="players">
-    <h3 class="ui-card-header">
-      Players
-    </h3>
-    <p class="ui-card-content datum">
-      {{ setup.players }}
-    </p>
-  </ui-card>
+      <ui-card name="players">
+        <h3 class="ui-card-header">
+          Players
+        </h3>
+        <p class="ui-card-content datum">
+          {{ setup.players }}
+        </p>
+      </ui-card>
 
-  <ui-card name="difficulty">
-    <h3 class="ui-card-header">
-      Difficulty
-    </h3>
-    <p class="ui-card-content datum">
-      {{ setup.difficulty }}
-    </p>
-  </ui-card>
+      <ui-card name="difficulty">
+        <h3 class="ui-card-header">
+          Difficulty
+        </h3>
+        <p class="ui-card-content datum">
+          {{ setup.difficulty }}
+        </p>
+      </ui-card>
+    </ui-card-group>
+  </div>
 </main>
