@@ -76,8 +76,8 @@
       "@atocha/spirit-islander/feature-game-setup": [
         "libs/spirit-islander/feature-game-setup/src/index.ts"
       ],
-      "@atocha/spirit-islander/shell": [
-        "libs/spirit-islander/shell/src/index.ts"
+      "@atocha/spirit-islander/feature-shell": [
+        "libs/spirit-islander/feature-shell/src/index.ts"
       ],
       "@atocha/spirit-islander/ui": ["libs/spirit-islander/ui/src/index.ts"],
       "@atocha/spirit-islander/util": ["libs/spirit-islander/util/src/index.ts"]
