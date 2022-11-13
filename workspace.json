@@ -36,6 +36,8 @@
     "spirit-islander": "apps/spirit-islander",
     "spirit-islander-data-access": "libs/spirit-islander/data-access",
     "spirit-islander-e2e": "apps/spirit-islander-e2e",
+    "spirit-islander-feature-config": "libs/spirit-islander/feature-config",
+    "spirit-islander-feature-game-setup": "libs/spirit-islander/feature-game-setup",
     "spirit-islander-feature-shell": "libs/spirit-islander/feature-shell",
     "spirit-islander-ui": "libs/spirit-islander/ui",
     "spirit-islander-util": "libs/spirit-islander/util"
