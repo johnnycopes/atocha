@@ -13,10 +13,12 @@ import {
   Config,
   createAdversariesModel,
   createBoardsModel,
+  createGameSetup,
   createMapsModel,
   createScenariosModel,
   createSpiritsModel,
   GameSetup,
+  getValidCombos,
   Page,
 } from '@atocha/spirit-islander/util';
 
@@ -42,20 +44,21 @@ interface AppState {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
+  _config: Config = {
+    expansions: [],
+    players: 1,
+    difficultyRange: [0, 1],
+    spiritNames: createSpiritsModel(),
+    mapNames: createMapsModel(),
+    boardNames: createBoardsModel(),
+    scenarioNames: createScenariosModel(),
+    adversaryNamesAndIds: createAdversariesModel(),
+  };
   _state = new State<AppState>({
-    page: Page.Config,
-    config: {
-      expansions: [],
-      players: 1,
-      difficultyRange: [0, 1],
-      spiritNames: createSpiritsModel(),
-      mapNames: createMapsModel(),
-      boardNames: createBoardsModel(),
-      scenarioNames: createScenariosModel(),
-      adversaryNamesAndIds: createAdversariesModel(),
-    },
+    page: Page.GameSetup,
+    config: this._config,
     validCombos: undefined,
-    gameSetup: undefined,
+    gameSetup: createGameSetup(this._config, getValidCombos(this._config)),
   });
 
   vm$ = this._state.get();
