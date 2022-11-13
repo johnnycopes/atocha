@@ -1,16 +1,22 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'ui-separator',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './separator.component.html',
-  styleUrls: ['./separator.component.scss'],
-  encapsulation: ViewEncapsulation.Emulated,
+  template: `&#8203;`,
+  styles: [
+    `
+      :host {
+        display: inline-block;
+        border-left: 2px solid var(--gray-400);
+      }
+    `,
+  ],
+  // eslint-disable-next-line @angular-eslint/no-host-metadata-property
+  host: {
+    class: 'ui-separator',
+  },
 })
-export class SeparatorComponent implements OnInit {
-  constructor() {}
-
-  ngOnInit(): void {}
-}
+export class SeparatorComponent {}
