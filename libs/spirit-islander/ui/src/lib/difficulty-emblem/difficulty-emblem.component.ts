@@ -12,11 +12,10 @@ import { CommonModule } from '@angular/common';
   imports: [CommonModule],
   templateUrl: './difficulty-emblem.component.html',
   styleUrls: ['./difficulty-emblem.component.scss'],
-  encapsulation: ViewEncapsulation.Emulated,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  // eslint-disable-next-line @angular-eslint/no-host-metadata-property
+  host: {
+    class: 'ui-difficulty-emblem',
+  },
 })
-export class DifficultyEmblemComponent implements OnInit {
-  constructor() {}
-
-  ngOnInit(): void {}
-}
+export class DifficultyEmblemComponent {}

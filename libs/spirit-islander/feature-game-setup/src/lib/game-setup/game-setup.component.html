@@ -41,6 +41,26 @@
           {{ setup.difficulty }}
         </p>
       </ui-card>
+      <ui-card name="spirits">
+				<h3 class="ui-card-header">
+          {{ setup.players | corePlural : 'Board' }}
+					<ui-separator></ui-separator>
+          {{ setup.players | corePlural : 'Spirit' }}
+				</h3>
+				<ul class="ui-card-content">
+          <li *ngFor="let spirit of setup.spirits; index as index"
+            class="datum"
+          >
+            <ui-board-emblem
+              [board]="setup.boards[index]"
+              [mapName]="setup.map.name">
+            </ui-board-emblem>
+            <ui-separator></ui-separator>
+            {{ spirit.name }}
+            <ui-expansion-emblem [value]="spirit.expansion"></ui-expansion-emblem>
+          </li>
+				</ul>
+			</ui-card>
     </ui-card-group>
   </div>
 </main>

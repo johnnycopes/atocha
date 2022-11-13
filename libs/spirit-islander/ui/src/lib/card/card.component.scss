@@ -5,12 +5,13 @@
   border-radius: var(--border-radius);
   box-shadow: var(--downward-box-shadow);
 
-  .emblem {
+  .ui-difficulty-emblem,
+  .ui-expansion-emblem {
     margin-left: 8px;
     flex-shrink: 0;
   }
 
-  .board-emblem {
+  .ui-board-emblem {
     margin-left: 0;
   }
 }

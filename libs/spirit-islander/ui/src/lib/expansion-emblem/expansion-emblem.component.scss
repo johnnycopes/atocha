@@ -1,3 +1,7 @@
+:host {
+  display: flex;
+}
+
 .ui-emblem {
   &--BC {
     background: var(--yellow-100);

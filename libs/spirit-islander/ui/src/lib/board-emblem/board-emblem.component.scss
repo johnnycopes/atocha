@@ -1,0 +1,15 @@
+:host {
+  display: flex;
+}
+
+.ui-emblem {
+  &--balanced-board {
+    background: var(--purple-100);
+    color: var(--gray-100);
+  }
+
+  &--thematic-board {
+    background: var(--brown-100);
+    color: var(--white);
+  }
+}
