@@ -6,7 +6,7 @@
     "e2e": {
       "executor": "@nrwl/cypress:cypress",
       "options": {
-        "cypressConfig": "apps/spirit-islander-e2e/cypress.json",
+        "cypressConfig": "apps/spirit-islander-e2e/cypress.config.ts",
         "devServerTarget": "spirit-islander:serve:development",
         "testingType": "e2e"
       },
