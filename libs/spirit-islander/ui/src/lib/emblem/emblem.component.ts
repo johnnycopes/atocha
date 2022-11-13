@@ -1,7 +1,8 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  OnInit,
+  HostBinding,
+  Input,
   ViewEncapsulation,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -12,11 +13,14 @@ import { CommonModule } from '@angular/common';
   imports: [CommonModule],
   templateUrl: './emblem.component.html',
   styleUrls: ['./emblem.component.scss'],
-  encapsulation: ViewEncapsulation.Emulated,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
 })
-export class EmblemComponent implements OnInit {
-  constructor() {}
+export class EmblemComponent {
+  @Input() name = '';
 
-  ngOnInit(): void {}
+  @HostBinding('class')
+  get hostClasses(): string[] {
+    return ['ui-emblem', `ui-emblem--${this.name}`];
+  }
 }

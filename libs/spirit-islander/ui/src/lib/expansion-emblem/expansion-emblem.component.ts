@@ -1,22 +1,40 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  OnInit,
-  ViewEncapsulation,
-} from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ExpansionName } from '@atocha/spirit-islander/util';
+
+import { EmblemComponent } from '../emblem/emblem.component';
 
 @Component({
   selector: 'ui-expansion-emblem',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, EmblemComponent],
   templateUrl: './expansion-emblem.component.html',
   styleUrls: ['./expansion-emblem.component.scss'],
-  encapsulation: ViewEncapsulation.Emulated,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ExpansionEmblemComponent implements OnInit {
-  constructor() {}
+export class ExpansionEmblemComponent {
+  @Input()
+  set value(name: ExpansionName | undefined) {
+    switch (name) {
+      case 'Branch & Claw':
+        this.abbreviation = 'BC';
+        break;
+      case 'Horizons':
+        this.abbreviation = 'H';
+        break;
+      case 'Jagged Earth':
+        this.abbreviation = 'JE';
+        break;
+      case 'Promo Pack 1':
+        this.abbreviation = 'P1';
+        break;
+      case 'Promo Pack 2':
+        this.abbreviation = 'P2';
+        break;
+      default:
+        this.abbreviation = undefined;
+    }
+  }
 
-  ngOnInit(): void {}
+  abbreviation: string | undefined;
 }
