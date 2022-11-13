@@ -48,7 +48,7 @@ export class AppComponent {
   _expansions: ExpansionName[] = ['Horizons', 'Jagged Earth', 'Branch & Claw'];
   _config: Config = {
     expansions: this._expansions,
-    players: 3,
+    players: 6,
     difficultyRange: [0, 8],
     spiritNames: createSpiritsModel(this._expansions),
     mapNames: createMapsModel(['Horizons']),
@@ -67,7 +67,7 @@ export class AppComponent {
   Page: typeof Page = Page;
 
   onEdit(): void {
-    // edit
+    this._state.updateProp('page', Page.Config);
   }
 
   onRegenerate(): void {
