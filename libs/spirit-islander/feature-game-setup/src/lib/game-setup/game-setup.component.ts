@@ -12,8 +12,10 @@ import {
   SeparatorComponent,
 } from '@atocha/spirit-islander/ui';
 import {
+  AdversaryName,
   Difficulty,
   GameSetup,
+  getAdversaryById,
   getDifficulty,
 } from '@atocha/spirit-islander/util';
 
@@ -51,8 +53,15 @@ export class GameSetupComponent {
       value.scenario.difficulty,
       value.expansions
     );
+    this.adversaryName = getAdversaryById(value.adversaryLevel.id);
+    this.adversaryDifficulty = getDifficulty(
+      value.adversaryLevel.difficulty,
+      value.expansions
+    );
   }
 
   mapDifficulty: Difficulty = 0;
   scenarioDifficulty: Difficulty = 0;
+  adversaryName: AdversaryName = 'No Adversary';
+  adversaryDifficulty: Difficulty = 0;
 }

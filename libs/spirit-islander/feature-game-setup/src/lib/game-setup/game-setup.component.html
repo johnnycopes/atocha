@@ -83,6 +83,19 @@
           <ui-expansion-emblem [value]="setup.scenario.expansion"></ui-expansion-emblem>
 				</p>
 			</ui-card>
+
+      <ui-card name="adversary">
+				<h3 class="ui-card-header">
+					Adversary
+				</h3>
+				<p class="ui-card-content datum">
+					{{ adversaryName }}
+          <ng-container *ngIf="adversaryName !== 'No Adversary'">
+            {{ setup.adversaryLevel.name }}
+            <ui-difficulty-emblem [value]="adversaryDifficulty"></ui-difficulty-emblem>
+          </ng-container>
+				</p>
+			</ui-card>
     </ui-card-group>
   </div>
 </main>
