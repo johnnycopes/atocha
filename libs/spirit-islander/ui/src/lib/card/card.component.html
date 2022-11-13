@@ -1,1 +1,10 @@
-<p>card works!</p>
+<div class="ui-card {{ name }}"
+	[style.grid-area]="name"
+>
+	<ng-content></ng-content>
+  <p *ngIf="error"
+    class="ui-card__error"
+  >
+    {{ errorMessage }}
+  </p>
+</div>

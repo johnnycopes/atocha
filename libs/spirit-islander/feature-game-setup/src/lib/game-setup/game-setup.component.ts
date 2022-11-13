@@ -1,13 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
-import { PageComponent } from '@atocha/spirit-islander/ui';
+import { CardComponent, PageComponent } from '@atocha/spirit-islander/ui';
 import { GameSetup } from '@atocha/spirit-islander/util';
 
 @Component({
   selector: 'app-game-setup',
   standalone: true,
-  imports: [CommonModule, PageComponent],
+  imports: [CardComponent, CommonModule, PageComponent],
   templateUrl: './game-setup.component.html',
   styleUrls: ['./game-setup.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
