@@ -45,7 +45,7 @@ interface AppState {
 })
 export class AppComponent {
   _config: Config = {
-    expansions: [],
+    expansions: ['Horizons', 'Jagged Earth', 'Branch & Claw'],
     players: 1,
     difficultyRange: [0, 1],
     spiritNames: createSpiritsModel(),
