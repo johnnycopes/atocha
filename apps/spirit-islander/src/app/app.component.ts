@@ -5,7 +5,7 @@ import { State } from '@atocha/core/util';
 import {
   FooterComponent,
   HeaderComponent,
-} from '@atocha/spirit-islander/shell';
+} from '@atocha/spirit-islander/feature-shell';
 import { PageComponent } from '@atocha/spirit-islander/ui';
 import {
   Combo,

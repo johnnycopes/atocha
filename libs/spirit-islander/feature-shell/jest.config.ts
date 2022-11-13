@@ -1,6 +1,6 @@
 /* eslint-disable */
 export default {
-  displayName: 'spirit-islander-shell',
+  displayName: 'spirit-islander-feature-shell',
   preset: '../../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
@@ -9,7 +9,7 @@ export default {
       stringifyContentPathRegex: '\\.(html|svg)$',
     },
   },
-  coverageDirectory: '../../../coverage/libs/spirit-islander/shell',
+  coverageDirectory: '../../../coverage/libs/spirit-islander/feature-shell',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': 'jest-preset-angular',
   },
