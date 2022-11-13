@@ -97,5 +97,18 @@
 				</p>
 			</ui-card>
     </ui-card-group>
+
+    <div class="ui-page-buttons">
+      <button ui-button
+        (click)="edit.emit()"
+      >
+        Edit
+      </button>
+      <button ui-button
+        (click)="regenerate.emit()"
+      >
+        Regenerate
+      </button>
+    </div>
   </div>
 </main>

@@ -1,9 +1,16 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+} from '@angular/core';
 
 import { PluralPipe } from '@atocha/core/ui';
 import {
   BoardEmblemComponent,
+  ButtonComponent,
   CardComponent,
   CardGroupComponent,
   DifficultyEmblemComponent,
@@ -24,6 +31,7 @@ import {
   standalone: true,
   imports: [
     BoardEmblemComponent,
+    ButtonComponent,
     CardComponent,
     CardGroupComponent,
     CommonModule,
@@ -59,6 +67,9 @@ export class GameSetupComponent {
       value.expansions
     );
   }
+
+  @Output() edit = new EventEmitter<void>();
+  @Output() regenerate = new EventEmitter<void>();
 
   mapDifficulty: Difficulty = 0;
   scenarioDifficulty: Difficulty = 0;

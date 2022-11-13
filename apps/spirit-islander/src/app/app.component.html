@@ -6,6 +6,8 @@
   ></app-config>
   <app-game-setup *ngIf="vm.page === Page.GameSetup"
     [setup]="vm.gameSetup"
+    (edit)="onEdit()"
+    (regenerate)="onRegenerate()"
   ></app-game-setup>
 </ng-container>
 

@@ -65,4 +65,15 @@ export class AppComponent {
 
   vm$ = this._state.get();
   Page: typeof Page = Page;
+
+  onEdit(): void {
+    // edit
+  }
+
+  onRegenerate(): void {
+    this._state.updateProp(
+      'gameSetup',
+      createGameSetup(this._config, getValidCombos(this._config))
+    );
+  }
 }
