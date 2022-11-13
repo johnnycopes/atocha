@@ -1,10 +1,11 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  OnInit,
+  Input,
   ViewEncapsulation,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { snakeCase } from '@atocha/core/util';
 
 @Component({
   selector: 'ui-card-group',
@@ -15,8 +16,18 @@ import { CommonModule } from '@angular/common';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CardGroupComponent implements OnInit {
-  constructor() {}
+export class CardGroupComponent {
+  private _name = '';
+  @Input()
+  get name() {
+    return this._name;
+  }
+  set name(name: string) {
+    this._name = name;
+    this.className = snakeCase(name);
+  }
 
-  ngOnInit(): void {}
+  @Input() description = '';
+
+  className = '';
 }

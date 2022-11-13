@@ -1,1 +1,11 @@
-<p>card-group works!</p>
+<div class="ui-card-group-legend">
+	<h2 class="ui-card-group-legend__header">
+	  {{ name }}
+	</h2>
+	<p class="ui-card-group-legend__description">
+		{{ description }}
+	</p>
+</div>
+<section class="ui-card-group {{ className }}">
+	<ng-content></ng-content>
+</section>
