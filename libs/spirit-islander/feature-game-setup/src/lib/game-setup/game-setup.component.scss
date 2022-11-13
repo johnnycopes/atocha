@@ -18,8 +18,13 @@
   }
 }
 
+.datum {
+  display: flex;
+  align-items: center;
+}
+
 .expansions {
-  .content {
+  .ui-card-content {
     display: flex;
     flex-wrap: wrap;
   }
@@ -28,9 +33,4 @@
     flex: 0 0 50%;
   }
 
-}
-
-.datum {
-  display: flex;
-  align-items: center;
 }

@@ -41,6 +41,7 @@
           {{ setup.difficulty }}
         </p>
       </ui-card>
+
       <ui-card name="spirits">
 				<h3 class="ui-card-header">
           {{ setup.players | corePlural : 'Board' }}
@@ -60,6 +61,16 @@
             <ui-expansion-emblem [value]="spirit.expansion"></ui-expansion-emblem>
           </li>
 				</ul>
+			</ui-card>
+
+      <ui-card name="map">
+				<h3 class="ui-card-header">
+					Map
+				</h3>
+				<p class="ui-card-content datum">
+					{{ setup.map.name }}
+          <ui-difficulty-emblem [value]="mapDifficulty"></ui-difficulty-emblem>
+				</p>
 			</ui-card>
     </ui-card-group>
   </div>

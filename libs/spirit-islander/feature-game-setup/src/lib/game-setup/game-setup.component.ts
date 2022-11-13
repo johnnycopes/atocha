@@ -6,11 +6,16 @@ import {
   BoardEmblemComponent,
   CardComponent,
   CardGroupComponent,
+  DifficultyEmblemComponent,
   ExpansionEmblemComponent,
   PageComponent,
   SeparatorComponent,
 } from '@atocha/spirit-islander/ui';
-import { GameSetup } from '@atocha/spirit-islander/util';
+import {
+  Difficulty,
+  GameSetup,
+  getDifficulty,
+} from '@atocha/spirit-islander/util';
 
 @Component({
   selector: 'app-game-setup',
@@ -20,6 +25,7 @@ import { GameSetup } from '@atocha/spirit-islander/util';
     CardComponent,
     CardGroupComponent,
     CommonModule,
+    DifficultyEmblemComponent,
     ExpansionEmblemComponent,
     PageComponent,
     PluralPipe,
@@ -30,5 +36,18 @@ import { GameSetup } from '@atocha/spirit-islander/util';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GameSetupComponent {
-  @Input() setup: GameSetup | undefined;
+  private _setup: GameSetup | undefined;
+  @Input()
+  get setup() {
+    return this._setup;
+  }
+  set setup(value) {
+    if (!value) {
+      return;
+    }
+    this._setup = value;
+    this.mapDifficulty = getDifficulty(value.map.difficulty, value.expansions);
+  }
+
+  mapDifficulty: Difficulty = 0;
 }
