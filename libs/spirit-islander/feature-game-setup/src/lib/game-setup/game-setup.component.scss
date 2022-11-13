@@ -1,6 +1,6 @@
 .game-setup  {
 
-  .ui-card-group.setup {
+  ::ng-deep .ui-card-group.setup {
     grid-template-areas:
       "players players players difficulty difficulty difficulty"
       "expansions expansions expansions expansions expansions expansions"
