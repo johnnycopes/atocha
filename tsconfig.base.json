@@ -67,11 +67,11 @@
       ],
       "@atocha/menu-matriarch/ui": ["libs/menu-matriarch/ui/src/index.ts"],
       "@atocha/menu-matriarch/util": ["libs/menu-matriarch/util/src/index.ts"],
+      "@atocha/spirit-islander/feature-shell": [
+        "libs/spirit-islander/feature-shell/src/index.ts"
+      ],
       "@atocha/spirit-islander/data-access": [
         "libs/spirit-islander/data-access/src/index.ts"
-      ],
-      "@atocha/spirit-islander/shell": [
-        "libs/spirit-islander/shell/src/index.ts"
       ],
       "@atocha/spirit-islander/ui": ["libs/spirit-islander/ui/src/index.ts"],
       "@atocha/spirit-islander/util": ["libs/spirit-islander/util/src/index.ts"]
