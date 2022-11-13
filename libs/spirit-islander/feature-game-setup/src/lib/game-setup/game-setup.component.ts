@@ -47,7 +47,12 @@ export class GameSetupComponent {
     }
     this._setup = value;
     this.mapDifficulty = getDifficulty(value.map.difficulty, value.expansions);
+    this.scenarioDifficulty = getDifficulty(
+      value.scenario.difficulty,
+      value.expansions
+    );
   }
 
   mapDifficulty: Difficulty = 0;
+  scenarioDifficulty: Difficulty = 0;
 }

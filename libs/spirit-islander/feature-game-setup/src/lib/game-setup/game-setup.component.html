@@ -72,6 +72,17 @@
           <ui-difficulty-emblem [value]="mapDifficulty"></ui-difficulty-emblem>
 				</p>
 			</ui-card>
+
+      <ui-card name="scenario">
+				<h3 class="ui-card-header">
+					Scenario
+				</h3>
+				<p class="ui-card-content datum">
+					{{ setup.scenario.name }}
+					<ui-difficulty-emblem [value]="scenarioDifficulty"></ui-difficulty-emblem>
+          <ui-expansion-emblem [value]="setup.scenario.expansion"></ui-expansion-emblem>
+				</p>
+			</ui-card>
     </ui-card-group>
   </div>
 </main>
