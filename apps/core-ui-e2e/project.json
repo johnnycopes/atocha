@@ -6,8 +6,9 @@
     "e2e": {
       "executor": "@nrwl/cypress:cypress",
       "options": {
-        "cypressConfig": "apps/core-ui-e2e/cypress.json",
-        "devServerTarget": "core-ui:storybook"
+        "cypressConfig": "apps/core-ui-e2e/cypress.config.ts",
+        "devServerTarget": "core-ui:storybook",
+        "testingType": "e2e"
       },
       "configurations": {
         "ci": {
