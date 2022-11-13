@@ -22,7 +22,7 @@ export class CardGroupComponent {
   get name() {
     return this._name;
   }
-  set name(name: string) {
+  set name(name) {
     this._name = name;
     this.className = snakeCase(name);
   }
