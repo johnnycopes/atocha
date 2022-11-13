@@ -1,7 +1,12 @@
 <header app-header></header>
 
-<main ui-page>
-  {{ vm$ | async | json }}
-</main>
+<ng-container *ngIf="vm$ | async as vm">
+  <app-config *ngIf="vm.page === Page.Config"
+    [config]="vm.config"
+  ></app-config>
+  <app-game-setup *ngIf="vm.page === Page.GameSetup"
+    [setup]="vm.gameSetup"
+  ></app-game-setup>
+</ng-container>
 
 <footer app-footer></footer>

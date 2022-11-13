@@ -2,11 +2,12 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 import { State } from '@atocha/core/util';
+import { ConfigComponent } from '@atocha/spirit-islander/feature-config';
+import { GameSetupComponent } from '@atocha/spirit-islander/feature-game-setup';
 import {
   FooterComponent,
   HeaderComponent,
 } from '@atocha/spirit-islander/feature-shell';
-import { PageComponent } from '@atocha/spirit-islander/ui';
 import {
   Combo,
   Config,
@@ -29,7 +30,13 @@ interface AppState {
 @Component({
   standalone: true,
   selector: 'app-root',
-  imports: [CommonModule, FooterComponent, HeaderComponent, PageComponent],
+  imports: [
+    CommonModule,
+    ConfigComponent,
+    FooterComponent,
+    GameSetupComponent,
+    HeaderComponent,
+  ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -52,4 +59,5 @@ export class AppComponent {
   });
 
   vm$ = this._state.get();
+  Page: typeof Page = Page;
 }
