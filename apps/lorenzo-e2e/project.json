@@ -6,7 +6,7 @@
     "e2e": {
       "executor": "@nrwl/cypress:cypress",
       "options": {
-        "cypressConfig": "apps/lorenzo-e2e/cypress.json",
+        "cypressConfig": "apps/lorenzo-e2e/cypress.config.ts",
         "devServerTarget": "lorenzo:serve:development",
         "testingType": "e2e"
       },
