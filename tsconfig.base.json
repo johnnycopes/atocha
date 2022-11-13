@@ -70,6 +70,12 @@
       "@atocha/spirit-islander/data-access": [
         "libs/spirit-islander/data-access/src/index.ts"
       ],
+      "@atocha/spirit-islander/feature-config": [
+        "libs/spirit-islander/feature-config/src/index.ts"
+      ],
+      "@atocha/spirit-islander/feature-game-setup": [
+        "libs/spirit-islander/feature-game-setup/src/index.ts"
+      ],
       "@atocha/spirit-islander/shell": [
         "libs/spirit-islander/shell/src/index.ts"
       ],
