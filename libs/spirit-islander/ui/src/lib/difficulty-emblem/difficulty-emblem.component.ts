@@ -1,15 +1,13 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  OnInit,
-  ViewEncapsulation,
-} from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+
+import { Difficulty } from '@atocha/spirit-islander/util';
+import { EmblemComponent } from '../emblem/emblem.component';
 
 @Component({
   selector: 'ui-difficulty-emblem',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, EmblemComponent],
   templateUrl: './difficulty-emblem.component.html',
   styleUrls: ['./difficulty-emblem.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -18,4 +16,6 @@ import { CommonModule } from '@angular/common';
     class: 'ui-difficulty-emblem',
   },
 })
-export class DifficultyEmblemComponent {}
+export class DifficultyEmblemComponent {
+  @Input() value: Difficulty = 0;
+}
