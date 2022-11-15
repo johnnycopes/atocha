@@ -25,16 +25,20 @@ export class BoardEmblemComponent {
     if (!this.board) {
       return;
     }
-    this.map = snakeCase(name);
+
+    let boardName = '';
     if (name === 'Balanced') {
-      this.boardName = this.board.name;
+      boardName = this.board.name;
     } else if (name === 'Thematic') {
-      this.boardName = this._getAbbreviation(this.board.thematicName);
+      boardName = this._getAbbreviation(this.board.thematicName);
     }
+
+    this.boardName = boardName;
+    this.map = snakeCase(name);
   }
 
   map = '';
-  boardName: string | undefined;
+  boardName = '';
 
   private _getAbbreviation(name: ThematicBoardName): string {
     switch (name) {
