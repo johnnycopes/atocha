@@ -43,12 +43,12 @@
       </ui-card>
 
       <ui-card name="spirits">
-				<h3 class="ui-card-header">
+        <h3 class="ui-card-header">
           {{ setup.players | corePlural : 'Board' }}
-					<ui-separator></ui-separator>
+          <ui-separator></ui-separator>
           {{ setup.players | corePlural : 'Spirit' }}
-				</h3>
-				<ul class="ui-card-content">
+        </h3>
+        <ul class="ui-card-content">
           <li *ngFor="let spirit of setup.spirits; index as index"
             class="datum"
           >
@@ -63,29 +63,29 @@
               [value]="spirit.expansion">
             </ui-expansion-emblem>
           </li>
-				</ul>
-			</ui-card>
+        </ul>
+      </ui-card>
 
       <ui-card name="map">
-				<h3 class="ui-card-header">
-					Map
-				</h3>
-				<p class="ui-card-content datum">
-					{{ setup.map.name }}
+        <h3 class="ui-card-header">
+          Map
+        </h3>
+        <p class="ui-card-content datum">
+          {{ setup.map.name }}
           <ui-difficulty-emblem
             *ngIf="mapDifficulty"
             [value]="mapDifficulty"
           ></ui-difficulty-emblem>
-				</p>
-			</ui-card>
+        </p>
+      </ui-card>
 
       <ui-card name="scenario">
-				<h3 class="ui-card-header">
-					Scenario
-				</h3>
-				<p class="ui-card-content datum">
-					{{ setup.scenario.name }}
-					<ui-difficulty-emblem
+        <h3 class="ui-card-header">
+          Scenario
+        </h3>
+        <p class="ui-card-content datum">
+          {{ setup.scenario.name }}
+          <ui-difficulty-emblem
             *ngIf="scenarioDifficulty"
             [value]="scenarioDifficulty"
           ></ui-difficulty-emblem>
@@ -93,15 +93,15 @@
             *ngIf="setup.scenario.expansion"
             [value]="setup.scenario.expansion">
           </ui-expansion-emblem>
-				</p>
-			</ui-card>
+        </p>
+      </ui-card>
 
       <ui-card name="adversary">
-				<h3 class="ui-card-header">
-					Adversary
-				</h3>
-				<p class="ui-card-content datum">
-					{{ adversaryName }}
+        <h3 class="ui-card-header">
+          Adversary
+        </h3>
+        <p class="ui-card-content datum">
+          {{ adversaryName }}
           <ng-container *ngIf="adversaryName !== 'No Adversary'">
             {{ setup.adversaryLevel.name }}
             <ui-difficulty-emblem
@@ -109,8 +109,8 @@
               [value]="adversaryDifficulty">
             </ui-difficulty-emblem>
           </ng-container>
-				</p>
-			</ui-card>
+        </p>
+      </ui-card>
     </ui-card-group>
 
     <div class="ui-page-buttons">
