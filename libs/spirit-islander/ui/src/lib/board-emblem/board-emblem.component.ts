@@ -30,7 +30,7 @@ export class BoardEmblemComponent {
     if (name === 'Balanced') {
       boardName = this.board.name;
     } else if (name === 'Thematic') {
-      boardName = this._getAbbreviation(this.board.thematicName);
+      boardName = this._thematicBoardRecord[this.board.thematicName];
     }
 
     this.boardName = boardName;
@@ -40,20 +40,12 @@ export class BoardEmblemComponent {
   map = '';
   boardName = '';
 
-  private _getAbbreviation(name: ThematicBoardName): string {
-    switch (name) {
-      case 'East':
-        return 'E';
-      case 'Northeast':
-        return 'NE';
-      case 'Northwest':
-        return 'NW';
-      case 'Southeast':
-        return 'SE';
-      case 'Southwest':
-        return 'SW';
-      case 'West':
-        return 'W';
-    }
-  }
+  private _thematicBoardRecord: Record<ThematicBoardName, string> = {
+    East: 'E',
+    Northeast: 'NE',
+    Northwest: 'NW',
+    Southeast: 'SE',
+    Southwest: 'SW',
+    West: 'W',
+  };
 }
