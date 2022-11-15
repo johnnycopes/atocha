@@ -5,6 +5,7 @@ import {
   EventEmitter,
   Input,
   Output,
+  ViewEncapsulation,
 } from '@angular/core';
 
 import { PluralPipe } from '@atocha/core/ui';
@@ -44,6 +45,7 @@ import {
   templateUrl: './game-setup.component.html',
   styleUrls: ['./game-setup.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
 })
 export class GameSetupComponent {
   private _setup: GameSetup | undefined;
@@ -55,8 +57,8 @@ export class GameSetupComponent {
     if (!value) {
       return;
     }
-    this._setup = value;
     const { map, expansions, scenario, adversaryLevel } = value;
+    this._setup = value;
     this.mapDifficulty = getDifficulty(map.difficulty, expansions);
     this.scenarioDifficulty = getDifficulty(scenario.difficulty, expansions);
     this.adversaryName = getAdversaryById(adversaryLevel.id);
