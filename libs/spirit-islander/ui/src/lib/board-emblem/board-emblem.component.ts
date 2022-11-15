@@ -16,10 +16,6 @@ import { EmblemComponent } from '../emblem/emblem.component';
   templateUrl: './board-emblem.component.html',
   styleUrls: ['./board-emblem.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  // eslint-disable-next-line @angular-eslint/no-host-metadata-property
-  host: {
-    class: 'ui-board-emblem',
-  },
 })
 export class BoardEmblemComponent {
   @Input() board: Board | undefined;

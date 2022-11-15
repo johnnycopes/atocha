@@ -11,10 +11,6 @@ import { EmblemComponent } from '../emblem/emblem.component';
   templateUrl: './expansion-emblem.component.html',
   styleUrls: ['./expansion-emblem.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  // eslint-disable-next-line @angular-eslint/no-host-metadata-property
-  host: {
-    class: 'ui-expansion-emblem',
-  },
 })
 export class ExpansionEmblemComponent {
   @Input()
@@ -36,9 +32,9 @@ export class ExpansionEmblemComponent {
         this.abbreviation = 'P2';
         break;
       default:
-        this.abbreviation = undefined;
+        this.abbreviation = '-';
     }
   }
 
-  abbreviation: string | undefined;
+  abbreviation = '-';
 }

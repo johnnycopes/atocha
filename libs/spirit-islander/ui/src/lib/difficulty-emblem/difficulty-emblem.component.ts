@@ -11,10 +11,6 @@ import { EmblemComponent } from '../emblem/emblem.component';
   templateUrl: './difficulty-emblem.component.html',
   styleUrls: ['./difficulty-emblem.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  // eslint-disable-next-line @angular-eslint/no-host-metadata-property
-  host: {
-    class: 'ui-difficulty-emblem',
-  },
 })
 export class DifficultyEmblemComponent {
   @Input() value: Difficulty = 0;

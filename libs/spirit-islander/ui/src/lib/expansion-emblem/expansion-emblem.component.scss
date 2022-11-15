@@ -2,25 +2,23 @@
   display: flex;
 }
 
-.ui-emblem {
-  &--BC {
-    background: var(--yellow-100);
-    color: var(--gray-100);
-  }
+.BC {
+  background: var(--yellow-100);
+  color: var(--gray-100);
+}
 
-  &--H {
-    background: var(--orange-100);
-    color: var(--gray-100);
-  }
+.H {
+  background: var(--orange-100);
+  color: var(--gray-100);
+}
 
-  &--JE {
-    background: var(--green-100);
-    color: var(--gray-100);
-  }
+.JE {
+  background: var(--green-100);
+  color: var(--gray-100);
+}
 
-  &--P1,
-  &--P2 {
-    background: var(--white);
-    color: var(--gray-100);
-  }
+.P1,
+.P2 {
+  background: var(--white);
+  color: var(--gray-100);
 }
