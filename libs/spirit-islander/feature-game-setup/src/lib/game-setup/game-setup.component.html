@@ -58,7 +58,8 @@
             </ui-board-emblem>
             <ui-separator></ui-separator>
             {{ spirit.name }}
-            <ui-expansion-emblem [value]="spirit.expansion"></ui-expansion-emblem>
+            <ui-expansion-emblem [value]="spirit.expansion">
+            </ui-expansion-emblem>
           </li>
 				</ul>
 			</ui-card>
@@ -69,7 +70,9 @@
 				</h3>
 				<p class="ui-card-content datum">
 					{{ setup.map.name }}
-          <ui-difficulty-emblem [value]="mapDifficulty"></ui-difficulty-emblem>
+          <ui-difficulty-emblem *ngIf="mapDifficulty"
+            [value]="mapDifficulty"
+          ></ui-difficulty-emblem>
 				</p>
 			</ui-card>
 
@@ -79,8 +82,11 @@
 				</h3>
 				<p class="ui-card-content datum">
 					{{ setup.scenario.name }}
-					<ui-difficulty-emblem [value]="scenarioDifficulty"></ui-difficulty-emblem>
-          <ui-expansion-emblem [value]="setup.scenario.expansion"></ui-expansion-emblem>
+					<ui-difficulty-emblem *ngIf="scenarioDifficulty"
+            [value]="scenarioDifficulty"
+          ></ui-difficulty-emblem>
+          <ui-expansion-emblem [value]="setup.scenario.expansion">
+          </ui-expansion-emblem>
 				</p>
 			</ui-card>
 
@@ -92,7 +98,9 @@
 					{{ adversaryName }}
           <ng-container *ngIf="adversaryName !== 'No Adversary'">
             {{ setup.adversaryLevel.name }}
-            <ui-difficulty-emblem [value]="adversaryDifficulty"></ui-difficulty-emblem>
+            <ui-difficulty-emblem *ngIf="adversaryDifficulty"
+              [value]="adversaryDifficulty">
+            </ui-difficulty-emblem>
           </ng-container>
 				</p>
 			</ui-card>
