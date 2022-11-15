@@ -23,7 +23,7 @@
 }
 
 .expansions {
-  .ui-card-content {
+  [ui-card-content] {
     display: flex;
     flex-wrap: wrap;
   }

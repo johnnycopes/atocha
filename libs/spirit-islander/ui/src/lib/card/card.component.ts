@@ -15,19 +15,18 @@ import {
   styleUrls: ['./card.component.scss'],
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  // eslint-disable-next-line @angular-eslint/no-host-metadata-property
+  host: {
+    class: 'ui-card',
+  },
 })
 export class CardComponent {
-  @Input() name = '';
-  @Input() error = false;
-  @Input() errorMessage = '';
-
   @HostBinding('class')
-  get hostClasses(): string[] {
-    return ['ui-card', this.name];
-  }
-
   @HostBinding('style.gridArea')
-  get gridArea(): string {
-    return this.name;
-  }
+  @Input()
+  name = '';
+
+  @Input() error = false;
+
+  @Input() errorMessage = '';
 }
