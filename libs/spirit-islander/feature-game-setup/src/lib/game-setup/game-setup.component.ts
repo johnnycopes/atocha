@@ -56,15 +56,13 @@ export class GameSetupComponent {
       return;
     }
     this._setup = value;
-    this.mapDifficulty = getDifficulty(value.map.difficulty, value.expansions);
-    this.scenarioDifficulty = getDifficulty(
-      value.scenario.difficulty,
-      value.expansions
-    );
-    this.adversaryName = getAdversaryById(value.adversaryLevel.id);
+    const { map, expansions, scenario, adversaryLevel } = value;
+    this.mapDifficulty = getDifficulty(map.difficulty, expansions);
+    this.scenarioDifficulty = getDifficulty(scenario.difficulty, expansions);
+    this.adversaryName = getAdversaryById(adversaryLevel.id);
     this.adversaryDifficulty = getDifficulty(
-      value.adversaryLevel.difficulty,
-      value.expansions
+      adversaryLevel.difficulty,
+      expansions
     );
   }
 
