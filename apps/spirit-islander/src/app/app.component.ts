@@ -2,20 +2,24 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 import { State } from '@atocha/core/util';
+import { ConfigComponent } from '@atocha/spirit-islander/feature-config';
+import { GameSetupComponent } from '@atocha/spirit-islander/feature-game-setup';
 import {
   FooterComponent,
   HeaderComponent,
 } from '@atocha/spirit-islander/feature-shell';
-import { PageComponent } from '@atocha/spirit-islander/ui';
 import {
   Combo,
   Config,
   createAdversariesModel,
   createBoardsModel,
+  createGameSetup,
   createMapsModel,
   createScenariosModel,
   createSpiritsModel,
+  ExpansionName,
   GameSetup,
+  getValidCombos,
   Page,
 } from '@atocha/spirit-islander/util';
 
@@ -29,27 +33,47 @@ interface AppState {
 @Component({
   standalone: true,
   selector: 'app-root',
-  imports: [CommonModule, FooterComponent, HeaderComponent, PageComponent],
+  imports: [
+    CommonModule,
+    ConfigComponent,
+    FooterComponent,
+    GameSetupComponent,
+    HeaderComponent,
+  ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
+  _expansions: ExpansionName[] = ['Horizons', 'Jagged Earth', 'Branch & Claw'];
+  _config: Config = {
+    expansions: this._expansions,
+    players: 6,
+    difficultyRange: [0, 8],
+    spiritNames: createSpiritsModel(this._expansions),
+    mapNames: createMapsModel(['Horizons']),
+    boardNames: createBoardsModel(this._expansions),
+    scenarioNames: createScenariosModel(this._expansions),
+    adversaryNamesAndIds: createAdversariesModel(this._expansions),
+  };
   _state = new State<AppState>({
-    page: Page.Config,
-    config: {
-      expansions: [],
-      players: 1,
-      difficultyRange: [0, 1],
-      spiritNames: createSpiritsModel(),
-      mapNames: createMapsModel(),
-      boardNames: createBoardsModel(),
-      scenarioNames: createScenariosModel(),
-      adversaryNamesAndIds: createAdversariesModel(),
-    },
+    page: Page.GameSetup,
+    config: this._config,
     validCombos: undefined,
-    gameSetup: undefined,
+    gameSetup: createGameSetup(this._config, getValidCombos(this._config)),
   });
 
   vm$ = this._state.get();
+  Page: typeof Page = Page;
+
+  onEdit(): void {
+    this._state.updateProp('page', Page.Config);
+  }
+
+  onRegenerate(): void {
+    this._state.updateProp(
+      'gameSetup',
+      createGameSetup(this._config, getValidCombos(this._config))
+    );
+  }
 }

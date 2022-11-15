@@ -1,0 +1,12 @@
+:host {
+  display: flex;
+}
+
+.difficulty {
+  background: var(--gray-300);
+}
+
+.value {
+  display: inline-block;
+  margin-left: 2px;
+}
