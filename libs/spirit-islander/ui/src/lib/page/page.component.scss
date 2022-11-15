@@ -12,7 +12,9 @@
     padding-bottom: 64px;
   }
 
-  .ui-card-group-contents {
+  [ui-page-content] {
+    display: flex;
+    flex-direction: column;
     margin-bottom: 36px;
 
     @media screen and (min-width: 768px) {
@@ -20,12 +22,7 @@
     }
   }
 
-  .ui-page-content {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .ui-page-buttons {
+  [ui-page-actions] {
     display: flex;
     justify-content: center;
 
