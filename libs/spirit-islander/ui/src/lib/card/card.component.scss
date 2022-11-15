@@ -22,7 +22,7 @@
   border-radius: var(--border-radius) var(--border-radius) 0 0;
   box-shadow: inset 0 1px 0 hsl(192, 10%, 35%), var(--downward-box-shadow);
 
-  .ui-separator {
+  ui-separator {
     margin: 0 2px;
   }
 
@@ -38,7 +38,7 @@
     padding: 16px;
   }
 
-  .ui-separator {
+  ui-separator {
     margin-left: 12px;
     margin-right: 10px;
     border-color: var(--gray-300);

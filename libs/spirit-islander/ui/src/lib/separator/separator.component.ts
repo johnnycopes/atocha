@@ -14,9 +14,5 @@ import { CommonModule } from '@angular/common';
       }
     `,
   ],
-  // eslint-disable-next-line @angular-eslint/no-host-metadata-property
-  host: {
-    class: 'ui-separator',
-  },
 })
 export class SeparatorComponent {}
