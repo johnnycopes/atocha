@@ -1,5 +1,6 @@
 <input type="text"
-  class="core-search-input__input"
+  class="core-search-input__field"
+  data-test="core-search-input-field"
   #input
   [coreAutofocus]="autofocus"
   [disabled]="disabled"
@@ -8,6 +9,7 @@
   (ngModelChange)="textChange.emit($event)"
 />
 <fa-icon *ngIf="text"
+  data-test="core-search-input-clear"
   class="core-search-input__clear"
   [icon]="clearIcon"
   (click)="onClear()"
