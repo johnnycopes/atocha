@@ -2,6 +2,7 @@
   class="core-search-input__input"
   #input
   [coreAutofocus]="autofocus"
+  [disabled]="disabled"
   [placeholder]="placeholder"
   [ngModel]="text"
   (ngModelChange)="textChange.emit($event)"

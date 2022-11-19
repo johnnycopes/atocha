@@ -8,6 +8,7 @@ import {
   componentWrapperDecorator,
 } from '@storybook/angular';
 
+import { AutofocusDirective } from '../autofocus/autofocus.directive';
 import { StorybookWrapperComponent } from '../../../.storybook/storybook-wrapper/storybook-wrapper.component';
 import { SearchInputComponent } from './search-input.component';
 
@@ -16,7 +17,12 @@ export default {
   component: SearchInputComponent,
   decorators: [
     moduleMetadata({
-      imports: [CommonModule, FormsModule, FontAwesomeModule],
+      imports: [
+        AutofocusDirective,
+        CommonModule,
+        FormsModule,
+        FontAwesomeModule,
+      ],
       declarations: [StorybookWrapperComponent],
     }),
     componentWrapperDecorator(StorybookWrapperComponent),
@@ -31,6 +37,8 @@ const Template: Story<SearchInputComponent> = (args: Args) => ({
   template: `
     <core-search-input
       [class]="className"
+      [autofocus]="autofocus"
+      [disabled]="disabled"
       [placeholder]="placeholder"
       [text]="text"
       (textChange)="text = $event; onClick($event)"
@@ -39,8 +47,21 @@ const Template: Story<SearchInputComponent> = (args: Args) => ({
 });
 
 export const base = Template.bind({});
-base.args = createArgs({
-  text: 'Something',
+base.args = createArgs({});
+
+export const autofocus = Template.bind({});
+autofocus.args = createArgs({
+  autofocus: true,
+});
+
+export const disabled = Template.bind({});
+disabled.args = createArgs({
+  disabled: true,
+});
+
+export const withText = Template.bind({});
+withText.args = createArgs({
+  text: 'Search term',
 });
 
 export const withCustomStyling = Template.bind({});
@@ -54,7 +75,13 @@ type Args = Partial<SearchInputComponent> & {
 };
 
 function createArgs(
-  { text = '', placeholder = 'Type words here...', className = '' } = {} as Args
+  {
+    autofocus = false,
+    disabled = false,
+    text = '',
+    placeholder = 'Type words here...',
+    className = '',
+  } = {} as Args
 ): Args {
-  return { text, placeholder, className };
+  return { autofocus, disabled, text, placeholder, className };
 }
