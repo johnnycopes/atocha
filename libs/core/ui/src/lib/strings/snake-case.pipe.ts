@@ -6,7 +6,7 @@ import { snakeCase } from '@atocha/core/util';
   standalone: true,
   name: 'coreSnakeCase',
 })
-export class PluralPipe implements PipeTransform {
+export class SnakeCasePipe implements PipeTransform {
   transform(str: string): string {
     return snakeCase(str);
   }

@@ -6,6 +6,6 @@
     {{ description }}
   </p>
 </div>
-<section class="ui-card-group-contents {{ className }}">
+<section class="ui-card-group-contents {{ name | coreSnakeCase }}">
   <ng-content></ng-content>
 </section>

@@ -5,29 +5,19 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { snakeCase } from '@atocha/core/util';
+
+import { SnakeCasePipe } from '@atocha/core/ui';
 
 @Component({
   selector: 'ui-card-group',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, SnakeCasePipe],
   templateUrl: './card-group.component.html',
   styleUrls: ['./card-group.component.scss'],
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CardGroupComponent {
-  private _name = '';
-  @Input()
-  get name() {
-    return this._name;
-  }
-  set name(name) {
-    this._name = name;
-    this.className = snakeCase(name);
-  }
-
+  @Input() name = '';
   @Input() description = '';
-
-  className = '';
 }
