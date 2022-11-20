@@ -10,8 +10,6 @@ describe('SearchInputComponent', () => {
       base: '/iframe.html?path=/story/search-input--base',
       autofocus: '/iframe.html?path=/story/search-input--autofocus',
       disabled: '/iframe.html?path=/story/search-input--disabled',
-      regularSize: '/iframe.html?path=/story/search-input--regular-size',
-      error: '/iframe.html?path=/story/inputs-actions-search-input--error',
     };
   });
 

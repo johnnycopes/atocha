@@ -1,4 +1,4 @@
-describe('SearchInputComponent', () => {
+describe('AutofocusDirective', () => {
   let input = '';
   let textarea = '';
   let stories: Record<string, string> = {};
