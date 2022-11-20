@@ -1,4 +1,4 @@
-import { Development } from './development.interface';
+import { Development } from '@atocha/lorenzo/util';
 
 export const DEVELOPMENTS: readonly Development[] = [
   {

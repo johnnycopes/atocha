@@ -1,4 +1,4 @@
-import { Family } from './family.interface';
+import { Family } from '@atocha/lorenzo/util';
 
 export const FAMILIES: readonly Family[] = [
   {

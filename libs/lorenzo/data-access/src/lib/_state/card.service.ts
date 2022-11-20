@@ -2,9 +2,6 @@ import { Injectable } from '@angular/core';
 import { combineLatest, map, Observable, of, shareReplay } from 'rxjs';
 
 import {
-  LEADERS,
-  DEVELOPMENTS,
-  FAMILIES,
   Card,
   Development,
   Family,
@@ -13,6 +10,9 @@ import {
   getFamilyId,
   getLeaderId,
 } from '@atocha/lorenzo/util';
+import { DEVELOPMENTS } from './_cards/developments';
+import { FAMILIES } from './_cards/families';
+import { LEADERS } from './_cards/leaders';
 import { FavoriteService } from './favorite.service';
 
 type Cards = {

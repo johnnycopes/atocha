@@ -1,4 +1,4 @@
-import { Leader } from './leader.interface';
+import { Leader } from '@atocha/lorenzo/util';
 
 export const LEADERS: readonly Leader[] = [
   {
