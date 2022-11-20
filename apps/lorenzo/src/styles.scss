@@ -98,14 +98,14 @@ a {
 
 app-root {
   .core-search-input {
-    .core-search-input__input {
+    &__field {
       width: 100%;
       height: 100%;
       font-size: 16px;
       outline: 0;
     }
 
-    .core-search-input__clear {
+    &__clear {
       color: var(--font-color);
     }
   }

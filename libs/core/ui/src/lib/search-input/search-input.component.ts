@@ -29,6 +29,7 @@ import { AutofocusDirective } from '../autofocus/autofocus.directive';
 })
 export class SearchInputComponent {
   @Input() autofocus = true;
+  @Input() disabled = false;
   @Input() placeholder = '';
   @Input() text = '';
   @Output() textChange = new EventEmitter<string>();

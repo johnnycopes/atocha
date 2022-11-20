@@ -211,11 +211,11 @@ app-root {
   .core-search-input {
     top: spacing(2);
 
-    .core-search-input__input {
+    &__field {
       padding-right: spacing(24);
     }
 
-    .core-search-input__clear {
+    &__clear {
       color: color($neutral, 5);
     }
   }
