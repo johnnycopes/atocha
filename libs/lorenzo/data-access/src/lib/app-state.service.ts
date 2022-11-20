@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { View } from '@atocha/lorenzo/util';
+import { CsvService } from './_state/csv.service';
 import { FilterService } from './_state/filter.service';
 import { PositionService } from './_state/position.service';
 
@@ -13,6 +14,7 @@ export class AppStateService {
   position$ = this._positionService.position$;
 
   constructor(
+    private _csvService: CsvService,
     private _filterService: FilterService,
     private _positionService: PositionService
   ) {}
