@@ -9,16 +9,26 @@ import { LEADERS } from './_cards/leaders';
   providedIn: 'root',
 })
 export class CsvService {
-  exportFamilies() {
-    const rows = [
-      Object.keys(FAMILIES[0]).map(startCase),
-      ...FAMILIES.map(Object.values).map(([name, privilege]) => [
-        name,
-        this._trim(privilege),
-      ]),
-    ];
-
+  exportFamilies(): void {
+    const rows = this._generateRows(FAMILIES);
     this._generateCsv(rows);
+  }
+
+  exportLeaders(): void {
+    const rows = this._generateRows(LEADERS);
+    this._generateCsv(rows);
+  }
+
+  private _generateRows<T extends object>(cards: readonly T[]) {
+    if (!cards.length) {
+      return [];
+    }
+    return [
+      Object.keys(cards[0]).map(startCase),
+      ...cards
+        .map(Object.values)
+        .map((values) => values.map((value) => this._trim(value))),
+    ];
   }
 
   private _generateCsv(rows: string[][]): void {

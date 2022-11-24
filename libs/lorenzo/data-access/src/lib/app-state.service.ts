@@ -34,4 +34,8 @@ export class AppStateService {
   exportFamilies() {
     this._csvService.exportFamilies();
   }
+
+  exportLeaders() {
+    this._csvService.exportLeaders();
+  }
 }
