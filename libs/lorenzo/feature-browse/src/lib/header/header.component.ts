@@ -21,7 +21,9 @@ export class HeaderComponent {
     this._appStateService.text$,
   ]).pipe(map(([view, text]) => ({ view, text })));
 
-  constructor(private _appStateService: AppStateService) {}
+  constructor(private _appStateService: AppStateService) {
+    this._appStateService.exportFamilies();
+  }
 
   onViewChange(view: View): void {
     this._appStateService.updateView(view);
@@ -30,5 +32,9 @@ export class HeaderComponent {
 
   onTextChange(text: string): void {
     this._appStateService.updateText(text);
+  }
+
+  export() {
+    this._appStateService.exportFamilies();
   }
 }

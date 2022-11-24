@@ -30,4 +30,8 @@ export class AppStateService {
   updatePosition(position: number, view: View): void {
     this._positionService.updatePosition(position, view);
   }
+
+  exportFamilies() {
+    this._csvService.exportFamilies();
+  }
 }
