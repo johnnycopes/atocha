@@ -18,6 +18,10 @@ export class CsvService {
       ]),
     ];
 
+    this._generateCsv(rows);
+  }
+
+  private _generateCsv(rows: string[][]): void {
     const csvContent =
       'data:text/csv;charset=utf-8,' + rows.map((e) => e.join(',')).join('\n');
 
