@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Development } from '@atocha/lorenzo/util';
 import { startCase } from 'lodash';
 
 import { DEVELOPMENTS } from './_cards/developments';
@@ -10,14 +11,40 @@ import { LEADERS } from './_cards/leaders';
 })
 export class CsvService {
   exportDevelopments(): void {
-    const rows = [
-      Object.keys(DEVELOPMENTS[38]).map(startCase),
-      ...DEVELOPMENTS.map(Object.values).map((values) =>
-        values.map((value) =>
-          typeof value === 'number' ? value.toString() : this._trim(value)
-        )
-      ),
+    const headers: (keyof Development)[] = [
+      'id',
+      'period',
+      'deck',
+      'type',
+      'cost',
+      'immediateEffect',
+      'permanentEffect',
     ];
+
+    const cards: string[][] = [];
+    for (const {
+      id,
+      period,
+      deck,
+      type,
+      cost,
+      immediateEffect,
+      permanentEffect,
+    } of DEVELOPMENTS) {
+      const card: string[] = [];
+      card.push(
+        id,
+        period.toString(),
+        deck,
+        type,
+        cost ? this._purify(cost) : 'Free',
+        immediateEffect ? this._purify(immediateEffect) : 'None',
+        permanentEffect ? this._purify(permanentEffect) : 'None'
+      );
+      cards.push(card);
+    }
+
+    const rows = [headers.map(startCase), ...cards];
     this._generateCsv(rows);
   }
 
@@ -41,7 +68,7 @@ export class CsvService {
         .map(Object.values)
         .map((values) =>
           values.map((value) =>
-            typeof value === 'number' ? value.toString() : this._trim(value)
+            typeof value === 'number' ? value.toString() : this._purify(value)
           )
         ),
     ];
@@ -55,7 +82,7 @@ export class CsvService {
     window.open(encodedUri);
   }
 
-  private _trim(str: string): string {
+  private _purify(str: string): string {
     return `"${str.replace(/\s+/g, ' ').trim()}"`;
   }
 }
