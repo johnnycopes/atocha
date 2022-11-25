@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Development } from '@atocha/lorenzo/util';
+import { Development, Family, Leader } from '@atocha/lorenzo/util';
 import { startCase } from 'lodash';
 
 import { DEVELOPMENTS } from './_cards/developments';
@@ -49,29 +49,41 @@ export class CsvService {
   }
 
   exportFamilies(): void {
-    const rows = this._generateRows(FAMILIES);
+    const headers: (keyof Family)[] = ['name', 'privilege'];
+
+    const cards: string[][] = [];
+    for (const { name, privilege } of FAMILIES) {
+      const card: string[] = [];
+      card.push(this._purify(name), this._purify(privilege));
+      cards.push(card);
+    }
+
+    const rows = [headers.map(startCase), ...cards];
     this._generateCsv(rows);
   }
 
   exportLeaders(): void {
-    const rows = this._generateRows(LEADERS);
-    this._generateCsv(rows);
-  }
-
-  private _generateRows<T extends object>(cards: readonly T[]) {
-    if (!cards.length) {
-      return [];
-    }
-    return [
-      Object.keys(cards[0]).map(startCase),
-      ...cards
-        .map(Object.values)
-        .map((values) =>
-          values.map((value) =>
-            typeof value === 'number' ? value.toString() : this._purify(value)
-          )
-        ),
+    const headers: (keyof Leader)[] = [
+      'name',
+      'requirement',
+      'type',
+      'ability',
     ];
+
+    const cards: string[][] = [];
+    for (const { name, requirement, ability, type } of LEADERS) {
+      const card: string[] = [];
+      card.push(
+        this._purify(name),
+        this._purify(requirement),
+        this._purify(type),
+        this._purify(ability)
+      );
+      cards.push(card);
+    }
+
+    const rows = [headers.map(startCase), ...cards];
+    this._generateCsv(rows);
   }
 
   private _generateCsv(rows: string[][]): void {
