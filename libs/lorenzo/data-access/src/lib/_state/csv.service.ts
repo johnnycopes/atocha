@@ -20,6 +20,9 @@ type CsvDevelopment = CsvMapping<Development>;
 type CsvFamily = CsvMapping<Family>;
 type CsvLeader = CsvMapping<Leader>;
 
+type CsvExceptions<T> = {
+  [Property in keyof T]-?: (prop: T[Property]) => string;
+};
 @Injectable({
   providedIn: 'root',
 })
@@ -46,16 +49,33 @@ export class CsvService {
       })
     ).map<string[]>(Object.values);
 
+    // const exceptions: CsvExceptions<Development> = {
+    //   id: (id) => id,
+    //   deck: (deck) => deck,
+    //   type: (type) => type,
+    //   period: (period) => period.toString(),
+    //   cost: (cost) => cost ?? 'Free',
+    //   immediateEffect: (effect) => effect ?? 'None',
+    //   permanentEffect: (effect) => effect ?? 'None',
+    // };
+    // const cards = DEVELOPMENTS.map((development) =>
+    //   headers.map((header) => {
+    //     if (exceptions[header]) {
+    //       return exceptions[header](development[header]);
+    //     }
+    //     return development[header];
+    //   })
+    // );
+
     const rows = [headers.map(startCase), ...cards];
     this._generateCsv(rows);
   }
 
   exportFamilies(): void {
     const headers: (keyof Family)[] = ['name', 'privilege'];
-    const cards = FAMILIES.map<CsvFamily>(({ name, privilege }) => ({
-      name: this._purify(name),
-      privilege: this._purify(privilege),
-    })).map<string[]>(Object.values);
+    const cards = FAMILIES.map((family) =>
+      headers.map((header) => this._purify(family[header]))
+    );
 
     const rows = [headers.map(startCase), ...cards];
     this._generateCsv(rows);
@@ -68,13 +88,8 @@ export class CsvService {
       'type',
       'ability',
     ];
-    const cards = LEADERS.map<CsvLeader>(
-      ({ name, requirement, type, ability }) => ({
-        name: this._purify(name),
-        requirement: this._purify(requirement),
-        type: this._purify(type),
-        ability: this._purify(ability),
-      })
+    const cards = LEADERS.map((leader) =>
+      headers.map((header) => this._purify(leader[header]))
     ).map<string[]>(Object.values);
 
     const rows = [headers.map(startCase), ...cards];
