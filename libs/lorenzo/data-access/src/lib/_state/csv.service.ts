@@ -35,36 +35,24 @@ export class CsvService {
       permanentEffect: (effect) => effect ?? 'None',
     };
 
-    const headers: (keyof Development)[] = [
-      'id',
-      'period',
-      'deck',
-      'type',
-      'cost',
-      'immediateEffect',
-      'permanentEffect',
-    ];
+    const headers = Object.keys(csvDevelopment) as (keyof Development)[];
 
     const cards: string[][] = [];
-    for (const {
-      id,
-      period,
-      deck,
-      type,
-      cost,
-      immediateEffect,
-      permanentEffect,
-    } of DEVELOPMENTS) {
+    for (const development of DEVELOPMENTS) {
       const card: string[] = [];
-      card.push(
-        id,
-        period.toString(),
-        deck,
-        type,
-        cost ? this._purify(cost) : 'Free',
-        immediateEffect ? this._purify(immediateEffect) : 'None',
-        permanentEffect ? this._purify(permanentEffect) : 'None'
-      );
+      for (const header of headers) {
+        const func = csvDevelopment[header];
+        const prop = development[header];
+        let value = '';
+        if (typeof prop === 'string') {
+          value = prop;
+        } else if (typeof prop === 'number') {
+          value = func(prop);
+        } else {
+          value = func(prop);
+        }
+        card.push(this._purify(value));
+      }
       cards.push(card);
     }
 
@@ -102,9 +90,7 @@ export class CsvService {
       type: (type) => type,
       ability: (ability) => ability,
     };
-
     const headers = Object.keys(csvLeader) as (keyof Leader)[];
-
     const cards: string[][] = [];
     for (const leader of LEADERS) {
       const card: string[] = [];
@@ -115,7 +101,6 @@ export class CsvService {
       }
       cards.push(card);
     }
-
     const rows = [headers.map(startCase), ...cards];
     this._generateCsv(rows);
   }
