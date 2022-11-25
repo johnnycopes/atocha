@@ -6,11 +6,29 @@ import { DEVELOPMENTS } from './_cards/developments';
 import { FAMILIES } from './_cards/families';
 import { LEADERS } from './_cards/leaders';
 
+type CsvMapping<T> = {
+  [Property in keyof T]: (prop: T[Property]) => string;
+};
+
+type CsvDevelopment = CsvMapping<Development>;
+type CsvFamily = CsvMapping<Family>;
+type CsvLeader = CsvMapping<Leader>;
+
 @Injectable({
   providedIn: 'root',
 })
 export class CsvService {
   exportDevelopments(): void {
+    const csvDevelopment: CsvDevelopment = {
+      id: (id) => id,
+      period: (period) => period.toString(),
+      deck: (deck) => deck,
+      type: (type) => type,
+      cost: (cost) => cost ?? 'Free',
+      immediateEffect: (effect) => effect ?? 'None',
+      permanentEffect: (effect) => effect ?? 'None',
+    };
+
     const headers: (keyof Development)[] = [
       'id',
       'period',
@@ -49,6 +67,11 @@ export class CsvService {
   }
 
   exportFamilies(): void {
+    const csvFamily: CsvFamily = {
+      name: (name) => name,
+      privilege: (privilege) => privilege,
+    };
+
     const headers: (keyof Family)[] = ['name', 'privilege'];
 
     const cards: string[][] = [];
@@ -63,6 +86,13 @@ export class CsvService {
   }
 
   exportLeaders(): void {
+    const csvLeader: CsvLeader = {
+      name: (name) => name,
+      requirement: (requirement) => requirement,
+      type: (type) => type,
+      ability: (ability) => ability,
+    };
+
     const headers: (keyof Leader)[] = [
       'name',
       'requirement',

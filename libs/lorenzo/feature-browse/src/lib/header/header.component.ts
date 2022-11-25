@@ -22,7 +22,7 @@ export class HeaderComponent {
   ]).pipe(map(([view, text]) => ({ view, text })));
 
   constructor(private _appStateService: AppStateService) {
-    this._appStateService.exportLeaders();
+    this._appStateService.exportDevelopments();
   }
 
   onViewChange(view: View): void {
