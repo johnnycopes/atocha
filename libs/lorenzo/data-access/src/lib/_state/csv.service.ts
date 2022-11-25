@@ -9,6 +9,18 @@ import { LEADERS } from './_cards/leaders';
   providedIn: 'root',
 })
 export class CsvService {
+  exportDevelopments(): void {
+    const rows = [
+      Object.keys(DEVELOPMENTS[38]).map(startCase),
+      ...DEVELOPMENTS.map(Object.values).map((values) =>
+        values.map((value) =>
+          typeof value === 'number' ? value.toString() : this._trim(value)
+        )
+      ),
+    ];
+    this._generateCsv(rows);
+  }
+
   exportFamilies(): void {
     const rows = this._generateRows(FAMILIES);
     this._generateCsv(rows);
@@ -27,7 +39,11 @@ export class CsvService {
       Object.keys(cards[0]).map(startCase),
       ...cards
         .map(Object.values)
-        .map((values) => values.map((value) => this._trim(value))),
+        .map((values) =>
+          values.map((value) =>
+            typeof value === 'number' ? value.toString() : this._trim(value)
+          )
+        ),
     ];
   }
 

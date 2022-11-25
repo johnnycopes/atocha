@@ -38,4 +38,8 @@ export class AppStateService {
   exportLeaders() {
     this._csvService.exportLeaders();
   }
+
+  exportDevelopments() {
+    this._csvService.exportDevelopments();
+  }
 }
