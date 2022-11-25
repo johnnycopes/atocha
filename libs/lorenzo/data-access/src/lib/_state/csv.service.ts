@@ -6,8 +6,14 @@ import { DEVELOPMENTS } from './_cards/developments';
 import { FAMILIES } from './_cards/families';
 import { LEADERS } from './_cards/leaders';
 
+/**
+ * Generic type mapping that maintains the shape of the passed-in
+ * type, but makes all properties non-nullable and requires that
+ * the values be callback functions that accept the original value
+ * as an argument and instead return a string
+ */
 type CsvMapping<T> = {
-  [Property in keyof T]: (prop: T[Property]) => string;
+  [Property in keyof T]-?: (prop: T[Property]) => string;
 };
 
 type CsvDevelopment = CsvMapping<Development>;
@@ -72,12 +78,16 @@ export class CsvService {
       privilege: (privilege) => privilege,
     };
 
-    const headers: (keyof Family)[] = ['name', 'privilege'];
+    const headers = Object.keys(csvFamily) as (keyof Family)[];
 
     const cards: string[][] = [];
-    for (const { name, privilege } of FAMILIES) {
+    for (const family of FAMILIES) {
       const card: string[] = [];
-      card.push(this._purify(name), this._purify(privilege));
+      for (const header of headers) {
+        const func = csvFamily[header];
+        const prop = family[header];
+        card.push(this._purify(func(prop)));
+      }
       cards.push(card);
     }
 
@@ -93,22 +103,16 @@ export class CsvService {
       ability: (ability) => ability,
     };
 
-    const headers: (keyof Leader)[] = [
-      'name',
-      'requirement',
-      'type',
-      'ability',
-    ];
+    const headers = Object.keys(csvLeader) as (keyof Leader)[];
 
     const cards: string[][] = [];
-    for (const { name, requirement, ability, type } of LEADERS) {
+    for (const leader of LEADERS) {
       const card: string[] = [];
-      card.push(
-        this._purify(name),
-        this._purify(requirement),
-        this._purify(type),
-        this._purify(ability)
-      );
+      for (const header of headers) {
+        const func = csvLeader[header];
+        const prop = leader[header];
+        card.push(this._purify(typeof prop === 'string' ? prop : func(prop)));
+      }
       cards.push(card);
     }
 
@@ -124,7 +128,7 @@ export class CsvService {
     window.open(encodedUri);
   }
 
-  private _purify(str: string): string {
+  private _purify<T extends string>(str: T): string {
     return `"${str.replace(/\s+/g, ' ').trim()}"`;
   }
 }
