@@ -13,7 +13,7 @@ import { LEADERS } from './_cards/leaders';
  * as an argument and instead return a string
  */
 type CsvMapping<T> = {
-  [Property in keyof T]-?: (prop: T[Property]) => string;
+  [Property in keyof T]-?: string;
 };
 
 type CsvDevelopment = CsvMapping<Development>;
@@ -25,82 +25,58 @@ type CsvLeader = CsvMapping<Leader>;
 })
 export class CsvService {
   exportDevelopments(): void {
-    const csvDevelopment: CsvDevelopment = {
-      id: (id) => id,
-      period: (period) => period.toString(),
-      deck: (deck) => deck,
-      type: (type) => type,
-      cost: (cost) => cost ?? 'Free',
-      immediateEffect: (effect) => effect ?? 'None',
-      permanentEffect: (effect) => effect ?? 'None',
-    };
-
-    const headers = Object.keys(csvDevelopment) as (keyof Development)[];
-
-    const cards: string[][] = [];
-    for (const development of DEVELOPMENTS) {
-      const card: string[] = [];
-      for (const header of headers) {
-        const func = csvDevelopment[header];
-        const prop = development[header];
-        let value = '';
-        if (typeof prop === 'string') {
-          value = prop;
-        } else if (typeof prop === 'number') {
-          value = func(prop);
-        } else {
-          value = func(prop);
-        }
-        card.push(this._purify(value));
-      }
-      cards.push(card);
-    }
+    const headers: (keyof Development)[] = [
+      'id',
+      'period',
+      'deck',
+      'type',
+      'cost',
+      'immediateEffect',
+      'permanentEffect',
+    ];
+    const cards = DEVELOPMENTS.map<CsvDevelopment>(
+      ({ id, period, deck, type, cost, immediateEffect, permanentEffect }) => ({
+        id: this._purify(id),
+        period: this._purify(period.toString()),
+        deck: this._purify(deck),
+        type: this._purify(type),
+        cost: this._purify(cost ?? 'Free'),
+        immediateEffect: this._purify(immediateEffect ?? 'None'),
+        permanentEffect: this._purify(permanentEffect ?? 'None'),
+      })
+    ).map<string[]>(Object.values);
 
     const rows = [headers.map(startCase), ...cards];
     this._generateCsv(rows);
   }
 
   exportFamilies(): void {
-    const csvFamily: CsvFamily = {
-      name: (name) => name,
-      privilege: (privilege) => privilege,
-    };
-
-    const headers = Object.keys(csvFamily) as (keyof Family)[];
-
-    const cards: string[][] = [];
-    for (const family of FAMILIES) {
-      const card: string[] = [];
-      for (const header of headers) {
-        const func = csvFamily[header];
-        const prop = family[header];
-        card.push(this._purify(func(prop)));
-      }
-      cards.push(card);
-    }
+    const headers: (keyof Family)[] = ['name', 'privilege'];
+    const cards = FAMILIES.map<CsvFamily>(({ name, privilege }) => ({
+      name: this._purify(name),
+      privilege: this._purify(privilege),
+    })).map<string[]>(Object.values);
 
     const rows = [headers.map(startCase), ...cards];
     this._generateCsv(rows);
   }
 
   exportLeaders(): void {
-    const csvLeader: CsvLeader = {
-      name: (name) => name,
-      requirement: (requirement) => requirement,
-      type: (type) => type,
-      ability: (ability) => ability,
-    };
-    const headers = Object.keys(csvLeader) as (keyof Leader)[];
-    const cards: string[][] = [];
-    for (const leader of LEADERS) {
-      const card: string[] = [];
-      for (const header of headers) {
-        const func = csvLeader[header];
-        const prop = leader[header];
-        card.push(this._purify(typeof prop === 'string' ? prop : func(prop)));
-      }
-      cards.push(card);
-    }
+    const headers: (keyof Leader)[] = [
+      'name',
+      'requirement',
+      'type',
+      'ability',
+    ];
+    const cards = LEADERS.map<CsvLeader>(
+      ({ name, requirement, type, ability }) => ({
+        name: this._purify(name),
+        requirement: this._purify(requirement),
+        type: this._purify(type),
+        ability: this._purify(ability),
+      })
+    ).map<string[]>(Object.values);
+
     const rows = [headers.map(startCase), ...cards];
     this._generateCsv(rows);
   }
@@ -113,7 +89,7 @@ export class CsvService {
     window.open(encodedUri);
   }
 
-  private _purify<T extends string>(str: T): string {
+  private _purify(str: string): string {
     return `"${str.replace(/\s+/g, ' ').trim()}"`;
   }
 }
