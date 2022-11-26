@@ -68,7 +68,7 @@ export class CsvService {
     // );
 
     const rows = [headers.map(startCase), ...cards];
-    this._generateCsv(rows);
+    this._generateCsv('lorenzo-developments', rows);
   }
 
   exportFamilies(): void {
@@ -78,7 +78,7 @@ export class CsvService {
     );
 
     const rows = [headers.map(startCase), ...cards];
-    this._generateCsv(rows);
+    this._generateCsv('lorenzo-families', rows);
   }
 
   exportLeaders(): void {
@@ -93,15 +93,24 @@ export class CsvService {
     ).map<string[]>(Object.values);
 
     const rows = [headers.map(startCase), ...cards];
-    this._generateCsv(rows);
+    this._generateCsv('lorenzo-leaders', rows);
   }
 
-  private _generateCsv(rows: string[][]): void {
-    const csvContent =
-      'data:text/csv;charset=utf-8,' + rows.map((e) => e.join(',')).join('\n');
-
-    const encodedUri = encodeURI(csvContent);
-    window.open(encodedUri);
+  private _generateCsv(filename: string, rows: string[][]): void {
+    const csvContent = rows.map((e) => e.join(',')).join('\n');
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    const link = document.createElement('a');
+    if (link.download !== undefined) {
+      // feature detection
+      // Browsers that support HTML5 download attribute
+      const url = URL.createObjectURL(blob);
+      link.setAttribute('href', url);
+      link.setAttribute('download', filename);
+      link.style.visibility = 'hidden';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
   }
 
   private _purify(str: string): string {
