@@ -7,23 +7,14 @@ import { DEVELOPMENTS } from './_cards/developments';
 import { FAMILIES } from './_cards/families';
 import { LEADERS } from './_cards/leaders';
 
-/**
- * Generic type mapping that maintains the shape of the passed-in
- * type, but makes all properties non-nullable and requires that
- * the values be callback functions that accept the original value
- * as an argument and instead return a string
- */
-type CsvMapping<T> = {
-  [Property in keyof T]-?: string;
-};
+type CsvMapping<T> = Required<{
+  [Property in keyof T]: string;
+}>;
 
 type CsvDevelopment = CsvMapping<Development>;
 type CsvFamily = CsvMapping<Family>;
 type CsvLeader = CsvMapping<Leader>;
 
-type CsvExceptions<T> = {
-  [Property in keyof T]-?: (prop: T[Property]) => string;
-};
 @Injectable({
   providedIn: 'root',
 })
@@ -50,33 +41,16 @@ export class CsvService {
       })
     ).map<string[]>(Object.values);
 
-    // const exceptions: CsvExceptions<Development> = {
-    //   id: (id) => id,
-    //   deck: (deck) => deck,
-    //   type: (type) => type,
-    //   period: (period) => period.toString(),
-    //   cost: (cost) => cost ?? 'Free',
-    //   immediateEffect: (effect) => effect ?? 'None',
-    //   permanentEffect: (effect) => effect ?? 'None',
-    // };
-    // const cards = DEVELOPMENTS.map((development) =>
-    //   headers.map((header) => {
-    //     if (exceptions[header]) {
-    //       return exceptions[header](development[header]);
-    //     }
-    //     return development[header];
-    //   })
-    // );
-
     const rows = [headers.map(startCase), ...cards];
     this._generateCsv('lorenzo-developments', rows);
   }
 
   exportFamilies(): void {
     const headers: (keyof Family)[] = ['name', 'privilege'];
-    const cards = FAMILIES.map((family) =>
-      headers.map((header) => this._formatCsvStr(family[header]))
-    );
+    const cards = FAMILIES.map<CsvFamily>(({ name, privilege }) => ({
+      name: this._formatCsvStr(name),
+      privilege: this._formatCsvStr(privilege),
+    })).map(Object.values);
 
     const rows = [headers.map(startCase), ...cards];
     this._generateCsv('lorenzo-families', rows);
@@ -89,8 +63,13 @@ export class CsvService {
       'type',
       'ability',
     ];
-    const cards = LEADERS.map((leader) =>
-      headers.map((header) => this._formatCsvStr(leader[header]))
+    const cards = LEADERS.map<CsvLeader>(
+      ({ name, requirement, type, ability }) => ({
+        name: this._formatCsvStr(name),
+        requirement: this._formatCsvStr(requirement),
+        type: this._formatCsvStr(type),
+        ability: this._formatCsvStr(ability),
+      })
     ).map<string[]>(Object.values);
 
     const rows = [headers.map(startCase), ...cards];
