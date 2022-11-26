@@ -21,9 +21,7 @@ export class HeaderComponent {
     this._appStateService.text$,
   ]).pipe(map(([view, text]) => ({ view, text })));
 
-  constructor(private _appStateService: AppStateService) {
-    this._appStateService.exportLeaders();
-  }
+  constructor(private _appStateService: AppStateService) {}
 
   onViewChange(view: View): void {
     this._appStateService.updateView(view);
@@ -34,7 +32,7 @@ export class HeaderComponent {
     this._appStateService.updateText(text);
   }
 
-  export() {
-    this._appStateService.exportFamilies();
+  exportCsv(): void {
+    this._appStateService.exportCsv();
   }
 }

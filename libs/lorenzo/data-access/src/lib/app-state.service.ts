@@ -31,15 +31,9 @@ export class AppStateService {
     this._positionService.updatePosition(position, view);
   }
 
-  exportFamilies() {
-    this._csvService.exportFamilies();
-  }
-
-  exportLeaders() {
-    this._csvService.exportLeaders();
-  }
-
-  exportDevelopments() {
+  exportCsv(): void {
     this._csvService.exportDevelopments();
+    this._csvService.exportLeaders();
+    this._csvService.exportFamilies();
   }
 }
