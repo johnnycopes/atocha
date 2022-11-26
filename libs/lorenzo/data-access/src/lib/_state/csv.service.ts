@@ -40,13 +40,13 @@ export class CsvService {
     ];
     const cards = DEVELOPMENTS.map<CsvDevelopment>(
       ({ id, period, deck, type, cost, immediateEffect, permanentEffect }) => ({
-        id: this._purify(id),
-        period: this._purify(period.toString()),
-        deck: this._purify(deck),
-        type: this._purify(type),
-        cost: this._purify(cost ?? 'Free'),
-        immediateEffect: this._purify(immediateEffect ?? 'None'),
-        permanentEffect: this._purify(permanentEffect ?? 'None'),
+        id: this._formatCsvStr(id),
+        period: this._formatCsvStr(period.toString()),
+        deck: this._formatCsvStr(deck),
+        type: this._formatCsvStr(type),
+        cost: this._formatCsvStr(cost ?? 'Free'),
+        immediateEffect: this._formatCsvStr(immediateEffect ?? 'None'),
+        permanentEffect: this._formatCsvStr(permanentEffect ?? 'None'),
       })
     ).map<string[]>(Object.values);
 
@@ -75,7 +75,7 @@ export class CsvService {
   exportFamilies(): void {
     const headers: (keyof Family)[] = ['name', 'privilege'];
     const cards = FAMILIES.map((family) =>
-      headers.map((header) => this._purify(family[header]))
+      headers.map((header) => this._formatCsvStr(family[header]))
     );
 
     const rows = [headers.map(startCase), ...cards];
@@ -90,7 +90,7 @@ export class CsvService {
       'ability',
     ];
     const cards = LEADERS.map((leader) =>
-      headers.map((header) => this._purify(leader[header]))
+      headers.map((header) => this._formatCsvStr(leader[header]))
     ).map<string[]>(Object.values);
 
     const rows = [headers.map(startCase), ...cards];
@@ -112,7 +112,7 @@ export class CsvService {
     }
   }
 
-  private _purify(str: string): string {
+  private _formatCsvStr(str: string): string {
     return `"${removeWhitespace(str)}"`;
   }
 }
