@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Development, Family, Leader } from '@atocha/lorenzo/util';
 import { startCase } from 'lodash';
 
+import { removeWhitespace } from '@atocha/core/util';
+import { Development, Family, Leader } from '@atocha/lorenzo/util';
 import { DEVELOPMENTS } from './_cards/developments';
 import { FAMILIES } from './_cards/families';
 import { LEADERS } from './_cards/leaders';
@@ -112,6 +113,6 @@ export class CsvService {
   }
 
   private _purify(str: string): string {
-    return `"${str.replace(/\s+/g, ' ').trim()}"`;
+    return `"${removeWhitespace(str)}"`;
   }
 }
