@@ -1,4 +1,5 @@
-import { Injectable } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import { Inject, Injectable } from '@angular/core';
 import { startCase } from 'lodash';
 
 import { removeWhitespace } from '@atocha/core/util';
@@ -19,6 +20,8 @@ type CsvLeader = CsvMapping<Leader>;
   providedIn: 'root',
 })
 export class CsvService {
+  constructor(@Inject(DOCUMENT) private _document: Document) {}
+
   exportDevelopments(): void {
     const headers: (keyof Development)[] = [
       'id',
@@ -79,15 +82,15 @@ export class CsvService {
   private _generateCsv(filename: string, rows: string[][]): void {
     const csvContent = rows.map((e) => e.join(',')).join('\n');
     const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
-    const link = document.createElement('a');
+    const link = this._document.createElement('a');
     if (link.download !== undefined) {
       const url = URL.createObjectURL(blob);
       link.setAttribute('href', url);
       link.setAttribute('download', filename);
       link.style.visibility = 'hidden';
-      document.body.appendChild(link);
+      this._document.body.appendChild(link);
       link.click();
-      document.body.removeChild(link);
+      this._document.body.removeChild(link);
     }
   }
 
