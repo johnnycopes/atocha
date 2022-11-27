@@ -31,4 +31,8 @@ export class HeaderComponent {
   onTextChange(text: string): void {
     this._appStateService.updateText(text);
   }
+
+  exportCsv(): void {
+    this._appStateService.exportCsv();
+  }
 }

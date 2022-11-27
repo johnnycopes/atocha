@@ -2,9 +2,20 @@
   class="container"
 >
   <nav class="top">
-    <h1 class="title">
-      Lorenzo il Magnifico
-    </h1>
+    <div class="title">
+      <h1 class="name">
+        Lorenzo
+        <span class="surname">
+          il Magnifico
+        </span>
+      </h1>
+      <button ui-button
+        class="export"
+        (click)="exportCsv()"
+      >
+        Export to CSV
+      </button>
+    </div>
     <ul class="views">
       <li class="view"
         [class.view--selected]="vm.view === 'all'"

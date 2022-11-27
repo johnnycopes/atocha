@@ -12,7 +12,24 @@
 }
 
 .title {
-  font-size: 16px;
+  display: flex;
+  align-items: center;
+
+  .name {
+    font-size: 16px;
+  }
+
+  .surname {
+    display: none;
+
+    @media screen and (min-width: 512px) {
+      display: inline-block;
+    }
+  }
+
+  .export {
+    margin-left: 8px;
+  }
 }
 
 .views {
