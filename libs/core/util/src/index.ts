@@ -1,6 +1,7 @@
 export * from './lib/calculate-tally-change';
 export * from './lib/combo-analyzer';
 export * from './lib/create-array';
+export * from './lib/csv';
 export * from './lib/dedupe';
 export * from './lib/flatten-values';
 export * from './lib/format';
