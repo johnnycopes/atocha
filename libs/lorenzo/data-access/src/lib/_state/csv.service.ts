@@ -39,7 +39,7 @@ export class CsvService {
     const cards = DEVELOPMENTS.map<CsvDevelopment>(
       ({ id, period, deck, type, cost, immediateEffect, permanentEffect }) => ({
         id: this._csv.formatCsvStr(id),
-        period: this._csv.formatCsvStr(period.toString()),
+        period: this._csv.formatCsvStr(period),
         deck: this._csv.formatCsvStr(deck),
         type: this._csv.formatCsvStr(type),
         cost: this._csv.formatCsvStr(cost ?? 'Free'),
