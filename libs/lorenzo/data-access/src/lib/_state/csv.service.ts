@@ -2,8 +2,9 @@ import { DOCUMENT } from '@angular/common';
 import { Inject, Injectable } from '@angular/core';
 import { startCase } from 'lodash';
 
+import { APP_NAME_TOKEN } from '@atocha/core/data-access';
 import { Csv } from '@atocha/core/util';
-import { Development, Family, Leader } from '@atocha/lorenzo/util';
+import { Card, Development, Family, Leader } from '@atocha/lorenzo/util';
 import { DEVELOPMENTS } from './_cards/developments';
 import { FAMILIES } from './_cards/families';
 import { LEADERS } from './_cards/leaders';
@@ -22,7 +23,10 @@ type CsvLeader = CsvMapping<Leader>;
 export class CsvService {
   private _csv: Csv;
 
-  constructor(@Inject(DOCUMENT) private _document: Document) {
+  constructor(
+    @Inject(DOCUMENT) private _document: Document,
+    @Inject(APP_NAME_TOKEN) private _appName: string
+  ) {
     this._csv = new Csv(this._document);
   }
 
@@ -48,7 +52,7 @@ export class CsvService {
       })
     ).map<string[]>(Object.values);
 
-    this._export({ filename: 'lorenzo-developments', headers, cards });
+    this._export({ type: 'development', headers, cards });
   }
 
   exportFamilies(): void {
@@ -58,7 +62,7 @@ export class CsvService {
       privilege: this._csv.formatValue(privilege),
     })).map(Object.values);
 
-    this._export({ filename: 'lorenzo-families', headers, cards });
+    this._export({ type: 'family', headers, cards });
   }
 
   exportLeaders(): void {
@@ -77,19 +81,34 @@ export class CsvService {
       })
     ).map<string[]>(Object.values);
 
-    this._export({ filename: 'lorenzo-leaders', headers, cards });
+    this._export({ type: 'leader', headers, cards });
   }
 
   private _export<T extends string>({
-    filename,
+    type,
     headers,
     cards,
   }: {
-    filename: string;
+    type: Card;
     headers: T[];
     cards: string[][];
   }): void {
+    const filename = this._createFilename(type);
     const rows = [headers.map(startCase), ...cards];
     this._csv.downloadFile(filename, rows);
+  }
+
+  private _createFilename(type: Card): string {
+    let plural = '';
+
+    if (type === 'development') {
+      plural = 'developments';
+    } else if (type === 'family') {
+      plural = 'families';
+    } else if (type === 'leader') {
+      plural = 'leaders';
+    }
+
+    return `${this._appName.toLowerCase()}-${plural}`;
   }
 }
