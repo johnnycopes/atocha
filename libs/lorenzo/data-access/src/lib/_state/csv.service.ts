@@ -42,13 +42,13 @@ export class CsvService {
     ];
     const cards = DEVELOPMENTS.map<CsvDevelopment>(
       ({ id, period, deck, type, cost, immediateEffect, permanentEffect }) => ({
-        id: this._csv.formatValue(id),
-        period: this._csv.formatValue(period),
-        deck: this._csv.formatValue(deck),
-        type: this._csv.formatValue(type),
-        cost: this._csv.formatValue(cost ?? 'Free'),
-        immediateEffect: this._csv.formatValue(immediateEffect ?? 'None'),
-        permanentEffect: this._csv.formatValue(permanentEffect ?? 'None'),
+        id: this._format(id),
+        period: this._format(period),
+        deck: this._format(deck),
+        type: this._format(type),
+        cost: this._format(cost ?? 'Free'),
+        immediateEffect: this._format(immediateEffect ?? 'None'),
+        permanentEffect: this._format(permanentEffect ?? 'None'),
       })
     ).map<string[]>(Object.values);
 
@@ -58,8 +58,8 @@ export class CsvService {
   exportFamilies(): void {
     const headers: (keyof Family)[] = ['name', 'privilege'];
     const cards = FAMILIES.map<CsvFamily>(({ name, privilege }) => ({
-      name: this._csv.formatValue(name),
-      privilege: this._csv.formatValue(privilege),
+      name: this._format(name),
+      privilege: this._format(privilege),
     })).map(Object.values);
 
     this._export({ type: 'family', headers, cards });
@@ -74,14 +74,18 @@ export class CsvService {
     ];
     const cards = LEADERS.map<CsvLeader>(
       ({ name, requirement, type, ability }) => ({
-        name: this._csv.formatValue(name),
-        requirement: this._csv.formatValue(requirement),
-        type: this._csv.formatValue(type),
-        ability: this._csv.formatValue(ability),
+        name: this._format(name),
+        requirement: this._format(requirement),
+        type: this._format(type),
+        ability: this._format(ability),
       })
     ).map<string[]>(Object.values);
 
     this._export({ type: 'leader', headers, cards });
+  }
+
+  private _format(value: string | number): string {
+    return this._csv.formatValue(value);
   }
 
   private _export<T extends string>({
