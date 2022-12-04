@@ -38,29 +38,29 @@ export class CsvService {
     ];
     const cards = DEVELOPMENTS.map<CsvDevelopment>(
       ({ id, period, deck, type, cost, immediateEffect, permanentEffect }) => ({
-        id: this._csv.formatCsvStr(id),
-        period: this._csv.formatCsvStr(period),
-        deck: this._csv.formatCsvStr(deck),
-        type: this._csv.formatCsvStr(type),
-        cost: this._csv.formatCsvStr(cost ?? 'Free'),
-        immediateEffect: this._csv.formatCsvStr(immediateEffect ?? 'None'),
-        permanentEffect: this._csv.formatCsvStr(permanentEffect ?? 'None'),
+        id: this._csv.formatValue(id),
+        period: this._csv.formatValue(period),
+        deck: this._csv.formatValue(deck),
+        type: this._csv.formatValue(type),
+        cost: this._csv.formatValue(cost ?? 'Free'),
+        immediateEffect: this._csv.formatValue(immediateEffect ?? 'None'),
+        permanentEffect: this._csv.formatValue(permanentEffect ?? 'None'),
       })
     ).map<string[]>(Object.values);
 
     const rows = [headers.map(startCase), ...cards];
-    this._csv.generateCsv('lorenzo-developments', rows);
+    this._csv.downloadFile('lorenzo-developments', rows);
   }
 
   exportFamilies(): void {
     const headers: (keyof Family)[] = ['name', 'privilege'];
     const cards = FAMILIES.map<CsvFamily>(({ name, privilege }) => ({
-      name: this._csv.formatCsvStr(name),
-      privilege: this._csv.formatCsvStr(privilege),
+      name: this._csv.formatValue(name),
+      privilege: this._csv.formatValue(privilege),
     })).map(Object.values);
 
     const rows = [headers.map(startCase), ...cards];
-    this._csv.generateCsv('lorenzo-families', rows);
+    this._csv.downloadFile('lorenzo-families', rows);
   }
 
   exportLeaders(): void {
@@ -72,14 +72,14 @@ export class CsvService {
     ];
     const cards = LEADERS.map<CsvLeader>(
       ({ name, requirement, type, ability }) => ({
-        name: this._csv.formatCsvStr(name),
-        requirement: this._csv.formatCsvStr(requirement),
-        type: this._csv.formatCsvStr(type),
-        ability: this._csv.formatCsvStr(ability),
+        name: this._csv.formatValue(name),
+        requirement: this._csv.formatValue(requirement),
+        type: this._csv.formatValue(type),
+        ability: this._csv.formatValue(ability),
       })
     ).map<string[]>(Object.values);
 
     const rows = [headers.map(startCase), ...cards];
-    this._csv.generateCsv('lorenzo-leaders', rows);
+    this._csv.downloadFile('lorenzo-leaders', rows);
   }
 }

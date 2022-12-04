@@ -9,7 +9,7 @@ export class Csv {
     }
   }
 
-  generateCsv(filename: string, rows: string[][]): void {
+  downloadFile(filename: string, rows: string[][]): void {
     const csvContent = rows.map((e) => e.join(',')).join('\n');
     const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
     const link = this._document.createElement('a');
@@ -24,7 +24,7 @@ export class Csv {
     }
   }
 
-  formatCsvStr(value: string | number): string {
+  formatValue(value: string | number): string {
     return `"${removeWhitespace(
       typeof value === 'string' ? value : value.toString()
     )}"`;

@@ -11,12 +11,12 @@ describe('Csv', () => {
   });
 
   it('formats standard strings', () => {
-    expect(csv.formatCsvStr('this is a sentence')).toBe('"this is a sentence"');
+    expect(csv.formatValue('this is a sentence')).toBe('"this is a sentence"');
   });
 
   it('formats multiline strings', () => {
     expect(
-      csv.formatCsvStr(`
+      csv.formatValue(`
         this is a sentence with  large  gaps and
         excessive whitespace
       `)
@@ -24,6 +24,6 @@ describe('Csv', () => {
   });
 
   it('formats numbers', () => {
-    expect(csv.formatCsvStr(2870)).toBe('"2870"');
+    expect(csv.formatValue(2870)).toBe('"2870"');
   });
 });
