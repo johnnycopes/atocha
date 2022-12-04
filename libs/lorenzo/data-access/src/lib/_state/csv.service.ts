@@ -2,8 +2,9 @@ import { DOCUMENT } from '@angular/common';
 import { Inject, Injectable } from '@angular/core';
 import { startCase } from 'lodash';
 
-import { removeWhitespace } from '@atocha/core/util';
-import { Development, Family, Leader } from '@atocha/lorenzo/util';
+import { APP_NAME_TOKEN } from '@atocha/core/data-access';
+import { Csv } from '@atocha/core/util';
+import { Card, Development, Family, Leader } from '@atocha/lorenzo/util';
 import { DEVELOPMENTS } from './_cards/developments';
 import { FAMILIES } from './_cards/families';
 import { LEADERS } from './_cards/leaders';
@@ -20,7 +21,14 @@ type CsvLeader = CsvMapping<Leader>;
   providedIn: 'root',
 })
 export class CsvService {
-  constructor(@Inject(DOCUMENT) private _document: Document) {}
+  private _csv: Csv;
+
+  constructor(
+    @Inject(DOCUMENT) private _document: Document,
+    @Inject(APP_NAME_TOKEN) private _appName: string
+  ) {
+    this._csv = new Csv(this._document);
+  }
 
   exportDevelopments(): void {
     const headers: (keyof Development)[] = [
@@ -34,29 +42,27 @@ export class CsvService {
     ];
     const cards = DEVELOPMENTS.map<CsvDevelopment>(
       ({ id, period, deck, type, cost, immediateEffect, permanentEffect }) => ({
-        id: this._formatCsvStr(id),
-        period: this._formatCsvStr(period.toString()),
-        deck: this._formatCsvStr(deck),
-        type: this._formatCsvStr(type),
-        cost: this._formatCsvStr(cost ?? 'Free'),
-        immediateEffect: this._formatCsvStr(immediateEffect ?? 'None'),
-        permanentEffect: this._formatCsvStr(permanentEffect ?? 'None'),
+        id: this._format(id),
+        period: this._format(period),
+        deck: this._format(deck),
+        type: this._format(type),
+        cost: this._format(cost ?? 'Free'),
+        immediateEffect: this._format(immediateEffect ?? 'None'),
+        permanentEffect: this._format(permanentEffect ?? 'None'),
       })
     ).map<string[]>(Object.values);
 
-    const rows = [headers.map(startCase), ...cards];
-    this._generateCsv('lorenzo-developments', rows);
+    this._export({ type: 'development', headers, cards });
   }
 
   exportFamilies(): void {
     const headers: (keyof Family)[] = ['name', 'privilege'];
     const cards = FAMILIES.map<CsvFamily>(({ name, privilege }) => ({
-      name: this._formatCsvStr(name),
-      privilege: this._formatCsvStr(privilege),
+      name: this._format(name),
+      privilege: this._format(privilege),
     })).map(Object.values);
 
-    const rows = [headers.map(startCase), ...cards];
-    this._generateCsv('lorenzo-families', rows);
+    this._export({ type: 'family', headers, cards });
   }
 
   exportLeaders(): void {
@@ -68,33 +74,45 @@ export class CsvService {
     ];
     const cards = LEADERS.map<CsvLeader>(
       ({ name, requirement, type, ability }) => ({
-        name: this._formatCsvStr(name),
-        requirement: this._formatCsvStr(requirement),
-        type: this._formatCsvStr(type),
-        ability: this._formatCsvStr(ability),
+        name: this._format(name),
+        requirement: this._format(requirement),
+        type: this._format(type),
+        ability: this._format(ability),
       })
     ).map<string[]>(Object.values);
 
+    this._export({ type: 'leader', headers, cards });
+  }
+
+  private _format(value: string | number): string {
+    return this._csv.formatValue(value);
+  }
+
+  private _export<T extends string>({
+    type,
+    headers,
+    cards,
+  }: {
+    type: Card;
+    headers: T[];
+    cards: string[][];
+  }): void {
+    const filename = this._createFilename(type);
     const rows = [headers.map(startCase), ...cards];
-    this._generateCsv('lorenzo-leaders', rows);
+    this._csv.downloadFile(filename, rows);
   }
 
-  private _generateCsv(filename: string, rows: string[][]): void {
-    const csvContent = rows.map((e) => e.join(',')).join('\n');
-    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
-    const link = this._document.createElement('a');
-    if (link.download !== undefined) {
-      const url = URL.createObjectURL(blob);
-      link.setAttribute('href', url);
-      link.setAttribute('download', filename);
-      link.style.visibility = 'hidden';
-      this._document.body.appendChild(link);
-      link.click();
-      this._document.body.removeChild(link);
+  private _createFilename(type: Card): string {
+    let plural = '';
+
+    if (type === 'development') {
+      plural = 'developments';
+    } else if (type === 'family') {
+      plural = 'families';
+    } else if (type === 'leader') {
+      plural = 'leaders';
     }
-  }
 
-  private _formatCsvStr(str: string): string {
-    return `"${removeWhitespace(str)}"`;
+    return `${this._appName.toLowerCase()}-${plural}`;
   }
 }
