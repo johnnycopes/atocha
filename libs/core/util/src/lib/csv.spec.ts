@@ -10,16 +10,20 @@ describe('Csv', () => {
     expect(csv).toBeDefined();
   });
 
-  it('formats standard strings in correct syntax', () => {
+  it('formats standard strings', () => {
     expect(csv.formatCsvStr('this is a sentence')).toBe('"this is a sentence"');
   });
 
-  it('formats multiline strings in correct syntax', () => {
+  it('formats multiline strings', () => {
     expect(
       csv.formatCsvStr(`
         this is a sentence with  large  gaps and
         excessive whitespace
       `)
     ).toBe('"this is a sentence with large gaps and excessive whitespace"');
+  });
+
+  it('formats numbers', () => {
+    expect(csv.formatCsvStr(2870)).toBe('"2870"');
   });
 });

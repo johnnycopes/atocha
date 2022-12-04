@@ -24,7 +24,9 @@ export class Csv {
     }
   }
 
-  formatCsvStr(str: string): string {
-    return `"${removeWhitespace(str)}"`;
+  formatCsvStr(value: string | number): string {
+    return `"${removeWhitespace(
+      typeof value === 'string' ? value : value.toString()
+    )}"`;
   }
 }
