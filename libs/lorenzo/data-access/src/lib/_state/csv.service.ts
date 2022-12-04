@@ -48,8 +48,7 @@ export class CsvService {
       })
     ).map<string[]>(Object.values);
 
-    const rows = [headers.map(startCase), ...cards];
-    this._csv.downloadFile('lorenzo-developments', rows);
+    this._export({ filename: 'lorenzo-developments', headers, cards });
   }
 
   exportFamilies(): void {
@@ -59,8 +58,7 @@ export class CsvService {
       privilege: this._csv.formatValue(privilege),
     })).map(Object.values);
 
-    const rows = [headers.map(startCase), ...cards];
-    this._csv.downloadFile('lorenzo-families', rows);
+    this._export({ filename: 'lorenzo-families', headers, cards });
   }
 
   exportLeaders(): void {
@@ -79,7 +77,19 @@ export class CsvService {
       })
     ).map<string[]>(Object.values);
 
+    this._export({ filename: 'lorenzo-leaders', headers, cards });
+  }
+
+  private _export<T extends string>({
+    filename,
+    headers,
+    cards,
+  }: {
+    filename: string;
+    headers: T[];
+    cards: string[][];
+  }): void {
     const rows = [headers.map(startCase), ...cards];
-    this._csv.downloadFile('lorenzo-leaders', rows);
+    this._csv.downloadFile(filename, rows);
   }
 }
