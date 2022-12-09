@@ -39,9 +39,27 @@ const Template: Story<ButtonComponent> = (args: ButtonComponent) => ({
   `,
 });
 
-export const base = Template.bind({});
-base.args = createArgs({
+export const primary = Template.bind({});
+primary.args = createArgs({
   slot: 'Click me!',
+});
+
+export const secondary = Template.bind({});
+secondary.args = createArgs({
+  slot: 'Click me!',
+  variant: 'secondary',
+});
+
+export const tertiary = Template.bind({});
+tertiary.args = createArgs({
+  slot: 'Click me!',
+  variant: 'tertiary',
+});
+
+export const disabled = Template.bind({});
+disabled.args = createArgs({
+  slot: 'Click me!',
+  disabled: true,
 });
 
 type Args = Partial<ButtonComponent> & {
