@@ -2,7 +2,10 @@
   --border-radius: 2px;
   --border-width: 1px;
   --background: cadetblue;
+  --background-hover: salmon;
+  --background-disabled: gray;
   --color: white;
+  --color-disabled: lightgray;
 
   background: var(--background);
   color: var(--color);
@@ -10,4 +13,15 @@
   border: var(--border-width) solid transparent;
   padding: 8px 16px;
   outline: none;
+  cursor: pointer;
+
+  &:hover {
+    background: var(--background-hover);
+  }
+
+  &:disabled {
+    color: var(--color-disabled);
+    background: var(--background-disabled);
+    cursor: unset;
+  }
 }
