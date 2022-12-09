@@ -1,0 +1,13 @@
+.core-button {
+  --border-radius: 2px;
+  --border-width: 1px;
+  --background: cadetblue;
+  --color: white;
+
+  background: var(--background);
+  color: var(--color);
+  border-radius: var(--border-radius);
+  border: var(--border-width) solid transparent;
+  padding: 8px 16px;
+  outline: none;
+}
