@@ -18,6 +18,9 @@ export type ButtonVariant = 'primary' | 'secondary' | 'tertiary';
   styleUrls: ['./button.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
+  host: {
+    class: 'core-button',
+  },
 })
 export class ButtonComponent {
   @HostBinding('disabled')
@@ -27,5 +30,7 @@ export class ButtonComponent {
   @Input() variant: ButtonVariant = 'primary';
 
   @HostBinding('class')
-  classes = ['core-button'];
+  get classes(): string[] {
+    return [`core-button--${this.variant}`];
+  }
 }

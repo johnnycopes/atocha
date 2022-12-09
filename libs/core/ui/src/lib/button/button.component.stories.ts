@@ -6,7 +6,7 @@ import {
 } from '@storybook/angular';
 
 import { StorybookWrapperComponent } from '../../../.storybook/storybook-wrapper/storybook-wrapper.component';
-import { ButtonComponent } from './button.component';
+import { ButtonComponent, ButtonVariant } from './button.component';
 
 export default {
   title: 'ButtonComponent',
@@ -18,6 +18,10 @@ export default {
     componentWrapperDecorator(StorybookWrapperComponent),
   ],
   argTypes: {
+    variant: {
+      control: { type: 'select' },
+      options: ['primary', 'secondary', 'tertiary'] as ButtonVariant[],
+    },
     onClick: { action: 'clicked' },
   },
 } as Meta<ButtonComponent>;
@@ -26,6 +30,7 @@ const Template: Story<ButtonComponent> = (args: ButtonComponent) => ({
   props: args,
   template: `
     <button core-button
+      [variant]="variant"
       [disabled]="disabled"
       (click)="onClick($event)"
     >
@@ -45,7 +50,12 @@ type Args = Partial<ButtonComponent> & {
 };
 
 function createArgs(
-  { slot = '', className = '', disabled = false } = {} as Args
+  {
+    slot = '',
+    className = '',
+    variant = 'primary',
+    disabled = false,
+  } = {} as Args
 ): Args {
-  return { slot, className, disabled };
+  return { slot, className, variant, disabled };
 }

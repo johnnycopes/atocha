@@ -1,14 +1,14 @@
 .core-button {
   --border-radius: 2px;
-  --border-width: 1px;
+  --border-width: 2px;
   --background: cadetblue;
   --background-hover: salmon;
   --background-disabled: gray;
   --color: white;
+  --color-hover: maroon;
   --color-disabled: lightgray;
 
-  background: var(--background);
-  color: var(--color);
+  background: transparent;
   border-radius: var(--border-radius);
   border: var(--border-width) solid transparent;
   padding: 8px 16px;
@@ -16,12 +16,41 @@
   cursor: pointer;
 
   &:hover {
-    background: var(--background-hover);
+    color: var(--color-hover);
   }
 
   &:disabled {
     color: var(--color-disabled);
-    background: var(--background-disabled);
     cursor: unset;
+  }
+
+  &--primary {
+    background: var(--background);
+    color: var(--color);
+
+    &:hover {
+      background: var(--background-hover);
+    }
+
+    &:disabled {
+      background: var(--background-disabled);
+    }
+  }
+
+  &--secondary {
+    color: var(--background);
+    border-color: var(--background);
+
+    &:hover {
+      border-color: var(--background-hover);
+    }
+
+    &:disabled {
+      border-color: var(--background-disabled);
+    }
+  }
+
+  &--tertiary {
+    color: var(--background);
   }
 }
