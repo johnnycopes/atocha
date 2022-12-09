@@ -1,10 +1,5 @@
-<button
-  class="button"
-  [class]="{
-    'button--primary': buttonStyle === 'primary',
-    'button--secondary': buttonStyle === 'secondary'
-  }"
-  [type]="buttonType"
+<button core-button
+  [variant]="buttonStyle"
   [disabled]="disabled"
   (click)="onClick()"
 >
