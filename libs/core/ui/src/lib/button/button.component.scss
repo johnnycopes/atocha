@@ -1,0 +1,54 @@
+.core-button {
+  --border-width: 2px;
+  --background: cadetblue;
+  --background-hover: salmon;
+  --background-disabled: gray;
+  --color: white;
+  --color-hover: maroon;
+  --color-disabled: lightgray;
+  background: transparent;
+  border-radius: 2px;
+  border: var(--border-width) solid transparent;
+  padding: 8px 16px;
+  outline: none;
+  cursor: pointer;
+
+  &:hover {
+    color: var(--color-hover);
+  }
+
+  &:disabled {
+    color: var(--color-disabled);
+    cursor: unset;
+  }
+
+  &--primary {
+    background: var(--background);
+    color: var(--color);
+
+    &:hover {
+      background: var(--background-hover);
+    }
+
+    &:disabled {
+      background: var(--background-disabled);
+    }
+  }
+
+  &--secondary {
+    color: var(--background);
+    border-color: var(--background);
+
+    &:hover {
+      border-color: var(--background-hover);
+    }
+
+    &:disabled {
+      border-color: var(--background-disabled);
+    }
+  }
+
+  &--tertiary {
+    color: var(--background);
+  }
+}
