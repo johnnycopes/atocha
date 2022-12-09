@@ -1,5 +1,4 @@
 .core-button {
-  --border-radius: 2px;
   --border-width: 2px;
   --background: cadetblue;
   --background-hover: salmon;
@@ -9,7 +8,7 @@
   --color-disabled: lightgray;
 
   background: transparent;
-  border-radius: var(--border-radius);
+  border-radius: 2px;
   border: var(--border-width) solid transparent;
   padding: 8px 16px;
   outline: none;
