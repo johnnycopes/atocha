@@ -35,6 +35,9 @@ export class ButtonComponent {
   @HostBinding('class')
   variantClass = this._createVariantClass('primary');
 
+  @HostBinding('attr.data-test')
+  dataTest = 'core-button';
+
   private _createVariantClass(variant: ButtonVariant): string {
     return `core-button--${variant}`;
   }
