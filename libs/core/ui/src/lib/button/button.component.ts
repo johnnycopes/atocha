@@ -27,10 +27,15 @@ export class ButtonComponent {
   @Input()
   disabled = false;
 
-  @Input() variant: ButtonVariant = 'primary';
+  @Input()
+  set variant(value: ButtonVariant) {
+    this.variantClass = this._createVariantClass(value);
+  }
 
   @HostBinding('class')
-  get classes(): string[] {
-    return [`core-button--${this.variant}`];
+  variantClass = this._createVariantClass('primary');
+
+  private _createVariantClass(variant: ButtonVariant): string {
+    return `core-button--${variant}`;
   }
 }
