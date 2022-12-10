@@ -1,15 +1,13 @@
 <ui-section *ngIf="dish$ | async as dish">
   <div class="ui-section__toolbar">
-    <button ui-button
+    <button core-button="danger"
       class="button"
-      buttonStyle="danger"
       (click)="onDelete()"
     >
       Delete
     </button>
-    <a ui-button
+    <a core-button="secondary"
       class="button"
-      buttonStyle="secondary"
       routerLink="edit"
     >
       Edit
