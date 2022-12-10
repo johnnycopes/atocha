@@ -1,15 +1,13 @@
 <ui-section *ngIf="vm$ | async as vm">
   <div class="ui-section__toolbar">
-    <a ui-button
+    <a core-button="secondary"
       class="button"
-      buttonStyle="secondary"
       routerLink=".."
     >
       Cancel
     </a>
-    <button ui-button
+    <button core-button
       class="button"
-      buttonStyle="primary"
       type="submit"
       form="ngForm"
       [disabled]="!form.valid"

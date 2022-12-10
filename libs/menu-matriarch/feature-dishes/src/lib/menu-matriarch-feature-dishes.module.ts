@@ -6,13 +6,14 @@ import { EditorModule } from '@tinymce/tinymce-angular';
 
 import {
   AutofocusDirective,
+  ButtonComponent,
   CheckboxComponent,
   PluralPipe,
   SafePipe,
 } from '@atocha/core/ui';
 import { MenuMatriarchFeatureEntitiesModule } from '@atocha/menu-matriarch/feature-entities';
 import {
-  ButtonComponent,
+  ButtonComponent as LegacyButtonComponent,
   CardComponent,
   DishSummaryComponent,
   InputComponent,
@@ -38,6 +39,7 @@ import { DishPlaceholderComponent } from './dish-placeholder/dish-placeholder.co
   imports: [
     AutofocusDirective,
     ButtonComponent,
+    LegacyButtonComponent,
     CardComponent,
     CheckboxComponent,
     CommonModule,
