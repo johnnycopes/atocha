@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { combineLatest, map } from 'rxjs';
 
-import { SearchInputComponent } from '@atocha/core/ui';
+import { ButtonComponent, SearchInputComponent } from '@atocha/core/ui';
 import { AppStateService } from '@atocha/lorenzo/data-access';
 import { View } from '@atocha/lorenzo/util';
 import { CommonModule } from '@angular/common';
@@ -10,7 +10,7 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'header[app-header]',
-  imports: [CommonModule, SearchInputComponent],
+  imports: [ButtonComponent, CommonModule, SearchInputComponent],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
