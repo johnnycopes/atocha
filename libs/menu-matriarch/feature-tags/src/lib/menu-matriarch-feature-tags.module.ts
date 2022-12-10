@@ -2,8 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
+import { ButtonComponent } from '@atocha/core/ui';
 import {
-  ButtonComponent,
+  ButtonComponent as LegacyButtonComponent,
   CardComponent,
   CountComponent,
   InlineNameEditComponent,
@@ -17,6 +18,7 @@ import { TagsComponent } from './tags.component';
   declarations: [TagCardComponent, TagsComponent],
   imports: [
     ButtonComponent,
+    LegacyButtonComponent,
     CardComponent,
     CommonModule,
     CountComponent,
