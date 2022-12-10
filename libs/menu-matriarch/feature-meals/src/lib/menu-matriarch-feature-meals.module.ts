@@ -3,10 +3,14 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
-import { AutofocusDirective, CheckboxComponent } from '@atocha/core/ui';
+import {
+  AutofocusDirective,
+  ButtonComponent,
+  CheckboxComponent,
+} from '@atocha/core/ui';
 import { MenuMatriarchFeatureEntitiesModule } from '@atocha/menu-matriarch/feature-entities';
 import {
-  ButtonComponent,
+  ButtonComponent as LegacyButtonComponent,
   CardComponent,
   DishSummaryComponent,
   InputComponent,
@@ -33,6 +37,7 @@ import { MealsComponent } from './meals.component';
   imports: [
     AutofocusDirective,
     ButtonComponent,
+    LegacyButtonComponent,
     CardComponent,
     CheckboxComponent,
     CommonModule,
