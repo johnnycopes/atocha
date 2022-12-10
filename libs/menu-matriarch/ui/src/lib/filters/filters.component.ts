@@ -8,9 +8,8 @@ import {
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
-import { CheckboxComponent } from '@atocha/core/ui';
+import { ButtonComponent, CheckboxComponent } from '@atocha/core/ui';
 import { Tag } from '@atocha/menu-matriarch/util';
-import { ButtonComponent } from '../_generic/button/button.component';
 import { CardComponent } from '../_generic/card/card.component';
 import { TagComponent } from '../tags/tag/tag.component';
 import { TagDefDirective } from '../tags/tags-list/tag-def.directive';
