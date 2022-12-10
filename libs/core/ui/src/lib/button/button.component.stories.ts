@@ -20,7 +20,12 @@ export default {
   argTypes: {
     variant: {
       control: { type: 'select' },
-      options: ['primary', 'secondary', 'tertiary'] as ButtonVariant[],
+      options: [
+        'primary',
+        'secondary',
+        'tertiary',
+        'danger',
+      ] as ButtonVariant[],
     },
     onClick: { action: 'clicked' },
   },
