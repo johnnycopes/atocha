@@ -2,8 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
+import { ButtonComponent } from '@atocha/core/ui';
 import {
-  ButtonComponent,
+  ButtonComponent as LegacyButtonComponent,
   EmptyViewPlaceholderComponent,
 } from '@atocha/menu-matriarch/ui';
 import { ErrorComponent } from './error/error.component';
@@ -23,6 +24,7 @@ import { WelcomeComponent } from './welcome/welcome.component';
   exports: [ErrorComponent],
   imports: [
     ButtonComponent,
+    LegacyButtonComponent,
     CommonModule,
     EmptyViewPlaceholderComponent,
     RouterModule,
