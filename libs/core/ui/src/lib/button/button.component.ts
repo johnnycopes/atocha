@@ -7,7 +7,7 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 
-export type ButtonVariant = 'primary' | 'secondary' | 'tertiary';
+export type ButtonVariant = 'primary' | 'secondary' | 'tertiary' | 'danger';
 export type ButtonType = 'submit' | 'button' | 'reset';
 
 @Component({
@@ -24,10 +24,6 @@ export type ButtonType = 'submit' | 'button' | 'reset';
   },
 })
 export class ButtonComponent {
-  @HostBinding('disabled')
-  @Input()
-  disabled = false;
-
   @HostBinding('type')
   @Input()
   type: ButtonType = 'button';

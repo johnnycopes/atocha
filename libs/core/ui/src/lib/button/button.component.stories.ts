@@ -26,7 +26,7 @@ export default {
   },
 } as Meta<ButtonComponent>;
 
-const Template: Story<ButtonComponent> = (args: ButtonComponent) => ({
+const Template: Story<ButtonComponent> = (args: Args) => ({
   props: args,
   template: `
     <button core-button="{{ variant }}"
@@ -57,9 +57,20 @@ tertiary.args = createArgs({
 });
 
 export const disabled = Template.bind({});
-disabled.args = createArgs({
-  disabled: true,
+disabled.args = createArgs({});
+
+export const link: Story<ButtonComponent> = (args: Args) => ({
+  props: args,
+  template: `
+    <a core-button="{{ variant }}"
+      [disabled]="disabled"
+      (click)="onClick($event)"
+    >
+      {{ slot }}
+    </a>
+  `,
 });
+link.args = createArgs({});
 
 type Args = Partial<ButtonComponent> & {
   slot?: string;
@@ -67,12 +78,7 @@ type Args = Partial<ButtonComponent> & {
 };
 
 function createArgs(
-  {
-    slot = 'Click me!',
-    className = '',
-    variant = '',
-    disabled = false,
-  } = {} as Args
+  { slot = 'Click me!', className = '', variant = '' } = {} as Args
 ): Args {
-  return { slot, className, variant, disabled };
+  return { slot, className, variant };
 }
