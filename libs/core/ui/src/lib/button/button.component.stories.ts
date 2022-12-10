@@ -29,8 +29,7 @@ export default {
 const Template: Story<ButtonComponent> = (args: ButtonComponent) => ({
   props: args,
   template: `
-    <button core-button
-      [variant]="variant"
+    <button core-button="{{ variant }}"
       [disabled]="disabled"
       (click)="onClick($event)"
     >
@@ -39,26 +38,26 @@ const Template: Story<ButtonComponent> = (args: ButtonComponent) => ({
   `,
 });
 
+export const base = Template.bind({});
+base.args = createArgs({});
+
 export const primary = Template.bind({});
 primary.args = createArgs({
-  slot: 'Click me!',
+  variant: 'primary',
 });
 
 export const secondary = Template.bind({});
 secondary.args = createArgs({
-  slot: 'Click me!',
   variant: 'secondary',
 });
 
 export const tertiary = Template.bind({});
 tertiary.args = createArgs({
-  slot: 'Click me!',
   variant: 'tertiary',
 });
 
 export const disabled = Template.bind({});
 disabled.args = createArgs({
-  slot: 'Click me!',
   disabled: true,
 });
 
@@ -69,9 +68,9 @@ type Args = Partial<ButtonComponent> & {
 
 function createArgs(
   {
-    slot = '',
+    slot = 'Click me!',
     className = '',
-    variant = 'primary',
+    variant = '',
     disabled = false,
   } = {} as Args
 ): Args {

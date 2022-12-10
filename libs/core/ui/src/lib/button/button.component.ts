@@ -8,6 +8,7 @@ import {
 } from '@angular/core';
 
 export type ButtonVariant = 'primary' | 'secondary' | 'tertiary';
+export type ButtonType = 'submit' | 'button' | 'reset';
 
 @Component({
   standalone: true,
@@ -27,18 +28,18 @@ export class ButtonComponent {
   @Input()
   disabled = false;
 
+  @HostBinding('type')
   @Input()
-  set variant(value: ButtonVariant) {
-    this.variantClass = this._createVariantClass(value);
+  type: ButtonType = 'button';
+
+  @Input('core-button')
+  set variant(value: '' | ButtonVariant) {
+    this.variantClass = `core-button--${value ? value : 'primary'}`;
   }
 
   @HostBinding('class')
-  variantClass = this._createVariantClass('primary');
+  variantClass = '';
 
   @HostBinding('attr.data-test')
   dataTest = 'core-button';
-
-  private _createVariantClass(variant: ButtonVariant): string {
-    return `core-button--${variant}`;
-  }
 }
