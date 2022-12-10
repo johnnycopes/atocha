@@ -1,14 +1,18 @@
 <ng-content></ng-content>
-<button ui-button
+<button core-button="secondary"
   class="ui-inline-form__button"
-  buttonStyle="secondary"
-  [icon]="cancelIcon"
   (click)="cancel.emit()"
-></button>
-<button ui-button
+>
+  <fa-icon class="icon"
+    [icon]="cancelIcon"
+  ></fa-icon>
+</button>
+<button core-button
   class="ui-inline-form__button"
-  buttonStyle="primary"
   [disabled]="disabled"
-  [icon]="saveIcon"
   (click)="save.emit()"
-></button>
+>
+  <fa-icon class="icon"
+    [icon]="saveIcon"
+  ></fa-icon>
+</button>
