@@ -14,12 +14,14 @@
           {{ name }}
         </h3>
       </a>
-      <button ui-button
-        buttonStyle="ternary"
-        [icon]="menuToggleIcon"
+      <button core-button="tertiary"
         [disabled]="state !== 'default'"
         [uiOptionsMenuTrigger]="optionsMenu"
-      ></button>
+      >
+        <fa-icon class="icon"
+          [icon]="menuToggleIcon"
+        ></fa-icon>
+      </button>
       <ui-options-menu #optionsMenu>
         <li ui-options-menu-item
           (click)="print.emit()"

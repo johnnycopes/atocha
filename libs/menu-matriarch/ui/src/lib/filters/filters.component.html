@@ -18,7 +18,7 @@
       </core-checkbox>
     </ng-container>
     <li>
-      <button ui-button
+      <button core-button="tertiary"
         buttonStyle="ternary"
         [disabled]="!selected.length"
         (click)="selectedClear.emit()"

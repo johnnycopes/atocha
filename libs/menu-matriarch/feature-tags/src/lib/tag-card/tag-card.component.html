@@ -23,16 +23,14 @@
       type="dishes"
       [count]="dishes.length"
     ></ui-count>
-    <button ui-button
+    <button core-button="danger"
       class="button"
-      buttonStyle="danger"
       (click)="delete.emit()"
     >
       Delete
     </button>
-    <button ui-button
+    <button core-button="secondary"
       class="button"
-      buttonStyle="secondary"
       (click)="startEdit$.next()"
     >
       Edit

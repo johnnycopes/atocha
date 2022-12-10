@@ -12,7 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
 
-import { ButtonComponent } from '../button/button.component';
+import { ButtonComponent } from '@atocha/core/ui';
 
 @Component({
   standalone: true,

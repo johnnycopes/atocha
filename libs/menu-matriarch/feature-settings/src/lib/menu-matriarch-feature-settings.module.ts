@@ -3,8 +3,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
+import { ButtonComponent } from '@atocha/core/ui';
 import {
-  ButtonComponent,
   CardComponent,
   InputComponent,
   SectionComponent,

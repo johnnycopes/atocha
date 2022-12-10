@@ -3,9 +3,8 @@
     <h2 class="title">
       Tags ({{ tags.length }})
     </h2>
-    <button ui-button
-      buttonStyle="primary"
-      [disabled]="adding$ | async"
+    <button core-button
+      [disabled]="(adding$ | async) ?? false"
       (click)="startAdd$.next()"
     >
       New Tag

@@ -4,10 +4,9 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
-import { CheckboxComponent } from '@atocha/core/ui';
+import { ButtonComponent, CheckboxComponent } from '@atocha/core/ui';
 import { MenuMatriarchFeatureEntitiesModule } from '@atocha/menu-matriarch/feature-entities';
 import {
-  ButtonComponent,
   CardComponent,
   DishSummaryComponent,
   EmptyViewPlaceholderComponent,

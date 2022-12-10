@@ -7,9 +7,12 @@ import {
   Output,
 } from '@angular/core';
 
-import { PluralPipe, SearchInputComponent } from '@atocha/core/ui';
+import {
+  ButtonComponent,
+  PluralPipe,
+  SearchInputComponent,
+} from '@atocha/core/ui';
 import { Tag } from '@atocha/menu-matriarch/util';
-import { ButtonComponent } from '../_generic/button/button.component';
 import { FiltersButtonComponent } from '../filters-button/filters-button.component';
 import { FiltersComponent } from '../filters/filters.component';
 import { InputComponent } from '../_generic/input/input.component';
