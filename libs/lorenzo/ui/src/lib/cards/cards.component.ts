@@ -13,13 +13,14 @@ import {
   TrackByFunction,
 } from '@angular/core';
 
+import { ButtonComponent } from '@atocha/core/ui';
 import { Ordinal } from '@atocha/lorenzo/util';
 import { CardTemplateDirective } from './card-template.directive';
 
 @Component({
   standalone: true,
   selector: 'ui-cards',
-  imports: [CommonModule],
+  imports: [ButtonComponent, CommonModule],
   templateUrl: './cards.component.html',
   styleUrls: ['./cards.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

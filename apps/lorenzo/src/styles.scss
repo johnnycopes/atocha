@@ -63,18 +63,6 @@ ul {
   --border-radius: 4px;
 }
 
-button {
-  padding: 2px 8px;
-  background: #fff;
-  color: var(--font-color);
-  font-family: var(--font-family);
-  font-size: 12px;
-  border: 2px solid var(--card-bg-dark);
-  border-radius: var(--border-radius);
-  outline: none;
-  cursor: pointer;
-}
-
 a {
   color: #fff;
 }
@@ -97,6 +85,16 @@ a {
 // Component styling overrides
 
 app-root {
+  .core-button {
+    padding: 2px 8px;
+    background: #fff;
+    color: var(--font-color);
+    font-family: var(--font-family);
+    font-size: 12px;
+    border: 2px solid var(--card-bg-dark);
+    border-radius: var(--border-radius);
+  }
+
   .core-search-input {
     &__field {
       width: 100%;
