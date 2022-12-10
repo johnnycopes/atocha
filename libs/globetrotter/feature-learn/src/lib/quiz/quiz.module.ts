@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { ButtonComponent } from '@atocha/core/ui';
 import {
-  ButtonComponent,
+  ButtonComponent as LegacyButtonComponent,
   ContainerComponent,
   FixedSlideablePanelComponent,
   FlipCardComponent,
@@ -16,6 +17,7 @@ import { QuizMenuComponent } from './quiz-menu/quiz-menu.component';
 @NgModule({
   imports: [
     ButtonComponent,
+    LegacyButtonComponent,
     CommonModule,
     ContainerComponent,
     FixedSlideablePanelComponent,

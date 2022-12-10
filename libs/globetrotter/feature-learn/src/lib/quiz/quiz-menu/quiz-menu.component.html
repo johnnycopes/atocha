@@ -37,9 +37,11 @@
     <h1 class="accuracy">
       {{ accuracy }}%
     </h1>
-    <ui-button class="reset"
-      buttonText="Reset"
+    <button core-button
+      class="reset"
       (click)="exit.emit()"
-    ></ui-button>
+    >
+      Reset
+    </button>
   </div>
 </ui-fixed-slideable-panel>
