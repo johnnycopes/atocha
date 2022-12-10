@@ -6,7 +6,10 @@ import {
   ChangeDetectionStrategy,
 } from '@angular/core';
 
-import { ButtonComponent as CoreButtonComponent } from '@atocha/core/ui';
+import {
+  ButtonComponent as CoreButtonComponent,
+  ButtonVariant,
+} from '@atocha/core/ui';
 
 @Component({
   standalone: true,
@@ -18,8 +21,7 @@ import { ButtonComponent as CoreButtonComponent } from '@atocha/core/ui';
 })
 export class ButtonComponent {
   @Input() buttonText = '';
-  @Input() buttonType = 'button';
-  @Input() buttonStyle: 'primary' | 'secondary' = 'primary';
+  @Input() buttonStyle: ButtonVariant = 'primary';
   @Input() disabled = false;
   @Output() clicked = new EventEmitter<void>();
 
