@@ -6,10 +6,12 @@ describe('ButtonComponent', () => {
     button = '[data-test="core-button"]';
     stories = {
       base: '/iframe.html?path=/story/buttoncomponent--base',
+      asLink: '/iframe.html?path=/story/buttoncomponent--as-link',
       disabled: '/iframe.html?path=/story/buttoncomponent--disabled',
       primary: '/iframe.html?path=/story/buttoncomponent--primary',
       secondary: '/iframe.html?path=/story/buttoncomponent--secondary',
       tertiary: '/iframe.html?path=/story/buttoncomponent--tertiary',
+      danger: '/iframe.html?path=/story/buttoncomponent--danger',
     };
   });
 
@@ -19,7 +21,7 @@ describe('ButtonComponent', () => {
       .should('has.class', 'core-button--primary');
   });
 
-  it('Can be clicked by default', () => {
+  it('Can be attached to <button> element', () => {
     cy.visit(stories.base)
       .get(button)
       .should('not.be.disabled')
@@ -27,8 +29,8 @@ describe('ButtonComponent', () => {
       .should('have.focus');
   });
 
-  it('Can be disabled', () => {
-    cy.visit(stories.disabled).get(button).should('be.disabled');
+  it('Can be attached to <a> element', () => {
+    cy.visit(stories.asLink).get(button).should('have.attr', 'href');
   });
 
   it('Renders appropriate variant', () => {
@@ -43,5 +45,9 @@ describe('ButtonComponent', () => {
     cy.visit(stories.tertiary)
       .get(button)
       .should('have.class', 'core-button--tertiary');
+
+    cy.visit(stories.danger)
+      .get(button)
+      .should('have.class', 'core-button--danger');
   });
 });

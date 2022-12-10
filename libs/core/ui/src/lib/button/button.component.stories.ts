@@ -56,21 +56,25 @@ tertiary.args = createArgs({
   variant: 'tertiary',
 });
 
+export const danger = Template.bind({});
+danger.args = createArgs({
+  variant: 'danger',
+});
+
 export const disabled = Template.bind({});
 disabled.args = createArgs({});
 
-export const link: Story<ButtonComponent> = (args: Args) => ({
+export const asLink: Story<ButtonComponent> = (args: Args) => ({
   props: args,
   template: `
     <a core-button="{{ variant }}"
-      [disabled]="disabled"
-      (click)="onClick($event)"
+      href="#"
     >
       {{ slot }}
     </a>
   `,
 });
-link.args = createArgs({});
+asLink.args = createArgs({});
 
 type Args = Partial<ButtonComponent> & {
   slot?: string;
