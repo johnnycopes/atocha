@@ -4,7 +4,6 @@ import { RouterModule } from '@angular/router';
 
 import { ButtonComponent } from '@atocha/core/ui';
 import {
-  ButtonComponent as LegacyButtonComponent,
   ErrorComponent,
   IconComponent,
   LoaderComponent,
@@ -17,7 +16,6 @@ import { ShellComponent } from './shell/shell.component';
 @NgModule({
   imports: [
     ButtonComponent,
-    LegacyButtonComponent,
     CommonModule,
     ErrorComponent,
     IconComponent,

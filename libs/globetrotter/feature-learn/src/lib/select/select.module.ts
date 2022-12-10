@@ -7,7 +7,6 @@ import {
   NestedCheckboxesWithCountsComponent,
 } from '@atocha/core/ui';
 import {
-  ButtonComponent as LegacyButtonComponent,
   IconComponent,
   InputComponent,
   RadioButtonsComponent,
@@ -21,7 +20,6 @@ import { SelectTypeComponent } from './select-type/select-type.component';
 @NgModule({
   imports: [
     ButtonComponent,
-    LegacyButtonComponent,
     CommonModule,
     FormsModule,
     IconComponent,
