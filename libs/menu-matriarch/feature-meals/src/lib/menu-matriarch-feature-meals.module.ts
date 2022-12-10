@@ -10,7 +10,6 @@ import {
 } from '@atocha/core/ui';
 import { MenuMatriarchFeatureEntitiesModule } from '@atocha/menu-matriarch/feature-entities';
 import {
-  ButtonComponent as LegacyButtonComponent,
   CardComponent,
   DishSummaryComponent,
   InputComponent,
@@ -37,7 +36,6 @@ import { MealsComponent } from './meals.component';
   imports: [
     AutofocusDirective,
     ButtonComponent,
-    LegacyButtonComponent,
     CardComponent,
     CheckboxComponent,
     CommonModule,

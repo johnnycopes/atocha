@@ -6,7 +6,6 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { ButtonComponent } from '@atocha/core/ui';
 import {
-  ButtonComponent as LegacyButtonComponent,
   CardComponent,
   InlineDaySelectComponent,
   InlineNameEditComponent,
@@ -24,7 +23,6 @@ import { MenuCardComponent } from './menu-card/menu-card.component';
   declarations: [MenuCardComponent, MenusComponent],
   imports: [
     ButtonComponent,
-    LegacyButtonComponent,
     CardComponent,
     CommonModule,
     FontAwesomeModule,

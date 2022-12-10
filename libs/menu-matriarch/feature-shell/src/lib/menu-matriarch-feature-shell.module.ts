@@ -3,10 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 import { ButtonComponent } from '@atocha/core/ui';
-import {
-  ButtonComponent as LegacyButtonComponent,
-  EmptyViewPlaceholderComponent,
-} from '@atocha/menu-matriarch/ui';
+import { EmptyViewPlaceholderComponent } from '@atocha/menu-matriarch/ui';
 import { ErrorComponent } from './error/error.component';
 import { HeaderComponent } from './header/header.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
@@ -24,7 +21,6 @@ import { WelcomeComponent } from './welcome/welcome.component';
   exports: [ErrorComponent],
   imports: [
     ButtonComponent,
-    LegacyButtonComponent,
     CommonModule,
     EmptyViewPlaceholderComponent,
     RouterModule,

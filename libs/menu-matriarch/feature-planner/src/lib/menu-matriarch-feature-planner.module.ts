@@ -7,7 +7,6 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ButtonComponent, CheckboxComponent } from '@atocha/core/ui';
 import { MenuMatriarchFeatureEntitiesModule } from '@atocha/menu-matriarch/feature-entities';
 import {
-  ButtonComponent as LegacyButtonComponent,
   CardComponent,
   DishSummaryComponent,
   EmptyViewPlaceholderComponent,
@@ -37,7 +36,6 @@ import { PlannerMenuComponent } from './planner-menu/planner-menu.component';
   ],
   imports: [
     ButtonComponent,
-    LegacyButtonComponent,
     CardComponent,
     CheckboxComponent,
     CommonModule,

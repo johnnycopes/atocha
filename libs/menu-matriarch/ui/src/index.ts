@@ -1,7 +1,6 @@
 export * from './lib/track-by-functions';
 
 export * from './lib/_generic/alert/alert.component';
-export * from './lib/_generic/button/button.component';
 export * from './lib/_generic/card/card.component';
 export * from './lib/_generic/inline-form/inline-form.component';
 export * from './lib/_generic/input/input.component';

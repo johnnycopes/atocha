@@ -5,7 +5,6 @@ import { RouterModule } from '@angular/router';
 
 import { ButtonComponent } from '@atocha/core/ui';
 import {
-  ButtonComponent as LegacyButtonComponent,
   CardComponent,
   InputComponent,
   SectionComponent,
@@ -16,7 +15,6 @@ import { SettingsComponent } from './settings.component';
   declarations: [SettingsComponent],
   imports: [
     ButtonComponent,
-    LegacyButtonComponent,
     CardComponent,
     CommonModule,
     FormsModule,
