@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { RouterModule } from '@angular/router';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { ButtonComponent } from '@atocha/core/ui';
 import {
@@ -26,6 +27,7 @@ import { MenuCardComponent } from './menu-card/menu-card.component';
     LegacyButtonComponent,
     CardComponent,
     CommonModule,
+    FontAwesomeModule,
     InlineDaySelectComponent,
     InlineNameEditComponent,
     MealSummaryComponent,
