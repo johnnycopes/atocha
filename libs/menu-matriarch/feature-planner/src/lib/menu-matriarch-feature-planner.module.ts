@@ -4,10 +4,10 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
-import { CheckboxComponent } from '@atocha/core/ui';
+import { ButtonComponent, CheckboxComponent } from '@atocha/core/ui';
 import { MenuMatriarchFeatureEntitiesModule } from '@atocha/menu-matriarch/feature-entities';
 import {
-  ButtonComponent,
+  ButtonComponent as LegacyButtonComponent,
   CardComponent,
   DishSummaryComponent,
   EmptyViewPlaceholderComponent,
@@ -37,6 +37,7 @@ import { PlannerMenuComponent } from './planner-menu/planner-menu.component';
   ],
   imports: [
     ButtonComponent,
+    LegacyButtonComponent,
     CardComponent,
     CheckboxComponent,
     CommonModule,
