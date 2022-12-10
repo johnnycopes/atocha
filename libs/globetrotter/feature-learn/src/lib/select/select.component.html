@@ -6,11 +6,12 @@
     <h1 class="header">
       Create Quiz
     </h1>
-    <ui-button
-      buttonText="Launch"
+    <button core-button
       [disabled]="vm.invalidQuantity"
-      (clicked)="onLaunch()"
-    ></ui-button>
+      (click)="onLaunch()"
+    >
+      Launch
+    </button>
   </div>
   <div class="fields">
     <div class="fields__top">
