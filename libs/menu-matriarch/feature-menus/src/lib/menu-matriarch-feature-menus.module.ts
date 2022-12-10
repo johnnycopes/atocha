@@ -3,8 +3,9 @@ import { CommonModule } from '@angular/common';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { RouterModule } from '@angular/router';
 
+import { ButtonComponent } from '@atocha/core/ui';
 import {
-  ButtonComponent,
+  ButtonComponent as LegacyButtonComponent,
   CardComponent,
   InlineDaySelectComponent,
   InlineNameEditComponent,
@@ -22,6 +23,7 @@ import { MenuCardComponent } from './menu-card/menu-card.component';
   declarations: [MenuCardComponent, MenusComponent],
   imports: [
     ButtonComponent,
+    LegacyButtonComponent,
     CardComponent,
     CommonModule,
     InlineDaySelectComponent,

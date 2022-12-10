@@ -3,8 +3,7 @@
     <h2 class="title">
       Menus ({{ vm.menus.length }})
     </h2>
-    <button ui-button
-      buttonStyle="primary"
+    <button core-button
       [disabled]="vm.adding"
       (click)="addingSubject.next(true)"
     >
