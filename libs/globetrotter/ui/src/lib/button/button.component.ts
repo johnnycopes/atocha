@@ -16,7 +16,6 @@ import {
   selector: 'ui-button',
   imports: [CoreButtonComponent],
   templateUrl: './button.component.html',
-  styleUrls: ['./button.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ButtonComponent {
