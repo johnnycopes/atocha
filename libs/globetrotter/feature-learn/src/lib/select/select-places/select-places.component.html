@@ -7,16 +7,18 @@
       possible countries in the cards.
     </div>
     <div class="top__buttons">
-      <ui-button class="top__select-all"
-        buttonStyle="secondary"
-        buttonText="Select all"
+      <button core-button="secondary"
+        class="top__select-all"
         (click)="onSelectAll()"
-      ></ui-button>
-      <ui-button class="top__clear-all"
-        buttonStyle="secondary"
-        buttonText="Clear all"
+      >
+        Select all
+      </button>
+      <button core-button="secondary"
+        class="top__clear-all"
         (click)="onClearAll()"
-      ></ui-button>
+      >
+        Clear all
+      </button>
     </div>
   </div>
   <div class="regions">
