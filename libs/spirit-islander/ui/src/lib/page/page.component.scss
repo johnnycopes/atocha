@@ -13,16 +13,23 @@
   }
 
   [ui-page-content] {
-    margin-bottom: 36px;
+    & > *:not(:last-of-type) {
+      margin-bottom: 36px;
 
-    @media screen and (min-width: 768px) {
-      margin-bottom: 48px;
+      @media screen and (min-width: 768px) {
+        margin-bottom: 48px;
+      }
     }
   }
 
   [ui-page-actions] {
     display: flex;
     justify-content: center;
+    margin-top: 36px;
+
+    @media screen and (min-width: 768px) {
+      margin-top: 48px;
+    }
 
     button {
       &:not(:last-of-type) {
