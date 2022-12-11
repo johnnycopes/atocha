@@ -8,6 +8,7 @@ import {
   AutofocusDirective,
   ButtonComponent,
   CheckboxComponent,
+  ExternalLinkDirective,
   PluralPipe,
   SafePipe,
 } from '@atocha/core/ui';
@@ -43,6 +44,7 @@ import { DishPlaceholderComponent } from './dish-placeholder/dish-placeholder.co
     CommonModule,
     DishSummaryComponent,
     EditorModule,
+    ExternalLinkDirective,
     FormsModule,
     InputComponent,
     MenuMatriarchFeatureEntitiesModule,
