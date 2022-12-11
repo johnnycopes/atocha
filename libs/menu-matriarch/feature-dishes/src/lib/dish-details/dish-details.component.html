@@ -22,10 +22,8 @@
     >
       {{ dish.description }}
     </p>
-    <a *ngIf="dish.link"
-      [href]="dish.link"
-      target="_blank"
-      rel="noopener noreferrer"
+    <a [coreExternalLink]="dish.link"
+      *ngIf="dish.link"
     >
       {{ dish.link }}
     </a>

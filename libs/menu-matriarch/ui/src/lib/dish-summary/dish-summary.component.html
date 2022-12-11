@@ -7,11 +7,9 @@
     </h3>
   </a>
   <div class="details">
-    <a *ngIf="link"
+    <a [coreExternalLink]="link"
+      *ngIf="link"
       class="external-link"
-      [href]="link"
-      target="_blank"
-      rel="noopener noreferrer"
     >
       <fa-icon [icon]="faLink">
       </fa-icon>
