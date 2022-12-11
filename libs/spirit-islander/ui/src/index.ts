@@ -1,5 +1,4 @@
 export * from './lib/board-emblem/board-emblem.component';
-export * from './lib/button/button.component';
 export * from './lib/card/card.component';
 export * from './lib/difficulty-emblem/difficulty-emblem.component';
 export * from './lib/expansion-emblem/expansion-emblem.component';

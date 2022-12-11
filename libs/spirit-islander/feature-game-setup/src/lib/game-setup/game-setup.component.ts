@@ -8,10 +8,9 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 
-import { PluralPipe } from '@atocha/core/ui';
+import { ButtonComponent, PluralPipe } from '@atocha/core/ui';
 import {
   BoardEmblemComponent,
-  ButtonComponent,
   CardComponent,
   CardGroupComponent,
   DifficultyEmblemComponent,
