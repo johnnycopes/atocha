@@ -70,6 +70,10 @@ export class AppComponent {
     this._state.updateProp('page', Page.Config);
   }
 
+  onGenerate(): void {
+    this._state.updateProp('page', Page.GameSetup);
+  }
+
   onRegenerate(): void {
     this._state.updateProp(
       'gameSetup',

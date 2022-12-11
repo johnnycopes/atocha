@@ -79,5 +79,15 @@
         <div ui-card-content>placeholder</div>
       </ui-card>
     </ui-card-group>
+
+    <div ui-page-actions>
+      <button core-button
+        [disabled]="false"
+        type="button"
+        (click)="onGenerate()"
+      >
+        Generate
+      </button>
+    </div>
   </form>
 </main>
