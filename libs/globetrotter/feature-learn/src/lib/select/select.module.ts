@@ -18,10 +18,10 @@ import { SelectTypeComponent } from './select-type/select-type.component';
   imports: [
     ButtonComponent,
     CommonModule,
+    CountedCheckboxTreeComponent,
     FormsModule,
     IconComponent,
     InputComponent,
-    CountedCheckboxTreeComponent,
     RadioButtonsComponent,
     SmallCapsComponent,
   ],
