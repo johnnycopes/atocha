@@ -29,7 +29,7 @@
         [icon]="regionState.region.name"
         [highlighted]="!!regionState.selected"
       ></ui-icon>
-      <core-nested-checkboxes-with-counts class="region__checkboxes"
+      <core-counted-checkbox-tree class="region__checkboxes"
         [item]="regionState.region"
         [getId]="getId"
         [getChildren]="getChildren"
@@ -40,7 +40,7 @@
         (ngModelChange)="onStateChange($event)"
         (selectedChange)="onSelectedChange(regionState, $event)"
         (totalChange)="onTotalChange(regionState, $event)"
-      ></core-nested-checkboxes-with-counts>
+      ></core-counted-checkbox-tree>
 
       <ng-template
         #label

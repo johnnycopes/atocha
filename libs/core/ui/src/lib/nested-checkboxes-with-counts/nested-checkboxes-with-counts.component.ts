@@ -30,7 +30,7 @@ type Counts = Record<string, number>;
 
 @Component({
   standalone: true,
-  selector: 'core-nested-checkboxes-with-counts',
+  selector: 'core-counted-checkbox-tree',
   imports: [CommonModule, FormsModule, NestedCheckboxesComponent],
   templateUrl: './nested-checkboxes-with-counts.component.html',
   styleUrls: ['./nested-checkboxes-with-counts.component.scss'],

@@ -58,7 +58,7 @@ const Template: Story<CountedCheckboxTreeComponent<TestItem>> = (
     getCounts,
   },
   template: `
-    <core-nested-checkboxes-with-counts
+    <core-counted-checkbox-tree
       [class]="className"
       [item]="item"
       [getId]="getId"
@@ -70,7 +70,7 @@ const Template: Story<CountedCheckboxTreeComponent<TestItem>> = (
       (ngModelChange)="states = $event; onNgModelChange($event)"
       (selectedChange)="onSelectedChange($event)"
       (totalChange)="onTotalChange($event)"
-    ></core-nested-checkboxes-with-counts>
+    ></core-counted-checkbox-tree>
   `,
 });
 
