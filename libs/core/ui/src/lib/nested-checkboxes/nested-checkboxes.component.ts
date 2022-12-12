@@ -43,12 +43,12 @@ type ItemsRecord<T> = Record<string, { item: T; parentId: string | undefined }>;
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => NestedCheckboxesComponent),
+      useExisting: forwardRef(() => CheckboxTreeComponent),
       multi: true,
     },
   ],
 })
-export class NestedCheckboxesComponent<T>
+export class CheckboxTreeComponent<T>
   implements OnChanges, ControlValueAccessor
 {
   @Input() item: T | undefined;

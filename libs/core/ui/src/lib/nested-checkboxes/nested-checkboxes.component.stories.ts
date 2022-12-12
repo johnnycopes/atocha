@@ -17,11 +17,11 @@ import {
   SOME_SELECTED,
   TestItem,
 } from '../../../.storybook/mock-data/nested-checkboxes';
-import { NestedCheckboxesComponent } from './nested-checkboxes.component';
+import { CheckboxTreeComponent } from './nested-checkboxes.component';
 
 export default {
   title: 'Nested Checkboxes',
-  component: NestedCheckboxesComponent,
+  component: CheckboxTreeComponent,
   decorators: [
     moduleMetadata({
       imports: [FormsModule, CheckboxComponent, TreeComponent],
@@ -36,9 +36,9 @@ export default {
     },
     onClick: { action: 'clicked' },
   },
-} as Meta<NestedCheckboxesComponent<TestItem>>;
+} as Meta<CheckboxTreeComponent<TestItem>>;
 
-const Template: Story<NestedCheckboxesComponent<TestItem>> = (args: Args) => ({
+const Template: Story<CheckboxTreeComponent<TestItem>> = (args: Args) => ({
   props: {
     ...args,
     item: AFRICA,
@@ -81,7 +81,7 @@ withCustomStyling.args = createArgs({
   className: 'custom-nested-checkboxes',
 });
 
-type Args = Partial<NestedCheckboxesComponent<TestItem>> & {
+type Args = Partial<CheckboxTreeComponent<TestItem>> & {
   className?: string;
 };
 

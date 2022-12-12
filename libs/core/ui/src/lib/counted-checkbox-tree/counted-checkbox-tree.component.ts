@@ -23,7 +23,7 @@ import { reduce } from 'lodash-es';
 import { CheckboxSize } from '../checkbox/checkbox.component';
 import {
   CheckboxStates,
-  NestedCheckboxesComponent,
+  CheckboxTreeComponent,
 } from '../nested-checkboxes/nested-checkboxes.component';
 
 type Counts = Record<string, number>;
@@ -31,7 +31,7 @@ type Counts = Record<string, number>;
 @Component({
   standalone: true,
   selector: 'core-counted-checkbox-tree',
-  imports: [CommonModule, FormsModule, NestedCheckboxesComponent],
+  imports: [CommonModule, FormsModule, CheckboxTreeComponent],
   templateUrl: './counted-checkbox-tree.component.html',
   styleUrls: ['./counted-checkbox-tree.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

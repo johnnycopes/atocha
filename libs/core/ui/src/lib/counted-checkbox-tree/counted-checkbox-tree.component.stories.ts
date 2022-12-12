@@ -6,7 +6,7 @@ import {
   componentWrapperDecorator,
 } from '@storybook/angular';
 
-import { NestedCheckboxesComponent } from '../nested-checkboxes/nested-checkboxes.component';
+import { CheckboxTreeComponent } from '../nested-checkboxes/nested-checkboxes.component';
 import { CheckboxComponent } from '../checkbox/checkbox.component';
 import { TreeComponent } from '../tree/tree.component';
 import { StorybookWrapperComponent } from '../../../.storybook/storybook-wrapper/storybook-wrapper.component';
@@ -29,7 +29,7 @@ export default {
       imports: [
         FormsModule,
         CheckboxComponent,
-        NestedCheckboxesComponent,
+        CheckboxTreeComponent,
         TreeComponent,
       ],
       declarations: [StorybookWrapperComponent],
