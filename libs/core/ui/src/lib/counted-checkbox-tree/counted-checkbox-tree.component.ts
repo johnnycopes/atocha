@@ -24,7 +24,7 @@ import { CheckboxSize } from '../checkbox/checkbox.component';
 import {
   CheckboxStates,
   CheckboxTreeComponent,
-} from '../nested-checkboxes/nested-checkboxes.component';
+} from '../checkbox-tree/nested-checkboxes.component';
 
 type Counts = Record<string, number>;
 
