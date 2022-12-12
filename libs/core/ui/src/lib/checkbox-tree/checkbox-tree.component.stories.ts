@@ -20,7 +20,7 @@ import {
 import { CheckboxTreeComponent } from './checkbox-tree.component';
 
 export default {
-  title: 'Nested Checkboxes',
+  title: 'Checkbox Tree',
   component: CheckboxTreeComponent,
   decorators: [
     moduleMetadata({
