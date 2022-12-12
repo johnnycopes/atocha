@@ -19,11 +19,11 @@ import {
   AFRICA,
   SOME_SELECTED,
 } from '../../../.storybook/mock-data/nested-checkboxes';
-import { NestedCheckboxesWithCountsComponent } from './nested-checkboxes-with-counts.component';
+import { CountedCheckboxTreeComponent } from './nested-checkboxes-with-counts.component';
 
 export default {
   title: 'Nested Checkboxes With Counts',
-  component: NestedCheckboxesWithCountsComponent,
+  component: CountedCheckboxTreeComponent,
   decorators: [
     moduleMetadata({
       imports: [
@@ -45,9 +45,9 @@ export default {
     onSelectedChange: { action: 'selectedChange' },
     onTotalChange: { action: 'totalChange' },
   },
-} as Meta<NestedCheckboxesWithCountsComponent<TestItem>>;
+} as Meta<CountedCheckboxTreeComponent<TestItem>>;
 
-const Template: Story<NestedCheckboxesWithCountsComponent<TestItem>> = (
+const Template: Story<CountedCheckboxTreeComponent<TestItem>> = (
   args: Args
 ) => ({
   props: {
@@ -96,7 +96,7 @@ withCustomStyling.args = createArgs({
   className: 'custom-nested-checkboxes-with-counts',
 });
 
-type Args = Partial<NestedCheckboxesWithCountsComponent<TestItem>> & {
+type Args = Partial<CountedCheckboxTreeComponent<TestItem>> & {
   className?: string;
 };
 

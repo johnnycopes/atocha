@@ -2,10 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
-import {
-  ButtonComponent,
-  NestedCheckboxesWithCountsComponent,
-} from '@atocha/core/ui';
+import { ButtonComponent, CountedCheckboxTreeComponent } from '@atocha/core/ui';
 import {
   IconComponent,
   InputComponent,
@@ -24,7 +21,7 @@ import { SelectTypeComponent } from './select-type/select-type.component';
     FormsModule,
     IconComponent,
     InputComponent,
-    NestedCheckboxesWithCountsComponent,
+    CountedCheckboxTreeComponent,
     RadioButtonsComponent,
     SmallCapsComponent,
   ],

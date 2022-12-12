@@ -42,12 +42,12 @@ type Counts = Record<string, number>;
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => NestedCheckboxesWithCountsComponent),
+      useExisting: forwardRef(() => CountedCheckboxTreeComponent),
       multi: true,
     },
   ],
 })
-export class NestedCheckboxesWithCountsComponent<T>
+export class CountedCheckboxTreeComponent<T>
   implements ControlValueAccessor, OnChanges
 {
   @Input() item: T | undefined;
