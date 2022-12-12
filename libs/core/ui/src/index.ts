@@ -4,7 +4,7 @@ export * from './lib/button/button.component';
 export * from './lib/checkbox/checkbox.component';
 export * from './lib/external-link/external-link.directive';
 export * from './lib/measurement/measurement.pipe';
-export * from './lib/nested-checkboxes-with-counts/nested-checkboxes-with-counts.component';
+export * from './lib/counted-checkbox-tree/counted-checkbox-tree.component';
 export * from './lib/nested-checkboxes/nested-checkboxes.component';
 export * from './lib/performance/track-by';
 export * from './lib/sanitization/safe.pipe';

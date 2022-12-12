@@ -19,7 +19,7 @@ import {
   AFRICA,
   SOME_SELECTED,
 } from '../../../.storybook/mock-data/nested-checkboxes';
-import { CountedCheckboxTreeComponent } from './nested-checkboxes-with-counts.component';
+import { CountedCheckboxTreeComponent } from './counted-checkbox-tree.component';
 
 export default {
   title: 'Counted Checkbox Tree',

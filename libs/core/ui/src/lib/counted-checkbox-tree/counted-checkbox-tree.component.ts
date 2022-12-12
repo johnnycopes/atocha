@@ -32,8 +32,8 @@ type Counts = Record<string, number>;
   standalone: true,
   selector: 'core-counted-checkbox-tree',
   imports: [CommonModule, FormsModule, NestedCheckboxesComponent],
-  templateUrl: './nested-checkboxes-with-counts.component.html',
-  styleUrls: ['./nested-checkboxes-with-counts.component.scss'],
+  templateUrl: './counted-checkbox-tree.component.html',
+  styleUrls: ['./counted-checkbox-tree.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   host: {
