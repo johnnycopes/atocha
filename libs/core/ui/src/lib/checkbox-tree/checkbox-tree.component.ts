@@ -33,8 +33,8 @@ type ItemsRecord<T> = Record<string, { item: T; parentId: string | undefined }>;
   standalone: true,
   selector: 'core-checkbox-tree',
   imports: [CheckboxComponent, CommonModule, FormsModule, TreeComponent],
-  templateUrl: './nested-checkboxes.component.html',
-  styleUrls: ['./nested-checkboxes.component.scss'],
+  templateUrl: './checkbox-tree.component.html',
+  styleUrls: ['./checkbox-tree.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   host: {
