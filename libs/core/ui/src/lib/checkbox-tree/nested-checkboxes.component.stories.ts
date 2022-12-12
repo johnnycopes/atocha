@@ -17,7 +17,7 @@ import {
   SOME_SELECTED,
   TestItem,
 } from '../../../.storybook/mock-data/nested-checkboxes';
-import { CheckboxTreeComponent } from './nested-checkboxes.component';
+import { CheckboxTreeComponent } from './checkbox-tree.component';
 
 export default {
   title: 'Nested Checkboxes',

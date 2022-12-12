@@ -6,7 +6,7 @@ import {
   componentWrapperDecorator,
 } from '@storybook/angular';
 
-import { CheckboxTreeComponent } from '../checkbox-tree/nested-checkboxes.component';
+import { CheckboxTreeComponent } from '../checkbox-tree/checkbox-tree.component';
 import { CheckboxComponent } from '../checkbox/checkbox.component';
 import { TreeComponent } from '../tree/tree.component';
 import { StorybookWrapperComponent } from '../../../.storybook/storybook-wrapper/storybook-wrapper.component';
