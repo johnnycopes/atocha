@@ -1,4 +1,4 @@
-import { CheckboxStates } from '../../src/lib/nested-checkboxes/nested-checkboxes.component';
+import { CheckboxStates } from '../../src/lib/checkbox-tree/checkbox-tree.component';
 
 export interface TestItem {
   id: string;

@@ -1,4 +1,4 @@
-describe('NestedCheckboxesWithCountsComponent', () => {
+describe('CountedCheckboxTreeComponent', () => {
   let checkboxSelector = '';
   let stories: Record<string, string> = {};
 
@@ -9,14 +9,11 @@ describe('NestedCheckboxesWithCountsComponent', () => {
   }
 
   beforeEach(() => {
-    checkboxSelector = '[data-test="core-nested-checkbox"]';
+    checkboxSelector = '[data-test="core-checkbox"]';
     stories = {
-      noneSelected:
-        '/iframe.html?id=nested-checkboxes-with-counts--none-selected',
-      someSelected:
-        '/iframe.html?id=nested-checkboxes-with-counts--some-selected',
-      allSelected:
-        '/iframe.html?id=nested-checkboxes-with-counts--all-selected',
+      noneSelected: '/iframe.html?id=counted-checkbox-tree--none-selected',
+      someSelected: '/iframe.html?id=counted-checkbox-tree--some-selected',
+      allSelected: '/iframe.html?id=counted-checkbox-tree--all-selected',
     };
   });
 

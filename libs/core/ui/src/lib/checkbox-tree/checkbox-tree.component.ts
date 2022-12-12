@@ -31,24 +31,24 @@ type ItemsRecord<T> = Record<string, { item: T; parentId: string | undefined }>;
 
 @Component({
   standalone: true,
-  selector: 'core-nested-checkboxes',
+  selector: 'core-checkbox-tree',
   imports: [CheckboxComponent, CommonModule, FormsModule, TreeComponent],
-  templateUrl: './nested-checkboxes.component.html',
-  styleUrls: ['./nested-checkboxes.component.scss'],
+  templateUrl: './checkbox-tree.component.html',
+  styleUrls: ['./checkbox-tree.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   host: {
-    class: 'core-nested-checkboxes',
+    class: 'core-checkbox-tree',
   },
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => NestedCheckboxesComponent),
+      useExisting: forwardRef(() => CheckboxTreeComponent),
       multi: true,
     },
   ],
 })
-export class NestedCheckboxesComponent<T>
+export class CheckboxTreeComponent<T>
   implements OnChanges, ControlValueAccessor
 {
   @Input() item: T | undefined;

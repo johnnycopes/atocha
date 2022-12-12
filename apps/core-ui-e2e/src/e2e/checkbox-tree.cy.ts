@@ -1,4 +1,4 @@
-describe('NestedCheckboxesComponent', () => {
+describe('CheckboxTreeComponent', () => {
   let checkboxSelector = '';
   let inputSelector = '';
   let stories: Record<string, string> = {};
@@ -33,12 +33,12 @@ describe('NestedCheckboxesComponent', () => {
   }
 
   beforeEach(() => {
-    checkboxSelector = '[data-test="core-nested-checkbox"]';
+    checkboxSelector = '[data-test="core-checkbox"]';
     inputSelector = '[data-test="core-checkbox-input"]';
     stories = {
-      noneSelected: '/iframe.html?id=nested-checkboxes--none-selected',
-      someSelected: '/iframe.html?id=nested-checkboxes--some-selected',
-      allSelected: '/iframe.html?id=nested-checkboxes--all-selected',
+      noneSelected: '/iframe.html?id=checkbox-tree--none-selected',
+      someSelected: '/iframe.html?id=checkbox-tree--some-selected',
+      allSelected: '/iframe.html?id=checkbox-tree--all-selected',
     };
   });
 

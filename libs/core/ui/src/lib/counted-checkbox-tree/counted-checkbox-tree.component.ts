@@ -23,31 +23,31 @@ import { reduce } from 'lodash-es';
 import { CheckboxSize } from '../checkbox/checkbox.component';
 import {
   CheckboxStates,
-  NestedCheckboxesComponent,
-} from '../nested-checkboxes/nested-checkboxes.component';
+  CheckboxTreeComponent,
+} from '../checkbox-tree/checkbox-tree.component';
 
 type Counts = Record<string, number>;
 
 @Component({
   standalone: true,
-  selector: 'core-nested-checkboxes-with-counts',
-  imports: [CommonModule, FormsModule, NestedCheckboxesComponent],
-  templateUrl: './nested-checkboxes-with-counts.component.html',
-  styleUrls: ['./nested-checkboxes-with-counts.component.scss'],
+  selector: 'core-counted-checkbox-tree',
+  imports: [CommonModule, FormsModule, CheckboxTreeComponent],
+  templateUrl: './counted-checkbox-tree.component.html',
+  styleUrls: ['./counted-checkbox-tree.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   host: {
-    class: 'core-nested-checkboxes-with-counts',
+    class: 'core-counted-checkbox-tree',
   },
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => NestedCheckboxesWithCountsComponent),
+      useExisting: forwardRef(() => CountedCheckboxTreeComponent),
       multi: true,
     },
   ],
 })
-export class NestedCheckboxesWithCountsComponent<T>
+export class CountedCheckboxTreeComponent<T>
   implements ControlValueAccessor, OnChanges
 {
   @Input() item: T | undefined;

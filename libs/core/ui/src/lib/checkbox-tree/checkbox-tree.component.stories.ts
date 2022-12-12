@@ -16,12 +16,12 @@ import {
   AFRICA,
   SOME_SELECTED,
   TestItem,
-} from '../../../.storybook/mock-data/nested-checkboxes';
-import { NestedCheckboxesComponent } from './nested-checkboxes.component';
+} from '../../../.storybook/mock-data/checkbox-tree';
+import { CheckboxTreeComponent } from './checkbox-tree.component';
 
 export default {
-  title: 'Nested Checkboxes',
-  component: NestedCheckboxesComponent,
+  title: 'Checkbox Tree',
+  component: CheckboxTreeComponent,
   decorators: [
     moduleMetadata({
       imports: [FormsModule, CheckboxComponent, TreeComponent],
@@ -36,9 +36,9 @@ export default {
     },
     onClick: { action: 'clicked' },
   },
-} as Meta<NestedCheckboxesComponent<TestItem>>;
+} as Meta<CheckboxTreeComponent<TestItem>>;
 
-const Template: Story<NestedCheckboxesComponent<TestItem>> = (args: Args) => ({
+const Template: Story<CheckboxTreeComponent<TestItem>> = (args: Args) => ({
   props: {
     ...args,
     item: AFRICA,
@@ -46,7 +46,7 @@ const Template: Story<NestedCheckboxesComponent<TestItem>> = (args: Args) => ({
     getChildren,
   },
   template: `
-    <core-nested-checkboxes
+    <core-checkbox-tree
       [class]="className"
       [item]="item"
       [getId]="getId"
@@ -55,7 +55,7 @@ const Template: Story<NestedCheckboxesComponent<TestItem>> = (args: Args) => ({
       [size]="size"
       [ngModel]="states"
       (ngModelChange)="states = $event; onClick($event)"
-    ></core-nested-checkboxes>
+    ></core-checkbox-tree>
   `,
 });
 
@@ -78,10 +78,10 @@ export const withCustomStyling = Template.bind({});
 withCustomStyling.args = createArgs({
   states: SOME_SELECTED,
   size: 'large',
-  className: 'custom-nested-checkboxes',
+  className: 'custom-checkbox-tree',
 });
 
-type Args = Partial<NestedCheckboxesComponent<TestItem>> & {
+type Args = Partial<CheckboxTreeComponent<TestItem>> & {
   className?: string;
 };
 

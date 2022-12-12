@@ -6,7 +6,7 @@ import {
   componentWrapperDecorator,
 } from '@storybook/angular';
 
-import { NestedCheckboxesComponent } from '../nested-checkboxes/nested-checkboxes.component';
+import { CheckboxTreeComponent } from '../checkbox-tree/checkbox-tree.component';
 import { CheckboxComponent } from '../checkbox/checkbox.component';
 import { TreeComponent } from '../tree/tree.component';
 import { StorybookWrapperComponent } from '../../../.storybook/storybook-wrapper/storybook-wrapper.component';
@@ -18,18 +18,18 @@ import {
   TestItem,
   AFRICA,
   SOME_SELECTED,
-} from '../../../.storybook/mock-data/nested-checkboxes';
-import { NestedCheckboxesWithCountsComponent } from './nested-checkboxes-with-counts.component';
+} from '../../../.storybook/mock-data/checkbox-tree';
+import { CountedCheckboxTreeComponent } from './counted-checkbox-tree.component';
 
 export default {
-  title: 'Nested Checkboxes With Counts',
-  component: NestedCheckboxesWithCountsComponent,
+  title: 'Counted Checkbox Tree',
+  component: CountedCheckboxTreeComponent,
   decorators: [
     moduleMetadata({
       imports: [
         FormsModule,
         CheckboxComponent,
-        NestedCheckboxesComponent,
+        CheckboxTreeComponent,
         TreeComponent,
       ],
       declarations: [StorybookWrapperComponent],
@@ -45,9 +45,9 @@ export default {
     onSelectedChange: { action: 'selectedChange' },
     onTotalChange: { action: 'totalChange' },
   },
-} as Meta<NestedCheckboxesWithCountsComponent<TestItem>>;
+} as Meta<CountedCheckboxTreeComponent<TestItem>>;
 
-const Template: Story<NestedCheckboxesWithCountsComponent<TestItem>> = (
+const Template: Story<CountedCheckboxTreeComponent<TestItem>> = (
   args: Args
 ) => ({
   props: {
@@ -58,7 +58,7 @@ const Template: Story<NestedCheckboxesWithCountsComponent<TestItem>> = (
     getCounts,
   },
   template: `
-    <core-nested-checkboxes-with-counts
+    <core-counted-checkbox-tree
       [class]="className"
       [item]="item"
       [getId]="getId"
@@ -70,7 +70,7 @@ const Template: Story<NestedCheckboxesWithCountsComponent<TestItem>> = (
       (ngModelChange)="states = $event; onNgModelChange($event)"
       (selectedChange)="onSelectedChange($event)"
       (totalChange)="onTotalChange($event)"
-    ></core-nested-checkboxes-with-counts>
+    ></core-counted-checkbox-tree>
   `,
 });
 
@@ -93,10 +93,10 @@ export const withCustomStyling = Template.bind({});
 withCustomStyling.args = createArgs({
   states: SOME_SELECTED,
   size: 'large',
-  className: 'custom-nested-checkboxes-with-counts',
+  className: 'custom-counted-checkbox-tree',
 });
 
-type Args = Partial<NestedCheckboxesWithCountsComponent<TestItem>> & {
+type Args = Partial<CountedCheckboxTreeComponent<TestItem>> & {
   className?: string;
 };
 

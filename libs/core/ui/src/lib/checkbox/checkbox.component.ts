@@ -35,7 +35,12 @@ export class CheckboxComponent implements ControlValueAccessor {
   @Input() size: CheckboxSize = 'normal';
   @Input() disabled = false;
   @Input() indeterminate = false;
+
   checked = false;
+
+  @HostBinding('attr.data-test')
+  dataTestAttr = 'core-checkbox';
+
   private _onChangeFn: (value: boolean) => void = () => undefined;
 
   constructor(private _changeDetectorRef: ChangeDetectorRef) {}
