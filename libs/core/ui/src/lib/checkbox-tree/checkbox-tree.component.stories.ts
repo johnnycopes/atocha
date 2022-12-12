@@ -16,7 +16,7 @@ import {
   AFRICA,
   SOME_SELECTED,
   TestItem,
-} from '../../../.storybook/mock-data/nested-checkboxes';
+} from '../../../.storybook/mock-data/checkbox-tree';
 import { CheckboxTreeComponent } from './checkbox-tree.component';
 
 export default {
