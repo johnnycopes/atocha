@@ -37,7 +37,7 @@ type Counts = Record<string, number>;
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   host: {
-    class: 'core-nested-checkboxes-with-counts',
+    class: 'core-counted-checkbox-tree',
   },
   providers: [
     {

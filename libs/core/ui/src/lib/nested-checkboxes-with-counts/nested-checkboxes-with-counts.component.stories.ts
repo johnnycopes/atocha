@@ -22,7 +22,7 @@ import {
 import { CountedCheckboxTreeComponent } from './nested-checkboxes-with-counts.component';
 
 export default {
-  title: 'Nested Checkboxes With Counts',
+  title: 'Counted Checkbox Tree',
   component: CountedCheckboxTreeComponent,
   decorators: [
     moduleMetadata({
@@ -93,7 +93,7 @@ export const withCustomStyling = Template.bind({});
 withCustomStyling.args = createArgs({
   states: SOME_SELECTED,
   size: 'large',
-  className: 'custom-nested-checkboxes-with-counts',
+  className: 'custom-counted-checkbox-tree',
 });
 
 type Args = Partial<CountedCheckboxTreeComponent<TestItem>> & {

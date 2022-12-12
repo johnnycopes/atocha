@@ -80,7 +80,7 @@ app-root {
     }
   }
 
-  .core-nested-checkboxes-with-counts {
+  .core-counted-checkbox-tree {
     .core-nested-checkboxes {
       --checkbox-margin: #{map-get($spacing, 8)};
     }
