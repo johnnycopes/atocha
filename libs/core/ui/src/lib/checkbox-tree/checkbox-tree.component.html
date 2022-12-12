@@ -14,7 +14,6 @@
   <core-checkbox
     [class.core-checkbox-tree__top]="!parent"
     [style.margin-left.px]="level * indentation"
-    data-test="core-nested-checkbox"
     [indeterminate]="states[getId(item)] === 'indeterminate'"
     [size]="size"
     [ngModel]="states[getId(item)] === 'checked'"

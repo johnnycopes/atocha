@@ -33,7 +33,7 @@ describe('CheckboxTreeComponent', () => {
   }
 
   beforeEach(() => {
-    checkboxSelector = '[data-test="core-nested-checkbox"]';
+    checkboxSelector = '[data-test="core-checkbox"]';
     inputSelector = '[data-test="core-checkbox-input"]';
     stories = {
       noneSelected: '/iframe.html?id=checkbox-tree--none-selected',
