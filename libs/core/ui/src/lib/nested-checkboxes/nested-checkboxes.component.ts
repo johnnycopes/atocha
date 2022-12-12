@@ -31,14 +31,14 @@ type ItemsRecord<T> = Record<string, { item: T; parentId: string | undefined }>;
 
 @Component({
   standalone: true,
-  selector: 'core-nested-checkboxes',
+  selector: 'core-checkbox-tree',
   imports: [CheckboxComponent, CommonModule, FormsModule, TreeComponent],
   templateUrl: './nested-checkboxes.component.html',
   styleUrls: ['./nested-checkboxes.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   host: {
-    class: 'core-nested-checkboxes',
+    class: 'core-checkbox-tree',
   },
   providers: [
     {

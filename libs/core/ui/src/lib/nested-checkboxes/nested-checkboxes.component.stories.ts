@@ -46,7 +46,7 @@ const Template: Story<CheckboxTreeComponent<TestItem>> = (args: Args) => ({
     getChildren,
   },
   template: `
-    <core-nested-checkboxes
+    <core-checkbox-tree
       [class]="className"
       [item]="item"
       [getId]="getId"
@@ -55,7 +55,7 @@ const Template: Story<CheckboxTreeComponent<TestItem>> = (args: Args) => ({
       [size]="size"
       [ngModel]="states"
       (ngModelChange)="states = $event; onClick($event)"
-    ></core-nested-checkboxes>
+    ></core-checkbox-tree>
   `,
 });
 

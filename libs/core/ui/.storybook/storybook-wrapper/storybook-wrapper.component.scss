@@ -28,8 +28,8 @@
       --label-margin: 12px;
     }
 
-    .core-nested-checkboxes__top.core-checkbox--checked,
-    .core-nested-checkboxes__top.core-checkbox--indeterminate {
+    .core-checkbox-tree__top.core-checkbox--checked,
+    .core-checkbox-tree__top.core-checkbox--indeterminate {
       --checkbox-color: aquamarine;
       --checkmark-color: darkblue;
       --checkbox-background: aquamarine;
@@ -48,7 +48,7 @@
   }
 
   .custom-counted-checkbox-tree{
-    .core-nested-checkboxes {
+    .core-checkbox-tree {
       --checkbox-margin: 8px;
     }
 
@@ -57,8 +57,8 @@
       --label-margin: 12px;
     }
 
-    .core-nested-checkboxes__top.core-checkbox--checked,
-    .core-nested-checkboxes__top.core-checkbox--indeterminate {
+    .core-checkbox-tree__top.core-checkbox--checked,
+    .core-checkbox-tree__top.core-checkbox--indeterminate {
       --checkbox-color: aquamarine;
       --checkmark-color: darkblue;
       --checkbox-background: aquamarine;

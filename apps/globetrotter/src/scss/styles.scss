@@ -81,7 +81,7 @@ app-root {
   }
 
   .core-counted-checkbox-tree {
-    .core-nested-checkboxes {
+    .core-checkbox-tree {
       --checkbox-margin: #{map-get($spacing, 8)};
     }
 
@@ -90,8 +90,8 @@ app-root {
       --label-margin: #{map-get($spacing, 12)};
     }
 
-    .core-nested-checkboxes__top.core-checkbox--checked,
-    .core-nested-checkboxes__top.core-checkbox--indeterminate {
+    .core-checkbox-tree__top.core-checkbox--checked,
+    .core-checkbox-tree__top.core-checkbox--indeterminate {
       --checkbox-color: #{map-get($color, lightest)};
       --checkmark-color: #{map-get($color, darkest)};
       --checkbox-background: #{map-get($color, lightest)};

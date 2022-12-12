@@ -1,4 +1,4 @@
-<core-nested-checkboxes
+<core-checkbox-tree
   [item]="item"
   [getId]="getId"
   [getChildren]="getChildren"
@@ -7,7 +7,7 @@
   [size]="size"
   [ngModel]="states"
   (ngModelChange)="onChange($event)"
-></core-nested-checkboxes>
+></core-checkbox-tree>
 
 <ng-template #checkbox let-item let-parent="parent">
   <ng-container
