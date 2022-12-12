@@ -78,7 +78,7 @@ export const withCustomStyling = Template.bind({});
 withCustomStyling.args = createArgs({
   states: SOME_SELECTED,
   size: 'large',
-  className: 'custom-nested-checkboxes',
+  className: 'custom-checkbox-tree',
 });
 
 type Args = Partial<CheckboxTreeComponent<TestItem>> & {
