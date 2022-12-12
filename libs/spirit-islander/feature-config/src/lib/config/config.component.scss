@@ -1,0 +1,26 @@
+.ui-card-group-contents.you {
+  grid-template-areas:
+    'expansions expansions expansions expansions expansions expansions'
+    'players players difficulty difficulty difficulty difficulty';
+
+  @media screen and (min-width: 768px) {
+    grid-template-areas: 'expansions expansions expansions players difficulty difficulty';
+  }
+}
+
+.ui-card-group-contents.the-game {
+  grid-template-areas:
+    'spirits spirits spirits spirits spirits spirits'
+    'maps maps maps maps maps maps'
+    'boards boards boards boards boards boards'
+    'scenarios scenarios scenarios scenarios scenarios scenarios'
+    'adversaries adversaries adversaries adversaries adversaries adversaries';
+
+  @media screen and (min-width: 768px) {
+    grid-template-areas:
+      'spirits spirits spirits spirits spirits spirits'
+      'maps maps maps scenarios scenarios scenarios'
+      'boards boards boards scenarios scenarios scenarios'
+      'adversaries adversaries adversaries adversaries adversaries adversaries';
+  }
+}

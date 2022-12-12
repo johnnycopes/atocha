@@ -1,5 +1,91 @@
 <main ui-page>
-  <ng-container ui-page-content>
+  <!-- <ng-container ui-page-content>
     {{ config | json }}
-  </ng-container>
+  </ng-container> -->
+  <form class="config"
+    ui-page-content
+  >
+    <ui-card-group
+      name="You"
+      description="What are you playing with?"
+    >
+      <ui-card name="expansions">
+        <h3 ui-card-header>
+          Expansions
+        </h3>
+        <div ui-card-content>placeholder</div>
+      </ui-card>
+
+      <ui-card name="players">
+        <h3 ui-card-header>
+          Players
+        </h3>
+        <div ui-card-content>placeholder</div>
+      </ui-card>
+
+      <ui-card expansions="difficulty">
+        <h3 ui-card-header>
+          Difficulty
+        </h3>
+        <div ui-card-content>placeholder</div>
+      </ui-card>
+    </ui-card-group>
+
+    <ui-card-group
+      name="The Game"
+      description="What are you open to playing with?"
+    >
+      <ui-card name="spirits">
+        <h3 ui-card-header>
+          Spirits
+        </h3>
+        <div ui-card-content>placeholder</div>
+      </ui-card>
+
+      <ui-card name="maps">
+        <h3 ui-card-header>
+          Maps
+        </h3>
+        <div ui-card-content>placeholder</div>
+      </ui-card>
+
+      <ui-card name="maps">
+        <h3 ui-card-header>
+          Maps
+        </h3>
+        <div ui-card-content>placeholder</div>
+      </ui-card>
+
+      <ui-card name="boards">
+        <h3 ui-card-header>
+          Boards
+        </h3>
+        <div ui-card-content>placeholder</div>
+      </ui-card>
+
+      <ui-card name="scenarios">
+        <h3 ui-card-header>
+          Scenarios
+        </h3>
+        <div ui-card-content>placeholder</div>
+      </ui-card>
+
+      <ui-card name="adversaries">
+        <h3 ui-card-header>
+          Adversaries
+        </h3>
+        <div ui-card-content>placeholder</div>
+      </ui-card>
+    </ui-card-group>
+
+    <div ui-page-actions>
+      <button core-button
+        [disabled]="false"
+        type="button"
+        (click)="onGenerate()"
+      >
+        Generate
+      </button>
+    </div>
+  </form>
 </main>

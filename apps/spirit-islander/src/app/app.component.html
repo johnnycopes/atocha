@@ -3,6 +3,7 @@
 <ng-container *ngIf="vm$ | async as vm">
   <app-config *ngIf="vm.page === Page.Config"
     [config]="vm.config"
+    (generate)="onGenerate()"
   ></app-config>
   <app-game-setup *ngIf="vm.page === Page.GameSetup"
     [setup]="vm.gameSetup"

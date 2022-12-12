@@ -57,7 +57,7 @@ export class AppComponent {
     adversaryNamesAndIds: createAdversariesModel(this._expansions),
   };
   _state = new State<AppState>({
-    page: Page.GameSetup,
+    page: Page.Config,
     config: this._config,
     validCombos: undefined,
     gameSetup: createGameSetup(this._config, getValidCombos(this._config)),
@@ -68,6 +68,10 @@ export class AppComponent {
 
   onEdit(): void {
     this._state.updateProp('page', Page.Config);
+  }
+
+  onGenerate(): void {
+    this._state.updateProp('page', Page.GameSetup);
   }
 
   onRegenerate(): void {
