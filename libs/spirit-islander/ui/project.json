@@ -1,11 +1,12 @@
 {
+  "name": "spirit-islander-ui",
   "projectType": "library",
   "sourceRoot": "libs/spirit-islander/ui/src",
   "prefix": "ui",
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/spirit-islander/ui"],
+      "outputs": ["{workspaceRoot}/coverage/libs/spirit-islander/ui"],
       "options": {
         "jestConfig": "libs/spirit-islander/ui/jest.config.ts",
         "passWithNoTests": true
