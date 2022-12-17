@@ -1,11 +1,12 @@
 {
+  "name": "lorenzo-ui",
   "projectType": "library",
   "sourceRoot": "libs/lorenzo/ui/src",
   "prefix": "ui",
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/lorenzo/ui"],
+      "outputs": ["{workspaceRoot}/coverage/libs/lorenzo/ui"],
       "options": {
         "jestConfig": "libs/lorenzo/ui/jest.config.ts",
         "passWithNoTests": true

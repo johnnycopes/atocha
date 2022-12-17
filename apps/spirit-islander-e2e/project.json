@@ -1,4 +1,5 @@
 {
+  "name": "spirit-islander-e2e",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "apps/spirit-islander-e2e/src",
   "projectType": "application",
