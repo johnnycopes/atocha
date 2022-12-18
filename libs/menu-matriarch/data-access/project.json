@@ -1,12 +1,11 @@
 {
-  "name": "menu-matriarch-data-access",
   "projectType": "library",
   "sourceRoot": "libs/menu-matriarch/data-access/src",
   "prefix": "app",
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/libs/menu-matriarch/data-access"],
+      "outputs": ["coverage/libs/menu-matriarch/data-access"],
       "options": {
         "jestConfig": "libs/menu-matriarch/data-access/jest.config.ts",
         "passWithNoTests": true

@@ -1,5 +1,4 @@
 {
-  "name": "globetrotter-e2e",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "apps/globetrotter-e2e/src",
   "projectType": "application",

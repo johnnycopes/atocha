@@ -1,5 +1,4 @@
 {
-  "name": "spirit-islander",
   "projectType": "application",
   "sourceRoot": "apps/spirit-islander/src",
   "prefix": "app",
@@ -83,7 +82,7 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/apps/spirit-islander"],
+      "outputs": ["coverage/apps/spirit-islander"],
       "options": {
         "jestConfig": "apps/spirit-islander/jest.config.ts",
         "passWithNoTests": true

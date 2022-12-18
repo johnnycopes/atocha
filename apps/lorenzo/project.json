@@ -1,5 +1,4 @@
 {
-  "name": "lorenzo",
   "projectType": "application",
   "sourceRoot": "apps/lorenzo/src",
   "prefix": "app",
@@ -80,7 +79,7 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/apps/lorenzo"],
+      "outputs": ["coverage/apps/lorenzo"],
       "options": {
         "jestConfig": "apps/lorenzo/jest.config.ts",
         "passWithNoTests": true

@@ -1,12 +1,11 @@
 {
-  "name": "globetrotter-feature-learn",
   "projectType": "library",
   "sourceRoot": "libs/globetrotter/feature-learn/src",
   "prefix": "app",
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/libs/globetrotter/feature-learn"],
+      "outputs": ["coverage/libs/globetrotter/feature-learn"],
       "options": {
         "jestConfig": "libs/globetrotter/feature-learn/jest.config.ts",
         "passWithNoTests": true

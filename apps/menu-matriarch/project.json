@@ -1,5 +1,4 @@
 {
-  "name": "menu-matriarch",
   "projectType": "application",
   "sourceRoot": "apps/menu-matriarch/src",
   "prefix": "app",
@@ -86,7 +85,7 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/apps/menu-matriarch"],
+      "outputs": ["coverage/apps/menu-matriarch"],
       "options": {
         "jestConfig": "apps/menu-matriarch/jest.config.ts",
         "passWithNoTests": true
