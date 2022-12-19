@@ -1,11 +1,14 @@
 {
+  "name": "spirit-islander-feature-game-setup",
   "projectType": "library",
   "sourceRoot": "libs/spirit-islander/feature-game-setup/src",
   "prefix": "app",
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/spirit-islander/feature-game-setup"],
+      "outputs": [
+        "{workspaceRoot}/coverage/libs/spirit-islander/feature-game-setup"
+      ],
       "options": {
         "jestConfig": "libs/spirit-islander/feature-game-setup/jest.config.ts",
         "passWithNoTests": true
