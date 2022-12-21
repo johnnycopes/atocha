@@ -12,5 +12,5 @@ export default {
     '^.+\\.[tj]s$': 'ts-jest',
   },
   moduleFileExtensions: ['ts', 'js', 'html'],
-  coverageDirectory: '../../../coverage/libs/new/new2',
+  coverageDirectory: '../../../coverage/libs/spirit-islander/util',
 };
