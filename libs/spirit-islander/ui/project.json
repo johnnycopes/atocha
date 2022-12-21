@@ -1,4 +1,5 @@
 {
+  "name": "spirit-islander-ui",
   "projectType": "library",
   "sourceRoot": "libs/spirit-islander/ui/src",
   "prefix": "ui",

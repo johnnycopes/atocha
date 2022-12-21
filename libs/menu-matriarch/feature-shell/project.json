@@ -1,4 +1,5 @@
 {
+  "name": "menu-matriarch-feature-shell",
   "projectType": "library",
   "sourceRoot": "libs/menu-matriarch/feature-shell/src",
   "prefix": "app",

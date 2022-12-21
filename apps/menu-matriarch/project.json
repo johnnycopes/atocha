@@ -1,4 +1,5 @@
 {
+  "name": "menu-matriarch",
   "projectType": "application",
   "sourceRoot": "apps/menu-matriarch/src",
   "prefix": "app",

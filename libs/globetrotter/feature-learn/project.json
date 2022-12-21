@@ -1,4 +1,5 @@
 {
+  "name": "globetrotter-feature-learn",
   "projectType": "library",
   "sourceRoot": "libs/globetrotter/feature-learn/src",
   "prefix": "app",

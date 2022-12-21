@@ -1,4 +1,5 @@
 {
+  "name": "menu-matriarch-data-access",
   "projectType": "library",
   "sourceRoot": "libs/menu-matriarch/data-access/src",
   "prefix": "app",

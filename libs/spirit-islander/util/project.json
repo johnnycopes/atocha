@@ -1,4 +1,5 @@
 {
+  "name": "spirit-islander-util",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/spirit-islander/util/src",
   "projectType": "library",

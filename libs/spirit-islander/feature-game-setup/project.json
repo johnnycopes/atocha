@@ -1,4 +1,5 @@
 {
+  "name": "spirit-islander-feature-game-setup",
   "projectType": "library",
   "sourceRoot": "libs/spirit-islander/feature-game-setup/src",
   "prefix": "app",

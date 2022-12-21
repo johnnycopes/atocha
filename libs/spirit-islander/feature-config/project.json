@@ -1,4 +1,5 @@
 {
+  "name": "spirit-islander-feature-config",
   "projectType": "library",
   "sourceRoot": "libs/spirit-islander/feature-config/src",
   "prefix": "app",

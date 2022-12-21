@@ -1,4 +1,5 @@
 {
+  "name": "spirit-islander",
   "projectType": "application",
   "sourceRoot": "apps/spirit-islander/src",
   "prefix": "app",

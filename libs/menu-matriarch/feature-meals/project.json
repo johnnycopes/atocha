@@ -1,4 +1,5 @@
 {
+  "name": "menu-matriarch-feature-meals",
   "projectType": "library",
   "sourceRoot": "libs/menu-matriarch/feature-meals/src",
   "prefix": "app",

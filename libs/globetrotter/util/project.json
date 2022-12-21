@@ -1,4 +1,5 @@
 {
+  "name": "globetrotter-util",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/globetrotter/util/src",
   "projectType": "library",

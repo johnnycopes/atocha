@@ -1,4 +1,5 @@
 {
+  "name": "menu-matriarch-feature-planner",
   "projectType": "library",
   "sourceRoot": "libs/menu-matriarch/feature-planner/src",
   "prefix": "app",

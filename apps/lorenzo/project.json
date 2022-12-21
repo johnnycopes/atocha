@@ -1,4 +1,5 @@
 {
+  "name": "lorenzo",
   "projectType": "application",
   "sourceRoot": "apps/lorenzo/src",
   "prefix": "app",

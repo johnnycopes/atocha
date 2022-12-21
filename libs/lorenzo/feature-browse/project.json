@@ -1,4 +1,5 @@
 {
+  "name": "lorenzo-feature-browse",
   "projectType": "library",
   "sourceRoot": "libs/lorenzo/feature-browse/src",
   "prefix": "app",

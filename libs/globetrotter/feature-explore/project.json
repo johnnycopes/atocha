@@ -1,4 +1,5 @@
 {
+  "name": "globetrotter-feature-explore",
   "projectType": "library",
   "sourceRoot": "libs/globetrotter/feature-explore/src",
   "prefix": "app",

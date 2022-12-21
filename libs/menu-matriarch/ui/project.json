@@ -1,4 +1,5 @@
 {
+  "name": "menu-matriarch-ui",
   "projectType": "library",
   "sourceRoot": "libs/menu-matriarch/ui/src",
   "prefix": "ui",

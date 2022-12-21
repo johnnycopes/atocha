@@ -1,4 +1,5 @@
 {
+  "name": "globetrotter",
   "projectType": "application",
   "sourceRoot": "apps/globetrotter/src",
   "prefix": "app",

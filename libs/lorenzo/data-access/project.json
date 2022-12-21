@@ -1,4 +1,5 @@
 {
+  "name": "lorenzo-data-access",
   "projectType": "library",
   "sourceRoot": "libs/lorenzo/data-access/src",
   "prefix": "app",

@@ -1,4 +1,5 @@
 {
+  "name": "menu-matriarch-util",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/menu-matriarch/util/src",
   "projectType": "library",

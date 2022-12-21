@@ -1,4 +1,5 @@
 {
+  "name": "lorenzo-ui",
   "projectType": "library",
   "sourceRoot": "libs/lorenzo/ui/src",
   "prefix": "ui",
