@@ -6,7 +6,7 @@
     "start": "nx serve",
     "build": "nx build",
     "test": "nx test",
-    "postinstall": "node ./decorate-angular-cli.js",
+    "postinstall": "ngcc --properties es2020 browser module main",
     "mm:delete-account": "node ./firebase/scripts/dev/delete-account.js",
     "mm:delete-data": "node ./firebase/scripts/dev/delete-data.js",
     "mm:reset": "node ./firebase/scripts/dev/delete-all-accounts.js"
@@ -22,7 +22,7 @@
     "@angular-eslint/eslint-plugin": "15.0.0",
     "@angular-eslint/eslint-plugin-template": "15.0.0",
     "@angular-eslint/template-parser": "15.0.0",
-    "@angular/cli": "15.0.4",
+    "@angular/cli": "~14.2.0",
     "@angular/compiler-cli": "15.0.4",
     "@angular/language-service": "15.0.4",
     "@nrwl/angular": "15.3.3",
