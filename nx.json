@@ -4,6 +4,13 @@
   "affected": {
     "defaultBase": "main"
   },
+  "implicitDependencies": {
+    "package.json": {
+      "dependencies": "*",
+      "devDependencies": "*"
+    },
+    ".eslintrc.json": "*"
+  },
   "tasksRunnerOptions": {
     "default": {
       "runner": "@nrwl/nx-cloud",
@@ -33,10 +40,5 @@
     "@nrwl/angular:component": {
       "style": "scss"
     }
-  },
-  "namedInputs": {
-    "default": ["{projectRoot}/**/*", "sharedGlobals"],
-    "sharedGlobals": [],
-    "production": ["default"]
   }
 }

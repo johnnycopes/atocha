@@ -6,7 +6,7 @@
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/libs/menu-matriarch/feature-menus"],
+      "outputs": ["coverage/libs/menu-matriarch/feature-menus"],
       "options": {
         "jestConfig": "libs/menu-matriarch/feature-menus/jest.config.ts",
         "passWithNoTests": true

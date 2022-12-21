@@ -6,7 +6,7 @@
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/libs/spirit-islander/ui"],
+      "outputs": ["coverage/libs/spirit-islander/ui"],
       "options": {
         "jestConfig": "libs/spirit-islander/ui/jest.config.ts",
         "passWithNoTests": true

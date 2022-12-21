@@ -6,7 +6,7 @@
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/libs/lorenzo/data-access"],
+      "outputs": ["coverage/libs/lorenzo/data-access"],
       "options": {
         "jestConfig": "libs/lorenzo/data-access/jest.config.ts",
         "passWithNoTests": true

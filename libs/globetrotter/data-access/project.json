@@ -7,7 +7,7 @@
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/libs/globetrotter/data-access"],
+      "outputs": ["coverage/libs/globetrotter/data-access"],
       "options": {
         "jestConfig": "libs/globetrotter/data-access/jest.config.ts",
         "passWithNoTests": true

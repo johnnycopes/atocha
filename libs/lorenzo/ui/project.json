@@ -6,7 +6,7 @@
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/libs/lorenzo/ui"],
+      "outputs": ["coverage/libs/lorenzo/ui"],
       "options": {
         "jestConfig": "libs/lorenzo/ui/jest.config.ts",
         "passWithNoTests": true

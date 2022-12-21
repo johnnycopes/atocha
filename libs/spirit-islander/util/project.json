@@ -13,7 +13,7 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/libs/spirit-islander/util"],
+      "outputs": ["coverage/libs/spirit-islander/util"],
       "options": {
         "jestConfig": "libs/spirit-islander/util/jest.config.ts",
         "passWithNoTests": true
