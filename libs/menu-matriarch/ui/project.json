@@ -1,11 +1,12 @@
 {
+  "name": "menu-matriarch-ui",
   "projectType": "library",
   "sourceRoot": "libs/menu-matriarch/ui/src",
   "prefix": "ui",
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/menu-matriarch/ui"],
+      "outputs": ["{workspaceRoot}/coverage/libs/menu-matriarch/ui"],
       "options": {
         "jestConfig": "libs/menu-matriarch/ui/jest.config.ts",
         "passWithNoTests": true

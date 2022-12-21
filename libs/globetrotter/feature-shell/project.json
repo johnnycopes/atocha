@@ -1,11 +1,12 @@
 {
+  "name": "globetrotter-feature-shell",
   "projectType": "library",
   "sourceRoot": "libs/globetrotter/feature-shell/src",
   "prefix": "app",
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/globetrotter/feature-shell"],
+      "outputs": ["{workspaceRoot}/coverage/libs/globetrotter/feature-shell"],
       "options": {
         "jestConfig": "libs/globetrotter/feature-shell/jest.config.ts",
         "passWithNoTests": true

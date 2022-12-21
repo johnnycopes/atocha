@@ -1,11 +1,12 @@
 {
+  "name": "spirit-islander-data-access",
   "projectType": "library",
   "sourceRoot": "libs/spirit-islander/data-access/src",
   "prefix": "app",
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/spirit-islander/data-access"],
+      "outputs": ["{workspaceRoot}/coverage/libs/spirit-islander/data-access"],
       "options": {
         "jestConfig": "libs/spirit-islander/data-access/jest.config.ts",
         "passWithNoTests": true

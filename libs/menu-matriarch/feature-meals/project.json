@@ -1,11 +1,12 @@
 {
+  "name": "menu-matriarch-feature-meals",
   "projectType": "library",
   "sourceRoot": "libs/menu-matriarch/feature-meals/src",
   "prefix": "app",
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/menu-matriarch/feature-meals"],
+      "outputs": ["{workspaceRoot}/coverage/libs/menu-matriarch/feature-meals"],
       "options": {
         "jestConfig": "libs/menu-matriarch/feature-meals/jest.config.ts",
         "passWithNoTests": true

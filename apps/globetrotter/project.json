@@ -1,4 +1,5 @@
 {
+  "name": "globetrotter",
   "projectType": "application",
   "sourceRoot": "apps/globetrotter/src",
   "prefix": "app",
@@ -88,7 +89,7 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/globetrotter"],
+      "outputs": ["{workspaceRoot}/coverage/apps/globetrotter"],
       "options": {
         "jestConfig": "apps/globetrotter/jest.config.ts",
         "passWithNoTests": true

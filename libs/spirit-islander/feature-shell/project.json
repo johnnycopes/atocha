@@ -1,4 +1,5 @@
 {
+  "name": "spirit-islander-feature-shell",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "sourceRoot": "libs/spirit-islander/feature-shell/src",
@@ -6,7 +7,9 @@
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/spirit-islander/feature-shell"],
+      "outputs": [
+        "{workspaceRoot}/coverage/libs/spirit-islander/feature-shell"
+      ],
       "options": {
         "jestConfig": "libs/spirit-islander/feature-shell/jest.config.ts",
         "passWithNoTests": true
