@@ -7,7 +7,7 @@
     "test": {
       "executor": "@nrwl/jest:jest",
       "outputs": [
-        "{workspaceRoot}/coverage/libs/spirit-islander/feature-game-setup"
+        "coverage/libs/spirit-islander/feature-game-setup"
       ],
       "options": {
         "jestConfig": "libs/spirit-islander/feature-game-setup/jest.config.ts",

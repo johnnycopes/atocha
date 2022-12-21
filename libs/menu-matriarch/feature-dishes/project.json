@@ -7,7 +7,7 @@
     "test": {
       "executor": "@nrwl/jest:jest",
       "outputs": [
-        "{workspaceRoot}/coverage/libs/menu-matriarch/feature-dishes"
+        "coverage/libs/menu-matriarch/feature-dishes"
       ],
       "options": {
         "jestConfig": "libs/menu-matriarch/feature-dishes/jest.config.ts",
