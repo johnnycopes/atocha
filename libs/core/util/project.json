@@ -1,16 +1,16 @@
 {
-  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/core/util/src",
   "projectType": "library",
   "targets": {
     "build": {
-      "executor": "@nrwl/js:swc",
+      "executor": "@nrwl/js:tsc",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/libs/core/util",
-        "main": "libs/core/util/src/index.ts",
-        "tsConfig": "libs/core/util/tsconfig.lib.json",
-        "assets": ["libs/core/util/*.md"]
+        "outputPath": "dist/libs/new/util2",
+        "main": "libs/new/util2/src/index.ts",
+        "tsConfig": "libs/new/util2/tsconfig.lib.json",
+        "assets": ["libs/new/util2/*.md"]
       }
     },
     "publish": {
