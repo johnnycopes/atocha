@@ -1,6 +1,6 @@
 import { DOCUMENT } from '@angular/common';
 import { Inject, Injectable } from '@angular/core';
-import { startCase } from 'lodash';
+import { startCase } from 'lodash-es';
 
 import { APP_NAME_TOKEN } from '@atocha/core/data-access';
 import { Csv } from '@atocha/core/util';
