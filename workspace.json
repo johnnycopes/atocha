@@ -33,7 +33,6 @@
     "menu-matriarch-feature-tags": "libs/menu-matriarch/feature-tags",
     "menu-matriarch-ui": "libs/menu-matriarch/ui",
     "menu-matriarch-util": "libs/menu-matriarch/util",
-    "new-util": "libs/new/util",
     "spirit-islander": "apps/spirit-islander",
     "spirit-islander-data-access": "libs/spirit-islander/data-access",
     "spirit-islander-e2e": "apps/spirit-islander-e2e",
