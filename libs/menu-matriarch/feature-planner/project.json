@@ -6,9 +6,7 @@
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": [
-        "coverage/libs/menu-matriarch/feature-planner"
-      ],
+      "outputs": ["coverage/libs/menu-matriarch/feature-planner"],
       "options": {
         "jestConfig": "libs/menu-matriarch/feature-planner/jest.config.ts",
         "passWithNoTests": true
