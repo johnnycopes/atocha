@@ -11,11 +11,6 @@
     "mm:delete-data": "node ./firebase/scripts/dev/delete-data.js",
     "mm:reset": "node ./firebase/scripts/dev/delete-all-accounts.js"
   },
-  "nx": {
-    "implicitDependencies": {
-      ".github/workflows/ci.yml": "*"
-    }
-  },
   "private": true,
   "devDependencies": {
     "@angular-devkit/build-angular": "15.0.4",
