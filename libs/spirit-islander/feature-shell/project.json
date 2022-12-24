@@ -7,7 +7,9 @@
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/spirit-islander/feature-shell"],
+      "outputs": [
+        "{workspaceRoot}/coverage/libs/spirit-islander/feature-shell"
+      ],
       "options": {
         "jestConfig": "libs/spirit-islander/feature-shell/jest.config.ts",
         "passWithNoTests": true

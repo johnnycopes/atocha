@@ -6,7 +6,7 @@
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/globetrotter/feature-explore"],
+      "outputs": ["{workspaceRoot}/coverage/libs/globetrotter/feature-explore"],
       "options": {
         "jestConfig": "libs/globetrotter/feature-explore/jest.config.ts",
         "passWithNoTests": true

@@ -80,7 +80,7 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/lorenzo"],
+      "outputs": ["{workspaceRoot}/coverage/apps/lorenzo"],
       "options": {
         "jestConfig": "apps/lorenzo/jest.config.ts",
         "passWithNoTests": true

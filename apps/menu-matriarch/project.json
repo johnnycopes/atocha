@@ -86,7 +86,7 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/menu-matriarch"],
+      "outputs": ["{workspaceRoot}/coverage/apps/menu-matriarch"],
       "options": {
         "jestConfig": "apps/menu-matriarch/jest.config.ts",
         "passWithNoTests": true
