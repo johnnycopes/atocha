@@ -12,6 +12,7 @@ import { ButtonComponent } from '@atocha/core/ui';
 import {
   CardComponent,
   CardGroupComponent,
+  CheckboxesGroupComponent,
   PageComponent,
 } from '@atocha/spirit-islander/ui';
 import { Combo, Config } from '@atocha/spirit-islander/util';
@@ -23,6 +24,7 @@ import { Combo, Config } from '@atocha/spirit-islander/util';
     ButtonComponent,
     CardComponent,
     CardGroupComponent,
+    CheckboxesGroupComponent,
     CommonModule,
     PageComponent,
   ],
@@ -44,5 +46,9 @@ export class ConfigComponent {
       config: this.config!,
       validCombos: [],
     });
+  }
+
+  onModelChange(e: unknown) {
+    console.log(e);
   }
 }

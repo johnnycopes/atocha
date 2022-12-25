@@ -2,7 +2,8 @@
   <!-- <ng-container ui-page-content>
     {{ config | json }}
   </ng-container> -->
-  <form class="config"
+  <form *ngIf="config"
+    class="config"
     ui-page-content
   >
     <ui-card-group
@@ -13,7 +14,11 @@
         <h3 ui-card-header>
           Expansions
         </h3>
-        <div ui-card-content>placeholder</div>
+        <ui-checkboxes-group ui-card-content
+          name="Expansions"
+          [items]="config.expansions"
+          (modelChange)="onModelChange($event)"
+        ></ui-checkboxes-group>
       </ui-card>
 
       <ui-card name="players">
@@ -39,7 +44,11 @@
         <h3 ui-card-header>
           Spirits
         </h3>
-        <div ui-card-content>placeholder</div>
+        <ui-checkboxes-group ui-card-content
+          name="Spirits"
+          [items]="config.spiritNames"
+          (modelChange)="onModelChange($event)"
+        ></ui-checkboxes-group>
       </ui-card>
 
       <ui-card name="maps">

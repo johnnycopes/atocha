@@ -1,1 +1,7 @@
-<p>checkboxes-group works!</p>
+<core-checkbox-tree
+  [item]="item"
+  [getId]="getId"
+  [getChildren]="getChildren"
+  [ngModel]="state"
+  (ngModelChange)="onChange($event)"
+></core-checkbox-tree>
