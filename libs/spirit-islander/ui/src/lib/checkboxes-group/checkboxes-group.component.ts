@@ -78,10 +78,6 @@ export class CheckboxesGroupComponent<T> {
   state: Record<string, CheckboxState> = {};
   private _items: T[] = [];
 
-  ngAfterContentInit() {
-    console.log(this.contentTemplate);
-  }
-
   getTreeId = ({ id }: Tree<T>) => id;
   getTreeChildren = ({ children }: Tree<T>) => children ?? [];
 

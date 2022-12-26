@@ -54,7 +54,10 @@
           (modelChange)="onModelChange($event)"
         >
           <ng-template #grab let-item>
-            {{ item | json }}
+            <ui-expansion-emblem
+              *ngIf="item.contents?.expansion"
+              [value]="item.contents.expansion"
+            ></ui-expansion-emblem>
           </ng-template>
         </ui-checkboxes-group>
       </ui-card>
@@ -82,7 +85,14 @@
           [items]="BOARDS"
           [model]="config.boardNames"
           (modelChange)="onModelChange($event)"
-        ></ui-checkboxes-group>
+        >
+          <ng-template #grab let-item>
+            <ui-expansion-emblem
+              *ngIf="item.contents?.expansion"
+              [value]="item.contents.expansion"
+            ></ui-expansion-emblem>
+          </ng-template>
+        </ui-checkboxes-group>
       </ui-card>
 
       <ui-card name="scenarios">

@@ -17,6 +17,7 @@ import {
   CardComponent,
   CardGroupComponent,
   CheckboxesGroupComponent,
+  ExpansionEmblemComponent,
   PageComponent,
 } from '@atocha/spirit-islander/ui';
 import {
@@ -41,6 +42,7 @@ import {
     CheckboxesGroupComponent,
     CheckboxTreeComponent,
     CommonModule,
+    ExpansionEmblemComponent,
     PageComponent,
   ],
   templateUrl: './config.component.html',

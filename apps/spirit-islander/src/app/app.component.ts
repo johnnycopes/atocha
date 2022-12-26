@@ -45,7 +45,12 @@ interface AppState {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
-  _expansions: ExpansionName[] = ['Horizons', 'Jagged Earth', 'Branch & Claw'];
+  _expansions: ExpansionName[] = [
+    'Horizons',
+    'Jagged Earth',
+    'Branch & Claw',
+    'Promo Pack 1',
+  ];
   _config: Config = {
     expansions: this._expansions,
     players: 6,
