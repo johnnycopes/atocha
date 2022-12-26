@@ -15,7 +15,12 @@ import {
   CheckboxesGroupComponent,
   PageComponent,
 } from '@atocha/spirit-islander/ui';
-import { Combo, Config } from '@atocha/spirit-islander/util';
+import {
+  Combo,
+  Config,
+  EXPANSIONS,
+  SPIRITS,
+} from '@atocha/spirit-islander/util';
 
 @Component({
   selector: 'app-config',
@@ -39,6 +44,9 @@ export class ConfigComponent {
     config: Config;
     validCombos: Combo[];
   }>();
+
+  readonly EXPANSIONS = EXPANSIONS;
+  readonly SPIRITS = SPIRITS;
 
   onGenerate(): void {
     this.generate.emit({

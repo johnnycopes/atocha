@@ -16,7 +16,8 @@
         </h3>
         <ui-checkboxes-group ui-card-content
           name="Expansions"
-          [items]="config.expansions"
+          [items]="EXPANSIONS"
+          [model]="config.expansions"
           (modelChange)="onModelChange($event)"
         ></ui-checkboxes-group>
       </ui-card>
@@ -46,7 +47,7 @@
         </h3>
         <ui-checkboxes-group ui-card-content
           name="Spirits"
-          [items]="config.spiritNames"
+          [model]="config.spiritNames"
           (modelChange)="onModelChange($event)"
         ></ui-checkboxes-group>
       </ui-card>

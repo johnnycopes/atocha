@@ -35,18 +35,33 @@ import {
 export class CheckboxesGroupComponent {
   @Input() name = '';
   @Input()
-  set items(value: string[]) {
-    this._items = value;
+  set items(items: string[]) {
+    this._items = items;
     this.item = {
       id: this.name,
       children: this._items.map((id) => ({ id })),
     };
   }
+  @Input()
+  set model(model: string[]) {
+    const state: Record<string, CheckboxState> = {};
+
+    if (model.length === this._items.length) {
+      state[this.name] = 'checked';
+    } else if (model.length > 0) {
+      state[this.name] = 'indeterminate';
+    }
+
+    this.state = model.reduce((accum, curr) => {
+      accum[curr] = 'checked';
+      return accum;
+    }, state);
+  }
   @Output() modelChange = new EventEmitter<string[]>();
 
-  private _items: string[] = [];
   item: Item | undefined;
   state: Record<string, CheckboxState> = {};
+  private _items: string[] = [];
 
   getId = ({ id }: Item) => id;
   getChildren = ({ children }: Item) => children ?? [];
