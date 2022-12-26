@@ -1,16 +1,20 @@
+/* eslint-disable @typescript-eslint/member-ordering */
 import {
   ChangeDetectionStrategy,
   Component,
+  ContentChild,
   EventEmitter,
   Input,
   Output,
+  TemplateRef,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
-interface Item {
+interface Tree<T> {
   id: string;
-  children?: Item[];
+  contents?: T;
+  children?: Tree<T>[];
 }
 
 import {
@@ -32,16 +36,23 @@ import {
   styleUrls: ['./checkboxes-group.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CheckboxesGroupComponent {
+export class CheckboxesGroupComponent<T> {
   @Input() name = '';
+
+  @Input() getId: (item: T) => string = () => '';
+
   @Input()
-  set items(items: string[]) {
+  set items(items: T[]) {
     this._items = items;
-    this.item = {
+    this.tree = {
       id: this.name,
-      children: this._items.map((id) => ({ id })),
+      children: this._items.map((item) => ({
+        id: this.getId(item),
+        contents: item,
+      })),
     };
   }
+
   @Input()
   set model(model: string[]) {
     const state: Record<string, CheckboxState> = {};
@@ -57,14 +68,22 @@ export class CheckboxesGroupComponent {
       return accum;
     }, state);
   }
+
   @Output() modelChange = new EventEmitter<string[]>();
 
-  item: Item | undefined;
-  state: Record<string, CheckboxState> = {};
-  private _items: string[] = [];
+  @ContentChild('grab')
+  contentTemplate: TemplateRef<unknown> | null = null;
 
-  getId = ({ id }: Item) => id;
-  getChildren = ({ children }: Item) => children ?? [];
+  tree: Tree<T> | undefined;
+  state: Record<string, CheckboxState> = {};
+  private _items: T[] = [];
+
+  ngAfterContentInit() {
+    console.log(this.contentTemplate);
+  }
+
+  getTreeId = ({ id }: Tree<T>) => id;
+  getTreeChildren = ({ children }: Tree<T>) => children ?? [];
 
   onChange(updatedState: Record<string, CheckboxState>): void {
     this.state = updatedState;

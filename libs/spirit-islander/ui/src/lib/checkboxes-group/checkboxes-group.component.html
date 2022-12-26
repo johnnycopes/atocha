@@ -1,7 +1,27 @@
-<core-checkbox-tree *ngIf="item"
-  [item]="item"
-  [getId]="getId"
-  [getChildren]="getChildren"
+<core-checkbox-tree *ngIf="tree"
+  [item]="tree"
+  [getId]="getTreeId"
+  [getChildren]="getTreeChildren"
   [ngModel]="state"
   (ngModelChange)="onChange($event)"
-></core-checkbox-tree>
+  ></core-checkbox-tree>
+  <!-- [itemTemplate]="contentTemplate? itemTemplate : defaultItemTemplate" -->
+
+
+<ng-template #defaultItemTemplate let-item>
+  {{ getId(item) }}
+</ng-template>
+
+<ng-template #itemTemplate let-item>
+  {{ getId(item) }}
+  <ng-container
+    [ngTemplateOutlet]="contentTemplate"
+    [ngTemplateOutletContext]="{ $implicit: item }"
+  ></ng-container>
+</ng-template>
+<!-- <ng-template></ng-template>
+  <<ng-container *ngIf="contentTemplate">
+    <ng-container *ngTemplateOutlet="contentTemplate"></ng-container>
+  </ng-container>
+</ng-template> -->
+

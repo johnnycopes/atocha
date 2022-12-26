@@ -8,7 +8,11 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 
-import { ButtonComponent } from '@atocha/core/ui';
+import {
+  ButtonComponent,
+  CheckboxState,
+  CheckboxTreeComponent,
+} from '@atocha/core/ui';
 import {
   CardComponent,
   CardGroupComponent,
@@ -22,6 +26,7 @@ import {
   EXPANSIONS,
   getOptionsByExpansion,
   MAPS,
+  Option,
   SCENARIOS,
   SPIRITS,
 } from '@atocha/spirit-islander/util';
@@ -34,6 +39,7 @@ import {
     CardComponent,
     CardGroupComponent,
     CheckboxesGroupComponent,
+    CheckboxTreeComponent,
     CommonModule,
     PageComponent,
   ],
@@ -48,18 +54,10 @@ export class ConfigComponent {
     this._config = config;
 
     if (config) {
-      this.SPIRITS = getOptionsByExpansion(SPIRITS, config?.expansions).map(
-        ({ name }) => name
-      );
-      this.MAPS = getOptionsByExpansion(MAPS, config?.expansions).map(
-        ({ name }) => name
-      );
-      this.BOARDS = getOptionsByExpansion(BOARDS, config?.expansions).map(
-        ({ name }) => name
-      );
-      this.SCENARIOS = getOptionsByExpansion(SCENARIOS, config?.expansions).map(
-        ({ name }) => name
-      );
+      this.SPIRITS = getOptionsByExpansion(SPIRITS, config?.expansions);
+      this.MAPS = getOptionsByExpansion(MAPS, config?.expansions);
+      this.BOARDS = getOptionsByExpansion(BOARDS, config?.expansions);
+      this.SCENARIOS = getOptionsByExpansion(SCENARIOS, config?.expansions);
     }
   }
   get config() {
@@ -73,10 +71,15 @@ export class ConfigComponent {
   }>();
 
   readonly EXPANSIONS = EXPANSIONS;
-  SPIRITS = SPIRITS.map(({ name }) => name);
-  MAPS = MAPS.map(({ name }) => name);
-  BOARDS = BOARDS.map(({ name }) => name);
-  SCENARIOS = SCENARIOS.map(({ name }) => name);
+  SPIRITS = SPIRITS;
+  MAPS = MAPS;
+  BOARDS = BOARDS;
+  SCENARIOS = SCENARIOS;
+
+  expansionsItem: Record<string, CheckboxState> = {};
+
+  getSelf = (item: string) => item;
+  getName = <T extends string>({ name }: Option<T>) => name;
 
   onGenerate(): void {
     this.generate.emit({

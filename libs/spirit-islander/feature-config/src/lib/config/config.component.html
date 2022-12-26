@@ -16,6 +16,7 @@
         </h3>
         <ui-checkboxes-group ui-card-content
           name="Expansions"
+          [getId]="getSelf"
           [items]="EXPANSIONS"
           [model]="config.expansions"
           (modelChange)="onModelChange($event)"
@@ -47,10 +48,15 @@
         </h3>
         <ui-checkboxes-group ui-card-content
           name="Spirits"
+          [getId]="getName"
           [items]="SPIRITS"
           [model]="config.spiritNames"
           (modelChange)="onModelChange($event)"
-        ></ui-checkboxes-group>
+        >
+          <ng-template #grab let-item>
+            {{ item | json }}
+          </ng-template>
+        </ui-checkboxes-group>
       </ui-card>
 
       <ui-card name="maps">
@@ -59,6 +65,7 @@
         </h3>
         <ui-checkboxes-group ui-card-content
           name="Maps"
+          [getId]="getName"
           [items]="MAPS"
           [model]="config.mapNames"
           (modelChange)="onModelChange($event)"
@@ -71,6 +78,7 @@
         </h3>
         <ui-checkboxes-group ui-card-content
           name="Boards"
+          [getId]="getName"
           [items]="BOARDS"
           [model]="config.boardNames"
           (modelChange)="onModelChange($event)"
@@ -83,6 +91,7 @@
         </h3>
         <ui-checkboxes-group ui-card-content
           name="Scenarios"
+          [getId]="getName"
           [items]="SCENARIOS"
           [model]="config.scenarioNames"
           (modelChange)="onModelChange($event)"
