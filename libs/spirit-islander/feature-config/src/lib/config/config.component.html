@@ -47,6 +47,7 @@
         </h3>
         <ui-checkboxes-group ui-card-content
           name="Spirits"
+          [items]="SPIRITS"
           [model]="config.spiritNames"
           (modelChange)="onModelChange($event)"
         ></ui-checkboxes-group>
@@ -56,28 +57,36 @@
         <h3 ui-card-header>
           Maps
         </h3>
-        <div ui-card-content>placeholder</div>
-      </ui-card>
-
-      <ui-card name="maps">
-        <h3 ui-card-header>
-          Maps
-        </h3>
-        <div ui-card-content>placeholder</div>
+        <ui-checkboxes-group ui-card-content
+          name="Maps"
+          [items]="MAPS"
+          [model]="config.mapNames"
+          (modelChange)="onModelChange($event)"
+        ></ui-checkboxes-group>
       </ui-card>
 
       <ui-card name="boards">
         <h3 ui-card-header>
           Boards
         </h3>
-        <div ui-card-content>placeholder</div>
+        <ui-checkboxes-group ui-card-content
+          name="Boards"
+          [items]="BOARDS"
+          [model]="config.boardNames"
+          (modelChange)="onModelChange($event)"
+        ></ui-checkboxes-group>
       </ui-card>
 
       <ui-card name="scenarios">
         <h3 ui-card-header>
           Scenarios
         </h3>
-        <div ui-card-content>placeholder</div>
+        <ui-checkboxes-group ui-card-content
+          name="Scenarios"
+          [items]="SCENARIOS"
+          [model]="config.scenarioNames"
+          (modelChange)="onModelChange($event)"
+        ></ui-checkboxes-group>
       </ui-card>
 
       <ui-card name="adversaries">

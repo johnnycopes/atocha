@@ -16,9 +16,13 @@ import {
   PageComponent,
 } from '@atocha/spirit-islander/ui';
 import {
+  BOARDS,
   Combo,
   Config,
   EXPANSIONS,
+  getOptionsByExpansion,
+  MAPS,
+  SCENARIOS,
   SPIRITS,
 } from '@atocha/spirit-islander/util';
 
@@ -39,14 +43,40 @@ import {
   encapsulation: ViewEncapsulation.None,
 })
 export class ConfigComponent {
-  @Input() config: Config | undefined;
+  @Input()
+  set config(config) {
+    this._config = config;
+
+    if (config) {
+      this.SPIRITS = getOptionsByExpansion(SPIRITS, config?.expansions).map(
+        ({ name }) => name
+      );
+      this.MAPS = getOptionsByExpansion(MAPS, config?.expansions).map(
+        ({ name }) => name
+      );
+      this.BOARDS = getOptionsByExpansion(BOARDS, config?.expansions).map(
+        ({ name }) => name
+      );
+      this.SCENARIOS = getOptionsByExpansion(SCENARIOS, config?.expansions).map(
+        ({ name }) => name
+      );
+    }
+  }
+  get config() {
+    return this._config;
+  }
+  private _config: Config | undefined;
+
   @Output() generate = new EventEmitter<{
     config: Config;
     validCombos: Combo[];
   }>();
 
   readonly EXPANSIONS = EXPANSIONS;
-  readonly SPIRITS = SPIRITS;
+  SPIRITS = SPIRITS.map(({ name }) => name);
+  MAPS = MAPS.map(({ name }) => name);
+  BOARDS = BOARDS.map(({ name }) => name);
+  SCENARIOS = SCENARIOS.map(({ name }) => name);
 
   onGenerate(): void {
     this.generate.emit({
