@@ -1,24 +1,15 @@
 import {
-  ADVERSARIES,
-  Adversary,
-  AdversaryLevel,
-  BOARDS,
-  EXPANSIONS,
-  MAPS,
-  SCENARIOS,
-  SPIRITS,
-} from '@atocha/spirit-islander/util';
-import { createTree } from './create-tree';
+  createAdversariesTree,
+  createBoardsTree,
+  createExpansionsTree,
+  createMapsTree,
+  createScenariosTree,
+  createSpiritsTree,
+} from './create-tree';
 
 describe('createTree', () => {
   it('generates expansions tree', () => {
-    expect(
-      createTree({
-        root: 'Expansions',
-        items: EXPANSIONS,
-        getId: (item) => item,
-      })
-    ).toEqual({
+    expect(createExpansionsTree()).toEqual({
       id: 'Expansions',
       children: [
         { id: 'Branch & Claw' },
@@ -31,14 +22,7 @@ describe('createTree', () => {
   });
 
   it('generates spirits tree', () => {
-    expect(
-      createTree({
-        root: 'Spirits',
-        items: SPIRITS,
-        getId: ({ name }) => name,
-        getData: ({ expansion }) => (expansion ? { expansion } : {}),
-      })
-    ).toEqual({
+    expect(createSpiritsTree()).toEqual({
       id: 'Spirits',
       children: [
         { id: 'A Spread of Rampant Green' },
@@ -138,27 +122,14 @@ describe('createTree', () => {
   });
 
   it('generates maps tree', () => {
-    expect(
-      createTree({
-        root: 'Maps',
-        items: MAPS,
-        getId: ({ name }) => name,
-      })
-    ).toEqual({
+    expect(createMapsTree()).toEqual({
       id: 'Maps',
       children: [{ id: 'Balanced' }, { id: 'Thematic' }],
     });
   });
 
   it('generates boards tree', () => {
-    expect(
-      createTree({
-        root: 'Boards',
-        items: BOARDS,
-        getId: ({ name }) => name,
-        getData: ({ expansion }) => (expansion ? { expansion } : {}),
-      })
-    ).toEqual({
+    expect(createBoardsTree()).toEqual({
       id: 'Boards',
       children: [
         { id: 'A' },
@@ -172,14 +143,7 @@ describe('createTree', () => {
   });
 
   it('generates scenarios tree', () => {
-    expect(
-      createTree({
-        root: 'Scenarios',
-        items: SCENARIOS,
-        getId: ({ name }) => name,
-        getData: ({ difficulty }) => ({ difficulty }),
-      })
-    ).toEqual({
+    expect(createScenariosTree()).toEqual({
       id: 'Scenarios',
       children: [
         {
@@ -243,26 +207,7 @@ describe('createTree', () => {
   });
 
   it('generates adversaries tree', () => {
-    expect(
-      createTree<Adversary | AdversaryLevel>({
-        root: 'Adversaries',
-        items: ADVERSARIES,
-        getId: (adversaryOrAdversaryLevel) =>
-          'id' in adversaryOrAdversaryLevel
-            ? adversaryOrAdversaryLevel.id
-            : adversaryOrAdversaryLevel.name,
-        getChildren: (adversaryOrAdversaryLevel) =>
-          'levels' in adversaryOrAdversaryLevel
-            ? adversaryOrAdversaryLevel.levels
-            : [],
-        getData: (adversaryOrAdversaryLevel) =>
-          'id' in adversaryOrAdversaryLevel
-            ? { difficulty: adversaryOrAdversaryLevel.difficulty }
-            : adversaryOrAdversaryLevel.expansion
-            ? { expansion: adversaryOrAdversaryLevel.expansion }
-            : {},
-      })
-    ).toEqual({
+    expect(createAdversariesTree()).toEqual({
       id: 'Adversaries',
       children: [
         { id: 'No Adversary' },

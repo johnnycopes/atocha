@@ -24,8 +24,6 @@ import {
 } from '@atocha/spirit-islander/ui';
 import {
   ADVERSARIES,
-  Adversary,
-  AdversaryLevel,
   BOARDS,
   Combo,
   Config,
@@ -35,7 +33,15 @@ import {
   SCENARIOS,
   SPIRITS,
 } from '@atocha/spirit-islander/util';
-import { ConfigTree, createTree } from './create-tree';
+import {
+  ConfigTree,
+  createAdversariesTree,
+  createBoardsTree,
+  createExpansionsTree,
+  createMapsTree,
+  createScenariosTree,
+  createSpiritsTree,
+} from './create-tree';
 
 @Component({
   selector: 'app-config',
@@ -90,62 +96,22 @@ export class ConfigComponent {
   configTreeGetChildren = <T>({ children }: ConfigTree<T>) => children ?? [];
 
   expansionsModel: Record<string, CheckboxState> = {};
-  expansionsTree = createTree({
-    root: 'Expansions',
-    getId: (item) => item,
-    items: this.EXPANSIONS,
-  });
+  expansionsTree = createExpansionsTree();
 
   spiritsModel: Record<string, CheckboxState> = {};
-  spiritsTree = createTree({
-    root: 'Spirits',
-    getId: ({ name }) => name,
-    getData: ({ expansion }) => (expansion ? { expansion } : {}),
-    items: this.SPIRITS,
-  });
+  spiritsTree = createSpiritsTree();
 
   mapsModel: Record<string, CheckboxState> = {};
-  mapsTree = createTree({
-    root: 'Maps',
-    getId: ({ name }) => name,
-    items: this.MAPS,
-  });
+  mapsTree = createMapsTree();
 
   boardsModel: Record<string, CheckboxState> = {};
-  boardsTree = createTree({
-    root: 'Boards',
-    getId: ({ name }) => name,
-    getData: ({ expansion }) => (expansion ? { expansion } : {}),
-    items: this.BOARDS,
-  });
+  boardsTree = createBoardsTree();
 
   scenariosModel: Record<string, CheckboxState> = {};
-  scenariosTree = createTree({
-    root: 'Scenarios',
-    getId: ({ name }) => name,
-    getData: ({ expansion }) => (expansion ? { expansion } : {}),
-    items: this.SCENARIOS,
-  });
+  scenariosTree = createScenariosTree();
 
   adversariesModel: Record<string, CheckboxState> = {};
-  adversariesTree = createTree<Adversary | AdversaryLevel>({
-    root: 'Adversaries',
-    getId: (adversaryOrAdversaryLevel) =>
-      'id' in adversaryOrAdversaryLevel
-        ? adversaryOrAdversaryLevel.id
-        : adversaryOrAdversaryLevel.name,
-    getChildren: (adversaryOrAdversaryLevel) =>
-      'levels' in adversaryOrAdversaryLevel
-        ? adversaryOrAdversaryLevel.levels
-        : [],
-    getData: (adversaryOrAdversaryLevel) =>
-      'id' in adversaryOrAdversaryLevel
-        ? { difficulty: adversaryOrAdversaryLevel.difficulty }
-        : adversaryOrAdversaryLevel.expansion
-        ? { expansion: adversaryOrAdversaryLevel.expansion }
-        : {},
-    items: this.ADVERSARIES,
-  });
+  adversariesTree = createAdversariesTree();
 
   onGenerate(): void {
     this.generate.emit({
