@@ -1,4 +1,7 @@
 import {
+  ADVERSARIES,
+  Adversary,
+  AdversaryLevel,
   BOARDS,
   EXPANSIONS,
   MAPS,
@@ -127,6 +130,112 @@ describe('createTree', () => {
         { id: 'Rituals of Terror' },
         { id: 'The Great River' },
         { id: 'Dahan Insurrection' },
+      ],
+    });
+  });
+
+  it('generates adversaries tree', () => {
+    expect(
+      createTree<Adversary | AdversaryLevel>({
+        root: 'Adversaries',
+        items: ADVERSARIES,
+        getId: (adversaryOrAdversaryLevel) =>
+          'id' in adversaryOrAdversaryLevel
+            ? adversaryOrAdversaryLevel.id
+            : adversaryOrAdversaryLevel.name,
+        getChildren: (adversaryOrAdversaryLevel) =>
+          'levels' in adversaryOrAdversaryLevel
+            ? adversaryOrAdversaryLevel.levels
+            : [],
+      })
+    ).toEqual({
+      id: 'Adversaries',
+      children: [
+        { id: 'No Adversary' },
+        {
+          id: 'Brandenburg-Prussia',
+          children: [
+            { id: 'bp-0' },
+            { id: 'bp-1' },
+            { id: 'bp-2' },
+            { id: 'bp-3' },
+            { id: 'bp-4' },
+            { id: 'bp-5' },
+            { id: 'bp-6' },
+          ],
+        },
+        {
+          id: 'England',
+          children: [
+            { id: 'en-0' },
+            { id: 'en-1' },
+            { id: 'en-2' },
+            { id: 'en-3' },
+            { id: 'en-4' },
+            { id: 'en-5' },
+            { id: 'en-6' },
+          ],
+        },
+        {
+          id: 'France',
+          children: [
+            { id: 'fr-0' },
+            { id: 'fr-1' },
+            { id: 'fr-2' },
+            { id: 'fr-3' },
+            { id: 'fr-4' },
+            { id: 'fr-5' },
+            { id: 'fr-6' },
+          ],
+        },
+        {
+          id: 'Habsburg Monarchy',
+          children: [
+            { id: 'hm-0' },
+            { id: 'hm-1' },
+            { id: 'hm-2' },
+            { id: 'hm-3' },
+            { id: 'hm-4' },
+            { id: 'hm-5' },
+            { id: 'hm-6' },
+          ],
+        },
+        {
+          id: 'Russia',
+          children: [
+            { id: 'ru-0' },
+            { id: 'ru-1' },
+            { id: 'ru-2' },
+            { id: 'ru-3' },
+            { id: 'ru-4' },
+            { id: 'ru-5' },
+            { id: 'ru-6' },
+          ],
+        },
+        {
+          id: 'Scotland',
+          children: [
+            { id: 'sc-0' },
+            { id: 'sc-1' },
+            { id: 'sc-2' },
+            { id: 'sc-3' },
+            { id: 'sc-4' },
+            { id: 'sc-5' },
+            { id: 'sc-6' },
+          ],
+        },
+        {
+          id: 'Sweden',
+          children: [
+            { id: 'sw-0' },
+            { id: 'sw-1' },
+            { id: 'sw-2' },
+            { id: 'sw-3' },
+            { id: 'sw-4' },
+            { id: 'sw-5' },
+            { id: 'sw-6' },
+          ],
+        },
       ],
     });
   });
