@@ -62,6 +62,7 @@
           [getId]="configTreeGetId"
           [getChildren]="configTreeGetChildren"
           [item]="mapsTree"
+          [itemTemplate]="configTemplate"
           [(ngModel)]="mapsModel"
         ></core-checkbox-tree>
       </ui-card>
@@ -120,6 +121,10 @@
 
 <ng-template #configTemplate let-item>
   {{ item.id }}
+  <ui-difficulty-emblem
+    *ngIf="item.difficulty"
+    [value]="item.difficulty"
+  ></ui-difficulty-emblem>
   <ui-expansion-emblem
     *ngIf="item.expansion"
     [value]="item.expansion"

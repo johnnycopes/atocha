@@ -3,7 +3,9 @@ import {
   Adversary,
   AdversaryLevel,
   BOARDS,
+  ExpansionName,
   EXPANSIONS,
+  getDifficulty,
   MAPS,
   SCENARIOS,
   SPIRITS,
@@ -31,11 +33,14 @@ export function createSpiritsTree() {
   });
 }
 
-export function createMapsTree() {
+export function createMapsTree(expansions: ExpansionName[] = []) {
   return createTree({
     root: 'Maps',
     items: MAPS,
     getId: ({ name }) => name,
+    getData: ({ difficulty }) => ({
+      difficulty: getDifficulty(difficulty, expansions),
+    }),
   });
 }
 
@@ -53,7 +58,10 @@ export function createScenariosTree() {
     root: 'Scenarios',
     items: SCENARIOS,
     getId: ({ name }) => name,
-    getData: ({ difficulty }) => ({ difficulty }),
+    getData: ({ expansion, difficulty }) => ({
+      difficulty,
+      ...(expansion && { expansion }),
+    }),
   });
 }
 
@@ -61,21 +69,27 @@ export function createAdversariesTree() {
   return createTree<Adversary | AdversaryLevel>({
     root: 'Adversaries',
     items: ADVERSARIES,
-    getId: (adversaryOrAdversaryLevel) =>
-      'id' in adversaryOrAdversaryLevel
-        ? adversaryOrAdversaryLevel.id
-        : adversaryOrAdversaryLevel.name,
-    getChildren: (adversaryOrAdversaryLevel) =>
-      'levels' in adversaryOrAdversaryLevel
-        ? adversaryOrAdversaryLevel.levels
-        : [],
-    getData: (adversaryOrAdversaryLevel) =>
-      'id' in adversaryOrAdversaryLevel
-        ? { difficulty: adversaryOrAdversaryLevel.difficulty }
-        : adversaryOrAdversaryLevel.expansion
-        ? { expansion: adversaryOrAdversaryLevel.expansion }
-        : {},
+    getId: (entity) => (isAdversaryLevel(entity) ? entity.id : entity.name),
+    getChildren: (entity) => (isAdversary(entity) ? entity.levels : []),
+    getData: (entity) => {
+      if (isAdversary(entity) && entity.expansion) {
+        return { expansion: entity.expansion };
+      } else if (isAdversaryLevel(entity)) {
+        return { difficulty: entity.difficulty };
+      }
+      return {};
+    },
   });
+}
+
+function isAdversary(entity: Adversary | AdversaryLevel): entity is Adversary {
+  return 'levels' in entity;
+}
+
+function isAdversaryLevel(
+  entity: Adversary | AdversaryLevel
+): entity is AdversaryLevel {
+  return 'id' in entity;
 }
 
 function createTree<T>({
@@ -97,7 +111,10 @@ function createTree<T>({
       id: getId(item),
       ...getData?.(item), // Only include extra properties if specified
       ...(getChildren(item).length > 0 && {
-        children: getChildren(item).map((item) => ({ id: getId(item) })),
+        children: getChildren(item).map((item) => ({
+          id: getId(item),
+          ...getData?.(item),
+        })),
       }), // Only include `children` property if children exist
     })),
   };

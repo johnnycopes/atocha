@@ -19,6 +19,7 @@ import {
   CardComponent,
   CardGroupComponent,
   CheckboxesGroupComponent,
+  DifficultyEmblemComponent,
   ExpansionEmblemComponent,
   PageComponent,
 } from '@atocha/spirit-islander/ui';
@@ -53,6 +54,7 @@ import {
     CheckboxesGroupComponent,
     CheckboxTreeComponent,
     CommonModule,
+    DifficultyEmblemComponent,
     ExpansionEmblemComponent,
     FormsModule,
     PageComponent,
