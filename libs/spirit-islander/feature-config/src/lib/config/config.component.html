@@ -49,15 +49,9 @@
           [getId]="configTreeGetId"
           [getChildren]="configTreeGetChildren"
           [item]="spiritsTree"
+          [itemTemplate]="configTemplate"
           [(ngModel)]="spiritsModel"
-        >
-          <ng-template #grab let-item>
-            <ui-expansion-emblem
-              *ngIf="item.contents?.expansion"
-              [value]="item.contents.expansion"
-            ></ui-expansion-emblem>
-          </ng-template>
-        </core-checkbox-tree>
+        ></core-checkbox-tree>
       </ui-card>
 
       <ui-card name="maps">
@@ -80,15 +74,9 @@
           [getId]="configTreeGetId"
           [getChildren]="configTreeGetChildren"
           [item]="boardsTree"
+          [itemTemplate]="configTemplate"
           [(ngModel)]="boardsModel"
-        >
-          <ng-template #grab let-item>
-            <ui-expansion-emblem
-              *ngIf="item.contents?.expansion"
-              [value]="item.contents.expansion"
-            ></ui-expansion-emblem>
-          </ng-template>
-        </core-checkbox-tree>
+        ></core-checkbox-tree>
       </ui-card>
 
       <ui-card name="scenarios">
@@ -99,6 +87,7 @@
           [getId]="configTreeGetId"
           [getChildren]="configTreeGetChildren"
           [item]="scenariosTree"
+          [itemTemplate]="configTemplate"
           [(ngModel)]="scenariosModel"
         ></core-checkbox-tree>
       </ui-card>
@@ -111,6 +100,7 @@
           [getId]="configTreeGetId"
           [getChildren]="configTreeGetChildren"
           [item]="adversariesTree"
+          [itemTemplate]="configTemplate"
           [(ngModel)]="adversariesModel"
         ></core-checkbox-tree>
       </ui-card>
@@ -127,3 +117,11 @@
     </div>
   </div>
 </main>
+
+<ng-template #configTemplate let-item>
+  {{ item.id }}
+  <ui-expansion-emblem
+    *ngIf="item.expansion"
+    [value]="item.expansion"
+  ></ui-expansion-emblem>
+</ng-template>

@@ -100,6 +100,7 @@ export class ConfigComponent {
   spiritsTree = createTree({
     root: 'Spirits',
     getId: ({ name }) => name,
+    getData: ({ expansion }) => (expansion ? { expansion } : {}),
     items: this.SPIRITS,
   });
 
@@ -114,6 +115,7 @@ export class ConfigComponent {
   boardsTree = createTree({
     root: 'Boards',
     getId: ({ name }) => name,
+    getData: ({ expansion }) => (expansion ? { expansion } : {}),
     items: this.BOARDS,
   });
 
@@ -121,6 +123,7 @@ export class ConfigComponent {
   scenariosTree = createTree({
     root: 'Scenarios',
     getId: ({ name }) => name,
+    getData: ({ expansion }) => (expansion ? { expansion } : {}),
     items: this.SCENARIOS,
   });
 
@@ -135,6 +138,12 @@ export class ConfigComponent {
       'levels' in adversaryOrAdversaryLevel
         ? adversaryOrAdversaryLevel.levels
         : [],
+    getData: (adversaryOrAdversaryLevel) =>
+      'id' in adversaryOrAdversaryLevel
+        ? { difficulty: adversaryOrAdversaryLevel.difficulty }
+        : adversaryOrAdversaryLevel.expansion
+        ? { expansion: adversaryOrAdversaryLevel.expansion }
+        : {},
     items: this.ADVERSARIES,
   });
 
