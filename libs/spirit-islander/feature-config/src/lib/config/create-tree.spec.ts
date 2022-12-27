@@ -36,39 +36,103 @@ describe('createTree', () => {
         root: 'Spirits',
         items: SPIRITS,
         getId: ({ name }) => name,
+        getData: ({ expansion }) => (expansion ? { expansion } : {}),
       })
     ).toEqual({
       id: 'Spirits',
       children: [
         { id: 'A Spread of Rampant Green' },
         { id: 'Bringer of Dreams and Nightmares' },
-        { id: 'Devouring Teeth Lurk Underfoot' },
-        { id: 'Downpour Drenches the World' },
-        { id: 'Eyes Watch From the Trees' },
-        { id: 'Fathomless Mud of the Swamp' },
-        { id: 'Finder of Paths Unseen' },
-        { id: 'Fractured Days Split the Sky' },
-        { id: 'Grinning Trickster Stirs Up Trouble' },
-        { id: 'Heart of the Wildfire' },
-        { id: 'Keeper of the Forbidden Wilds' },
+        {
+          id: 'Devouring Teeth Lurk Underfoot',
+          expansion: 'Horizons',
+        },
+        {
+          id: 'Downpour Drenches the World',
+          expansion: 'Promo Pack 2',
+        },
+        {
+          id: 'Eyes Watch From the Trees',
+          expansion: 'Horizons',
+        },
+        {
+          id: 'Fathomless Mud of the Swamp',
+          expansion: 'Horizons',
+        },
+        {
+          id: 'Finder of Paths Unseen',
+          expansion: 'Promo Pack 2',
+        },
+        {
+          id: 'Fractured Days Split the Sky',
+          expansion: 'Jagged Earth',
+        },
+        {
+          id: 'Grinning Trickster Stirs Up Trouble',
+          expansion: 'Jagged Earth',
+        },
+        {
+          id: 'Heart of the Wildfire',
+          expansion: 'Promo Pack 1',
+        },
+        {
+          id: 'Keeper of the Forbidden Wilds',
+          expansion: 'Branch & Claw',
+        },
         { id: "Lightning's Swift Strike" },
-        { id: 'Lure of the Deep Wilderness' },
-        { id: 'Many Minds Move as One' },
+        {
+          id: 'Lure of the Deep Wilderness',
+          expansion: 'Jagged Earth',
+        },
+        {
+          id: 'Many Minds Move as One',
+          expansion: 'Jagged Earth',
+        },
         { id: "Ocean's Hungry Grasp" },
-        { id: 'Rising Heat of Stone and Sand' },
+        {
+          id: 'Rising Heat of Stone and Sand',
+          expansion: 'Horizons',
+        },
         { id: 'River Surges in Sunlight' },
-        { id: 'Serpent Slumbering Beneath the Island' },
+        {
+          id: 'Serpent Slumbering Beneath the Island',
+          expansion: 'Promo Pack 1',
+        },
         { id: 'Shadows Flicker Like Flame' },
-        { id: 'Sharp Fangs Behind the Leaves' },
-        { id: 'Shifting Memory of Ages' },
-        { id: 'Shroud of Silent Mist' },
-        { id: 'Sun-Bright Whirlwind' },
-        { id: 'Starlight Seeks Its Form' },
-        { id: "Stone's Unyielding Defiance" },
+        {
+          id: 'Sharp Fangs Behind the Leaves',
+          expansion: 'Branch & Claw',
+        },
+        {
+          id: 'Shifting Memory of Ages',
+          expansion: 'Jagged Earth',
+        },
+        {
+          id: 'Shroud of Silent Mist',
+          expansion: 'Jagged Earth',
+        },
+        {
+          id: 'Sun-Bright Whirlwind',
+          expansion: 'Horizons',
+        },
+        {
+          id: 'Starlight Seeks Its Form',
+          expansion: 'Jagged Earth',
+        },
+        {
+          id: "Stone's Unyielding Defiance",
+          expansion: 'Jagged Earth',
+        },
         { id: 'Thunderspeaker' },
-        { id: 'Vengeance as a Burning Plague' },
+        {
+          id: 'Vengeance as a Burning Plague',
+          expansion: 'Jagged Earth',
+        },
         { id: 'Vital Strength of the Earth' },
-        { id: 'Volcano Looming High' },
+        {
+          id: 'Volcano Looming High',
+          expansion: 'Jagged Earth',
+        },
       ],
     });
   });
@@ -92,6 +156,7 @@ describe('createTree', () => {
         root: 'Boards',
         items: BOARDS,
         getId: ({ name }) => name,
+        getData: ({ expansion }) => (expansion ? { expansion } : {}),
       })
     ).toEqual({
       id: 'Boards',
@@ -100,8 +165,8 @@ describe('createTree', () => {
         { id: 'B' },
         { id: 'C' },
         { id: 'D' },
-        { id: 'E' },
-        { id: 'F' },
+        { id: 'E', expansion: 'Jagged Earth' },
+        { id: 'F', expansion: 'Jagged Earth' },
       ],
     });
   });
@@ -112,24 +177,67 @@ describe('createTree', () => {
         root: 'Scenarios',
         items: SCENARIOS,
         getId: ({ name }) => name,
+        getData: ({ difficulty }) => ({ difficulty }),
       })
     ).toEqual({
       id: 'Scenarios',
       children: [
-        { id: 'No Scenario' },
-        { id: 'Blitz' },
-        { id: "Guard the Isle's Heart" },
-        { id: 'Second Wave' },
-        { id: 'A Diversity of Spirits' },
-        { id: 'Powers Long Forgotten' },
-        { id: 'Elemental Invocation' },
-        { id: 'Varied Terrains' },
-        { id: 'Despicable Theft' },
-        { id: 'Ward the Shores' },
-        { id: 'Rituals of Destroying Flame' },
-        { id: 'Rituals of Terror' },
-        { id: 'The Great River' },
-        { id: 'Dahan Insurrection' },
+        {
+          id: 'No Scenario',
+          difficulty: 0,
+        },
+        {
+          id: 'Blitz',
+          difficulty: 0,
+        },
+        {
+          id: "Guard the Isle's Heart",
+          difficulty: 0,
+        },
+        {
+          id: 'Second Wave',
+          difficulty: 0,
+        },
+        {
+          id: 'A Diversity of Spirits',
+          difficulty: 0,
+        },
+        {
+          id: 'Powers Long Forgotten',
+          difficulty: 1,
+        },
+        {
+          id: 'Elemental Invocation',
+          difficulty: 0,
+        },
+        {
+          id: 'Varied Terrains',
+          difficulty: 2,
+        },
+        {
+          id: 'Despicable Theft',
+          difficulty: 2,
+        },
+        {
+          id: 'Ward the Shores',
+          difficulty: 2,
+        },
+        {
+          id: 'Rituals of Destroying Flame',
+          difficulty: 3,
+        },
+        {
+          id: 'Rituals of Terror',
+          difficulty: 3,
+        },
+        {
+          id: 'The Great River',
+          difficulty: 3,
+        },
+        {
+          id: 'Dahan Insurrection',
+          difficulty: 4,
+        },
       ],
     });
   });
@@ -147,6 +255,12 @@ describe('createTree', () => {
           'levels' in adversaryOrAdversaryLevel
             ? adversaryOrAdversaryLevel.levels
             : [],
+        getData: (adversaryOrAdversaryLevel) =>
+          'id' in adversaryOrAdversaryLevel
+            ? { difficulty: adversaryOrAdversaryLevel.difficulty }
+            : adversaryOrAdversaryLevel.expansion
+            ? { expansion: adversaryOrAdversaryLevel.expansion }
+            : {},
       })
     ).toEqual({
       id: 'Adversaries',
@@ -178,6 +292,7 @@ describe('createTree', () => {
         },
         {
           id: 'France',
+          expansion: 'Branch & Claw',
           children: [
             { id: 'fr-0' },
             { id: 'fr-1' },
@@ -190,6 +305,7 @@ describe('createTree', () => {
         },
         {
           id: 'Habsburg Monarchy',
+          expansion: 'Jagged Earth',
           children: [
             { id: 'hm-0' },
             { id: 'hm-1' },
@@ -202,6 +318,7 @@ describe('createTree', () => {
         },
         {
           id: 'Russia',
+          expansion: 'Jagged Earth',
           children: [
             { id: 'ru-0' },
             { id: 'ru-1' },
@@ -214,6 +331,7 @@ describe('createTree', () => {
         },
         {
           id: 'Scotland',
+          expansion: 'Promo Pack 2',
           children: [
             { id: 'sc-0' },
             { id: 'sc-1' },
