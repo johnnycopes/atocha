@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/member-ordering */
 import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
@@ -7,6 +8,7 @@ import {
   Output,
   ViewEncapsulation,
 } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 import {
   ButtonComponent,
@@ -21,16 +23,19 @@ import {
   PageComponent,
 } from '@atocha/spirit-islander/ui';
 import {
+  ADVERSARIES,
+  Adversary,
+  AdversaryLevel,
   BOARDS,
   Combo,
   Config,
   EXPANSIONS,
   getOptionsByExpansion,
   MAPS,
-  Option,
   SCENARIOS,
   SPIRITS,
 } from '@atocha/spirit-islander/util';
+import { ConfigTree, createTree } from './create-tree';
 
 @Component({
   selector: 'app-config',
@@ -43,6 +48,7 @@ import {
     CheckboxTreeComponent,
     CommonModule,
     ExpansionEmblemComponent,
+    FormsModule,
     PageComponent,
   ],
   templateUrl: './config.component.html',
@@ -60,6 +66,7 @@ export class ConfigComponent {
       this.MAPS = getOptionsByExpansion(MAPS, config?.expansions);
       this.BOARDS = getOptionsByExpansion(BOARDS, config?.expansions);
       this.SCENARIOS = getOptionsByExpansion(SCENARIOS, config?.expansions);
+      this.ADVERSARIES = getOptionsByExpansion(ADVERSARIES, config?.expansions);
     }
   }
   get config() {
@@ -77,11 +84,59 @@ export class ConfigComponent {
   MAPS = MAPS;
   BOARDS = BOARDS;
   SCENARIOS = SCENARIOS;
+  ADVERSARIES = ADVERSARIES;
 
-  expansionsItem: Record<string, CheckboxState> = {};
+  configTreeGetId = <T>({ id }: ConfigTree<T>) => id;
+  configTreeGetChildren = <T>({ children }: ConfigTree<T>) => children ?? [];
 
-  getSelf = (item: string) => item;
-  getName = <T extends string>({ name }: Option<T>) => name;
+  expansionsModel: Record<string, CheckboxState> = {};
+  expansionsTree = createTree({
+    root: 'Expansions',
+    getId: (item) => item,
+    items: this.EXPANSIONS,
+  });
+
+  spiritsModel: Record<string, CheckboxState> = {};
+  spiritsTree = createTree({
+    root: 'Spirits',
+    getId: ({ name }) => name,
+    items: this.SPIRITS,
+  });
+
+  mapsModel: Record<string, CheckboxState> = {};
+  mapsTree = createTree({
+    root: 'Maps',
+    getId: ({ name }) => name,
+    items: this.MAPS,
+  });
+
+  boardsModel: Record<string, CheckboxState> = {};
+  boardsTree = createTree({
+    root: 'Boards',
+    getId: ({ name }) => name,
+    items: this.BOARDS,
+  });
+
+  scenariosModel: Record<string, CheckboxState> = {};
+  scenariosTree = createTree({
+    root: 'Scenarios',
+    getId: ({ name }) => name,
+    items: this.SCENARIOS,
+  });
+
+  adversariesModel: Record<string, CheckboxState> = {};
+  adversariesTree = createTree<Adversary | AdversaryLevel>({
+    root: 'Adversaries',
+    getId: (adversaryOrAdversaryLevel) =>
+      'id' in adversaryOrAdversaryLevel
+        ? adversaryOrAdversaryLevel.id
+        : adversaryOrAdversaryLevel.name,
+    getChildren: (adversaryOrAdversaryLevel) =>
+      'levels' in adversaryOrAdversaryLevel
+        ? adversaryOrAdversaryLevel.levels
+        : [],
+    items: this.ADVERSARIES,
+  });
 
   onGenerate(): void {
     this.generate.emit({

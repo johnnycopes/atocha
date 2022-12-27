@@ -2,7 +2,7 @@
   <!-- <ng-container ui-page-content>
     {{ config | json }}
   </ng-container> -->
-  <form *ngIf="config"
+  <div *ngIf="config"
     class="config"
     ui-page-content
   >
@@ -14,13 +14,12 @@
         <h3 ui-card-header>
           Expansions
         </h3>
-        <ui-checkboxes-group ui-card-content
-          name="Expansions"
-          [getId]="getSelf"
-          [items]="EXPANSIONS"
-          [model]="config.expansions"
-          (modelChange)="onModelChange($event)"
-        ></ui-checkboxes-group>
+        <core-checkbox-tree ui-card-content
+          [getId]="configTreeGetId"
+          [getChildren]="configTreeGetChildren"
+          [item]="expansionsTree"
+          [(ngModel)]="expansionsModel"
+        ></core-checkbox-tree>
       </ui-card>
 
       <ui-card name="players">
@@ -46,12 +45,11 @@
         <h3 ui-card-header>
           Spirits
         </h3>
-        <ui-checkboxes-group ui-card-content
-          name="Spirits"
-          [getId]="getName"
-          [items]="SPIRITS"
-          [model]="config.spiritNames"
-          (modelChange)="onModelChange($event)"
+        <core-checkbox-tree ui-card-content
+          [getId]="configTreeGetId"
+          [getChildren]="configTreeGetChildren"
+          [item]="spiritsTree"
+          [(ngModel)]="spiritsModel"
         >
           <ng-template #grab let-item>
             <ui-expansion-emblem
@@ -59,32 +57,30 @@
               [value]="item.contents.expansion"
             ></ui-expansion-emblem>
           </ng-template>
-        </ui-checkboxes-group>
+        </core-checkbox-tree>
       </ui-card>
 
       <ui-card name="maps">
         <h3 ui-card-header>
           Maps
         </h3>
-        <ui-checkboxes-group ui-card-content
-          name="Maps"
-          [getId]="getName"
-          [items]="MAPS"
-          [model]="config.mapNames"
-          (modelChange)="onModelChange($event)"
-        ></ui-checkboxes-group>
+        <core-checkbox-tree ui-card-content
+          [getId]="configTreeGetId"
+          [getChildren]="configTreeGetChildren"
+          [item]="mapsTree"
+          [(ngModel)]="mapsModel"
+        ></core-checkbox-tree>
       </ui-card>
 
       <ui-card name="boards">
         <h3 ui-card-header>
           Boards
         </h3>
-        <ui-checkboxes-group ui-card-content
-          name="Boards"
-          [getId]="getName"
-          [items]="BOARDS"
-          [model]="config.boardNames"
-          (modelChange)="onModelChange($event)"
+        <core-checkbox-tree ui-card-content
+          [getId]="configTreeGetId"
+          [getChildren]="configTreeGetChildren"
+          [item]="boardsTree"
+          [(ngModel)]="boardsModel"
         >
           <ng-template #grab let-item>
             <ui-expansion-emblem
@@ -92,27 +88,31 @@
               [value]="item.contents.expansion"
             ></ui-expansion-emblem>
           </ng-template>
-        </ui-checkboxes-group>
+        </core-checkbox-tree>
       </ui-card>
 
       <ui-card name="scenarios">
         <h3 ui-card-header>
           Scenarios
         </h3>
-        <ui-checkboxes-group ui-card-content
-          name="Scenarios"
-          [getId]="getName"
-          [items]="SCENARIOS"
-          [model]="config.scenarioNames"
-          (modelChange)="onModelChange($event)"
-        ></ui-checkboxes-group>
+        <core-checkbox-tree ui-card-content
+          [getId]="configTreeGetId"
+          [getChildren]="configTreeGetChildren"
+          [item]="scenariosTree"
+          [(ngModel)]="scenariosModel"
+        ></core-checkbox-tree>
       </ui-card>
 
       <ui-card name="adversaries">
         <h3 ui-card-header>
           Adversaries
         </h3>
-        <div ui-card-content>placeholder</div>
+        <core-checkbox-tree ui-card-content
+          [getId]="configTreeGetId"
+          [getChildren]="configTreeGetChildren"
+          [item]="adversariesTree"
+          [(ngModel)]="adversariesModel"
+        ></core-checkbox-tree>
       </ui-card>
     </ui-card-group>
 
@@ -125,5 +125,5 @@
         Generate
       </button>
     </div>
-  </form>
+  </div>
 </main>

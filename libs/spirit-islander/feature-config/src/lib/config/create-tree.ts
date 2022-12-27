@@ -1,6 +1,6 @@
-interface Tree<T> {
+export interface ConfigTree<T> {
   id: string;
-  children?: Tree<T>[];
+  children?: ConfigTree<T>[];
 }
 
 export function createTree<T>({
@@ -13,7 +13,7 @@ export function createTree<T>({
   items: T[];
   getId: (item: T) => string;
   getChildren?: (item: T) => T[];
-}): Tree<T> {
+}): ConfigTree<T> {
   return {
     id: root,
     children: items.map((item) => ({
