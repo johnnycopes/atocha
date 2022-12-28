@@ -38,3 +38,25 @@ export function transformArrToObj<T>(
       return state;
     }, {} as Record<string, CheckboxState>);
 }
+
+export function transformObjToArr<T>(
+  tree: ConfigTree<T>,
+  model: Record<string, CheckboxState>
+): string[] {
+  const childrenIds = reduceRecursively({
+    item: tree,
+    getItems: ({ children }) => children ?? [],
+    initialValue: new Map<string, string[]>(),
+    reducer: (accum, item) =>
+      accum.set(item.id, item.children?.map(({ id }) => id) ?? []),
+  });
+
+  return Array.from(childrenIds.keys())
+    .reverse()
+    .reduce((state, id) => {
+      if (model[id] === 'checked' && !(childrenIds.get(id) ?? []).length) {
+        state.unshift(id);
+      }
+      return state;
+    }, [] as string[]);
+}
