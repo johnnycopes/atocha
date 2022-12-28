@@ -75,6 +75,11 @@ export class ConfigComponent {
       this.BOARDS = getOptionsByExpansion(BOARDS, config?.expansions);
       this.SCENARIOS = getOptionsByExpansion(SCENARIOS, config?.expansions);
       this.ADVERSARIES = getOptionsByExpansion(ADVERSARIES, config?.expansions);
+      this.spiritsTree = createSpiritsTree(config?.expansions);
+      this.mapsTree = createMapsTree(config?.expansions);
+      this.boardsTree = createBoardsTree(config?.expansions);
+      this.scenariosTree = createScenariosTree(config?.expansions);
+      this.adversariesTree = createAdversariesTree(config?.expansions);
     }
   }
   get config() {
@@ -101,19 +106,19 @@ export class ConfigComponent {
   expansionsTree = createExpansionsTree();
 
   spiritsModel: Record<string, CheckboxState> = {};
-  spiritsTree = createSpiritsTree();
+  spiritsTree = createSpiritsTree([]);
 
   mapsModel: Record<string, CheckboxState> = {};
-  mapsTree = createMapsTree();
+  mapsTree = createMapsTree([]);
 
   boardsModel: Record<string, CheckboxState> = {};
-  boardsTree = createBoardsTree();
+  boardsTree = createBoardsTree([]);
 
   scenariosModel: Record<string, CheckboxState> = {};
-  scenariosTree = createScenariosTree();
+  scenariosTree = createScenariosTree([]);
 
   adversariesModel: Record<string, CheckboxState> = {};
-  adversariesTree = createAdversariesTree();
+  adversariesTree = createAdversariesTree([]);
 
   onGenerate(): void {
     this.generate.emit({

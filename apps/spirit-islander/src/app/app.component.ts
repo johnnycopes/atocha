@@ -50,6 +50,7 @@ export class AppComponent {
     'Jagged Earth',
     'Branch & Claw',
     'Promo Pack 1',
+    'Promo Pack 2',
   ];
   _config: Config = {
     expansions: this._expansions,

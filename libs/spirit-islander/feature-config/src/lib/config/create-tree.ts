@@ -6,6 +6,7 @@ import {
   ExpansionName,
   EXPANSIONS,
   getDifficulty,
+  getOptionsByExpansion,
   MAPS,
   SCENARIOS,
   SPIRITS,
@@ -25,19 +26,19 @@ export function createExpansionsTree() {
   });
 }
 
-export function createSpiritsTree() {
+export function createSpiritsTree(expansions: ExpansionName[]) {
   return createTree({
     root: 'Spirits',
-    items: SPIRITS,
+    items: getOptionsByExpansion(SPIRITS, expansions),
     getId: ({ name }) => name,
     getDisplay: ({ expansion }) => (expansion ? { expansion } : {}),
   });
 }
 
-export function createMapsTree(expansions: ExpansionName[] = []) {
+export function createMapsTree(expansions: ExpansionName[]) {
   return createTree({
     root: 'Maps',
-    items: MAPS,
+    items: getOptionsByExpansion(MAPS, expansions),
     getId: ({ name }) => name,
     getDisplay: ({ difficulty }) => ({
       difficulty: getDifficulty(difficulty, expansions),
@@ -45,19 +46,19 @@ export function createMapsTree(expansions: ExpansionName[] = []) {
   });
 }
 
-export function createBoardsTree() {
+export function createBoardsTree(expansions: ExpansionName[]) {
   return createTree({
     root: 'Boards',
-    items: BOARDS,
+    items: getOptionsByExpansion(BOARDS, expansions),
     getId: ({ name }) => name,
     getDisplay: ({ expansion }) => (expansion ? { expansion } : {}),
   });
 }
 
-export function createScenariosTree() {
+export function createScenariosTree(expansions: ExpansionName[]) {
   return createTree({
     root: 'Scenarios',
-    items: SCENARIOS,
+    items: getOptionsByExpansion(SCENARIOS, expansions),
     getId: ({ name }) => name,
     getDisplay: ({ expansion, difficulty }) => ({
       difficulty,
@@ -66,10 +67,10 @@ export function createScenariosTree() {
   });
 }
 
-export function createAdversariesTree() {
+export function createAdversariesTree(expansions: ExpansionName[]) {
   return createTree<Adversary | AdversaryLevel>({
     root: 'Adversaries',
-    items: ADVERSARIES,
+    items: getOptionsByExpansion(ADVERSARIES, expansions),
     getId: (entity) => (isAdversaryLevel(entity) ? entity.id : entity.name),
     getChildren: (entity) => (isAdversary(entity) ? entity.levels : []),
     getDisplay: (entity) => {

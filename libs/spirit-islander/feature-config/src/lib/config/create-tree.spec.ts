@@ -1,3 +1,4 @@
+import { ExpansionName } from '@atocha/spirit-islander/util';
 import {
   createAdversariesTree,
   createBoardsTree,
@@ -8,6 +9,18 @@ import {
 } from './create-tree';
 
 describe('createTree', () => {
+  let expansions: ExpansionName[] = [];
+
+  beforeEach(() => {
+    expansions = [
+      'Horizons',
+      'Jagged Earth',
+      'Branch & Claw',
+      'Promo Pack 1',
+      'Promo Pack 2',
+    ];
+  });
+
   it('generates expansions tree', () => {
     expect(createExpansionsTree()).toEqual({
       id: 'Expansions',
@@ -22,7 +35,7 @@ describe('createTree', () => {
   });
 
   it('generates spirits tree', () => {
-    expect(createSpiritsTree()).toEqual({
+    expect(createSpiritsTree(expansions)).toEqual({
       id: 'Spirits',
       children: [
         { id: 'A Spread of Rampant Green' },
@@ -164,17 +177,17 @@ describe('createTree', () => {
   });
 
   it('generates maps tree', () => {
-    expect(createMapsTree()).toEqual({
+    expect(createMapsTree(expansions)).toEqual({
       id: 'Maps',
       children: [
         { id: 'Balanced', display: { difficulty: 0 } },
-        { id: 'Thematic', display: { difficulty: 3 } },
+        { id: 'Thematic', display: { difficulty: 1 } },
       ],
     });
   });
 
   it('generates boards tree', () => {
-    expect(createBoardsTree()).toEqual({
+    expect(createBoardsTree(expansions)).toEqual({
       id: 'Boards',
       children: [
         { id: 'A' },
@@ -188,7 +201,7 @@ describe('createTree', () => {
   });
 
   it('generates scenarios tree', () => {
-    expect(createScenariosTree()).toEqual({
+    expect(createScenariosTree(expansions)).toEqual({
       id: 'Scenarios',
       children: [
         {
@@ -289,7 +302,7 @@ describe('createTree', () => {
   });
 
   it('generates adversaries tree', () => {
-    expect(createAdversariesTree()).toEqual({
+    expect(createAdversariesTree(expansions)).toEqual({
       id: 'Adversaries',
       children: [
         { id: 'No Adversary' },
