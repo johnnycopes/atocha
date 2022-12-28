@@ -1,7 +1,7 @@
 <main ui-page>
-  <ng-container ui-page-content>
+  <!-- <ng-container ui-page-content>
     {{ config | json }}
-  </ng-container>
+  </ng-container> -->
   <div *ngIf="config"
     class="config"
     ui-page-content
@@ -11,9 +11,6 @@
       description="What are you playing with?"
     >
       <ui-card name="expansions">
-        <h3 ui-card-header>
-          Expansions
-        </h3>
         <core-checkbox-tree ui-card-content
           [getId]="getId"
           [getChildren]="getChildren"
@@ -42,9 +39,6 @@
       description="What are you open to playing with?"
     >
       <ui-card name="spirits">
-        <h3 ui-card-header>
-          Spirits
-        </h3>
         <core-checkbox-tree ui-card-content
           [getId]="getId"
           [getChildren]="getChildren"
@@ -55,9 +49,6 @@
       </ui-card>
 
       <ui-card name="maps">
-        <h3 ui-card-header>
-          Maps
-        </h3>
         <core-checkbox-tree ui-card-content
           [getId]="getId"
           [getChildren]="getChildren"
@@ -68,9 +59,6 @@
       </ui-card>
 
       <ui-card name="boards">
-        <h3 ui-card-header>
-          Boards
-        </h3>
         <core-checkbox-tree ui-card-content
           [getId]="getId"
           [getChildren]="getChildren"
@@ -81,9 +69,6 @@
       </ui-card>
 
       <ui-card name="scenarios">
-        <h3 ui-card-header>
-          Scenarios
-        </h3>
         <core-checkbox-tree ui-card-content
           [getId]="getId"
           [getChildren]="getChildren"
@@ -94,9 +79,6 @@
       </ui-card>
 
       <ui-card name="adversaries">
-        <h3 ui-card-header>
-          Adversaries
-        </h3>
         <core-checkbox-tree ui-card-content
           [getId]="getId"
           [getChildren]="getChildren"
