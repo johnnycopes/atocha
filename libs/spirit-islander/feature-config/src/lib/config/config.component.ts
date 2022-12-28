@@ -19,7 +19,7 @@ import {
   PageComponent,
 } from '@atocha/spirit-islander/ui';
 import { Combo, Config } from '@atocha/spirit-islander/util';
-import { createModel } from './create-model';
+import { transformArrToObj } from './create-model';
 import {
   ConfigTree,
   createAdversariesTree,
@@ -61,18 +61,21 @@ export class ConfigComponent {
       this.scenariosTree = createScenariosTree(config?.expansions);
       this.adversariesTree = createAdversariesTree(config?.expansions);
 
-      this.expansionsModel = createModel(
+      this.expansionsModel = transformArrToObj(
         this.expansionsTree,
         config?.expansions
       );
-      this.spiritsModel = createModel(this.spiritsTree, config?.spiritNames);
-      this.mapsModel = createModel(this.mapsTree, config?.mapNames);
-      this.boardsModel = createModel(this.boardsTree, config?.boardNames);
-      this.scenariosModel = createModel(
+      this.spiritsModel = transformArrToObj(
+        this.spiritsTree,
+        config?.spiritNames
+      );
+      this.mapsModel = transformArrToObj(this.mapsTree, config?.mapNames);
+      this.boardsModel = transformArrToObj(this.boardsTree, config?.boardNames);
+      this.scenariosModel = transformArrToObj(
         this.scenariosTree,
         config?.scenarioNames
       );
-      this.adversariesModel = createModel(
+      this.adversariesModel = transformArrToObj(
         this.adversariesTree,
         config?.adversaryNamesAndIds
       );
@@ -92,22 +95,22 @@ export class ConfigComponent {
   getChildren = <T>({ children }: ConfigTree<T>) => children ?? [];
 
   expansionsTree = createExpansionsTree();
-  expansionsModel = createModel(this.expansionsTree, []);
+  expansionsModel = transformArrToObj(this.expansionsTree, []);
 
   spiritsTree = createSpiritsTree([]);
-  spiritsModel = createModel(this.spiritsTree, []);
+  spiritsModel = transformArrToObj(this.spiritsTree, []);
 
   mapsTree = createMapsTree([]);
-  mapsModel = createModel(this.mapsTree, []);
+  mapsModel = transformArrToObj(this.mapsTree, []);
 
   boardsTree = createBoardsTree([]);
-  boardsModel = createModel(this.boardsTree, []);
+  boardsModel = transformArrToObj(this.boardsTree, []);
 
   scenariosTree = createScenariosTree([]);
-  scenariosModel = createModel(this.scenariosTree, []);
+  scenariosModel = transformArrToObj(this.scenariosTree, []);
 
   adversariesTree = createAdversariesTree([]);
-  adversariesModel = createModel(this.adversariesTree, []);
+  adversariesModel = transformArrToObj(this.adversariesTree, []);
 
   onGenerate(): void {
     this.generate.emit({

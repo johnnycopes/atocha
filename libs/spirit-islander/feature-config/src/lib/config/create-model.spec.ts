@@ -1,13 +1,13 @@
 import { createAdversariesTree, createExpansionsTree } from './create-tree';
-import { createModel } from './create-model';
+import { transformArrToObj } from './create-model';
 
 describe('createModel', () => {
   it('converts empty array model with shallow tree', () => {
-    expect(createModel(createExpansionsTree(), [])).toEqual({});
+    expect(transformArrToObj(createExpansionsTree(), [])).toEqual({});
   });
 
   it('converts partial array model with shallow tree', () => {
-    expect(createModel(createExpansionsTree(), ['Horizons'])).toEqual({
+    expect(transformArrToObj(createExpansionsTree(), ['Horizons'])).toEqual({
       Expansions: 'indeterminate',
       Horizons: 'checked',
     });
@@ -15,7 +15,7 @@ describe('createModel', () => {
 
   it('converts full array model with shallow tree', () => {
     expect(
-      createModel(createExpansionsTree(), [
+      transformArrToObj(createExpansionsTree(), [
         'Horizons',
         'Branch & Claw',
         'Jagged Earth',
@@ -33,11 +33,13 @@ describe('createModel', () => {
   });
 
   it('converts empty array model with nested tree', () => {
-    expect(createModel(createAdversariesTree([]), [])).toEqual({});
+    expect(transformArrToObj(createAdversariesTree([]), [])).toEqual({});
   });
 
   it('converts partial array model with nested tree', () => {
-    expect(createModel(createAdversariesTree([]), ['bp-0', 'sw-1'])).toEqual({
+    expect(
+      transformArrToObj(createAdversariesTree([]), ['bp-0', 'sw-1'])
+    ).toEqual({
       Adversaries: 'indeterminate',
       'Brandenburg-Prussia': 'indeterminate',
       Sweden: 'indeterminate',
@@ -48,7 +50,7 @@ describe('createModel', () => {
 
   it('converts full array model with nested tree', () => {
     expect(
-      createModel(createAdversariesTree([]), [
+      transformArrToObj(createAdversariesTree([]), [
         'No Adversary',
         'bp-0',
         'bp-1',

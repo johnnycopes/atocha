@@ -2,7 +2,7 @@ import { CheckboxState } from '@atocha/core/ui';
 import { reduceRecursively } from '@atocha/core/util';
 import { ConfigTree } from './create-tree';
 
-export function createModel<T>(
+export function transformArrToObj<T>(
   tree: ConfigTree<T>,
   model: string[]
 ): Record<string, CheckboxState> {
