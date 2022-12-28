@@ -10,11 +10,7 @@ import {
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
-import {
-  ButtonComponent,
-  CheckboxState,
-  CheckboxTreeComponent,
-} from '@atocha/core/ui';
+import { ButtonComponent, CheckboxTreeComponent } from '@atocha/core/ui';
 import {
   CardComponent,
   CardGroupComponent,
@@ -24,7 +20,7 @@ import {
   PageComponent,
 } from '@atocha/spirit-islander/ui';
 import { Combo, Config } from '@atocha/spirit-islander/util';
-import { createTreeModel } from './create-model';
+import { createModel } from './create-model';
 import {
   ConfigTree,
   createAdversariesTree,
@@ -67,21 +63,18 @@ export class ConfigComponent {
       this.scenariosTree = createScenariosTree(config?.expansions);
       this.adversariesTree = createAdversariesTree(config?.expansions);
 
-      this.expansionsModel = createTreeModel(
+      this.expansionsModel = createModel(
         this.expansionsTree,
         config?.expansions
       );
-      this.spiritsModel = createTreeModel(
-        this.spiritsTree,
-        config?.spiritNames
-      );
-      this.mapsModel = createTreeModel(this.mapsTree, config?.mapNames);
-      this.boardsModel = createTreeModel(this.boardsTree, config?.boardNames);
-      this.scenariosModel = createTreeModel(
+      this.spiritsModel = createModel(this.spiritsTree, config?.spiritNames);
+      this.mapsModel = createModel(this.mapsTree, config?.mapNames);
+      this.boardsModel = createModel(this.boardsTree, config?.boardNames);
+      this.scenariosModel = createModel(
         this.scenariosTree,
         config?.scenarioNames
       );
-      this.adversariesModel = createTreeModel(
+      this.adversariesModel = createModel(
         this.adversariesTree,
         config?.adversaryNamesAndIds
       );
@@ -101,22 +94,22 @@ export class ConfigComponent {
   getChildren = <T>({ children }: ConfigTree<T>) => children ?? [];
 
   expansionsTree = createExpansionsTree();
-  expansionsModel = createTreeModel(this.expansionsTree, []);
+  expansionsModel = createModel(this.expansionsTree, []);
 
   spiritsTree = createSpiritsTree([]);
-  spiritsModel = createTreeModel(this.spiritsTree, []);
+  spiritsModel = createModel(this.spiritsTree, []);
 
   mapsTree = createMapsTree([]);
-  mapsModel = createTreeModel(this.mapsTree, []);
+  mapsModel = createModel(this.mapsTree, []);
 
   boardsTree = createBoardsTree([]);
-  boardsModel = createTreeModel(this.boardsTree, []);
+  boardsModel = createModel(this.boardsTree, []);
 
   scenariosTree = createScenariosTree([]);
-  scenariosModel = createTreeModel(this.scenariosTree, []);
+  scenariosModel = createModel(this.scenariosTree, []);
 
   adversariesTree = createAdversariesTree([]);
-  adversariesModel = createTreeModel(this.adversariesTree, []);
+  adversariesModel = createModel(this.adversariesTree, []);
 
   onGenerate(): void {
     this.generate.emit({
