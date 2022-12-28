@@ -116,8 +116,4 @@ export class ConfigComponent {
       validCombos: [],
     });
   }
-
-  onModelChange(e: unknown) {
-    console.log(e);
-  }
 }
