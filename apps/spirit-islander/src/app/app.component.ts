@@ -1,8 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { first } from 'rxjs';
 
 import { State } from '@atocha/core/util';
-import { ConfigComponent } from '@atocha/spirit-islander/feature-config';
+import {
+  ConfigComponent,
+  ConfigDetails,
+} from '@atocha/spirit-islander/feature-config';
 import { GameSetupComponent } from '@atocha/spirit-islander/feature-game-setup';
 import {
   FooterComponent,
@@ -76,14 +80,22 @@ export class AppComponent {
     this._state.updateProp('page', Page.Config);
   }
 
-  onGenerate(): void {
+  onGenerate({ config, validCombos }: ConfigDetails): void {
+    this._state.updateProp('config', config);
+    this._state.updateProp('validCombos', validCombos);
+    this._state.updateProp('gameSetup', createGameSetup(config, validCombos));
     this._state.updateProp('page', Page.GameSetup);
   }
 
   onRegenerate(): void {
-    this._state.updateProp(
-      'gameSetup',
-      createGameSetup(this._config, getValidCombos(this._config))
-    );
+    this._state
+      .get()
+      .pipe(first())
+      .subscribe(({ config, validCombos }) =>
+        this._state.updateProp(
+          'gameSetup',
+          createGameSetup(config, validCombos ?? [])
+        )
+      );
   }
 }

@@ -18,8 +18,19 @@ import {
   ExpansionEmblemComponent,
   PageComponent,
 } from '@atocha/spirit-islander/ui';
-import { Combo, Config } from '@atocha/spirit-islander/util';
-import { transformArrToObj } from './create-model';
+import {
+  AdversaryLevelId,
+  AdversaryName,
+  BalancedBoardName,
+  Combo,
+  Config,
+  ExpansionName,
+  getValidCombos,
+  MapName,
+  ScenarioName,
+  SpiritName,
+} from '@atocha/spirit-islander/util';
+import { transformArrToObj, transformObjToArr } from './create-model';
 import {
   ConfigTree,
   createAdversariesTree,
@@ -29,6 +40,11 @@ import {
   createScenariosTree,
   createSpiritsTree,
 } from './create-tree';
+
+export interface ConfigDetails {
+  config: Config;
+  validCombos: Combo[];
+}
 
 @Component({
   selector: 'app-config',
@@ -86,10 +102,7 @@ export class ConfigComponent {
   }
   private _config: Config | undefined;
 
-  @Output() generate = new EventEmitter<{
-    config: Config;
-    validCombos: Combo[];
-  }>();
+  @Output() generate = new EventEmitter<ConfigDetails>();
 
   getId = <T>({ id }: ConfigTree<T>) => id;
   getChildren = <T>({ children }: ConfigTree<T>) => children ?? [];
@@ -113,10 +126,38 @@ export class ConfigComponent {
   adversariesModel = transformArrToObj(this.adversariesTree, []);
 
   onGenerate(): void {
+    if (!this.config) {
+      return;
+    }
+    const config = {
+      ...this.config,
+      expansions: transformObjToArr(
+        this.expansionsTree,
+        this.expansionsModel
+      ) as ExpansionName[],
+      spiritNames: transformObjToArr(
+        this.spiritsTree,
+        this.spiritsModel
+      ) as SpiritName[],
+      mapNames: transformObjToArr(this.mapsTree, this.mapsModel) as MapName[],
+      boardNames: transformObjToArr(
+        this.boardsTree,
+        this.boardsModel
+      ) as BalancedBoardName[],
+      scenarioNames: transformObjToArr(
+        this.scenariosTree,
+        this.scenariosModel
+      ) as ScenarioName[],
+      adversaryNamesAndIds: transformObjToArr(
+        this.adversariesTree,
+        this.adversariesModel
+      ) as (AdversaryName | AdversaryLevelId)[],
+    };
+    const validCombos = getValidCombos(config);
+
     this.generate.emit({
-      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-      config: this.config!,
-      validCombos: [],
+      config,
+      validCombos,
     });
   }
 }
