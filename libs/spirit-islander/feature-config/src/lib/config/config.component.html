@@ -1,7 +1,7 @@
 <main ui-page>
-  <ng-container ui-page-content>
-    {{ spiritsTree | json }}
-  </ng-container>
+  <!-- <ng-container ui-page-content>
+    {{ config | json }}
+  </ng-container> -->
   <div *ngIf="config"
     class="config"
     ui-page-content
@@ -15,8 +15,8 @@
           Expansions
         </h3>
         <core-checkbox-tree ui-card-content
-          [getId]="configTreeGetId"
-          [getChildren]="configTreeGetChildren"
+          [getId]="getId"
+          [getChildren]="getChildren"
           [item]="expansionsTree"
           [(ngModel)]="expansionsModel"
         ></core-checkbox-tree>
@@ -46,8 +46,8 @@
           Spirits
         </h3>
         <core-checkbox-tree ui-card-content
-          [getId]="configTreeGetId"
-          [getChildren]="configTreeGetChildren"
+          [getId]="getId"
+          [getChildren]="getChildren"
           [item]="spiritsTree"
           [itemTemplate]="configTemplate"
           [(ngModel)]="spiritsModel"
@@ -59,8 +59,8 @@
           Maps
         </h3>
         <core-checkbox-tree ui-card-content
-          [getId]="configTreeGetId"
-          [getChildren]="configTreeGetChildren"
+          [getId]="getId"
+          [getChildren]="getChildren"
           [item]="mapsTree"
           [itemTemplate]="configTemplate"
           [(ngModel)]="mapsModel"
@@ -72,8 +72,8 @@
           Boards
         </h3>
         <core-checkbox-tree ui-card-content
-          [getId]="configTreeGetId"
-          [getChildren]="configTreeGetChildren"
+          [getId]="getId"
+          [getChildren]="getChildren"
           [item]="boardsTree"
           [itemTemplate]="configTemplate"
           [(ngModel)]="boardsModel"
@@ -85,8 +85,8 @@
           Scenarios
         </h3>
         <core-checkbox-tree ui-card-content
-          [getId]="configTreeGetId"
-          [getChildren]="configTreeGetChildren"
+          [getId]="getId"
+          [getChildren]="getChildren"
           [item]="scenariosTree"
           [itemTemplate]="configTemplate"
           [(ngModel)]="scenariosModel"
@@ -98,8 +98,8 @@
           Adversaries
         </h3>
         <core-checkbox-tree ui-card-content
-          [getId]="configTreeGetId"
-          [getChildren]="configTreeGetChildren"
+          [getId]="getId"
+          [getChildren]="getChildren"
           [item]="adversariesTree"
           [itemTemplate]="configTemplate"
           [(ngModel)]="adversariesModel"

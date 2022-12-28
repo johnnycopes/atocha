@@ -23,17 +23,7 @@ import {
   ExpansionEmblemComponent,
   PageComponent,
 } from '@atocha/spirit-islander/ui';
-import {
-  ADVERSARIES,
-  BOARDS,
-  Combo,
-  Config,
-  EXPANSIONS,
-  getOptionsByExpansion,
-  MAPS,
-  SCENARIOS,
-  SPIRITS,
-} from '@atocha/spirit-islander/util';
+import { Combo, Config } from '@atocha/spirit-islander/util';
 import {
   ConfigTree,
   createAdversariesTree,
@@ -70,11 +60,6 @@ export class ConfigComponent {
     this._config = config;
 
     if (config) {
-      this.SPIRITS = getOptionsByExpansion(SPIRITS, config?.expansions);
-      this.MAPS = getOptionsByExpansion(MAPS, config?.expansions);
-      this.BOARDS = getOptionsByExpansion(BOARDS, config?.expansions);
-      this.SCENARIOS = getOptionsByExpansion(SCENARIOS, config?.expansions);
-      this.ADVERSARIES = getOptionsByExpansion(ADVERSARIES, config?.expansions);
       this.spiritsTree = createSpiritsTree(config?.expansions);
       this.mapsTree = createMapsTree(config?.expansions);
       this.boardsTree = createBoardsTree(config?.expansions);
@@ -92,15 +77,8 @@ export class ConfigComponent {
     validCombos: Combo[];
   }>();
 
-  readonly EXPANSIONS = EXPANSIONS;
-  SPIRITS = SPIRITS;
-  MAPS = MAPS;
-  BOARDS = BOARDS;
-  SCENARIOS = SCENARIOS;
-  ADVERSARIES = ADVERSARIES;
-
-  configTreeGetId = <T>({ id }: ConfigTree<T>) => id;
-  configTreeGetChildren = <T>({ children }: ConfigTree<T>) => children ?? [];
+  getId = <T>({ id }: ConfigTree<T>) => id;
+  getChildren = <T>({ children }: ConfigTree<T>) => children ?? [];
 
   expansionsModel: Record<string, CheckboxState> = {};
   expansionsTree = createExpansionsTree();
