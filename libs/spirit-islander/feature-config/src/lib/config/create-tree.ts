@@ -13,6 +13,7 @@ import {
 
 export interface ConfigTree<T> {
   id: string;
+  display?: Partial<T>;
   children?: ConfigTree<T>[];
 }
 
@@ -29,7 +30,7 @@ export function createSpiritsTree() {
     root: 'Spirits',
     items: SPIRITS,
     getId: ({ name }) => name,
-    getData: ({ expansion }) => (expansion ? { expansion } : {}),
+    getDisplay: ({ expansion }) => (expansion ? { expansion } : {}),
   });
 }
 
@@ -38,7 +39,7 @@ export function createMapsTree(expansions: ExpansionName[] = []) {
     root: 'Maps',
     items: MAPS,
     getId: ({ name }) => name,
-    getData: ({ difficulty }) => ({
+    getDisplay: ({ difficulty }) => ({
       difficulty: getDifficulty(difficulty, expansions),
     }),
   });
@@ -49,7 +50,7 @@ export function createBoardsTree() {
     root: 'Boards',
     items: BOARDS,
     getId: ({ name }) => name,
-    getData: ({ expansion }) => (expansion ? { expansion } : {}),
+    getDisplay: ({ expansion }) => (expansion ? { expansion } : {}),
   });
 }
 
@@ -58,7 +59,7 @@ export function createScenariosTree() {
     root: 'Scenarios',
     items: SCENARIOS,
     getId: ({ name }) => name,
-    getData: ({ expansion, difficulty }) => ({
+    getDisplay: ({ expansion, difficulty }) => ({
       difficulty,
       ...(expansion && { expansion }),
     }),
@@ -71,11 +72,11 @@ export function createAdversariesTree() {
     items: ADVERSARIES,
     getId: (entity) => (isAdversaryLevel(entity) ? entity.id : entity.name),
     getChildren: (entity) => (isAdversary(entity) ? entity.levels : []),
-    getData: (entity) => {
+    getDisplay: (entity) => {
       if (isAdversary(entity) && entity.expansion) {
         return { expansion: entity.expansion };
       } else if (isAdversaryLevel(entity)) {
-        return { difficulty: entity.difficulty };
+        return { name: entity.name, difficulty: entity.difficulty };
       }
       return {};
     },
@@ -96,24 +97,30 @@ function createTree<T>({
   root,
   items,
   getId,
-  getData,
+  getDisplay,
   getChildren = () => [],
 }: {
   root: string;
   items: T[];
   getId: (item: T) => string;
-  getData?: (item: T) => Partial<T>;
+  getDisplay?: (item: T) => Partial<T>;
   getChildren?: (item: T) => T[];
 }): ConfigTree<T> {
   return {
     id: root,
     children: items.map((item) => ({
       id: getId(item),
-      ...getData?.(item), // Only include extra properties if specified
+      ...(getDisplay &&
+        Object.keys(getDisplay(item)).length > 0 && {
+          display: getDisplay(item),
+        }), // Only include display properties if specified
       ...(getChildren(item).length > 0 && {
         children: getChildren(item).map((item) => ({
           id: getId(item),
-          ...getData?.(item),
+          ...(getDisplay &&
+            Object.keys(getDisplay(item)).length > 0 && {
+              display: getDisplay(item),
+            }), // Only include display properties if specified
         })),
       }), // Only include `children` property if children exist
     })),

@@ -1,7 +1,7 @@
 <main ui-page>
-  <!-- <ng-container ui-page-content>
-    {{ config | json }}
-  </ng-container> -->
+  <ng-container ui-page-content>
+    {{ spiritsTree | json }}
+  </ng-container>
   <div *ngIf="config"
     class="config"
     ui-page-content
@@ -120,13 +120,13 @@
 </main>
 
 <ng-template #configTemplate let-item>
-  {{ item.id }}
+  {{ item.display?.name ?? item.id }}
   <ui-difficulty-emblem
-    *ngIf="item.difficulty"
-    [value]="item.difficulty"
+    *ngIf="item.display?.difficulty"
+    [value]="item.display.difficulty"
   ></ui-difficulty-emblem>
   <ui-expansion-emblem
-    *ngIf="item.expansion"
-    [value]="item.expansion"
+    *ngIf="item.display?.expansion"
+    [value]="item.display.expansion"
   ></ui-expansion-emblem>
 </ng-template>
