@@ -24,6 +24,7 @@ import {
   PageComponent,
 } from '@atocha/spirit-islander/ui';
 import { Combo, Config } from '@atocha/spirit-islander/util';
+import { createTreeModel } from './create-model';
 import {
   ConfigTree,
   createAdversariesTree,
@@ -65,6 +66,25 @@ export class ConfigComponent {
       this.boardsTree = createBoardsTree(config?.expansions);
       this.scenariosTree = createScenariosTree(config?.expansions);
       this.adversariesTree = createAdversariesTree(config?.expansions);
+
+      this.expansionsModel = createTreeModel(
+        this.expansionsTree,
+        config?.expansions
+      );
+      this.spiritsModel = createTreeModel(
+        this.spiritsTree,
+        config?.spiritNames
+      );
+      this.mapsModel = createTreeModel(this.mapsTree, config?.mapNames);
+      this.boardsModel = createTreeModel(this.boardsTree, config?.boardNames);
+      this.scenariosModel = createTreeModel(
+        this.scenariosTree,
+        config?.scenarioNames
+      );
+      this.adversariesModel = createTreeModel(
+        this.adversariesTree,
+        config?.adversaryNamesAndIds
+      );
     }
   }
   get config() {
@@ -80,23 +100,23 @@ export class ConfigComponent {
   getId = <T>({ id }: ConfigTree<T>) => id;
   getChildren = <T>({ children }: ConfigTree<T>) => children ?? [];
 
-  expansionsModel: Record<string, CheckboxState> = {};
   expansionsTree = createExpansionsTree();
+  expansionsModel = createTreeModel(this.expansionsTree, []);
 
-  spiritsModel: Record<string, CheckboxState> = {};
   spiritsTree = createSpiritsTree([]);
+  spiritsModel = createTreeModel(this.spiritsTree, []);
 
-  mapsModel: Record<string, CheckboxState> = {};
   mapsTree = createMapsTree([]);
+  mapsModel = createTreeModel(this.mapsTree, []);
 
-  boardsModel: Record<string, CheckboxState> = {};
   boardsTree = createBoardsTree([]);
+  boardsModel = createTreeModel(this.boardsTree, []);
 
-  scenariosModel: Record<string, CheckboxState> = {};
   scenariosTree = createScenariosTree([]);
+  scenariosModel = createTreeModel(this.scenariosTree, []);
 
-  adversariesModel: Record<string, CheckboxState> = {};
   adversariesTree = createAdversariesTree([]);
+  adversariesModel = createTreeModel(this.adversariesTree, []);
 
   onGenerate(): void {
     this.generate.emit({
