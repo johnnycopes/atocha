@@ -14,7 +14,6 @@ import { ButtonComponent, CheckboxTreeComponent } from '@atocha/core/ui';
 import {
   CardComponent,
   CardGroupComponent,
-  CheckboxesGroupComponent,
   DifficultyEmblemComponent,
   ExpansionEmblemComponent,
   PageComponent,
@@ -38,7 +37,6 @@ import {
     ButtonComponent,
     CardComponent,
     CardGroupComponent,
-    CheckboxesGroupComponent,
     CheckboxTreeComponent,
     CommonModule,
     DifficultyEmblemComponent,
