@@ -31,4 +31,20 @@ describe('createModel', () => {
       'Promo Pack 2': 'checked',
     });
   });
+
+  it('converts empty array model with nested tree', () => {
+    expect(createTreeModel(createAdversariesTree([]), [])).toEqual({});
+  });
+
+  //   it('converts partial array model with nested tree', () => {
+  //     expect(
+  //       createTreeModel(createAdversariesTree([]), ['bp-0', 'sw-1'])
+  //     ).toEqual({
+  //       Adversaries: 'indeterminate',
+  //       'Brandenburg-Prussia': 'indeterminate',
+  //       Sweden: 'indeterminate',
+  //       'bp-0': 'checked',
+  //       'sw-1': 'checked',
+  //     });
+  //   });
 });

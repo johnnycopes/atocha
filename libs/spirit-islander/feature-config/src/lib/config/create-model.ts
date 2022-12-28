@@ -7,29 +7,32 @@ export function createTreeModel<T>(
   model: string[]
 ): Record<string, CheckboxState> {
   const state: Record<string, CheckboxState> = {};
+
   const childrenKeyedByParentId = reduceRecursively({
     item: tree,
     getItems: ({ children }) => children ?? [],
-    initialValue: {} as Record<string, string[]>,
-    reducer: (accum, item) => ({
-      ...accum,
-      [item.id]: item.children?.map(({ id }) => id) ?? [],
-    }),
+    initialValue: new Map<string, string[]>(),
+    reducer: (accum, item) =>
+      accum.set(item.id, item.children?.map(({ id }) => id) ?? []),
   });
 
-  return Object.keys(childrenKeyedByParentId).reduce((accum, curr) => {
+  return Array.from(childrenKeyedByParentId.keys()).reduce((accum, curr) => {
     if (model.includes(curr)) {
       accum[curr] = 'checked';
-    } else if (childrenKeyedByParentId[curr].length > 0) {
-      const childrenInModel = childrenKeyedByParentId[curr].reduce(
-        (accum, child) => accum + (model.includes(child) ? 1 : 0),
-        0
-      );
-      const totalChildren = childrenKeyedByParentId[curr].length;
-      if (totalChildren === childrenInModel) {
-        accum[curr] = 'checked';
-      } else if (childrenInModel > 0) {
-        accum[curr] = 'indeterminate';
+    } else {
+      const parentChildren = childrenKeyedByParentId.get(curr) ?? [];
+      if (parentChildren.length) {
+        const childrenInModel = parentChildren.reduce(
+          (accum, child) => accum + (model.includes(child) ? 1 : 0),
+          0
+        );
+        const totalChildren = parentChildren.length;
+
+        if (totalChildren === childrenInModel) {
+          accum[curr] = 'checked';
+        } else if (childrenInModel > 0) {
+          accum[curr] = 'indeterminate';
+        }
       }
     }
     return accum;
