@@ -30,7 +30,6 @@ import {
   ScenarioName,
   SpiritName,
 } from '@atocha/spirit-islander/util';
-import { transformArrToObj, transformObjToArr } from './create-model';
 import {
   ConfigTree,
   createAdversariesTree,
@@ -40,6 +39,7 @@ import {
   createScenariosTree,
   createSpiritsTree,
 } from './create-tree';
+import { ModelTransformer } from './model-transformer';
 
 export interface ConfigDetails {
   config: Config;
@@ -77,22 +77,22 @@ export class ConfigComponent {
       this.scenariosTree = createScenariosTree(config?.expansions);
       this.adversariesTree = createAdversariesTree(config?.expansions);
 
-      this.expansionsModel = transformArrToObj(
-        this.expansionsTree,
+      this.spiritsTransformer.update(this.spiritsTree);
+      this.mapsTransformer.update(this.mapsTree);
+      this.boardsTransformer.update(this.boardsTree);
+      this.scenariosTransformer.update(this.scenariosTree);
+      this.adversariesTransformer.update(this.adversariesTree);
+
+      this.expansionsModel = this.expansionsTransformer.toObj(
         config?.expansions
       );
-      this.spiritsModel = transformArrToObj(
-        this.spiritsTree,
-        config?.spiritNames
-      );
-      this.mapsModel = transformArrToObj(this.mapsTree, config?.mapNames);
-      this.boardsModel = transformArrToObj(this.boardsTree, config?.boardNames);
-      this.scenariosModel = transformArrToObj(
-        this.scenariosTree,
+      this.spiritsModel = this.spiritsTransformer.toObj(config?.spiritNames);
+      this.mapsModel = this.mapsTransformer.toObj(config?.mapNames);
+      this.boardsModel = this.boardsTransformer.toObj(config?.boardNames);
+      this.scenariosModel = this.scenariosTransformer.toObj(
         config?.scenarioNames
       );
-      this.adversariesModel = transformArrToObj(
-        this.adversariesTree,
+      this.adversariesModel = this.adversariesTransformer.toObj(
         config?.adversaryNamesAndIds
       );
     }
@@ -108,22 +108,28 @@ export class ConfigComponent {
   getChildren = <T>({ children }: ConfigTree<T>) => children ?? [];
 
   expansionsTree = createExpansionsTree();
-  expansionsModel = transformArrToObj(this.expansionsTree, []);
+  expansionsTransformer = new ModelTransformer(this.expansionsTree);
+  expansionsModel = this.expansionsTransformer.toObj([]);
 
   spiritsTree = createSpiritsTree([]);
-  spiritsModel = transformArrToObj(this.spiritsTree, []);
+  spiritsTransformer = new ModelTransformer(this.spiritsTree);
+  spiritsModel = this.spiritsTransformer.toObj([]);
 
   mapsTree = createMapsTree([]);
-  mapsModel = transformArrToObj(this.mapsTree, []);
+  mapsTransformer = new ModelTransformer(this.mapsTree);
+  mapsModel = this.mapsTransformer.toObj([]);
 
   boardsTree = createBoardsTree([]);
-  boardsModel = transformArrToObj(this.boardsTree, []);
+  boardsTransformer = new ModelTransformer(this.boardsTree);
+  boardsModel = this.boardsTransformer.toObj([]);
 
   scenariosTree = createScenariosTree([]);
-  scenariosModel = transformArrToObj(this.scenariosTree, []);
+  scenariosTransformer = new ModelTransformer(this.scenariosTree);
+  scenariosModel = this.scenariosTransformer.toObj([]);
 
   adversariesTree = createAdversariesTree([]);
-  adversariesModel = transformArrToObj(this.adversariesTree, []);
+  adversariesTransformer = new ModelTransformer(this.adversariesTree);
+  adversariesModel = this.adversariesTransformer.toObj([]);
 
   onGenerate(): void {
     if (!this.config) {
@@ -131,25 +137,20 @@ export class ConfigComponent {
     }
     const config = {
       ...this.config,
-      expansions: transformObjToArr(
-        this.expansionsTree,
+      expansions: this.expansionsTransformer.toArr(
         this.expansionsModel
       ) as ExpansionName[],
-      spiritNames: transformObjToArr(
-        this.spiritsTree,
+      spiritNames: this.spiritsTransformer.toArr(
         this.spiritsModel
       ) as SpiritName[],
-      mapNames: transformObjToArr(this.mapsTree, this.mapsModel) as MapName[],
-      boardNames: transformObjToArr(
-        this.boardsTree,
+      mapNames: this.mapsTransformer.toArr(this.mapsModel) as MapName[],
+      boardNames: this.boardsTransformer.toArr(
         this.boardsModel
       ) as BalancedBoardName[],
-      scenarioNames: transformObjToArr(
-        this.scenariosTree,
+      scenarioNames: this.scenariosTransformer.toArr(
         this.scenariosModel
       ) as ScenarioName[],
-      adversaryNamesAndIds: transformObjToArr(
-        this.adversariesTree,
+      adversaryNamesAndIds: this.adversariesTransformer.toArr(
         this.adversariesModel
       ) as (AdversaryName | AdversaryLevelId)[],
     };

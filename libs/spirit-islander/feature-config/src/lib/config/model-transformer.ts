@@ -3,12 +3,16 @@ import { reduceRecursively } from '@atocha/core/util';
 import { ConfigTree } from './create-tree';
 
 export class ModelTransformer<T> {
-  private _idsMap: Map<string, string[]>;
-  private _ids: string[];
+  private _idsMap = new Map<string, string[]>();
+  private _ids: string[] = [];
 
   constructor(private _tree: ConfigTree<T>) {
+    this.update(this._tree);
+  }
+
+  update(tree: ConfigTree<T>): void {
     this._idsMap = reduceRecursively({
-      item: this._tree,
+      item: tree,
       getItems: ({ children }) => children ?? [],
       initialValue: new Map<string, string[]>(),
       reducer: (accum, item) =>
