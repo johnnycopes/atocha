@@ -1,10 +1,11 @@
 <main ui-page>
   <!-- <ng-container ui-page-content>
-    {{ config | json }}
+    {{ form.controls.spirits.value | json }}
   </ng-container> -->
-  <div *ngIf="config"
+  <form *ngIf="config"
     class="config"
     ui-page-content
+    [formGroup]="form"
   >
     <ui-card-group
       name="You"
@@ -12,10 +13,10 @@
     >
       <ui-card name="expansions">
         <core-checkbox-tree ui-card-content
+          formControlName="expansions"
           [getId]="getId"
           [getChildren]="getChildren"
           [item]="expansionsTree"
-          [(ngModel)]="expansionsModel"
         ></core-checkbox-tree>
       </ui-card>
 
@@ -40,51 +41,51 @@
     >
       <ui-card name="spirits">
         <core-checkbox-tree ui-card-content
+          formControlName="spirits"
           [getId]="getId"
           [getChildren]="getChildren"
           [item]="spiritsTree"
           [itemTemplate]="configTemplate"
-          [(ngModel)]="spiritsModel"
         ></core-checkbox-tree>
       </ui-card>
 
       <ui-card name="maps">
         <core-checkbox-tree ui-card-content
+          formControlName="maps"
           [getId]="getId"
           [getChildren]="getChildren"
           [item]="mapsTree"
           [itemTemplate]="configTemplate"
-          [(ngModel)]="mapsModel"
         ></core-checkbox-tree>
       </ui-card>
 
       <ui-card name="boards">
         <core-checkbox-tree ui-card-content
+          formControlName="boards"
           [getId]="getId"
           [getChildren]="getChildren"
           [item]="boardsTree"
           [itemTemplate]="configTemplate"
-          [(ngModel)]="boardsModel"
         ></core-checkbox-tree>
       </ui-card>
 
       <ui-card name="scenarios">
         <core-checkbox-tree ui-card-content
+          formControlName="scenarios"
           [getId]="getId"
           [getChildren]="getChildren"
           [item]="scenariosTree"
           [itemTemplate]="configTemplate"
-          [(ngModel)]="scenariosModel"
         ></core-checkbox-tree>
       </ui-card>
 
       <ui-card name="adversaries">
         <core-checkbox-tree ui-card-content
+          formControlName="adversaries"
           [getId]="getId"
           [getChildren]="getChildren"
           [item]="adversariesTree"
           [itemTemplate]="configTemplate"
-          [(ngModel)]="adversariesModel"
         ></core-checkbox-tree>
       </ui-card>
     </ui-card-group>
@@ -98,7 +99,7 @@
         Generate
       </button>
     </div>
-  </div>
+  </form>
 </main>
 
 <ng-template #configTemplate let-item>
