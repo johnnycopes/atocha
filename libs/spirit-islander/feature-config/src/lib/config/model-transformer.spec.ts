@@ -1,5 +1,9 @@
-import { createAdversariesTree, createExpansionsTree } from './create-tree';
 import { ModelTransformer } from './model-transformer';
+import {
+  createAdversariesTree,
+  createExpansionsTree,
+  createSpiritsTree,
+} from './create-tree';
 
 describe('ModelTransformer', () => {
   describe('with shallow tree', () => {
@@ -219,6 +223,43 @@ describe('ModelTransformer', () => {
         'sw-5',
         'sw-6',
       ]);
+    });
+  });
+
+  describe('update functionality', () => {
+    let transformer = new ModelTransformer(createSpiritsTree([]));
+
+    beforeEach(() => {
+      transformer = new ModelTransformer(createSpiritsTree([]));
+    });
+
+    it('toObj method', () => {
+      expect(transformer.toObj(['Shroud of Silent Mist'])).toEqual({});
+
+      transformer.update(createSpiritsTree(['Jagged Earth']));
+
+      expect(transformer.toObj(['Shroud of Silent Mist'])).toEqual({
+        Spirits: 'indeterminate',
+        'Shroud of Silent Mist': 'checked',
+      });
+    });
+
+    it('toArr method', () => {
+      expect(
+        transformer.toArr({
+          Spirits: 'indeterminate',
+          'Shroud of Silent Mist': 'checked',
+        })
+      ).toEqual([]);
+
+      transformer.update(createSpiritsTree(['Jagged Earth']));
+
+      expect(
+        transformer.toArr({
+          Spirits: 'indeterminate',
+          'Shroud of Silent Mist': 'checked',
+        })
+      ).toEqual(['Shroud of Silent Mist']);
     });
   });
 });
