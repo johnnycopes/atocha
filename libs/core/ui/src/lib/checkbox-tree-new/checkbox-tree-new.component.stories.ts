@@ -10,12 +10,11 @@ import { CheckboxComponent } from '../checkbox/checkbox.component';
 import { TreeComponent } from '../tree/tree.component';
 import { StorybookWrapperComponent } from '../../../.storybook/storybook-wrapper/storybook-wrapper.component';
 import {
-  ALL_SELECTED,
   getChildren,
   getId,
   AFRICA,
-  SOME_SELECTED,
   TestItem,
+  SOME_SELECTED_NEW,
 } from '../../../.storybook/mock-data/checkbox-tree';
 import { CheckboxTreeNewComponent } from './checkbox-tree-new.component';
 
@@ -53,7 +52,7 @@ const Template: Story<CheckboxTreeNewComponent<TestItem>> = (args: Args) => ({
       [getChildren]="getChildren"
       [indentation]="indentation"
       [size]="size"
-      [ngModel]="states"
+      [ngModel]="model"
       (ngModelChange)="states = $event; onClick($event)"
     ></core-checkbox-tree-new>
   `,
@@ -61,22 +60,22 @@ const Template: Story<CheckboxTreeNewComponent<TestItem>> = (args: Args) => ({
 
 export const noneSelected = Template.bind({});
 noneSelected.args = createArgs({
-  states: {},
+  model: [],
 });
 
 export const someSelected = Template.bind({});
 someSelected.args = createArgs({
-  states: SOME_SELECTED,
+  model: SOME_SELECTED_NEW,
 });
 
 export const allSelected = Template.bind({});
 allSelected.args = createArgs({
-  states: ALL_SELECTED,
+  model: [],
 });
 
 export const withCustomStyling = Template.bind({});
 withCustomStyling.args = createArgs({
-  states: SOME_SELECTED,
+  model: [],
   size: 'large',
   className: 'custom-checkbox-tree',
 });
@@ -88,10 +87,10 @@ type Args = Partial<CheckboxTreeNewComponent<TestItem>> & {
 function createArgs(
   {
     indentation = 24,
-    states = {},
+    model: states = [],
     size = 'normal',
     className = '',
   } = {} as Args
 ): Args {
-  return { indentation, states, size, className };
+  return { indentation, model: states, size, className };
 }

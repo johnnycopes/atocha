@@ -41,6 +41,8 @@ export const SOME_SELECTED: CheckboxStates = {
   Fes: 'checked',
 };
 
+export const SOME_SELECTED_NEW = ['Swaziland', 'Fes'];
+
 export const ALL_SELECTED: CheckboxStates = {
   Africa: 'checked',
   'Southern Africa': 'checked',
