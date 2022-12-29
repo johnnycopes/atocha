@@ -55,6 +55,14 @@ export const ALL_SELECTED: CheckboxStates = {
   Fes: 'checked',
 };
 
+export const ALL_SELECTED_NEW = [
+  'Swaziland',
+  'Namibia',
+  'Central Africa',
+  'Marrakesh',
+  'Fes',
+];
+
 export const getId = ({ id }: TestItem) => id;
 export const getChildren = ({ children }: TestItem) => children ?? [];
 export const getCounts = ({ targets }: TestItem) => targets ?? 0;
