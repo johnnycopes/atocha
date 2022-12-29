@@ -2,6 +2,8 @@ import {
   ADVERSARIES,
   Adversary,
   AdversaryLevel,
+  AdversaryLevelId,
+  AdversaryName,
   BOARDS,
   ExpansionName,
   EXPANSIONS,
@@ -68,7 +70,10 @@ export function createScenariosTree(expansions: ExpansionName[]) {
 }
 
 export function createAdversariesTree(expansions: ExpansionName[]) {
-  return createTree<Adversary | AdversaryLevel>({
+  return createTree<
+    Adversary | AdversaryLevel,
+    AdversaryName | AdversaryLevelId
+  >({
     root: 'Adversaries',
     items: getOptionsByExpansion(ADVERSARIES, expansions),
     getId: (entity) => (isAdversaryLevel(entity) ? entity.id : entity.name),
@@ -94,7 +99,7 @@ function isAdversaryLevel(
   return 'id' in entity;
 }
 
-function createTree<T>({
+function createTree<T, U extends string>({
   root,
   items,
   getId,
@@ -103,7 +108,7 @@ function createTree<T>({
 }: {
   root: string;
   items: T[];
-  getId: (item: T) => string;
+  getId: (item: T) => U;
   getDisplay?: (item: T) => Partial<T>;
   getChildren?: (item: T) => T[];
 }): ConfigTree<T> {

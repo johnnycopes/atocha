@@ -18,8 +18,18 @@ import {
   ExpansionEmblemComponent,
   PageComponent,
 } from '@atocha/spirit-islander/ui';
-import { Combo, Config } from '@atocha/spirit-islander/util';
-import { createModel } from './create-model';
+import {
+  AdversaryLevelId,
+  AdversaryName,
+  BalancedBoardName,
+  Combo,
+  Config,
+  ExpansionName,
+  getValidCombos,
+  MapName,
+  ScenarioName,
+  SpiritName,
+} from '@atocha/spirit-islander/util';
 import {
   ConfigTree,
   createAdversariesTree,
@@ -29,6 +39,12 @@ import {
   createScenariosTree,
   createSpiritsTree,
 } from './create-tree';
+import { ModelTransformer } from './model-transformer';
+
+export interface ConfigDetails {
+  config: Config;
+  validCombos: Combo[];
+}
 
 @Component({
   selector: 'app-config',
@@ -61,19 +77,22 @@ export class ConfigComponent {
       this.scenariosTree = createScenariosTree(config?.expansions);
       this.adversariesTree = createAdversariesTree(config?.expansions);
 
-      this.expansionsModel = createModel(
-        this.expansionsTree,
+      this.spiritsTransformer.update(this.spiritsTree);
+      this.mapsTransformer.update(this.mapsTree);
+      this.boardsTransformer.update(this.boardsTree);
+      this.scenariosTransformer.update(this.scenariosTree);
+      this.adversariesTransformer.update(this.adversariesTree);
+
+      this.expansionsModel = this.expansionsTransformer.toObj(
         config?.expansions
       );
-      this.spiritsModel = createModel(this.spiritsTree, config?.spiritNames);
-      this.mapsModel = createModel(this.mapsTree, config?.mapNames);
-      this.boardsModel = createModel(this.boardsTree, config?.boardNames);
-      this.scenariosModel = createModel(
-        this.scenariosTree,
+      this.spiritsModel = this.spiritsTransformer.toObj(config?.spiritNames);
+      this.mapsModel = this.mapsTransformer.toObj(config?.mapNames);
+      this.boardsModel = this.boardsTransformer.toObj(config?.boardNames);
+      this.scenariosModel = this.scenariosTransformer.toObj(
         config?.scenarioNames
       );
-      this.adversariesModel = createModel(
-        this.adversariesTree,
+      this.adversariesModel = this.adversariesTransformer.toObj(
         config?.adversaryNamesAndIds
       );
     }
@@ -83,37 +102,63 @@ export class ConfigComponent {
   }
   private _config: Config | undefined;
 
-  @Output() generate = new EventEmitter<{
-    config: Config;
-    validCombos: Combo[];
-  }>();
+  @Output() generate = new EventEmitter<ConfigDetails>();
 
   getId = <T>({ id }: ConfigTree<T>) => id;
   getChildren = <T>({ children }: ConfigTree<T>) => children ?? [];
 
   expansionsTree = createExpansionsTree();
-  expansionsModel = createModel(this.expansionsTree, []);
+  expansionsTransformer = new ModelTransformer(this.expansionsTree);
+  expansionsModel = this.expansionsTransformer.toObj([]);
 
   spiritsTree = createSpiritsTree([]);
-  spiritsModel = createModel(this.spiritsTree, []);
+  spiritsTransformer = new ModelTransformer(this.spiritsTree);
+  spiritsModel = this.spiritsTransformer.toObj([]);
 
   mapsTree = createMapsTree([]);
-  mapsModel = createModel(this.mapsTree, []);
+  mapsTransformer = new ModelTransformer(this.mapsTree);
+  mapsModel = this.mapsTransformer.toObj([]);
 
   boardsTree = createBoardsTree([]);
-  boardsModel = createModel(this.boardsTree, []);
+  boardsTransformer = new ModelTransformer(this.boardsTree);
+  boardsModel = this.boardsTransformer.toObj([]);
 
   scenariosTree = createScenariosTree([]);
-  scenariosModel = createModel(this.scenariosTree, []);
+  scenariosTransformer = new ModelTransformer(this.scenariosTree);
+  scenariosModel = this.scenariosTransformer.toObj([]);
 
   adversariesTree = createAdversariesTree([]);
-  adversariesModel = createModel(this.adversariesTree, []);
+  adversariesTransformer = new ModelTransformer(this.adversariesTree);
+  adversariesModel = this.adversariesTransformer.toObj([]);
 
   onGenerate(): void {
+    if (!this.config) {
+      return;
+    }
+    const config = {
+      ...this.config,
+      expansions: this.expansionsTransformer.toArr(
+        this.expansionsModel
+      ) as ExpansionName[],
+      spiritNames: this.spiritsTransformer.toArr(
+        this.spiritsModel
+      ) as SpiritName[],
+      mapNames: this.mapsTransformer.toArr(this.mapsModel) as MapName[],
+      boardNames: this.boardsTransformer.toArr(
+        this.boardsModel
+      ) as BalancedBoardName[],
+      scenarioNames: this.scenariosTransformer.toArr(
+        this.scenariosModel
+      ) as ScenarioName[],
+      adversaryNamesAndIds: this.adversariesTransformer.toArr(
+        this.adversariesModel
+      ) as (AdversaryName | AdversaryLevelId)[],
+    };
+    const validCombos = getValidCombos(config);
+
     this.generate.emit({
-      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-      config: this.config!,
-      validCombos: [],
+      config,
+      validCombos,
     });
   }
 }
