@@ -56,9 +56,9 @@ export const ALL_SELECTED: CheckboxStates = {
 };
 
 export const ALL_SELECTED_NEW = [
+  'Central Africa',
   'Swaziland',
   'Namibia',
-  'Central Africa',
   'Marrakesh',
   'Fes',
 ];
