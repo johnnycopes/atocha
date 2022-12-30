@@ -81,7 +81,7 @@ export class CheckboxTreeNewComponent<T>
   writeValue(model: string[]): void {
     if (model) {
       this.model = model;
-      this.states = this._transformer.toObj(model);
+      this.states = this._transformer.toStates(model);
     }
     this._changeDetectorRef.markForCheck();
   }
@@ -94,8 +94,8 @@ export class CheckboxTreeNewComponent<T>
   registerOnTouched(_fn: (value: string[]) => void): void {}
 
   onChange(checked: boolean, item: T): void {
-    this.states = this._transformer.updateObj(checked, item, this.states);
-    this.model = this._transformer.toArr(this.states);
+    this.states = this._transformer.updateStates(checked, item, this.states);
+    this.model = this._transformer.toModel(this.states);
     this._onChangeFn(this.model);
   }
 }

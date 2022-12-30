@@ -17,35 +17,35 @@ describe('ModelTransformer', () => {
     transformer = new ModelTransformer(AFRICA, getId, getChildren);
   });
 
-  describe('toArr', () => {
-    it('transforms empty obj model', () => {
-      expect(transformer.toArr({})).toEqual([]);
+  describe('toModel', () => {
+    it('transforms empty states', () => {
+      expect(transformer.toModel({})).toEqual([]);
     });
 
-    it('transforms partial obj model', () => {
-      expect(transformer.toArr(SOME_SELECTED)).toEqual(SOME_SELECTED_NEW);
+    it('transforms partial states', () => {
+      expect(transformer.toModel(SOME_SELECTED)).toEqual(SOME_SELECTED_NEW);
     });
 
-    it('transforms full obj model', () => {
-      expect(transformer.toArr(ALL_SELECTED)).toEqual(ALL_SELECTED_NEW);
-    });
-  });
-
-  describe('toObj', () => {
-    it('transforms empty array model', () => {
-      expect(transformer.toObj([])).toEqual({});
-    });
-
-    it('transforms partial array model', () => {
-      expect(transformer.toObj(SOME_SELECTED_NEW)).toEqual(SOME_SELECTED);
-    });
-
-    it('transforms full array model', () => {
-      expect(transformer.toObj(ALL_SELECTED_NEW)).toEqual(ALL_SELECTED);
+    it('transforms full states', () => {
+      expect(transformer.toModel(ALL_SELECTED)).toEqual(ALL_SELECTED_NEW);
     });
   });
 
-  describe('updateObj', () => {
+  describe('toStates', () => {
+    it('transforms empty model', () => {
+      expect(transformer.toStates([])).toEqual({});
+    });
+
+    it('transforms partial model', () => {
+      expect(transformer.toStates(SOME_SELECTED_NEW)).toEqual(SOME_SELECTED);
+    });
+
+    it('transforms full model', () => {
+      expect(transformer.toStates(ALL_SELECTED_NEW)).toEqual(ALL_SELECTED);
+    });
+  });
+
+  describe('updateStates', () => {
     let item: TestItem = AFRICA;
 
     beforeEach(() => {
@@ -53,7 +53,7 @@ describe('ModelTransformer', () => {
     });
 
     it('selects all states when the top node is selected', () => {
-      expect(transformer.updateObj(true, item, {})).toEqual({
+      expect(transformer.updateStates(true, item, {})).toEqual({
         Africa: 'checked',
         'Central Africa': 'checked',
         Fes: 'checked',
@@ -67,7 +67,7 @@ describe('ModelTransformer', () => {
     });
 
     it('deselects all states when the top node is deselected', () => {
-      expect(transformer.updateObj(false, item, ALL_SELECTED)).toEqual({});
+      expect(transformer.updateStates(false, item, ALL_SELECTED)).toEqual({});
     });
 
     it('updates states when middle checkbox is selected', () => {
@@ -75,7 +75,7 @@ describe('ModelTransformer', () => {
         ?.find(({ id }) => id === 'Northern Africa')
         ?.children?.find(({ id }) => id === 'Morocco') ?? { id: 'Morocco' };
 
-      expect(transformer.updateObj(true, item, {})).toEqual({
+      expect(transformer.updateStates(true, item, {})).toEqual({
         Africa: 'indeterminate',
         Fes: 'checked',
         Marrakesh: 'checked',
@@ -89,7 +89,7 @@ describe('ModelTransformer', () => {
         ?.find(({ id }) => id === 'Southern Africa')
         ?.children?.find(({ id }) => id === 'Namibia') ?? { id: 'Namibia' };
 
-      expect(transformer.updateObj(true, item, {})).toEqual({
+      expect(transformer.updateStates(true, item, {})).toEqual({
         Africa: 'indeterminate',
         Namibia: 'checked',
         'Southern Africa': 'indeterminate',
@@ -101,7 +101,7 @@ describe('ModelTransformer', () => {
         id: 'Southern Africa',
       };
 
-      expect(transformer.updateObj(true, item, SOME_SELECTED)).toEqual({
+      expect(transformer.updateStates(true, item, SOME_SELECTED)).toEqual({
         Africa: 'indeterminate',
         Fes: 'checked',
         Morocco: 'indeterminate',

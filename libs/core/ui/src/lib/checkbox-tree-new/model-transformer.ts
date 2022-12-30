@@ -39,16 +39,16 @@ export class ModelTransformer<T> {
     };
   }
 
-  toArr(model: CheckboxStates): string[] {
+  toModel(states: CheckboxStates): string[] {
     return this._ids.reduce((state, id) => {
-      if (model[id] === 'checked' && !(this._idsMap.get(id) ?? []).length) {
+      if (states[id] === 'checked' && !(this._idsMap.get(id) ?? []).length) {
         state.unshift(id);
       }
       return state;
     }, [] as string[]);
   }
 
-  toObj(model: string[]): CheckboxStates {
+  toStates(model: string[]): CheckboxStates {
     return this._ids.reduce((state, curr) => {
       if (model.includes(curr)) {
         state[curr] = 'checked';
@@ -74,7 +74,11 @@ export class ModelTransformer<T> {
     }, {} as CheckboxStates);
   }
 
-  updateObj(checked: boolean, item: T, states: CheckboxStates): CheckboxStates {
+  updateStates(
+    checked: boolean,
+    item: T,
+    states: CheckboxStates
+  ): CheckboxStates {
     let updatedStates = { ...states };
     updatedStates = this._updateItemAndDescendantStates({
       item,
