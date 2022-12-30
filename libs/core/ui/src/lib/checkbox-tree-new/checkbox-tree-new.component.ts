@@ -17,7 +17,6 @@ import {
   FormsModule,
 } from '@angular/forms';
 
-import { reduceRecursively } from '@atocha/core/util';
 import {
   CheckboxComponent,
   CheckboxSize,
@@ -27,8 +26,6 @@ import { ModelTransformer } from './model-transformer';
 
 export type CheckboxState = 'checked' | 'indeterminate';
 export type CheckboxStates = Record<string, CheckboxState>;
-
-type ItemsRecord<T> = Record<string, { item: T; parentId: string | undefined }>;
 
 @Component({
   standalone: true,
@@ -65,12 +62,7 @@ export class CheckboxTreeNewComponent<T>
     this.getId,
     this.getChildren
   );
-  private _itemsKeyedById: ItemsRecord<T> = {};
   private _onChangeFn: (value: string[]) => void = () => [];
-  private _getParent = (item: T): T[] => {
-    const parentId = this._itemsKeyedById[this.getId(item)].parentId;
-    return parentId ? [this._itemsKeyedById[parentId].item] : [];
-  };
 
   constructor(private _changeDetectorRef: ChangeDetectorRef) {}
 
@@ -83,8 +75,6 @@ export class CheckboxTreeNewComponent<T>
         this.getId,
         this.getChildren
       );
-
-      this._itemsKeyedById = this._createItemsRecord(tree);
     }
   }
 
@@ -104,97 +94,8 @@ export class CheckboxTreeNewComponent<T>
   registerOnTouched(_fn: (value: string[]) => void): void {}
 
   onChange(checked: boolean, item: T): void {
-    let states = { ...this.states };
-    states = this._updateItemAndDescendantStates({ item, checked, states });
-    states = this._updateAncestorStates(item, states);
-    this.states = states;
-
+    this.states = this._transformer.updateObj(checked, item, this.states);
     this.model = this._transformer.toArr(this.states);
     this._onChangeFn(this.model);
-  }
-
-  private _updateItemAndDescendantStates({
-    item,
-    checked,
-    states,
-  }: {
-    item: T;
-    checked: boolean;
-    states: CheckboxStates;
-  }): CheckboxStates {
-    const itemAndDescendantsIds = reduceRecursively({
-      item,
-      getItems: this.getChildren,
-      initialValue: [] as string[],
-      reducer: (accum, item) => [...accum, this.getId(item)],
-    });
-
-    itemAndDescendantsIds.forEach((id) => {
-      if (checked) {
-        states[id] = 'checked';
-      } else {
-        delete states[id];
-      }
-    });
-
-    return states;
-  }
-
-  private _updateAncestorStates(
-    item: T,
-    states: CheckboxStates
-  ): CheckboxStates {
-    const ancestors = reduceRecursively({
-      item,
-      getItems: this._getParent,
-      initialValue: [] as T[],
-      reducer: (accum, curr) =>
-        this.getId(item) === this.getId(curr) ? [...accum] : [...accum, curr],
-    });
-
-    ancestors.forEach((ancestor) => {
-      const ancestorId = this.getId(ancestor);
-      const ancestorChildren = this.getChildren(ancestor);
-      const ancestorChildrenStates: Record<CheckboxState, number> = {
-        checked: 0,
-        indeterminate: 0,
-      };
-
-      ancestorChildren.forEach((child) => {
-        const childId = this.getId(child);
-        const childState = states[childId];
-        if (childState) {
-          ancestorChildrenStates[childState]++;
-        }
-      });
-
-      if (ancestorChildrenStates.checked === ancestorChildren.length) {
-        states[ancestorId] = 'checked';
-      } else if (
-        ancestorChildrenStates.checked > 0 ||
-        ancestorChildrenStates.indeterminate > 0
-      ) {
-        states[ancestorId] = 'indeterminate';
-      } else {
-        delete states[ancestorId];
-      }
-    });
-
-    return states;
-  }
-
-  private _createItemsRecord(item: T): ItemsRecord<T> {
-    return reduceRecursively<T, ItemsRecord<T>>({
-      item,
-      getItems: this.getChildren,
-      reducer: (accumulator, item, parent) => ({
-        ...accumulator,
-        [this.getId(item)]: {
-          item,
-          parentId: parent ? this.getId(parent) : undefined,
-        },
-      }),
-      initialValue: {},
-    });
   }
 }
