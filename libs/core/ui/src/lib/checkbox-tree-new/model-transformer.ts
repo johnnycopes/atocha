@@ -5,7 +5,7 @@ type ItemsRecord<T> = Record<string, { item: T; parentId: string | undefined }>;
 
 export class ModelTransformer<T> {
   private _idsMap: Map<string, string[]>;
-  private _ids: string[];
+  private _ids: readonly string[];
 
   private _itemsKeyedById: ItemsRecord<T>;
   private _getParent: (item: T) => T[];
