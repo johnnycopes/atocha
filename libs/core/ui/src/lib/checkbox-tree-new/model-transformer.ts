@@ -10,12 +10,8 @@ export class ModelTransformer<T> {
     private _getId: (tree: T) => string,
     private _getChildren: (tree: T) => T[]
   ) {
-    this.update(this._tree);
-  }
-
-  update(tree: T): void {
     this._idsMap = reduceRecursively({
-      item: tree,
+      item: this._tree,
       getItems: this._getChildren,
       initialValue: new Map<string, string[]>(),
       reducer: (accum, curr) =>
