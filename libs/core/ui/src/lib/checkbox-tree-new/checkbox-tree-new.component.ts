@@ -23,6 +23,7 @@ import {
   CheckboxSize,
 } from '../checkbox/checkbox.component';
 import { TreeComponent } from '../tree/tree.component';
+import { ModelTransformer } from './model-transformer';
 
 export type CheckboxState = 'checked' | 'indeterminate';
 export type CheckboxStates = Record<string, CheckboxState>;
@@ -59,65 +60,38 @@ export class CheckboxTreeNewComponent<T>
   @Input() indentation = 24;
   model: string[] = [];
   states: CheckboxStates = {};
+  private _transformer = new ModelTransformer<T>(
+    {} as T,
+    this.getId,
+    this.getChildren
+  );
   private _itemsKeyedById: ItemsRecord<T> = {};
   private _onChangeFn: (value: string[]) => void = () => [];
   private _getParent = (item: T): T[] => {
     const parentId = this._itemsKeyedById[this.getId(item)].parentId;
     return parentId ? [this._itemsKeyedById[parentId].item] : [];
   };
-  private _idsMap = new Map<string, string[]>();
-  private _ids: string[] = [];
 
   constructor(private _changeDetectorRef: ChangeDetectorRef) {}
 
   ngOnChanges({ item }: SimpleChanges): void {
     if (item) {
-      this._itemsKeyedById = this._createItemsRecord(item.currentValue);
+      const tree: T = item.currentValue;
 
-      this._idsMap = reduceRecursively({
-        item: item.currentValue as T,
-        getItems: this.getChildren,
-        initialValue: new Map<string, string[]>(),
-        reducer: (accum, curr) =>
-          accum.set(
-            this.getId(curr),
-            this.getChildren(curr).length
-              ? this.getChildren(curr).map((child) => this.getId(child))
-              : []
-          ),
-      });
+      this._transformer = new ModelTransformer(
+        tree,
+        this.getId,
+        this.getChildren
+      );
 
-      // Reverse the keys because we want to ascend the tree starting from the leaf nodes
-      this._ids = Array.from(this._idsMap.keys()).reverse();
+      this._itemsKeyedById = this._createItemsRecord(tree);
     }
   }
 
   writeValue(model: string[]): void {
     if (model) {
       this.model = model;
-      this.states = this._ids.reduce((state, curr) => {
-        if (model.includes(curr)) {
-          state[curr] = 'checked';
-        } else {
-          const ids = this._idsMap.get(curr) ?? [];
-          if (ids.length) {
-            const idsInState = ids.reduce(
-              (total, id) => total + (state[id] ? 1 : 0),
-              0
-            );
-            const totalIds = ids.length;
-
-            if (totalIds === 1 && state[ids[0]] === 'indeterminate') {
-              state[curr] = 'indeterminate';
-            } else if (totalIds === idsInState) {
-              state[curr] = 'checked';
-            } else if (idsInState > 0) {
-              state[curr] = 'indeterminate';
-            }
-          }
-        }
-        return state;
-      }, {} as Record<string, CheckboxState>);
+      this.states = this._transformer.toObj(model);
     }
     this._changeDetectorRef.markForCheck();
   }
@@ -131,21 +105,11 @@ export class CheckboxTreeNewComponent<T>
 
   onChange(checked: boolean, item: T): void {
     let states = { ...this.states };
-
     states = this._updateItemAndDescendantStates({ item, checked, states });
     states = this._updateAncestorStates(item, states);
-
     this.states = states;
 
-    this.model = this._ids.reduce((state, id) => {
-      if (
-        this.states[id] === 'checked' &&
-        !(this._idsMap.get(id) ?? []).length
-      ) {
-        state.unshift(id);
-      }
-      return state;
-    }, [] as string[]);
+    this.model = this._transformer.toArr(this.states);
     this._onChangeFn(this.model);
   }
 
