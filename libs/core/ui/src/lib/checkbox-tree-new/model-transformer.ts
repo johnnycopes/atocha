@@ -72,33 +72,33 @@ export class ModelTransformer<T> {
 
   updateStates(
     checked: boolean,
-    item: T,
+    id: string,
     states: CheckboxStates
   ): CheckboxStates {
     let updatedStates = { ...states };
     updatedStates = this._updateItemAndDescendantStates({
-      item,
+      id,
       checked,
       states,
     });
-    updatedStates = this._updateAncestorStates(item, updatedStates);
+    updatedStates = this._updateAncestorStates(id, updatedStates);
     return updatedStates;
   }
 
   private _updateItemAndDescendantStates({
-    item,
+    id,
     checked,
     states,
   }: {
-    item: T;
+    id: string;
     checked: boolean;
     states: CheckboxStates;
   }): CheckboxStates {
     const itemAndDescendantsIds = reduceRecursively({
-      item: this._getId(item),
+      item: id,
       getItems: (id: string) => this._idsMap.get(id)?.childrenIds ?? [],
       initialValue: [] as string[],
-      reducer: (accum, id) => [...accum, id],
+      reducer: (accum, curr) => [...accum, curr],
     });
 
     itemAndDescendantsIds.forEach((id) => {
@@ -113,18 +113,17 @@ export class ModelTransformer<T> {
   }
 
   private _updateAncestorStates(
-    item: T,
+    id: string,
     states: CheckboxStates
   ): CheckboxStates {
     const ancestorIds = reduceRecursively({
-      item: this._getId(item),
+      item: id,
       getItems: (id) => {
         const parentId = this._idsMap.get(id)?.parentId;
         return parentId ? [parentId] : [];
       },
       initialValue: [] as string[],
-      reducer: (accum, curr) =>
-        this._getId(item) === curr ? [...accum] : [...accum, curr],
+      reducer: (accum, curr) => (id === curr ? [...accum] : [...accum, curr]),
     });
 
     ancestorIds.forEach((ancestorId) => {

@@ -53,11 +53,13 @@ describe('ModelTransformer', () => {
     });
 
     it('selects all states when the top node is selected', () => {
-      expect(transformer.updateStates(true, item, {})).toEqual(ALL_SELECTED);
+      expect(transformer.updateStates(true, item.id, {})).toEqual(ALL_SELECTED);
     });
 
     it('deselects all states when the top node is deselected', () => {
-      expect(transformer.updateStates(false, item, ALL_SELECTED)).toEqual({});
+      expect(transformer.updateStates(false, item.id, ALL_SELECTED)).toEqual(
+        {}
+      );
     });
 
     it('updates states when middle checkbox is selected', () => {
@@ -65,7 +67,7 @@ describe('ModelTransformer', () => {
         ?.find(({ id }) => id === 'Northern Africa')
         ?.children?.find(({ id }) => id === 'Morocco') ?? { id: 'Morocco' };
 
-      expect(transformer.updateStates(true, item, {})).toEqual({
+      expect(transformer.updateStates(true, item.id, {})).toEqual({
         Africa: 'indeterminate',
         Fes: 'checked',
         Marrakesh: 'checked',
@@ -79,7 +81,7 @@ describe('ModelTransformer', () => {
         ?.find(({ id }) => id === 'Southern Africa')
         ?.children?.find(({ id }) => id === 'Namibia') ?? { id: 'Namibia' };
 
-      expect(transformer.updateStates(true, item, {})).toEqual({
+      expect(transformer.updateStates(true, item.id, {})).toEqual({
         Africa: 'indeterminate',
         Namibia: 'checked',
         'Southern Africa': 'indeterminate',
@@ -91,7 +93,7 @@ describe('ModelTransformer', () => {
         id: 'Southern Africa',
       };
 
-      expect(transformer.updateStates(true, item, SOME_SELECTED)).toEqual({
+      expect(transformer.updateStates(true, item.id, SOME_SELECTED)).toEqual({
         Africa: 'indeterminate',
         Fes: 'checked',
         Morocco: 'indeterminate',
