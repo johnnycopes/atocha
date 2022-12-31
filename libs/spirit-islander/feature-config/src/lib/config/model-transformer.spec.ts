@@ -262,4 +262,37 @@ describe('ModelTransformer', () => {
       ).toEqual(['Shroud of Silent Mist']);
     });
   });
+
+  describe('deeply nested tree', () => {
+    const transformer = new ModelTransformer({
+      id: 'Africa',
+      children: [
+        {
+          id: 'Southern Africa',
+          children: [{ id: 'Swaziland' }, { id: 'Namibia' }],
+        },
+        { id: 'Central Africa' },
+        {
+          id: 'Northern Africa',
+          children: [
+            {
+              id: 'Morocco',
+              children: [{ id: 'Marrakesh' }, { id: 'Fes' }],
+            },
+          ],
+        },
+      ],
+    });
+
+    it('recurses multiple levels', () => {
+      expect(transformer.toObj(['Swaziland', 'Fes'])).toEqual({
+        Africa: 'indeterminate',
+        'Southern Africa': 'indeterminate',
+        Swaziland: 'checked',
+        'Northern Africa': 'indeterminate',
+        Morocco: 'indeterminate',
+        Fes: 'checked',
+      });
+    });
+  });
 });

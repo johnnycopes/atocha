@@ -36,7 +36,9 @@ export class ModelTransformer<T> {
           );
           const totalIds = ids.length;
 
-          if (totalIds === idsInState) {
+          if (totalIds === 1 && state[ids[0]] === 'indeterminate') {
+            state[curr] = 'indeterminate';
+          } else if (totalIds === idsInState) {
             state[curr] = 'checked';
           } else if (idsInState > 0) {
             state[curr] = 'indeterminate';

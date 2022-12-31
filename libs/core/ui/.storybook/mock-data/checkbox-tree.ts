@@ -41,6 +41,8 @@ export const SOME_SELECTED: CheckboxStates = {
   Fes: 'checked',
 };
 
+export const SOME_SELECTED_NEW = ['Swaziland', 'Fes'];
+
 export const ALL_SELECTED: CheckboxStates = {
   Africa: 'checked',
   'Southern Africa': 'checked',
@@ -52,6 +54,14 @@ export const ALL_SELECTED: CheckboxStates = {
   Marrakesh: 'checked',
   Fes: 'checked',
 };
+
+export const ALL_SELECTED_NEW = [
+  'Central Africa',
+  'Swaziland',
+  'Namibia',
+  'Marrakesh',
+  'Fes',
+];
 
 export const getId = ({ id }: TestItem) => id;
 export const getChildren = ({ children }: TestItem) => children ?? [];
