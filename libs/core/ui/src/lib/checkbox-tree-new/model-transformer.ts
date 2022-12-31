@@ -1,16 +1,14 @@
 import { reduceRecursively } from '@atocha/core/util';
 import { CheckboxState, CheckboxStates } from './checkbox-tree-new.component';
 
-type IdsMap<T> = Map<
+type IdsMap = Map<
   string,
-  { item: T; parentId: string | undefined; childrenIds: string[] }
+  { parentId: string | undefined; childrenIds: string[] }
 >;
 
 export class ModelTransformer<T> {
-  private _idsMap: IdsMap<T>;
+  private _idsMap: IdsMap;
   private _ids: readonly string[];
-
-  private _getParent: (item: T) => T[];
 
   constructor(
     private _tree: T,
@@ -20,10 +18,9 @@ export class ModelTransformer<T> {
     this._idsMap = reduceRecursively({
       item: this._tree,
       getItems: this._getChildren,
-      initialValue: new Map() as IdsMap<T>,
+      initialValue: new Map() as IdsMap,
       reducer: (accum, item, parent) =>
         accum.set(this._getId(item), {
-          item,
           parentId: parent ? this._getId(parent) : undefined,
           childrenIds: this._getChildren(item).length
             ? this._getChildren(item).map((child) => this._getId(child))
@@ -33,15 +30,6 @@ export class ModelTransformer<T> {
 
     // Reverse the keys because we want to ascend the tree starting from the leaf nodes
     this._ids = Array.from(this._idsMap.keys()).reverse();
-
-    this._getParent = (item) => {
-      const parentId = this._idsMap.get(this._getId(item))?.parentId;
-      if (parentId) {
-        const parent = this._idsMap.get(parentId);
-        return parent ? [parent.item] : [];
-      }
-      return [];
-    };
   }
 
   toModel(states: CheckboxStates): string[] {
@@ -107,10 +95,10 @@ export class ModelTransformer<T> {
     states: CheckboxStates;
   }): CheckboxStates {
     const itemAndDescendantsIds = reduceRecursively({
-      item,
-      getItems: this._getChildren,
+      item: this._getId(item),
+      getItems: (id: string) => this._idsMap.get(id)?.childrenIds ?? [],
       initialValue: [] as string[],
-      reducer: (accum, item) => [...accum, this._getId(item)],
+      reducer: (accum, id) => [...accum, id],
     });
 
     itemAndDescendantsIds.forEach((id) => {
@@ -128,31 +116,33 @@ export class ModelTransformer<T> {
     item: T,
     states: CheckboxStates
   ): CheckboxStates {
-    const ancestors = reduceRecursively({
-      item,
-      getItems: this._getParent,
-      initialValue: [] as T[],
+    const ancestorIds = reduceRecursively({
+      item: this._getId(item),
+      getItems: (id) => {
+        const parentId = this._idsMap.get(id)?.parentId;
+        return parentId ? [parentId] : [];
+      },
+      initialValue: [] as string[],
       reducer: (accum, curr) =>
-        this._getId(item) === this._getId(curr) ? [...accum] : [...accum, curr],
+        this._getId(item) === curr ? [...accum] : [...accum, curr],
     });
 
-    ancestors.forEach((ancestor) => {
-      const ancestorId = this._getId(ancestor);
-      const ancestorChildren = this._getChildren(ancestor);
+    ancestorIds.forEach((ancestorId) => {
+      const ancestorChildrenIds =
+        this._idsMap.get(ancestorId)?.childrenIds ?? [];
       const ancestorChildrenStates: Record<CheckboxState, number> = {
         checked: 0,
         indeterminate: 0,
       };
 
-      ancestorChildren.forEach((child) => {
-        const childId = this._getId(child);
+      ancestorChildrenIds.forEach((childId) => {
         const childState = states[childId];
-        if (childState) {
+        if (states[childId]) {
           ancestorChildrenStates[childState]++;
         }
       });
 
-      if (ancestorChildrenStates.checked === ancestorChildren.length) {
+      if (ancestorChildrenStates.checked === ancestorChildrenIds.length) {
         states[ancestorId] = 'checked';
       } else if (
         ancestorChildrenStates.checked > 0 ||
