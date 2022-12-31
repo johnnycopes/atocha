@@ -53,17 +53,7 @@ describe('ModelTransformer', () => {
     });
 
     it('selects all states when the top node is selected', () => {
-      expect(transformer.updateStates(true, item, {})).toEqual({
-        Africa: 'checked',
-        'Central Africa': 'checked',
-        Fes: 'checked',
-        Marrakesh: 'checked',
-        Morocco: 'checked',
-        Namibia: 'checked',
-        'Northern Africa': 'checked',
-        'Southern Africa': 'checked',
-        Swaziland: 'checked',
-      });
+      expect(transformer.updateStates(true, item, {})).toEqual(ALL_SELECTED);
     });
 
     it('deselects all states when the top node is deselected', () => {
