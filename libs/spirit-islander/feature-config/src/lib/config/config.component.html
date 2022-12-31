@@ -1,7 +1,7 @@
 <main ui-page>
-  <!-- <ng-container ui-page-content>
-    {{ form.controls.spirits.value | json }}
-  </ng-container> -->
+  <ng-container ui-page-content>
+    {{ form.value | json }}
+  </ng-container>
   <form *ngIf="config"
     class="config"
     ui-page-content
@@ -12,12 +12,12 @@
       description="What are you playing with?"
     >
       <ui-card name="expansions">
-        <core-checkbox-tree ui-card-content
+        <core-checkbox-tree-new ui-card-content
           formControlName="expansions"
           [getId]="getId"
           [getChildren]="getChildren"
           [item]="expansionsTree"
-        ></core-checkbox-tree>
+        ></core-checkbox-tree-new>
       </ui-card>
 
       <ui-card name="players">
@@ -40,53 +40,53 @@
       description="What are you open to playing with?"
     >
       <ui-card name="spirits">
-        <core-checkbox-tree ui-card-content
+        <core-checkbox-tree-new ui-card-content
           formControlName="spirits"
           [getId]="getId"
           [getChildren]="getChildren"
           [item]="spiritsTree"
           [itemTemplate]="configTemplate"
-        ></core-checkbox-tree>
+        ></core-checkbox-tree-new>
       </ui-card>
 
       <ui-card name="maps">
-        <core-checkbox-tree ui-card-content
+        <core-checkbox-tree-new ui-card-content
           formControlName="maps"
           [getId]="getId"
           [getChildren]="getChildren"
           [item]="mapsTree"
           [itemTemplate]="configTemplate"
-        ></core-checkbox-tree>
+        ></core-checkbox-tree-new>
       </ui-card>
 
       <ui-card name="boards">
-        <core-checkbox-tree ui-card-content
+        <core-checkbox-tree-new ui-card-content
           formControlName="boards"
           [getId]="getId"
           [getChildren]="getChildren"
           [item]="boardsTree"
           [itemTemplate]="configTemplate"
-        ></core-checkbox-tree>
+        ></core-checkbox-tree-new>
       </ui-card>
 
       <ui-card name="scenarios">
-        <core-checkbox-tree ui-card-content
+        <core-checkbox-tree-new ui-card-content
           formControlName="scenarios"
           [getId]="getId"
           [getChildren]="getChildren"
           [item]="scenariosTree"
           [itemTemplate]="configTemplate"
-        ></core-checkbox-tree>
+        ></core-checkbox-tree-new>
       </ui-card>
 
       <ui-card name="adversaries">
-        <core-checkbox-tree ui-card-content
+        <core-checkbox-tree-new ui-card-content
           formControlName="adversaries"
           [getId]="getId"
           [getChildren]="getChildren"
           [item]="adversariesTree"
           [itemTemplate]="configTemplate"
-        ></core-checkbox-tree>
+        ></core-checkbox-tree-new>
       </ui-card>
     </ui-card-group>
 

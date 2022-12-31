@@ -16,7 +16,11 @@ import {
   ReactiveFormsModule,
 } from '@angular/forms';
 
-import { ButtonComponent, CheckboxTreeComponent } from '@atocha/core/ui';
+import {
+  ButtonComponent,
+  CheckboxTreeComponent,
+  CheckboxTreeNewComponent,
+} from '@atocha/core/ui';
 import {
   CardComponent,
   CardGroupComponent,
@@ -45,7 +49,6 @@ import {
   createScenariosTree,
   createSpiritsTree,
 } from './create-tree';
-import { ModelTransformer } from './model-transformer';
 
 export interface ConfigDetails {
   config: Config;
@@ -60,6 +63,7 @@ export interface ConfigDetails {
     CardComponent,
     CardGroupComponent,
     CheckboxTreeComponent,
+    CheckboxTreeNewComponent,
     CommonModule,
     DifficultyEmblemComponent,
     ExpansionEmblemComponent,
@@ -85,21 +89,13 @@ export class ConfigComponent implements OnInit {
       this.scenariosTree = createScenariosTree(expansions);
       this.adversariesTree = createAdversariesTree(expansions);
 
-      this.spiritsTransformer.update(this.spiritsTree);
-      this.mapsTransformer.update(this.mapsTree);
-      this.boardsTransformer.update(this.boardsTree);
-      this.scenariosTransformer.update(this.scenariosTree);
-      this.adversariesTransformer.update(this.adversariesTree);
-
       this.form.setValue({
-        expansions: this.expansionsTransformer.toObj(expansions),
-        spirits: this.spiritsTransformer.toObj(config.spiritNames),
-        maps: this.mapsTransformer.toObj(config.mapNames),
-        boards: this.boardsTransformer.toObj(config.boardNames),
-        scenarios: this.scenariosTransformer.toObj(config.scenarioNames),
-        adversaries: this.adversariesTransformer.toObj(
-          config.adversaryNamesAndIds
-        ),
+        expansions,
+        spirits: config.spiritNames,
+        maps: config.mapNames,
+        boards: config.boardNames,
+        scenarios: config.scenarioNames,
+        adversaries: config.adversaryNamesAndIds,
       });
     }
   }
@@ -114,63 +110,30 @@ export class ConfigComponent implements OnInit {
   getChildren = <T>({ children }: ConfigTree<T>) => children ?? [];
 
   expansionsTree = createExpansionsTree();
-  expansionsTransformer = new ModelTransformer(this.expansionsTree);
-
   spiritsTree = createSpiritsTree([]);
-  spiritsTransformer = new ModelTransformer(this.spiritsTree);
-
   mapsTree = createMapsTree([]);
-  mapsTransformer = new ModelTransformer(this.mapsTree);
-
   boardsTree = createBoardsTree([]);
-  boardsTransformer = new ModelTransformer(this.boardsTree);
-
   scenariosTree = createScenariosTree([]);
-  scenariosTransformer = new ModelTransformer(this.scenariosTree);
-
   adversariesTree = createAdversariesTree([]);
-  adversariesTransformer = new ModelTransformer(this.adversariesTree);
 
   form = new FormGroup({
-    expansions: new FormControl(this.expansionsTransformer.toObj([]), {
-      nonNullable: true,
-    }),
-    spirits: new FormControl(this.spiritsTransformer.toObj([]), {
-      nonNullable: true,
-    }),
-    maps: new FormControl(this.mapsTransformer.toObj([]), {
-      nonNullable: true,
-    }),
-    boards: new FormControl(this.boardsTransformer.toObj([]), {
-      nonNullable: true,
-    }),
-    scenarios: new FormControl(this.scenariosTransformer.toObj([]), {
-      nonNullable: true,
-    }),
-    adversaries: new FormControl(this.adversariesTransformer.toObj([]), {
-      nonNullable: true,
-    }),
+    expansions: new FormControl<string[]>([], { nonNullable: true }),
+    spirits: new FormControl<string[]>([], { nonNullable: true }),
+    maps: new FormControl<string[]>([], { nonNullable: true }),
+    boards: new FormControl<string[]>([], { nonNullable: true }),
+    scenarios: new FormControl<string[]>([], { nonNullable: true }),
+    adversaries: new FormControl<string[]>([], { nonNullable: true }),
   });
 
   ngOnInit(): void {
     this.form.get('expansions')?.valueChanges.subscribe((expansions) => {
-      const expansionsArr = this.expansionsTransformer.toArr(
-        expansions
-      ) as ExpansionName[];
+      const expansionsArr = expansions as ExpansionName[];
 
       this.spiritsTree = createSpiritsTree(expansionsArr);
       this.mapsTree = createMapsTree(expansionsArr);
       this.boardsTree = createBoardsTree(expansionsArr);
       this.scenariosTree = createScenariosTree(expansionsArr);
       this.adversariesTree = createAdversariesTree(expansionsArr);
-
-      this.spiritsTransformer.update(this.spiritsTree);
-      this.mapsTransformer.update(this.mapsTree);
-      this.boardsTransformer.update(this.boardsTree);
-      this.scenariosTransformer.update(this.scenariosTree);
-      this.adversariesTransformer.update(this.adversariesTree);
-
-      // Need to call updateModels here
     });
   }
 
@@ -183,19 +146,12 @@ export class ConfigComponent implements OnInit {
       this.form.getRawValue();
     const config = {
       ...this.config,
-      expansions: this.expansionsTransformer.toArr(
-        expansions
-      ) as ExpansionName[],
-      spiritNames: this.spiritsTransformer.toArr(spirits) as SpiritName[],
-      mapNames: this.mapsTransformer.toArr(maps) as MapName[],
-      boardNames: this.boardsTransformer.toArr(boards) as BalancedBoardName[],
-      scenarioNames: this.scenariosTransformer.toArr(
-        scenarios
-      ) as ScenarioName[],
-      adversaryNamesAndIds: this.adversariesTransformer.toArr(adversaries) as (
-        | AdversaryName
-        | AdversaryLevelId
-      )[],
+      expansions: expansions as ExpansionName[],
+      spiritNames: spirits as SpiritName[],
+      mapNames: maps as MapName[],
+      boardNames: boards as BalancedBoardName[],
+      scenarioNames: scenarios as ScenarioName[],
+      adversaryNamesAndIds: adversaries as (AdversaryName | AdversaryLevelId)[],
     };
     const validCombos = getValidCombos(config);
     console.log(config);
