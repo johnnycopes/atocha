@@ -1,13 +1,15 @@
 import { reduceRecursively } from '@atocha/core/util';
 import { CheckboxState, CheckboxStates } from './checkbox-tree-new.component';
 
-type ItemsRecord<T> = Record<string, { item: T; parentId: string | undefined }>;
+type IdsMap<T> = Map<
+  string,
+  { item: T; parentId: string | undefined; childrenIds: string[] }
+>;
 
 export class ModelTransformer<T> {
-  private _idsMap: Map<string, string[]>;
+  private _idsMap: IdsMap<T>;
   private _ids: readonly string[];
 
-  private _itemsKeyedById: ItemsRecord<T>;
   private _getParent: (item: T) => T[];
 
   constructor(
@@ -18,30 +20,36 @@ export class ModelTransformer<T> {
     this._idsMap = reduceRecursively({
       item: this._tree,
       getItems: this._getChildren,
-      initialValue: new Map<string, string[]>(),
-      reducer: (accum, curr) =>
-        accum.set(
-          this._getId(curr),
-          this._getChildren(curr).length
-            ? this._getChildren(curr).map((child) => this._getId(child))
-            : []
-        ),
+      initialValue: new Map() as IdsMap<T>,
+      reducer: (accum, item, parent) =>
+        accum.set(this._getId(item), {
+          item,
+          parentId: parent ? this._getId(parent) : undefined,
+          childrenIds: this._getChildren(item).length
+            ? this._getChildren(item).map((child) => this._getId(child))
+            : [],
+        }),
     });
 
     // Reverse the keys because we want to ascend the tree starting from the leaf nodes
     this._ids = Array.from(this._idsMap.keys()).reverse();
 
-    this._itemsKeyedById = this._createItemsRecord(this._tree);
-
     this._getParent = (item) => {
-      const parentId = this._itemsKeyedById[this._getId(item)].parentId;
-      return parentId ? [this._itemsKeyedById[parentId].item] : [];
+      const parentId = this._idsMap.get(this._getId(item))?.parentId;
+      if (parentId) {
+        const parent = this._idsMap.get(parentId);
+        return parent ? [parent.item] : [];
+      }
+      return [];
     };
   }
 
   toModel(states: CheckboxStates): string[] {
     return this._ids.reduce((state, id) => {
-      if (states[id] === 'checked' && !(this._idsMap.get(id) ?? []).length) {
+      if (
+        states[id] === 'checked' &&
+        !(this._idsMap.get(id)?.childrenIds ?? []).length
+      ) {
         state.unshift(id);
       }
       return state;
@@ -53,7 +61,7 @@ export class ModelTransformer<T> {
       if (model.includes(curr)) {
         state[curr] = 'checked';
       } else {
-        const ids = this._idsMap.get(curr) ?? [];
+        const ids = this._idsMap.get(curr)?.childrenIds ?? [];
         if (ids.length) {
           const idsInState = ids.reduce(
             (total, id) => total + (state[id] ? 1 : 0),
@@ -157,20 +165,5 @@ export class ModelTransformer<T> {
     });
 
     return states;
-  }
-
-  private _createItemsRecord(item: T): ItemsRecord<T> {
-    return reduceRecursively<T, ItemsRecord<T>>({
-      item,
-      getItems: this._getChildren,
-      reducer: (accumulator, item, parent) => ({
-        ...accumulator,
-        [this._getId(item)]: {
-          item,
-          parentId: parent ? this._getId(parent) : undefined,
-        },
-      }),
-      initialValue: {},
-    });
   }
 }
