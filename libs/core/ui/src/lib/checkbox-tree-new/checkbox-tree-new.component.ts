@@ -22,10 +22,7 @@ import {
   CheckboxSize,
 } from '../checkbox/checkbox.component';
 import { TreeComponent } from '../tree/tree.component';
-import { ModelTransformer } from './model-transformer';
-
-export type CheckboxState = 'checked' | 'indeterminate';
-export type CheckboxStates = Record<string, CheckboxState>;
+import { CheckboxStates, ModelTransformer } from './model-transformer';
 
 @Component({
   standalone: true,

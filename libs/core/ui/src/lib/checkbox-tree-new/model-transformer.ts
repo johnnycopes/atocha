@@ -1,5 +1,7 @@
 import { reduceRecursively } from '@atocha/core/util';
-import { CheckboxState, CheckboxStates } from './checkbox-tree-new.component';
+
+export type CheckboxState = 'checked' | 'indeterminate';
+export type CheckboxStates = Record<string, CheckboxState>;
 
 type IdsMap = Map<
   string,
