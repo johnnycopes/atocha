@@ -72,6 +72,8 @@ export class CheckboxTreeNewComponent<T>
         this.getId,
         this.getChildren
       );
+
+      this.writeValue(this.model);
     }
   }
 

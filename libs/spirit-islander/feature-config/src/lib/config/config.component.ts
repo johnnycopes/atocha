@@ -34,11 +34,17 @@ import {
   BalancedBoardName,
   Combo,
   Config,
+  createAdversariesModel,
+  createBoardsModel,
+  createMapsModel,
+  createScenariosModel,
+  createSpiritsModel,
   ExpansionName,
   getValidCombos,
   MapName,
   ScenarioName,
   SpiritName,
+  updateModel,
 } from '@atocha/spirit-islander/util';
 import {
   ConfigTree,
@@ -127,13 +133,54 @@ export class ConfigComponent implements OnInit {
 
   ngOnInit(): void {
     this.form.get('expansions')?.valueChanges.subscribe((expansions) => {
-      const expansionsArr = expansions as ExpansionName[];
+      const expansionNames = expansions as ExpansionName[];
 
-      this.spiritsTree = createSpiritsTree(expansionsArr);
-      this.mapsTree = createMapsTree(expansionsArr);
-      this.boardsTree = createBoardsTree(expansionsArr);
-      this.scenariosTree = createScenariosTree(expansionsArr);
-      this.adversariesTree = createAdversariesTree(expansionsArr);
+      this.spiritsTree = createSpiritsTree(expansionNames);
+      this.mapsTree = createMapsTree(expansionNames);
+      this.boardsTree = createBoardsTree(expansionNames);
+      this.scenariosTree = createScenariosTree(expansionNames);
+      this.adversariesTree = createAdversariesTree(expansionNames);
+
+      // setTimeout(() => {
+      const {
+        spiritNames,
+        mapNames,
+        boardNames,
+        scenarioNames,
+        adversaryNamesAndIds,
+      } = this._getFormModels();
+      this.form.patchValue({
+        spirits: updateModel(
+          createSpiritsModel,
+          spiritNames,
+          expansionNames,
+          'Expansions'
+        ),
+        boards: updateModel(
+          createBoardsModel,
+          boardNames,
+          expansionNames,
+          'Expansions'
+        ),
+        maps: updateModel(
+          createMapsModel,
+          mapNames,
+          expansionNames,
+          'Expansions'
+        ),
+        scenarios: updateModel(
+          createScenariosModel,
+          scenarioNames,
+          expansionNames,
+          'Expansions'
+        ),
+        adversaries: updateModel(
+          createAdversariesModel,
+          adversaryNamesAndIds,
+          expansionNames,
+          'Expansions'
+        ),
+      });
     });
   }
 
@@ -141,11 +188,22 @@ export class ConfigComponent implements OnInit {
     if (!this.config) {
       return;
     }
+    const config = this._getFormModels();
+    const validCombos = getValidCombos(config);
 
+    this.generate.emit({
+      config,
+      validCombos,
+    });
+  }
+
+  private _getFormModels(): Config {
     const { expansions, spirits, maps, boards, scenarios, adversaries } =
       this.form.getRawValue();
-    const config = {
-      ...this.config,
+
+    return {
+      players: 6,
+      difficultyRange: [0, 8],
       expansions: expansions as ExpansionName[],
       spiritNames: spirits as SpiritName[],
       mapNames: maps as MapName[],
@@ -153,12 +211,5 @@ export class ConfigComponent implements OnInit {
       scenarioNames: scenarios as ScenarioName[],
       adversaryNamesAndIds: adversaries as (AdversaryName | AdversaryLevelId)[],
     };
-    const validCombos = getValidCombos(config);
-    console.log(config);
-
-    this.generate.emit({
-      config,
-      validCombos,
-    });
   }
 }
