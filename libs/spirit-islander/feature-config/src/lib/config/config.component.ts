@@ -141,7 +141,6 @@ export class ConfigComponent implements OnInit {
       this.scenariosTree = createScenariosTree(expansionNames);
       this.adversariesTree = createAdversariesTree(expansionNames);
 
-      // setTimeout(() => {
       const {
         spiritNames,
         mapNames,
