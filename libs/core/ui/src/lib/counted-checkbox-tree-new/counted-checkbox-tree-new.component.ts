@@ -89,8 +89,8 @@ export class CountedCheckboxTreeNewComponent<T>
     if (model) {
       this.model = model;
       this.selectedCounts = this._counter.getSelectedCounts(
-        this.model,
-        this.item
+        this.item,
+        this.model
       );
       this.selectedChange.emit(this.selectedCounts[this._id]);
     }
@@ -113,8 +113,8 @@ export class CountedCheckboxTreeNewComponent<T>
     this._onChangeFn(this.model);
 
     this.selectedCounts = this._counter.getSelectedCounts(
-      this.model,
-      this.item
+      this.item,
+      this.model
     );
     this.selectedChange.emit(this.selectedCounts[this._id]);
   }

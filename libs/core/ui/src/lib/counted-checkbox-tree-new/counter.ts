@@ -14,7 +14,7 @@ export class Counter<T> {
     return this._getCounts(tree, this._getLeafNodeCount);
   }
 
-  getSelectedCounts(model: string[], tree: T): Counts {
+  getSelectedCounts(tree: T, model: string[]): Counts {
     const leafNodeCount = (leafItem: T): number => {
       const leafItemId = this._getId(leafItem);
       return model.includes(leafItemId) ? this._getLeafNodeCount(leafItem) : 0;

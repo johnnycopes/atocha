@@ -33,7 +33,7 @@ describe('Counter', () => {
 
   describe('getSelectedCounts', () => {
     it('returns selected counts record with empty model', () => {
-      expect(counter.getSelectedCounts([], AFRICA)).toEqual({
+      expect(counter.getSelectedCounts(AFRICA, [])).toEqual({
         Africa: 0,
         'Central Africa': 0,
         Fes: 0,
@@ -47,7 +47,7 @@ describe('Counter', () => {
     });
 
     it('returns selected counts record with partial model', () => {
-      expect(counter.getSelectedCounts(SOME_SELECTED_NEW, AFRICA)).toEqual({
+      expect(counter.getSelectedCounts(AFRICA, SOME_SELECTED_NEW)).toEqual({
         Africa: 39,
         'Central Africa': 0,
         Fes: 11,
@@ -61,7 +61,7 @@ describe('Counter', () => {
     });
 
     it('returns selected counts record with full model', () => {
-      expect(counter.getSelectedCounts(ALL_SELECTED_NEW, AFRICA)).toEqual({
+      expect(counter.getSelectedCounts(AFRICA, ALL_SELECTED_NEW)).toEqual({
         Africa: 130,
         'Central Africa': 65,
         Fes: 11,
