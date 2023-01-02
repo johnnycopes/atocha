@@ -184,7 +184,7 @@ export class ConfigComponent implements OnInit {
       });
   }
 
-  onChange(id: string): void {
+  onExpansionChange(id: string): void {
     this.targetSubject.next(id as 'Expansions' | ExpansionName);
   }
 
