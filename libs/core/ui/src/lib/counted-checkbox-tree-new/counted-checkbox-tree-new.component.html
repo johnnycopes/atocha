@@ -1,13 +1,13 @@
-<core-checkbox-tree
+<core-checkbox-tree-new
   [item]="item"
   [getId]="getId"
   [getChildren]="getChildren"
   [itemTemplate]="checkbox"
   [indentation]="indentation"
   [size]="size"
-  [ngModel]="states"
+  [ngModel]="model"
   (ngModelChange)="onChange($event)"
-></core-checkbox-tree>
+></core-checkbox-tree-new>
 
 <ng-template #checkbox let-item let-parent="parent">
   <ng-container

@@ -21,17 +21,14 @@ import {
 import { reduce } from 'lodash-es';
 
 import { CheckboxSize } from '../checkbox/checkbox.component';
-import {
-  CheckboxStates,
-  CheckboxTreeComponent,
-} from '../checkbox-tree/checkbox-tree.component';
+import { CheckboxTreeNewComponent } from '../checkbox-tree-new/checkbox-tree-new.component';
 
 type Counts = Record<string, number>;
 
 @Component({
   standalone: true,
   selector: 'core-counted-checkbox-tree-new',
-  imports: [CommonModule, FormsModule, CheckboxTreeComponent],
+  imports: [CommonModule, FormsModule, CheckboxTreeNewComponent],
   templateUrl: './counted-checkbox-tree-new.component.html',
   styleUrls: ['./counted-checkbox-tree-new.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -59,49 +56,50 @@ export class CountedCheckboxTreeNewComponent<T>
   @Input() size: CheckboxSize = 'normal';
   @Output() selectedChange = new EventEmitter<number>();
   @Output() totalChange = new EventEmitter<number>();
-  states: CheckboxStates = {};
+  model: string[] = [];
   selectedCounts: Counts = {};
   totalCounts: Counts = {};
   private _id = '';
-  private _onChangeFn: (value: CheckboxStates) => void = () => ({});
+  private _onChangeFn: (model: string[]) => void = () => [];
 
   constructor(private _changeDetectorRef: ChangeDetectorRef) {}
 
   ngOnChanges({ item }: SimpleChanges): void {
     if (item.currentValue) {
-      this._id = this.getId(item.currentValue);
-      this.totalCounts = this._getTotalCounts(item.currentValue);
+      const tree: T = item.currentValue;
+      this._id = this.getId(tree);
+      this.totalCounts = this._getTotalCounts(tree);
       this.totalChange.emit(this.totalCounts[this._id]);
     }
   }
 
-  writeValue(value: CheckboxStates): void {
+  writeValue(model: string[]): void {
     if (!this.item) {
       return;
     }
 
-    if (value) {
-      this.states = value;
+    if (model) {
+      this.model = model;
       this.selectedCounts = this._getSelectedCounts(this.item);
       this.selectedChange.emit(this.selectedCounts[this._id]);
     }
     this._changeDetectorRef.markForCheck();
   }
 
-  registerOnChange(fn: (value: CheckboxStates) => void): void {
+  registerOnChange(fn: (model: string[]) => void): void {
     this._onChangeFn = fn;
   }
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-empty-function
-  registerOnTouched(fn: (value: CheckboxStates) => void): void {}
+  registerOnTouched(fn: (model: string[]) => void): void {}
 
-  onChange(states: CheckboxStates): void {
+  onChange(model: string[]): void {
     if (!this.item) {
       return;
     }
 
-    this.states = states;
-    this._onChangeFn(this.states);
+    this.model = model;
+    this._onChangeFn(this.model);
 
     this.selectedCounts = this._getSelectedCounts(this.item);
     this.selectedChange.emit(this.selectedCounts[this._id]);
@@ -114,7 +112,7 @@ export class CountedCheckboxTreeNewComponent<T>
   private _getSelectedCounts(item: T): Counts {
     const leafNodeCount = (leafItem: T): number => {
       const leafItemId = this.getId(leafItem);
-      return this.states[leafItemId] === 'checked'
+      return this.model.includes(leafItemId)
         ? this.getLeafItemCount(leafItem)
         : 0;
     };

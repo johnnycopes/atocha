@@ -11,13 +11,13 @@ import { CheckboxComponent } from '../checkbox/checkbox.component';
 import { TreeComponent } from '../tree/tree.component';
 import { StorybookWrapperComponent } from '../../../.storybook/storybook-wrapper/storybook-wrapper.component';
 import {
-  ALL_SELECTED,
+  ALL_SELECTED_NEW,
   getChildren,
   getCounts,
   getId,
   TestItem,
   AFRICA,
-  SOME_SELECTED,
+  SOME_SELECTED_NEW,
 } from '../../../.storybook/mock-data/checkbox-tree';
 import { CountedCheckboxTreeNewComponent } from './counted-checkbox-tree-new.component';
 
@@ -66,8 +66,8 @@ const Template: Story<CountedCheckboxTreeNewComponent<TestItem>> = (
       [getLeafItemCount]="getCounts"
       [indentation]="indentation"
       [size]="size"
-      [ngModel]="states"
-      (ngModelChange)="states = $event; onNgModelChange($event)"
+      [ngModel]="model"
+      (ngModelChange)="model = $event; onNgModelChange($event)"
       (selectedChange)="onSelectedChange($event)"
       (totalChange)="onTotalChange($event)"
     ></core-counted-checkbox-tree-new>
@@ -76,22 +76,22 @@ const Template: Story<CountedCheckboxTreeNewComponent<TestItem>> = (
 
 export const noneSelected = Template.bind({});
 noneSelected.args = createArgs({
-  states: {},
+  model: [],
 });
 
 export const someSelected = Template.bind({});
 someSelected.args = createArgs({
-  states: SOME_SELECTED,
+  model: SOME_SELECTED_NEW,
 });
 
 export const allSelected = Template.bind({});
 allSelected.args = createArgs({
-  states: ALL_SELECTED,
+  model: ALL_SELECTED_NEW,
 });
 
 export const withCustomStyling = Template.bind({});
 withCustomStyling.args = createArgs({
-  states: SOME_SELECTED,
+  model: SOME_SELECTED_NEW,
   size: 'large',
   className: 'custom-counted-checkbox-tree',
 });
@@ -101,12 +101,7 @@ type Args = Partial<CountedCheckboxTreeNewComponent<TestItem>> & {
 };
 
 function createArgs(
-  {
-    indentation = 24,
-    states = {},
-    size = 'normal',
-    className = '',
-  } = {} as Args
+  { indentation = 24, model = [], size = 'normal', className = '' } = {} as Args
 ): Args {
-  return { indentation, states, size, className };
+  return { indentation, model, size, className };
 }
