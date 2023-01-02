@@ -10,6 +10,8 @@ import {
   OnChanges,
   SimpleChanges,
   ViewEncapsulation,
+  Output,
+  EventEmitter,
 } from '@angular/core';
 import {
   NG_VALUE_ACCESSOR,
@@ -52,6 +54,7 @@ export class CheckboxTreeNewComponent<T>
   @Input() itemTemplate: TemplateRef<unknown> | undefined;
   @Input() size: CheckboxSize = 'normal';
   @Input() indentation = 24;
+  @Output() itemClick = new EventEmitter<string>();
   model: string[] = [];
   states: CheckboxStates = {};
   private _transformer = new ModelTransformer<T>(
@@ -72,6 +75,8 @@ export class CheckboxTreeNewComponent<T>
         this.getId,
         this.getChildren
       );
+
+      this.writeValue(this.model);
     }
   }
 
@@ -91,11 +96,10 @@ export class CheckboxTreeNewComponent<T>
   registerOnTouched(_fn: (value: string[]) => void): void {}
 
   onChange(checked: boolean, item: T): void {
-    this.states = this._transformer.updateStates(
-      checked,
-      this.getId(item),
-      this.states
-    );
+    const itemId = this.getId(item);
+
+    this.itemClick.emit(itemId);
+    this.states = this._transformer.updateStates(checked, itemId, this.states);
     this.model = this._transformer.toModel(this.states);
     this._onChangeFn(this.model);
   }

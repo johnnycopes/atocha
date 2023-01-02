@@ -32,6 +32,25 @@ export const AFRICA: TestItem = {
   ],
 };
 
+export const SMALL_AFRICA: TestItem = {
+  id: 'Africa',
+  children: [
+    {
+      id: 'Southern Africa',
+      children: [{ id: 'Swaziland', targets: 28 }],
+    },
+    {
+      id: 'Northern Africa',
+      children: [
+        {
+          id: 'Morocco',
+          children: [{ id: 'Fes', targets: 11 }],
+        },
+      ],
+    },
+  ],
+};
+
 export const SOME_SELECTED: CheckboxStates = {
   Africa: 'indeterminate',
   Morocco: 'indeterminate',

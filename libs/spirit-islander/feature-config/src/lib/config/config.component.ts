@@ -5,12 +5,23 @@ import {
   Component,
   EventEmitter,
   Input,
+  OnInit,
   Output,
   ViewEncapsulation,
 } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import {
+  FormControl,
+  FormGroup,
+  FormsModule,
+  ReactiveFormsModule,
+} from '@angular/forms';
+import { Subject, withLatestFrom } from 'rxjs';
 
-import { ButtonComponent, CheckboxTreeComponent } from '@atocha/core/ui';
+import {
+  ButtonComponent,
+  CheckboxTreeComponent,
+  CheckboxTreeNewComponent,
+} from '@atocha/core/ui';
 import {
   CardComponent,
   CardGroupComponent,
@@ -24,11 +35,17 @@ import {
   BalancedBoardName,
   Combo,
   Config,
+  createAdversariesModel,
+  createBoardsModel,
+  createMapsModel,
+  createScenariosModel,
+  createSpiritsModel,
   ExpansionName,
   getValidCombos,
   MapName,
   ScenarioName,
   SpiritName,
+  updateModel,
 } from '@atocha/spirit-islander/util';
 import {
   ConfigTree,
@@ -39,7 +56,6 @@ import {
   createScenariosTree,
   createSpiritsTree,
 } from './create-tree';
-import { ModelTransformer } from './model-transformer';
 
 export interface ConfigDetails {
   config: Config;
@@ -54,47 +70,40 @@ export interface ConfigDetails {
     CardComponent,
     CardGroupComponent,
     CheckboxTreeComponent,
+    CheckboxTreeNewComponent,
     CommonModule,
     DifficultyEmblemComponent,
     ExpansionEmblemComponent,
     FormsModule,
     PageComponent,
+    ReactiveFormsModule,
   ],
   templateUrl: './config.component.html',
   styleUrls: ['./config.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
 })
-export class ConfigComponent {
+export class ConfigComponent implements OnInit {
   @Input()
   set config(config) {
     this._config = config;
+    const expansions = config?.expansions;
 
-    if (config) {
-      this.spiritsTree = createSpiritsTree(config?.expansions);
-      this.mapsTree = createMapsTree(config?.expansions);
-      this.boardsTree = createBoardsTree(config?.expansions);
-      this.scenariosTree = createScenariosTree(config?.expansions);
-      this.adversariesTree = createAdversariesTree(config?.expansions);
+    if (config && expansions) {
+      this.spiritsTree = createSpiritsTree(expansions);
+      this.mapsTree = createMapsTree(expansions);
+      this.boardsTree = createBoardsTree(expansions);
+      this.scenariosTree = createScenariosTree(expansions);
+      this.adversariesTree = createAdversariesTree(expansions);
 
-      this.spiritsTransformer.update(this.spiritsTree);
-      this.mapsTransformer.update(this.mapsTree);
-      this.boardsTransformer.update(this.boardsTree);
-      this.scenariosTransformer.update(this.scenariosTree);
-      this.adversariesTransformer.update(this.adversariesTree);
-
-      this.expansionsModel = this.expansionsTransformer.toObj(
-        config?.expansions
-      );
-      this.spiritsModel = this.spiritsTransformer.toObj(config?.spiritNames);
-      this.mapsModel = this.mapsTransformer.toObj(config?.mapNames);
-      this.boardsModel = this.boardsTransformer.toObj(config?.boardNames);
-      this.scenariosModel = this.scenariosTransformer.toObj(
-        config?.scenarioNames
-      );
-      this.adversariesModel = this.adversariesTransformer.toObj(
-        config?.adversaryNamesAndIds
-      );
+      this.form.setValue({
+        expansions,
+        spirits: config.spiritNames,
+        maps: config.mapNames,
+        boards: config.boardNames,
+        scenarios: config.scenarioNames,
+        adversaries: config.adversaryNamesAndIds,
+      });
     }
   }
   get config() {
@@ -108,57 +117,103 @@ export class ConfigComponent {
   getChildren = <T>({ children }: ConfigTree<T>) => children ?? [];
 
   expansionsTree = createExpansionsTree();
-  expansionsTransformer = new ModelTransformer(this.expansionsTree);
-  expansionsModel = this.expansionsTransformer.toObj([]);
-
   spiritsTree = createSpiritsTree([]);
-  spiritsTransformer = new ModelTransformer(this.spiritsTree);
-  spiritsModel = this.spiritsTransformer.toObj([]);
-
   mapsTree = createMapsTree([]);
-  mapsTransformer = new ModelTransformer(this.mapsTree);
-  mapsModel = this.mapsTransformer.toObj([]);
-
   boardsTree = createBoardsTree([]);
-  boardsTransformer = new ModelTransformer(this.boardsTree);
-  boardsModel = this.boardsTransformer.toObj([]);
-
   scenariosTree = createScenariosTree([]);
-  scenariosTransformer = new ModelTransformer(this.scenariosTree);
-  scenariosModel = this.scenariosTransformer.toObj([]);
-
   adversariesTree = createAdversariesTree([]);
-  adversariesTransformer = new ModelTransformer(this.adversariesTree);
-  adversariesModel = this.adversariesTransformer.toObj([]);
+
+  form = new FormGroup({
+    expansions: new FormControl<string[]>([], { nonNullable: true }),
+    spirits: new FormControl<string[]>([], { nonNullable: true }),
+    maps: new FormControl<string[]>([], { nonNullable: true }),
+    boards: new FormControl<string[]>([], { nonNullable: true }),
+    scenarios: new FormControl<string[]>([], { nonNullable: true }),
+    adversaries: new FormControl<string[]>([], { nonNullable: true }),
+  });
+  targetSubject = new Subject<'Expansions' | ExpansionName>();
+
+  ngOnInit(): void {
+    this.form
+      .get('expansions')
+      ?.valueChanges.pipe(withLatestFrom(this.targetSubject.asObservable()))
+      .subscribe(([expansions, target]) => {
+        const expansionNames = expansions as ExpansionName[];
+
+        this.spiritsTree = createSpiritsTree(expansionNames);
+        this.mapsTree = createMapsTree(expansionNames);
+        this.boardsTree = createBoardsTree(expansionNames);
+        this.scenariosTree = createScenariosTree(expansionNames);
+        this.adversariesTree = createAdversariesTree(expansionNames);
+
+        const {
+          spiritNames,
+          mapNames,
+          boardNames,
+          scenarioNames,
+          adversaryNamesAndIds,
+        } = this._getFormModels();
+
+        this.form.patchValue({
+          spirits: updateModel(
+            createSpiritsModel,
+            spiritNames,
+            expansionNames,
+            target
+          ),
+          boards: updateModel(
+            createBoardsModel,
+            boardNames,
+            expansionNames,
+            target
+          ),
+          maps: updateModel(createMapsModel, mapNames, expansionNames, target),
+          scenarios: updateModel(
+            createScenariosModel,
+            scenarioNames,
+            expansionNames,
+            target
+          ),
+          adversaries: updateModel(
+            createAdversariesModel,
+            adversaryNamesAndIds,
+            expansionNames,
+            target
+          ),
+        });
+      });
+  }
+
+  onExpansionChange(id: string): void {
+    this.targetSubject.next(id as 'Expansions' | ExpansionName);
+  }
 
   onGenerate(): void {
     if (!this.config) {
       return;
     }
-    const config = {
-      ...this.config,
-      expansions: this.expansionsTransformer.toArr(
-        this.expansionsModel
-      ) as ExpansionName[],
-      spiritNames: this.spiritsTransformer.toArr(
-        this.spiritsModel
-      ) as SpiritName[],
-      mapNames: this.mapsTransformer.toArr(this.mapsModel) as MapName[],
-      boardNames: this.boardsTransformer.toArr(
-        this.boardsModel
-      ) as BalancedBoardName[],
-      scenarioNames: this.scenariosTransformer.toArr(
-        this.scenariosModel
-      ) as ScenarioName[],
-      adversaryNamesAndIds: this.adversariesTransformer.toArr(
-        this.adversariesModel
-      ) as (AdversaryName | AdversaryLevelId)[],
-    };
+    const config = this._getFormModels();
     const validCombos = getValidCombos(config);
 
     this.generate.emit({
       config,
       validCombos,
     });
+  }
+
+  private _getFormModels(): Config {
+    const { expansions, spirits, maps, boards, scenarios, adversaries } =
+      this.form.getRawValue();
+
+    return {
+      players: 6,
+      difficultyRange: [0, 8],
+      expansions: expansions as ExpansionName[],
+      spiritNames: spirits as SpiritName[],
+      mapNames: maps as MapName[],
+      boardNames: boards as BalancedBoardName[],
+      scenarioNames: scenarios as ScenarioName[],
+      adversaryNamesAndIds: adversaries as (AdversaryName | AdversaryLevelId)[],
+    };
   }
 }
