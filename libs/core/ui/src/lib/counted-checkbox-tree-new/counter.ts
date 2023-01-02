@@ -1,9 +1,9 @@
-// eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
-import { reduce } from 'lodash';
+import { reduceRecursively } from '@atocha/core/util';
 
 export type Counts = Record<string, number>;
 
 export class Counter<T> {
+  // TODO: pass in tree here so the getCounts result can be cached in the constructor body
   constructor(
     private _getId: (tree: T) => string,
     private _getChildren: (tree: T) => T[],
@@ -15,6 +15,7 @@ export class Counter<T> {
   }
 
   getSelectedCounts(tree: T, model: string[]): Counts {
+    // TODO: extract this to a private method
     const leafNodeCount = (leafItem: T): number => {
       const leafItemId = this._getId(leafItem);
       return model.includes(leafItemId) ? this._getLeafNodeCount(leafItem) : 0;
@@ -23,29 +24,19 @@ export class Counter<T> {
   }
 
   private _getCounts(tree: T, getLeafItemCount: (item: T) => number): Counts {
-    const id = this._getId(tree);
-    const children = this._getChildren(tree);
-    if (!children.length) {
-      const count = getLeafItemCount(tree);
-      return { [id]: count };
-    }
-    const descendantTotals = children.reduce(
-      (totalsDict, child) =>
-        Object.assign(totalsDict, this._getCounts(child, getLeafItemCount)),
-      {} as Counts
-    );
-    const grandTotal = reduce(
-      children,
-      (total, child) => {
-        const childId = this._getId(child);
-        const childTotal = descendantTotals[childId];
-        return total + childTotal;
-      },
-      0
-    );
-    return {
-      ...descendantTotals,
-      [id]: grandTotal,
-    };
+    return reduceRecursively({
+      item: tree,
+      getItems: this._getChildren,
+      initialValue: {} as Counts,
+      reducer: (accum, curr) => ({
+        ...accum,
+        [this._getId(curr)]: reduceRecursively({
+          item: curr,
+          getItems: this._getChildren,
+          initialValue: 0,
+          reducer: (total, item) => total + getLeafItemCount(item),
+        }),
+      }),
+    });
   }
 }
