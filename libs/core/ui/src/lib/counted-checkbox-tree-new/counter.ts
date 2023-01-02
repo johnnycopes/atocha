@@ -1,7 +1,7 @@
 // eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
 import { reduce } from 'lodash';
 
-type Counts = Record<string, number>;
+export type Counts = Record<string, number>;
 
 export class Counter<T> {
   constructor(

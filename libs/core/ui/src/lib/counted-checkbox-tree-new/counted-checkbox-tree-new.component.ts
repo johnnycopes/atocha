@@ -18,12 +18,10 @@ import {
   FormsModule,
   NG_VALUE_ACCESSOR,
 } from '@angular/forms';
-import { reduce } from 'lodash-es';
 
 import { CheckboxSize } from '../checkbox/checkbox.component';
 import { CheckboxTreeNewComponent } from '../checkbox-tree-new/checkbox-tree-new.component';
-
-type Counts = Record<string, number>;
+import { Counter, Counts } from './counter';
 
 @Component({
   standalone: true,
@@ -60,6 +58,11 @@ export class CountedCheckboxTreeNewComponent<T>
   selectedCounts: Counts = {};
   totalCounts: Counts = {};
   private _id = '';
+  private _counter = new Counter<T>(
+    this.getId,
+    this.getChildren,
+    this.getLeafItemCount
+  );
   private _onChangeFn: (model: string[]) => void = () => [];
 
   constructor(private _changeDetectorRef: ChangeDetectorRef) {}
@@ -68,7 +71,12 @@ export class CountedCheckboxTreeNewComponent<T>
     if (item.currentValue) {
       const tree: T = item.currentValue;
       this._id = this.getId(tree);
-      this.totalCounts = this._getTotalCounts(tree);
+      this._counter = new Counter<T>(
+        this.getId,
+        this.getChildren,
+        this.getLeafItemCount
+      );
+      this.totalCounts = this._counter.getTotalCounts(tree);
       this.totalChange.emit(this.totalCounts[this._id]);
     }
   }
@@ -80,7 +88,10 @@ export class CountedCheckboxTreeNewComponent<T>
 
     if (model) {
       this.model = model;
-      this.selectedCounts = this._getSelectedCounts(this.item);
+      this.selectedCounts = this._counter.getSelectedCounts(
+        this.model,
+        this.item
+      );
       this.selectedChange.emit(this.selectedCounts[this._id]);
     }
     this._changeDetectorRef.markForCheck();
@@ -101,48 +112,10 @@ export class CountedCheckboxTreeNewComponent<T>
     this.model = model;
     this._onChangeFn(this.model);
 
-    this.selectedCounts = this._getSelectedCounts(this.item);
+    this.selectedCounts = this._counter.getSelectedCounts(
+      this.model,
+      this.item
+    );
     this.selectedChange.emit(this.selectedCounts[this._id]);
-  }
-
-  private _getTotalCounts(item: T): Counts {
-    return this._getCounts(item, this.getLeafItemCount);
-  }
-
-  private _getSelectedCounts(item: T): Counts {
-    const leafNodeCount = (leafItem: T): number => {
-      const leafItemId = this.getId(leafItem);
-      return this.model.includes(leafItemId)
-        ? this.getLeafItemCount(leafItem)
-        : 0;
-    };
-    return this._getCounts(item, leafNodeCount);
-  }
-
-  private _getCounts(item: T, getLeafItemCount: (item: T) => number): Counts {
-    const id = this.getId(item);
-    const children = this.getChildren(item);
-    if (!children.length) {
-      const count = getLeafItemCount(item);
-      return { [id]: count };
-    }
-    const descendantTotals = children.reduce(
-      (totalsDict, child) =>
-        Object.assign(totalsDict, this._getCounts(child, getLeafItemCount)),
-      {} as Counts
-    );
-    const grandTotal = reduce(
-      children,
-      (total, child) => {
-        const childId = this.getId(child);
-        const childTotal = descendantTotals[childId];
-        return total + childTotal;
-      },
-      0
-    );
-    return {
-      ...descendantTotals,
-      [id]: grandTotal,
-    };
   }
 }
