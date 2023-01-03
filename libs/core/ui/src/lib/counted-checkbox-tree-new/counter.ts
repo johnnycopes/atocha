@@ -3,7 +3,6 @@ import { reduceRecursively } from '@atocha/core/util';
 export type Counts = Record<string, number>;
 
 export class Counter<T> {
-  // TODO: pass in tree here so the getCounts result can be cached in the constructor body
   constructor(
     private _getId: (tree: T) => string,
     private _getChildren: (tree: T) => T[],
@@ -15,12 +14,10 @@ export class Counter<T> {
   }
 
   getSelectedCounts(tree: T, model: string[]): Counts {
-    // TODO: extract this to a private method
-    const leafNodeCount = (leafItem: T): number => {
-      const leafItemId = this._getId(leafItem);
-      return model.includes(leafItemId) ? this._getLeafNodeCount(leafItem) : 0;
-    };
-    return this._getCounts(tree, leafNodeCount);
+    return this._getCounts(tree, (leafNode: T): number => {
+      const leafNodeId = this._getId(leafNode);
+      return model.includes(leafNodeId) ? this._getLeafNodeCount(leafNode) : 0;
+    });
   }
 
   private _getCounts(tree: T, getLeafItemCount: (item: T) => number): Counts {
