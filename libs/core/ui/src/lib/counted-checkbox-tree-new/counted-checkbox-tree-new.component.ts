@@ -70,6 +70,7 @@ export class CountedCheckboxTreeNewComponent<T>
   ngOnChanges({ item }: SimpleChanges): void {
     if (item.currentValue) {
       const tree: T = item.currentValue;
+
       this._id = this.getId(tree);
       this._counter = new Counter<T>(
         this.getId,
@@ -78,15 +79,13 @@ export class CountedCheckboxTreeNewComponent<T>
       );
       this.totalCounts = this._counter.getTotalCounts(tree);
       this.totalChange.emit(this.totalCounts[this._id]);
+
+      this.writeValue(this.model);
     }
   }
 
   writeValue(model: string[]): void {
-    if (!this.item) {
-      return;
-    }
-
-    if (model) {
+    if (model && this.item) {
       this.model = model;
       this.selectedCounts = this._counter.getSelectedCounts(
         this.item,
@@ -105,17 +104,15 @@ export class CountedCheckboxTreeNewComponent<T>
   registerOnTouched(fn: (model: string[]) => void): void {}
 
   onChange(model: string[]): void {
-    if (!this.item) {
-      return;
+    if (this.item) {
+      this.model = model;
+      this._onChangeFn(this.model);
+
+      this.selectedCounts = this._counter.getSelectedCounts(
+        this.item,
+        this.model
+      );
+      this.selectedChange.emit(this.selectedCounts[this._id]);
     }
-
-    this.model = model;
-    this._onChangeFn(this.model);
-
-    this.selectedCounts = this._counter.getSelectedCounts(
-      this.item,
-      this.model
-    );
-    this.selectedChange.emit(this.selectedCounts[this._id]);
   }
 }

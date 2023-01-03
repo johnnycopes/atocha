@@ -18,6 +18,7 @@ import {
   TestItem,
   AFRICA,
   SOME_SELECTED_NEW,
+  SMALL_AFRICA,
 } from '../../../.storybook/mock-data/checkbox-tree';
 import { CountedCheckboxTreeNewComponent } from './counted-checkbox-tree-new.component';
 
@@ -41,6 +42,14 @@ export default {
       control: { type: 'select' },
       options: ['normal', 'large'],
     },
+    item: {
+      control: { type: 'select' },
+      options: ['Africa', 'Small Africa'],
+      mapping: {
+        Africa: AFRICA,
+        'Small Africa': SMALL_AFRICA,
+      },
+    },
     onNgModelChange: { action: 'ngModelChange' },
     onSelectedChange: { action: 'selectedChange' },
     onTotalChange: { action: 'totalChange' },
@@ -52,7 +61,6 @@ const Template: Story<CountedCheckboxTreeNewComponent<TestItem>> = (
 ) => ({
   props: {
     ...args,
-    item: AFRICA,
     getId,
     getChildren,
     getCounts,
@@ -101,7 +109,13 @@ type Args = Partial<CountedCheckboxTreeNewComponent<TestItem>> & {
 };
 
 function createArgs(
-  { indentation = 24, model = [], size = 'normal', className = '' } = {} as Args
+  {
+    item = AFRICA,
+    indentation = 24,
+    model = [],
+    size = 'normal',
+    className = '',
+  } = {} as Args
 ): Args {
-  return { indentation, model, size, className };
+  return { item, indentation, model, size, className };
 }
