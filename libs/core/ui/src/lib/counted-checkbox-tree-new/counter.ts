@@ -21,7 +21,7 @@ export class Counter<T> {
     );
   }
 
-  private _getCounts(tree: T, getLeafItemCount: (item: T) => number): Counts {
+  private _getCounts(tree: T, getLeafNodeCount: (item: T) => number): Counts {
     return reduceRecursively({
       item: tree,
       getItems: this._getChildren,
@@ -32,7 +32,7 @@ export class Counter<T> {
           item: curr,
           getItems: this._getChildren,
           initialValue: 0,
-          reducer: (total, item) => total + getLeafItemCount(item),
+          reducer: (total, item) => total + getLeafNodeCount(item),
         }),
       }),
     });
