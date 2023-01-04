@@ -9,6 +9,7 @@ import {
   PlaceSelection,
   PlaceSelectionState,
   mapRegionsToPlaceSelection,
+  mapRegionsToPlaceModel,
 } from '@atocha/globetrotter/util';
 import { PlaceService } from './place.service';
 
@@ -34,6 +35,7 @@ export class SelectService {
       .pipe(map(({ regions }) => regions))
       .subscribe((regions) => {
         this.updatePlaces(mapRegionsToPlaceSelection(regions));
+        this.updateModel(mapRegionsToPlaceModel(regions));
       });
   }
 
@@ -51,6 +53,10 @@ export class SelectService {
 
   updatePlaces(places: PlaceSelection): void {
     this._state.updateProp('places', places);
+  }
+
+  updateModel(model: string[]): void {
+    this._state.updateProp('model', model);
   }
 
   mapSelectionToQueryParams(selection: Selection): SelectionParams {
