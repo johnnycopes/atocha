@@ -1,22 +1,22 @@
-import { Region } from '@atocha/globetrotter/util';
+import { Place } from '@atocha/globetrotter/util';
 
-export interface PlacesTree<T> {
+export interface PlaceTree {
   id: string;
-  display?: Partial<T>;
-  children?: PlacesTree<T>[];
+  display?: Partial<Place>;
+  children?: PlaceTree[];
 }
 
-export function createTree<T>({
+export function createTree({
   root,
   items,
   getId,
   getChildren = () => [],
 }: {
   root: string;
-  items: T[];
-  getId: (item: T) => string;
-  getChildren?: (item: T) => T[];
-}): PlacesTree<T> {
+  items: Place[];
+  getId: (item: Place) => string;
+  getChildren?: (item: Place) => Place[];
+}): PlaceTree {
   return {
     id: root,
     children: items.map((item) => ({
@@ -28,4 +28,12 @@ export function createTree<T>({
       }), // Only include `children` property if children exist
     })),
   };
+}
+
+export function getId({ id }: PlaceTree): string {
+  return id;
+}
+
+export function getChildren({ children }: PlaceTree): PlaceTree[] {
+  return children ?? [];
 }
