@@ -61,44 +61,44 @@ describe('SelectService', () => {
     });
   });
 
-  // it('maps selection to selection query params', () => {
-  //   expect(
-  //     service.mapSelectionToQueryParams({
-  //       type: QuizType.flagsCountries,
-  //       quantity: 3,
-  //       places: {
-  //         Asia: 'indeterminate',
-  //         'Southern Asia': 'checked',
-  //         'Western Asia': 'checked',
-  //       },
-  //       model: ['Northern Africa', 'Western Africa'],
-  //     })
-  //   ).toEqual({
-  //     type: '1',
-  //     quantity: '3',
-  //     places: 'Asia_i,Southern Asia_c,Western Asia_c',
-  //     model: 'Northern Africa,Western Africa',
-  //   });
-  // });
+  it('maps selection to selection query params', () => {
+    expect(
+      service.mapSelectionToQueryParams({
+        type: QuizType.flagsCountries,
+        quantity: 3,
+        places: {
+          Asia: 'indeterminate',
+          'Southern Asia': 'checked',
+          'Western Asia': 'checked',
+        },
+        model: ['Northern Africa', 'Western Africa'],
+      })
+    ).toEqual({
+      type: '1',
+      quantity: '3',
+      places: 'Asia_i,Southern Asia_c,Western Asia_c',
+      model: 'Northern Africa,Western Africa',
+    });
+  });
 
-  // it('maps selection query params to selection', () => {
-  //   expect(
-  //     service.mapQueryParamsToSelection({
-  //       type: '2',
-  //       quantity: '7',
-  //       places: 'Oceania_i,Melanesia_c,Micronesia_c,Polynesia_c',
-  //       model: 'Melanesia,Micronesia,Polynesia',
-  //     })
-  //   ).toEqual({
-  //     type: QuizType.capitalsCountries,
-  //     quantity: 7,
-  //     places: {
-  //       Oceania: 'indeterminate',
-  //       Melanesia: 'checked',
-  //       Micronesia: 'checked',
-  //       Polynesia: 'checked',
-  //     },
-  //     model: ['Melanesia', 'Micronesia', 'Polynesia'],
-  //   });
-  // });
+  it('maps selection query params to selection', () => {
+    expect(
+      service.mapQueryParamsToSelection({
+        type: '2',
+        quantity: '7',
+        places: 'Oceania_i,Melanesia_c,Micronesia_c,Polynesia_c',
+        model: 'Melanesia,Micronesia,Polynesia',
+      })
+    ).toEqual({
+      type: QuizType.capitalsCountries,
+      quantity: 7,
+      places: {
+        Oceania: 'indeterminate',
+        Melanesia: 'checked',
+        Micronesia: 'checked',
+        Polynesia: 'checked',
+      },
+      model: ['Melanesia', 'Micronesia', 'Polynesia'],
+    });
+  });
 });

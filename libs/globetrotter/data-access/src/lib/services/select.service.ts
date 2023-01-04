@@ -65,7 +65,7 @@ export class SelectService {
     const places = Object.entries(selection.places)
       .map(([place, state]) => place + this._paramDict[state])
       .join(',');
-    const model = '';
+    const model = selection.model.join(',');
     return {
       type,
       quantity,
@@ -90,7 +90,7 @@ export class SelectService {
       }
       return accum;
     }, {} as PlaceSelection);
-    const model: string[] = [];
+    const model: string[] = queryParams.model.split(',');
     return {
       type,
       quantity,
