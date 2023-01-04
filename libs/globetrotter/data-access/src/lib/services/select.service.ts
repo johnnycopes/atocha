@@ -20,6 +20,7 @@ export class SelectService {
     type: QuizType.flagsCountries,
     quantity: 5,
     places: {},
+    model: [],
   });
   private readonly _paramDict: Record<PlaceSelectionState, string> = {
     checked: '_c',
@@ -58,10 +59,12 @@ export class SelectService {
     const places = Object.entries(selection.places)
       .map(([place, state]) => place + this._paramDict[state])
       .join(',');
+    const model = '';
     return {
       type,
       quantity,
       places,
+      model,
     };
   }
 
@@ -81,10 +84,12 @@ export class SelectService {
       }
       return accum;
     }, {} as PlaceSelection);
+    const model: string[] = [];
     return {
       type,
       quantity,
       places,
+      model,
     };
   }
 }
