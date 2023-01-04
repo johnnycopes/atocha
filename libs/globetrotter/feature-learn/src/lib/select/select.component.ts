@@ -4,7 +4,7 @@ import { combineLatest } from 'rxjs';
 import { first, map } from 'rxjs/operators';
 
 import { fadeInAnimation } from '@atocha/globetrotter/ui';
-import { Route, QuizType, PlaceSelection } from '@atocha/globetrotter/util';
+import { Route, QuizType } from '@atocha/globetrotter/util';
 import { PlaceService, SelectService } from '@atocha/globetrotter/data-access';
 
 @Component({
@@ -19,28 +19,34 @@ export class SelectComponent {
     this._placeService.places$,
     this._selectService.selection$,
   ]).pipe(
-    map(([{ regions, countriesBySubregion }, { places, type, quantity }]) => {
-      if (!regions.length) {
-        return undefined;
+    map(
+      ([
+        { regions, countriesBySubregion },
+        { model, places, type, quantity },
+      ]) => {
+        if (!regions.length) {
+          return undefined;
+        }
+        const selectedCountriesQuantity = Object.keys(places).reduce(
+          (total, name) =>
+            countriesBySubregion[name]
+              ? total + countriesBySubregion[name].length
+              : total,
+          0
+        );
+        return {
+          regions,
+          places,
+          model,
+          type,
+          quantity,
+          invalidQuantity:
+            selectedCountriesQuantity < 2 ||
+            quantity < 2 ||
+            quantity > selectedCountriesQuantity,
+        };
       }
-      const selectedCountriesQuantity = Object.keys(places).reduce(
-        (total, name) =>
-          countriesBySubregion[name]
-            ? total + countriesBySubregion[name].length
-            : total,
-        0
-      );
-      return {
-        regions,
-        places,
-        type,
-        quantity,
-        invalidQuantity:
-          selectedCountriesQuantity < 2 ||
-          quantity < 2 ||
-          quantity > selectedCountriesQuantity,
-      };
-    })
+    )
   );
 
   constructor(
@@ -57,8 +63,8 @@ export class SelectComponent {
     this._selectService.updateQuantity(quantity);
   }
 
-  onPlacesChange(places: PlaceSelection): void {
-    this._selectService.updatePlaces(places);
+  onModelChange(model: string[]): void {
+    this._selectService.updateModel(model);
   }
 
   async onLaunch(): Promise<void> {

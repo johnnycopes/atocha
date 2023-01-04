@@ -27,8 +27,8 @@
     </div>
     <app-select-places
       [regions]="vm.regions"
-      [places]="vm.places"
-      (placesChange)="onPlacesChange($event)"
+      [model]="vm.model"
+      (modelChange)="onModelChange($event)"
     ></app-select-places>
   </div>
 </div>

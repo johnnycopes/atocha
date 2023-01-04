@@ -22,7 +22,7 @@
     </div>
   </div>
   <div class="regions">
-    <div class="region"
+    <!-- <div class="region"
       *ngFor="let regionState of regionStates; trackBy: trackByFn"
     >
       <ui-icon class="region__image"
@@ -41,25 +41,35 @@
         (selectedChange)="onSelectedChange(regionState, $event)"
         (totalChange)="onTotalChange(regionState, $event)"
       ></core-counted-checkbox-tree>
-
-      <ng-template
-        #label
-        let-item
-        let-parent="parent"
-        let-selected="selected"
-        let-total="total"
-      >
-        <span class="bold"
-          *ngIf="!parent; else child"
-        >
-          {{ getId(item) }} ({{ selected }} / {{ total }})
-        </span>
-        <ng-template #child>
-          <span>
-            {{ getId(item) }} ({{ total }})
-          </span>
-        </ng-template>
-      </ng-template>
-    </div>
+    </div> -->
+    <core-checkbox-tree-new *ngIf="tree"
+      class="region__checkboxes"
+      [item]="tree"
+      [getId]="getTreeId"
+      [getChildren]="getTreeChildren"
+      [itemTemplate]="label"
+      size="large"
+      [ngModel]="placesModel"
+      (ngModelChange)="onModelChange($event)"
+    ></core-checkbox-tree-new>
   </div>
 </ui-small-caps>
+
+<ng-template
+  #label
+  let-item
+  let-parent="parent"
+  let-selected="selected"
+  let-total="total"
+>
+  <span class="bold"
+    *ngIf="!parent; else child"
+  >
+    {{ getTreeId(item) }} ({{ selected }} / {{ total }})
+  </span>
+  <ng-template #child>
+    <span>
+      {{ getTreeId(item) }} ({{ total }})
+    </span>
+  </ng-template>
+</ng-template>
