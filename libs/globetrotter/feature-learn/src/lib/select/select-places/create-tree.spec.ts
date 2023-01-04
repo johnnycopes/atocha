@@ -1,19 +1,19 @@
-import { isRegion, Place } from '@atocha/globetrotter/util';
+import { Country, Region } from '@atocha/globetrotter/util';
 import { createTree } from './create-tree';
 
 describe('createTree', () => {
   it('returns a consistent tree from regions data', () => {
-    const MOCK_REGIONS: Place[] = [
+    const MOCK_REGIONS: Region[] = [
       {
         name: 'Africa',
         subregions: [
           {
             name: 'Northern Africa',
-            countries: [],
+            countries: [{}, {}, {}] as Country[],
           },
           {
             name: 'Western Africa',
-            countries: [],
+            countries: [{}, {}] as Country[],
           },
         ],
       },
@@ -21,17 +21,17 @@ describe('createTree', () => {
     expect(
       createTree({
         root: 'Places',
-        items: MOCK_REGIONS,
-        getId: ({ name }) => name,
-        getChildren: (place: Place) =>
-          isRegion(place) ? place.subregions : [],
+        regions: MOCK_REGIONS,
       })
     ).toEqual({
       id: 'Places',
       children: [
         {
           id: 'Africa',
-          children: [{ id: 'Northern Africa' }, { id: 'Western Africa' }],
+          children: [
+            { id: 'Northern Africa', countries: 3, children: [] },
+            { id: 'Western Africa', countries: 2, children: [] },
+          ],
         },
       ],
     });

@@ -1,39 +1,41 @@
-import { Place } from '@atocha/globetrotter/util';
+import { Region } from '@atocha/globetrotter/util';
 
 export interface PlaceTree {
   id: string;
-  display?: Partial<Place>;
-  children?: PlaceTree[];
+  children: {
+    id: string;
+    children: {
+      id: string;
+      countries: number;
+      children: [];
+    }[];
+  }[];
 }
 
 export function createTree({
   root,
-  items,
-  getId,
-  getChildren = () => [],
+  regions,
 }: {
   root: string;
-  items: Place[];
-  getId: (item: Place) => string;
-  getChildren?: (item: Place) => Place[];
+  regions: Region[];
 }): PlaceTree {
   return {
     id: root,
-    children: items.map((item) => ({
-      id: getId(item),
-      ...(getChildren(item).length > 0 && {
-        children: getChildren(item).map((item) => ({
-          id: getId(item),
-        })),
-      }), // Only include `children` property if children exist
+    children: regions.map((region) => ({
+      id: region.name,
+      children: region.subregions.map((subregion) => ({
+        id: subregion.name,
+        countries: subregion.countries.length,
+        children: [],
+      })),
     })),
   };
 }
 
-export function getId({ id }: PlaceTree): string {
+export function getTreeId({ id }: PlaceTree): string {
   return id;
 }
 
-export function getChildren({ children }: PlaceTree): PlaceTree[] {
-  return children ?? [];
+export function getTreeChildren({ children }: PlaceTree): PlaceTree[] {
+  return children;
 }
