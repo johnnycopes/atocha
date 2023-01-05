@@ -24,13 +24,13 @@ describe('createTree', () => {
         regions: MOCK_REGIONS,
       })
     ).toEqual({
-      id: 'Places',
-      children: [
+      name: 'Places',
+      regions: [
         {
-          id: 'Africa',
-          children: [
-            { id: 'Northern Africa', countries: 3, children: [] },
-            { id: 'Western Africa', countries: 2, children: [] },
+          name: 'Africa',
+          subregions: [
+            { name: 'Northern Africa', countries: [{}, {}, {}] },
+            { name: 'Western Africa', countries: [{}, {}] },
           ],
         },
       ],

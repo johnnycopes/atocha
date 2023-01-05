@@ -1,16 +1,16 @@
-import { Region } from '@atocha/globetrotter/util';
+import {
+  isRegion,
+  isSubregion,
+  Place,
+  Region,
+} from '@atocha/globetrotter/util';
 
-export interface PlaceTree {
-  id: string;
-  children: {
-    id: string;
-    children: {
-      id: string;
-      countries: number;
-      children: [];
-    }[];
-  }[];
+export interface Root {
+  name: string;
+  regions: Region[];
 }
+
+type PlaceTree = Root | Place;
 
 export function createTree({
   root,
@@ -20,22 +20,29 @@ export function createTree({
   regions: Region[];
 }): PlaceTree {
   return {
-    id: root,
-    children: regions.map((region) => ({
-      id: region.name,
-      children: region.subregions.map((subregion) => ({
-        id: subregion.name,
-        countries: subregion.countries.length,
-        children: [],
-      })),
-    })),
+    name: root,
+    regions,
   };
 }
 
-export function getTreeId({ id }: PlaceTree): string {
-  return id;
+export function getTreeId({ name }: PlaceTree): string {
+  return name;
 }
 
-export function getTreeChildren({ children }: PlaceTree): PlaceTree[] {
-  return children;
+export function getChildren(tree: PlaceTree): Place[] {
+  if ('regions' in tree) {
+    return tree.regions;
+  } else if (isRegion(tree)) {
+    return tree.subregions;
+  } else {
+    return [];
+  }
+}
+
+export function getNumberOfCountries(tree: PlaceTree): number {
+  return !isRoot(tree) && isSubregion(tree) ? tree.countries.length : 0;
+}
+
+function isRoot(tree: PlaceTree): tree is Root {
+  return 'regions' in tree;
 }
