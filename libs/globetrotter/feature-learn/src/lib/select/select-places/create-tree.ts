@@ -5,14 +5,14 @@ import {
   Region,
 } from '@atocha/globetrotter/util';
 
-export interface Root {
+export type PlaceTree = Root | Place;
+
+interface Root {
   name: string;
   regions: Region[];
 }
 
-type PlaceTree = Root | Place;
-
-export function createTree({
+export function createPlaceTree({
   root,
   regions,
 }: {
@@ -25,12 +25,12 @@ export function createTree({
   };
 }
 
-export function getTreeId({ name }: PlaceTree): string {
+export function getId({ name }: PlaceTree): string {
   return name;
 }
 
 export function getChildren(tree: PlaceTree): Place[] {
-  if ('regions' in tree) {
+  if (isRoot(tree)) {
     return tree.regions;
   } else if (isRegion(tree)) {
     return tree.subregions;
