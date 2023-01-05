@@ -32,16 +32,16 @@
   }
 }
 
-.regions {
-  display: grid;
-  grid-template-columns: 1fr;
-  justify-items: center;
+// .regions {
+//   display: grid;
+//   grid-template-columns: 1fr;
+//   justify-items: center;
 
-  @include desktop {
-    grid-template-columns: 1fr 1fr;
-    justify-items: left;
-  }
-}
+//   @include desktop {
+//     grid-template-columns: 1fr 1fr;
+//     justify-items: left;
+//   }
+// }
 
 .region {
   display: flex;
