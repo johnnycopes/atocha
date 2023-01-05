@@ -1,7 +1,7 @@
 <ui-small-caps header="Places">
   <div class="regions">
     <core-counted-checkbox-tree-new *ngIf="tree"
-      class="region__checkboxes"
+      class="places"
       [item]="tree"
       [getId]="getId"
       [getChildren]="getChildren"
@@ -48,10 +48,10 @@
   </div>
 
   <div *ngIf="level === 1">
-    <ui-icon class="region__image"
+    <!-- <ui-icon class="region__image"
       [icon]="getId(item)"
       [highlighted]="!!selected"
-    ></ui-icon>
+    ></ui-icon> -->
     <span *ngIf="level === 1"
       class="bold"
     >

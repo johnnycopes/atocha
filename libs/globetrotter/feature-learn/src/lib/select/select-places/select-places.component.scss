@@ -32,16 +32,21 @@
   }
 }
 
-// .regions {
-//   display: grid;
-//   grid-template-columns: 1fr;
-//   justify-items: center;
+.places ::ng-deep [data-level="0"] {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-auto-rows: 1fr;
+  justify-items: center;
 
-//   @include desktop {
-//     grid-template-columns: 1fr 1fr;
-//     justify-items: left;
-//   }
-// }
+  @include desktop {
+    grid-template-columns: 1fr 1fr;
+    justify-items: left;
+  }
+
+  & > .core-checkbox {
+    grid-column: 1 / 3;
+  }
+}
 
 .region {
   display: flex;
