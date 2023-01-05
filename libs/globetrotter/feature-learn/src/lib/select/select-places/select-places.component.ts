@@ -11,12 +11,17 @@ import {
   Place,
   PlaceSelection,
   isSubregion,
-  isRegion,
   mapRegionsToPlaceSelection,
   Region,
   mapRegionsToPlaceModel,
 } from '@atocha/globetrotter/util';
-import { createTree, getChildren, getId, PlaceTree } from './create-tree';
+import {
+  createPlaceTree,
+  getId,
+  getChildren,
+  getNumberOfCountries,
+  PlaceTree,
+} from './create-places-tree';
 
 interface RegionState {
   region: Place;
@@ -43,13 +48,7 @@ export class SelectPlacesComponent {
       total: 0,
     }));
 
-    this.tree = createTree({
-      root: 'Places',
-      items: value,
-      getId: ({ name }) => name,
-      getChildren: (place: Place) => (isRegion(place) ? place.subregions : []),
-    });
-    console.log(this.tree);
+    this.tree = createPlaceTree({ root: 'Places', regions: value });
   }
 
   @Input()
@@ -61,8 +60,6 @@ export class SelectPlacesComponent {
   }
 
   tree: PlaceTree | undefined;
-  getTreeId = getId;
-  getTreeChildren = getChildren;
   placesModel: string[] = [];
 
   @Output() placesChange = new EventEmitter<PlaceSelection>();
@@ -75,13 +72,9 @@ export class SelectPlacesComponent {
   private _allSelectedState: PlaceSelection = {};
   private _allSelectedModel: string[] = [];
 
-  getId = ({ name }: Place) => name;
-
-  getChildren = (place: Place): Place[] =>
-    isRegion(place) ? place.subregions : [];
-
-  getNumberOfCountries = (place: Place) =>
-    isSubregion(place) ? place.countries.length : 0;
+  getId = getId;
+  getChildren = getChildren;
+  getNumberOfCountries = getNumberOfCountries;
 
   onModelChange(model: string[]): void {
     this.modelChange.emit(model);

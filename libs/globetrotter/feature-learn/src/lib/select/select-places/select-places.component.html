@@ -42,34 +42,40 @@
         (totalChange)="onTotalChange(regionState, $event)"
       ></core-counted-checkbox-tree>
     </div> -->
-    <core-checkbox-tree-new *ngIf="tree"
+    <core-counted-checkbox-tree-new *ngIf="tree"
       class="region__checkboxes"
       [item]="tree"
-      [getId]="getTreeId"
-      [getChildren]="getTreeChildren"
+      [getId]="getId"
+      [getChildren]="getChildren"
+      [getLeafItemCount]="getNumberOfCountries"
       [itemTemplate]="label"
       size="large"
       [ngModel]="placesModel"
       (ngModelChange)="onModelChange($event)"
-    ></core-checkbox-tree-new>
+    ></core-counted-checkbox-tree-new>
   </div>
 </ui-small-caps>
 
 <ng-template
   #label
   let-item
-  let-parent="parent"
+  let-level="level"
   let-selected="selected"
   let-total="total"
 >
-  <span class="bold"
-    *ngIf="!parent; else child"
+  <span *ngIf="level === 0"
+    class="bold"
   >
-    {{ getTreeId(item) }} ({{ selected }} / {{ total }})
+    {{ selected }} / {{ total }} possible countries in the cards.
   </span>
-  <ng-template #child>
-    <span>
-      {{ getTreeId(item) }} ({{ total }})
-    </span>
-  </ng-template>
+
+  <span *ngIf="level === 1"
+    class="bold"
+  >
+    {{ getId(item) }} ({{ selected }} / {{ total }})
+  </span>
+
+  <span *ngIf="level === 2">
+    {{ getId(item) }} ({{ total }})
+  </span>
 </ng-template>
