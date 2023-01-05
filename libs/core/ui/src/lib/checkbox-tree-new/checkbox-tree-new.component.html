@@ -23,6 +23,7 @@
       [ngTemplateOutlet]="itemTemplate ? itemTemplate : defaultTemplate"
       [ngTemplateOutletContext]="{
         $implicit: item,
+        level: level,
         parent: parent
       }"
     ></ng-container>
