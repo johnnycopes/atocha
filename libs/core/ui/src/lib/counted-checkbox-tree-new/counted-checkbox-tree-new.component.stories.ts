@@ -42,7 +42,7 @@ export default {
       control: { type: 'select' },
       options: ['normal', 'large'],
     },
-    item: {
+    node: {
       control: { type: 'select' },
       options: ['Africa', 'Small Africa'],
       mapping: {
@@ -68,17 +68,42 @@ const Template: Story<CountedCheckboxTreeNewComponent<TestItem>> = (
   template: `
     <core-counted-checkbox-tree-new
       [class]="className"
-      [item]="item"
+      [node]="node"
       [getId]="getId"
       [getChildren]="getChildren"
-      [getLeafItemCount]="getCounts"
-      [indentation]="indentation"
-      [size]="size"
+      [getLeafNodeCount]="getCounts"
+      [template]="checkboxTemplate"
       [ngModel]="model"
       (ngModelChange)="model = $event; onNgModelChange($event)"
       (selectedChange)="onSelectedChange($event)"
       (totalChange)="onTotalChange($event)"
     ></core-counted-checkbox-tree-new>
+
+    <ng-template #checkboxTemplate
+      let-node
+      let-level="level"
+      let-checked="checked"
+      let-indeterminate="indeterminate"
+      let-onChange="onChange"
+      let-selected="selected"
+      let-total="total"
+    >
+      <core-checkbox
+        [style.margin-left.px]="level * 24"
+        [style.margin-bottom.px]="4"
+        [indeterminate]="indeterminate"
+        size="normal"
+        [ngModel]="checked"
+        (ngModelChange)="onChange($event, node)"
+      >
+        {{ this.getId(node) }}
+        ({{
+          this.getChildren(node).length
+            ? selected + ' / ' + total
+            : total
+        }})
+      </core-checkbox>
+    </ng-template>
   `,
 });
 
@@ -100,7 +125,6 @@ allSelected.args = createArgs({
 export const withCustomStyling = Template.bind({});
 withCustomStyling.args = createArgs({
   model: SOME_SELECTED_NEW,
-  size: 'large',
   className: 'custom-counted-checkbox-tree',
 });
 
@@ -109,13 +133,7 @@ type Args = Partial<CountedCheckboxTreeNewComponent<TestItem>> & {
 };
 
 function createArgs(
-  {
-    item = AFRICA,
-    indentation = 24,
-    model = [],
-    size = 'normal',
-    className = '',
-  } = {} as Args
+  { node = AFRICA, model = [], className = '' } = {} as Args
 ): Args {
-  return { item, indentation, model, size, className };
+  return { node, model, className };
 }

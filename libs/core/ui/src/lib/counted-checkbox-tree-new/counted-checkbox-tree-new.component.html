@@ -1,35 +1,42 @@
 <core-checkbox-tree-new
-  [item]="item"
+  [node]="node"
   [getId]="getId"
   [getChildren]="getChildren"
-  [itemTemplate]="checkbox"
-  [indentation]="indentation"
-  [size]="size"
+  [template]="checkboxTemplate"
   [ngModel]="model"
   (ngModelChange)="onChange($event)"
 ></core-checkbox-tree-new>
 
-<ng-template #checkbox let-item let-parent="parent">
+<ng-template #checkboxTemplate
+  let-node
+  let-level="level"
+  let-checked="checked"
+  let-indeterminate="indeterminate"
+  let-onChange="onChange"
+>
   <ng-container
-    [ngTemplateOutlet]="itemTemplate ? itemTemplate : defaultTemplate"
+    [ngTemplateOutlet]="template ? template : defaultTemplate"
     [ngTemplateOutletContext]="{
-      $implicit: item,
-      parent: parent,
-      selected: selectedCounts[getId(item)],
-      total: totalCounts[getId(item)]
+      $implicit: node,
+      level: level,
+      checked: checked,
+      indeterminate: indeterminate,
+      onChange: onChange,
+      selected: this.selectedCounts[this.getId(node)],
+      total: this.totalCounts[this.getId(node)]
     }"
   ></ng-container>
 </ng-template>
 
 <ng-template
   #defaultTemplate
-  let-item
+  let-node
   let-selected="selected"
   let-total="total"
 >
-  {{ getId(item) }}
+  {{ getId(node) }}
   ({{
-    getChildren(item).length
+    getChildren(node).length
       ? selected + ' / ' + total
       : total
   }})

@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
+  HostBinding,
   Input,
   OnInit,
   TemplateRef,
@@ -37,7 +38,9 @@ export class TreeComponent<T> implements OnInit {
   /**
    * **Do not modify**. Used internally to track number of levels of recursion and exposed via the template context.
    */
-  @Input() level = 0;
+  @HostBinding('attr.data-level')
+  @Input()
+  level = 0;
   /**
    * Callback function that tells the tree how to retrieve the given node's unique ID.
    */

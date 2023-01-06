@@ -35,7 +35,7 @@ export default {
       control: { type: 'select' },
       options: ['normal', 'large'],
     },
-    item: {
+    node: {
       control: { type: 'select' },
       options: ['Africa', 'Small Africa'],
       mapping: {
@@ -56,14 +56,32 @@ const Template: Story<CheckboxTreeNewComponent<TestItem>> = (args: Args) => ({
   template: `
     <core-checkbox-tree-new
       [class]="className"
-      [item]="item"
+      [node]="node"
       [getId]="getId"
       [getChildren]="getChildren"
-      [indentation]="indentation"
-      [size]="size"
+      [template]="checkboxTemplate"
       [ngModel]="model"
       (ngModelChange)="model = $event; onClick($event)"
     ></core-checkbox-tree-new>
+
+    <ng-template #checkboxTemplate
+      let-node
+      let-level="level"
+      let-checked="checked"
+      let-indeterminate="indeterminate"
+      let-onChange="onChange"
+    >
+      <core-checkbox
+        [style.margin-left.px]="level * 24"
+        [style.margin-bottom.px]="4"
+        [indeterminate]="indeterminate"
+        size="normal"
+        [ngModel]="checked"
+        (ngModelChange)="onChange($event, node)"
+      >
+        {{ this.getId(node) }}
+      </core-checkbox>
+    </ng-template>
   `,
 });
 
@@ -85,7 +103,6 @@ allSelected.args = createArgs({
 export const withCustomStyling = Template.bind({});
 withCustomStyling.args = createArgs({
   model: [],
-  size: 'large',
   className: 'custom-checkbox-tree',
 });
 
@@ -94,13 +111,7 @@ type Args = Partial<CheckboxTreeNewComponent<TestItem>> & {
 };
 
 function createArgs(
-  {
-    item = AFRICA,
-    indentation = 24,
-    model = [],
-    size = 'normal',
-    className = '',
-  } = {} as Args
+  { node = AFRICA, model = [], className = '' } = {} as Args
 ): Args {
-  return { item, indentation, model, size, className };
+  return { node, model, className };
 }
