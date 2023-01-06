@@ -1,44 +1,27 @@
-<core-tree *ngIf="item"
-  [node]="item"
+<core-tree *ngIf="node"
+  [node]="node"
   [getId]="getId"
   [getChildren]="getChildren"
-  [template]="checkbox"
+  [template]="checkboxTemplate"
 ></core-tree>
 
 <ng-template
-  #checkbox
-  let-item
+  #checkboxTemplate
+  let-node
   let-level="level"
-  let-parent="level > 0"
 >
-  <ng-container *ngIf="treeTemplate"
-    [ngTemplateOutlet]="treeTemplate"
+  <ng-container
+    [ngTemplateOutlet]="template ? template : defaultTemplate"
     [ngTemplateOutletContext]="{
-      $implicit: item,
+      $implicit: node,
       level: level,
-      parent: parent
+      checked: this.states[this.getId(node)] === 'checked',
+      indeterminate: this.states[this.getId(node)] === 'indeterminate',
+      onChange: this.onChange
     }"
   ></ng-container>
-
-  <core-checkbox
-    [class.core-checkbox-tree__top]="!parent"
-    [style.margin-left.px]="level * indentation"
-    [indeterminate]="states[getId(item)] === 'indeterminate'"
-    [size]="size"
-    [ngModel]="states[getId(item)] === 'checked'"
-    (ngModelChange)="onChange($event, item)"
-  >
-    <ng-container
-      [ngTemplateOutlet]="itemTemplate ? itemTemplate : defaultTemplate"
-      [ngTemplateOutletContext]="{
-        $implicit: item,
-        level: level,
-        parent: parent
-      }"
-    ></ng-container>
-  </core-checkbox>
 </ng-template>
 
-<ng-template #defaultTemplate let-item>
-  {{ this.getId(item) }}
+<ng-template #defaultTemplate let-node>
+  {{ this.getId(node) }}
 </ng-template>
