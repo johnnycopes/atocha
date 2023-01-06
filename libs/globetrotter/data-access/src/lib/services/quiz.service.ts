@@ -27,15 +27,15 @@ export class QuizService {
       .subscribe(() => this._state.updateProp('quiz', undefined));
   }
 
-  initializeQuiz({ quantity, places }: Selection): void {
+  initializeQuiz({ quantity, model }: Selection): void {
     this._placeService.places$
       .pipe(
         map(({ countriesBySubregion }) => {
           const countries: Country[] = [];
 
-          for (const [name, state] of Object.entries(places)) {
-            if (state === 'checked' && countriesBySubregion[name]) {
-              countries.push(...countriesBySubregion[name]);
+          for (const place of model) {
+            if (countriesBySubregion[place]) {
+              countries.push(...countriesBySubregion[place]);
             }
           }
 
