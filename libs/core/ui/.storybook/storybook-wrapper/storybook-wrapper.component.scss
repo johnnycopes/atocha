@@ -28,7 +28,7 @@
       --label-margin: 12px;
     }
 
-    [data-level="0"] {
+    [data-level='0'] {
       > .core-checkbox--checked,
       > .core-checkbox--indeterminate {
         --checkbox-color: aquamarine;
@@ -59,7 +59,7 @@
       --label-margin: 12px;
     }
 
-    [data-level="0"] {
+    [data-level='0'] {
       > .core-checkbox--checked,
       > .core-checkbox--indeterminate {
         --checkbox-color: aquamarine;
