@@ -42,7 +42,7 @@ export default {
       control: { type: 'select' },
       options: ['normal', 'large'],
     },
-    item: {
+    node: {
       control: { type: 'select' },
       options: ['Africa', 'Small Africa'],
       mapping: {
@@ -68,10 +68,10 @@ const Template: Story<CountedCheckboxTreeNewComponent<TestItem>> = (
   template: `
     <core-counted-checkbox-tree-new
       [class]="className"
-      [item]="item"
+      [node]="node"
       [getId]="getId"
       [getChildren]="getChildren"
-      [getLeafItemCount]="getCounts"
+      [getLeafNodeCount]="getCounts"
       [template]="checkboxTemplate"
       [ngModel]="model"
       (ngModelChange)="model = $event; onNgModelChange($event)"
@@ -134,7 +134,7 @@ type Args = Partial<CountedCheckboxTreeNewComponent<TestItem>> & {
 };
 
 function createArgs(
-  { item = AFRICA, model = [], size = 'normal', className = '' } = {} as Args
+  { node = AFRICA, model = [], size = 'normal', className = '' } = {} as Args
 ): Args {
-  return { item, model, size, className };
+  return { node, model, size, className };
 }
