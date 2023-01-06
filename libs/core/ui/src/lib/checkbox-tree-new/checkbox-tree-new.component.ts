@@ -44,11 +44,11 @@ import { CheckboxStates, ModelTransformer } from './model-transformer';
 export class CheckboxTreeNewComponent<T>
   implements OnChanges, ControlValueAccessor
 {
-  @Input() item: T | undefined;
-  @Input() getId: (item: T) => string = () => '';
-  @Input() getChildren: (item: T) => T[] = () => [];
-  @Input() itemTemplate: TemplateRef<unknown> | undefined;
-  @Output() itemClick = new EventEmitter<string>();
+  @Input() node: T | undefined;
+  @Input() getId: (node: T) => string = () => '';
+  @Input() getChildren: (node: T) => T[] = () => [];
+  @Input() template: TemplateRef<unknown> | undefined;
+  @Output() nodeClick = new EventEmitter<string>();
   model: string[] = [];
   states: CheckboxStates = {};
   private _transformer = new ModelTransformer<T>(
@@ -60,9 +60,9 @@ export class CheckboxTreeNewComponent<T>
 
   constructor(private _changeDetectorRef: ChangeDetectorRef) {}
 
-  ngOnChanges({ item }: SimpleChanges): void {
-    if (item) {
-      const tree: T = item.currentValue;
+  ngOnChanges({ node }: SimpleChanges): void {
+    if (node) {
+      const tree: T = node.currentValue;
 
       this._transformer = new ModelTransformer(
         tree,
@@ -89,11 +89,11 @@ export class CheckboxTreeNewComponent<T>
   // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-empty-function
   registerOnTouched(_fn: (value: string[]) => void): void {}
 
-  onChange = (checked: boolean, item: T): void => {
-    const itemId = this.getId(item);
+  onChange = (checked: boolean, node: T): void => {
+    const nodeId = this.getId(node);
 
-    this.itemClick.emit(itemId);
-    this.states = this._transformer.updateStates(checked, itemId, this.states);
+    this.nodeClick.emit(nodeId);
+    this.states = this._transformer.updateStates(checked, nodeId, this.states);
     this.model = this._transformer.toModel(this.states);
     this._onChangeFn(this.model);
   };

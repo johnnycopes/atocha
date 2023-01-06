@@ -35,7 +35,7 @@ export default {
       control: { type: 'select' },
       options: ['normal', 'large'],
     },
-    item: {
+    node: {
       control: { type: 'select' },
       options: ['Africa', 'Small Africa'],
       mapping: {
@@ -56,16 +56,16 @@ const Template: Story<CheckboxTreeNewComponent<TestItem>> = (args: Args) => ({
   template: `
     <core-checkbox-tree-new
       [class]="className"
-      [item]="item"
+      [node]="node"
       [getId]="getId"
       [getChildren]="getChildren"
-      [itemTemplate]="checkboxTemplate"
+      [template]="checkboxTemplate"
       [ngModel]="model"
       (ngModelChange)="model = $event; onClick($event)"
     ></core-checkbox-tree-new>
 
     <ng-template #checkboxTemplate
-      let-item
+      let-node
       let-level="level"
       let-checked="checked"
       let-indeterminate="indeterminate"
@@ -76,9 +76,9 @@ const Template: Story<CheckboxTreeNewComponent<TestItem>> = (args: Args) => ({
         [indeterminate]="indeterminate"
         size="normal"
         [ngModel]="checked"
-        (ngModelChange)="onChange($event, item)"
+        (ngModelChange)="onChange($event, node)"
       >
-        {{ this.getId(item) }}
+        {{ this.getId(node) }}
       </core-checkbox>
     </ng-template>
   `,
@@ -110,7 +110,7 @@ type Args = Partial<CheckboxTreeNewComponent<TestItem>> & {
 };
 
 function createArgs(
-  { item = AFRICA, model = [], className = '' } = {} as Args
+  { node = AFRICA, model = [], className = '' } = {} as Args
 ): Args {
-  return { item, model, className };
+  return { node, model, className };
 }
