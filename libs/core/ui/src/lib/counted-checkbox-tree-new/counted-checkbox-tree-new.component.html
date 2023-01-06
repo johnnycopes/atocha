@@ -2,12 +2,12 @@
   [node]="node"
   [getId]="getId"
   [getChildren]="getChildren"
-  [template]="checkbox"
+  [template]="checkboxTemplate"
   [ngModel]="model"
   (ngModelChange)="onChange($event)"
 ></core-checkbox-tree-new>
 
-<ng-template #checkbox
+<ng-template #checkboxTemplate
   let-node
   let-level="level"
   let-checked="checked"
