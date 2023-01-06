@@ -68,6 +68,10 @@
       width: 100%;
     }
   }
+
+  ::ng-deep [data-level="2"] {
+    margin-left: map-get($spacing, 24);
+  }
 }
 
 .top {
