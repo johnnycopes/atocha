@@ -28,11 +28,13 @@
       --label-margin: 12px;
     }
 
-    .core-checkbox-tree__top.core-checkbox--checked,
-    .core-checkbox-tree__top.core-checkbox--indeterminate {
-      --checkbox-color: aquamarine;
-      --checkmark-color: darkblue;
-      --checkbox-background: aquamarine;
+    [data-level="0"] {
+      > .core-checkbox--checked,
+      > .core-checkbox--indeterminate {
+        --checkbox-color: aquamarine;
+        --checkmark-color: darkblue;
+        --checkbox-background: aquamarine;
+      }
     }
 
     .core-checkbox--checked,
@@ -57,11 +59,13 @@
       --label-margin: 12px;
     }
 
-    .core-checkbox-tree__top.core-checkbox--checked,
-    .core-checkbox-tree__top.core-checkbox--indeterminate {
-      --checkbox-color: aquamarine;
-      --checkmark-color: darkblue;
-      --checkbox-background: aquamarine;
+    [data-level="0"] {
+      > .core-checkbox--checked,
+      > .core-checkbox--indeterminate {
+        --checkbox-color: aquamarine;
+        --checkmark-color: darkblue;
+        --checkbox-background: aquamarine;
+      }
     }
 
     .core-checkbox--checked,

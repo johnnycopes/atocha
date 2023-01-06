@@ -11,7 +11,6 @@
   let-level="level"
 >
   <core-checkbox
-    [class.core-checkbox-tree__top]="level === 0"
     [style.margin-left.px]="level * indentation"
     [indeterminate]="states[getId(item)] === 'indeterminate'"
     [size]="size"
