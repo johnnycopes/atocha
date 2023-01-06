@@ -9,13 +9,12 @@
   (ngModelChange)="onChange($event)"
 ></core-checkbox-tree-new>
 
-<ng-template #checkbox let-item let-level="level" let-parent="parent">
+<ng-template #checkbox let-item let-level="level">
   <ng-container
     [ngTemplateOutlet]="itemTemplate ? itemTemplate : defaultTemplate"
     [ngTemplateOutletContext]="{
       $implicit: item,
       level: level,
-      parent: parent,
       selected: selectedCounts[getId(item)],
       total: totalCounts[getId(item)]
     }"

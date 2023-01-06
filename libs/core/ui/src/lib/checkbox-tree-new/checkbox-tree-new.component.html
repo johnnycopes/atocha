@@ -9,10 +9,9 @@
   #checkbox
   let-item
   let-level="level"
-  let-parent="level > 0"
 >
   <core-checkbox
-    [class.core-checkbox-tree__top]="!parent"
+    [class.core-checkbox-tree__top]="level === 0"
     [style.margin-left.px]="level * indentation"
     [indeterminate]="states[getId(item)] === 'indeterminate'"
     [size]="size"
@@ -23,8 +22,7 @@
       [ngTemplateOutlet]="itemTemplate ? itemTemplate : defaultTemplate"
       [ngTemplateOutletContext]="{
         $implicit: item,
-        level: level,
-        parent: parent
+        level: level
       }"
     ></ng-container>
   </core-checkbox>
