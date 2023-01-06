@@ -6,11 +6,7 @@ import {
   EventEmitter,
 } from '@angular/core';
 
-import {
-  PlaceSelection,
-  Region,
-  mapRegionsToPlaceModel,
-} from '@atocha/globetrotter/util';
+import { Region, mapRegionsToPlaceModel } from '@atocha/globetrotter/util';
 import {
   createPlaceTree,
   getId,
@@ -32,7 +28,6 @@ export class SelectPlacesComponent {
     this.tree = createPlaceTree({ root: 'Places', regions: value });
   }
   @Input() model: string[] = [];
-  @Output() placesChange = new EventEmitter<PlaceSelection>();
   @Output() modelChange = new EventEmitter<string[]>();
 
   tree: PlaceTree | undefined;

@@ -19,34 +19,28 @@ export class SelectComponent {
     this._placeService.places$,
     this._selectService.selection$,
   ]).pipe(
-    map(
-      ([
-        { regions, countriesBySubregion },
-        { model, places, type, quantity },
-      ]) => {
-        if (!regions.length) {
-          return undefined;
-        }
-        const selectedCountriesQuantity = model.reduce(
-          (total, name) =>
-            countriesBySubregion[name]
-              ? total + countriesBySubregion[name].length
-              : total,
-          0
-        );
-        return {
-          regions,
-          places,
-          model,
-          type,
-          quantity,
-          invalidQuantity:
-            selectedCountriesQuantity < 2 ||
-            quantity < 2 ||
-            quantity > selectedCountriesQuantity,
-        };
+    map(([{ regions, countriesBySubregion }, { model, type, quantity }]) => {
+      if (!regions.length) {
+        return undefined;
       }
-    )
+      const selectedCountriesQuantity = model.reduce(
+        (total, name) =>
+          countriesBySubregion[name]
+            ? total + countriesBySubregion[name].length
+            : total,
+        0
+      );
+      return {
+        regions,
+        model,
+        type,
+        quantity,
+        invalidQuantity:
+          selectedCountriesQuantity < 2 ||
+          quantity < 2 ||
+          quantity > selectedCountriesQuantity,
+      };
+    })
   );
 
   constructor(
