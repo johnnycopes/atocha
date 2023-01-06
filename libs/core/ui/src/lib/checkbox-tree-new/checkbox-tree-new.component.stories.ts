@@ -59,11 +59,28 @@ const Template: Story<CheckboxTreeNewComponent<TestItem>> = (args: Args) => ({
       [item]="item"
       [getId]="getId"
       [getChildren]="getChildren"
-      [indentation]="indentation"
-      [size]="size"
+      [itemTemplate]="checkboxTemplate"
       [ngModel]="model"
       (ngModelChange)="model = $event; onClick($event)"
     ></core-checkbox-tree-new>
+
+    <ng-template #checkboxTemplate
+      let-item
+      let-level="level"
+      let-checked="checked"
+      let-indeterminate="indeterminate"
+      let-onChange="onChange"
+    >
+      <core-checkbox
+        [style.margin-left.px]="level * 24"
+        [indeterminate]="indeterminate"
+        size="normal"
+        [ngModel]="checked"
+        (ngModelChange)="onChange($event, item)"
+      >
+        {{ this.getId(item) }}
+      </core-checkbox>
+    </ng-template>
   `,
 });
 
@@ -85,7 +102,6 @@ allSelected.args = createArgs({
 export const withCustomStyling = Template.bind({});
 withCustomStyling.args = createArgs({
   model: [],
-  size: 'large',
   className: 'custom-checkbox-tree',
 });
 
@@ -94,13 +110,7 @@ type Args = Partial<CheckboxTreeNewComponent<TestItem>> & {
 };
 
 function createArgs(
-  {
-    item = AFRICA,
-    indentation = 24,
-    model = [],
-    size = 'normal',
-    className = '',
-  } = {} as Args
+  { item = AFRICA, model = [], className = '' } = {} as Args
 ): Args {
-  return { item, indentation, model, size, className };
+  return { item, model, className };
 }

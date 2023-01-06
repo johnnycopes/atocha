@@ -10,21 +10,16 @@
   let-item
   let-level="level"
 >
-  <core-checkbox
-    [style.margin-left.px]="level * indentation"
-    [indeterminate]="states[getId(item)] === 'indeterminate'"
-    [size]="size"
-    [ngModel]="states[getId(item)] === 'checked'"
-    (ngModelChange)="onChange($event, item)"
-  >
-    <ng-container
-      [ngTemplateOutlet]="itemTemplate ? itemTemplate : defaultTemplate"
-      [ngTemplateOutletContext]="{
-        $implicit: item,
-        level: level
-      }"
-    ></ng-container>
-  </core-checkbox>
+  <ng-container
+    [ngTemplateOutlet]="itemTemplate ? itemTemplate : defaultTemplate"
+    [ngTemplateOutletContext]="{
+      $implicit: item,
+      level: level,
+      checked: this.states[this.getId(item)] === 'checked',
+      indeterminate: this.states[this.getId(item)] === 'indeterminate',
+      onChange: this.onChange
+    }"
+  ></ng-container>
 </ng-template>
 
 <ng-template #defaultTemplate let-item>

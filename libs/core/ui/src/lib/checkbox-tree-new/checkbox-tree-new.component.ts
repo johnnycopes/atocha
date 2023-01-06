@@ -19,17 +19,13 @@ import {
   FormsModule,
 } from '@angular/forms';
 
-import {
-  CheckboxComponent,
-  CheckboxSize,
-} from '../checkbox/checkbox.component';
 import { TreeComponent } from '../tree/tree.component';
 import { CheckboxStates, ModelTransformer } from './model-transformer';
 
 @Component({
   standalone: true,
   selector: 'core-checkbox-tree-new',
-  imports: [CheckboxComponent, CommonModule, FormsModule, TreeComponent],
+  imports: [CommonModule, FormsModule, TreeComponent],
   templateUrl: './checkbox-tree-new.component.html',
   styleUrls: ['./checkbox-tree-new.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -52,8 +48,6 @@ export class CheckboxTreeNewComponent<T>
   @Input() getId: (item: T) => string = () => '';
   @Input() getChildren: (item: T) => T[] = () => [];
   @Input() itemTemplate: TemplateRef<unknown> | undefined;
-  @Input() size: CheckboxSize = 'normal';
-  @Input() indentation = 24;
   @Output() itemClick = new EventEmitter<string>();
   model: string[] = [];
   states: CheckboxStates = {};
@@ -95,12 +89,12 @@ export class CheckboxTreeNewComponent<T>
   // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-empty-function
   registerOnTouched(_fn: (value: string[]) => void): void {}
 
-  onChange(checked: boolean, item: T): void {
+  onChange = (checked: boolean, item: T): void => {
     const itemId = this.getId(item);
 
     this.itemClick.emit(itemId);
     this.states = this._transformer.updateStates(checked, itemId, this.states);
     this.model = this._transformer.toModel(this.states);
     this._onChangeFn(this.model);
-  }
+  };
 }
