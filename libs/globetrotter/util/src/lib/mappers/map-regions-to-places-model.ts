@@ -1,6 +1,6 @@
 import { Region } from '../domain/region.interface';
 
-export function mapRegionsToPlaceModel(regions: Region[]): string[] {
+export function mapRegionsToPlacesModel(regions: Region[]): string[] {
   const placeModel = [];
 
   for (const { subregions } of regions) {

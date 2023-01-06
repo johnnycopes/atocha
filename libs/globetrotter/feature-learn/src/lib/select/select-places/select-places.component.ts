@@ -6,7 +6,7 @@ import {
   EventEmitter,
 } from '@angular/core';
 
-import { Region, mapRegionsToPlaceModel } from '@atocha/globetrotter/util';
+import { Region, mapRegionsToPlacesModel } from '@atocha/globetrotter/util';
 import {
   createPlaceTree,
   getId,
@@ -24,27 +24,27 @@ import {
 export class SelectPlacesComponent {
   @Input()
   set regions(value: Region[]) {
-    this._allSelectedModel = mapRegionsToPlaceModel(value);
+    this._allPlaces = mapRegionsToPlacesModel(value);
     this.tree = createPlaceTree({ root: 'Places', regions: value });
   }
-  @Input() model: string[] = [];
-  @Output() modelChange = new EventEmitter<string[]>();
+  @Input() places: string[] = [];
+  @Output() placesChange = new EventEmitter<string[]>();
 
   tree: PlaceTree | undefined;
   getId = getId;
   getChildren = getChildren;
   getNumberOfCountries = getNumberOfCountries;
-  private _allSelectedModel: string[] = [];
+  private _allPlaces: string[] = [];
 
-  onModelChange(model: string[]): void {
-    this.modelChange.emit(model);
+  onPlacesChange(places: string[]): void {
+    this.placesChange.emit(places);
   }
 
   onSelectAll(): void {
-    this.modelChange.emit(this._allSelectedModel);
+    this.placesChange.emit(this._allPlaces);
   }
 
   onClearAll(): void {
-    this.modelChange.emit([]);
+    this.placesChange.emit([]);
   }
 }

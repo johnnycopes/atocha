@@ -50,12 +50,7 @@ describe('SelectService', () => {
       expect(value).toEqual({
         type: 1,
         quantity: 5,
-        places: {
-          Africa: 'checked',
-          'Northern Africa': 'checked',
-          'Western Africa': 'checked',
-        },
-        model: ['Northern Africa', 'Western Africa'],
+        places: ['Northern Africa', 'Western Africa'],
       });
       done();
     });
@@ -66,18 +61,12 @@ describe('SelectService', () => {
       service.mapSelectionToQueryParams({
         type: QuizType.flagsCountries,
         quantity: 3,
-        places: {
-          Asia: 'indeterminate',
-          'Southern Asia': 'checked',
-          'Western Asia': 'checked',
-        },
-        model: ['Northern Africa', 'Western Africa'],
+        places: ['Northern Africa', 'Western Africa'],
       })
     ).toEqual({
       type: '1',
       quantity: '3',
-      places: 'Asia_i,Southern Asia_c,Western Asia_c',
-      model: 'Northern Africa,Western Africa',
+      places: 'Northern Africa,Western Africa',
     });
   });
 
@@ -86,19 +75,12 @@ describe('SelectService', () => {
       service.mapQueryParamsToSelection({
         type: '2',
         quantity: '7',
-        places: 'Oceania_i,Melanesia_c,Micronesia_c,Polynesia_c',
-        model: 'Melanesia,Micronesia,Polynesia',
+        places: 'Melanesia,Micronesia,Polynesia',
       })
     ).toEqual({
       type: QuizType.capitalsCountries,
       quantity: 7,
-      places: {
-        Oceania: 'indeterminate',
-        Melanesia: 'checked',
-        Micronesia: 'checked',
-        Polynesia: 'checked',
-      },
-      model: ['Melanesia', 'Micronesia', 'Polynesia'],
+      places: ['Melanesia', 'Micronesia', 'Polynesia'],
     });
   });
 });

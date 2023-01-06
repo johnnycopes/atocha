@@ -27,13 +27,13 @@ export class QuizService {
       .subscribe(() => this._state.updateProp('quiz', undefined));
   }
 
-  initializeQuiz({ quantity, model }: Selection): void {
+  initializeQuiz({ quantity, places }: Selection): void {
     this._placeService.places$
       .pipe(
         map(({ countriesBySubregion }) => {
           const countries: Country[] = [];
 
-          for (const place of model) {
+          for (const place of places) {
             if (countriesBySubregion[place]) {
               countries.push(...countriesBySubregion[place]);
             }

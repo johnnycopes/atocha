@@ -3,11 +3,11 @@ import { QuizType } from './quiz-type.enum';
 export interface Selection {
   type: QuizType;
   quantity: number;
-  model: string[];
+  places: string[];
 }
 
 export interface SelectionParams {
   type: string;
   quantity: string;
-  model: string;
+  places: string;
 }

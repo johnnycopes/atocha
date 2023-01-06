@@ -1,7 +1,7 @@
 export * from './lib/dtos/country-dto.interface';
 
 export * from './lib/mappers/map-country-dto-to-country';
-export * from './lib/mappers/map-regions-to-place-model';
+export * from './lib/mappers/map-regions-to-places-model';
 
 export * from './lib/domain/country.interface';
 export * from './lib/domain/place.type';

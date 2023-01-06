@@ -19,11 +19,11 @@ export class SelectComponent {
     this._placeService.places$,
     this._selectService.selection$,
   ]).pipe(
-    map(([{ regions, countriesBySubregion }, { model, type, quantity }]) => {
+    map(([{ regions, countriesBySubregion }, { places, type, quantity }]) => {
       if (!regions.length) {
         return undefined;
       }
-      const selectedCountriesQuantity = model.reduce(
+      const selectedCountriesQuantity = places.reduce(
         (total, name) =>
           countriesBySubregion[name]
             ? total + countriesBySubregion[name].length
@@ -32,7 +32,7 @@ export class SelectComponent {
       );
       return {
         regions,
-        model,
+        places,
         type,
         quantity,
         invalidQuantity:
@@ -57,8 +57,8 @@ export class SelectComponent {
     this._selectService.updateQuantity(quantity);
   }
 
-  onModelChange(model: string[]): void {
-    this._selectService.updateModel(model);
+  onPlacesChange(places: string[]): void {
+    this._selectService.updatePlaces(places);
   }
 
   async onLaunch(): Promise<void> {

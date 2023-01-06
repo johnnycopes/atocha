@@ -6,7 +6,7 @@ import {
   QuizType,
   Selection,
   SelectionParams,
-  mapRegionsToPlaceModel,
+  mapRegionsToPlacesModel,
 } from '@atocha/globetrotter/util';
 import { PlaceService } from './place.service';
 
@@ -17,7 +17,7 @@ export class SelectService {
   private readonly _state = new State<Selection>({
     type: QuizType.flagsCountries,
     quantity: 5,
-    model: [],
+    places: [],
   });
 
   selection$ = this._state.get();
@@ -26,7 +26,7 @@ export class SelectService {
     this._placeService.places$
       .pipe(map(({ regions }) => regions))
       .subscribe((regions) =>
-        this.updateModel(mapRegionsToPlaceModel(regions))
+        this.updatePlaces(mapRegionsToPlacesModel(regions))
       );
   }
 
@@ -42,29 +42,31 @@ export class SelectService {
     this._state.updateProp('quantity', quantity);
   }
 
-  updateModel(model: string[]): void {
-    this._state.updateProp('model', model);
+  updatePlaces(places: string[]): void {
+    this._state.updateProp('places', places);
   }
 
-  mapSelectionToQueryParams(selection: Selection): SelectionParams {
-    const type = selection.type.toString();
-    const quantity = selection.quantity.toString();
-    const model = selection.model.join(',');
+  mapSelectionToQueryParams({
+    type,
+    quantity,
+    places,
+  }: Selection): SelectionParams {
     return {
-      type,
-      quantity,
-      model,
+      type: type.toString(),
+      quantity: quantity.toString(),
+      places: places.join(','),
     };
   }
 
-  mapQueryParamsToSelection(queryParams: SelectionParams): Selection {
-    const type = parseInt(queryParams.type, 10) as QuizType;
-    const quantity = parseInt(queryParams.quantity, 10);
-    const model: string[] = queryParams.model.split(',');
+  mapQueryParamsToSelection({
+    type,
+    quantity,
+    places,
+  }: SelectionParams): Selection {
     return {
-      type,
-      quantity,
-      model,
+      type: parseInt(type, 10) as QuizType,
+      quantity: parseInt(quantity, 10),
+      places: places.split(','),
     };
   }
 }

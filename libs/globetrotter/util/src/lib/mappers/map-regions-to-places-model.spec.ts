@@ -1,8 +1,8 @@
 import { Region } from '../domain/region.interface';
-import { mapRegionsToPlaceModel } from './map-regions-to-place-model';
+import { mapRegionsToPlacesModel } from './map-regions-to-places-model';
 
-describe('mapRegionsToPlaceModel', () => {
-  it('returns a fully-selected PlaceSelection object', () => {
+describe('mapRegionsToPlacsModel', () => {
+  it('returns a fully-selected places model', () => {
     const regions: Region[] = [
       {
         name: 'Americas',
@@ -23,7 +23,7 @@ describe('mapRegionsToPlaceModel', () => {
       },
     ];
 
-    expect(mapRegionsToPlaceModel(regions)).toEqual([
+    expect(mapRegionsToPlacesModel(regions)).toEqual([
       'North America',
       'Central America',
       'South America',
