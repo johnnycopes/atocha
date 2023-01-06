@@ -27,7 +27,7 @@ export class SelectComponent {
         if (!regions.length) {
           return undefined;
         }
-        const selectedCountriesQuantity = Object.keys(places).reduce(
+        const selectedCountriesQuantity = model.reduce(
           (total, name) =>
             countriesBySubregion[name]
               ? total + countriesBySubregion[name].length
