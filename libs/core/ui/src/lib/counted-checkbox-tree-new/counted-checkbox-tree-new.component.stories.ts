@@ -72,13 +72,38 @@ const Template: Story<CountedCheckboxTreeNewComponent<TestItem>> = (
       [getId]="getId"
       [getChildren]="getChildren"
       [getLeafItemCount]="getCounts"
-      [indentation]="indentation"
-      [size]="size"
+      [itemTemplate]="checkboxTemplate"
       [ngModel]="model"
       (ngModelChange)="model = $event; onNgModelChange($event)"
       (selectedChange)="onSelectedChange($event)"
       (totalChange)="onTotalChange($event)"
     ></core-counted-checkbox-tree-new>
+
+    <ng-template #checkboxTemplate
+      let-node
+      let-level="level"
+      let-checked="checked"
+      let-indeterminate="indeterminate"
+      let-onChange="onChange"
+      let-selected="selected"
+      let-total="total"
+    >
+      <core-checkbox
+        [style.margin-left.px]="level * 24"
+        [style.margin-bottom.px]="4"
+        [indeterminate]="indeterminate"
+        size="normal"
+        [ngModel]="checked"
+        (ngModelChange)="onChange($event, node)"
+      >
+        {{ this.getId(node) }}
+        ({{
+          this.getChildren(node).length
+            ? selected + ' / ' + total
+            : total
+        }})
+      </core-checkbox>
+    </ng-template>
   `,
 });
 
