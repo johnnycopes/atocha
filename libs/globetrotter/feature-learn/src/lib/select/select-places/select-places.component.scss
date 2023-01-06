@@ -38,15 +38,29 @@
   }
 
   ::ng-deep [data-level="1"] {
-    // display: flex;
-    // align-items: center;
+    position: relative;
     padding: map-get($spacing, 8) 0;
+    padding-left: map-get($spacing, 128);
     max-width: 500px;
     width: 100%;
 
+    @include tablet {
+      padding: map-get($spacing, 16) 0;
+      padding-left: map-get($spacing, 192);
+    }
+
+    @include desktop {
+      max-width: unset;
+      min-width: 500px;
+      width: 100%;
+    }
+
     .image {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
       width: map-get($spacing, 96);
-      padding-right: map-get($spacing, 8);
 
       @include mobile {
         width: map-get($spacing, 128);
@@ -56,16 +70,6 @@
         width: map-get($spacing, 192);
         padding-right: map-get($spacing, 32);
       }
-    }
-
-    @include tablet {
-      padding: map-get($spacing, 16) 0;
-    }
-
-    @include desktop {
-      max-width: none;
-      min-width: 500px;
-      width: 100%;
     }
   }
 

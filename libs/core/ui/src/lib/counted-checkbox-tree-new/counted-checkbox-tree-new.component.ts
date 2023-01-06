@@ -49,6 +49,7 @@ export class CountedCheckboxTreeNewComponent<T>
   @Input() getId: (item: T) => string = () => '';
   @Input() getChildren: (item: T) => T[] = () => [];
   @Input() getLeafItemCount: (item: T) => number = () => 0;
+  @Input() treeTemplate: TemplateRef<unknown> | undefined;
   @Input() itemTemplate: TemplateRef<unknown> | undefined;
   @Input() indentation = 24;
   @Input() size: CheckboxSize = 'normal';

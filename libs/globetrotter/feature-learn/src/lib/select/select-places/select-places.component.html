@@ -7,6 +7,7 @@
       [getChildren]="getChildren"
       [getLeafItemCount]="getNumberOfCountries"
       [indentation]="0"
+      [treeTemplate]="image"
       [itemTemplate]="label"
       size="large"
       [ngModel]="model"
@@ -14,6 +15,20 @@
     ></core-counted-checkbox-tree-new>
   </div>
 </ui-small-caps>
+
+<ng-template
+  #image
+  let-item
+  let-level="level"
+  let-selected="selected"
+  let-total="total"
+>
+  <ui-icon *ngIf="level === 1"
+    class="image"
+    [icon]="getId(item)"
+    [highlighted]="!!selected"
+  ></ui-icon>
+</ng-template>
 
 <ng-template
   #label
@@ -49,10 +64,6 @@
   </div>
 
   <div *ngIf="level === 1">
-    <!-- <ui-icon class="region__image"
-      [icon]="getId(item)"
-      [highlighted]="!!selected"
-    ></ui-icon> -->
     <span *ngIf="level === 1"
       class="bold"
     >

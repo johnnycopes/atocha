@@ -51,6 +51,7 @@ export class CheckboxTreeNewComponent<T>
   @Input() item: T | undefined;
   @Input() getId: (item: T) => string = () => '';
   @Input() getChildren: (item: T) => T[] = () => [];
+  @Input() treeTemplate: TemplateRef<unknown> | undefined;
   @Input() itemTemplate: TemplateRef<unknown> | undefined;
   @Input() size: CheckboxSize = 'normal';
   @Input() indentation = 24;

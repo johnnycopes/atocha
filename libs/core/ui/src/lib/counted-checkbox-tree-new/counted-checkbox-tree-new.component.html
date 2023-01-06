@@ -2,12 +2,26 @@
   [item]="item"
   [getId]="getId"
   [getChildren]="getChildren"
+  [treeTemplate]="image"
   [itemTemplate]="checkbox"
   [indentation]="indentation"
   [size]="size"
   [ngModel]="model"
   (ngModelChange)="onChange($event)"
 ></core-checkbox-tree-new>
+
+<ng-template #image let-item let-level="level" let-parent="parent">
+  <ng-container *ngIf="treeTemplate"
+    [ngTemplateOutlet]="treeTemplate"
+    [ngTemplateOutletContext]="{
+      $implicit: item,
+      level: level,
+      parent: parent,
+      selected: selectedCounts[getId(item)],
+      total: totalCounts[getId(item)]
+    }"
+  ></ng-container>
+</ng-template>
 
 <ng-template #checkbox let-item let-level="level" let-parent="parent">
   <ng-container

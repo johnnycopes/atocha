@@ -11,6 +11,15 @@
   let-level="level"
   let-parent="level > 0"
 >
+  <ng-container *ngIf="treeTemplate"
+    [ngTemplateOutlet]="treeTemplate"
+    [ngTemplateOutletContext]="{
+      $implicit: item,
+      level: level,
+      parent: parent
+    }"
+  ></ng-container>
+
   <core-checkbox
     [class.core-checkbox-tree__top]="!parent"
     [style.margin-left.px]="level * indentation"
