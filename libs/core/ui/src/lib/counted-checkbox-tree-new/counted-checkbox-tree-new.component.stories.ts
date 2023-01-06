@@ -134,13 +134,7 @@ type Args = Partial<CountedCheckboxTreeNewComponent<TestItem>> & {
 };
 
 function createArgs(
-  {
-    item = AFRICA,
-    indentation = 24,
-    model = [],
-    size = 'normal',
-    className = '',
-  } = {} as Args
+  { item = AFRICA, model = [], size = 'normal', className = '' } = {} as Args
 ): Args {
-  return { item, indentation, model, size, className };
+  return { item, model, size, className };
 }
