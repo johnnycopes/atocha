@@ -125,7 +125,6 @@ allSelected.args = createArgs({
 export const withCustomStyling = Template.bind({});
 withCustomStyling.args = createArgs({
   model: SOME_SELECTED_NEW,
-  size: 'large',
   className: 'custom-counted-checkbox-tree',
 });
 
@@ -134,7 +133,7 @@ type Args = Partial<CountedCheckboxTreeNewComponent<TestItem>> & {
 };
 
 function createArgs(
-  { node = AFRICA, model = [], size = 'normal', className = '' } = {} as Args
+  { node = AFRICA, model = [], className = '' } = {} as Args
 ): Args {
-  return { node, model, size, className };
+  return { node, model, className };
 }

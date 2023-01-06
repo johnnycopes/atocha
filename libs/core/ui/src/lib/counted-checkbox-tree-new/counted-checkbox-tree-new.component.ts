@@ -19,7 +19,6 @@ import {
   NG_VALUE_ACCESSOR,
 } from '@angular/forms';
 
-import { CheckboxSize } from '../checkbox/checkbox.component';
 import { CheckboxTreeNewComponent } from '../checkbox-tree-new/checkbox-tree-new.component';
 import { Counter, Counts } from './counter';
 
@@ -50,7 +49,6 @@ export class CountedCheckboxTreeNewComponent<T>
   @Input() getChildren: (node: T) => T[] = () => [];
   @Input() getLeafNodeCount: (node: T) => number = () => 0;
   @Input() template: TemplateRef<unknown> | undefined;
-  @Input() size: CheckboxSize = 'normal';
   @Output() selectedChange = new EventEmitter<number>();
   @Output() totalChange = new EventEmitter<number>();
   model: string[] = [];
