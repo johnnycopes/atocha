@@ -15,7 +15,7 @@
   let-onChange="onChange"
 >
   <ng-container
-    [ngTemplateOutlet]="itemTemplate ? itemTemplate : defaultTemplate"
+    [ngTemplateOutlet]="template ? template : defaultTemplate"
     [ngTemplateOutletContext]="{
       $implicit: item,
       level: level,

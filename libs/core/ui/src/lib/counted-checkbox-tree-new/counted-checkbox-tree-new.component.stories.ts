@@ -72,7 +72,7 @@ const Template: Story<CountedCheckboxTreeNewComponent<TestItem>> = (
       [getId]="getId"
       [getChildren]="getChildren"
       [getLeafItemCount]="getCounts"
-      [itemTemplate]="checkboxTemplate"
+      [template]="checkboxTemplate"
       [ngModel]="model"
       (ngModelChange)="model = $event; onNgModelChange($event)"
       (selectedChange)="onSelectedChange($event)"

@@ -49,7 +49,7 @@ export class CountedCheckboxTreeNewComponent<T>
   @Input() getId: (item: T) => string = () => '';
   @Input() getChildren: (item: T) => T[] = () => [];
   @Input() getLeafItemCount: (item: T) => number = () => 0;
-  @Input() itemTemplate: TemplateRef<unknown> | undefined;
+  @Input() template: TemplateRef<unknown> | undefined;
   @Input() size: CheckboxSize = 'normal';
   @Output() selectedChange = new EventEmitter<number>();
   @Output() totalChange = new EventEmitter<number>();
