@@ -73,6 +73,7 @@ const Template: Story<CheckboxTreeNewComponent<TestItem>> = (args: Args) => ({
     >
       <core-checkbox
         [style.margin-left.px]="level * 24"
+        [style.margin-bottom.px]="4"
         [indeterminate]="indeterminate"
         size="normal"
         [ngModel]="checked"
