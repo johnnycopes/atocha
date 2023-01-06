@@ -37,41 +37,41 @@
   let-selected="selected"
   let-total="total"
 >
-  <div *ngIf="level === 0"
-    class="top"
-  >
-    <div class="top__message">
-      <span class="bold">
-        {{ selected }} / {{ total }}
-      </span>
-      possible countries in the cards.
+  <ng-container [ngSwitch]="level">
+    <div *ngSwitchCase="0"
+      class="top"
+    >
+      <div class="top__counter">
+        <span class="bold">
+          {{ selected }} / {{ total }}
+        </span>
+        possible countries in the cards.
+      </div>
+
+      <div class="top__buttons">
+        <button core-button="secondary"
+          class="top__select-all"
+          (click)="onSelectAll()"
+        >
+          Select all
+        </button>
+        <button core-button="secondary"
+          class="top__clear-all"
+          (click)="onClearAll()"
+        >
+          Clear all
+        </button>
+      </div>
     </div>
 
-    <div class="top__buttons">
-      <button core-button="secondary"
-        class="top__select-all"
-        (click)="onSelectAll()"
-      >
-        Select all
-      </button>
-      <button core-button="secondary"
-        class="top__clear-all"
-        (click)="onClearAll()"
-      >
-        Clear all
-      </button>
-    </div>
-  </div>
-
-  <div *ngIf="level === 1">
-    <span *ngIf="level === 1"
+    <span *ngSwitchCase="1"
       class="bold"
     >
       {{ getId(item) }} ({{ selected }} / {{ total }})
     </span>
-  </div>
 
-  <span *ngIf="level === 2">
-    {{ getId(item) }} ({{ total }})
-  </span>
+    <span *ngSwitchCase="2">
+      {{ getId(item) }} ({{ total }})
+    </span>
+  </ng-container>
 </ng-template>
