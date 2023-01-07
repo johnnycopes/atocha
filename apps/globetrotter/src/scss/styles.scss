@@ -80,34 +80,28 @@ app-root {
     }
   }
 
-  .core-counted-checkbox-tree {
-    .core-checkbox-tree {
-      --checkbox-margin: #{map-get($spacing, 8)};
-    }
+  .core-checkbox {
+    --hover-color: #{map-get($color, medium)};
+    --label-margin: #{map-get($spacing, 12)};
+    --checkbox-color: #{map-get($color, lightest)};
+    --checkmark-color: #{map-get($color, lightest)};
+  }
 
-    .core-checkbox {
-      --hover-color: #{map-get($color, medium)};
-      --label-margin: #{map-get($spacing, 12)};
-    }
+  [data-level='1'] > .core-checkbox--checked,
+  [data-level='1'] > .core-checkbox--indeterminate {
+    --checkbox-color: #{map-get($color, lightest)};
+    --checkmark-color: #{map-get($color, darkest)};
+    --checkbox-background: #{map-get($color, lightest)};
+  }
 
-    .core-checkbox-tree__top.core-checkbox--checked,
-    .core-checkbox-tree__top.core-checkbox--indeterminate {
-      --checkbox-color: #{map-get($color, lightest)};
-      --checkmark-color: #{map-get($color, darkest)};
-      --checkbox-background: #{map-get($color, lightest)};
-    }
+  [data-level='1'] > .core-checkbox > .core-checkbox__container {
+    font-weight: bold;
+  }
 
-    .core-checkbox--checked,
-    .core-checkbox--indeterminate {
-      --checkbox-color: #{map-get($color, lightest)};
-      --checkmark-color: #{map-get($color, lightest)};
-    }
-
-    .core-checkbox--unchecked {
-      --checkbox-color: #{map-get($color, medium)};
-      --checkmark-color: #{map-get($color, medium)};
-      color: map-get($color, medium);
-    }
+  .core-checkbox--unchecked {
+    --checkbox-color: #{map-get($color, medium)};
+    --checkmark-color: #{map-get($color, medium)};
+    color: map-get($color, medium);
   }
 
   .core-search-input {

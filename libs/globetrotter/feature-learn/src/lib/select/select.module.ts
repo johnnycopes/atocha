@@ -2,7 +2,11 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
-import { ButtonComponent, CountedCheckboxTreeComponent } from '@atocha/core/ui';
+import {
+  ButtonComponent,
+  CheckboxComponent,
+  CountedCheckboxTreeNewComponent,
+} from '@atocha/core/ui';
 import {
   IconComponent,
   InputComponent,
@@ -17,8 +21,9 @@ import { SelectTypeComponent } from './select-type/select-type.component';
 @NgModule({
   imports: [
     ButtonComponent,
+    CheckboxComponent,
     CommonModule,
-    CountedCheckboxTreeComponent,
+    CountedCheckboxTreeNewComponent,
     FormsModule,
     IconComponent,
     InputComponent,

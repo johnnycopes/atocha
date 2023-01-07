@@ -4,11 +4,51 @@
   display: grid;
 }
 
+.places {
+  ::ng-deep [data-level='0'] {
+    display: grid;
+    grid-template-columns: [start] 1fr [end];
+    grid-auto-rows: auto;
+    justify-items: center;
+    align-items: center;
+
+    @include desktop {
+      grid-template-columns: [start] 1fr [middle] 1fr [end];
+      justify-items: unset;
+    }
+  }
+
+  ::ng-deep [data-level='1'] {
+    position: relative;
+    padding: map-get($spacing, 8) 0;
+    padding-left: map-get($spacing, 128);
+    max-width: 500px;
+    width: 100%;
+
+    @include tablet {
+      padding: map-get($spacing, 16) 0;
+      padding-left: map-get($spacing, 192);
+    }
+
+    @include desktop {
+      max-width: unset;
+      min-width: 500px;
+      width: 100%;
+    }
+  }
+
+  ::ng-deep [data-level='2'] {
+    margin-left: map-get($spacing, 24);
+  }
+}
+
 .top {
+  grid-column: start / span end;
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-direction: column;
+  width: 100%;
 
   @include desktop {
     flex-direction: row;
@@ -32,45 +72,23 @@
   }
 }
 
-.regions {
-  display: grid;
-  grid-template-columns: 1fr;
-  justify-items: center;
+.image {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  width: map-get($spacing, 96);
 
-  @include desktop {
-    grid-template-columns: 1fr 1fr;
-    justify-items: left;
-  }
-}
-
-.region {
-  display: flex;
-  align-items: center;
-  padding: map-get($spacing, 8) 0;
-  max-width: 500px;
-  width: 100%;
-
-  &__image {
-    width: map-get($spacing, 96);
-    padding-right: map-get($spacing, 8);
-
-    @include mobile {
-      width: map-get($spacing, 128);
-    }
-
-    @include tablet {
-      width: map-get($spacing, 192);
-      padding-right: map-get($spacing, 32);
-    }
+  @include mobile {
+    width: map-get($spacing, 128);
   }
 
   @include tablet {
-    padding: map-get($spacing, 16) 0;
+    width: map-get($spacing, 192);
+    padding-right: map-get($spacing, 32);
   }
+}
 
-  @include desktop {
-    max-width: none;
-    min-width: 500px;
-    width: 100%;
-  }
+.checkbox {
+  margin-bottom: map-get($spacing, 8);
 }

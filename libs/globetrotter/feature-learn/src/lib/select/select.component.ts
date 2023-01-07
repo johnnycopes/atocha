@@ -4,7 +4,7 @@ import { combineLatest } from 'rxjs';
 import { first, map } from 'rxjs/operators';
 
 import { fadeInAnimation } from '@atocha/globetrotter/ui';
-import { Route, QuizType, PlaceSelection } from '@atocha/globetrotter/util';
+import { Route, QuizType } from '@atocha/globetrotter/util';
 import { PlaceService, SelectService } from '@atocha/globetrotter/data-access';
 
 @Component({
@@ -23,7 +23,7 @@ export class SelectComponent {
       if (!regions.length) {
         return undefined;
       }
-      const selectedCountriesQuantity = Object.keys(places).reduce(
+      const selectedCountriesQuantity = places.reduce(
         (total, name) =>
           countriesBySubregion[name]
             ? total + countriesBySubregion[name].length
@@ -57,7 +57,7 @@ export class SelectComponent {
     this._selectService.updateQuantity(quantity);
   }
 
-  onPlacesChange(places: PlaceSelection): void {
+  onPlacesChange(places: string[]): void {
     this._selectService.updatePlaces(places);
   }
 

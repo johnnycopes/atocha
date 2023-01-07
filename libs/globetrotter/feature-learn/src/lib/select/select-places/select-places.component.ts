@@ -6,21 +6,14 @@ import {
   EventEmitter,
 } from '@angular/core';
 
-import { CheckboxStates, trackByFactory } from '@atocha/core/ui';
+import { Region, mapRegionsToPlacesModel } from '@atocha/globetrotter/util';
 import {
-  Place,
-  PlaceSelection,
-  isSubregion,
-  isRegion,
-  mapRegionsToPlaceSelection,
-  Region,
-} from '@atocha/globetrotter/util';
-
-interface RegionState {
-  region: Place;
-  selected: number;
-  total: number;
-}
+  createPlaceTree,
+  getId,
+  getChildren,
+  getNumberOfCountries,
+  PlaceTree,
+} from './create-places-tree';
 
 @Component({
   selector: 'app-select-places',
@@ -30,92 +23,28 @@ interface RegionState {
 })
 export class SelectPlacesComponent {
   @Input()
-  set regions(value: Region[]) {
-    this._allSelectedState = mapRegionsToPlaceSelection(value);
-    this.regionStates = value.map((region) => ({
-      region,
-      selected: 0,
-      total: 0,
-    }));
+  set regions(regions: Region[]) {
+    this._allPlaces = mapRegionsToPlacesModel(regions);
+    this.tree = createPlaceTree('Places', regions);
   }
+  @Input() places: string[] = [];
+  @Output() placesChange = new EventEmitter<string[]>();
 
-  @Input()
-  set places(value: PlaceSelection) {
-    if (value) {
-      this.state = this._transformPlaceSelection(value);
-    }
-  }
-  state: CheckboxStates = {};
+  tree: PlaceTree | undefined;
+  getId = getId;
+  getChildren = getChildren;
+  getNumberOfCountries = getNumberOfCountries;
+  private _allPlaces: string[] = [];
 
-  @Output() placesChange = new EventEmitter<PlaceSelection>();
-
-  regionStates: RegionState[] = [];
-  overallSelected = 0;
-  overallTotal = 0;
-  readonly trackByFn = trackByFactory<RegionState>(({ region }) => region.name);
-  private _allSelectedState: PlaceSelection = {};
-
-  getId = ({ name }: Place) => name;
-
-  getChildren = (place: Place): Place[] =>
-    isRegion(place) ? place.subregions : [];
-
-  getNumberOfCountries = (place: Place) =>
-    isSubregion(place) ? place.countries.length : 0;
-
-  onStateChange(state: CheckboxStates): void {
-    this.placesChange.emit(this._transformState(state));
-  }
-
-  onSelectedChange(regionState: RegionState, quantity: number): void {
-    regionState.selected = quantity;
-    this.overallSelected = this.regionStates.reduce(
-      (accum, { selected }) => accum + selected,
-      0
-    );
-  }
-
-  onTotalChange(regionState: RegionState, quantity: number): void {
-    regionState.total = quantity;
-    this.overallTotal = this.regionStates.reduce(
-      (accum, { total }) => accum + total,
-      0
-    );
+  onPlacesChange(places: string[]): void {
+    this.placesChange.emit(places);
   }
 
   onSelectAll(): void {
-    this.placesChange.emit(this._allSelectedState);
+    this.placesChange.emit(this._allPlaces);
   }
 
   onClearAll(): void {
-    this.placesChange.emit({});
-  }
-
-  private _transformPlaceSelection(selection: PlaceSelection): CheckboxStates {
-    const states: CheckboxStates = {};
-
-    for (const [place, placeSelectionState] of Object.entries(selection)) {
-      if (placeSelectionState === 'checked') {
-        states[place] = 'checked';
-      } else if (placeSelectionState === 'indeterminate') {
-        states[place] = 'indeterminate';
-      }
-    }
-
-    return states;
-  }
-
-  private _transformState(state: CheckboxStates): PlaceSelection {
-    const placeSelection: PlaceSelection = {};
-
-    for (const [place, checkboxState] of Object.entries(state)) {
-      if (checkboxState === 'checked') {
-        placeSelection[place] = 'checked';
-      } else if (checkboxState === 'indeterminate') {
-        placeSelection[place] = 'indeterminate';
-      }
-    }
-
-    return placeSelection;
+    this.placesChange.emit([]);
   }
 }

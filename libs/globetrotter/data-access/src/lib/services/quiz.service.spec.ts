@@ -58,12 +58,7 @@ describe('QuizService', () => {
     service.initializeQuiz({
       type: QuizType.flagsCountries,
       quantity: 2,
-      places: {
-        Africa: 'checked',
-        'Eastern Africa': 'checked',
-        'Southeast Europe': 'checked',
-        'South-Eastern Asia': 'checked',
-      },
+      places: ['Eastern Africa', 'Southeast Europe', 'South-Eastern Asia'],
     });
 
     service.quiz$.subscribe((value) => {
@@ -83,12 +78,7 @@ describe('QuizService', () => {
     service.initializeQuiz({
       type: QuizType.flagsCountries,
       quantity: 4,
-      places: {
-        Africa: 'checked',
-        'Eastern Africa': 'checked',
-        'Southeast Europe': 'checked',
-        'South-Eastern Asia': 'checked',
-      },
+      places: ['Eastern Africa', 'Southeast Europe', 'South-Eastern Asia'],
     });
 
     service.updateQuiz(false);

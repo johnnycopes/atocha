@@ -1,8 +1,8 @@
 import { Region } from '../domain/region.interface';
-import { mapRegionsToPlaceSelection } from './map-regions-to-place-selection';
+import { mapRegionsToPlacesModel } from './map-regions-to-places-model';
 
-describe('mapRegionsToPlaceSelection', () => {
-  it('returns a fully-selected PlaceSelection object', () => {
+describe('mapRegionsToPlacesModel', () => {
+  it('returns a fully-selected places model', () => {
     const regions: Region[] = [
       {
         name: 'Americas',
@@ -23,11 +23,10 @@ describe('mapRegionsToPlaceSelection', () => {
       },
     ];
 
-    expect(mapRegionsToPlaceSelection(regions)).toEqual({
-      Americas: 'checked',
-      'Central America': 'checked',
-      'North America': 'checked',
-      'South America': 'checked',
-    });
+    expect(mapRegionsToPlacesModel(regions)).toEqual([
+      'North America',
+      'Central America',
+      'South America',
+    ]);
   });
 });

@@ -3,7 +3,7 @@ import { QuizType } from './quiz-type.enum';
 export interface Selection {
   type: QuizType;
   quantity: number;
-  places: PlaceSelection;
+  places: string[];
 }
 
 export interface SelectionParams {
@@ -11,6 +11,3 @@ export interface SelectionParams {
   quantity: string;
   places: string;
 }
-
-export type PlaceSelection = Record<string, PlaceSelectionState>;
-export type PlaceSelectionState = 'checked' | 'indeterminate';

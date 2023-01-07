@@ -1,65 +1,83 @@
 <ui-small-caps header="Places">
-  <div class="top">
-    <div class="top__counter">
-      <span class="bold">
-        {{ overallSelected }} / {{ overallTotal }}
-      </span>
-      possible countries in the cards.
-    </div>
-    <div class="top__buttons">
-      <button core-button="secondary"
-        class="top__select-all"
-        (click)="onSelectAll()"
-      >
-        Select all
-      </button>
-      <button core-button="secondary"
-        class="top__clear-all"
-        (click)="onClearAll()"
-      >
-        Clear all
-      </button>
-    </div>
-  </div>
-  <div class="regions">
-    <div class="region"
-      *ngFor="let regionState of regionStates; trackBy: trackByFn"
-    >
-      <ui-icon class="region__image"
-        [icon]="regionState.region.name"
-        [highlighted]="!!regionState.selected"
-      ></ui-icon>
-      <core-counted-checkbox-tree class="region__checkboxes"
-        [item]="regionState.region"
-        [getId]="getId"
-        [getChildren]="getChildren"
-        [getLeafItemCount]="getNumberOfCountries"
-        [itemTemplate]="label"
-        size="large"
-        [ngModel]="state"
-        (ngModelChange)="onStateChange($event)"
-        (selectedChange)="onSelectedChange(regionState, $event)"
-        (totalChange)="onTotalChange(regionState, $event)"
-      ></core-counted-checkbox-tree>
-
-      <ng-template
-        #label
-        let-item
-        let-parent="parent"
-        let-selected="selected"
-        let-total="total"
-      >
-        <span class="bold"
-          *ngIf="!parent; else child"
-        >
-          {{ getId(item) }} ({{ selected }} / {{ total }})
-        </span>
-        <ng-template #child>
-          <span>
-            {{ getId(item) }} ({{ total }})
-          </span>
-        </ng-template>
-      </ng-template>
-    </div>
-  </div>
+  <core-counted-checkbox-tree-new *ngIf="tree"
+    class="places"
+    [node]="tree"
+    [getId]="getId"
+    [getChildren]="getChildren"
+    [getLeafNodeCount]="getNumberOfCountries"
+    [template]="label"
+    size="large"
+    [ngModel]="places"
+    (ngModelChange)="onPlacesChange($event)"
+  ></core-counted-checkbox-tree-new>
 </ui-small-caps>
+
+<ng-template
+  #label
+  let-node
+  let-level="level"
+  let-checked="checked"
+  let-indeterminate="indeterminate"
+  let-onChange="onChange"
+  let-selected="selected"
+  let-total="total"
+>
+  <ng-container [ngSwitch]="level">
+    <div *ngSwitchCase="0"
+      class="top"
+    >
+      <div class="top__counter">
+        <span class="bold">
+          {{ selected }} / {{ total }}
+        </span>
+        possible countries in the cards.
+      </div>
+
+      <div class="top__buttons">
+        <button core-button="secondary"
+          class="top__select-all"
+          (click)="onSelectAll()"
+        >
+          Select all
+        </button>
+        <button core-button="secondary"
+          class="top__clear-all"
+          (click)="onClearAll()"
+        >
+          Clear all
+        </button>
+      </div>
+    </div>
+
+    <ng-container *ngSwitchCase="1">
+      <ui-icon class="image"
+        [icon]="getId(node)"
+        [highlighted]="!!selected"
+      ></ui-icon>
+
+      <core-checkbox class="checkbox region-checkbox"
+        [indeterminate]="indeterminate"
+        size="large"
+        [ngModel]="checked"
+        (ngModelChange)="onChange($event, node)"
+      >
+        {{ this.getId(node) }}
+        ({{
+          this.getChildren(node).length
+            ? selected + ' / ' + total
+            : total
+        }})
+      </core-checkbox>
+    </ng-container>
+
+    <core-checkbox *ngSwitchCase="2"
+      class="checkbox"
+      [indeterminate]="indeterminate"
+      size="large"
+      [ngModel]="checked"
+      (ngModelChange)="onChange($event, node)"
+    >
+      {{ getId(node) }} ({{ total }})
+    </core-checkbox>
+  </ng-container>
+</ng-template>
