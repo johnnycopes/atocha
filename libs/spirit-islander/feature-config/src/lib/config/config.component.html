@@ -12,7 +12,7 @@
       description="What are you playing with?"
     >
       <ui-card name="expansions">
-        <core-checkbox-tree ui-card-content
+        <core-checkbox-tree
           formControlName="expansions"
           [getId]="getId"
           [getChildren]="getChildren"
@@ -42,7 +42,7 @@
       description="What are you open to playing with?"
     >
       <ui-card name="spirits">
-        <core-checkbox-tree ui-card-content
+        <core-checkbox-tree
           formControlName="spirits"
           [getId]="getId"
           [getChildren]="getChildren"
@@ -52,7 +52,7 @@
       </ui-card>
 
       <ui-card name="maps">
-        <core-checkbox-tree ui-card-content
+        <core-checkbox-tree
           formControlName="maps"
           [getId]="getId"
           [getChildren]="getChildren"
@@ -62,7 +62,7 @@
       </ui-card>
 
       <ui-card name="boards">
-        <core-checkbox-tree ui-card-content
+        <core-checkbox-tree
           formControlName="boards"
           [getId]="getId"
           [getChildren]="getChildren"
@@ -72,7 +72,7 @@
       </ui-card>
 
       <ui-card name="scenarios">
-        <core-checkbox-tree ui-card-content
+        <core-checkbox-tree
           formControlName="scenarios"
           [getId]="getId"
           [getChildren]="getChildren"
@@ -82,7 +82,7 @@
       </ui-card>
 
       <ui-card name="adversaries">
-        <core-checkbox-tree ui-card-content
+        <core-checkbox-tree
           formControlName="adversaries"
           [getId]="getId"
           [getChildren]="getChildren"
@@ -121,8 +121,9 @@
     {{ item.display?.name ?? item.id }}
   </core-checkbox>
 
-  <core-checkbox *ngIf="level > 0"
-    [style.margin-left.px]="(level - 1) * 12"
+  <core-checkbox class="checkbox"
+    *ngIf="level > 0"
+    [style.margin-left.px]="(level - 1) * 24"
     [indeterminate]="indeterminate"
     size="normal"
     [ngModel]="checked"

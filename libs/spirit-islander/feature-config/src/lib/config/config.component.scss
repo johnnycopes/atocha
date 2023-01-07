@@ -24,3 +24,22 @@
       'adversaries adversaries adversaries adversaries adversaries adversaries';
   }
 }
+
+.core-checkbox {
+  margin-bottom: 4px;
+  padding: 0 8px;
+
+  @media screen and (min-width: 768px) {
+    padding: 0 16px;
+  }
+}
+
+[data-level='0'] {
+  & > .core-tree:first-of-type{
+    padding-top: 8px;
+  }
+
+  & > .core-tree:last-of-type{
+    padding-bottom: 8px;
+  }
+}
