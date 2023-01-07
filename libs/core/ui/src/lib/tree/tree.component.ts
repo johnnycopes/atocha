@@ -30,11 +30,11 @@ export class TreeComponent<T> implements OnInit {
   /**
    * The item to render in the tree.
    */
-  @Input() node!: T;
+  @Input() tree!: T;
   /**
    * The template of the node to pass into the tree.
    */
-  @Input() template?: TemplateRef<TreeNodeContext<T>> | undefined = undefined;
+  @Input() template?: TemplateRef<TreeNodeContext<T>> | undefined;
   /**
    * **Do not modify**. Used internally to track number of levels of recursion and exposed via the template context.
    */
@@ -44,17 +44,17 @@ export class TreeComponent<T> implements OnInit {
   /**
    * Callback function that tells the tree how to retrieve the given node's unique ID.
    */
-  @Input() getId: (node: T) => string = () => '';
+  @Input() getId: (tree: T) => string = () => '';
   /**
    * Callback function that tells the tree how to retrieve the given node's children to recurse over, if it has any.
    */
-  @Input() getChildren: (node: T) => T[] = () => [];
+  @Input() getChildren: (tree: T) => T[] = () => [];
 
   // eslint-disable-next-line @typescript-eslint/member-ordering
   trackByFn = trackByFactory(this.getId);
 
   ngOnInit(): void {
-    if (!this.node) {
+    if (!this.tree) {
       throw new Error('A node must be passed into the TreeComponent');
     }
   }
