@@ -18,11 +18,11 @@ import {
   SOME_SELECTED_NEW,
   SMALL_AFRICA,
 } from '../../../.storybook/mock-data/checkbox-tree';
-import { CountedCheckboxTreeNewComponent } from './counted-checkbox-tree-new.component';
+import { CountedCheckboxTreeComponent } from './counted-checkbox-tree.component';
 
 export default {
   title: 'Counted Checkbox Tree New',
-  component: CountedCheckboxTreeNewComponent,
+  component: CountedCheckboxTreeComponent,
   decorators: [
     moduleMetadata({
       imports: [FormsModule, CheckboxComponent],
@@ -47,9 +47,9 @@ export default {
     onSelectedChange: { action: 'selectedChange' },
     onTotalChange: { action: 'totalChange' },
   },
-} as Meta<CountedCheckboxTreeNewComponent<TestItem>>;
+} as Meta<CountedCheckboxTreeComponent<TestItem>>;
 
-const Template: Story<CountedCheckboxTreeNewComponent<TestItem>> = (
+const Template: Story<CountedCheckboxTreeComponent<TestItem>> = (
   args: Args
 ) => ({
   props: {
@@ -59,7 +59,7 @@ const Template: Story<CountedCheckboxTreeNewComponent<TestItem>> = (
     getCounts,
   },
   template: `
-    <core-counted-checkbox-tree-new
+    <core-counted-checkbox-tree
       [class]="className"
       [node]="node"
       [getId]="getId"
@@ -70,7 +70,7 @@ const Template: Story<CountedCheckboxTreeNewComponent<TestItem>> = (
       (ngModelChange)="model = $event; onNgModelChange($event)"
       (selectedChange)="onSelectedChange($event)"
       (totalChange)="onTotalChange($event)"
-    ></core-counted-checkbox-tree-new>
+    ></core-counted-checkbox-tree>
 
     <ng-template #checkboxTemplate
       let-node
@@ -121,7 +121,7 @@ withCustomStyling.args = createArgs({
   className: 'custom-counted-checkbox-tree',
 });
 
-type Args = Partial<CountedCheckboxTreeNewComponent<TestItem>> & {
+type Args = Partial<CountedCheckboxTreeComponent<TestItem>> & {
   className?: string;
 };
 

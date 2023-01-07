@@ -19,15 +19,15 @@ import {
   NG_VALUE_ACCESSOR,
 } from '@angular/forms';
 
-import { CheckboxTreeNewComponent } from '../checkbox-tree-new/checkbox-tree-new.component';
+import { CheckboxTreeComponent } from '../checkbox-tree/checkbox-tree.component';
 import { Counter, Counts } from './counter';
 
 @Component({
   standalone: true,
-  selector: 'core-counted-checkbox-tree-new',
-  imports: [CommonModule, FormsModule, CheckboxTreeNewComponent],
-  templateUrl: './counted-checkbox-tree-new.component.html',
-  styleUrls: ['./counted-checkbox-tree-new.component.scss'],
+  selector: 'core-counted-checkbox-tree',
+  imports: [CommonModule, FormsModule, CheckboxTreeComponent],
+  templateUrl: './counted-checkbox-tree.component.html',
+  styleUrls: ['./counted-checkbox-tree.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   host: {
@@ -36,12 +36,12 @@ import { Counter, Counts } from './counter';
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => CountedCheckboxTreeNewComponent),
+      useExisting: forwardRef(() => CountedCheckboxTreeComponent),
       multi: true,
     },
   ],
 })
-export class CountedCheckboxTreeNewComponent<T>
+export class CountedCheckboxTreeComponent<T>
   implements ControlValueAccessor, OnChanges
 {
   @Input() node: T | undefined;

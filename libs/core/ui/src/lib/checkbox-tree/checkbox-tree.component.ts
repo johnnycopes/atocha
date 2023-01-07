@@ -24,10 +24,10 @@ import { CheckboxStates, ModelTransformer } from './model-transformer';
 
 @Component({
   standalone: true,
-  selector: 'core-checkbox-tree-new',
+  selector: 'core-checkbox-tree',
   imports: [CommonModule, FormsModule, TreeComponent],
-  templateUrl: './checkbox-tree-new.component.html',
-  styleUrls: ['./checkbox-tree-new.component.scss'],
+  templateUrl: './checkbox-tree.component.html',
+  styleUrls: ['./checkbox-tree.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   host: {
@@ -36,12 +36,12 @@ import { CheckboxStates, ModelTransformer } from './model-transformer';
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => CheckboxTreeNewComponent),
+      useExisting: forwardRef(() => CheckboxTreeComponent),
       multi: true,
     },
   ],
 })
-export class CheckboxTreeNewComponent<T>
+export class CheckboxTreeComponent<T>
   implements OnChanges, ControlValueAccessor
 {
   @Input() node: T | undefined;
