@@ -24,7 +24,7 @@ import { CheckboxStates, ModelTransformer } from './model-transformer';
 
 @Component({
   standalone: true,
-  selector: 'core-checkbox-tree-new',
+  selector: 'core-checkbox-tree',
   imports: [CommonModule, FormsModule, TreeComponent],
   templateUrl: './checkbox-tree.component.html',
   styleUrls: ['./checkbox-tree.component.scss'],
