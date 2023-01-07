@@ -17,8 +17,8 @@
   ></core-tree>
 </ng-container>
 
-<ng-template #defaultTemplate let-item>
-  <span data-test="core-tree-default-item">
-    {{ getId(item) }}
+<ng-template #defaultTemplate let-node>
+  <span data-test="core-tree-default-node">
+    {{ getId(node) }}
   </span>
 </ng-template>
