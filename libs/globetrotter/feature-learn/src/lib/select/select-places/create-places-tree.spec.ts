@@ -18,12 +18,8 @@ describe('createTree', () => {
         ],
       },
     ];
-    expect(
-      createPlaceTree({
-        root: 'Places',
-        regions: MOCK_REGIONS,
-      })
-    ).toEqual({
+
+    expect(createPlaceTree('Places', MOCK_REGIONS)).toEqual({
       name: 'Places',
       regions: [
         {

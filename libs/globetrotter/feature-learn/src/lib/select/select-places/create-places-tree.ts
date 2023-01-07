@@ -12,15 +12,9 @@ interface Root {
   regions: Region[];
 }
 
-export function createPlaceTree({
-  root,
-  regions,
-}: {
-  root: string;
-  regions: Region[];
-}): PlaceTree {
+export function createPlaceTree(name: string, regions: Region[]): PlaceTree {
   return {
-    name: root,
+    name,
     regions,
   };
 }

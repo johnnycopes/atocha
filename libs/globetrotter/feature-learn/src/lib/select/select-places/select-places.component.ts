@@ -23,9 +23,9 @@ import {
 })
 export class SelectPlacesComponent {
   @Input()
-  set regions(value: Region[]) {
-    this._allPlaces = mapRegionsToPlacesModel(value);
-    this.tree = createPlaceTree({ root: 'Places', regions: value });
+  set regions(regions: Region[]) {
+    this._allPlaces = mapRegionsToPlacesModel(regions);
+    this.tree = createPlaceTree('Places', regions);
   }
   @Input() places: string[] = [];
   @Output() placesChange = new EventEmitter<string[]>();
