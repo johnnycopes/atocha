@@ -160,21 +160,12 @@ app-root {
     }
   }
 
-  .core-checkbox-tree {
-    // --checkbox-margin: #{map-get($spacing, 8)};
-    .core-checkbox {
-      --hover-color: var(--gray-300);
-      --label-margin: 12px;
-    }
-
-    .core-checkbox-tree__top {
-      padding: 0;
-    }
-
-    .core-checkbox {
-      --checkmark-color: var(--white);
-      --checkbox-color: var(--gray-400);
-      --checkbox-background: var(--gray-400);
-    }
+  .core-checkbox {
+    --checkmark-color: var(--white);
+    --checkbox-color: var(--gray-400);
+    --checkbox-background: var(--gray-400);
+    --hover-color: var(--gray-300);
+    --label-margin: 12px;
+    margin-bottom: 4px;
   }
 }
