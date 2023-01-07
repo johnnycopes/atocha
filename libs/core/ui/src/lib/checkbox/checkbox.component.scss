@@ -3,7 +3,7 @@ $normal-size: 14px;
 $large-size: 20px;
 
 .core-checkbox {
-  display: flex;
+  display: inline-flex;
   position: relative;
   --border-radius: 2px;
   --checkbox-background: transparent;
@@ -13,7 +13,7 @@ $large-size: 20px;
   --label-margin: 4px;
 
   &__container {
-    display: flex;
+    display: inline-flex;
     align-items: center;
     position: relative;
     font-size: var(--font-size);
@@ -85,7 +85,7 @@ $large-size: 20px;
   }
 
   &__label {
-    display: flex;
+    display: inline-flex;
     margin-left: var(--label-margin);
     user-select: none;
   }
