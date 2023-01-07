@@ -35,7 +35,7 @@ export default {
       control: { type: 'select' },
       options: ['normal', 'large'],
     },
-    node: {
+    tree: {
       control: { type: 'select' },
       options: ['Africa', 'Small Africa'],
       mapping: {
@@ -61,7 +61,7 @@ const Template: Story<CountedCheckboxTreeComponent<TestItem>> = (
   template: `
     <core-counted-checkbox-tree
       [class]="className"
-      [node]="node"
+      [tree]="tree"
       [getId]="getId"
       [getChildren]="getChildren"
       [getLeafNodeCount]="getCounts"
@@ -126,7 +126,7 @@ type Args = Partial<CountedCheckboxTreeComponent<TestItem>> & {
 };
 
 function createArgs(
-  { node = AFRICA, model = [], className = '' } = {} as Args
+  { tree = AFRICA, model = [], className = '' } = {} as Args
 ): Args {
-  return { node, model, className };
+  return { tree, model, className };
 }
