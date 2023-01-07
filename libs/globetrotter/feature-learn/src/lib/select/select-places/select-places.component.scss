@@ -5,7 +5,7 @@
 }
 
 .places {
-  ::ng-deep [data-level="0"] {
+  ::ng-deep [data-level='0'] {
     display: grid;
     grid-template-columns: [start] 1fr [end];
     grid-auto-rows: auto;
@@ -18,7 +18,7 @@
     }
   }
 
-  ::ng-deep [data-level="1"] {
+  ::ng-deep [data-level='1'] {
     position: relative;
     padding: map-get($spacing, 8) 0;
     padding-left: map-get($spacing, 128);
@@ -37,7 +37,7 @@
     }
   }
 
-  ::ng-deep [data-level="2"] {
+  ::ng-deep [data-level='2'] {
     margin-left: map-get($spacing, 24);
   }
 }
