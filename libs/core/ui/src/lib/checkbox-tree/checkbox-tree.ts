@@ -1,4 +1,4 @@
-import { CheckboxStates } from '../../src/lib/checkbox-tree/model-transformer';
+import { CheckboxStates } from './model-transformer';
 
 export interface TestItem {
   id: string;

@@ -17,7 +17,7 @@ import {
   SOME_SELECTED_NEW,
   ALL_SELECTED_NEW,
   SMALL_AFRICA,
-} from '../../../.storybook/mock-data/checkbox-tree';
+} from './checkbox-tree';
 import { CheckboxTreeComponent } from './checkbox-tree.component';
 
 export default {
