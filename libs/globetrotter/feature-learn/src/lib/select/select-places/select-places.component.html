@@ -1,17 +1,15 @@
 <ui-small-caps header="Places">
-  <div class="regions">
-    <core-counted-checkbox-tree-new *ngIf="tree"
-      class="places"
-      [node]="tree"
-      [getId]="getId"
-      [getChildren]="getChildren"
-      [getLeafNodeCount]="getNumberOfCountries"
-      [template]="label"
-      size="large"
-      [ngModel]="places"
-      (ngModelChange)="onPlacesChange($event)"
-    ></core-counted-checkbox-tree-new>
-  </div>
+  <core-counted-checkbox-tree-new *ngIf="tree"
+    class="places"
+    [node]="tree"
+    [getId]="getId"
+    [getChildren]="getChildren"
+    [getLeafNodeCount]="getNumberOfCountries"
+    [template]="label"
+    size="large"
+    [ngModel]="places"
+    (ngModelChange)="onPlacesChange($event)"
+  ></core-counted-checkbox-tree-new>
 </ui-small-caps>
 
 <ng-template
