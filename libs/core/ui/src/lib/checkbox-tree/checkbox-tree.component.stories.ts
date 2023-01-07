@@ -18,11 +18,11 @@ import {
   ALL_SELECTED_NEW,
   SMALL_AFRICA,
 } from '../../../.storybook/mock-data/checkbox-tree';
-import { CheckboxTreeNewComponent } from './checkbox-tree.component';
+import { CheckboxTreeComponent } from './checkbox-tree.component';
 
 export default {
   title: 'Checkbox Tree New',
-  component: CheckboxTreeNewComponent,
+  component: CheckboxTreeComponent,
   decorators: [
     moduleMetadata({
       imports: [FormsModule, CheckboxComponent, TreeComponent],
@@ -45,9 +45,9 @@ export default {
     },
     onClick: { action: 'clicked' },
   },
-} as Meta<CheckboxTreeNewComponent<TestItem>>;
+} as Meta<CheckboxTreeComponent<TestItem>>;
 
-const Template: Story<CheckboxTreeNewComponent<TestItem>> = (args: Args) => ({
+const Template: Story<CheckboxTreeComponent<TestItem>> = (args: Args) => ({
   props: {
     ...args,
     getId,
@@ -106,7 +106,7 @@ withCustomStyling.args = createArgs({
   className: 'custom-checkbox-tree',
 });
 
-type Args = Partial<CheckboxTreeNewComponent<TestItem>> & {
+type Args = Partial<CheckboxTreeComponent<TestItem>> & {
   className?: string;
 };
 

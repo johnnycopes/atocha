@@ -36,12 +36,12 @@ import { CheckboxStates, ModelTransformer } from './model-transformer';
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => CheckboxTreeNewComponent),
+      useExisting: forwardRef(() => CheckboxTreeComponent),
       multi: true,
     },
   ],
 })
-export class CheckboxTreeNewComponent<T>
+export class CheckboxTreeComponent<T>
   implements OnChanges, ControlValueAccessor
 {
   @Input() node: T | undefined;
