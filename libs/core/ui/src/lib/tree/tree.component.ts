@@ -44,11 +44,11 @@ export class TreeComponent<T> implements OnInit {
   /**
    * Callback function that tells the tree how to retrieve the given node's unique ID.
    */
-  @Input() getId: (tree: T) => string = () => '';
+  @Input() getId: (node: T) => string = () => '';
   /**
    * Callback function that tells the tree how to retrieve the given node's children to recurse over, if it has any.
    */
-  @Input() getChildren: (tree: T) => T[] = () => [];
+  @Input() getChildren: (node: T) => T[] = () => [];
 
   // eslint-disable-next-line @typescript-eslint/member-ordering
   trackByFn = trackByFactory(this.getId);
