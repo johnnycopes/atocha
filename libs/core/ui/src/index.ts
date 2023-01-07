@@ -4,7 +4,6 @@ export * from './lib/button/button.component';
 export * from './lib/checkbox/checkbox.component';
 export * from './lib/checkbox-tree/checkbox-tree.component';
 export * from './lib/checkbox-tree-new/checkbox-tree-new.component';
-export * from './lib/counted-checkbox-tree/counted-checkbox-tree.component';
 export * from './lib/counted-checkbox-tree-new/counted-checkbox-tree-new.component';
 export * from './lib/external-link/external-link.directive';
 export * from './lib/measurement/measurement.pipe';
