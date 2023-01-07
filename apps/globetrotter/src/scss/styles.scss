@@ -94,6 +94,10 @@ app-root {
     --checkbox-background: #{map-get($color, lightest)};
   }
 
+  [data-level="1"] > .core-checkbox > .core-checkbox__container {
+    font-weight: bold;
+  }
+
   .core-checkbox--unchecked {
     --checkbox-color: #{map-get($color, medium)};
     --checkmark-color: #{map-get($color, medium)};
