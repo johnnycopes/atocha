@@ -18,7 +18,7 @@ import {
   ALL_SELECTED_NEW,
   SMALL_AFRICA,
 } from '../../../.storybook/mock-data/checkbox-tree';
-import { CheckboxTreeNewComponent } from './checkbox-tree-new.component';
+import { CheckboxTreeNewComponent } from './checkbox-tree.component';
 
 export default {
   title: 'Checkbox Tree New',
