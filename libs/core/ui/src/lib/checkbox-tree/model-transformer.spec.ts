@@ -3,12 +3,12 @@ import {
   getChildren,
   getId,
   AFRICA,
-  SOME_SELECTED_NEW,
-  ALL_SELECTED_NEW,
-  SOME_SELECTED,
-  ALL_SELECTED,
+  ALL_SELECTED_MODEL,
+  ALL_SELECTED_STATES,
+  SOME_SELECTED_STATES,
+  SOME_SELECTED_MODEL,
   TestItem,
-} from '../../../.storybook/mock-data/checkbox-tree';
+} from './mock-data';
 
 describe('ModelTransformer', () => {
   let transformer = new ModelTransformer(AFRICA, getId, getChildren);
@@ -23,11 +23,15 @@ describe('ModelTransformer', () => {
     });
 
     it('transforms partial states', () => {
-      expect(transformer.toModel(SOME_SELECTED)).toEqual(SOME_SELECTED_NEW);
+      expect(transformer.toModel(SOME_SELECTED_STATES)).toEqual(
+        SOME_SELECTED_MODEL
+      );
     });
 
     it('transforms full states', () => {
-      expect(transformer.toModel(ALL_SELECTED)).toEqual(ALL_SELECTED_NEW);
+      expect(transformer.toModel(ALL_SELECTED_STATES)).toEqual(
+        ALL_SELECTED_MODEL
+      );
     });
   });
 
@@ -37,11 +41,15 @@ describe('ModelTransformer', () => {
     });
 
     it('transforms partial model', () => {
-      expect(transformer.toStates(SOME_SELECTED_NEW)).toEqual(SOME_SELECTED);
+      expect(transformer.toStates(SOME_SELECTED_MODEL)).toEqual(
+        SOME_SELECTED_STATES
+      );
     });
 
     it('transforms full model', () => {
-      expect(transformer.toStates(ALL_SELECTED_NEW)).toEqual(ALL_SELECTED);
+      expect(transformer.toStates(ALL_SELECTED_MODEL)).toEqual(
+        ALL_SELECTED_STATES
+      );
     });
   });
 
@@ -53,13 +61,15 @@ describe('ModelTransformer', () => {
     });
 
     it('selects all states when the top node is selected', () => {
-      expect(transformer.updateStates(true, item.id, {})).toEqual(ALL_SELECTED);
+      expect(transformer.updateStates(true, item.id, {})).toEqual(
+        ALL_SELECTED_STATES
+      );
     });
 
     it('deselects all states when the top node is deselected', () => {
-      expect(transformer.updateStates(false, item.id, ALL_SELECTED)).toEqual(
-        {}
-      );
+      expect(
+        transformer.updateStates(false, item.id, ALL_SELECTED_STATES)
+      ).toEqual({});
     });
 
     it('updates states when middle checkbox is selected', () => {
@@ -93,7 +103,9 @@ describe('ModelTransformer', () => {
         id: 'Southern Africa',
       };
 
-      expect(transformer.updateStates(true, item.id, SOME_SELECTED)).toEqual({
+      expect(
+        transformer.updateStates(true, item.id, SOME_SELECTED_STATES)
+      ).toEqual({
         Africa: 'indeterminate',
         Fes: 'checked',
         Morocco: 'indeterminate',

@@ -9,14 +9,14 @@ import {
 import { CheckboxComponent } from '../checkbox/checkbox.component';
 import { StorybookWrapperComponent } from '../../../.storybook/storybook-wrapper/storybook-wrapper.component';
 import {
-  ALL_SELECTED_NEW,
+  AFRICA,
+  ALL_SELECTED_MODEL,
   getChildren,
   getCounts,
   getId,
-  TestItem,
-  AFRICA,
-  SOME_SELECTED_NEW,
   SMALL_AFRICA,
+  SOME_SELECTED_MODEL,
+  TestItem,
 } from '../checkbox-tree/mock-data';
 import { CountedCheckboxTreeComponent } from './counted-checkbox-tree.component';
 
@@ -107,17 +107,17 @@ noneSelected.args = createArgs({
 
 export const someSelected = Template.bind({});
 someSelected.args = createArgs({
-  model: SOME_SELECTED_NEW,
+  model: SOME_SELECTED_MODEL,
 });
 
 export const allSelected = Template.bind({});
 allSelected.args = createArgs({
-  model: ALL_SELECTED_NEW,
+  model: ALL_SELECTED_MODEL,
 });
 
 export const withCustomStyling = Template.bind({});
 withCustomStyling.args = createArgs({
-  model: SOME_SELECTED_NEW,
+  model: SOME_SELECTED_MODEL,
   className: 'custom-counted-checkbox-tree',
 });
 

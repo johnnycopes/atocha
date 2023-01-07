@@ -10,13 +10,13 @@ import { CheckboxComponent } from '../checkbox/checkbox.component';
 import { TreeComponent } from '../tree/tree.component';
 import { StorybookWrapperComponent } from '../../../.storybook/storybook-wrapper/storybook-wrapper.component';
 import {
+  AFRICA,
+  ALL_SELECTED_MODEL,
   getChildren,
   getId,
-  AFRICA,
-  TestItem,
-  SOME_SELECTED_NEW,
-  ALL_SELECTED_NEW,
   SMALL_AFRICA,
+  SOME_SELECTED_MODEL,
+  TestItem,
 } from './mock-data';
 import { CheckboxTreeComponent } from './checkbox-tree.component';
 
@@ -92,12 +92,12 @@ noneSelected.args = createArgs({
 
 export const someSelected = Template.bind({});
 someSelected.args = createArgs({
-  model: SOME_SELECTED_NEW,
+  model: SOME_SELECTED_MODEL,
 });
 
 export const allSelected = Template.bind({});
 allSelected.args = createArgs({
-  model: ALL_SELECTED_NEW,
+  model: ALL_SELECTED_MODEL,
 });
 
 export const withCustomStyling = Template.bind({});
