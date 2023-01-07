@@ -17,7 +17,7 @@ import {
   AFRICA,
   SOME_SELECTED_NEW,
   SMALL_AFRICA,
-} from '../checkbox-tree/checkbox-tree';
+} from '../checkbox-tree/mock-data';
 import { CountedCheckboxTreeComponent } from './counted-checkbox-tree.component';
 
 export default {
