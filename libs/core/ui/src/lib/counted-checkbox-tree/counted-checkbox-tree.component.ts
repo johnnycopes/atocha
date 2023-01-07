@@ -36,12 +36,12 @@ import { Counter, Counts } from './counter';
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => CountedCheckboxTreeNewComponent),
+      useExisting: forwardRef(() => CountedCheckboxTreeComponent),
       multi: true,
     },
   ],
 })
-export class CountedCheckboxTreeNewComponent<T>
+export class CountedCheckboxTreeComponent<T>
   implements ControlValueAccessor, OnChanges
 {
   @Input() node: T | undefined;
