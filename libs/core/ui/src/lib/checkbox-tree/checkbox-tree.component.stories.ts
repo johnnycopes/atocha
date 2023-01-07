@@ -21,7 +21,7 @@ import {
 import { CheckboxTreeComponent } from './checkbox-tree.component';
 
 export default {
-  title: 'Checkbox Tree New',
+  title: 'Checkbox Tree',
   component: CheckboxTreeComponent,
   decorators: [
     moduleMetadata({

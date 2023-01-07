@@ -36,9 +36,9 @@ describe('CheckboxTreeComponent', () => {
     checkboxSelector = '[data-test="core-checkbox"]';
     inputSelector = '[data-test="core-checkbox-input"]';
     stories = {
-      noneSelected: '/iframe.html?id=checkbox-tree-new--none-selected',
-      someSelected: '/iframe.html?id=checkbox-tree-new--some-selected',
-      allSelected: '/iframe.html?id=checkbox-tree-new--all-selected',
+      noneSelected: '/iframe.html?id=checkbox-tree--none-selected',
+      someSelected: '/iframe.html?id=checkbox-tree--some-selected',
+      allSelected: '/iframe.html?id=checkbox-tree--all-selected',
     };
   });
 

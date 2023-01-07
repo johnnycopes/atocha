@@ -21,7 +21,7 @@ import {
 import { CountedCheckboxTreeComponent } from './counted-checkbox-tree.component';
 
 export default {
-  title: 'Counted Checkbox Tree New',
+  title: 'Counted Checkbox Tree',
   component: CountedCheckboxTreeComponent,
   decorators: [
     moduleMetadata({
