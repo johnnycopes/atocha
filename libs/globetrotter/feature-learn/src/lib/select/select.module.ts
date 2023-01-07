@@ -5,8 +5,6 @@ import { FormsModule } from '@angular/forms';
 import {
   ButtonComponent,
   CheckboxComponent,
-  CheckboxTreeNewComponent,
-  CountedCheckboxTreeComponent,
   CountedCheckboxTreeNewComponent,
 } from '@atocha/core/ui';
 import {
@@ -23,10 +21,8 @@ import { SelectTypeComponent } from './select-type/select-type.component';
 @NgModule({
   imports: [
     ButtonComponent,
-    CommonModule,
     CheckboxComponent,
-    CheckboxTreeNewComponent,
-    CountedCheckboxTreeComponent,
+    CommonModule,
     CountedCheckboxTreeNewComponent,
     FormsModule,
     IconComponent,
