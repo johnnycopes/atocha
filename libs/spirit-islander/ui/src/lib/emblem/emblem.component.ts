@@ -13,10 +13,14 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         justify-content: center;
         padding: 2px 0;
         width: 30px;
-        font-size: 14px;
+        font-size: 12px;
         background: var(--gray-400);
         border-radius: var(--border-radius);
         font-weight: 700;
+
+        @media screen and (min-width: 768px) {
+          font-size: 14px;
+        }
       }
     `,
   ],
