@@ -34,12 +34,34 @@
   }
 }
 
-[data-level='0'] {
-  & > .core-tree:first-of-type{
-    padding-top: 8px;
-  }
+.ui-card [data-level='0'] {
+  display: flex;
+  flex-wrap: wrap;
 
-  & > .core-tree:last-of-type{
-    padding-bottom: 8px;
+  [ui-card-header],
+  .core-tree {
+    flex-basis: 100%;
+  }
+}
+
+.expansions [data-level='0'] .core-tree {
+  flex-basis: 50%;
+}
+
+.spirits [data-level='0'] .core-tree {
+  @media screen and (min-width: 768px) {
+    flex-basis: 50%;
+  }
+}
+
+.boards [data-level='0'] .core-tree {
+  flex-basis: 25%;
+}
+
+.adversaries [data-level='0'] .core-tree {
+  flex-basis: 50%;
+
+  @media screen and (min-width: 768px) {
+    flex-basis: 25%;
   }
 }

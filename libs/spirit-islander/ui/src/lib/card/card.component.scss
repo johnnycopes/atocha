@@ -4,6 +4,7 @@
   background: var(--gray-200);
   border-radius: var(--border-radius);
   box-shadow: var(--downward-box-shadow);
+  padding-bottom: 8px;
 
   ui-difficulty-emblem,
   ui-expansion-emblem {
@@ -17,6 +18,7 @@
 }
 
 [ui-card-header] {
+  margin-bottom: 12px;
   padding: 8px;
   background: var(--gray-300);
   border-radius: var(--border-radius) var(--border-radius) 0 0;
