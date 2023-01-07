@@ -44,7 +44,7 @@ import { CheckboxStates, ModelTransformer } from './model-transformer';
 export class CheckboxTreeComponent<T>
   implements OnChanges, ControlValueAccessor
 {
-  @Input() node: T | undefined;
+  @Input() tree: T | undefined;
   @Input() getId: (node: T) => string = () => '';
   @Input() getChildren: (node: T) => T[] = () => [];
   @Input() template: TemplateRef<unknown> | undefined;
@@ -60,9 +60,9 @@ export class CheckboxTreeComponent<T>
 
   constructor(private _changeDetectorRef: ChangeDetectorRef) {}
 
-  ngOnChanges({ node }: SimpleChanges): void {
-    if (node) {
-      const tree: T = node.currentValue;
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['tree']) {
+      const tree: T = changes['tree'].currentValue;
 
       this._transformer = new ModelTransformer(
         tree,

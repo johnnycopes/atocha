@@ -1,5 +1,5 @@
-<core-tree *ngIf="node"
-  [node]="node"
+<core-tree *ngIf="tree"
+  [tree]="tree"
   [getId]="getId"
   [getChildren]="getChildren"
   [template]="checkboxTemplate"
@@ -7,21 +7,21 @@
 
 <ng-template
   #checkboxTemplate
-  let-node
+  let-tree
   let-level="level"
 >
   <ng-container
     [ngTemplateOutlet]="template ? template : defaultTemplate"
     [ngTemplateOutletContext]="{
-      $implicit: node,
+      $implicit: tree,
       level: level,
-      checked: this.states[this.getId(node)] === 'checked',
-      indeterminate: this.states[this.getId(node)] === 'indeterminate',
+      checked: this.states[this.getId(tree)] === 'checked',
+      indeterminate: this.states[this.getId(tree)] === 'indeterminate',
       onChange: this.onChange
     }"
   ></ng-container>
 </ng-template>
 
-<ng-template #defaultTemplate let-node>
-  {{ this.getId(node) }}
+<ng-template #defaultTemplate let-tree>
+  {{ this.getId(tree) }}
 </ng-template>
