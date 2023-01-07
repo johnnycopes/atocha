@@ -17,11 +17,7 @@ import {
 } from '@angular/forms';
 import { Subject, withLatestFrom } from 'rxjs';
 
-import {
-  ButtonComponent,
-  CheckboxTreeComponent,
-  CheckboxTreeNewComponent,
-} from '@atocha/core/ui';
+import { ButtonComponent, CheckboxTreeNewComponent } from '@atocha/core/ui';
 import {
   CardComponent,
   CardGroupComponent,
@@ -69,7 +65,6 @@ export interface ConfigDetails {
     ButtonComponent,
     CardComponent,
     CardGroupComponent,
-    CheckboxTreeComponent,
     CheckboxTreeNewComponent,
     CommonModule,
     DifficultyEmblemComponent,

@@ -6,9 +6,7 @@ import {
   componentWrapperDecorator,
 } from '@storybook/angular';
 
-import { CheckboxTreeComponent } from '../checkbox-tree/checkbox-tree.component';
 import { CheckboxComponent } from '../checkbox/checkbox.component';
-import { TreeComponent } from '../tree/tree.component';
 import { StorybookWrapperComponent } from '../../../.storybook/storybook-wrapper/storybook-wrapper.component';
 import {
   ALL_SELECTED_NEW,
@@ -27,12 +25,7 @@ export default {
   component: CountedCheckboxTreeNewComponent,
   decorators: [
     moduleMetadata({
-      imports: [
-        FormsModule,
-        CheckboxComponent,
-        CheckboxTreeComponent,
-        TreeComponent,
-      ],
+      imports: [FormsModule, CheckboxComponent],
       declarations: [StorybookWrapperComponent],
     }),
     componentWrapperDecorator(StorybookWrapperComponent),
