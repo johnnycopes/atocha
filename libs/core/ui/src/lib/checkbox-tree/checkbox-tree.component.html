@@ -7,16 +7,16 @@
 
 <ng-template
   #checkboxTemplate
-  let-tree
+  let-node
   let-level="level"
 >
   <ng-container
     [ngTemplateOutlet]="template ? template : defaultTemplate"
     [ngTemplateOutletContext]="{
-      $implicit: tree,
+      $implicit: node,
       level: level,
-      checked: this.states[this.getId(tree)] === 'checked',
-      indeterminate: this.states[this.getId(tree)] === 'indeterminate',
+      checked: this.states[this.getId(node)] === 'checked',
+      indeterminate: this.states[this.getId(node)] === 'indeterminate',
       onChange: this.onChange
     }"
   ></ng-container>
