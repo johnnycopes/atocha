@@ -10,30 +10,11 @@
     grid-template-columns: [start] 1fr [end];
     grid-auto-rows: auto;
     justify-items: center;
+    align-items: center;
 
     @include desktop {
       grid-template-columns: [start] 1fr [middle] 1fr [end];
       justify-items: unset;
-    }
-
-    > .core-checkbox {
-      grid-column: start / span end;
-
-      .core-checkbox__input,
-      .core-checkbox__checkbox {
-        display: none;
-      }
-
-      .core-checkbox__label {
-        margin: 0;
-        display: flex;
-        justify-content: space-between;
-        width: 100%;
-      }
-
-      .core-checkbox__container {
-        width: 100%;
-      }
     }
   }
 
@@ -54,23 +35,6 @@
       min-width: 500px;
       width: 100%;
     }
-
-    .image {
-      position: absolute;
-      top: 50%;
-      left: 0;
-      transform: translateY(-50%);
-      width: map-get($spacing, 96);
-
-      @include mobile {
-        width: map-get($spacing, 128);
-      }
-
-      @include tablet {
-        width: map-get($spacing, 192);
-        padding-right: map-get($spacing, 32);
-      }
-    }
   }
 
   ::ng-deep [data-level="2"] {
@@ -79,6 +43,7 @@
 }
 
 .top {
+  grid-column: start / span end;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -105,4 +70,25 @@
   &__select-all {
     margin-right: map-get($spacing, 24);
   }
+}
+
+.image {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  width: map-get($spacing, 96);
+
+  @include mobile {
+    width: map-get($spacing, 128);
+  }
+
+  @include tablet {
+    width: map-get($spacing, 192);
+    padding-right: map-get($spacing, 32);
+  }
+}
+
+.checkbox {
+  margin-bottom: map-get($spacing, 8);
 }

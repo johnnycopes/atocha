@@ -2,13 +2,11 @@
   <div class="regions">
     <core-counted-checkbox-tree-new *ngIf="tree"
       class="places"
-      [item]="tree"
+      [node]="tree"
       [getId]="getId"
       [getChildren]="getChildren"
-      [getLeafItemCount]="getNumberOfCountries"
-      [indentation]="0"
-      [treeTemplate]="image"
-      [itemTemplate]="label"
+      [getLeafNodeCount]="getNumberOfCountries"
+      [template]="label"
       size="large"
       [ngModel]="places"
       (ngModelChange)="onPlacesChange($event)"
@@ -17,23 +15,12 @@
 </ui-small-caps>
 
 <ng-template
-  #image
-  let-item
-  let-level="level"
-  let-selected="selected"
-  let-total="total"
->
-  <ui-icon *ngIf="level === 1"
-    class="image"
-    [icon]="getId(item)"
-    [highlighted]="!!selected"
-  ></ui-icon>
-</ng-template>
-
-<ng-template
   #label
-  let-item
+  let-node
   let-level="level"
+  let-checked="checked"
+  let-indeterminate="indeterminate"
+  let-onChange="onChange"
   let-selected="selected"
   let-total="total"
 >
@@ -64,14 +51,36 @@
       </div>
     </div>
 
-    <span *ngSwitchCase="1"
-      class="bold"
-    >
-      {{ getId(item) }} ({{ selected }} / {{ total }})
-    </span>
+    <ng-container *ngSwitchCase="1">
+      <ui-icon *ngIf="level === 1"
+        class="image"
+        [icon]="getId(node)"
+        [highlighted]="!!selected"
+      ></ui-icon>
 
-    <span *ngSwitchCase="2">
-      {{ getId(item) }} ({{ total }})
-    </span>
+      <core-checkbox class="checkbox"
+        [indeterminate]="indeterminate"
+        size="large"
+        [ngModel]="checked"
+        (ngModelChange)="onChange($event, node)"
+      >
+        {{ this.getId(node) }}
+        ({{
+          this.getChildren(node).length
+            ? selected + ' / ' + total
+            : total
+        }})
+      </core-checkbox>
+    </ng-container>
+
+    <core-checkbox *ngSwitchCase="2"
+      class="checkbox"
+      [indeterminate]="indeterminate"
+      size="large"
+      [ngModel]="checked"
+      (ngModelChange)="onChange($event, node)"
+    >
+      {{ getId(node) }} ({{ total }})
+    </core-checkbox>
   </ng-container>
 </ng-template>
