@@ -1,5 +1,5 @@
 <ui-small-caps header="Places">
-  <core-counted-checkbox-tree-new *ngIf="tree"
+  <core-counted-checkbox-tree *ngIf="tree"
     class="places"
     [node]="tree"
     [getId]="getId"
@@ -9,7 +9,7 @@
     size="large"
     [ngModel]="places"
     (ngModelChange)="onPlacesChange($event)"
-  ></core-counted-checkbox-tree-new>
+  ></core-counted-checkbox-tree>
 </ui-small-caps>
 
 <ng-template

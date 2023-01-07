@@ -59,7 +59,7 @@ const Template: Story<CountedCheckboxTreeComponent<TestItem>> = (
     getCounts,
   },
   template: `
-    <core-counted-checkbox-tree-new
+    <core-counted-checkbox-tree
       [class]="className"
       [node]="node"
       [getId]="getId"
@@ -70,7 +70,7 @@ const Template: Story<CountedCheckboxTreeComponent<TestItem>> = (
       (ngModelChange)="model = $event; onNgModelChange($event)"
       (selectedChange)="onSelectedChange($event)"
       (totalChange)="onTotalChange($event)"
-    ></core-counted-checkbox-tree-new>
+    ></core-counted-checkbox-tree>
 
     <ng-template #checkboxTemplate
       let-node

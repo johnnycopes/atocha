@@ -24,7 +24,7 @@ import { Counter, Counts } from './counter';
 
 @Component({
   standalone: true,
-  selector: 'core-counted-checkbox-tree-new',
+  selector: 'core-counted-checkbox-tree',
   imports: [CommonModule, FormsModule, CheckboxTreeComponent],
   templateUrl: './counted-checkbox-tree.component.html',
   styleUrls: ['./counted-checkbox-tree.component.scss'],
