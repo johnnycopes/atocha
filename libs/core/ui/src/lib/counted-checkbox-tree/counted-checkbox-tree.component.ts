@@ -44,7 +44,7 @@ import { Counter, Counts } from './counter';
 export class CountedCheckboxTreeComponent<T>
   implements ControlValueAccessor, OnChanges
 {
-  @Input() node: T | undefined;
+  @Input() tree: T | undefined;
   @Input() getId: (node: T) => string = () => '';
   @Input() getChildren: (node: T) => T[] = () => [];
   @Input() getLeafNodeCount: (node: T) => number = () => 0;
@@ -64,9 +64,9 @@ export class CountedCheckboxTreeComponent<T>
 
   constructor(private _changeDetectorRef: ChangeDetectorRef) {}
 
-  ngOnChanges({ node }: SimpleChanges): void {
-    if (node.currentValue) {
-      const tree: T = node.currentValue;
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['tree']) {
+      const tree: T = changes['tree'].currentValue;
 
       this._id = this.getId(tree);
       this._counter = new Counter<T>(
@@ -82,10 +82,10 @@ export class CountedCheckboxTreeComponent<T>
   }
 
   writeValue(model: string[]): void {
-    if (model && this.node) {
+    if (model && this.tree) {
       this.model = model;
       this.selectedCounts = this._counter.getSelectedCounts(
-        this.node,
+        this.tree,
         this.model
       );
       this.selectedChange.emit(this.selectedCounts[this._id]);
@@ -101,12 +101,12 @@ export class CountedCheckboxTreeComponent<T>
   registerOnTouched(fn: (model: string[]) => void): void {}
 
   onChange(model: string[]): void {
-    if (this.node) {
+    if (this.tree) {
       this.model = model;
       this._onChangeFn(this.model);
 
       this.selectedCounts = this._counter.getSelectedCounts(
-        this.node,
+        this.tree,
         this.model
       );
       this.selectedChange.emit(this.selectedCounts[this._id]);

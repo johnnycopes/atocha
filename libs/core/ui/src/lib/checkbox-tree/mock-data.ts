@@ -1,4 +1,4 @@
-import { CheckboxStates } from '../../src/lib/checkbox-tree/model-transformer';
+import { CheckboxStates } from './model-transformer';
 
 export interface TestItem {
   id: string;
@@ -51,7 +51,7 @@ export const SMALL_AFRICA: TestItem = {
   ],
 };
 
-export const SOME_SELECTED: CheckboxStates = {
+export const SOME_SELECTED_STATES: CheckboxStates = {
   Africa: 'indeterminate',
   Morocco: 'indeterminate',
   'Southern Africa': 'indeterminate',
@@ -60,9 +60,9 @@ export const SOME_SELECTED: CheckboxStates = {
   Fes: 'checked',
 };
 
-export const SOME_SELECTED_NEW = ['Swaziland', 'Fes'];
+export const SOME_SELECTED_MODEL = ['Swaziland', 'Fes'];
 
-export const ALL_SELECTED: CheckboxStates = {
+export const ALL_SELECTED_STATES: CheckboxStates = {
   Africa: 'checked',
   'Southern Africa': 'checked',
   Swaziland: 'checked',
@@ -74,7 +74,7 @@ export const ALL_SELECTED: CheckboxStates = {
   Fes: 'checked',
 };
 
-export const ALL_SELECTED_NEW = [
+export const ALL_SELECTED_MODEL = [
   'Central Africa',
   'Swaziland',
   'Namibia',

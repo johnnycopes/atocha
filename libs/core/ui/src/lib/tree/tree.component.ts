@@ -30,11 +30,11 @@ export class TreeComponent<T> implements OnInit {
   /**
    * The item to render in the tree.
    */
-  @Input() node!: T;
+  @Input() tree!: T;
   /**
    * The template of the node to pass into the tree.
    */
-  @Input() template?: TemplateRef<TreeNodeContext<T>> | undefined = undefined;
+  @Input() template?: TemplateRef<TreeNodeContext<T>> | undefined;
   /**
    * **Do not modify**. Used internally to track number of levels of recursion and exposed via the template context.
    */
@@ -54,7 +54,7 @@ export class TreeComponent<T> implements OnInit {
   trackByFn = trackByFactory(this.getId);
 
   ngOnInit(): void {
-    if (!this.node) {
+    if (!this.tree) {
       throw new Error('A node must be passed into the TreeComponent');
     }
   }

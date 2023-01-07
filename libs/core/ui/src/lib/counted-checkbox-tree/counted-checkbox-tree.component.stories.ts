@@ -9,19 +9,19 @@ import {
 import { CheckboxComponent } from '../checkbox/checkbox.component';
 import { StorybookWrapperComponent } from '../../../.storybook/storybook-wrapper/storybook-wrapper.component';
 import {
-  ALL_SELECTED_NEW,
+  AFRICA,
+  ALL_SELECTED_MODEL,
   getChildren,
   getCounts,
   getId,
-  TestItem,
-  AFRICA,
-  SOME_SELECTED_NEW,
   SMALL_AFRICA,
-} from '../../../.storybook/mock-data/checkbox-tree';
+  SOME_SELECTED_MODEL,
+  TestItem,
+} from '../checkbox-tree/mock-data';
 import { CountedCheckboxTreeComponent } from './counted-checkbox-tree.component';
 
 export default {
-  title: 'Counted Checkbox Tree New',
+  title: 'Counted Checkbox Tree',
   component: CountedCheckboxTreeComponent,
   decorators: [
     moduleMetadata({
@@ -35,7 +35,7 @@ export default {
       control: { type: 'select' },
       options: ['normal', 'large'],
     },
-    node: {
+    tree: {
       control: { type: 'select' },
       options: ['Africa', 'Small Africa'],
       mapping: {
@@ -61,7 +61,7 @@ const Template: Story<CountedCheckboxTreeComponent<TestItem>> = (
   template: `
     <core-counted-checkbox-tree
       [class]="className"
-      [node]="node"
+      [tree]="tree"
       [getId]="getId"
       [getChildren]="getChildren"
       [getLeafNodeCount]="getCounts"
@@ -107,17 +107,17 @@ noneSelected.args = createArgs({
 
 export const someSelected = Template.bind({});
 someSelected.args = createArgs({
-  model: SOME_SELECTED_NEW,
+  model: SOME_SELECTED_MODEL,
 });
 
 export const allSelected = Template.bind({});
 allSelected.args = createArgs({
-  model: ALL_SELECTED_NEW,
+  model: ALL_SELECTED_MODEL,
 });
 
 export const withCustomStyling = Template.bind({});
 withCustomStyling.args = createArgs({
-  model: SOME_SELECTED_NEW,
+  model: SOME_SELECTED_MODEL,
   className: 'custom-counted-checkbox-tree',
 });
 
@@ -126,7 +126,7 @@ type Args = Partial<CountedCheckboxTreeComponent<TestItem>> & {
 };
 
 function createArgs(
-  { node = AFRICA, model = [], className = '' } = {} as Args
+  { tree = AFRICA, model = [], className = '' } = {} as Args
 ): Args {
-  return { node, model, className };
+  return { tree, model, className };
 }

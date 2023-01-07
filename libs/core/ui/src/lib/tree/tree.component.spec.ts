@@ -12,13 +12,13 @@ interface Item {
 @Component({
   template: `
     <core-tree
-      [node]="leafItem"
+      [tree]="leafItem"
       [template]="itemTemplate"
       [getId]="getId"
       [getChildren]="getItems"
     ></core-tree>
     <core-tree
-      [node]="nestedItem"
+      [tree]="nestedItem"
       [template]="itemTemplate"
       [getId]="getId"
       [getChildren]="getItems"
@@ -78,7 +78,7 @@ describe('TreeComponent', () => {
     fixture.detectChanges();
 
     const name = fixture.nativeElement
-      .querySelector('[data-test="core-tree-default-item"]')
+      .querySelector('[data-test="core-tree-default-node"]')
       .textContent.trim();
     expect(name).toBe('1');
   });
@@ -95,7 +95,7 @@ describe('TreeComponent', () => {
     fixture.detectChanges();
 
     const items = fixture.nativeElement.querySelectorAll(
-      '[data-test="core-tree-default-item"]'
+      '[data-test="core-tree-default-node"]'
     );
     const name = items[1].textContent.trim();
     const childName = items[2].textContent.trim();

@@ -10,18 +10,18 @@ import { CheckboxComponent } from '../checkbox/checkbox.component';
 import { TreeComponent } from '../tree/tree.component';
 import { StorybookWrapperComponent } from '../../../.storybook/storybook-wrapper/storybook-wrapper.component';
 import {
+  AFRICA,
+  ALL_SELECTED_MODEL,
   getChildren,
   getId,
-  AFRICA,
-  TestItem,
-  SOME_SELECTED_NEW,
-  ALL_SELECTED_NEW,
   SMALL_AFRICA,
-} from '../../../.storybook/mock-data/checkbox-tree';
+  SOME_SELECTED_MODEL,
+  TestItem,
+} from './mock-data';
 import { CheckboxTreeComponent } from './checkbox-tree.component';
 
 export default {
-  title: 'Checkbox Tree New',
+  title: 'Checkbox Tree',
   component: CheckboxTreeComponent,
   decorators: [
     moduleMetadata({
@@ -35,7 +35,7 @@ export default {
       control: { type: 'select' },
       options: ['normal', 'large'],
     },
-    node: {
+    tree: {
       control: { type: 'select' },
       options: ['Africa', 'Small Africa'],
       mapping: {
@@ -56,7 +56,7 @@ const Template: Story<CheckboxTreeComponent<TestItem>> = (args: Args) => ({
   template: `
     <core-checkbox-tree
       [class]="className"
-      [node]="node"
+      [tree]="tree"
       [getId]="getId"
       [getChildren]="getChildren"
       [template]="checkboxTemplate"
@@ -92,12 +92,12 @@ noneSelected.args = createArgs({
 
 export const someSelected = Template.bind({});
 someSelected.args = createArgs({
-  model: SOME_SELECTED_NEW,
+  model: SOME_SELECTED_MODEL,
 });
 
 export const allSelected = Template.bind({});
 allSelected.args = createArgs({
-  model: ALL_SELECTED_NEW,
+  model: ALL_SELECTED_MODEL,
 });
 
 export const withCustomStyling = Template.bind({});
@@ -111,7 +111,7 @@ type Args = Partial<CheckboxTreeComponent<TestItem>> & {
 };
 
 function createArgs(
-  { node = AFRICA, model = [], className = '' } = {} as Args
+  { tree = AFRICA, model = [], className = '' } = {} as Args
 ): Args {
-  return { node, model, className };
+  return { tree, model, className };
 }
