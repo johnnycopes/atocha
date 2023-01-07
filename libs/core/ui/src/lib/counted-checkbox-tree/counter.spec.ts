@@ -1,12 +1,12 @@
 import { Counter } from './counter';
 import {
-  getChildren,
-  getId,
   AFRICA,
-  SOME_SELECTED_NEW,
-  ALL_SELECTED_NEW,
+  ALL_SELECTED_MODEL,
+  getChildren,
   getCounts,
-} from '../../../.storybook/mock-data/checkbox-tree';
+  getId,
+  SOME_SELECTED_MODEL,
+} from '../checkbox-tree/mock-data';
 
 describe('Counter', () => {
   let counter = new Counter(getId, getChildren, getCounts);
@@ -47,7 +47,7 @@ describe('Counter', () => {
     });
 
     it('returns selected counts record with partial model', () => {
-      expect(counter.getSelectedCounts(AFRICA, SOME_SELECTED_NEW)).toEqual({
+      expect(counter.getSelectedCounts(AFRICA, SOME_SELECTED_MODEL)).toEqual({
         Africa: 39,
         'Central Africa': 0,
         Fes: 11,
@@ -61,7 +61,7 @@ describe('Counter', () => {
     });
 
     it('returns selected counts record with full model', () => {
-      expect(counter.getSelectedCounts(AFRICA, ALL_SELECTED_NEW)).toEqual({
+      expect(counter.getSelectedCounts(AFRICA, ALL_SELECTED_MODEL)).toEqual({
         Africa: 130,
         'Central Africa': 65,
         Fes: 11,
