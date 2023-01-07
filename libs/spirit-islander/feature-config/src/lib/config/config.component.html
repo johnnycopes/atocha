@@ -1,7 +1,7 @@
 <main ui-page>
-  <ng-container ui-page-content>
+  <!-- <ng-container ui-page-content>
     {{ form.value | json }}
-  </ng-container>
+  </ng-container> -->
   <form *ngIf="config"
     class="config"
     ui-page-content
@@ -17,6 +17,7 @@
           [getId]="getId"
           [getChildren]="getChildren"
           [tree]="expansionsTree"
+          [template]="checkboxTemplate"
           (nodeClick)="onExpansionChange($event)"
         ></core-checkbox-tree>
       </ui-card>
@@ -46,7 +47,7 @@
           [getId]="getId"
           [getChildren]="getChildren"
           [tree]="spiritsTree"
-          [template]="configTemplate"
+          [template]="checkboxTemplate"
         ></core-checkbox-tree>
       </ui-card>
 
@@ -56,7 +57,7 @@
           [getId]="getId"
           [getChildren]="getChildren"
           [tree]="mapsTree"
-          [template]="configTemplate"
+          [template]="checkboxTemplate"
         ></core-checkbox-tree>
       </ui-card>
 
@@ -66,7 +67,7 @@
           [getId]="getId"
           [getChildren]="getChildren"
           [tree]="boardsTree"
-          [template]="configTemplate"
+          [template]="checkboxTemplate"
         ></core-checkbox-tree>
       </ui-card>
 
@@ -76,7 +77,7 @@
           [getId]="getId"
           [getChildren]="getChildren"
           [tree]="scenariosTree"
-          [template]="configTemplate"
+          [template]="checkboxTemplate"
         ></core-checkbox-tree>
       </ui-card>
 
@@ -86,7 +87,7 @@
           [getId]="getId"
           [getChildren]="getChildren"
           [tree]="adversariesTree"
-          [template]="configTemplate"
+          [template]="checkboxTemplate"
         ></core-checkbox-tree>
       </ui-card>
     </ui-card-group>
@@ -103,15 +104,25 @@
   </form>
 </main>
 
-<ng-template #configTemplate
+<ng-template #checkboxTemplate
   let-item
   let-level="level"
   let-checked="checked"
   let-indeterminate="indeterminate"
   let-onChange="onChange"
 >
-  <core-checkbox
-    [style.margin-left.px]="level * 12"
+  <core-checkbox ui-card-header
+    *ngIf="level === 0"
+    [indeterminate]="indeterminate"
+    size="normal"
+    [ngModel]="checked"
+    (ngModelChange)="onChange($event, item)"
+  >
+    {{ item.display?.name ?? item.id }}
+  </core-checkbox>
+
+  <core-checkbox *ngIf="level > 0"
+    [style.margin-left.px]="(level - 1) * 12"
     [indeterminate]="indeterminate"
     size="normal"
     [ngModel]="checked"
