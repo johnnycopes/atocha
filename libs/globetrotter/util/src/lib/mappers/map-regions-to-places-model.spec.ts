@@ -1,7 +1,7 @@
 import { Region } from '../domain/region.interface';
 import { mapRegionsToPlacesModel } from './map-regions-to-places-model';
 
-describe('mapRegionsToPlacsModel', () => {
+describe('mapRegionsToPlacesModel', () => {
   it('returns a fully-selected places model', () => {
     const regions: Region[] = [
       {
