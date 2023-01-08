@@ -5,6 +5,7 @@ import {
   Component,
   EventEmitter,
   Input,
+  OnDestroy,
   OnInit,
   Output,
   ViewEncapsulation,
@@ -15,7 +16,7 @@ import {
   FormsModule,
   ReactiveFormsModule,
 } from '@angular/forms';
-import { Subject, withLatestFrom } from 'rxjs';
+import { of, Subject, Subscription, withLatestFrom } from 'rxjs';
 
 import {
   ButtonComponent,
@@ -83,40 +84,14 @@ export interface ConfigDetails {
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
 })
-export class ConfigComponent implements OnInit {
-  @Input()
-  set config(config) {
-    this._config = config;
-
-    if (config) {
-      this._updateTrees(config.expansions);
-      this.form.setValue({
-        expansions: config.expansions,
-        spirits: config.spiritNames,
-        maps: config.mapNames,
-        boards: config.boardNames,
-        scenarios: config.scenarioNames,
-        adversaries: config.adversaryNamesAndIds,
-      });
-    }
-  }
-  get config() {
-    return this._config;
-  }
-  private _config: Config | undefined;
-
+export class ConfigComponent implements OnInit, OnDestroy {
+  @Input() config: Config | undefined;
   @Output() generate = new EventEmitter<ConfigDetails>();
 
   getId = <T>({ id }: ConfigTree<T>) => id;
   getChildren = <T>({ children }: ConfigTree<T>) => children ?? [];
 
-  expansionsTree = createExpansionsTree();
-  spiritsTree = createSpiritsTree([]);
-  mapsTree = createMapsTree([]);
-  boardsTree = createBoardsTree([]);
-  scenariosTree = createScenariosTree([]);
-  adversariesTree = createAdversariesTree([]);
-
+  subscriptions = new Subscription();
   form = new FormGroup({
     expansions: new FormControl<string[]>([], { nonNullable: true }),
     spirits: new FormControl<string[]>([], { nonNullable: true }),
@@ -125,55 +100,100 @@ export class ConfigComponent implements OnInit {
     scenarios: new FormControl<string[]>([], { nonNullable: true }),
     adversaries: new FormControl<string[]>([], { nonNullable: true }),
   });
-  targetSubject = new Subject<'Expansions' | ExpansionName>();
+  expansionsClickSubject = new Subject<'Expansions' | ExpansionName>();
+  expansions$ = this.form.get('expansions')?.valueChanges ?? of([]);
+
+  expansionsTree = createExpansionsTree();
+  spiritsTree = createSpiritsTree([]);
+  mapsTree = createMapsTree([]);
+  boardsTree = createBoardsTree([]);
+  scenariosTree = createScenariosTree([]);
+  adversariesTree = createAdversariesTree([]);
+  jaggedEarth = false;
 
   ngOnInit(): void {
-    this.form
-      .get('expansions')
-      ?.valueChanges.pipe(withLatestFrom(this.targetSubject.asObservable()))
-      .subscribe(([expansions, target]) => {
+    // Whenever the expansions change at all, update the other fields' data
+    this.subscriptions.add(
+      this.expansions$.subscribe((expansions) => {
         const expansionNames = expansions as ExpansionName[];
-        const {
-          spiritNames,
-          mapNames,
-          boardNames,
-          scenarioNames,
-          adversaryNamesAndIds,
-        } = this._getFormModels();
 
-        this._updateTrees(expansionNames);
-        this.form.patchValue({
-          spirits: updateModel(
-            createSpiritsModel,
+        this.spiritsTree = createSpiritsTree(expansionNames);
+        this.mapsTree = createMapsTree(expansionNames);
+        this.boardsTree = createBoardsTree(expansionNames);
+        this.scenariosTree = createScenariosTree(expansionNames);
+        this.adversariesTree = createAdversariesTree(expansionNames);
+        this.jaggedEarth = expansionNames.includes('Jagged Earth');
+      })
+    );
+
+    // Whenever the user changes the expansions, update the other fields' models
+    this.subscriptions.add(
+      this.expansions$
+        .pipe(withLatestFrom(this.expansionsClickSubject.asObservable()))
+        .subscribe(([expansions, target]) => {
+          const expansionNames = expansions as ExpansionName[];
+          const {
             spiritNames,
-            expansionNames,
-            target
-          ),
-          boards: updateModel(
-            createBoardsModel,
+            mapNames,
             boardNames,
-            expansionNames,
-            target
-          ),
-          maps: updateModel(createMapsModel, mapNames, expansionNames, target),
-          scenarios: updateModel(
-            createScenariosModel,
             scenarioNames,
-            expansionNames,
-            target
-          ),
-          adversaries: updateModel(
-            createAdversariesModel,
             adversaryNamesAndIds,
-            expansionNames,
-            target
-          ),
-        });
+          } = this._getFormModels();
+
+          this.form.patchValue({
+            spirits: updateModel(
+              createSpiritsModel,
+              spiritNames,
+              expansionNames,
+              target
+            ),
+            boards: updateModel(
+              createBoardsModel,
+              boardNames,
+              expansionNames,
+              target
+            ),
+            maps: updateModel(
+              createMapsModel,
+              mapNames,
+              expansionNames,
+              target
+            ),
+            scenarios: updateModel(
+              createScenariosModel,
+              scenarioNames,
+              expansionNames,
+              target
+            ),
+            adversaries: updateModel(
+              createAdversariesModel,
+              adversaryNamesAndIds,
+              expansionNames,
+              target
+            ),
+          });
+        })
+    );
+
+    // Push received config data into form once
+    if (this.config) {
+      this.form.setValue({
+        expansions: this.config.expansions,
+        spirits: this.config.spiritNames,
+        maps: this.config.mapNames,
+        boards: this.config.boardNames,
+        scenarios: this.config.scenarioNames,
+        adversaries: this.config.adversaryNamesAndIds,
       });
+    }
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.unsubscribe();
   }
 
   onExpansionChange(id: string): void {
-    this.targetSubject.next(id as 'Expansions' | ExpansionName);
+    this.expansionsClickSubject.next(id as 'Expansions' | ExpansionName);
   }
 
   onGenerate(): void {
@@ -187,14 +207,6 @@ export class ConfigComponent implements OnInit {
       config,
       validCombos,
     });
-  }
-
-  private _updateTrees(expansions: ExpansionName[]): void {
-    this.spiritsTree = createSpiritsTree(expansions);
-    this.mapsTree = createMapsTree(expansions);
-    this.boardsTree = createBoardsTree(expansions);
-    this.scenariosTree = createScenariosTree(expansions);
-    this.adversariesTree = createAdversariesTree(expansions);
   }
 
   private _getFormModels(): Config {
