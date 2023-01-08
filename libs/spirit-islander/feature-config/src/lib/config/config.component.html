@@ -1,8 +1,8 @@
 <main ui-page>
-  <ng-container ui-page-content>
+  <!-- <ng-container ui-page-content>
     {{ form.value | json }}
-  </ng-container>
-  <!-- <form *ngIf="config"
+  </ng-container> -->
+  <form *ngIf="config"
     class="config"
     ui-page-content
     [formGroup]="form"
@@ -12,13 +12,14 @@
       description="What are you playing with?"
     >
       <ui-card name="expansions">
-        <core-checkbox-tree-new ui-card-content
+        <core-checkbox-tree
           formControlName="expansions"
           [getId]="getId"
           [getChildren]="getChildren"
-          [item]="expansionsTree"
-          (itemClick)="onExpansionChange($event)"
-        ></core-checkbox-tree-new>
+          [tree]="expansionsTree"
+          [template]="checkboxTemplate"
+          (nodeClick)="onExpansionChange($event)"
+        ></core-checkbox-tree>
       </ui-card>
 
       <ui-card name="players">
@@ -41,53 +42,53 @@
       description="What are you open to playing with?"
     >
       <ui-card name="spirits">
-        <core-checkbox-tree-new ui-card-content
+        <core-checkbox-tree
           formControlName="spirits"
           [getId]="getId"
           [getChildren]="getChildren"
-          [item]="spiritsTree"
-          [itemTemplate]="configTemplate"
-        ></core-checkbox-tree-new>
+          [tree]="spiritsTree"
+          [template]="checkboxTemplate"
+        ></core-checkbox-tree>
       </ui-card>
 
       <ui-card name="maps">
-        <core-checkbox-tree-new ui-card-content
+        <core-checkbox-tree
           formControlName="maps"
           [getId]="getId"
           [getChildren]="getChildren"
-          [item]="mapsTree"
-          [itemTemplate]="configTemplate"
-        ></core-checkbox-tree-new>
+          [tree]="mapsTree"
+          [template]="checkboxTemplate"
+        ></core-checkbox-tree>
       </ui-card>
 
       <ui-card name="boards">
-        <core-checkbox-tree-new ui-card-content
+        <core-checkbox-tree
           formControlName="boards"
           [getId]="getId"
           [getChildren]="getChildren"
-          [item]="boardsTree"
-          [itemTemplate]="configTemplate"
-        ></core-checkbox-tree-new>
+          [tree]="boardsTree"
+          [template]="checkboxTemplate"
+        ></core-checkbox-tree>
       </ui-card>
 
       <ui-card name="scenarios">
-        <core-checkbox-tree-new ui-card-content
+        <core-checkbox-tree
           formControlName="scenarios"
           [getId]="getId"
           [getChildren]="getChildren"
-          [item]="scenariosTree"
-          [itemTemplate]="configTemplate"
-        ></core-checkbox-tree-new>
+          [tree]="scenariosTree"
+          [template]="checkboxTemplate"
+        ></core-checkbox-tree>
       </ui-card>
 
       <ui-card name="adversaries">
-        <core-checkbox-tree-new ui-card-content
+        <core-checkbox-tree
           formControlName="adversaries"
           [getId]="getId"
           [getChildren]="getChildren"
-          [item]="adversariesTree"
-          [itemTemplate]="configTemplate"
-        ></core-checkbox-tree-new>
+          [tree]="adversariesTree"
+          [template]="checkboxTemplate"
+        ></core-checkbox-tree>
       </ui-card>
     </ui-card-group>
 
@@ -100,17 +101,42 @@
         Generate
       </button>
     </div>
-  </form> -->
+  </form>
 </main>
 
-<ng-template #configTemplate let-item>
-  {{ item.display?.name ?? item.id }}
-  <ui-difficulty-emblem
-    *ngIf="item.display?.difficulty"
-    [value]="item.display.difficulty"
-  ></ui-difficulty-emblem>
-  <ui-expansion-emblem
-    *ngIf="item.display?.expansion"
-    [value]="item.display.expansion"
-  ></ui-expansion-emblem>
+<ng-template #checkboxTemplate
+  let-item
+  let-level="level"
+  let-checked="checked"
+  let-indeterminate="indeterminate"
+  let-onChange="onChange"
+>
+  <core-checkbox ui-card-header
+    *ngIf="level === 0"
+    [indeterminate]="indeterminate"
+    size="normal"
+    [ngModel]="checked"
+    (ngModelChange)="onChange($event, item)"
+  >
+    {{ item.display?.name ?? item.id }}
+  </core-checkbox>
+
+  <core-checkbox class="checkbox"
+    *ngIf="level > 0"
+    [style.margin-left.px]="(level - 1) * 24"
+    [indeterminate]="indeterminate"
+    size="normal"
+    [ngModel]="checked"
+    (ngModelChange)="onChange($event, item)"
+  >
+    {{ item.display?.name ?? item.id }}
+    <ui-difficulty-emblem
+      *ngIf="item.display?.difficulty"
+      [value]="item.display.difficulty"
+    ></ui-difficulty-emblem>
+    <ui-expansion-emblem
+      *ngIf="item.display?.expansion"
+      [value]="item.display.expansion"
+    ></ui-expansion-emblem>
+  </core-checkbox>
 </ng-template>

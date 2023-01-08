@@ -86,6 +86,7 @@ $large-size: 20px;
 
   &__label {
     display: inline-flex;
+    align-items: center;
     margin-left: var(--label-margin);
     user-select: none;
   }
