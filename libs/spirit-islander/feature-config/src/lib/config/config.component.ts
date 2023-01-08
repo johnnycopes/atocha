@@ -87,17 +87,11 @@ export class ConfigComponent implements OnInit {
   @Input()
   set config(config) {
     this._config = config;
-    const expansions = config?.expansions;
 
-    if (config && expansions) {
-      this.spiritsTree = createSpiritsTree(expansions);
-      this.mapsTree = createMapsTree(expansions);
-      this.boardsTree = createBoardsTree(expansions);
-      this.scenariosTree = createScenariosTree(expansions);
-      this.adversariesTree = createAdversariesTree(expansions);
-
+    if (config) {
+      this._updateTrees(config.expansions);
       this.form.setValue({
-        expansions,
+        expansions: config.expansions,
         spirits: config.spiritNames,
         maps: config.mapNames,
         boards: config.boardNames,
@@ -139,13 +133,6 @@ export class ConfigComponent implements OnInit {
       ?.valueChanges.pipe(withLatestFrom(this.targetSubject.asObservable()))
       .subscribe(([expansions, target]) => {
         const expansionNames = expansions as ExpansionName[];
-
-        this.spiritsTree = createSpiritsTree(expansionNames);
-        this.mapsTree = createMapsTree(expansionNames);
-        this.boardsTree = createBoardsTree(expansionNames);
-        this.scenariosTree = createScenariosTree(expansionNames);
-        this.adversariesTree = createAdversariesTree(expansionNames);
-
         const {
           spiritNames,
           mapNames,
@@ -154,6 +141,7 @@ export class ConfigComponent implements OnInit {
           adversaryNamesAndIds,
         } = this._getFormModels();
 
+        this._updateTrees(expansionNames);
         this.form.patchValue({
           spirits: updateModel(
             createSpiritsModel,
@@ -199,6 +187,14 @@ export class ConfigComponent implements OnInit {
       config,
       validCombos,
     });
+  }
+
+  private _updateTrees(expansions: ExpansionName[]): void {
+    this.spiritsTree = createSpiritsTree(expansions);
+    this.mapsTree = createMapsTree(expansions);
+    this.boardsTree = createBoardsTree(expansions);
+    this.scenariosTree = createScenariosTree(expansions);
+    this.adversariesTree = createAdversariesTree(expansions);
   }
 
   private _getFormModels(): Config {
