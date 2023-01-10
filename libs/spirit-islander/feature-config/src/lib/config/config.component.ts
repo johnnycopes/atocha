@@ -15,6 +15,7 @@ import {
   FormGroup,
   FormsModule,
   ReactiveFormsModule,
+  Validators,
 } from '@angular/forms';
 import { of, Subject, Subscription, withLatestFrom } from 'rxjs';
 
@@ -95,7 +96,10 @@ export class ConfigComponent implements OnInit, OnDestroy {
   form = new FormGroup({
     expansions: new FormControl<string[]>([], { nonNullable: true }),
     spirits: new FormControl<string[]>([], { nonNullable: true }),
-    maps: new FormControl<string[]>([], { nonNullable: true }),
+    maps: new FormControl<string[]>([], {
+      nonNullable: true,
+      validators: [Validators.required],
+    }),
     boards: new FormControl<string[]>([], { nonNullable: true }),
     scenarios: new FormControl<string[]>([], { nonNullable: true }),
     adversaries: new FormControl<string[]>([], { nonNullable: true }),

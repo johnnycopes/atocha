@@ -51,7 +51,10 @@
         ></core-checkbox-tree>
       </ui-card>
 
-      <ui-card name="maps">
+      <ui-card name="maps"
+        [error]="!!form.get('maps')?.errors"
+        errorMessage="At least 1 option must be selected"
+      >
         <core-checkbox-tree
           formControlName="maps"
           [getId]="getId"
@@ -94,7 +97,7 @@
 
     <div ui-page-actions>
       <button core-button
-        [disabled]="false"
+        [disabled]="form.status !== 'VALID'"
         type="button"
         (click)="onGenerate()"
       >
