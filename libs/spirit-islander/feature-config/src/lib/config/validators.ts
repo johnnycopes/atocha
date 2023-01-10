@@ -1,7 +1,7 @@
 import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 import { ExpansionName, Players } from '@atocha/spirit-islander/util';
 
-export const playersOutnumberPossibleBoards: ValidatorFn = (
+export const playersOutnumberTotalBoards: ValidatorFn = (
   control: AbstractControl
 ): ValidationErrors | null => {
   const expansions: ExpansionName[] = control.get('expansions')?.value;
@@ -9,7 +9,7 @@ export const playersOutnumberPossibleBoards: ValidatorFn = (
 
   return !expansions.includes('Jagged Earth') && players > 4
     ? {
-        playersOutnumberPossibleBoards: true,
+        playersOutnumberTotalBoards: true,
       }
     : null;
 };
