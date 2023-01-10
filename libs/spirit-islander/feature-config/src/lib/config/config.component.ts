@@ -59,7 +59,7 @@ import {
   createScenariosTree,
   createSpiritsTree,
 } from './create-tree';
-import { enoughBoards, enoughPlayers } from './enough-boards';
+import { enoughBoards, enoughPlayers } from './validators';
 
 export interface ConfigDetails {
   config: Config;
