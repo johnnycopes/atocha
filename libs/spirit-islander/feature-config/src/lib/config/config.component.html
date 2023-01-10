@@ -23,7 +23,7 @@
       </ui-card>
 
       <ui-card name="players"
-        [error]="form.errors?.['enoughBoards']"
+        [error]="form.errors?.['playersOutnumberPossibleBoards']"
         errorMessage="Cannot generate a setup with more than 4 players unless playing with the Jagged Earth expansion"
       >
         <h3 ui-card-header>
@@ -68,7 +68,7 @@
       </ui-card>
 
       <ui-card name="boards"
-        [error]="form.errors?.['enoughPlayers']"
+        [error]="form.errors?.['playersOutnumberSelectedBoards']"
         errorMessage="Too many players"
       >
         <core-checkbox-tree

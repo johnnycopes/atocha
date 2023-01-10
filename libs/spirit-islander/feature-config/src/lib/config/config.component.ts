@@ -59,7 +59,10 @@ import {
   createScenariosTree,
   createSpiritsTree,
 } from './create-tree';
-import { enoughBoards, enoughPlayers } from './validators';
+import {
+  playersOutnumberPossibleBoards,
+  playersOutnumberSelectedBoards,
+} from './validators';
 
 export interface ConfigDetails {
   config: Config;
@@ -115,7 +118,10 @@ export class ConfigComponent implements OnInit, OnDestroy {
       }),
     },
     {
-      validators: [enoughBoards, enoughPlayers],
+      validators: [
+        playersOutnumberPossibleBoards,
+        playersOutnumberSelectedBoards,
+      ],
     }
   );
   expansionsClickSubject = new Subject<'Expansions' | ExpansionName>();
