@@ -105,7 +105,10 @@ export class ConfigComponent implements OnInit, OnDestroy {
       nonNullable: true,
       validators: [Validators.required],
     }),
-    adversaries: new FormControl<string[]>([], { nonNullable: true }),
+    adversaries: new FormControl<string[]>([], {
+      nonNullable: true,
+      validators: [Validators.required],
+    }),
   });
   expansionsClickSubject = new Subject<'Expansions' | ExpansionName>();
   expansions$ = this.form.get('expansions')?.valueChanges ?? of([]);

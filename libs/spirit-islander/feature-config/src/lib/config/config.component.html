@@ -87,7 +87,10 @@
         ></core-checkbox-tree>
       </ui-card>
 
-      <ui-card name="adversaries">
+      <ui-card name="adversaries"
+        [error]="!!form.get('adversaries')?.errors"
+        errorMessage="At least 1 option must be selected"
+      >
         <core-checkbox-tree
           formControlName="adversaries"
           [getId]="getId"
