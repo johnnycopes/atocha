@@ -45,6 +45,7 @@ import {
   ExpansionName,
   getValidCombos,
   MapName,
+  Players,
   ScenarioName,
   SpiritName,
   updateModel,
@@ -58,6 +59,7 @@ import {
   createScenariosTree,
   createSpiritsTree,
 } from './create-tree';
+import { supportsPlayers } from './supports-players';
 
 export interface ConfigDetails {
   config: Config;
@@ -93,23 +95,29 @@ export class ConfigComponent implements OnInit, OnDestroy {
   getChildren = <T>({ children }: ConfigTree<T>) => children ?? [];
 
   subscriptions = new Subscription();
-  form = new FormGroup({
-    expansions: new FormControl<string[]>([], { nonNullable: true }),
-    spirits: new FormControl<string[]>([], { nonNullable: true }),
-    maps: new FormControl<string[]>([], {
-      nonNullable: true,
-      validators: [Validators.required],
-    }),
-    boards: new FormControl<string[]>([], { nonNullable: true }),
-    scenarios: new FormControl<string[]>([], {
-      nonNullable: true,
-      validators: [Validators.required],
-    }),
-    adversaries: new FormControl<string[]>([], {
-      nonNullable: true,
-      validators: [Validators.required],
-    }),
-  });
+  form = new FormGroup(
+    {
+      expansions: new FormControl<string[]>([], { nonNullable: true }),
+      players: new FormControl<number>(0, { nonNullable: true }),
+      spirits: new FormControl<string[]>([], { nonNullable: true }),
+      maps: new FormControl<string[]>([], {
+        nonNullable: true,
+        validators: [Validators.required],
+      }),
+      boards: new FormControl<string[]>([], { nonNullable: true }),
+      scenarios: new FormControl<string[]>([], {
+        nonNullable: true,
+        validators: [Validators.required],
+      }),
+      adversaries: new FormControl<string[]>([], {
+        nonNullable: true,
+        validators: [Validators.required],
+      }),
+    },
+    {
+      validators: [supportsPlayers],
+    }
+  );
   expansionsClickSubject = new Subject<'Expansions' | ExpansionName>();
   expansions$ = this.form.get('expansions')?.valueChanges ?? of([]);
 
@@ -189,6 +197,7 @@ export class ConfigComponent implements OnInit, OnDestroy {
     if (this.config) {
       this.form.setValue({
         expansions: this.config.expansions,
+        players: this.config.players,
         spirits: this.config.spiritNames,
         maps: this.config.mapNames,
         boards: this.config.boardNames,
@@ -220,11 +229,18 @@ export class ConfigComponent implements OnInit, OnDestroy {
   }
 
   private _getFormModels(): Config {
-    const { expansions, spirits, maps, boards, scenarios, adversaries } =
-      this.form.getRawValue();
+    const {
+      expansions,
+      players,
+      spirits,
+      maps,
+      boards,
+      scenarios,
+      adversaries,
+    } = this.form.getRawValue();
 
     return {
-      players: 6,
+      players: players as Players,
       difficultyRange: [0, 8],
       expansions: expansions as ExpansionName[],
       spiritNames: spirits as SpiritName[],

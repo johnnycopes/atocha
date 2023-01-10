@@ -22,11 +22,14 @@
         ></core-checkbox-tree>
       </ui-card>
 
-      <ui-card name="players">
+      <ui-card name="players"
+        [error]="form.errors?.['supportsPlayers']"
+        errorMessage="Cannot generate a setup with more than 4 players unless playing with the Jagged Earth expansion"
+      >
         <h3 ui-card-header>
           Players
         </h3>
-        <div ui-card-content>placeholder</div>
+        <div ui-card-content>{{ form.get('players')?.value }}</div>
       </ui-card>
 
       <ui-card expansions="difficulty">
