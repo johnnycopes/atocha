@@ -74,7 +74,10 @@
         ></core-checkbox-tree>
       </ui-card>
 
-      <ui-card name="scenarios">
+      <ui-card name="scenarios"
+        [error]="!!form.get('scenarios')?.errors"
+        errorMessage="At least 1 option must be selected"
+      >
         <core-checkbox-tree
           formControlName="scenarios"
           [getId]="getId"

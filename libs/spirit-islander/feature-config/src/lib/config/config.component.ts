@@ -101,7 +101,10 @@ export class ConfigComponent implements OnInit, OnDestroy {
       validators: [Validators.required],
     }),
     boards: new FormControl<string[]>([], { nonNullable: true }),
-    scenarios: new FormControl<string[]>([], { nonNullable: true }),
+    scenarios: new FormControl<string[]>([], {
+      nonNullable: true,
+      validators: [Validators.required],
+    }),
     adversaries: new FormControl<string[]>([], { nonNullable: true }),
   });
   expansionsClickSubject = new Subject<'Expansions' | ExpansionName>();
