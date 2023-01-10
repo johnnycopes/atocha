@@ -60,6 +60,7 @@ import {
   createSpiritsTree,
 } from './create-tree';
 import {
+  playersOutnumberSpirits,
   playersOutnumberTotalBoards,
   playersOutnumberSelectedBoards,
 } from './validators';
@@ -118,7 +119,11 @@ export class ConfigComponent implements OnInit, OnDestroy {
       }),
     },
     {
-      validators: [playersOutnumberTotalBoards, playersOutnumberSelectedBoards],
+      validators: [
+        playersOutnumberSpirits,
+        playersOutnumberTotalBoards,
+        playersOutnumberSelectedBoards,
+      ],
     }
   );
   expansionsClickSubject = new Subject<'Expansions' | ExpansionName>();

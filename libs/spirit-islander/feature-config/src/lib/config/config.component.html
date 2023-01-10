@@ -1,7 +1,7 @@
 <main ui-page>
-  <!-- <ng-container ui-page-content>
-    {{ form.value | json }}
-  </ng-container> -->
+  <ng-container ui-page-content>
+    {{ form.errors | json }}
+  </ng-container>
   <form *ngIf="config"
     class="config"
     ui-page-content
@@ -44,7 +44,10 @@
       name="The Game"
       description="What are you open to playing with?"
     >
-      <ui-card name="spirits">
+      <ui-card name="spirits"
+        [error]="form.errors?.['playersOutnumberSpirits']"
+        errorMessage="Too many players"
+      >
         <core-checkbox-tree
           formControlName="spirits"
           [getId]="getId"
