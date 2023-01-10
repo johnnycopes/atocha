@@ -67,7 +67,10 @@
         ></core-checkbox-tree>
       </ui-card>
 
-      <ui-card name="boards">
+      <ui-card name="boards"
+        [error]="form.errors?.['enoughPlayers']"
+        errorMessage="Too many players"
+      >
         <core-checkbox-tree
           formControlName="boards"
           [getId]="getId"
