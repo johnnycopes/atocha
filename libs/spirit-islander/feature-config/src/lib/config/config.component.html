@@ -32,7 +32,10 @@
         <div ui-card-content>{{ form.get('players')?.value }}</div>
       </ui-card>
 
-      <ui-card expansions="difficulty">
+      <ui-card expansions="difficulty"
+        [error]="form.errors?.['invalidDifficultyRange']"
+        [errorMessage]="form.errors?.['invalidDifficultyRange']"
+      >
         <h3 ui-card-header>
           Difficulty
         </h3>
