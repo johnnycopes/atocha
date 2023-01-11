@@ -49,7 +49,7 @@
     >
       <ui-card name="spirits"
         [error]="form.errors?.['playersOutnumberSpirits']"
-        errorMessage="Too many players"
+        [errorMessage]="form.errors?.['playersOutnumberSpirits']"
       >
         <core-checkbox-tree
           formControlName="spirits"

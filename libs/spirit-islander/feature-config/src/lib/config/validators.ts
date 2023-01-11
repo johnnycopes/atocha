@@ -1,5 +1,6 @@
 import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 
+import { pluralize } from '@atocha/core/util';
 import {
   ExpansionName,
   getValidCombos,
@@ -15,7 +16,10 @@ export const playersOutnumberSpirits: ValidatorFn = (
 
   return players > numberOfSpirits
     ? {
-        playersOutnumberSpirits: true,
+        playersOutnumberSpirits: `At least ${players} ${pluralize(
+          players,
+          'spirit'
+        )} must be selected`,
       }
     : null;
 };
