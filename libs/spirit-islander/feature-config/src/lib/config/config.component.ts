@@ -32,9 +32,6 @@ import {
   PageComponent,
 } from '@atocha/spirit-islander/ui';
 import {
-  AdversaryLevelId,
-  AdversaryName,
-  BalancedBoardName,
   Combo,
   Config,
   createAdversariesModel,
@@ -42,13 +39,8 @@ import {
   createMapsModel,
   createScenariosModel,
   createSpiritsModel,
-  Difficulty,
   ExpansionName,
   getValidCombos,
-  MapName,
-  Players,
-  ScenarioName,
-  SpiritName,
   updateModel,
 } from '@atocha/spirit-islander/util';
 import {
@@ -65,6 +57,7 @@ import {
   playersOutnumberTotalBoards,
   playersOutnumberSelectedBoards,
 } from './validators';
+import { modelToConfig } from './form-model';
 
 export interface ConfigDetails {
   config: Config;
@@ -241,33 +234,16 @@ export class ConfigComponent implements OnInit, OnDestroy {
   }
 
   onGenerate(): void {
+    const config = this._getFormModels();
+    const validCombos = getValidCombos(config);
+
     this.generate.emit({
-      config: this._getFormModels(),
-      validCombos: this._validCombos,
+      config,
+      validCombos,
     });
   }
 
   private _getFormModels(): Config {
-    const {
-      expansions,
-      players,
-      difficultyRange,
-      spirits,
-      maps,
-      boards,
-      scenarios,
-      adversaries,
-    } = this.form.getRawValue();
-
-    return {
-      players: players as Players,
-      difficultyRange: difficultyRange as Difficulty[],
-      expansions: expansions as ExpansionName[],
-      spiritNames: spirits as SpiritName[],
-      mapNames: maps as MapName[],
-      boardNames: boards as BalancedBoardName[],
-      scenarioNames: scenarios as ScenarioName[],
-      adversaryNamesAndIds: adversaries as (AdversaryName | AdversaryLevelId)[],
-    };
+    return modelToConfig(this.form.getRawValue());
   }
 }
