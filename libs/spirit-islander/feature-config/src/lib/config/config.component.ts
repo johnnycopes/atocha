@@ -200,7 +200,7 @@ export class ConfigComponent implements OnInit, OnDestroy {
         })
     );
 
-    // Push received config data into form once
+    // Initialize form with config data
     if (this.config) {
       this.form.setValue({
         expansions: this.config.expansions,
