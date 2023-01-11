@@ -1,7 +1,7 @@
 <main ui-page>
-  <ng-container ui-page-content>
+  <!-- <ng-container ui-page-content>
     {{ form.errors | json }}
-  </ng-container>
+  </ng-container> -->
   <form *ngIf="config"
     class="config"
     ui-page-content
@@ -36,7 +36,7 @@
         <h3 ui-card-header>
           Difficulty
         </h3>
-        <div ui-card-content>placeholder</div>
+        <div ui-card-content>{{ form.get('difficultyRange')?.value | json }}</div>
       </ui-card>
     </ui-card-group>
 

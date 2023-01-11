@@ -42,6 +42,7 @@ import {
   createMapsModel,
   createScenariosModel,
   createSpiritsModel,
+  Difficulty,
   ExpansionName,
   getValidCombos,
   MapName,
@@ -103,6 +104,9 @@ export class ConfigComponent implements OnInit, OnDestroy {
     {
       expansions: new FormControl<string[]>([], { nonNullable: true }),
       players: new FormControl<number>(0, { nonNullable: true }),
+      difficultyRange: new FormControl<number[]>([0, 0], {
+        nonNullable: true,
+      }),
       spirits: new FormControl<string[]>([], { nonNullable: true }),
       maps: new FormControl<string[]>([], {
         nonNullable: true,
@@ -218,6 +222,7 @@ export class ConfigComponent implements OnInit, OnDestroy {
       this.form.setValue({
         expansions: this.config.expansions,
         players: this.config.players,
+        difficultyRange: this.config.difficultyRange,
         spirits: this.config.spiritNames,
         maps: this.config.mapNames,
         boards: this.config.boardNames,
@@ -246,6 +251,7 @@ export class ConfigComponent implements OnInit, OnDestroy {
     const {
       expansions,
       players,
+      difficultyRange,
       spirits,
       maps,
       boards,
@@ -255,7 +261,7 @@ export class ConfigComponent implements OnInit, OnDestroy {
 
     return {
       players: players as Players,
-      difficultyRange: [0, 8],
+      difficultyRange: difficultyRange as Difficulty[],
       expansions: expansions as ExpansionName[],
       spiritNames: spirits as SpiritName[],
       mapNames: maps as MapName[],
