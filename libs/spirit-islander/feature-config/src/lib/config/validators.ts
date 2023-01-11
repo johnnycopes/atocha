@@ -32,7 +32,8 @@ export const playersOutnumberTotalBoards: ValidatorFn = (
 
   return !expansions.includes('Jagged Earth') && players > 4
     ? {
-        playersOutnumberTotalBoards: true,
+        playersOutnumberTotalBoards:
+          'Cannot generate a setup with more than 4 players unless playing with the Jagged Earth expansion',
       }
     : null;
 };

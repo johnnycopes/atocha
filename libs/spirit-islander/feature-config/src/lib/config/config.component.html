@@ -24,7 +24,7 @@
 
       <ui-card name="players"
         [error]="form.errors?.['playersOutnumberTotalBoards']"
-        errorMessage="Cannot generate a setup with more than 4 players unless playing with the Jagged Earth expansion"
+        [errorMessage]="form.errors?.['playersOutnumberTotalBoards']"
       >
         <h3 ui-card-header>
           Players
