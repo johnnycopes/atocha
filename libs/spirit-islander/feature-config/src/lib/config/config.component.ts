@@ -17,7 +17,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { of, Subject, Subscription, withLatestFrom } from 'rxjs';
+import { debounceTime, of, Subject, Subscription, withLatestFrom } from 'rxjs';
 
 import {
   ButtonComponent,
@@ -136,8 +136,20 @@ export class ConfigComponent implements OnInit, OnDestroy {
   scenariosTree = createScenariosTree([]);
   adversariesTree = createAdversariesTree([]);
   jaggedEarth = false;
+  private _validCombos: Combo[] = [];
 
   ngOnInit(): void {
+    // Whenever the form changes at all all, update the valid combos
+    this.subscriptions.add(
+      this.form.valueChanges
+        .pipe(
+          debounceTime(0) // prevents double emission after immediately patching models
+        )
+        .subscribe(() => {
+          this._validCombos = getValidCombos(this._getFormModels());
+        })
+    );
+
     // Whenever the expansions change at all, update the other fields' data
     this.subscriptions.add(
       this.expansions$.subscribe((expansions) => {
@@ -224,15 +236,9 @@ export class ConfigComponent implements OnInit, OnDestroy {
   }
 
   onGenerate(): void {
-    if (!this.config) {
-      return;
-    }
-    const config = this._getFormModels();
-    const validCombos = getValidCombos(config);
-
     this.generate.emit({
-      config,
-      validCombos,
+      config: this._getFormModels(),
+      validCombos: this._validCombos,
     });
   }
 
