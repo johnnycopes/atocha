@@ -115,7 +115,7 @@
 
     <div ui-page-actions>
       <button core-button
-        [disabled]="form.status !== 'VALID'"
+        [disabled]="!form.valid"
         type="button"
         (click)="onGenerate()"
       >
