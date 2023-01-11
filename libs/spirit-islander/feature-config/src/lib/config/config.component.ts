@@ -223,7 +223,7 @@ export class ConfigComponent implements OnInit, OnDestroy {
     this.expansionsClickSubject.next(id as 'Expansions' | ExpansionName);
   }
 
-  onGenerate(): void {
+  onSubmit(): void {
     const config = this._getFormModels();
     const validCombos = getValidCombos(config);
 

@@ -6,6 +6,7 @@
     class="config"
     ui-page-content
     [formGroup]="form"
+    (ngSubmit)="onSubmit()"
   >
     <ui-card-group
       name="You"
@@ -116,8 +117,6 @@
     <div ui-page-actions>
       <button core-button
         [disabled]="!form.valid"
-        type="button"
-        (click)="onGenerate()"
       >
         Generate
       </button>
