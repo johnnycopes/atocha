@@ -46,7 +46,10 @@ export const playersOutnumberSelectedBoards: ValidatorFn = (
 
   return players > numberOfBoards
     ? {
-        playersOutnumberSelectedBoards: true,
+        playersOutnumberSelectedBoards: `At least ${players} ${pluralize(
+          players,
+          'board'
+        )} must be selected (must match or exceed player count)`,
       }
     : null;
 };

@@ -75,7 +75,7 @@
 
       <ui-card name="boards"
         [error]="form.errors?.['playersOutnumberSelectedBoards']"
-        errorMessage="Too many players"
+        [errorMessage]="form.errors?.['playersOutnumberSelectedBoards']"
       >
         <core-checkbox-tree
           formControlName="boards"
