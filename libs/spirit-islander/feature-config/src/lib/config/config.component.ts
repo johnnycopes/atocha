@@ -15,7 +15,6 @@ import {
   FormGroup,
   FormsModule,
   ReactiveFormsModule,
-  Validators,
 } from '@angular/forms';
 import { of, Subject, Subscription, withLatestFrom } from 'rxjs';
 
@@ -57,6 +56,7 @@ import {
   playersOutnumberTotalBoards,
   playersOutnumberSelectedBoards,
   invalidDifficultyRange,
+  required,
 } from './validators';
 import { modelToConfig } from './form-model';
 
@@ -104,16 +104,16 @@ export class ConfigComponent implements OnInit, OnDestroy {
       spirits: new FormControl<string[]>([], { nonNullable: true }),
       maps: new FormControl<string[]>([], {
         nonNullable: true,
-        validators: [Validators.required],
+        validators: [required],
       }),
       boards: new FormControl<string[]>([], { nonNullable: true }),
       scenarios: new FormControl<string[]>([], {
         nonNullable: true,
-        validators: [Validators.required],
+        validators: [required],
       }),
       adversaries: new FormControl<string[]>([], {
         nonNullable: true,
-        validators: [Validators.required],
+        validators: [required],
       }),
     },
     {

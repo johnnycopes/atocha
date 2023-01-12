@@ -8,6 +8,16 @@ import {
 } from '@atocha/spirit-islander/util';
 import { modelToConfig } from './form-model';
 
+export const required: ValidatorFn = (
+  control: AbstractControl
+): ValidationErrors | null => {
+  return !control.value.length
+    ? {
+        required: 'At least 1 option must be selected',
+      }
+    : null;
+};
+
 export const playersOutnumberSpirits: ValidatorFn = (
   control: AbstractControl
 ): ValidationErrors | null => {
