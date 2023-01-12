@@ -35,13 +35,13 @@ export function modelToConfig(model: ConfigFormModel): Config {
   } = model;
 
   return {
-    players: players as Players,
-    difficultyRange: difficultyRange as Difficulty[],
-    expansions: expansions as ExpansionName[],
-    spiritNames: spirits as SpiritName[],
-    mapNames: maps as MapName[],
-    boardNames: boards as BalancedBoardName[],
-    scenarioNames: scenarios as ScenarioName[],
-    adversaryNamesAndIds: adversaries as (AdversaryName | AdversaryLevelId)[],
+    expansions,
+    players,
+    difficultyRange,
+    spiritNames: spirits,
+    mapNames: maps,
+    boardNames: boards,
+    scenarioNames: scenarios,
+    adversaryNamesAndIds: adversaries,
   };
 }
