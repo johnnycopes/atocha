@@ -1,4 +1,9 @@
-import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
+import {
+  AbstractControl,
+  ValidationErrors,
+  ValidatorFn,
+  Validators,
+} from '@angular/forms';
 
 import { pluralize } from '@atocha/core/util';
 import {
@@ -11,7 +16,7 @@ import { modelToConfig } from './form-model';
 export const required: ValidatorFn = (
   control: AbstractControl
 ): ValidationErrors | null => {
-  return !control.value.length
+  return Validators.required(control)
     ? {
         required: 'At least 1 option must be selected',
       }
