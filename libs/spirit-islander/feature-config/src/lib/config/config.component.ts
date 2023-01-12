@@ -10,18 +10,14 @@ import {
   Output,
   ViewEncapsulation,
 } from '@angular/core';
-import {
-  FormControl,
-  FormGroup,
-  FormsModule,
-  ReactiveFormsModule,
-} from '@angular/forms';
+import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { of, Subject, Subscription, withLatestFrom } from 'rxjs';
 
 import {
   ButtonComponent,
   CheckboxComponent,
   CheckboxTreeComponent,
+  Form,
 } from '@atocha/core/ui';
 import {
   CardComponent,
@@ -31,9 +27,6 @@ import {
   PageComponent,
 } from '@atocha/spirit-islander/ui';
 import {
-  AdversaryLevelId,
-  AdversaryName,
-  BalancedBoardName,
   Combo,
   Config,
   createAdversariesModel,
@@ -43,9 +36,6 @@ import {
   createSpiritsModel,
   ExpansionName,
   getValidCombos,
-  MapName,
-  ScenarioName,
-  SpiritName,
   updateModel,
 } from '@atocha/spirit-islander/util';
 import {
@@ -57,11 +47,21 @@ import {
   createScenariosTree,
   createSpiritsTree,
 } from './create-tree';
+import {
+  playersOutnumberSpirits,
+  playersOutnumberTotalBoards,
+  playersOutnumberSelectedBoards,
+  invalidDifficultyRange,
+  required,
+} from './validators';
+import { ConfigFormModel, modelToConfig } from './form-model';
 
 export interface ConfigDetails {
   config: Config;
   validCombos: Combo[];
 }
+
+type ConfigForm = Form<ConfigFormModel>;
 
 @Component({
   selector: 'app-config',
@@ -91,15 +91,28 @@ export class ConfigComponent implements OnInit, OnDestroy {
   getId = <T>({ id }: ConfigTree<T>) => id;
   getChildren = <T>({ children }: ConfigTree<T>) => children ?? [];
 
+  private _fbnn = this._fb.nonNullable;
+  form = this._fbnn.group<ConfigForm>(
+    {
+      expansions: this._fbnn.control([]),
+      players: this._fbnn.control(0),
+      difficultyRange: this._fbnn.control([0, 0]),
+      spirits: this._fbnn.control([]),
+      maps: this._fbnn.control([], required),
+      boards: this._fbnn.control([]),
+      scenarios: this._fbnn.control([], required),
+      adversaries: this._fbnn.control([], required),
+    },
+    {
+      validators: [
+        playersOutnumberSpirits,
+        playersOutnumberTotalBoards,
+        playersOutnumberSelectedBoards,
+        invalidDifficultyRange,
+      ],
+    }
+  );
   subscriptions = new Subscription();
-  form = new FormGroup({
-    expansions: new FormControl<string[]>([], { nonNullable: true }),
-    spirits: new FormControl<string[]>([], { nonNullable: true }),
-    maps: new FormControl<string[]>([], { nonNullable: true }),
-    boards: new FormControl<string[]>([], { nonNullable: true }),
-    scenarios: new FormControl<string[]>([], { nonNullable: true }),
-    adversaries: new FormControl<string[]>([], { nonNullable: true }),
-  });
   expansionsClickSubject = new Subject<'Expansions' | ExpansionName>();
   expansions$ = this.form.get('expansions')?.valueChanges ?? of([]);
 
@@ -110,6 +123,8 @@ export class ConfigComponent implements OnInit, OnDestroy {
   scenariosTree = createScenariosTree([]);
   adversariesTree = createAdversariesTree([]);
   jaggedEarth = false;
+
+  constructor(private _fb: FormBuilder) {}
 
   ngOnInit(): void {
     // Whenever the expansions change at all, update the other fields' data
@@ -175,10 +190,12 @@ export class ConfigComponent implements OnInit, OnDestroy {
         })
     );
 
-    // Push received config data into form once
+    // Initialize form with config data
     if (this.config) {
       this.form.setValue({
         expansions: this.config.expansions,
+        players: this.config.players,
+        difficultyRange: this.config.difficultyRange,
         spirits: this.config.spiritNames,
         maps: this.config.mapNames,
         boards: this.config.boardNames,
@@ -196,10 +213,7 @@ export class ConfigComponent implements OnInit, OnDestroy {
     this.expansionsClickSubject.next(id as 'Expansions' | ExpansionName);
   }
 
-  onGenerate(): void {
-    if (!this.config) {
-      return;
-    }
+  onSubmit(): void {
     const config = this._getFormModels();
     const validCombos = getValidCombos(config);
 
@@ -210,18 +224,6 @@ export class ConfigComponent implements OnInit, OnDestroy {
   }
 
   private _getFormModels(): Config {
-    const { expansions, spirits, maps, boards, scenarios, adversaries } =
-      this.form.getRawValue();
-
-    return {
-      players: 6,
-      difficultyRange: [0, 8],
-      expansions: expansions as ExpansionName[],
-      spiritNames: spirits as SpiritName[],
-      mapNames: maps as MapName[],
-      boardNames: boards as BalancedBoardName[],
-      scenarioNames: scenarios as ScenarioName[],
-      adversaryNamesAndIds: adversaries as (AdversaryName | AdversaryLevelId)[],
-    };
+    return modelToConfig(this.form.getRawValue());
   }
 }

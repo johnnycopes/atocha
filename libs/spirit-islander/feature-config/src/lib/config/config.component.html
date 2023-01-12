@@ -6,6 +6,7 @@
     class="config"
     ui-page-content
     [formGroup]="form"
+    (ngSubmit)="onSubmit()"
   >
     <ui-card-group
       name="You"
@@ -22,18 +23,22 @@
         ></core-checkbox-tree>
       </ui-card>
 
-      <ui-card name="players">
+      <ui-card name="players"
+        [error]="form.errors?.['playersOutnumberTotalBoards']"
+      >
         <h3 ui-card-header>
           Players
         </h3>
-        <div ui-card-content>placeholder</div>
+        <div ui-card-content>{{ form.get('players')?.value }}</div>
       </ui-card>
 
-      <ui-card expansions="difficulty">
+      <ui-card name="difficulty"
+        [error]="form.errors?.['invalidDifficultyRange']"
+      >
         <h3 ui-card-header>
           Difficulty
         </h3>
-        <div ui-card-content>placeholder</div>
+        <div ui-card-content>{{ form.get('difficultyRange')?.value | json }}</div>
       </ui-card>
     </ui-card-group>
 
@@ -41,7 +46,9 @@
       name="The Game"
       description="What are you open to playing with?"
     >
-      <ui-card name="spirits">
+      <ui-card name="spirits"
+        [error]="form.errors?.['playersOutnumberSpirits']"
+      >
         <core-checkbox-tree
           formControlName="spirits"
           [getId]="getId"
@@ -51,7 +58,9 @@
         ></core-checkbox-tree>
       </ui-card>
 
-      <ui-card name="maps">
+      <ui-card name="maps"
+        [error]="form.get('maps')?.errors?.['required']"
+      >
         <core-checkbox-tree
           formControlName="maps"
           [getId]="getId"
@@ -61,7 +70,9 @@
         ></core-checkbox-tree>
       </ui-card>
 
-      <ui-card name="boards">
+      <ui-card name="boards"
+        [error]="form.errors?.['playersOutnumberSelectedBoards']"
+      >
         <core-checkbox-tree
           formControlName="boards"
           [getId]="getId"
@@ -71,7 +82,9 @@
         ></core-checkbox-tree>
       </ui-card>
 
-      <ui-card name="scenarios">
+      <ui-card name="scenarios"
+        [error]="form.get('scenarios')?.errors?.['required']"
+      >
         <core-checkbox-tree
           formControlName="scenarios"
           [getId]="getId"
@@ -81,7 +94,9 @@
         ></core-checkbox-tree>
       </ui-card>
 
-      <ui-card name="adversaries">
+      <ui-card name="adversaries"
+        [error]="form.get('adversaries')?.errors?.['required']"
+      >
         <core-checkbox-tree
           formControlName="adversaries"
           [getId]="getId"
@@ -94,9 +109,7 @@
 
     <div ui-page-actions>
       <button core-button
-        [disabled]="false"
-        type="button"
-        (click)="onGenerate()"
+        [disabled]="!form.valid"
       >
         Generate
       </button>

@@ -26,7 +26,5 @@ export class CardComponent {
   @Input()
   name = '';
 
-  @Input() error = false;
-
-  @Input() errorMessage = '';
+  @Input() error = '';
 }

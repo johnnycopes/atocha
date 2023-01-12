@@ -58,7 +58,7 @@ export class AppComponent {
   ];
   _config: Config = {
     expansions: this._expansions,
-    players: 6,
+    players: 5,
     difficultyRange: [0, 8],
     spiritNames: createSpiritsModel(this._expansions),
     mapNames: createMapsModel(['Horizons']),

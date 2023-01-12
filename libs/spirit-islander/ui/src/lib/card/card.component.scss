@@ -1,10 +1,11 @@
 .ui-card {
   display: flex;
   flex-direction: column;
+  position: relative;
   background: var(--gray-200);
   border-radius: var(--border-radius);
   box-shadow: var(--downward-box-shadow);
-  padding-bottom: 12px;
+  padding-bottom: 8px;
 
   ui-difficulty-emblem,
   ui-expansion-emblem {
