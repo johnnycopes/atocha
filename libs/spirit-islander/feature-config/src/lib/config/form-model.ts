@@ -17,7 +17,7 @@ export interface ConfigFormModel {
   difficultyRange: Difficulty[];
   spiritNames: SpiritName[];
   mapNames: MapName[];
-  boards: BalancedBoardName[];
+  boardNames: BalancedBoardName[];
   scenarios: ScenarioName[];
   adversaries: (AdversaryName | AdversaryLevelId)[];
 }
@@ -29,7 +29,7 @@ export function modelToConfig(model: ConfigFormModel): Config {
     difficultyRange,
     spiritNames,
     mapNames,
-    boards,
+    boardNames,
     scenarios,
     adversaries,
   } = model;
@@ -40,7 +40,7 @@ export function modelToConfig(model: ConfigFormModel): Config {
     difficultyRange,
     spiritNames,
     mapNames,
-    boardNames: boards,
+    boardNames,
     scenarioNames: scenarios,
     adversaryNamesAndIds: adversaries,
   };

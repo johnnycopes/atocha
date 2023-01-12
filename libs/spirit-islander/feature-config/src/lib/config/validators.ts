@@ -57,7 +57,7 @@ export const playersOutnumberSelectedBoards: ValidatorFn = (
   control: AbstractControl
 ): ValidationErrors | null => {
   const players: Players = control.get('players')?.value;
-  const numberOfBoards: number = control.get('boards')?.value.length;
+  const numberOfBoards: number = control.get('boardNames')?.value.length;
 
   return players > numberOfBoards
     ? {

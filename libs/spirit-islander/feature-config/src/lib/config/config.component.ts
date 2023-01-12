@@ -99,7 +99,7 @@ export class ConfigComponent implements OnInit, OnDestroy {
       difficultyRange: this._fbnn.control([0, 0]),
       spiritNames: this._fbnn.control([]),
       mapNames: this._fbnn.control([], required),
-      boards: this._fbnn.control([]),
+      boardNames: this._fbnn.control([]),
       scenarios: this._fbnn.control([], required),
       adversaries: this._fbnn.control([], required),
     },
@@ -162,7 +162,7 @@ export class ConfigComponent implements OnInit, OnDestroy {
               expansionNames,
               target
             ),
-            boards: updateModel(
+            boardNames: updateModel(
               createBoardsModel,
               boardNames,
               expansionNames,
@@ -198,7 +198,7 @@ export class ConfigComponent implements OnInit, OnDestroy {
         difficultyRange: this.config.difficultyRange,
         spiritNames: this.config.spiritNames,
         mapNames: this.config.mapNames,
-        boards: this.config.boardNames,
+        boardNames: this.config.boardNames,
         scenarios: this.config.scenarioNames,
         adversaries: this.config.adversaryNamesAndIds,
       });

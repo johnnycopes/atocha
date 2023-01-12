@@ -19,7 +19,7 @@ describe('modelToConfig', () => {
         'Vital Strength of the Earth',
       ],
       mapNames: ['Balanced', 'Thematic'],
-      boards: ['A', 'C', 'D', 'E', 'F'],
+      boardNames: ['A', 'C', 'D', 'E', 'F'],
       scenarios: ['No Scenario', 'Second Wave', 'Despicable Theft'],
       adversaries: ['No Adversary', 'bp-1', 'bp-2'],
     };
