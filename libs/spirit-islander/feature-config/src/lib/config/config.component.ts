@@ -65,11 +65,11 @@ export interface ConfigDetails {
   validCombos: Combo[];
 }
 
-type FormMapping<T> = Required<{
-  [Property in keyof T]: FormControl<T[Property]>;
+type Form<TModel> = Required<{
+  [Property in keyof TModel]: FormControl<TModel[Property]>;
 }>;
 
-type ConfigForm = FormMapping<ConfigFormModel>;
+type ConfigForm = Form<ConfigFormModel>;
 
 @Component({
   selector: 'app-config',
