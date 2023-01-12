@@ -10,18 +10,14 @@ import {
   Output,
   ViewEncapsulation,
 } from '@angular/core';
-import {
-  FormBuilder,
-  FormControl,
-  FormsModule,
-  ReactiveFormsModule,
-} from '@angular/forms';
+import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { of, Subject, Subscription, withLatestFrom } from 'rxjs';
 
 import {
   ButtonComponent,
   CheckboxComponent,
   CheckboxTreeComponent,
+  Form,
 } from '@atocha/core/ui';
 import {
   CardComponent,
@@ -64,10 +60,6 @@ export interface ConfigDetails {
   config: Config;
   validCombos: Combo[];
 }
-
-type Form<TModel> = Required<{
-  [Property in keyof TModel]: FormControl<TModel[Property]>;
-}>;
 
 type ConfigForm = Form<ConfigFormModel>;
 
