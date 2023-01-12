@@ -97,7 +97,7 @@ export class ConfigComponent implements OnInit, OnDestroy {
       expansions: this._fbnn.control([]),
       players: this._fbnn.control(1),
       difficultyRange: this._fbnn.control([0, 0]),
-      spirits: this._fbnn.control([]),
+      spiritNames: this._fbnn.control([]),
       maps: this._fbnn.control([], required),
       boards: this._fbnn.control([]),
       scenarios: this._fbnn.control([], required),
@@ -156,7 +156,7 @@ export class ConfigComponent implements OnInit, OnDestroy {
           } = this._getFormModels();
 
           this.form.patchValue({
-            spirits: updateModel(
+            spiritNames: updateModel(
               createSpiritsModel,
               spiritNames,
               expansionNames,
@@ -196,7 +196,7 @@ export class ConfigComponent implements OnInit, OnDestroy {
         expansions: this.config.expansions,
         players: this.config.players,
         difficultyRange: this.config.difficultyRange,
-        spirits: this.config.spiritNames,
+        spiritNames: this.config.spiritNames,
         maps: this.config.mapNames,
         boards: this.config.boardNames,
         scenarios: this.config.scenarioNames,

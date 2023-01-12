@@ -27,7 +27,7 @@ export const playersOutnumberSpirits: ValidatorFn = (
   control: AbstractControl
 ): ValidationErrors | null => {
   const players: Players = control.get('players')?.value;
-  const numberOfSpirits: number = control.get('spirits')?.value.length;
+  const numberOfSpirits: number = control.get('spiritNames')?.value.length;
 
   return players > numberOfSpirits
     ? {

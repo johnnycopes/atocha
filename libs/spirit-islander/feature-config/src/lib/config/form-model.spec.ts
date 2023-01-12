@@ -6,7 +6,7 @@ describe('modelToConfig', () => {
       expansions: ['Horizons', 'Jagged Earth', 'Branch & Claw'],
       players: 5,
       difficultyRange: [0, 8],
-      spirits: [
+      spiritNames: [
         'A Spread of Rampant Green',
         'Bringer of Dreams and Nightmares',
         'Keeper of the Forbidden Wilds',

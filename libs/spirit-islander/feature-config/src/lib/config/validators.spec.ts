@@ -26,7 +26,7 @@ describe('Validators', () => {
         playersOutnumberSpirits(
           new FormGroup({
             players: new FormControl(2),
-            spirits: new FormControl(['Thunderspeaker']),
+            spiritNames: new FormControl(['Thunderspeaker']),
           })
         )
       ).toEqual({
@@ -39,7 +39,7 @@ describe('Validators', () => {
         playersOutnumberSelectedBoards(
           new FormGroup({
             players: new FormControl(1),
-            boards: new FormControl(['Thunderspeaker']),
+            spiritNames: new FormControl(['Thunderspeaker']),
           })
         )
       ).toBe(null);
