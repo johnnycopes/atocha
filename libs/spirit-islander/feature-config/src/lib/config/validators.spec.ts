@@ -41,7 +41,7 @@ describe('Validators', () => {
 
     it('returns null if spirits count is greater than or equal to spirits count', () => {
       expect(
-        playersOutnumberSelectedBoards(
+        playersOutnumberSpirits(
           fbnn.group<Pick<Form<Config>, 'players' | 'spiritNames'>>({
             players: fbnn.control(1),
             spiritNames: fbnn.control(['Thunderspeaker']),
