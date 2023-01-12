@@ -95,16 +95,10 @@ export class ConfigComponent implements OnInit, OnDestroy {
       players: this._fbnn.control<number>(0),
       difficultyRange: this._fbnn.control<number[]>([0, 0]),
       spirits: this._fbnn.control<string[]>([]),
-      maps: this._fbnn.control<string[]>([], {
-        validators: [required],
-      }),
+      maps: this._fbnn.control<string[]>([], required),
       boards: this._fbnn.control<string[]>([]),
-      scenarios: this._fbnn.control<string[]>([], {
-        validators: [required],
-      }),
-      adversaries: this._fbnn.control<string[]>([], {
-        validators: [required],
-      }),
+      scenarios: this._fbnn.control<string[]>([], required),
+      adversaries: this._fbnn.control<string[]>([], required),
     },
     {
       validators: [
