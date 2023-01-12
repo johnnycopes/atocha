@@ -21,7 +21,7 @@ describe('modelToConfig', () => {
       mapNames: ['Balanced', 'Thematic'],
       boardNames: ['A', 'C', 'D', 'E', 'F'],
       scenarioNames: ['No Scenario', 'Second Wave', 'Despicable Theft'],
-      adversaries: ['No Adversary', 'bp-1', 'bp-2'],
+      adversaryNamesAndIds: ['No Adversary', 'bp-1', 'bp-2'],
     };
 
     expect(modelToConfig(model)).toEqual({

@@ -95,10 +95,10 @@
       </ui-card>
 
       <ui-card name="adversaries"
-        [error]="form.get('adversaries')?.errors?.['required']"
+        [error]="form.get('adversaryNamesAndIds')?.errors?.['required']"
       >
         <core-checkbox-tree
-          formControlName="adversaries"
+          formControlName="adversaryNamesAndIds"
           [getId]="getId"
           [getChildren]="getChildren"
           [tree]="adversariesTree"

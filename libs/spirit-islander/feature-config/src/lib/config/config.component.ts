@@ -101,7 +101,7 @@ export class ConfigComponent implements OnInit, OnDestroy {
       mapNames: this._fbnn.control([], required),
       boardNames: this._fbnn.control([]),
       scenarioNames: this._fbnn.control([], required),
-      adversaries: this._fbnn.control([], required),
+      adversaryNamesAndIds: this._fbnn.control([], required),
     },
     {
       validators: [
@@ -180,7 +180,7 @@ export class ConfigComponent implements OnInit, OnDestroy {
               expansionNames,
               target
             ),
-            adversaries: updateModel(
+            adversaryNamesAndIds: updateModel(
               createAdversariesModel,
               adversaryNamesAndIds,
               expansionNames,
@@ -200,7 +200,7 @@ export class ConfigComponent implements OnInit, OnDestroy {
         mapNames: this.config.mapNames,
         boardNames: this.config.boardNames,
         scenarioNames: this.config.scenarioNames,
-        adversaries: this.config.adversaryNamesAndIds,
+        adversaryNamesAndIds: this.config.adversaryNamesAndIds,
       });
     }
   }
