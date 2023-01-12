@@ -54,14 +54,13 @@ import {
   invalidDifficultyRange,
   required,
 } from './validators';
-import { ConfigFormModel, modelToConfig } from './form-model';
 
 export interface ConfigDetails {
   config: Config;
   validCombos: Combo[];
 }
 
-type ConfigForm = Form<ConfigFormModel>;
+type ConfigForm = Form<Config>;
 
 @Component({
   selector: 'app-config',
@@ -224,6 +223,6 @@ export class ConfigComponent implements OnInit, OnDestroy {
   }
 
   private _getFormModels(): Config {
-    return modelToConfig(this.form.getRawValue());
+    return this.form.getRawValue();
   }
 }

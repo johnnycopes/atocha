@@ -7,11 +7,11 @@ import {
 
 import { pluralize } from '@atocha/core/util';
 import {
+  Config,
   ExpansionName,
   getValidCombos,
   Players,
 } from '@atocha/spirit-islander/util';
-import { modelToConfig } from './form-model';
 
 export const required: ValidatorFn = (
   control: AbstractControl
@@ -72,7 +72,7 @@ export const playersOutnumberSelectedBoards: ValidatorFn = (
 export const invalidDifficultyRange: ValidatorFn = (
   control: AbstractControl
 ): ValidationErrors | null => {
-  const config = modelToConfig(control.value);
+  const config: Config = control.value;
   const [min, max] = config.difficultyRange;
   let errorMessage = '';
 
