@@ -12,14 +12,14 @@ import {
 } from '@atocha/spirit-islander/util';
 
 export interface ConfigFormModel {
-  expansions: string[];
-  players: number;
-  difficultyRange: number[];
-  spirits: string[];
-  maps: string[];
-  boards: string[];
-  scenarios: string[];
-  adversaries: string[];
+  expansions: ExpansionName[];
+  players: Players;
+  difficultyRange: Difficulty[];
+  spirits: SpiritName[];
+  maps: MapName[];
+  boards: BalancedBoardName[];
+  scenarios: ScenarioName[];
+  adversaries: (AdversaryName | AdversaryLevelId)[];
 }
 
 export function modelToConfig(model: ConfigFormModel): Config {

@@ -95,7 +95,7 @@ export class ConfigComponent implements OnInit, OnDestroy {
   form = this._fbnn.group<ConfigForm>(
     {
       expansions: this._fbnn.control([]),
-      players: this._fbnn.control(0),
+      players: this._fbnn.control(1),
       difficultyRange: this._fbnn.control([0, 0]),
       spirits: this._fbnn.control([]),
       maps: this._fbnn.control([], required),
