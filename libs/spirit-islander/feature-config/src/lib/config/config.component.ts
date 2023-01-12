@@ -10,12 +10,7 @@ import {
   Output,
   ViewEncapsulation,
 } from '@angular/core';
-import {
-  FormControl,
-  FormGroup,
-  FormsModule,
-  ReactiveFormsModule,
-} from '@angular/forms';
+import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { of, Subject, Subscription, withLatestFrom } from 'rxjs';
 
 import {
@@ -93,26 +88,21 @@ export class ConfigComponent implements OnInit, OnDestroy {
   getId = <T>({ id }: ConfigTree<T>) => id;
   getChildren = <T>({ children }: ConfigTree<T>) => children ?? [];
 
-  subscriptions = new Subscription();
-  form = new FormGroup(
+  private _fbnn = this._fb.nonNullable;
+  form = this._fbnn.group(
     {
-      expansions: new FormControl<string[]>([], { nonNullable: true }),
-      players: new FormControl<number>(0, { nonNullable: true }),
-      difficultyRange: new FormControl<number[]>([0, 0], {
-        nonNullable: true,
-      }),
-      spirits: new FormControl<string[]>([], { nonNullable: true }),
-      maps: new FormControl<string[]>([], {
-        nonNullable: true,
+      expansions: this._fbnn.control<string[]>([]),
+      players: this._fbnn.control<number>(0),
+      difficultyRange: this._fbnn.control<number[]>([0, 0]),
+      spirits: this._fbnn.control<string[]>([]),
+      maps: this._fbnn.control<string[]>([], {
         validators: [required],
       }),
-      boards: new FormControl<string[]>([], { nonNullable: true }),
-      scenarios: new FormControl<string[]>([], {
-        nonNullable: true,
+      boards: this._fbnn.control<string[]>([]),
+      scenarios: this._fbnn.control<string[]>([], {
         validators: [required],
       }),
-      adversaries: new FormControl<string[]>([], {
-        nonNullable: true,
+      adversaries: this._fbnn.control<string[]>([], {
         validators: [required],
       }),
     },
@@ -125,6 +115,7 @@ export class ConfigComponent implements OnInit, OnDestroy {
       ],
     }
   );
+  subscriptions = new Subscription();
   expansionsClickSubject = new Subject<'Expansions' | ExpansionName>();
   expansions$ = this.form.get('expansions')?.valueChanges ?? of([]);
 
@@ -135,6 +126,8 @@ export class ConfigComponent implements OnInit, OnDestroy {
   scenariosTree = createScenariosTree([]);
   adversariesTree = createAdversariesTree([]);
   jaggedEarth = false;
+
+  constructor(private _fb: FormBuilder) {}
 
   ngOnInit(): void {
     // Whenever the expansions change at all, update the other fields' data
