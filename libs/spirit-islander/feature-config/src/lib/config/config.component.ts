@@ -11,7 +11,7 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { of, Subject, Subscription, withLatestFrom } from 'rxjs';
+import { of, Subject, Subscription } from 'rxjs';
 
 import {
   ButtonComponent,
@@ -54,14 +54,13 @@ import {
   invalidDifficultyRange,
   required,
 } from './validators';
-import { ConfigFormModel, modelToConfig } from './form-model';
 
 export interface ConfigDetails {
   config: Config;
   validCombos: Combo[];
 }
 
-type ConfigForm = Form<ConfigFormModel>;
+type ConfigForm = Form<Config>;
 
 @Component({
   selector: 'app-config',
@@ -95,13 +94,13 @@ export class ConfigComponent implements OnInit, OnDestroy {
   form = this._fbnn.group<ConfigForm>(
     {
       expansions: this._fbnn.control([]),
-      players: this._fbnn.control(0),
+      players: this._fbnn.control(1),
       difficultyRange: this._fbnn.control([0, 0]),
-      spirits: this._fbnn.control([]),
-      maps: this._fbnn.control([], required),
-      boards: this._fbnn.control([]),
-      scenarios: this._fbnn.control([], required),
-      adversaries: this._fbnn.control([], required),
+      spiritNames: this._fbnn.control([]),
+      mapNames: this._fbnn.control([], required),
+      boardNames: this._fbnn.control([]),
+      scenarioNames: this._fbnn.control([], required),
+      adversaryNamesAndIds: this._fbnn.control([], required),
     },
     {
       validators: [
@@ -129,9 +128,7 @@ export class ConfigComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     // Whenever the expansions change at all, update the other fields' data
     this.subscriptions.add(
-      this.expansions$.subscribe((expansions) => {
-        const expansionNames = expansions as ExpansionName[];
-
+      this.expansions$.subscribe((expansionNames) => {
         this.spiritsTree = createSpiritsTree(expansionNames);
         this.mapsTree = createMapsTree(expansionNames);
         this.boardsTree = createBoardsTree(expansionNames);
@@ -143,65 +140,49 @@ export class ConfigComponent implements OnInit, OnDestroy {
 
     // Whenever the user changes the expansions, update the other fields' models
     this.subscriptions.add(
-      this.expansions$
-        .pipe(withLatestFrom(this.expansionsClickSubject.asObservable()))
-        .subscribe(([expansions, target]) => {
-          const expansionNames = expansions as ExpansionName[];
-          const {
-            spiritNames,
-            mapNames,
-            boardNames,
-            scenarioNames,
-            adversaryNamesAndIds,
-          } = this._getFormModels();
+      this.expansionsClickSubject.asObservable().subscribe((target) => {
+        const {
+          expansions,
+          spiritNames,
+          mapNames,
+          boardNames,
+          scenarioNames,
+          adversaryNamesAndIds,
+        } = this._getFormModel();
 
-          this.form.patchValue({
-            spirits: updateModel(
-              createSpiritsModel,
-              spiritNames,
-              expansionNames,
-              target
-            ),
-            boards: updateModel(
-              createBoardsModel,
-              boardNames,
-              expansionNames,
-              target
-            ),
-            maps: updateModel(
-              createMapsModel,
-              mapNames,
-              expansionNames,
-              target
-            ),
-            scenarios: updateModel(
-              createScenariosModel,
-              scenarioNames,
-              expansionNames,
-              target
-            ),
-            adversaries: updateModel(
-              createAdversariesModel,
-              adversaryNamesAndIds,
-              expansionNames,
-              target
-            ),
-          });
-        })
+        this.form.patchValue({
+          spiritNames: updateModel(
+            createSpiritsModel,
+            spiritNames,
+            expansions,
+            target
+          ),
+          boardNames: updateModel(
+            createBoardsModel,
+            boardNames,
+            expansions,
+            target
+          ),
+          mapNames: updateModel(createMapsModel, mapNames, expansions, target),
+          scenarioNames: updateModel(
+            createScenariosModel,
+            scenarioNames,
+            expansions,
+            target
+          ),
+          adversaryNamesAndIds: updateModel(
+            createAdversariesModel,
+            adversaryNamesAndIds,
+            expansions,
+            target
+          ),
+        });
+      })
     );
 
     // Initialize form with config data
     if (this.config) {
-      this.form.setValue({
-        expansions: this.config.expansions,
-        players: this.config.players,
-        difficultyRange: this.config.difficultyRange,
-        spirits: this.config.spiritNames,
-        maps: this.config.mapNames,
-        boards: this.config.boardNames,
-        scenarios: this.config.scenarioNames,
-        adversaries: this.config.adversaryNamesAndIds,
-      });
+      this.form.setValue(this.config);
     }
   }
 
@@ -214,7 +195,7 @@ export class ConfigComponent implements OnInit, OnDestroy {
   }
 
   onSubmit(): void {
-    const config = this._getFormModels();
+    const config = this._getFormModel();
     const validCombos = getValidCombos(config);
 
     this.generate.emit({
@@ -223,7 +204,7 @@ export class ConfigComponent implements OnInit, OnDestroy {
     });
   }
 
-  private _getFormModels(): Config {
-    return modelToConfig(this.form.getRawValue());
+  private _getFormModel(): Config {
+    return this.form.getRawValue();
   }
 }

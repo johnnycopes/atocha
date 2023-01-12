@@ -50,7 +50,7 @@
         [error]="form.errors?.['playersOutnumberSpirits']"
       >
         <core-checkbox-tree
-          formControlName="spirits"
+          formControlName="spiritNames"
           [getId]="getId"
           [getChildren]="getChildren"
           [tree]="spiritsTree"
@@ -59,10 +59,10 @@
       </ui-card>
 
       <ui-card name="maps"
-        [error]="form.get('maps')?.errors?.['required']"
+        [error]="form.get('mapNames')?.errors?.['required']"
       >
         <core-checkbox-tree
-          formControlName="maps"
+          formControlName="mapNames"
           [getId]="getId"
           [getChildren]="getChildren"
           [tree]="mapsTree"
@@ -74,7 +74,7 @@
         [error]="form.errors?.['playersOutnumberSelectedBoards']"
       >
         <core-checkbox-tree
-          formControlName="boards"
+          formControlName="boardNames"
           [getId]="getId"
           [getChildren]="getChildren"
           [tree]="boardsTree"
@@ -83,10 +83,10 @@
       </ui-card>
 
       <ui-card name="scenarios"
-        [error]="form.get('scenarios')?.errors?.['required']"
+        [error]="form.get('scenarioNames')?.errors?.['required']"
       >
         <core-checkbox-tree
-          formControlName="scenarios"
+          formControlName="scenarioNames"
           [getId]="getId"
           [getChildren]="getChildren"
           [tree]="scenariosTree"
@@ -95,10 +95,10 @@
       </ui-card>
 
       <ui-card name="adversaries"
-        [error]="form.get('adversaries')?.errors?.['required']"
+        [error]="form.get('adversaryNamesAndIds')?.errors?.['required']"
       >
         <core-checkbox-tree
-          formControlName="adversaries"
+          formControlName="adversaryNamesAndIds"
           [getId]="getId"
           [getChildren]="getChildren"
           [tree]="adversariesTree"

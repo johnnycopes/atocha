@@ -6,15 +6,10 @@ import {
 } from '@angular/forms';
 
 import { pluralize } from '@atocha/core/util';
-import {
-  ExpansionName,
-  getValidCombos,
-  Players,
-} from '@atocha/spirit-islander/util';
-import { modelToConfig } from './form-model';
+import { Config, getValidCombos } from '@atocha/spirit-islander/util';
 
 export const required: ValidatorFn = (
-  control: AbstractControl
+  control: AbstractControl<string[]>
 ): ValidationErrors | null => {
   return Validators.required(control)
     ? {
@@ -24,10 +19,10 @@ export const required: ValidatorFn = (
 };
 
 export const playersOutnumberSpirits: ValidatorFn = (
-  control: AbstractControl
+  control: AbstractControl<Config>
 ): ValidationErrors | null => {
-  const players: Players = control.get('players')?.value;
-  const numberOfSpirits: number = control.get('spirits')?.value.length;
+  const players = control.value.players;
+  const numberOfSpirits = control.value.spiritNames.length;
 
   return players > numberOfSpirits
     ? {
@@ -40,10 +35,10 @@ export const playersOutnumberSpirits: ValidatorFn = (
 };
 
 export const playersOutnumberTotalBoards: ValidatorFn = (
-  control: AbstractControl
+  control: AbstractControl<Config>
 ): ValidationErrors | null => {
-  const expansions: ExpansionName[] = control.get('expansions')?.value;
-  const players: Players = control.get('players')?.value;
+  const expansions = control.value.expansions;
+  const players = control.value.players;
 
   return !expansions.includes('Jagged Earth') && players > 4
     ? {
@@ -54,10 +49,10 @@ export const playersOutnumberTotalBoards: ValidatorFn = (
 };
 
 export const playersOutnumberSelectedBoards: ValidatorFn = (
-  control: AbstractControl
+  control: AbstractControl<Config>
 ): ValidationErrors | null => {
-  const players: Players = control.get('players')?.value;
-  const numberOfBoards: number = control.get('boards')?.value.length;
+  const players = control.value.players;
+  const numberOfBoards = control.value.boardNames.length;
 
   return players > numberOfBoards
     ? {
@@ -70,9 +65,9 @@ export const playersOutnumberSelectedBoards: ValidatorFn = (
 };
 
 export const invalidDifficultyRange: ValidatorFn = (
-  control: AbstractControl
+  control: AbstractControl<Config>
 ): ValidationErrors | null => {
-  const config = modelToConfig(control.value);
+  const config = control.value;
   const [min, max] = config.difficultyRange;
   let errorMessage = '';
 

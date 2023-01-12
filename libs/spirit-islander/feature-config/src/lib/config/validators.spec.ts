@@ -1,4 +1,7 @@
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
+
+import { Form } from '@atocha/core/ui';
+import { Config } from '@atocha/spirit-islander/util';
 
 import {
   playersOutnumberSelectedBoards,
@@ -8,15 +11,17 @@ import {
 } from './validators';
 
 describe('Validators', () => {
+  const fbnn = new FormBuilder().nonNullable;
+
   describe('required', () => {
     it('returns an error if control value length is 0', () => {
-      expect(required(new FormControl([]))).toEqual({
+      expect(required(fbnn.control([] as string[]))).toEqual({
         required: 'At least 1 option must be selected',
       });
     });
 
     it('returns null if control value length is at least 1', () => {
-      expect(required(new FormControl(['A', 'B']))).toBe(null);
+      expect(required(fbnn.control(['A', 'B']))).toBe(null);
     });
   });
 
@@ -24,9 +29,9 @@ describe('Validators', () => {
     it('returns an error if player count is greater than spirits count', () => {
       expect(
         playersOutnumberSpirits(
-          new FormGroup({
-            players: new FormControl(2),
-            spirits: new FormControl(['Thunderspeaker']),
+          fbnn.group<Pick<Form<Config>, 'players' | 'spiritNames'>>({
+            players: fbnn.control(2),
+            spiritNames: fbnn.control(['Thunderspeaker']),
           })
         )
       ).toEqual({
@@ -36,10 +41,10 @@ describe('Validators', () => {
 
     it('returns null if spirits count is greater than or equal to spirits count', () => {
       expect(
-        playersOutnumberSelectedBoards(
-          new FormGroup({
-            players: new FormControl(1),
-            boards: new FormControl(['Thunderspeaker']),
+        playersOutnumberSpirits(
+          fbnn.group<Pick<Form<Config>, 'players' | 'spiritNames'>>({
+            players: fbnn.control(1),
+            spiritNames: fbnn.control(['Thunderspeaker']),
           })
         )
       ).toBe(null);
@@ -50,9 +55,9 @@ describe('Validators', () => {
     it('returns an error if player count is greater than 4 and Jagged Earth is not included', () => {
       expect(
         playersOutnumberTotalBoards(
-          new FormGroup({
-            expansions: new FormControl([]),
-            players: new FormControl(5),
+          fbnn.group<Pick<Form<Config>, 'expansions' | 'players'>>({
+            expansions: fbnn.control([]),
+            players: fbnn.control(5),
           })
         )
       ).toEqual({
@@ -64,9 +69,9 @@ describe('Validators', () => {
     it('returns null if player count is greater than 4 and Jagged Earth is included', () => {
       expect(
         playersOutnumberTotalBoards(
-          new FormGroup({
-            expansions: new FormControl(['Jagged Earth']),
-            players: new FormControl(5),
+          fbnn.group<Pick<Form<Config>, 'expansions' | 'players'>>({
+            expansions: fbnn.control(['Jagged Earth']),
+            players: fbnn.control(5),
           })
         )
       ).toBe(null);
@@ -75,9 +80,9 @@ describe('Validators', () => {
     it('returns null if player count is less than 5, regardless of expansions', () => {
       expect(
         playersOutnumberTotalBoards(
-          new FormGroup({
-            expansions: new FormControl([]),
-            players: new FormControl(4),
+          fbnn.group<Pick<Form<Config>, 'expansions' | 'players'>>({
+            expansions: fbnn.control([]),
+            players: fbnn.control(4),
           })
         )
       ).toBe(null);
@@ -88,9 +93,9 @@ describe('Validators', () => {
     it('returns an error if player count is greater than boards count', () => {
       expect(
         playersOutnumberSelectedBoards(
-          new FormGroup({
-            players: new FormControl(2),
-            boards: new FormControl(['A']),
+          fbnn.group<Pick<Form<Config>, 'players' | 'boardNames'>>({
+            players: fbnn.control(2),
+            boardNames: fbnn.control(['A']),
           })
         )
       ).toEqual({
@@ -102,9 +107,9 @@ describe('Validators', () => {
     it('returns null if boards count is greater than or equal to players count', () => {
       expect(
         playersOutnumberSelectedBoards(
-          new FormGroup({
-            players: new FormControl(2),
-            boards: new FormControl(['A', 'B']),
+          fbnn.group<Pick<Form<Config>, 'players' | 'boardNames'>>({
+            players: fbnn.control(2),
+            boardNames: fbnn.control(['A', 'B']),
           })
         )
       ).toBe(null);
