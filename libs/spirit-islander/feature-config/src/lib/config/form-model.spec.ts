@@ -18,7 +18,7 @@ describe('modelToConfig', () => {
         'Thunderspeaker',
         'Vital Strength of the Earth',
       ],
-      maps: ['Balanced', 'Thematic'],
+      mapNames: ['Balanced', 'Thematic'],
       boards: ['A', 'C', 'D', 'E', 'F'],
       scenarios: ['No Scenario', 'Second Wave', 'Despicable Theft'],
       adversaries: ['No Adversary', 'bp-1', 'bp-2'],

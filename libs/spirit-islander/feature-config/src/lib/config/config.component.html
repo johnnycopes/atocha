@@ -59,10 +59,10 @@
       </ui-card>
 
       <ui-card name="maps"
-        [error]="form.get('maps')?.errors?.['required']"
+        [error]="form.get('mapNames')?.errors?.['required']"
       >
         <core-checkbox-tree
-          formControlName="maps"
+          formControlName="mapNames"
           [getId]="getId"
           [getChildren]="getChildren"
           [tree]="mapsTree"
