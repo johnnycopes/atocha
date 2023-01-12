@@ -11,7 +11,7 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { of, Subject, Subscription, withLatestFrom } from 'rxjs';
+import { of, Subject, Subscription } from 'rxjs';
 
 import {
   ButtonComponent,
@@ -140,50 +140,44 @@ export class ConfigComponent implements OnInit, OnDestroy {
 
     // Whenever the user changes the expansions, update the other fields' models
     this.subscriptions.add(
-      this.expansions$
-        .pipe(withLatestFrom(this.expansionsClickSubject.asObservable()))
-        .subscribe(([expansionNames, target]) => {
-          const {
-            spiritNames,
-            mapNames,
-            boardNames,
-            scenarioNames,
-            adversaryNamesAndIds,
-          } = this._getFormModel();
+      this.expansionsClickSubject.asObservable().subscribe((target) => {
+        const {
+          expansions,
+          spiritNames,
+          mapNames,
+          boardNames,
+          scenarioNames,
+          adversaryNamesAndIds,
+        } = this._getFormModel();
 
-          this.form.patchValue({
-            spiritNames: updateModel(
-              createSpiritsModel,
-              spiritNames,
-              expansionNames,
-              target
-            ),
-            boardNames: updateModel(
-              createBoardsModel,
-              boardNames,
-              expansionNames,
-              target
-            ),
-            mapNames: updateModel(
-              createMapsModel,
-              mapNames,
-              expansionNames,
-              target
-            ),
-            scenarioNames: updateModel(
-              createScenariosModel,
-              scenarioNames,
-              expansionNames,
-              target
-            ),
-            adversaryNamesAndIds: updateModel(
-              createAdversariesModel,
-              adversaryNamesAndIds,
-              expansionNames,
-              target
-            ),
-          });
-        })
+        this.form.patchValue({
+          spiritNames: updateModel(
+            createSpiritsModel,
+            spiritNames,
+            expansions,
+            target
+          ),
+          boardNames: updateModel(
+            createBoardsModel,
+            boardNames,
+            expansions,
+            target
+          ),
+          mapNames: updateModel(createMapsModel, mapNames, expansions, target),
+          scenarioNames: updateModel(
+            createScenariosModel,
+            scenarioNames,
+            expansions,
+            target
+          ),
+          adversaryNamesAndIds: updateModel(
+            createAdversariesModel,
+            adversaryNamesAndIds,
+            expansions,
+            target
+          ),
+        });
+      })
     );
 
     // Initialize form with config data
