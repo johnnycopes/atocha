@@ -149,7 +149,7 @@ export class ConfigComponent implements OnInit, OnDestroy {
             boardNames,
             scenarioNames,
             adversaryNamesAndIds,
-          } = this._getFormModels();
+          } = this._getFormModel();
 
           this.form.patchValue({
             spiritNames: updateModel(
@@ -201,7 +201,7 @@ export class ConfigComponent implements OnInit, OnDestroy {
   }
 
   onSubmit(): void {
-    const config = this._getFormModels();
+    const config = this._getFormModel();
     const validCombos = getValidCombos(config);
 
     this.generate.emit({
@@ -210,7 +210,7 @@ export class ConfigComponent implements OnInit, OnDestroy {
     });
   }
 
-  private _getFormModels(): Config {
+  private _getFormModel(): Config {
     return this.form.getRawValue();
   }
 }
