@@ -18,7 +18,7 @@ export interface ConfigFormModel {
   spiritNames: SpiritName[];
   mapNames: MapName[];
   boardNames: BalancedBoardName[];
-  scenarios: ScenarioName[];
+  scenarioNames: ScenarioName[];
   adversaries: (AdversaryName | AdversaryLevelId)[];
 }
 
@@ -30,7 +30,7 @@ export function modelToConfig(model: ConfigFormModel): Config {
     spiritNames,
     mapNames,
     boardNames,
-    scenarios,
+    scenarioNames,
     adversaries,
   } = model;
 
@@ -41,7 +41,7 @@ export function modelToConfig(model: ConfigFormModel): Config {
     spiritNames,
     mapNames,
     boardNames,
-    scenarioNames: scenarios,
+    scenarioNames,
     adversaryNamesAndIds: adversaries,
   };
 }

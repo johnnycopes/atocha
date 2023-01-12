@@ -83,10 +83,10 @@
       </ui-card>
 
       <ui-card name="scenarios"
-        [error]="form.get('scenarios')?.errors?.['required']"
+        [error]="form.get('scenarioNames')?.errors?.['required']"
       >
         <core-checkbox-tree
-          formControlName="scenarios"
+          formControlName="scenarioNames"
           [getId]="getId"
           [getChildren]="getChildren"
           [tree]="scenariosTree"

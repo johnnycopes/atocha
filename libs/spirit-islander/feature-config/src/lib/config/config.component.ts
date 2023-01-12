@@ -100,7 +100,7 @@ export class ConfigComponent implements OnInit, OnDestroy {
       spiritNames: this._fbnn.control([]),
       mapNames: this._fbnn.control([], required),
       boardNames: this._fbnn.control([]),
-      scenarios: this._fbnn.control([], required),
+      scenarioNames: this._fbnn.control([], required),
       adversaries: this._fbnn.control([], required),
     },
     {
@@ -174,7 +174,7 @@ export class ConfigComponent implements OnInit, OnDestroy {
               expansionNames,
               target
             ),
-            scenarios: updateModel(
+            scenarioNames: updateModel(
               createScenariosModel,
               scenarioNames,
               expansionNames,
@@ -199,7 +199,7 @@ export class ConfigComponent implements OnInit, OnDestroy {
         spiritNames: this.config.spiritNames,
         mapNames: this.config.mapNames,
         boardNames: this.config.boardNames,
-        scenarios: this.config.scenarioNames,
+        scenarioNames: this.config.scenarioNames,
         adversaries: this.config.adversaryNamesAndIds,
       });
     }

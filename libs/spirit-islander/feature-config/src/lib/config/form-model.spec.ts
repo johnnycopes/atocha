@@ -20,7 +20,7 @@ describe('modelToConfig', () => {
       ],
       mapNames: ['Balanced', 'Thematic'],
       boardNames: ['A', 'C', 'D', 'E', 'F'],
-      scenarios: ['No Scenario', 'Second Wave', 'Despicable Theft'],
+      scenarioNames: ['No Scenario', 'Second Wave', 'Despicable Theft'],
       adversaries: ['No Adversary', 'bp-1', 'bp-2'],
     };
 
