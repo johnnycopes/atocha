@@ -188,16 +188,7 @@ export class ConfigComponent implements OnInit, OnDestroy {
 
     // Initialize form with config data
     if (this.config) {
-      this.form.setValue({
-        expansions: this.config.expansions,
-        players: this.config.players,
-        difficultyRange: this.config.difficultyRange,
-        spiritNames: this.config.spiritNames,
-        mapNames: this.config.mapNames,
-        boardNames: this.config.boardNames,
-        scenarioNames: this.config.scenarioNames,
-        adversaryNamesAndIds: this.config.adversaryNamesAndIds,
-      });
+      this.form.setValue(this.config);
     }
   }
 
