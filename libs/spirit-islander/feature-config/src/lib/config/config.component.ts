@@ -10,7 +10,12 @@ import {
   Output,
   ViewEncapsulation,
 } from '@angular/core';
-import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormsModule,
+  ReactiveFormsModule,
+} from '@angular/forms';
 import { of, Subject, Subscription, withLatestFrom } from 'rxjs';
 
 import {
@@ -53,12 +58,18 @@ import {
   invalidDifficultyRange,
   required,
 } from './validators';
-import { modelToConfig } from './form-model';
+import { ConfigFormModel, modelToConfig } from './form-model';
 
 export interface ConfigDetails {
   config: Config;
   validCombos: Combo[];
 }
+
+type FormMapping<T> = Required<{
+  [Property in keyof T]: FormControl<T[Property]>;
+}>;
+
+type ConfigForm = FormMapping<ConfigFormModel>;
 
 @Component({
   selector: 'app-config',
@@ -89,16 +100,16 @@ export class ConfigComponent implements OnInit, OnDestroy {
   getChildren = <T>({ children }: ConfigTree<T>) => children ?? [];
 
   private _fbnn = this._fb.nonNullable;
-  form = this._fbnn.group(
+  form = this._fbnn.group<ConfigForm>(
     {
-      expansions: this._fbnn.control<string[]>([]),
-      players: this._fbnn.control<number>(0),
-      difficultyRange: this._fbnn.control<number[]>([0, 0]),
-      spirits: this._fbnn.control<string[]>([]),
-      maps: this._fbnn.control<string[]>([], required),
-      boards: this._fbnn.control<string[]>([]),
-      scenarios: this._fbnn.control<string[]>([], required),
-      adversaries: this._fbnn.control<string[]>([], required),
+      expansions: this._fbnn.control([]),
+      players: this._fbnn.control(0),
+      difficultyRange: this._fbnn.control([0, 0]),
+      spirits: this._fbnn.control([]),
+      maps: this._fbnn.control([], required),
+      boards: this._fbnn.control([]),
+      scenarios: this._fbnn.control([], required),
+      adversaries: this._fbnn.control([], required),
     },
     {
       validators: [
