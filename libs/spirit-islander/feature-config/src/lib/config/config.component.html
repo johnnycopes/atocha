@@ -25,7 +25,6 @@
 
       <ui-card name="players"
         [error]="form.errors?.['playersOutnumberTotalBoards']"
-        [errorMessage]="form.errors?.['playersOutnumberTotalBoards']"
       >
         <h3 ui-card-header>
           Players
@@ -35,7 +34,6 @@
 
       <ui-card name="difficulty"
         [error]="form.errors?.['invalidDifficultyRange']"
-        [errorMessage]="form.errors?.['invalidDifficultyRange']"
       >
         <h3 ui-card-header>
           Difficulty
@@ -50,7 +48,6 @@
     >
       <ui-card name="spirits"
         [error]="form.errors?.['playersOutnumberSpirits']"
-        [errorMessage]="form.errors?.['playersOutnumberSpirits']"
       >
         <core-checkbox-tree
           formControlName="spirits"
@@ -63,7 +60,6 @@
 
       <ui-card name="maps"
         [error]="form.get('maps')?.errors?.['required']"
-        [errorMessage]="form.get('maps')?.errors?.['required']"
       >
         <core-checkbox-tree
           formControlName="maps"
@@ -76,7 +72,6 @@
 
       <ui-card name="boards"
         [error]="form.errors?.['playersOutnumberSelectedBoards']"
-        [errorMessage]="form.errors?.['playersOutnumberSelectedBoards']"
       >
         <core-checkbox-tree
           formControlName="boards"
@@ -89,7 +84,6 @@
 
       <ui-card name="scenarios"
         [error]="form.get('scenarios')?.errors?.['required']"
-        [errorMessage]="form.get('scenarios')?.errors?.['required']"
       >
         <core-checkbox-tree
           formControlName="scenarios"
@@ -102,7 +96,6 @@
 
       <ui-card name="adversaries"
         [error]="form.get('adversaries')?.errors?.['required']"
-        [errorMessage]="form.get('adversaries')?.errors?.['required']"
       >
         <core-checkbox-tree
           formControlName="adversaries"
