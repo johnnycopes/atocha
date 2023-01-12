@@ -128,9 +128,7 @@ export class ConfigComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     // Whenever the expansions change at all, update the other fields' data
     this.subscriptions.add(
-      this.expansions$.subscribe((expansions) => {
-        const expansionNames = expansions as ExpansionName[];
-
+      this.expansions$.subscribe((expansionNames) => {
         this.spiritsTree = createSpiritsTree(expansionNames);
         this.mapsTree = createMapsTree(expansionNames);
         this.boardsTree = createBoardsTree(expansionNames);
@@ -144,8 +142,7 @@ export class ConfigComponent implements OnInit, OnDestroy {
     this.subscriptions.add(
       this.expansions$
         .pipe(withLatestFrom(this.expansionsClickSubject.asObservable()))
-        .subscribe(([expansions, target]) => {
-          const expansionNames = expansions as ExpansionName[];
+        .subscribe(([expansionNames, target]) => {
           const {
             spiritNames,
             mapNames,
