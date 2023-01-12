@@ -1,6 +1,7 @@
 .ui-card {
   display: flex;
   flex-direction: column;
+  position: relative;
   background: var(--gray-200);
   border-radius: var(--border-radius);
   box-shadow: var(--downward-box-shadow);

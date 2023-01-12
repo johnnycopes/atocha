@@ -48,6 +48,15 @@
   flex-basis: 50%;
 }
 
+.players,
+.difficulty {
+  .ui-card__error {
+    position: absolute;
+    top: calc(100% - 14px);
+    z-index: 100;
+  }
+}
+
 .spirits [data-level='0'] .core-tree {
   @media screen and (min-width: 768px) {
     flex-basis: 50%;
