@@ -108,4 +108,14 @@ describe('ConfigForm', () => {
     expect(form.valid).toBe(false);
     expect(form.get('adversaryNamesAndIds')?.errors?.['required']).toBeTruthy();
   });
+
+  it('exposes observable of selected expansions', (done) => {
+    const form = new ConfigForm(config);
+    form.expansions$.subscribe((value) => {
+      expect(value).toEqual(['Jagged Earth']);
+      done();
+    });
+
+    form.patchValue({ expansions: ['Jagged Earth'] });
+  });
 });

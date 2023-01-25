@@ -81,7 +81,6 @@ export class ConfigComponent implements OnInit, OnDestroy {
   });
   subscriptions = new Subscription();
   expansionsClickSubject = new Subject<'Expansions' | ExpansionName>();
-  expansions$ = this.form.expansions$;
 
   expansionsTree = createExpansionsTree();
   spiritsTree = createSpiritsTree([]);
@@ -94,7 +93,7 @@ export class ConfigComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     // Whenever the expansions change at all, update the other fields' data
     this.subscriptions.add(
-      this.expansions$.subscribe((expansionNames) => {
+      this.form.expansions$.subscribe((expansionNames) => {
         this.spiritsTree = createSpiritsTree(expansionNames);
         this.mapsTree = createMapsTree(expansionNames);
         this.boardsTree = createBoardsTree(expansionNames);
