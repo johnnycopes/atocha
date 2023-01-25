@@ -11,7 +11,7 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { Subject, Subscription } from 'rxjs';
+import { combineLatest, Subject, Subscription } from 'rxjs';
 
 import { ButtonComponent } from '@atocha/core/ui';
 import {
@@ -91,23 +91,13 @@ export class ConfigComponent implements OnInit, OnDestroy {
   jaggedEarth = false;
 
   ngOnInit(): void {
-    // Whenever the expansions change at all, update the other fields' data
-    this.subscriptions.add(
-      this.form.expansions$.subscribe((expansionNames) => {
-        this.spiritsTree = createSpiritsTree(expansionNames);
-        this.mapsTree = createMapsTree(expansionNames);
-        this.boardsTree = createBoardsTree(expansionNames);
-        this.scenariosTree = createScenariosTree(expansionNames);
-        this.adversariesTree = createAdversariesTree(expansionNames);
-        this.jaggedEarth = expansionNames.includes('Jagged Earth');
-      })
-    );
-
     // Whenever the user changes the expansions, update the other fields' models
     this.subscriptions.add(
-      this.expansionsClickSubject.asObservable().subscribe((target) => {
+      combineLatest([
+        this.form.expansions$,
+        this.expansionsClickSubject.asObservable(),
+      ]).subscribe(([expansions, target]) => {
         const {
-          expansions,
           spiritNames,
           mapNames,
           boardNames,
@@ -142,12 +132,15 @@ export class ConfigComponent implements OnInit, OnDestroy {
             target
           ),
         });
+
+        this._updateFormData(expansions);
       })
     );
 
     // Initialize form with config data
     if (this.config) {
       this.form.setValue(this.config);
+      this._updateFormData(this.config.expansions);
     }
   }
 
@@ -171,5 +164,14 @@ export class ConfigComponent implements OnInit, OnDestroy {
 
   private _getFormModel(): Config {
     return this.form.getRawValue();
+  }
+
+  private _updateFormData(expansions: ExpansionName[]): void {
+    this.spiritsTree = createSpiritsTree(expansions);
+    this.mapsTree = createMapsTree(expansions);
+    this.boardsTree = createBoardsTree(expansions);
+    this.scenariosTree = createScenariosTree(expansions);
+    this.adversariesTree = createAdversariesTree(expansions);
+    this.jaggedEarth = expansions.includes('Jagged Earth');
   }
 }

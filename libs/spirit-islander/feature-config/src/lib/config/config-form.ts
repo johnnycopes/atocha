@@ -64,7 +64,6 @@ export class ConfigForm extends FormGroup<Form<Config>> {
       adversaryNamesAndIds,
     } = this.getRawValue();
 
-    console.log(spiritNames);
     this.patchValue({
       spiritNames: updateModel(
         createSpiritsModel,
