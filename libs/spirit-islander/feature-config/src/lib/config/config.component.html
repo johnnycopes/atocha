@@ -13,14 +13,12 @@
       description="What are you playing with?"
     >
       <ui-card name="expansions">
-        <core-checkbox-tree
-          formControlName="expansions"
-          [getId]="getId"
-          [getChildren]="getChildren"
+        <ui-checkbox-tree
           [tree]="expansionsTree"
-          [template]="checkboxTemplate"
+          [form]="form"
+          controlName="expansions"
           (nodeClick)="onExpansionChange($event)"
-        ></core-checkbox-tree>
+          ></ui-checkbox-tree>
       </ui-card>
 
       <ui-card name="players"
