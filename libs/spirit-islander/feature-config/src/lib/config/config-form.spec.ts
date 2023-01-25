@@ -28,4 +28,84 @@ describe('ConfigForm', () => {
   it('has value that matches the passed-in model', () => {
     expect(new ConfigForm(config).value).toEqual(config);
   });
+
+  it('has error when players outnumber spirits', () => {
+    const form = new ConfigForm(config);
+    form.patchValue({
+      spiritNames: [],
+    });
+
+    expect(form.valid).toBe(false);
+    expect(form.errors?.['playersOutnumberSpirits']).toBeTruthy();
+  });
+
+  it('has error when players outnumber total boards', () => {
+    const form = new ConfigForm(config);
+    form.patchValue({
+      players: 5,
+    });
+
+    expect(form.valid).toBe(false);
+    expect(form.errors?.['playersOutnumberTotalBoards']).toBeTruthy();
+  });
+
+  it('has error when players outnumber selected boards', () => {
+    const form = new ConfigForm(config);
+    form.patchValue({
+      boardNames: [],
+    });
+
+    expect(form.valid).toBe(false);
+    expect(form.errors?.['playersOutnumberSelectedBoards']).toBeTruthy();
+  });
+
+  it('has error with invalid difficulty range', () => {
+    const form = new ConfigForm(config);
+    form.patchValue({
+      difficultyRange: [6, 9],
+    });
+
+    expect(form.valid).toBe(false);
+    expect(form.errors?.['invalidDifficultyRange']).toBeTruthy();
+  });
+
+  it('has error difficulty range is incompatible', () => {
+    const form = new ConfigForm(config);
+    form.patchValue({
+      difficultyRange: [6, 9],
+    });
+
+    expect(form.valid).toBe(false);
+    expect(form.errors?.['invalidDifficultyRange']).toBeTruthy();
+  });
+
+  it('has error when no maps are selected', () => {
+    const form = new ConfigForm(config);
+    form.patchValue({
+      mapNames: [],
+    });
+
+    expect(form.valid).toBe(false);
+    expect(form.get('mapNames')?.errors?.['required']).toBeTruthy();
+  });
+
+  it('has error when no scenarios are selected', () => {
+    const form = new ConfigForm(config);
+    form.patchValue({
+      scenarioNames: [],
+    });
+
+    expect(form.valid).toBe(false);
+    expect(form.get('scenarioNames')?.errors?.['required']).toBeTruthy();
+  });
+
+  it('has error when no adversaries are selected', () => {
+    const form = new ConfigForm(config);
+    form.patchValue({
+      adversaryNamesAndIds: [],
+    });
+
+    expect(form.valid).toBe(false);
+    expect(form.get('adversaryNamesAndIds')?.errors?.['required']).toBeTruthy();
+  });
 });
