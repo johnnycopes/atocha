@@ -59,49 +59,41 @@
       <ui-card name="maps"
         [error]="form.get('mapNames')?.errors?.['required']"
       >
-        <core-checkbox-tree
-          formControlName="mapNames"
-          [getId]="getId"
-          [getChildren]="getChildren"
+        <ui-checkbox-tree
           [tree]="mapsTree"
-          [template]="checkboxTemplate"
-        ></core-checkbox-tree>
+          [form]="form"
+          controlName="mapNames"
+        ></ui-checkbox-tree>
       </ui-card>
 
       <ui-card name="boards"
         [error]="form.errors?.['playersOutnumberSelectedBoards']"
       >
-        <core-checkbox-tree
-          formControlName="boardNames"
-          [getId]="getId"
-          [getChildren]="getChildren"
+        <ui-checkbox-tree
           [tree]="boardsTree"
-          [template]="checkboxTemplate"
-        ></core-checkbox-tree>
+          [form]="form"
+          controlName="boardNames"
+        ></ui-checkbox-tree>
       </ui-card>
 
       <ui-card name="scenarios"
         [error]="form.get('scenarioNames')?.errors?.['required']"
       >
-        <core-checkbox-tree
-          formControlName="scenarioNames"
-          [getId]="getId"
-          [getChildren]="getChildren"
+        <ui-checkbox-tree
           [tree]="scenariosTree"
-          [template]="checkboxTemplate"
-        ></core-checkbox-tree>
+          [form]="form"
+          controlName="scenarioNames"
+        ></ui-checkbox-tree>
       </ui-card>
 
       <ui-card name="adversaries"
         [error]="form.get('adversaryNamesAndIds')?.errors?.['required']"
       >
-        <core-checkbox-tree
-          formControlName="adversaryNamesAndIds"
-          [getId]="getId"
-          [getChildren]="getChildren"
+        <ui-checkbox-tree
           [tree]="adversariesTree"
-          [template]="checkboxTemplate"
-        ></core-checkbox-tree>
+          [form]="form"
+          controlName="adversaryNamesAndIds"
+        ></ui-checkbox-tree>
       </ui-card>
     </ui-card-group>
 
