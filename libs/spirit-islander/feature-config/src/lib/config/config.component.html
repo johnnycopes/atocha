@@ -50,8 +50,9 @@
         [error]="form.errors?.['playersOutnumberSpirits']"
       >
         <ui-checkbox-tree
-          [form]="form"
           [tree]="spiritsTree"
+          [form]="form"
+          controlName="spiritNames"
         ></ui-checkbox-tree>
       </ui-card>
 

@@ -27,8 +27,9 @@ import { ExpansionEmblemComponent } from '../expansion-emblem/expansion-emblem.c
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CheckboxTreeComponent<T> {
-  @Input() form: FormGroup | undefined;
   @Input() tree: ConfigTree<T> | undefined;
+  @Input() form: FormGroup | undefined;
+  @Input() controlName = '';
 
   getId = <T>({ id }: ConfigTree<T>) => id;
   getChildren = <T>({ children }: ConfigTree<T>) => children ?? [];
