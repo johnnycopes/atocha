@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import {
   CheckboxComponent,
@@ -20,12 +20,14 @@ import { ExpansionEmblemComponent } from '../expansion-emblem/expansion-emblem.c
     DifficultyEmblemComponent,
     ExpansionEmblemComponent,
     FormsModule,
+    ReactiveFormsModule,
   ],
   templateUrl: './checkbox-tree.component.html',
   styleUrls: ['./checkbox-tree.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CheckboxTreeComponent<T> {
+  @Input() form: FormGroup | undefined;
   @Input() tree: ConfigTree<T> | undefined;
 
   getId = <T>({ id }: ConfigTree<T>) => id;

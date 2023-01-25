@@ -49,13 +49,10 @@
       <ui-card name="spirits"
         [error]="form.errors?.['playersOutnumberSpirits']"
       >
-        <core-checkbox-tree
-          formControlName="spiritNames"
-          [getId]="getId"
-          [getChildren]="getChildren"
+        <ui-checkbox-tree
+          [form]="form"
           [tree]="spiritsTree"
-          [template]="checkboxTemplate"
-        ></core-checkbox-tree>
+        ></ui-checkbox-tree>
       </ui-card>
 
       <ui-card name="maps"

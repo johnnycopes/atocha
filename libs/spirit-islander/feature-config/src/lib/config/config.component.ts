@@ -39,6 +39,7 @@ import {
   updateModel,
 } from '@atocha/spirit-islander/util';
 import {
+  CheckboxTreeComponent as LocalCheckboxTreeComponent,
   ConfigTree,
   createAdversariesTree,
   createBoardsTree,
@@ -71,6 +72,7 @@ type ConfigForm = Form<Config>;
     CardGroupComponent,
     CheckboxComponent,
     CheckboxTreeComponent,
+    LocalCheckboxTreeComponent,
     CommonModule,
     DifficultyEmblemComponent,
     ExpansionEmblemComponent,

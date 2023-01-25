@@ -1,10 +1,14 @@
-<core-checkbox-tree
-  formControlName="spiritNames"
-  [getId]="getId"
-  [getChildren]="getChildren"
-  [tree]="tree"
-  [template]="checkboxTemplate"
-></core-checkbox-tree>
+<ng-container *ngIf="form"
+  [formGroup]="form"
+>
+  <core-checkbox-tree
+    formControlName="spiritNames"
+    [getId]="getId"
+    [getChildren]="getChildren"
+    [tree]="tree"
+    [template]="checkboxTemplate"
+  ></core-checkbox-tree>
+</ng-container>
 
 <ng-template #checkboxTemplate
   let-item
