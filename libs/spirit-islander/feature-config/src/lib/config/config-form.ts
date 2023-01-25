@@ -1,4 +1,5 @@
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { of } from 'rxjs';
 
 import { Form } from '@atocha/core/ui';
 import { Config } from '@atocha/spirit-islander/util';
@@ -11,6 +12,8 @@ import {
 } from './validators';
 
 export class ConfigForm extends FormGroup<Form<Config>> {
+  readonly expansions$ = this.get('expansions')?.valueChanges ?? of([]);
+
   constructor(
     readonly model: Config,
     readonly fb: FormBuilder = new FormBuilder()

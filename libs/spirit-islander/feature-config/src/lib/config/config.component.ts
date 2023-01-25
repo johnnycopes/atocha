@@ -11,7 +11,7 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { of, Subject, Subscription } from 'rxjs';
+import { Subject, Subscription } from 'rxjs';
 
 import { ButtonComponent } from '@atocha/core/ui';
 import {
@@ -81,7 +81,7 @@ export class ConfigComponent implements OnInit, OnDestroy {
   });
   subscriptions = new Subscription();
   expansionsClickSubject = new Subject<'Expansions' | ExpansionName>();
-  expansions$ = this.form.get('expansions')?.valueChanges ?? of([]);
+  expansions$ = this.form.expansions$;
 
   expansionsTree = createExpansionsTree();
   spiritsTree = createSpiritsTree([]);
