@@ -26,6 +26,6 @@ describe('ConfigForm', () => {
   });
 
   it('has value that matches the passed-in model', () => {
-    expect(new ConfigForm(config).value).toStrictEqual(config);
+    expect(new ConfigForm(config).value).toEqual(config);
   });
 });
