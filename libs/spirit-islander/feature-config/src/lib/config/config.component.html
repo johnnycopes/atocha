@@ -13,14 +13,12 @@
       description="What are you playing with?"
     >
       <ui-card name="expansions">
-        <core-checkbox-tree
-          formControlName="expansions"
-          [getId]="getId"
-          [getChildren]="getChildren"
+        <ui-checkbox-tree
           [tree]="expansionsTree"
-          [template]="checkboxTemplate"
+          [form]="form"
+          controlName="expansions"
           (nodeClick)="onExpansionChange($event)"
-        ></core-checkbox-tree>
+          ></ui-checkbox-tree>
       </ui-card>
 
       <ui-card name="players"
@@ -49,61 +47,51 @@
       <ui-card name="spirits"
         [error]="form.errors?.['playersOutnumberSpirits']"
       >
-        <core-checkbox-tree
-          formControlName="spiritNames"
-          [getId]="getId"
-          [getChildren]="getChildren"
+        <ui-checkbox-tree
           [tree]="spiritsTree"
-          [template]="checkboxTemplate"
-        ></core-checkbox-tree>
+          [form]="form"
+          controlName="spiritNames"
+        ></ui-checkbox-tree>
       </ui-card>
 
       <ui-card name="maps"
         [error]="form.get('mapNames')?.errors?.['required']"
       >
-        <core-checkbox-tree
-          formControlName="mapNames"
-          [getId]="getId"
-          [getChildren]="getChildren"
+        <ui-checkbox-tree
           [tree]="mapsTree"
-          [template]="checkboxTemplate"
-        ></core-checkbox-tree>
+          [form]="form"
+          controlName="mapNames"
+        ></ui-checkbox-tree>
       </ui-card>
 
       <ui-card name="boards"
         [error]="form.errors?.['playersOutnumberSelectedBoards']"
       >
-        <core-checkbox-tree
-          formControlName="boardNames"
-          [getId]="getId"
-          [getChildren]="getChildren"
+        <ui-checkbox-tree
           [tree]="boardsTree"
-          [template]="checkboxTemplate"
-        ></core-checkbox-tree>
+          [form]="form"
+          controlName="boardNames"
+        ></ui-checkbox-tree>
       </ui-card>
 
       <ui-card name="scenarios"
         [error]="form.get('scenarioNames')?.errors?.['required']"
       >
-        <core-checkbox-tree
-          formControlName="scenarioNames"
-          [getId]="getId"
-          [getChildren]="getChildren"
+        <ui-checkbox-tree
           [tree]="scenariosTree"
-          [template]="checkboxTemplate"
-        ></core-checkbox-tree>
+          [form]="form"
+          controlName="scenarioNames"
+        ></ui-checkbox-tree>
       </ui-card>
 
       <ui-card name="adversaries"
         [error]="form.get('adversaryNamesAndIds')?.errors?.['required']"
       >
-        <core-checkbox-tree
-          formControlName="adversaryNamesAndIds"
-          [getId]="getId"
-          [getChildren]="getChildren"
+        <ui-checkbox-tree
           [tree]="adversariesTree"
-          [template]="checkboxTemplate"
-        ></core-checkbox-tree>
+          [form]="form"
+          controlName="adversaryNamesAndIds"
+        ></ui-checkbox-tree>
       </ui-card>
     </ui-card-group>
 
@@ -116,40 +104,3 @@
     </div>
   </form>
 </main>
-
-<ng-template #checkboxTemplate
-  let-item
-  let-level="level"
-  let-checked="checked"
-  let-indeterminate="indeterminate"
-  let-onChange="onChange"
->
-  <core-checkbox ui-card-header
-    *ngIf="level === 0"
-    [indeterminate]="indeterminate"
-    size="normal"
-    [ngModel]="checked"
-    (ngModelChange)="onChange($event, item)"
-  >
-    {{ item.display?.name ?? item.id }}
-  </core-checkbox>
-
-  <core-checkbox class="checkbox"
-    *ngIf="level > 0"
-    [style.margin-left.px]="(level - 1) * 24"
-    [indeterminate]="indeterminate"
-    size="normal"
-    [ngModel]="checked"
-    (ngModelChange)="onChange($event, item)"
-  >
-    {{ item.display?.name ?? item.id }}
-    <ui-difficulty-emblem
-      *ngIf="item.display?.difficulty"
-      [value]="item.display.difficulty"
-    ></ui-difficulty-emblem>
-    <ui-expansion-emblem
-      *ngIf="item.display?.expansion"
-      [value]="item.display.expansion"
-    ></ui-expansion-emblem>
-  </core-checkbox>
-</ng-template>

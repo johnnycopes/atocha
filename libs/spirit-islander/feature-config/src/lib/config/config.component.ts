@@ -13,17 +13,10 @@ import {
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { of, Subject, Subscription } from 'rxjs';
 
-import {
-  ButtonComponent,
-  CheckboxComponent,
-  CheckboxTreeComponent,
-  Form,
-} from '@atocha/core/ui';
+import { ButtonComponent, Form } from '@atocha/core/ui';
 import {
   CardComponent,
   CardGroupComponent,
-  DifficultyEmblemComponent,
-  ExpansionEmblemComponent,
   PageComponent,
 } from '@atocha/spirit-islander/ui';
 import {
@@ -39,14 +32,14 @@ import {
   updateModel,
 } from '@atocha/spirit-islander/util';
 import {
-  ConfigTree,
+  CheckboxTreeComponent,
   createAdversariesTree,
   createBoardsTree,
   createExpansionsTree,
   createMapsTree,
   createScenariosTree,
   createSpiritsTree,
-} from './create-tree';
+} from '@atocha/spirit-islander/ui';
 import {
   playersOutnumberSpirits,
   playersOutnumberTotalBoards,
@@ -69,11 +62,8 @@ type ConfigForm = Form<Config>;
     ButtonComponent,
     CardComponent,
     CardGroupComponent,
-    CheckboxComponent,
     CheckboxTreeComponent,
     CommonModule,
-    DifficultyEmblemComponent,
-    ExpansionEmblemComponent,
     FormsModule,
     PageComponent,
     ReactiveFormsModule,
@@ -86,9 +76,6 @@ type ConfigForm = Form<Config>;
 export class ConfigComponent implements OnInit, OnDestroy {
   @Input() config: Config | undefined;
   @Output() generate = new EventEmitter<ConfigDetails>();
-
-  getId = <T>({ id }: ConfigTree<T>) => id;
-  getChildren = <T>({ children }: ConfigTree<T>) => children ?? [];
 
   private _fbnn = this._fb.nonNullable;
   form = this._fbnn.group<ConfigForm>(
