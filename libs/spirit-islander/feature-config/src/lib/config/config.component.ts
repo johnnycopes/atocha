@@ -46,7 +46,7 @@ import {
   createMapsTree,
   createScenariosTree,
   createSpiritsTree,
-} from './create-tree';
+} from '@atocha/spirit-islander/ui';
 import {
   playersOutnumberSpirits,
   playersOutnumberTotalBoards,
