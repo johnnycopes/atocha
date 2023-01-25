@@ -10,10 +10,10 @@ import {
   Output,
   ViewEncapsulation,
 } from '@angular/core';
-import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { of, Subject, Subscription } from 'rxjs';
 
-import { ButtonComponent, Form } from '@atocha/core/ui';
+import { ButtonComponent } from '@atocha/core/ui';
 import {
   CardComponent,
   CardGroupComponent,
@@ -40,20 +40,12 @@ import {
   createScenariosTree,
   createSpiritsTree,
 } from '@atocha/spirit-islander/ui';
-import {
-  playersOutnumberSpirits,
-  playersOutnumberTotalBoards,
-  playersOutnumberSelectedBoards,
-  invalidDifficultyRange,
-  required,
-} from './validators';
+import { ConfigForm } from './config-form';
 
 export interface ConfigDetails {
   config: Config;
   validCombos: Combo[];
 }
-
-type ConfigForm = Form<Config>;
 
 @Component({
   selector: 'app-config',
@@ -77,27 +69,16 @@ export class ConfigComponent implements OnInit, OnDestroy {
   @Input() config: Config | undefined;
   @Output() generate = new EventEmitter<ConfigDetails>();
 
-  private _fbnn = this._fb.nonNullable;
-  form = this._fbnn.group<ConfigForm>(
-    {
-      expansions: this._fbnn.control([]),
-      players: this._fbnn.control(1),
-      difficultyRange: this._fbnn.control([0, 0]),
-      spiritNames: this._fbnn.control([]),
-      mapNames: this._fbnn.control([], required),
-      boardNames: this._fbnn.control([]),
-      scenarioNames: this._fbnn.control([], required),
-      adversaryNamesAndIds: this._fbnn.control([], required),
-    },
-    {
-      validators: [
-        playersOutnumberSpirits,
-        playersOutnumberTotalBoards,
-        playersOutnumberSelectedBoards,
-        invalidDifficultyRange,
-      ],
-    }
-  );
+  form = new ConfigForm({
+    expansions: [],
+    players: 1,
+    difficultyRange: [0, 0],
+    spiritNames: [],
+    mapNames: [],
+    boardNames: [],
+    scenarioNames: [],
+    adversaryNamesAndIds: [],
+  });
   subscriptions = new Subscription();
   expansionsClickSubject = new Subject<'Expansions' | ExpansionName>();
   expansions$ = this.form.get('expansions')?.valueChanges ?? of([]);
@@ -109,8 +90,6 @@ export class ConfigComponent implements OnInit, OnDestroy {
   scenariosTree = createScenariosTree([]);
   adversariesTree = createAdversariesTree([]);
   jaggedEarth = false;
-
-  constructor(private _fb: FormBuilder) {}
 
   ngOnInit(): void {
     // Whenever the expansions change at all, update the other fields' data
