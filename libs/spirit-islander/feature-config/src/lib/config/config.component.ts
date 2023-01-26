@@ -111,17 +111,13 @@ export class ConfigComponent implements OnInit, OnDestroy {
   }
 
   onSubmit(): void {
-    const config = this._getFormModel();
+    const config = this.form.getRawValue();
     const validCombos = getValidCombos(config);
 
     this.generate.emit({
       config,
       validCombos,
     });
-  }
-
-  private _getFormModel(): Config {
-    return this.form.getRawValue();
   }
 
   private _updateFormData(expansions: ExpansionName[]): void {
