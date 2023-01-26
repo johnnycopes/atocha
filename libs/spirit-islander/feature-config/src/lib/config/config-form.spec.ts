@@ -113,7 +113,7 @@ describe('ConfigForm', () => {
     });
   });
 
-  describe('changes to expansions affect models', () => {
+  describe('expansions changes affect models', () => {
     it('when an expansion is clicked once', () => {
       const form = new ConfigForm(config);
       form.updateModels([], 'Branch & Claw');
