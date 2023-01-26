@@ -85,7 +85,7 @@ export class ConfigComponent implements OnInit, OnDestroy {
   jaggedEarth = false;
 
   ngOnInit(): void {
-    // Whenever the user changes the expansions, update the other fields' models
+    // Whenever the user changes the expansions, update the other fields' models and data
     this.subscriptions.add(
       this.form.expansions$
         .pipe(withLatestFrom(this.expansionsClickSubject.asObservable()))
