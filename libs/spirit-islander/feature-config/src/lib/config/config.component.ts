@@ -22,14 +22,8 @@ import {
 import {
   Combo,
   Config,
-  createAdversariesModel,
-  createBoardsModel,
-  createMapsModel,
-  createScenariosModel,
-  createSpiritsModel,
   ExpansionName,
   getValidCombos,
-  updateModel,
 } from '@atocha/spirit-islander/util';
 import {
   CheckboxTreeComponent,
@@ -96,47 +90,7 @@ export class ConfigComponent implements OnInit, OnDestroy {
       this.form.expansions$
         .pipe(withLatestFrom(this.expansionsClickSubject.asObservable()))
         .subscribe(([expansions, target]) => {
-          const {
-            spiritNames,
-            mapNames,
-            boardNames,
-            scenarioNames,
-            adversaryNamesAndIds,
-          } = this._getFormModel();
-
-          this.form.patchValue({
-            spiritNames: updateModel(
-              createSpiritsModel,
-              spiritNames,
-              expansions,
-              target
-            ),
-            boardNames: updateModel(
-              createBoardsModel,
-              boardNames,
-              expansions,
-              target
-            ),
-            mapNames: updateModel(
-              createMapsModel,
-              mapNames,
-              expansions,
-              target
-            ),
-            scenarioNames: updateModel(
-              createScenariosModel,
-              scenarioNames,
-              expansions,
-              target
-            ),
-            adversaryNamesAndIds: updateModel(
-              createAdversariesModel,
-              adversaryNamesAndIds,
-              expansions,
-              target
-            ),
-          });
-
+          this.form.updateModels(expansions, target);
           this._updateFormData(expansions);
         })
     );
