@@ -10,10 +10,10 @@ import {
   Output,
   ViewEncapsulation,
 } from '@angular/core';
-import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { of, Subject, Subscription } from 'rxjs';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { withLatestFrom, Subject, Subscription } from 'rxjs';
 
-import { ButtonComponent, Form } from '@atocha/core/ui';
+import { ButtonComponent } from '@atocha/core/ui';
 import {
   CardComponent,
   CardGroupComponent,
@@ -22,14 +22,8 @@ import {
 import {
   Combo,
   Config,
-  createAdversariesModel,
-  createBoardsModel,
-  createMapsModel,
-  createScenariosModel,
-  createSpiritsModel,
   ExpansionName,
   getValidCombos,
-  updateModel,
 } from '@atocha/spirit-islander/util';
 import {
   CheckboxTreeComponent,
@@ -40,20 +34,12 @@ import {
   createScenariosTree,
   createSpiritsTree,
 } from '@atocha/spirit-islander/ui';
-import {
-  playersOutnumberSpirits,
-  playersOutnumberTotalBoards,
-  playersOutnumberSelectedBoards,
-  invalidDifficultyRange,
-  required,
-} from './validators';
+import { ConfigForm } from './config-form';
 
 export interface ConfigDetails {
   config: Config;
   validCombos: Combo[];
 }
-
-type ConfigForm = Form<Config>;
 
 @Component({
   selector: 'app-config',
@@ -77,30 +63,18 @@ export class ConfigComponent implements OnInit, OnDestroy {
   @Input() config: Config | undefined;
   @Output() generate = new EventEmitter<ConfigDetails>();
 
-  private _fbnn = this._fb.nonNullable;
-  form = this._fbnn.group<ConfigForm>(
-    {
-      expansions: this._fbnn.control([]),
-      players: this._fbnn.control(1),
-      difficultyRange: this._fbnn.control([0, 0]),
-      spiritNames: this._fbnn.control([]),
-      mapNames: this._fbnn.control([], required),
-      boardNames: this._fbnn.control([]),
-      scenarioNames: this._fbnn.control([], required),
-      adversaryNamesAndIds: this._fbnn.control([], required),
-    },
-    {
-      validators: [
-        playersOutnumberSpirits,
-        playersOutnumberTotalBoards,
-        playersOutnumberSelectedBoards,
-        invalidDifficultyRange,
-      ],
-    }
-  );
+  form = new ConfigForm({
+    expansions: [],
+    players: 1,
+    difficultyRange: [0, 0],
+    spiritNames: [],
+    mapNames: [],
+    boardNames: [],
+    scenarioNames: [],
+    adversaryNamesAndIds: [],
+  });
   subscriptions = new Subscription();
   expansionsClickSubject = new Subject<'Expansions' | ExpansionName>();
-  expansions$ = this.form.get('expansions')?.valueChanges ?? of([]);
 
   expansionsTree = createExpansionsTree();
   spiritsTree = createSpiritsTree([]);
@@ -110,66 +84,21 @@ export class ConfigComponent implements OnInit, OnDestroy {
   adversariesTree = createAdversariesTree([]);
   jaggedEarth = false;
 
-  constructor(private _fb: FormBuilder) {}
-
   ngOnInit(): void {
-    // Whenever the expansions change at all, update the other fields' data
+    // Whenever the user changes the expansions, update the other fields' models and data
     this.subscriptions.add(
-      this.expansions$.subscribe((expansionNames) => {
-        this.spiritsTree = createSpiritsTree(expansionNames);
-        this.mapsTree = createMapsTree(expansionNames);
-        this.boardsTree = createBoardsTree(expansionNames);
-        this.scenariosTree = createScenariosTree(expansionNames);
-        this.adversariesTree = createAdversariesTree(expansionNames);
-        this.jaggedEarth = expansionNames.includes('Jagged Earth');
-      })
-    );
-
-    // Whenever the user changes the expansions, update the other fields' models
-    this.subscriptions.add(
-      this.expansionsClickSubject.asObservable().subscribe((target) => {
-        const {
-          expansions,
-          spiritNames,
-          mapNames,
-          boardNames,
-          scenarioNames,
-          adversaryNamesAndIds,
-        } = this._getFormModel();
-
-        this.form.patchValue({
-          spiritNames: updateModel(
-            createSpiritsModel,
-            spiritNames,
-            expansions,
-            target
-          ),
-          boardNames: updateModel(
-            createBoardsModel,
-            boardNames,
-            expansions,
-            target
-          ),
-          mapNames: updateModel(createMapsModel, mapNames, expansions, target),
-          scenarioNames: updateModel(
-            createScenariosModel,
-            scenarioNames,
-            expansions,
-            target
-          ),
-          adversaryNamesAndIds: updateModel(
-            createAdversariesModel,
-            adversaryNamesAndIds,
-            expansions,
-            target
-          ),
-        });
-      })
+      this.form.expansions$
+        .pipe(withLatestFrom(this.expansionsClickSubject.asObservable()))
+        .subscribe(([expansions, target]) => {
+          this.form.updateModels(expansions, target);
+          this._updateFormData(expansions);
+        })
     );
 
     // Initialize form with config data
     if (this.config) {
       this.form.setValue(this.config);
+      this._updateFormData(this.config.expansions);
     }
   }
 
@@ -182,7 +111,7 @@ export class ConfigComponent implements OnInit, OnDestroy {
   }
 
   onSubmit(): void {
-    const config = this._getFormModel();
+    const config = this.form.getRawValue();
     const validCombos = getValidCombos(config);
 
     this.generate.emit({
@@ -191,7 +120,12 @@ export class ConfigComponent implements OnInit, OnDestroy {
     });
   }
 
-  private _getFormModel(): Config {
-    return this.form.getRawValue();
+  private _updateFormData(expansions: ExpansionName[]): void {
+    this.spiritsTree = createSpiritsTree(expansions);
+    this.mapsTree = createMapsTree(expansions);
+    this.boardsTree = createBoardsTree(expansions);
+    this.scenariosTree = createScenariosTree(expansions);
+    this.adversariesTree = createAdversariesTree(expansions);
+    this.jaggedEarth = expansions.includes('Jagged Earth');
   }
 }
