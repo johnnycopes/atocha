@@ -46,7 +46,11 @@
         <h3 ui-card-header>
           Difficulty
         </h3>
-        <div ui-card-content>{{ form.get('difficultyRange')?.value | json }}</div>
+          <ui-select-range
+            formControlName="difficultyRange"
+            label="difficulty-range"
+            [options]="difficulties"
+          ></ui-select-range>
       </ui-card>
     </ui-card-group>
 
