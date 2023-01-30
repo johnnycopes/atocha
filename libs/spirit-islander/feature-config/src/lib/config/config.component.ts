@@ -24,6 +24,7 @@ import {
   Config,
   ExpansionName,
   getValidCombos,
+  Players,
 } from '@atocha/spirit-islander/util';
 import {
   CheckboxTreeComponent,
@@ -83,6 +84,8 @@ export class ConfigComponent implements OnInit, OnDestroy {
   scenariosTree = createScenariosTree([]);
   adversariesTree = createAdversariesTree([]);
   jaggedEarth = false;
+
+  players: Players[] = [1, 2, 3, 4, 5, 6];
 
   ngOnInit(): void {
     // Whenever the user changes the expansions, update the other fields' models and data

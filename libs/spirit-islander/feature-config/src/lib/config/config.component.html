@@ -27,7 +27,17 @@
         <h3 ui-card-header>
           Players
         </h3>
-        <div ui-card-content>{{ form.get('players')?.value }}</div>
+        <div ui-card-content
+          class="select"
+        >
+          <select formControlName="players">
+            <option *ngFor="let player of players"
+              [ngValue]="player"
+            >
+              {{ player }}
+            </option>
+          </select>
+        </div>
       </ui-card>
 
       <ui-card name="difficulty"
