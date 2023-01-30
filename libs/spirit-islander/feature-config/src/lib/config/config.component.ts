@@ -26,15 +26,15 @@ import {
   getValidCombos,
 } from '@atocha/spirit-islander/util';
 import {
-  CheckboxTreeComponent,
   createAdversariesTree,
   createBoardsTree,
   createExpansionsTree,
   createMapsTree,
   createScenariosTree,
   createSpiritsTree,
-} from '@atocha/spirit-islander/ui';
+} from '../checkbox-tree/create-tree';
 import { ConfigForm } from '../form/config-form';
+import { CheckboxTreeComponent } from '../checkbox-tree/checkbox-tree.component';
 import { SelectDifficultyRangeComponent } from '../select-difficulty-range/select-difficulty-range.component';
 import { SelectPlayersComponent } from '../select-players/select-players.component';
 
