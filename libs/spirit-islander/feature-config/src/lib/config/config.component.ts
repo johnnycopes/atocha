@@ -13,6 +13,7 @@ import {
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { withLatestFrom, Subject, Subscription } from 'rxjs';
 
+import { createArray } from '@atocha/core/util';
 import { ButtonComponent } from '@atocha/core/ui';
 import {
   CardComponent,
@@ -38,7 +39,6 @@ import {
   SelectRangeComponent,
 } from '@atocha/spirit-islander/ui';
 import { ConfigForm } from './config-form';
-import { createArray } from '@atocha/core/util';
 
 export interface ConfigDetails {
   config: Config;
