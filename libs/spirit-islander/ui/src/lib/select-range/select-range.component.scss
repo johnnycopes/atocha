@@ -1,3 +1,18 @@
 :host {
-  display: block;
+  display: flex;
+  align-items: center;
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  margin: 0 16px;
+
+  &:not(:last-of-type) {
+    margin-right: 16px;
+  }
+
+  label {
+    margin-right: 8px;
+  }
 }
