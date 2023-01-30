@@ -57,6 +57,11 @@
   }
 }
 
+app-select-players,
+app-select-difficulty-range {
+  margin: 4px 16px 0;
+}
+
 .spirits [data-level='0'] .core-tree {
   @media screen and (min-width: 768px) {
     flex-basis: 50%;

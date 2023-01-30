@@ -1,0 +1,9 @@
+<ng-container *ngIf="form"
+  [formGroup]="form"
+>
+  <ui-select-range
+    formControlName="difficultyRange"
+    label="difficulty-range"
+    [options]="difficulties"
+  ></ui-select-range>
+</ng-container>

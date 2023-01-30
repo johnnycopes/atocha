@@ -34,7 +34,9 @@ import {
   createScenariosTree,
   createSpiritsTree,
 } from '@atocha/spirit-islander/ui';
-import { ConfigForm } from './config-form';
+import { ConfigForm } from '../form/config-form';
+import { SelectDifficultyRangeComponent } from '../select-difficulty-range/select-difficulty-range.component';
+import { SelectPlayersComponent } from '../select-players/select-players.component';
 
 export interface ConfigDetails {
   config: Config;
@@ -53,6 +55,8 @@ export interface ConfigDetails {
     FormsModule,
     PageComponent,
     ReactiveFormsModule,
+    SelectDifficultyRangeComponent,
+    SelectPlayersComponent,
   ],
   templateUrl: './config.component.html',
   styleUrls: ['./config.component.scss'],

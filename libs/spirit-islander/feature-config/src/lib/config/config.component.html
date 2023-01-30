@@ -27,7 +27,8 @@
         <h3 ui-card-header>
           Players
         </h3>
-        <div ui-card-content>{{ form.get('players')?.value }}</div>
+        <app-select-players [form]="form">
+        </app-select-players>
       </ui-card>
 
       <ui-card name="difficulty"
@@ -36,7 +37,8 @@
         <h3 ui-card-header>
           Difficulty
         </h3>
-        <div ui-card-content>{{ form.get('difficultyRange')?.value | json }}</div>
+        <app-select-difficulty-range [form]="form">
+        </app-select-difficulty-range>
       </ui-card>
     </ui-card-group>
 

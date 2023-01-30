@@ -109,6 +109,19 @@ a:visited {
   }
 }
 
+select {
+  width: 64px;
+  padding: 8px;
+  font-size: 16px;
+  font-family: var(--font);
+  border: 0;
+  border-radius: var(--border-radius);
+
+  @media screen and (min-width: 768px) {
+    font-size: 20px;
+  }
+}
+
 /* Custom scrollbar */
 body::-webkit-scrollbar-track {
   background-color: var(--gray-100);
