@@ -37,11 +37,8 @@
         <h3 ui-card-header>
           Difficulty
         </h3>
-        <ui-select-range
-          formControlName="difficultyRange"
-          label="difficulty-range"
-          [options]="difficulties"
-        ></ui-select-range>
+        <ui-select-difficulty-range [form]="form">
+        </ui-select-difficulty-range>
       </ui-card>
     </ui-card-group>
 

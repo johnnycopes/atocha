@@ -13,7 +13,6 @@ import {
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { withLatestFrom, Subject, Subscription } from 'rxjs';
 
-import { createArray } from '@atocha/core/util';
 import { ButtonComponent } from '@atocha/core/ui';
 import {
   CardComponent,
@@ -23,7 +22,6 @@ import {
 import {
   Combo,
   Config,
-  Difficulty,
   ExpansionName,
   getValidCombos,
 } from '@atocha/spirit-islander/util';
@@ -35,6 +33,7 @@ import {
   createMapsTree,
   createScenariosTree,
   createSpiritsTree,
+  SelectDifficultyRangeComponent,
   SelectPlayersComponent,
   SelectRangeComponent,
 } from '@atocha/spirit-islander/ui';
@@ -57,6 +56,7 @@ export interface ConfigDetails {
     FormsModule,
     PageComponent,
     ReactiveFormsModule,
+    SelectDifficultyRangeComponent,
     SelectPlayersComponent,
     SelectRangeComponent,
   ],
@@ -89,7 +89,6 @@ export class ConfigComponent implements OnInit, OnDestroy {
   scenariosTree = createScenariosTree([]);
   adversariesTree = createAdversariesTree([]);
   jaggedEarth = false;
-  difficulties = createArray(11, 0) as Difficulty[];
 
   ngOnInit(): void {
     // Whenever the user changes the expansions, update the other fields' models and data
