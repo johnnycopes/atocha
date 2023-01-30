@@ -10,8 +10,6 @@ export * from './lib/measurement/measurement.pipe';
 export * from './lib/performance/track-by';
 export * from './lib/sanitization/safe.pipe';
 export * from './lib/search-input/search-input.component';
-export * from './lib/select-difficulty-range/select-difficulty-range.component';
-export * from './lib/select-players/select-players.component';
 export * from './lib/strings/plural.pipe';
 export * from './lib/strings/snake-case.pipe';
 export * from './lib/tree/tree.component';

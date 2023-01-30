@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'core-select-difficulty-range',
+  selector: 'ui-select-difficulty-range',
   standalone: true,
   imports: [CommonModule],
   templateUrl: './select-difficulty-range.component.html',

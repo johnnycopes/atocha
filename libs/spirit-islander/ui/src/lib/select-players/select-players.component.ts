@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'core-select-players',
+  selector: 'ui-select-players',
   standalone: true,
   imports: [CommonModule],
   templateUrl: './select-players.component.html',
