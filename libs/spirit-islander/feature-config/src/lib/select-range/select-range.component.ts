@@ -11,7 +11,7 @@ import { trackBySelf } from '@atocha/core/ui';
 type Range = [number, number];
 
 @Component({
-  selector: 'ui-select-range',
+  selector: 'app-select-range',
   standalone: true,
   imports: [CommonModule, FormsModule],
   templateUrl: './select-range.component.html',
