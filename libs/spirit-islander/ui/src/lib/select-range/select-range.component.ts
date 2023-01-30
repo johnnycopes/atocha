@@ -28,15 +28,27 @@ export class SelectRangeComponent implements ControlValueAccessor {
   @Input() options: number[] = [];
   range: Range = [0, 0];
 
+  private _onChangeFn: (value: Range) => void = () => undefined;
+
   writeValue(value: Range): void {
     this.range = value;
   }
 
   registerOnChange(fn: (value: Range) => void): void {
-    fn;
+    this._onChangeFn = fn;
   }
 
   registerOnTouched(fn: (value: Range) => void): void {
     fn;
+  }
+
+  onMinChange(min: number): void {
+    this.range = [min, this.range[1]];
+    this._onChangeFn(this.range);
+  }
+
+  onMaxChange(max: number): void {
+    this.range = [this.range[0], max];
+    this._onChangeFn(this.range);
   }
 }

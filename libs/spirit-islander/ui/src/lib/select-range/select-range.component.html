@@ -3,7 +3,8 @@
     Min
   </label>
   <select id="min-{{ label }}"
-    [(ngModel)]="range[0]"
+    [ngModel]="range[0]"
+    (ngModelChange)="onMinChange($event)"
   >
     <option *ngFor="let option of options"
       [ngValue]="option"
@@ -18,7 +19,8 @@
     Max
   </label>
   <select id="max-{{ label }}"
-    [(ngModel)]="range[1]"
+    [ngModel]="range[1]"
+    (ngModelChange)="onMaxChange($event)"
   >
     <option *ngFor="let option of options"
       [ngValue]="option"
