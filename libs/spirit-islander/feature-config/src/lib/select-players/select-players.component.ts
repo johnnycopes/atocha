@@ -7,7 +7,7 @@ import { createArray } from '@atocha/core/util';
 import { Players } from '@atocha/spirit-islander/util';
 
 @Component({
-  selector: 'ui-select-players',
+  selector: 'app-select-players',
   standalone: true,
   imports: [CommonModule, FormsModule, ReactiveFormsModule],
   templateUrl: './select-players.component.html',
