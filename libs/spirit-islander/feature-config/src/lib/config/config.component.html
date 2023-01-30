@@ -27,16 +27,8 @@
         <h3 ui-card-header>
           Players
         </h3>
-        <select
-          formControlName="players"
-          class="select-planers"
-        >
-          <option *ngFor="let player of players"
-            [ngValue]="player"
-          >
-            {{ player }}
-          </option>
-        </select>
+        <ui-select-players [form]="form">
+        </ui-select-players>
       </ui-card>
 
       <ui-card name="difficulty"

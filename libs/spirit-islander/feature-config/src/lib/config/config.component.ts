@@ -26,7 +26,6 @@ import {
   Difficulty,
   ExpansionName,
   getValidCombos,
-  Players,
 } from '@atocha/spirit-islander/util';
 import {
   CheckboxTreeComponent,
@@ -36,6 +35,7 @@ import {
   createMapsTree,
   createScenariosTree,
   createSpiritsTree,
+  SelectPlayersComponent,
   SelectRangeComponent,
 } from '@atocha/spirit-islander/ui';
 import { ConfigForm } from './config-form';
@@ -57,6 +57,7 @@ export interface ConfigDetails {
     FormsModule,
     PageComponent,
     ReactiveFormsModule,
+    SelectPlayersComponent,
     SelectRangeComponent,
   ],
   templateUrl: './config.component.html',
@@ -88,7 +89,6 @@ export class ConfigComponent implements OnInit, OnDestroy {
   scenariosTree = createScenariosTree([]);
   adversariesTree = createAdversariesTree([]);
   jaggedEarth = false;
-  players = createArray(6) as Players[];
   difficulties = createArray(11, 0) as Difficulty[];
 
   ngOnInit(): void {
