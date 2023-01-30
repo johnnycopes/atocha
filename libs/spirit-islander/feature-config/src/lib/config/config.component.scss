@@ -57,6 +57,11 @@
   }
 }
 
+.players select,
+.difficulty ui-select-range {
+  margin: 4px 16px 0;
+}
+
 .spirits [data-level='0'] .core-tree {
   @media screen and (min-width: 768px) {
     flex-basis: 50%;
@@ -72,23 +77,5 @@
 
   @media screen and (min-width: 768px) {
     flex-basis: 25%;
-  }
-}
-
-.players [ui-card-content] {
-  padding-top: 0;
-  padding-bottom: 0;
-}
-
-select {
-  width: 64px;
-  padding: 8px;
-  font-size: 16px;
-  font-family: var(--font);
-  border: 0;
-  border-radius: var(--border-radius);
-
-  @media screen and (min-width: 768px) {
-    font-size: 20px;
   }
 }

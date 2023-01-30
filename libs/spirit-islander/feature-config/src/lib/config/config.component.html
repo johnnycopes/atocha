@@ -27,17 +27,16 @@
         <h3 ui-card-header>
           Players
         </h3>
-        <div ui-card-content
-          class="select"
+        <select
+          formControlName="players"
+          class="select-planers"
         >
-          <select formControlName="players">
-            <option *ngFor="let player of players"
-              [ngValue]="player"
-            >
-              {{ player }}
-            </option>
-          </select>
-        </div>
+          <option *ngFor="let player of players"
+            [ngValue]="player"
+          >
+            {{ player }}
+          </option>
+        </select>
       </ui-card>
 
       <ui-card name="difficulty"
@@ -46,11 +45,11 @@
         <h3 ui-card-header>
           Difficulty
         </h3>
-          <ui-select-range
-            formControlName="difficultyRange"
-            label="difficulty-range"
-            [options]="difficulties"
-          ></ui-select-range>
+        <ui-select-range
+          formControlName="difficultyRange"
+          label="difficulty-range"
+          [options]="difficulties"
+        ></ui-select-range>
       </ui-card>
     </ui-card-group>
 
