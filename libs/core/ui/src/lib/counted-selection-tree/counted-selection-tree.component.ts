@@ -19,8 +19,8 @@ import {
   NG_VALUE_ACCESSOR,
 } from '@angular/forms';
 
-import { SelectionTreeComponent } from '../selection-tree/selection-tree.component';
 import { Counter, Counts } from './counter';
+import { SelectionTreeComponent } from '../selection-tree/selection-tree.component';
 
 @Component({
   standalone: true,

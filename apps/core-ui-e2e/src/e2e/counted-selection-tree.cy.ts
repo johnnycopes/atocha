@@ -1,4 +1,4 @@
-describe('CountedCheckboxTreeComponent', () => {
+describe('CountedSelectionTreeComponent', () => {
   let checkboxSelector = '';
   let stories: Record<string, string> = {};
 
