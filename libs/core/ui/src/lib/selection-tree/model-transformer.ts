@@ -1,7 +1,7 @@
 import { reduceRecursively } from '@atocha/core/util';
 
-export type CheckboxState = 'checked' | 'indeterminate';
-export type CheckboxStates = Record<string, CheckboxState>;
+export type SelectionState = 'checked' | 'indeterminate';
+export type SelectionStates = Record<string, SelectionState>;
 
 type IdsMap = Map<
   string,
@@ -34,7 +34,7 @@ export class ModelTransformer<T> {
     this._ids = Array.from(this._idsMap.keys()).reverse();
   }
 
-  toModel(states: CheckboxStates): string[] {
+  toModel(states: SelectionStates): string[] {
     return this._ids.reduce((state, id) => {
       if (
         states[id] === 'checked' &&
@@ -46,7 +46,7 @@ export class ModelTransformer<T> {
     }, [] as string[]);
   }
 
-  toStates(model: string[]): CheckboxStates {
+  toStates(model: string[]): SelectionStates {
     return this._ids.reduce((state, curr) => {
       if (model.includes(curr)) {
         state[curr] = 'checked';
@@ -69,14 +69,14 @@ export class ModelTransformer<T> {
         }
       }
       return state;
-    }, {} as CheckboxStates);
+    }, {} as SelectionStates);
   }
 
   updateStates(
     checked: boolean,
     id: string,
-    states: CheckboxStates
-  ): CheckboxStates {
+    states: SelectionStates
+  ): SelectionStates {
     let updatedStates = { ...states };
     updatedStates = this._updateItemAndDescendantStates({
       id,
@@ -94,8 +94,8 @@ export class ModelTransformer<T> {
   }: {
     id: string;
     checked: boolean;
-    states: CheckboxStates;
-  }): CheckboxStates {
+    states: SelectionStates;
+  }): SelectionStates {
     const itemAndDescendantsIds = reduceRecursively({
       item: id,
       getItems: (id: string) => this._idsMap.get(id)?.childrenIds ?? [],
@@ -116,8 +116,8 @@ export class ModelTransformer<T> {
 
   private _updateAncestorStates(
     id: string,
-    states: CheckboxStates
-  ): CheckboxStates {
+    states: SelectionStates
+  ): SelectionStates {
     const ancestorIds = reduceRecursively({
       item: id,
       getItems: (id) => {
@@ -131,7 +131,7 @@ export class ModelTransformer<T> {
     ancestorIds.forEach((ancestorId) => {
       const ancestorChildrenIds =
         this._idsMap.get(ancestorId)?.childrenIds ?? [];
-      const ancestorChildrenStates: Record<CheckboxState, number> = {
+      const ancestorChildrenStates: Record<SelectionState, number> = {
         checked: 0,
         indeterminate: 0,
       };

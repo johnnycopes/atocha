@@ -20,7 +20,7 @@ import {
 } from '@angular/forms';
 
 import { TreeComponent } from '../tree/tree.component';
-import { CheckboxStates, ModelTransformer } from './model-transformer';
+import { SelectionStates, ModelTransformer } from './model-transformer';
 
 @Component({
   standalone: true,
@@ -50,7 +50,7 @@ export class SelectionTreeComponent<T>
   @Input() template: TemplateRef<unknown> | undefined;
   @Output() nodeClick = new EventEmitter<string>();
   model: string[] = [];
-  states: CheckboxStates = {};
+  states: SelectionStates = {};
   private _transformer = new ModelTransformer<T>(
     {} as T,
     this.getId,
