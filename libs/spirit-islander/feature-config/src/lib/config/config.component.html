@@ -13,12 +13,12 @@
       description="What are you playing with?"
     >
       <ui-card name="expansions">
-        <ui-checkbox-tree
+        <app-checkbox-tree
           [tree]="expansionsTree"
           [form]="form"
           controlName="expansions"
           (nodeClick)="onExpansionChange($event)"
-          ></ui-checkbox-tree>
+          ></app-checkbox-tree>
       </ui-card>
 
       <ui-card name="players"
@@ -49,51 +49,51 @@
       <ui-card name="spirits"
         [error]="form.errors?.['playersOutnumberSpirits']"
       >
-        <ui-checkbox-tree
+        <app-checkbox-tree
           [tree]="spiritsTree"
           [form]="form"
           controlName="spiritNames"
-        ></ui-checkbox-tree>
+        ></app-checkbox-tree>
       </ui-card>
 
       <ui-card name="maps"
         [error]="form.get('mapNames')?.errors?.['required']"
       >
-        <ui-checkbox-tree
+        <app-checkbox-tree
           [tree]="mapsTree"
           [form]="form"
           controlName="mapNames"
-        ></ui-checkbox-tree>
+        ></app-checkbox-tree>
       </ui-card>
 
       <ui-card name="boards"
         [error]="form.errors?.['playersOutnumberSelectedBoards']"
       >
-        <ui-checkbox-tree
+        <app-checkbox-tree
           [tree]="boardsTree"
           [form]="form"
           controlName="boardNames"
-        ></ui-checkbox-tree>
+        ></app-checkbox-tree>
       </ui-card>
 
       <ui-card name="scenarios"
         [error]="form.get('scenarioNames')?.errors?.['required']"
       >
-        <ui-checkbox-tree
+        <app-checkbox-tree
           [tree]="scenariosTree"
           [form]="form"
           controlName="scenarioNames"
-        ></ui-checkbox-tree>
+        ></app-checkbox-tree>
       </ui-card>
 
       <ui-card name="adversaries"
         [error]="form.get('adversaryNamesAndIds')?.errors?.['required']"
       >
-        <ui-checkbox-tree
+        <app-checkbox-tree
           [tree]="adversariesTree"
           [form]="form"
           controlName="adversaryNamesAndIds"
-        ></ui-checkbox-tree>
+        ></app-checkbox-tree>
       </ui-card>
     </ui-card-group>
 

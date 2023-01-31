@@ -12,12 +12,14 @@ import {
   CheckboxComponent,
   CheckboxTreeComponent as CoreCheckboxTreeComponent,
 } from '@atocha/core/ui';
+import {
+  DifficultyEmblemComponent,
+  ExpansionEmblemComponent,
+} from '@atocha/spirit-islander/ui';
 import { ConfigTree } from './create-tree';
-import { DifficultyEmblemComponent } from '../difficulty-emblem/difficulty-emblem.component';
-import { ExpansionEmblemComponent } from '../expansion-emblem/expansion-emblem.component';
 
 @Component({
-  selector: 'ui-checkbox-tree',
+  selector: 'app-checkbox-tree',
   standalone: true,
   imports: [
     CheckboxComponent,

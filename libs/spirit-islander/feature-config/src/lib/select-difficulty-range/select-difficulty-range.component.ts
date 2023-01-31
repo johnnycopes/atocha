@@ -3,8 +3,8 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { createArray } from '@atocha/core/util';
-import { SelectRangeComponent } from '@atocha/spirit-islander/ui';
 import { Difficulty } from '@atocha/spirit-islander/util';
+import { SelectRangeComponent } from '../select-range/select-range.component';
 
 @Component({
   selector: 'app-select-difficulty-range',
