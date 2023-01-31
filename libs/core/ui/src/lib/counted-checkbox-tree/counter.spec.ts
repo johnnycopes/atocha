@@ -6,7 +6,7 @@ import {
   getCounts,
   getId,
   SOME_SELECTED_MODEL,
-} from '../checkbox-tree/mock-data';
+} from '../selection-tree/mock-data';
 
 describe('Counter', () => {
   let counter = new Counter(getId, getChildren, getCounts);
