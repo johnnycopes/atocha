@@ -24,14 +24,14 @@ import { CheckboxStates, ModelTransformer } from './model-transformer';
 
 @Component({
   standalone: true,
-  selector: 'core-checkbox-tree',
+  selector: 'core-selection-tree',
   imports: [CommonModule, FormsModule, TreeComponent],
   templateUrl: './selection-tree.component.html',
   styleUrls: ['./selection-tree.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   host: {
-    class: 'core-checkbox-tree',
+    class: 'core-selection-tree',
   },
   providers: [
     {

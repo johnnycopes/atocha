@@ -1,14 +1,14 @@
 <ng-container *ngIf="form"
   [formGroup]="form"
 >
-  <core-checkbox-tree
+  <core-selection-tree
     [formControlName]="controlName"
     [getId]="getId"
     [getChildren]="getChildren"
     [tree]="tree"
     [template]="checkboxTemplate"
     (nodeClick)="nodeClick.emit($event)"
-  ></core-checkbox-tree>
+  ></core-selection-tree>
 </ng-container>
 
 <ng-template #checkboxTemplate
