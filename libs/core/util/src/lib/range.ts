@@ -1,4 +1,4 @@
-export function createArray({
+export function range({
   start,
   stop,
   step = 1,
