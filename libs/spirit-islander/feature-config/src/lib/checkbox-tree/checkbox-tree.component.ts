@@ -8,10 +8,7 @@ import {
 import { CommonModule } from '@angular/common';
 import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import {
-  CheckboxComponent,
-  SelectionTreeComponent as CoreCheckboxTreeComponent,
-} from '@atocha/core/ui';
+import { CheckboxComponent, SelectionTreeComponent } from '@atocha/core/ui';
 import {
   DifficultyEmblemComponent,
   ExpansionEmblemComponent,
@@ -23,12 +20,12 @@ import { ConfigTree } from './create-tree';
   standalone: true,
   imports: [
     CheckboxComponent,
-    CoreCheckboxTreeComponent,
     CommonModule,
     DifficultyEmblemComponent,
     ExpansionEmblemComponent,
     FormsModule,
     ReactiveFormsModule,
+    SelectionTreeComponent,
   ],
   templateUrl: './checkbox-tree.component.html',
   styleUrls: ['./checkbox-tree.component.scss'],
