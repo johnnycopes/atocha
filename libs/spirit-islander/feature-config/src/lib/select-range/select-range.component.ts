@@ -27,7 +27,7 @@ type Range = [number, number];
 })
 export class SelectRangeComponent implements ControlValueAccessor {
   @Input() label = '';
-  @Input() options: number[] = [];
+  @Input() options: readonly number[] = [];
   range: Range = [0, 0];
   readonly trackByFn = trackBySelf;
 
