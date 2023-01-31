@@ -18,11 +18,11 @@ import {
   SOME_SELECTED_MODEL,
   TestItem,
 } from '../selection-tree/mock-data';
-import { CountedCheckboxTreeComponent } from './counted-selection-tree.component';
+import { CountedSelectionTreeComponent } from './counted-selection-tree.component';
 
 export default {
   title: 'Counted Checkbox Tree',
-  component: CountedCheckboxTreeComponent,
+  component: CountedSelectionTreeComponent,
   decorators: [
     moduleMetadata({
       imports: [FormsModule, CheckboxComponent],
@@ -47,9 +47,9 @@ export default {
     onSelectedChange: { action: 'selectedChange' },
     onTotalChange: { action: 'totalChange' },
   },
-} as Meta<CountedCheckboxTreeComponent<TestItem>>;
+} as Meta<CountedSelectionTreeComponent<TestItem>>;
 
-const Template: Story<CountedCheckboxTreeComponent<TestItem>> = (
+const Template: Story<CountedSelectionTreeComponent<TestItem>> = (
   args: Args
 ) => ({
   props: {
@@ -121,7 +121,7 @@ withCustomStyling.args = createArgs({
   className: 'custom-counted-checkbox-tree',
 });
 
-type Args = Partial<CountedCheckboxTreeComponent<TestItem>> & {
+type Args = Partial<CountedSelectionTreeComponent<TestItem>> & {
   className?: string;
 };
 
