@@ -22,5 +22,5 @@ import { SelectRangeComponent } from '../select-range/select-range.component';
 export class SelectDifficultyRangeComponent {
   @Input() form: FormGroup | undefined;
 
-  difficulties = createArray(11, 0) as Difficulty[];
+  difficulties = createArray({ start: 0, stop: 11 }) as Difficulty[];
 }

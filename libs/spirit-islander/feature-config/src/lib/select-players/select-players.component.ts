@@ -18,5 +18,5 @@ export class SelectPlayersComponent {
   @Input() form: FormGroup | undefined;
 
   readonly trackByFn = trackBySelf;
-  players = createArray(6) as Players[];
+  players = createArray({ start: 1, stop: 6 }) as Players[];
 }
