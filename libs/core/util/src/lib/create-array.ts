@@ -1,9 +1,14 @@
-export function createArray(end: number, start = 1): number[] {
-  const arr = [];
-
-  for (let i = start; i <= end; i++) {
-    arr.push(i);
-  }
-
-  return arr;
+export function createArray({
+  start,
+  stop,
+  step = 1,
+}: {
+  start: number;
+  stop: number;
+  step?: number;
+}): number[] {
+  return Array.from(
+    { length: (stop - start) / step + 1 },
+    (_, i) => start + i * step
+  );
 }
