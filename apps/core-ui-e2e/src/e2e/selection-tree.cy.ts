@@ -1,4 +1,4 @@
-describe('CheckboxTreeComponent', () => {
+describe('SelectionTreeComponent', () => {
   let checkboxSelector = '';
   let inputSelector = '';
   let stories: Record<string, string> = {};
@@ -36,9 +36,9 @@ describe('CheckboxTreeComponent', () => {
     checkboxSelector = '[data-test="core-checkbox"]';
     inputSelector = '[data-test="core-checkbox-input"]';
     stories = {
-      noneSelected: '/iframe.html?id=checkbox-tree--none-selected',
-      someSelected: '/iframe.html?id=checkbox-tree--some-selected',
-      allSelected: '/iframe.html?id=checkbox-tree--all-selected',
+      noneSelected: '/iframe.html?id=selection-tree--none-selected',
+      someSelected: '/iframe.html?id=selection-tree--some-selected',
+      allSelected: '/iframe.html?id=selection-tree--all-selected',
     };
   });
 

@@ -21,7 +21,7 @@ import {
 import { SelectionTreeComponent } from './selection-tree.component';
 
 export default {
-  title: 'Checkbox Tree',
+  title: 'Selection Tree',
   component: SelectionTreeComponent,
   decorators: [
     moduleMetadata({
@@ -103,7 +103,7 @@ allSelected.args = createArgs({
 export const withCustomStyling = Template.bind({});
 withCustomStyling.args = createArgs({
   model: [],
-  className: 'custom-checkbox-tree',
+  className: 'custom-selection-tree',
 });
 
 type Args = Partial<SelectionTreeComponent<TestItem>> & {
