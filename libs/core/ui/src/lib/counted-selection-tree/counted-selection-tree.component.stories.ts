@@ -21,7 +21,7 @@ import {
 import { CountedSelectionTreeComponent } from './counted-selection-tree.component';
 
 export default {
-  title: 'Counted Checkbox Tree',
+  title: 'Counted Selection Tree',
   component: CountedSelectionTreeComponent,
   decorators: [
     moduleMetadata({
@@ -118,7 +118,7 @@ allSelected.args = createArgs({
 export const withCustomStyling = Template.bind({});
 withCustomStyling.args = createArgs({
   model: SOME_SELECTED_MODEL,
-  className: 'custom-counted-checkbox-tree',
+  className: 'custom-counted-selection-tree',
 });
 
 type Args = Partial<CountedSelectionTreeComponent<TestItem>> & {

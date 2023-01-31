@@ -11,9 +11,9 @@ describe('CountedCheckboxTreeComponent', () => {
   beforeEach(() => {
     checkboxSelector = '[data-test="core-checkbox"]';
     stories = {
-      noneSelected: '/iframe.html?id=counted-checkbox-tree--none-selected',
-      someSelected: '/iframe.html?id=counted-checkbox-tree--some-selected',
-      allSelected: '/iframe.html?id=counted-checkbox-tree--all-selected',
+      noneSelected: '/iframe.html?id=counted-selection-tree--none-selected',
+      someSelected: '/iframe.html?id=counted-selection-tree--some-selected',
+      allSelected: '/iframe.html?id=counted-selection-tree--all-selected',
     };
   });
 
