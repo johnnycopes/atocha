@@ -24,14 +24,14 @@ import { Counter, Counts } from './counter';
 
 @Component({
   standalone: true,
-  selector: 'core-counted-checkbox-tree',
+  selector: 'core-counted-selection-tree',
   imports: [CommonModule, FormsModule, SelectionTreeComponent],
-  templateUrl: './counted-checkbox-tree.component.html',
-  styleUrls: ['./counted-checkbox-tree.component.scss'],
+  templateUrl: './counted-selection-tree.component.html',
+  styleUrls: ['./counted-selection-tree.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   host: {
-    class: 'core-counted-checkbox-tree',
+    class: 'core-counted-selection-tree',
   },
   providers: [
     {

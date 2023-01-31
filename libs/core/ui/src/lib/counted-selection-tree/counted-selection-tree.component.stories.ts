@@ -18,7 +18,7 @@ import {
   SOME_SELECTED_MODEL,
   TestItem,
 } from '../selection-tree/mock-data';
-import { CountedCheckboxTreeComponent } from './counted-checkbox-tree.component';
+import { CountedCheckboxTreeComponent } from './counted-selection-tree.component';
 
 export default {
   title: 'Counted Checkbox Tree',
@@ -59,7 +59,7 @@ const Template: Story<CountedCheckboxTreeComponent<TestItem>> = (
     getCounts,
   },
   template: `
-    <core-counted-checkbox-tree
+    <core-counted-selection-tree
       [class]="className"
       [tree]="tree"
       [getId]="getId"
@@ -70,7 +70,7 @@ const Template: Story<CountedCheckboxTreeComponent<TestItem>> = (
       (ngModelChange)="model = $event; onNgModelChange($event)"
       (selectedChange)="onSelectedChange($event)"
       (totalChange)="onTotalChange($event)"
-    ></core-counted-checkbox-tree>
+    ></core-counted-selection-tree>
 
     <ng-template #checkboxTemplate
       let-node
