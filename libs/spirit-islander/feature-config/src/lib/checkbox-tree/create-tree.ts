@@ -107,7 +107,7 @@ function createTree<T, U extends string>({
   getChildren = () => [],
 }: {
   root: string;
-  items: T[];
+  items: readonly T[];
   getId: (item: T) => U;
   getDisplay?: (item: T) => Partial<T>;
   getChildren?: (item: T) => T[];
