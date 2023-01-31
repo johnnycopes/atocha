@@ -2,8 +2,7 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { createArray } from '@atocha/core/util';
-import { Difficulty } from '@atocha/spirit-islander/util';
+import { DIFFICULTIES } from '@atocha/spirit-islander/util';
 import { SelectRangeComponent } from '../select-range/select-range.component';
 
 @Component({
@@ -22,5 +21,5 @@ import { SelectRangeComponent } from '../select-range/select-range.component';
 export class SelectDifficultyRangeComponent {
   @Input() form: FormGroup | undefined;
 
-  difficulties = createArray({ start: 0, stop: 11 }) as Difficulty[];
+  difficulties = DIFFICULTIES;
 }
