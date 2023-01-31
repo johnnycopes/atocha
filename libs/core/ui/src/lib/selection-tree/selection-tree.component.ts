@@ -20,28 +20,28 @@ import {
 } from '@angular/forms';
 
 import { TreeComponent } from '../tree/tree.component';
-import { CheckboxStates, ModelTransformer } from './model-transformer';
+import { SelectionStates, ModelTransformer } from './model-transformer';
 
 @Component({
   standalone: true,
-  selector: 'core-checkbox-tree',
+  selector: 'core-selection-tree',
   imports: [CommonModule, FormsModule, TreeComponent],
-  templateUrl: './checkbox-tree.component.html',
-  styleUrls: ['./checkbox-tree.component.scss'],
+  templateUrl: './selection-tree.component.html',
+  styleUrls: ['./selection-tree.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   host: {
-    class: 'core-checkbox-tree',
+    class: 'core-selection-tree',
   },
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => CheckboxTreeComponent),
+      useExisting: forwardRef(() => SelectionTreeComponent),
       multi: true,
     },
   ],
 })
-export class CheckboxTreeComponent<T>
+export class SelectionTreeComponent<T>
   implements OnChanges, ControlValueAccessor
 {
   @Input() tree: T | undefined;
@@ -50,7 +50,7 @@ export class CheckboxTreeComponent<T>
   @Input() template: TemplateRef<unknown> | undefined;
   @Output() nodeClick = new EventEmitter<string>();
   model: string[] = [];
-  states: CheckboxStates = {};
+  states: SelectionStates = {};
   private _transformer = new ModelTransformer<T>(
     {} as T,
     this.getId,

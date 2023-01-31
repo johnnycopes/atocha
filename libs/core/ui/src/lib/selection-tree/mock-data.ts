@@ -1,4 +1,4 @@
-import { CheckboxStates } from './model-transformer';
+import { SelectionStates } from './model-transformer';
 
 export interface TestItem {
   id: string;
@@ -51,7 +51,7 @@ export const SMALL_AFRICA: TestItem = {
   ],
 };
 
-export const SOME_SELECTED_STATES: CheckboxStates = {
+export const SOME_SELECTED_STATES: SelectionStates = {
   Africa: 'indeterminate',
   Morocco: 'indeterminate',
   'Southern Africa': 'indeterminate',
@@ -62,7 +62,7 @@ export const SOME_SELECTED_STATES: CheckboxStates = {
 
 export const SOME_SELECTED_MODEL = ['Swaziland', 'Fes'];
 
-export const ALL_SELECTED_STATES: CheckboxStates = {
+export const ALL_SELECTED_STATES: SelectionStates = {
   Africa: 'checked',
   'Southern Africa': 'checked',
   Swaziland: 'checked',
