@@ -19,7 +19,7 @@ import {
   NG_VALUE_ACCESSOR,
 } from '@angular/forms';
 
-import { CheckboxTreeComponent } from '../checkbox-tree/checkbox-tree.component';
+import { CheckboxTreeComponent } from '../selection-tree/selection-tree.component';
 import { Counter, Counts } from './counter';
 
 @Component({

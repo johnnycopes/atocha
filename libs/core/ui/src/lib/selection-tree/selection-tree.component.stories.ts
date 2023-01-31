@@ -18,7 +18,7 @@ import {
   SOME_SELECTED_MODEL,
   TestItem,
 } from './mock-data';
-import { CheckboxTreeComponent } from './checkbox-tree.component';
+import { CheckboxTreeComponent } from './selection-tree.component';
 
 export default {
   title: 'Checkbox Tree',

@@ -26,8 +26,8 @@ import { CheckboxStates, ModelTransformer } from './model-transformer';
   standalone: true,
   selector: 'core-checkbox-tree',
   imports: [CommonModule, FormsModule, TreeComponent],
-  templateUrl: './checkbox-tree.component.html',
-  styleUrls: ['./checkbox-tree.component.scss'],
+  templateUrl: './selection-tree.component.html',
+  styleUrls: ['./selection-tree.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   host: {
