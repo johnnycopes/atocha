@@ -1,6 +1,6 @@
 import { ADVERSARIES } from '../data/adversaries';
 import { BOARDS } from '../data/boards';
-import { EXPANSIONS } from '../data/expansions';
+import { EXPANSIONS } from '../types/game/expansions';
 import { MAPS } from '../data/maps';
 import { SCENARIOS } from '../data/scenarios';
 import { SPIRITS } from '../data/spirits';
@@ -15,7 +15,7 @@ import { getValidCombos } from './get-valid-combos';
 describe('createGameSetup', () => {
   it('returns a randomly-generated game setup', () => {
     const mockConfig: Config = {
-      expansions: EXPANSIONS,
+      expansions: [...EXPANSIONS],
       players: 4,
       difficultyRange: [5, 8],
       spiritNames: SPIRITS.map((spirit) => spirit.name),

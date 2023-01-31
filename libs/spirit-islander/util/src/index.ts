@@ -1,7 +1,6 @@
 // Data
 export * from './lib/data/adversaries';
 export * from './lib/data/boards';
-export * from './lib/data/expansions';
 export * from './lib/data/maps';
 export * from './lib/data/scenarios';
 export * from './lib/data/spirits';

@@ -6,7 +6,7 @@ import type {
 } from '../types/game/adversaries';
 import { ADVERSARIES } from '../data/adversaries';
 import { BOARDS } from '../data/boards';
-import { EXPANSIONS } from '../data/expansions';
+import { EXPANSIONS } from '../types/game/expansions';
 import { MAPS } from '../data/maps';
 import { SCENARIOS } from '../data/scenarios';
 import { SPIRITS } from '../data/spirits';
@@ -14,7 +14,7 @@ import { SPIRITS } from '../data/spirits';
 describe('getValidCombos', () => {
   it('returns possible combinations for lowest difficulty', () => {
     const mockConfig: Config = {
-      expansions: EXPANSIONS,
+      expansions: [...EXPANSIONS],
       players: 1,
       difficultyRange: [0, 0],
       spiritNames: SPIRITS.map((spirit) => spirit.name),
@@ -71,7 +71,7 @@ describe('getValidCombos', () => {
 
   it('returns all possible combinations', () => {
     const mockConfig: Config = {
-      expansions: EXPANSIONS,
+      expansions: [...EXPANSIONS],
       players: 1,
       difficultyRange: [0, 11],
       spiritNames: SPIRITS.map((spirit) => spirit.name),
