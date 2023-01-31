@@ -19,13 +19,13 @@ import {
   NG_VALUE_ACCESSOR,
 } from '@angular/forms';
 
-import { CheckboxTreeComponent } from '../selection-tree/selection-tree.component';
+import { SelectionTreeComponent } from '../selection-tree/selection-tree.component';
 import { Counter, Counts } from './counter';
 
 @Component({
   standalone: true,
   selector: 'core-counted-checkbox-tree',
-  imports: [CommonModule, FormsModule, CheckboxTreeComponent],
+  imports: [CommonModule, FormsModule, SelectionTreeComponent],
   templateUrl: './counted-checkbox-tree.component.html',
   styleUrls: ['./counted-checkbox-tree.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

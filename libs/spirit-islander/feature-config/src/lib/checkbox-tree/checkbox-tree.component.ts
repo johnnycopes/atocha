@@ -10,7 +10,7 @@ import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import {
   CheckboxComponent,
-  CheckboxTreeComponent as CoreCheckboxTreeComponent,
+  SelectionTreeComponent as CoreCheckboxTreeComponent,
 } from '@atocha/core/ui';
 import {
   DifficultyEmblemComponent,

@@ -18,11 +18,11 @@ import {
   SOME_SELECTED_MODEL,
   TestItem,
 } from './mock-data';
-import { CheckboxTreeComponent } from './selection-tree.component';
+import { SelectionTreeComponent } from './selection-tree.component';
 
 export default {
   title: 'Checkbox Tree',
-  component: CheckboxTreeComponent,
+  component: SelectionTreeComponent,
   decorators: [
     moduleMetadata({
       imports: [FormsModule, CheckboxComponent, TreeComponent],
@@ -45,9 +45,9 @@ export default {
     },
     onClick: { action: 'clicked' },
   },
-} as Meta<CheckboxTreeComponent<TestItem>>;
+} as Meta<SelectionTreeComponent<TestItem>>;
 
-const Template: Story<CheckboxTreeComponent<TestItem>> = (args: Args) => ({
+const Template: Story<SelectionTreeComponent<TestItem>> = (args: Args) => ({
   props: {
     ...args,
     getId,
@@ -106,7 +106,7 @@ withCustomStyling.args = createArgs({
   className: 'custom-checkbox-tree',
 });
 
-type Args = Partial<CheckboxTreeComponent<TestItem>> & {
+type Args = Partial<SelectionTreeComponent<TestItem>> & {
   className?: string;
 };
 
