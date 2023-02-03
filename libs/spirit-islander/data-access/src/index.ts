@@ -1,1 +1,1 @@
-export * from './lib/config.service';
+export * from './lib/app-state.service';
