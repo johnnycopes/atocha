@@ -75,7 +75,7 @@ export class AppStateService {
           players: 5,
           difficultyRange: [0, 8],
           spiritNames: createSpiritsModel(expansions),
-          mapNames: createMapsModel(['Horizons']),
+          mapNames: createMapsModel(expansions),
           boardNames: createBoardsModel(expansions),
           scenarioNames: createScenariosModel(expansions),
           adversaryNamesAndIds: createAdversariesModel(expansions),
