@@ -12,7 +12,7 @@ describe('ClickOutsideDirective', () => {
       <div class="zone">
         Clicking outside the target will fire the print function
       </div>
-      <p class="target" (coeClickOutside)="doLogic()">Target</p>
+      <p class="target" (coreClickOutside)="doLogic()">Target</p>
     `,
   })
   class TestComponent {
