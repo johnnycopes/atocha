@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
+import { first, tap } from 'rxjs';
 
+import { LocalStorageService } from '@atocha/core/data-access';
 import { State } from '@atocha/core/util';
 import {
   Combo,
@@ -10,12 +12,11 @@ import {
   createMapsModel,
   createScenariosModel,
   createSpiritsModel,
-  ExpansionName,
+  EXPANSIONS,
   GameSetup,
   getValidCombos,
   Page,
 } from '@atocha/spirit-islander/util';
-import { first } from 'rxjs';
 
 interface AppState {
   page: Page;
@@ -28,23 +29,8 @@ interface AppState {
   providedIn: 'root',
 })
 export class AppStateService {
-  private _expansions: ExpansionName[] = [
-    'Horizons',
-    'Jagged Earth',
-    'Branch & Claw',
-    'Promo Pack 1',
-    'Promo Pack 2',
-  ];
-  private _config: Config = {
-    expansions: this._expansions,
-    players: 5,
-    difficultyRange: [0, 8],
-    spiritNames: createSpiritsModel(this._expansions),
-    mapNames: createMapsModel(['Horizons']),
-    boardNames: createBoardsModel(this._expansions),
-    scenarioNames: createScenariosModel(this._expansions),
-    adversaryNamesAndIds: createAdversariesModel(this._expansions),
-  };
+  private readonly _key = 'CONFIG';
+  private _config: Config = this._getConfig();
   private _state = new State<AppState>({
     page: Page.Config,
     config: this._config,
@@ -52,7 +38,9 @@ export class AppStateService {
     gameSetup: createGameSetup(this._config, getValidCombos(this._config)),
   });
 
-  state$ = this._state.get();
+  state$ = this._state.get().pipe(tap(({ config }) => this._setConfig(config)));
+
+  constructor(private _localStorageService: LocalStorageService) {}
 
   edit(): void {
     this._state.updateProp('page', Page.Config);
@@ -75,5 +63,26 @@ export class AppStateService {
           createGameSetup(config, validCombos ?? [])
         )
       );
+  }
+
+  private _getConfig(): Config {
+    const config = this._localStorageService.getItem(this._key);
+    const expansions = EXPANSIONS.slice();
+    return config
+      ? JSON.parse(config)
+      : {
+          expansions: expansions,
+          players: 5,
+          difficultyRange: [0, 8],
+          spiritNames: createSpiritsModel(expansions),
+          mapNames: createMapsModel(['Horizons']),
+          boardNames: createBoardsModel(expansions),
+          scenarioNames: createScenariosModel(expansions),
+          adversaryNamesAndIds: createAdversariesModel(expansions),
+        };
+  }
+
+  private _setConfig(config: Config): void {
+    this._localStorageService.setItem(this._key, JSON.stringify(config));
   }
 }
