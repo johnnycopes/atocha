@@ -1,8 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { first } from 'rxjs';
 
-import { State } from '@atocha/core/util';
 import {
   ConfigComponent,
   ConfigDetails,
@@ -12,27 +10,8 @@ import {
   FooterComponent,
   HeaderComponent,
 } from '@atocha/spirit-islander/feature-shell';
-import {
-  Combo,
-  Config,
-  createAdversariesModel,
-  createBoardsModel,
-  createGameSetup,
-  createMapsModel,
-  createScenariosModel,
-  createSpiritsModel,
-  ExpansionName,
-  GameSetup,
-  getValidCombos,
-  Page,
-} from '@atocha/spirit-islander/util';
-
-interface AppState {
-  page: Page;
-  config: Config;
-  validCombos: Combo[] | undefined;
-  gameSetup: GameSetup | undefined;
-}
+import { Page } from '@atocha/spirit-islander/util';
+import { ConfigService } from '@atocha/spirit-islander/data-access';
 
 @Component({
   standalone: true,
@@ -49,53 +28,20 @@ interface AppState {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
-  _expansions: ExpansionName[] = [
-    'Horizons',
-    'Jagged Earth',
-    'Branch & Claw',
-    'Promo Pack 1',
-    'Promo Pack 2',
-  ];
-  _config: Config = {
-    expansions: this._expansions,
-    players: 5,
-    difficultyRange: [0, 8],
-    spiritNames: createSpiritsModel(this._expansions),
-    mapNames: createMapsModel(['Horizons']),
-    boardNames: createBoardsModel(this._expansions),
-    scenarioNames: createScenariosModel(this._expansions),
-    adversaryNamesAndIds: createAdversariesModel(this._expansions),
-  };
-  _state = new State<AppState>({
-    page: Page.Config,
-    config: this._config,
-    validCombos: undefined,
-    gameSetup: createGameSetup(this._config, getValidCombos(this._config)),
-  });
-
-  vm$ = this._state.get();
+  vm$ = this._configService.state$;
   Page: typeof Page = Page;
 
+  constructor(private _configService: ConfigService) {}
+
   onEdit(): void {
-    this._state.updateProp('page', Page.Config);
+    this._configService.edit();
   }
 
   onGenerate({ config, validCombos }: ConfigDetails): void {
-    this._state.updateProp('config', config);
-    this._state.updateProp('validCombos', validCombos);
-    this._state.updateProp('gameSetup', createGameSetup(config, validCombos));
-    this._state.updateProp('page', Page.GameSetup);
+    this._configService.generate(config, validCombos);
   }
 
   onRegenerate(): void {
-    this._state
-      .get()
-      .pipe(first())
-      .subscribe(({ config, validCombos }) =>
-        this._state.updateProp(
-          'gameSetup',
-          createGameSetup(config, validCombos ?? [])
-        )
-      );
+    this._configService.regenerate();
   }
 }
