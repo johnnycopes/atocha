@@ -27,7 +27,7 @@ interface AppState {
 @Injectable({
   providedIn: 'root',
 })
-export class ConfigService {
+export class AppStateService {
   private _expansions: ExpansionName[] = [
     'Horizons',
     'Jagged Earth',
