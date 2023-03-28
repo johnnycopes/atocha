@@ -19,7 +19,7 @@ const comboAnalyzer = new ComboAnalyzer<
 export function getValidCombos(
   config: Config
 ): [Map, AdversaryLevel, Scenario][] {
-  const { mapNames, scenarioNames, adversaryNamesAndIds } = config;
+  const { mapNames, scenarioNames, adversaryLevelIds } = config;
   const maps = MAPS.filter((map) => mapNames.includes(map.name));
   const scenarios = SCENARIOS.filter((scenario) =>
     scenarioNames.includes(scenario.name)
@@ -27,7 +27,7 @@ export function getValidCombos(
   const adversaries = ADVERSARIES.reduce<AdversaryLevel[]>(
     (levels, adversary) => {
       const adversaryLevels = adversary.levels.filter((level) =>
-        adversaryNamesAndIds.includes(level.id)
+        adversaryLevelIds.includes(level.id)
       );
       levels.push(...adversaryLevels);
       return levels;

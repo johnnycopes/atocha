@@ -78,7 +78,7 @@ export class AppStateService {
           mapNames: createMapsModel(expansions),
           boardNames: createBoardsModel(expansions),
           scenarioNames: createScenariosModel(expansions),
-          adversaryNamesAndIds: createAdversariesModel(expansions),
+          adversaryLevelIds: createAdversariesModel(expansions),
         };
   }
 

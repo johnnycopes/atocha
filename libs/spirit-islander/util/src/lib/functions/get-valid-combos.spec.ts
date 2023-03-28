@@ -18,7 +18,7 @@ describe('getValidCombos', () => {
       mapNames: MAPS.map((map) => map.name),
       boardNames: BOARDS.map((board) => board.name),
       scenarioNames: SCENARIOS.map((scenario) => scenario.name),
-      adversaryNamesAndIds: ADVERSARIES.reduce<AdversaryLevelId[]>(
+      adversaryLevelIds: ADVERSARIES.reduce<AdversaryLevelId[]>(
         (model, adversary) => {
           adversary.levels.forEach((level) => model.push(level.id));
           return model;
@@ -77,7 +77,7 @@ describe('getValidCombos', () => {
       mapNames: MAPS.map((map) => map.name),
       boardNames: BOARDS.map((board) => board.name),
       scenarioNames: SCENARIOS.map((scenario) => scenario.name),
-      adversaryNamesAndIds: ADVERSARIES.reduce((model, adversary) => {
+      adversaryLevelIds: ADVERSARIES.reduce((model, adversary) => {
         adversary.levels.forEach((level) => model.push(level.id));
         return model;
       }, [] as AdversaryLevelId[]),

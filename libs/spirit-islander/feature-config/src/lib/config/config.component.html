@@ -84,12 +84,12 @@
       </ui-card>
 
       <ui-card name="adversaries"
-        [error]="form.get('adversaryNamesAndIds')?.errors?.['required']"
+        [error]="form.get('adversaryLevelIds')?.errors?.['required']"
       >
         <app-checkbox-tree
           [tree]="adversariesTree"
           [form]="form"
-          controlName="adversaryNamesAndIds"
+          controlName="adversaryLevelIds"
         ></app-checkbox-tree>
       </ui-card>
     </ui-card-group>

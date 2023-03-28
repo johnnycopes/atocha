@@ -17,7 +17,7 @@ describe('ConfigForm', () => {
       mapNames: ['Balanced'],
       boardNames: ['A', 'C', 'D'],
       scenarioNames: ['No Scenario', 'Blitz'],
-      adversaryNamesAndIds: ['No Adversary', 'bp-0', 'bp-1', 'bp-2'],
+      adversaryLevelIds: ['No Adversary', 'bp-0', 'bp-1', 'bp-2'],
     };
   });
 
@@ -103,13 +103,11 @@ describe('ConfigForm', () => {
     it('when no adversaries are selected', () => {
       const form = new ConfigForm(config);
       form.patchValue({
-        adversaryNamesAndIds: [],
+        adversaryLevelIds: [],
       });
 
       expect(form.valid).toBe(false);
-      expect(
-        form.get('adversaryNamesAndIds')?.errors?.['required']
-      ).toBeTruthy();
+      expect(form.get('adversaryLevelIds')?.errors?.['required']).toBeTruthy();
     });
   });
 
@@ -123,7 +121,7 @@ describe('ConfigForm', () => {
         mapNames,
         boardNames,
         scenarioNames,
-        adversaryNamesAndIds,
+        adversaryLevelIds,
       } = form.value;
       expect(spiritNames).toEqual([
         'A Spread of Rampant Green',
@@ -132,7 +130,7 @@ describe('ConfigForm', () => {
       expect(mapNames).toEqual(['Balanced']);
       expect(boardNames).toEqual(['A', 'C', 'D']);
       expect(scenarioNames).toEqual(['No Scenario', 'Blitz']);
-      expect(adversaryNamesAndIds).toEqual([
+      expect(adversaryLevelIds).toEqual([
         'No Adversary',
         'bp-0',
         'bp-1',
@@ -150,7 +148,7 @@ describe('ConfigForm', () => {
         mapNames,
         boardNames,
         scenarioNames,
-        adversaryNamesAndIds,
+        adversaryLevelIds,
       } = form.value;
       expect(spiritNames).toEqual([
         'A Spread of Rampant Green',
@@ -168,7 +166,7 @@ describe('ConfigForm', () => {
         'Ward the Shores',
         'Rituals of Destroying Flame',
       ]);
-      expect(adversaryNamesAndIds).toEqual([
+      expect(adversaryLevelIds).toEqual([
         'No Adversary',
         'bp-0',
         'bp-1',
@@ -202,7 +200,7 @@ describe('ConfigForm', () => {
         mapNames,
         boardNames,
         scenarioNames,
-        adversaryNamesAndIds,
+        adversaryLevelIds,
       } = form.value;
       expect(spiritNames).toEqual([
         'A Spread of Rampant Green',
@@ -244,7 +242,7 @@ describe('ConfigForm', () => {
         'Rituals of Destroying Flame',
         'The Great River',
       ]);
-      expect(adversaryNamesAndIds).toEqual([
+      expect(adversaryLevelIds).toEqual([
         'No Adversary',
         'bp-0',
         'bp-1',
@@ -303,7 +301,7 @@ describe('ConfigForm', () => {
         mapNames,
         boardNames,
         scenarioNames,
-        adversaryNamesAndIds,
+        adversaryLevelIds,
       } = form.value;
       expect(spiritNames).toEqual([
         'A Spread of Rampant Green',
@@ -312,7 +310,7 @@ describe('ConfigForm', () => {
       expect(mapNames).toEqual(['Balanced']);
       expect(boardNames).toEqual(['A', 'C', 'D']);
       expect(scenarioNames).toEqual(['No Scenario', 'Blitz']);
-      expect(adversaryNamesAndIds).toEqual([
+      expect(adversaryLevelIds).toEqual([
         'No Adversary',
         'bp-0',
         'bp-1',

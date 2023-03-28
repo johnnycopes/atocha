@@ -19,5 +19,5 @@ export interface Config {
   mapNames: MapName[];
   boardNames: BalancedBoardName[];
   scenarioNames: ScenarioName[];
-  adversaryNamesAndIds: AdversaryLevelId[];
+  adversaryLevelIds: AdversaryLevelId[];
 }

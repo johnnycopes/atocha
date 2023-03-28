@@ -75,7 +75,7 @@ export class ConfigComponent implements OnInit, OnDestroy {
     mapNames: [],
     boardNames: [],
     scenarioNames: [],
-    adversaryNamesAndIds: [],
+    adversaryLevelIds: [],
   });
   subscriptions = new Subscription();
   expansionsClickSubject = new Subject<'Expansions' | ExpansionName>();
