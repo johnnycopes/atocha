@@ -206,8 +206,7 @@ describe('createModel', () => {
   describe('createAdversariesModel', () => {
     it('gets base game adversaries', () => {
       expect(createAdversariesModel()).toStrictEqual([
-        'No Adversary',
-        'Brandenburg-Prussia',
+        'none',
         'bp-0',
         'bp-1',
         'bp-2',
@@ -215,7 +214,6 @@ describe('createModel', () => {
         'bp-4',
         'bp-5',
         'bp-6',
-        'England',
         'en-0',
         'en-1',
         'en-2',
@@ -223,7 +221,6 @@ describe('createModel', () => {
         'en-4',
         'en-5',
         'en-6',
-        'Sweden',
         'sw-0',
         'sw-1',
         'sw-2',
@@ -236,8 +233,7 @@ describe('createModel', () => {
 
     it('gets base game + Branch & Claw adversaries', () => {
       expect(createAdversariesModel(['Branch & Claw'])).toStrictEqual([
-        'No Adversary',
-        'Brandenburg-Prussia',
+        'none',
         'bp-0',
         'bp-1',
         'bp-2',
@@ -245,7 +241,6 @@ describe('createModel', () => {
         'bp-4',
         'bp-5',
         'bp-6',
-        'England',
         'en-0',
         'en-1',
         'en-2',
@@ -253,7 +248,6 @@ describe('createModel', () => {
         'en-4',
         'en-5',
         'en-6',
-        'France',
         'fr-0',
         'fr-1',
         'fr-2',
@@ -261,7 +255,6 @@ describe('createModel', () => {
         'fr-4',
         'fr-5',
         'fr-6',
-        'Sweden',
         'sw-0',
         'sw-1',
         'sw-2',
@@ -274,8 +267,7 @@ describe('createModel', () => {
 
     it('gets base game + Jagged Earth adversaries', () => {
       expect(createAdversariesModel(['Jagged Earth'])).toStrictEqual([
-        'No Adversary',
-        'Brandenburg-Prussia',
+        'none',
         'bp-0',
         'bp-1',
         'bp-2',
@@ -283,7 +275,6 @@ describe('createModel', () => {
         'bp-4',
         'bp-5',
         'bp-6',
-        'England',
         'en-0',
         'en-1',
         'en-2',
@@ -291,7 +282,6 @@ describe('createModel', () => {
         'en-4',
         'en-5',
         'en-6',
-        'Habsburg Monarchy',
         'hm-0',
         'hm-1',
         'hm-2',
@@ -299,7 +289,6 @@ describe('createModel', () => {
         'hm-4',
         'hm-5',
         'hm-6',
-        'Russia',
         'ru-0',
         'ru-1',
         'ru-2',
@@ -307,7 +296,6 @@ describe('createModel', () => {
         'ru-4',
         'ru-5',
         'ru-6',
-        'Sweden',
         'sw-0',
         'sw-1',
         'sw-2',
@@ -320,8 +308,7 @@ describe('createModel', () => {
 
     it('gets base game + Promo Pack 1 adversaries', () => {
       expect(createAdversariesModel(['Promo Pack 1'])).toStrictEqual([
-        'No Adversary',
-        'Brandenburg-Prussia',
+        'none',
         'bp-0',
         'bp-1',
         'bp-2',
@@ -329,7 +316,6 @@ describe('createModel', () => {
         'bp-4',
         'bp-5',
         'bp-6',
-        'England',
         'en-0',
         'en-1',
         'en-2',
@@ -337,7 +323,6 @@ describe('createModel', () => {
         'en-4',
         'en-5',
         'en-6',
-        'Sweden',
         'sw-0',
         'sw-1',
         'sw-2',
@@ -350,8 +335,7 @@ describe('createModel', () => {
 
     it('gets base game + Promo Pack 2 adversaries', () => {
       expect(createAdversariesModel(['Promo Pack 2'])).toStrictEqual([
-        'No Adversary',
-        'Brandenburg-Prussia',
+        'none',
         'bp-0',
         'bp-1',
         'bp-2',
@@ -359,7 +343,6 @@ describe('createModel', () => {
         'bp-4',
         'bp-5',
         'bp-6',
-        'England',
         'en-0',
         'en-1',
         'en-2',
@@ -367,7 +350,6 @@ describe('createModel', () => {
         'en-4',
         'en-5',
         'en-6',
-        'Scotland',
         'sc-0',
         'sc-1',
         'sc-2',
@@ -375,7 +357,6 @@ describe('createModel', () => {
         'sc-4',
         'sc-5',
         'sc-6',
-        'Sweden',
         'sw-0',
         'sw-1',
         'sw-2',

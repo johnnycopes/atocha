@@ -41,13 +41,12 @@ export function createAdversariesModel(
 ): (AdversaryName | AdversaryLevelId)[] {
   return getOptionsByExpansion(ADVERSARIES, expansions).reduce(
     (adversaries, adversary) => {
-      adversaries.push(adversary.name);
       adversary.levels.forEach((level) => {
         adversaries.push(level.id);
       });
       return adversaries;
     },
-    [] as (AdversaryName | AdversaryLevelId)[]
+    ['none'] as AdversaryLevelId[]
   );
 }
 
