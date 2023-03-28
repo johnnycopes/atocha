@@ -3,7 +3,7 @@ import type { Adversary } from '../types/game/adversaries';
 export const ADVERSARIES: Adversary[] = [
   {
     name: 'No Adversary',
-    levels: [],
+    levels: [{ id: 'none', name: 'N/A', difficulty: 0 }],
   },
   {
     name: 'Brandenburg-Prussia',
