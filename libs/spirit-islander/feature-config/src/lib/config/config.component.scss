@@ -72,10 +72,18 @@ app-select-difficulty-range {
   flex-basis: 25%;
 }
 
-.adversaries [data-level='0'] .core-tree {
-  flex-basis: 50%;
+.adversaries {
 
-  @media screen and (min-width: 768px) {
-    flex-basis: 25%;
+  [data-level='0'] .core-tree {
+    flex-basis: 50%;
+
+    @media screen and (min-width: 768px) {
+      flex-basis: 25%;
+    }
+  }
+
+  // Hide the 'N/A' checkbox
+  .core-tree .core-tree:first-of-type [data-level='2'] {
+    display: none;
   }
 }
