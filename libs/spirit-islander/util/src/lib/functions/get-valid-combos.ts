@@ -24,14 +24,16 @@ export function getValidCombos(
   const scenarios = SCENARIOS.filter((scenario) =>
     scenarioNames.includes(scenario.name)
   );
-  const adversaries: AdversaryLevel[] = [];
-
-  ADVERSARIES.forEach((adversary) => {
-    const adversaryLevels = adversary.levels.filter((level) =>
-      adversaryNamesAndIds.includes(level.id)
-    );
-    adversaries.push(...adversaryLevels);
-  });
+  const adversaries = ADVERSARIES.reduce<AdversaryLevel[]>(
+    (levels, adversary) => {
+      const adversaryLevels = adversary.levels.filter((level) =>
+        adversaryNamesAndIds.includes(level.id)
+      );
+      levels.push(...adversaryLevels);
+      return levels;
+    },
+    []
+  );
 
   return comboAnalyzer.getPossibleCombos(
     [maps, adversaries, scenarios],
