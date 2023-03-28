@@ -26,9 +26,6 @@ export function getValidCombos(
   );
   const adversaries: AdversaryLevel[] = [];
 
-  if (adversaryNamesAndIds.includes('No Adversary')) {
-    adversaries.push({ id: 'none', name: 'N/A', difficulty: 0 });
-  }
   ADVERSARIES.forEach((adversary) => {
     const adversaryLevels = adversary.levels.filter((level) =>
       adversaryNamesAndIds.includes(level.id)
