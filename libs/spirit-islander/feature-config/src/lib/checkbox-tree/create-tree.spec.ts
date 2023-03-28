@@ -305,7 +305,10 @@ describe('createTree', () => {
     expect(createAdversariesTree(expansions)).toEqual({
       id: 'Adversaries',
       children: [
-        { id: 'No Adversary' },
+        {
+          id: 'No Adversary',
+          children: [{ id: 'none', display: { name: 'N/A', difficulty: 0 } }],
+        },
         {
           id: 'Brandenburg-Prussia',
           children: [
