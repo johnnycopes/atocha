@@ -19,22 +19,21 @@ const comboAnalyzer = new ComboAnalyzer<
 export function getValidCombos(
   config: Config
 ): [Map, AdversaryLevel, Scenario][] {
-  const { mapNames, scenarioNames, adversaryNamesAndIds } = config;
+  const { mapNames, scenarioNames, adversaryLevelIds } = config;
   const maps = MAPS.filter((map) => mapNames.includes(map.name));
   const scenarios = SCENARIOS.filter((scenario) =>
     scenarioNames.includes(scenario.name)
   );
-  const adversaries: AdversaryLevel[] = [];
-
-  if (adversaryNamesAndIds.includes('No Adversary')) {
-    adversaries.push({ id: 'none', name: 'N/A', difficulty: 0 });
-  }
-  ADVERSARIES.forEach((adversary) => {
-    const adversaryLevels = adversary.levels.filter((level) =>
-      adversaryNamesAndIds.includes(level.id)
-    );
-    adversaries.push(...adversaryLevels);
-  });
+  const adversaries = ADVERSARIES.reduce<AdversaryLevel[]>(
+    (levels, adversary) => {
+      const adversaryLevels = adversary.levels.filter((level) =>
+        adversaryLevelIds.includes(level.id)
+      );
+      levels.push(...adversaryLevels);
+      return levels;
+    },
+    []
+  );
 
   return comboAnalyzer.getPossibleCombos(
     [maps, adversaries, scenarios],

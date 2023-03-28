@@ -36,8 +36,8 @@ export class ConfigForm extends FormGroup<Form<Config>> {
         mapNames: fb.nonNullable.control(model.mapNames, required),
         boardNames: fb.nonNullable.control(model.boardNames),
         scenarioNames: fb.nonNullable.control(model.scenarioNames, required),
-        adversaryNamesAndIds: fb.nonNullable.control(
-          model.adversaryNamesAndIds,
+        adversaryLevelIds: fb.nonNullable.control(
+          model.adversaryLevelIds,
           required
         ),
       }).controls,
@@ -61,7 +61,7 @@ export class ConfigForm extends FormGroup<Form<Config>> {
       boardNames,
       scenarioNames,
       mapNames,
-      adversaryNamesAndIds,
+      adversaryLevelIds,
     } = this.getRawValue();
 
     this.patchValue({
@@ -84,9 +84,9 @@ export class ConfigForm extends FormGroup<Form<Config>> {
         expansions,
         target
       ),
-      adversaryNamesAndIds: updateModel(
+      adversaryLevelIds: updateModel(
         createAdversariesModel,
-        adversaryNamesAndIds,
+        adversaryLevelIds,
         expansions,
         target
       ),

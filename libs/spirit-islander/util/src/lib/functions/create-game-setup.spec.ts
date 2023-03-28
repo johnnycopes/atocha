@@ -5,10 +5,7 @@ import { MAPS } from '../data/maps';
 import { SCENARIOS } from '../data/scenarios';
 import { SPIRITS } from '../data/spirits';
 import type { Config } from '../types/config.interface';
-import type {
-  AdversaryName,
-  AdversaryLevelId,
-} from '../types/game/adversaries';
+import type { AdversaryLevelId } from '../types/game/adversaries';
 import { createGameSetup } from './create-game-setup';
 import { getValidCombos } from './get-valid-combos';
 
@@ -22,11 +19,13 @@ describe('createGameSetup', () => {
       mapNames: MAPS.map((map) => map.name),
       boardNames: BOARDS.map((board) => board.name),
       scenarioNames: SCENARIOS.map((scenario) => scenario.name),
-      adversaryNamesAndIds: ADVERSARIES.reduce((model, adversary) => {
-        model.push(adversary.name);
-        adversary.levels.forEach((level) => model.push(level.id));
-        return model;
-      }, [] as (AdversaryName | AdversaryLevelId)[]),
+      adversaryLevelIds: ADVERSARIES.reduce<AdversaryLevelId[]>(
+        (model, adversary) => {
+          adversary.levels.forEach((level) => model.push(level.id));
+          return model;
+        },
+        []
+      ),
     };
     const { boards, spirits, expansions, difficulty } = createGameSetup(
       mockConfig,
