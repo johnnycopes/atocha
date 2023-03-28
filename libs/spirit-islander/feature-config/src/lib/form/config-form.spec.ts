@@ -17,7 +17,7 @@ describe('ConfigForm', () => {
       mapNames: ['Balanced'],
       boardNames: ['A', 'C', 'D'],
       scenarioNames: ['No Scenario', 'Blitz'],
-      adversaryLevelIds: ['No Adversary', 'bp-0', 'bp-1', 'bp-2'],
+      adversaryLevelIds: ['none', 'bp-0', 'bp-1', 'bp-2'],
     };
   });
 
@@ -130,12 +130,7 @@ describe('ConfigForm', () => {
       expect(mapNames).toEqual(['Balanced']);
       expect(boardNames).toEqual(['A', 'C', 'D']);
       expect(scenarioNames).toEqual(['No Scenario', 'Blitz']);
-      expect(adversaryLevelIds).toEqual([
-        'No Adversary',
-        'bp-0',
-        'bp-1',
-        'bp-2',
-      ]);
+      expect(adversaryLevelIds).toEqual(['none', 'bp-0', 'bp-1', 'bp-2']);
     });
 
     it('when an expansion is clicked twice', () => {
@@ -167,11 +162,10 @@ describe('ConfigForm', () => {
         'Rituals of Destroying Flame',
       ]);
       expect(adversaryLevelIds).toEqual([
-        'No Adversary',
+        'none',
         'bp-0',
         'bp-1',
         'bp-2',
-        'France',
         'fr-0',
         'fr-1',
         'fr-2',
@@ -243,11 +237,10 @@ describe('ConfigForm', () => {
         'The Great River',
       ]);
       expect(adversaryLevelIds).toEqual([
-        'No Adversary',
+        'none',
         'bp-0',
         'bp-1',
         'bp-2',
-        'France',
         'fr-0',
         'fr-1',
         'fr-2',
@@ -255,7 +248,6 @@ describe('ConfigForm', () => {
         'fr-4',
         'fr-5',
         'fr-6',
-        'Habsburg Monarchy',
         'hm-0',
         'hm-1',
         'hm-2',
@@ -263,7 +255,6 @@ describe('ConfigForm', () => {
         'hm-4',
         'hm-5',
         'hm-6',
-        'Russia',
         'ru-0',
         'ru-1',
         'ru-2',
@@ -271,7 +262,6 @@ describe('ConfigForm', () => {
         'ru-4',
         'ru-5',
         'ru-6',
-        'Scotland',
         'sc-0',
         'sc-1',
         'sc-2',
@@ -310,12 +300,7 @@ describe('ConfigForm', () => {
       expect(mapNames).toEqual(['Balanced']);
       expect(boardNames).toEqual(['A', 'C', 'D']);
       expect(scenarioNames).toEqual(['No Scenario', 'Blitz']);
-      expect(adversaryLevelIds).toEqual([
-        'No Adversary',
-        'bp-0',
-        'bp-1',
-        'bp-2',
-      ]);
+      expect(adversaryLevelIds).toEqual(['none', 'bp-0', 'bp-1', 'bp-2']);
     });
   });
 });
