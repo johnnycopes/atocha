@@ -36,15 +36,14 @@ export function createScenariosModel(
 export function createAdversariesModel(
   expansions: ExpansionName[] = []
 ): AdversaryLevelId[] {
-  return getOptionsByExpansion(ADVERSARIES, expansions).reduce(
-    (adversaries, adversary) => {
-      adversary.levels.forEach((level) => {
-        adversaries.push(level.id);
-      });
-      return adversaries;
-    },
-    [] as AdversaryLevelId[]
-  );
+  return getOptionsByExpansion(ADVERSARIES, expansions).reduce<
+    AdversaryLevelId[]
+  >((adversaries, adversary) => {
+    adversary.levels.forEach((level) => {
+      adversaries.push(level.id);
+    });
+    return adversaries;
+  }, []);
 }
 
 function createModel<TName extends string>(
