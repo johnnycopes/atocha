@@ -3,10 +3,7 @@ import { BOARDS } from '../data/boards';
 import { MAPS } from '../data/maps';
 import { SCENARIOS } from '../data/scenarios';
 import { SPIRITS } from '../data/spirits';
-import type {
-  AdversaryLevelId,
-  AdversaryName,
-} from '../types/game/adversaries';
+import type { AdversaryLevelId } from '../types/game/adversaries';
 import type { BalancedBoardName } from '../types/game/board';
 import type { ExpansionName, ExpansionOption } from '../types/game/expansions';
 import type { MapName } from '../types/game/maps';
@@ -38,7 +35,7 @@ export function createScenariosModel(
 
 export function createAdversariesModel(
   expansions: ExpansionName[] = []
-): (AdversaryName | AdversaryLevelId)[] {
+): AdversaryLevelId[] {
   return getOptionsByExpansion(ADVERSARIES, expansions).reduce(
     (adversaries, adversary) => {
       adversary.levels.forEach((level) => {
@@ -46,7 +43,7 @@ export function createAdversariesModel(
       });
       return adversaries;
     },
-    ['none'] as AdversaryLevelId[]
+    [] as AdversaryLevelId[]
   );
 }
 
