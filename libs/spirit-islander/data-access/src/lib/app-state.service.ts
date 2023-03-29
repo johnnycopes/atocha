@@ -15,6 +15,7 @@ import {
   EXPANSIONS,
   GameSetup,
   getValidCombos,
+  migrateConfig,
   Page,
 } from '@atocha/spirit-islander/util';
 
@@ -69,7 +70,7 @@ export class AppStateService {
     const config = this._localStorageService.getItem(this._key);
     const expansions = EXPANSIONS.slice();
     return config
-      ? JSON.parse(config)
+      ? JSON.parse(migrateConfig(config))
       : {
           expansions: expansions,
           players: 5,
