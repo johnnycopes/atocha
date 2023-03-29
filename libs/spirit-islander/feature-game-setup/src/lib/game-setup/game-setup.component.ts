@@ -1,77 +1,53 @@
 import { CommonModule } from '@angular/common';
-import {
-  ChangeDetectionStrategy,
-  Component,
-  EventEmitter,
-  Input,
-  Output,
-  ViewEncapsulation,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
-import { ButtonComponent, PluralPipe } from '@atocha/core/ui';
+import { AppStateService } from '@atocha/spirit-islander/data-access';
 import {
-  BoardEmblemComponent,
-  CardComponent,
-  CardGroupComponent,
-  DifficultyEmblemComponent,
-  ExpansionEmblemComponent,
-  PageComponent,
-  SeparatorComponent,
-} from '@atocha/spirit-islander/ui';
-import {
-  AdversaryName,
-  Difficulty,
+  Config,
+  createGameSetup,
   GameSetup,
-  getAdversaryById,
-  getDifficulty,
+  getValidCombos,
 } from '@atocha/spirit-islander/util';
+import { GameSetupOutputComponent } from '../game-setup-output/game-setup-output.component';
 
 @Component({
   selector: 'app-game-setup',
   standalone: true,
-  imports: [
-    BoardEmblemComponent,
-    ButtonComponent,
-    CardComponent,
-    CardGroupComponent,
-    CommonModule,
-    DifficultyEmblemComponent,
-    ExpansionEmblemComponent,
-    PageComponent,
-    PluralPipe,
-    SeparatorComponent,
-  ],
-  templateUrl: './game-setup.component.html',
-  styleUrls: ['./game-setup.component.scss'],
+  imports: [CommonModule, GameSetupOutputComponent],
+  template: `
+    <app-game-setup-output
+      [setup]="gameSetup"
+      (edit)="onEdit()"
+      (regenerate)="onRegenerate()"
+    ></app-game-setup-output>
+  `,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
 })
 export class GameSetupComponent {
-  private _setup: GameSetup | undefined;
-  @Input()
-  get setup() {
-    return this._setup;
-  }
-  set setup(value) {
-    if (!value) {
-      return;
-    }
-    const { map, expansions, scenario, adversaryLevel } = value;
-    this._setup = value;
-    this.mapDifficulty = getDifficulty(map.difficulty, expansions);
-    this.scenarioDifficulty = getDifficulty(scenario.difficulty, expansions);
-    this.adversaryName = getAdversaryById(adversaryLevel.id);
-    this.adversaryDifficulty = getDifficulty(
-      adversaryLevel.difficulty,
-      expansions
-    );
+  private _mockConfig: Config = {
+    expansions: [],
+    players: 2,
+    difficultyRange: [0, 8],
+    spiritNames: [
+      'A Spread of Rampant Green',
+      'Bringer of Dreams and Nightmares',
+    ],
+    mapNames: ['Balanced'],
+    boardNames: ['A', 'B', 'C'],
+    scenarioNames: ['A Diversity of Spirits', 'Blitz'],
+    adversaryLevelIds: ['none', 'bp-0', 'en-4'],
+  };
+  gameSetup: GameSetup = createGameSetup(
+    this._mockConfig,
+    getValidCombos(this._mockConfig)
+  );
+  constructor(private _appStateService: AppStateService) {}
+
+  onEdit(): void {
+    this._appStateService.edit();
   }
 
-  @Output() edit = new EventEmitter<void>();
-  @Output() regenerate = new EventEmitter<void>();
-
-  mapDifficulty: Difficulty = 0;
-  scenarioDifficulty: Difficulty = 0;
-  adversaryName: AdversaryName = 'No Adversary';
-  adversaryDifficulty: Difficulty = 0;
+  onRegenerate(): void {
+    this._appStateService.regenerate();
+  }
 }
