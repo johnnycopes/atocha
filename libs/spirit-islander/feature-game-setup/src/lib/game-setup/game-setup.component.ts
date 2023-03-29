@@ -1,13 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { first, map } from 'rxjs';
 
-import { AppStateService } from '@atocha/spirit-islander/data-access';
 import {
-  Config,
-  createGameSetup,
-  GameSetup,
-  getValidCombos,
-} from '@atocha/spirit-islander/util';
+  AppStateService,
+  mapParamMapToConfig,
+} from '@atocha/spirit-islander/data-access';
+import { createGameSetup, getValidCombos } from '@atocha/spirit-islander/util';
 import { GameSetupOutputComponent } from '../game-setup-output/game-setup-output.component';
 
 @Component({
@@ -16,6 +16,7 @@ import { GameSetupOutputComponent } from '../game-setup-output/game-setup-output
   imports: [CommonModule, GameSetupOutputComponent],
   template: `
     <app-game-setup-output
+      *ngIf="gameSetup$ | async as gameSetup"
       [setup]="gameSetup"
       (edit)="onEdit()"
       (regenerate)="onRegenerate()"
@@ -24,24 +25,18 @@ import { GameSetupOutputComponent } from '../game-setup-output/game-setup-output
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GameSetupComponent {
-  private _mockConfig: Config = {
-    expansions: [],
-    players: 2,
-    difficultyRange: [0, 8],
-    spiritNames: [
-      'A Spread of Rampant Green',
-      'Bringer of Dreams and Nightmares',
-    ],
-    mapNames: ['Balanced'],
-    boardNames: ['A', 'B', 'C'],
-    scenarioNames: ['A Diversity of Spirits', 'Blitz'],
-    adversaryLevelIds: ['none', 'bp-0', 'en-4'],
-  };
-  gameSetup: GameSetup = createGameSetup(
-    this._mockConfig,
-    getValidCombos(this._mockConfig)
+  gameSetup$ = this._route.queryParamMap.pipe(
+    first(),
+    map((queryParams) => {
+      const config = mapParamMapToConfig(queryParams);
+      return createGameSetup(config, getValidCombos(config));
+    })
   );
-  constructor(private _appStateService: AppStateService) {}
+
+  constructor(
+    private _appStateService: AppStateService,
+    private _route: ActivatedRoute
+  ) {}
 
   onEdit(): void {
     this._appStateService.edit();

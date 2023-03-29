@@ -1,3 +1,5 @@
+import { ParamMap } from '@angular/router';
+
 import { Config } from '@atocha/spirit-islander/util';
 
 type ConfigQueryParams = Required<{
@@ -14,5 +16,18 @@ export function mapConfigToQueryParams(config: Config): ConfigQueryParams {
     boardNames: JSON.stringify(config.boardNames),
     scenarioNames: JSON.stringify(config.scenarioNames),
     adversaryLevelIds: JSON.stringify(config.adversaryLevelIds),
+  };
+}
+
+export function mapParamMapToConfig(params: ParamMap): Config {
+  return {
+    expansions: JSON.parse(params.get('expansions') ?? ''),
+    players: JSON.parse(params.get('players') ?? ''),
+    difficultyRange: JSON.parse(params.get('difficultyRange') ?? ''),
+    spiritNames: JSON.parse(params.get('spiritNames') ?? ''),
+    mapNames: JSON.parse(params.get('mapNames') ?? ''),
+    boardNames: JSON.parse(params.get('boardNames') ?? ''),
+    scenarioNames: JSON.parse(params.get('scenarioNames') ?? ''),
+    adversaryLevelIds: JSON.parse(params.get('adversaryLevelIds') ?? ''),
   };
 }
