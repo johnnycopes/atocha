@@ -1,15 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
-import { AppStateService } from '@atocha/spirit-islander/data-access';
-import { Page } from '@atocha/spirit-islander/util';
 import { ConfigComponent } from '@atocha/spirit-islander/feature-config';
 import { GameSetupComponent } from '@atocha/spirit-islander/feature-game-setup';
 import {
   FooterComponent,
   HeaderComponent,
 } from '@atocha/spirit-islander/feature-shell';
-import { RouterModule } from '@angular/router';
 
 @Component({
   standalone: true,
@@ -26,17 +24,4 @@ import { RouterModule } from '@angular/router';
   styleUrls: ['./app.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AppComponent {
-  vm$ = this._appStateService.state$;
-  Page: typeof Page = Page;
-
-  constructor(private _appStateService: AppStateService) {}
-
-  onEdit(): void {
-    this._appStateService.edit();
-  }
-
-  onRegenerate(): void {
-    this._appStateService.regenerate();
-  }
-}
+export class AppComponent {}
