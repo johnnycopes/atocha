@@ -1,8 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { Router } from '@angular/router';
 
-import { mapConfigToQueryParams } from '@atocha/spirit-islander/data-access';
+import { AppStateService } from '@atocha/spirit-islander/data-access';
 import { Config } from '@atocha/spirit-islander/util';
 import {
   ConfigDetails,
@@ -37,10 +36,9 @@ export class ConfigComponent {
     adversaryLevelIds: ['none', 'bp-0', 'en-4'],
   };
 
-  constructor(private _router: Router) {}
+  constructor(private _appStateService: AppStateService) {}
 
-  async onGenerate({ config }: ConfigDetails): Promise<void> {
-    const queryParams = mapConfigToQueryParams(config);
-    this._router.navigate(['game-setup'], { queryParams });
+  onGenerate({ config, validCombos }: ConfigDetails): void {
+    this._appStateService.generate(config, validCombos);
   }
 }

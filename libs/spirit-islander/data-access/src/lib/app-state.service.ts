@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { first, tap } from 'rxjs';
 
 import { LocalStorageService } from '@atocha/core/data-access';
@@ -18,6 +19,7 @@ import {
   migrateConfig,
   Page,
 } from '@atocha/spirit-islander/util';
+import { mapConfigToQueryParams } from './routing';
 
 interface AppState {
   page: Page;
@@ -42,7 +44,10 @@ export class AppStateService {
 
   state$ = this._state.get().pipe(tap(({ config }) => this._setConfig(config)));
 
-  constructor(private _localStorageService: LocalStorageService) {}
+  constructor(
+    private _localStorageService: LocalStorageService,
+    private _router: Router
+  ) {}
 
   edit(): void {
     this._state.updateProp('page', Page.Config);
@@ -53,6 +58,10 @@ export class AppStateService {
     this._state.updateProp('validCombos', validCombos);
     this._state.updateProp('gameSetup', createGameSetup(config, validCombos));
     this._state.updateProp('page', Page.GameSetup);
+
+    this._router.navigate(['game-setup'], {
+      queryParams: mapConfigToQueryParams(config),
+    });
   }
 
   regenerate(): void {
