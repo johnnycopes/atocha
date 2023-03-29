@@ -12,6 +12,7 @@ import {
   FooterComponent,
   HeaderComponent,
 } from '@atocha/spirit-islander/feature-shell';
+import { RouterModule } from '@angular/router';
 
 @Component({
   standalone: true,
@@ -22,6 +23,7 @@ import {
     FooterComponent,
     GameSetupComponent,
     HeaderComponent,
+    RouterModule,
   ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
