@@ -3,10 +3,7 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { first, map } from 'rxjs';
 
-import {
-  AppStateService,
-  mapParamMapToConfig,
-} from '@atocha/spirit-islander/data-access';
+import { AppStateService } from '@atocha/spirit-islander/data-access';
 import { GameSetupOutputComponent } from '../game-setup-output/game-setup-output.component';
 
 @Component({
@@ -37,7 +34,7 @@ export class GameSetupComponent implements OnInit {
     this._route.queryParamMap
       .pipe(first())
       .subscribe((queryParams) =>
-        this._appStateService.setState(mapParamMapToConfig(queryParams))
+        this._appStateService.processParams(queryParams)
       );
   }
 
@@ -46,6 +43,6 @@ export class GameSetupComponent implements OnInit {
   }
 
   onRegenerate(): void {
-    this._appStateService.createGameSetup();
+    this._appStateService.createNewGameSetup();
   }
 }

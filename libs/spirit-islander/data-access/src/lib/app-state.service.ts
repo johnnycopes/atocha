@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
+import { ParamMap, Router } from '@angular/router';
 import { first, tap } from 'rxjs';
 
 import { LocalStorageService } from '@atocha/core/data-access';
@@ -18,7 +18,7 @@ import {
   getValidCombos,
   migrateConfig,
 } from '@atocha/spirit-islander/util';
-import { mapConfigToQueryParams } from './routing';
+import { mapConfigToQueryParams, mapParamMapToConfig } from './routing';
 
 interface AppState {
   config: Config;
@@ -56,14 +56,17 @@ export class AppStateService {
     this._router.navigate(['config']);
   }
 
-  setState(config: Config): void {
+  processParams(params: ParamMap): void {
+    const config = mapParamMapToConfig(params);
     const validCombos = getValidCombos(config);
+    // TODO: if valid combos doesn't work, throw an error to prevent the UI from loading
+
     this._state.updateProp('config', config);
     this._state.updateProp('validCombos', getValidCombos(config));
     this._state.updateProp('gameSetup', createGameSetup(config, validCombos));
   }
 
-  createGameSetup(): void {
+  createNewGameSetup(): void {
     this._state
       .get()
       .pipe(first())
