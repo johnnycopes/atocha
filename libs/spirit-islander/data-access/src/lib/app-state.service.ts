@@ -50,7 +50,7 @@ export class AppStateService {
   ) {}
 
   edit(): void {
-    this._state.updateProp('page', Page.Config);
+    this._router.navigate(['config']);
   }
 
   generate(config: Config, validCombos: Combo[]): void {
