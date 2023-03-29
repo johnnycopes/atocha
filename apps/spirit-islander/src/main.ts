@@ -32,6 +32,13 @@ const APP_ROUTES: Route[] = [
     redirectTo: 'config',
     pathMatch: 'full',
   },
+  {
+    path: '**',
+    loadComponent: () =>
+      import('@atocha/spirit-islander/feature-shell').then(
+        (m) => m.PageNotFoundComponent
+      ),
+  },
 ];
 
 bootstrapApplication(AppComponent, {
