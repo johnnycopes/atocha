@@ -29,7 +29,7 @@ export class ConfigComponent {
 
   constructor(private _appStateService: AppStateService) {}
 
-  onGenerate({ config, validCombos }: ConfigDetails): void {
-    this._appStateService.generate(config, validCombos);
+  onGenerate({ config }: ConfigDetails): void {
+    this._appStateService.navigateToGameSetup(config);
   }
 }

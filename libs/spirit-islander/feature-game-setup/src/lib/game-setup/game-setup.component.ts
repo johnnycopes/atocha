@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { first, map } from 'rxjs';
 
@@ -7,7 +7,6 @@ import {
   AppStateService,
   mapParamMapToConfig,
 } from '@atocha/spirit-islander/data-access';
-import { createGameSetup, getValidCombos } from '@atocha/spirit-islander/util';
 import { GameSetupOutputComponent } from '../game-setup-output/game-setup-output.component';
 
 @Component({
@@ -24,13 +23,9 @@ import { GameSetupOutputComponent } from '../game-setup-output/game-setup-output
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class GameSetupComponent {
-  gameSetup$ = this._route.queryParamMap.pipe(
-    first(),
-    map((queryParams) => {
-      const config = mapParamMapToConfig(queryParams);
-      return createGameSetup(config, getValidCombos(config));
-    })
+export class GameSetupComponent implements OnInit {
+  gameSetup$ = this._appStateService.state$.pipe(
+    map(({ gameSetup }) => gameSetup)
   );
 
   constructor(
@@ -38,11 +33,19 @@ export class GameSetupComponent {
     private _route: ActivatedRoute
   ) {}
 
+  ngOnInit(): void {
+    this._route.queryParamMap
+      .pipe(first())
+      .subscribe((queryParams) =>
+        this._appStateService.setState(mapParamMapToConfig(queryParams))
+      );
+  }
+
   onEdit(): void {
-    this._appStateService.edit();
+    this._appStateService.navigateToConfig();
   }
 
   onRegenerate(): void {
-    this._appStateService.regenerate();
+    this._appStateService.createGameSetup();
   }
 }

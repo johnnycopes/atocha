@@ -49,22 +49,25 @@ export class AppStateService {
     private _router: Router
   ) {}
 
-  edit(): void {
-    this._router.navigate(['config']);
-  }
-
-  generate(config: Config, validCombos: Combo[]): void {
-    this._state.updateProp('config', config);
-    this._state.updateProp('validCombos', validCombos);
-    this._state.updateProp('gameSetup', createGameSetup(config, validCombos));
-    this._state.updateProp('page', Page.GameSetup);
-
+  navigateToGameSetup(config: Config): void {
     this._router.navigate(['game-setup'], {
       queryParams: mapConfigToQueryParams(config),
     });
   }
 
-  regenerate(): void {
+  navigateToConfig(): void {
+    this._router.navigate(['config']);
+  }
+
+  setState(config: Config): void {
+    const validCombos = getValidCombos(config);
+    this._state.updateProp('config', config);
+    this._state.updateProp('validCombos', getValidCombos(config));
+    this._state.updateProp('gameSetup', createGameSetup(config, validCombos));
+    this._state.updateProp('page', Page.GameSetup);
+  }
+
+  createGameSetup(): void {
     this._state
       .get()
       .pipe(first())
