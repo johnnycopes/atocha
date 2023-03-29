@@ -28,6 +28,13 @@ const APP_ROUTES: Route[] = [
       ),
   },
   {
+    path: 'error',
+    loadComponent: () =>
+      import('@atocha/spirit-islander/feature-shell').then(
+        (m) => m.ErrorComponent
+      ),
+  },
+  {
     path: '',
     redirectTo: 'config',
     pathMatch: 'full',

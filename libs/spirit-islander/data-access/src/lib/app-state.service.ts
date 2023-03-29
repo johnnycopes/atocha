@@ -57,13 +57,19 @@ export class AppStateService {
   }
 
   processParams(params: ParamMap): void {
-    const config = mapParamMapToConfig(params);
-    const validCombos = getValidCombos(config);
-    // TODO: if valid combos doesn't work, throw an error to prevent the UI from loading
+    try {
+      const config = mapParamMapToConfig(params);
+      const validCombos = getValidCombos(config);
 
-    this._state.updateProp('config', config);
-    this._state.updateProp('validCombos', getValidCombos(config));
-    this._state.updateProp('gameSetup', createGameSetup(config, validCombos));
+      this._state.updateProp('config', config);
+      this._state.updateProp('validCombos', getValidCombos(config));
+      this._state.updateProp('gameSetup', createGameSetup(config, validCombos));
+    } catch {
+      this._router.navigate(['error'], {
+        skipLocationChange: true,
+        queryParamsHandling: 'preserve',
+      });
+    }
   }
 
   createNewGameSetup(): void {
