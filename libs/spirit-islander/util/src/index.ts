@@ -9,7 +9,6 @@ export * from './lib/data/spirits';
 export * from './lib/types/combo.interface';
 export * from './lib/types/config.interface';
 export * from './lib/types/game-setup.interface';
-export * from './lib/types/page.enum';
 
 // Game types
 export * from './lib/types/game/adversaries';
