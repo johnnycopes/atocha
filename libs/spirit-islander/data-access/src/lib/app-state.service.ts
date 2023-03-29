@@ -32,7 +32,7 @@ interface AppState {
 export class AppStateService {
   private readonly _oldKey = 'CONFIG_NEW';
   private readonly _key = 'CONFIG';
-  private _config: Config = this._getConfig();
+  private _config: Config = this._getConfig(); // TODO: consider initializing _state in the constructor so this _config doesn't have to be a long-lived class member
   private _state = new State<AppState>({
     config: this._config,
     validCombos: undefined,
