@@ -65,7 +65,7 @@ export class AppStateService {
       this._state.updateProp('validCombos', getValidCombos(config));
       this._state.updateProp('gameSetup', createGameSetup(config, validCombos));
     } catch {
-      this._router.navigate(['error'], {
+      this._router.navigate(['*'], {
         skipLocationChange: true,
         queryParamsHandling: 'preserve',
       });
