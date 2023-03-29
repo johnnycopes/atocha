@@ -6,7 +6,7 @@ import { AppStateService } from '@atocha/spirit-islander/data-access';
 import {
   ConfigDetails,
   ConfigFormComponent,
-} from '../config-form/config-form.component';
+} from './config-form/config-form.component';
 
 @Component({
   standalone: true,
