@@ -23,6 +23,7 @@ export * from './lib/types/game/scenarios';
 export * from './lib/types/game/spirits';
 
 // Functions
+export * from './lib/functions/app-migration';
 export * from './lib/functions/create-game-setup';
 export * from './lib/functions/create-model';
 export * from './lib/functions/get-adversary-by-id';
