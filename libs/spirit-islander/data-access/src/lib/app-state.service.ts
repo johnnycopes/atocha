@@ -30,6 +30,7 @@ interface AppState {
   providedIn: 'root',
 })
 export class AppStateService {
+  private readonly _oldKey = 'CONFIG_NEW';
   private readonly _key = 'CONFIG';
   private _config: Config = this._getConfig();
   private _state = new State<AppState>({
@@ -67,7 +68,13 @@ export class AppStateService {
   }
 
   private _getConfig(): Config {
-    const config = this._localStorageService.getItem(this._key);
+    const oldConfig = this._localStorageService.getItem(this._oldKey);
+    const config = oldConfig || this._localStorageService.getItem(this._key);
+
+    if (oldConfig) {
+      this._localStorageService.removeItem(this._oldKey);
+    }
+
     const expansions = EXPANSIONS.slice();
     return config
       ? JSON.parse(migrateConfig(config))
