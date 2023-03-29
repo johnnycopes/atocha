@@ -25,6 +25,11 @@ const APP_ROUTES: Route[] = [
         (m) => m.GameSetupComponent
       ),
   },
+  {
+    path: '',
+    redirectTo: 'config',
+    pathMatch: 'full',
+  },
 ];
 
 bootstrapApplication(AppComponent, {
