@@ -13,6 +13,7 @@ if (environment.production) {
 const APP_ROUTES: Route[] = [
   {
     path: 'config',
+    title: 'Config | Spirit Islander',
     loadComponent: () =>
       import('@atocha/spirit-islander/feature-config').then(
         (m) => m.ConfigComponent
@@ -20,6 +21,7 @@ const APP_ROUTES: Route[] = [
   },
   {
     path: 'game-setup',
+    title: 'Game Setup | Spirit Islander',
     loadComponent: () =>
       import('@atocha/spirit-islander/feature-game-setup').then(
         (m) => m.GameSetupComponent
