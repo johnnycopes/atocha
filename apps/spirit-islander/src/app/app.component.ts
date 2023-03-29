@@ -3,10 +3,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 import { AppStateService } from '@atocha/spirit-islander/data-access';
 import { Page } from '@atocha/spirit-islander/util';
-import {
-  ConfigComponent,
-  ConfigDetails,
-} from '@atocha/spirit-islander/feature-config';
+import { ConfigComponent } from '@atocha/spirit-islander/feature-config';
 import { GameSetupComponent } from '@atocha/spirit-islander/feature-game-setup';
 import {
   FooterComponent,
@@ -37,10 +34,6 @@ export class AppComponent {
 
   onEdit(): void {
     this._appStateService.edit();
-  }
-
-  onGenerate({ config, validCombos }: ConfigDetails): void {
-    this._appStateService.generate(config, validCombos);
   }
 
   onRegenerate(): void {
