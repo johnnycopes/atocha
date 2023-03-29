@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { first, map } from 'rxjs';
 
 import { AppStateService } from '@atocha/spirit-islander/data-access';
-import { GameSetupOutputComponent } from '../game-setup-output/game-setup-output.component';
+import { GameSetupOutputComponent } from './game-setup-output/game-setup-output.component';
 
 @Component({
   selector: 'app-game-setup',
