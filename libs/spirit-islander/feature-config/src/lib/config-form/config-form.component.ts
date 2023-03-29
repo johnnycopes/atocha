@@ -14,11 +14,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { withLatestFrom, Subject, Subscription } from 'rxjs';
 
 import { ButtonComponent } from '@atocha/core/ui';
-import {
-  CardComponent,
-  CardGroupComponent,
-  PageComponent,
-} from '@atocha/spirit-islander/ui';
+import { CardComponent, CardGroupComponent } from '@atocha/spirit-islander/ui';
 import {
   Combo,
   Config,
@@ -53,7 +49,6 @@ export interface ConfigDetails {
     CheckboxTreeComponent,
     CommonModule,
     FormsModule,
-    PageComponent,
     ReactiveFormsModule,
     SelectDifficultyRangeComponent,
     SelectPlayersComponent,

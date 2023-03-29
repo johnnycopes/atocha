@@ -8,6 +8,7 @@ import {
   FooterComponent,
   HeaderComponent,
 } from '@atocha/spirit-islander/feature-shell';
+import { PageComponent } from '@atocha/spirit-islander/ui';
 
 @Component({
   standalone: true,
@@ -18,6 +19,7 @@ import {
     FooterComponent,
     GameSetupComponent,
     HeaderComponent,
+    PageComponent,
     RouterModule,
   ],
   templateUrl: './app.component.html',

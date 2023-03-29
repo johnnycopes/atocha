@@ -15,7 +15,6 @@ import {
   CardGroupComponent,
   DifficultyEmblemComponent,
   ExpansionEmblemComponent,
-  PageComponent,
   SeparatorComponent,
 } from '@atocha/spirit-islander/ui';
 import {
@@ -37,7 +36,6 @@ import {
     CommonModule,
     DifficultyEmblemComponent,
     ExpansionEmblemComponent,
-    PageComponent,
     PluralPipe,
     SeparatorComponent,
   ],
