@@ -17,12 +17,10 @@ import {
   GameSetup,
   getValidCombos,
   migrateConfig,
-  Page,
 } from '@atocha/spirit-islander/util';
 import { mapConfigToQueryParams } from './routing';
 
 interface AppState {
-  page: Page;
   config: Config;
   validCombos: Combo[] | undefined;
   gameSetup: GameSetup | undefined;
@@ -36,7 +34,6 @@ export class AppStateService {
   private readonly _key = 'CONFIG';
   private _config: Config = this._getConfig();
   private _state = new State<AppState>({
-    page: Page.Config,
     config: this._config,
     validCombos: undefined,
     gameSetup: createGameSetup(this._config, getValidCombos(this._config)),
@@ -64,7 +61,6 @@ export class AppStateService {
     this._state.updateProp('config', config);
     this._state.updateProp('validCombos', getValidCombos(config));
     this._state.updateProp('gameSetup', createGameSetup(config, validCombos));
-    this._state.updateProp('page', Page.GameSetup);
   }
 
   createGameSetup(): void {
