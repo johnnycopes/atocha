@@ -1,0 +1,14 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.error {
+  margin-bottom: 16px;
+}
+
+.message {
+  margin-bottom: 24px;
+}

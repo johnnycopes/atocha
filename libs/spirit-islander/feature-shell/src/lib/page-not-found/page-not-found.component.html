@@ -1,5 +1,17 @@
-<main ui-page>
-  <h1 ui-page-content>
-    Page not found
-  </h1>
+<main ui-page
+  class="page"
+>
+  <ng-container ui-page-content>
+    <h1 class="error">
+      Page not found
+    </h1>
+    <p class="message">
+      Please check the URL and try again.
+    </p>
+    <button core-button
+      (click)="onClick()"
+    >
+      Home
+    </button>
+  </ng-container>
 </main>
