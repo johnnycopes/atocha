@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { ButtonComponent } from '@atocha/core/ui';
-import { AppRoutingService } from '@atocha/spirit-islander/data-access';
+import { AppFacadeService } from '@atocha/spirit-islander/data-access';
 import { PageComponent } from '@atocha/spirit-islander/ui';
 
 @Component({
@@ -14,9 +14,9 @@ import { PageComponent } from '@atocha/spirit-islander/ui';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PageNotFoundComponent {
-  constructor(private _appRoutingService: AppRoutingService) {}
+  constructor(private _appFacadeService: AppFacadeService) {}
 
   async onClick(): Promise<void> {
-    await this._appRoutingService.navigateToHome();
+    await this._appFacadeService.navigateToHome();
   }
 }

@@ -7,7 +7,7 @@ import { mapConfigToQueryParams } from './routing';
 @Injectable({
   providedIn: 'root',
 })
-export class AppRoutingService {
+export class AppFacadeService {
   constructor(private _router: Router) {}
 
   async navigateToHome(): Promise<void> {

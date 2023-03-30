@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { first, map } from 'rxjs';
 
 import {
-  AppRoutingService,
+  AppFacadeService,
   AppStateService,
 } from '@atocha/spirit-islander/data-access';
 import { GameSetupOutputComponent } from './game-setup-output/game-setup-output.component';
@@ -29,8 +29,8 @@ export class GameSetupComponent implements OnInit {
   );
 
   constructor(
+    private _appFacadeService: AppFacadeService,
     private _appStateService: AppStateService,
-    private _appRoutingService: AppRoutingService,
     private _route: ActivatedRoute
   ) {}
 
@@ -43,7 +43,7 @@ export class GameSetupComponent implements OnInit {
   }
 
   onEdit(): void {
-    this._appRoutingService.navigateToConfig();
+    this._appFacadeService.navigateToConfig();
   }
 
   onRegenerate(): void {

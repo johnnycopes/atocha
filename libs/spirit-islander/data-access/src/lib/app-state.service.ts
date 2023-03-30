@@ -18,8 +18,8 @@ import {
   getValidCombos,
   migrateConfig,
 } from '@atocha/spirit-islander/util';
+import { AppFacadeService } from './app-facade.service';
 import { mapParamMapToConfig } from './routing';
-import { AppRoutingService } from './app-routing.service';
 
 interface AppState {
   config: Config;
@@ -43,7 +43,7 @@ export class AppStateService {
   state$ = this._state.get().pipe(tap(({ config }) => this._setConfig(config)));
 
   constructor(
-    private _appRoutingService: AppRoutingService,
+    private _appFacadeService: AppFacadeService,
     private _localStorageService: LocalStorageService
   ) {}
 
@@ -56,7 +56,7 @@ export class AppStateService {
       this._state.updateProp('validCombos', getValidCombos(config));
       this._state.updateProp('gameSetup', createGameSetup(config, validCombos));
     } catch {
-      await this._appRoutingService.navigateToError();
+      await this._appFacadeService.navigateToError();
     }
   }
 

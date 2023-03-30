@@ -3,7 +3,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { first, map } from 'rxjs';
 
 import {
-  AppRoutingService,
+  AppFacadeService,
   AppStateService,
 } from '@atocha/spirit-islander/data-access';
 import {
@@ -32,10 +32,10 @@ export class ConfigComponent {
 
   constructor(
     private _appStateService: AppStateService,
-    private _appRoutingService: AppRoutingService
+    private _appFacadeService: AppFacadeService
   ) {}
 
   onGenerate({ config }: ConfigDetails): void {
-    this._appRoutingService.navigateToGameSetup(config);
+    this._appFacadeService.navigateToGameSetup(config);
   }
 }
