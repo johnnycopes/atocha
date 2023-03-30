@@ -2,10 +2,7 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { first, map } from 'rxjs';
 
-import {
-  AppFacadeService,
-  AppStateService,
-} from '@atocha/spirit-islander/data-access';
+import { AppFacadeService } from '@atocha/spirit-islander/data-access';
 import {
   ConfigDetails,
   ConfigFormComponent,
@@ -25,15 +22,12 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ConfigComponent {
-  config$ = this._appStateService.state$.pipe(
+  config$ = this._appFacadeService.state$.pipe(
     first(),
     map(({ config }) => config)
   );
 
-  constructor(
-    private _appStateService: AppStateService,
-    private _appFacadeService: AppFacadeService
-  ) {}
+  constructor(private _appFacadeService: AppFacadeService) {}
 
   onGenerate({ config }: ConfigDetails): void {
     this._appFacadeService.navigateToGameSetup(config);

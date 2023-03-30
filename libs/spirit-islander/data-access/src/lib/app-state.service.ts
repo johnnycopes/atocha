@@ -18,7 +18,7 @@ import {
   migrateConfig,
 } from '@atocha/spirit-islander/util';
 
-interface AppState {
+export interface AppState {
   config: Config;
   validCombos: Combo[] | undefined;
   gameSetup: GameSetup | undefined;

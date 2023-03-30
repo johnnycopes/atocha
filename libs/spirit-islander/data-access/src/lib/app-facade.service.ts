@@ -9,6 +9,8 @@ import { mapConfigToQueryParams, mapParamMapToConfig } from './routing';
   providedIn: 'root',
 })
 export class AppFacadeService {
+  state$ = this._appStateService.state$;
+
   constructor(
     private _appStateService: AppStateService,
     private _router: Router

@@ -3,10 +3,7 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { first, map } from 'rxjs';
 
-import {
-  AppFacadeService,
-  AppStateService,
-} from '@atocha/spirit-islander/data-access';
+import { AppFacadeService } from '@atocha/spirit-islander/data-access';
 import { GameSetupOutputComponent } from './game-setup-output/game-setup-output.component';
 
 @Component({
@@ -24,13 +21,12 @@ import { GameSetupOutputComponent } from './game-setup-output/game-setup-output.
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GameSetupComponent implements OnInit {
-  gameSetup$ = this._appStateService.state$.pipe(
+  gameSetup$ = this._appFacadeService.state$.pipe(
     map(({ gameSetup }) => gameSetup)
   );
 
   constructor(
     private _appFacadeService: AppFacadeService,
-    private _appStateService: AppStateService,
     private _route: ActivatedRoute
   ) {}
 
