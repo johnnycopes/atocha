@@ -1,10 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
 
 import { ButtonComponent } from '@atocha/core/ui';
+import { AppStateService } from '@atocha/spirit-islander/data-access';
 import { PageComponent } from '@atocha/spirit-islander/ui';
-import { Route } from '@atocha/spirit-islander/util';
 
 @Component({
   selector: 'app-page-not-found',
@@ -15,9 +14,9 @@ import { Route } from '@atocha/spirit-islander/util';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PageNotFoundComponent {
-  constructor(private _router: Router) {}
+  constructor(private _appStateService: AppStateService) {}
 
   async onClick(): Promise<void> {
-    await this._router.navigate([Route.Home]);
+    await this._appStateService.navigateToHome();
   }
 }

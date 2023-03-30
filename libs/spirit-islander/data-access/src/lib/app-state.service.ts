@@ -47,6 +47,10 @@ export class AppStateService {
     private _router: Router
   ) {}
 
+  async navigateToHome(): Promise<void> {
+    await this._router.navigate([Route.Home]);
+  }
+
   async navigateToGameSetup(config: Config): Promise<void> {
     await this._router.navigate([Route.GameSetup], {
       queryParams: mapConfigToQueryParams(config),
