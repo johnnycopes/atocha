@@ -3,12 +3,11 @@ import { CommonModule } from '@angular/common';
 
 import { ButtonComponent } from '@atocha/core/ui';
 import { AppFacadeService } from '@atocha/spirit-islander/data-access';
-import { PageComponent } from '@atocha/spirit-islander/ui';
 
 @Component({
   selector: 'app-page-not-found',
   standalone: true,
-  imports: [ButtonComponent, CommonModule, PageComponent],
+  imports: [ButtonComponent, CommonModule],
   templateUrl: './page-not-found.component.html',
   styleUrls: ['./page-not-found.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
