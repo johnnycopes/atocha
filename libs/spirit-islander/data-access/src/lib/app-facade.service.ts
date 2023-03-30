@@ -3,7 +3,7 @@ import { ParamMap, Router } from '@angular/router';
 
 import { Config, getValidCombos, Route } from '@atocha/spirit-islander/util';
 import { AppStateService } from './app-state.service';
-import { mapConfigToQueryParams, mapParamMapToConfig } from './routing';
+import { mapConfigToQueryParams, mapParamMapToConfig } from './mappers';
 
 @Injectable({
   providedIn: 'root',
