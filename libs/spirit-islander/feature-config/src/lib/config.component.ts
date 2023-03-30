@@ -2,7 +2,10 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { first, map } from 'rxjs';
 
-import { AppStateService } from '@atocha/spirit-islander/data-access';
+import {
+  AppRoutingService,
+  AppStateService,
+} from '@atocha/spirit-islander/data-access';
 import {
   ConfigDetails,
   ConfigFormComponent,
@@ -27,9 +30,12 @@ export class ConfigComponent {
     map(({ config }) => config)
   );
 
-  constructor(private _appStateService: AppStateService) {}
+  constructor(
+    private _appStateService: AppStateService,
+    private _appRoutingService: AppRoutingService
+  ) {}
 
   onGenerate({ config }: ConfigDetails): void {
-    this._appStateService.navigateToGameSetup(config);
+    this._appRoutingService.navigateToGameSetup(config);
   }
 }

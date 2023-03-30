@@ -3,7 +3,10 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { first, map } from 'rxjs';
 
-import { AppStateService } from '@atocha/spirit-islander/data-access';
+import {
+  AppRoutingService,
+  AppStateService,
+} from '@atocha/spirit-islander/data-access';
 import { GameSetupOutputComponent } from './game-setup-output/game-setup-output.component';
 
 @Component({
@@ -27,6 +30,7 @@ export class GameSetupComponent implements OnInit {
 
   constructor(
     private _appStateService: AppStateService,
+    private _appRoutingService: AppRoutingService,
     private _route: ActivatedRoute
   ) {}
 
@@ -39,7 +43,7 @@ export class GameSetupComponent implements OnInit {
   }
 
   onEdit(): void {
-    this._appStateService.navigateToConfig();
+    this._appRoutingService.navigateToConfig();
   }
 
   onRegenerate(): void {

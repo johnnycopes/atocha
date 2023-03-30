@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ParamMap, Router } from '@angular/router';
+import { ParamMap } from '@angular/router';
 import { first, tap } from 'rxjs';
 
 import { LocalStorageService } from '@atocha/core/data-access';
@@ -17,9 +17,9 @@ import {
   GameSetup,
   getValidCombos,
   migrateConfig,
-  Route,
 } from '@atocha/spirit-islander/util';
-import { mapConfigToQueryParams, mapParamMapToConfig } from './routing';
+import { mapParamMapToConfig } from './routing';
+import { AppRoutingService } from './app-routing.service';
 
 interface AppState {
   config: Config;
@@ -43,23 +43,9 @@ export class AppStateService {
   state$ = this._state.get().pipe(tap(({ config }) => this._setConfig(config)));
 
   constructor(
-    private _localStorageService: LocalStorageService,
-    private _router: Router
+    private _appRoutingService: AppRoutingService,
+    private _localStorageService: LocalStorageService
   ) {}
-
-  async navigateToHome(): Promise<void> {
-    await this._router.navigate([Route.Home]);
-  }
-
-  async navigateToGameSetup(config: Config): Promise<void> {
-    await this._router.navigate([Route.GameSetup], {
-      queryParams: mapConfigToQueryParams(config),
-    });
-  }
-
-  async navigateToConfig(): Promise<void> {
-    await this._router.navigate([Route.Config]);
-  }
 
   async processParams(params: ParamMap): Promise<void> {
     try {
@@ -70,10 +56,7 @@ export class AppStateService {
       this._state.updateProp('validCombos', getValidCombos(config));
       this._state.updateProp('gameSetup', createGameSetup(config, validCombos));
     } catch {
-      await this._router.navigate([Route.Error], {
-        skipLocationChange: true,
-        queryParamsHandling: 'preserve',
-      });
+      await this._appRoutingService.navigateToError();
     }
   }
 
