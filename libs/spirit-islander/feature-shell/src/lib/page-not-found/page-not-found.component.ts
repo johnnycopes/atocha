@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 import { ButtonComponent } from '@atocha/core/ui';
 import { PageComponent } from '@atocha/spirit-islander/ui';
-import { Router } from '@angular/router';
+import { Route } from '@atocha/spirit-islander/util';
 
 @Component({
   selector: 'app-page-not-found',
@@ -17,6 +18,6 @@ export class PageNotFoundComponent {
   constructor(private _router: Router) {}
 
   onClick(): void {
-    this._router.navigate(['']);
+    this._router.navigate([Route.Home]);
   }
 }

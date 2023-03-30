@@ -1,8 +1,9 @@
 import { Route } from '@angular/router';
+import { Route as AppRoute } from '@atocha/spirit-islander/util';
 
 export const APP_ROUTES: Route[] = [
   {
-    path: 'config',
+    path: AppRoute.Config,
     title: 'Config | Spirit Islander',
     loadComponent: () =>
       import('@atocha/spirit-islander/feature-config').then(
@@ -10,7 +11,7 @@ export const APP_ROUTES: Route[] = [
       ),
   },
   {
-    path: 'game-setup',
+    path: AppRoute.GameSetup,
     title: 'Game Setup | Spirit Islander',
     loadComponent: () =>
       import('@atocha/spirit-islander/feature-game-setup').then(
@@ -18,12 +19,12 @@ export const APP_ROUTES: Route[] = [
       ),
   },
   {
-    path: '',
+    path: AppRoute.Home,
     redirectTo: 'config',
     pathMatch: 'full',
   },
   {
-    path: '**',
+    path: AppRoute.Error,
     loadComponent: () =>
       import('@atocha/spirit-islander/feature-shell').then(
         (m) => m.PageNotFoundComponent

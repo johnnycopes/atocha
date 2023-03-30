@@ -17,6 +17,7 @@ import {
   GameSetup,
   getValidCombos,
   migrateConfig,
+  Route,
 } from '@atocha/spirit-islander/util';
 import { mapConfigToQueryParams, mapParamMapToConfig } from './routing';
 
@@ -47,13 +48,13 @@ export class AppStateService {
   ) {}
 
   navigateToGameSetup(config: Config): void {
-    this._router.navigate(['game-setup'], {
+    this._router.navigate([Route.GameSetup], {
       queryParams: mapConfigToQueryParams(config),
     });
   }
 
   navigateToConfig(): void {
-    this._router.navigate(['config']);
+    this._router.navigate([Route.Config]);
   }
 
   processParams(params: ParamMap): void {
@@ -65,7 +66,7 @@ export class AppStateService {
       this._state.updateProp('validCombos', getValidCombos(config));
       this._state.updateProp('gameSetup', createGameSetup(config, validCombos));
     } catch {
-      this._router.navigate(['*'], {
+      this._router.navigate([Route.Error], {
         skipLocationChange: true,
         queryParamsHandling: 'preserve',
       });
