@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { ParamMap } from '@angular/router';
 import { first, tap } from 'rxjs';
 
 import { LocalStorageService } from '@atocha/core/data-access';
@@ -18,8 +17,6 @@ import {
   getValidCombos,
   migrateConfig,
 } from '@atocha/spirit-islander/util';
-import { AppFacadeService } from './app-facade.service';
-import { mapParamMapToConfig } from './routing';
 
 interface AppState {
   config: Config;
@@ -42,25 +39,15 @@ export class AppStateService {
 
   state$ = this._state.get().pipe(tap(({ config }) => this._setConfig(config)));
 
-  constructor(
-    private _appFacadeService: AppFacadeService,
-    private _localStorageService: LocalStorageService
-  ) {}
+  constructor(private _localStorageService: LocalStorageService) {}
 
-  async processParams(params: ParamMap): Promise<void> {
-    try {
-      const config = mapParamMapToConfig(params);
-      const validCombos = getValidCombos(config);
-
-      this._state.updateProp('config', config);
-      this._state.updateProp('validCombos', getValidCombos(config));
-      this._state.updateProp('gameSetup', createGameSetup(config, validCombos));
-    } catch {
-      await this._appFacadeService.navigateToError();
-    }
+  updateState(config: Config, validCombos: Combo[]): void {
+    this._state.updateProp('config', config);
+    this._state.updateProp('validCombos', getValidCombos(config));
+    this._state.updateProp('gameSetup', createGameSetup(config, validCombos));
   }
 
-  createNewGameSetup(): void {
+  refreshGameSetup(): void {
     this._state
       .get()
       .pipe(first())

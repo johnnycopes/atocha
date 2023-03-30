@@ -38,7 +38,7 @@ export class GameSetupComponent implements OnInit {
     this._route.queryParamMap
       .pipe(first())
       .subscribe((queryParams) =>
-        this._appStateService.processParams(queryParams)
+        this._appFacadeService.processParams(queryParams)
       );
   }
 
@@ -47,6 +47,6 @@ export class GameSetupComponent implements OnInit {
   }
 
   onRegenerate(): void {
-    this._appStateService.createNewGameSetup();
+    this._appFacadeService.refreshGameSetup();
   }
 }

@@ -1,14 +1,18 @@
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
+import { ParamMap, Router } from '@angular/router';
 
-import { Config, Route } from '@atocha/spirit-islander/util';
-import { mapConfigToQueryParams } from './routing';
+import { Config, getValidCombos, Route } from '@atocha/spirit-islander/util';
+import { AppStateService } from './app-state.service';
+import { mapConfigToQueryParams, mapParamMapToConfig } from './routing';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AppFacadeService {
-  constructor(private _router: Router) {}
+  constructor(
+    private _appStateService: AppStateService,
+    private _router: Router
+  ) {}
 
   async navigateToHome(): Promise<void> {
     await this._router.navigate([Route.Home]);
@@ -29,5 +33,19 @@ export class AppFacadeService {
       skipLocationChange: true,
       queryParamsHandling: 'preserve',
     });
+  }
+
+  async processParams(params: ParamMap): Promise<void> {
+    try {
+      const config = mapParamMapToConfig(params);
+      const validCombos = getValidCombos(config);
+      this._appStateService.updateState(config, validCombos);
+    } catch {
+      await this.navigateToError();
+    }
+  }
+
+  refreshGameSetup(): void {
+    this._appStateService.refreshGameSetup();
   }
 }
