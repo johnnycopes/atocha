@@ -20,11 +20,12 @@ export const APP_ROUTES: Route[] = [
   },
   {
     path: AppRoute.Home,
-    redirectTo: 'config',
+    redirectTo: AppRoute.Config,
     pathMatch: 'full',
   },
   {
     path: AppRoute.Error,
+    title: 'Error | Spirit Islander',
     loadComponent: () =>
       import('@atocha/spirit-islander/feature-shell').then(
         (m) => m.PageNotFoundComponent
