@@ -53,11 +53,11 @@ export class AppStateService {
     });
   }
 
-  navigateToConfig(): void {
-    this._router.navigate([Route.Config]);
+  async navigateToConfig(): Promise<void> {
+    await this._router.navigate([Route.Config]);
   }
 
-  processParams(params: ParamMap): void {
+  async processParams(params: ParamMap): Promise<void> {
     try {
       const config = mapParamMapToConfig(params);
       const validCombos = getValidCombos(config);
@@ -66,7 +66,7 @@ export class AppStateService {
       this._state.updateProp('validCombos', getValidCombos(config));
       this._state.updateProp('gameSetup', createGameSetup(config, validCombos));
     } catch {
-      this._router.navigate([Route.Error], {
+      await this._router.navigate([Route.Error], {
         skipLocationChange: true,
         queryParamsHandling: 'preserve',
       });

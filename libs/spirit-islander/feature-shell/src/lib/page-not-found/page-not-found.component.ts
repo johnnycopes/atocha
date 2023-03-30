@@ -17,7 +17,7 @@ import { Route } from '@atocha/spirit-islander/util';
 export class PageNotFoundComponent {
   constructor(private _router: Router) {}
 
-  onClick(): void {
-    this._router.navigate([Route.Home]);
+  async onClick(): Promise<void> {
+    await this._router.navigate([Route.Home]);
   }
 }
