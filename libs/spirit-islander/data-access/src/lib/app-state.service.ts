@@ -43,7 +43,7 @@ export class AppStateService {
 
   updateState(config: Config, validCombos: Combo[]): void {
     this._state.updateProp('config', config);
-    this._state.updateProp('validCombos', getValidCombos(config));
+    this._state.updateProp('validCombos', validCombos);
     this._state.updateProp('gameSetup', createGameSetup(config, validCombos));
   }
 
