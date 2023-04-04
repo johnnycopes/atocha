@@ -2,9 +2,9 @@ import { convertToParamMap } from '@angular/router';
 import {
   mapConfigToQueryParams as mapConfigToParamMap,
   mapParamMapToConfig,
-} from './mappers';
+} from './url-mappers';
 
-describe('mappers', () => {
+describe('URL mappers', () => {
   describe('mapConfigToQueryParams', () => {
     it('returns a ParamMap', () => {
       expect(
