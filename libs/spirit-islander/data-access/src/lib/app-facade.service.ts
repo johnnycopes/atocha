@@ -3,7 +3,7 @@ import { ParamMap, Router } from '@angular/router';
 
 import { Config, getValidCombos, Route } from '@atocha/spirit-islander/util';
 import { AppStateService } from './app-state.service';
-import { mapConfigToQueryParams, mapParamMapToConfig } from './url-mappers';
+import { mapConfigToParams, mapParamsToConfig } from './url-mappers';
 
 @Injectable({
   providedIn: 'root',
@@ -22,7 +22,7 @@ export class AppFacadeService {
 
   async navigateToGameSetup(config: Config): Promise<void> {
     await this._router.navigate([Route.GameSetup], {
-      queryParams: mapConfigToQueryParams(config),
+      queryParams: mapConfigToParams(config),
     });
   }
 
@@ -39,7 +39,7 @@ export class AppFacadeService {
 
   async processParams(params: ParamMap): Promise<void> {
     try {
-      const config = mapParamMapToConfig(params);
+      const config = mapParamsToConfig(params);
       const validCombos = getValidCombos(config);
       this._appStateService.updateState(config, validCombos);
     } catch {

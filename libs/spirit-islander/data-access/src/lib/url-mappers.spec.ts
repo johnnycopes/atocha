@@ -1,11 +1,11 @@
 import { convertToParamMap } from '@angular/router';
 import {
-  mapConfigToQueryParams as mapConfigToParamMap,
-  mapParamMapToConfig,
+  mapConfigToParams as mapConfigToParamMap,
+  mapParamsToConfig,
 } from './url-mappers';
 
 describe('URL mappers', () => {
-  describe('mapConfigToQueryParams', () => {
+  describe('mapConfigToParamMap', () => {
     it('returns a ParamMap', () => {
       expect(
         mapConfigToParamMap({
@@ -36,10 +36,10 @@ describe('URL mappers', () => {
     });
   });
 
-  describe('mapParamMapToConfig', () => {
-    it('returns a Config object', () => {
+  describe('mapParamsToConfig', () => {
+    it('returns a Config', () => {
       expect(
-        mapParamMapToConfig(
+        mapParamsToConfig(
           convertToParamMap({
             expansions: '["Branch & Claw"]',
             players: '2',

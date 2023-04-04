@@ -6,7 +6,7 @@ type ConfigQueryParams = Required<{
   [Property in keyof Config]: string;
 }>;
 
-export function mapConfigToQueryParams(config: Config): ConfigQueryParams {
+export function mapConfigToParams(config: Config): ConfigQueryParams {
   return {
     expansions: JSON.stringify(config.expansions),
     players: JSON.stringify(config.players),
@@ -19,7 +19,7 @@ export function mapConfigToQueryParams(config: Config): ConfigQueryParams {
   };
 }
 
-export function mapParamMapToConfig(params: ParamMap): Config {
+export function mapParamsToConfig(params: ParamMap): Config {
   return {
     expansions: JSON.parse(params.get('expansions') ?? ''),
     players: JSON.parse(params.get('players') ?? ''),
