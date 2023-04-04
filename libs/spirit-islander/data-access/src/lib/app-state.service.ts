@@ -16,11 +16,9 @@ import {
   GameSetup,
   getValidCombos,
   migrateConfig,
-  Page,
 } from '@atocha/spirit-islander/util';
 
-interface AppState {
-  page: Page;
+export interface AppState {
   config: Config;
   validCombos: Combo[] | undefined;
   gameSetup: GameSetup | undefined;
@@ -34,7 +32,6 @@ export class AppStateService {
   private readonly _key = 'CONFIG';
   private _config: Config = this._getConfig();
   private _state = new State<AppState>({
-    page: Page.Config,
     config: this._config,
     validCombos: undefined,
     gameSetup: createGameSetup(this._config, getValidCombos(this._config)),
@@ -44,18 +41,13 @@ export class AppStateService {
 
   constructor(private _localStorageService: LocalStorageService) {}
 
-  edit(): void {
-    this._state.updateProp('page', Page.Config);
-  }
-
-  generate(config: Config, validCombos: Combo[]): void {
+  updateState(config: Config, validCombos: Combo[]): void {
     this._state.updateProp('config', config);
     this._state.updateProp('validCombos', validCombos);
     this._state.updateProp('gameSetup', createGameSetup(config, validCombos));
-    this._state.updateProp('page', Page.GameSetup);
   }
 
-  regenerate(): void {
+  refreshGameSetup(): void {
     this._state
       .get()
       .pipe(first())

@@ -14,11 +14,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { withLatestFrom, Subject, Subscription } from 'rxjs';
 
 import { ButtonComponent } from '@atocha/core/ui';
-import {
-  CardComponent,
-  CardGroupComponent,
-  PageComponent,
-} from '@atocha/spirit-islander/ui';
+import { CardComponent, CardGroupComponent } from '@atocha/spirit-islander/ui';
 import {
   Combo,
   Config,
@@ -33,7 +29,7 @@ import {
   createScenariosTree,
   createSpiritsTree,
 } from '../checkbox-tree/create-tree';
-import { ConfigForm } from '../form/config-form';
+import { ConfigForm } from './config-form';
 import { CheckboxTreeComponent } from '../checkbox-tree/checkbox-tree.component';
 import { SelectDifficultyRangeComponent } from '../select-difficulty-range/select-difficulty-range.component';
 import { SelectPlayersComponent } from '../select-players/select-players.component';
@@ -44,7 +40,7 @@ export interface ConfigDetails {
 }
 
 @Component({
-  selector: 'app-config',
+  selector: 'app-config-form',
   standalone: true,
   imports: [
     ButtonComponent,
@@ -53,17 +49,16 @@ export interface ConfigDetails {
     CheckboxTreeComponent,
     CommonModule,
     FormsModule,
-    PageComponent,
     ReactiveFormsModule,
     SelectDifficultyRangeComponent,
     SelectPlayersComponent,
   ],
-  templateUrl: './config.component.html',
-  styleUrls: ['./config.component.scss'],
+  templateUrl: './config-form.component.html',
+  styleUrls: ['./config-form.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
 })
-export class ConfigComponent implements OnInit, OnDestroy {
+export class ConfigFormComponent implements OnInit, OnDestroy {
   @Input() config: Config | undefined;
   @Output() generate = new EventEmitter<ConfigDetails>();
 

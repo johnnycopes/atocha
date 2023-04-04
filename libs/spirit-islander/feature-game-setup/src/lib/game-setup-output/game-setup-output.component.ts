@@ -15,7 +15,6 @@ import {
   CardGroupComponent,
   DifficultyEmblemComponent,
   ExpansionEmblemComponent,
-  PageComponent,
   SeparatorComponent,
 } from '@atocha/spirit-islander/ui';
 import {
@@ -27,7 +26,7 @@ import {
 } from '@atocha/spirit-islander/util';
 
 @Component({
-  selector: 'app-game-setup',
+  selector: 'app-game-setup-output',
   standalone: true,
   imports: [
     BoardEmblemComponent,
@@ -37,16 +36,15 @@ import {
     CommonModule,
     DifficultyEmblemComponent,
     ExpansionEmblemComponent,
-    PageComponent,
     PluralPipe,
     SeparatorComponent,
   ],
-  templateUrl: './game-setup.component.html',
-  styleUrls: ['./game-setup.component.scss'],
+  templateUrl: './game-setup-output.component.html',
+  styleUrls: ['./game-setup-output.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
 })
-export class GameSetupComponent {
+export class GameSetupOutputComponent {
   private _setup: GameSetup | undefined;
   @Input()
   get setup() {

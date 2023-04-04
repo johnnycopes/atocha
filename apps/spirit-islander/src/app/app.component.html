@@ -1,15 +1,8 @@
 <header app-header></header>
 
-<ng-container *ngIf="vm$ | async as vm">
-  <app-config *ngIf="vm.page === Page.Config"
-    [config]="vm.config"
-    (generate)="onGenerate($event)"
-  ></app-config>
-  <app-game-setup *ngIf="vm.page === Page.GameSetup"
-    [setup]="vm.gameSetup"
-    (edit)="onEdit()"
-    (regenerate)="onRegenerate()"
-  ></app-game-setup>
-</ng-container>
+<main ui-page>
+  <router-outlet ui-page-content>
+  </router-outlet>
+</main>
 
 <footer app-footer></footer>

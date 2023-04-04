@@ -1,0 +1,103 @@
+<form *ngIf="config"
+  class="config"
+  ui-page-content
+  [formGroup]="form"
+  (ngSubmit)="onSubmit()"
+>
+  <ui-card-group
+    name="You"
+    description="What are you playing with?"
+  >
+    <ui-card name="expansions">
+      <app-checkbox-tree
+        [tree]="expansionsTree"
+        [form]="form"
+        controlName="expansions"
+        (nodeClick)="onExpansionChange($event)"
+      ></app-checkbox-tree>
+    </ui-card>
+
+    <ui-card name="players"
+      [error]="form.errors?.['playersOutnumberTotalBoards']"
+    >
+      <h3 ui-card-header>
+        Players
+      </h3>
+      <app-select-players [form]="form">
+      </app-select-players>
+    </ui-card>
+
+    <ui-card name="difficulty"
+      [error]="form.errors?.['invalidDifficultyRange']"
+    >
+      <h3 ui-card-header>
+        Difficulty
+      </h3>
+      <app-select-difficulty-range [form]="form">
+      </app-select-difficulty-range>
+    </ui-card>
+  </ui-card-group>
+
+  <ui-card-group
+    name="The Game"
+    description="What are you open to playing with?"
+  >
+    <ui-card name="spirits"
+      [error]="form.errors?.['playersOutnumberSpirits']"
+    >
+      <app-checkbox-tree
+        [tree]="spiritsTree"
+        [form]="form"
+        controlName="spiritNames"
+      ></app-checkbox-tree>
+    </ui-card>
+
+    <ui-card name="maps"
+      [error]="form.get('mapNames')?.errors?.['required']"
+    >
+      <app-checkbox-tree
+        [tree]="mapsTree"
+        [form]="form"
+        controlName="mapNames"
+      ></app-checkbox-tree>
+    </ui-card>
+
+    <ui-card name="boards"
+      [error]="form.errors?.['playersOutnumberSelectedBoards']"
+    >
+      <app-checkbox-tree
+        [tree]="boardsTree"
+        [form]="form"
+        controlName="boardNames"
+      ></app-checkbox-tree>
+    </ui-card>
+
+    <ui-card name="scenarios"
+      [error]="form.get('scenarioNames')?.errors?.['required']"
+    >
+      <app-checkbox-tree
+        [tree]="scenariosTree"
+        [form]="form"
+        controlName="scenarioNames"
+      ></app-checkbox-tree>
+    </ui-card>
+
+    <ui-card name="adversaries"
+      [error]="form.get('adversaryLevelIds')?.errors?.['required']"
+    >
+      <app-checkbox-tree
+        [tree]="adversariesTree"
+        [form]="form"
+        controlName="adversaryLevelIds"
+      ></app-checkbox-tree>
+    </ui-card>
+  </ui-card-group>
+
+  <div ui-page-actions>
+    <button core-button
+      [disabled]="!form.valid"
+    >
+      Generate
+    </button>
+  </div>
+</form>
