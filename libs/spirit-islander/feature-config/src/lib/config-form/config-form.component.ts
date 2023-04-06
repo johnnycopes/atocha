@@ -15,12 +15,7 @@ import { withLatestFrom, Subject, Subscription } from 'rxjs';
 
 import { ButtonComponent } from '@atocha/core/ui';
 import { CardComponent, CardGroupComponent } from '@atocha/spirit-islander/ui';
-import {
-  Combo,
-  Config,
-  ExpansionName,
-  getValidCombos,
-} from '@atocha/spirit-islander/util';
+import { Config, ExpansionName } from '@atocha/spirit-islander/util';
 import {
   createAdversariesTree,
   createBoardsTree,
@@ -33,11 +28,6 @@ import { ConfigForm } from './config-form';
 import { CheckboxTreeComponent } from '../checkbox-tree/checkbox-tree.component';
 import { SelectDifficultyRangeComponent } from '../select-difficulty-range/select-difficulty-range.component';
 import { SelectPlayersComponent } from '../select-players/select-players.component';
-
-export interface ConfigDetails {
-  config: Config;
-  validCombos: Combo[];
-}
 
 @Component({
   selector: 'app-config-form',
@@ -60,7 +50,7 @@ export interface ConfigDetails {
 })
 export class ConfigFormComponent implements OnInit, OnDestroy {
   @Input() config: Config | undefined;
-  @Output() generate = new EventEmitter<ConfigDetails>();
+  @Output() generate = new EventEmitter<Config>();
 
   form = new ConfigForm({
     expansions: [],
@@ -111,12 +101,7 @@ export class ConfigFormComponent implements OnInit, OnDestroy {
 
   onSubmit(): void {
     const config = this.form.getRawValue();
-    const validCombos = getValidCombos(config);
-
-    this.generate.emit({
-      config,
-      validCombos,
-    });
+    this.generate.emit(config);
   }
 
   private _updateFormData(expansions: ExpansionName[]): void {

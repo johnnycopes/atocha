@@ -4,7 +4,6 @@ import { first, tap } from 'rxjs';
 import { LocalStorageService } from '@atocha/core/data-access';
 import { State } from '@atocha/core/util';
 import {
-  Combo,
   Config,
   createAdversariesModel,
   createBoardsModel,
@@ -14,13 +13,11 @@ import {
   createSpiritsModel,
   EXPANSIONS,
   GameSetup,
-  getValidCombos,
   migrateConfig,
 } from '@atocha/spirit-islander/util';
 
 export interface AppState {
   config: Config;
-  validCombos: Combo[] | undefined;
   gameSetup: GameSetup | undefined;
 }
 
@@ -33,29 +30,24 @@ export class AppStateService {
   private _config: Config = this._getConfig();
   private _state = new State<AppState>({
     config: this._config,
-    validCombos: undefined,
-    gameSetup: createGameSetup(this._config, getValidCombos(this._config)),
+    gameSetup: createGameSetup(this._config),
   });
 
   state$ = this._state.get().pipe(tap(({ config }) => this._setConfig(config)));
 
   constructor(private _localStorageService: LocalStorageService) {}
 
-  updateState(config: Config, validCombos: Combo[]): void {
+  updateState(config: Config): void {
     this._state.updateProp('config', config);
-    this._state.updateProp('validCombos', validCombos);
-    this._state.updateProp('gameSetup', createGameSetup(config, validCombos));
+    this._state.updateProp('gameSetup', createGameSetup(config));
   }
 
   refreshGameSetup(): void {
     this._state
       .get()
       .pipe(first())
-      .subscribe(({ config, validCombos }) =>
-        this._state.updateProp(
-          'gameSetup',
-          createGameSetup(config, validCombos ?? [])
-        )
+      .subscribe(({ config }) =>
+        this._state.updateProp('gameSetup', createGameSetup(config))
       );
   }
 

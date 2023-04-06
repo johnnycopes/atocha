@@ -2,11 +2,9 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { first, map } from 'rxjs';
 
+import { Config } from '@atocha/spirit-islander/util';
 import { AppFacadeService } from '@atocha/spirit-islander/data-access';
-import {
-  ConfigDetails,
-  ConfigFormComponent,
-} from './config-form/config-form.component';
+import { ConfigFormComponent } from './config-form/config-form.component';
 
 @Component({
   standalone: true,
@@ -29,7 +27,7 @@ export class ConfigComponent {
 
   constructor(private _appFacadeService: AppFacadeService) {}
 
-  onGenerate({ config }: ConfigDetails): void {
+  onGenerate(config: Config): void {
     this._appFacadeService.navigateToGameSetup(config);
   }
 }
