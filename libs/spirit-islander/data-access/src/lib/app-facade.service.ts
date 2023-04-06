@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ParamMap, Router } from '@angular/router';
 
-import { Config, getValidCombos, Route } from '@atocha/spirit-islander/util';
+import { Config, Route } from '@atocha/spirit-islander/util';
 import { AppStateService } from './app-state.service';
 import { mapConfigToParams, mapParamsToConfig } from './url-mappers';
 
@@ -40,8 +40,7 @@ export class AppFacadeService {
   async processParams(params: ParamMap): Promise<void> {
     try {
       const config = mapParamsToConfig(params);
-      const validCombos = getValidCombos(config);
-      this._appStateService.updateState(config, validCombos);
+      this._appStateService.updateState(config);
     } catch {
       await this.navigateToError();
     }

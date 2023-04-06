@@ -7,7 +7,6 @@ import { SPIRITS } from '../data/spirits';
 import type { Config } from '../types/config.interface';
 import type { AdversaryLevelId } from '../types/game/adversaries';
 import { createGameSetup } from './create-game-setup';
-import { getValidCombos } from './get-valid-combos';
 
 describe('createGameSetup', () => {
   it('returns a randomly-generated game setup', () => {
@@ -27,10 +26,8 @@ describe('createGameSetup', () => {
         []
       ),
     };
-    const { boards, spirits, expansions, difficulty } = createGameSetup(
-      mockConfig,
-      getValidCombos(mockConfig)
-    );
+    const { boards, spirits, expansions, difficulty } =
+      createGameSetup(mockConfig);
 
     expect(boards).toHaveLength(4);
     expect(spirits).toHaveLength(4);

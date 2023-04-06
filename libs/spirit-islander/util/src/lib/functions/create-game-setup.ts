@@ -1,18 +1,16 @@
 import { selectRandom } from '@atocha/core/util';
 import { SPIRITS } from '../data/spirits';
-import type { Combo } from '../types/combo.interface';
 import type { Config } from '../types/config.interface';
 import type { GameSetup } from '../types/game-setup.interface';
+import type { Difficulty } from '../types/game/difficulty';
 import { selectBoards } from './select-boards';
+import { getValidCombos } from './get-valid-combos';
 import { getOptionsByName } from './get-options';
 import { getDifficulty } from './get-difficulty';
-import type { Difficulty } from '../types/game/difficulty';
 
-export function createGameSetup(
-  config: Config,
-  validCombos: Combo[]
-): GameSetup {
+export function createGameSetup(config: Config): GameSetup {
   const { players, expansions, spiritNames, boardNames } = config;
+  const validCombos = getValidCombos(config);
 
   // Randomly choose a combination of a map, adversary, and scenario and determine the total difficulty
   const [selectedMap, selectedAdversaryLevel, selectedScenario] =
