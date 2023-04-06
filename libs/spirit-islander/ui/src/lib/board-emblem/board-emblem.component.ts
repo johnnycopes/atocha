@@ -1,13 +1,22 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  OnChanges,
+} from '@angular/core';
 
 import { SnakeCasePipe } from '@atocha/core/ui';
 import {
+  BOARDS,
+  BalancedBoardName,
   Board,
   MapName,
   ThematicBoardName,
 } from '@atocha/spirit-islander/util';
 import { EmblemComponent } from '../emblem/emblem.component';
+
+type ThematicBoardNameAbberviation = 'E' | 'NE' | 'NW' | 'SE' | 'SW' | 'W';
 
 @Component({
   selector: 'ui-board-emblem',
@@ -17,32 +26,17 @@ import { EmblemComponent } from '../emblem/emblem.component';
   styleUrls: ['./board-emblem.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class BoardEmblemComponent {
-  @Input() board: Board | undefined;
+export class BoardEmblemComponent implements OnChanges {
+  @Input() mapName: MapName = 'Balanced';
+  @Input() board: Board = BOARDS[0];
 
-  @Input()
-  get mapName() {
-    return this._map;
-  }
-  set mapName(name) {
-    if (!this.board) {
-      return;
-    }
+  boardName: BalancedBoardName | ThematicBoardNameAbberviation =
+    this.board.name;
 
-    let boardName = '';
-    if (name === 'Balanced') {
-      boardName = this.board.name;
-    } else if (name === 'Thematic') {
-      boardName = this._abbreviations[this.board.thematicName];
-    }
-
-    this.boardName = boardName;
-    this._map = name;
-  }
-
-  boardName = '';
-  private _map: MapName = 'Balanced';
-  private _abbreviations: Record<ThematicBoardName, string> = {
+  private readonly _abbreviations: Record<
+    ThematicBoardName,
+    ThematicBoardNameAbberviation
+  > = {
     East: 'E',
     Northeast: 'NE',
     Northwest: 'NW',
@@ -50,4 +44,14 @@ export class BoardEmblemComponent {
     Southwest: 'SW',
     West: 'W',
   };
+
+  ngOnChanges(): void {
+    const { name, thematicName } = this.board;
+
+    if (this.mapName === 'Balanced') {
+      this.boardName = name;
+    } else if (this.mapName === 'Thematic') {
+      this.boardName = this._abbreviations[thematicName];
+    }
+  }
 }
