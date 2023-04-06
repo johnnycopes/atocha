@@ -13,7 +13,7 @@
           No Expansions
         </li>
         <ng-template #expansionsTemplate>
-          <li *ngFor="let expansion of setup.expansions"
+          <li *ngFor="let expansion of setup.expansions; trackBy: trackByFn"
             class="datum"
           >
             {{ expansion }}
@@ -51,7 +51,7 @@
         {{ setup.players | corePlural : 'Spirit' }}
       </h3>
       <ul ui-card-content>
-        <li *ngFor="let spirit of setup.spirits; index as index"
+        <li *ngFor="let spirit of setup.spirits; index as index; trackBy: trackByFn"
           class="datum"
         >
           <ui-board-emblem

@@ -8,7 +8,7 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 
-import { ButtonComponent, PluralPipe } from '@atocha/core/ui';
+import { ButtonComponent, PluralPipe, trackBySelf } from '@atocha/core/ui';
 import {
   BoardEmblemComponent,
   CardComponent,
@@ -68,6 +68,7 @@ export class GameSetupOutputComponent {
   @Output() edit = new EventEmitter<void>();
   @Output() regenerate = new EventEmitter<void>();
 
+  readonly trackByFn = trackBySelf;
   mapDifficulty: Difficulty = 0;
   scenarioDifficulty: Difficulty = 0;
   adversaryName: AdversaryName = 'No Adversary';
