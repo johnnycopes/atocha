@@ -1,14 +1,12 @@
 import { Route } from '@angular/router';
 
+import { ShellComponent } from '@atocha/spirit-islander/feature-shell';
 import { Route as AppRoute } from '@atocha/spirit-islander/util';
 
 export const APP_ROUTES: Route[] = [
   {
     path: '',
-    loadComponent: () =>
-      import('@atocha/spirit-islander/feature-shell').then(
-        (m) => m.ShellComponent
-      ),
+    component: ShellComponent,
     children: [
       {
         path: AppRoute.Config,
