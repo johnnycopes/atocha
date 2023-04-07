@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterModule, RouterOutlet } from '@angular/router';
 
+import { routerTransition } from '@atocha/core/ui';
 import { ConfigComponent } from '@atocha/spirit-islander/feature-config';
 import { GameSetupComponent } from '@atocha/spirit-islander/feature-game-setup';
 import {
@@ -8,7 +9,6 @@ import {
   HeaderComponent,
 } from '@atocha/spirit-islander/feature-shell';
 import { PageComponent } from '@atocha/spirit-islander/ui';
-import { routerTransition } from './router-transition';
 
 @Component({
   standalone: true,

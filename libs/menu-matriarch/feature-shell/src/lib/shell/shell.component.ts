@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
-import { routerTransition } from './router-transition';
+import { routerTransition } from '@atocha/core/ui';
 
 @Component({
   selector: 'app-shell',
