@@ -4,18 +4,18 @@
     --label-margin: 12px;
 
     &.core-checkbox--checked {
-      --checkbox-color: aquamarine;
+      --border-color: aquamarine;
       --checkmark-color: darkblue;
       --checkbox-background: aquamarine;
     }
 
     &.core-checkbox--indeterminate {
-      --checkbox-color: goldenrod;
+      --border-color: goldenrod;
       --checkmark-color: goldenrod;
     }
 
     &.core-checkbox--unchecked {
-      --checkbox-color: darkseagreen;
+      --border-color: darkseagreen;
       color: darkgray;
     }
   }
@@ -31,7 +31,7 @@
     [data-level='0'] {
       > .core-checkbox--checked,
       > .core-checkbox--indeterminate {
-        --checkbox-color: aquamarine;
+        --border-color: aquamarine;
         --checkmark-color: darkblue;
         --checkbox-background: aquamarine;
       }
@@ -39,12 +39,12 @@
 
     .core-checkbox--checked,
     .core-checkbox--indeterminate {
-      --checkbox-color: goldenrod;
+      --border-color: goldenrod;
       --checkmark-color: goldenrod;
     }
 
     .checkbox--unchecked {
-      --checkbox-color: darkseagreen;
+      --border-color: darkseagreen;
       color: darkgray;
     }
   }
@@ -62,7 +62,7 @@
     [data-level='0'] {
       > .core-checkbox--checked,
       > .core-checkbox--indeterminate {
-        --checkbox-color: aquamarine;
+        --border-color: aquamarine;
         --checkmark-color: darkblue;
         --checkbox-background: aquamarine;
       }
@@ -70,12 +70,12 @@
 
     .core-checkbox--checked,
     .core-checkbox--indeterminate {
-      --checkbox-color: goldenrod;
+      --border-color: goldenrod;
       --checkmark-color: goldenrod;
     }
 
     .checkbox--unchecked {
-      --checkbox-color: darkseagreen;
+      --border-color: darkseagreen;
       color: darkgray;
     }
   }

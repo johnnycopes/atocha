@@ -285,7 +285,7 @@ app-root {
   }
 
   .core-checkbox {
-    --checkbox-color: #{color($neutral, 7)};
+    --border-color: #{color($neutral, 7)};
     --checkmark-color: #{color($neutral, 3)};
     --hover-color: #{color($neutral, 10)};
 

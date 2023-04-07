@@ -7,7 +7,7 @@ $large-size: 20px;
   position: relative;
   --border-radius: 2px;
   --checkbox-background: transparent;
-  --checkbox-color: lightgray;
+  --border-color: lightgray;
   --checkmark-color: gray;
   --hover-color: lightgray;
   --label-margin: 4px;
@@ -39,7 +39,7 @@ $large-size: 20px;
   &__checkbox {
     position: relative;
     background: var(--checkbox-background);
-    border: $checkmark-width solid var(--checkbox-color);
+    border: $checkmark-width solid var(--border-color);
     border-radius: var(--border-radius);
 
     &--normal {
