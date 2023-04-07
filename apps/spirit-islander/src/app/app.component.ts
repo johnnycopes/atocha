@@ -7,8 +7,7 @@ import { routerTransition } from '@atocha/core/ui';
   standalone: true,
   selector: 'app-root',
   imports: [RouterModule],
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
+  template: `<router-outlet></router-outlet>`,
   changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [routerTransition],
 })
