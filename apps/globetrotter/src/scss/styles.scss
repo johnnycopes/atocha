@@ -81,17 +81,17 @@ app-root {
   }
 
   .core-checkbox {
-    --hover-color: #{map-get($color, medium)};
+    --checkbox-color-hover: #{map-get($color, medium)};
     --label-margin: #{map-get($spacing, 12)};
-    --checkbox-color: #{map-get($color, lightest)};
+    --checkbox-border: #{map-get($color, lightest)};
     --checkmark-color: #{map-get($color, lightest)};
   }
 
   [data-level='1'] > .core-checkbox--checked,
   [data-level='1'] > .core-checkbox--indeterminate {
-    --checkbox-color: #{map-get($color, lightest)};
+    --checkbox-border: #{map-get($color, lightest)};
     --checkmark-color: #{map-get($color, darkest)};
-    --checkbox-background: #{map-get($color, lightest)};
+    --checkbox-color: #{map-get($color, lightest)};
   }
 
   [data-level='1'] > .core-checkbox > .core-checkbox__container {
@@ -99,7 +99,7 @@ app-root {
   }
 
   .core-checkbox--unchecked {
-    --checkbox-color: #{map-get($color, medium)};
+    --checkbox-border: #{map-get($color, medium)};
     --checkmark-color: #{map-get($color, medium)};
     color: map-get($color, medium);
   }
