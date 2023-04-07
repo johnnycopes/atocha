@@ -1,4 +1,4 @@
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { of } from 'rxjs';
 
 import { Form } from '@atocha/core/ui';
@@ -22,6 +22,34 @@ import {
 
 export class ConfigForm extends FormGroup<Form<Config>> {
   readonly expansions$ = this.get('expansions')?.valueChanges ?? of([]);
+
+  get playersError(): string {
+    return this.errors?.[playersOutnumberTotalBoards.name] ?? '';
+  }
+
+  get difficultyError(): string {
+    return this.errors?.[invalidDifficultyRange.name] ?? '';
+  }
+
+  get spiritsError(): string {
+    return this.errors?.[playersOutnumberSpirits.name] ?? '';
+  }
+
+  get mapsError(): string {
+    return this.get('mapNames')?.errors?.[Validators.required.name] ?? '';
+  }
+
+  get boardsError(): string {
+    return this.errors?.[playersOutnumberSelectedBoards.name] ?? '';
+  }
+
+  get scenariosError(): string {
+    return this.get('scenarioNames')?.errors?.[Validators.required.name];
+  }
+
+  get adversariesError(): string {
+    return this.get('adversaryLevelIds')?.errors?.[Validators.required.name];
+  }
 
   constructor(
     readonly model: Config,
