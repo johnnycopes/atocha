@@ -1,0 +1,12 @@
+<header app-header></header>
+
+<main ui-page
+  [@routerTransition]="getState(outlet)"
+>
+  <router-outlet
+    ui-page-content
+    #outlet="outlet"
+  ></router-outlet>
+</main>
+
+<footer app-footer></footer>
