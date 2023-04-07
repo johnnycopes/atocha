@@ -6,7 +6,7 @@
     &.core-checkbox--checked {
       --border-color: aquamarine;
       --checkmark-color: darkblue;
-      --checkbox-background: aquamarine;
+      --checkbox-color: aquamarine;
     }
 
     &.core-checkbox--indeterminate {
@@ -33,7 +33,7 @@
       > .core-checkbox--indeterminate {
         --border-color: aquamarine;
         --checkmark-color: darkblue;
-        --checkbox-background: aquamarine;
+        --checkbox-color: aquamarine;
       }
     }
 
@@ -64,7 +64,7 @@
       > .core-checkbox--indeterminate {
         --border-color: aquamarine;
         --checkmark-color: darkblue;
-        --checkbox-background: aquamarine;
+        --checkbox-color: aquamarine;
       }
     }
 

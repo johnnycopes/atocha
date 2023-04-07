@@ -6,7 +6,7 @@ $large-size: 20px;
   display: inline-flex;
   position: relative;
   --border-radius: 2px;
-  --checkbox-background: transparent;
+  --checkbox-color: transparent;
   --border-color: lightgray;
   --checkmark-color: gray;
   --hover-color: lightgray;
@@ -38,7 +38,7 @@ $large-size: 20px;
 
   &__checkbox {
     position: relative;
-    background: var(--checkbox-background);
+    background: var(--checkbox-color);
     border: $checkmark-width solid var(--border-color);
     border-radius: var(--border-radius);
 

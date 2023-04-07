@@ -91,7 +91,7 @@ app-root {
   [data-level='1'] > .core-checkbox--indeterminate {
     --border-color: #{map-get($color, lightest)};
     --checkmark-color: #{map-get($color, darkest)};
-    --checkbox-background: #{map-get($color, lightest)};
+    --checkbox-color: #{map-get($color, lightest)};
   }
 
   [data-level='1'] > .core-checkbox > .core-checkbox__container {
