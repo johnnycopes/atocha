@@ -1,4 +1,5 @@
 import { Route } from '@angular/router';
+
 import { Route as AppRoute } from '@atocha/spirit-islander/util';
 
 export const APP_ROUTES: Route[] = [
