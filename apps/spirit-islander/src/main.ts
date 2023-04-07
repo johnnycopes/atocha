@@ -1,5 +1,6 @@
-import { enableProdMode } from '@angular/core';
+import { enableProdMode, importProvidersFrom } from '@angular/core';
 import { bootstrapApplication } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { provideRouter } from '@angular/router';
 
 import { APP_NAME_TOKEN } from '@atocha/core/data-access';
@@ -18,5 +19,6 @@ bootstrapApplication(AppComponent, {
       useValue: 'SPIRIT_ISLANDER',
     },
     provideRouter(APP_ROUTES),
+    importProvidersFrom([BrowserAnimationsModule]),
   ],
 }).catch(console.error);
