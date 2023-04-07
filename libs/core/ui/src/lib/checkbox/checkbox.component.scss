@@ -7,9 +7,9 @@ $large-size: 20px;
   position: relative;
   --border-radius: 2px;
   --checkbox-color: transparent;
-  --border-color: lightgray;
+  --checkbox-color-hover: lightgray;
+  --checkbox-border: lightgray;
   --checkmark-color: gray;
-  --hover-color: lightgray;
   --label-margin: 4px;
 
   &__container {
@@ -19,7 +19,7 @@ $large-size: 20px;
     font-size: var(--font-size);
 
     &:hover .core-checkbox__checkbox {
-      background: var(--hover-color);
+      background: var(--checkbox-color-hover);
     }
 
     &--disabled {
@@ -39,7 +39,7 @@ $large-size: 20px;
   &__checkbox {
     position: relative;
     background: var(--checkbox-color);
-    border: $checkmark-width solid var(--border-color);
+    border: $checkmark-width solid var(--checkbox-border);
     border-radius: var(--border-radius);
 
     &--normal {

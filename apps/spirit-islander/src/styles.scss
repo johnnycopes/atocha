@@ -175,9 +175,9 @@ app-root {
 
   .core-checkbox {
     --checkmark-color: var(--white);
-    --border-color: var(--gray-400);
+    --checkbox-border: var(--gray-400);
     --checkbox-color: var(--gray-500);
-    --hover-color: var(--gray-400);
+    --checkbox-color-hover: var(--gray-400);
     --label-margin: 12px;
   }
 }

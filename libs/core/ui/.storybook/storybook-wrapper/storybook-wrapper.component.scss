@@ -1,21 +1,21 @@
 :host::ng-deep {
   .custom-checkbox {
-    --hover-color: beige;
+    --checkbox-color-hover: beige;
     --label-margin: 12px;
 
     &.core-checkbox--checked {
-      --border-color: aquamarine;
+      --checkbox-border: aquamarine;
       --checkmark-color: darkblue;
       --checkbox-color: aquamarine;
     }
 
     &.core-checkbox--indeterminate {
-      --border-color: goldenrod;
+      --checkbox-border: goldenrod;
       --checkmark-color: goldenrod;
     }
 
     &.core-checkbox--unchecked {
-      --border-color: darkseagreen;
+      --checkbox-border: darkseagreen;
       color: darkgray;
     }
   }
@@ -24,14 +24,14 @@
     --checkbox-margin: 8px;
 
     .core-checkbox {
-      --hover-color: beige;
+      --checkbox-color-hover: beige;
       --label-margin: 12px;
     }
 
     [data-level='0'] {
       > .core-checkbox--checked,
       > .core-checkbox--indeterminate {
-        --border-color: aquamarine;
+        --checkbox-border: aquamarine;
         --checkmark-color: darkblue;
         --checkbox-color: aquamarine;
       }
@@ -39,12 +39,12 @@
 
     .core-checkbox--checked,
     .core-checkbox--indeterminate {
-      --border-color: goldenrod;
+      --checkbox-border: goldenrod;
       --checkmark-color: goldenrod;
     }
 
     .checkbox--unchecked {
-      --border-color: darkseagreen;
+      --checkbox-border: darkseagreen;
       color: darkgray;
     }
   }
@@ -55,14 +55,14 @@
     }
 
     .core-checkbox {
-      --hover-color: beige;
+      --checkbox-color-hover: beige;
       --label-margin: 12px;
     }
 
     [data-level='0'] {
       > .core-checkbox--checked,
       > .core-checkbox--indeterminate {
-        --border-color: aquamarine;
+        --checkbox-border: aquamarine;
         --checkmark-color: darkblue;
         --checkbox-color: aquamarine;
       }
@@ -70,12 +70,12 @@
 
     .core-checkbox--checked,
     .core-checkbox--indeterminate {
-      --border-color: goldenrod;
+      --checkbox-border: goldenrod;
       --checkmark-color: goldenrod;
     }
 
     .checkbox--unchecked {
-      --border-color: darkseagreen;
+      --checkbox-border: darkseagreen;
       color: darkgray;
     }
   }
