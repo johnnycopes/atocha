@@ -1,6 +1,7 @@
+import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { FormsModule, NgForm } from '@angular/forms';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { combineLatest, of, Subject } from 'rxjs';
 import {
   concatMap,
@@ -11,8 +12,13 @@ import {
   tap,
 } from 'rxjs/operators';
 
+import {
+  AutofocusDirective,
+  ButtonComponent,
+  CheckboxComponent,
+  trackBySelf,
+} from '@atocha/core/ui';
 import { recordToArray } from '@atocha/core/util';
-import { trackBySelf } from '@atocha/core/ui';
 import {
   DishService,
   MealService,
@@ -20,7 +26,18 @@ import {
   UserService,
 } from '@atocha/menu-matriarch/data-access';
 import { Dish, TagModel, getDishTypes } from '@atocha/menu-matriarch/util';
-import { dishTrackByFn } from '@atocha/menu-matriarch/ui';
+import {
+  CardComponent,
+  DishSummaryComponent,
+  InputComponent,
+  MealSummaryComponent,
+  SectionComponent,
+  TagComponent,
+  TagDefDirective,
+  TagsListComponent,
+  dishTrackByFn,
+} from '@atocha/menu-matriarch/ui';
+import { MenuMatriarchFeatureEntitiesModule } from '@atocha/menu-matriarch/feature-entities';
 
 interface MealEditForm {
   name: string;
@@ -32,7 +49,25 @@ interface MealEditForm {
 type FormDishes = Record<string, boolean>;
 
 @Component({
+  standalone: true,
   selector: 'app-meal-edit',
+  imports: [
+    AutofocusDirective,
+    ButtonComponent,
+    CardComponent,
+    CheckboxComponent,
+    CommonModule,
+    DishSummaryComponent,
+    FormsModule,
+    InputComponent,
+    MealSummaryComponent,
+    MenuMatriarchFeatureEntitiesModule,
+    RouterModule,
+    SectionComponent,
+    TagComponent,
+    TagDefDirective,
+    TagsListComponent,
+  ],
   templateUrl: './meal-edit.component.html',
   styleUrls: ['./meal-edit.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
