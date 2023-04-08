@@ -1,7 +1,7 @@
 import { enableProdMode, importProvidersFrom } from '@angular/core';
 import { bootstrapApplication } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { provideRouter } from '@angular/router';
+import { provideRouter, withInMemoryScrolling } from '@angular/router';
 
 import { APP_NAME_TOKEN } from '@atocha/core/data-access';
 import { APP_ROUTES } from './app/app-routes';
@@ -20,7 +20,10 @@ bootstrapApplication(AppComponent, {
       provide: APP_NAME_TOKEN,
       useValue: 'MENU_MATRIARCH',
     },
-    provideRouter(APP_ROUTES),
+    provideRouter(
+      APP_ROUTES,
+      withInMemoryScrolling({ scrollPositionRestoration: 'enabled' })
+    ),
     importProvidersFrom([
       AngularFireModule.initializeApp(environment.firebaseConfig),
       AngularFirestoreModule,
