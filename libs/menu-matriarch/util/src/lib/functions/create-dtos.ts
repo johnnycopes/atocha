@@ -1,4 +1,5 @@
 import { DishDto } from '../dish.interface';
+import { IngredientDto } from '../ingredient.interface';
 import { MealDto } from '../meal.interface';
 import { MenuDto } from '../menu.interface';
 import { TagDto } from '../tag.interface';
@@ -65,6 +66,22 @@ export function createMealDto({
     description: description ?? '',
     dishIds: dishIds ?? [],
     tagIds: tagIds ?? [],
+  };
+}
+
+export function createIngredientDto({
+  id,
+  uid,
+  name,
+  type,
+  dishes,
+}: Partial<IngredientDto>): IngredientDto {
+  return {
+    id: id ?? '',
+    uid: uid ?? '',
+    name: name ?? '',
+    type: type ?? 'uncategorized',
+    dishes: dishes ?? [],
   };
 }
 
