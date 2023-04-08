@@ -37,7 +37,10 @@ import {
   TagsListComponent,
   dishTrackByFn,
 } from '@atocha/menu-matriarch/ui';
-import { MenuMatriarchFeatureEntitiesModule } from '@atocha/menu-matriarch/feature-entities';
+import {
+  DishDefDirective,
+  DishesListComponent,
+} from '@atocha/menu-matriarch/feature-entities';
 
 interface MealEditForm {
   name: string;
@@ -57,11 +60,12 @@ type FormDishes = Record<string, boolean>;
     CardComponent,
     CheckboxComponent,
     CommonModule,
+    DishDefDirective,
+    DishesListComponent,
     DishSummaryComponent,
     FormsModule,
     InputComponent,
     MealSummaryComponent,
-    MenuMatriarchFeatureEntitiesModule,
     RouterModule,
     SectionComponent,
     TagComponent,

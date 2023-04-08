@@ -1,15 +1,19 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import { MenuMatriarchFeatureEntitiesModule } from '@atocha/menu-matriarch/feature-entities';
 import { DishCardComponent } from './dish-card/dish-card.component';
+import {
+  DishDefDirective,
+  DishesListComponent,
+} from '@atocha/menu-matriarch/feature-entities';
 
 @Component({
   standalone: true,
   selector: 'app-dishes',
   imports: [
     DishCardComponent,
-    MenuMatriarchFeatureEntitiesModule,
+    DishDefDirective,
+    DishesListComponent,
     RouterModule,
   ],
   templateUrl: './dishes.component.html',
