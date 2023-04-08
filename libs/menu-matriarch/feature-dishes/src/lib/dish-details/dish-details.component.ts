@@ -1,13 +1,39 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { of } from 'rxjs';
 import { concatMap, first, map, switchMap, tap } from 'rxjs/operators';
 
-import { trackBySelf } from '@atocha/core/ui';
+import {
+  ButtonComponent,
+  ExternalLinkDirective,
+  PluralPipe,
+  SafePipe,
+  trackBySelf,
+} from '@atocha/core/ui';
 import { DishService } from '@atocha/menu-matriarch/data-access';
+import { CommonModule } from '@angular/common';
+import {
+  SectionComponent,
+  TagComponent,
+  TagDefDirective,
+  TagsListComponent,
+} from '@atocha/menu-matriarch/ui';
 
 @Component({
+  standalone: true,
   selector: 'app-dish-details',
+  imports: [
+    ButtonComponent,
+    CommonModule,
+    ExternalLinkDirective,
+    PluralPipe,
+    RouterModule,
+    SafePipe,
+    SectionComponent,
+    TagComponent,
+    TagDefDirective,
+    TagsListComponent,
+  ],
   templateUrl: './dish-details.component.html',
   styleUrls: ['./dish-details.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
