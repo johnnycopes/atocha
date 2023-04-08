@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { of } from 'rxjs';
@@ -11,7 +12,6 @@ import {
   trackBySelf,
 } from '@atocha/core/ui';
 import { DishService } from '@atocha/menu-matriarch/data-access';
-import { CommonModule } from '@angular/common';
 import {
   SectionComponent,
   TagComponent,
