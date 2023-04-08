@@ -44,11 +44,13 @@ export class ConfigForm extends FormGroup<Form<Config>> {
   }
 
   get scenariosError(): string {
-    return this.get('scenarioNames')?.errors?.[Validators.required.name];
+    return this.get('scenarioNames')?.errors?.[Validators.required.name] ?? '';
   }
 
   get adversariesError(): string {
-    return this.get('adversaryLevelIds')?.errors?.[Validators.required.name];
+    return (
+      this.get('adversaryLevelIds')?.errors?.[Validators.required.name] ?? ''
+    );
   }
 
   constructor(
