@@ -18,7 +18,7 @@
     </ui-card>
 
     <ui-card name="players"
-      [error]="form.errors?.['playersOutnumberTotalBoards']"
+      [error]="form.playersError"
     >
       <h3 ui-card-header>
         Players
@@ -28,7 +28,7 @@
     </ui-card>
 
     <ui-card name="difficulty"
-      [error]="form.errors?.['invalidDifficultyRange']"
+      [error]="form.difficultyError"
     >
       <h3 ui-card-header>
         Difficulty
@@ -43,7 +43,7 @@
     description="What are you open to playing with?"
   >
     <ui-card name="spirits"
-      [error]="form.errors?.['playersOutnumberSpirits']"
+      [error]="form.spiritsError"
     >
       <app-checkbox-tree
         [tree]="spiritsTree"
@@ -53,7 +53,7 @@
     </ui-card>
 
     <ui-card name="maps"
-      [error]="form.get('mapNames')?.errors?.['required']"
+      [error]="form.mapsError"
     >
       <app-checkbox-tree
         [tree]="mapsTree"
@@ -63,7 +63,7 @@
     </ui-card>
 
     <ui-card name="boards"
-      [error]="form.errors?.['playersOutnumberSelectedBoards']"
+      [error]="form.boardsError"
     >
       <app-checkbox-tree
         [tree]="boardsTree"
@@ -73,7 +73,7 @@
     </ui-card>
 
     <ui-card name="scenarios"
-      [error]="form.get('scenarioNames')?.errors?.['required']"
+      [error]="form.scenariosError"
     >
       <app-checkbox-tree
         [tree]="scenariosTree"
@@ -83,7 +83,7 @@
     </ui-card>
 
     <ui-card name="adversaries"
-      [error]="form.get('adversaryLevelIds')?.errors?.['required']"
+      [error]="form.adversariesError"
     >
       <app-checkbox-tree
         [tree]="adversariesTree"
