@@ -1,13 +1,27 @@
+import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { BehaviorSubject, combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { trackByFactory } from '@atocha/core/ui';
+import { ButtonComponent, trackByFactory } from '@atocha/core/ui';
 import { MenuService, PrintService } from '@atocha/menu-matriarch/data-access';
 import { Day, Menu } from '@atocha/menu-matriarch/util';
+import {
+  InlineNameEditComponent,
+  SectionComponent,
+} from '@atocha/menu-matriarch/ui';
+import { MenuCardComponent } from './menu-card/menu-card.component';
 
 @Component({
+  standalone: true,
   selector: 'app-menus',
+  imports: [
+    ButtonComponent,
+    CommonModule,
+    InlineNameEditComponent,
+    MenuCardComponent,
+    SectionComponent,
+  ],
   templateUrl: './menus.component.html',
   styleUrls: ['./menus.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
