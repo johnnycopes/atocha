@@ -12,23 +12,21 @@ import { MealDefDirective } from './meals-list/meal-def.directive';
 import { MealsListComponent } from './meals-list/meals-list.component';
 
 @NgModule({
-  declarations: [
+  imports: [
+    CommonModule,
     DishDefDirective,
     DishesListComponent,
+    FilterableListComponent,
     MealDefDirective,
     MealsListComponent,
+    TabsetComponent,
+    TabComponent,
   ],
   exports: [
     DishDefDirective,
     DishesListComponent,
     MealDefDirective,
     MealsListComponent,
-  ],
-  imports: [
-    CommonModule,
-    FilterableListComponent,
-    TabsetComponent,
-    TabComponent,
   ],
 })
 export class MenuMatriarchFeatureEntitiesModule {}

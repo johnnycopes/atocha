@@ -10,6 +10,7 @@ export interface MealDefContext {
 }
 
 @Directive({
+  standalone: true,
   selector: '[appMealDef]',
 })
 export class MealDefDirective {

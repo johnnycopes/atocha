@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import {
   Component,
   ChangeDetectionStrategy,
@@ -15,11 +16,24 @@ import {
   FilterService,
   TagService,
 } from '@atocha/menu-matriarch/data-access';
-import { dishTrackByFn, groupTrackByFn } from '@atocha/menu-matriarch/ui';
+import {
+  FilterableListComponent,
+  TabComponent,
+  TabsetComponent,
+  dishTrackByFn,
+  groupTrackByFn,
+} from '@atocha/menu-matriarch/ui';
 import { DishContext, DishDefDirective } from './dish-def.directive';
 
 @Component({
+  standalone: true,
   selector: 'app-dishes-list',
+  imports: [
+    CommonModule,
+    FilterableListComponent,
+    TabsetComponent,
+    TabComponent,
+  ],
   templateUrl: './dishes-list.component.html',
   styleUrls: ['./dishes-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
