@@ -1,24 +1,24 @@
-import { Route } from '@angular/router';
+import { Routes } from '@angular/router';
 
 import {
   HomeComponent,
   PageNotFoundComponent,
   ShellComponent,
 } from '@atocha/globetrotter/feature-shell';
-import { Route as AppRoute } from '@atocha/globetrotter/util';
+import { Route } from '@atocha/globetrotter/util';
 
-export const APP_ROUTES: Route[] = [
+export const APP_ROUTES: Routes = [
   {
     path: '',
     component: ShellComponent,
     children: [
       {
-        path: AppRoute.home,
+        path: Route.home,
         title: 'Globetrotter',
         component: HomeComponent,
       },
       {
-        path: AppRoute.explore,
+        path: Route.explore,
         title: 'Globetrotter | Explore',
         loadComponent: () =>
           import('@atocha/globetrotter/feature-explore').then(
@@ -26,7 +26,7 @@ export const APP_ROUTES: Route[] = [
           ),
       },
       {
-        path: AppRoute.learn,
+        path: Route.learn,
         title: 'Globetrotter | Learn',
         loadChildren: () =>
           import('@atocha/globetrotter/feature-learn').then(
@@ -35,7 +35,7 @@ export const APP_ROUTES: Route[] = [
       },
       {
         path: '',
-        redirectTo: AppRoute.home,
+        redirectTo: Route.home,
         pathMatch: 'full',
       },
     ],
