@@ -7,10 +7,14 @@ import {
 } from '@angular/core';
 
 import { MenuService } from '@atocha/menu-matriarch/data-access';
+import { MenuMatriarchFeatureEntitiesModule } from '@atocha/menu-matriarch/feature-entities';
 import { Day, Menu } from '@atocha/menu-matriarch/util';
+import { PlannerDishComponent } from './planner-dish/planner-dish.component';
 
 @Component({
+  standalone: true,
   selector: 'app-planner-dishes',
+  imports: [MenuMatriarchFeatureEntitiesModule, PlannerDishComponent],
   templateUrl: './planner-dishes.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

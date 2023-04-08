@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import {
   Component,
   ChangeDetectionStrategy,
@@ -5,9 +6,17 @@ import {
   Output,
   EventEmitter,
 } from '@angular/core';
-import { Router } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { Router, RouterModule } from '@angular/router';
 
-import { trackByFactory } from '@atocha/core/ui';
+import { CheckboxComponent, trackByFactory } from '@atocha/core/ui';
+import {
+  CardComponent,
+  MealSummaryComponent,
+  TagComponent,
+  TagDefDirective,
+  TagsListComponent,
+} from '@atocha/menu-matriarch/ui';
 import { Day, Dish, Menu, Orientation, Tag } from '@atocha/menu-matriarch/util';
 
 interface EntryModel {
@@ -18,7 +27,19 @@ interface EntryModel {
 }
 
 @Component({
+  standalone: true,
   selector: 'app-planner-meal',
+  imports: [
+    CardComponent,
+    CheckboxComponent,
+    CommonModule,
+    FormsModule,
+    MealSummaryComponent,
+    TagComponent,
+    TagDefDirective,
+    TagsListComponent,
+    RouterModule,
+  ],
   templateUrl: './planner-meal.component.html',
   styleUrls: ['./planner-meal.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
