@@ -1,26 +1,13 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
-import { ButtonComponent } from '@atocha/core/ui';
-import {
-  CardComponent,
-  InputComponent,
-  SectionComponent,
-} from '@atocha/menu-matriarch/ui';
 import { SettingsComponent } from './settings.component';
 
 @NgModule({
-  declarations: [SettingsComponent],
+  declarations: [],
   imports: [
-    ButtonComponent,
-    CardComponent,
-    CommonModule,
-    FormsModule,
-    InputComponent,
     RouterModule.forChild([{ path: '', component: SettingsComponent }]),
-    SectionComponent,
+    SettingsComponent,
   ],
 })
 export class MenuMatriarchFeatureSettingsModule {}
