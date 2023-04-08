@@ -47,7 +47,7 @@ describe('ConfigForm', () => {
       });
 
       expect(form.valid).toBe(false);
-      expect(form.errors?.['playersOutnumberSpirits']).toBeTruthy();
+      expect(form.spiritsError).toBeTruthy();
     });
 
     it('when players outnumber total boards', () => {
@@ -57,7 +57,7 @@ describe('ConfigForm', () => {
       });
 
       expect(form.valid).toBe(false);
-      expect(form.errors?.['playersOutnumberTotalBoards']).toBeTruthy();
+      expect(form.playersError).toBeTruthy();
     });
 
     it('when players outnumber selected boards', () => {
@@ -67,7 +67,7 @@ describe('ConfigForm', () => {
       });
 
       expect(form.valid).toBe(false);
-      expect(form.errors?.['playersOutnumberSelectedBoards']).toBeTruthy();
+      expect(form.boardsError).toBeTruthy();
     });
 
     it('when difficulty range is incompatible', () => {
@@ -77,7 +77,7 @@ describe('ConfigForm', () => {
       });
 
       expect(form.valid).toBe(false);
-      expect(form.errors?.['invalidDifficultyRange']).toBeTruthy();
+      expect(form.difficultyError).toBeTruthy();
     });
 
     it('when no maps are selected', () => {
@@ -87,7 +87,7 @@ describe('ConfigForm', () => {
       });
 
       expect(form.valid).toBe(false);
-      expect(form.get('mapNames')?.errors?.['required']).toBeTruthy();
+      expect(form.mapsError).toBeTruthy();
     });
 
     it('when no scenarios are selected', () => {
@@ -97,7 +97,7 @@ describe('ConfigForm', () => {
       });
 
       expect(form.valid).toBe(false);
-      expect(form.get('scenarioNames')?.errors?.['required']).toBeTruthy();
+      expect(form.scenariosError).toBeTruthy();
     });
 
     it('when no adversaries are selected', () => {
@@ -107,7 +107,7 @@ describe('ConfigForm', () => {
       });
 
       expect(form.valid).toBe(false);
-      expect(form.get('adversaryLevelIds')?.errors?.['required']).toBeTruthy();
+      expect(form.adversariesError).toBeTruthy();
     });
   });
 
