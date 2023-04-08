@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { combineLatest, of } from 'rxjs';
-import { concatMap, first, map, switchMap, tap } from 'rxjs/operators';
+import { concatMap, first, map, switchMap } from 'rxjs/operators';
 
 import { ButtonComponent, trackBySelf } from '@atocha/core/ui';
 import { MealService, UserService } from '@atocha/menu-matriarch/data-access';
@@ -74,10 +74,11 @@ export class MealDetailsComponent {
             return of(undefined);
           }
           return this._mealService.deleteMeal(id);
-        }),
-        tap(() => this._router.navigate(['..'], { relativeTo: this._route }))
+        })
       )
-      .subscribe();
+      .subscribe(() =>
+        this._router.navigate(['..'], { relativeTo: this._route })
+      );
   }
 
   onDishClick(id: string): void {

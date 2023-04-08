@@ -9,7 +9,6 @@ import {
   first,
   map,
   startWith,
-  tap,
 } from 'rxjs/operators';
 
 import {
@@ -161,12 +160,9 @@ export class MealEditComponent {
     if (!this._routeId) {
       this._mealService
         .createMeal(details)
-        .pipe(
-          tap((newId) =>
-            this._router.navigate(['..', newId], { relativeTo: this._route })
-          )
-        )
-        .subscribe();
+        .subscribe((newId) =>
+          this._router.navigate(['..', newId], { relativeTo: this._route })
+        );
     } else {
       this._meal$
         .pipe(
@@ -177,10 +173,11 @@ export class MealEditComponent {
             } else {
               return of(undefined);
             }
-          }),
-          tap(() => this._router.navigate(['..'], { relativeTo: this._route }))
+          })
         )
-        .subscribe();
+        .subscribe(() =>
+          this._router.navigate(['..'], { relativeTo: this._route })
+        );
     }
   }
 

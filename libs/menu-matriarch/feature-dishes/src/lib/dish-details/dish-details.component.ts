@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { of } from 'rxjs';
-import { concatMap, first, map, switchMap, tap } from 'rxjs/operators';
+import { concatMap, first, map, switchMap } from 'rxjs/operators';
 
 import {
   ButtonComponent,
@@ -67,9 +67,10 @@ export class DishDetailsComponent {
             return of(undefined);
           }
           return this._dishService.deleteDish(id);
-        }),
-        tap(() => this._router.navigate(['..'], { relativeTo: this._route }))
+        })
       )
-      .subscribe();
+      .subscribe(() =>
+        this._router.navigate(['..'], { relativeTo: this._route })
+      );
   }
 }
