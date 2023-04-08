@@ -9,8 +9,8 @@ import {
   OnChanges,
   SimpleChanges,
 } from '@angular/core';
-import { ButtonComponent } from '@atocha/core/ui';
 
+import { ButtonComponent } from '@atocha/core/ui';
 import {
   ContainerComponent,
   FixedSlideablePanelComponent,

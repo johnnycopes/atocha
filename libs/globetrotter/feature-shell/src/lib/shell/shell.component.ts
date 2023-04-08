@@ -1,12 +1,12 @@
+import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { RouterModule } from '@angular/router';
 import { BehaviorSubject, combineLatest } from 'rxjs';
 import { map, distinctUntilChanged } from 'rxjs/operators';
 
 import { LoaderService, QuizService } from '@atocha/globetrotter/data-access';
-import { CommonModule } from '@angular/common';
 import { LoaderComponent } from '@atocha/globetrotter/ui';
 import { NavigationComponent } from '../navigation/navigation.component';
-import { RouterModule } from '@angular/router';
 
 @Component({
   standalone: true,
