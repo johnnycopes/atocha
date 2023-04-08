@@ -14,7 +14,6 @@ import { QuizCardsComponent } from './quiz-cards/quiz-cards.component';
   selector: 'app-quiz',
   imports: [CommonModule, QuizCardsComponent, QuizMenuComponent],
   templateUrl: './quiz.component.html',
-  styleUrls: ['./quiz.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class QuizComponent implements OnInit {
