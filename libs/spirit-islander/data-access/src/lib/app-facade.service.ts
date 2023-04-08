@@ -17,21 +17,21 @@ export class AppFacadeService {
   ) {}
 
   async navigateToHome(): Promise<void> {
-    await this._router.navigate([Route.Home]);
+    await this._router.navigate([Route.home]);
   }
 
   async navigateToGameSetup(config: Config): Promise<void> {
-    await this._router.navigate([Route.GameSetup], {
+    await this._router.navigate([Route.gameSetup], {
       queryParams: mapConfigToParams(config),
     });
   }
 
   async navigateToConfig(): Promise<void> {
-    await this._router.navigate([Route.Config]);
+    await this._router.navigate([Route.config]);
   }
 
   async navigateToError(): Promise<void> {
-    await this._router.navigate([Route.Error], {
+    await this._router.navigate([Route.error], {
       skipLocationChange: true,
       queryParamsHandling: 'preserve',
     });
