@@ -9,33 +9,33 @@ export const APP_ROUTES: Routes = [
     component: ShellComponent,
     children: [
       {
-        path: Route.Config,
+        path: Route.config,
         title: 'Config | Spirit Islander',
-        data: { state: Route.Config },
+        data: { state: Route.config },
         loadComponent: () =>
           import('@atocha/spirit-islander/feature-config').then(
             (m) => m.ConfigComponent
           ),
       },
       {
-        path: Route.GameSetup,
+        path: Route.gameSetup,
         title: 'Game Setup | Spirit Islander',
-        data: { state: Route.GameSetup },
+        data: { state: Route.gameSetup },
         loadComponent: () =>
           import('@atocha/spirit-islander/feature-game-setup').then(
             (m) => m.GameSetupComponent
           ),
       },
       {
-        path: Route.Home,
-        data: { state: Route.Home },
-        redirectTo: Route.Config,
+        path: Route.home,
+        data: { state: Route.home },
+        redirectTo: Route.config,
         pathMatch: 'full',
       },
       {
-        path: Route.Error,
+        path: Route.error,
         title: 'Error | Spirit Islander',
-        data: { state: Route.Error },
+        data: { state: Route.error },
         loadComponent: () =>
           import('@atocha/spirit-islander/feature-shell').then(
             (m) => m.PageNotFoundComponent
