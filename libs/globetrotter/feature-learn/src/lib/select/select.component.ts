@@ -1,14 +1,27 @@
+import { CommonModule } from '@angular/common';
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { Router } from '@angular/router';
 import { combineLatest } from 'rxjs';
 import { first, map } from 'rxjs/operators';
 
+import { ButtonComponent } from '@atocha/core/ui';
+import { PlaceService, SelectService } from '@atocha/globetrotter/data-access';
 import { fadeInAnimation } from '@atocha/globetrotter/ui';
 import { Route, QuizType } from '@atocha/globetrotter/util';
-import { PlaceService, SelectService } from '@atocha/globetrotter/data-access';
+import { SelectTypeComponent } from './select-type/select-type.component';
+import { SelectQuantityComponent } from './select-quantity/select-quantity.component';
+import { SelectPlacesComponent } from './select-places/select-places.component';
 
 @Component({
+  standalone: true,
   selector: 'app-select',
+  imports: [
+    ButtonComponent,
+    CommonModule,
+    SelectPlacesComponent,
+    SelectQuantityComponent,
+    SelectTypeComponent,
+  ],
   templateUrl: './select.component.html',
   styleUrls: ['./select.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
