@@ -49,9 +49,9 @@ const routes: Routes = [
         path: Route.menus,
         title: 'Menu Matriarch | Menus',
         data: { state: Route.menus },
-        loadChildren: () =>
+        loadComponent: () =>
           import('@atocha/menu-matriarch/feature-menus').then(
-            (m) => m.MenuMatriarchFeatureMenusModule
+            (m) => m.MenusComponent
           ),
       },
       {
