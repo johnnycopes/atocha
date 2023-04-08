@@ -1,3 +1,5 @@
+import { AnimationEvent } from '@angular/animations';
+import { CommonModule } from '@angular/common';
 import {
   Component,
   Input,
@@ -9,20 +11,21 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
 } from '@angular/core';
-import { AnimationEvent } from '@angular/animations';
 
+import { wait } from '@atocha/core/util';
 import {
   FlipCardComponent,
   FlipCardGuess,
   FlipCardSide,
 } from '@atocha/globetrotter/ui';
-import { wait } from '@atocha/core/util';
 import { Country, Duration, QuizType } from '@atocha/globetrotter/util';
 
 type CardTemplate = Record<FlipCardSide, TemplateRef<unknown> | undefined>;
 
 @Component({
+  standalone: true,
   selector: 'app-quiz-card',
+  imports: [CommonModule, FlipCardComponent],
   templateUrl: './quiz-card.component.html',
   styleUrls: ['./quiz-card.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
