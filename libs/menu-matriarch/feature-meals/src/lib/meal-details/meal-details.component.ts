@@ -1,15 +1,34 @@
+import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { combineLatest, of } from 'rxjs';
 import { concatMap, first, map, switchMap, tap } from 'rxjs/operators';
 
-import { trackBySelf } from '@atocha/core/ui';
+import { ButtonComponent, trackBySelf } from '@atocha/core/ui';
 import { MealService, UserService } from '@atocha/menu-matriarch/data-access';
 import { getDishTypes } from '@atocha/menu-matriarch/util';
-import { dishTrackByFn } from '@atocha/menu-matriarch/ui';
+import {
+  MealSummaryComponent,
+  SectionComponent,
+  TagComponent,
+  TagDefDirective,
+  TagsListComponent,
+  dishTrackByFn,
+} from '@atocha/menu-matriarch/ui';
 
 @Component({
+  standalone: true,
   selector: 'app-meal-details',
+  imports: [
+    ButtonComponent,
+    CommonModule,
+    MealSummaryComponent,
+    SectionComponent,
+    TagComponent,
+    TagDefDirective,
+    TagsListComponent,
+    RouterModule,
+  ],
   templateUrl: './meal-details.component.html',
   styleUrls: ['./meal-details.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

@@ -8,6 +8,7 @@ export interface DishContext {
 }
 
 @Directive({
+  standalone: true,
   selector: '[appDishDef]',
 })
 export class DishDefDirective {

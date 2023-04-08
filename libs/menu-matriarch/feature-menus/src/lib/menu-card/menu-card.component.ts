@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -5,18 +6,45 @@ import {
   Input,
   Output,
 } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 import { BehaviorSubject } from 'rxjs';
 
+import { ButtonComponent } from '@atocha/core/ui';
 import { Day, MenuEntry, Orientation } from '@atocha/menu-matriarch/util';
-import { menuEntryTrackByFn } from '@atocha/menu-matriarch/ui';
+import {
+  CardComponent,
+  InlineDaySelectComponent,
+  InlineNameEditComponent,
+  MealSummaryComponent,
+  OptionsMenuComponent,
+  OptionsMenuItemComponent,
+  OptionsMenuTriggerDirective,
+  SmallCapsLabelComponent,
+  menuEntryTrackByFn,
+} from '@atocha/menu-matriarch/ui';
 
 type State = 'default' | 'renaming' | 'changingStartDay';
 
 @Component({
+  standalone: true,
   // eslint-disable-next-line @angular-eslint/component-selector
   selector: '[app-menu-card]',
+  imports: [
+    ButtonComponent,
+    CardComponent,
+    CommonModule,
+    FontAwesomeModule,
+    InlineNameEditComponent,
+    InlineDaySelectComponent,
+    MealSummaryComponent,
+    OptionsMenuComponent,
+    OptionsMenuItemComponent,
+    OptionsMenuTriggerDirective,
+    RouterModule,
+    SmallCapsLabelComponent,
+  ],
   templateUrl: './menu-card.component.html',
   styleUrls: ['./menu-card.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

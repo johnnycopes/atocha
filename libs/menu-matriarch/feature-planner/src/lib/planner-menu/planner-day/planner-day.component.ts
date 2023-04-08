@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -6,14 +7,27 @@ import {
   OnInit,
   Output,
 } from '@angular/core';
+import { Router, RouterModule } from '@angular/router';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faPlusSquare, faTimes } from '@fortawesome/free-solid-svg-icons';
 
+import {
+  MealSummaryComponent,
+  SmallCapsLabelComponent,
+} from '@atocha/menu-matriarch/ui';
 import { Day, Dish, Orientation } from '@atocha/menu-matriarch/util';
-import { Router } from '@angular/router';
 
 @Component({
+  standalone: true,
   // eslint-disable-next-line @angular-eslint/component-selector
   selector: '[app-planner-day]',
+  imports: [
+    CommonModule,
+    FontAwesomeModule,
+    MealSummaryComponent,
+    RouterModule,
+    SmallCapsLabelComponent,
+  ],
   templateUrl: './planner-day.component.html',
   styleUrls: ['./planner-day.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

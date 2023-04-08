@@ -1,11 +1,15 @@
+import { CommonModule } from '@angular/common';
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { PlannerService } from '@atocha/menu-matriarch/data-access';
+import { RouterModule } from '@angular/router';
 
+import { PlannerService } from '@atocha/menu-matriarch/data-access';
 import { Route } from '@atocha/menu-matriarch/util';
 
 @Component({
+  standalone: true,
   // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'header[app-header]',
+  imports: [CommonModule, RouterModule],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

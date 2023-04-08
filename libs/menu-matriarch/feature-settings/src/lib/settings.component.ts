@@ -1,20 +1,36 @@
+import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
   OnDestroy,
   OnInit,
 } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { debounceTime, switchMap, takeUntil } from 'rxjs/operators';
 
-import { trackBySelf } from '@atocha/core/ui';
+import { ButtonComponent, trackBySelf } from '@atocha/core/ui';
 import { AuthService } from '@atocha/core/data-access';
 import { UserService } from '@atocha/menu-matriarch/data-access';
+import {
+  CardComponent,
+  InputComponent,
+  SectionComponent,
+} from '@atocha/menu-matriarch/ui';
 import { UserPreferences, getDays } from '@atocha/menu-matriarch/util';
 
 @Component({
+  standalone: true,
   selector: 'app-settings',
+  imports: [
+    ButtonComponent,
+    CardComponent,
+    CommonModule,
+    FormsModule,
+    InputComponent,
+    SectionComponent,
+  ],
   templateUrl: './settings.component.html',
   styleUrls: ['./settings.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

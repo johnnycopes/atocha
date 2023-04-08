@@ -1,25 +1,24 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { Route } from '@angular/router';
 
 import {
-  AuthGuard,
   LoggedInAuthGuard,
+  AuthGuard,
   PlannerGuard,
 } from '@atocha/menu-matriarch/data-access';
 import {
-  PageNotFoundComponent,
-  ShellComponent,
   WelcomeComponent,
+  ShellComponent,
+  PageNotFoundComponent,
 } from '@atocha/menu-matriarch/feature-shell';
-import { Route } from '@atocha/menu-matriarch/util';
+import { Route as AppRoute } from '@atocha/menu-matriarch/util';
 
-const routes: Routes = [
+export const APP_ROUTES: Route[] = [
   {
     path: 'welcome',
     title: 'Menu Matriarch | Welcome',
     component: WelcomeComponent,
     canActivate: [LoggedInAuthGuard],
-    data: { state: Route.welcome },
+    data: { state: AppRoute.welcome },
   },
   {
     path: '',
@@ -27,85 +26,75 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     children: [
       {
-        path: `${Route.planner}/:menuId`,
+        path: `${AppRoute.planner}/:menuId`,
         title: 'Menu Matriarch | Planner',
-        data: { state: Route.planner },
-        loadChildren: () =>
+        data: { state: AppRoute.planner },
+        loadComponent: () =>
           import('@atocha/menu-matriarch/feature-planner').then(
-            (m) => m.MenuMatriarchFeaturePlannerModule
+            (m) => m.PlannerComponent
           ),
       },
       {
-        path: Route.planner,
+        path: AppRoute.planner,
         title: 'Menu Matriarch | Planner',
-        data: { state: Route.planner },
+        data: { state: AppRoute.planner },
         canActivate: [PlannerGuard],
-        loadChildren: () =>
+        loadComponent: () =>
           import('@atocha/menu-matriarch/feature-planner').then(
-            (m) => m.MenuMatriarchFeaturePlannerModule
+            (m) => m.PlannerComponent
           ),
       },
       {
-        path: Route.menus,
+        path: AppRoute.menus,
         title: 'Menu Matriarch | Menus',
-        data: { state: Route.menus },
-        loadChildren: () =>
+        data: { state: AppRoute.menus },
+        loadComponent: () =>
           import('@atocha/menu-matriarch/feature-menus').then(
-            (m) => m.MenuMatriarchFeatureMenusModule
+            (m) => m.MenusComponent
           ),
       },
       {
-        path: Route.meals,
+        path: AppRoute.meals,
         title: 'Menu Matriarch | Meals',
-        data: { state: Route.meals },
+        data: { state: AppRoute.meals },
         loadChildren: () =>
           import('@atocha/menu-matriarch/feature-meals').then(
-            (m) => m.MenuMatriarchFeatureMealsModule
+            (m) => m.MEALS_ROUTES
           ),
       },
       {
-        path: Route.dishes,
+        path: AppRoute.dishes,
         title: 'Menu Matriarch | Dishes',
-        data: { state: Route.dishes },
+        data: { state: AppRoute.dishes },
         loadChildren: () =>
           import('@atocha/menu-matriarch/feature-dishes').then(
-            (m) => m.MenuMatriarchFeatureDishesModule
+            (m) => m.DISHES_ROUTES
           ),
       },
       {
-        path: Route.tags,
+        path: AppRoute.tags,
         title: 'Menu Matriarch | Tags',
-        data: { state: Route.tags },
-        loadChildren: () =>
+        data: { state: AppRoute.tags },
+        loadComponent: () =>
           import('@atocha/menu-matriarch/feature-tags').then(
-            (m) => m.MenuMatriarchFeatureTagsModule
+            (m) => m.TagsComponent
           ),
       },
       {
-        path: Route.settings,
+        path: AppRoute.settings,
         title: 'Menu Matriarch | Settings',
-        data: { state: Route.settings },
-        loadChildren: () =>
+        data: { state: AppRoute.settings },
+        loadComponent: () =>
           import('@atocha/menu-matriarch/feature-settings').then(
-            (m) => m.MenuMatriarchFeatureSettingsModule
+            (m) => m.SettingsComponent
           ),
       },
       {
         path: '',
-        redirectTo: Route.planner,
+        redirectTo: AppRoute.planner,
         pathMatch: 'full',
       },
     ],
   },
   { path: '**', component: PageNotFoundComponent, canActivate: [AuthGuard] },
 ];
-
-@NgModule({
-  imports: [
-    RouterModule.forRoot(routes, {
-      scrollPositionRestoration: 'enabled',
-    }),
-  ],
-  exports: [RouterModule],
-})
-export class AppRoutingModule {}

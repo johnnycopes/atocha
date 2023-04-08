@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
 
 import {
   ErrorService,
@@ -6,9 +7,18 @@ import {
 } from '@atocha/menu-matriarch/data-access';
 
 @Component({
+  standalone: true,
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
+  imports: [RouterOutlet],
+  template: `<router-outlet></router-outlet>`,
+  styles: [
+    `
+      :host {
+        display: block;
+        height: 100%;
+      }
+    `,
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {

@@ -1,10 +1,28 @@
+import { CommonModule } from '@angular/common';
 import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
+import {
+  CardComponent,
+  MealSummaryComponent,
+  TagComponent,
+  TagDefDirective,
+  TagsListComponent,
+} from '@atocha/menu-matriarch/ui';
 import { Dish, Orientation, Tag } from '@atocha/menu-matriarch/util';
 
 @Component({
+  standalone: true,
   selector: 'app-meal-card',
+  imports: [
+    CardComponent,
+    CommonModule,
+    MealSummaryComponent,
+    RouterModule,
+    TagComponent,
+    TagDefDirective,
+    TagsListComponent,
+  ],
   templateUrl: './meal-card.component.html',
   styleUrls: ['./meal-card.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

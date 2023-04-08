@@ -1,10 +1,13 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterModule, RouterOutlet } from '@angular/router';
 
 import { routerTransition } from '@atocha/core/ui';
+import { HeaderComponent } from '../header/header.component';
 
 @Component({
+  standalone: true,
   selector: 'app-shell',
+  imports: [HeaderComponent, RouterModule],
   templateUrl: './shell.component.html',
   styleUrls: ['./shell.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

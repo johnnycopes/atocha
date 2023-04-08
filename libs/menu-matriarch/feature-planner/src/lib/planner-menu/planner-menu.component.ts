@@ -1,11 +1,24 @@
+import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
-import { Menu, MenuEntry } from '@atocha/menu-matriarch/util';
-import { menuEntryTrackByFn } from '@atocha/menu-matriarch/ui';
+import { ButtonComponent } from '@atocha/core/ui';
 import { MenuService, PrintService } from '@atocha/menu-matriarch/data-access';
+import { Menu, MenuEntry } from '@atocha/menu-matriarch/util';
+import {
+  SectionComponent,
+  menuEntryTrackByFn,
+} from '@atocha/menu-matriarch/ui';
+import { PlannerDayComponent } from './planner-day/planner-day.component';
 
 @Component({
+  standalone: true,
   selector: 'app-planner-menu',
+  imports: [
+    ButtonComponent,
+    CommonModule,
+    PlannerDayComponent,
+    SectionComponent,
+  ],
   templateUrl: './planner-menu.component.html',
   styleUrls: ['./planner-menu.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

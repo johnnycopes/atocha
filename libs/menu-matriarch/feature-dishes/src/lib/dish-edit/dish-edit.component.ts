@@ -1,13 +1,27 @@
+import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { FormsModule, NgForm } from '@angular/forms';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { combineLatest, of } from 'rxjs';
 import { concatMap, first, map, tap } from 'rxjs/operators';
+import { EditorModule } from '@tinymce/tinymce-angular';
 
 import { recordToArray } from '@atocha/core/util';
-import { trackBySelf } from '@atocha/core/ui';
+import {
+  AutofocusDirective,
+  ButtonComponent,
+  CheckboxComponent,
+  trackBySelf,
+} from '@atocha/core/ui';
 import { DishService, TagService } from '@atocha/menu-matriarch/data-access';
 import { DishType, TagModel, getDishTypes } from '@atocha/menu-matriarch/util';
+import {
+  InputComponent,
+  SectionComponent,
+  TagComponent,
+  TagDefDirective,
+  TagsListComponent,
+} from '@atocha/menu-matriarch/ui';
 
 interface DishEditForm {
   name: string;
@@ -19,7 +33,22 @@ interface DishEditForm {
 }
 
 @Component({
+  standalone: true,
   selector: 'app-dish-edit',
+  imports: [
+    AutofocusDirective,
+    ButtonComponent,
+    CheckboxComponent,
+    CommonModule,
+    EditorModule,
+    FormsModule,
+    InputComponent,
+    SectionComponent,
+    TagComponent,
+    TagDefDirective,
+    TagsListComponent,
+    RouterModule,
+  ],
   templateUrl: './dish-edit.component.html',
   styleUrls: ['./dish-edit.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

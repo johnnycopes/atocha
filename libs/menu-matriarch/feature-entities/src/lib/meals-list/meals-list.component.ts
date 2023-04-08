@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import {
   Component,
   ChangeDetectionStrategy,
@@ -18,10 +19,22 @@ import {
   TagService,
   UserService,
 } from '@atocha/menu-matriarch/data-access';
+import {
+  FilterableListComponent,
+  TabComponent,
+  TabsetComponent,
+} from '@atocha/menu-matriarch/ui';
 import { MealDefContext, MealDefDirective } from './meal-def.directive';
 
 @Component({
+  standalone: true,
   selector: 'app-meals-list',
+  imports: [
+    CommonModule,
+    FilterableListComponent,
+    TabsetComponent,
+    TabComponent,
+  ],
   templateUrl: './meals-list.component.html',
   styleUrls: ['./meals-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
