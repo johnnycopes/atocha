@@ -1,4 +1,4 @@
-import { Route } from '@angular/router';
+import { Routes } from '@angular/router';
 
 import {
   AuthGuard,
@@ -10,15 +10,15 @@ import {
   PageNotFoundComponent,
   ShellComponent,
 } from '@atocha/menu-matriarch/feature-shell';
-import { Route as AppRoute } from '@atocha/menu-matriarch/util';
+import { Route } from '@atocha/menu-matriarch/util';
 
-export const APP_ROUTES: Route[] = [
+export const APP_ROUTES: Routes = [
   {
     path: 'welcome',
     title: 'Menu Matriarch | Welcome',
     component: WelcomeComponent,
     canActivate: [LoggedInAuthGuard],
-    data: { state: AppRoute.welcome },
+    data: { state: Route.welcome },
   },
   {
     path: '',
@@ -26,18 +26,18 @@ export const APP_ROUTES: Route[] = [
     canActivate: [AuthGuard],
     children: [
       {
-        path: `${AppRoute.planner}/:menuId`,
+        path: `${Route.planner}/:menuId`,
         title: 'Menu Matriarch | Planner',
-        data: { state: AppRoute.planner },
+        data: { state: Route.planner },
         loadComponent: () =>
           import('@atocha/menu-matriarch/feature-planner').then(
             (m) => m.PlannerComponent
           ),
       },
       {
-        path: AppRoute.planner,
+        path: Route.planner,
         title: 'Menu Matriarch | Planner',
-        data: { state: AppRoute.planner },
+        data: { state: Route.planner },
         canActivate: [PlannerGuard],
         loadComponent: () =>
           import('@atocha/menu-matriarch/feature-planner').then(
@@ -45,45 +45,45 @@ export const APP_ROUTES: Route[] = [
           ),
       },
       {
-        path: AppRoute.menus,
+        path: Route.menus,
         title: 'Menu Matriarch | Menus',
-        data: { state: AppRoute.menus },
+        data: { state: Route.menus },
         loadComponent: () =>
           import('@atocha/menu-matriarch/feature-menus').then(
             (m) => m.MenusComponent
           ),
       },
       {
-        path: AppRoute.meals,
+        path: Route.meals,
         title: 'Menu Matriarch | Meals',
-        data: { state: AppRoute.meals },
+        data: { state: Route.meals },
         loadChildren: () =>
           import('@atocha/menu-matriarch/feature-meals').then(
             (m) => m.MEALS_ROUTES
           ),
       },
       {
-        path: AppRoute.dishes,
+        path: Route.dishes,
         title: 'Menu Matriarch | Dishes',
-        data: { state: AppRoute.dishes },
+        data: { state: Route.dishes },
         loadChildren: () =>
           import('@atocha/menu-matriarch/feature-dishes').then(
             (m) => m.DISHES_ROUTES
           ),
       },
       {
-        path: AppRoute.tags,
+        path: Route.tags,
         title: 'Menu Matriarch | Tags',
-        data: { state: AppRoute.tags },
+        data: { state: Route.tags },
         loadComponent: () =>
           import('@atocha/menu-matriarch/feature-tags').then(
             (m) => m.TagsComponent
           ),
       },
       {
-        path: AppRoute.settings,
+        path: Route.settings,
         title: 'Menu Matriarch | Settings',
-        data: { state: AppRoute.settings },
+        data: { state: Route.settings },
         loadComponent: () =>
           import('@atocha/menu-matriarch/feature-settings').then(
             (m) => m.SettingsComponent
@@ -91,7 +91,7 @@ export const APP_ROUTES: Route[] = [
       },
       {
         path: '',
-        redirectTo: AppRoute.planner,
+        redirectTo: Route.planner,
         pathMatch: 'full',
       },
     ],

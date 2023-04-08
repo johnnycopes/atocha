@@ -1,41 +1,41 @@
-import { Route } from '@angular/router';
+import { Routes } from '@angular/router';
 
 import { ShellComponent } from '@atocha/spirit-islander/feature-shell';
-import { Route as AppRoute } from '@atocha/spirit-islander/util';
+import { Route } from '@atocha/spirit-islander/util';
 
-export const APP_ROUTES: Route[] = [
+export const APP_ROUTES: Routes = [
   {
     path: '',
     component: ShellComponent,
     children: [
       {
-        path: AppRoute.Config,
+        path: Route.config,
         title: 'Config | Spirit Islander',
-        data: { state: AppRoute.Config },
+        data: { state: Route.config },
         loadComponent: () =>
           import('@atocha/spirit-islander/feature-config').then(
             (m) => m.ConfigComponent
           ),
       },
       {
-        path: AppRoute.GameSetup,
+        path: Route.gameSetup,
         title: 'Game Setup | Spirit Islander',
-        data: { state: AppRoute.GameSetup },
+        data: { state: Route.gameSetup },
         loadComponent: () =>
           import('@atocha/spirit-islander/feature-game-setup').then(
             (m) => m.GameSetupComponent
           ),
       },
       {
-        path: AppRoute.Home,
-        data: { state: AppRoute.Home },
-        redirectTo: AppRoute.Config,
+        path: Route.home,
+        data: { state: Route.home },
+        redirectTo: Route.config,
         pathMatch: 'full',
       },
       {
-        path: AppRoute.Error,
+        path: Route.error,
         title: 'Error | Spirit Islander',
-        data: { state: AppRoute.Error },
+        data: { state: Route.error },
         loadComponent: () =>
           import('@atocha/spirit-islander/feature-shell').then(
             (m) => m.PageNotFoundComponent
