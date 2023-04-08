@@ -76,9 +76,9 @@ const routes: Routes = [
         path: Route.tags,
         title: 'Menu Matriarch | Tags',
         data: { state: Route.tags },
-        loadChildren: () =>
+        loadComponent: () =>
           import('@atocha/menu-matriarch/feature-tags').then(
-            (m) => m.MenuMatriarchFeatureTagsModule
+            (m) => m.TagsComponent
           ),
       },
       {
