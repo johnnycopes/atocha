@@ -3,7 +3,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { combineLatest, of } from 'rxjs';
-import { concatMap, first, map, tap } from 'rxjs/operators';
+import { concatMap, first, map } from 'rxjs/operators';
 import { EditorModule } from '@tinymce/tinymce-angular';
 
 import { recordToArray } from '@atocha/core/util';
@@ -112,12 +112,9 @@ export class DishEditComponent {
     if (!this._routeId) {
       this._dishService
         .createDish(details)
-        .pipe(
-          tap((newId) =>
-            this._router.navigate(['..', newId], { relativeTo: this._route })
-          )
-        )
-        .subscribe();
+        .subscribe((newId) =>
+          this._router.navigate(['..', newId], { relativeTo: this._route })
+        );
     } else {
       this._dish$
         .pipe(
@@ -128,10 +125,11 @@ export class DishEditComponent {
             } else {
               return of(undefined);
             }
-          }),
-          tap(() => this._router.navigate(['..'], { relativeTo: this._route }))
+          })
         )
-        .subscribe();
+        .subscribe(() =>
+          this._router.navigate(['..'], { relativeTo: this._route })
+        );
     }
   }
 }
