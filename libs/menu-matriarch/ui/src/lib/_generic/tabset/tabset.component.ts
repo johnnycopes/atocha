@@ -13,7 +13,7 @@ import {
   ElementRef,
 } from '@angular/core';
 import { merge, Subject } from 'rxjs';
-import { takeUntil, tap } from 'rxjs/operators';
+import { takeUntil } from 'rxjs/operators';
 
 import { trackByFactory } from '@atocha/core/ui';
 import { AnimatedComponent } from '@atocha/core/ui';
@@ -61,11 +61,8 @@ export class TabsetComponent
         ...this.tabs.map(({ nameChange }) => nameChange),
         ...this.tabs.map(({ selectedChange }) => selectedChange)
       )
-        .pipe(
-          takeUntil(this._destroy$),
-          tap(() => this._changeDetectorRef.markForCheck())
-        )
-        .subscribe();
+        .pipe(takeUntil(this._destroy$))
+        .subscribe(() => this._changeDetectorRef.markForCheck());
     }
   }
 

@@ -26,33 +26,25 @@ export class WelcomeComponent {
   ) {}
 
   async login(): Promise<void> {
-    try {
-      const user = await this._authService.login();
-      if (user) {
-        const { name, email } = user;
-        this._authService.uid$
-          .pipe(
-            first(),
-            tap(async (uid) => {
-              if (!uid) {
-                return;
-              }
-              const menuId = await this._seedDataService.createUserData({
-                uid,
-                name,
-                email,
-              });
-              this._router.navigate(['/planner', menuId]);
-            })
-          )
-          .subscribe();
-      } else {
-        this._plannerService.route$
-          .pipe(tap((route) => this._router.navigate(route)))
-          .subscribe();
-      }
-    } catch (e) {
-      console.error(e);
+    const user = await this._authService.login().catch(console.error);
+
+    if (user) {
+      const { name, email } = user;
+      this._authService.uid$.pipe(first()).subscribe(async (uid) => {
+        if (!uid) {
+          return;
+        }
+        const menuId = await this._seedDataService.createUserData({
+          uid,
+          name,
+          email,
+        });
+        this._router.navigate(['/planner', menuId]);
+      });
+    } else {
+      this._plannerService.route$.subscribe((route) =>
+        this._router.navigate(route)
+      );
     }
   }
 }
