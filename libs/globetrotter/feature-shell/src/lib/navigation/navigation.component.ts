@@ -1,7 +1,9 @@
+import { CommonModule } from '@angular/common';
 import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 import { AnimatedComponent, trackByFactory } from '@atocha/core/ui';
-import { positionAnimation } from '@atocha/globetrotter/ui';
+import { IconComponent, positionAnimation } from '@atocha/globetrotter/ui';
 import { Route } from '@atocha/globetrotter/util';
 
 interface NavigationLink {
@@ -12,7 +14,9 @@ interface NavigationLink {
 }
 
 @Component({
+  standalone: true,
   selector: 'app-navigation',
+  imports: [CommonModule, IconComponent, RouterModule],
   templateUrl: './navigation.component.html',
   styleUrls: ['./navigation.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
