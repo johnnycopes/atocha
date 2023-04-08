@@ -19,7 +19,7 @@ export const APP_ROUTES: Routes = [
       },
       {
         path: Route.explore,
-        title: 'Globetrotter | Explore',
+        title: 'Explore | Globetrotter',
         loadComponent: () =>
           import('@atocha/globetrotter/feature-explore').then(
             (m) => m.ExploreComponent
@@ -27,7 +27,7 @@ export const APP_ROUTES: Routes = [
       },
       {
         path: Route.learn,
-        title: 'Globetrotter | Learn',
+        title: 'Learn | Globetrotter',
         loadChildren: () =>
           import('@atocha/globetrotter/feature-learn').then(
             (m) => m.LEARN_ROUTES
@@ -42,6 +42,7 @@ export const APP_ROUTES: Routes = [
   },
   {
     path: '**',
+    title: 'Error | Globetrotter',
     component: PageNotFoundComponent,
   },
 ];
