@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
-import { distinctUntilChanged, map, shareReplay, tap } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 
+import { State } from '@atocha/core/util';
 import { LocalStorageService } from '@atocha/core/data-access';
 import {
   LocalStorageKey,
@@ -14,17 +14,16 @@ import { MenuService } from './menu.service';
   providedIn: 'root',
 })
 export class PlannerService {
-  private _viewSubject = new BehaviorSubject<PlannerView>(
-    (this._localStorageService.getItem(LocalStorageKey.plannerView) ??
-      'dishes') as PlannerView
-  );
+  private _state = new State<{ view: PlannerView }>({
+    view: (this._localStorageService.getItem(LocalStorageKey.plannerView) ??
+      'dishes') as PlannerView,
+  });
 
-  view$ = this._viewSubject.pipe(
+  view$ = this._state.getProp('view').pipe(
     tap((view) =>
       this._localStorageService.setItem(LocalStorageKey.plannerView, view)
     ),
-    distinctUntilChanged(),
-    shareReplay({ bufferSize: 1, refCount: true })
+    tap(console.log)
   );
 
   route$ = this._menuService.activeMenuId$.pipe(
@@ -37,6 +36,6 @@ export class PlannerService {
   ) {}
 
   updateView(view: PlannerView): void {
-    this._viewSubject.next(view);
+    this._state.updateProp('view', view);
   }
 }
