@@ -60,7 +60,7 @@ const routes: Routes = [
         data: { state: Route.meals },
         loadChildren: () =>
           import('@atocha/menu-matriarch/feature-meals').then(
-            (m) => m.MenuMatriarchFeatureMealsModule
+            (m) => m.MEALS_ROUTES
           ),
       },
       {
