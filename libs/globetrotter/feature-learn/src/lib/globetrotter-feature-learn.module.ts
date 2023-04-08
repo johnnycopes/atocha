@@ -1,32 +1,9 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
-import { Route } from '@atocha/globetrotter/util';
-import { LearnComponent } from './learn.component';
-
-import { QuizModule } from './quiz/quiz.module';
-import { QuizComponent } from './quiz/quiz.component';
-import { SelectModule } from './select/select.module';
-import { SelectComponent } from './select/select.component';
+import { LEARN_ROUTES } from './learn-routes';
 
 @NgModule({
-  declarations: [LearnComponent],
-  imports: [
-    CommonModule,
-    QuizModule,
-    SelectModule,
-    RouterModule.forChild([
-      {
-        path: '',
-        component: LearnComponent,
-        children: [
-          { path: Route.select, component: SelectComponent },
-          { path: Route.quiz, component: QuizComponent },
-          { path: '', redirectTo: Route.select, pathMatch: 'full' },
-        ],
-      },
-    ]),
-  ],
+  imports: [RouterModule.forChild(LEARN_ROUTES)],
 })
 export class GlobetrotterFeatureLearnModule {}
