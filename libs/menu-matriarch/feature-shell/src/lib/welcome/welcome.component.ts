@@ -3,13 +3,16 @@ import { Router } from '@angular/router';
 import { first, tap } from 'rxjs/operators';
 
 import { AuthService } from '@atocha/core/data-access';
+import { ButtonComponent } from '@atocha/core/ui';
 import {
   PlannerService,
   SeedDataService,
 } from '@atocha/menu-matriarch/data-access';
 
 @Component({
+  standalone: true,
   selector: 'app-welcome',
+  imports: [ButtonComponent],
   templateUrl: './welcome.component.html',
   styleUrls: ['./welcome.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

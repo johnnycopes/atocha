@@ -11,19 +11,17 @@ import { ShellComponent } from './shell/shell.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 
 @NgModule({
-  declarations: [
-    ErrorComponent,
-    HeaderComponent,
-    PageNotFoundComponent,
-    ShellComponent,
-    WelcomeComponent,
-  ],
   exports: [ErrorComponent],
   imports: [
     ButtonComponent,
     CommonModule,
     EmptyViewPlaceholderComponent,
+    ErrorComponent,
+    HeaderComponent,
+    PageNotFoundComponent,
     RouterModule,
+    ShellComponent,
+    WelcomeComponent,
   ],
 })
 export class MenuMatriarchFeatureShellModule {}
