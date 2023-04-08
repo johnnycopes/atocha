@@ -30,9 +30,9 @@ const routes: Routes = [
         path: `${Route.planner}/:menuId`,
         title: 'Menu Matriarch | Planner',
         data: { state: Route.planner },
-        loadChildren: () =>
+        loadComponent: () =>
           import('@atocha/menu-matriarch/feature-planner').then(
-            (m) => m.MenuMatriarchFeaturePlannerModule
+            (m) => m.PlannerComponent
           ),
       },
       {
@@ -40,9 +40,9 @@ const routes: Routes = [
         title: 'Menu Matriarch | Planner',
         data: { state: Route.planner },
         canActivate: [PlannerGuard],
-        loadChildren: () =>
+        loadComponent: () =>
           import('@atocha/menu-matriarch/feature-planner').then(
-            (m) => m.MenuMatriarchFeaturePlannerModule
+            (m) => m.PlannerComponent
           ),
       },
       {
