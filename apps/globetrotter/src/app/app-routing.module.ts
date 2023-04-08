@@ -21,9 +21,9 @@ const routes: Routes = [
       {
         path: Route.explore,
         title: 'Globetrotter | Explore',
-        loadChildren: () =>
+        loadComponent: () =>
           import('@atocha/globetrotter/feature-explore').then(
-            (m) => m.GlobetrotterFeatureExploreModule
+            (m) => m.ExploreComponent
           ),
       },
       {
@@ -31,7 +31,7 @@ const routes: Routes = [
         title: 'Globetrotter | Learn',
         loadChildren: () =>
           import('@atocha/globetrotter/feature-learn').then(
-            (m) => m.GlobetrotterFeatureLearnModule
+            (m) => m.LEARN_ROUTES
           ),
       },
       {
