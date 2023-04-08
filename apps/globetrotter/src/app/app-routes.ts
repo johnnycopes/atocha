@@ -1,42 +1,41 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { Route } from '@angular/router';
 
 import {
   HomeComponent,
   PageNotFoundComponent,
   ShellComponent,
 } from '@atocha/globetrotter/feature-shell';
-import { Route } from '@atocha/globetrotter/util';
+import { Route as AppRoute } from '@atocha/globetrotter/util';
 
-const routes: Routes = [
+export const APP_ROUTES: Route[] = [
   {
     path: '',
     component: ShellComponent,
     children: [
       {
-        path: Route.home,
+        path: AppRoute.home,
         title: 'Globetrotter',
         component: HomeComponent,
       },
       {
-        path: Route.explore,
+        path: AppRoute.explore,
         title: 'Globetrotter | Explore',
-        loadChildren: () =>
+        loadComponent: () =>
           import('@atocha/globetrotter/feature-explore').then(
-            (m) => m.GlobetrotterFeatureExploreModule
+            (m) => m.ExploreComponent
           ),
       },
       {
-        path: Route.learn,
+        path: AppRoute.learn,
         title: 'Globetrotter | Learn',
         loadChildren: () =>
           import('@atocha/globetrotter/feature-learn').then(
-            (m) => m.GlobetrotterFeatureLearnModule
+            (m) => m.LEARN_ROUTES
           ),
       },
       {
         path: '',
-        redirectTo: Route.home,
+        redirectTo: AppRoute.home,
         pathMatch: 'full',
       },
     ],
@@ -46,13 +45,3 @@ const routes: Routes = [
     component: PageNotFoundComponent,
   },
 ];
-
-@NgModule({
-  imports: [
-    RouterModule.forRoot(routes, {
-      scrollPositionRestoration: 'enabled',
-    }),
-  ],
-  exports: [RouterModule],
-})
-export class AppRoutingModule {}

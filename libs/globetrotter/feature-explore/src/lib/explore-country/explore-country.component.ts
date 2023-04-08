@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import {
   Component,
   Input,
@@ -10,8 +11,9 @@ import {
   SimpleChanges,
 } from '@angular/core';
 
-import { trackByFactory, trackBySelf } from '@atocha/core/ui';
+import { MeasurementPipe, trackByFactory, trackBySelf } from '@atocha/core/ui';
 import { pluralize } from '@atocha/core/util';
+import { SmallCapsComponent } from '@atocha/globetrotter/ui';
 import { Country } from '@atocha/globetrotter/util';
 
 interface TableData {
@@ -21,7 +23,9 @@ interface TableData {
 }
 
 @Component({
+  standalone: true,
   selector: 'app-explore-country',
+  imports: [CommonModule, MeasurementPipe, SmallCapsComponent],
   templateUrl: './explore-country.component.html',
   styleUrls: ['./explore-country.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

@@ -5,12 +5,19 @@ import {
   Output,
   EventEmitter,
 } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
-import { RadioButtonsOption } from '@atocha/globetrotter/ui';
+import {
+  RadioButtonsComponent,
+  RadioButtonsOption,
+  SmallCapsComponent,
+} from '@atocha/globetrotter/ui';
 import { QuizType } from '@atocha/globetrotter/util';
 
 @Component({
+  standalone: true,
   selector: 'app-select-type',
+  imports: [FormsModule, RadioButtonsComponent, SmallCapsComponent],
   templateUrl: './select-type.component.html',
   styleUrls: ['./select-type.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

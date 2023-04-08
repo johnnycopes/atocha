@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import {
   Component,
   ChangeDetectionStrategy,
@@ -11,9 +12,12 @@ import { shuffle } from 'lodash-es';
 import { trackByFactory } from '@atocha/core/ui';
 import { staggerAnimation, fadeInAnimation } from '@atocha/globetrotter/ui';
 import { Country, QuizType } from '@atocha/globetrotter/util';
+import { QuizCardComponent } from './quiz-card/quiz-card.component';
 
 @Component({
+  standalone: true,
   selector: 'app-quiz-cards',
+  imports: [CommonModule, QuizCardComponent],
   templateUrl: './quiz-cards.component.html',
   styleUrls: ['./quiz-cards.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

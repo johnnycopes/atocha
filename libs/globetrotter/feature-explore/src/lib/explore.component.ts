@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { BehaviorSubject, combineLatest, of, Subject } from 'rxjs';
 import {
@@ -9,12 +10,15 @@ import {
 } from 'rxjs/operators';
 
 import { includes } from '@atocha/core/util';
-import { fadeInAnimation } from '@atocha/globetrotter/ui';
 import { PlaceService } from '@atocha/globetrotter/data-access';
+import { ListDetailsComponent, fadeInAnimation } from '@atocha/globetrotter/ui';
 import { Country } from '@atocha/globetrotter/util';
+import { ExploreCountryComponent } from './explore-country/explore-country.component';
 
 @Component({
+  standalone: true,
   selector: 'app-explore',
+  imports: [CommonModule, ExploreCountryComponent, ListDetailsComponent],
   templateUrl: './explore.component.html',
   styleUrls: ['./explore.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
