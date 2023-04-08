@@ -69,7 +69,7 @@ const routes: Routes = [
         data: { state: Route.dishes },
         loadChildren: () =>
           import('@atocha/menu-matriarch/feature-dishes').then(
-            (m) => m.MenuMatriarchFeatureDishesModule
+            (m) => m.DISHES_ROUTES
           ),
       },
       {
