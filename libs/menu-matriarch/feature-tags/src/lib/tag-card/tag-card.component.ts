@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import {
   Component,
   ChangeDetectionStrategy,
@@ -6,11 +7,28 @@ import {
   Output,
 } from '@angular/core';
 import { Subject, merge } from 'rxjs';
-import { mapTo, shareReplay } from 'rxjs/operators';
+import { map, shareReplay } from 'rxjs/operators';
+
+import {
+  CardComponent,
+  CountComponent,
+  InlineNameEditComponent,
+  TagComponent,
+} from '@atocha/menu-matriarch/ui';
+import { ButtonComponent } from '@atocha/core/ui';
 
 @Component({
+  standalone: true,
   // eslint-disable-next-line @angular-eslint/component-selector
   selector: '[app-tag-card]',
+  imports: [
+    ButtonComponent,
+    CardComponent,
+    CommonModule,
+    CountComponent,
+    InlineNameEditComponent,
+    TagComponent,
+  ],
   templateUrl: './tag-card.component.html',
   styleUrls: ['./tag-card.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -25,8 +43,8 @@ export class TagCardComponent {
   startEdit$ = new Subject<void>();
   finishEdit$ = new Subject<void>();
   editing$ = merge(
-    this.startEdit$.pipe(mapTo(true)),
-    this.finishEdit$.pipe(mapTo(false))
+    this.startEdit$.pipe(map(() => true)),
+    this.finishEdit$.pipe(map(() => false))
   ).pipe(shareReplay({ refCount: true, bufferSize: 1 }));
 
   onSave(name: string): void {
