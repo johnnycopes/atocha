@@ -1,14 +1,14 @@
 import { Route } from '@angular/router';
 
 import {
-  LoggedInAuthGuard,
   AuthGuard,
+  LoggedInAuthGuard,
   PlannerGuard,
 } from '@atocha/menu-matriarch/data-access';
 import {
   WelcomeComponent,
-  ShellComponent,
   PageNotFoundComponent,
+  ShellComponent,
 } from '@atocha/menu-matriarch/feature-shell';
 import { Route as AppRoute } from '@atocha/menu-matriarch/util';
 
