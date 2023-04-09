@@ -3,7 +3,7 @@ import { Observable, of } from 'rxjs';
 import { concatMap, first, tap } from 'rxjs/operators';
 
 import { AuthService } from '@atocha/core/data-access';
-import { Tag, TagDto } from '@atocha/menu-matriarch/util';
+import { Tag } from '@atocha/menu-matriarch/util';
 import { TagDataService } from './internal/tag-data.service';
 
 @Injectable({
@@ -31,14 +31,12 @@ export class TagService {
     );
   }
 
-  createTag(
-    tag: Partial<Omit<TagDto, 'id' | 'uid'>>
-  ): Observable<string | undefined> {
+  createTag(tag: Pick<Tag, 'name'>): Observable<string | undefined> {
     return this._authService.uid$.pipe(
       first(),
       concatMap(async (uid) => {
         if (uid) {
-          const id = await this._tagDataService.createTag({ uid, tag });
+          const id = await this._tagDataService.createTag(uid, tag);
           return id;
         } else {
           return undefined;
@@ -47,7 +45,7 @@ export class TagService {
     );
   }
 
-  updateTag(id: string, data: Partial<TagDto>): Promise<void> {
+  updateTag(id: string, data: Pick<Tag, 'name'>): Promise<void> {
     return this._tagDataService.updateTag(id, data);
   }
 
