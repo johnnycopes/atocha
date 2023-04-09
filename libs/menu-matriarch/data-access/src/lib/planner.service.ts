@@ -16,12 +16,13 @@ export class PlannerService {
       'dishes') as PlannerView,
   });
 
-  view$ = this._state.getProp('view').pipe(
-    tap((view) =>
-      this._localStorageService.setItem(LocalStorageKey.plannerView, view)
-    ),
-    tap(console.log)
-  );
+  view$ = this._state
+    .getProp('view')
+    .pipe(
+      tap((view) =>
+        this._localStorageService.setItem(LocalStorageKey.plannerView, view)
+      )
+    );
 
   route$ = this._menuService.activeMenuId$.pipe(
     map((menuId) => (menuId ? [Route.planner, menuId] : [Route.planner]))
