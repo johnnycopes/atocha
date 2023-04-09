@@ -2,9 +2,7 @@ export * from './lib/functions/create-dtos';
 export * from './lib/functions/get-days';
 export * from './lib/functions/get-dish-types';
 
-export * from './lib/mappers/map-dish-dto-to-dish';
-export * from './lib/mappers/map-meal-dto-to-meal';
-export * from './lib/mappers/map-menu-dto-to-menu';
+export * from './lib/mappers/mock-data';
 
 export * from './lib/day.type';
 export * from './lib/dish.interface';

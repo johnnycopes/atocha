@@ -3,12 +3,13 @@ import { combineLatest, Observable, of } from 'rxjs';
 import { concatMap, first, map } from 'rxjs/operators';
 
 import { AuthService } from '@atocha/core/data-access';
-import { Day, Menu, mapMenuDtoToMenu } from '@atocha/menu-matriarch/util';
+import { Day, Menu } from '@atocha/menu-matriarch/util';
 import { DishService } from './dish.service';
 import {
   EditableMenuData,
   MenuDataService,
 } from './internal/menu-data.service';
+import { mapMenuDtoToMenu } from './dtos/map-menu-dto-to-menu';
 import { RouterService } from './internal/router.service';
 import { UserService } from './user.service';
 
