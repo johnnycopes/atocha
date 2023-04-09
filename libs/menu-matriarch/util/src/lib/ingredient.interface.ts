@@ -17,7 +17,7 @@ export interface IngredientDto {
   uid: string;
   name: string;
   type: IngredientType;
-  dishes: string[];
+  dishIds: string[];
 }
 
 export type Ingredient = IngredientDto;
