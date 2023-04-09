@@ -76,27 +76,11 @@ export class MealService {
     );
   }
 
-  updateMeal(id: string, data: Partial<MealDto>): Observable<Meal | undefined> {
-    return this.getMeal(id).pipe(
-      first(),
-      tap(async (meal) => {
-        if (!meal) {
-          return;
-        }
-        await this._mealDataService.updateMeal(meal, data);
-      })
-    );
+  async updateMeal(meal: Meal, data: Partial<MealDto>): Promise<void> {
+    return this._mealDataService.updateMeal(meal, data);
   }
 
-  deleteMeal(id: string): Observable<Meal | undefined> {
-    return this.getMeal(id).pipe(
-      first(),
-      tap(async (meal) => {
-        if (!meal) {
-          return;
-        }
-        await this._mealDataService.deleteMeal(meal);
-      })
-    );
+  async deleteMeal(meal: Meal): Promise<void> {
+    return this._mealDataService.deleteMeal(meal);
   }
 }
