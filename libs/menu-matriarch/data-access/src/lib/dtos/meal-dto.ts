@@ -1,4 +1,4 @@
-import { Meal } from './meal.interface';
+import { Meal } from '@atocha/menu-matriarch/util';
 
 export interface MealDto extends Omit<Meal, 'dishes' | 'tags'> {
   dishIds: string[];

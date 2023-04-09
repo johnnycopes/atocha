@@ -1,10 +1,10 @@
 import {
-  MenuDto,
   Dish,
   UserPreferences,
   Menu,
   getDays,
 } from '@atocha/menu-matriarch/util';
+import { MenuDto } from './menu-dto';
 
 export function mapMenuDtoToMenu({
   menuDto,

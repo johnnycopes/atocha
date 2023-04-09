@@ -4,7 +4,8 @@ import { map } from 'rxjs/operators';
 
 import { DataService } from '@atocha/core/data-access';
 import { lower, sort } from '@atocha/core/util';
-import { Dish, DishDto, Endpoint } from '@atocha/menu-matriarch/util';
+import { Dish, Endpoint } from '@atocha/menu-matriarch/util';
+import { DishDto } from '../dtos/dish-dto';
 import { createDishDto } from '../dtos/create-dtos';
 import { BatchService } from './batch.service';
 
