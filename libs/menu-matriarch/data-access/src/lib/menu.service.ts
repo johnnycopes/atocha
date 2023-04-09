@@ -1,16 +1,14 @@
 import { Injectable } from '@angular/core';
 import { combineLatest, Observable, of } from 'rxjs';
-import { concatMap, first, map, tap } from 'rxjs/operators';
+import { concatMap, first, map } from 'rxjs/operators';
 
 import { AuthService } from '@atocha/core/data-access';
-import {
-  Day,
-  Menu,
-  MenuDto,
-  mapMenuDtoToMenu,
-} from '@atocha/menu-matriarch/util';
+import { Day, Menu, mapMenuDtoToMenu } from '@atocha/menu-matriarch/util';
 import { DishService } from './dish.service';
-import { MenuDataService } from './internal/menu-data.service';
+import {
+  EditableMenuData,
+  MenuDataService,
+} from './internal/menu-data.service';
 import { RouterService } from './internal/router.service';
 import { UserService } from './user.service';
 
@@ -68,9 +66,7 @@ export class MenuService {
     );
   }
 
-  createMenu(
-    menu: Partial<Omit<MenuDto, 'id' | 'uid' | 'startDay'>>
-  ): Observable<string | undefined> {
+  createMenu(menu: EditableMenuData): Observable<string | undefined> {
     return this._userService.getUser().pipe(
       first(),
       concatMap(async (user) => {
@@ -88,15 +84,15 @@ export class MenuService {
     );
   }
 
-  updateMenuName(id: string, name: string): Promise<void> {
+  async updateMenuName(id: string, name: string): Promise<void> {
     return this._menuDataService.updateMenu(id, { name });
   }
 
-  updateMenuStartDay(id: string, startDay: Day): Promise<void> {
+  async updateMenuStartDay(id: string, startDay: Day): Promise<void> {
     return this._menuDataService.updateMenu(id, { startDay });
   }
 
-  updateMenuContents({
+  async updateMenuContents({
     menu,
     day,
     dishIds,
@@ -115,23 +111,11 @@ export class MenuService {
     });
   }
 
-  async deleteMenu(id?: string): Promise<void> {
-    if (id) {
-      this.getMenu(id)
-        .pipe(
-          first(),
-          tap(async (menu) => {
-            if (!menu) {
-              return;
-            }
-            await this._menuDataService.deleteMenu(menu);
-          })
-        )
-        .subscribe();
-    }
+  async deleteMenu(menu: Menu): Promise<void> {
+    return this._menuDataService.deleteMenu(menu);
   }
 
-  deleteMenuContents(menu: Menu, day?: Day): Promise<void> {
+  async deleteMenuContents(menu: Menu, day?: Day): Promise<void> {
     return this._menuDataService.deleteMenuContents(menu, day);
   }
 }
