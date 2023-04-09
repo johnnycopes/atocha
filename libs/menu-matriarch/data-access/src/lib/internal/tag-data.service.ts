@@ -12,6 +12,8 @@ import {
 } from '@atocha/menu-matriarch/util';
 import { BatchService } from './batch.service';
 
+export type EditableTagData = Pick<TagDto, 'name'>;
+
 @Injectable({
   providedIn: 'root',
 })
@@ -33,7 +35,7 @@ export class TagDataService {
       .pipe(map((tags) => sort(tags, ({ name }) => lower(name))));
   }
 
-  async createTag(uid: string, tag: Pick<Tag, 'name'>): Promise<string> {
+  async createTag(uid: string, tag: EditableTagData): Promise<string> {
     const id = this._dataService.createId();
 
     await this._dataService.create<TagDto>(
@@ -45,8 +47,8 @@ export class TagDataService {
     return id;
   }
 
-  updateTag(id: string, data: Pick<Tag, 'name'>): Promise<void> {
-    return this._dataService.update<TagDto>(this._endpoint, id, data);
+  async updateTag(tag: Tag, data: EditableTagData): Promise<void> {
+    return this._dataService.update<TagDto>(this._endpoint, tag.id, data);
   }
 
   async deleteTag(tag: Tag): Promise<void> {

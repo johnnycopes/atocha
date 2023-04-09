@@ -22,8 +22,8 @@
       [name]="tag.name"
       [meals]="tag.mealIds"
       [dishes]="tag.dishIds"
-      (edit)="onTagEdit(tag.id, $event)"
-      (delete)="onTagDelete(tag.id)"
+      (edit)="onTagEdit(tag, $event)"
+      (delete)="onTagDelete(tag)"
     >
       {{ tag.name }}
     </li>

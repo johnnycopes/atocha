@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { concatMap, first, tap } from 'rxjs/operators';
+import { concatMap, first } from 'rxjs/operators';
 
 import { AuthService } from '@atocha/core/data-access';
 import { Tag } from '@atocha/menu-matriarch/util';
-import { TagDataService } from './internal/tag-data.service';
+import { EditableTagData, TagDataService } from './internal/tag-data.service';
 
 @Injectable({
   providedIn: 'root',
@@ -31,7 +31,7 @@ export class TagService {
     );
   }
 
-  createTag(tag: Pick<Tag, 'name'>): Observable<string | undefined> {
+  createTag(tag: EditableTagData): Observable<string | undefined> {
     return this._authService.uid$.pipe(
       first(),
       concatMap(async (uid) => {
@@ -45,19 +45,11 @@ export class TagService {
     );
   }
 
-  updateTag(id: string, data: Pick<Tag, 'name'>): Promise<void> {
-    return this._tagDataService.updateTag(id, data);
+  async updateTag(tag: Tag, data: EditableTagData): Promise<void> {
+    return this._tagDataService.updateTag(tag, data);
   }
 
-  deleteTag(id: string): Observable<Tag | undefined> {
-    return this.getTag(id).pipe(
-      first(),
-      tap(async (tag) => {
-        if (!tag) {
-          return;
-        }
-        await this._tagDataService.deleteTag(tag);
-      })
-    );
+  async deleteTag(tag: Tag): Promise<void> {
+    return this._tagDataService.deleteTag(tag);
   }
 }
