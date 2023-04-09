@@ -66,14 +66,13 @@ export class MenuService {
     );
   }
 
-  createMenu(menu: EditableMenuData): Observable<string | undefined> {
+  createMenu({ name }: EditableMenuData): Observable<string | undefined> {
     return this._userService.getUser().pipe(
       first(),
       concatMap(async (user) => {
         if (user) {
-          const id = await this._menuDataService.createMenu({
-            uid: user.uid,
-            menu,
+          const id = await this._menuDataService.createMenu(user.uid, {
+            name,
             startDay: user.preferences.defaultMenuStartDay,
           });
           return id;

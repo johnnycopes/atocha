@@ -36,25 +36,16 @@ export class MenuDataService {
       .pipe(map((menuDtos) => sort(menuDtos, ({ name }) => lower(name))));
   }
 
-  async createMenu({
-    uid,
-    menu,
-    startDay,
-  }: {
-    uid: string;
-    menu: EditableMenuData;
-    startDay: Day;
-  }): Promise<string> {
+  async createMenu(uid: string, menu: EditableMenuData): Promise<string> {
     const id = this._dataService.createId();
 
     await this._dataService.create<MenuDto>(
       this._endpoint,
       id,
       createMenuDto({
-        ...menu,
         id,
         uid,
-        startDay,
+        ...menu,
       })
     );
 
