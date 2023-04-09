@@ -4,7 +4,12 @@ import { map } from 'rxjs/operators';
 
 import { DataService } from '@atocha/core/data-access';
 import { lower, sort } from '@atocha/core/util';
-import { TagDto, Endpoint, createTagDto } from '@atocha/menu-matriarch/util';
+import {
+  Tag,
+  TagDto,
+  Endpoint,
+  createTagDto,
+} from '@atocha/menu-matriarch/util';
 import { BatchService } from './batch.service';
 
 @Injectable({
@@ -18,17 +23,17 @@ export class TagDataService {
     private _dataService: DataService
   ) {}
 
-  getTag(id: string): Observable<TagDto | undefined> {
+  getTag(id: string): Observable<Tag | undefined> {
     return this._dataService.getOne<TagDto>(this._endpoint, id);
   }
 
-  getTags(uid: string): Observable<TagDto[]> {
+  getTags(uid: string): Observable<Tag[]> {
     return this._dataService
       .getMany<TagDto>(this._endpoint, uid)
       .pipe(map((tags) => sort(tags, ({ name }) => lower(name))));
   }
 
-  async createTag(uid: string, tag: Pick<TagDto, 'name'>): Promise<string> {
+  async createTag(uid: string, tag: Pick<Tag, 'name'>): Promise<string> {
     const id = this._dataService.createId();
 
     await this._dataService.create<TagDto>(
@@ -40,11 +45,11 @@ export class TagDataService {
     return id;
   }
 
-  updateTag(id: string, data: Pick<TagDto, 'name'>): Promise<void> {
+  updateTag(id: string, data: Pick<Tag, 'name'>): Promise<void> {
     return this._dataService.update<TagDto>(this._endpoint, id, data);
   }
 
-  async deleteTag(tag: TagDto): Promise<void> {
+  async deleteTag(tag: Tag): Promise<void> {
     const batch = this._batchService.createBatch();
 
     batch.delete(this._endpoint, tag.id).updateMultiple([
