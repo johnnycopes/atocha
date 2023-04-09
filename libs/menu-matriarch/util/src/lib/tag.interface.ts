@@ -1,4 +1,4 @@
-export interface TagDto {
+export interface Tag {
   id: string;
   uid: string;
   name: string;
@@ -7,7 +7,7 @@ export interface TagDto {
   dishIds: string[];
 }
 
-export type Tag = TagDto;
+export type TagDto = Tag;
 
 export interface TagModel extends Tag {
   checked: boolean;

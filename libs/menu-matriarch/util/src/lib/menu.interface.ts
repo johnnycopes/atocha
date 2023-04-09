@@ -7,7 +7,7 @@ export interface MenuEntry {
   dishes: Dish[];
 }
 
-export interface MenuDto {
+export interface Menu {
   id: string;
   uid: string;
   name: string;
@@ -16,10 +16,9 @@ export interface MenuDto {
   contents: {
     [day in Day]: string[];
   };
-}
-
-export interface Menu extends MenuDto {
   entries: MenuEntry[];
   orientation: Orientation;
   fallbackText: string;
 }
+
+export type MenuDto = Omit<Menu, 'entries' | 'orientation' | 'fallbackText'>;
