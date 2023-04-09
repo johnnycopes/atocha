@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { DataService } from '@atocha/core/data-access';
 import {
   createDishDto,
+  createIngredientDto,
   createMealDto,
   createMenuDto,
   createTagDto,
@@ -36,6 +37,7 @@ export class SeedDataService {
     const enchiladasDishId = this._dataService.createId();
     const friedChickenDishId = this._dataService.createId();
     const greekSaladDishId = this._dataService.createId();
+    const huevosRotosDishId = this._dataService.createId();
     const macAndCheeseDishId = this._dataService.createId();
     const misoSoupDishId = this._dataService.createId();
     const pizzaDishId = this._dataService.createId();
@@ -48,6 +50,14 @@ export class SeedDataService {
     const thaiCurryDishId = this._dataService.createId();
     const easyTagId = this._dataService.createId();
     const pescatarianTagId = this._dataService.createId();
+    const eggsIngredientId = this._dataService.createId();
+    const garlicIngredientId = this._dataService.createId();
+    const oliveOilIngredientId = this._dataService.createId();
+    const onionIngredientId = this._dataService.createId();
+    const paprikaIngredientId = this._dataService.createId();
+    const pepperIngredientId = this._dataService.createId();
+    const potatoIngredientId = this._dataService.createId();
+    const saltIngredientId = this._dataService.createId();
     const veganTagId = this._dataService.createId();
     const vegetarianTagId = this._dataService.createId();
     const batch = this._batchService.createBatch();
@@ -287,6 +297,94 @@ export class SeedDataService {
         }),
       })
       .set({
+        endpoint: Endpoint.ingredients,
+        id: eggsIngredientId,
+        data: createIngredientDto({
+          id: eggsIngredientId,
+          uid,
+          name: 'Eggs',
+          type: 'refrigerated',
+          dishIds: [huevosRotosDishId],
+        }),
+      })
+      .set({
+        endpoint: Endpoint.ingredients,
+        id: garlicIngredientId,
+        data: createIngredientDto({
+          id: garlicIngredientId,
+          uid,
+          name: 'Garlic',
+          type: 'produce',
+          dishIds: [huevosRotosDishId],
+        }),
+      })
+      .set({
+        endpoint: Endpoint.ingredients,
+        id: oliveOilIngredientId,
+        data: createIngredientDto({
+          id: oliveOilIngredientId,
+          uid,
+          name: 'Olive Oil',
+          type: 'oil',
+          dishIds: [huevosRotosDishId],
+        }),
+      })
+      .set({
+        endpoint: Endpoint.ingredients,
+        id: onionIngredientId,
+        data: createIngredientDto({
+          id: onionIngredientId,
+          uid,
+          name: 'Onion',
+          type: 'produce',
+          dishIds: [huevosRotosDishId],
+        }),
+      })
+      .set({
+        endpoint: Endpoint.ingredients,
+        id: paprikaIngredientId,
+        data: createIngredientDto({
+          id: paprikaIngredientId,
+          uid,
+          name: 'Paprika',
+          type: 'spice',
+          dishIds: [huevosRotosDishId],
+        }),
+      })
+      .set({
+        endpoint: Endpoint.ingredients,
+        id: pepperIngredientId,
+        data: createIngredientDto({
+          id: pepperIngredientId,
+          uid,
+          name: 'Pepper',
+          type: 'spice',
+          dishIds: [huevosRotosDishId],
+        }),
+      })
+      .set({
+        endpoint: Endpoint.ingredients,
+        id: potatoIngredientId,
+        data: createIngredientDto({
+          id: potatoIngredientId,
+          uid,
+          name: 'Potato',
+          type: 'produce',
+          dishIds: [huevosRotosDishId],
+        }),
+      })
+      .set({
+        endpoint: Endpoint.ingredients,
+        id: saltIngredientId,
+        data: createIngredientDto({
+          id: saltIngredientId,
+          uid,
+          name: 'Salt',
+          type: 'spice',
+          dishIds: [huevosRotosDishId],
+        }),
+      })
+      .set({
         endpoint: Endpoint.tags,
         id: easyTagId,
         data: createTagDto({
@@ -333,6 +431,7 @@ export class SeedDataService {
           dishIds: [
             cornbreadDishId,
             greekSaladDishId,
+            huevosRotosDishId,
             macAndCheeseDishId,
             misoSoupDishId,
             pizzaDishId,
@@ -343,7 +442,6 @@ export class SeedDataService {
           ],
         }),
       });
-
     await batch.commit();
     return menuId;
   }
