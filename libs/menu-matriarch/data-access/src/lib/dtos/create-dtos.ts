@@ -1,8 +1,10 @@
-import { DishDto } from '../dish-dto';
-import { MealDto } from '../meal-dto';
-import { MenuDto } from '../menu-dto';
-import { TagDto } from '../tag-dto';
-import { UserDto } from '../user.interface';
+import {
+  DishDto,
+  MealDto,
+  MenuDto,
+  TagDto,
+  UserDto,
+} from '@atocha/menu-matriarch/util';
 
 export function createUserDto({
   uid,

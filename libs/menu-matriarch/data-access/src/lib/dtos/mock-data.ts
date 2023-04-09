@@ -3,7 +3,7 @@ import {
   createMealDto,
   createMenuDto,
   createTagDto,
-} from '../functions/create-dtos';
+} from './create-dtos';
 
 export const MENU_DTO = createMenuDto({
   id: 'menu-1',

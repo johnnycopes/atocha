@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
 
 import { DataService } from '@atocha/core/data-access';
-import {
-  createDishDto,
-  createMealDto,
-  createMenuDto,
-  createTagDto,
-  createUserDto,
-  Endpoint,
-} from '@atocha/menu-matriarch/util';
+import { Endpoint } from '@atocha/menu-matriarch/util';
 import { BatchService } from './internal/batch.service';
+import {
+  createUserDto,
+  createMenuDto,
+  createMealDto,
+  createDishDto,
+  createTagDto,
+} from './dtos/create-dtos';
 
 @Injectable({
   providedIn: 'root',

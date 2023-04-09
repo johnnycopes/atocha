@@ -4,13 +4,9 @@ import { map } from 'rxjs/operators';
 
 import { DataService } from '@atocha/core/data-access';
 import { lower, sort } from '@atocha/core/util';
-import {
-  MealDto,
-  Endpoint,
-  Meal,
-  createMealDto,
-} from '@atocha/menu-matriarch/util';
+import { MealDto, Endpoint, Meal } from '@atocha/menu-matriarch/util';
 import { BatchService } from './batch.service';
+import { createMealDto } from '../dtos/create-dtos';
 
 export type EditableMealData = Pick<
   MealDto,

@@ -4,12 +4,8 @@ import { map } from 'rxjs/operators';
 
 import { DataService } from '@atocha/core/data-access';
 import { lower, sort } from '@atocha/core/util';
-import {
-  Tag,
-  TagDto,
-  Endpoint,
-  createTagDto,
-} from '@atocha/menu-matriarch/util';
+import { Tag, TagDto, Endpoint } from '@atocha/menu-matriarch/util';
+import { createTagDto } from '../dtos/create-dtos';
 import { BatchService } from './batch.service';
 
 export type EditableTagData = Pick<TagDto, 'name'>;
