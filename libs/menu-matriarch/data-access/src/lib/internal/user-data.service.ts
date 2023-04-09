@@ -4,7 +4,7 @@ import { map } from 'rxjs/operators';
 
 import { DataService } from '@atocha/core/data-access';
 import { User, UserPreferences } from '@atocha/menu-matriarch/util';
-import { UserDto } from './dtos/user-dto';
+import { UserDto } from '../dtos/user-dto';
 import { Endpoint } from './endpoint.enum';
 
 @Injectable({

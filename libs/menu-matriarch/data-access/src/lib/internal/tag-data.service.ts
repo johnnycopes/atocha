@@ -5,7 +5,7 @@ import { map } from 'rxjs/operators';
 import { DataService } from '@atocha/core/data-access';
 import { lower, sort } from '@atocha/core/util';
 import { Tag } from '@atocha/menu-matriarch/util';
-import { TagDto, createTagDto } from './dtos/tag-dto';
+import { TagDto, createTagDto } from '../dtos/tag-dto';
 import { BatchService } from './batch.service';
 import { Endpoint } from './endpoint.enum';
 

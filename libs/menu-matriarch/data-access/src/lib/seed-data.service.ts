@@ -3,11 +3,11 @@ import { Injectable } from '@angular/core';
 import { DataService } from '@atocha/core/data-access';
 import { BatchService } from './internal/batch.service';
 import { Endpoint } from './internal/endpoint.enum';
-import { createDishDto } from './internal/dtos/dish-dto';
-import { createMealDto } from './internal/dtos/meal-dto';
-import { createMenuDto } from './internal/dtos/menu-dto';
-import { createTagDto } from './internal/dtos/tag-dto';
-import { createUserDto } from './internal/dtos/user-dto';
+import { createDishDto } from './dtos/dish-dto';
+import { createMealDto } from './dtos/meal-dto';
+import { createMenuDto } from './dtos/menu-dto';
+import { createTagDto } from './dtos/tag-dto';
+import { createUserDto } from './dtos/user-dto';
 
 @Injectable({
   providedIn: 'root',

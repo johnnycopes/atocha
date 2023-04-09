@@ -8,7 +8,7 @@ import {
   DishDataService,
   EditableDishData,
 } from './internal/dish-data.service';
-import { mapDishDtoToDish } from './internal/dtos/map-dish-dto-to-dish';
+import { mapDishDtoToDish } from './dtos/map-dish-dto-to-dish';
 import { RouterService } from './internal/router.service';
 import { TagService } from './tag.service';
 
