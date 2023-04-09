@@ -17,3 +17,4 @@ export * from './lib/dish-dto';
 export * from './lib/meal-dto';
 export * from './lib/menu-dto';
 export * from './lib/tag-dto';
+export * from './lib/user-dto';

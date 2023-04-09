@@ -17,5 +17,3 @@ export interface User {
   email: string;
   preferences: UserPreferences;
 }
-
-export type UserDto = User;
