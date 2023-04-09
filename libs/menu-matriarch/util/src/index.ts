@@ -9,6 +9,7 @@ export * from './lib/mappers/map-menu-dto-to-menu';
 export * from './lib/day.type';
 export * from './lib/dish.interface';
 export * from './lib/endpoint.enum';
+export * from './lib/ingredient.interface';
 export * from './lib/local-storage-key.enum';
 export * from './lib/meal.interface';
 export * from './lib/menu.interface';
