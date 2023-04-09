@@ -10,9 +10,9 @@ export interface Tag {
   name: string;
   /** (INACTIVE) Color of the tag */
   color: string;
-  /** The unique IDs of the meals the tag is applied to */
+  /** The unique IDs of any meals the tag is applied to */
   mealIds: string[];
-  /** The unique IDs of the dishes the tag is applied to */
+  /** The unique IDs of any dishes the tag is applied to */
   dishIds: string[];
 }
 
