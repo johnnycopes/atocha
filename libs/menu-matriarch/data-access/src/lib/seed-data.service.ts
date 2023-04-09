@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 
 import { DataService } from '@atocha/core/data-access';
-import { Endpoint } from '@atocha/menu-matriarch/util';
 import { BatchService } from './internal/batch.service';
 import {
   createUserDto,
@@ -10,6 +9,7 @@ import {
   createDishDto,
   createTagDto,
 } from './dtos/create-dtos';
+import { Endpoint } from './internal/endpoint.enum';
 
 @Injectable({
   providedIn: 'root',
