@@ -71,11 +71,11 @@ export class DishService {
     );
   }
 
-  updateDish(dish: Dish, data: EditableDishData): Promise<void> {
+  async updateDish(dish: Dish, data: EditableDishData): Promise<void> {
     return this._dishDataService.updateDish(dish, data);
   }
 
-  deleteDish(dish: Dish): Promise<void> {
+  async deleteDish(dish: Dish): Promise<void> {
     return this._dishDataService.deleteDish(dish);
   }
 }
