@@ -1,11 +1,14 @@
 import { Injectable } from '@angular/core';
 import { combineLatest, Observable, of } from 'rxjs';
-import { concatMap, first, map, tap } from 'rxjs/operators';
+import { concatMap, first, map } from 'rxjs/operators';
 
 import { AuthService } from '@atocha/core/data-access';
-import { MealDto, Meal, mapMealDtoToMeal } from '@atocha/menu-matriarch/util';
+import { Meal, mapMealDtoToMeal } from '@atocha/menu-matriarch/util';
 import { DishService } from './dish.service';
-import { MealDataService } from './internal/meal-data.service';
+import {
+  EditableMealData,
+  MealDataService,
+} from './internal/meal-data.service';
 import { RouterService } from './internal/router.service';
 import { TagService } from './tag.service';
 
@@ -60,9 +63,7 @@ export class MealService {
     );
   }
 
-  createMeal(
-    meal: Partial<Omit<MealDto, 'id' | 'uid'>>
-  ): Observable<string | undefined> {
+  createMeal(meal: EditableMealData): Observable<string | undefined> {
     return this._authService.uid$.pipe(
       first(),
       concatMap(async (uid) => {
@@ -76,7 +77,7 @@ export class MealService {
     );
   }
 
-  async updateMeal(meal: Meal, data: Partial<MealDto>): Promise<void> {
+  async updateMeal(meal: Meal, data: EditableMealData): Promise<void> {
     return this._mealDataService.updateMeal(meal, data);
   }
 
