@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { of } from 'rxjs';
-import { concatMap, first, map, switchMap } from 'rxjs/operators';
+import { concatMap, first, switchMap } from 'rxjs/operators';
 
 import {
   ButtonComponent,
@@ -39,9 +39,6 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DishDetailsComponent {
-  private _id$ = this._route.paramMap.pipe(
-    map((paramMap) => paramMap.get('id'))
-  );
   dish$ = this._route.params.pipe(
     switchMap(({ id }) => {
       if (!id) {
@@ -59,14 +56,14 @@ export class DishDetailsComponent {
   ) {}
 
   onDelete(): void {
-    this._id$
+    this.dish$
       .pipe(
         first(),
-        concatMap((id) => {
-          if (!id) {
+        concatMap((dish) => {
+          if (!dish) {
             return of(undefined);
           }
-          return this._dishService.deleteDish(id);
+          return this._dishService.deleteDish(dish);
         })
       )
       .subscribe(() =>

@@ -1,10 +1,13 @@
 import { Injectable } from '@angular/core';
 import { combineLatest, Observable, of } from 'rxjs';
-import { concatMap, first, map, tap } from 'rxjs/operators';
+import { concatMap, first, map } from 'rxjs/operators';
 
 import { AuthService } from '@atocha/core/data-access';
-import { Dish, DishDto, mapDishDtoToDish } from '@atocha/menu-matriarch/util';
-import { DishDataService } from './internal/dish-data.service';
+import { Dish, mapDishDtoToDish } from '@atocha/menu-matriarch/util';
+import {
+  DishDataService,
+  EditableDishData,
+} from './internal/dish-data.service';
 import { RouterService } from './internal/router.service';
 import { TagService } from './tag.service';
 
@@ -54,14 +57,12 @@ export class DishService {
     );
   }
 
-  createDish(
-    dish: Partial<Omit<DishDto, 'id' | 'uid'>>
-  ): Observable<string | undefined> {
+  createDish(dish: EditableDishData): Observable<string | undefined> {
     return this._authService.uid$.pipe(
       first(),
       concatMap(async (uid) => {
         if (uid) {
-          const id = await this._dishDataService.createDish({ uid, dish });
+          const id = await this._dishDataService.createDish(uid, dish);
           return id;
         } else {
           return undefined;
@@ -70,30 +71,11 @@ export class DishService {
     );
   }
 
-  updateDish(
-    id: string,
-    data: Partial<Omit<DishDto, 'usages' | 'menus'>>
-  ): Observable<Dish | undefined> {
-    return this.getDish(id).pipe(
-      first(),
-      tap(async (dish) => {
-        if (!dish) {
-          return;
-        }
-        await this._dishDataService.updateDish(dish, data);
-      })
-    );
+  updateDish(dish: Dish, data: EditableDishData): Promise<void> {
+    return this._dishDataService.updateDish(dish, data);
   }
 
-  deleteDish(id: string): Observable<Dish | undefined> {
-    return this.getDish(id).pipe(
-      first(),
-      tap(async (dish) => {
-        if (!dish) {
-          return;
-        }
-        await this._dishDataService.deleteDish(dish);
-      })
-    );
+  deleteDish(dish: Dish): Promise<void> {
+    return this._dishDataService.deleteDish(dish);
   }
 }

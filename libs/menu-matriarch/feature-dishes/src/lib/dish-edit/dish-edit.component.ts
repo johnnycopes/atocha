@@ -121,7 +121,7 @@ export class DishEditComponent {
           first(),
           concatMap((dish) => {
             if (dish) {
-              return this._dishService.updateDish(dish.id, details);
+              return this._dishService.updateDish(dish, details);
             } else {
               return of(undefined);
             }
