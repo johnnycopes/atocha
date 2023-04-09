@@ -9,7 +9,7 @@ import {
   EditableMealData,
   MealDataService,
 } from './internal/meal-data.service';
-import { mapMealDtoToMeal } from './dtos/map-meal-dto-to-meal';
+import { mapMealDtoToMeal } from './internal/dtos/map-meal-dto-to-meal';
 import { RouterService } from './internal/router.service';
 import { TagService } from './tag.service';
 

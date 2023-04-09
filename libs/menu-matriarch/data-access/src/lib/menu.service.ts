@@ -9,7 +9,7 @@ import {
   EditableMenuData,
   MenuDataService,
 } from './internal/menu-data.service';
-import { mapMenuDtoToMenu } from './dtos/map-menu-dto-to-menu';
+import { mapMenuDtoToMenu } from './internal/dtos/map-menu-dto-to-menu';
 import { RouterService } from './internal/router.service';
 import { UserService } from './user.service';
 
