@@ -160,6 +160,27 @@ export class SeedDataService {
       })
       .set({
         endpoint: Endpoint.dishes,
+        id: huevosRotosDishId,
+        data: createDishDto({
+          id: huevosRotosDishId,
+          uid,
+          name: 'Huevos Rotos',
+          link: 'https://cooking.nytimes.com/recipes/1020055-huevos-rotos-broken-eggs',
+          ingredientIds: [
+            eggsIngredientId,
+            garlicIngredientId,
+            oliveOilIngredientId,
+            onionIngredientId,
+            paprikaIngredientId,
+            pepperIngredientId,
+            potatoIngredientId,
+            saltIngredientId,
+          ],
+          tagIds: [vegetarianTagId],
+        }),
+      })
+      .set({
+        endpoint: Endpoint.dishes,
         id: macAndCheeseDishId,
         data: createDishDto({
           id: macAndCheeseDishId,
