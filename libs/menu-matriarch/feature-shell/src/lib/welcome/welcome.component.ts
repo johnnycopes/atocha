@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { first, tap } from 'rxjs/operators';
+import { first } from 'rxjs/operators';
 
 import { AuthService } from '@atocha/core/data-access';
 import { ButtonComponent } from '@atocha/core/ui';
