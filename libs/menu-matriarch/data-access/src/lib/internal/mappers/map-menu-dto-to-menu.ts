@@ -4,7 +4,7 @@ import {
   Menu,
   getDays,
 } from '@atocha/menu-matriarch/util';
-import { MenuDto } from './menu-dto';
+import { MenuDto } from '../dtos/menu-dto';
 
 export function mapMenuDtoToMenu({
   menuDto,

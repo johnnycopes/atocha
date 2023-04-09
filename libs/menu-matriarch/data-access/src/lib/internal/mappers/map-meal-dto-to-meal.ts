@@ -1,5 +1,5 @@
 import { Dish, Tag, Meal } from '@atocha/menu-matriarch/util';
-import { MealDto } from './meal-dto';
+import { MealDto } from '../dtos/meal-dto';
 
 export function mapMealDtoToMeal({
   mealDto,

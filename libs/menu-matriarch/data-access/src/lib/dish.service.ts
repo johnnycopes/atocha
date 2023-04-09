@@ -4,11 +4,11 @@ import { concatMap, first, map } from 'rxjs/operators';
 
 import { AuthService } from '@atocha/core/data-access';
 import { Dish } from '@atocha/menu-matriarch/util';
+import { mapDishDtoToDish } from './internal/mappers/map-dish-dto-to-dish';
 import {
   DishDataService,
   EditableDishData,
 } from './internal/dish-data.service';
-import { mapDishDtoToDish } from './internal/dtos/map-dish-dto-to-dish';
 import { RouterService } from './internal/router.service';
 import { TagService } from './tag.service';
 

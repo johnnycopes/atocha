@@ -4,13 +4,13 @@ import { concatMap, first, map } from 'rxjs/operators';
 
 import { AuthService } from '@atocha/core/data-access';
 import { Meal } from '@atocha/menu-matriarch/util';
-import { DishService } from './dish.service';
+import { mapMealDtoToMeal } from './internal/mappers/map-meal-dto-to-meal';
 import {
   EditableMealData,
   MealDataService,
 } from './internal/meal-data.service';
-import { mapMealDtoToMeal } from './internal/dtos/map-meal-dto-to-meal';
 import { RouterService } from './internal/router.service';
+import { DishService } from './dish.service';
 import { TagService } from './tag.service';
 
 @Injectable({

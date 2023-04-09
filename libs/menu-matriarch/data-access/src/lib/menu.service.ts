@@ -5,11 +5,11 @@ import { concatMap, first, map } from 'rxjs/operators';
 import { AuthService } from '@atocha/core/data-access';
 import { Day, Menu } from '@atocha/menu-matriarch/util';
 import { DishService } from './dish.service';
+import { mapMenuDtoToMenu } from './internal/mappers/map-menu-dto-to-menu';
 import {
   EditableMenuData,
   MenuDataService,
 } from './internal/menu-data.service';
-import { mapMenuDtoToMenu } from './internal/dtos/map-menu-dto-to-menu';
 import { RouterService } from './internal/router.service';
 import { UserService } from './user.service';
 
