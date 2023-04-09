@@ -3,11 +3,8 @@ import { map, tap } from 'rxjs/operators';
 
 import { State } from '@atocha/core/util';
 import { LocalStorageService } from '@atocha/core/data-access';
-import {
-  LocalStorageKey,
-  PlannerView,
-  Route,
-} from '@atocha/menu-matriarch/util';
+import { PlannerView, Route } from '@atocha/menu-matriarch/util';
+import { LocalStorageKey } from './internal/local-storage-key.enum';
 import { MenuService } from './menu.service';
 
 @Injectable({
