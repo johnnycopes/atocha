@@ -26,7 +26,7 @@ export class UserDataService {
     return this.getUser(uid).pipe(map((user) => user?.preferences));
   }
 
-  updatePreferences(
+  async updatePreferences(
     { uid, preferences }: User,
     data: Partial<UserPreferences>
   ): Promise<void> {

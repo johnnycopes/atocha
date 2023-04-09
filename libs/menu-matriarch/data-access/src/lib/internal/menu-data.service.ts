@@ -13,6 +13,8 @@ import {
 } from '@atocha/menu-matriarch/util';
 import { BatchService } from './batch.service';
 
+export type EditableMenuData = Partial<Pick<MenuDto, 'name' | 'startDay'>>;
+
 @Injectable({
   providedIn: 'root',
 })
@@ -34,32 +36,23 @@ export class MenuDataService {
       .pipe(map((menuDtos) => sort(menuDtos, ({ name }) => lower(name))));
   }
 
-  async createMenu({
-    uid,
-    menu,
-    startDay,
-  }: {
-    uid: string;
-    menu: Partial<Omit<MenuDto, 'id' | 'uid' | 'startDay'>>;
-    startDay: Day;
-  }): Promise<string> {
+  async createMenu(uid: string, menu: EditableMenuData): Promise<string> {
     const id = this._dataService.createId();
 
     await this._dataService.create<MenuDto>(
       this._endpoint,
       id,
       createMenuDto({
-        ...menu,
         id,
         uid,
-        startDay,
+        ...menu,
       })
     );
 
     return id;
   }
 
-  async updateMenu(id: string, data: Partial<MenuDto>): Promise<void> {
+  async updateMenu(id: string, data: EditableMenuData): Promise<void> {
     return await this._dataService.update<MenuDto>(this._endpoint, id, data);
   }
 

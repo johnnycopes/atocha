@@ -12,6 +12,11 @@ import {
 } from '@atocha/menu-matriarch/util';
 import { BatchService } from './batch.service';
 
+export type EditableMealData = Pick<
+  MealDto,
+  'name' | 'description' | 'dishIds' | 'tagIds'
+>;
+
 @Injectable({
   providedIn: 'root',
 })
@@ -33,10 +38,7 @@ export class MealDataService {
       .pipe(map((mealDtos) => sort(mealDtos, ({ name }) => lower(name))));
   }
 
-  async createMeal(
-    uid: string,
-    meal: Partial<Omit<MealDto, 'id' | 'uid'>>
-  ): Promise<string> {
+  async createMeal(uid: string, meal: EditableMealData): Promise<string> {
     const id = this._dataService.createId();
     const batch = this._batchService.createBatch();
 
@@ -70,7 +72,7 @@ export class MealDataService {
     return id;
   }
 
-  async updateMeal(meal: Meal, data: Partial<MealDto>): Promise<void> {
+  async updateMeal(meal: Meal, data: EditableMealData): Promise<void> {
     const batch = this._batchService.createBatch();
 
     batch.update({
