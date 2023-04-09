@@ -3,12 +3,9 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { DataService } from '@atocha/core/data-access';
-import {
-  User,
-  UserDto,
-  UserPreferences,
-  Endpoint,
-} from '@atocha/menu-matriarch/util';
+import { User, UserPreferences } from '@atocha/menu-matriarch/util';
+import { UserDto } from './dtos/user-dto';
+import { Endpoint } from './endpoint.enum';
 
 @Injectable({
   providedIn: 'root',

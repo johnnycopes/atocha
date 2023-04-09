@@ -11,11 +11,9 @@ export interface UserPreferences {
   mealOrientation: Orientation;
 }
 
-export interface UserDto {
+export interface User {
   uid: string;
   name: string;
   email: string;
   preferences: UserPreferences;
 }
-
-export type User = UserDto;

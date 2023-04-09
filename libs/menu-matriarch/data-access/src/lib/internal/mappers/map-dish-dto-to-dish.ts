@@ -1,5 +1,5 @@
-import { Dish, DishDto } from '../dish.interface';
-import { Tag } from '../tag.interface';
+import { Tag, Dish } from '@atocha/menu-matriarch/util';
+import { DishDto } from '../dtos/dish-dto';
 
 export function mapDishDtoToDish(dishDto: DishDto, tags: Tag[]): Dish {
   return {

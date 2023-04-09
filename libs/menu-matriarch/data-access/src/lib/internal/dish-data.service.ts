@@ -4,13 +4,10 @@ import { map } from 'rxjs/operators';
 
 import { DataService } from '@atocha/core/data-access';
 import { lower, sort } from '@atocha/core/util';
-import {
-  Dish,
-  DishDto,
-  Endpoint,
-  createDishDto,
-} from '@atocha/menu-matriarch/util';
+import { Dish } from '@atocha/menu-matriarch/util';
+import { DishDto, createDishDto } from './dtos/dish-dto';
 import { BatchService } from './batch.service';
+import { Endpoint } from './endpoint.enum';
 
 export type EditableDishData = Pick<
   DishDto,

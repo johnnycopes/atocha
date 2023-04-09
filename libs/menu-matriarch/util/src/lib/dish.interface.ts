@@ -2,7 +2,7 @@ import { Tag } from './tag.interface';
 
 export type DishType = 'main' | 'side' | 'dessert';
 
-export interface DishDto {
+export interface Dish {
   id: string;
   uid: string;
   type: DishType;
@@ -12,15 +12,10 @@ export interface DishDto {
   link: string;
   menuIds: string[];
   mealIds: string[];
-  ingredientIds: string[];
-  tagIds: string[];
-  notes: string;
-  usages: number;
-}
-
-export interface Dish extends Omit<DishDto, 'ingredientIds' | 'tagIds'> {
   ingredients: string[];
   tags: Tag[];
+  notes: string;
+  usages: number;
 }
 
 export interface FilteredDishesGroup {
