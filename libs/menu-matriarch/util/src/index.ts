@@ -15,3 +15,8 @@ export * from './lib/planner-view.type';
 export * from './lib/route.enum';
 export * from './lib/tag.interface';
 export * from './lib/user.interface';
+
+export * from './lib/dish-dto';
+export * from './lib/meal-dto';
+export * from './lib/menu-dto';
+export * from './lib/tag-dto';

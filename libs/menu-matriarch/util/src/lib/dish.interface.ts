@@ -18,11 +18,6 @@ export interface Dish {
   usages: number;
 }
 
-export interface DishDto extends Omit<Dish, 'ingredients' | 'tags'> {
-  ingredientIds: string[];
-  tagIds: string[];
-}
-
 export interface FilteredDishesGroup {
   type: DishType;
   dishes: Dish[];

@@ -20,5 +20,3 @@ export interface Menu {
   orientation: Orientation;
   fallbackText: string;
 }
-
-export type MenuDto = Omit<Menu, 'entries' | 'orientation' | 'fallbackText'>;

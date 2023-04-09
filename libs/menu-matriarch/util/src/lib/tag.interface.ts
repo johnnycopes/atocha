@@ -7,8 +7,6 @@ export interface Tag {
   dishIds: string[];
 }
 
-export type TagDto = Tag;
-
 export interface TagModel extends Tag {
   checked: boolean;
 }
