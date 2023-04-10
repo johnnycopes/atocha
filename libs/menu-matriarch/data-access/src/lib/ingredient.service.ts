@@ -41,10 +41,10 @@ export class IngredientService {
       first(),
       concatMap(async (uid) => {
         if (uid) {
-          const id = await this._ingredientDataService.createIngredient({
+          const id = await this._ingredientDataService.createIngredient(
             uid,
-            ingredient,
-          });
+            ingredient
+          );
           return id;
         } else {
           return undefined;

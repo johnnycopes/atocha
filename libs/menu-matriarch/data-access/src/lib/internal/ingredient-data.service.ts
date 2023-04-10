@@ -39,13 +39,10 @@ export class IngredientDataService {
       );
   }
 
-  async createIngredient({
-    uid,
-    ingredient,
-  }: {
-    uid: string;
-    ingredient: EditableIngredientData;
-  }): Promise<string> {
+  async createIngredient(
+    uid: string,
+    ingredient: EditableIngredientData
+  ): Promise<string> {
     const id = this._dataService.createId();
 
     await this._dataService.create<IngredientDto>(
