@@ -9,6 +9,11 @@ import { IngredientDto, createIngredientDto } from './dtos/ingredient-dto';
 import { BatchService } from './batch.service';
 import { Endpoint } from './endpoint.enum';
 
+export type EditableIngredientData = Pick<
+  IngredientDto,
+  'name' | 'type' | 'dishIds'
+>;
+
 @Injectable({
   providedIn: 'root',
 })
@@ -39,7 +44,7 @@ export class IngredientDataService {
     ingredient,
   }: {
     uid: string;
-    ingredient: Partial<Omit<IngredientDto, 'id' | 'uid'>>;
+    ingredient: EditableIngredientData;
   }): Promise<string> {
     const id = this._dataService.createId();
 
@@ -54,7 +59,7 @@ export class IngredientDataService {
 
   async updateIngredient(
     ingredient: Ingredient,
-    updates: Partial<IngredientDto>
+    updates: EditableIngredientData
   ): Promise<void> {
     const batch = this._batchService.createBatch();
 

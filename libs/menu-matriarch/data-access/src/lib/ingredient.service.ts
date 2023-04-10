@@ -3,9 +3,11 @@ import { Observable, of } from 'rxjs';
 import { concatMap, first } from 'rxjs/operators';
 
 import { AuthService } from '@atocha/core/data-access';
-import { IngredientDataService } from './internal/ingredient-data.service';
 import { Ingredient } from '@atocha/menu-matriarch/util';
-import { IngredientDto } from './internal/dtos/ingredient-dto';
+import {
+  EditableIngredientData,
+  IngredientDataService,
+} from './internal/ingredient-data.service';
 
 @Injectable({
   providedIn: 'root',
@@ -33,7 +35,7 @@ export class IngredientService {
   }
 
   createIngredient(
-    ingredient: Partial<Omit<IngredientDto, 'id' | 'uid'>>
+    ingredient: EditableIngredientData
   ): Observable<string | undefined> {
     return this._authService.uid$.pipe(
       first(),
@@ -53,7 +55,7 @@ export class IngredientService {
 
   updateIngredient(
     ingredient: Ingredient,
-    updates: Partial<IngredientDto>
+    updates: EditableIngredientData
   ): Promise<void> {
     return this._ingredientDataService.updateIngredient(ingredient, updates);
   }
