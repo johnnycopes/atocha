@@ -4,7 +4,8 @@ import { concatMap, first, tap } from 'rxjs/operators';
 
 import { AuthService } from '@atocha/core/data-access';
 import { IngredientDataService } from './internal/ingredient-data.service';
-import { Ingredient, IngredientDto } from '@atocha/menu-matriarch/util';
+import { Ingredient } from '@atocha/menu-matriarch/util';
+import { IngredientDto } from './internal/dtos/ingredient-dto';
 
 @Injectable({
   providedIn: 'root',

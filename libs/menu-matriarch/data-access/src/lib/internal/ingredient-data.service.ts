@@ -4,13 +4,10 @@ import { map } from 'rxjs/operators';
 
 import { DataService } from '@atocha/core/data-access';
 import { lower, sort } from '@atocha/core/util';
-import {
-  Endpoint,
-  Ingredient,
-  IngredientDto,
-  createIngredientDto,
-} from '@atocha/menu-matriarch/util';
+import { Ingredient } from '@atocha/menu-matriarch/util';
+import { IngredientDto, createIngredientDto } from './dtos/ingredient-dto';
 import { BatchService } from './batch.service';
+import { Endpoint } from './endpoint.enum';
 
 @Injectable({
   providedIn: 'root',
