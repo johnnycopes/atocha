@@ -16,11 +16,11 @@ export interface Dish {
   name: string;
   /** (INACTIVE) Whether the dish has been saved as a user favorite */
   favorited: boolean;
-  /** High-level notes about a dish, displayed in both full and sumary views */
+  /** High-level notes about the dish, displayed in both full and sumary views */
   description: string;
   /** Link associated with the dish (typically a recipe) */
   link: string;
-  /** In-depth notes about a dish, displayed only in full view. Saved as HTML */
+  /** In-depth notes about the dish, displayed only in full view. Saved as HTML */
   notes: string;
   /** The total number of menu days where a dish is referenced */
   usages: number;
@@ -28,9 +28,9 @@ export interface Dish {
   menuIds: string[];
   /** The unique IDs of any meals the dish belongs to */
   mealIds: string[];
-  /** (INACTIVE) The unique IDs of any ingredients used in the dish */
+  /** (INACTIVE) The ingredients used in the dish */
   ingredients: string[];
-  /** The unique IDs of any tags applied to the dish */
+  /** The tags applied to the dish */
   tags: Tag[];
 }
 
