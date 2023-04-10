@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { concatMap, first, tap } from 'rxjs/operators';
+import { concatMap, first } from 'rxjs/operators';
 
 import { AuthService } from '@atocha/core/data-access';
 import { IngredientDataService } from './internal/ingredient-data.service';
@@ -52,29 +52,13 @@ export class IngredientService {
   }
 
   updateIngredient(
-    id: string,
+    ingredient: Ingredient,
     updates: Partial<IngredientDto>
-  ): Observable<Ingredient | undefined> {
-    return this.getIngredient(id).pipe(
-      first(),
-      tap(async (ingredient) => {
-        if (!ingredient) {
-          return;
-        }
-        await this._ingredientDataService.updateIngredient(ingredient, updates);
-      })
-    );
+  ): Promise<void> {
+    return this._ingredientDataService.updateIngredient(ingredient, updates);
   }
 
-  deleteIngredient(id: string): Observable<Ingredient | undefined> {
-    return this.getIngredient(id).pipe(
-      first(),
-      tap(async (ingredient) => {
-        if (!ingredient) {
-          return;
-        }
-        await this._ingredientDataService.deleteIngredient(ingredient);
-      })
-    );
+  deleteIngredient(ingredient: Ingredient): Promise<void> {
+    return this._ingredientDataService.deleteIngredient(ingredient);
   }
 }
