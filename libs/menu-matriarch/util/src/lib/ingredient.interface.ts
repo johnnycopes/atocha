@@ -1,3 +1,11 @@
+export interface Ingredient {
+  id: string;
+  uid: string;
+  name: string;
+  type: IngredientType;
+  dishIds: string[];
+}
+
 export type IngredientType =
   | 'bread/bakery'
   | 'condiment'
@@ -11,13 +19,3 @@ export type IngredientType =
   | 'refrigerated'
   | 'spice'
   | 'uncategorized';
-
-export interface IngredientDto {
-  id: string;
-  uid: string;
-  name: string;
-  type: IngredientType;
-  dishIds: string[];
-}
-
-export type Ingredient = IngredientDto;
