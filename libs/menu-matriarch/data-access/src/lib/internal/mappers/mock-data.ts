@@ -1,9 +1,7 @@
-import {
-  createDishDto,
-  createMealDto,
-  createMenuDto,
-  createTagDto,
-} from '../functions/create-dtos';
+import { createDishDto } from '../dtos/dish-dto';
+import { createMealDto } from '../dtos/meal-dto';
+import { createMenuDto } from '../dtos/menu-dto';
+import { createTagDto } from '../dtos/tag-dto';
 
 export const MENU_DTO = createMenuDto({
   id: 'menu-1',

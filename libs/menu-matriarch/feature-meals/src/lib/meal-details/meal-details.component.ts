@@ -34,9 +34,6 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MealDetailsComponent {
-  private _id$ = this._route.paramMap.pipe(
-    map((paramMap) => paramMap.get('id'))
-  );
   vm$ = combineLatest([
     this._route.params.pipe(
       switchMap(({ id }) => {
@@ -66,14 +63,14 @@ export class MealDetailsComponent {
   ) {}
 
   onDelete(): void {
-    this._id$
+    this.vm$
       .pipe(
         first(),
-        concatMap((id) => {
-          if (!id) {
+        concatMap(({ meal }) => {
+          if (!meal) {
             return of(undefined);
           }
-          return this._mealService.deleteMeal(id);
+          return this._mealService.deleteMeal(meal);
         })
       )
       .subscribe(() =>

@@ -66,7 +66,7 @@ export class MenusComponent {
     this._menuService.updateMenuStartDay(id, startDay);
   }
 
-  onDelete(id: string): void {
-    this._menuService.deleteMenu(id);
+  onDelete(menu: Menu): void {
+    this._menuService.deleteMenu(menu);
   }
 }

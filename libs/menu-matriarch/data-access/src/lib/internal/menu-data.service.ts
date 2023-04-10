@@ -4,14 +4,12 @@ import { map } from 'rxjs/operators';
 
 import { DataService } from '@atocha/core/data-access';
 import { flattenValues, lower, sort } from '@atocha/core/util';
-import {
-  Day,
-  Menu,
-  MenuDto,
-  Endpoint,
-  createMenuDto,
-} from '@atocha/menu-matriarch/util';
+import { Day, Menu } from '@atocha/menu-matriarch/util';
+import { MenuDto, createMenuDto } from './dtos/menu-dto';
 import { BatchService } from './batch.service';
+import { Endpoint } from './endpoint.enum';
+
+export type EditableMenuData = Partial<Pick<MenuDto, 'name' | 'startDay'>>;
 
 @Injectable({
   providedIn: 'root',
@@ -34,32 +32,23 @@ export class MenuDataService {
       .pipe(map((menuDtos) => sort(menuDtos, ({ name }) => lower(name))));
   }
 
-  async createMenu({
-    uid,
-    menu,
-    startDay,
-  }: {
-    uid: string;
-    menu: Partial<Omit<MenuDto, 'id' | 'uid' | 'startDay'>>;
-    startDay: Day;
-  }): Promise<string> {
+  async createMenu(uid: string, menu: EditableMenuData): Promise<string> {
     const id = this._dataService.createId();
 
     await this._dataService.create<MenuDto>(
       this._endpoint,
       id,
       createMenuDto({
-        ...menu,
         id,
         uid,
-        startDay,
+        ...menu,
       })
     );
 
     return id;
   }
 
-  async updateMenu(id: string, data: Partial<MenuDto>): Promise<void> {
+  async updateMenu(id: string, data: EditableMenuData): Promise<void> {
     return await this._dataService.update<MenuDto>(this._endpoint, id, data);
   }
 

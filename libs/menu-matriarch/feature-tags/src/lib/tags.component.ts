@@ -43,11 +43,11 @@ export class TagsComponent {
     this.finishAdd$.next();
   }
 
-  onTagEdit(id: string, name: string): void {
-    this._tagService.updateTag(id, { name });
+  onTagEdit(tag: Tag, name: string): void {
+    this._tagService.updateTag(tag, { name });
   }
 
-  onTagDelete(id: string): void {
-    this._tagService.deleteTag(id).subscribe();
+  onTagDelete(tag: Tag): void {
+    this._tagService.deleteTag(tag);
   }
 }

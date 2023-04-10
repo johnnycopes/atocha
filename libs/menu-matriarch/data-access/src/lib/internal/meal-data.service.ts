@@ -4,13 +4,15 @@ import { map } from 'rxjs/operators';
 
 import { DataService } from '@atocha/core/data-access';
 import { lower, sort } from '@atocha/core/util';
-import {
-  MealDto,
-  Endpoint,
-  Meal,
-  createMealDto,
-} from '@atocha/menu-matriarch/util';
+import { Meal } from '@atocha/menu-matriarch/util';
+import { MealDto, createMealDto } from './dtos/meal-dto';
 import { BatchService } from './batch.service';
+import { Endpoint } from './endpoint.enum';
+
+export type EditableMealData = Pick<
+  MealDto,
+  'name' | 'description' | 'dishIds' | 'tagIds'
+>;
 
 @Injectable({
   providedIn: 'root',
@@ -33,10 +35,7 @@ export class MealDataService {
       .pipe(map((mealDtos) => sort(mealDtos, ({ name }) => lower(name))));
   }
 
-  async createMeal(
-    uid: string,
-    meal: Partial<Omit<MealDto, 'id' | 'uid'>>
-  ): Promise<string> {
+  async createMeal(uid: string, meal: EditableMealData): Promise<string> {
     const id = this._dataService.createId();
     const batch = this._batchService.createBatch();
 
@@ -70,7 +69,7 @@ export class MealDataService {
     return id;
   }
 
-  async updateMeal(meal: Meal, data: Partial<MealDto>): Promise<void> {
+  async updateMeal(meal: Meal, data: EditableMealData): Promise<void> {
     const batch = this._batchService.createBatch();
 
     batch.update({
