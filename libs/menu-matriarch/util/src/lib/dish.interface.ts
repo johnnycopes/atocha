@@ -20,6 +20,10 @@ export interface Dish {
   description: string;
   /** Link associated with the dish (typically a recipe) */
   link: string;
+  /** In-depth notes about a dish, displayed only in full view. Saved as HTML */
+  notes: string;
+  /** The total number of menu days where a dish is referenced */
+  usages: number;
   /** The unique IDs of any menu the dish belongs to */
   menuIds: string[];
   /** The unique IDs of any meals the dish belongs to */
@@ -28,10 +32,6 @@ export interface Dish {
   ingredients: string[];
   /** The unique IDs of any tags applied to the dish */
   tags: Tag[];
-  /** In-depth notes about a dish, displayed only in full view. Saved as HTML */
-  notes: string;
-  /** The total number of menu days where a dish is listed */
-  usages: number;
 }
 
 export interface FilteredDishesGroup {
