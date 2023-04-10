@@ -3,10 +3,10 @@ import { Tag } from './tag.interface';
 
 /**
  * A collection of dishes grouped together as a single
- * unit. It can have any number of dishes and tags.
+ * unit. It can have any number of dishes and tags
  */
 export interface Meal {
-  /** Dish's unique ID */
+  /** Meal's unique ID */
   id: string;
   /** Unique ID of the user associated with the meal */
   uid: string;

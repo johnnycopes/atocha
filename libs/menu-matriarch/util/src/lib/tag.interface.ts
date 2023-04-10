@@ -1,4 +1,5 @@
-/** A customizable tag that can be applied to any number of dishes
+/**
+ * A customizable tag that can be applied to any number of dishes
  * and/or meals in order to allow easier filtering when browsing
  */
 export interface Tag {

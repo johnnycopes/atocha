@@ -17,7 +17,7 @@ export interface Menu {
   contents: {
     [day in Day]: string[];
   };
-  /** The dish IDs of each day in the menu, starting with the preferred start day */
+  /** A list of each day and its associated unique dish IDs, starting with the preferred start day */
   entries: MenuEntry[];
   /** Which direction to display the dishes belonging to a meal  */
   orientation: Orientation;

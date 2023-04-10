@@ -3,7 +3,7 @@ import { Tag } from './tag.interface';
 /**
  * The fundamental unit in the app. Contains lots of
  * information about a particular dish, can be categorized
- * with tags, and can belong to any number of meals and/or menus.
+ * with tags, and can belong to any number of meals and/or menus
  */
 export interface Dish {
   /** Dish's unique ID */
@@ -24,7 +24,7 @@ export interface Dish {
   notes: string;
   /** The total number of menu days where a dish is referenced */
   usages: number;
-  /** The unique IDs of any menu the dish belongs to */
+  /** The unique IDs of any menus the dish belongs to */
   menuIds: string[];
   /** The unique IDs of any meals the dish belongs to */
   mealIds: string[];
