@@ -3,6 +3,7 @@ export * from './lib/functions/get-dish-types';
 
 export * from './lib/day.type';
 export * from './lib/dish.interface';
+export * from './lib/ingredient.interface';
 export * from './lib/meal.interface';
 export * from './lib/menu.interface';
 export * from './lib/orientation.type';

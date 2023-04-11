@@ -9,6 +9,7 @@ import {
   DishDataService,
   EditableDishData,
 } from './internal/dish-data.service';
+import { IngredientService } from './ingredient.service';
 import { RouterService } from './internal/router.service';
 import { TagService } from './tag.service';
 
@@ -21,6 +22,7 @@ export class DishService {
   constructor(
     private _authService: AuthService,
     private _dishDataService: DishDataService,
+    private _ingredientService: IngredientService,
     private _routerService: RouterService,
     private _tagService: TagService
   ) {}
@@ -28,13 +30,14 @@ export class DishService {
   getDish(id: string): Observable<Dish | undefined> {
     return combineLatest([
       this._dishDataService.getDish(id),
+      this._ingredientService.getIngredients(),
       this._tagService.getTags(),
     ]).pipe(
-      map(([dishDto, tags]) => {
+      map(([dishDto, ingredients, tags]) => {
         if (!dishDto) {
           return undefined;
         }
-        return mapDishDtoToDish(dishDto, tags);
+        return mapDishDtoToDish(dishDto, ingredients, tags);
       })
     );
   }
@@ -46,10 +49,13 @@ export class DishService {
         if (uid) {
           return combineLatest([
             this._dishDataService.getDishes(uid),
+            this._ingredientService.getIngredients(),
             this._tagService.getTags(),
           ]).pipe(
-            map(([dishDtos, tags]) =>
-              dishDtos.map((dishDto) => mapDishDtoToDish(dishDto, tags))
+            map(([dishDtos, ingredients, tags]) =>
+              dishDtos.map((dishDto) =>
+                mapDishDtoToDish(dishDto, ingredients, tags)
+              )
             )
           );
         }
