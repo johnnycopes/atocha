@@ -34,7 +34,7 @@ export class DishService {
         if (!dishDto) {
           return undefined;
         }
-        return mapDishDtoToDish(dishDto, tags);
+        return mapDishDtoToDish(dishDto, [], tags);
       })
     );
   }
@@ -49,7 +49,7 @@ export class DishService {
             this._tagService.getTags(),
           ]).pipe(
             map(([dishDtos, tags]) =>
-              dishDtos.map((dishDto) => mapDishDtoToDish(dishDto, tags))
+              dishDtos.map((dishDto) => mapDishDtoToDish(dishDto, [], tags))
             )
           );
         }
