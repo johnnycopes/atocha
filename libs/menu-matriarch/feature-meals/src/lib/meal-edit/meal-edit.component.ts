@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { FormsModule, NgForm } from '@angular/forms';
+import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { combineLatest, of, Subject } from 'rxjs';
 import {
@@ -11,12 +11,6 @@ import {
   startWith,
 } from 'rxjs/operators';
 
-import {
-  AutofocusDirective,
-  ButtonComponent,
-  CheckboxComponent,
-  trackBySelf,
-} from '@atocha/core/ui';
 import { recordToArray } from '@atocha/core/util';
 import {
   DishService,
@@ -24,22 +18,8 @@ import {
   TagService,
   UserService,
 } from '@atocha/menu-matriarch/data-access';
-import { Dish, TagModel, getDishTypes } from '@atocha/menu-matriarch/util';
-import {
-  CardComponent,
-  DishSummaryComponent,
-  InputComponent,
-  MealSummaryComponent,
-  SectionComponent,
-  TagComponent,
-  TagDefDirective,
-  TagsListComponent,
-  dishTrackByFn,
-} from '@atocha/menu-matriarch/ui';
-import {
-  DishDefDirective,
-  DishesListComponent,
-} from '@atocha/menu-matriarch/feature-entities';
+import { Dish, TagModel } from '@atocha/menu-matriarch/util';
+import { MealEditFormComponent } from './meal-edit-form/meal-edit-form.component';
 
 interface MealEditForm {
   name: string;
@@ -53,26 +33,16 @@ type FormDishes = Record<string, boolean>;
 @Component({
   standalone: true,
   selector: 'app-meal-edit',
-  imports: [
-    AutofocusDirective,
-    ButtonComponent,
-    CardComponent,
-    CheckboxComponent,
-    CommonModule,
-    DishDefDirective,
-    DishesListComponent,
-    DishSummaryComponent,
-    FormsModule,
-    InputComponent,
-    MealSummaryComponent,
-    RouterModule,
-    SectionComponent,
-    TagComponent,
-    TagDefDirective,
-    TagsListComponent,
-  ],
-  templateUrl: './meal-edit.component.html',
-  styleUrls: ['./meal-edit.component.scss'],
+  imports: [CommonModule, MealEditFormComponent, RouterModule],
+  template: `
+    <app-meal-edit-form
+      *ngIf="vm$ | async as vm"
+      [vm]="vm"
+      (dishClick)="onDishClick($event)"
+      (dishesChange)="onDishChange($event)"
+      (save)="onSave($event)"
+    ></app-meal-edit-form>
+  `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MealEditComponent {
@@ -116,7 +86,8 @@ export class MealEditComponent {
         };
       } else {
         return {
-          ...meal,
+          name: meal.name,
+          description: meal.description,
           tags: tags.map<TagModel>((tag) => ({
             ...tag,
             checked: !!meal?.tags.find((mealTag) => mealTag.id === tag.id),
@@ -129,9 +100,6 @@ export class MealEditComponent {
       }
     })
   );
-  readonly dishTypes = getDishTypes();
-  readonly typeTrackByFn = trackBySelf;
-  readonly dishTrackByFn = dishTrackByFn;
 
   constructor(
     private _route: ActivatedRoute,
