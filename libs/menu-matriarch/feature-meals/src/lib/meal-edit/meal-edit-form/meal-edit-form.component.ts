@@ -37,7 +37,6 @@ import {
   Tag,
   TagModel,
 } from '@atocha/menu-matriarch/util';
-import { MealEditForm } from './meal-edit-form';
 
 export interface MealEditDetails {
   meal: Meal;
@@ -96,13 +95,6 @@ export class MealEditFormComponent implements OnChanges {
   dishesModel: string[] = [];
   tagsModel: TagModel[] = [];
   dishes: Dish[] = [];
-
-  reactiveForm = new MealEditForm({
-    name: '',
-    description: '',
-    dishesModel: [],
-    tags: [],
-  });
 
   ngOnChanges(): void {
     if (!this.vm) {
