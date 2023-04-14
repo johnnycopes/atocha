@@ -39,9 +39,7 @@ import {
 import { MealEditForm } from './meal-edit-form';
 
 export interface MealEditDetails {
-  meal: Meal | undefined;
-  name: string;
-  description: string;
+  meal: Meal;
   allTags: Tag[];
   allDishes: Dish[];
   dishes: Dish[];
@@ -100,13 +98,16 @@ export class MealEditFormComponent implements OnChanges {
   });
 
   ngOnChanges(changes: SimpleChanges): void {
-    this.dishesModel = this.vm?.meal?.dishes.map((dish) => dish.id) ?? [];
+    if (!this.vm) {
+      return;
+    }
 
-    this.tagsModel =
-      this.vm?.allTags.map<TagModel>((tag) => ({
-        ...tag,
-        checked: !!this.vm?.meal?.tags.find((mealTag) => mealTag.id === tag.id),
-      })) ?? [];
+    this.dishesModel = this.vm.meal.dishes.map((dish) => dish.id);
+
+    this.tagsModel = this.vm.allTags.map<TagModel>((tag) => ({
+      ...tag,
+      checked: !!this.vm?.meal?.tags.find((mealTag) => mealTag.id === tag.id),
+    }));
   }
 
   onDishClick(id: string): void {

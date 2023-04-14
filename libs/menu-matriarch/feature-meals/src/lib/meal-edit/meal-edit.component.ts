@@ -65,9 +65,14 @@ export class MealEditComponent {
       const orientation = preferences?.mealOrientation ?? 'horizontal';
       if (!meal) {
         return {
-          meal,
-          name: '',
-          description: '',
+          meal: {
+            id: '',
+            uid: '',
+            name: '',
+            description: '',
+            dishes: [],
+            tags: [],
+          },
           allTags: tags,
           allDishes,
           dishes,
@@ -77,8 +82,6 @@ export class MealEditComponent {
       } else {
         return {
           meal,
-          name: meal.name,
-          description: meal.description,
           allTags: tags,
           allDishes,
           dishes,
