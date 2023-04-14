@@ -12,7 +12,7 @@ import {
 } from '@atocha/menu-matriarch/data-access';
 import {
   MealEditFormComponent,
-  MealEditFormOutput,
+  MealEditForm,
 } from './meal-edit-form/meal-edit-form.component';
 
 @Component({
@@ -83,7 +83,7 @@ export class MealEditComponent {
     this._router.navigate(['dishes', id]);
   }
 
-  async onSave(details: MealEditFormOutput): Promise<void> {
+  async onSave(details: MealEditForm): Promise<void> {
     if (!this._routeId) {
       this._mealService
         .createMeal(details)

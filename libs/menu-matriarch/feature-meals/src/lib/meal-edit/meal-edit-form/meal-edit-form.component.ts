@@ -46,7 +46,7 @@ export interface MealEditDetails {
   orientation: Orientation;
 }
 
-export interface MealEditFormOutput {
+export interface MealEditForm {
   name: string;
   description: string;
   dishIds: string[];
@@ -84,7 +84,7 @@ type FormDishes = Record<string, boolean>;
 export class MealEditFormComponent implements OnChanges {
   @Input() vm: MealEditDetails | undefined;
   @Output() dishClick = new EventEmitter<string>();
-  @Output() save = new EventEmitter<MealEditFormOutput>();
+  @Output() save = new EventEmitter<MealEditForm>();
   dishesModel: string[] = [];
   tagsModel: TagModel[] = [];
   dishes: Dish[] = [];
