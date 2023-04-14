@@ -1,18 +1,19 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { combineLatest, of } from 'rxjs';
 import { concatMap, first, map } from 'rxjs/operators';
 
-import { recordToArray } from '@atocha/core/util';
 import {
   DishService,
   MealService,
   TagService,
   UserService,
 } from '@atocha/menu-matriarch/data-access';
-import { MealEditFormComponent } from './meal-edit-form/meal-edit-form.component';
+import {
+  MealEditFormComponent,
+  MealEditFormOutput,
+} from './meal-edit-form/meal-edit-form.component';
 
 @Component({
   standalone: true,
@@ -82,18 +83,7 @@ export class MealEditComponent {
     this._router.navigate(['dishes', id]);
   }
 
-  async onSave(form: NgForm): Promise<void> {
-    const details: {
-      name: string;
-      description: string;
-      dishIds: string[];
-      tagIds: string[];
-    } = {
-      name: form.value.name,
-      description: form.value.description,
-      tagIds: recordToArray<string>(form.value.tags),
-      dishIds: recordToArray<string>(form.value.dishes),
-    };
+  async onSave(details: MealEditFormOutput): Promise<void> {
     if (!this._routeId) {
       this._mealService
         .createMeal(details)

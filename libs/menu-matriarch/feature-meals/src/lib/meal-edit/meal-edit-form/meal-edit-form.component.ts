@@ -6,15 +6,16 @@ import {
   Input,
   OnChanges,
   Output,
-  SimpleChanges,
 } from '@angular/core';
 import { FormsModule, NgForm, ReactiveFormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
+
 import {
   AutofocusDirective,
   ButtonComponent,
   CheckboxComponent,
 } from '@atocha/core/ui';
+import { recordToArray } from '@atocha/core/util';
 import {
   DishDefDirective,
   DishesListComponent,
@@ -53,6 +54,13 @@ export interface MealEditModel {
   dishesModel: string[];
 }
 
+export interface MealEditFormOutput {
+  name: string;
+  description: string;
+  dishIds: string[];
+  tagIds: string[];
+}
+
 type FormDishes = Record<string, boolean>;
 
 @Component({
@@ -84,7 +92,7 @@ type FormDishes = Record<string, boolean>;
 export class MealEditFormComponent implements OnChanges {
   @Input() vm: MealEditDetails | undefined;
   @Output() dishClick = new EventEmitter<string>();
-  @Output() save = new EventEmitter<NgForm>();
+  @Output() save = new EventEmitter<MealEditFormOutput>();
   dishesModel: string[] = [];
   tagsModel: TagModel[] = [];
   dishes: Dish[] = [];
@@ -96,7 +104,7 @@ export class MealEditFormComponent implements OnChanges {
     tags: [],
   });
 
-  ngOnChanges(changes: SimpleChanges): void {
+  ngOnChanges(): void {
     if (!this.vm) {
       return;
     }
@@ -115,14 +123,18 @@ export class MealEditFormComponent implements OnChanges {
   }
 
   onDishChange(dishesModel: FormDishes): void {
-    // this.dishesChange.emit(dishesModel);
     if (this.vm?.allDishes) {
       this.dishes = this._transformFormDishes(this.vm?.allDishes, dishesModel);
     }
   }
 
   onSave(form: NgForm): void {
-    this.save.emit(form);
+    this.save.emit({
+      name: form.value.name,
+      description: form.value.description,
+      tagIds: recordToArray<string>(form.value.tags),
+      dishIds: recordToArray<string>(form.value.dishes),
+    });
   }
 
   private _transformFormDishes(
