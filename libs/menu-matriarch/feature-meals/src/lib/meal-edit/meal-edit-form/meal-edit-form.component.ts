@@ -46,13 +46,6 @@ export interface MealEditDetails {
   orientation: Orientation;
 }
 
-export interface MealEditModel {
-  name: string;
-  description: string;
-  tags: TagModel[];
-  dishesModel: string[];
-}
-
 export interface MealEditFormOutput {
   name: string;
   description: string;
