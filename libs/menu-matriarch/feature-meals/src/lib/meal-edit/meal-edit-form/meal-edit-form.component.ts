@@ -6,7 +6,7 @@ import {
   Input,
   Output,
 } from '@angular/core';
-import { FormsModule, NgForm } from '@angular/forms';
+import { FormsModule, NgForm, ReactiveFormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import {
   AutofocusDirective,
@@ -28,8 +28,9 @@ import {
   TagsListComponent,
 } from '@atocha/menu-matriarch/ui';
 import { Dish, Orientation, TagModel } from '@atocha/menu-matriarch/util';
+import { MealEditForm } from './meal-edit-form';
 
-interface MealEditForm {
+export interface MealEditDetails {
   name: string;
   description: string;
   tags: TagModel[];
@@ -37,6 +38,13 @@ interface MealEditForm {
   dishesModel: string[];
   fallbackText: string;
   orientation: Orientation;
+}
+
+export interface MealEditModel {
+  name: string;
+  description: string;
+  tags: TagModel[];
+  dishesModel: string[];
 }
 
 type FormDishes = Record<string, boolean>;
@@ -56,6 +64,7 @@ type FormDishes = Record<string, boolean>;
     FormsModule,
     InputComponent,
     MealSummaryComponent,
+    ReactiveFormsModule,
     RouterLink,
     SectionComponent,
     TagComponent,
@@ -67,10 +76,17 @@ type FormDishes = Record<string, boolean>;
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MealEditFormComponent {
-  @Input() vm: MealEditForm | undefined;
+  @Input() vm: MealEditDetails | undefined;
   @Output() dishClick = new EventEmitter<string>();
   @Output() dishesChange = new EventEmitter<FormDishes>();
   @Output() save = new EventEmitter<NgForm>();
+
+  reactiveForm = new MealEditForm({
+    name: '',
+    description: '',
+    dishesModel: [],
+    tags: [],
+  });
 
   onDishClick(id: string): void {
     this.dishClick.emit(id);
