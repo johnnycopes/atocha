@@ -39,7 +39,7 @@
       <button core-button
         class="button"
         type="submit"
-        [disabled]="!form.valid || !dishesModel.length"
+        [disabled]="!form.valid"
       >
         Save
       </button>
@@ -105,7 +105,7 @@
       </ui-input>
       <div class="details">
         <ui-meal-summary
-          [dishes]="vm.dishes"
+          [dishes]="dishes"
           [fallbackText]="vm.fallbackText"
           [orientation]="vm.orientation"
           (dishClick)="onDishClick($event)"

@@ -42,7 +42,6 @@ export interface MealEditDetails {
   meal: Meal;
   allTags: Tag[];
   allDishes: Dish[];
-  dishes: Dish[];
   fallbackText: string;
   orientation: Orientation;
 }
@@ -85,10 +84,10 @@ type FormDishes = Record<string, boolean>;
 export class MealEditFormComponent implements OnChanges {
   @Input() vm: MealEditDetails | undefined;
   @Output() dishClick = new EventEmitter<string>();
-  @Output() dishesChange = new EventEmitter<FormDishes>();
   @Output() save = new EventEmitter<NgForm>();
   dishesModel: string[] = [];
   tagsModel: TagModel[] = [];
+  dishes: Dish[] = [];
 
   reactiveForm = new MealEditForm({
     name: '',
@@ -103,6 +102,7 @@ export class MealEditFormComponent implements OnChanges {
     }
 
     this.dishesModel = this.vm.meal.dishes.map((dish) => dish.id);
+    this.dishes = this.vm.meal.dishes;
 
     this.tagsModel = this.vm.allTags.map<TagModel>((tag) => ({
       ...tag,
@@ -115,10 +115,31 @@ export class MealEditFormComponent implements OnChanges {
   }
 
   onDishChange(dishesModel: FormDishes): void {
-    this.dishesChange.emit(dishesModel);
+    // this.dishesChange.emit(dishesModel);
+    if (this.vm?.allDishes) {
+      this.dishes = this._transformFormDishes(this.vm?.allDishes, dishesModel);
+    }
   }
 
   onSave(form: NgForm): void {
     this.save.emit(form);
+  }
+
+  private _transformFormDishes(
+    allDishes: Dish[],
+    formDishes: Record<string, boolean>
+  ): Dish[] {
+    const dishes: Dish[] = [];
+
+    for (const dishId in formDishes) {
+      if (formDishes[dishId]) {
+        const dish = allDishes.find(({ id }) => id === dishId);
+        if (dish) {
+          dishes.push(dish);
+        }
+      }
+    }
+
+    return dishes;
   }
 }
