@@ -29,6 +29,16 @@ import {
 } from '@atocha/menu-matriarch/ui';
 import { Dish, Orientation, TagModel } from '@atocha/menu-matriarch/util';
 
+interface MealEditForm {
+  name: string;
+  description: string;
+  tags: TagModel[];
+  dishes: Dish[];
+  dishesModel: string[];
+  fallbackText: string;
+  orientation: Orientation;
+}
+
 type FormDishes = Record<string, boolean>;
 
 @Component({
@@ -57,17 +67,7 @@ type FormDishes = Record<string, boolean>;
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MealEditFormComponent {
-  @Input() vm:
-    | {
-        name: string;
-        description: string;
-        tags: TagModel[];
-        dishes: Dish[];
-        dishesModel: string[];
-        fallbackText: string;
-        orientation: Orientation;
-      }
-    | undefined;
+  @Input() vm: MealEditForm | undefined;
   @Output() dishClick = new EventEmitter<string>();
   @Output() dishesChange = new EventEmitter<FormDishes>();
   @Output() save = new EventEmitter<NgForm>();

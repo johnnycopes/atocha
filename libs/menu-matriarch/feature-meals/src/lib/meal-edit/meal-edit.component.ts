@@ -21,13 +21,6 @@ import {
 import { Dish, TagModel } from '@atocha/menu-matriarch/util';
 import { MealEditFormComponent } from './meal-edit-form/meal-edit-form.component';
 
-interface MealEditForm {
-  name: string;
-  description: string;
-  dishIds: string[];
-  tagIds: string[];
-}
-
 type FormDishes = Record<string, boolean>;
 
 @Component({
@@ -119,7 +112,12 @@ export class MealEditComponent {
   }
 
   async onSave(form: NgForm): Promise<void> {
-    const details: MealEditForm = {
+    const details: {
+      name: string;
+      description: string;
+      dishIds: string[];
+      tagIds: string[];
+    } = {
       name: form.value.name,
       description: form.value.description,
       tagIds: recordToArray<string>(form.value.tags),
