@@ -45,7 +45,6 @@ export interface MealEditDetails {
   allTags: Tag[];
   allDishes: Dish[];
   dishes: Dish[];
-  dishesModel: string[];
   fallbackText: string;
   orientation: Orientation;
 }
@@ -90,6 +89,7 @@ export class MealEditFormComponent implements OnChanges {
   @Output() dishClick = new EventEmitter<string>();
   @Output() dishesChange = new EventEmitter<FormDishes>();
   @Output() save = new EventEmitter<NgForm>();
+  dishesModel: string[] = [];
   tagsModel: TagModel[] = [];
 
   reactiveForm = new MealEditForm({
@@ -100,6 +100,8 @@ export class MealEditFormComponent implements OnChanges {
   });
 
   ngOnChanges(changes: SimpleChanges): void {
+    this.dishesModel = this.vm?.meal?.dishes.map((dish) => dish.id) ?? [];
+
     this.tagsModel =
       this.vm?.allTags.map<TagModel>((tag) => ({
         ...tag,

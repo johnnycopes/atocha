@@ -3,7 +3,6 @@
   (keydown.enter)="$event.preventDefault()"
   (ngSubmit)="onSave(form)"
 >
-  {{ form.value | json }}
   <app-dishes-list class="dishes"
     ngModelGroup="dishes"
   >
@@ -21,7 +20,7 @@
       ></ui-dish-summary>
       <core-checkbox class="included"
         [name]="dish.id"
-        [ngModel]="vm.dishesModel.includes(dish.id)"
+        [ngModel]="dishesModel.includes(dish.id)"
         (ngModelChange)="onDishChange(form.value.dishes)"
       >
         Include in meal
@@ -40,7 +39,7 @@
       <button core-button
         class="button"
         type="submit"
-        [disabled]="!form.valid || !vm.dishesModel.length"
+        [disabled]="!form.valid || !dishesModel.length"
       >
         Save
       </button>

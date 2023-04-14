@@ -61,7 +61,6 @@ export class MealEditComponent {
       const dishes = formDishes
         ? this._transformFormDishes(allDishes, formDishes)
         : meal?.dishes ?? [];
-      const dishesModel = dishes.map((dish) => dish.id);
       const fallbackText = preferences?.emptyMealText ?? '';
       const orientation = preferences?.mealOrientation ?? 'horizontal';
       if (!meal) {
@@ -72,7 +71,6 @@ export class MealEditComponent {
           allTags: tags,
           allDishes,
           dishes,
-          dishesModel,
           fallbackText,
           orientation,
         };
@@ -84,7 +82,6 @@ export class MealEditComponent {
           allTags: tags,
           allDishes,
           dishes,
-          dishesModel,
           fallbackText,
           orientation,
         };
