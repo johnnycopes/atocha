@@ -3,6 +3,7 @@
   (keydown.enter)="$event.preventDefault()"
   (ngSubmit)="onSave(form)"
 >
+  {{ form.value | json }}
   <app-dishes-list class="dishes"
     ngModelGroup="dishes"
   >
@@ -73,10 +74,10 @@
         label="tags"
       >
         <ui-tags-list
-          *ngIf="vm.tags.length; else noTagsPlaceholder"
+          *ngIf="vm.allTags?.length; else noTagsPlaceholder"
           class="tags"
           ngModelGroup="tags"
-          [tags]="vm.tags"
+          [tags]="tagsModel"
           [interactive]="true"
         >
           <ng-container *uiTagDef="let tag">

@@ -4,7 +4,9 @@ import {
   Component,
   EventEmitter,
   Input,
+  OnChanges,
   Output,
+  SimpleChanges,
 } from '@angular/core';
 import { FormsModule, NgForm, ReactiveFormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
@@ -27,13 +29,21 @@ import {
   TagDefDirective,
   TagsListComponent,
 } from '@atocha/menu-matriarch/ui';
-import { Dish, Orientation, TagModel } from '@atocha/menu-matriarch/util';
+import {
+  Dish,
+  Meal,
+  Orientation,
+  Tag,
+  TagModel,
+} from '@atocha/menu-matriarch/util';
 import { MealEditForm } from './meal-edit-form';
 
 export interface MealEditDetails {
+  meal: Meal | undefined;
   name: string;
   description: string;
-  tags: TagModel[];
+  allTags: Tag[];
+  allDishes: Dish[];
   dishes: Dish[];
   dishesModel: string[];
   fallbackText: string;
@@ -75,11 +85,12 @@ type FormDishes = Record<string, boolean>;
   styleUrls: ['./meal-edit-form.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class MealEditFormComponent {
+export class MealEditFormComponent implements OnChanges {
   @Input() vm: MealEditDetails | undefined;
   @Output() dishClick = new EventEmitter<string>();
   @Output() dishesChange = new EventEmitter<FormDishes>();
   @Output() save = new EventEmitter<NgForm>();
+  tagsModel: TagModel[] = [];
 
   reactiveForm = new MealEditForm({
     name: '',
@@ -87,6 +98,14 @@ export class MealEditFormComponent {
     dishesModel: [],
     tags: [],
   });
+
+  ngOnChanges(changes: SimpleChanges): void {
+    this.tagsModel =
+      this.vm?.allTags.map<TagModel>((tag) => ({
+        ...tag,
+        checked: !!this.vm?.meal?.tags.find((mealTag) => mealTag.id === tag.id),
+      })) ?? [];
+  }
 
   onDishClick(id: string): void {
     this.dishClick.emit(id);

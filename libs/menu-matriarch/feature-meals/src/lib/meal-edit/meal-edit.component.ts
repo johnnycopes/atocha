@@ -18,7 +18,7 @@ import {
   TagService,
   UserService,
 } from '@atocha/menu-matriarch/data-access';
-import { Dish, TagModel } from '@atocha/menu-matriarch/util';
+import { Dish } from '@atocha/menu-matriarch/util';
 import { MealEditFormComponent } from './meal-edit-form/meal-edit-form.component';
 
 type FormDishes = Record<string, boolean>;
@@ -66,12 +66,11 @@ export class MealEditComponent {
       const orientation = preferences?.mealOrientation ?? 'horizontal';
       if (!meal) {
         return {
+          meal,
           name: '',
           description: '',
-          tags: tags.map<TagModel>((tag) => ({
-            ...tag,
-            checked: false,
-          })),
+          allTags: tags,
+          allDishes,
           dishes,
           dishesModel,
           fallbackText,
@@ -79,12 +78,11 @@ export class MealEditComponent {
         };
       } else {
         return {
+          meal,
           name: meal.name,
           description: meal.description,
-          tags: tags.map<TagModel>((tag) => ({
-            ...tag,
-            checked: !!meal?.tags.find((mealTag) => mealTag.id === tag.id),
-          })),
+          allTags: tags,
+          allDishes,
           dishes,
           dishesModel,
           fallbackText,
