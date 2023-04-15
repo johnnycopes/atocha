@@ -15,8 +15,13 @@ import {
   standalone: true,
   selector: 'app-dish-edit',
   imports: [CommonModule, DishEditFormComponent, RouterModule],
-  templateUrl: './dish-edit.component.html',
-  styleUrls: ['./dish-edit.component.scss'],
+  template: `
+    <app-dish-edit-form
+      *ngIf="vm$ | async as vm"
+      [vm]="vm"
+      (save)="onSave($event)"
+    ></app-dish-edit-form>
+  `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DishEditComponent {
