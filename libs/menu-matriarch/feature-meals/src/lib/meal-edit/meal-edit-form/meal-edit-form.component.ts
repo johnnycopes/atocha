@@ -8,15 +8,9 @@ import {
   OnInit,
   Output,
 } from '@angular/core';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  FormsModule,
-  ReactiveFormsModule,
-} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
-import { Subject, map, startWith, takeUntil } from 'rxjs';
+import { Subject, takeUntil } from 'rxjs';
 
 import {
   AutofocusDirective,
@@ -47,7 +41,7 @@ import {
 } from '@atocha/menu-matriarch/util';
 import { MealEditFormClass } from './meal-edit-form';
 
-export interface MealEditDetails {
+export interface AppData {
   meal: Meal;
   allTags: Tag[];
   allDishes: Dish[];
@@ -55,14 +49,7 @@ export interface MealEditDetails {
   orientation: Orientation;
 }
 
-export interface MealEditForm {
-  name: FormControl<string>;
-  description: FormControl<string>;
-  dishIds: FormGroup<Record<string, FormControl<boolean>>>;
-  tagIds: FormGroup<Record<string, FormControl<boolean>>>;
-}
-
-export interface MealEditFormOutput {
+export interface MealDetails {
   name: string;
   description: string;
   dishIds: string[];
@@ -96,21 +83,15 @@ export interface MealEditFormOutput {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MealEditFormComponent implements OnInit, OnDestroy {
-  @Input() vm: MealEditDetails | undefined;
+  @Input() vm: AppData | undefined;
   @Output() dishClick = new EventEmitter<string>();
-  @Output() save = new EventEmitter<MealEditFormOutput>();
+  @Output() save = new EventEmitter<MealDetails>();
 
   tagsModel: TagModel[] = [];
   dishes: Dish[] = [];
-  reactiveForm = this._fb.nonNullable.group<MealEditForm>({
-    name: this._fb.nonNullable.control(''),
-    description: this._fb.nonNullable.control(''),
-    dishIds: this._fb.nonNullable.group({}),
-    tagIds: this._fb.nonNullable.group({}),
-  });
-  private _destroy$ = new Subject<void>();
+  reactiveForm: MealEditFormClass | undefined;
 
-  constructor(private _fb: FormBuilder) {}
+  private _destroy$ = new Subject<void>();
 
   ngOnInit(): void {
     if (!this.vm) {
@@ -119,14 +100,8 @@ export class MealEditFormComponent implements OnInit, OnDestroy {
 
     this.reactiveForm = new MealEditFormClass(this.vm);
 
-    this.reactiveForm.controls['dishIds'].valueChanges
-      .pipe(
-        startWith(this._mapDishesToFormRecord(this.vm.meal.dishes)),
-        map((dishIds) =>
-          this._mapFormRecordToDishes(this.vm?.allDishes ?? [], dishIds)
-        ),
-        takeUntil(this._destroy$)
-      )
+    this.reactiveForm.dishes$
+      .pipe(takeUntil(this._destroy$))
       .subscribe((dishes) => (this.dishes = dishes));
 
     this.tagsModel = this.vm.allTags.map<TagModel>((tag) => ({
@@ -145,6 +120,10 @@ export class MealEditFormComponent implements OnInit, OnDestroy {
   }
 
   onSave(): void {
+    if (!this.reactiveForm) {
+      return;
+    }
+
     const { name, description, dishIds, tagIds } =
       this.reactiveForm.getRawValue();
 
@@ -154,33 +133,5 @@ export class MealEditFormComponent implements OnInit, OnDestroy {
       dishIds: recordToArray<string>(dishIds),
       tagIds: recordToArray<string>(tagIds),
     });
-  }
-
-  private _mapDishesToFormRecord(dishes: Dish[]): Record<string, boolean> {
-    const record: Record<string, boolean> = {};
-
-    for (const dish of dishes) {
-      record[dish.id] = true;
-    }
-
-    return record;
-  }
-
-  private _mapFormRecordToDishes(
-    allDishes: Dish[],
-    formDishes: Partial<Record<string, boolean>>
-  ): Dish[] {
-    const dishes: Dish[] = [];
-
-    for (const dishId in formDishes) {
-      if (formDishes[dishId]) {
-        const dish = allDishes.find(({ id }) => id === dishId);
-        if (dish) {
-          dishes.push(dish);
-        }
-      }
-    }
-
-    return dishes;
   }
 }
