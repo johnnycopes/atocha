@@ -1,4 +1,4 @@
-<form *ngIf="vm"
+<form *ngIf="vm && reactiveForm"
   [formGroup]="reactiveForm"
   (ngSubmit)="onSave()"
 >
@@ -96,7 +96,7 @@
       </ui-input>
       <div class="details">
         <ui-meal-summary
-          [dishes]="(dishes$ | async) ?? []"
+          [dishes]="dishes"
           [fallbackText]="vm.fallbackText"
           [orientation]="vm.orientation"
           (dishClick)="onDishClick($event)"
