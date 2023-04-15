@@ -24,8 +24,8 @@ import {
   imports: [CommonModule, MealEditFormComponent, RouterModule],
   template: `
     <app-meal-edit-form
-      *ngIf="vm$ | async as vm"
-      [data]="vm"
+      *ngIf="meal$ | async as meal"
+      [meal]="meal"
       (dishClick)="onDishClick($event)"
       (save)="onSave($event)"
     ></app-meal-edit-form>

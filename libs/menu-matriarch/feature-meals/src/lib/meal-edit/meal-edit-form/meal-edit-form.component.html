@@ -1,9 +1,9 @@
-<form *ngIf="data && form"
+<form *ngIf="meal && form"
   [formGroup]="form"
   (ngSubmit)="onSave()"
 >
   <app-dishes-list class="dishes"
-    formGroupName="dishIds"
+    formGroupName="dishesModel"
   >
     <ui-card *appDishDef="let dish">
       <ui-dish-summary
@@ -65,10 +65,10 @@
         label="tags"
       >
         <ui-tags-list
-          *ngIf="data.allTags.length; else noTagsPlaceholder"
+          *ngIf="meal.tagsModel; else noTagsPlaceholder"
           class="tags"
-          formGroupName="tagIds"
-          [tags]="tagsModel"
+          formGroupName="tagsModel"
+          [tags]="meal.tagsModel"
           [interactive]="true"
         >
           <ng-container *uiTagDef="let tag">
@@ -95,13 +95,13 @@
         </ng-template>
       </ui-input>
       <div class="details">
-        <ui-meal-summary
+        <!-- <ui-meal-summary
           [dishes]="dishes"
-          [fallbackText]="data.fallbackText"
-          [orientation]="data.orientation"
+          [fallbackText]="meal.fallbackText"
+          [orientation]="meal.orientation"
           (dishClick)="onDishClick($event)"
           boundaries="labeled"
-        ></ui-meal-summary>
+        ></ui-meal-summary> -->
       </div>
     </div>
   </ui-section>

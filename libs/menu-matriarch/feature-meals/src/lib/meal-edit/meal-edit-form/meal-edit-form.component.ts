@@ -91,31 +91,25 @@ export interface MealDetails {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MealEditFormComponent implements OnInit, OnDestroy {
-  @Input() data: AppData | undefined;
+  @Input() meal: MealConfig | undefined;
   @Output() dishClick = new EventEmitter<string>();
   @Output() save = new EventEmitter<MealDetails>();
 
-  tagsModel: TagModel[] = [];
   dishes: Dish[] = [];
   form: MealEditForm | undefined;
 
   private _destroy$ = new Subject<void>();
 
   ngOnInit(): void {
-    if (!this.data) {
+    if (!this.meal) {
       return;
     }
 
-    this.form = new MealEditForm(this.data);
+    this.form = new MealEditForm(this.meal);
 
     this.form.dishes$
       .pipe(takeUntil(this._destroy$))
       .subscribe((dishes) => (this.dishes = dishes));
-
-    this.tagsModel = this.data.allTags.map<TagModel>((tag) => ({
-      ...tag,
-      checked: !!this.data?.meal?.tags.find((mealTag) => mealTag.id === tag.id),
-    }));
   }
 
   ngOnDestroy(): void {
@@ -132,13 +126,14 @@ export class MealEditFormComponent implements OnInit, OnDestroy {
       return;
     }
 
-    const { name, description, dishIds, tagIds } = this.form.getRawValue();
+    const { name, description, dishesModel, tagsModel } =
+      this.form.getRawValue();
 
     this.save.emit({
       name,
       description,
-      dishIds: recordToArray<string>(dishIds),
-      tagIds: recordToArray<string>(tagIds),
+      dishIds: recordToArray<string>(dishesModel),
+      tagIds: recordToArray<string>(tagsModel),
     });
   }
 }

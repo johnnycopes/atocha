@@ -8,47 +8,50 @@ import {
 import { map, of, startWith } from 'rxjs';
 
 import { Dish } from '@atocha/menu-matriarch/util';
-import { AppData } from './meal-edit-form.component';
+import { MealConfig } from './meal-edit-form.component';
 
 export class MealEditForm extends FormGroup<{
   name: FormControl<string>;
   description: FormControl<string>;
-  dishIds: FormGroup<Record<string, FormControl<boolean>>>;
-  tagIds: FormGroup<Record<string, FormControl<boolean>>>;
+  dishesModel: FormGroup<Record<string, FormControl<boolean>>>;
+  tagsModel: FormGroup<Record<string, FormControl<boolean>>>;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   [key: string]: AbstractControl<any, any>;
 }> {
-  dishes$ =
-    this.get('dishIds')?.valueChanges.pipe(
-      startWith(this._mapDishesToFormRecord(this.details.meal.dishes)),
-      map((dishIds) =>
-        this._mapFormRecordToDishes(this.details.allDishes, dishIds)
-      )
-    ) ?? of([]);
+  dishes$ = of<Dish[]>([]);
+  // dishes$ =
+  //   this.get('dishIds')?.valueChanges.pipe(
+  //     startWith(this._mapDishesToFormRecord(this.details.meal.dishes)),
+  //     map((dishIds) =>
+  //       this._mapFormRecordToDishes(this.details.allDishes, dishIds)
+  //     )
+  //   ) ?? of([]);
 
   constructor(
-    readonly details: AppData,
+    readonly meal: MealConfig,
     readonly fb: FormBuilder = new FormBuilder()
   ) {
     super(
       fb.nonNullable.group({
-        name: fb.nonNullable.control(details.meal.name, Validators.required),
-        description: fb.nonNullable.control(details.meal.description),
-        dishIds: fb.nonNullable.group(
-          details.allDishes.reduce((group, { id }) => {
-            group[id] = fb.nonNullable.control(
-              details.meal.dishes.map(({ id }) => id).includes(id)
-            );
-            return group;
-          }, {} as { [key: string]: FormControl<boolean> })
+        name: fb.nonNullable.control(meal.name, Validators.required),
+        description: fb.nonNullable.control(meal.description),
+        dishesModel: fb.nonNullable.group(
+          meal.dishesModel.reduce<Record<string, FormControl<boolean>>>(
+            (group, dish) => {
+              group[dish.id] = fb.nonNullable.control(dish.checked);
+              return group;
+            },
+            {}
+          )
         ),
-        tagIds: fb.nonNullable.group(
-          details.allTags.reduce((group, { id }) => {
-            group[id] = fb.nonNullable.control(
-              details.meal.tags.map(({ id }) => id).includes(id)
-            );
-            return group;
-          }, {} as { [key: string]: FormControl<boolean> })
+        tagsModel: fb.nonNullable.group(
+          meal.tagsModel.reduce<Record<string, FormControl<boolean>>>(
+            (group, tag) => {
+              group[tag.id] = fb.nonNullable.control(tag.checked);
+              return group;
+            },
+            {}
+          )
         ),
       }).controls,
       []
