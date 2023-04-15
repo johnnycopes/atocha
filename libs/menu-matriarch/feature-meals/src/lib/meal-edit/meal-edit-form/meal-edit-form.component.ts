@@ -34,10 +34,12 @@ import {
 } from '@atocha/menu-matriarch/ui';
 import {
   Dish,
+  DishModel,
   Meal,
   Orientation,
   Tag,
   TagModel,
+  UserPreferences,
 } from '@atocha/menu-matriarch/util';
 import { MealEditForm } from './meal-edit-form';
 
@@ -48,6 +50,12 @@ export interface AppData {
   fallbackText: string;
   orientation: Orientation;
 }
+
+export type MealConfig = Pick<Meal, 'name' | 'description'> &
+  Pick<UserPreferences, 'emptyMealText' | 'mealOrientation'> & {
+    tagsModel: TagModel[];
+    dishesModel: DishModel[];
+  };
 
 export interface MealDetails {
   name: string;
