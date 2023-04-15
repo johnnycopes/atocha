@@ -10,10 +10,12 @@ import {
   TagService,
   UserService,
 } from '@atocha/menu-matriarch/data-access';
+import { DishModel, TagModel } from '@atocha/menu-matriarch/util';
 import {
   AppData,
   MealEditFormComponent,
   MealDetails,
+  MealConfig,
 } from './meal-edit-form/meal-edit-form.component';
 
 @Component({
@@ -59,6 +61,30 @@ export class MealEditComponent {
         orientation,
       };
     })
+  );
+
+  meal$: Observable<MealConfig> = combineLatest([
+    this._meal$,
+    this._dishService.getDishes(),
+    this._tagService.getTags(),
+    this._userService.getPreferences(),
+  ]).pipe(
+    map(([meal, allDishes, allTags, preferences]) => ({
+      id: meal?.id ?? '',
+      uid: meal?.uid ?? '',
+      name: meal?.name ?? '',
+      description: meal?.description ?? '',
+      dishesModel: allDishes.map<DishModel>((dish) => ({
+        ...dish,
+        checked: !!meal?.dishes.find(({ id }) => id === dish.id) ?? false,
+      })),
+      tagsModel: allTags.map<TagModel>((tag) => ({
+        ...tag,
+        checked: !!meal?.tags.find(({ id }) => id === tag.id) ?? false,
+      })),
+      emptyMealText: preferences?.emptyMealText ?? '',
+      mealOrientation: preferences?.mealOrientation ?? 'horizontal',
+    }))
   );
 
   constructor(
