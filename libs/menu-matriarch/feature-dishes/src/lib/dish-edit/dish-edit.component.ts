@@ -5,7 +5,7 @@ import { combineLatest, of } from 'rxjs';
 import { concatMap, first, map } from 'rxjs/operators';
 
 import { DishService, TagService } from '@atocha/menu-matriarch/data-access';
-import { DishType, TagModel } from '@atocha/menu-matriarch/util';
+import { TagModel } from '@atocha/menu-matriarch/util';
 import {
   DishEditDetails,
   DishEditFormComponent,
