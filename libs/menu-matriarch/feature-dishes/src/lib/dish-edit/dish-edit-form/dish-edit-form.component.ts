@@ -69,7 +69,7 @@ export class DishEditFormComponent implements OnInit {
   @Input() dish: DishConfig | undefined;
   @Output() save = new EventEmitter<DishEditDetails>();
 
-  reactiveForm: DishEditForm | undefined;
+  form: DishEditForm | undefined;
   readonly dishTypes = getDishTypes();
   readonly tinyMceConfig = {
     height: 300,
@@ -82,17 +82,17 @@ export class DishEditFormComponent implements OnInit {
 
   ngOnInit() {
     if (this.dish) {
-      this.reactiveForm = new DishEditForm(this.dish);
+      this.form = new DishEditForm(this.dish);
     }
   }
 
   async onSave(): Promise<void> {
-    if (!this.reactiveForm) {
+    if (!this.form) {
       return;
     }
 
     const { name, description, link, type, tagsModel, notes } =
-      this.reactiveForm.getRawValue();
+      this.form.getRawValue();
     this.save.emit({
       name,
       description,

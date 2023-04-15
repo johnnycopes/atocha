@@ -1,6 +1,6 @@
-<form *ngIf="dish && reactiveForm"
+<form *ngIf="dish && form"
   class="ui-section__content"
-  [formGroup]="reactiveForm"
+  [formGroup]="form"
   (keydown.enter)="$event.preventDefault()"
   (ngSubmit)="onSave()"
 >
@@ -14,7 +14,7 @@
     <button core-button
       class="button"
       type="submit"
-      [disabled]="!reactiveForm.valid"
+      [disabled]="!form.valid"
     >
       Save
     </button>
