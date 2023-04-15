@@ -12,7 +12,6 @@ import {
 } from '@atocha/menu-matriarch/data-access';
 import { DishModel, TagModel } from '@atocha/menu-matriarch/util';
 import {
-  AppData,
   MealEditFormComponent,
   MealDetails,
   MealConfig,
@@ -37,31 +36,6 @@ export class MealEditComponent {
   _meal$ = this._routeId
     ? this._mealService.getMeal(this._routeId)
     : of(undefined);
-  vm$: Observable<AppData> = combineLatest([
-    this._meal$,
-    this._dishService.getDishes(),
-    this._tagService.getTags(),
-    this._userService.getPreferences(),
-  ]).pipe(
-    map(([meal, allDishes, allTags, preferences]) => {
-      const fallbackText = preferences?.emptyMealText ?? '';
-      const orientation = preferences?.mealOrientation ?? 'horizontal';
-      return {
-        meal: {
-          id: meal?.id ?? '',
-          uid: meal?.uid ?? '',
-          name: meal?.name ?? '',
-          description: meal?.description ?? '',
-          dishes: meal?.dishes ?? [],
-          tags: meal?.tags ?? [],
-        },
-        allTags,
-        allDishes,
-        fallbackText,
-        orientation,
-      };
-    })
-  );
 
   meal$: Observable<MealConfig> = combineLatest([
     this._meal$,
