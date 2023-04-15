@@ -1,0 +1,27 @@
+@import 'main';
+
+.ui-section__toolbar {
+  justify-content: flex-end;
+
+  .button {
+    margin-left: spacing(8);
+  }
+}
+
+.input {
+  margin-bottom: spacing(32);
+}
+
+.tags {
+  margin-top: spacing(8);
+}
+
+.placeholder {
+  display: flex;
+  align-items: center;
+  margin-top: spacing(8);
+
+  p {
+    margin-right: spacing(8);
+  }
+}

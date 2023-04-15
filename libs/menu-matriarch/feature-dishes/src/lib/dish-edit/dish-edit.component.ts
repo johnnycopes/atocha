@@ -1,55 +1,20 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { FormsModule, NgForm } from '@angular/forms';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { combineLatest, of } from 'rxjs';
 import { concatMap, first, map } from 'rxjs/operators';
-import { EditorModule } from '@tinymce/tinymce-angular';
 
-import { recordToArray } from '@atocha/core/util';
-import {
-  AutofocusDirective,
-  ButtonComponent,
-  CheckboxComponent,
-  trackBySelf,
-} from '@atocha/core/ui';
 import { DishService, TagService } from '@atocha/menu-matriarch/data-access';
-import { DishType, TagModel, getDishTypes } from '@atocha/menu-matriarch/util';
+import { DishType, TagModel } from '@atocha/menu-matriarch/util';
 import {
-  InputComponent,
-  SectionComponent,
-  TagComponent,
-  TagDefDirective,
-  TagsListComponent,
-} from '@atocha/menu-matriarch/ui';
-
-interface DishEditForm {
-  name: string;
-  description: string;
-  link: string;
-  type: DishType;
-  tagIds: string[];
-  notes: string;
-}
+  DishEditDetails,
+  DishEditFormComponent,
+} from './dish-edit-form/dish-edit-form.component';
 
 @Component({
   standalone: true,
   selector: 'app-dish-edit',
-  imports: [
-    AutofocusDirective,
-    ButtonComponent,
-    CheckboxComponent,
-    CommonModule,
-    DishEditComponent,
-    EditorModule,
-    FormsModule,
-    InputComponent,
-    SectionComponent,
-    TagComponent,
-    TagDefDirective,
-    TagsListComponent,
-    RouterModule,
-  ],
+  imports: [CommonModule, DishEditFormComponent, RouterModule],
   templateUrl: './dish-edit.component.html',
   styleUrls: ['./dish-edit.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -66,7 +31,7 @@ export class DishEditComponent {
           name: '',
           description: '',
           link: '',
-          type: 'main',
+          type: 'main' as DishType,
           tags: tags.map<TagModel>((tag) => ({
             ...tag,
             checked: false,
@@ -75,24 +40,19 @@ export class DishEditComponent {
         };
       } else {
         return {
-          ...dish,
+          name: dish.name,
+          description: dish.description,
+          link: dish.link,
+          type: dish.type,
           tags: tags.map<TagModel>((tag) => ({
             ...tag,
             checked: !!dish?.tags.find((dishTag) => dishTag.id === tag.id),
           })),
+          notes: dish.notes,
         };
       }
     })
   );
-  readonly dishTypes = getDishTypes();
-  readonly tinyMceConfig = {
-    height: 300,
-    menubar: false,
-    plugins: ['lists', 'searchreplace', 'wordcount'],
-    toolbar: `undo redo | formatselect | bold italic underline forecolor backcolor |
-      bullist numlist outdent indent | removeformat | help`,
-  };
-  readonly typeTrackByFn = trackBySelf;
 
   constructor(
     private _route: ActivatedRoute,
@@ -101,15 +61,7 @@ export class DishEditComponent {
     private _tagService: TagService
   ) {}
 
-  async onSave(form: NgForm): Promise<void> {
-    const details: DishEditForm = {
-      name: form.value.name,
-      description: form.value.description,
-      link: form.value.link,
-      type: form.value.type,
-      tagIds: recordToArray<string>(form.value?.tags ?? []),
-      notes: form.value.notes,
-    };
+  async onSave(details: DishEditDetails): Promise<void> {
     if (!this._routeId) {
       this._dishService
         .createDish(details)
