@@ -12,8 +12,8 @@ import {
   FormControl,
   FormGroup,
   FormsModule,
-  NgForm,
   ReactiveFormsModule,
+  Validators,
 } from '@angular/forms';
 import { EditorComponent } from '@tinymce/tinymce-angular';
 
@@ -104,7 +104,7 @@ export class DishEditFormComponent implements OnInit {
 
     const { name, description, link, type, tagsModel, notes } = this.dish;
     this.reactiveForm = this._fb.nonNullable.group<DishEditForm>({
-      name: this._fb.nonNullable.control(name),
+      name: this._fb.nonNullable.control(name, Validators.required),
       description: this._fb.nonNullable.control(description),
       link: this._fb.nonNullable.control(link),
       type: this._fb.nonNullable.control(type),
@@ -118,14 +118,21 @@ export class DishEditFormComponent implements OnInit {
     });
   }
 
-  async onSave(form: NgForm): Promise<void> {
+  async onSave(): Promise<void> {
+    console.log('here');
+    if (!this.reactiveForm) {
+      return;
+    }
+
+    const { name, description, link, type, tags, notes } =
+      this.reactiveForm.getRawValue();
     this.save.emit({
-      name: form.value.name,
-      description: form.value.description,
-      link: form.value.link,
-      type: form.value.type,
-      tagIds: recordToArray<string>(form.value?.tags ?? []),
-      notes: form.value.notes,
+      name,
+      description,
+      link,
+      type,
+      tagIds: recordToArray<string>(tags ?? []),
+      notes,
     });
   }
 }
