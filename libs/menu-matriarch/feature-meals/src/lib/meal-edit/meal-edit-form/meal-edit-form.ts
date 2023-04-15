@@ -1,5 +1,4 @@
 import {
-  AbstractControl,
   FormBuilder,
   FormControl,
   FormGroup,
@@ -14,8 +13,6 @@ export class MealEditForm extends FormGroup<{
   description: FormControl<string>;
   dishesModel: FormGroup<Record<string, FormControl<boolean>>>;
   tagsModel: FormGroup<Record<string, FormControl<boolean>>>;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  [key: string]: AbstractControl<any, any>;
 }> {
   dishes$ =
     this.get('dishesModel')?.valueChanges.pipe(
