@@ -89,7 +89,7 @@ export class MealEditFormComponent implements OnInit, OnDestroy {
 
   tagsModel: TagModel[] = [];
   dishes: Dish[] = [];
-  reactiveForm: MealEditFormClass | undefined;
+  form: MealEditFormClass | undefined;
 
   private _destroy$ = new Subject<void>();
 
@@ -98,9 +98,9 @@ export class MealEditFormComponent implements OnInit, OnDestroy {
       return;
     }
 
-    this.reactiveForm = new MealEditFormClass(this.vm);
+    this.form = new MealEditFormClass(this.vm);
 
-    this.reactiveForm.dishes$
+    this.form.dishes$
       .pipe(takeUntil(this._destroy$))
       .subscribe((dishes) => (this.dishes = dishes));
 
@@ -120,12 +120,11 @@ export class MealEditFormComponent implements OnInit, OnDestroy {
   }
 
   onSave(): void {
-    if (!this.reactiveForm) {
+    if (!this.form) {
       return;
     }
 
-    const { name, description, dishIds, tagIds } =
-      this.reactiveForm.getRawValue();
+    const { name, description, dishIds, tagIds } = this.form.getRawValue();
 
     this.save.emit({
       name,

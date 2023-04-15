@@ -1,5 +1,5 @@
-<form *ngIf="vm && reactiveForm"
-  [formGroup]="reactiveForm"
+<form *ngIf="vm && form"
+  [formGroup]="form"
   (ngSubmit)="onSave()"
 >
   <app-dishes-list class="dishes"
@@ -36,7 +36,7 @@
       <button core-button
         class="button"
         type="submit"
-        [disabled]="!reactiveForm.valid"
+        [disabled]="!form.valid"
       >
         Save
       </button>
