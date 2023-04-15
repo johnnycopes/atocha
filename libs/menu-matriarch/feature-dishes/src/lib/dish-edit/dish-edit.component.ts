@@ -37,7 +37,7 @@ export class DishEditComponent {
           description: '',
           link: '',
           type: 'main' as DishType,
-          tags: tags.map<TagModel>((tag) => ({
+          tagsModel: tags.map<TagModel>((tag) => ({
             ...tag,
             checked: false,
           })),
@@ -49,9 +49,9 @@ export class DishEditComponent {
           description: dish.description,
           link: dish.link,
           type: dish.type,
-          tags: tags.map<TagModel>((tag) => ({
+          tagsModel: tags.map<TagModel>((tag) => ({
             ...tag,
-            checked: !!dish?.tags.find((dishTag) => dishTag.id === tag.id),
+            checked: !!dish.tags.find(({ id }) => id === tag.id),
           })),
           notes: dish.notes,
         };

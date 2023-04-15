@@ -77,10 +77,10 @@
       label="tags"
     >
       <ui-tags-list
-        *ngIf="vm.tags.length; else noTagsPlaceholder"
+        *ngIf="vm.tagsModel.length; else noTagsPlaceholder"
         class="tags"
         ngModelGroup="tags"
-        [tags]="vm.tags"
+        [tags]="vm.tagsModel"
         [interactive]="true"
       >
         <ng-container *uiTagDef="let tag">

@@ -20,14 +20,19 @@ import {
   TagDefDirective,
   TagsListComponent,
 } from '@atocha/menu-matriarch/ui';
-import { Dish, DishType, getDishTypes } from '@atocha/menu-matriarch/util';
+import {
+  Dish,
+  DishType,
+  TagModel,
+  getDishTypes,
+} from '@atocha/menu-matriarch/util';
 import { recordToArray } from '@atocha/core/util';
 import { RouterLink } from '@angular/router';
 
 export type AppData = Pick<
   Dish,
-  'name' | 'description' | 'link' | 'type' | 'tags' | 'notes'
->;
+  'name' | 'description' | 'link' | 'type' | 'notes'
+> & { tagsModel: TagModel[] };
 
 export interface DishEditDetails {
   name: string;
