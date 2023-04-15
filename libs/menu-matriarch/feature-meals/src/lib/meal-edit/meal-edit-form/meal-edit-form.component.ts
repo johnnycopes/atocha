@@ -39,7 +39,7 @@ import {
   Tag,
   TagModel,
 } from '@atocha/menu-matriarch/util';
-import { MealEditFormClass } from './meal-edit-form';
+import { MealEditForm } from './meal-edit-form';
 
 export interface AppData {
   meal: Meal;
@@ -89,7 +89,7 @@ export class MealEditFormComponent implements OnInit, OnDestroy {
 
   tagsModel: TagModel[] = [];
   dishes: Dish[] = [];
-  form: MealEditFormClass | undefined;
+  form: MealEditForm | undefined;
 
   private _destroy$ = new Subject<void>();
 
@@ -98,7 +98,7 @@ export class MealEditFormComponent implements OnInit, OnDestroy {
       return;
     }
 
-    this.form = new MealEditFormClass(this.data);
+    this.form = new MealEditForm(this.data);
 
     this.form.dishes$
       .pipe(takeUntil(this._destroy$))

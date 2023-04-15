@@ -5,21 +5,19 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-
-import { AppData } from './meal-edit-form.component';
 import { map, of, startWith } from 'rxjs';
-import { Dish } from '@atocha/menu-matriarch/util';
 
-export interface MealEditForm {
+import { Dish } from '@atocha/menu-matriarch/util';
+import { AppData } from './meal-edit-form.component';
+
+export class MealEditForm extends FormGroup<{
   name: FormControl<string>;
   description: FormControl<string>;
   dishIds: FormGroup<Record<string, FormControl<boolean>>>;
   tagIds: FormGroup<Record<string, FormControl<boolean>>>;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   [key: string]: AbstractControl<any, any>;
-}
-
-export class MealEditFormClass extends FormGroup<MealEditForm> {
+}> {
   dishes$ =
     this.get('dishIds')?.valueChanges.pipe(
       startWith(this._mapDishesToFormRecord(this.details.meal.dishes)),
@@ -33,7 +31,7 @@ export class MealEditFormClass extends FormGroup<MealEditForm> {
     readonly fb: FormBuilder = new FormBuilder()
   ) {
     super(
-      fb.nonNullable.group<MealEditForm>({
+      fb.nonNullable.group({
         name: fb.nonNullable.control(details.meal.name, Validators.required),
         description: fb.nonNullable.control(details.meal.description),
         dishIds: fb.nonNullable.group(
