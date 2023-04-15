@@ -54,8 +54,7 @@ export class MealEditForm extends FormGroup<{
             {}
           )
         ),
-      }).controls,
-      []
+      }).controls
     );
   }
 }
