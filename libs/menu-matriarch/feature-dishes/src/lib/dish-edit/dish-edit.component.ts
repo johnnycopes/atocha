@@ -30,33 +30,17 @@ export class DishEditComponent {
     ? this._dishService.getDish(this._routeId)
     : of(undefined);
   dish$ = combineLatest([this._dish$, this._tagService.getTags()]).pipe(
-    map(([dish, tags]) => {
-      if (!dish) {
-        return {
-          name: '',
-          description: '',
-          link: '',
-          type: 'main' as DishType,
-          tagsModel: tags.map<TagModel>((tag) => ({
-            ...tag,
-            checked: false,
-          })),
-          notes: '',
-        };
-      } else {
-        return {
-          name: dish.name,
-          description: dish.description,
-          link: dish.link,
-          type: dish.type,
-          tagsModel: tags.map<TagModel>((tag) => ({
-            ...tag,
-            checked: !!dish.tags.find(({ id }) => id === tag.id),
-          })),
-          notes: dish.notes,
-        };
-      }
-    })
+    map(([dish, tags]) => ({
+      name: dish?.name ?? '',
+      description: dish?.description ?? '',
+      link: dish?.link ?? '',
+      type: dish?.type ?? 'main',
+      tagsModel: tags.map<TagModel>((tag) => ({
+        ...tag,
+        checked: !!dish?.tags.find(({ id }) => id === tag.id) ?? false,
+      })),
+      notes: dish?.notes ?? '',
+    }))
   );
 
   constructor(
