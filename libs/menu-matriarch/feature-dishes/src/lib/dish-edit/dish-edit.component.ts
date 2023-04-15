@@ -1,12 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-import { combineLatest, of } from 'rxjs';
+import { Observable, combineLatest, of } from 'rxjs';
 import { concatMap, first, map } from 'rxjs/operators';
 
 import { DishService, TagService } from '@atocha/menu-matriarch/data-access';
 import { TagModel } from '@atocha/menu-matriarch/util';
 import {
+  DishConfig,
   DishEditDetails,
   DishEditFormComponent,
 } from './dish-edit-form/dish-edit-form.component';
@@ -29,7 +30,10 @@ export class DishEditComponent {
   private _dish$ = this._routeId
     ? this._dishService.getDish(this._routeId)
     : of(undefined);
-  dish$ = combineLatest([this._dish$, this._tagService.getTags()]).pipe(
+  dish$: Observable<DishConfig> = combineLatest([
+    this._dish$,
+    this._tagService.getTags(),
+  ]).pipe(
     map(([dish, tags]) => ({
       name: dish?.name ?? '',
       description: dish?.description ?? '',
