@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-import { combineLatest, of } from 'rxjs';
+import { Observable, combineLatest, of } from 'rxjs';
 import { concatMap, first, map } from 'rxjs/operators';
 
 import {
@@ -11,6 +11,7 @@ import {
   UserService,
 } from '@atocha/menu-matriarch/data-access';
 import {
+  AppData,
   MealEditFormComponent,
   MealDetails,
 } from './meal-edit-form/meal-edit-form.component';
@@ -34,7 +35,7 @@ export class MealEditComponent {
   _meal$ = this._routeId
     ? this._mealService.getMeal(this._routeId)
     : of(undefined);
-  vm$ = combineLatest([
+  vm$: Observable<AppData> = combineLatest([
     this._meal$,
     this._dishService.getDishes(),
     this._tagService.getTags(),
