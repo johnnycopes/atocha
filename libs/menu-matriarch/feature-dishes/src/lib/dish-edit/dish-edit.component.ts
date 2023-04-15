@@ -17,8 +17,8 @@ import {
   imports: [CommonModule, DishEditFormComponent, RouterModule],
   template: `
     <app-dish-edit-form
-      *ngIf="vm$ | async as vm"
-      [vm]="vm"
+      *ngIf="dish$ | async as dish"
+      [dish]="dish"
       (save)="onSave($event)"
     ></app-dish-edit-form>
   `,
@@ -29,7 +29,7 @@ export class DishEditComponent {
   private _dish$ = this._routeId
     ? this._dishService.getDish(this._routeId)
     : of(undefined);
-  vm$ = combineLatest([this._dish$, this._tagService.getTags()]).pipe(
+  dish$ = combineLatest([this._dish$, this._tagService.getTags()]).pipe(
     map(([dish, tags]) => {
       if (!dish) {
         return {

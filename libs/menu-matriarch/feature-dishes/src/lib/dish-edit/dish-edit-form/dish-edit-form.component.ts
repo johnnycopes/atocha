@@ -29,7 +29,7 @@ import {
 import { recordToArray } from '@atocha/core/util';
 import { RouterLink } from '@angular/router';
 
-export type AppData = Pick<
+export type DishConfig = Pick<
   Dish,
   'name' | 'description' | 'link' | 'type' | 'notes'
 > & { tagsModel: TagModel[] };
@@ -64,7 +64,7 @@ export interface DishEditDetails {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DishEditFormComponent {
-  @Input() vm: AppData | undefined;
+  @Input() dish: DishConfig | undefined;
   @Output() save = new EventEmitter<DishEditDetails>();
 
   readonly dishTypes = getDishTypes();
