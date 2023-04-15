@@ -40,6 +40,7 @@ interface DishEditForm {
     ButtonComponent,
     CheckboxComponent,
     CommonModule,
+    DishEditComponent,
     EditorModule,
     FormsModule,
     InputComponent,
