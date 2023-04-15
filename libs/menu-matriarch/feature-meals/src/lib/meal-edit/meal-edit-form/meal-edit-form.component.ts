@@ -83,7 +83,7 @@ export interface MealDetails {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MealEditFormComponent implements OnInit, OnDestroy {
-  @Input() vm: AppData | undefined;
+  @Input() data: AppData | undefined;
   @Output() dishClick = new EventEmitter<string>();
   @Output() save = new EventEmitter<MealDetails>();
 
@@ -94,19 +94,19 @@ export class MealEditFormComponent implements OnInit, OnDestroy {
   private _destroy$ = new Subject<void>();
 
   ngOnInit(): void {
-    if (!this.vm) {
+    if (!this.data) {
       return;
     }
 
-    this.form = new MealEditFormClass(this.vm);
+    this.form = new MealEditFormClass(this.data);
 
     this.form.dishes$
       .pipe(takeUntil(this._destroy$))
       .subscribe((dishes) => (this.dishes = dishes));
 
-    this.tagsModel = this.vm.allTags.map<TagModel>((tag) => ({
+    this.tagsModel = this.data.allTags.map<TagModel>((tag) => ({
       ...tag,
-      checked: !!this.vm?.meal?.tags.find((mealTag) => mealTag.id === tag.id),
+      checked: !!this.data?.meal?.tags.find((mealTag) => mealTag.id === tag.id),
     }));
   }
 

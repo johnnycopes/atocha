@@ -22,7 +22,7 @@ import {
   template: `
     <app-meal-edit-form
       *ngIf="vm$ | async as vm"
-      [vm]="vm"
+      [data]="vm"
       (dishClick)="onDishClick($event)"
       (save)="onSave($event)"
     ></app-meal-edit-form>

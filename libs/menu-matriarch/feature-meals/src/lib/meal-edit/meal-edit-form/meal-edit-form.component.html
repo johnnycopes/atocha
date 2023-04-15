@@ -1,4 +1,4 @@
-<form *ngIf="vm && form"
+<form *ngIf="data && form"
   [formGroup]="form"
   (ngSubmit)="onSave()"
 >
@@ -65,7 +65,7 @@
         label="tags"
       >
         <ui-tags-list
-          *ngIf="vm.allTags?.length; else noTagsPlaceholder"
+          *ngIf="data.allTags.length; else noTagsPlaceholder"
           class="tags"
           formGroupName="tagIds"
           [tags]="tagsModel"
@@ -97,8 +97,8 @@
       <div class="details">
         <ui-meal-summary
           [dishes]="dishes"
-          [fallbackText]="vm.fallbackText"
-          [orientation]="vm.orientation"
+          [fallbackText]="data.fallbackText"
+          [orientation]="data.orientation"
           (dishClick)="onDishClick($event)"
           boundaries="labeled"
         ></ui-meal-summary>
