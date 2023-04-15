@@ -43,30 +43,20 @@ export class MealEditComponent {
     map(([meal, allDishes, allTags, preferences]) => {
       const fallbackText = preferences?.emptyMealText ?? '';
       const orientation = preferences?.mealOrientation ?? 'horizontal';
-      if (!meal) {
-        return {
-          meal: {
-            id: '',
-            uid: '',
-            name: '',
-            description: '',
-            dishes: [],
-            tags: [],
-          },
-          allTags,
-          allDishes,
-          fallbackText,
-          orientation,
-        };
-      } else {
-        return {
-          meal,
-          allTags,
-          allDishes,
-          fallbackText,
-          orientation,
-        };
-      }
+      return {
+        meal: {
+          id: meal?.id ?? '',
+          uid: meal?.uid ?? '',
+          name: meal?.name ?? '',
+          description: meal?.description ?? '',
+          dishes: meal?.dishes ?? [],
+          tags: meal?.tags ?? [],
+        },
+        allTags,
+        allDishes,
+        fallbackText,
+        orientation,
+      };
     })
   );
 
