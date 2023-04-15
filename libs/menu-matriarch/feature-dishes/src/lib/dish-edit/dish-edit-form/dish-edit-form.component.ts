@@ -78,6 +78,7 @@ export class DishEditFormComponent implements OnInit {
     toolbar: `undo redo | formatselect | bold italic underline forecolor backcolor |
       bullist numlist outdent indent | removeformat | help`,
   };
+  readonly tinyMceApiKey = '4yfx3pv3xaz2njb6vj43b4grlu0qfmodc0l9xvuw4elb3ijx';
   readonly typeTrackByFn = trackBySelf;
 
   ngOnInit() {
