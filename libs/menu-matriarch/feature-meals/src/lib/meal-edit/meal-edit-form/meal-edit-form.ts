@@ -7,7 +7,6 @@ import {
 } from '@angular/forms';
 import { map, of, startWith } from 'rxjs';
 
-import { DishModel } from '@atocha/menu-matriarch/util';
 import { MealConfig } from './meal-edit-form.component';
 
 export class MealEditForm extends FormGroup<{
@@ -20,10 +19,16 @@ export class MealEditForm extends FormGroup<{
 }> {
   dishes$ =
     this.get('dishesModel')?.valueChanges.pipe(
-      startWith(this._mapDishesModelToFormRecord(this.meal.dishesModel)),
-      map((dishIds) =>
-        this._mapFormRecordToDishes(this.meal.dishesModel, dishIds)
-      )
+      startWith(
+        this.meal.dishesModel.reduce<Record<string, boolean>>(
+          (states, { id, checked }) => {
+            states[id] = checked;
+            return states;
+          },
+          {}
+        )
+      ),
+      map((dishIds) => this.meal.dishesModel.filter(({ id }) => dishIds[id]))
     ) ?? of([]);
 
   constructor(
@@ -55,35 +60,5 @@ export class MealEditForm extends FormGroup<{
       }).controls,
       []
     );
-  }
-
-  private _mapDishesModelToFormRecord(
-    dishesModel: DishModel[]
-  ): Record<string, boolean> {
-    const record: Record<string, boolean> = {};
-
-    for (const { id, checked } of dishesModel) {
-      record[id] = checked;
-    }
-
-    return record;
-  }
-
-  private _mapFormRecordToDishes(
-    dishesModel: DishModel[],
-    record: Partial<Record<string, boolean>>
-  ): DishModel[] {
-    const dishes: DishModel[] = [];
-
-    for (const dishId in record) {
-      if (record[dishId]) {
-        const dish = dishesModel.find(({ id }) => id === dishId);
-        if (dish?.checked) {
-          dishes.push(dish);
-        }
-      }
-    }
-
-    return dishes;
   }
 }
