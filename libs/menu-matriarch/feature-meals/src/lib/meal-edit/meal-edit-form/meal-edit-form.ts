@@ -7,7 +7,7 @@ import {
 } from '@angular/forms';
 import { map, of, startWith } from 'rxjs';
 
-import { Dish } from '@atocha/menu-matriarch/util';
+import { DishModel } from '@atocha/menu-matriarch/util';
 import { MealConfig } from './meal-edit-form.component';
 
 export class MealEditForm extends FormGroup<{
@@ -18,14 +18,13 @@ export class MealEditForm extends FormGroup<{
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   [key: string]: AbstractControl<any, any>;
 }> {
-  dishes$ = of<Dish[]>([]);
-  // dishes$ =
-  //   this.get('dishIds')?.valueChanges.pipe(
-  //     startWith(this._mapDishesToFormRecord(this.details.meal.dishes)),
-  //     map((dishIds) =>
-  //       this._mapFormRecordToDishes(this.details.allDishes, dishIds)
-  //     )
-  //   ) ?? of([]);
+  dishes$ =
+    this.get('dishesModel')?.valueChanges.pipe(
+      startWith(this._mapDishesModelToFormRecord(this.meal.dishesModel)),
+      map((dishIds) =>
+        this._mapFormRecordToDishes(this.meal.dishesModel, dishIds)
+      )
+    ) ?? of([]);
 
   constructor(
     readonly meal: MealConfig,
@@ -58,26 +57,28 @@ export class MealEditForm extends FormGroup<{
     );
   }
 
-  private _mapDishesToFormRecord(dishes: Dish[]): Record<string, boolean> {
+  private _mapDishesModelToFormRecord(
+    dishesModel: DishModel[]
+  ): Record<string, boolean> {
     const record: Record<string, boolean> = {};
 
-    for (const dish of dishes) {
-      record[dish.id] = true;
+    for (const { id, checked } of dishesModel) {
+      record[id] = checked;
     }
 
     return record;
   }
 
   private _mapFormRecordToDishes(
-    allDishes: Dish[],
-    formDishes: Partial<Record<string, boolean>>
-  ): Dish[] {
-    const dishes: Dish[] = [];
+    dishesModel: DishModel[],
+    record: Partial<Record<string, boolean>>
+  ): DishModel[] {
+    const dishes: DishModel[] = [];
 
-    for (const dishId in formDishes) {
-      if (formDishes[dishId]) {
-        const dish = allDishes.find(({ id }) => id === dishId);
-        if (dish) {
+    for (const dishId in record) {
+      if (record[dishId]) {
+        const dish = dishesModel.find(({ id }) => id === dishId);
+        if (dish?.checked) {
           dishes.push(dish);
         }
       }
