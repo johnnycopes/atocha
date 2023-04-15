@@ -9,7 +9,6 @@ import {
 } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
-import { of } from 'rxjs';
 
 import {
   AutofocusDirective,
@@ -95,15 +94,11 @@ export class MealEditFormComponent implements OnInit {
   @Output() save = new EventEmitter<MealDetails>();
 
   form: MealEditForm | undefined;
-  dishes$ = of<Dish[]>([]);
 
   ngOnInit(): void {
-    if (!this.meal) {
-      return;
+    if (this.meal) {
+      this.form = new MealEditForm(this.meal);
     }
-
-    this.form = new MealEditForm(this.meal);
-    this.dishes$ = this.form.dishes$;
   }
 
   onDishClick(id: string): void {
