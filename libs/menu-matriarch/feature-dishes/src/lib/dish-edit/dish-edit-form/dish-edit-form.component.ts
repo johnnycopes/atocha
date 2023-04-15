@@ -17,6 +17,7 @@ import {
 import {
   InputComponent,
   TagComponent,
+  TagDefDirective,
   TagsListComponent,
 } from '@atocha/menu-matriarch/ui';
 import { Dish, DishType, getDishTypes } from '@atocha/menu-matriarch/util';
@@ -50,6 +51,7 @@ export interface DishEditDetails {
     ReactiveFormsModule,
     RouterLink,
     TagComponent,
+    TagDefDirective,
     TagsListComponent,
   ],
   templateUrl: './dish-edit-form.component.html',
