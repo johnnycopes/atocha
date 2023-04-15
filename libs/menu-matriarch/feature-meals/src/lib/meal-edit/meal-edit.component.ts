@@ -43,16 +43,16 @@ export class MealEditComponent {
     this._tagService.getTags(),
     this._userService.getPreferences(),
   ]).pipe(
-    map(([meal, allDishes, allTags, preferences]) => ({
+    map(([meal, dishes, tags, preferences]) => ({
       id: meal?.id ?? '',
       uid: meal?.uid ?? '',
       name: meal?.name ?? '',
       description: meal?.description ?? '',
-      dishesModel: allDishes.map<DishModel>((dish) => ({
+      dishesModel: dishes.map<DishModel>((dish) => ({
         ...dish,
         checked: !!meal?.dishes.find(({ id }) => id === dish.id) ?? false,
       })),
-      tagsModel: allTags.map<TagModel>((tag) => ({
+      tagsModel: tags.map<TagModel>((tag) => ({
         ...tag,
         checked: !!meal?.tags.find(({ id }) => id === tag.id) ?? false,
       })),
