@@ -96,7 +96,7 @@
       </ui-input>
       <div class="details">
         <ui-meal-summary
-          [dishes]="dishes"
+          [dishes]="(dishes$ | async ) ?? []"
           [fallbackText]="meal.emptyMealText"
           [orientation]="meal.mealOrientation"
           (dishClick)="onDishClick($event)"

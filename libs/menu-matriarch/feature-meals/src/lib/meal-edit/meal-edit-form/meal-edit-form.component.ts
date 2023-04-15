@@ -4,13 +4,12 @@ import {
   Component,
   EventEmitter,
   Input,
-  OnDestroy,
   OnInit,
   Output,
 } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
-import { Subject, takeUntil } from 'rxjs';
+import { of } from 'rxjs';
 
 import {
   AutofocusDirective,
@@ -90,15 +89,13 @@ export interface MealDetails {
   styleUrls: ['./meal-edit-form.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class MealEditFormComponent implements OnInit, OnDestroy {
+export class MealEditFormComponent implements OnInit {
   @Input() meal: MealConfig | undefined;
   @Output() dishClick = new EventEmitter<string>();
   @Output() save = new EventEmitter<MealDetails>();
 
-  dishes: Dish[] = [];
   form: MealEditForm | undefined;
-
-  private _destroy$ = new Subject<void>();
+  dishes$ = of<Dish[]>([]);
 
   ngOnInit(): void {
     if (!this.meal) {
@@ -106,15 +103,7 @@ export class MealEditFormComponent implements OnInit, OnDestroy {
     }
 
     this.form = new MealEditForm(this.meal);
-
-    this.form.dishes$
-      .pipe(takeUntil(this._destroy$))
-      .subscribe((dishes) => (this.dishes = dishes));
-  }
-
-  ngOnDestroy(): void {
-    this._destroy$.next();
-    this._destroy$.complete();
+    this.dishes$ = this.form.dishes$;
   }
 
   onDishClick(id: string): void {
