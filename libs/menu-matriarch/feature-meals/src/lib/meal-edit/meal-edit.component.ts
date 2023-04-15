@@ -40,7 +40,7 @@ export class MealEditComponent {
     this._tagService.getTags(),
     this._userService.getPreferences(),
   ]).pipe(
-    map(([meal, allDishes, tags, preferences]) => {
+    map(([meal, allDishes, allTags, preferences]) => {
       const fallbackText = preferences?.emptyMealText ?? '';
       const orientation = preferences?.mealOrientation ?? 'horizontal';
       if (!meal) {
@@ -53,7 +53,7 @@ export class MealEditComponent {
             dishes: [],
             tags: [],
           },
-          allTags: tags,
+          allTags,
           allDishes,
           fallbackText,
           orientation,
@@ -61,7 +61,7 @@ export class MealEditComponent {
       } else {
         return {
           meal,
-          allTags: tags,
+          allTags,
           allDishes,
           fallbackText,
           orientation,
