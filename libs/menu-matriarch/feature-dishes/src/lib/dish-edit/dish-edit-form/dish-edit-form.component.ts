@@ -4,9 +4,17 @@ import {
   Component,
   EventEmitter,
   Input,
+  OnInit,
   Output,
 } from '@angular/core';
-import { FormsModule, NgForm, ReactiveFormsModule } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  FormsModule,
+  NgForm,
+  ReactiveFormsModule,
+} from '@angular/forms';
 import { EditorComponent } from '@tinymce/tinymce-angular';
 
 import {
@@ -43,6 +51,15 @@ export interface DishEditDetails {
   notes: string;
 }
 
+interface DishEditForm {
+  name: FormControl<string>;
+  description: FormControl<string>;
+  link: FormControl<string>;
+  type: FormControl<DishType>;
+  tags: FormGroup<Record<string, FormControl<boolean>>>;
+  notes: FormControl<string>;
+}
+
 @Component({
   standalone: true,
   selector: 'app-dish-edit-form',
@@ -63,10 +80,11 @@ export interface DishEditDetails {
   styleUrls: ['./dish-edit-form.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DishEditFormComponent {
+export class DishEditFormComponent implements OnInit {
   @Input() dish: DishConfig | undefined;
   @Output() save = new EventEmitter<DishEditDetails>();
 
+  reactiveForm: FormGroup<DishEditForm> | undefined;
   readonly dishTypes = getDishTypes();
   readonly tinyMceConfig = {
     height: 300,
@@ -76,6 +94,29 @@ export class DishEditFormComponent {
       bullist numlist outdent indent | removeformat | help`,
   };
   readonly typeTrackByFn = trackBySelf;
+
+  constructor(private _fb: FormBuilder) {}
+
+  ngOnInit() {
+    if (!this.dish) {
+      return;
+    }
+
+    const { name, description, link, type, tagsModel, notes } = this.dish;
+    this.reactiveForm = this._fb.nonNullable.group<DishEditForm>({
+      name: this._fb.nonNullable.control(name),
+      description: this._fb.nonNullable.control(description),
+      link: this._fb.nonNullable.control(link),
+      type: this._fb.nonNullable.control(type),
+      tags: this._fb.nonNullable.group(
+        tagsModel.reduce<Record<string, FormControl<boolean>>>((group, tag) => {
+          group[tag.id] = this._fb.nonNullable.control(tag.checked);
+          return group;
+        }, {})
+      ),
+      notes: this._fb.nonNullable.control(notes),
+    });
+  }
 
   async onSave(form: NgForm): Promise<void> {
     this.save.emit({
