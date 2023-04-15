@@ -7,14 +7,7 @@ import {
   OnInit,
   Output,
 } from '@angular/core';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  FormsModule,
-  ReactiveFormsModule,
-  Validators,
-} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EditorComponent } from '@tinymce/tinymce-angular';
 
 import {
@@ -36,6 +29,7 @@ import {
 } from '@atocha/menu-matriarch/util';
 import { recordToArray } from '@atocha/core/util';
 import { RouterLink } from '@angular/router';
+import { DishEditForm } from './dish-edit-form';
 
 export type DishConfig = Pick<
   Dish,
@@ -49,15 +43,6 @@ export interface DishEditDetails {
   type: DishType;
   tagIds: string[];
   notes: string;
-}
-
-interface DishEditForm {
-  name: FormControl<string>;
-  description: FormControl<string>;
-  link: FormControl<string>;
-  type: FormControl<DishType>;
-  tags: FormGroup<Record<string, FormControl<boolean>>>;
-  notes: FormControl<string>;
 }
 
 @Component({
@@ -84,7 +69,7 @@ export class DishEditFormComponent implements OnInit {
   @Input() dish: DishConfig | undefined;
   @Output() save = new EventEmitter<DishEditDetails>();
 
-  reactiveForm: FormGroup<DishEditForm> | undefined;
+  reactiveForm: DishEditForm | undefined;
   readonly dishTypes = getDishTypes();
   readonly tinyMceConfig = {
     height: 300,
@@ -95,43 +80,25 @@ export class DishEditFormComponent implements OnInit {
   };
   readonly typeTrackByFn = trackBySelf;
 
-  constructor(private _fb: FormBuilder) {}
-
   ngOnInit() {
-    if (!this.dish) {
-      return;
+    if (this.dish) {
+      this.reactiveForm = new DishEditForm(this.dish);
     }
-
-    const { name, description, link, type, tagsModel, notes } = this.dish;
-    this.reactiveForm = this._fb.nonNullable.group<DishEditForm>({
-      name: this._fb.nonNullable.control(name, Validators.required),
-      description: this._fb.nonNullable.control(description),
-      link: this._fb.nonNullable.control(link),
-      type: this._fb.nonNullable.control(type),
-      tags: this._fb.nonNullable.group(
-        tagsModel.reduce<Record<string, FormControl<boolean>>>((group, tag) => {
-          group[tag.id] = this._fb.nonNullable.control(tag.checked);
-          return group;
-        }, {})
-      ),
-      notes: this._fb.nonNullable.control(notes),
-    });
   }
 
   async onSave(): Promise<void> {
-    console.log('here');
     if (!this.reactiveForm) {
       return;
     }
 
-    const { name, description, link, type, tags, notes } =
+    const { name, description, link, type, tagsModel, notes } =
       this.reactiveForm.getRawValue();
     this.save.emit({
       name,
       description,
       link,
       type,
-      tagIds: recordToArray<string>(tags ?? []),
+      tagIds: recordToArray<string>(tagsModel ?? []),
       notes,
     });
   }
