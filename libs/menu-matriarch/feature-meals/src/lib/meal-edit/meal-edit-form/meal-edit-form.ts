@@ -18,9 +18,9 @@ export class MealEditForm extends FormGroup<{
     this.get('dishIds')?.valueChanges.pipe(
       startWith(
         this.meal.dishesModel.reduce<Record<string, boolean>>(
-          (states, { id, checked }) => {
-            states[id] = checked;
-            return states;
+          (dishIds, { id, checked }) => {
+            dishIds[id] = checked;
+            return dishIds;
           },
           {}
         )
