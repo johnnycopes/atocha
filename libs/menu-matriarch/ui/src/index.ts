@@ -13,7 +13,6 @@ export * from './lib/_generic/tabset/tabset.component';
 export * from './lib/_generic/tabset/tab/tab.component';
 export * from './lib/count/count.component';
 export * from './lib/dish-summary/dish-summary.component';
-export * from './lib/legacy-dish-summary/dish-summary.component';
 export * from './lib/empty-view-placeholder/empty-view-placeholder.component';
 export * from './lib/filterable-list/filterable-list.component';
 export * from './lib/filters/filters.component';
