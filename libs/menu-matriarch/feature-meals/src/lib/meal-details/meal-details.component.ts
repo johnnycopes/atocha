@@ -8,13 +8,13 @@ import { ButtonComponent, trackBySelf } from '@atocha/core/ui';
 import { MealService, UserService } from '@atocha/menu-matriarch/data-access';
 import { getDishTypes } from '@atocha/menu-matriarch/util';
 import {
+  MealSummaryComponent,
   SectionComponent,
   TagComponent,
   TagDefDirective,
   TagsListComponent,
   dishTrackByFn,
 } from '@atocha/menu-matriarch/ui';
-import { MealSummaryComponent } from '../meal-summary/meal-summary.component';
 
 @Component({
   standalone: true,

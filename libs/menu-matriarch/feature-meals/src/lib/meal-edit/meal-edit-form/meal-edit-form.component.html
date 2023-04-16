@@ -95,12 +95,12 @@
         </ng-template>
       </ui-input>
       <div class="details">
-        <app-meal-summary
+        <ui-meal-summary
           [dishes]="(form.dishes$ | async ) ?? []"
           [fallbackText]="meal.emptyMealText"
           [orientation]="meal.mealOrientation"
           boundaries="labeled"
-        ></app-meal-summary>
+        ></ui-meal-summary>
       </div>
     </div>
   </ui-section>

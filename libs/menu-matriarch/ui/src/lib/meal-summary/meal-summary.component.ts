@@ -5,7 +5,6 @@ import {
   Input,
 } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { SmallCapsLabelComponent, dishTrackByFn, groupTrackByFn } from '@atocha/menu-matriarch/ui';
 
 import {
   Dish,
@@ -13,10 +12,12 @@ import {
   Orientation,
   getDishTypes,
 } from '@atocha/menu-matriarch/util';
+import { SmallCapsLabelComponent } from '../_generic/small-caps-label/small-caps-label.component';
+import { dishTrackByFn, groupTrackByFn } from '../track-by-functions';
 
 @Component({
   standalone: true,
-  selector: 'app-meal-summary',
+  selector: 'ui-meal-summary',
   imports: [CommonModule, RouterLink, SmallCapsLabelComponent],
   templateUrl: './meal-summary.component.html',
   styleUrls: ['./meal-summary.component.scss'],

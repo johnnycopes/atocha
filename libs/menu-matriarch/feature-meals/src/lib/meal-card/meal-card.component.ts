@@ -4,12 +4,12 @@ import { RouterLink } from '@angular/router';
 
 import {
   CardComponent,
+  MealSummaryComponent,
   TagComponent,
   TagDefDirective,
   TagsListComponent,
 } from '@atocha/menu-matriarch/ui';
 import { Dish, Orientation, Tag } from '@atocha/menu-matriarch/util';
-import { MealSummaryComponent } from '../meal-summary/meal-summary.component';
 
 @Component({
   standalone: true,
