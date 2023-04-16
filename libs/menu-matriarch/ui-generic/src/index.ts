@@ -1,5 +1,3 @@
-export * from './lib/animations';
-
 export * from './lib/alert/alert.component';
 export * from './lib/card/card.component';
 export * from './lib/input/input.component';
