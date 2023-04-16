@@ -20,10 +20,9 @@
       ></ui-tag>
     </ui-tags-list>
   </div>
-  <ui-meal-summary
+  <app-meal-summary
     [dishes]="dishes"
     [fallbackText]="fallbackText"
     [orientation]="orientation"
-    (dishClick)="onDishClick($event)"
-  ></ui-meal-summary>
+  ></app-meal-summary>
 </ui-card>

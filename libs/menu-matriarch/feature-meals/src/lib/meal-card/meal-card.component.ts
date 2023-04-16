@@ -1,15 +1,15 @@
 import { CommonModule } from '@angular/common';
 import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
-import { Router, RouterModule } from '@angular/router';
+import { RouterLink } from '@angular/router';
 
 import {
   CardComponent,
-  LegacyMealSummaryComponent,
   TagComponent,
   TagDefDirective,
   TagsListComponent,
 } from '@atocha/menu-matriarch/ui';
 import { Dish, Orientation, Tag } from '@atocha/menu-matriarch/util';
+import { MealSummaryComponent } from '../meal-summary/meal-summary.component';
 
 @Component({
   standalone: true,
@@ -17,8 +17,8 @@ import { Dish, Orientation, Tag } from '@atocha/menu-matriarch/util';
   imports: [
     CardComponent,
     CommonModule,
-    LegacyMealSummaryComponent,
-    RouterModule,
+    MealSummaryComponent,
+    RouterLink,
     TagComponent,
     TagDefDirective,
     TagsListComponent,
@@ -36,10 +36,4 @@ export class MealCardComponent {
   @Input() active = false;
   @Input() fallbackText = '';
   @Input() orientation: Orientation = 'horizontal';
-
-  constructor(private _router: Router) {}
-
-  onDishClick(id: string): void {
-    this._router.navigate(['dishes', id]);
-  }
 }
