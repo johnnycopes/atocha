@@ -8,6 +8,7 @@ import {
   Output,
 } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterLink } from '@angular/router';
 import { EditorComponent } from '@tinymce/tinymce-angular';
 
 import {
@@ -15,6 +16,7 @@ import {
   CheckboxComponent,
   trackBySelf,
 } from '@atocha/core/ui';
+import { recordToArray } from '@atocha/core/util';
 import {
   InputComponent,
   TagComponent,
@@ -27,8 +29,6 @@ import {
   TagModel,
   getDishTypes,
 } from '@atocha/menu-matriarch/util';
-import { recordToArray } from '@atocha/core/util';
-import { RouterLink } from '@angular/router';
 import { DishEditForm } from './dish-edit-form';
 
 export type DishConfig = Pick<
