@@ -34,6 +34,10 @@ export interface Dish {
   tags: Tag[];
 }
 
+export interface DishModel extends Dish {
+  checked: boolean;
+}
+
 export interface FilteredDishesGroup {
   type: DishType;
   dishes: Dish[];

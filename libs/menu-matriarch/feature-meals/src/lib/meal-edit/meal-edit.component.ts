@@ -1,137 +1,68 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { FormsModule, NgForm } from '@angular/forms';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-import { combineLatest, of, Subject } from 'rxjs';
-import {
-  concatMap,
-  distinctUntilChanged,
-  first,
-  map,
-  startWith,
-} from 'rxjs/operators';
+import { Observable, combineLatest, of } from 'rxjs';
+import { concatMap, first, map } from 'rxjs/operators';
 
 import {
-  AutofocusDirective,
-  ButtonComponent,
-  CheckboxComponent,
-  trackBySelf,
-} from '@atocha/core/ui';
-import { recordToArray } from '@atocha/core/util';
-import {
   DishService,
+  MealData,
   MealService,
   TagService,
   UserService,
 } from '@atocha/menu-matriarch/data-access';
-import { Dish, TagModel, getDishTypes } from '@atocha/menu-matriarch/util';
+import { DishModel, TagModel } from '@atocha/menu-matriarch/util';
 import {
-  CardComponent,
-  DishSummaryComponent,
-  InputComponent,
-  MealSummaryComponent,
-  SectionComponent,
-  TagComponent,
-  TagDefDirective,
-  TagsListComponent,
-  dishTrackByFn,
-} from '@atocha/menu-matriarch/ui';
-import {
-  DishDefDirective,
-  DishesListComponent,
-} from '@atocha/menu-matriarch/feature-entities';
-
-interface MealEditForm {
-  name: string;
-  description: string;
-  dishIds: string[];
-  tagIds: string[];
-}
-
-type FormDishes = Record<string, boolean>;
+  MealEditFormComponent,
+  MealConfig,
+} from './meal-edit-form/meal-edit-form.component';
 
 @Component({
   standalone: true,
   selector: 'app-meal-edit',
-  imports: [
-    AutofocusDirective,
-    ButtonComponent,
-    CardComponent,
-    CheckboxComponent,
-    CommonModule,
-    DishDefDirective,
-    DishesListComponent,
-    DishSummaryComponent,
-    FormsModule,
-    InputComponent,
-    MealSummaryComponent,
-    RouterModule,
-    SectionComponent,
-    TagComponent,
-    TagDefDirective,
-    TagsListComponent,
-  ],
-  templateUrl: './meal-edit.component.html',
-  styleUrls: ['./meal-edit.component.scss'],
+  imports: [CommonModule, MealEditFormComponent, RouterModule],
+  template: `
+    <app-meal-edit-form
+      *ngIf="meal$ | async as meal"
+      [meal]="meal"
+      (dishClick)="onDishClick($event)"
+      (save)="onSave($event)"
+    ></app-meal-edit-form>
+  `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MealEditComponent {
   private _routeId = this._route.snapshot.paramMap.get('id');
-  private _dishIds = this._route.snapshot.queryParamMap.get('dishes');
-  private _formDishes$ = new Subject<FormDishes | null>();
+  private _dishIds = this._route.snapshot.queryParamMap.get('dishes') ?? '';
   _meal$ = this._routeId
     ? this._mealService.getMeal(this._routeId)
     : of(undefined);
-  vm$ = combineLatest([
+
+  meal$: Observable<MealConfig> = combineLatest([
     this._meal$,
     this._dishService.getDishes(),
     this._tagService.getTags(),
     this._userService.getPreferences(),
-    this._formDishes$.pipe(
-      startWith(
-        this._dishIds ? this._transformDishIds(JSON.parse(this._dishIds)) : null
-      ),
-      distinctUntilChanged()
-    ),
   ]).pipe(
-    map(([meal, allDishes, tags, preferences, formDishes]) => {
-      const dishes = formDishes
-        ? this._transformFormDishes(allDishes, formDishes)
-        : meal?.dishes ?? [];
-      const dishesModel = dishes.map((dish) => dish.id);
-      const fallbackText = preferences?.emptyMealText ?? '';
-      const orientation = preferences?.mealOrientation ?? 'horizontal';
-      if (!meal) {
-        return {
-          name: '',
-          description: '',
-          tags: tags.map<TagModel>((tag) => ({
-            ...tag,
-            checked: false,
-          })),
-          dishes,
-          dishesModel,
-          fallbackText,
-          orientation,
-        };
-      } else {
-        return {
-          ...meal,
-          tags: tags.map<TagModel>((tag) => ({
-            ...tag,
-            checked: !!meal?.tags.find((mealTag) => mealTag.id === tag.id),
-          })),
-          dishes,
-          dishesModel,
-          fallbackText,
-          orientation,
-        };
-      }
-    })
+    map(([meal, dishes, tags, preferences]) => ({
+      id: meal?.id ?? '',
+      uid: meal?.uid ?? '',
+      name: meal?.name ?? '',
+      description: meal?.description ?? '',
+      dishModels: dishes.map<DishModel>((dish) => ({
+        ...dish,
+        checked:
+          !!meal?.dishes.find(({ id }) => id === dish.id) ||
+          this._dishIds.includes(dish.id),
+      })),
+      tagModels: tags.map<TagModel>((tag) => ({
+        ...tag,
+        checked: !!meal?.tags.find(({ id }) => id === tag.id) ?? false,
+      })),
+      emptyMealText: preferences?.emptyMealText ?? '',
+      mealOrientation: preferences?.mealOrientation ?? 'horizontal',
+    }))
   );
-  readonly dishTypes = getDishTypes();
-  readonly typeTrackByFn = trackBySelf;
-  readonly dishTrackByFn = dishTrackByFn;
 
   constructor(
     private _route: ActivatedRoute,
@@ -146,20 +77,10 @@ export class MealEditComponent {
     this._router.navigate(['dishes', id]);
   }
 
-  onDishChange(dishesModel: FormDishes): void {
-    this._formDishes$.next(dishesModel);
-  }
-
-  async onSave(form: NgForm): Promise<void> {
-    const details: MealEditForm = {
-      name: form.value.name,
-      description: form.value.description,
-      tagIds: recordToArray<string>(form.value.tags),
-      dishIds: recordToArray<string>(form.value.dishes),
-    };
+  async onSave(data: MealData): Promise<void> {
     if (!this._routeId) {
       this._mealService
-        .createMeal(details)
+        .createMeal(data)
         .subscribe((newId) =>
           this._router.navigate(['..', newId], { relativeTo: this._route })
         );
@@ -169,7 +90,7 @@ export class MealEditComponent {
           first(),
           concatMap((meal) => {
             if (meal) {
-              return this._mealService.updateMeal(meal, details);
+              return this._mealService.updateMeal(meal, data);
             } else {
               return of(undefined);
             }
@@ -179,30 +100,5 @@ export class MealEditComponent {
           this._router.navigate(['..'], { relativeTo: this._route })
         );
     }
-  }
-
-  private _transformFormDishes(
-    allDishes: Dish[],
-    formDishes: Record<string, boolean>
-  ): Dish[] {
-    const dishes: Dish[] = [];
-
-    for (const dishId in formDishes) {
-      if (formDishes[dishId]) {
-        const dish = allDishes.find(({ id }) => id === dishId);
-        if (dish) {
-          dishes.push(dish);
-        }
-      }
-    }
-
-    return dishes;
-  }
-
-  private _transformDishIds(dishIds: string[]): Record<string, boolean> {
-    return dishIds.reduce((accum, id) => {
-      accum[id] = true;
-      return accum;
-    }, {} as Record<string, boolean>);
   }
 }

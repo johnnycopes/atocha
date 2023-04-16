@@ -1,0 +1,110 @@
+<form *ngIf="dish && form"
+  class="ui-section__content"
+  [formGroup]="form"
+  (keydown.enter)="$event.preventDefault()"
+  (ngSubmit)="onSave()"
+>
+  <div class="ui-section__toolbar">
+    <a core-button="secondary"
+      class="button"
+      routerLink=".."
+    >
+      Cancel
+    </a>
+    <button core-button
+      class="button"
+      type="submit"
+      [disabled]="!form.valid"
+    >
+      Save
+    </button>
+  </div>
+  <ui-input class="input"
+    label="name"
+  >
+    <input
+      id="name"
+      type="text"
+      formControlName="name"
+      coreAutofocus
+    />
+  </ui-input>
+  <ui-input class="input"
+    label="description"
+  >
+    <input
+      id="description"
+      type="text"
+      formControlName="description"
+    />
+  </ui-input>
+  <ui-input class="input"
+    label="link"
+  >
+    <input
+      id="link"
+      type="text"
+      formControlName="link"
+    />
+  </ui-input>
+  <ui-input class="input"
+    label="dish type"
+  >
+    <div class="radio-container">
+      <label *ngFor="let dishType of dishTypes; trackBy: typeTrackByFn"
+        class="radio-button"
+      >
+        <input
+          type="radio"
+          name="type"
+          [value]="dishType"
+          formControlName="type"
+        />
+        {{ dishType | titlecase }}
+      </label>
+    </div>
+  </ui-input>
+  <ui-input class="input"
+    label="tags"
+  >
+    <ui-tags-list
+      *ngIf="dish.tagModels.length; else noTagsPlaceholder"
+      class="tags"
+      formGroupName="tagIds"
+      [tags]="dish.tagModels"
+      [interactive]="true"
+    >
+      <ng-container *uiTagDef="let tag">
+        <core-checkbox
+          [formControlName]="tag.id"
+        >
+          <ui-tag
+            [id]="tag.id"
+            [name]="tag.name"
+          ></ui-tag>
+        </core-checkbox>
+      </ng-container>
+    </ui-tags-list>
+    <ng-template #noTagsPlaceholder>
+      <div class="placeholder">
+        <p>No tags to display</p>
+        <a core-button
+          class="button"
+          routerLink="/tags"
+        >
+          New Tag
+        </a>
+      </div>
+    </ng-template>
+  </ui-input>
+  <ui-input class="input"
+    label="notes"
+  >
+    <editor
+      name="notes"
+      [apiKey]="tinyMceApiKey"
+      [init]="tinyMceConfig"
+      formControlName="notes"
+    ></editor>
+  </ui-input>
+</form>
