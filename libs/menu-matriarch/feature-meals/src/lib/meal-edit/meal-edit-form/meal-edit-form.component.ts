@@ -40,8 +40,8 @@ import { MealEditForm } from './meal-edit-form';
 
 export type MealConfig = Pick<Meal, 'name' | 'description'> &
   Pick<UserPreferences, 'emptyMealText' | 'mealOrientation'> & {
-    tagsModel: TagModel[];
-    dishesModel: DishModel[];
+    tagModels: TagModel[];
+    dishModels: DishModel[];
   };
 
 export interface MealDetails {

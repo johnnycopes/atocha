@@ -65,10 +65,10 @@
         label="tags"
       >
         <ui-tags-list
-          *ngIf="meal.tagsModel; else noTagsPlaceholder"
+          *ngIf="meal.tagModels; else noTagsPlaceholder"
           class="tags"
           formGroupName="tagIds"
-          [tags]="meal.tagsModel"
+          [tags]="meal.tagModels"
           [interactive]="true"
         >
           <ng-container *uiTagDef="let tag">

@@ -27,7 +27,7 @@ export class DishEditForm extends FormGroup<{
         link: fb.nonNullable.control(dish.link),
         type: fb.nonNullable.control(dish.type),
         tagIds: fb.nonNullable.group(
-          dish.tagsModel.reduce<Record<string, FormControl<boolean>>>(
+          dish.tagModels.reduce<Record<string, FormControl<boolean>>>(
             (group, tag) => {
               group[tag.id] = fb.nonNullable.control(tag.checked);
               return group;

@@ -34,7 +34,7 @@ import { DishEditForm } from './dish-edit-form';
 export type DishConfig = Pick<
   Dish,
   'name' | 'description' | 'link' | 'type' | 'notes'
-> & { tagsModel: TagModel[] };
+> & { tagModels: TagModel[] };
 
 export interface DishEditDetails {
   name: string;

@@ -39,7 +39,7 @@ export class DishEditComponent {
       description: dish?.description ?? '',
       link: dish?.link ?? '',
       type: dish?.type ?? 'main',
-      tagsModel: tags.map<TagModel>((tag) => ({
+      tagModels: tags.map<TagModel>((tag) => ({
         ...tag,
         checked: !!dish?.tags.find(({ id }) => id === tag.id) ?? false,
       })),

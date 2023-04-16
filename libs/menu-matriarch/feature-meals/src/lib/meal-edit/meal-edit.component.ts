@@ -48,11 +48,11 @@ export class MealEditComponent {
       uid: meal?.uid ?? '',
       name: meal?.name ?? '',
       description: meal?.description ?? '',
-      dishesModel: dishes.map<DishModel>((dish) => ({
+      dishModels: dishes.map<DishModel>((dish) => ({
         ...dish,
         checked: !!meal?.dishes.find(({ id }) => id === dish.id) ?? false,
       })),
-      tagsModel: tags.map<TagModel>((tag) => ({
+      tagModels: tags.map<TagModel>((tag) => ({
         ...tag,
         checked: !!meal?.tags.find(({ id }) => id === tag.id) ?? false,
       })),
