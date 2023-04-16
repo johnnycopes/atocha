@@ -20,7 +20,7 @@
       >
         <li *ngFor="let dish of group.dishes; let last = last; trackBy: dishTrackByFn">
           <a class="dish-link {{ group.type }}"
-            [routerLink]="['dishes', dish.id]"
+            [routerLink]="['/dishes', dish.id]"
           >
             {{ dish.name }}<span *ngIf="orientation === 'horizontal' && !last">,&nbsp;</span>
           </a>
