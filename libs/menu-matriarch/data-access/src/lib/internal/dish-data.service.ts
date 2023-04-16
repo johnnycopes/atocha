@@ -11,7 +11,7 @@ import { Endpoint } from './endpoint.enum';
 
 export type EditableDishData = Pick<
   DishDto,
-  'name' | 'description' | 'link' | 'tagIds' | 'notes'
+  'name' | 'description' | 'link' | 'type' | 'tagIds' | 'notes'
 >;
 
 @Injectable({
