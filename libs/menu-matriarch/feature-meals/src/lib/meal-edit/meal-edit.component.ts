@@ -51,7 +51,9 @@ export class MealEditComponent {
       description: meal?.description ?? '',
       dishModels: dishes.map<DishModel>((dish) => ({
         ...dish,
-        checked: !!meal?.dishes.find(({ id }) => id === dish.id) || this._dishIds.includes(dish.id),
+        checked:
+          !!meal?.dishes.find(({ id }) => id === dish.id) ||
+          this._dishIds.includes(dish.id),
       })),
       tagModels: tags.map<TagModel>((tag) => ({
         ...tag,
