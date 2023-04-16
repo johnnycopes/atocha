@@ -7,10 +7,10 @@ import {
   Output,
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
 
 import { CheckboxComponent, trackByFactory } from '@atocha/core/ui';
-import { CardComponent, DishSummaryComponent } from '@atocha/menu-matriarch/ui';
+import { DishSummaryComponent } from '@atocha/menu-matriarch/ui-domain';
+import { CardComponent } from '@atocha/menu-matriarch/ui-generic';
 import { Day, DishType, Menu, Tag } from '@atocha/menu-matriarch/util';
 
 interface EntryModel {
@@ -58,10 +58,4 @@ export class PlannerDishComponent {
 
   entryModels: EntryModel[] = [];
   readonly trackByFn = trackByFactory<EntryModel>(({ day }) => day);
-
-  constructor(private _router: Router) {}
-
-  onClick(id: string): void {
-    this._router.navigate(['dishes', id]);
-  }
 }

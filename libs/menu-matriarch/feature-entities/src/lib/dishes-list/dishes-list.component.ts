@@ -18,11 +18,13 @@ import {
 } from '@atocha/menu-matriarch/data-access';
 import {
   FilterableListComponent,
-  TabComponent,
-  TabsetComponent,
   dishTrackByFn,
   groupTrackByFn,
-} from '@atocha/menu-matriarch/ui';
+} from '@atocha/menu-matriarch/ui-domain';
+import {
+  TabComponent,
+  TabsetComponent,
+} from '@atocha/menu-matriarch/ui-generic';
 import { DishContext, DishDefDirective } from './dish-def.directive';
 
 @Component({

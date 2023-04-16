@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { combineLatest, of } from 'rxjs';
 import { concatMap, first, map, switchMap } from 'rxjs/operators';
 
@@ -9,12 +9,12 @@ import { MealService, UserService } from '@atocha/menu-matriarch/data-access';
 import { getDishTypes } from '@atocha/menu-matriarch/util';
 import {
   MealSummaryComponent,
-  SectionComponent,
   TagComponent,
   TagDefDirective,
   TagsListComponent,
   dishTrackByFn,
-} from '@atocha/menu-matriarch/ui';
+} from '@atocha/menu-matriarch/ui-domain';
+import { SectionComponent } from '@atocha/menu-matriarch/ui-generic';
 
 @Component({
   standalone: true,
@@ -27,7 +27,7 @@ import {
     TagComponent,
     TagDefDirective,
     TagsListComponent,
-    RouterModule,
+    RouterLink,
   ],
   templateUrl: './meal-details.component.html',
   styleUrls: ['./meal-details.component.scss'],
@@ -76,9 +76,5 @@ export class MealDetailsComponent {
       .subscribe(() =>
         this._router.navigate(['..'], { relativeTo: this._route })
       );
-  }
-
-  onDishClick(id: string): void {
-    this._router.navigate(['dishes', id]);
   }
 }

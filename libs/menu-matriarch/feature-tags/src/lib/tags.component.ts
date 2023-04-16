@@ -6,10 +6,8 @@ import { map, shareReplay } from 'rxjs/operators';
 import { ButtonComponent, trackByFactory } from '@atocha/core/ui';
 import { TagService } from '@atocha/menu-matriarch/data-access';
 import { Tag } from '@atocha/menu-matriarch/util';
-import {
-  InlineNameEditComponent,
-  SectionComponent,
-} from '@atocha/menu-matriarch/ui';
+import { InlineNameEditComponent } from '@atocha/menu-matriarch/ui-domain';
+import { SectionComponent } from '@atocha/menu-matriarch/ui-generic';
 import { TagCardComponent } from './tag-card/tag-card.component';
 
 @Component({

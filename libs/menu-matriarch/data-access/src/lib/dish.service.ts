@@ -13,6 +13,8 @@ import { IngredientService } from './ingredient.service';
 import { RouterService } from './internal/router.service';
 import { TagService } from './tag.service';
 
+export type DishData = EditableDishData;
+
 @Injectable({
   providedIn: 'root',
 })
