@@ -19,22 +19,13 @@ import {
   TagService,
   UserService,
 } from '@atocha/menu-matriarch/data-access';
-import {
-  FilterableListComponent,
-  TabComponent,
-  TabsetComponent,
-} from '@atocha/menu-matriarch/ui';
+import { FilterableListComponent } from '@atocha/menu-matriarch/ui-domain';
 import { MealDefContext, MealDefDirective } from './meal-def.directive';
 
 @Component({
   standalone: true,
   selector: 'app-meals-list',
-  imports: [
-    CommonModule,
-    FilterableListComponent,
-    TabsetComponent,
-    TabComponent,
-  ],
+  imports: [CommonModule, FilterableListComponent],
   templateUrl: './meals-list.component.html',
   styleUrls: ['./meals-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

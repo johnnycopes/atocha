@@ -11,10 +11,8 @@ import { RouterLink } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faPlusSquare, faTimes } from '@fortawesome/free-solid-svg-icons';
 
-import {
-  MealSummaryComponent,
-  SmallCapsLabelComponent,
-} from '@atocha/menu-matriarch/ui';
+import { MealSummaryComponent } from '@atocha/menu-matriarch/ui-domain';
+import { SmallCapsLabelComponent } from '@atocha/menu-matriarch/ui-generic';
 import { Day, Dish, Orientation } from '@atocha/menu-matriarch/util';
 
 @Component({

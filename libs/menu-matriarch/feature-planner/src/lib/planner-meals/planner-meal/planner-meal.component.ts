@@ -11,12 +11,12 @@ import { RouterLink } from '@angular/router';
 
 import { CheckboxComponent, trackByFactory } from '@atocha/core/ui';
 import {
-  CardComponent,
   MealSummaryComponent,
   TagComponent,
   TagDefDirective,
   TagsListComponent,
-} from '@atocha/menu-matriarch/ui';
+} from '@atocha/menu-matriarch/ui-domain';
+import { CardComponent } from '@atocha/menu-matriarch/ui-generic';
 import { Day, Dish, Menu, Orientation, Tag } from '@atocha/menu-matriarch/util';
 
 interface EntryModel {

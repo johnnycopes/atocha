@@ -22,15 +22,17 @@ import {
   DishesListComponent,
 } from '@atocha/menu-matriarch/feature-entities';
 import {
-  CardComponent,
   DishSummaryComponent,
-  InputComponent,
   MealSummaryComponent,
-  SectionComponent,
   TagComponent,
   TagDefDirective,
   TagsListComponent,
-} from '@atocha/menu-matriarch/ui';
+} from '@atocha/menu-matriarch/ui-domain';
+import {
+  CardComponent,
+  InputComponent,
+  SectionComponent,
+} from '@atocha/menu-matriarch/ui-generic';
 import {
   DishModel,
   Meal,

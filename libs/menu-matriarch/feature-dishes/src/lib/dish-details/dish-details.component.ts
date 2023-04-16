@@ -13,11 +13,11 @@ import {
 } from '@atocha/core/ui';
 import { DishService } from '@atocha/menu-matriarch/data-access';
 import {
-  SectionComponent,
   TagComponent,
   TagDefDirective,
   TagsListComponent,
-} from '@atocha/menu-matriarch/ui';
+} from '@atocha/menu-matriarch/ui-domain';
+import { SectionComponent } from '@atocha/menu-matriarch/ui-generic';
 
 @Component({
   standalone: true,
