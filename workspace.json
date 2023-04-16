@@ -32,6 +32,7 @@
     "menu-matriarch-feature-shell": "libs/menu-matriarch/feature-shell",
     "menu-matriarch-feature-tags": "libs/menu-matriarch/feature-tags",
     "menu-matriarch-ui": "libs/menu-matriarch/ui",
+    "menu-matriarch-ui-generic": "libs/menu-matriarch/ui-generic",
     "menu-matriarch-util": "libs/menu-matriarch/util",
     "spirit-islander": "apps/spirit-islander",
     "spirit-islander-data-access": "libs/spirit-islander/data-access",
