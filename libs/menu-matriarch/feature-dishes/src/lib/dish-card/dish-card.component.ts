@@ -1,13 +1,13 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { CardComponent, DishSummaryComponent } from '@atocha/menu-matriarch/ui';
+import { CardComponent, LegacyDishSummaryComponent } from '@atocha/menu-matriarch/ui';
 import { Tag, DishType } from '@atocha/menu-matriarch/util';
 
 @Component({
   standalone: true,
   selector: 'app-dish-card',
-  imports: [CardComponent, DishSummaryComponent],
+  imports: [CardComponent, LegacyDishSummaryComponent],
   templateUrl: './dish-card.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

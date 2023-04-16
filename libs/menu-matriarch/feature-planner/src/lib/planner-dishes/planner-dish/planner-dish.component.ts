@@ -10,7 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { CheckboxComponent, trackByFactory } from '@atocha/core/ui';
-import { CardComponent, DishSummaryComponent } from '@atocha/menu-matriarch/ui';
+import { CardComponent, LegacyDishSummaryComponent } from '@atocha/menu-matriarch/ui';
 import { Day, DishType, Menu, Tag } from '@atocha/menu-matriarch/util';
 
 interface EntryModel {
@@ -25,7 +25,7 @@ interface EntryModel {
     CardComponent,
     CheckboxComponent,
     CommonModule,
-    DishSummaryComponent,
+    LegacyDishSummaryComponent,
     FormsModule,
   ],
   templateUrl: './planner-dish.component.html',

@@ -23,7 +23,7 @@ import {
 } from '@atocha/menu-matriarch/feature-entities';
 import {
   CardComponent,
-  DishSummaryComponent,
+  LegacyDishSummaryComponent,
   InputComponent,
   MealSummaryComponent,
   SectionComponent,
@@ -56,7 +56,7 @@ export type MealConfig = Pick<Meal, 'name' | 'description'> &
     CommonModule,
     DishDefDirective,
     DishesListComponent,
-    DishSummaryComponent,
+    LegacyDishSummaryComponent,
     FormsModule,
     InputComponent,
     MealSummaryComponent,
