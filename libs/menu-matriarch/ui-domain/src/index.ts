@@ -2,7 +2,6 @@ export * from './lib/track-by-functions';
 
 export * from './lib/count/count.component';
 export * from './lib/dish-summary/dish-summary.component';
-export * from './lib/empty-view-placeholder/empty-view-placeholder.component';
 export * from './lib/filterable-list/filterable-list.component';
 export * from './lib/filters/filters.component';
 export * from './lib/filters-button/filters-button.component';
