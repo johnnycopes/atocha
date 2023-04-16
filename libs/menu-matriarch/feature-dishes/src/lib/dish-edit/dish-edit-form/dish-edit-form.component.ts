@@ -17,6 +17,7 @@ import {
   trackBySelf,
 } from '@atocha/core/ui';
 import { recordToArray } from '@atocha/core/util';
+import { DishData } from '@atocha/menu-matriarch/data-access';
 import {
   InputComponent,
   TagComponent,
@@ -25,7 +26,6 @@ import {
 } from '@atocha/menu-matriarch/ui';
 import {
   Dish,
-  DishType,
   TagModel,
   getDishTypes,
 } from '@atocha/menu-matriarch/util';
@@ -35,15 +35,6 @@ export type DishConfig = Pick<
   Dish,
   'name' | 'description' | 'link' | 'type' | 'notes'
 > & { tagModels: TagModel[] };
-
-export interface DishEditDetails {
-  name: string;
-  description: string;
-  link: string;
-  type: DishType;
-  tagIds: string[];
-  notes: string;
-}
 
 @Component({
   standalone: true,
@@ -67,7 +58,7 @@ export interface DishEditDetails {
 })
 export class DishEditFormComponent implements OnInit {
   @Input() dish: DishConfig | undefined;
-  @Output() save = new EventEmitter<DishEditDetails>();
+  @Output() save = new EventEmitter<DishData>();
 
   form: DishEditForm | undefined;
   readonly dishTypes = getDishTypes();

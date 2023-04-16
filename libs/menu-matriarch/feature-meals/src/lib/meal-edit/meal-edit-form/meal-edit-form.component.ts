@@ -16,6 +16,7 @@ import {
   CheckboxComponent,
 } from '@atocha/core/ui';
 import { recordToArray } from '@atocha/core/util';
+import { MealData } from '@atocha/menu-matriarch/data-access';
 import {
   DishDefDirective,
   DishesListComponent,
@@ -43,13 +44,6 @@ export type MealConfig = Pick<Meal, 'name' | 'description'> &
     tagModels: TagModel[];
     dishModels: DishModel[];
   };
-
-export interface MealDetails {
-  name: string;
-  description: string;
-  dishIds: string[];
-  tagIds: string[];
-}
 
 @Component({
   standalone: true,
@@ -80,7 +74,7 @@ export interface MealDetails {
 export class MealEditFormComponent implements OnInit {
   @Input() meal: MealConfig | undefined;
   @Output() dishClick = new EventEmitter<string>();
-  @Output() save = new EventEmitter<MealDetails>();
+  @Output() save = new EventEmitter<MealData>();
 
   form: MealEditForm | undefined;
 

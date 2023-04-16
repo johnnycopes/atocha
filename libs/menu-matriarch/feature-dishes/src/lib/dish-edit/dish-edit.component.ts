@@ -4,11 +4,10 @@ import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { Observable, combineLatest, of } from 'rxjs';
 import { concatMap, first, map } from 'rxjs/operators';
 
-import { DishService, TagService } from '@atocha/menu-matriarch/data-access';
+import { DishData, DishService, TagService } from '@atocha/menu-matriarch/data-access';
 import { TagModel } from '@atocha/menu-matriarch/util';
 import {
   DishConfig,
-  DishEditDetails,
   DishEditFormComponent,
 } from './dish-edit-form/dish-edit-form.component';
 
@@ -54,10 +53,10 @@ export class DishEditComponent {
     private _tagService: TagService
   ) {}
 
-  async onSave(details: DishEditDetails): Promise<void> {
+  async onSave(data: DishData): Promise<void> {
     if (!this._routeId) {
       this._dishService
-        .createDish(details)
+        .createDish(data)
         .subscribe((newId) =>
           this._router.navigate(['..', newId], { relativeTo: this._route })
         );
@@ -67,7 +66,7 @@ export class DishEditComponent {
           first(),
           concatMap((dish) => {
             if (dish) {
-              return this._dishService.updateDish(dish, details);
+              return this._dishService.updateDish(dish, data);
             } else {
               return of(undefined);
             }

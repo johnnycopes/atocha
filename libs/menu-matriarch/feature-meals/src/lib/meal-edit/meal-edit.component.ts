@@ -6,6 +6,7 @@ import { concatMap, first, map } from 'rxjs/operators';
 
 import {
   DishService,
+  MealData,
   MealService,
   TagService,
   UserService,
@@ -13,7 +14,6 @@ import {
 import { DishModel, TagModel } from '@atocha/menu-matriarch/util';
 import {
   MealEditFormComponent,
-  MealDetails,
   MealConfig,
 } from './meal-edit-form/meal-edit-form.component';
 
@@ -77,10 +77,10 @@ export class MealEditComponent {
     this._router.navigate(['dishes', id]);
   }
 
-  async onSave(details: MealDetails): Promise<void> {
+  async onSave(data: MealData): Promise<void> {
     if (!this._routeId) {
       this._mealService
-        .createMeal(details)
+        .createMeal(data)
         .subscribe((newId) =>
           this._router.navigate(['..', newId], { relativeTo: this._route })
         );
@@ -90,7 +90,7 @@ export class MealEditComponent {
           first(),
           concatMap((meal) => {
             if (meal) {
-              return this._mealService.updateMeal(meal, details);
+              return this._mealService.updateMeal(meal, data);
             } else {
               return of(undefined);
             }
