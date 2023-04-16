@@ -99,8 +99,7 @@ export class MealEditFormComponent implements OnInit {
       return;
     }
 
-    const { name, description, dishIds, tagIds } =
-      this.form.getRawValue();
+    const { name, description, dishIds, tagIds } = this.form.getRawValue();
 
     this.save.emit({
       name,
