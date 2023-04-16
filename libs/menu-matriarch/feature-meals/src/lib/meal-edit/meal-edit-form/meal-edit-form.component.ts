@@ -23,7 +23,7 @@ import {
 } from '@atocha/menu-matriarch/feature-entities';
 import {
   CardComponent,
-  LegacyDishSummaryComponent,
+  DishSummaryComponent,
   InputComponent,
   MealSummaryComponent,
   SectionComponent,
@@ -56,7 +56,7 @@ export type MealConfig = Pick<Meal, 'name' | 'description'> &
     CommonModule,
     DishDefDirective,
     DishesListComponent,
-    LegacyDishSummaryComponent,
+    DishSummaryComponent,
     FormsModule,
     InputComponent,
     MealSummaryComponent,
@@ -73,7 +73,6 @@ export type MealConfig = Pick<Meal, 'name' | 'description'> &
 })
 export class MealEditFormComponent implements OnInit {
   @Input() meal: MealConfig | undefined;
-  @Output() dishClick = new EventEmitter<string>();
   @Output() save = new EventEmitter<MealData>();
 
   form: MealEditForm | undefined;
@@ -82,10 +81,6 @@ export class MealEditFormComponent implements OnInit {
     if (this.meal) {
       this.form = new MealEditForm(this.meal);
     }
-  }
-
-  onDishClick(id: string): void {
-    this.dishClick.emit(id);
   }
 
   onSave(): void {

@@ -25,7 +25,6 @@ import {
     <app-meal-edit-form
       *ngIf="meal$ | async as meal"
       [meal]="meal"
-      (dishClick)="onDishClick($event)"
       (save)="onSave($event)"
     ></app-meal-edit-form>
   `,
@@ -72,10 +71,6 @@ export class MealEditComponent {
     private _tagService: TagService,
     private _userService: UserService
   ) {}
-
-  onDishClick(id: string): void {
-    this._router.navigate(['dishes', id]);
-  }
 
   async onSave(data: MealData): Promise<void> {
     if (!this._routeId) {
