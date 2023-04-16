@@ -20,10 +20,12 @@ import {
   UserService,
 } from '@atocha/menu-matriarch/data-access';
 import {
-  FilterableListComponent,
+  FilterableListComponent
+} from '@atocha/menu-matriarch/ui';
+import {
   TabComponent,
   TabsetComponent,
-} from '@atocha/menu-matriarch/ui';
+} from '@atocha/menu-matriarch/ui-generic';
 import { MealDefContext, MealDefDirective } from './meal-def.directive';
 
 @Component({

@@ -9,8 +9,6 @@ export * from './lib/_generic/options-menu/options-menu-item/options-menu-item.c
 export * from './lib/_generic/options-menu/options-menu-trigger.directive';
 export * from './lib/_generic/section/section.component';
 export * from './lib/_generic/small-caps-label/small-caps-label.component';
-export * from './lib/_generic/tabset/tabset.component';
-export * from './lib/_generic/tabset/tab/tab.component';
 export * from './lib/count/count.component';
 export * from './lib/dish-summary/dish-summary.component';
 export * from './lib/empty-view-placeholder/empty-view-placeholder.component';
