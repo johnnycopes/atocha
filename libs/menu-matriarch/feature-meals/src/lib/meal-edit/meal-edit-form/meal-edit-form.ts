@@ -11,11 +11,11 @@ import { MealConfig } from './meal-edit-form.component';
 export class MealEditForm extends FormGroup<{
   name: FormControl<string>;
   description: FormControl<string>;
-  dishesModel: FormGroup<Record<string, FormControl<boolean>>>;
-  tagsModel: FormGroup<Record<string, FormControl<boolean>>>;
+  dishIds: FormGroup<Record<string, FormControl<boolean>>>;
+  tagIds: FormGroup<Record<string, FormControl<boolean>>>;
 }> {
   dishes$ =
-    this.get('dishesModel')?.valueChanges.pipe(
+    this.get('dishIds')?.valueChanges.pipe(
       startWith(
         this.meal.dishesModel.reduce<Record<string, boolean>>(
           (states, { id, checked }) => {
@@ -36,7 +36,7 @@ export class MealEditForm extends FormGroup<{
       fb.nonNullable.group({
         name: fb.nonNullable.control(meal.name, Validators.required),
         description: fb.nonNullable.control(meal.description),
-        dishesModel: fb.nonNullable.group(
+        dishIds: fb.nonNullable.group(
           meal.dishesModel.reduce<Record<string, FormControl<boolean>>>(
             (group, dish) => {
               group[dish.id] = fb.nonNullable.control(dish.checked);
@@ -45,7 +45,7 @@ export class MealEditForm extends FormGroup<{
             {}
           )
         ),
-        tagsModel: fb.nonNullable.group(
+        tagIds: fb.nonNullable.group(
           meal.tagsModel.reduce<Record<string, FormControl<boolean>>>(
             (group, tag) => {
               group[tag.id] = fb.nonNullable.control(tag.checked);

@@ -92,14 +92,14 @@ export class DishEditFormComponent implements OnInit {
       return;
     }
 
-    const { name, description, link, type, tagsModel, notes } =
+    const { name, description, link, type, tagIds, notes } =
       this.form.getRawValue();
     this.save.emit({
       name,
       description,
       link,
       type,
-      tagIds: recordToArray<string>(tagsModel ?? []),
+      tagIds: recordToArray<string>(tagIds ?? []),
       notes,
     });
   }

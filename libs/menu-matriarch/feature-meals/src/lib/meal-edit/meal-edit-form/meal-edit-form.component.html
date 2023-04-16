@@ -3,7 +3,7 @@
   (ngSubmit)="onSave()"
 >
   <app-dishes-list class="dishes"
-    formGroupName="dishesModel"
+    formGroupName="dishIds"
   >
     <ui-card *appDishDef="let dish">
       <ui-dish-summary
@@ -67,7 +67,7 @@
         <ui-tags-list
           *ngIf="meal.tagsModel; else noTagsPlaceholder"
           class="tags"
-          formGroupName="tagsModel"
+          formGroupName="tagIds"
           [tags]="meal.tagsModel"
           [interactive]="true"
         >
