@@ -33,6 +33,7 @@ import {
 })
 export class MealEditComponent {
   private _routeId = this._route.snapshot.paramMap.get('id');
+  private _dishIds = this._route.snapshot.queryParamMap.get('dishes') ?? '';
   _meal$ = this._routeId
     ? this._mealService.getMeal(this._routeId)
     : of(undefined);
@@ -50,7 +51,7 @@ export class MealEditComponent {
       description: meal?.description ?? '',
       dishModels: dishes.map<DishModel>((dish) => ({
         ...dish,
-        checked: !!meal?.dishes.find(({ id }) => id === dish.id) ?? false,
+        checked: !!meal?.dishes.find(({ id }) => id === dish.id) || this._dishIds.includes(dish.id),
       })),
       tagModels: tags.map<TagModel>((tag) => ({
         ...tag,
