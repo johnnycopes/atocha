@@ -9,9 +9,8 @@ import {
 import { FormsModule } from '@angular/forms';
 
 import { trackBySelf } from '@atocha/core/ui';
+import { InlineFormComponent, InputComponent } from '@atocha/menu-matriarch/ui-generic';
 import { Day, getDays } from '@atocha/menu-matriarch/util';
-import { InputComponent } from '@atocha/menu-matriarch/ui-generic';
-import { InlineFormComponent } from '../_generic/inline-form/inline-form.component';
 
 @Component({
   standalone: true,
