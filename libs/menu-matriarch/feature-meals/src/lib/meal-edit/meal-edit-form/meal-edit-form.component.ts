@@ -24,13 +24,13 @@ import {
 import {
   CardComponent,
   DishSummaryComponent,
-  InputComponent,
   MealSummaryComponent,
   SectionComponent,
   TagComponent,
   TagDefDirective,
   TagsListComponent,
 } from '@atocha/menu-matriarch/ui';
+import { InputComponent } from '@atocha/menu-matriarch/ui-generic';
 import {
   DishModel,
   Meal,

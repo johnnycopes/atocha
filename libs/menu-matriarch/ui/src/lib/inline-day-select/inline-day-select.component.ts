@@ -10,8 +10,8 @@ import { FormsModule } from '@angular/forms';
 
 import { trackBySelf } from '@atocha/core/ui';
 import { Day, getDays } from '@atocha/menu-matriarch/util';
+import { InputComponent } from '@atocha/menu-matriarch/ui-generic';
 import { InlineFormComponent } from '../_generic/inline-form/inline-form.component';
-import { InputComponent } from '../_generic/input/input.component';
 
 @Component({
   standalone: true,

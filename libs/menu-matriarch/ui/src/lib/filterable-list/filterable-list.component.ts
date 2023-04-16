@@ -12,10 +12,10 @@ import {
   PluralPipe,
   SearchInputComponent,
 } from '@atocha/core/ui';
+import { InputComponent } from '@atocha/menu-matriarch/ui-generic';
 import { Tag } from '@atocha/menu-matriarch/util';
 import { FiltersButtonComponent } from '../filters-button/filters-button.component';
 import { FiltersComponent } from '../filters/filters.component';
-import { InputComponent } from '../_generic/input/input.component';
 import { SectionComponent } from '../_generic/section/section.component';
 
 @Component({

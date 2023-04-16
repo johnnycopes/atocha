@@ -19,11 +19,11 @@ import {
 import { recordToArray } from '@atocha/core/util';
 import { DishData } from '@atocha/menu-matriarch/data-access';
 import {
-  InputComponent,
   TagComponent,
   TagDefDirective,
   TagsListComponent,
 } from '@atocha/menu-matriarch/ui';
+import { InputComponent } from '@atocha/menu-matriarch/ui-generic';
 import { Dish, TagModel, getDishTypes } from '@atocha/menu-matriarch/util';
 import { DishEditForm } from './dish-edit-form';
 
