@@ -6,7 +6,7 @@ import {
   Input,
   Output,
 } from '@angular/core';
-import { Router, RouterModule } from '@angular/router';
+import { RouterLink } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 import { BehaviorSubject } from 'rxjs';
@@ -42,7 +42,7 @@ type State = 'default' | 'renaming' | 'changingStartDay';
     OptionsMenuComponent,
     OptionsMenuItemComponent,
     OptionsMenuTriggerDirective,
-    RouterModule,
+    RouterLink,
     SmallCapsLabelComponent,
   ],
   templateUrl: './menu-card.component.html',
@@ -68,8 +68,6 @@ export class MenuCardComponent {
   readonly menuToggleIcon = faEllipsisV;
   readonly trackByFn = menuEntryTrackByFn;
 
-  constructor(private _router: Router) {}
-
   onRename(): void {
     this._stateSubject.next('renaming');
   }
@@ -94,9 +92,5 @@ export class MenuCardComponent {
 
   onCancel(): void {
     this._stateSubject.next('default');
-  }
-
-  onDishClick(id: string): void {
-    this._router.navigate(['dishes', id]);
   }
 }

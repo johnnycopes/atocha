@@ -15,7 +15,6 @@
         [menuIds]="dish.menuIds"
         [mealIds]="dish.mealIds"
         [usages]="dish.usages"
-        (nameClick)="onDishClick($event)"
       ></ui-dish-summary>
       <core-checkbox class="included"
         [formControlName]="dish.id"
@@ -99,7 +98,6 @@
           [dishes]="(form.dishes$ | async ) ?? []"
           [fallbackText]="meal.emptyMealText"
           [orientation]="meal.mealOrientation"
-          (dishClick)="onDishClick($event)"
           boundaries="labeled"
         ></ui-meal-summary>
       </div>

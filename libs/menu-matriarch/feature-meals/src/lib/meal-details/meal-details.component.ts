@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { combineLatest, of } from 'rxjs';
 import { concatMap, first, map, switchMap } from 'rxjs/operators';
 
@@ -27,7 +27,7 @@ import {
     TagComponent,
     TagDefDirective,
     TagsListComponent,
-    RouterModule,
+    RouterLink,
   ],
   templateUrl: './meal-details.component.html',
   styleUrls: ['./meal-details.component.scss'],
@@ -76,9 +76,5 @@ export class MealDetailsComponent {
       .subscribe(() =>
         this._router.navigate(['..'], { relativeTo: this._route })
       );
-  }
-
-  onDishClick(id: string): void {
-    this._router.navigate(['dishes', id]);
   }
 }

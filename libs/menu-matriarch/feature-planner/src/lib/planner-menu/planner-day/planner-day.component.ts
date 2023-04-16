@@ -7,7 +7,7 @@ import {
   OnInit,
   Output,
 } from '@angular/core';
-import { Router, RouterModule } from '@angular/router';
+import { RouterLink } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faPlusSquare, faTimes } from '@fortawesome/free-solid-svg-icons';
 
@@ -25,7 +25,7 @@ import { Day, Dish, Orientation } from '@atocha/menu-matriarch/util';
     CommonModule,
     FontAwesomeModule,
     MealSummaryComponent,
-    RouterModule,
+    RouterLink,
     SmallCapsLabelComponent,
   ],
   templateUrl: './planner-day.component.html',
@@ -50,15 +50,9 @@ export class PlannerDayComponent implements OnInit {
   readonly clearIcon = faTimes;
   private _dishes: Dish[] = [];
 
-  constructor(private _router: Router) {}
-
   ngOnInit(): void {
     if (!this.day) {
       throw new Error('DayComponent must have an assigned "day" property');
     }
-  }
-
-  onDishClick(id: string): void {
-    this._router.navigate(['dishes', id]);
   }
 }

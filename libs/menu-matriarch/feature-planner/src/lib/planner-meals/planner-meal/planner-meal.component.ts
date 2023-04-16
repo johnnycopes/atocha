@@ -7,7 +7,7 @@ import {
   EventEmitter,
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Router, RouterModule } from '@angular/router';
+import { RouterLink } from '@angular/router';
 
 import { CheckboxComponent, trackByFactory } from '@atocha/core/ui';
 import {
@@ -38,7 +38,7 @@ interface EntryModel {
     TagComponent,
     TagDefDirective,
     TagsListComponent,
-    RouterModule,
+    RouterLink,
   ],
   templateUrl: './planner-meal.component.html',
   styleUrls: ['./planner-meal.component.scss'],
@@ -79,12 +79,6 @@ export class PlannerMealComponent {
   }>();
   entryModels: EntryModel[] = [];
   readonly trackByFn = trackByFactory<EntryModel>(({ day }) => day);
-
-  constructor(private _router: Router) {}
-
-  onDishClick(id: string): void {
-    this._router.navigate(['dishes', id]);
-  }
 
   private _compare(
     mealDishIds: string[],
