@@ -17,12 +17,11 @@ import {
   InlineDaySelectComponent,
   InlineNameEditComponent,
   MealSummaryComponent,
-  SmallCapsLabelComponent,
   menuEntryTrackByFn,
 } from '@atocha/menu-matriarch/ui';
 import { CardComponent, OptionsMenuComponent,
   OptionsMenuItemComponent,
-  OptionsMenuTriggerDirective, } from '@atocha/menu-matriarch/ui-generic';
+  OptionsMenuTriggerDirective, SmallCapsLabelComponent } from '@atocha/menu-matriarch/ui-generic';
 
 type State = 'default' | 'renaming' | 'changingStartDay';
 
