@@ -24,11 +24,7 @@ import {
   TagDefDirective,
   TagsListComponent,
 } from '@atocha/menu-matriarch/ui';
-import {
-  Dish,
-  TagModel,
-  getDishTypes,
-} from '@atocha/menu-matriarch/util';
+import { Dish, TagModel, getDishTypes } from '@atocha/menu-matriarch/util';
 import { DishEditForm } from './dish-edit-form';
 
 export type DishConfig = Pick<

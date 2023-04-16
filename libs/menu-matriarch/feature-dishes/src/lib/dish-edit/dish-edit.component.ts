@@ -4,7 +4,11 @@ import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { Observable, combineLatest, of } from 'rxjs';
 import { concatMap, first, map } from 'rxjs/operators';
 
-import { DishData, DishService, TagService } from '@atocha/menu-matriarch/data-access';
+import {
+  DishData,
+  DishService,
+  TagService,
+} from '@atocha/menu-matriarch/data-access';
 import { TagModel } from '@atocha/menu-matriarch/util';
 import {
   DishConfig,
