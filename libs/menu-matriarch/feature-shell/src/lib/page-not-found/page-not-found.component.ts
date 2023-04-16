@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { ButtonComponent } from '@atocha/core/ui';
-import { EmptyViewPlaceholderComponent } from '@atocha/menu-matriarch/ui-domain';
+import { EmptyViewPlaceholderComponent } from '@atocha/menu-matriarch/ui-generic';
 
 @Component({
   standalone: true,

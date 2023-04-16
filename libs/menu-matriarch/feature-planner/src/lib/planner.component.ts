@@ -9,7 +9,7 @@ import {
   MenuService,
   PlannerService,
 } from '@atocha/menu-matriarch/data-access';
-import { EmptyViewPlaceholderComponent } from '@atocha/menu-matriarch/ui-domain';
+import { EmptyViewPlaceholderComponent } from '@atocha/menu-matriarch/ui-generic';
 import { PlannerView } from '@atocha/menu-matriarch/util';
 import { PlannerDishesComponent } from './planner-dishes/planner-dishes.component';
 import { PlannerMealsComponent } from './planner-meals/planner-meals.component';
