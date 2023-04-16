@@ -25,7 +25,6 @@ import {
   CardComponent,
   DishSummaryComponent,
   InputComponent,
-  LegacyMealSummaryComponent,
   SectionComponent,
   TagComponent,
   TagDefDirective,
@@ -38,6 +37,7 @@ import {
   UserPreferences,
 } from '@atocha/menu-matriarch/util';
 import { MealEditForm } from './meal-edit-form';
+import { MealSummaryComponent } from '../../meal-summary/meal-summary.component';
 
 export type MealConfig = Pick<Meal, 'name' | 'description'> &
   Pick<UserPreferences, 'emptyMealText' | 'mealOrientation'> & {
@@ -59,7 +59,7 @@ export type MealConfig = Pick<Meal, 'name' | 'description'> &
     DishSummaryComponent,
     FormsModule,
     InputComponent,
-    LegacyMealSummaryComponent,
+    MealSummaryComponent,
     ReactiveFormsModule,
     RouterLink,
     SectionComponent,
