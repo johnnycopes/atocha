@@ -1,13 +1,12 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { Router } from '@angular/router';
 
-import { CardComponent, LegacyDishSummaryComponent } from '@atocha/menu-matriarch/ui';
+import { CardComponent, DishSummaryComponent } from '@atocha/menu-matriarch/ui';
 import { Tag, DishType } from '@atocha/menu-matriarch/util';
 
 @Component({
   standalone: true,
   selector: 'app-dish-card',
-  imports: [CardComponent, LegacyDishSummaryComponent],
+  imports: [CardComponent, DishSummaryComponent],
   templateUrl: './dish-card.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -24,10 +23,4 @@ export class DishCardComponent {
   @Input() mealIds: string[] = [];
   @Input() usages = 0;
   @Input() active = false;
-
-  constructor(private _router: Router) {}
-
-  onClick(id: string): void {
-    this._router.navigate(['dishes', id]);
-  }
 }
