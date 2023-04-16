@@ -1,5 +1,6 @@
 export * from './lib/alert/alert.component';
 export * from './lib/card/card.component';
+export * from './lib/empty-view-placeholder/empty-view-placeholder.component';
 export * from './lib/input/input.component';
 export * from './lib/inline-form/inline-form.component';
 export * from './lib/options-menu/options-menu.component';
