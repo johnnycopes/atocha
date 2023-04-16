@@ -22,10 +22,6 @@ import {
 import {
   FilterableListComponent
 } from '@atocha/menu-matriarch/ui';
-import {
-  TabComponent,
-  TabsetComponent,
-} from '@atocha/menu-matriarch/ui-generic';
 import { MealDefContext, MealDefDirective } from './meal-def.directive';
 
 @Component({
@@ -34,8 +30,6 @@ import { MealDefContext, MealDefDirective } from './meal-def.directive';
   imports: [
     CommonModule,
     FilterableListComponent,
-    TabsetComponent,
-    TabComponent,
   ],
   templateUrl: './meals-list.component.html',
   styleUrls: ['./meals-list.component.scss'],
