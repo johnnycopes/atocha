@@ -2,10 +2,9 @@ import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
-  EventEmitter,
   Input,
-  Output,
 } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { SmallCapsLabelComponent, dishTrackByFn, groupTrackByFn } from '@atocha/menu-matriarch/ui';
 
 import {
@@ -18,7 +17,7 @@ import {
 @Component({
   standalone: true,
   selector: 'app-meal-summary',
-  imports: [CommonModule, SmallCapsLabelComponent],
+  imports: [CommonModule, RouterLink, SmallCapsLabelComponent],
   templateUrl: './meal-summary.component.html',
   styleUrls: ['./meal-summary.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -35,7 +34,6 @@ export class MealSummaryComponent {
   @Input() boundaries: 'labeled' | 'unlabeled' = 'unlabeled';
   @Input() fallbackText = '';
   @Input() orientation: Orientation = 'horizontal';
-  @Output() dishClick = new EventEmitter<string>();
 
   dishesGroups: FilteredDishesGroup[] = [];
   showFallback = true;
