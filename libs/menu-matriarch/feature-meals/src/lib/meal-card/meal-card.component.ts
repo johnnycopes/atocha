@@ -3,12 +3,12 @@ import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 import {
-  CardComponent,
   MealSummaryComponent,
   TagComponent,
   TagDefDirective,
   TagsListComponent,
 } from '@atocha/menu-matriarch/ui';
+import { CardComponent } from '@atocha/menu-matriarch/ui-generic';
 import { Dish, Orientation, Tag } from '@atocha/menu-matriarch/util';
 
 @Component({

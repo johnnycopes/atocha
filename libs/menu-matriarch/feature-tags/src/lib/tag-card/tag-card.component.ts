@@ -9,13 +9,13 @@ import {
 import { Subject, merge } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 
+import { ButtonComponent } from '@atocha/core/ui';
 import {
-  CardComponent,
   CountComponent,
   InlineNameEditComponent,
   TagComponent,
 } from '@atocha/menu-matriarch/ui';
-import { ButtonComponent } from '@atocha/core/ui';
+import { CardComponent } from '@atocha/menu-matriarch/ui-generic';
 
 @Component({
   standalone: true,

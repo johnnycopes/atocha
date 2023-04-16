@@ -22,7 +22,6 @@ import {
   DishesListComponent,
 } from '@atocha/menu-matriarch/feature-entities';
 import {
-  CardComponent,
   DishSummaryComponent,
   MealSummaryComponent,
   SectionComponent,
@@ -30,7 +29,7 @@ import {
   TagDefDirective,
   TagsListComponent,
 } from '@atocha/menu-matriarch/ui';
-import { InputComponent } from '@atocha/menu-matriarch/ui-generic';
+import { CardComponent, InputComponent } from '@atocha/menu-matriarch/ui-generic';
 import {
   DishModel,
   Meal,

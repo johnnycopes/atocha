@@ -14,10 +14,9 @@ import { ButtonComponent, trackBySelf } from '@atocha/core/ui';
 import { AuthService } from '@atocha/core/data-access';
 import { UserService } from '@atocha/menu-matriarch/data-access';
 import {
-  CardComponent,
   SectionComponent,
 } from '@atocha/menu-matriarch/ui';
-import { InputComponent } from '@atocha/menu-matriarch/ui-generic';
+import { CardComponent, InputComponent } from '@atocha/menu-matriarch/ui-generic';
 import { UserPreferences, getDays } from '@atocha/menu-matriarch/util';
 
 @Component({

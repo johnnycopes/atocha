@@ -14,7 +14,6 @@ import { BehaviorSubject } from 'rxjs';
 import { ButtonComponent } from '@atocha/core/ui';
 import { Day, MenuEntry, Orientation } from '@atocha/menu-matriarch/util';
 import {
-  CardComponent,
   InlineDaySelectComponent,
   InlineNameEditComponent,
   MealSummaryComponent,
@@ -24,6 +23,7 @@ import {
   SmallCapsLabelComponent,
   menuEntryTrackByFn,
 } from '@atocha/menu-matriarch/ui';
+import { CardComponent } from '@atocha/menu-matriarch/ui-generic';
 
 type State = 'default' | 'renaming' | 'changingStartDay';
 
