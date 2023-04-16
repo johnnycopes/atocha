@@ -12,7 +12,7 @@ import { Router, RouterModule } from '@angular/router';
 import { CheckboxComponent, trackByFactory } from '@atocha/core/ui';
 import {
   CardComponent,
-  MealSummaryComponent,
+  LegacyMealSummaryComponent,
   TagComponent,
   TagDefDirective,
   TagsListComponent,
@@ -34,7 +34,7 @@ interface EntryModel {
     CheckboxComponent,
     CommonModule,
     FormsModule,
-    MealSummaryComponent,
+    LegacyMealSummaryComponent,
     TagComponent,
     TagDefDirective,
     TagsListComponent,

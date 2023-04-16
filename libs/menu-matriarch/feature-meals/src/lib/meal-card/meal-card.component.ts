@@ -4,7 +4,7 @@ import { Router, RouterModule } from '@angular/router';
 
 import {
   CardComponent,
-  MealSummaryComponent,
+  LegacyMealSummaryComponent,
   TagComponent,
   TagDefDirective,
   TagsListComponent,
@@ -17,7 +17,7 @@ import { Dish, Orientation, Tag } from '@atocha/menu-matriarch/util';
   imports: [
     CardComponent,
     CommonModule,
-    MealSummaryComponent,
+    LegacyMealSummaryComponent,
     RouterModule,
     TagComponent,
     TagDefDirective,

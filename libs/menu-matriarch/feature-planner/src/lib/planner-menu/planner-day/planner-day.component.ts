@@ -12,7 +12,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faPlusSquare, faTimes } from '@fortawesome/free-solid-svg-icons';
 
 import {
-  MealSummaryComponent,
+  LegacyMealSummaryComponent,
   SmallCapsLabelComponent,
 } from '@atocha/menu-matriarch/ui';
 import { Day, Dish, Orientation } from '@atocha/menu-matriarch/util';
@@ -24,7 +24,7 @@ import { Day, Dish, Orientation } from '@atocha/menu-matriarch/util';
   imports: [
     CommonModule,
     FontAwesomeModule,
-    MealSummaryComponent,
+    LegacyMealSummaryComponent,
     RouterModule,
     SmallCapsLabelComponent,
   ],

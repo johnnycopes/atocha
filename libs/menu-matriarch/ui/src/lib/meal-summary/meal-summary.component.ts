@@ -24,7 +24,7 @@ import { SmallCapsLabelComponent } from '../_generic/small-caps-label/small-caps
   styleUrls: ['./meal-summary.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class MealSummaryComponent {
+export class LegacyMealSummaryComponent {
   @Input()
   set dishes(dishes: Dish[]) {
     this.dishesGroups = getDishTypes().map((dishType) => ({

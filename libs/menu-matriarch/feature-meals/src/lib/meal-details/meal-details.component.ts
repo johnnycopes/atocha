@@ -8,7 +8,7 @@ import { ButtonComponent, trackBySelf } from '@atocha/core/ui';
 import { MealService, UserService } from '@atocha/menu-matriarch/data-access';
 import { getDishTypes } from '@atocha/menu-matriarch/util';
 import {
-  MealSummaryComponent,
+  LegacyMealSummaryComponent,
   SectionComponent,
   TagComponent,
   TagDefDirective,
@@ -22,7 +22,7 @@ import {
   imports: [
     ButtonComponent,
     CommonModule,
-    MealSummaryComponent,
+    LegacyMealSummaryComponent,
     SectionComponent,
     TagComponent,
     TagDefDirective,
