@@ -14,7 +14,7 @@ import {
   CountComponent,
   InlineNameEditComponent,
   TagComponent,
-} from '@atocha/menu-matriarch/ui';
+} from '@atocha/menu-matriarch/ui-domain';
 import { CardComponent } from '@atocha/menu-matriarch/ui-generic';
 
 @Component({

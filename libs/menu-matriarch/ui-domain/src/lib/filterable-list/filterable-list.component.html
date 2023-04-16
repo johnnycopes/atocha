@@ -1,10 +1,8 @@
 <ui-section class="dishes">
   <div class="ui-section__toolbar">
     <div class="controls">
-      <h2 class="title"
-        (dblclick)="nameDblClick.emit()"
-      >
-        {{ 0 | corePlural : entity : pluralEntity }} ({{ total }})
+      <h2 class="title" (dblclick)="nameDblClick.emit()">
+        {{ 0 | corePlural: entity:pluralEntity }} ({{ total }})
       </h2>
       <ui-input>
         <core-search-input
@@ -14,19 +12,18 @@
           (textChange)="searchTextChange.emit($event)"
         ></core-search-input>
       </ui-input>
-      <ui-filters-button class="button"
+      <ui-filters-button
+        class="button"
         [count]="filters.length"
         [open]="isPanelOpen"
         (clicked)="filtersButtonClick.emit()"
       ></ui-filters-button>
-      <a core-button
-        class="button"
-        (click)="newButtonClick.emit()"
-      >
+      <a core-button class="button" (click)="newButtonClick.emit()">
         New {{ entity }}
       </a>
     </div>
-    <ui-filters *ngIf="isPanelOpen"
+    <ui-filters
+      *ngIf="isPanelOpen"
       class="filters"
       [tags]="tags"
       [selected]="filters"

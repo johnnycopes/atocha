@@ -6,9 +6,7 @@ import { map } from 'rxjs/operators';
 import { ButtonComponent, trackByFactory } from '@atocha/core/ui';
 import { MenuService, PrintService } from '@atocha/menu-matriarch/data-access';
 import { Day, Menu } from '@atocha/menu-matriarch/util';
-import {
-  InlineNameEditComponent,
-} from '@atocha/menu-matriarch/ui';
+import { InlineNameEditComponent } from '@atocha/menu-matriarch/ui-domain';
 import { SectionComponent } from '@atocha/menu-matriarch/ui-generic';
 import { MenuCardComponent } from './menu-card/menu-card.component';
 

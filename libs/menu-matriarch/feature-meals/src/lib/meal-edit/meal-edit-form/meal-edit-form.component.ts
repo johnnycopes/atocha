@@ -27,8 +27,12 @@ import {
   TagComponent,
   TagDefDirective,
   TagsListComponent,
-} from '@atocha/menu-matriarch/ui';
-import { CardComponent, InputComponent, SectionComponent } from '@atocha/menu-matriarch/ui-generic';
+} from '@atocha/menu-matriarch/ui-domain';
+import {
+  CardComponent,
+  InputComponent,
+  SectionComponent,
+} from '@atocha/menu-matriarch/ui-generic';
 import {
   DishModel,
   Meal,

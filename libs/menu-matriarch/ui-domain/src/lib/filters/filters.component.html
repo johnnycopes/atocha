@@ -11,14 +11,12 @@
         [ngModel]="selected.includes(tag.id)"
         (ngModelChange)="onTagChange(tag.id, $event)"
       >
-        <ui-tag
-          [id]="tag.id"
-          [name]="tag.name"
-        ></ui-tag>
+        <ui-tag [id]="tag.id" [name]="tag.name"></ui-tag>
       </core-checkbox>
     </ng-container>
     <li>
-      <button core-button="tertiary"
+      <button
+        core-button="tertiary"
         buttonStyle="ternary"
         [disabled]="!selected.length"
         (click)="selectedClear.emit()"

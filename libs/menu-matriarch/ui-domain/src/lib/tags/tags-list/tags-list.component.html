@@ -1,6 +1,4 @@
-<ul class="tags"
-  [class.tags--interactive]="interactive"
->
+<ul class="tags" [class.tags--interactive]="interactive">
   <li *ngFor="let tag of tags; trackBy: trackByFn">
     <ng-container
       [ngTemplateOutlet]="tagTemplate"

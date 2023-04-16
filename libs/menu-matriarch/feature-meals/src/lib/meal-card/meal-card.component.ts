@@ -7,7 +7,7 @@ import {
   TagComponent,
   TagDefDirective,
   TagsListComponent,
-} from '@atocha/menu-matriarch/ui';
+} from '@atocha/menu-matriarch/ui-domain';
 import { CardComponent } from '@atocha/menu-matriarch/ui-generic';
 import { Dish, Orientation, Tag } from '@atocha/menu-matriarch/util';
 

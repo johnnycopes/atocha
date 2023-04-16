@@ -8,7 +8,10 @@ import {
 import { FormsModule, NgForm } from '@angular/forms';
 
 import { AutofocusDirective } from '@atocha/core/ui';
-import { InlineFormComponent, InputComponent } from '@atocha/menu-matriarch/ui-generic';
+import {
+  InlineFormComponent,
+  InputComponent,
+} from '@atocha/menu-matriarch/ui-generic';
 
 @Component({
   standalone: true,

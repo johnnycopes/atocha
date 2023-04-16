@@ -16,7 +16,7 @@ import {
   TagComponent,
   TagDefDirective,
   TagsListComponent,
-} from '@atocha/menu-matriarch/ui';
+} from '@atocha/menu-matriarch/ui-domain';
 import { SectionComponent } from '@atocha/menu-matriarch/ui-generic';
 
 @Component({

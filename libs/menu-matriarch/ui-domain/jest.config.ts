@@ -1,6 +1,6 @@
 /* eslint-disable */
 export default {
-  displayName: 'menu-matriarch-ui',
+  displayName: 'menu-matriarch-ui-domain',
   preset: '../../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
@@ -9,7 +9,7 @@ export default {
       stringifyContentPathRegex: '\\.(html|svg)$',
     },
   },
-  coverageDirectory: '../../../coverage/libs/menu-matriarch/ui',
+  coverageDirectory: '../../../coverage/libs/menu-matriarch/ui-domain',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': 'jest-preset-angular',
   },
