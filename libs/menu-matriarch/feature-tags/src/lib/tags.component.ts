@@ -8,8 +8,8 @@ import { TagService } from '@atocha/menu-matriarch/data-access';
 import { Tag } from '@atocha/menu-matriarch/util';
 import {
   InlineNameEditComponent,
-  SectionComponent,
 } from '@atocha/menu-matriarch/ui';
+import { SectionComponent } from '@atocha/menu-matriarch/ui-generic';
 import { TagCardComponent } from './tag-card/tag-card.component';
 
 @Component({
