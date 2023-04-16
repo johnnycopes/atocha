@@ -2,10 +2,9 @@ import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
-  EventEmitter,
   Input,
-  Output,
 } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faLink } from '@fortawesome/free-solid-svg-icons';
 
@@ -24,6 +23,7 @@ import { TagDefDirective } from '../tags/tags-list/tag-def.directive';
     CountComponent,
     ExternalLinkDirective,
     FontAwesomeModule,
+    RouterLink,
     TagComponent,
     TagDefDirective,
     TagsListComponent,
@@ -41,6 +41,5 @@ export class DishSummaryComponent {
   @Input() menuIds: string[] = [];
   @Input() mealIds: string[] = [];
   @Input() usages = 0;
-  @Output() nameClick = new EventEmitter<string>();
   readonly faLink = faLink;
 }
