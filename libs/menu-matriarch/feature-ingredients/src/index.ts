@@ -1,1 +1,1 @@
-export * from './lib/ingredients.component';
+export * from './lib/ingredients-routes';
