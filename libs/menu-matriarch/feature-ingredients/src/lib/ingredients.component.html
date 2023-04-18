@@ -1,0 +1,14 @@
+<ui-section *ngIf="ingredients$ | async as ingredients">
+  <div class="ui-section__toolbar">
+    <h2 class="title">
+      Ingredients ({{ ingredients.length }})
+    </h2>
+  </div>
+  <ul class="ui-section__content ingredients">
+    <app-ingredient-card *ngFor="let ingredient of ingredients"
+      [name]="ingredient.name"
+      [type]="ingredient.type"
+      [dishIds]="ingredient.dishIds"
+    ></app-ingredient-card>
+  </ul>
+</ui-section>

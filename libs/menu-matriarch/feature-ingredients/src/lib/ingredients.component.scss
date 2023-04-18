@@ -1,0 +1,11 @@
+@import 'main';
+
+:host {
+  display: block;
+}
+
+.title {
+  margin-right: spacing(16);
+  font-weight: font-weight(bold);
+  color: color($neutral, 4);
+}
