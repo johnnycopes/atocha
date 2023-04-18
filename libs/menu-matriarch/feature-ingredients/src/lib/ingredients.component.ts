@@ -1,13 +1,16 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 import { IngredientService } from '@atocha/menu-matriarch/data-access';
+import { SectionComponent } from '@atocha/menu-matriarch/ui-generic';
 
 @Component({
   standalone: true,
   selector: 'app-ingredients',
-  imports: [CommonModule],
-  template: `{{ ingredients$ | async | json }}`,
+  imports: [CommonModule, SectionComponent],
+  templateUrl: './ingredients.component.html',
+  styleUrls: ['./ingredients.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class IngredientsComponent {
   ingredients$ = this._ingredientService.getIngredients();

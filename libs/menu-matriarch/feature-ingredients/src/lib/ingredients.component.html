@@ -1,0 +1,10 @@
+<ui-section *ngIf="ingredients$ | async as ingredients">
+  <div class="ui-section__toolbar">
+    <h2 class="title">
+      Ingredients ({{ ingredients.length }})
+    </h2>
+  </div>
+  <ul class="ui-section__content ingredients">
+    {{ ingredients | json }}
+  </ul>
+</ui-section>
