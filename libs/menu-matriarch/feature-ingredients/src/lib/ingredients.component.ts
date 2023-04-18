@@ -4,7 +4,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { IngredientService } from '@atocha/menu-matriarch/data-access';
 import { ingredientTrackByFn } from '@atocha/menu-matriarch/ui-domain';
 import { SectionComponent } from '@atocha/menu-matriarch/ui-generic';
-import { IngredientCardComponent } from './ingredient-card/ingredient-card.component';
+import { IngredientsBoardComponent } from './ingredients-board/ingredients-board.component';
 
 @Component({
   standalone: true,
@@ -12,7 +12,7 @@ import { IngredientCardComponent } from './ingredient-card/ingredient-card.compo
   templateUrl: './ingredients.component.html',
   styleUrls: ['./ingredients.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [CommonModule, IngredientCardComponent, SectionComponent],
+  imports: [CommonModule, IngredientsBoardComponent, SectionComponent],
 })
 export class IngredientsComponent {
   ingredients$ = this._ingredientService.getIngredients();
