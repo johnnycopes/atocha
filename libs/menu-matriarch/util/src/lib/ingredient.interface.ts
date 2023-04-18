@@ -11,16 +11,20 @@ export interface Ingredient {
   dishIds: string[];
 }
 
-export type IngredientType =
-  | 'bread/bakery'
-  | 'condiment'
-  | 'canned/jarred good'
-  | 'dry good'
-  | 'frozen'
-  | 'grocery'
-  | 'meat/seafood'
-  | 'oil'
-  | 'produce'
-  | 'refrigerated'
-  | 'spice'
-  | 'uncategorized';
+export const INGREDIENT_TYPES = [
+  'bread/bakery',
+  'condiment',
+  'canned/jarred good',
+  'dry good',
+  'frozen',
+  'grocery',
+  'meat/seafood',
+  'oil',
+  'produce',
+  'refrigerated',
+  'spice',
+  'uncategorized',
+] as const;
+
+export type IngredientTypes = typeof INGREDIENT_TYPES;
+export type IngredientType = IngredientTypes[number];
