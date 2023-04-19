@@ -6,7 +6,7 @@
   </div>
   <ul class="ui-section__content ingredients">
     <app-ingredients-board
-      [columns]="columns"
+      [columns]="(columns$ | async) ?? []"
       [getColumnId]="getColumnId"
       [getColumnName]="getColumnName"
       [getColumnItems]="getColumnItems"

@@ -1,15 +1,17 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Observable, map, tap } from 'rxjs';
 
 import { IngredientService } from '@atocha/menu-matriarch/data-access';
 import { ingredientTrackByFn } from '@atocha/menu-matriarch/ui-domain';
 import { SectionComponent } from '@atocha/menu-matriarch/ui-generic';
 import { IngredientsBoardComponent } from './ingredients-board/ingredients-board.component';
+import { groupIngredientsByType } from './group-ingredients-by-type';
+import { Ingredient, IngredientType } from '@atocha/menu-matriarch/util';
 
-export interface KitchenLocation {
-  id: string;
-  name: string;
-  foods: string[];
+interface IngredientCategory {
+  type: IngredientType;
+  ingredients: Ingredient[];
 }
 
 @Component({
@@ -22,38 +24,28 @@ export interface KitchenLocation {
 })
 export class IngredientsComponent {
   ingredients$ = this._ingredientService.getIngredients();
-  trackByFn = ingredientTrackByFn;
 
-  columns: KitchenLocation[] = [
-    {
-      id: '01',
-      name: 'Refrigerator',
-      foods: ['Salmon', 'Cheese', 'Oat milk', 'Mustard'],
-    },
-    {
-      id: '02',
-      name: 'Freezer',
-      foods: ['Chicken', 'Mixed veggies'],
-    },
-    {
-      id: '03',
-      name: 'Pantry',
-      foods: [
-        'Avocados',
-        'Tomatoes',
-        'Bell peppers',
-        'Red onions',
-        'Sweet pototoes',
-      ],
-    },
-  ];
+  columns$: Observable<IngredientCategory[]> = this.ingredients$.pipe(
+    map((ingredients) =>
+      Object.entries(groupIngredientsByType(ingredients)).map(
+        ([type, ingredients]) => ({
+          type,
+          ingredients,
+        })
+      )
+    ),
+    tap(console.log)
+  );
+
+  trackByFn = ingredientTrackByFn;
 
   constructor(private _ingredientService: IngredientService) {}
 
-  getColumnId = ({ id }: KitchenLocation): string => id;
-  getColumnName = ({ name }: KitchenLocation): string => name;
-  getColumnItems = ({ foods }: KitchenLocation): string[] => foods;
-  getItemId = (food: string): string => food;
+  getColumnId = ({ type }: IngredientCategory): string => type;
+  getColumnName = ({ type }: IngredientCategory): string => type;
+  getColumnItems = ({ ingredients }: IngredientCategory): Ingredient[] =>
+    ingredients;
+  getItemId = ({ name }: Ingredient): string => name;
 
   onColumnMove(e: unknown) {
     console.log(e);
