@@ -5,8 +5,9 @@ import { CardComponent } from '@atocha/menu-matriarch/ui-generic';
 import { IngredientType } from '@atocha/menu-matriarch/util';
 
 @Component({
-  selector: 'app-ingredient-card',
   standalone: true,
+  // eslint-disable-next-line @angular-eslint/component-selector
+  selector: '[app-ingredient-card]',
   imports: [CardComponent, CommonModule],
   templateUrl: './ingredient-card.component.html',
   styleUrls: ['./ingredient-card.component.scss'],

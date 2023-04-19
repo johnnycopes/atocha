@@ -17,6 +17,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faEllipsisH } from '@fortawesome/free-solid-svg-icons';
 
 import { trackByFactory } from '@atocha/core/ui';
+import { IngredientCardComponent } from '../../ingredient-card/ingredient-card.component';
 import { IngredientsBoardFormComponent } from './ingredients-board-form/ingredients-board-form.component';
 
 export interface KanbanBoardItemAdd {
@@ -48,6 +49,7 @@ export interface KanbanColumnMove {
     CommonModule,
     DragDropModule,
     FontAwesomeModule,
+    IngredientCardComponent,
     IngredientsBoardFormComponent,
   ],
 })

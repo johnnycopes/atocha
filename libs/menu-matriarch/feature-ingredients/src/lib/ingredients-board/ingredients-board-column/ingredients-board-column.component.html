@@ -1,25 +1,24 @@
-<div class="core-kbc__toolbar">
-  <h2 class="name">
-    {{name}}
-  </h2>
-</div>
-<ul class="core-kbc__list"
+<h2 class="name">
+  {{ name }}
+</h2>
+
+<ul class="ingredients"
   cdkDropList
   [cdkDropListData]="items"
   (cdkDropListDropped)="onDropItem($event)"
 >
-  <li class="core-kbc__list-item"
-    [class.list-item--moving]="moving"
+  <li app-ingredient-card
     *ngFor="let item of items; trackBy: trackByFn"
+    class="ingredient"
+    [class.ingredient--moving]="moving"
+    [name]="getItemId(item)"
     cdkDrag
     [cdkDragData]="{
       columnId: id,
       item: item
     }"
     (cdkDragStarted)="onDragItem()"
-  >
-    {{ getItemId(item) }}
-  </li>
+  ></li>
 </ul>
 
 <app-ingredients-board-form (add)="onItemAdd($event)">

@@ -1,61 +1,43 @@
-.core-kbc {
-  margin-right: 8px;
-  padding: 8px;
-  padding-bottom: 12px;
-  // background-color: color($neutral, 8);
-  background-color: darkslateblue;
-  border-radius: 2px;
-  box-shadow: 0 1px 3px hsla(0deg, 0%, 0%, 20%);
+@import 'main';
 
-  &__toolbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 8px;
-    padding: 0 8px;
-    // color: color($neutral, 3);
-    color: cadetblue;
+:host {
+  margin-right: spacing(8);
+  padding: spacing(8);
+  padding-bottom: spacing(12);
+  background-color: color($neutral, 10);
+  border-radius: border(radius);
+  box-shadow: box-shadow(lightest);
+}
+
+.name {
+  margin-bottom: spacing(8);
+  @include small-caps;
+  color: color($neutral, 6);
+  font-size: font-size(16);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.ingredients {
+  min-height: spacing(8);
+  padding-bottom: spacing(8);
+}
+
+.ingredient {
+  &:not(:last-of-type) {
+    margin-bottom: spacing(8);
   }
 
-  &__name {
-    font-size: font-size(16);
-    // @include small-caps;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-weight: 700;
-  }
-
-  &__menu-icon {
-    cursor: pointer;
-  }
-
-  &__list {
-    min-height: 8px;
-    padding: 0 0 8px 0;
-  }
-
-  &__list-item {
-    list-style-type: none;
-    margin-bottom: 8px;
-    padding: 16px 8px;
-    background: #fff;
-    border-radius: 2px;
-    box-shadow: 0 1px 3px hsla(0deg, 0%, 0%, 20%);
-
-    &:last-child {
-      margin: 0;
+  &:hover {
+    ::ng-deep .kanban-board-column-item-hover {
+      opacity: 1;
     }
+  }
 
-    &:hover {
-      ::ng-deep .kanban-board-column-item-hover {
-        opacity: 1;
-      }
-    }
-
-    &--moving:hover {
-      ::ng-deep .kanban-board-column-item-hover {
-        opacity: 0;
-      }
+  &--moving:hover {
+    ::ng-deep .kanban-board-column-item-hover {
+      opacity: 0;
     }
   }
 }
