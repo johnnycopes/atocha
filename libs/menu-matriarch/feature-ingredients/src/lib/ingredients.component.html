@@ -5,6 +5,16 @@
     </h2>
   </div>
   <ul class="ui-section__content ingredients">
-    <app-ingredients-board></app-ingredients-board>
+    <app-ingredients-board
+      [columns]="columns"
+      [getColumnId]="getColumnId"
+      [getColumnName]="getColumnName"
+      [getColumnItems]="getColumnItems"
+      [getItemId]="getItemId"
+      (columnAdd)="onColumnAdd($event)"
+      (columnMove)="onColumnMove($event)"
+      (itemAdd)="onItemAdd($event)"
+      (itemMove)="onItemMove($event)"
+    ></app-ingredients-board>
   </ul>
 </ui-section>

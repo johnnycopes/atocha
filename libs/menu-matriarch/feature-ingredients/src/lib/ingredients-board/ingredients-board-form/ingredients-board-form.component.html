@@ -1,0 +1,33 @@
+<button class="new-button"
+  *ngIf="!adding; else addFormTemplate"
+  buttonStyle="secondary"
+  (click)="adding = true"
+>
+  <fa-icon [icon]="addNewIcon">
+  </fa-icon>
+  New {{name}}
+</button>
+<ng-template #addFormTemplate>
+  <form #form="ngForm"
+    (ngSubmit)="submitForm(form)"
+  >
+    <input type="text"
+      coreAutofocus
+      required
+      [name]="name"
+      [(ngModel)]="model"
+    />
+    <button
+      type="submit"
+      [disabled]="!model"
+    >
+      Add
+    </button>
+    <button
+      buttonStyle="ternary"
+      (click)="resetForm(form)"
+    >
+      Cancel
+    </button>
+  </form>
+</ng-template>

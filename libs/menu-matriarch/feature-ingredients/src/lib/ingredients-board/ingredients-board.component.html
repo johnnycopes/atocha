@@ -1,3 +1,32 @@
-<p>ingredients-board works!</p>
-
-<app-ingredients-board-column></app-ingredients-board-column>
+<main class="core-kb__container"
+  cdkDropList
+  cdkDropListOrientation="horizontal"
+  [cdkDropListData]="columns"
+  (cdkDropListDropped)="onDropColumn($event)"
+>
+  <div class="core-kb__columns"
+    cdkDropListGroup
+  >
+    <app-ingredients-board-column class="core-kb__column"
+      *ngFor="let column of columns; trackBy: trackByFn"
+      cdkDrag
+      [cdkDragData]="getColumnId(column)"
+      [id]="getColumnId(column)"
+      [name]="getColumnName(column)"
+      [items]="getColumnItems(column)"
+      [getItemId]="getItemId"
+      [itemUnit]="itemUnit"
+      [itemTemplate]="itemTemplate"
+      [actions]="actions"
+      (actionClick)="onActionClick($event)"
+      (itemAdd)="onItemAdd($event)"
+      (itemMove)="onItemMove($event)"
+      (cdkDragStarted)="onDragColumn()"
+      [(moving)]="moving"
+    ></app-ingredients-board-column>
+    <app-ingredients-board-form class="core-kb__column"
+      [name]="columnUnit"
+      (add)="onColumnAdd($event)"
+    ></app-ingredients-board-form>
+  </div>
+</main>

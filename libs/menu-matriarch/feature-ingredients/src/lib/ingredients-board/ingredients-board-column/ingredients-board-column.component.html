@@ -1,1 +1,40 @@
-<p>ingredients-board-column works!</p>
+<div class="core-kbc__toolbar">
+  <h2 class="name">
+    {{name}}
+  </h2>
+  <fa-icon class="core-kbc__menu-icon"
+    *ngIf="actions.length"
+    [icon]="menuIcon"
+  ></fa-icon>
+</div>
+<ul class="core-kbc__list"
+  cdkDropList
+  [cdkDropListData]="items"
+  (cdkDropListDropped)="onDropItem($event)"
+>
+  <li class="core-kbc__list-item"
+    [class.list-item--moving]="moving"
+    *ngFor="let item of items; trackBy: trackByFn"
+    cdkDrag
+    [cdkDragData]="{
+      columnId: id,
+      item: item
+    }"
+    (cdkDragStarted)="onDragItem()"
+    >
+      <ng-container
+        [ngTemplateOutlet]="itemTemplate ? itemTemplate : defaultTemplate"
+        [ngTemplateOutletContext]="{ $implicit: item }"
+      ></ng-container>
+  </li>
+</ul>
+<app-ingredients-board-form
+  [name]="itemUnit"
+  (add)="onItemAdd($event)"
+></app-ingredients-board-form>
+
+<ng-template #defaultTemplate
+  let-item
+>
+  {{ getItemId(item) }}
+</ng-template>
