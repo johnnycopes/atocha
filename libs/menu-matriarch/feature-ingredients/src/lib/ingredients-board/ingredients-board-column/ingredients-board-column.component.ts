@@ -20,11 +20,6 @@ import { faEllipsisH } from '@fortawesome/free-solid-svg-icons';
 import { trackByFactory } from '@atocha/core/ui';
 import { IngredientsBoardFormComponent } from './ingredients-board-form/ingredients-board-form.component';
 
-export interface KanbanBoardActionClick {
-  action: string;
-  columnId: string;
-}
-
 export interface KanbanBoardItemAdd {
   item: string;
   columnId: string;
@@ -64,12 +59,9 @@ export class IngredientsBoardColumnComponent<TItem> {
   @Input() itemTemplate: TemplateRef<unknown> | undefined;
   @Input() itemUnit = 'Item';
   @Input() getItemId: (item: TItem) => string = () => '';
-  @Input() actions: string[] = [];
   @Input() moving = false;
   @Output() itemAdd: EventEmitter<KanbanBoardItemAdd> = new EventEmitter();
   @Output() itemMove: EventEmitter<KanbanBoardItemMove> = new EventEmitter();
-  @Output() actionClick: EventEmitter<KanbanBoardActionClick> =
-    new EventEmitter();
   @Output() movingChange: EventEmitter<boolean> = new EventEmitter();
   readonly menuIcon = faEllipsisH;
   hoverStatesDict: Record<string, boolean> = {};
@@ -105,13 +97,6 @@ export class IngredientsBoardColumnComponent<TItem> {
       currentIndex,
     });
     this.movingChange.emit(false);
-  }
-
-  onActionClick(action: string): void {
-    this.actionClick.emit({
-      action,
-      columnId: this.id,
-    });
   }
 
   onItemAdd(newItemName: string): void {

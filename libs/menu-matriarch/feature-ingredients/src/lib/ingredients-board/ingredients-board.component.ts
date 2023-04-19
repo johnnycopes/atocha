@@ -18,7 +18,6 @@ import {
 import { trackByFactory } from '@atocha/core/ui';
 import {
   KanbanBoardItemAdd,
-  KanbanBoardActionClick,
   KanbanBoardItemMove,
   IngredientsBoardColumnComponent,
 } from './ingredients-board-column/ingredients-board-column.component';
@@ -45,7 +44,6 @@ export interface KanbanColumnMove {
 export class IngredientsBoardComponent<TColumn, TItem> {
   @Input() columns: TColumn[] = [];
   @Input() itemTemplate: TemplateRef<unknown> | undefined;
-  @Input() actions: string[] = [];
   @Input() itemUnit = 'Item';
   @Input() getColumnId: (node: TColumn) => string = () => '';
   @Input() getColumnName: (node: TColumn) => string = () => '';
@@ -54,8 +52,6 @@ export class IngredientsBoardComponent<TColumn, TItem> {
   @Output() columnMove: EventEmitter<KanbanColumnMove> = new EventEmitter();
   @Output() itemAdd: EventEmitter<KanbanBoardItemAdd> = new EventEmitter();
   @Output() itemMove: EventEmitter<KanbanBoardItemMove> = new EventEmitter();
-  @Output() actionClick: EventEmitter<KanbanBoardActionClick> =
-    new EventEmitter();
   moving = false;
   trackByFn = trackByFactory(this.getColumnId);
 
@@ -85,9 +81,5 @@ export class IngredientsBoardComponent<TColumn, TItem> {
 
   onItemMove(event: KanbanBoardItemMove): void {
     this.itemMove.emit(event);
-  }
-
-  onActionClick(event: KanbanBoardActionClick): void {
-    this.actionClick.emit(event);
   }
 }
