@@ -63,7 +63,6 @@ export class IngredientsBoardColumnComponent {
   @Output() movingChange = new EventEmitter<boolean>();
   readonly menuIcon = faEllipsisH;
   readonly trackByFn = ingredientTrackByFn;
-  hoverStatesDict: Record<string, boolean> = {};
 
   onDragItem(): void {
     this.movingChange.emit(true);
