@@ -18,7 +18,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faEllipsisH } from '@fortawesome/free-solid-svg-icons';
 
 import { trackByFactory } from '@atocha/core/ui';
-import { IngredientsBoardFormComponent } from '../ingredients-board-form/ingredients-board-form.component';
+import { IngredientsBoardFormComponent } from './ingredients-board-form/ingredients-board-form.component';
 
 export interface KanbanBoardActionClick {
   action: string;
@@ -47,15 +47,15 @@ export interface KanbanColumnMove {
 @Component({
   selector: 'app-ingredients-board-column',
   standalone: true,
+  templateUrl: './ingredients-board-column.component.html',
+  styleUrls: ['./ingredients-board-column.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     CommonModule,
     DragDropModule,
     FontAwesomeModule,
     IngredientsBoardFormComponent,
   ],
-  templateUrl: './ingredients-board-column.component.html',
-  styleUrls: ['./ingredients-board-column.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class IngredientsBoardColumnComponent<TItem> {
   @Input() id = '';
