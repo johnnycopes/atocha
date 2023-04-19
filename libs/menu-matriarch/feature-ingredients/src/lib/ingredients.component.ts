@@ -1,15 +1,15 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { Observable, map, tap } from 'rxjs';
+import { Observable, map } from 'rxjs';
 
 import { IngredientService } from '@atocha/menu-matriarch/data-access';
 import { SectionComponent } from '@atocha/menu-matriarch/ui-generic';
+import { Ingredient, IngredientType } from '@atocha/menu-matriarch/util';
 import { IngredientsBoardComponent } from './ingredients-board/ingredients-board.component';
 import { groupIngredientsByType } from './group-ingredients-by-type';
-import { Ingredient, IngredientType } from '@atocha/menu-matriarch/util';
 
 export interface IngredientColumn {
-  type: IngredientType;
+  name: IngredientType;
   ingredients: Ingredient[];
 }
 
@@ -28,12 +28,11 @@ export class IngredientsComponent {
     map((ingredients) =>
       Object.entries(groupIngredientsByType(ingredients)).map(
         ([type, ingredients]) => ({
-          type,
+          name: type as IngredientType,
           ingredients,
         })
       )
-    ),
-    tap(console.log)
+    )
   );
 
   constructor(private _ingredientService: IngredientService) {}

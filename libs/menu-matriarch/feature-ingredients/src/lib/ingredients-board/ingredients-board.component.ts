@@ -42,7 +42,7 @@ export class IngredientsBoardComponent {
   @Output() itemAdd = new EventEmitter<ItemAdd>();
   @Output() itemMove = new EventEmitter<ItemMove>();
   moving = false;
-  trackByFn = trackByFactory(({ type }: IngredientColumn) => type);
+  trackByFn = trackByFactory(({ name: type }: IngredientColumn) => type);
 
   onDragColumn(): void {
     this.moving = true;
