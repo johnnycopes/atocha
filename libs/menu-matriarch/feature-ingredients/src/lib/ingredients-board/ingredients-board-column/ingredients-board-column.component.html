@@ -28,10 +28,9 @@
       ></ng-container>
   </li>
 </ul>
-<app-ingredients-board-form
-  [name]="itemUnit"
-  (add)="onItemAdd($event)"
-></app-ingredients-board-form>
+
+<app-ingredients-board-form (add)="onItemAdd($event)">
+</app-ingredients-board-form>
 
 <ng-template #defaultTemplate
   let-item

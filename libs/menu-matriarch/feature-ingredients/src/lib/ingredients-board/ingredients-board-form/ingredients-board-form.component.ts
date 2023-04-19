@@ -1,13 +1,11 @@
 import { CommonModule } from '@angular/common';
 import {
   Component,
-  Input,
   Output,
   EventEmitter,
   ChangeDetectionStrategy,
 } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
 import { ButtonComponent } from '@atocha/core/ui';
 import { InlineNameEditComponent } from '@atocha/menu-matriarch/ui-domain';
@@ -26,9 +24,6 @@ import { InlineNameEditComponent } from '@atocha/menu-matriarch/ui-domain';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class IngredientsBoardFormComponent {
-  @Input() name = '';
   @Output() add = new EventEmitter<string>();
-
-  readonly addNewIcon = faPlus;
   adding = false;
 }
