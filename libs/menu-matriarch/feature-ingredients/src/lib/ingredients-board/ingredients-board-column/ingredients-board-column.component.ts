@@ -55,7 +55,6 @@ export interface ColumnMove {
   ],
 })
 export class IngredientsBoardColumnComponent {
-  @Input() id = '';
   @Input() name = '';
   @Input() ingredients: Ingredient[] = [];
   @Input() moving = false;
@@ -91,7 +90,7 @@ export class IngredientsBoardColumnComponent {
     this.itemMove.emit({
       itemId: item.data.item.name,
       previousColumnId: item.data.columnId,
-      currentColumnId: this.id,
+      currentColumnId: this.name,
       previousIndex,
       currentIndex,
     });
@@ -101,7 +100,7 @@ export class IngredientsBoardColumnComponent {
   onItemAdd(newItemName: string): void {
     this.itemAdd.emit({
       item: newItemName,
-      columnId: this.id,
+      columnId: this.name,
     });
   }
 }
