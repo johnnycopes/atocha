@@ -56,22 +56,22 @@ export class IngredientsComponent {
   getItemId = (food: string): string => food;
 
   onColumnAdd(e: unknown) {
-    e;
+    console.log(e);
   }
 
   onColumnMove(e: unknown) {
-    e;
+    console.log(e);
   }
 
   onItemAdd(e: unknown) {
-    e;
+    console.log(e);
   }
 
   onItemMove(e: unknown) {
-    e;
+    console.log(e);
   }
 
   actionClick(e: unknown) {
-    e;
+    console.log(e);
   }
 }
