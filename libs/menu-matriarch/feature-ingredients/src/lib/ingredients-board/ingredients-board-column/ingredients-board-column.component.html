@@ -17,19 +17,10 @@
       item: item
     }"
     (cdkDragStarted)="onDragItem()"
-    >
-      <ng-container
-        [ngTemplateOutlet]="itemTemplate ? itemTemplate : defaultTemplate"
-        [ngTemplateOutletContext]="{ $implicit: item }"
-      ></ng-container>
+  >
+    {{ getItemId(item) }}
   </li>
 </ul>
 
 <app-ingredients-board-form (add)="onItemAdd($event)">
 </app-ingredients-board-form>
-
-<ng-template #defaultTemplate
-  let-item
->
-  {{ getItemId(item) }}
-</ng-template>

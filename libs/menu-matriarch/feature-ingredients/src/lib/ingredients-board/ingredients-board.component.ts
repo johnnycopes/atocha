@@ -6,7 +6,6 @@ import {
   ChangeDetectionStrategy,
   Output,
   EventEmitter,
-  TemplateRef,
   ViewEncapsulation,
 } from '@angular/core';
 import {
@@ -43,7 +42,6 @@ export interface KanbanColumnMove {
 })
 export class IngredientsBoardComponent<TColumn, TItem> {
   @Input() columns: TColumn[] = [];
-  @Input() itemTemplate: TemplateRef<unknown> | undefined;
   @Input() getColumnId: (node: TColumn) => string = () => '';
   @Input() getColumnName: (node: TColumn) => string = () => '';
   @Input() getColumnItems: (node: TColumn) => TItem[] = () => [];

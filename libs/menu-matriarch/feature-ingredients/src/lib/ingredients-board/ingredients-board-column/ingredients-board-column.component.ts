@@ -6,7 +6,6 @@ import {
   Output,
   EventEmitter,
   ChangeDetectionStrategy,
-  TemplateRef,
 } from '@angular/core';
 import {
   CdkDragDrop,
@@ -56,7 +55,6 @@ export class IngredientsBoardColumnComponent<TItem> {
   @Input() id = '';
   @Input() name = '';
   @Input() items: TItem[] = [];
-  @Input() itemTemplate: TemplateRef<unknown> | undefined;
   @Input() getItemId: (item: TItem) => string = () => '';
   @Input() moving = false;
   @Output() itemAdd: EventEmitter<KanbanBoardItemAdd> = new EventEmitter();
