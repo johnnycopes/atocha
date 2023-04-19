@@ -9,7 +9,7 @@ import { IngredientsBoardComponent } from './ingredients-board/ingredients-board
 import { groupIngredientsByType } from './group-ingredients-by-type';
 import { Ingredient, IngredientType } from '@atocha/menu-matriarch/util';
 
-interface IngredientCategory {
+interface IngredientColumn {
   type: IngredientType;
   ingredients: Ingredient[];
 }
@@ -25,7 +25,7 @@ interface IngredientCategory {
 export class IngredientsComponent {
   ingredients$ = this._ingredientService.getIngredients();
 
-  columns$: Observable<IngredientCategory[]> = this.ingredients$.pipe(
+  columns$: Observable<IngredientColumn[]> = this.ingredients$.pipe(
     map((ingredients) =>
       Object.entries(groupIngredientsByType(ingredients)).map(
         ([type, ingredients]) => ({
@@ -41,9 +41,9 @@ export class IngredientsComponent {
 
   constructor(private _ingredientService: IngredientService) {}
 
-  getColumnId = ({ type }: IngredientCategory): string => type;
-  getColumnName = ({ type }: IngredientCategory): string => type;
-  getColumnItems = ({ ingredients }: IngredientCategory): Ingredient[] =>
+  getColumnId = ({ type }: IngredientColumn): string => type;
+  getColumnName = ({ type }: IngredientColumn): string => type;
+  getColumnItems = ({ ingredients }: IngredientColumn): Ingredient[] =>
     ingredients;
   getItemId = ({ name }: Ingredient): string => name;
 
