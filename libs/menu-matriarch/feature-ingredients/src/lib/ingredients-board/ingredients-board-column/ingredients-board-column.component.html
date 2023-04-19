@@ -4,19 +4,19 @@
 
 <ul class="ingredients"
   cdkDropList
-  [cdkDropListData]="items"
+  [cdkDropListData]="ingredients"
   (cdkDropListDropped)="onDropItem($event)"
 >
   <li app-ingredient-card
-    *ngFor="let item of items; trackBy: trackByFn"
+    *ngFor="let ingredient of ingredients; trackBy: trackByFn"
     class="ingredient"
     [class.ingredient--moving]="moving"
-    [name]="item.name"
-    [dishes]="item.dishIds"
+    [name]="ingredient.name"
+    [dishes]="ingredient.dishIds"
     cdkDrag
     [cdkDragData]="{
       columnId: id,
-      item: item
+      item: ingredient
     }"
     (cdkDragStarted)="onDragItem()"
   ></li>

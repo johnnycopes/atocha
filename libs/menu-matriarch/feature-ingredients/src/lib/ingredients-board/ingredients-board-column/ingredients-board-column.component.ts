@@ -57,7 +57,7 @@ export interface KanbanColumnMove {
 export class IngredientsBoardColumnComponent {
   @Input() id = '';
   @Input() name = '';
-  @Input() items: Ingredient[] = [];
+  @Input() ingredients: Ingredient[] = [];
   @Input() moving = false;
   @Output() itemAdd: EventEmitter<KanbanBoardItemAdd> = new EventEmitter();
   @Output() itemMove: EventEmitter<KanbanBoardItemMove> = new EventEmitter();
