@@ -20,6 +20,7 @@ import {
   KanbanBoardItemMove,
   IngredientsBoardColumnComponent,
 } from './ingredients-board-column/ingredients-board-column.component';
+import { IngredientColumn } from '../ingredients.component';
 
 export interface KanbanColumnMove {
   columnId: string;
@@ -40,29 +41,25 @@ export interface KanbanColumnMove {
     class: 'core-kb',
   },
 })
-export class IngredientsBoardComponent<TColumn, TItem> {
-  @Input() columns: TColumn[] = [];
-  @Input() getColumnId: (node: TColumn) => string = () => '';
-  @Input() getColumnName: (node: TColumn) => string = () => '';
-  @Input() getColumnItems: (node: TColumn) => TItem[] = () => [];
-  @Input() getItemId: (node: TItem) => string = () => '';
+export class IngredientsBoardComponent {
+  @Input() columns: IngredientColumn[] = [];
   @Output() columnMove: EventEmitter<KanbanColumnMove> = new EventEmitter();
   @Output() itemAdd: EventEmitter<KanbanBoardItemAdd> = new EventEmitter();
   @Output() itemMove: EventEmitter<KanbanBoardItemMove> = new EventEmitter();
   moving = false;
-  trackByFn = trackByFactory(this.getColumnId);
+  trackByFn = trackByFactory(({ type }: IngredientColumn) => type);
 
   onDragColumn(): void {
     this.moving = true;
   }
 
-  onDropColumn(event: CdkDragDrop<TColumn[]>): void {
+  onDropColumn(event: CdkDragDrop<IngredientColumn[]>): void {
     const {
       item,
       previousIndex,
       currentIndex,
       container,
-    }: CdkDragDrop<TColumn[]> = event;
+    }: CdkDragDrop<IngredientColumn[]> = event;
     moveItemInArray(container.data, previousIndex, currentIndex);
     this.columnMove.emit({
       columnId: item.data,

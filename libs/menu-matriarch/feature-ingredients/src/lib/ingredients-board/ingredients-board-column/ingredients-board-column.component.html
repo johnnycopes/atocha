@@ -11,7 +11,8 @@
     *ngFor="let item of items; trackBy: trackByFn"
     class="ingredient"
     [class.ingredient--moving]="moving"
-    [name]="getItemId(item)"
+    [name]="item.name"
+    [dishes]="item.dishIds"
     cdkDrag
     [cdkDragData]="{
       columnId: id,

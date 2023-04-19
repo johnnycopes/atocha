@@ -3,13 +3,12 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Observable, map, tap } from 'rxjs';
 
 import { IngredientService } from '@atocha/menu-matriarch/data-access';
-import { ingredientTrackByFn } from '@atocha/menu-matriarch/ui-domain';
 import { SectionComponent } from '@atocha/menu-matriarch/ui-generic';
 import { IngredientsBoardComponent } from './ingredients-board/ingredients-board.component';
 import { groupIngredientsByType } from './group-ingredients-by-type';
 import { Ingredient, IngredientType } from '@atocha/menu-matriarch/util';
 
-interface IngredientColumn {
+export interface IngredientColumn {
   type: IngredientType;
   ingredients: Ingredient[];
 }
@@ -37,15 +36,7 @@ export class IngredientsComponent {
     tap(console.log)
   );
 
-  trackByFn = ingredientTrackByFn;
-
   constructor(private _ingredientService: IngredientService) {}
-
-  getColumnId = ({ type }: IngredientColumn): string => type;
-  getColumnName = ({ type }: IngredientColumn): string => type;
-  getColumnItems = ({ ingredients }: IngredientColumn): Ingredient[] =>
-    ingredients;
-  getItemId = ({ name }: Ingredient): string => name;
 
   onColumnMove(e: unknown) {
     console.log(e);

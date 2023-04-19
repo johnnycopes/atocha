@@ -7,10 +7,6 @@
   <ul class="ui-section__content ingredients">
     <app-ingredients-board
       [columns]="(columns$ | async) ?? []"
-      [getColumnId]="getColumnId"
-      [getColumnName]="getColumnName"
-      [getColumnItems]="getColumnItems"
-      [getItemId]="getItemId"
       (columnMove)="onColumnMove($event)"
       (itemAdd)="onItemAdd($event)"
       (itemMove)="onItemMove($event)"

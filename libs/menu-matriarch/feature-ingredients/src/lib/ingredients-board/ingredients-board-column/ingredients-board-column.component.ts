@@ -16,9 +16,10 @@ import {
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faEllipsisH } from '@fortawesome/free-solid-svg-icons';
 
-import { trackByFactory } from '@atocha/core/ui';
 import { IngredientCardComponent } from '../../ingredient-card/ingredient-card.component';
 import { IngredientsBoardFormComponent } from './ingredients-board-form/ingredients-board-form.component';
+import { Ingredient } from '@atocha/menu-matriarch/util';
+import { ingredientTrackByFn } from '@atocha/menu-matriarch/ui-domain';
 
 export interface KanbanBoardItemAdd {
   item: string;
@@ -53,31 +54,30 @@ export interface KanbanColumnMove {
     IngredientsBoardFormComponent,
   ],
 })
-export class IngredientsBoardColumnComponent<TItem> {
+export class IngredientsBoardColumnComponent {
   @Input() id = '';
   @Input() name = '';
-  @Input() items: TItem[] = [];
-  @Input() getItemId: (item: TItem) => string = () => '';
+  @Input() items: Ingredient[] = [];
   @Input() moving = false;
   @Output() itemAdd: EventEmitter<KanbanBoardItemAdd> = new EventEmitter();
   @Output() itemMove: EventEmitter<KanbanBoardItemMove> = new EventEmitter();
   @Output() movingChange: EventEmitter<boolean> = new EventEmitter();
   readonly menuIcon = faEllipsisH;
+  readonly trackByFn = ingredientTrackByFn;
   hoverStatesDict: Record<string, boolean> = {};
-  trackByFn = trackByFactory(this.getItemId);
 
   onDragItem(): void {
     this.movingChange.emit(true);
   }
 
-  onDropItem(event: CdkDragDrop<TItem[]>): void {
+  onDropItem(event: CdkDragDrop<Ingredient[]>): void {
     const {
       item,
       previousIndex,
       currentIndex,
       previousContainer,
       container,
-    }: CdkDragDrop<TItem[]> = event;
+    }: CdkDragDrop<Ingredient[]> = event;
     if (previousContainer.id === container.id) {
       moveItemInArray(container.data, previousIndex, currentIndex);
     } else {
@@ -89,7 +89,7 @@ export class IngredientsBoardColumnComponent<TItem> {
       );
     }
     this.itemMove.emit({
-      itemId: this.getItemId(item.data.item),
+      itemId: item.data.item.name,
       previousColumnId: item.data.columnId,
       currentColumnId: this.id,
       previousIndex,
