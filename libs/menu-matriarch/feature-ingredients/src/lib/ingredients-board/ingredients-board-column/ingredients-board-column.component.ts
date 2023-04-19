@@ -57,7 +57,6 @@ export class IngredientsBoardColumnComponent<TItem> {
   @Input() name = '';
   @Input() items: TItem[] = [];
   @Input() itemTemplate: TemplateRef<unknown> | undefined;
-  @Input() itemUnit = 'Item';
   @Input() getItemId: (item: TItem) => string = () => '';
   @Input() moving = false;
   @Output() itemAdd: EventEmitter<KanbanBoardItemAdd> = new EventEmitter();

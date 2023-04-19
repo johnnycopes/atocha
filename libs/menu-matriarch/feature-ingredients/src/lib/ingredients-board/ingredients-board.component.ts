@@ -44,7 +44,6 @@ export interface KanbanColumnMove {
 export class IngredientsBoardComponent<TColumn, TItem> {
   @Input() columns: TColumn[] = [];
   @Input() itemTemplate: TemplateRef<unknown> | undefined;
-  @Input() itemUnit = 'Item';
   @Input() getColumnId: (node: TColumn) => string = () => '';
   @Input() getColumnName: (node: TColumn) => string = () => '';
   @Input() getColumnItems: (node: TColumn) => TItem[] = () => [];
