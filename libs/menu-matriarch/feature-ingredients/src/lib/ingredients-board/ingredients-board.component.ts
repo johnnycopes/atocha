@@ -16,17 +16,12 @@ import {
 
 import { trackByFactory } from '@atocha/core/ui';
 import {
-  KanbanBoardItemAdd,
-  KanbanBoardItemMove,
+  ItemAdd,
+  ItemMove,
   IngredientsBoardColumnComponent,
+  ColumnMove,
 } from './ingredients-board-column/ingredients-board-column.component';
 import { IngredientColumn } from '../ingredients.component';
-
-export interface KanbanColumnMove {
-  columnId: string;
-  currentIndex: number;
-  previousIndex: number;
-}
 
 @Component({
   standalone: true,
@@ -43,9 +38,9 @@ export interface KanbanColumnMove {
 })
 export class IngredientsBoardComponent {
   @Input() columns: IngredientColumn[] = [];
-  @Output() columnMove: EventEmitter<KanbanColumnMove> = new EventEmitter();
-  @Output() itemAdd: EventEmitter<KanbanBoardItemAdd> = new EventEmitter();
-  @Output() itemMove: EventEmitter<KanbanBoardItemMove> = new EventEmitter();
+  @Output() columnMove = new EventEmitter<ColumnMove>();
+  @Output() itemAdd = new EventEmitter<ItemAdd>();
+  @Output() itemMove = new EventEmitter<ItemMove>();
   moving = false;
   trackByFn = trackByFactory(({ type }: IngredientColumn) => type);
 
@@ -69,11 +64,11 @@ export class IngredientsBoardComponent {
     this.moving = false;
   }
 
-  onItemAdd(event: KanbanBoardItemAdd): void {
+  onItemAdd(event: ItemAdd): void {
     this.itemAdd.emit(event);
   }
 
-  onItemMove(event: KanbanBoardItemMove): void {
+  onItemMove(event: ItemMove): void {
     this.itemMove.emit(event);
   }
 }

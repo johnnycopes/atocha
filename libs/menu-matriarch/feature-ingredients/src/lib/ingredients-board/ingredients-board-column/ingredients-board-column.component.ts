@@ -21,12 +21,12 @@ import { IngredientsBoardFormComponent } from './ingredients-board-form/ingredie
 import { Ingredient } from '@atocha/menu-matriarch/util';
 import { ingredientTrackByFn } from '@atocha/menu-matriarch/ui-domain';
 
-export interface KanbanBoardItemAdd {
+export interface ItemAdd {
   item: string;
   columnId: string;
 }
 
-export interface KanbanBoardItemMove {
+export interface ItemMove {
   itemId: string;
   currentColumnId: string;
   previousColumnId: string;
@@ -34,7 +34,7 @@ export interface KanbanBoardItemMove {
   previousIndex: number;
 }
 
-export interface KanbanColumnMove {
+export interface ColumnMove {
   columnId: string;
   currentIndex: number;
   previousIndex: number;
@@ -59,9 +59,9 @@ export class IngredientsBoardColumnComponent {
   @Input() name = '';
   @Input() ingredients: Ingredient[] = [];
   @Input() moving = false;
-  @Output() itemAdd: EventEmitter<KanbanBoardItemAdd> = new EventEmitter();
-  @Output() itemMove: EventEmitter<KanbanBoardItemMove> = new EventEmitter();
-  @Output() movingChange: EventEmitter<boolean> = new EventEmitter();
+  @Output() itemAdd = new EventEmitter<ItemAdd>();
+  @Output() itemMove = new EventEmitter<ItemMove>();
+  @Output() movingChange = new EventEmitter<boolean>();
   readonly menuIcon = faEllipsisH;
   readonly trackByFn = ingredientTrackByFn;
   hoverStatesDict: Record<string, boolean> = {};
