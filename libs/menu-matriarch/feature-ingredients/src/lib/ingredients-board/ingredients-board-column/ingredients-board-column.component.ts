@@ -44,7 +44,10 @@ export interface ColumnMove {
   standalone: true,
   selector: 'app-ingredients-board-column',
   templateUrl: './ingredients-board-column.component.html',
-  styleUrls: ['./ingredients-board-column.component.scss'],
+  styleUrls: [
+    '../ingredients-board.scss',
+    './ingredients-board-column.component.scss',
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     CommonModule,
