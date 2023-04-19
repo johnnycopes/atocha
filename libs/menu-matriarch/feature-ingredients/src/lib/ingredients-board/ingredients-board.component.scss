@@ -1,13 +1,15 @@
-.core-kb {
-  &__columns {
-    display: flex;
-    align-items: flex-start;
-  }
+@import 'main';
 
-  &__column {
-    flex: 1;
-    max-width: 384px;
-  }
+.columns {
+  display: flex;
+  align-items: flex-start;
+  height: 100%;
+  overflow: auto;
+}
+
+.column {
+  flex: 1 0 spacing(384);
+  margin-right: spacing(8);
 }
 
 .cdk-drop-list-dragging ::ng-deep:not(.cdk-drag-placeholder) {

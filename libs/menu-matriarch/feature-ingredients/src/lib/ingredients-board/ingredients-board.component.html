@@ -1,22 +1,19 @@
-<main class="core-kb__container"
+<div class="columns"
   cdkDropList
+  cdkDropListGroup
   cdkDropListOrientation="horizontal"
   [cdkDropListData]="columns"
   (cdkDropListDropped)="onDropColumn($event)"
 >
-  <div class="core-kb__columns"
-    cdkDropListGroup
-  >
-    <app-ingredients-board-column class="core-kb__column"
-      *ngFor="let column of columns; trackBy: trackByFn"
-      cdkDrag
-      [cdkDragData]="column.name"
-      [name]="column.name"
-      [ingredients]="column.ingredients"
-      (itemAdd)="onItemAdd($event)"
-      (itemMove)="onItemMove($event)"
-      (cdkDragStarted)="onDragColumn()"
-      [(moving)]="moving"
-    ></app-ingredients-board-column>
-  </div>
-</main>
+  <app-ingredients-board-column class="column"
+    *ngFor="let column of columns; trackBy: trackByFn"
+    cdkDrag
+    [cdkDragData]="column.name"
+    [name]="column.name"
+    [ingredients]="column.ingredients"
+    (itemAdd)="onItemAdd($event)"
+    (itemMove)="onItemMove($event)"
+    (cdkDragStarted)="onDragColumn()"
+    [(moving)]="moving"
+  ></app-ingredients-board-column>
+</div>

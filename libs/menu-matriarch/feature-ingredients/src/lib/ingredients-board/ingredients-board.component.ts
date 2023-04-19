@@ -6,7 +6,6 @@ import {
   ChangeDetectionStrategy,
   Output,
   EventEmitter,
-  ViewEncapsulation,
 } from '@angular/core';
 import {
   CdkDragDrop,
@@ -30,11 +29,6 @@ import { IngredientColumn } from '../ingredients.component';
   templateUrl: './ingredients-board.component.html',
   styleUrls: ['./ingredients-board.scss', './ingredients-board.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
-  // eslint-disable-next-line @angular-eslint/no-host-metadata-property
-  host: {
-    class: 'core-kb',
-  },
 })
 export class IngredientsBoardComponent {
   @Input() columns: IngredientColumn[] = [];

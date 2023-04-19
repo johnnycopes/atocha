@@ -41,8 +41,8 @@ export interface ColumnMove {
 }
 
 @Component({
-  selector: 'app-ingredients-board-column',
   standalone: true,
+  selector: 'app-ingredients-board-column',
   templateUrl: './ingredients-board-column.component.html',
   styleUrls: ['./ingredients-board-column.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -50,8 +50,8 @@ export interface ColumnMove {
     CommonModule,
     DragDropModule,
     FontAwesomeModule,
-    IngredientCardComponent,
     IngredientsBoardFormComponent,
+    IngredientCardComponent,
   ],
 })
 export class IngredientsBoardColumnComponent {
