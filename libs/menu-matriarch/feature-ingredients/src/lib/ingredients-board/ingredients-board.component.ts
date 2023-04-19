@@ -15,14 +15,13 @@ import {
   moveItemInArray,
 } from '@angular/cdk/drag-drop';
 
+import { trackByFactory } from '@atocha/core/ui';
 import {
   KanbanBoardItemAdd,
   KanbanBoardActionClick,
   KanbanBoardItemMove,
   IngredientsBoardColumnComponent,
 } from './ingredients-board-column/ingredients-board-column.component';
-import { IngredientsBoardFormComponent } from './ingredients-board-form/ingredients-board-form.component';
-import { trackByFactory } from '@atocha/core/ui';
 
 export interface KanbanColumnMove {
   columnId: string;
@@ -33,12 +32,7 @@ export interface KanbanColumnMove {
 @Component({
   standalone: true,
   selector: 'app-ingredients-board',
-  imports: [
-    CommonModule,
-    DragDropModule,
-    IngredientsBoardColumnComponent,
-    IngredientsBoardFormComponent,
-  ],
+  imports: [CommonModule, DragDropModule, IngredientsBoardColumnComponent],
   templateUrl: './ingredients-board.component.html',
   styleUrls: ['./ingredients-board.scss', './ingredients-board.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -52,13 +46,11 @@ export class IngredientsBoardComponent<TColumn, TItem> {
   @Input() columns: TColumn[] = [];
   @Input() itemTemplate: TemplateRef<unknown> | undefined;
   @Input() actions: string[] = [];
-  @Input() columnUnit = 'Column';
   @Input() itemUnit = 'Item';
   @Input() getColumnId: (node: TColumn) => string = () => '';
   @Input() getColumnName: (node: TColumn) => string = () => '';
   @Input() getColumnItems: (node: TColumn) => TItem[] = () => [];
   @Input() getItemId: (node: TItem) => string = () => '';
-  @Output() columnAdd: EventEmitter<string> = new EventEmitter();
   @Output() columnMove: EventEmitter<KanbanColumnMove> = new EventEmitter();
   @Output() itemAdd: EventEmitter<KanbanBoardItemAdd> = new EventEmitter();
   @Output() itemMove: EventEmitter<KanbanBoardItemMove> = new EventEmitter();
@@ -66,10 +58,6 @@ export class IngredientsBoardComponent<TColumn, TItem> {
     new EventEmitter();
   moving = false;
   trackByFn = trackByFactory(this.getColumnId);
-
-  onColumnAdd(newColumnName: string): void {
-    this.columnAdd.emit(newColumnName);
-  }
 
   onDragColumn(): void {
     this.moving = true;

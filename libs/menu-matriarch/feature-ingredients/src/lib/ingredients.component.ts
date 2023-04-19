@@ -55,10 +55,6 @@ export class IngredientsComponent {
   getColumnItems = ({ foods }: KitchenLocation): string[] => foods;
   getItemId = (food: string): string => food;
 
-  onColumnAdd(e: unknown) {
-    console.log(e);
-  }
-
   onColumnMove(e: unknown) {
     console.log(e);
   }
