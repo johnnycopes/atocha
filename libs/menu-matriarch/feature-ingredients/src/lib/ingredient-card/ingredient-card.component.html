@@ -1,3 +1,10 @@
-<ui-card>
-  {{ name }} | {{ type }} | {{ dishIds.length }}
+<ui-card class="ingredient">
+  <h4>
+    {{ name }}
+  </h4>
+  <ui-count
+    class="count"
+    type="dishes"
+    [count]="dishes.length"
+  ></ui-count>
 </ui-card>
