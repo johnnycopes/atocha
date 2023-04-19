@@ -6,11 +6,11 @@ export function groupIngredientsByType(
   const record: Record<IngredientType, Ingredient[]> = {
     'bread/bakery': [],
     'canned/jarred good': [],
-    'dry good': [],
-    'meat/seafood': [],
     condiment: [],
+    'dry good': [],
     frozen: [],
     grocery: [],
+    'meat/seafood': [],
     oil: [],
     produce: [],
     refrigerated: [],
