@@ -48,8 +48,4 @@ export class IngredientsComponent {
   onItemMove(e: unknown) {
     console.log(e);
   }
-
-  actionClick(e: unknown) {
-    console.log(e);
-  }
 }
