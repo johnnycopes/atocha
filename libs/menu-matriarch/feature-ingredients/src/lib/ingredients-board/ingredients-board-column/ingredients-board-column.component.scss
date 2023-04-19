@@ -27,16 +27,4 @@
   &:not(:last-of-type) {
     margin-bottom: spacing(8);
   }
-
-  &:hover {
-    ::ng-deep .kanban-board-column-item-hover {
-      opacity: 1;
-    }
-  }
-
-  &--moving:hover {
-    ::ng-deep .kanban-board-column-item-hover {
-      opacity: 0;
-    }
-  }
 }
