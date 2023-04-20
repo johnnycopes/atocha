@@ -19,8 +19,37 @@ import { InlineNameEditComponent } from '@atocha/menu-matriarch/ui-domain';
     FontAwesomeModule,
     InlineNameEditComponent,
   ],
-  templateUrl: './ingredients-board-form.component.html',
-  styleUrls: ['./ingredients-board-form.component.scss'],
+  template: `
+    <button
+      core-button="secondary"
+      *ngIf="!adding; else addFormTemplate"
+      class="new-button"
+      (click)="adding = true"
+    >
+      New Ingredient
+    </button>
+
+    <ng-template #addFormTemplate>
+      <ui-inline-name-edit
+        class="form"
+        (cancel)="adding = false"
+        (save)="this.add.emit($event); adding = false"
+      ></ui-inline-name-edit>
+    </ng-template>
+  `,
+  styles: [
+    `
+      @import 'main';
+
+      .new-button {
+        width: 100%;
+      }
+
+      ui-input {
+        margin-bottom: spacing(8);
+      }
+    `,
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class IngredientsBoardFormComponent {

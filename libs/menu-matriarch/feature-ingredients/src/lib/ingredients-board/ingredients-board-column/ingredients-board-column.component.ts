@@ -17,7 +17,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faEllipsisH } from '@fortawesome/free-solid-svg-icons';
 
 import { IngredientCardComponent } from '../../ingredient-card/ingredient-card.component';
-import { IngredientsBoardFormComponent } from './ingredients-board-form/ingredients-board-form.component';
+import { IngredientsBoardFormComponent } from './ingredients-board-form.component';
 import { Ingredient } from '@atocha/menu-matriarch/util';
 import { ingredientTrackByFn } from '@atocha/menu-matriarch/ui-domain';
 
