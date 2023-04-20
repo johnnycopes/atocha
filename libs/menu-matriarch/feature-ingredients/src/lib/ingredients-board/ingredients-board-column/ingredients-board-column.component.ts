@@ -21,21 +21,21 @@ import { IngredientsBoardFormComponent } from './ingredients-board-form.componen
 import { Ingredient } from '@atocha/menu-matriarch/util';
 import { ingredientTrackByFn } from '@atocha/menu-matriarch/ui-domain';
 
-export interface ItemAdd {
-  item: string;
-  columnId: string;
-}
-
-export interface ItemMove {
-  itemId: string;
-  currentColumnId: string;
-  previousColumnId: string;
+export interface ColumnMove {
+  columnName: string;
   currentIndex: number;
   previousIndex: number;
 }
 
-export interface ColumnMove {
-  columnId: string;
+export interface IngredientAdd {
+  ingredientName: string;
+  columnName: string;
+}
+
+export interface IngredientMove {
+  ingredientId: string;
+  currentColumnName: string;
+  previousColumnName: string;
   currentIndex: number;
   previousIndex: number;
 }
@@ -62,8 +62,8 @@ export class IngredientsBoardColumnComponent {
   @Input() name = '';
   @Input() ingredients: Ingredient[] = [];
   @Input() moving = false;
-  @Output() add = new EventEmitter<ItemAdd>();
-  @Output() move = new EventEmitter<ItemMove>();
+  @Output() add = new EventEmitter<IngredientAdd>();
+  @Output() move = new EventEmitter<IngredientMove>();
   @Output() movingChange = new EventEmitter<boolean>();
   readonly menuIcon = faEllipsisH;
   readonly trackByFn = ingredientTrackByFn;
@@ -86,19 +86,19 @@ export class IngredientsBoardColumnComponent {
       );
     }
     this.move.emit({
-      itemId: item.data.item.name,
-      previousColumnId: item.data.columnId,
-      currentColumnId: this.name,
+      ingredientId: item.data.item.name,
+      previousColumnName: item.data.columnId,
+      currentColumnName: this.name,
       previousIndex,
       currentIndex,
     });
     this.movingChange.emit(false);
   }
 
-  onItemAdd(newItemName: string): void {
+  onItemAdd(ingredientName: string): void {
     this.add.emit({
-      item: newItemName,
-      columnId: this.name,
+      ingredientName,
+      columnName: this.name,
     });
   }
 }

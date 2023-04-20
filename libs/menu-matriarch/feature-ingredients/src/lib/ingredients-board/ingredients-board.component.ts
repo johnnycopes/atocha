@@ -16,8 +16,8 @@ import {
 import { trackByFactory } from '@atocha/core/ui';
 import { Ingredient, IngredientType } from '@atocha/menu-matriarch/util';
 import {
-  ItemAdd,
-  ItemMove,
+  IngredientAdd,
+  IngredientMove,
   IngredientsBoardColumnComponent,
   ColumnMove,
 } from './ingredients-board-column/ingredients-board-column.component';
@@ -38,8 +38,8 @@ export interface IngredientColumn {
 export class IngredientsBoardComponent {
   @Input() columns: IngredientColumn[] = [];
   @Output() columnMove = new EventEmitter<ColumnMove>();
-  @Output() ingredientAdd = new EventEmitter<ItemAdd>();
-  @Output() ingredientMove = new EventEmitter<ItemMove>();
+  @Output() ingredientAdd = new EventEmitter<IngredientAdd>();
+  @Output() ingredientMove = new EventEmitter<IngredientMove>();
   moving = false;
   trackByFn = trackByFactory(({ name: type }: IngredientColumn) => type);
 
@@ -51,7 +51,7 @@ export class IngredientsBoardComponent {
   }: CdkDragDrop<IngredientColumn[]>): void {
     moveItemInArray(container.data, previousIndex, currentIndex);
     this.columnMove.emit({
-      columnId: item.data,
+      columnName: item.data,
       currentIndex,
       previousIndex,
     });
