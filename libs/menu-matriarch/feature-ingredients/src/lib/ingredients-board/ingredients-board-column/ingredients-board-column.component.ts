@@ -72,14 +72,13 @@ export class IngredientsBoardColumnComponent {
     this.movingChange.emit(true);
   }
 
-  onDropItem(event: CdkDragDrop<Ingredient[]>): void {
-    const {
-      item,
-      previousIndex,
-      currentIndex,
-      previousContainer,
-      container,
-    }: CdkDragDrop<Ingredient[]> = event;
+  onDropItem({
+    item,
+    previousIndex,
+    currentIndex,
+    previousContainer,
+    container,
+  }: CdkDragDrop<Ingredient[]>): void {
     if (previousContainer.id === container.id) {
       moveItemInArray(container.data, previousIndex, currentIndex);
     } else {
