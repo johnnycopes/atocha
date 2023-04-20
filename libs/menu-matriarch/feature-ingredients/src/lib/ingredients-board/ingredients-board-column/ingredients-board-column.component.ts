@@ -42,7 +42,8 @@ export interface ColumnMove {
 
 @Component({
   standalone: true,
-  selector: 'app-ingredients-board-column',
+  // eslint-disable-next-line @angular-eslint/component-selector
+  selector: '[app-ingredients-board-column]',
   templateUrl: './ingredients-board-column.component.html',
   styleUrls: [
     '../ingredients-board.scss',
