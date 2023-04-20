@@ -14,13 +14,17 @@ import {
 } from '@angular/cdk/drag-drop';
 
 import { trackByFactory } from '@atocha/core/ui';
+import { Ingredient, IngredientType } from '@atocha/menu-matriarch/util';
 import {
   ItemAdd,
   ItemMove,
   IngredientsBoardColumnComponent,
   ColumnMove,
 } from './ingredients-board-column/ingredients-board-column.component';
-import { IngredientColumn } from '../ingredients.component';
+export interface IngredientColumn {
+  name: IngredientType;
+  ingredients: Ingredient[];
+}
 
 @Component({
   standalone: true,

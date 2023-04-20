@@ -1,12 +1,12 @@
-<ui-section *ngIf="ingredients$ | async as ingredients">
+<ui-section *ngIf="vm$ | async as vm">
   <div class="ui-section__toolbar">
     <h2 class="title">
-      Ingredients ({{ ingredients.length }})
+      Ingredients ({{ vm.total }})
     </h2>
   </div>
   <ul class="ui-section__content ingredients">
     <app-ingredients-board
-      [columns]="(columns$ | async) ?? []"
+      [columns]="vm.columns"
       (columnMove)="onColumnMove($event)"
       (itemAdd)="onItemAdd($event)"
       (itemMove)="onItemMove($event)"
