@@ -17,5 +17,5 @@ import { IngredientType } from '@atocha/menu-matriarch/util';
 export class IngredientCardComponent {
   @Input() name = '';
   @Input() type: IngredientType = 'uncategorized';
-  @Input() dishes: string[] = [];
+  @Input() dishIds: string[] = [];
 }

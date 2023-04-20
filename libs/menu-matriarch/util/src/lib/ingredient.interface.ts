@@ -11,7 +11,11 @@ export interface Ingredient {
   dishIds: string[];
 }
 
-export const INGREDIENT_TYPES = [
+export type IngredientType = IngredientTypes[number];
+
+type IngredientTypes = typeof INGREDIENT_TYPES;
+
+const INGREDIENT_TYPES = [
   'bread/bakery',
   'condiment',
   'canned/jarred good',
@@ -25,6 +29,3 @@ export const INGREDIENT_TYPES = [
   'spice',
   'uncategorized',
 ] as const;
-
-export type IngredientTypes = typeof INGREDIENT_TYPES;
-export type IngredientType = IngredientTypes[number];
