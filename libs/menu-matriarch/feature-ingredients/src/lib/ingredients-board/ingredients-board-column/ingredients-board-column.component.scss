@@ -8,13 +8,10 @@
 }
 
 .name {
-  margin-bottom: spacing(8);
   @include small-caps;
+  margin-bottom: spacing(8);
   color: color($neutral, 6);
   font-size: font-size(16);
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1px;
 }
 
 .ingredients {

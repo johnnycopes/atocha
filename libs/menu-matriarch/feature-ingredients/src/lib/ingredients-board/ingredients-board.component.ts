@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/member-ordering */
 import { CommonModule } from '@angular/common';
 import {
   Component,
@@ -16,10 +15,10 @@ import {
 import { trackByFactory } from '@atocha/core/ui';
 import { Ingredient, IngredientType } from '@atocha/menu-matriarch/util';
 import {
+  ColumnMove,
   IngredientAdd,
   IngredientMove,
   IngredientsBoardColumnComponent,
-  ColumnMove,
 } from './ingredients-board-column/ingredients-board-column.component';
 
 export interface IngredientColumn {
@@ -41,7 +40,9 @@ export class IngredientsBoardComponent {
   @Output() ingredientAdd = new EventEmitter<IngredientAdd>();
   @Output() ingredientMove = new EventEmitter<IngredientMove>();
   moving = false;
-  trackByFn = trackByFactory(({ name: type }: IngredientColumn) => type);
+  readonly trackByFn = trackByFactory(
+    ({ name: type }: IngredientColumn) => type
+  );
 
   onDropColumn({
     item,

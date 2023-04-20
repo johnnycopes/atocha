@@ -4,12 +4,10 @@
       Ingredients ({{ vm.total }})
     </h2>
   </div>
-  <ul class="ui-section__content ingredients">
-    <app-ingredients-board
-      [columns]="vm.columns"
-      (columnMove)="onColumnMove($event)"
-      (ingredientAdd)="onItemAdd($event)"
-      (ingredientMove)="onItemMove($event)"
-    ></app-ingredients-board>
-  </ul>
+  <app-ingredients-board class="ui-section__content ingredients"
+    [columns]="vm.columns"
+    (columnMove)="onColumnMove($event)"
+    (ingredientAdd)="onItemAdd($event)"
+    (ingredientMove)="onItemMove($event)"
+  ></app-ingredients-board>
 </ui-section>
