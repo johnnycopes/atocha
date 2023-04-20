@@ -21,6 +21,7 @@ import {
   IngredientsBoardColumnComponent,
   ColumnMove,
 } from './ingredients-board-column/ingredients-board-column.component';
+
 export interface IngredientColumn {
   name: IngredientType;
   ingredients: Ingredient[];
@@ -53,6 +54,7 @@ export class IngredientsBoardComponent {
       currentIndex,
       container,
     }: CdkDragDrop<IngredientColumn[]> = event;
+
     moveItemInArray(container.data, previousIndex, currentIndex);
     this.columnMove.emit({
       columnId: item.data,
