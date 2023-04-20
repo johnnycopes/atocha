@@ -9,7 +9,11 @@
 
 .column {
   flex: 1 0 spacing(256);
-  margin-right: spacing(8);
+  height: 100%;
+
+  &:not(:last-of-type) {
+    margin-right: spacing(8);
+  }
 }
 
 .cdk-drop-list-dragging ::ng-deep:not(.cdk-drag-placeholder) {

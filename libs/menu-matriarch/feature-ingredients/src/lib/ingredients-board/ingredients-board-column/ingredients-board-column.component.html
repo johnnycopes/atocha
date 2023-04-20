@@ -2,6 +2,9 @@
   {{ name }}
 </h2>
 
+<app-ingredients-board-form (add)="onItemAdd($event)">
+</app-ingredients-board-form>
+
 <ul class="ingredients"
   cdkDropList
   [cdkDropListData]="ingredients"
@@ -21,6 +24,3 @@
     (cdkDragStarted)="onDragItem()"
   ></li>
 </ul>
-
-<app-ingredients-board-form (add)="onItemAdd($event)">
-</app-ingredients-board-form>
