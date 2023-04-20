@@ -38,14 +38,10 @@ export interface IngredientColumn {
 export class IngredientsBoardComponent {
   @Input() columns: IngredientColumn[] = [];
   @Output() columnMove = new EventEmitter<ColumnMove>();
-  @Output() itemAdd = new EventEmitter<ItemAdd>();
-  @Output() itemMove = new EventEmitter<ItemMove>();
+  @Output() ingredientAdd = new EventEmitter<ItemAdd>();
+  @Output() ingredientMove = new EventEmitter<ItemMove>();
   moving = false;
   trackByFn = trackByFactory(({ name: type }: IngredientColumn) => type);
-
-  onDragColumn(): void {
-    this.moving = true;
-  }
 
   onDropColumn({
     item,
@@ -60,13 +56,5 @@ export class IngredientsBoardComponent {
       previousIndex,
     });
     this.moving = false;
-  }
-
-  onItemAdd(event: ItemAdd): void {
-    this.itemAdd.emit(event);
-  }
-
-  onItemMove(event: ItemMove): void {
-    this.itemMove.emit(event);
   }
 }

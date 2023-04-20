@@ -12,9 +12,9 @@
     [cdkDragData]="column.name"
     [name]="column.name"
     [ingredients]="column.ingredients"
-    (itemAdd)="onItemAdd($event)"
-    (itemMove)="onItemMove($event)"
-    (cdkDragStarted)="onDragColumn()"
+    (add)="ingredientAdd.emit($event)"
+    (move)="ingredientMove.emit($event)"
+    (cdkDragStarted)="moving = true"
     [(moving)]="moving"
   ></li>
 </ul>

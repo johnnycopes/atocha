@@ -21,6 +21,6 @@
       columnId: name,
       item: ingredient
     }"
-    (cdkDragStarted)="onDragItem()"
+    (cdkDragStarted)="movingChange.emit(true)"
   ></li>
 </ul>
