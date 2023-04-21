@@ -12,7 +12,6 @@ import {
   IngredientsBoardComponent,
 } from './ingredients-board/ingredients-board.component';
 import { createIngredientsColumns } from './create-ingredients-columns';
-import { groupIngredientsByType } from './group-ingredients-by-type';
 
 @Component({
   standalone: true,
