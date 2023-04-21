@@ -4,32 +4,32 @@ describe('createOrderedIngredientsColumns', () => {
   it('returns correctly ordered columns', () => {
     expect(
       createOrderedIngredientsColumns({
-        'bread/bakery': 0,
-        'canned/jarred good': 1,
+        'bread/bakery': 7,
+        'canned/jarred good': 5,
         condiment: 2,
         'dry good': 3,
-        frozen: 4,
-        grocery: 5,
+        frozen: 1,
+        grocery: 4,
         'meat/seafood': 6,
-        oil: 7,
-        produce: 8,
+        oil: 11,
+        produce: 0,
         refrigerated: 9,
-        spice: 10,
-        uncategorized: 11,
+        spice: 8,
+        uncategorized: 10,
       })
     ).toEqual([
-      { name: 'bread/bakery', ingredients: [] },
-      { name: 'canned/jarred good', ingredients: [] },
+      { name: 'produce', ingredients: [] },
+      { name: 'frozen', ingredients: [] },
       { name: 'condiment', ingredients: [] },
       { name: 'dry good', ingredients: [] },
-      { name: 'frozen', ingredients: [] },
       { name: 'grocery', ingredients: [] },
+      { name: 'canned/jarred good', ingredients: [] },
       { name: 'meat/seafood', ingredients: [] },
-      { name: 'oil', ingredients: [] },
-      { name: 'produce', ingredients: [] },
-      { name: 'refrigerated', ingredients: [] },
+      { name: 'bread/bakery', ingredients: [] },
       { name: 'spice', ingredients: [] },
+      { name: 'refrigerated', ingredients: [] },
       { name: 'uncategorized', ingredients: [] },
+      { name: 'oil', ingredients: [] },
     ]);
   });
 });
