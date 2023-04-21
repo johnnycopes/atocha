@@ -32,21 +32,12 @@ export class IngredientsComponent {
         .getPreferences()
         .pipe(map((preferences) => preferences?.ingredientTypeOrder))
     ),
-    map(([ingredients, ingredientTypeOrder]) => {
-      if (!ingredientTypeOrder) {
-        return { total: 0, columns: [] };
-      }
-      const columns = createIngredientsColumns(ingredientTypeOrder);
-      const ingredientsGroupedByType = groupIngredientsByType(ingredients);
-      columns.forEach(
-        (column) => (column.ingredients = ingredientsGroupedByType[column.name])
-      );
-
-      return {
-        total: ingredients.length,
-        columns,
-      };
-    })
+    map(([ingredients, ingredientTypeOrder]) => ({
+      total: ingredients.length,
+      columns: ingredientTypeOrder
+        ? createIngredientsColumns(ingredients, ingredientTypeOrder)
+        : [],
+    }))
   );
 
   constructor(

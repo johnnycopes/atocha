@@ -1,14 +1,39 @@
-import { IngredientType } from '@atocha/menu-matriarch/util';
+import { Ingredient, IngredientType } from '@atocha/menu-matriarch/util';
 import { IngredientColumn } from './ingredients-board/ingredients-board.component';
 
 export function createIngredientsColumns(
-  ordersRecord: Record<IngredientType, number>
+  ingredients: Ingredient[],
+  order: Record<IngredientType, number>
 ): IngredientColumn[] {
-  const orders = Object.entries(ordersRecord);
+  const ingredientsByType: Record<IngredientType, Ingredient[]> = {
+    'bread/bakery': [],
+    'canned/jarred good': [],
+    condiment: [],
+    'dry good': [],
+    frozen: [],
+    grocery: [],
+    'meat/seafood': [],
+    oil: [],
+    produce: [],
+    refrigerated: [],
+    spice: [],
+    uncategorized: [],
+  };
+
+  for (const ingredient of ingredients) {
+    ingredientsByType[ingredient.type].push(ingredient);
+  }
+
   const columns: IngredientColumn[] = [];
 
-  for (const [type, position] of orders) {
-    columns[position] = { name: type as IngredientType, ingredients: [] };
+  for (const key in order) {
+    const type = key as IngredientType;
+    const position = order[type];
+
+    columns[position] = {
+      name: type,
+      ingredients: ingredientsByType[type],
+    };
   }
 
   return columns;
