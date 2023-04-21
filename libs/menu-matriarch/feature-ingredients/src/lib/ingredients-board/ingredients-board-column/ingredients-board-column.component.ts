@@ -21,20 +21,20 @@ import { ingredientTrackByFn } from '@atocha/menu-matriarch/ui-domain';
 import { Ingredient } from '@atocha/menu-matriarch/util';
 
 export interface ColumnMove {
-  columnName: string;
+  columnId: string;
   currentIndex: number;
   previousIndex: number;
 }
 
 export interface IngredientAdd {
   ingredientName: string;
-  columnName: string;
+  columnId: string;
 }
 
 export interface IngredientMove {
   ingredientId: string;
-  currentColumnName: string;
-  previousColumnName: string;
+  currentColumnId: string;
+  previousColumnId: string;
   currentIndex: number;
   previousIndex: number;
 }
@@ -85,9 +85,9 @@ export class IngredientsBoardColumnComponent {
       );
     }
     this.move.emit({
-      ingredientId: item.data.item.name,
-      previousColumnName: item.data.columnId,
-      currentColumnName: this.name,
+      ingredientId: item.data.ingredient.id,
+      previousColumnId: item.data.columnId,
+      currentColumnId: this.name,
       previousIndex,
       currentIndex,
     });
@@ -97,7 +97,7 @@ export class IngredientsBoardColumnComponent {
   onItemAdd(ingredientName: string): void {
     this.add.emit({
       ingredientName,
-      columnName: this.name,
+      columnId: this.name,
     });
   }
 }

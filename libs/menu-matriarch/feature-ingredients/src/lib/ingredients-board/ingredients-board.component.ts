@@ -52,7 +52,7 @@ export class IngredientsBoardComponent {
   }: CdkDragDrop<IngredientColumn[]>): void {
     moveItemInArray(container.data, previousIndex, currentIndex);
     this.columnMove.emit({
-      columnName: item.data,
+      columnId: item.data,
       currentIndex,
       previousIndex,
     });
