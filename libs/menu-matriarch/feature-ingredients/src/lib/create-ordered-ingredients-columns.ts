@@ -1,9 +1,18 @@
-import { IngredientType } from '@atocha/menu-matriarch/util';
+import { Ingredient, IngredientType } from '@atocha/menu-matriarch/util';
 import { IngredientColumn } from './ingredients-board/ingredients-board.component';
 
 export function createOrderedIngredientsColumns(
-  ingredientTypeOrder: Record<IngredientType, number>
+  ordersRecord: Record<IngredientType, number>
 ): IngredientColumn[] {
-  ingredientTypeOrder;
-  return [];
+  const columns: IngredientColumn[] = [];
+
+  for (const type in ordersRecord) {
+    const typedType = type as IngredientType;
+    columns[ordersRecord[typedType]] = {
+      name: typedType,
+      ingredients: new Array<Ingredient>(),
+    };
+  }
+
+  return columns;
 }
