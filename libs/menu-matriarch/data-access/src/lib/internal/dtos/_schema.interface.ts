@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
-import { DishDto } from './dish-dto';
-import { MealDto } from './meal-dto';
 import { MenuDto } from './menu-dto';
+import { MealDto } from './meal-dto';
+import { DishDto } from './dish-dto';
 import { TagDto } from './tag-dto';
 import { UserDto } from './user-dto';
 
