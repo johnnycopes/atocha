@@ -1,3 +1,4 @@
+import { Ingredient } from './ingredient.interface';
 import { Tag } from './tag.interface';
 
 /**
@@ -28,8 +29,8 @@ export interface Dish {
   menuIds: string[];
   /** The unique IDs of any meals the dish belongs to */
   mealIds: string[];
-  /** (INACTIVE) The ingredients used in the dish */
-  ingredients: string[];
+  /** The ingredients used in the dish */
+  ingredients: Ingredient[];
   /** The tags applied to the dish */
   tags: Tag[];
 }

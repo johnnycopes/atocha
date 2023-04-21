@@ -1,0 +1,27 @@
+@import 'main';
+
+:host {
+  padding: spacing(8);
+  background-color: color($neutral, 10);
+  border-radius: border(radius);
+  box-shadow: box-shadow(lightest);
+}
+
+.name {
+  @include small-caps;
+  margin-bottom: spacing(8);
+  color: color($neutral, 6);
+  font-size: font-size(16);
+}
+
+.ingredients {
+  margin-top: spacing(16);
+  height: calc(100% - 76px);
+  overflow-y: auto;
+}
+
+.ingredient {
+  &:not(:last-of-type) {
+    margin-bottom: spacing(8);
+  }
+}
