@@ -13,7 +13,6 @@
   <li app-ingredient-card
     *ngFor="let ingredient of ingredients; trackBy: trackByFn"
     class="ingredient"
-    [class.ingredient--moving]="moving"
     [name]="ingredient.name"
     [dishIds]="ingredient.dishIds"
     cdkDrag
