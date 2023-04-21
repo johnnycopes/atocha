@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { Observable, map, withLatestFrom } from 'rxjs';
+import { combineLatest, Observable, map } from 'rxjs';
 
 import {
   IngredientService,
@@ -25,17 +25,15 @@ export class IngredientsComponent {
   vm$: Observable<{
     total: number;
     columns: IngredientColumn[];
-  }> = this._ingredientService.getIngredients().pipe(
-    withLatestFrom(
-      this._userService
-        .getPreferences()
-        .pipe(map((preferences) => preferences?.ingredientTypeOrder))
-    ),
-    map(([ingredients, ingredientTypeOrder]) => ({
+  }> = combineLatest([
+    this._ingredientService.getIngredients(),
+    this._userService
+      .getPreferences()
+      .pipe(map((preferences) => preferences?.ingredientTypeOrder)),
+  ]).pipe(
+    map(([ingredients, order]) => ({
       total: ingredients.length,
-      columns: ingredientTypeOrder
-        ? createIngredientsColumns(ingredients, ingredientTypeOrder)
-        : [],
+      columns: order ? createIngredientsColumns(ingredients, order) : [],
     }))
   );
 
