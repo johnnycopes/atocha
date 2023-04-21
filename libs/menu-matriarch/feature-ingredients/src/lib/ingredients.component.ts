@@ -11,7 +11,7 @@ import {
   IngredientColumn,
   IngredientsBoardComponent,
 } from './ingredients-board/ingredients-board.component';
-import { createOrderedIngredientsColumns } from './create-ordered-ingredients-columns';
+import { createIngredientsColumns } from './create-ingredients-columns';
 import { groupIngredientsByType } from './group-ingredients-by-type';
 
 @Component({
@@ -36,7 +36,7 @@ export class IngredientsComponent {
       if (!ingredientTypeOrder) {
         return { total: 0, columns: [] };
       }
-      const columns = createOrderedIngredientsColumns(ingredientTypeOrder);
+      const columns = createIngredientsColumns(ingredientTypeOrder);
       const ingredientsGroupedByType = groupIngredientsByType(ingredients);
       columns.forEach(
         (column) => (column.ingredients = ingredientsGroupedByType[column.name])

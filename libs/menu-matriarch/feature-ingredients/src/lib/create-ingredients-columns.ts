@@ -1,7 +1,7 @@
 import { IngredientType } from '@atocha/menu-matriarch/util';
 import { IngredientColumn } from './ingredients-board/ingredients-board.component';
 
-export function createOrderedIngredientsColumns(
+export function createIngredientsColumns(
   ordersRecord: Record<IngredientType, number>
 ): IngredientColumn[] {
   const orders = Object.entries(ordersRecord);

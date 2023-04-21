@@ -1,9 +1,9 @@
-import { createOrderedIngredientsColumns } from './create-ordered-ingredients-columns';
+import { createIngredientsColumns } from './create-ingredients-columns';
 
-describe('createOrderedIngredientsColumns', () => {
+describe('createIngredientsColumns', () => {
   it('returns correctly ordered columns', () => {
     expect(
-      createOrderedIngredientsColumns({
+      createIngredientsColumns({
         'bread/bakery': 7,
         'canned/jarred good': 5,
         condiment: 2,
