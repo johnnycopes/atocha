@@ -12,6 +12,11 @@ import {
   IngredientsBoardComponent,
 } from './ingredients-board/ingredients-board.component';
 import { createIngredientsColumns } from './create-ingredients-columns';
+import {
+  ColumnMove,
+  IngredientAdd,
+  IngredientMove,
+} from './ingredients-board/ingredients-board-column/ingredients-board-column.component';
 
 @Component({
   standalone: true,
@@ -42,15 +47,15 @@ export class IngredientsComponent {
     private _userService: UserService
   ) {}
 
-  onColumnMove(e: unknown) {
+  onColumnMove(e: ColumnMove) {
     console.log(e);
   }
 
-  onItemAdd(e: unknown) {
+  onIngredientAdd(e: IngredientAdd) {
     console.log(e);
   }
 
-  onItemMove(e: unknown) {
+  onIngredientMove(e: IngredientMove) {
     console.log(e);
   }
 }
