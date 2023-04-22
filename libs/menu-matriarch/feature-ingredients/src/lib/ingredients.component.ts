@@ -8,10 +8,7 @@ import {
 } from '@atocha/menu-matriarch/data-access';
 import { SectionComponent } from '@atocha/menu-matriarch/ui-generic';
 import { IngredientType } from '@atocha/menu-matriarch/util';
-import {
-  ColumnMove,
-  IngredientsBoardComponent,
-} from './ingredients-board/ingredients-board.component';
+import { IngredientsBoardComponent } from './ingredients-board/ingredients-board.component';
 import {
   IngredientAdd,
   IngredientMove,
@@ -60,8 +57,10 @@ export class IngredientsComponent {
     private _userService: UserService
   ) {}
 
-  onColumnMove(e: ColumnMove) {
-    console.log(e);
+  onColumnMove(columns: IngredientType[]) {
+    this._userService
+      .updatePreferences({ ingredientTypeOrder: columns })
+      .subscribe();
   }
 
   onIngredientAdd({ ingredientName, columnId }: IngredientAdd) {

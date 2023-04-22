@@ -25,12 +25,6 @@ export interface IngredientColumn {
   ingredients: Ingredient[];
 }
 
-export interface ColumnMove {
-  columnId: string;
-  currentIndex: number;
-  previousIndex: number;
-}
-
 @Component({
   standalone: true,
   selector: 'app-ingredients-board',
@@ -42,25 +36,19 @@ export interface ColumnMove {
 export class IngredientsBoardComponent {
   @Input() ingredientsByType!: Record<IngredientType, Ingredient[]>;
   @Input() columns: IngredientType[] = [];
-  @Output() columnMove = new EventEmitter<ColumnMove>();
+  @Output() columnMove = new EventEmitter<IngredientType[]>();
   @Output() ingredientAdd = new EventEmitter<IngredientAdd>();
   @Output() ingredientMove = new EventEmitter<IngredientMove>();
   moving = false;
   readonly trackByFn = trackByFactory<IngredientType>((type) => type);
 
   onDropColumn({
-    item,
     previousIndex,
     currentIndex,
     container,
   }: CdkDragDrop<IngredientType[]>): void {
     moveItemInArray(container.data, previousIndex, currentIndex);
-
-    this.columnMove.emit({
-      columnId: item.data,
-      currentIndex,
-      previousIndex,
-    });
+    this.columnMove.emit(container.data);
     this.moving = false;
   }
 }
