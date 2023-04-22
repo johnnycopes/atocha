@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { combineLatest, Observable, map } from 'rxjs';
+import { combineLatest, map } from 'rxjs';
 
 import {
   IngredientService,
@@ -8,16 +8,13 @@ import {
 } from '@atocha/menu-matriarch/data-access';
 import { SectionComponent } from '@atocha/menu-matriarch/ui-generic';
 import { IngredientType } from '@atocha/menu-matriarch/util';
-import {
-  IngredientColumn,
-  IngredientsBoardComponent,
-} from './ingredients-board/ingredients-board.component';
-import { createIngredientsColumns } from './create-ingredients-columns';
+import { IngredientsBoardComponent } from './ingredients-board/ingredients-board.component';
 import {
   ColumnMove,
   IngredientAdd,
   IngredientMove,
 } from './ingredients-board/ingredients-board-column/ingredients-board-column.component';
+import { groupIngredientsByType } from './group-ingredients-by-type';
 
 @Component({
   standalone: true,
@@ -28,10 +25,7 @@ import {
   imports: [CommonModule, IngredientsBoardComponent, SectionComponent],
 })
 export class IngredientsComponent {
-  vm$: Observable<{
-    total: number;
-    columns: IngredientColumn[];
-  }> = combineLatest([
+  vm$ = combineLatest([
     this._ingredientService.getIngredients(),
     this._userService
       .getPreferences()
@@ -39,7 +33,23 @@ export class IngredientsComponent {
   ]).pipe(
     map(([ingredients, order]) => ({
       total: ingredients.length,
-      columns: order ? createIngredientsColumns(ingredients, order) : [],
+      ingredientsByType: groupIngredientsByType(ingredients),
+      columns:
+        order ??
+        ([
+          'bread/bakery',
+          'canned/jarred good',
+          'condiment',
+          'dry good',
+          'frozen',
+          'grocery',
+          'meat/seafood',
+          'oil',
+          'produce',
+          'refrigerated',
+          'spice',
+          'uncategorized',
+        ] as IngredientType[]),
     }))
   );
 
@@ -63,10 +73,10 @@ export class IngredientsComponent {
   }
 
   onIngredientMove({ ingredient, currentColumnId }: IngredientMove) {
-    this._ingredientService.updateIngredient(ingredient, {
-      ...ingredient,
-      type: this._mapColumnIdToIngredientType(currentColumnId),
-    });
+    // this._ingredientService.updateIngredient(ingredient, {
+    //   ...ingredient,
+    //   type: this._mapColumnIdToIngredientType(currentColumnId),
+    // });
   }
 
   private _mapColumnIdToIngredientType(columnId: string): IngredientType {

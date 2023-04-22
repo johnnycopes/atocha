@@ -5,6 +5,7 @@
     </h2>
   </div>
   <app-ingredients-board class="ui-section__content ingredients"
+    [ingredientsByType]="vm.ingredientsByType"
     [columns]="vm.columns"
     (columnMove)="onColumnMove($event)"
     (ingredientAdd)="onIngredientAdd($event)"

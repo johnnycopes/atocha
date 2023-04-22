@@ -35,22 +35,22 @@ export interface IngredientColumn {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class IngredientsBoardComponent {
-  @Input() columns: IngredientColumn[] = [];
+  @Input() ingredientsByType!: Record<IngredientType, Ingredient[]>;
+  @Input() columns: IngredientType[] = [];
   @Output() columnMove = new EventEmitter<ColumnMove>();
   @Output() ingredientAdd = new EventEmitter<IngredientAdd>();
   @Output() ingredientMove = new EventEmitter<IngredientMove>();
   moving = false;
-  readonly trackByFn = trackByFactory(
-    ({ name: type }: IngredientColumn) => type
-  );
+  readonly trackByFn = trackByFactory<IngredientType>((type) => type);
 
   onDropColumn({
     item,
     previousIndex,
     currentIndex,
     container,
-  }: CdkDragDrop<IngredientColumn[]>): void {
+  }: CdkDragDrop<IngredientType[]>): void {
     moveItemInArray(container.data, previousIndex, currentIndex);
+
     this.columnMove.emit({
       columnId: item.data,
       currentIndex,
