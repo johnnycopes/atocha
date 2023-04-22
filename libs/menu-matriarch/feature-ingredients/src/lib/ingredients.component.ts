@@ -7,6 +7,7 @@ import {
   UserService,
 } from '@atocha/menu-matriarch/data-access';
 import { SectionComponent } from '@atocha/menu-matriarch/ui-generic';
+import { IngredientType } from '@atocha/menu-matriarch/util';
 import {
   IngredientColumn,
   IngredientsBoardComponent,
@@ -17,7 +18,6 @@ import {
   IngredientAdd,
   IngredientMove,
 } from './ingredients-board/ingredients-board-column/ingredients-board-column.component';
-import { IngredientType } from '@atocha/menu-matriarch/util';
 
 @Component({
   standalone: true,
