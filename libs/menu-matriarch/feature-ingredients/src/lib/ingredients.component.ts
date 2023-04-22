@@ -13,7 +13,6 @@ import {
   IngredientAdd,
   IngredientMove,
 } from './ingredients-board/ingredients-board-column/ingredients-board-column.component';
-import { groupIngredientsByType } from './group-ingredients-by-type';
 
 @Component({
   standalone: true,
@@ -31,8 +30,7 @@ export class IngredientsComponent {
       .pipe(map((preferences) => preferences?.ingredientTypeOrder)),
   ]).pipe(
     map(([ingredients, order]) => ({
-      total: ingredients.length,
-      ingredientsByType: groupIngredientsByType(ingredients),
+      ingredients,
       columns:
         order ??
         ([

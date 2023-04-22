@@ -19,6 +19,7 @@ import {
   IngredientMove,
   IngredientsBoardColumnComponent,
 } from './ingredients-board-column/ingredients-board-column.component';
+import { groupIngredientsByType } from '../group-ingredients-by-type';
 
 export interface IngredientColumn {
   name: IngredientType;
@@ -34,11 +35,15 @@ export interface IngredientColumn {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class IngredientsBoardComponent {
-  @Input() ingredientsByType!: Record<IngredientType, Ingredient[]>;
+  @Input()
+  set ingredients(value: Ingredient[]) {
+    this.ingredientsByType = groupIngredientsByType(value);
+  }
   @Input() columns: IngredientType[] = [];
   @Output() columnMove = new EventEmitter<IngredientType[]>();
   @Output() ingredientAdd = new EventEmitter<IngredientAdd>();
   @Output() ingredientMove = new EventEmitter<IngredientMove>();
+  ingredientsByType = groupIngredientsByType([]);
   moving = false;
   readonly trackByFn = trackByFactory<IngredientType>((type) => type);
 
