@@ -56,13 +56,20 @@ export class IngredientsComponent {
     this._ingredientService
       .createIngredient({
         name: ingredientName,
-        type: columnId as IngredientType,
+        type: this._mapColumnIdToIngredientType(columnId),
         dishIds: [],
       })
       .subscribe();
   }
 
-  onIngredientMove(e: IngredientMove) {
-    console.log(e);
+  onIngredientMove({ ingredient, currentColumnId }: IngredientMove) {
+    this._ingredientService.updateIngredient(ingredient, {
+      ...ingredient,
+      type: this._mapColumnIdToIngredientType(currentColumnId),
+    });
+  }
+
+  private _mapColumnIdToIngredientType(columnId: string): IngredientType {
+    return columnId as IngredientType;
   }
 }

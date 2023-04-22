@@ -32,7 +32,7 @@ export interface IngredientAdd {
 }
 
 export interface IngredientMove {
-  ingredientId: string;
+  ingredient: Ingredient;
   currentColumnId: string;
   previousColumnId: string;
   currentIndex: number;
@@ -85,7 +85,7 @@ export class IngredientsBoardColumnComponent {
       );
     }
     this.move.emit({
-      ingredientId: item.data.ingredient.id,
+      ingredient: item.data.ingredient,
       previousColumnId: item.data.columnId,
       currentColumnId: this.name,
       previousIndex,
