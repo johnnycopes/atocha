@@ -17,6 +17,7 @@ import {
   IngredientAdd,
   IngredientMove,
 } from './ingredients-board/ingredients-board-column/ingredients-board-column.component';
+import { IngredientType } from '@atocha/menu-matriarch/util';
 
 @Component({
   standalone: true,
@@ -51,8 +52,14 @@ export class IngredientsComponent {
     console.log(e);
   }
 
-  onIngredientAdd(e: IngredientAdd) {
-    console.log(e);
+  onIngredientAdd({ ingredientName, columnId }: IngredientAdd) {
+    this._ingredientService
+      .createIngredient({
+        name: ingredientName,
+        type: columnId as IngredientType,
+        dishIds: [],
+      })
+      .subscribe();
   }
 
   onIngredientMove(e: IngredientMove) {
