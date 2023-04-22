@@ -20,12 +20,6 @@ import { IngredientsBoardFormComponent } from './ingredients-board-form.componen
 import { ingredientTrackByFn } from '@atocha/menu-matriarch/ui-domain';
 import { Ingredient } from '@atocha/menu-matriarch/util';
 
-export interface ColumnMove {
-  columnId: string;
-  currentIndex: number;
-  previousIndex: number;
-}
-
 export interface IngredientAdd {
   ingredientName: string;
   columnId: string;

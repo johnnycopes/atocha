@@ -15,7 +15,6 @@ import {
 import { trackByFactory } from '@atocha/core/ui';
 import { Ingredient, IngredientType } from '@atocha/menu-matriarch/util';
 import {
-  ColumnMove,
   IngredientAdd,
   IngredientMove,
   IngredientsBoardColumnComponent,
@@ -24,6 +23,12 @@ import {
 export interface IngredientColumn {
   name: IngredientType;
   ingredients: Ingredient[];
+}
+
+export interface ColumnMove {
+  columnId: string;
+  currentIndex: number;
+  previousIndex: number;
 }
 
 @Component({

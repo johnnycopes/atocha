@@ -8,9 +8,11 @@ import {
 } from '@atocha/menu-matriarch/data-access';
 import { SectionComponent } from '@atocha/menu-matriarch/ui-generic';
 import { IngredientType } from '@atocha/menu-matriarch/util';
-import { IngredientsBoardComponent } from './ingredients-board/ingredients-board.component';
 import {
   ColumnMove,
+  IngredientsBoardComponent,
+} from './ingredients-board/ingredients-board.component';
+import {
   IngredientAdd,
   IngredientMove,
 } from './ingredients-board/ingredients-board-column/ingredients-board-column.component';
