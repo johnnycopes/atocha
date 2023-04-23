@@ -20,8 +20,8 @@
       *ngFor="let tag of tags; trackBy: trackByFn"
       [id]="tag.id"
       [name]="tag.name"
-      [meals]="tag.mealIds"
-      [dishes]="tag.dishIds"
+      [mealIds]="tag.mealIds"
+      [dishIds]="tag.dishIds"
       (edit)="onTagEdit(tag, $event)"
       (delete)="onTagDelete(tag)"
     >
