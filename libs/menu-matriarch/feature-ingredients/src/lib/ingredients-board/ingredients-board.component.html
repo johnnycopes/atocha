@@ -11,7 +11,7 @@
     cdkDrag
     [cdkDragData]="column"
     [name]="column"
-    [ingredients]="ingredientsByType[column]"
+    [ingredients]="ingredientsByType.get(column) ?? []"
     (add)="ingredientAdd.emit($event)"
     (move)="ingredientMove.emit($event)"
   ></li>

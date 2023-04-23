@@ -1,4 +1,4 @@
-import { Ingredient } from '@atocha/menu-matriarch/util';
+import { Ingredient, IngredientType } from '@atocha/menu-matriarch/util';
 import { groupIngredientsByType } from './group-ingredients-by-type';
 
 describe('groupIngredientsByType', () => {
@@ -62,79 +62,93 @@ describe('groupIngredientsByType', () => {
       },
     ];
 
-    expect(groupIngredientsByType(ingredients)).toEqual({
-      'bread/bakery': [],
-      'canned/jarred good': [],
-      condiment: [],
-      'dry good': [],
-      frozen: [],
-      grocery: [],
-      'meat/seafood': [],
-      oil: [
-        {
-          dishIds: ['32'],
-          id: 'GHI',
-          name: 'Olive Oil',
-          type: 'oil',
-          uid: '123',
-        },
-      ],
-      produce: [
-        {
-          dishIds: ['67', '32'],
-          id: 'DEF',
-          name: 'Garlic',
-          type: 'produce',
-          uid: '123',
-        },
-        {
-          dishIds: [],
-          id: 'JKL',
-          name: 'Onion',
-          type: 'produce',
-          uid: '123',
-        },
-        {
-          dishIds: ['67'],
-          id: 'STU',
-          name: 'Potato',
-          type: 'produce',
-          uid: '123',
-        },
-      ],
-      refrigerated: [
-        {
-          dishIds: ['67'],
-          id: 'ABC',
-          name: 'Eggs',
-          type: 'refrigerated',
-          uid: '123',
-        },
-      ],
-      spice: [
-        {
-          dishIds: ['32'],
-          id: 'MNO',
-          name: 'Paprika',
-          type: 'spice',
-          uid: '123',
-        },
-        {
-          dishIds: ['32'],
-          id: 'PQR',
-          name: 'Pepper',
-          type: 'spice',
-          uid: '123',
-        },
-        {
-          dishIds: [],
-          id: 'VWX',
-          name: 'Salt',
-          type: 'spice',
-          uid: '123',
-        },
-      ],
-      uncategorized: [],
-    });
+    expect(groupIngredientsByType(ingredients)).toEqual(
+      new Map<IngredientType, Ingredient[]>([
+        ['bread/bakery', []],
+        ['canned/jarred good', []],
+        ['condiment', []],
+        ['dry good', []],
+        ['frozen', []],
+        ['grocery', []],
+        ['meat/seafood', []],
+        [
+          'oil',
+          [
+            {
+              dishIds: ['32'],
+              id: 'GHI',
+              name: 'Olive Oil',
+              type: 'oil',
+              uid: '123',
+            },
+          ],
+        ],
+        [
+          'produce',
+          [
+            {
+              dishIds: ['67', '32'],
+              id: 'DEF',
+              name: 'Garlic',
+              type: 'produce',
+              uid: '123',
+            },
+            {
+              dishIds: [],
+              id: 'JKL',
+              name: 'Onion',
+              type: 'produce',
+              uid: '123',
+            },
+            {
+              dishIds: ['67'],
+              id: 'STU',
+              name: 'Potato',
+              type: 'produce',
+              uid: '123',
+            },
+          ],
+        ],
+        [
+          'refrigerated',
+          [
+            {
+              dishIds: ['67'],
+              id: 'ABC',
+              name: 'Eggs',
+              type: 'refrigerated',
+              uid: '123',
+            },
+          ],
+        ],
+        [
+          'spice',
+          [
+            {
+              dishIds: ['32'],
+              id: 'MNO',
+              name: 'Paprika',
+              type: 'spice',
+              uid: '123',
+            },
+            {
+              dishIds: ['32'],
+              id: 'PQR',
+              name: 'Pepper',
+              type: 'spice',
+              uid: '123',
+            },
+            {
+              dishIds: [],
+              id: 'VWX',
+              name: 'Salt',
+              type: 'spice',
+              uid: '123',
+            },
+          ],
+        ],
+        ['uncategorized', []],
+      ])
+    );
   });
 });
