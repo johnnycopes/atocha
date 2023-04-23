@@ -71,10 +71,10 @@ export class IngredientsComponent {
       .subscribe();
   }
 
-  onIngredientMove({ ingredient, currentColumnId }: IngredientMove) {
+  onIngredientMove({ ingredient, columnId }: IngredientMove) {
     this._ingredientService.updateIngredient(ingredient, {
       ...ingredient,
-      type: this._mapColumnIdToIngredientType(currentColumnId),
+      type: this._mapColumnIdToIngredientType(columnId),
     });
   }
 
