@@ -6,7 +6,6 @@
 </app-ingredients-board-form>
 
 <ul class="ingredients"
-  [class.ingredients--droppable]="moving"
   cdkDropList
   [cdkDropListData]="ingredients"
   (cdkDropListDropped)="onDropItem($event)"
@@ -21,6 +20,5 @@
       columnId: name,
       ingredient: ingredient
     }"
-    (cdkDragStarted)="movingChange.emit(true)"
   ></li>
 </ul>

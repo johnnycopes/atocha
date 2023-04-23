@@ -54,10 +54,8 @@ export interface IngredientMove {
 export class IngredientsBoardColumnComponent {
   @Input() name = '';
   @Input() ingredients: Ingredient[] = [];
-  @Input() moving = false;
   @Output() add = new EventEmitter<IngredientAdd>();
   @Output() move = new EventEmitter<IngredientMove>();
-  @Output() movingChange = new EventEmitter<boolean>();
   readonly menuIcon = faEllipsisH;
   readonly trackByFn = ingredientTrackByFn;
 
@@ -85,7 +83,6 @@ export class IngredientsBoardColumnComponent {
       previousIndex,
       currentIndex,
     });
-    this.movingChange.emit(false);
   }
 
   onItemAdd(ingredientName: string): void {

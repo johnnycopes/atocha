@@ -44,7 +44,6 @@ export class IngredientsBoardComponent {
   @Output() ingredientAdd = new EventEmitter<IngredientAdd>();
   @Output() ingredientMove = new EventEmitter<IngredientMove>();
   ingredientsByType = groupIngredientsByType([]);
-  moving = false;
   readonly trackByFn = trackByFactory<IngredientType>((type) => type);
 
   onDropColumn({
@@ -54,6 +53,5 @@ export class IngredientsBoardComponent {
   }: CdkDragDrop<IngredientType[]>): void {
     moveItemInArray(container.data, previousIndex, currentIndex);
     this.columnMove.emit(container.data);
-    this.moving = false;
   }
 }
