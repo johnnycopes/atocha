@@ -3,18 +3,16 @@
   cdkDropListGroup
   cdkDropListOrientation="horizontal"
   [cdkDropListData]="columns"
-  (cdkDropListDropped)="onDropColumn($event)"
+  (cdkDropListDropped)="onDrop($event)"
 >
   <li app-ingredients-board-column
     *ngFor="let column of columns; trackBy: trackByFn"
     class="column"
     cdkDrag
-    [cdkDragData]="column.name"
-    [name]="column.name"
-    [ingredients]="column.ingredients"
+    [cdkDragData]="column"
+    [name]="column"
+    [ingredients]="ingredientsByType.get(column) ?? []"
     (add)="ingredientAdd.emit($event)"
     (move)="ingredientMove.emit($event)"
-    (cdkDragStarted)="moving = true"
-    [(moving)]="moving"
   ></li>
 </ul>

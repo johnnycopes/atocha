@@ -1,15 +1,21 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { Observable, map } from 'rxjs';
+import { combineLatest, map } from 'rxjs';
 
-import { IngredientService } from '@atocha/menu-matriarch/data-access';
-import { SectionComponent } from '@atocha/menu-matriarch/ui-generic';
-import { IngredientType } from '@atocha/menu-matriarch/util';
 import {
-  IngredientColumn,
-  IngredientsBoardComponent,
-} from './ingredients-board/ingredients-board.component';
-import { groupIngredientsByType } from './group-ingredients-by-type';
+  IngredientService,
+  UserService,
+} from '@atocha/menu-matriarch/data-access';
+import { SectionComponent } from '@atocha/menu-matriarch/ui-generic';
+import {
+  IngredientType,
+  getIngredientTypes,
+} from '@atocha/menu-matriarch/util';
+import { IngredientsBoardComponent } from './ingredients-board/ingredients-board.component';
+import {
+  IngredientAdd,
+  IngredientMove,
+} from './ingredients-board/ingredients-board-column/ingredients-board-column.component';
 
 @Component({
   standalone: true,
@@ -20,32 +26,43 @@ import { groupIngredientsByType } from './group-ingredients-by-type';
   imports: [CommonModule, IngredientsBoardComponent, SectionComponent],
 })
 export class IngredientsComponent {
-  vm$: Observable<{
-    total: number;
-    columns: IngredientColumn[];
-  }> = this._ingredientService.getIngredients().pipe(
-    map((ingredients) => ({
-      total: ingredients.length,
-      columns: Object.entries(groupIngredientsByType(ingredients)).map(
-        ([type, ingredients]) => ({
-          name: type as IngredientType,
-          ingredients,
-        })
-      ),
+  vm$ = combineLatest([
+    this._ingredientService.getIngredients(),
+    this._userService
+      .getPreferences()
+      .pipe(map((preferences) => preferences?.ingredientTypeOrder)),
+  ]).pipe(
+    map(([ingredients, order]) => ({
+      ingredients,
+      columns: order ?? getIngredientTypes(),
     }))
   );
 
-  constructor(private _ingredientService: IngredientService) {}
+  constructor(
+    private _ingredientService: IngredientService,
+    private _userService: UserService
+  ) {}
 
-  onColumnMove(e: unknown) {
-    console.log(e);
+  onColumnMove(columns: IngredientType[]) {
+    this._userService
+      .updatePreferences({ ingredientTypeOrder: columns })
+      .subscribe();
   }
 
-  onItemAdd(e: unknown) {
-    console.log(e);
+  onIngredientAdd({ ingredientName, columnId }: IngredientAdd) {
+    this._ingredientService
+      .createIngredient({
+        name: ingredientName,
+        type: columnId as IngredientType,
+        dishIds: [],
+      })
+      .subscribe();
   }
 
-  onItemMove(e: unknown) {
-    console.log(e);
+  onIngredientMove({ ingredient, columnId }: IngredientMove) {
+    this._ingredientService.updateIngredient(ingredient, {
+      ...ingredient,
+      type: columnId as IngredientType,
+    });
   }
 }

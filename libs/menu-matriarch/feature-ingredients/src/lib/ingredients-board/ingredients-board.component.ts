@@ -15,11 +15,11 @@ import {
 import { trackByFactory } from '@atocha/core/ui';
 import { Ingredient, IngredientType } from '@atocha/menu-matriarch/util';
 import {
-  ColumnMove,
   IngredientAdd,
   IngredientMove,
   IngredientsBoardColumnComponent,
 } from './ingredients-board-column/ingredients-board-column.component';
+import { groupIngredientsByType } from './group-ingredients-by-type';
 
 export interface IngredientColumn {
   name: IngredientType;
@@ -35,27 +35,23 @@ export interface IngredientColumn {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class IngredientsBoardComponent {
-  @Input() columns: IngredientColumn[] = [];
-  @Output() columnMove = new EventEmitter<ColumnMove>();
+  @Input()
+  set ingredients(value: Ingredient[]) {
+    this.ingredientsByType = groupIngredientsByType(value);
+  }
+  @Input() columns: IngredientType[] = [];
+  @Output() columnMove = new EventEmitter<IngredientType[]>();
   @Output() ingredientAdd = new EventEmitter<IngredientAdd>();
   @Output() ingredientMove = new EventEmitter<IngredientMove>();
-  moving = false;
-  readonly trackByFn = trackByFactory(
-    ({ name: type }: IngredientColumn) => type
-  );
+  ingredientsByType = groupIngredientsByType([]);
+  readonly trackByFn = trackByFactory<IngredientType>((type) => type);
 
-  onDropColumn({
-    item,
+  onDrop({
     previousIndex,
     currentIndex,
     container,
-  }: CdkDragDrop<IngredientColumn[]>): void {
+  }: CdkDragDrop<IngredientType[]>): void {
     moveItemInArray(container.data, previousIndex, currentIndex);
-    this.columnMove.emit({
-      columnId: item.data,
-      currentIndex,
-      previousIndex,
-    });
-    this.moving = false;
+    this.columnMove.emit(container.data);
   }
 }

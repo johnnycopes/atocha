@@ -20,23 +20,14 @@ import { IngredientsBoardFormComponent } from './ingredients-board-form.componen
 import { ingredientTrackByFn } from '@atocha/menu-matriarch/ui-domain';
 import { Ingredient } from '@atocha/menu-matriarch/util';
 
-export interface ColumnMove {
-  columnId: string;
-  currentIndex: number;
-  previousIndex: number;
-}
-
 export interface IngredientAdd {
   ingredientName: string;
   columnId: string;
 }
 
 export interface IngredientMove {
-  ingredientId: string;
-  currentColumnId: string;
-  previousColumnId: string;
-  currentIndex: number;
-  previousIndex: number;
+  ingredient: Ingredient;
+  columnId: string;
 }
 
 @Component({
@@ -60,14 +51,12 @@ export interface IngredientMove {
 export class IngredientsBoardColumnComponent {
   @Input() name = '';
   @Input() ingredients: Ingredient[] = [];
-  @Input() moving = false;
   @Output() add = new EventEmitter<IngredientAdd>();
   @Output() move = new EventEmitter<IngredientMove>();
-  @Output() movingChange = new EventEmitter<boolean>();
   readonly menuIcon = faEllipsisH;
   readonly trackByFn = ingredientTrackByFn;
 
-  onDropItem({
+  onDrop({
     item,
     previousIndex,
     currentIndex,
@@ -85,16 +74,12 @@ export class IngredientsBoardColumnComponent {
       );
     }
     this.move.emit({
-      ingredientId: item.data.ingredient.id,
-      previousColumnId: item.data.columnId,
-      currentColumnId: this.name,
-      previousIndex,
-      currentIndex,
+      ingredient: item.data.ingredient,
+      columnId: this.name,
     });
-    this.movingChange.emit(false);
   }
 
-  onItemAdd(ingredientName: string): void {
+  onAdd(ingredientName: string): void {
     this.add.emit({
       ingredientName,
       columnId: this.name,

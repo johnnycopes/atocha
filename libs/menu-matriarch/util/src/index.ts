@@ -1,5 +1,6 @@
 export * from './lib/functions/get-days';
 export * from './lib/functions/get-dish-types';
+export * from './lib/functions/get-ingredient-types';
 
 export * from './lib/day.type';
 export * from './lib/dish.interface';
