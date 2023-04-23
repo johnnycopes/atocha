@@ -9,10 +9,10 @@ export function getIngredientTypes(): IngredientType[] {
     'frozen',
     'grocery',
     'meat/seafood',
+    'misc',
     'oil',
     'produce',
     'refrigerated',
     'spice',
-    'misc',
   ];
 }

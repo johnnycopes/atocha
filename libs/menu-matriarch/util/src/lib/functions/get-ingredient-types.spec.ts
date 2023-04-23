@@ -10,11 +10,11 @@ describe('getIngredientTypes', () => {
       'frozen',
       'grocery',
       'meat/seafood',
+      'misc',
       'oil',
       'produce',
       'refrigerated',
       'spice',
-      'misc',
     ]);
   });
 });

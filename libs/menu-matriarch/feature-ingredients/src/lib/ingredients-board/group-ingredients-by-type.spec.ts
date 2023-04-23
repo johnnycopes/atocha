@@ -71,6 +71,7 @@ describe('groupIngredientsByType', () => {
         ['frozen', []],
         ['grocery', []],
         ['meat/seafood', []],
+        ['misc', []],
         [
           'oil',
           [
@@ -147,7 +148,6 @@ describe('groupIngredientsByType', () => {
             },
           ],
         ],
-        ['misc', []],
       ])
     );
   });

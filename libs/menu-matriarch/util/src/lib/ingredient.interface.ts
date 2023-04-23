@@ -23,9 +23,9 @@ const INGREDIENT_TYPES = [
   'frozen',
   'grocery',
   'meat/seafood',
+  'misc',
   'oil',
   'produce',
   'refrigerated',
   'spice',
-  'misc',
 ] as const;
