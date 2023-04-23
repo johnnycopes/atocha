@@ -19,17 +19,24 @@
   margin-top: spacing(16);
   height: calc(100% - 76px);
   overflow-y: auto;
+}
 
-  &--droppable {
-    &::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      z-index: 1;
-      background: color($yellow, 8);
-      border-radius: border(radius);
-    }
+.cdk-drop-list-dragging {
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: color($yellow, 8);
+    border-radius: border(radius);
   }
+}
+
+.drag-placeholder {
+  position: relative;
+  height: calc(100% - 76px);
+  background: color($yellow, 8);
+  border-radius: border(radius);
 }
 
 .ingredient {
