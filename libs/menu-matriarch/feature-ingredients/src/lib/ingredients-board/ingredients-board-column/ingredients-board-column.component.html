@@ -6,6 +6,7 @@
 </app-ingredients-board-form>
 
 <ul class="ingredients"
+  [class.ingredients--droppable]="moving"
   cdkDropList
   [cdkDropListData]="ingredients"
   (cdkDropListDropped)="onDropItem($event)"

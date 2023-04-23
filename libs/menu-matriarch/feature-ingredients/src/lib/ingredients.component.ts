@@ -72,10 +72,10 @@ export class IngredientsComponent {
   }
 
   onIngredientMove({ ingredient, currentColumnId }: IngredientMove) {
-    // this._ingredientService.updateIngredient(ingredient, {
-    //   ...ingredient,
-    //   type: this._mapColumnIdToIngredientType(currentColumnId),
-    // });
+    this._ingredientService.updateIngredient(ingredient, {
+      ...ingredient,
+      type: this._mapColumnIdToIngredientType(currentColumnId),
+    });
   }
 
   private _mapColumnIdToIngredientType(columnId: string): IngredientType {

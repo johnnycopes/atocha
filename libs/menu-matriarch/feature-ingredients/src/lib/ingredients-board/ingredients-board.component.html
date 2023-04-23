@@ -14,7 +14,6 @@
     [ingredients]="ingredientsByType[column]"
     (add)="ingredientAdd.emit($event)"
     (move)="ingredientMove.emit($event)"
-    (cdkDragStarted)="moving = true"
     [(moving)]="moving"
   ></li>
 </ul>
