@@ -41,7 +41,7 @@ export const INGREDIENT_DTOS = [
     id: 'ingredient-2',
     uid: 'abc',
     name: 'Tomato sauce',
-    type: 'canned/jarred good',
+    type: 'canned/jarred',
     dishIds: ['dish-1'],
   }),
   createIngredientDto({

@@ -18,14 +18,14 @@ type IngredientTypes = typeof INGREDIENT_TYPES;
 const INGREDIENT_TYPES = [
   'bread/bakery',
   'condiment',
-  'canned/jarred good',
+  'canned/jarred',
   'dry good',
   'frozen',
   'grocery',
   'meat/seafood',
+  'misc',
   'oil',
   'produce',
   'refrigerated',
   'spice',
-  'uncategorized',
 ] as const;

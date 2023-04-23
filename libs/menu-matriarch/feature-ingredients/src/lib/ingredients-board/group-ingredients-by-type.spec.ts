@@ -65,12 +65,13 @@ describe('groupIngredientsByType', () => {
     expect(groupIngredientsByType(ingredients)).toEqual(
       new Map<IngredientType, Ingredient[]>([
         ['bread/bakery', []],
-        ['canned/jarred good', []],
+        ['canned/jarred', []],
         ['condiment', []],
         ['dry good', []],
         ['frozen', []],
         ['grocery', []],
         ['meat/seafood', []],
+        ['misc', []],
         [
           'oil',
           [
@@ -147,7 +148,6 @@ describe('groupIngredientsByType', () => {
             },
           ],
         ],
-        ['uncategorized', []],
       ])
     );
   });

@@ -13,7 +13,7 @@ export function createIngredientDto({
     id: id ?? '',
     uid: uid ?? '',
     name: name ?? '',
-    type: type ?? 'uncategorized',
+    type: type ?? 'misc',
     dishIds: dishIds ?? [],
   };
 }
