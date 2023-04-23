@@ -19,7 +19,7 @@ import {
   IngredientMove,
   IngredientsBoardColumnComponent,
 } from './ingredients-board-column/ingredients-board-column.component';
-import { groupIngredientsByType } from '../group-ingredients-by-type';
+import { groupIngredientsByType } from './group-ingredients-by-type';
 
 export interface IngredientColumn {
   name: IngredientType;
