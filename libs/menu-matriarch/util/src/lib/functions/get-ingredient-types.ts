@@ -13,6 +13,6 @@ export function getIngredientTypes(): IngredientType[] {
     'produce',
     'refrigerated',
     'spice',
-    'uncategorized',
+    'misc',
   ];
 }

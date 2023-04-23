@@ -147,7 +147,7 @@ describe('groupIngredientsByType', () => {
             },
           ],
         ],
-        ['uncategorized', []],
+        ['misc', []],
       ])
     );
   });

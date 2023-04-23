@@ -27,5 +27,5 @@ const INGREDIENT_TYPES = [
   'produce',
   'refrigerated',
   'spice',
-  'uncategorized',
+  'misc',
 ] as const;

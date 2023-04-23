@@ -14,7 +14,7 @@ describe('getIngredientTypes', () => {
       'produce',
       'refrigerated',
       'spice',
-      'uncategorized',
+      'misc',
     ]);
   });
 });

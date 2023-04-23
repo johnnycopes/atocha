@@ -7,7 +7,7 @@ describe('createIngredientDto', () => {
       id: '',
       uid: '',
       name: '',
-      type: 'uncategorized',
+      type: 'misc',
       dishIds: [],
     });
   });
