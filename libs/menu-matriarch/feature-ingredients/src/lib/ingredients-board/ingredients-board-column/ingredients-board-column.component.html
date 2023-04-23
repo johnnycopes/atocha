@@ -2,13 +2,13 @@
   {{ name }}
 </h2>
 
-<app-ingredients-board-form (add)="onItemAdd($event)">
+<app-ingredients-board-form (add)="onAdd($event)">
 </app-ingredients-board-form>
 
 <ul class="ingredients"
   cdkDropList
   [cdkDropListData]="ingredients"
-  (cdkDropListDropped)="onDropItem($event)"
+  (cdkDropListDropped)="onDrop($event)"
 >
   <li app-ingredient-card
     *ngFor="let ingredient of ingredients; trackBy: trackByFn"

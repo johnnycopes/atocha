@@ -46,7 +46,7 @@ export class IngredientsBoardComponent {
   ingredientsByType = groupIngredientsByType([]);
   readonly trackByFn = trackByFactory<IngredientType>((type) => type);
 
-  onDropColumn({
+  onDrop({
     previousIndex,
     currentIndex,
     container,

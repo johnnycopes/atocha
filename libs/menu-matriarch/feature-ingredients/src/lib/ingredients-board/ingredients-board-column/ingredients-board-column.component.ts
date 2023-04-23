@@ -59,7 +59,7 @@ export class IngredientsBoardColumnComponent {
   readonly menuIcon = faEllipsisH;
   readonly trackByFn = ingredientTrackByFn;
 
-  onDropItem({
+  onDrop({
     item,
     previousIndex,
     currentIndex,
@@ -85,7 +85,7 @@ export class IngredientsBoardColumnComponent {
     });
   }
 
-  onItemAdd(ingredientName: string): void {
+  onAdd(ingredientName: string): void {
     this.add.emit({
       ingredientName,
       columnId: this.name,
