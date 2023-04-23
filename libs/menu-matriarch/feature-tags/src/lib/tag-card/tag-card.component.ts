@@ -36,8 +36,8 @@ import { CardComponent } from '@atocha/menu-matriarch/ui-generic';
 export class TagCardComponent {
   @Input() id = '';
   @Input() name = '';
-  @Input() meals: string[] = [];
-  @Input() dishes: string[] = [];
+  @Input() mealIds: string[] = [];
+  @Input() dishIds: string[] = [];
   @Output() edit = new EventEmitter<string>();
   @Output() delete = new EventEmitter<void>();
   startEdit$ = new Subject<void>();
