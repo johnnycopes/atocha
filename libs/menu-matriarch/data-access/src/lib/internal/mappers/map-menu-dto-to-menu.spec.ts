@@ -1,3 +1,4 @@
+import { getIngredientTypes } from '@atocha/menu-matriarch/util';
 import { mapDishDtoToDish } from './map-dish-dto-to-dish';
 import { mapMenuDtoToMenu } from './map-menu-dto-to-menu';
 import {
@@ -23,6 +24,7 @@ describe('mapMenuDtoToMenu', () => {
           defaultMenuStartDay: 'Monday',
           emptyMealText: 'undecided',
           mealOrientation: 'horizontal',
+          ingredientTypeOrder: getIngredientTypes(),
         },
       })
     ).toEqual({

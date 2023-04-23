@@ -7,7 +7,10 @@ import {
   UserService,
 } from '@atocha/menu-matriarch/data-access';
 import { SectionComponent } from '@atocha/menu-matriarch/ui-generic';
-import { IngredientType } from '@atocha/menu-matriarch/util';
+import {
+  IngredientType,
+  getIngredientTypes,
+} from '@atocha/menu-matriarch/util';
 import { IngredientsBoardComponent } from './ingredients-board/ingredients-board.component';
 import {
   IngredientAdd,
@@ -31,22 +34,7 @@ export class IngredientsComponent {
   ]).pipe(
     map(([ingredients, order]) => ({
       ingredients,
-      columns:
-        order ??
-        ([
-          'bread/bakery',
-          'canned/jarred good',
-          'condiment',
-          'dry good',
-          'frozen',
-          'grocery',
-          'meat/seafood',
-          'oil',
-          'produce',
-          'refrigerated',
-          'spice',
-          'uncategorized',
-        ] as IngredientType[]),
+      columns: order ?? getIngredientTypes(),
     }))
   );
 

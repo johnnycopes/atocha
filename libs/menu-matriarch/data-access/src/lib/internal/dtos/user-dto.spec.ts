@@ -1,3 +1,4 @@
+import { getIngredientTypes } from '@atocha/menu-matriarch/util';
 import { createUserDto } from './user-dto';
 
 describe('createUserDto', () => {
@@ -13,6 +14,7 @@ describe('createUserDto', () => {
         defaultMenuStartDay: 'Monday',
         emptyMealText: 'undecided',
         mealOrientation: 'horizontal',
+        ingredientTypeOrder: getIngredientTypes(),
       },
     });
   });
@@ -28,6 +30,7 @@ describe('createUserDto', () => {
         defaultMenuStartDay: 'Wednesday',
         emptyMealText: 'nothing',
         mealOrientation: 'vertical',
+        ingredientTypeOrder: getIngredientTypes(),
       },
     });
     expect(user).toEqual({
@@ -40,6 +43,7 @@ describe('createUserDto', () => {
         defaultMenuStartDay: 'Wednesday',
         emptyMealText: 'nothing',
         mealOrientation: 'vertical',
+        ingredientTypeOrder: getIngredientTypes(),
       },
     });
   });
