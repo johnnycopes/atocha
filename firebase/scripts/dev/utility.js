@@ -30,7 +30,14 @@ async function deleteData(admin, uid) {
   }
   const db = admin.firestore();
   const batch = db.batch();
-  const collections = ['users', 'menus', 'meals', 'ingredients', 'dishes', 'tags'];
+  const collections = [
+    'users',
+    'menus',
+    'meals',
+    'ingredients',
+    'dishes',
+    'tags',
+  ];
   const snapshots = await Promise.all(
     collections.map((collection) => {
       return db.collection(collection).where('uid', '==', uid).get();
