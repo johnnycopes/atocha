@@ -16,16 +16,17 @@ export type IngredientType = IngredientTypes[number];
 type IngredientTypes = typeof INGREDIENT_TYPES;
 
 const INGREDIENT_TYPES = [
-  'bread/bakery',
+  'bread',
   'condiment',
-  'canned/jarred',
   'dry good',
   'frozen',
   'grocery',
-  'meat/seafood',
+  'meat',
   'misc',
   'oil',
+  'preserved',
   'produce',
   'refrigerated',
+  'seafood',
   'spice',
 ] as const;
