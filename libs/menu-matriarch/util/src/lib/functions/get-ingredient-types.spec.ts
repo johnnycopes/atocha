@@ -3,17 +3,18 @@ import { getIngredientTypes } from './get-ingredient-types';
 describe('getIngredientTypes', () => {
   it('returns ingredient types in alphabetical order', () => {
     expect(getIngredientTypes()).toEqual([
-      'bread/bakery',
-      'canned/jarred',
+      'bread',
       'condiment',
       'dry good',
       'frozen',
       'grocery',
-      'meat/seafood',
+      'meat',
       'misc',
       'oil',
+      'preserved',
       'produce',
       'refrigerated',
+      'seafood',
       'spice',
     ]);
   });

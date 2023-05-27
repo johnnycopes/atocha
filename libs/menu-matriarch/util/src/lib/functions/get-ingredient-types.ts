@@ -2,17 +2,18 @@ import { IngredientType } from '../ingredient.interface';
 
 export function getIngredientTypes(): IngredientType[] {
   return [
-    'bread/bakery',
-    'canned/jarred',
+    'bread',
     'condiment',
     'dry good',
     'frozen',
     'grocery',
-    'meat/seafood',
+    'meat',
     'misc',
     'oil',
+    'preserved',
     'produce',
     'refrigerated',
+    'seafood',
     'spice',
   ];
 }
