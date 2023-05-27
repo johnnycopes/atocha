@@ -34,14 +34,14 @@ export const INGREDIENT_DTOS = [
     id: 'ingredient-1',
     uid: 'abc',
     name: 'Dough',
-    type: 'bread/bakery',
+    type: 'bread',
     dishIds: ['dish-1'],
   }),
   createIngredientDto({
     id: 'ingredient-2',
     uid: 'abc',
     name: 'Tomato sauce',
-    type: 'canned/jarred',
+    type: 'preserved',
     dishIds: ['dish-1'],
   }),
   createIngredientDto({
