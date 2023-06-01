@@ -17,6 +17,7 @@ import { Ingredient, IngredientType } from '@atocha/menu-matriarch/util';
 import {
   IngredientAdd,
   IngredientMove,
+  IngredientRename,
   IngredientsBoardColumnComponent,
 } from './ingredients-board-column/ingredients-board-column.component';
 import { groupIngredientsByType } from './group-ingredients-by-type';
@@ -43,6 +44,7 @@ export class IngredientsBoardComponent {
   @Output() columnMove = new EventEmitter<IngredientType[]>();
   @Output() ingredientAdd = new EventEmitter<IngredientAdd>();
   @Output() ingredientMove = new EventEmitter<IngredientMove>();
+  @Output() ingredientRename = new EventEmitter<IngredientRename>();
   @Output() ingredientDelete = new EventEmitter<Ingredient>();
   ingredientsByType = groupIngredientsByType([]);
   readonly trackByFn = trackByFactory<IngredientType>((type) => type);

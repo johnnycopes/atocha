@@ -1,29 +1,39 @@
-<ui-card class="ingredient">
-  <h4 class="name">
-    {{ name }}
-  </h4>
-  <ui-count
-    class="count"
-    type="dishes"
-    [count]="dishIds.length"
-  ></ui-count>
-  <button core-button="tertiary"
-    [uiOptionsMenuTrigger]="optionsMenu"
-  >
-    <fa-icon class="icon"
-      [icon]="menuToggleIcon"
-    ></fa-icon>
-  </button>
-  <ui-options-menu #optionsMenu>
-    <li ui-options-menu-item
-      (click)="rename()"
+<ui-card *ngIf="state$ | async as state"
+  class="ingredient"
+>
+  <ui-inline-name-edit
+    *ngIf="state === 'renaming'; else toolbarTemplate"
+    [name]="name"
+    (cancel)="onCancel()"
+    (save)="onRenameSave($event)"
+  ></ui-inline-name-edit>
+  <ng-template #toolbarTemplate>
+    <h4 class="name">
+      {{ name }}
+    </h4>
+    <ui-count
+      class="count"
+      type="dishes"
+      [count]="dishIds.length"
+    ></ui-count>
+    <button core-button="tertiary"
+      [uiOptionsMenuTrigger]="optionsMenu"
     >
-      Rename
-    </li>
-    <li ui-options-menu-item
-      (click)="delete.emit()"
-    >
-      Delete
-    </li>
-  </ui-options-menu>
+      <fa-icon class="icon"
+        [icon]="menuToggleIcon"
+      ></fa-icon>
+    </button>
+    <ui-options-menu #optionsMenu>
+      <li ui-options-menu-item
+        (click)="onRename()"
+      >
+        Rename
+      </li>
+      <li ui-options-menu-item
+        (click)="delete.emit()"
+      >
+        Delete
+      </li>
+    </ui-options-menu>
+  </ng-template>
 </ui-card>

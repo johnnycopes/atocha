@@ -30,6 +30,11 @@ export interface IngredientMove {
   columnId: string;
 }
 
+export interface IngredientRename {
+  ingredient: Ingredient;
+  name: string;
+}
+
 @Component({
   standalone: true,
   // eslint-disable-next-line @angular-eslint/component-selector
@@ -53,6 +58,7 @@ export class IngredientsBoardColumnComponent {
   @Input() ingredients: Ingredient[] = [];
   @Output() add = new EventEmitter<IngredientAdd>();
   @Output() move = new EventEmitter<IngredientMove>();
+  @Output() rename = new EventEmitter<IngredientRename>();
   @Output() delete = new EventEmitter<Ingredient>();
   readonly menuIcon = faEllipsisH;
   readonly trackByFn = ingredientTrackByFn;
@@ -85,6 +91,10 @@ export class IngredientsBoardColumnComponent {
       ingredientName,
       columnId: this.name,
     });
+  }
+
+  onRename(ingredient: Ingredient, name: string): void {
+    this.rename.emit({ ingredient, name });
   }
 
   onDelete(ingredient: Ingredient): void {

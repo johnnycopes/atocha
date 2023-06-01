@@ -16,6 +16,7 @@ import { IngredientsBoardComponent } from './ingredients-board/ingredients-board
 import {
   IngredientAdd,
   IngredientMove,
+  IngredientRename,
 } from './ingredients-board/ingredients-board-column/ingredients-board-column.component';
 
 @Component({
@@ -64,6 +65,13 @@ export class IngredientsComponent {
     this._ingredientService.updateIngredient(ingredient, {
       ...ingredient,
       type: columnId as IngredientType,
+    });
+  }
+
+  onIngredientRename({ ingredient, name }: IngredientRename): void {
+    this._ingredientService.updateIngredient(ingredient, {
+      ...ingredient,
+      name,
     });
   }
 

@@ -20,6 +20,7 @@
       columnId: name,
       ingredient: ingredient
     }"
+    (rename)="onRename(ingredient, $event)"
     (delete)="onDelete(ingredient)"
   ></li>
 </ul>
