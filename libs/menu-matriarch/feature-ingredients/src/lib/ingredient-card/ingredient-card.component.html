@@ -1,5 +1,5 @@
 <ui-card class="ingredient">
-  <h4>
+  <h4 class="name">
     {{ name }}
   </h4>
   <ui-count
@@ -7,4 +7,23 @@
     type="dishes"
     [count]="dishIds.length"
   ></ui-count>
+  <button core-button="tertiary"
+    [uiOptionsMenuTrigger]="optionsMenu"
+  >
+    <fa-icon class="icon"
+      [icon]="menuToggleIcon"
+    ></fa-icon>
+  </button>
+  <ui-options-menu #optionsMenu>
+    <li ui-options-menu-item
+      (click)="rename()"
+    >
+      Rename
+    </li>
+    <li ui-options-menu-item
+      (click)="delete.emit()"
+    >
+      Delete
+    </li>
+  </ui-options-menu>
 </ui-card>

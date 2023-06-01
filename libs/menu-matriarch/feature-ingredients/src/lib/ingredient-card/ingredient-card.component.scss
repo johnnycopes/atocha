@@ -1,8 +1,19 @@
+@import 'main';
+
 :host {
   display: block;
 }
 
 .ingredient {
   display: flex;
-  justify-content: space-between;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.name {
+  margin-right: auto;
+}
+
+.count {
+  margin: 0 spacing(8);
 }
