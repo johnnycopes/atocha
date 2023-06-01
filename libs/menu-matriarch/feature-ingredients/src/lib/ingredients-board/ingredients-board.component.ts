@@ -43,6 +43,7 @@ export class IngredientsBoardComponent {
   @Output() columnMove = new EventEmitter<IngredientType[]>();
   @Output() ingredientAdd = new EventEmitter<IngredientAdd>();
   @Output() ingredientMove = new EventEmitter<IngredientMove>();
+  @Output() ingredientDelete = new EventEmitter<Ingredient>();
   ingredientsByType = groupIngredientsByType([]);
   readonly trackByFn = trackByFactory<IngredientType>((type) => type);
 

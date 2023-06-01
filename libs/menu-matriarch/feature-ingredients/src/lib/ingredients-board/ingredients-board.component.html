@@ -14,5 +14,6 @@
     [ingredients]="ingredientsByType.get(column) ?? []"
     (add)="ingredientAdd.emit($event)"
     (move)="ingredientMove.emit($event)"
+    (delete)="ingredientDelete.emit($event)"
   ></li>
 </ul>

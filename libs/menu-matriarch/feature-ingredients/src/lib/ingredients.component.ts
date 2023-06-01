@@ -8,6 +8,7 @@ import {
 } from '@atocha/menu-matriarch/data-access';
 import { SectionComponent } from '@atocha/menu-matriarch/ui-generic';
 import {
+  Ingredient,
   IngredientType,
   getIngredientTypes,
 } from '@atocha/menu-matriarch/util';
@@ -64,5 +65,9 @@ export class IngredientsComponent {
       ...ingredient,
       type: columnId as IngredientType,
     });
+  }
+
+  onIngredientDelete(ingredient: Ingredient): void {
+    this._ingredientService.deleteIngredient(ingredient);
   }
 }

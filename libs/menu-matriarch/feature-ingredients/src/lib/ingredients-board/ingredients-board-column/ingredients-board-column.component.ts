@@ -53,6 +53,7 @@ export class IngredientsBoardColumnComponent {
   @Input() ingredients: Ingredient[] = [];
   @Output() add = new EventEmitter<IngredientAdd>();
   @Output() move = new EventEmitter<IngredientMove>();
+  @Output() delete = new EventEmitter<Ingredient>();
   readonly menuIcon = faEllipsisH;
   readonly trackByFn = ingredientTrackByFn;
 
@@ -84,5 +85,9 @@ export class IngredientsBoardColumnComponent {
       ingredientName,
       columnId: this.name,
     });
+  }
+
+  onDelete(ingredient: Ingredient): void {
+    this.delete.emit(ingredient);
   }
 }
