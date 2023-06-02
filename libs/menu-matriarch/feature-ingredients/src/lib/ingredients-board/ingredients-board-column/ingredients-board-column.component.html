@@ -2,8 +2,9 @@
   {{ name }} ({{ ingredients.length }})
 </h2>
 
-<app-ingredients-board-form (add)="onAdd($event)">
-</app-ingredients-board-form>
+<app-ingredients-board-form
+  (add)="add.emit({ ingredientName: $event, columnId: name })"
+></app-ingredients-board-form>
 
 <ul class="ingredients"
   cdkDropList
@@ -21,7 +22,8 @@
       columnId: name,
       ingredient: ingredient
     }"
-    (rename)="onRename(ingredient, $event)"
-    (delete)="onDelete(ingredient)"
+    (rename)="rename.emit({ ingredient: ingredient, name: $event })"
+    (typeChange)="move.emit({ ingredient: ingredient, columnId: $event })"
+    (delete)="delete.emit(ingredient)"
   ></li>
 </ul>

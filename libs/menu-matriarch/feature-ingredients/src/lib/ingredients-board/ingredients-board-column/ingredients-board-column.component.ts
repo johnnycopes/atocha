@@ -85,19 +85,4 @@ export class IngredientsBoardColumnComponent {
       columnId: this.name,
     });
   }
-
-  onAdd(ingredientName: string): void {
-    this.add.emit({
-      ingredientName,
-      columnId: this.name,
-    });
-  }
-
-  onRename(ingredient: Ingredient, name: string): void {
-    this.rename.emit({ ingredient, name });
-  }
-
-  onDelete(ingredient: Ingredient): void {
-    this.delete.emit(ingredient);
-  }
 }
