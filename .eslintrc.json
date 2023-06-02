@@ -93,6 +93,5 @@
       "extends": ["plugin:@nx/javascript"],
       "rules": {}
     }
-  ],
-  "extends": [null, "plugin:storybook/recommended"]
+  ]
 }
