@@ -1,13 +1,7 @@
 <ui-card *ngIf="state$ | async as state"
   class="ingredient"
 >
-  <ui-inline-name-edit
-    *ngIf="state === 'renaming'; else toolbarTemplate"
-    [name]="name"
-    (cancel)="onCancel()"
-    (save)="onRenameSave($event)"
-  ></ui-inline-name-edit>
-  <ng-template #toolbarTemplate>
+  <ng-container *ngIf="state === 'default'">
     <h4 class="name">
       {{ name }}
     </h4>
@@ -30,10 +24,27 @@
         Rename
       </li>
       <li ui-options-menu-item
+        (click)="onMove()"
+      >
+        Move
+      </li>
+      <li ui-options-menu-item
         (click)="delete.emit()"
       >
         Delete
       </li>
     </ui-options-menu>
-  </ng-template>
+  </ng-container>
+  <ui-inline-name-edit
+    *ngIf="state === 'renaming'"
+    [name]="name"
+    (cancel)="onCancel()"
+    (save)="onRenameSave($event)"
+  ></ui-inline-name-edit>
+  <app-inline-type-select class="start-type-form"
+    *ngIf="state === 'changingType'"
+    [startType]="type"
+    (cancel)="onCancel()"
+    (save)="onChangeTypeSave($event)"
+  ></app-inline-type-select>
 </ui-card>
