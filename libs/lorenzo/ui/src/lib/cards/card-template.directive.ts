@@ -1,6 +1,6 @@
 import { Directive, Input } from '@angular/core';
 
-interface CardTemplateContext<T> {
+export interface CardTemplateContext<T> {
   $implicit: T;
   uiCard: T;
 }

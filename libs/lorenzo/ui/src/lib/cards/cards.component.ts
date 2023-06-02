@@ -15,7 +15,10 @@ import {
 
 import { ButtonComponent } from '@atocha/core/ui';
 import { Ordinal } from '@atocha/lorenzo/util';
-import { CardTemplateDirective } from './card-template.directive';
+import {
+  CardTemplateContext,
+  CardTemplateDirective,
+} from './card-template.directive';
 
 @Component({
   standalone: true,
@@ -40,7 +43,7 @@ export class CardsComponent<T> implements OnChanges {
   showMoveDown = false;
 
   @ContentChild(CardTemplateDirective, { read: TemplateRef })
-  cardTemplate: TemplateRef<T> | null = null;
+  cardTemplate: TemplateRef<CardTemplateContext<T>> | null = null;
 
   ngOnChanges(changes: SimpleChanges): void {
     const ordinal: Ordinal | undefined = changes['ordinal']?.currentValue;
