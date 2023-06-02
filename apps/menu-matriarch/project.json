@@ -1,5 +1,6 @@
 {
   "name": "menu-matriarch",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
   "sourceRoot": "apps/menu-matriarch/src",
   "prefix": "app",
@@ -76,7 +77,7 @@
       }
     },
     "lint": {
-      "executor": "@nrwl/linter:eslint",
+      "executor": "@nx/linter:eslint",
       "options": {
         "lintFilePatterns": [
           "apps/menu-matriarch/**/*.ts",
@@ -85,7 +86,7 @@
       }
     },
     "test": {
-      "executor": "@nrwl/jest:jest",
+      "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/apps/menu-matriarch"],
       "options": {
         "jestConfig": "apps/menu-matriarch/jest.config.ts",

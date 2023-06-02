@@ -6,7 +6,7 @@
   "prefix": "app",
   "targets": {
     "test": {
-      "executor": "@nrwl/jest:jest",
+      "executor": "@nx/jest:jest",
       "outputs": [
         "{workspaceRoot}/coverage/libs/spirit-islander/feature-shell"
       ],
@@ -16,7 +16,7 @@
       }
     },
     "lint": {
-      "executor": "@nrwl/linter:eslint",
+      "executor": "@nx/linter:eslint",
       "options": {
         "lintFilePatterns": [
           "libs/spirit-islander/feature-shell/**/*.ts",

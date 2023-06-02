@@ -6,7 +6,7 @@
   "prefix": "ui",
   "targets": {
     "test": {
-      "executor": "@nrwl/jest:jest",
+      "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/libs/menu-matriarch/ui-domain"],
       "options": {
         "jestConfig": "libs/menu-matriarch/ui-domain/jest.config.ts",
@@ -14,7 +14,7 @@
       }
     },
     "lint": {
-      "executor": "@nrwl/linter:eslint",
+      "executor": "@nx/linter:eslint",
       "options": {
         "lintFilePatterns": [
           "libs/menu-matriarch/ui-domain/**/*.ts",

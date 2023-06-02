@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, Router, UrlTree } from '@angular/router';
+import { Router, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
 import { first, map } from 'rxjs/operators';
 
@@ -8,7 +8,7 @@ import { PlannerService } from './planner.service';
 @Injectable({
   providedIn: 'root',
 })
-export class PlannerGuard implements CanActivate {
+export class PlannerGuard  {
   constructor(
     private _router: Router,
     private _plannerService: PlannerService
