@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {
+  Event,
   Router,
   NavigationEnd,
   RouterEvent,
@@ -31,7 +32,7 @@ export class RouterService {
 
     this._router.events
       .pipe(
-        filter((e): e is RouterEvent => e instanceof RouterEvent),
+        filter((e): e is Event => e instanceof RouterEvent),
         map((routerEvent) => {
           if (
             routerEvent instanceof NavigationEnd ||
