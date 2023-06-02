@@ -14,6 +14,7 @@
     *ngFor="let ingredient of ingredients; trackBy: trackByFn"
     class="ingredient"
     [name]="ingredient.name"
+    [type]="ingredient.type"
     [dishIds]="ingredient.dishIds"
     cdkDrag
     [cdkDragData]="{
