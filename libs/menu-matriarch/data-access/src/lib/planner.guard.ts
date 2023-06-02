@@ -8,7 +8,7 @@ import { PlannerService } from './planner.service';
 @Injectable({
   providedIn: 'root',
 })
-export class PlannerGuard  {
+export class PlannerGuard {
   constructor(
     private _router: Router,
     private _plannerService: PlannerService

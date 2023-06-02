@@ -8,7 +8,7 @@ import { AuthService } from '@atocha/core/data-access';
 @Injectable({
   providedIn: 'root',
 })
-export class AuthGuard  {
+export class AuthGuard {
   constructor(private _router: Router, private _authService: AuthService) {}
 
   canActivate():
