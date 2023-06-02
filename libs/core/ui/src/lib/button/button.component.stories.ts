@@ -1,6 +1,7 @@
 import {
+  StoryObj,
   moduleMetadata,
-  Story,
+  StoryFn,
   Meta,
   componentWrapperDecorator,
 } from '@storybook/angular';
@@ -31,7 +32,7 @@ export default {
   },
 } as Meta<ButtonComponent>;
 
-const Template: Story<ButtonComponent> = (args: Args) => ({
+const Template: StoryFn<ButtonComponent> = (args: Args) => ({
   props: args,
   template: `
     <button core-button="{{ variant }}"
@@ -43,43 +44,62 @@ const Template: Story<ButtonComponent> = (args: Args) => ({
   `,
 });
 
-export const base = Template.bind({});
-base.args = createArgs({});
+export const base = {
+  render: Template,
+  args: createArgs({}),
+};
 
-export const primary = Template.bind({});
-primary.args = createArgs({
-  variant: 'primary',
-});
+export const primary = {
+  render: Template,
 
-export const secondary = Template.bind({});
-secondary.args = createArgs({
-  variant: 'secondary',
-});
+  args: createArgs({
+    variant: 'primary',
+  }),
+};
 
-export const tertiary = Template.bind({});
-tertiary.args = createArgs({
-  variant: 'tertiary',
-});
+export const secondary = {
+  render: Template,
 
-export const danger = Template.bind({});
-danger.args = createArgs({
-  variant: 'danger',
-});
+  args: createArgs({
+    variant: 'secondary',
+  }),
+};
 
-export const disabled = Template.bind({});
-disabled.args = createArgs({});
+export const tertiary = {
+  render: Template,
 
-export const asLink: Story<ButtonComponent> = (args: Args) => ({
-  props: args,
-  template: `
-    <a core-button="{{ variant }}"
-      href="#"
-    >
-      {{ slot }}
-    </a>
-  `,
-});
-asLink.args = createArgs({});
+  args: createArgs({
+    variant: 'tertiary',
+  }),
+};
+
+export const danger = {
+  render: Template,
+
+  args: createArgs({
+    variant: 'danger',
+  }),
+};
+
+export const disabled = {
+  render: Template,
+  args: createArgs({}),
+};
+
+export const asLink: StoryObj<ButtonComponent> = {
+  render: (args: Args) => ({
+    props: args,
+    template: `
+      <a core-button="{{ variant }}"
+        href="#"
+      >
+        {{ slot }}
+      </a>
+    `,
+  }),
+
+  args: createArgs({}),
+};
 
 type Args = Partial<ButtonComponent> & {
   slot?: string;

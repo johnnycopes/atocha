@@ -1,7 +1,7 @@
 import { FormsModule } from '@angular/forms';
 import {
   moduleMetadata,
-  Story,
+  StoryFn,
   Meta,
   componentWrapperDecorator,
 } from '@storybook/angular';
@@ -49,7 +49,7 @@ export default {
   },
 } as Meta<CountedSelectionTreeComponent<TestItem>>;
 
-const Template: Story<CountedSelectionTreeComponent<TestItem>> = (
+const Template: StoryFn<CountedSelectionTreeComponent<TestItem>> = (
   args: Args
 ) => ({
   props: {
@@ -100,26 +100,38 @@ const Template: Story<CountedSelectionTreeComponent<TestItem>> = (
   `,
 });
 
-export const noneSelected = Template.bind({});
-noneSelected.args = createArgs({
-  model: [],
-});
+export const noneSelected = {
+  render: Template,
 
-export const someSelected = Template.bind({});
-someSelected.args = createArgs({
-  model: SOME_SELECTED_MODEL,
-});
+  args: createArgs({
+    model: [],
+  }),
+};
 
-export const allSelected = Template.bind({});
-allSelected.args = createArgs({
-  model: ALL_SELECTED_MODEL,
-});
+export const someSelected = {
+  render: Template,
 
-export const withCustomStyling = Template.bind({});
-withCustomStyling.args = createArgs({
-  model: SOME_SELECTED_MODEL,
-  className: 'custom-counted-selection-tree',
-});
+  args: createArgs({
+    model: SOME_SELECTED_MODEL,
+  }),
+};
+
+export const allSelected = {
+  render: Template,
+
+  args: createArgs({
+    model: ALL_SELECTED_MODEL,
+  }),
+};
+
+export const withCustomStyling = {
+  render: Template,
+
+  args: createArgs({
+    model: SOME_SELECTED_MODEL,
+    className: 'custom-counted-selection-tree',
+  }),
+};
 
 type Args = Partial<CountedSelectionTreeComponent<TestItem>> & {
   className?: string;

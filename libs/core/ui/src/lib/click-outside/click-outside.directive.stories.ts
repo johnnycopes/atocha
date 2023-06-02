@@ -1,6 +1,7 @@
 import {
+  StoryObj,
   moduleMetadata,
-  Story,
+  StoryFn,
   Meta,
   componentWrapperDecorator,
 } from '@storybook/angular';
@@ -23,16 +24,18 @@ export default {
   },
 } as Meta<ClickOutsideDirective>;
 
-export const base: Story<Args> = (args: Args) => ({
-  props: args,
-  template: `
-    <p style="background: goldenrod; padding: 16px;"
-      (click)="inside($event)"
-      (coreClickOutside)="outside($event)"
-    >
-      Click inside or outside of me to see different actions fire
-    </p>
-  `,
-});
+export const base: StoryObj<Args> = {
+  render: (args: Args) => ({
+    props: args,
+    template: `
+      <p style="background: goldenrod; padding: 16px;"
+        (click)="inside($event)"
+        (coreClickOutside)="outside($event)"
+      >
+        Click inside or outside of me to see different actions fire
+      </p>
+    `,
+  }),
+};
 
 type Args = Partial<ClickOutsideDirective>;

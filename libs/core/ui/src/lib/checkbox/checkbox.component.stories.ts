@@ -2,7 +2,7 @@ import { FormsModule } from '@angular/forms';
 import {
   Meta,
   moduleMetadata,
-  Story,
+  StoryFn,
   componentWrapperDecorator,
 } from '@storybook/angular';
 
@@ -28,7 +28,7 @@ export default {
   },
 } as Meta;
 
-const Template: Story<CheckboxComponent> = (args: Args) => ({
+const Template: StoryFn<CheckboxComponent> = (args: Args) => ({
   props: args,
   template: `
     <core-checkbox
@@ -44,17 +44,23 @@ const Template: Story<CheckboxComponent> = (args: Args) => ({
   `,
 });
 
-export const base = Template.bind({});
-base.args = createArgs({
-  slot: 'Click me!',
-});
+export const base = {
+  render: Template,
 
-export const withCustomStyling = Template.bind({});
-withCustomStyling.args = createArgs({
-  slot: 'Click me!',
-  size: 'large',
-  className: 'custom-checkbox',
-});
+  args: createArgs({
+    slot: 'Click me!',
+  }),
+};
+
+export const withCustomStyling = {
+  render: Template,
+
+  args: createArgs({
+    slot: 'Click me!',
+    size: 'large',
+    className: 'custom-checkbox',
+  }),
+};
 
 type Args = Partial<CheckboxComponent> & {
   slot?: string;

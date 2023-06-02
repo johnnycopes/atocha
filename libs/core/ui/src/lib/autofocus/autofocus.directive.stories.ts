@@ -1,6 +1,7 @@
 import {
+  StoryObj,
   moduleMetadata,
-  Story,
+  StoryFn,
   Meta,
   componentWrapperDecorator,
 } from '@storybook/angular';
@@ -19,35 +20,45 @@ export default {
   ],
 } as Meta<AutofocusDirective>;
 
-export const base: Story<Args> = (args: Args) => ({
-  props: args,
-  template: `
-    <input coreAutofocus />
-  `,
-});
+export const base: StoryObj<Args> = {
+  render: (args: Args) => ({
+    props: args,
+    template: `
+      <input coreAutofocus />
+    `,
+  }),
+};
 
-export const input: Story<Args> = (args: Args) => ({
-  props: args,
-  template: `
-    <input [coreAutofocus]="focus" />
-  `,
-});
-input.args = createArgs();
+export const input: StoryObj<Args> = {
+  render: (args: Args) => ({
+    props: args,
+    template: `
+      <input [coreAutofocus]="focus" />
+    `,
+  }),
 
-export const textarea: Story<Args> = (args: Args) => ({
-  props: args,
-  template: `
-    <textarea [coreAutofocus]="focus"></textarea>
-  `,
-});
-textarea.args = createArgs();
+  args: createArgs(),
+};
 
-export const turnedOff: Story<Args> = (args: Args) => ({
-  props: args,
-  template: `
-    <input [coreAutofocus]="false" />
-  `,
-});
+export const textarea: StoryObj<Args> = {
+  render: (args: Args) => ({
+    props: args,
+    template: `
+      <textarea [coreAutofocus]="focus"></textarea>
+    `,
+  }),
+
+  args: createArgs(),
+};
+
+export const turnedOff: StoryObj<Args> = {
+  render: (args: Args) => ({
+    props: args,
+    template: `
+      <input [coreAutofocus]="false" />
+    `,
+  }),
+};
 
 type Args = Partial<AutofocusDirective> & { focus: boolean };
 

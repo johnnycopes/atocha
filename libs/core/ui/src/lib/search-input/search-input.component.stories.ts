@@ -4,7 +4,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {
   Meta,
   moduleMetadata,
-  Story,
+  StoryFn,
   componentWrapperDecorator,
 } from '@storybook/angular';
 
@@ -32,7 +32,7 @@ export default {
   },
 } as Meta;
 
-const Template: Story<SearchInputComponent> = (args: Args) => ({
+const Template: StoryFn<SearchInputComponent> = (args: Args) => ({
   props: args,
   template: `
     <core-search-input
@@ -46,29 +46,43 @@ const Template: Story<SearchInputComponent> = (args: Args) => ({
   `,
 });
 
-export const base = Template.bind({});
-base.args = createArgs({});
+export const base = {
+  render: Template,
+  args: createArgs({}),
+};
 
-export const autofocus = Template.bind({});
-autofocus.args = createArgs({
-  autofocus: true,
-});
+export const autofocus = {
+  render: Template,
 
-export const disabled = Template.bind({});
-disabled.args = createArgs({
-  disabled: true,
-});
+  args: createArgs({
+    autofocus: true,
+  }),
+};
 
-export const withText = Template.bind({});
-withText.args = createArgs({
-  text: 'Search term',
-});
+export const disabled = {
+  render: Template,
 
-export const withCustomStyling = Template.bind({});
-withCustomStyling.args = createArgs({
-  text: 'This looks totally different',
-  className: 'custom-search-input',
-});
+  args: createArgs({
+    disabled: true,
+  }),
+};
+
+export const withText = {
+  render: Template,
+
+  args: createArgs({
+    text: 'Search term',
+  }),
+};
+
+export const withCustomStyling = {
+  render: Template,
+
+  args: createArgs({
+    text: 'This looks totally different',
+    className: 'custom-search-input',
+  }),
+};
 
 type Args = Partial<SearchInputComponent> & {
   className?: string;
