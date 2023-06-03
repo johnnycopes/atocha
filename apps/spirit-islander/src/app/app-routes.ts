@@ -1,6 +1,9 @@
 import { Routes } from '@angular/router';
 
-import { ShellComponent } from '@atocha/spirit-islander/feature-shell';
+import {
+  PageNotFoundComponent,
+  ShellComponent,
+} from '@atocha/spirit-islander/feature-shell';
 import { Route } from '@atocha/spirit-islander/util';
 
 export const APP_ROUTES: Routes = [
@@ -34,12 +37,8 @@ export const APP_ROUTES: Routes = [
       },
       {
         path: Route.error,
+        component: PageNotFoundComponent,
         title: 'Error | Spirit Islander',
-        data: { state: Route.error },
-        loadComponent: () =>
-          import('@atocha/spirit-islander/feature-shell').then(
-            (m) => m.PageNotFoundComponent
-          ),
       },
     ],
   },

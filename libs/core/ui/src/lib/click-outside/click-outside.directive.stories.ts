@@ -1,7 +1,6 @@
 import {
   StoryObj,
   moduleMetadata,
-  StoryFn,
   Meta,
   componentWrapperDecorator,
 } from '@storybook/angular';
