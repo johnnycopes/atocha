@@ -4,6 +4,7 @@ import {
   moduleMetadata,
   StoryFn,
   componentWrapperDecorator,
+  StoryObj,
 } from '@storybook/angular';
 
 import { StorybookWrapperComponent } from '../../../.storybook/storybook-wrapper/storybook-wrapper.component';
@@ -44,7 +45,7 @@ const Template: StoryFn<CheckboxComponent> = (args: Args) => ({
   `,
 });
 
-export const base = {
+export const base: StoryObj<CheckboxComponent> = {
   render: Template,
 
   args: createArgs({
@@ -52,7 +53,7 @@ export const base = {
   }),
 };
 
-export const withCustomStyling = {
+export const withCustomStyling: StoryObj<CheckboxComponent> = {
   render: Template,
 
   args: createArgs({

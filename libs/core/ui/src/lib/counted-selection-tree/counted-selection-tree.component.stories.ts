@@ -4,6 +4,7 @@ import {
   StoryFn,
   Meta,
   componentWrapperDecorator,
+  StoryObj,
 } from '@storybook/angular';
 
 import { CheckboxComponent } from '../checkbox/checkbox.component';
@@ -100,7 +101,7 @@ const Template: StoryFn<CountedSelectionTreeComponent<TestItem>> = (
   `,
 });
 
-export const noneSelected = {
+export const noneSelected: StoryObj<CountedSelectionTreeComponent<TestItem>> = {
   render: Template,
 
   args: createArgs({
@@ -108,7 +109,7 @@ export const noneSelected = {
   }),
 };
 
-export const someSelected = {
+export const someSelected: StoryObj<CountedSelectionTreeComponent<TestItem>> = {
   render: Template,
 
   args: createArgs({
@@ -116,7 +117,7 @@ export const someSelected = {
   }),
 };
 
-export const allSelected = {
+export const allSelected: StoryObj<CountedSelectionTreeComponent<TestItem>> = {
   render: Template,
 
   args: createArgs({
@@ -124,7 +125,9 @@ export const allSelected = {
   }),
 };
 
-export const withCustomStyling = {
+export const withCustomStyling: StoryObj<
+  CountedSelectionTreeComponent<TestItem>
+> = {
   render: Template,
 
   args: createArgs({

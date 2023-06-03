@@ -44,12 +44,12 @@ const Template: StoryFn<ButtonComponent> = (args: Args) => ({
   `,
 });
 
-export const base = {
+export const base: StoryObj<ButtonComponent> = {
   render: Template,
   args: createArgs({}),
 };
 
-export const primary = {
+export const primary: StoryObj<ButtonComponent> = {
   render: Template,
 
   args: createArgs({
@@ -57,7 +57,7 @@ export const primary = {
   }),
 };
 
-export const secondary = {
+export const secondary: StoryObj<ButtonComponent> = {
   render: Template,
 
   args: createArgs({
@@ -65,7 +65,7 @@ export const secondary = {
   }),
 };
 
-export const tertiary = {
+export const tertiary: StoryObj<ButtonComponent> = {
   render: Template,
 
   args: createArgs({
@@ -73,7 +73,7 @@ export const tertiary = {
   }),
 };
 
-export const danger = {
+export const danger: StoryObj<ButtonComponent> = {
   render: Template,
 
   args: createArgs({
@@ -81,7 +81,7 @@ export const danger = {
   }),
 };
 
-export const disabled = {
+export const disabled: StoryObj<ButtonComponent> = {
   render: Template,
   args: createArgs({}),
 };

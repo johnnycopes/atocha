@@ -6,6 +6,7 @@ import {
   moduleMetadata,
   StoryFn,
   componentWrapperDecorator,
+  StoryObj,
 } from '@storybook/angular';
 
 import { AutofocusDirective } from '../autofocus/autofocus.directive';
@@ -46,12 +47,12 @@ const Template: StoryFn<SearchInputComponent> = (args: Args) => ({
   `,
 });
 
-export const base = {
+export const base: StoryObj<SearchInputComponent> = {
   render: Template,
   args: createArgs({}),
 };
 
-export const autofocus = {
+export const autofocus: StoryObj<SearchInputComponent> = {
   render: Template,
 
   args: createArgs({
@@ -59,7 +60,7 @@ export const autofocus = {
   }),
 };
 
-export const disabled = {
+export const disabled: StoryObj<SearchInputComponent> = {
   render: Template,
 
   args: createArgs({
@@ -67,7 +68,7 @@ export const disabled = {
   }),
 };
 
-export const withText = {
+export const withText: StoryObj<SearchInputComponent> = {
   render: Template,
 
   args: createArgs({
@@ -75,7 +76,7 @@ export const withText = {
   }),
 };
 
-export const withCustomStyling = {
+export const withCustomStyling: StoryObj<SearchInputComponent> = {
   render: Template,
 
   args: createArgs({
