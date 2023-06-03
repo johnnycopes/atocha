@@ -1,11 +1,12 @@
 {
   "name": "spirit-islander-ui",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "sourceRoot": "libs/spirit-islander/ui/src",
   "prefix": "ui",
   "targets": {
     "test": {
-      "executor": "@nrwl/jest:jest",
+      "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/libs/spirit-islander/ui"],
       "options": {
         "jestConfig": "libs/spirit-islander/ui/jest.config.ts",
@@ -13,7 +14,7 @@
       }
     },
     "lint": {
-      "executor": "@nrwl/linter:eslint",
+      "executor": "@nx/linter:eslint",
       "options": {
         "lintFilePatterns": [
           "libs/spirit-islander/ui/**/*.ts",

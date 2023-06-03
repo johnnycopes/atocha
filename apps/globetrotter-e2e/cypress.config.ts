@@ -1,5 +1,5 @@
 import { defineConfig } from 'cypress';
-import { nxE2EPreset } from '@nrwl/cypress/plugins/cypress-preset';
+import { nxE2EPreset } from '@nx/cypress/plugins/cypress-preset';
 
 const cypressJsonConfig = {
   fileServerFolder: '.',
@@ -16,5 +16,6 @@ export default defineConfig({
   e2e: {
     ...nxE2EPreset(__filename),
     ...cypressJsonConfig,
+    testIsolation: true,
   },
 });

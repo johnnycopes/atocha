@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, Router, UrlTree } from '@angular/router';
+import { Router, UrlTree } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { first, map, switchMap } from 'rxjs/operators';
 
@@ -9,7 +9,7 @@ import { PlannerService } from './planner.service';
 @Injectable({
   providedIn: 'root',
 })
-export class LoggedInAuthGuard implements CanActivate {
+export class LoggedInAuthGuard {
   constructor(
     private _router: Router,
     private _authService: AuthService,

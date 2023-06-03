@@ -1,11 +1,12 @@
 {
   "name": "lorenzo-feature-browse",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "sourceRoot": "libs/lorenzo/feature-browse/src",
   "prefix": "app",
   "targets": {
     "test": {
-      "executor": "@nrwl/jest:jest",
+      "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/libs/lorenzo/feature-browse"],
       "options": {
         "jestConfig": "libs/lorenzo/feature-browse/jest.config.ts",
@@ -13,7 +14,7 @@
       }
     },
     "lint": {
-      "executor": "@nrwl/linter:eslint",
+      "executor": "@nx/linter:eslint",
       "options": {
         "lintFilePatterns": [
           "libs/lorenzo/feature-browse/**/*.ts",

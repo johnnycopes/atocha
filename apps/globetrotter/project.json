@@ -1,5 +1,6 @@
 {
   "name": "globetrotter",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
   "sourceRoot": "apps/globetrotter/src",
   "prefix": "app",
@@ -79,7 +80,7 @@
       }
     },
     "lint": {
-      "executor": "@nrwl/linter:eslint",
+      "executor": "@nx/linter:eslint",
       "options": {
         "lintFilePatterns": [
           "apps/globetrotter/**/*.ts",
@@ -88,7 +89,7 @@
       }
     },
     "test": {
-      "executor": "@nrwl/jest:jest",
+      "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/apps/globetrotter"],
       "options": {
         "jestConfig": "apps/globetrotter/jest.config.ts",

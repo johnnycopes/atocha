@@ -2,7 +2,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import {
   Meta,
   moduleMetadata,
-  Story,
+  StoryFn,
   componentWrapperDecorator,
 } from '@storybook/angular';
 
@@ -39,7 +39,7 @@ export default {
   },
 } as Meta;
 
-const Template: Story<KanbanBoardComponent<KitchenLocation, string>> = (
+const Template: StoryFn<KanbanBoardComponent<KitchenLocation, string>> = (
   args: Args
 ) => ({
   props: {
@@ -66,8 +66,10 @@ const Template: Story<KanbanBoardComponent<KitchenLocation, string>> = (
   `,
 });
 
-export const base = Template.bind({});
-base.args = createArgs();
+export const base = {
+  render: Template,
+  args: createArgs(),
+};
 
 type Args = Partial<KanbanBoardComponent<KitchenLocation, string>> & {
   className?: string;

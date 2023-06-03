@@ -6,16 +6,15 @@
   "prefix": "app",
   "targets": {
     "test": {
-      "executor": "@nrwl/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "executor": "@nx/jest:jest",
+      "outputs": [ "{workspaceRoot}/coverage/libs/menu-matriarch/feature-ingredients"],
       "options": {
         "jestConfig": "libs/menu-matriarch/feature-ingredients/jest.config.ts",
         "passWithNoTests": true
       }
     },
     "lint": {
-      "executor": "@nrwl/linter:eslint",
-      "outputs": ["{options.outputFile}"],
+      "executor": "@nx/linter:eslint",
       "options": {
         "lintFilePatterns": [
           "libs/menu-matriarch/feature-ingredients/**/*.ts",

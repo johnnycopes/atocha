@@ -1,5 +1,6 @@
 {
   "name": "spirit-islander",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
   "sourceRoot": "apps/spirit-islander/src",
   "prefix": "app",
@@ -73,7 +74,7 @@
       }
     },
     "lint": {
-      "executor": "@nrwl/linter:eslint",
+      "executor": "@nx/linter:eslint",
       "options": {
         "lintFilePatterns": [
           "apps/spirit-islander/**/*.ts",
@@ -82,7 +83,7 @@
       }
     },
     "test": {
-      "executor": "@nrwl/jest:jest",
+      "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/apps/spirit-islander"],
       "options": {
         "jestConfig": "apps/spirit-islander/jest.config.ts",
