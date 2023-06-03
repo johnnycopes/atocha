@@ -1,9 +1,10 @@
 import { FormsModule } from '@angular/forms';
 import {
   moduleMetadata,
-  Story,
+  StoryFn,
   Meta,
   componentWrapperDecorator,
+  StoryObj,
 } from '@storybook/angular';
 
 import { CheckboxComponent } from '../checkbox/checkbox.component';
@@ -47,7 +48,7 @@ export default {
   },
 } as Meta<SelectionTreeComponent<TestItem>>;
 
-const Template: Story<SelectionTreeComponent<TestItem>> = (args: Args) => ({
+const Template: StoryFn<SelectionTreeComponent<TestItem>> = (args: Args) => ({
   props: {
     ...args,
     getId,
@@ -85,26 +86,38 @@ const Template: Story<SelectionTreeComponent<TestItem>> = (args: Args) => ({
   `,
 });
 
-export const noneSelected = Template.bind({});
-noneSelected.args = createArgs({
-  model: [],
-});
+export const noneSelected: StoryObj<SelectionTreeComponent<TestItem>> = {
+  render: Template,
 
-export const someSelected = Template.bind({});
-someSelected.args = createArgs({
-  model: SOME_SELECTED_MODEL,
-});
+  args: createArgs({
+    model: [],
+  }),
+};
 
-export const allSelected = Template.bind({});
-allSelected.args = createArgs({
-  model: ALL_SELECTED_MODEL,
-});
+export const someSelected: StoryObj<SelectionTreeComponent<TestItem>> = {
+  render: Template,
 
-export const withCustomStyling = Template.bind({});
-withCustomStyling.args = createArgs({
-  model: [],
-  className: 'custom-selection-tree',
-});
+  args: createArgs({
+    model: SOME_SELECTED_MODEL,
+  }),
+};
+
+export const allSelected: StoryObj<SelectionTreeComponent<TestItem>> = {
+  render: Template,
+
+  args: createArgs({
+    model: ALL_SELECTED_MODEL,
+  }),
+};
+
+export const withCustomStyling: StoryObj<SelectionTreeComponent<TestItem>> = {
+  render: Template,
+
+  args: createArgs({
+    model: [],
+    className: 'custom-selection-tree',
+  }),
+};
 
 type Args = Partial<SelectionTreeComponent<TestItem>> & {
   className?: string;

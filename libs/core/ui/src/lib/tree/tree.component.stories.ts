@@ -1,4 +1,4 @@
-import { moduleMetadata, Story, Meta } from '@storybook/angular';
+import { StoryFn, moduleMetadata, Meta } from '@storybook/angular';
 
 import { TreeComponent } from './tree.component';
 
@@ -45,7 +45,7 @@ export default {
   ],
 } as Meta<TreeComponent<Item>>;
 
-export const leaf: Story<TreeComponent<Item>> = () => ({
+export const leaf: StoryFn<TreeComponent<Item>> = () => ({
   props: {
     item: leafItem,
     getId,
@@ -58,7 +58,7 @@ export const leaf: Story<TreeComponent<Item>> = () => ({
   `,
 });
 
-export const withChildren: Story<TreeComponent<Item>> = () => ({
+export const withChildren: StoryFn<TreeComponent<Item>> = () => ({
   props: {
     item: nestedItem,
     getId,
@@ -73,7 +73,7 @@ export const withChildren: Story<TreeComponent<Item>> = () => ({
   `,
 });
 
-export const withCustomTemplate: Story<TreeComponent<Item>> = () => ({
+export const withCustomTemplate: StoryFn<TreeComponent<Item>> = () => ({
   props: {
     item: nestedItem,
     getId,
