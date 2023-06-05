@@ -1,0 +1,16 @@
+<ui-section *ngIf="vm$ | async as vm">
+  <div class="ui-section__toolbar">
+    <h2 class="title">
+      Ingredients ({{ vm.ingredients.length }})
+    </h2>
+  </div>
+  <app-ingredients-board class="ui-section__content ingredients"
+    [ingredients]="vm.ingredients"
+    [columns]="vm.columns"
+    (columnMove)="onColumnMove($event)"
+    (ingredientAdd)="onIngredientAdd($event)"
+    (ingredientMove)="onIngredientMove($event)"
+    (ingredientRename)="onIngredientRename($event)"
+    (ingredientDelete)="onIngredientDelete($event)"
+  ></app-ingredients-board>
+</ui-section>

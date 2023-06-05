@@ -1,0 +1,10 @@
+@import 'main';
+
+.cdk-drag-preview {
+  box-shadow: box-shadow(heaviest);
+}
+
+.cdk-drop-list-dragging,
+.cdk-drop-list-receiving {
+  cursor: grabbing;
+}

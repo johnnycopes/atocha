@@ -1,6 +1,7 @@
 export enum Route {
   planner = 'planner',
   dishes = 'dishes',
+  ingredients = 'ingredients',
   meals = 'meals',
   menus = 'menus',
   tags = 'tags',

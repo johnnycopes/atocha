@@ -39,6 +39,14 @@ service cloud.firestore {
       allow delete: if belongsToUser(request, resource);
     }
 
+    match /ingredients/{ingredientId} {
+      allow read: if belongsToUser(request, resource);
+      allow create: if isFromUser(request);
+      allow update: if isFromUser(request)
+        && belongsToUser(request, resource);
+      allow delete: if belongsToUser(request, resource);
+    }
+
     match /tags/{tagId} {
       allow read: if belongsToUser(request, resource);
       allow create: if isFromUser(request);

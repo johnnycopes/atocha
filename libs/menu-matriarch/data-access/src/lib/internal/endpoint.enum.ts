@@ -1,7 +1,8 @@
 export enum Endpoint {
   dishes = 'dishes',
-  tags = 'tags',
+  ingredients = 'ingredients',
   meals = 'meals',
   menus = 'menus',
+  tags = 'tags',
   users = 'users',
 }
