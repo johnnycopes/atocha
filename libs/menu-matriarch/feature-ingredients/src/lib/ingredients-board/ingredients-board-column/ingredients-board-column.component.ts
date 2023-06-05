@@ -14,17 +14,21 @@ import {
 } from '@angular/cdk/drag-drop';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
+import { BehaviorSubject } from 'rxjs';
 
-import { IngredientCardComponent } from '../../ingredient-card/ingredient-card.component';
-import { IngredientsBoardFormComponent } from './ingredients-board-form.component';
-import { ingredientTrackByFn } from '@atocha/menu-matriarch/ui-domain';
+import { ButtonComponent } from '@atocha/core/ui';
 import { Ingredient } from '@atocha/menu-matriarch/util';
+import {
+  InlineNameEditComponent,
+  ingredientTrackByFn,
+} from '@atocha/menu-matriarch/ui-domain';
 import {
   OptionsMenuComponent,
   OptionsMenuItemComponent,
   OptionsMenuTriggerDirective,
 } from '@atocha/menu-matriarch/ui-generic';
-import { ButtonComponent } from '@atocha/core/ui';
+import { IngredientCardComponent } from '../../ingredient-card/ingredient-card.component';
+import { IngredientsBoardFormComponent } from './ingredients-board-form.component';
 
 export interface IngredientAdd {
   ingredientName: string;
@@ -40,6 +44,8 @@ export interface IngredientRename {
   ingredient: Ingredient;
   name: string;
 }
+
+type State = 'default' | 'renaming' | 'addingIngredient';
 
 @Component({
   standalone: true,
@@ -58,6 +64,7 @@ export interface IngredientRename {
     FontAwesomeModule,
     IngredientsBoardFormComponent,
     IngredientCardComponent,
+    InlineNameEditComponent,
     OptionsMenuComponent,
     OptionsMenuItemComponent,
     OptionsMenuTriggerDirective,
@@ -70,6 +77,10 @@ export class IngredientsBoardColumnComponent {
   @Output() move = new EventEmitter<IngredientMove>();
   @Output() rename = new EventEmitter<IngredientRename>();
   @Output() delete = new EventEmitter<Ingredient>();
+
+  private _stateSubject = new BehaviorSubject<State>('default');
+  state$ = this._stateSubject.asObservable();
+
   readonly menuToggleIcon = faEllipsisV;
   readonly trackByFn = ingredientTrackByFn;
 
@@ -94,5 +105,30 @@ export class IngredientsBoardColumnComponent {
       ingredient: item.data.ingredient,
       columnId: this.name,
     });
+  }
+
+  onAddNewIngredient(): void {
+    this._stateSubject.next('addingIngredient');
+  }
+
+  onRename(): void {
+    this._stateSubject.next('renaming');
+  }
+
+  onCancel(): void {
+    this._stateSubject.next('default');
+  }
+
+  onSave(name: string, state: State): void {
+    if (state === 'renaming') {
+      console.log('rename');
+    } else if (state === 'addingIngredient') {
+      this.add.emit({ ingredientName: name, columnId: this.name });
+    }
+  }
+
+  addNewIngredient(name: string): void {
+    this.add.emit({ ingredientName: name, columnId: this.name });
+    this._stateSubject.next('default');
   }
 }

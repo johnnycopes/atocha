@@ -11,7 +11,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: spacing(8);
+  padding-bottom: spacing(8);
+  border-bottom: map-get($border, thin) solid color($neutral, 9);
 }
 
 .name {
@@ -20,8 +21,13 @@
   font-size: font-size(16);
 }
 
+.add-ingredient-form {
+  display: block;
+  margin-top: spacing(8);
+}
+
 .ingredients {
-  margin-top: spacing(16);
+  margin-top: spacing(8);
   height: calc(100% - 84px);
   overflow-y: auto;
 

@@ -1,50 +1,62 @@
-<div class="header">
-  <h2 class="name">
-    {{ name }} ({{ ingredients.length }})
-  </h2>
+<ng-container *ngIf="state$ | async as state">
+  <div class="header">
+    <h2 class="name">
+      {{ name }} ({{ ingredients.length }})
+    </h2>
 
-  <button core-button="tertiary"
-    [uiOptionsMenuTrigger]="optionsMenu"
+    <button core-button="tertiary"
+      [uiOptionsMenuTrigger]="optionsMenu"
+    >
+      <fa-icon class="icon"
+        [icon]="menuToggleIcon"
+      ></fa-icon>
+    </button>
+    <ui-options-menu #optionsMenu>
+      <li ui-options-menu-item
+        (click)="onAddNewIngredient()"
+      >
+        New Ingredient
+      </li>
+      <li ui-options-menu-item
+        (click)="onRename()"
+      >
+        Rename
+      </li>
+      <li ui-options-menu-item
+        *ngIf="!ingredients.length"
+        (click)="delete.emit()"
+      >
+        Delete
+      </li>
+    </ui-options-menu>
+  </div>
+
+  <ui-inline-name-edit
+    *ngIf="state === 'addingIngredient'"
+    class="add-ingredient-form"
+    (cancel)="onCancel()"
+    (save)="addNewIngredient($event)"
+  ></ui-inline-name-edit>
+
+  <ul class="ingredients"
+    cdkDropList
+    [cdkDropListData]="ingredients"
+    (cdkDropListDropped)="onDrop($event)"
   >
-    <fa-icon class="icon"
-      [icon]="menuToggleIcon"
-    ></fa-icon>
-  </button>
-  <ui-options-menu #optionsMenu>
-    <li ui-options-menu-item
-    >
-      Rename
-    </li>
-    <li ui-options-menu-item
-      (click)="delete.emit()"
-    >
-      Delete
-    </li>
-  </ui-options-menu>
-</div>
-
-<app-ingredients-board-form
-  (add)="add.emit({ ingredientName: $event, columnId: name })"
-></app-ingredients-board-form>
-
-<ul class="ingredients"
-  cdkDropList
-  [cdkDropListData]="ingredients"
-  (cdkDropListDropped)="onDrop($event)"
->
-  <li app-ingredient-card
-    *ngFor="let ingredient of ingredients; trackBy: trackByFn"
-    class="ingredient"
-    [name]="ingredient.name"
-    [type]="ingredient.type"
-    [dishIds]="ingredient.dishIds"
-    cdkDrag
-    [cdkDragData]="{
-      columnId: name,
-      ingredient: ingredient
-    }"
-    (rename)="rename.emit({ ingredient: ingredient, name: $event })"
-    (typeChange)="move.emit({ ingredient: ingredient, columnId: $event })"
-    (delete)="delete.emit(ingredient)"
-  ></li>
-</ul>
+    <li app-ingredient-card
+      *ngFor="let ingredient of ingredients; trackBy: trackByFn"
+      class="ingredient"
+      [name]="ingredient.name"
+      [type]="ingredient.type"
+      [dishIds]="ingredient.dishIds"
+      cdkDrag
+      [cdkDragData]="{
+        columnId: name,
+        ingredient: ingredient
+      }"
+      (rename)="rename.emit({ ingredient: ingredient, name: $event })"
+      (typeChange)="move.emit({ ingredient: ingredient, columnId: $event })"
+      (delete)="delete.emit(ingredient)"
+    ></li>
+  </ul>
+</ng-container>
