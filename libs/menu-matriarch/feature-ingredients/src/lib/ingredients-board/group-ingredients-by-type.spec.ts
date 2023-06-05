@@ -1,4 +1,4 @@
-import { Ingredient, IngredientType } from '@atocha/menu-matriarch/util';
+import { Ingredient } from '@atocha/menu-matriarch/util';
 import { groupIngredientsByType } from './group-ingredients-by-type';
 
 describe('groupIngredientsByType', () => {
@@ -63,7 +63,7 @@ describe('groupIngredientsByType', () => {
     ];
 
     expect(groupIngredientsByType(ingredients)).toEqual(
-      new Map<IngredientType, Ingredient[]>([
+      new Map<string, Ingredient[]>([
         ['bread', []],
         ['condiment', []],
         ['dry good', []],

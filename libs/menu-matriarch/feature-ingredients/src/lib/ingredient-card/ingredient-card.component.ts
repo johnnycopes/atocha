@@ -21,7 +21,6 @@ import {
   OptionsMenuItemComponent,
   OptionsMenuTriggerDirective,
 } from '@atocha/menu-matriarch/ui-generic';
-import { IngredientType } from '@atocha/menu-matriarch/util';
 import { InlineTypeSelectComponent } from './inline-type-select/inline-type-select.component';
 
 type State = 'default' | 'renaming' | 'changingType';
@@ -48,10 +47,10 @@ type State = 'default' | 'renaming' | 'changingType';
 })
 export class IngredientCardComponent {
   @Input() name = '';
-  @Input() type: IngredientType = 'misc';
+  @Input() type = 'misc';
   @Input() dishIds: string[] = [];
   @Output() rename = new EventEmitter<string>();
-  @Output() typeChange = new EventEmitter<IngredientType>();
+  @Output() typeChange = new EventEmitter<string>();
   @Output() delete = new EventEmitter<void>();
 
   private _stateSubject = new BehaviorSubject<State>('default');
@@ -74,7 +73,7 @@ export class IngredientCardComponent {
     this._stateSubject.next('changingType');
   }
 
-  onChangeTypeSave(type: IngredientType): void {
+  onChangeTypeSave(type: string): void {
     if (type !== this.type) {
       this.typeChange.emit(type);
     }

@@ -13,10 +13,7 @@ import {
   InlineFormComponent,
   InputComponent,
 } from '@atocha/menu-matriarch/ui-generic';
-import {
-  IngredientType,
-  getIngredientTypes,
-} from '@atocha/menu-matriarch/util';
+import { getIngredientTypes } from '@atocha/menu-matriarch/util';
 
 @Component({
   standalone: true,
@@ -27,9 +24,9 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InlineTypeSelectComponent {
-  @Input() startType: IngredientType = 'bread';
+  @Input() startType = 'misc';
   @Output() cancel = new EventEmitter<void>();
-  @Output() save = new EventEmitter<IngredientType>();
+  @Output() save = new EventEmitter<string>();
   readonly types = getIngredientTypes();
   readonly typeTrackByFn = trackBySelf;
 }

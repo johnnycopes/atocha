@@ -1,6 +1,4 @@
-import { IngredientType } from '../ingredient.interface';
-
-export function getIngredientTypes(): IngredientType[] {
+export function getIngredientTypes(): string[] {
   return [
     'bread',
     'condiment',

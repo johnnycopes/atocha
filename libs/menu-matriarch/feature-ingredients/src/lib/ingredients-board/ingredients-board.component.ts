@@ -13,7 +13,7 @@ import {
 } from '@angular/cdk/drag-drop';
 
 import { trackByFactory } from '@atocha/core/ui';
-import { Ingredient, IngredientType } from '@atocha/menu-matriarch/util';
+import { Ingredient } from '@atocha/menu-matriarch/util';
 import {
   IngredientAdd,
   IngredientMove,
@@ -23,7 +23,7 @@ import {
 import { groupIngredientsByType } from './group-ingredients-by-type';
 
 export interface IngredientColumn {
-  name: IngredientType;
+  name: string;
   ingredients: Ingredient[];
 }
 
@@ -40,20 +40,20 @@ export class IngredientsBoardComponent {
   set ingredients(value: Ingredient[]) {
     this.ingredientsByType = groupIngredientsByType(value);
   }
-  @Input() columns: IngredientType[] = [];
-  @Output() columnMove = new EventEmitter<IngredientType[]>();
+  @Input() columns: string[] = [];
+  @Output() columnMove = new EventEmitter<string[]>();
   @Output() ingredientAdd = new EventEmitter<IngredientAdd>();
   @Output() ingredientMove = new EventEmitter<IngredientMove>();
   @Output() ingredientRename = new EventEmitter<IngredientRename>();
   @Output() ingredientDelete = new EventEmitter<Ingredient>();
   ingredientsByType = groupIngredientsByType([]);
-  readonly trackByFn = trackByFactory<IngredientType>((type) => type);
+  readonly trackByFn = trackByFactory<string>((type) => type);
 
   onDrop({
     previousIndex,
     currentIndex,
     container,
-  }: CdkDragDrop<IngredientType[]>): void {
+  }: CdkDragDrop<string[]>): void {
     moveItemInArray(container.data, previousIndex, currentIndex);
     this.columnMove.emit(container.data);
   }

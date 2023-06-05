@@ -1,13 +1,9 @@
-import {
-  Ingredient,
-  IngredientType,
-  getIngredientTypes,
-} from '@atocha/menu-matriarch/util';
+import { Ingredient, getIngredientTypes } from '@atocha/menu-matriarch/util';
 
 export function groupIngredientsByType(
   ingredients: Ingredient[]
-): Map<IngredientType, Ingredient[]> {
-  const map = new Map<IngredientType, Ingredient[]>(
+): Map<string, Ingredient[]> {
+  const map = new Map<string, Ingredient[]>(
     getIngredientTypes().map((type) => [type, []])
   );
 

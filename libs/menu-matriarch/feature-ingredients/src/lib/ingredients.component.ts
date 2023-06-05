@@ -7,11 +7,7 @@ import {
   UserService,
 } from '@atocha/menu-matriarch/data-access';
 import { SectionComponent } from '@atocha/menu-matriarch/ui-generic';
-import {
-  Ingredient,
-  IngredientType,
-  getIngredientTypes,
-} from '@atocha/menu-matriarch/util';
+import { Ingredient, getIngredientTypes } from '@atocha/menu-matriarch/util';
 import { IngredientsBoardComponent } from './ingredients-board/ingredients-board.component';
 import {
   IngredientAdd,
@@ -45,7 +41,7 @@ export class IngredientsComponent {
     private _userService: UserService
   ) {}
 
-  onColumnMove(columns: IngredientType[]) {
+  onColumnMove(columns: string[]) {
     this._userService
       .updatePreferences({ ingredientTypeOrder: columns })
       .subscribe();
@@ -55,7 +51,7 @@ export class IngredientsComponent {
     this._ingredientService
       .createIngredient({
         name: ingredientName,
-        type: columnId as IngredientType,
+        type: columnId,
         dishIds: [],
       })
       .subscribe();
@@ -64,7 +60,7 @@ export class IngredientsComponent {
   onIngredientMove({ ingredient, columnId }: IngredientMove) {
     this._ingredientService.updateIngredient(ingredient, {
       ...ingredient,
-      type: columnId as IngredientType,
+      type: columnId,
     });
   }
 
