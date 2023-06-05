@@ -5,6 +5,7 @@ import { BatchService } from './internal/batch.service';
 import { Endpoint } from './internal/endpoint.enum';
 import { createDishDto } from './internal/dtos/dish-dto';
 import { createIngredientDto } from './internal/dtos/ingredient-dto';
+import { createIngredientTypeDto } from './internal/dtos/ingredient-type-dto';
 import { createMealDto } from './internal/dtos/meal-dto';
 import { createMenuDto } from './internal/dtos/menu-dto';
 import { createTagDto } from './internal/dtos/tag-dto';
@@ -48,6 +49,9 @@ export class SeedDataService {
     const thaiCurryDishId = this._dataService.createId();
     const easyTagId = this._dataService.createId();
     const pescatarianTagId = this._dataService.createId();
+    const produceIngredientTypeId = this._dataService.createId();
+    const refrigeratedIngredientTypeId = this._dataService.createId();
+    const spiceIngredientTypeId = this._dataService.createId();
     const eggsIngredientId = this._dataService.createId();
     const garlicIngredientId = this._dataService.createId();
     const oliveOilIngredientId = this._dataService.createId();
@@ -313,6 +317,44 @@ export class SeedDataService {
           menuIds: [menuId],
           tagIds: [easyTagId, veganTagId, vegetarianTagId],
           usages: 1,
+        }),
+      })
+      .set({
+        endpoint: Endpoint.ingredientTypes,
+        id: produceIngredientTypeId,
+        data: createIngredientTypeDto({
+          id: produceIngredientTypeId,
+          uid,
+          name: 'Produce',
+          ingredientIds: [
+            garlicIngredientId,
+            onionIngredientId,
+            potatoIngredientId,
+          ],
+        }),
+      })
+      .set({
+        endpoint: Endpoint.ingredientTypes,
+        id: refrigeratedIngredientTypeId,
+        data: createIngredientTypeDto({
+          id: refrigeratedIngredientTypeId,
+          uid,
+          name: 'Refrigerated',
+          ingredientIds: [eggsIngredientId],
+        }),
+      })
+      .set({
+        endpoint: Endpoint.ingredientTypes,
+        id: spiceIngredientTypeId,
+        data: createIngredientTypeDto({
+          id: spiceIngredientTypeId,
+          uid,
+          name: 'Spice',
+          ingredientIds: [
+            paprikaIngredientId,
+            pepperIngredientId,
+            saltIngredientId,
+          ],
         }),
       })
       .set({
