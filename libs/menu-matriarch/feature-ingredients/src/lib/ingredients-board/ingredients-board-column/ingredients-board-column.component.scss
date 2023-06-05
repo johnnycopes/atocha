@@ -7,9 +7,15 @@
   box-shadow: box-shadow(lightest);
 }
 
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: spacing(8);
+}
+
 .name {
   @include small-caps;
-  margin-bottom: spacing(8);
   color: color($neutral, 6);
   font-size: font-size(16);
 }

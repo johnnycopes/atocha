@@ -13,12 +13,18 @@ import {
   transferArrayItem,
 } from '@angular/cdk/drag-drop';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faEllipsisH } from '@fortawesome/free-solid-svg-icons';
+import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 
 import { IngredientCardComponent } from '../../ingredient-card/ingredient-card.component';
 import { IngredientsBoardFormComponent } from './ingredients-board-form.component';
 import { ingredientTrackByFn } from '@atocha/menu-matriarch/ui-domain';
 import { Ingredient } from '@atocha/menu-matriarch/util';
+import {
+  OptionsMenuComponent,
+  OptionsMenuItemComponent,
+  OptionsMenuTriggerDirective,
+} from '@atocha/menu-matriarch/ui-generic';
+import { ButtonComponent } from '@atocha/core/ui';
 
 export interface IngredientAdd {
   ingredientName: string;
@@ -46,11 +52,15 @@ export interface IngredientRename {
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
+    ButtonComponent,
     CommonModule,
     DragDropModule,
     FontAwesomeModule,
     IngredientsBoardFormComponent,
     IngredientCardComponent,
+    OptionsMenuComponent,
+    OptionsMenuItemComponent,
+    OptionsMenuTriggerDirective,
   ],
 })
 export class IngredientsBoardColumnComponent {
@@ -60,7 +70,7 @@ export class IngredientsBoardColumnComponent {
   @Output() move = new EventEmitter<IngredientMove>();
   @Output() rename = new EventEmitter<IngredientRename>();
   @Output() delete = new EventEmitter<Ingredient>();
-  readonly menuIcon = faEllipsisH;
+  readonly menuToggleIcon = faEllipsisV;
   readonly trackByFn = ingredientTrackByFn;
 
   onDrop({

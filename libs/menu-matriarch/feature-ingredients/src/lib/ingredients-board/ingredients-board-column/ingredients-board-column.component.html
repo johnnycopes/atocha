@@ -1,6 +1,27 @@
-<h2 class="name">
-  {{ name }} ({{ ingredients.length }})
-</h2>
+<div class="header">
+  <h2 class="name">
+    {{ name }} ({{ ingredients.length }})
+  </h2>
+
+  <button core-button="tertiary"
+    [uiOptionsMenuTrigger]="optionsMenu"
+  >
+    <fa-icon class="icon"
+      [icon]="menuToggleIcon"
+    ></fa-icon>
+  </button>
+  <ui-options-menu #optionsMenu>
+    <li ui-options-menu-item
+    >
+      Rename
+    </li>
+    <li ui-options-menu-item
+      (click)="delete.emit()"
+    >
+      Delete
+    </li>
+  </ui-options-menu>
+</div>
 
 <app-ingredients-board-form
   (add)="add.emit({ ingredientName: $event, columnId: name })"
