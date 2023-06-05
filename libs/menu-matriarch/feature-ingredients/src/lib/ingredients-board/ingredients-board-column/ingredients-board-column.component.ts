@@ -28,7 +28,6 @@ import {
   OptionsMenuTriggerDirective,
 } from '@atocha/menu-matriarch/ui-generic';
 import { IngredientCardComponent } from '../../ingredient-card/ingredient-card.component';
-import { IngredientsBoardFormComponent } from './ingredients-board-form.component';
 
 export interface IngredientAdd {
   ingredientName: string;
@@ -62,7 +61,6 @@ type State = 'default' | 'renaming' | 'addingIngredient';
     CommonModule,
     DragDropModule,
     FontAwesomeModule,
-    IngredientsBoardFormComponent,
     IngredientCardComponent,
     InlineNameEditComponent,
     OptionsMenuComponent,
