@@ -59,7 +59,7 @@ export class IngredientTypeDataService {
     return id;
   }
 
-  async updateIngredient(
+  async updateIngredientType(
     ingredientType: IngredientType,
     updates: EditableIngredientTypeData
   ): Promise<void> {
@@ -75,7 +75,7 @@ export class IngredientTypeDataService {
     await batch.commit();
   }
 
-  async deleteIngredient(ingredientType: IngredientType): Promise<void> {
+  async deleteIngredientType(ingredientType: IngredientType): Promise<void> {
     const batch = this._batchService.createBatch();
 
     batch.delete(Endpoint.ingredientTypes, ingredientType.id);
