@@ -60,7 +60,7 @@ export class IngredientsComponent {
     this._ingredientService
       .createIngredient({
         name: ingredientName,
-        type: columnId,
+        typeId: columnId,
         dishIds: [],
       })
       .subscribe();
@@ -69,7 +69,7 @@ export class IngredientsComponent {
   onIngredientMove({ ingredient, columnId }: IngredientMove) {
     this._ingredientService.updateIngredient(ingredient, {
       ...ingredient,
-      type: columnId,
+      typeId: columnId,
     });
   }
 

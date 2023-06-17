@@ -5,8 +5,8 @@ export interface Ingredient {
   uid: string;
   /** Display name of the ingredient */
   name: string;
-  /** Category of ingredient */
-  type: string;
+  /** The unique ID of the ingredient type associated with the ingredient */
+  typeId: string;
   /** The unique IDs of any dishes the ingredient belongs to */
   dishIds: string[];
 }

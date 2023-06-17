@@ -9,7 +9,7 @@ export function groupIngredientsByType(
   );
 
   for (const ingredient of ingredients) {
-    map.get(ingredient.type)?.push(ingredient);
+    map.get(ingredient.typeId)?.push(ingredient);
   }
 
   return map;

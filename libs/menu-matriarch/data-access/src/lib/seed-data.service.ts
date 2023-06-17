@@ -380,7 +380,7 @@ export class SeedDataService {
           id: eggsIngredientId,
           uid,
           name: 'Eggs',
-          type: refrigeratedIngredientTypeId,
+          typeId: refrigeratedIngredientTypeId,
           dishIds: [huevosRotosDishId],
         }),
       })
@@ -391,7 +391,7 @@ export class SeedDataService {
           id: garlicIngredientId,
           uid,
           name: 'Garlic',
-          type: produceIngredientTypeId,
+          typeId: produceIngredientTypeId,
           dishIds: [huevosRotosDishId],
         }),
       })
@@ -402,7 +402,7 @@ export class SeedDataService {
           id: oliveOilIngredientId,
           uid,
           name: 'Olive Oil',
-          type: refrigeratedIngredientTypeId,
+          typeId: refrigeratedIngredientTypeId,
           dishIds: [huevosRotosDishId],
         }),
       })
@@ -413,7 +413,7 @@ export class SeedDataService {
           id: onionIngredientId,
           uid,
           name: 'Onion',
-          type: produceIngredientTypeId,
+          typeId: produceIngredientTypeId,
           dishIds: [huevosRotosDishId],
         }),
       })
@@ -424,7 +424,7 @@ export class SeedDataService {
           id: paprikaIngredientId,
           uid,
           name: 'Paprika',
-          type: spiceIngredientTypeId,
+          typeId: spiceIngredientTypeId,
           dishIds: [huevosRotosDishId],
         }),
       })
@@ -435,7 +435,7 @@ export class SeedDataService {
           id: pepperIngredientId,
           uid,
           name: 'Pepper',
-          type: spiceIngredientTypeId,
+          typeId: spiceIngredientTypeId,
           dishIds: [huevosRotosDishId],
         }),
       })
@@ -446,7 +446,7 @@ export class SeedDataService {
           id: potatoIngredientId,
           uid,
           name: 'Potato',
-          type: produceIngredientTypeId,
+          typeId: produceIngredientTypeId,
           dishIds: [huevosRotosDishId],
         }),
       })
@@ -457,7 +457,7 @@ export class SeedDataService {
           id: saltIngredientId,
           uid,
           name: 'Salt',
-          type: spiceIngredientTypeId,
+          typeId: spiceIngredientTypeId,
           dishIds: [huevosRotosDishId],
         }),
       })
