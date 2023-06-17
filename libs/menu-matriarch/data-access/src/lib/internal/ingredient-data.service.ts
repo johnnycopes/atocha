@@ -65,7 +65,16 @@ export class IngredientDataService {
       id: ingredient.id,
       data: updates,
     });
-    // TODO: update ingredient doc and relevant dishes docs
+
+    if (updates.typeId) {
+      batch.updateMultiple(
+        this._batchService.getIngredientTypeUpdates({
+          ingredientId: ingredient.id,
+          initialTypeId: ingredient.typeId,
+          finalTypeId: updates.typeId,
+        })
+      );
+    }
 
     await batch.commit();
   }
