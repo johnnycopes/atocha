@@ -68,7 +68,23 @@ export class SeedDataService {
       .set({
         endpoint: Endpoint.users,
         id: uid,
-        data: createUserDto({ uid, name, email }),
+        data: createUserDto({
+          uid,
+          name,
+          email,
+          preferences: {
+            darkMode: false,
+            dayNameDisplay: 'full',
+            defaultMenuStartDay: 'Monday',
+            emptyMealText: 'undecided',
+            mealOrientation: 'vertical',
+            ingredientTypeOrder: [
+              produceIngredientTypeId,
+              refrigeratedIngredientTypeId,
+              spiceIngredientTypeId,
+            ],
+          },
+        }),
       })
       .set({
         endpoint: Endpoint.menus,
