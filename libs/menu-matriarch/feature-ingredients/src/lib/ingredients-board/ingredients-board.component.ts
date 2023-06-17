@@ -23,11 +23,6 @@ import {
   IngredientsBoardColumnComponent,
 } from './ingredients-board-column/ingredients-board-column.component';
 
-export interface IngredientColumn {
-  name: string;
-  ingredients: Ingredient[];
-}
-
 export interface ColumnRename {
   column: IngredientType;
   name: string;
