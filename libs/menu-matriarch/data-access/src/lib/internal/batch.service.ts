@@ -129,6 +129,33 @@ export class BatchService {
     });
   }
 
+  getIngredientTypeUpdates({
+    ingredientId,
+    initialTypeId,
+    finalTypeId,
+  }: {
+    ingredientId: string;
+    initialTypeId: string;
+    finalTypeId: string;
+  }): BatchUpdate[] {
+    return [
+      {
+        endpoint: Endpoint.ingredientTypes,
+        id: initialTypeId,
+        data: {
+          ingredientIds: this._firestoreService.removeFromArray(ingredientId),
+        },
+      },
+      {
+        endpoint: Endpoint.ingredientTypes,
+        id: finalTypeId,
+        data: {
+          ingredientIds: this._firestoreService.addToArray(ingredientId),
+        },
+      },
+    ];
+  }
+
   getTagUpdates({
     key,
     initialTagIds,
