@@ -91,13 +91,18 @@ export class IngredientDataService {
   async deleteIngredient(ingredient: Ingredient): Promise<void> {
     const batch = this._batchService.createBatch();
 
-    batch.delete(Endpoint.ingredients, ingredient.id).updateMultiple(
-      this._batchService.getIngredientTypeUpdates({
+    batch.delete(Endpoint.ingredients, ingredient.id).updateMultiple([
+      ...this._batchService.getIngredientTypeUpdates({
         ingredientId: ingredient.id,
         typeIdToRemoveFrom: ingredient.typeId,
-      })
-    );
-    // TODO: update dish docs to remove ingredient
+      }),
+      ...this._batchService.getDishUpdates({
+        key: 'ingredientIds',
+        initialDishIds: ingredient.dishIds,
+        finalDishIds: [],
+        entityId: ingredient.id,
+      }),
+    ]);
 
     await batch.commit();
   }

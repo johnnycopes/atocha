@@ -80,7 +80,7 @@ export class BatchService {
     finalDishIds,
     entityId,
   }: {
-    key: 'mealIds' | 'tagIds';
+    key: 'mealIds' | 'ingredientIds' | 'tagIds';
     initialDishIds: string[];
     finalDishIds: string[];
     entityId: string;
@@ -192,7 +192,7 @@ export class BatchService {
     entityId,
   }: {
     endpoint: string;
-    key: 'mealIds' | 'dishIds' | 'tagIds';
+    key: 'mealIds' | 'dishIds' | 'ingredientIds' | 'tagIds';
     initialIds: string[];
     finalIds: string[];
     entityId: string;
