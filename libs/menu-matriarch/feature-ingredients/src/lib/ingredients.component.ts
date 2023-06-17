@@ -7,7 +7,7 @@ import {
   UserService,
 } from '@atocha/menu-matriarch/data-access';
 import { SectionComponent } from '@atocha/menu-matriarch/ui-generic';
-import { Ingredient, getIngredientTypes } from '@atocha/menu-matriarch/util';
+import { Ingredient } from '@atocha/menu-matriarch/util';
 import { IngredientsBoardComponent } from './ingredients-board/ingredients-board.component';
 import {
   IngredientAdd,
@@ -28,11 +28,11 @@ export class IngredientsComponent {
     this._ingredientService.getIngredients(),
     this._userService
       .getPreferences()
-      .pipe(map((preferences) => preferences?.ingredientTypeOrder)),
+      .pipe(map((preferences) => preferences?.ingredientTypeOrder ?? [])),
   ]).pipe(
-    map(([ingredients, order]) => ({
+    map(([ingredients, columns]) => ({
       ingredients,
-      columns: order ?? getIngredientTypes(),
+      columns,
     }))
   );
 

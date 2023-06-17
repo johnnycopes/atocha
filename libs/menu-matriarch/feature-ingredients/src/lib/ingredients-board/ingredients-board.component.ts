@@ -5,6 +5,8 @@ import {
   ChangeDetectionStrategy,
   Output,
   EventEmitter,
+  OnChanges,
+  SimpleChanges,
 } from '@angular/core';
 import {
   CdkDragDrop,
@@ -35,19 +37,28 @@ export interface IngredientColumn {
   styleUrls: ['./ingredients-board.scss', './ingredients-board.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class IngredientsBoardComponent {
-  @Input()
-  set ingredients(value: Ingredient[]) {
-    this.ingredientsByType = groupIngredientsByType(value);
-  }
+export class IngredientsBoardComponent implements OnChanges {
   @Input() columns: string[] = [];
+  @Input() ingredients: Ingredient[] = [];
   @Output() columnMove = new EventEmitter<string[]>();
   @Output() ingredientAdd = new EventEmitter<IngredientAdd>();
   @Output() ingredientMove = new EventEmitter<IngredientMove>();
   @Output() ingredientRename = new EventEmitter<IngredientRename>();
   @Output() ingredientDelete = new EventEmitter<Ingredient>();
-  ingredientsByType = groupIngredientsByType([]);
+  ingredientsByType = groupIngredientsByType([], []);
   readonly trackByFn = trackByFactory<string>((type) => type);
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (
+      changes['columns'].currentValue ||
+      changes['ingredients'].currentValue
+    ) {
+      this.ingredientsByType = groupIngredientsByType(
+        this.columns,
+        this.ingredients
+      );
+    }
+  }
 
   onDrop({
     previousIndex,
