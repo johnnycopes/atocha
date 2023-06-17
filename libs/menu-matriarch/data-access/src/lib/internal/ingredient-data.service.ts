@@ -55,7 +55,7 @@ export class IngredientDataService {
       .updateMultiple(
         this._batchService.getIngredientTypeUpdates({
           ingredientId: id,
-          finalTypeId: ingredient.typeId,
+          typeIdToAddTo: ingredient.typeId,
         })
       );
 
@@ -79,8 +79,8 @@ export class IngredientDataService {
       batch.updateMultiple(
         this._batchService.getIngredientTypeUpdates({
           ingredientId: ingredient.id,
-          initialTypeId: ingredient.typeId,
-          finalTypeId: updates.typeId,
+          typeIdToRemoveFrom: ingredient.typeId,
+          typeIdToAddTo: updates.typeId,
         })
       );
     }
@@ -91,7 +91,12 @@ export class IngredientDataService {
   async deleteIngredient(ingredient: Ingredient): Promise<void> {
     const batch = this._batchService.createBatch();
 
-    batch.delete(Endpoint.ingredients, ingredient.id);
+    batch.delete(Endpoint.ingredients, ingredient.id).updateMultiple(
+      this._batchService.getIngredientTypeUpdates({
+        ingredientId: ingredient.id,
+        typeIdToRemoveFrom: ingredient.typeId,
+      })
+    );
     // TODO: update dish docs to remove ingredient
 
     await batch.commit();

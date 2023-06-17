@@ -131,30 +131,30 @@ export class BatchService {
 
   getIngredientTypeUpdates({
     ingredientId,
-    initialTypeId,
-    finalTypeId,
+    typeIdToRemoveFrom,
+    typeIdToAddTo,
   }: {
     ingredientId: string;
-    initialTypeId?: string;
-    finalTypeId?: string;
+    typeIdToRemoveFrom?: string;
+    typeIdToAddTo?: string;
   }): BatchUpdate[] {
     const endpoint = Endpoint.ingredientTypes;
     const updates: BatchUpdate[] = [];
 
-    if (initialTypeId) {
+    if (typeIdToRemoveFrom) {
       updates.push({
         endpoint,
-        id: initialTypeId,
+        id: typeIdToRemoveFrom,
         data: {
           ingredientIds: this._firestoreService.removeFromArray(ingredientId),
         },
       });
     }
 
-    if (finalTypeId) {
+    if (typeIdToAddTo) {
       updates.push({
         endpoint,
-        id: finalTypeId,
+        id: typeIdToAddTo,
         data: {
           ingredientIds: this._firestoreService.addToArray(ingredientId),
         },
