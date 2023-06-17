@@ -12,9 +12,8 @@ import {
 import { BatchService } from './batch.service';
 import { Endpoint } from './endpoint.enum';
 
-export type EditableIngredientTypeData = Pick<
-  IngredientTypeDto,
-  'name' | 'ingredientIds'
+export type EditableIngredientTypeData = Partial<
+  Pick<IngredientTypeDto, 'name' | 'ingredientIds'>
 >;
 
 @Injectable({
