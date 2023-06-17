@@ -93,15 +93,14 @@ export class IngredientsBoardColumnComponent {
     container,
   }: CdkDragDrop<Ingredient[]>): void {
     if (previousContainer.id === container.id) {
-      moveItemInArray(container.data, previousIndex, currentIndex);
-    } else {
-      transferArrayItem(
-        previousContainer.data,
-        container.data,
-        previousIndex,
-        currentIndex
-      );
+      return; // do nothing if dragged into starting container
     }
+    transferArrayItem(
+      previousContainer.data,
+      container.data,
+      previousIndex,
+      currentIndex
+    );
     this.ingredientMove.emit({
       ingredient: item.data.ingredient,
       columnId: this.id,
