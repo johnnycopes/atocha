@@ -18,11 +18,11 @@ import {
 
 @Component({
   standalone: true,
+  imports: [CommonModule, IngredientsBoardComponent, SectionComponent],
   selector: 'app-ingredients',
   templateUrl: './ingredients.component.html',
   styleUrls: ['./ingredients.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [CommonModule, IngredientsBoardComponent, SectionComponent],
 })
 export class IngredientsComponent {
   vm$ = combineLatest([
@@ -44,7 +44,7 @@ export class IngredientsComponent {
           (total, { ingredients }) => total + ingredients.length,
           0
         ),
-        columns: columnIds.map((column) => ingredientTypesKeyedById[column]),
+        columns: columnIds.map((id) => ingredientTypesKeyedById[id]),
       };
     })
   );
@@ -62,6 +62,7 @@ export class IngredientsComponent {
   }
 
   onIngredientAdd({ ingredientName, columnId }: IngredientAdd) {
+    console.log(ingredientName, columnId);
     this._ingredientService
       .createIngredient({
         name: ingredientName,
