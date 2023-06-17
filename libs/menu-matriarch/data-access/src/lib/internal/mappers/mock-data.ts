@@ -1,5 +1,6 @@
 import { createDishDto } from '../dtos/dish-dto';
 import { createIngredientDto } from '../dtos/ingredient-dto';
+import { createIngredientTypeDto } from '../dtos/ingredient-type-dto';
 import { createMealDto } from '../dtos/meal-dto';
 import { createMenuDto } from '../dtos/menu-dto';
 import { createTagDto } from '../dtos/tag-dto';
@@ -29,40 +30,56 @@ export const MEAL_DTO = createMealDto({
   dishIds: ['dish-1', 'dish-2'],
   tagIds: ['tag-1'],
 });
+
+export const INGREDIENT_TYPE_DTOS = [
+  createIngredientTypeDto({
+    id: 'ingredient-type-1',
+    uid: 'abc',
+    name: 'preserved',
+    ingredientIds: ['ingredient-2', 'ingredient-5'],
+  }),
+  createIngredientTypeDto({
+    id: 'ingredient-type-2',
+    uid: 'abc',
+    name: 'refrigerated',
+    ingredientIds: ['ingredient-1', 'ingredient-3', 'ingredient-4'],
+  }),
+];
+
 export const INGREDIENT_DTOS = [
   createIngredientDto({
     id: 'ingredient-1',
     uid: 'abc',
     name: 'Dough',
-    typeId: 'bread',
+    typeId: 'ingredient-type-2',
     dishIds: ['dish-1'],
   }),
   createIngredientDto({
     id: 'ingredient-2',
     uid: 'abc',
     name: 'Tomato sauce',
-    typeId: 'preserved',
+    typeId: 'ingredient-type-1',
     dishIds: ['dish-1'],
   }),
   createIngredientDto({
     id: 'ingredient-3',
     uid: 'abc',
     name: 'Goat cheese',
-    typeId: 'refrigerated',
+    typeId: 'ingredient-type-2',
     dishIds: ['dish-1', 'dish-2'],
   }),
   createIngredientDto({
     id: 'ingredient-4',
     uid: 'abc',
     name: 'Spinach',
-    typeId: 'refrigerated',
+    typeId: 'ingredient-type-2',
     dishIds: ['dish-2'],
   }),
   createIngredientDto({
     id: 'ingredient-5',
     uid: 'abc',
     name: 'Walnuts',
-    typeId: 'dry good',
+    typeId: 'ingredient-type-1',
     dishIds: ['dish-2'],
   }),
 ];
