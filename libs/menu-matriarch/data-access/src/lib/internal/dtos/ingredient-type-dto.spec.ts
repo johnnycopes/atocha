@@ -1,9 +1,9 @@
 import { createIngredientTypeDto } from './ingredient-type-dto';
 
 describe('createIngredientTypeDto', () => {
-  it('creates default ingredient when no arguments are passed in', () => {
-    const ingredient = createIngredientTypeDto({});
-    expect(ingredient).toEqual({
+  it('creates default ingredient type when no arguments are passed in', () => {
+    const ingredientType = createIngredientTypeDto({});
+    expect(ingredientType).toEqual({
       id: '',
       uid: '',
       name: '',
@@ -11,14 +11,14 @@ describe('createIngredientTypeDto', () => {
     });
   });
 
-  it('creates ingredient when arguments are passed in', () => {
-    const ingredient = createIngredientTypeDto({
+  it('creates ingredient type when arguments are passed in', () => {
+    const ingredientType = createIngredientTypeDto({
       id: '1',
       uid: '1',
       name: 'Spice',
       ingredientIds: ['A', 'B'],
     });
-    expect(ingredient).toEqual({
+    expect(ingredientType).toEqual({
       id: '1',
       uid: '1',
       name: 'Spice',
