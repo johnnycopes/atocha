@@ -5,7 +5,7 @@
       class="rename-type-form"
       [name]="name"
       (cancel)="onCancel()"
-      (save)="onRenameSave($event)"
+      (save)="onRenameColumnSave($event)"
     ></ui-inline-name-edit>
 
     <ng-template #headerTemplate>
@@ -27,13 +27,13 @@
           New Ingredient
         </li>
         <li ui-options-menu-item
-          (click)="onRename()"
+          (click)="onRenameColumn()"
         >
           Rename
         </li>
         <li ui-options-menu-item
           *ngIf="!ingredients.length"
-          (click)="delete.emit()"
+          (click)="ingredientDelete.emit()"
         >
           Delete
         </li>
@@ -64,9 +64,9 @@
         columnId: name,
         ingredient: ingredient
       }"
-      (rename)="rename.emit({ ingredient: ingredient, name: $event })"
-      (typeChange)="move.emit({ ingredient: ingredient, columnId: $event })"
-      (delete)="delete.emit(ingredient)"
+      (rename)="ingredientRename.emit({ ingredient: ingredient, name: $event })"
+      (typeChange)="ingredientMove.emit({ ingredient: ingredient, columnId: $event })"
+      (delete)="ingredientDelete.emit(ingredient)"
     ></li>
   </ul>
 </ng-container>

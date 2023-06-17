@@ -71,10 +71,10 @@ type State = 'default' | 'renaming' | 'addingIngredient';
 export class IngredientsBoardColumnComponent {
   @Input() name = '';
   @Input() ingredients: Ingredient[] = [];
-  @Output() add = new EventEmitter<IngredientAdd>();
-  @Output() move = new EventEmitter<IngredientMove>();
-  @Output() rename = new EventEmitter<IngredientRename>();
-  @Output() delete = new EventEmitter<Ingredient>();
+  @Output() ingredientAdd = new EventEmitter<IngredientAdd>();
+  @Output() ingredientMove = new EventEmitter<IngredientMove>();
+  @Output() ingredientRename = new EventEmitter<IngredientRename>();
+  @Output() ingredientDelete = new EventEmitter<Ingredient>();
 
   private _stateSubject = new BehaviorSubject<State>('default');
   state$ = this._stateSubject.asObservable();
@@ -99,31 +99,31 @@ export class IngredientsBoardColumnComponent {
         currentIndex
       );
     }
-    this.move.emit({
+    this.ingredientMove.emit({
       ingredient: item.data.ingredient,
       columnId: this.name,
     });
-  }
-
-  onAddNewIngredient(): void {
-    this._stateSubject.next('addingIngredient');
-  }
-
-  onRename(): void {
-    this._stateSubject.next('renaming');
   }
 
   onCancel(): void {
     this._stateSubject.next('default');
   }
 
-  onRenameSave(name: string): void {
-    console.log('rename:', name);
+  onRenameColumn(): void {
+    this._stateSubject.next('renaming');
+  }
+
+  onRenameColumnSave(name: string): void {
+    console.log('column rename:', name);
     this._stateSubject.next('default');
   }
 
+  onAddNewIngredient(): void {
+    this._stateSubject.next('addingIngredient');
+  }
+
   onAddIngredientSave(name: string): void {
-    this.add.emit({ ingredientName: name, columnId: this.name });
+    this.ingredientAdd.emit({ ingredientName: name, columnId: this.name });
     this._stateSubject.next('default');
   }
 }
