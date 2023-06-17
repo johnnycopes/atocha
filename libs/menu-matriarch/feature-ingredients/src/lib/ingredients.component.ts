@@ -4,10 +4,11 @@ import { combineLatest, map } from 'rxjs';
 
 import {
   IngredientService,
+  IngredientTypeService,
   UserService,
 } from '@atocha/menu-matriarch/data-access';
 import { SectionComponent } from '@atocha/menu-matriarch/ui-generic';
-import { Ingredient } from '@atocha/menu-matriarch/util';
+import { Ingredient, IngredientType } from '@atocha/menu-matriarch/util';
 import { IngredientsBoardComponent } from './ingredients-board/ingredients-board.component';
 import {
   IngredientAdd,
@@ -26,18 +27,26 @@ import {
 export class IngredientsComponent {
   vm$ = combineLatest([
     this._ingredientService.getIngredients(),
+    this._ingredientTypeService.getIngredientTypes(),
     this._userService
       .getPreferences()
       .pipe(map((preferences) => preferences?.ingredientTypeOrder ?? [])),
   ]).pipe(
-    map(([ingredients, columns]) => ({
+    map(([ingredients, ingredientTypes, columns]) => ({
       ingredients,
+      ingredientTypesKeyedById: ingredientTypes.reduce<
+        Record<string, IngredientType>
+      >((record, type) => {
+        record[type.id] = type;
+        return record;
+      }, {}),
       columns,
     }))
   );
 
   constructor(
     private _ingredientService: IngredientService,
+    private _ingredientTypeService: IngredientTypeService,
     private _userService: UserService
   ) {}
 

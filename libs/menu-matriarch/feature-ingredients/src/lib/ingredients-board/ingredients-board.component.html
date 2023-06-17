@@ -10,7 +10,8 @@
     class="column"
     cdkDrag
     [cdkDragData]="column"
-    [name]="column"
+    [id]="column"
+    [name]="columnsRecord[column].name"
     [ingredients]="ingredientsByType.get(column) ?? []"
     (ingredientAdd)="ingredientAdd.emit($event)"
     (ingredientMove)="ingredientMove.emit($event)"

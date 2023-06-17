@@ -15,7 +15,7 @@ import {
 } from '@angular/cdk/drag-drop';
 
 import { trackByFactory } from '@atocha/core/ui';
-import { Ingredient } from '@atocha/menu-matriarch/util';
+import { Ingredient, IngredientType } from '@atocha/menu-matriarch/util';
 import {
   IngredientAdd,
   IngredientMove,
@@ -39,6 +39,7 @@ export interface IngredientColumn {
 })
 export class IngredientsBoardComponent implements OnChanges {
   @Input() columns: string[] = [];
+  @Input() columnsRecord: Record<string, IngredientType> = {};
   @Input() ingredients: Ingredient[] = [];
   @Output() columnMove = new EventEmitter<string[]>();
   @Output() ingredientAdd = new EventEmitter<IngredientAdd>();
@@ -49,10 +50,7 @@ export class IngredientsBoardComponent implements OnChanges {
   readonly trackByFn = trackByFactory<string>((type) => type);
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (
-      changes['columns'].currentValue ||
-      changes['ingredients'].currentValue
-    ) {
+    if (changes['ingredients']?.currentValue) {
       this.ingredientsByType = groupIngredientsByType(
         this.columns,
         this.ingredients

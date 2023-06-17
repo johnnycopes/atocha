@@ -69,6 +69,7 @@ type State = 'default' | 'renaming' | 'addingIngredient';
   ],
 })
 export class IngredientsBoardColumnComponent {
+  @Input() id = '';
   @Input() name = '';
   @Input() ingredients: Ingredient[] = [];
   @Output() columnRename = new EventEmitter<string>();
@@ -103,7 +104,7 @@ export class IngredientsBoardColumnComponent {
     }
     this.ingredientMove.emit({
       ingredient: item.data.ingredient,
-      columnId: this.name,
+      columnId: this.id,
     });
   }
 
@@ -125,7 +126,7 @@ export class IngredientsBoardColumnComponent {
   }
 
   onAddIngredientSave(name: string): void {
-    this.ingredientAdd.emit({ ingredientName: name, columnId: this.name });
+    this.ingredientAdd.emit({ ingredientName: name, columnId: this.id });
     this._stateSubject.next('default');
   }
 }
