@@ -3,6 +3,21 @@ import { groupIngredientsByType } from './group-ingredients-by-type';
 
 describe('groupIngredientsByType', () => {
   it('returns a record of ingredients grouped by type', () => {
+    const ingredientTypes = [
+      'bread',
+      'condiment',
+      'dry good',
+      'frozen',
+      'grocery',
+      'meat',
+      'misc',
+      'oil',
+      'preserved',
+      'produce',
+      'refrigerated',
+      'seafood',
+      'spice',
+    ];
     const ingredients: Ingredient[] = [
       {
         id: 'ABC',
@@ -62,7 +77,7 @@ describe('groupIngredientsByType', () => {
       },
     ];
 
-    expect(groupIngredientsByType(ingredients)).toEqual(
+    expect(groupIngredientsByType(ingredientTypes, ingredients)).toEqual(
       new Map<string, Ingredient[]>([
         ['bread', []],
         ['condiment', []],
