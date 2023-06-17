@@ -164,6 +164,24 @@ export class BatchService {
     return updates;
   }
 
+  getIngredientUpdates({
+    initialIngredientIds,
+    finalIngredientIds,
+    entityId,
+  }: {
+    initialIngredientIds: string[];
+    finalIngredientIds: string[];
+    entityId: string;
+  }): BatchUpdate[] {
+    return this._getBatchUpdates({
+      endpoint: Endpoint.ingredients,
+      key: 'dishIds',
+      initialIds: initialIngredientIds,
+      finalIds: finalIngredientIds,
+      entityId,
+    });
+  }
+
   getTagUpdates({
     key,
     initialTagIds,
