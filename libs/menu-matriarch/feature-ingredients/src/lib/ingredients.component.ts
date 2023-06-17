@@ -62,7 +62,6 @@ export class IngredientsComponent {
   }
 
   onIngredientAdd({ ingredientName, columnId }: IngredientAdd) {
-    console.log(ingredientName, columnId);
     this._ingredientService
       .createIngredient({
         name: ingredientName,
