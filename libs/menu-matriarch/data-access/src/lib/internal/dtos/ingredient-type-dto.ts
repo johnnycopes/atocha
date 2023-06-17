@@ -1,6 +1,8 @@
 import { IngredientType } from '@atocha/menu-matriarch/util';
 
-export type IngredientTypeDto = IngredientType;
+export interface IngredientTypeDto extends Omit<IngredientType, 'ingredients'> {
+  ingredientIds: string[];
+}
 
 export function createIngredientTypeDto({
   id,

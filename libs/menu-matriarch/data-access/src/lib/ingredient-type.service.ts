@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { concatMap, first } from 'rxjs/operators';
+import { Observable, combineLatest, of } from 'rxjs';
+import { concatMap, first, map } from 'rxjs/operators';
 
 import { AuthService } from '@atocha/core/data-access';
 import { IngredientType } from '@atocha/menu-matriarch/util';
@@ -8,6 +8,8 @@ import {
   EditableIngredientTypeData,
   IngredientTypeDataService,
 } from './internal/ingredient-type-data.service';
+import { mapIngredientTypeDtoToIngredientType } from './internal/mappers/map-ingredient-type-dto-to-ingredient-type';
+import { IngredientService } from './ingredient.service';
 
 @Injectable({
   providedIn: 'root',
@@ -15,11 +17,25 @@ import {
 export class IngredientTypeService {
   constructor(
     private _authService: AuthService,
-    private _ingredientTypeDataService: IngredientTypeDataService
+    private _ingredientTypeDataService: IngredientTypeDataService,
+    private _ingredientService: IngredientService
   ) {}
 
   getIngredientType(id: string): Observable<IngredientType | undefined> {
-    return this._ingredientTypeDataService.getIngredientType(id);
+    return combineLatest([
+      this._ingredientTypeDataService.getIngredientType(id),
+      this._ingredientService.getIngredients(),
+    ]).pipe(
+      map(([ingredientTypeDto, ingredients]) => {
+        if (!ingredientTypeDto) {
+          return undefined;
+        }
+        return mapIngredientTypeDtoToIngredientType(
+          ingredientTypeDto,
+          ingredients
+        );
+      })
+    );
   }
 
   getIngredientTypes(): Observable<IngredientType[]> {
@@ -27,7 +43,16 @@ export class IngredientTypeService {
       first(),
       concatMap((uid) => {
         if (uid) {
-          return this._ingredientTypeDataService.getIngredientTypes(uid);
+          return combineLatest([
+            this._ingredientTypeDataService.getIngredientTypes(uid),
+            this._ingredientService.getIngredients(),
+          ]).pipe(
+            map(([dishDtos, ingredients]) =>
+              dishDtos.map((dishDto) =>
+                mapIngredientTypeDtoToIngredientType(dishDto, ingredients)
+              )
+            )
+          );
         }
         return of([]);
       })
