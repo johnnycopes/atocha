@@ -71,6 +71,8 @@ type State = 'default' | 'renaming' | 'addingIngredient';
 export class IngredientsBoardColumnComponent {
   @Input() name = '';
   @Input() ingredients: Ingredient[] = [];
+  @Output() columnRename = new EventEmitter<string>();
+  @Output() columnDelete = new EventEmitter<void>();
   @Output() ingredientAdd = new EventEmitter<IngredientAdd>();
   @Output() ingredientMove = new EventEmitter<IngredientMove>();
   @Output() ingredientRename = new EventEmitter<IngredientRename>();
@@ -114,7 +116,7 @@ export class IngredientsBoardColumnComponent {
   }
 
   onRenameColumnSave(name: string): void {
-    console.log('column rename:', name);
+    this.columnRename.emit(name);
     this._stateSubject.next('default');
   }
 
