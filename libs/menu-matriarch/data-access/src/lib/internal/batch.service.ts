@@ -135,25 +135,33 @@ export class BatchService {
     finalTypeId,
   }: {
     ingredientId: string;
-    initialTypeId: string;
-    finalTypeId: string;
+    initialTypeId?: string;
+    finalTypeId?: string;
   }): BatchUpdate[] {
-    return [
-      {
-        endpoint: Endpoint.ingredientTypes,
+    const endpoint = Endpoint.ingredientTypes;
+    const updates: BatchUpdate[] = [];
+
+    if (initialTypeId) {
+      updates.push({
+        endpoint,
         id: initialTypeId,
         data: {
           ingredientIds: this._firestoreService.removeFromArray(ingredientId),
         },
-      },
-      {
-        endpoint: Endpoint.ingredientTypes,
+      });
+    }
+
+    if (finalTypeId) {
+      updates.push({
+        endpoint,
         id: finalTypeId,
         data: {
           ingredientIds: this._firestoreService.addToArray(ingredientId),
         },
-      },
-    ];
+      });
+    }
+
+    return updates;
   }
 
   getTagUpdates({
