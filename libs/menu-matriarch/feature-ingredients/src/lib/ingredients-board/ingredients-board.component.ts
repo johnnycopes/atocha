@@ -53,7 +53,7 @@ export class IngredientsBoardComponent implements OnChanges {
   readonly trackByFn = ingredientTypeTrackByFn;
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes['newColumns']?.currentValue) {
+    if (changes['columns']?.currentValue) {
       this.columnIds = this._getColumnIds(this.columns);
     }
   }
