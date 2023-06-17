@@ -13,6 +13,7 @@
     [id]="column.id"
     [name]="column.name"
     [ingredients]="column.ingredients"
+    (columnRename)="columnRename.emit({ column: column, name: $event })"
     (ingredientAdd)="ingredientAdd.emit($event)"
     (ingredientMove)="ingredientMove.emit($event)"
     (ingredientRename)="ingredientRename.emit($event)"

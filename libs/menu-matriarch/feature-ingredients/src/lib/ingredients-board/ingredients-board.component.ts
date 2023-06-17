@@ -28,6 +28,11 @@ export interface IngredientColumn {
   ingredients: Ingredient[];
 }
 
+export interface ColumnRename {
+  column: IngredientType;
+  name: string;
+}
+
 @Component({
   standalone: true,
   selector: 'app-ingredients-board',
@@ -39,6 +44,7 @@ export interface IngredientColumn {
 export class IngredientsBoardComponent implements OnChanges {
   @Input() columns: IngredientType[] = [];
   @Output() columnMove = new EventEmitter<string[]>();
+  @Output() columnRename = new EventEmitter<ColumnRename>();
   @Output() ingredientAdd = new EventEmitter<IngredientAdd>();
   @Output() ingredientMove = new EventEmitter<IngredientMove>();
   @Output() ingredientRename = new EventEmitter<IngredientRename>();

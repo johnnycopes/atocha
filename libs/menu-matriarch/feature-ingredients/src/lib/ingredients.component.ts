@@ -9,7 +9,10 @@ import {
 } from '@atocha/menu-matriarch/data-access';
 import { SectionComponent } from '@atocha/menu-matriarch/ui-generic';
 import { Ingredient, IngredientType } from '@atocha/menu-matriarch/util';
-import { IngredientsBoardComponent } from './ingredients-board/ingredients-board.component';
+import {
+  ColumnRename,
+  IngredientsBoardComponent,
+} from './ingredients-board/ingredients-board.component';
 import {
   IngredientAdd,
   IngredientMove,
@@ -59,6 +62,12 @@ export class IngredientsComponent {
     this._userService
       .updatePreferences({ ingredientTypeOrder: columns })
       .subscribe();
+  }
+
+  onColumnRename({ column, name }: ColumnRename) {
+    this._ingredientTypeService.updateIngredientType(column, {
+      name,
+    });
   }
 
   onIngredientAdd({ ingredientName, columnId }: IngredientAdd) {

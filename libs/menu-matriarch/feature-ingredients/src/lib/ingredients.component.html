@@ -7,6 +7,7 @@
   <app-ingredients-board class="ui-section__content ingredients"
     [columns]="vm.columns"
     (columnMove)="onColumnMove($event)"
+    (columnRename)="onColumnRename($event)"
     (ingredientAdd)="onIngredientAdd($event)"
     (ingredientMove)="onIngredientMove($event)"
     (ingredientRename)="onIngredientRename($event)"
