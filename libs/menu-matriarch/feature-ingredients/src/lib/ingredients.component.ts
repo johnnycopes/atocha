@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { combineLatest, map } from 'rxjs';
+import { combineLatest, map, tap } from 'rxjs';
 
 import {
   IngredientService,
@@ -26,22 +26,27 @@ import {
 })
 export class IngredientsComponent {
   vm$ = combineLatest([
-    this._ingredientService.getIngredients(),
     this._ingredientTypeService.getIngredientTypes(),
     this._userService
       .getPreferences()
       .pipe(map((preferences) => preferences?.ingredientTypeOrder ?? [])),
   ]).pipe(
-    map(([ingredients, ingredientTypes, columns]) => ({
-      ingredients,
-      ingredientTypesKeyedById: ingredientTypes.reduce<
+    map(([ingredientTypes, columnIds]) => {
+      const ingredientTypesKeyedById = ingredientTypes.reduce<
         Record<string, IngredientType>
       >((record, type) => {
         record[type.id] = type;
         return record;
-      }, {}),
-      columns,
-    }))
+      }, {});
+
+      return {
+        total: ingredientTypes.reduce(
+          (total, { ingredients }) => total + ingredients.length,
+          0
+        ),
+        columns: columnIds.map((column) => ingredientTypesKeyedById[column]),
+      };
+    })
   );
 
   constructor(

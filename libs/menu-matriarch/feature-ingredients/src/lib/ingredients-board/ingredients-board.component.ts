@@ -14,7 +14,7 @@ import {
   moveItemInArray,
 } from '@angular/cdk/drag-drop';
 
-import { trackByFactory } from '@atocha/core/ui';
+import { ingredientTypeTrackByFn } from '@atocha/menu-matriarch/ui-domain';
 import { Ingredient, IngredientType } from '@atocha/menu-matriarch/util';
 import {
   IngredientAdd,
@@ -22,7 +22,6 @@ import {
   IngredientRename,
   IngredientsBoardColumnComponent,
 } from './ingredients-board-column/ingredients-board-column.component';
-import { groupIngredientsByType } from './group-ingredients-by-type';
 
 export interface IngredientColumn {
   name: string;
@@ -38,23 +37,18 @@ export interface IngredientColumn {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class IngredientsBoardComponent implements OnChanges {
-  @Input() columns: string[] = [];
-  @Input() columnsRecord: Record<string, IngredientType> = {};
-  @Input() ingredients: Ingredient[] = [];
+  @Input() columns: IngredientType[] = [];
   @Output() columnMove = new EventEmitter<string[]>();
   @Output() ingredientAdd = new EventEmitter<IngredientAdd>();
   @Output() ingredientMove = new EventEmitter<IngredientMove>();
   @Output() ingredientRename = new EventEmitter<IngredientRename>();
   @Output() ingredientDelete = new EventEmitter<Ingredient>();
-  ingredientsByType = groupIngredientsByType([], []);
-  readonly trackByFn = trackByFactory<string>((type) => type);
+  columnIds = this._getColumnIds(this.columns);
+  readonly trackByFn = ingredientTypeTrackByFn;
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes['ingredients']?.currentValue) {
-      this.ingredientsByType = groupIngredientsByType(
-        this.columns,
-        this.ingredients
-      );
+    if (changes['newColumns']?.currentValue) {
+      this.columnIds = this._getColumnIds(this.columns);
     }
   }
 
@@ -65,5 +59,9 @@ export class IngredientsBoardComponent implements OnChanges {
   }: CdkDragDrop<string[]>): void {
     moveItemInArray(container.data, previousIndex, currentIndex);
     this.columnMove.emit(container.data);
+  }
+
+  private _getColumnIds(columns: IngredientType[]): string[] {
+    return columns.map(({ id }) => id);
   }
 }
