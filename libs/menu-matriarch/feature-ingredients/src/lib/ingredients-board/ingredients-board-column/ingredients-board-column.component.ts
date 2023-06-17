@@ -117,15 +117,12 @@ export class IngredientsBoardColumnComponent {
     this._stateSubject.next('default');
   }
 
-  onSave(name: string, state: State): void {
-    if (state === 'renaming') {
-      console.log('rename');
-    } else if (state === 'addingIngredient') {
-      this.add.emit({ ingredientName: name, columnId: this.name });
-    }
+  onRenameSave(name: string): void {
+    console.log('rename:', name);
+    this._stateSubject.next('default');
   }
 
-  addNewIngredient(name: string): void {
+  onAddIngredientSave(name: string): void {
     this.add.emit({ ingredientName: name, columnId: this.name });
     this._stateSubject.next('default');
   }

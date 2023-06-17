@@ -1,41 +1,51 @@
 <ng-container *ngIf="state$ | async as state">
   <div class="header">
-    <h2 class="name">
-      {{ name }} ({{ ingredients.length }})
-    </h2>
+    <ui-inline-name-edit
+      *ngIf="state === 'renaming'; else headerTemplate"
+      class="rename-type-form"
+      [name]="name"
+      (cancel)="onCancel()"
+      (save)="onRenameSave($event)"
+    ></ui-inline-name-edit>
 
-    <button core-button="tertiary"
-      [uiOptionsMenuTrigger]="optionsMenu"
-    >
-      <fa-icon class="icon"
-        [icon]="menuToggleIcon"
-      ></fa-icon>
-    </button>
-    <ui-options-menu #optionsMenu>
-      <li ui-options-menu-item
-        (click)="onAddNewIngredient()"
+    <ng-template #headerTemplate>
+      <h2 class="name">
+        {{ name }} ({{ ingredients.length }})
+      </h2>
+
+      <button core-button="tertiary"
+        [uiOptionsMenuTrigger]="optionsMenu"
       >
-        New Ingredient
-      </li>
-      <li ui-options-menu-item
-        (click)="onRename()"
-      >
-        Rename
-      </li>
-      <li ui-options-menu-item
-        *ngIf="!ingredients.length"
-        (click)="delete.emit()"
-      >
-        Delete
-      </li>
-    </ui-options-menu>
+        <fa-icon class="icon"
+          [icon]="menuToggleIcon"
+        ></fa-icon>
+      </button>
+      <ui-options-menu #optionsMenu>
+        <li ui-options-menu-item
+          (click)="onAddNewIngredient()"
+        >
+          New Ingredient
+        </li>
+        <li ui-options-menu-item
+          (click)="onRename()"
+        >
+          Rename
+        </li>
+        <li ui-options-menu-item
+          *ngIf="!ingredients.length"
+          (click)="delete.emit()"
+        >
+          Delete
+        </li>
+      </ui-options-menu>
+    </ng-template>
   </div>
 
   <ui-inline-name-edit
     *ngIf="state === 'addingIngredient'"
     class="add-ingredient-form"
     (cancel)="onCancel()"
-    (save)="addNewIngredient($event)"
+    (save)="onAddIngredientSave($event)"
   ></ui-inline-name-edit>
 
   <ul class="ingredients"
