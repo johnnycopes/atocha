@@ -364,7 +364,7 @@ export class SeedDataService {
           id: eggsIngredientId,
           uid,
           name: 'Eggs',
-          type: 'refrigerated',
+          type: refrigeratedIngredientTypeId,
           dishIds: [huevosRotosDishId],
         }),
       })
@@ -375,7 +375,7 @@ export class SeedDataService {
           id: garlicIngredientId,
           uid,
           name: 'Garlic',
-          type: 'produce',
+          type: produceIngredientTypeId,
           dishIds: [huevosRotosDishId],
         }),
       })
@@ -386,7 +386,7 @@ export class SeedDataService {
           id: oliveOilIngredientId,
           uid,
           name: 'Olive Oil',
-          type: 'oil',
+          type: refrigeratedIngredientTypeId,
           dishIds: [huevosRotosDishId],
         }),
       })
@@ -397,7 +397,7 @@ export class SeedDataService {
           id: onionIngredientId,
           uid,
           name: 'Onion',
-          type: 'produce',
+          type: produceIngredientTypeId,
           dishIds: [huevosRotosDishId],
         }),
       })
@@ -408,7 +408,7 @@ export class SeedDataService {
           id: paprikaIngredientId,
           uid,
           name: 'Paprika',
-          type: 'spice',
+          type: spiceIngredientTypeId,
           dishIds: [huevosRotosDishId],
         }),
       })
@@ -419,7 +419,7 @@ export class SeedDataService {
           id: pepperIngredientId,
           uid,
           name: 'Pepper',
-          type: 'spice',
+          type: spiceIngredientTypeId,
           dishIds: [huevosRotosDishId],
         }),
       })
@@ -430,7 +430,7 @@ export class SeedDataService {
           id: potatoIngredientId,
           uid,
           name: 'Potato',
-          type: 'produce',
+          type: produceIngredientTypeId,
           dishIds: [huevosRotosDishId],
         }),
       })
@@ -441,7 +441,7 @@ export class SeedDataService {
           id: saltIngredientId,
           uid,
           name: 'Salt',
-          type: 'spice',
+          type: spiceIngredientTypeId,
           dishIds: [huevosRotosDishId],
         }),
       })
