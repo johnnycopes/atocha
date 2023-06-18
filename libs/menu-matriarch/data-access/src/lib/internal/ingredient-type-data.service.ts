@@ -52,7 +52,7 @@ export class IngredientTypeDataService {
 
     batch
       .set({
-        endpoint: Endpoint.ingredientTypes,
+        endpoint: this._endpoint,
         id,
         data: createIngredientTypeDto({ id, uid, ...ingredientType }),
       })
@@ -74,7 +74,7 @@ export class IngredientTypeDataService {
     const batch = this._batchService.createBatch();
 
     batch.update({
-      endpoint: Endpoint.ingredientTypes,
+      endpoint: this._endpoint,
       id: ingredientType.id,
       data: updates,
     });
@@ -93,7 +93,7 @@ export class IngredientTypeDataService {
           ingredientTypeIdToDelete: ingredientType.id,
         })
       )
-      .delete(Endpoint.ingredientTypes, ingredientType.id);
+      .delete(this._endpoint, ingredientType.id);
 
     await batch.commit();
   }
