@@ -38,6 +38,7 @@ export class IngredientsBoardComponent {
   @Input() columns: IngredientType[] = [];
   @Output() columnMove = new EventEmitter<string[]>();
   @Output() columnRename = new EventEmitter<ColumnRename>();
+  @Output() columnDelete = new EventEmitter<IngredientType>();
   @Output() ingredientAdd = new EventEmitter<IngredientAdd>();
   @Output() ingredientMove = new EventEmitter<IngredientMove>();
   @Output() ingredientRename = new EventEmitter<IngredientRename>();

@@ -119,6 +119,10 @@ export class IngredientsBoardColumnComponent {
     this._stateSubject.next('default');
   }
 
+  onDeleteColumn(): void {
+    this.columnDelete.emit();
+  }
+
   onAddNewIngredient(): void {
     this._stateSubject.next('addingIngredient');
   }

@@ -58,7 +58,7 @@ export class IngredientsComponent {
     private _userService: UserService
   ) {}
 
-  onColumnMove(columns: string[]) {
+  onColumnMove(columns: string[]): void {
     this._userService
       .updatePreferences({ ingredientTypeOrder: columns })
       .subscribe();
@@ -68,6 +68,10 @@ export class IngredientsComponent {
     this._ingredientTypeService.updateIngredientType(column, {
       name,
     });
+  }
+
+  async onColumnDelete(column: IngredientType): Promise<void> {
+    this._ingredientTypeService.deleteIngredientType(column);
   }
 
   onIngredientAdd({ ingredientName, columnId }: IngredientAdd) {
@@ -80,7 +84,10 @@ export class IngredientsComponent {
       .subscribe();
   }
 
-  onIngredientMove({ ingredient, columnId }: IngredientMove) {
+  async onIngredientMove({
+    ingredient,
+    columnId,
+  }: IngredientMove): Promise<void> {
     this._ingredientService.updateIngredient(ingredient, {
       ...ingredient,
       typeId: columnId,
@@ -94,7 +101,7 @@ export class IngredientsComponent {
     });
   }
 
-  onIngredientDelete(ingredient: Ingredient): void {
+  async onIngredientDelete(ingredient: Ingredient): Promise<void> {
     this._ingredientService.deleteIngredient(ingredient);
   }
 }
