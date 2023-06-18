@@ -2,6 +2,7 @@ export * from './lib/auth.guard';
 export * from './lib/dish.service';
 export * from './lib/error.service';
 export * from './lib/filter.service';
+export * from './lib/ingredient-type.service';
 export * from './lib/ingredient.service';
 export * from './lib/loading.service';
 export * from './lib/logged-in-auth.guard';

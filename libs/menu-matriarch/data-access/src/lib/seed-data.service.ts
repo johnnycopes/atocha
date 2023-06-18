@@ -5,6 +5,7 @@ import { BatchService } from './internal/batch.service';
 import { Endpoint } from './internal/endpoint.enum';
 import { createDishDto } from './internal/dtos/dish-dto';
 import { createIngredientDto } from './internal/dtos/ingredient-dto';
+import { createIngredientTypeDto } from './internal/dtos/ingredient-type-dto';
 import { createMealDto } from './internal/dtos/meal-dto';
 import { createMenuDto } from './internal/dtos/menu-dto';
 import { createTagDto } from './internal/dtos/tag-dto';
@@ -48,6 +49,9 @@ export class SeedDataService {
     const thaiCurryDishId = this._dataService.createId();
     const easyTagId = this._dataService.createId();
     const pescatarianTagId = this._dataService.createId();
+    const produceIngredientTypeId = this._dataService.createId();
+    const refrigeratedIngredientTypeId = this._dataService.createId();
+    const spiceIngredientTypeId = this._dataService.createId();
     const eggsIngredientId = this._dataService.createId();
     const garlicIngredientId = this._dataService.createId();
     const oliveOilIngredientId = this._dataService.createId();
@@ -64,7 +68,23 @@ export class SeedDataService {
       .set({
         endpoint: Endpoint.users,
         id: uid,
-        data: createUserDto({ uid, name, email }),
+        data: createUserDto({
+          uid,
+          name,
+          email,
+          preferences: {
+            darkMode: false,
+            dayNameDisplay: 'full',
+            defaultMenuStartDay: 'Monday',
+            emptyMealText: 'undecided',
+            mealOrientation: 'vertical',
+            ingredientTypeOrder: [
+              produceIngredientTypeId,
+              refrigeratedIngredientTypeId,
+              spiceIngredientTypeId,
+            ],
+          },
+        }),
       })
       .set({
         endpoint: Endpoint.menus,
@@ -316,13 +336,51 @@ export class SeedDataService {
         }),
       })
       .set({
+        endpoint: Endpoint.ingredientTypes,
+        id: produceIngredientTypeId,
+        data: createIngredientTypeDto({
+          id: produceIngredientTypeId,
+          uid,
+          name: 'Produce',
+          ingredientIds: [
+            garlicIngredientId,
+            onionIngredientId,
+            potatoIngredientId,
+          ],
+        }),
+      })
+      .set({
+        endpoint: Endpoint.ingredientTypes,
+        id: refrigeratedIngredientTypeId,
+        data: createIngredientTypeDto({
+          id: refrigeratedIngredientTypeId,
+          uid,
+          name: 'Refrigerated',
+          ingredientIds: [eggsIngredientId, oliveOilIngredientId],
+        }),
+      })
+      .set({
+        endpoint: Endpoint.ingredientTypes,
+        id: spiceIngredientTypeId,
+        data: createIngredientTypeDto({
+          id: spiceIngredientTypeId,
+          uid,
+          name: 'Spice',
+          ingredientIds: [
+            paprikaIngredientId,
+            pepperIngredientId,
+            saltIngredientId,
+          ],
+        }),
+      })
+      .set({
         endpoint: Endpoint.ingredients,
         id: eggsIngredientId,
         data: createIngredientDto({
           id: eggsIngredientId,
           uid,
           name: 'Eggs',
-          type: 'refrigerated',
+          typeId: refrigeratedIngredientTypeId,
           dishIds: [huevosRotosDishId],
         }),
       })
@@ -333,7 +391,7 @@ export class SeedDataService {
           id: garlicIngredientId,
           uid,
           name: 'Garlic',
-          type: 'produce',
+          typeId: produceIngredientTypeId,
           dishIds: [huevosRotosDishId],
         }),
       })
@@ -344,7 +402,7 @@ export class SeedDataService {
           id: oliveOilIngredientId,
           uid,
           name: 'Olive Oil',
-          type: 'oil',
+          typeId: refrigeratedIngredientTypeId,
           dishIds: [huevosRotosDishId],
         }),
       })
@@ -355,7 +413,7 @@ export class SeedDataService {
           id: onionIngredientId,
           uid,
           name: 'Onion',
-          type: 'produce',
+          typeId: produceIngredientTypeId,
           dishIds: [huevosRotosDishId],
         }),
       })
@@ -366,7 +424,7 @@ export class SeedDataService {
           id: paprikaIngredientId,
           uid,
           name: 'Paprika',
-          type: 'spice',
+          typeId: spiceIngredientTypeId,
           dishIds: [huevosRotosDishId],
         }),
       })
@@ -377,7 +435,7 @@ export class SeedDataService {
           id: pepperIngredientId,
           uid,
           name: 'Pepper',
-          type: 'spice',
+          typeId: spiceIngredientTypeId,
           dishIds: [huevosRotosDishId],
         }),
       })
@@ -388,7 +446,7 @@ export class SeedDataService {
           id: potatoIngredientId,
           uid,
           name: 'Potato',
-          type: 'produce',
+          typeId: produceIngredientTypeId,
           dishIds: [huevosRotosDishId],
         }),
       })
@@ -399,7 +457,7 @@ export class SeedDataService {
           id: saltIngredientId,
           uid,
           name: 'Salt',
-          type: 'spice',
+          typeId: spiceIngredientTypeId,
           dishIds: [huevosRotosDishId],
         }),
       })

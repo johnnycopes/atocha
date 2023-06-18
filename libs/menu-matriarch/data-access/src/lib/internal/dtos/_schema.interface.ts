@@ -4,6 +4,7 @@ import { MenuDto } from './menu-dto';
 import { MealDto } from './meal-dto';
 import { DishDto } from './dish-dto';
 import { IngredientDto } from './ingredient-dto';
+import { IngredientTypeDto } from './ingredient-type-dto';
 import { TagDto } from './tag-dto';
 import { UserDto } from './user-dto';
 
@@ -14,7 +15,8 @@ interface DatabaseSchema {
   menus: MenuDto[];
   meals: MealDto[];
   dishes: DishDto[];
-  ingredients: IngredientDto;
+  ingredientTypes: IngredientTypeDto[];
+  ingredients: IngredientDto[];
   tags: TagDto[];
   users: UserDto[];
 }

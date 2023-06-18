@@ -2,19 +2,20 @@
   cdkDropList
   cdkDropListGroup
   cdkDropListOrientation="horizontal"
-  [cdkDropListData]="columns"
   (cdkDropListDropped)="onDrop($event)"
 >
   <li app-ingredients-board-column
-    *ngFor="let column of columns; trackBy: trackByFn"
+    *ngFor="let type of types; trackBy: trackByFn"
     class="column"
     cdkDrag
-    [cdkDragData]="column"
-    [name]="column"
-    [ingredients]="ingredientsByType.get(column) ?? []"
-    (add)="ingredientAdd.emit($event)"
-    (move)="ingredientMove.emit($event)"
-    (rename)="ingredientRename.emit($event)"
-    (delete)="ingredientDelete.emit($event)"
+    [id]="type.id"
+    [name]="type.name"
+    [ingredients]="type.ingredients"
+    (rename)="typeRename.emit({ type: type, name: $event })"
+    (delete)="typeDelete.emit(type)"
+    (ingredientAdd)="ingredientAdd.emit($event)"
+    (ingredientMove)="ingredientMove.emit($event)"
+    (ingredientRename)="ingredientRename.emit($event)"
+    (ingredientDelete)="ingredientDelete.emit($event)"
   ></li>
 </ul>

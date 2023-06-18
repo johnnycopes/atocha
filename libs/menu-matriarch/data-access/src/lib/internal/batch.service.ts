@@ -80,7 +80,7 @@ export class BatchService {
     finalDishIds,
     entityId,
   }: {
-    key: 'mealIds' | 'tagIds';
+    key: 'mealIds' | 'ingredientIds' | 'tagIds';
     initialDishIds: string[];
     finalDishIds: string[];
     entityId: string;
@@ -129,6 +129,59 @@ export class BatchService {
     });
   }
 
+  getIngredientTypeUpdates({
+    ingredientId,
+    typeIdToRemoveFrom,
+    typeIdToAddTo,
+  }: {
+    ingredientId: string;
+    typeIdToRemoveFrom?: string;
+    typeIdToAddTo?: string;
+  }): BatchUpdate[] {
+    const endpoint = Endpoint.ingredientTypes;
+    const updates: BatchUpdate[] = [];
+
+    if (typeIdToRemoveFrom) {
+      updates.push({
+        endpoint,
+        id: typeIdToRemoveFrom,
+        data: {
+          ingredientIds: this._firestoreService.removeFromArray(ingredientId),
+        },
+      });
+    }
+
+    if (typeIdToAddTo) {
+      updates.push({
+        endpoint,
+        id: typeIdToAddTo,
+        data: {
+          ingredientIds: this._firestoreService.addToArray(ingredientId),
+        },
+      });
+    }
+
+    return updates;
+  }
+
+  getIngredientUpdates({
+    initialIngredientIds,
+    finalIngredientIds,
+    entityId,
+  }: {
+    initialIngredientIds: string[];
+    finalIngredientIds: string[];
+    entityId: string;
+  }): BatchUpdate[] {
+    return this._getBatchUpdates({
+      endpoint: Endpoint.ingredients,
+      key: 'dishIds',
+      initialIds: initialIngredientIds,
+      finalIds: finalIngredientIds,
+      entityId,
+    });
+  }
+
   getTagUpdates({
     key,
     initialTagIds,
@@ -149,6 +202,28 @@ export class BatchService {
     });
   }
 
+  getUserUpdate({
+    uid,
+    ingredientTypeIdToAdd,
+    ingredientTypeIdToDelete,
+  }: {
+    uid: string;
+    ingredientTypeIdToAdd?: string;
+    ingredientTypeIdToDelete?: string;
+  }): BatchUpdate {
+    return {
+      endpoint: Endpoint.users,
+      id: uid,
+      data: {
+        'preferences.ingredientTypeOrder': ingredientTypeIdToAdd
+          ? this._firestoreService.addToArray(ingredientTypeIdToAdd)
+          : ingredientTypeIdToDelete
+          ? this._firestoreService.removeFromArray(ingredientTypeIdToDelete)
+          : [],
+      },
+    };
+  }
+
   private _getBatchUpdates({
     endpoint,
     key,
@@ -157,7 +232,7 @@ export class BatchService {
     entityId,
   }: {
     endpoint: string;
-    key: 'mealIds' | 'dishIds' | 'tagIds';
+    key: 'mealIds' | 'dishIds' | 'ingredientIds' | 'tagIds';
     initialIds: string[];
     finalIds: string[];
     entityId: string;

@@ -7,16 +7,28 @@
   box-shadow: box-shadow(lightest);
 }
 
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: spacing(8);
+  border-bottom: map-get($border, thin) solid color($neutral, 9);
+}
+
 .name {
   @include small-caps;
-  margin-bottom: spacing(8);
   color: color($neutral, 6);
   font-size: font-size(16);
 }
 
+.add-ingredient-form {
+  display: block;
+  margin-top: spacing(8);
+}
+
 .ingredients {
-  margin-top: spacing(16);
-  height: calc(100% - 84px);
+  margin-top: spacing(8);
+  height: calc(100% - 58px);
   overflow-y: auto;
 
   &.cdk-drop-list-dragging {

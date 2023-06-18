@@ -34,6 +34,7 @@ async function deleteData(admin, uid) {
     'users',
     'menus',
     'meals',
+    'ingredientTypes',
     'ingredients',
     'dishes',
     'tags',

@@ -1,5 +1,4 @@
 import { Day } from './day.type';
-import { IngredientType } from './ingredient.interface';
 import { Orientation } from './orientation.type';
 
 /** The application user */
@@ -25,8 +24,8 @@ export interface UserPreferences {
   emptyMealText: string;
   /** Which direction to display the dishes belonging to a meal  */
   mealOrientation: Orientation;
-  /** Tracks the desired display order of the ingredient type groupings */
-  ingredientTypeOrder: IngredientType[];
+  /** Tracks the desired display order of the ingredient type IDs */
+  ingredientTypeOrder: string[];
 }
 
 export type DayNameDisplay = 'full';

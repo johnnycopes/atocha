@@ -6,14 +6,14 @@ export function createIngredientDto({
   id,
   uid,
   name,
-  type,
+  typeId,
   dishIds,
 }: Partial<IngredientDto>): IngredientDto {
   return {
     id: id ?? '',
     uid: uid ?? '',
     name: name ?? '',
-    type: type ?? 'misc',
+    typeId: typeId ?? '',
     dishIds: dishIds ?? [],
   };
 }

@@ -5,6 +5,15 @@
   height: 100%;
 }
 
+.form {
+  margin-left: spacing(16);
+}
+
+.ui-section__toolbar {
+  display: flex;
+  align-items: center;
+}
+
 .title {
   margin-right: spacing(16);
   font-weight: font-weight(bold);

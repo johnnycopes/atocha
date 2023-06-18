@@ -96,6 +96,11 @@ export class DishDataService {
         finalMealIds: [],
         entityId: dish.id,
       }),
+      ...this._batchService.getIngredientUpdates({
+        initialIngredientIds: dish.ingredients.map(({ id }) => id),
+        finalIngredientIds: [],
+        entityId: dish.id,
+      }),
       ...this._batchService.getTagUpdates({
         key: 'dishIds',
         initialTagIds: dish.tags.map(({ id }) => id),

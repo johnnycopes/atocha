@@ -25,11 +25,6 @@
           Rename
         </li>
         <li ui-options-menu-item
-          (click)="onMove()"
-        >
-          Move
-        </li>
-        <li ui-options-menu-item
           (click)="delete.emit()"
         >
           Delete
@@ -42,11 +37,5 @@
       (cancel)="onCancel()"
       (save)="onRenameSave($event)"
     ></ui-inline-name-edit>
-    <app-inline-type-select class="start-type-form"
-      *ngSwitchCase="'changingType'"
-      [startType]="type"
-      (cancel)="onCancel()"
-      (save)="onChangeTypeSave($event)"
-    ></app-inline-type-select>
   </ng-container>
 </ui-card>

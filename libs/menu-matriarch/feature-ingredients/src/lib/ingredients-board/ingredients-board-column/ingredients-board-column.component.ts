@@ -9,31 +9,41 @@ import {
 import {
   CdkDragDrop,
   DragDropModule,
-  moveItemInArray,
   transferArrayItem,
 } from '@angular/cdk/drag-drop';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faEllipsisH } from '@fortawesome/free-solid-svg-icons';
+import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
+import { BehaviorSubject } from 'rxjs';
 
-import { IngredientCardComponent } from '../../ingredient-card/ingredient-card.component';
-import { IngredientsBoardFormComponent } from './ingredients-board-form.component';
-import { ingredientTrackByFn } from '@atocha/menu-matriarch/ui-domain';
+import { ButtonComponent } from '@atocha/core/ui';
 import { Ingredient } from '@atocha/menu-matriarch/util';
+import {
+  InlineNameEditComponent,
+  ingredientTrackByFn,
+} from '@atocha/menu-matriarch/ui-domain';
+import {
+  OptionsMenuComponent,
+  OptionsMenuItemComponent,
+  OptionsMenuTriggerDirective,
+} from '@atocha/menu-matriarch/ui-generic';
+import { IngredientCardComponent } from '../../ingredient-card/ingredient-card.component';
 
 export interface IngredientAdd {
-  ingredientName: string;
-  columnId: string;
+  name: string;
+  typeId: string;
 }
 
 export interface IngredientMove {
   ingredient: Ingredient;
-  columnId: string;
+  typeId: string;
 }
 
 export interface IngredientRename {
   ingredient: Ingredient;
   name: string;
 }
+
+type State = 'default' | 'renaming' | 'addingIngredient';
 
 @Component({
   standalone: true,
@@ -46,21 +56,32 @@ export interface IngredientRename {
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
+    ButtonComponent,
     CommonModule,
     DragDropModule,
     FontAwesomeModule,
-    IngredientsBoardFormComponent,
     IngredientCardComponent,
+    InlineNameEditComponent,
+    OptionsMenuComponent,
+    OptionsMenuItemComponent,
+    OptionsMenuTriggerDirective,
   ],
 })
 export class IngredientsBoardColumnComponent {
+  @Input() id = '';
   @Input() name = '';
   @Input() ingredients: Ingredient[] = [];
-  @Output() add = new EventEmitter<IngredientAdd>();
-  @Output() move = new EventEmitter<IngredientMove>();
-  @Output() rename = new EventEmitter<IngredientRename>();
-  @Output() delete = new EventEmitter<Ingredient>();
-  readonly menuIcon = faEllipsisH;
+  @Output() rename = new EventEmitter<string>();
+  @Output() delete = new EventEmitter<void>();
+  @Output() ingredientAdd = new EventEmitter<IngredientAdd>();
+  @Output() ingredientMove = new EventEmitter<IngredientMove>();
+  @Output() ingredientRename = new EventEmitter<IngredientRename>();
+  @Output() ingredientDelete = new EventEmitter<Ingredient>();
+
+  private _stateSubject = new BehaviorSubject<State>('default');
+  state$ = this._stateSubject.asObservable();
+
+  readonly menuToggleIcon = faEllipsisV;
   readonly trackByFn = ingredientTrackByFn;
 
   onDrop({
@@ -71,18 +92,39 @@ export class IngredientsBoardColumnComponent {
     container,
   }: CdkDragDrop<Ingredient[]>): void {
     if (previousContainer.id === container.id) {
-      moveItemInArray(container.data, previousIndex, currentIndex);
-    } else {
-      transferArrayItem(
-        previousContainer.data,
-        container.data,
-        previousIndex,
-        currentIndex
-      );
+      return;
     }
-    this.move.emit({
-      ingredient: item.data.ingredient,
-      columnId: this.name,
+    transferArrayItem(
+      previousContainer.data,
+      container.data,
+      previousIndex,
+      currentIndex
+    );
+    this.ingredientMove.emit({
+      ingredient: item.data,
+      typeId: this.id,
     });
+  }
+
+  onCancel(): void {
+    this._stateSubject.next('default');
+  }
+
+  onRename(): void {
+    this._stateSubject.next('renaming');
+  }
+
+  onRenameSave(name: string): void {
+    this.rename.emit(name);
+    this._stateSubject.next('default');
+  }
+
+  onAddNewIngredient(): void {
+    this._stateSubject.next('addingIngredient');
+  }
+
+  onAddIngredientSave(name: string): void {
+    this.ingredientAdd.emit({ name: name, typeId: this.id });
+    this._stateSubject.next('default');
   }
 }

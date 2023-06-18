@@ -11,7 +11,7 @@ import { Endpoint } from './endpoint.enum';
 
 export type EditableIngredientData = Pick<
   IngredientDto,
-  'name' | 'type' | 'dishIds'
+  'name' | 'typeId' | 'dishIds'
 >;
 
 @Injectable({
@@ -44,13 +44,22 @@ export class IngredientDataService {
     ingredient: EditableIngredientData
   ): Promise<string> {
     const id = this._dataService.createId();
+    const batch = this._batchService.createBatch();
 
-    await this._dataService.create<IngredientDto>(
-      this._endpoint,
-      id,
-      createIngredientDto({ id, uid, ...ingredient })
-    );
+    batch
+      .set({
+        endpoint: this._endpoint,
+        id,
+        data: createIngredientDto({ id, uid, ...ingredient }),
+      })
+      .updateMultiple(
+        this._batchService.getIngredientTypeUpdates({
+          ingredientId: id,
+          typeIdToAddTo: ingredient.typeId,
+        })
+      );
 
+    await batch.commit();
     return id;
   }
 
@@ -65,7 +74,16 @@ export class IngredientDataService {
       id: ingredient.id,
       data: updates,
     });
-    // TODO: update ingredient doc and relevant dishes docs
+
+    if (updates.typeId) {
+      batch.updateMultiple(
+        this._batchService.getIngredientTypeUpdates({
+          ingredientId: ingredient.id,
+          typeIdToRemoveFrom: ingredient.typeId,
+          typeIdToAddTo: updates.typeId,
+        })
+      );
+    }
 
     await batch.commit();
   }
@@ -73,8 +91,18 @@ export class IngredientDataService {
   async deleteIngredient(ingredient: Ingredient): Promise<void> {
     const batch = this._batchService.createBatch();
 
-    batch.delete(Endpoint.ingredients, ingredient.id);
-    // TODO: update dish docs to remove ingredient
+    batch.delete(Endpoint.ingredients, ingredient.id).updateMultiple([
+      ...this._batchService.getIngredientTypeUpdates({
+        ingredientId: ingredient.id,
+        typeIdToRemoveFrom: ingredient.typeId,
+      }),
+      ...this._batchService.getDishUpdates({
+        key: 'ingredientIds',
+        initialDishIds: ingredient.dishIds,
+        finalDishIds: [],
+        entityId: ingredient.id,
+      }),
+    ]);
 
     await batch.commit();
   }
