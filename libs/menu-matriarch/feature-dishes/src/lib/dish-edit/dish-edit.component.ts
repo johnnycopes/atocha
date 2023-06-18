@@ -7,9 +7,10 @@ import { concatMap, first, map } from 'rxjs/operators';
 import {
   DishData,
   DishService,
+  IngredientService,
   TagService,
 } from '@atocha/menu-matriarch/data-access';
-import { TagModel } from '@atocha/menu-matriarch/util';
+import { IngredientModel, TagModel } from '@atocha/menu-matriarch/util';
 import {
   DishConfig,
   DishEditFormComponent,
@@ -35,9 +36,10 @@ export class DishEditComponent {
     : of(undefined);
   dish$: Observable<DishConfig> = combineLatest([
     this._dish$,
+    this._ingredientService.getIngredients(),
     this._tagService.getTags(),
   ]).pipe(
-    map(([dish, tags]) => ({
+    map(([dish, ingredients, tags]) => ({
       name: dish?.name ?? '',
       description: dish?.description ?? '',
       link: dish?.link ?? '',
@@ -45,6 +47,11 @@ export class DishEditComponent {
       tagModels: tags.map<TagModel>((tag) => ({
         ...tag,
         checked: !!dish?.tags.find(({ id }) => id === tag.id) ?? false,
+      })),
+      ingredientModels: ingredients.map<IngredientModel>((ingredient) => ({
+        ...ingredient,
+        checked:
+          !!dish?.ingredients.find(({ id }) => id === ingredient.id) ?? false,
       })),
       notes: dish?.notes ?? '',
     }))
@@ -54,6 +61,7 @@ export class DishEditComponent {
     private _route: ActivatedRoute,
     private _router: Router,
     private _dishService: DishService,
+    private _ingredientService: IngredientService,
     private _tagService: TagService
   ) {}
 

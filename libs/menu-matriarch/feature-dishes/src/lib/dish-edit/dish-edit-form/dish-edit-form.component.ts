@@ -24,13 +24,18 @@ import {
   TagsListComponent,
 } from '@atocha/menu-matriarch/ui-domain';
 import { InputComponent } from '@atocha/menu-matriarch/ui-generic';
-import { Dish, TagModel, getDishTypes } from '@atocha/menu-matriarch/util';
+import {
+  Dish,
+  IngredientModel,
+  TagModel,
+  getDishTypes,
+} from '@atocha/menu-matriarch/util';
 import { DishEditForm } from './dish-edit-form';
 
 export type DishConfig = Pick<
   Dish,
   'name' | 'description' | 'link' | 'type' | 'notes'
-> & { tagModels: TagModel[] };
+> & { tagModels: TagModel[]; ingredientModels: IngredientModel[] };
 
 @Component({
   standalone: true,

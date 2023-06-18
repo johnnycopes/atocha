@@ -98,6 +98,15 @@
     </ng-template>
   </ui-input>
   <ui-input class="input"
+    label="ingredients"
+  >
+    <ul>
+      <li *ngFor="let ingredient of dish.ingredientModels">
+        {{ ingredient.checked }} | {{ ingredient.name }}
+      </li>
+    </ul>
+  </ui-input>
+  <ui-input class="input"
     label="notes"
   >
     <editor
