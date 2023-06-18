@@ -5,8 +5,6 @@ import {
   ChangeDetectionStrategy,
   Output,
   EventEmitter,
-  OnChanges,
-  SimpleChanges,
 } from '@angular/core';
 import {
   CdkDragDrop,
@@ -36,7 +34,7 @@ export interface ColumnRename {
   styleUrls: ['./ingredients-board.scss', './ingredients-board.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class IngredientsBoardComponent implements OnChanges {
+export class IngredientsBoardComponent {
   @Input() columns: IngredientType[] = [];
   @Output() columnMove = new EventEmitter<string[]>();
   @Output() columnRename = new EventEmitter<ColumnRename>();
@@ -44,21 +42,10 @@ export class IngredientsBoardComponent implements OnChanges {
   @Output() ingredientMove = new EventEmitter<IngredientMove>();
   @Output() ingredientRename = new EventEmitter<IngredientRename>();
   @Output() ingredientDelete = new EventEmitter<Ingredient>();
-  columnIds = this._getColumnIds(this.columns);
   readonly trackByFn = ingredientTypeTrackByFn;
-
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes['columns']?.currentValue) {
-      this.columnIds = this._getColumnIds(this.columns);
-    }
-  }
 
   async onDrop({ previousIndex, currentIndex }: CdkDragDrop<string[]>) {
     moveItemInArray(this.columns, previousIndex, currentIndex);
-    this.columnMove.emit(this._getColumnIds(this.columns));
-  }
-
-  private _getColumnIds(columns: IngredientType[]): string[] {
-    return columns.map(({ id }) => id);
+    this.columnMove.emit(this.columns.map(({ id }) => id));
   }
 }
