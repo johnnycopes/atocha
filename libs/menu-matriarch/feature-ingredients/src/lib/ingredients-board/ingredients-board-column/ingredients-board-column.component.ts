@@ -101,7 +101,7 @@ export class IngredientsBoardColumnComponent {
       currentIndex
     );
     this.ingredientMove.emit({
-      ingredient: item.data.ingredient,
+      ingredient: item.data,
       columnId: this.id,
     });
   }

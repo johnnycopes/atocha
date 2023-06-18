@@ -60,10 +60,7 @@
       [type]="ingredient.typeId"
       [dishIds]="ingredient.dishIds"
       cdkDrag
-      [cdkDragData]="{
-        columnId: name,
-        ingredient: ingredient
-      }"
+      [cdkDragData]="ingredient"
       (rename)="ingredientRename.emit({ ingredient: ingredient, name: $event })"
       (typeChange)="ingredientMove.emit({ ingredient: ingredient, columnId: $event })"
       (delete)="ingredientDelete.emit(ingredient)"
