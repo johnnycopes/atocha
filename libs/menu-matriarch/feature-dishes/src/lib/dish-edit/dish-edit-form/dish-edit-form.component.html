@@ -67,13 +67,26 @@
   <ui-input class="input"
     label="ingredients"
   >
-    <ul formGroupName="ingredientIds">
+    <ul *ngIf="dish.ingredientModels.length; else noIngredientsPlaceholder"
+      formGroupName="ingredientIds"
+    >
       <li *ngFor="let ingredient of dish.ingredientModels; trackBy: ingredientTrackByFn">
         <core-checkbox [formControlName]="ingredient.id">
           {{ ingredient.name }}
         </core-checkbox>
       </li>
     </ul>
+    <ng-template #noIngredientsPlaceholder>
+      <div class="placeholder">
+        <p>No ingredients to display</p>
+        <a core-button
+          class="button"
+          routerLink="/ingredients"
+        >
+          New Ingredient
+        </a>
+      </div>
+    </ng-template>
   </ui-input>
   <ui-input class="input"
     label="tags"
