@@ -8,7 +8,6 @@
     *ngFor="let column of columns; trackBy: trackByFn"
     class="column"
     cdkDrag
-    [cdkDragData]="column.id"
     [id]="column.id"
     [name]="column.name"
     [ingredients]="column.ingredients"
