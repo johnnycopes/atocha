@@ -65,6 +65,17 @@
     </div>
   </ui-input>
   <ui-input class="input"
+    label="ingredients"
+  >
+    <ul formGroupName="ingredientIds">
+      <li *ngFor="let ingredient of dish.ingredientModels; trackBy: ingredientTrackByFn">
+        <core-checkbox [formControlName]="ingredient.id">
+          {{ ingredient.name }}
+        </core-checkbox>
+      </li>
+    </ul>
+  </ui-input>
+  <ui-input class="input"
     label="tags"
   >
     <ui-tags-list
@@ -96,15 +107,6 @@
         </a>
       </div>
     </ng-template>
-  </ui-input>
-  <ui-input class="input"
-    label="ingredients"
-  >
-    <ul>
-      <li *ngFor="let ingredient of dish.ingredientModels">
-        {{ ingredient.checked }} | {{ ingredient.name }}
-      </li>
-    </ul>
   </ui-input>
   <ui-input class="input"
     label="notes"

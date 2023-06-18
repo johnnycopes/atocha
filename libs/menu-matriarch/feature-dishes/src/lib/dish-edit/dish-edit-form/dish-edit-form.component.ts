@@ -22,6 +22,7 @@ import {
   TagComponent,
   TagDefDirective,
   TagsListComponent,
+  ingredientTrackByFn,
 } from '@atocha/menu-matriarch/ui-domain';
 import { InputComponent } from '@atocha/menu-matriarch/ui-generic';
 import {
@@ -72,6 +73,7 @@ export class DishEditFormComponent implements OnInit {
   };
   readonly tinyMceApiKey = '4yfx3pv3xaz2njb6vj43b4grlu0qfmodc0l9xvuw4elb3ijx';
   readonly typeTrackByFn = trackBySelf;
+  readonly ingredientTrackByFn = ingredientTrackByFn;
 
   ngOnInit() {
     if (this.dish) {
@@ -84,13 +86,14 @@ export class DishEditFormComponent implements OnInit {
       return;
     }
 
-    const { name, description, link, type, tagIds, notes } =
+    const { name, description, link, type, ingredientIds, tagIds, notes } =
       this.form.getRawValue();
     this.save.emit({
       name,
       description,
       link,
       type,
+      ingredientIds: recordToArray<string>(ingredientIds ?? []),
       tagIds: recordToArray<string>(tagIds ?? []),
       notes,
     });
