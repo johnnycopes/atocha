@@ -202,6 +202,28 @@ export class BatchService {
     });
   }
 
+  getUserUpdate({
+    uid,
+    ingredientIdToAdd,
+    ingredientIdToDelete,
+  }: {
+    uid: string;
+    ingredientIdToAdd?: string;
+    ingredientIdToDelete?: string;
+  }): BatchUpdate {
+    return {
+      endpoint: Endpoint.users,
+      id: uid,
+      data: {
+        'preferences.ingredientTypeOrder': ingredientIdToAdd
+          ? this._firestoreService.addToArray(ingredientIdToAdd)
+          : ingredientIdToDelete
+          ? this._firestoreService.removeFromArray(ingredientIdToDelete)
+          : [],
+      },
+    };
+  }
+
   private _getBatchUpdates({
     endpoint,
     key,
