@@ -10,3 +10,7 @@ export interface Ingredient {
   /** Unique IDs of any dishes the ingredient belongs to */
   dishIds: string[];
 }
+
+export interface IngredientModel extends Ingredient {
+  checked: boolean;
+}
