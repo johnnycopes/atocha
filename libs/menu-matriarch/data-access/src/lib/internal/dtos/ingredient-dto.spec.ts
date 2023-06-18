@@ -7,7 +7,7 @@ describe('createIngredientDto', () => {
       id: '',
       uid: '',
       name: '',
-      type: 'misc',
+      typeId: '',
       dishIds: [],
     });
   });
@@ -17,14 +17,14 @@ describe('createIngredientDto', () => {
       id: '1',
       uid: '1',
       name: 'Paprika',
-      type: 'spice',
+      typeId: 'ingredient-type-1',
       dishIds: ['26'],
     });
     expect(ingredient).toEqual({
       id: '1',
       uid: '1',
       name: 'Paprika',
-      type: 'spice',
+      typeId: 'ingredient-type-1',
       dishIds: ['26'],
     });
   });
