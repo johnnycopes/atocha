@@ -3,6 +3,17 @@
     <h2 class="title">
       Ingredients ({{ vm.total }})
     </h2>
+    <button core-button
+      [disabled]="vm.adding"
+      (click)="addingSubject.next(true)"
+    >
+      New Ingredient Type
+    </button>
+    <ui-inline-name-edit class="form"
+      *ngIf="vm.adding"
+      (cancel)="addingSubject.next(false)"
+      (save)="onColumnAdd($event)"
+    ></ui-inline-name-edit>
   </div>
   <app-ingredients-board class="ui-section__content ingredients"
     [columns]="vm.columns"

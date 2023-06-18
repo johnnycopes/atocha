@@ -48,13 +48,22 @@ export class IngredientTypeDataService {
     ingredientType: EditableIngredientTypeData
   ): Promise<string> {
     const id = this._dataService.createId();
+    const batch = this._batchService.createBatch();
 
-    await this._dataService.create<IngredientTypeDto>(
-      this._endpoint,
-      id,
-      createIngredientTypeDto({ id, uid, ...ingredientType })
-    );
+    batch
+      .set({
+        endpoint: Endpoint.ingredientTypes,
+        id,
+        data: createIngredientTypeDto({ id, uid, ...ingredientType }),
+      })
+      .update(
+        this._batchService.getUserUpdate({
+          uid,
+          ingredientIdToAdd: id,
+        })
+      );
 
+    await batch.commit();
     return id;
   }
 

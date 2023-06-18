@@ -1,12 +1,14 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { combineLatest, map } from 'rxjs';
+import { BehaviorSubject, combineLatest, map } from 'rxjs';
 
+import { ButtonComponent } from '@atocha/core/ui';
 import {
   IngredientService,
   IngredientTypeService,
   UserService,
 } from '@atocha/menu-matriarch/data-access';
+import { InlineNameEditComponent } from '@atocha/menu-matriarch/ui-domain';
 import { SectionComponent } from '@atocha/menu-matriarch/ui-generic';
 import { Ingredient, IngredientType } from '@atocha/menu-matriarch/util';
 import {
@@ -21,18 +23,32 @@ import {
 
 @Component({
   standalone: true,
-  imports: [CommonModule, IngredientsBoardComponent, SectionComponent],
+  imports: [
+    ButtonComponent,
+    CommonModule,
+    IngredientsBoardComponent,
+    InlineNameEditComponent,
+    SectionComponent,
+  ],
   selector: 'app-ingredients',
   templateUrl: './ingredients.component.html',
   styleUrls: ['./ingredients.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class IngredientsComponent {
+  addingSubject = new BehaviorSubject<boolean>(false);
+
   vm$ = combineLatest([
     this._userService.getPreferences(),
     this._ingredientTypeService.getIngredientTypes(),
+    this.addingSubject.asObservable(),
   ]).pipe(
-    map(([preferences, ingredientTypes]) => {
+    map(([preferences, ingredientTypes, adding]) => {
+      // Bail out if user's columnIds and ingredientTypes aren't in sync
+      if (preferences?.ingredientTypeOrder.length !== ingredientTypes.length) {
+        return;
+      }
+
       const columnIds = preferences?.ingredientTypeOrder ?? [];
       const ingredientTypesKeyedById = ingredientTypes.reduce<
         Record<string, IngredientType>
@@ -47,6 +63,7 @@ export class IngredientsComponent {
           0
         ),
         columns: columnIds.map((id) => ingredientTypesKeyedById[id]),
+        adding,
       };
     })
   );
@@ -57,13 +74,17 @@ export class IngredientsComponent {
     private _userService: UserService
   ) {}
 
+  onColumnAdd(name: string): void {
+    this._ingredientTypeService.createIngredientType({ name }).subscribe();
+  }
+
   onColumnMove(columns: string[]): void {
     this._userService
       .updatePreferences({ ingredientTypeOrder: columns })
       .subscribe();
   }
 
-  onColumnRename({ column, name }: ColumnRename) {
+  async onColumnRename({ column, name }: ColumnRename) {
     this._ingredientTypeService.updateIngredientType(column, {
       name,
     });
