@@ -356,7 +356,7 @@ export class SeedDataService {
           id: refrigeratedIngredientTypeId,
           uid,
           name: 'Refrigerated',
-          ingredientIds: [eggsIngredientId],
+          ingredientIds: [eggsIngredientId, oliveOilIngredientId],
         }),
       })
       .set({
