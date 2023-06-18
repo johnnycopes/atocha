@@ -21,9 +21,8 @@ import {
   OptionsMenuItemComponent,
   OptionsMenuTriggerDirective,
 } from '@atocha/menu-matriarch/ui-generic';
-import { InlineTypeSelectComponent } from './inline-type-select/inline-type-select.component';
 
-type State = 'default' | 'renaming' | 'changingType';
+type State = 'default' | 'renaming';
 
 @Component({
   standalone: true,
@@ -36,7 +35,6 @@ type State = 'default' | 'renaming' | 'changingType';
     CountComponent,
     FontAwesomeModule,
     InlineNameEditComponent,
-    InlineTypeSelectComponent,
     OptionsMenuComponent,
     OptionsMenuItemComponent,
     OptionsMenuTriggerDirective,
@@ -50,7 +48,6 @@ export class IngredientCardComponent {
   @Input() type = 'misc';
   @Input() dishIds: string[] = [];
   @Output() rename = new EventEmitter<string>();
-  @Output() typeChange = new EventEmitter<string>();
   @Output() delete = new EventEmitter<void>();
 
   private _stateSubject = new BehaviorSubject<State>('default');
@@ -65,17 +62,6 @@ export class IngredientCardComponent {
   onRenameSave(name: string): void {
     if (name !== this.name) {
       this.rename.emit(name);
-    }
-    this._stateSubject.next('default');
-  }
-
-  onMove(): void {
-    this._stateSubject.next('changingType');
-  }
-
-  onChangeTypeSave(type: string): void {
-    if (type !== this.type) {
-      this.typeChange.emit(type);
     }
     this._stateSubject.next('default');
   }
