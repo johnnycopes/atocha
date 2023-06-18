@@ -1,13 +1,13 @@
 @import 'main';
 
-.columns {
+.types {
   display: flex;
   align-items: flex-start;
   height: 100%;
   overflow: auto;
 }
 
-.column {
+.type {
   flex: 1 0 spacing(256);
   height: 100%;
 

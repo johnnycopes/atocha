@@ -49,8 +49,8 @@ export class IngredientsComponent {
         return;
       }
 
-      const columnIds = preferences?.ingredientTypeOrder ?? [];
-      const ingredientTypesKeyedById = ingredientTypes.reduce<
+      const orderedTypeIds = preferences?.ingredientTypeOrder ?? [];
+      const typesKeyedById = ingredientTypes.reduce<
         Record<string, IngredientType>
       >((record, type) => {
         record[type.id] = type;
@@ -58,11 +58,11 @@ export class IngredientsComponent {
       }, {});
 
       return {
-        total: ingredientTypes.reduce(
+        totalIngredients: ingredientTypes.reduce(
           (total, { ingredients }) => total + ingredients.length,
           0
         ),
-        columns: columnIds.map((id) => ingredientTypesKeyedById[id]),
+        types: orderedTypeIds.map((id) => typesKeyedById[id]),
         adding,
       };
     })
@@ -74,23 +74,23 @@ export class IngredientsComponent {
     private _userService: UserService
   ) {}
 
-  onColumnAdd(name: string): void {
+  onTypeAdd(name: string): void {
     this._ingredientTypeService.createIngredientType({ name }).subscribe();
   }
 
-  onColumnMove(columns: string[]): void {
+  onTypeMove(columns: string[]): void {
     this._userService
       .updatePreferences({ ingredientTypeOrder: columns })
       .subscribe();
   }
 
-  async onColumnRename({ column, name }: ColumnRename) {
+  async onTypeRename({ column, name }: ColumnRename) {
     this._ingredientTypeService.updateIngredientType(column, {
       name,
     });
   }
 
-  async onColumnDelete(column: IngredientType): Promise<void> {
+  async onTypeDelete(column: IngredientType): Promise<void> {
     this._ingredientTypeService.deleteIngredientType(column);
   }
 

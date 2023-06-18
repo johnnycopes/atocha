@@ -35,10 +35,10 @@ export interface ColumnRename {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class IngredientsBoardComponent {
-  @Input() columns: IngredientType[] = [];
-  @Output() columnMove = new EventEmitter<string[]>();
-  @Output() columnRename = new EventEmitter<ColumnRename>();
-  @Output() columnDelete = new EventEmitter<IngredientType>();
+  @Input() types: IngredientType[] = [];
+  @Output() typeMove = new EventEmitter<string[]>();
+  @Output() typeRename = new EventEmitter<ColumnRename>();
+  @Output() typeDelete = new EventEmitter<IngredientType>();
   @Output() ingredientAdd = new EventEmitter<IngredientAdd>();
   @Output() ingredientMove = new EventEmitter<IngredientMove>();
   @Output() ingredientRename = new EventEmitter<IngredientRename>();
@@ -46,7 +46,7 @@ export class IngredientsBoardComponent {
   readonly trackByFn = ingredientTypeTrackByFn;
 
   async onDrop({ previousIndex, currentIndex }: CdkDragDrop<string[]>) {
-    moveItemInArray(this.columns, previousIndex, currentIndex);
-    this.columnMove.emit(this.columns.map(({ id }) => id));
+    moveItemInArray(this.types, previousIndex, currentIndex);
+    this.typeMove.emit(this.types.map(({ id }) => id));
   }
 }

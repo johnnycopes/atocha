@@ -71,8 +71,8 @@ export class IngredientsBoardColumnComponent {
   @Input() id = '';
   @Input() name = '';
   @Input() ingredients: Ingredient[] = [];
-  @Output() columnRename = new EventEmitter<string>();
-  @Output() columnDelete = new EventEmitter<void>();
+  @Output() rename = new EventEmitter<string>();
+  @Output() delete = new EventEmitter<void>();
   @Output() ingredientAdd = new EventEmitter<IngredientAdd>();
   @Output() ingredientMove = new EventEmitter<IngredientMove>();
   @Output() ingredientRename = new EventEmitter<IngredientRename>();
@@ -110,17 +110,13 @@ export class IngredientsBoardColumnComponent {
     this._stateSubject.next('default');
   }
 
-  onRenameColumn(): void {
+  onRename(): void {
     this._stateSubject.next('renaming');
   }
 
-  onRenameColumnSave(name: string): void {
-    this.columnRename.emit(name);
+  onRenameSave(name: string): void {
+    this.rename.emit(name);
     this._stateSubject.next('default');
-  }
-
-  onDeleteColumn(): void {
-    this.columnDelete.emit();
   }
 
   onAddNewIngredient(): void {
