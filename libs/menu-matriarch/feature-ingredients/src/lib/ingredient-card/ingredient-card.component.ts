@@ -45,7 +45,6 @@ type State = 'default' | 'renaming';
 })
 export class IngredientCardComponent {
   @Input() name = '';
-  @Input() type = 'misc';
   @Input() dishIds: string[] = [];
   @Output() rename = new EventEmitter<string>();
   @Output() delete = new EventEmitter<void>();
