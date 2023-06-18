@@ -51,8 +51,10 @@
     >
       <div [innerHTML]="dish.notes | coreSafe : 'html'"></div>
     </div>
-    <div class="details">
-      <ul *ngIf="dish.ingredients.length">
+    <div class="details"
+      *ngIf="dish.ingredients.length"
+    >
+      <ul>
         <li *ngFor="let ingredient of dish.ingredients; trackBy: ingredientTrackByFn">
           {{ ingredient.name }}
         </li>
