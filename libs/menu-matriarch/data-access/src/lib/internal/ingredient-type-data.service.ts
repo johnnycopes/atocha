@@ -59,7 +59,7 @@ export class IngredientTypeDataService {
       .update(
         this._batchService.getUserUpdate({
           uid,
-          ingredientIdToAdd: id,
+          ingredientTypeIdToAdd: id,
         })
       );
 
@@ -90,7 +90,7 @@ export class IngredientTypeDataService {
       .update(
         this._batchService.getUserUpdate({
           uid: ingredientType.uid,
-          ingredientIdToDelete: ingredientType.id,
+          ingredientTypeIdToDelete: ingredientType.id,
         })
       )
       .delete(Endpoint.ingredientTypes, ingredientType.id);
