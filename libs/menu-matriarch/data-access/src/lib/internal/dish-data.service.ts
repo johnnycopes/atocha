@@ -50,6 +50,11 @@ export class DishDataService {
       id,
       data: createDishDto({ id, uid, ...dish }),
     });
+
+    if (dish.ingredientIds) {
+      // TODO: write batch logic
+    }
+
     if (dish.tagIds) {
       batch.updateMultiple(
         this._batchService.getTagUpdates({
@@ -73,6 +78,17 @@ export class DishDataService {
       id: dish.id,
       data,
     });
+
+    if (data.ingredientIds) {
+      batch.updateMultiple(
+        this._batchService.getIngredientUpdates({
+          initialIngredientIds: dish.ingredients.map(({ id }) => id),
+          finalIngredientIds: data.ingredientIds,
+          entityId: dish.id,
+        })
+      );
+    }
+
     if (data.tagIds) {
       batch.updateMultiple(
         this._batchService.getTagUpdates({
