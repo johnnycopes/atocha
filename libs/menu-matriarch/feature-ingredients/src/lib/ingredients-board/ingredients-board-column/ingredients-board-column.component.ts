@@ -9,7 +9,6 @@ import {
 import {
   CdkDragDrop,
   DragDropModule,
-  moveItemInArray,
   transferArrayItem,
 } from '@angular/cdk/drag-drop';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -93,7 +92,7 @@ export class IngredientsBoardColumnComponent {
     container,
   }: CdkDragDrop<Ingredient[]>): void {
     if (previousContainer.id === container.id) {
-      return; // do nothing if dragged into starting container
+      return;
     }
     transferArrayItem(
       previousContainer.data,

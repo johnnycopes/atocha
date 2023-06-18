@@ -53,13 +53,9 @@ export class IngredientsBoardComponent implements OnChanges {
     }
   }
 
-  onDrop({
-    previousIndex,
-    currentIndex,
-    container,
-  }: CdkDragDrop<string[]>): void {
-    moveItemInArray(container.data, previousIndex, currentIndex);
-    this.columnMove.emit(container.data);
+  async onDrop({ previousIndex, currentIndex }: CdkDragDrop<string[]>) {
+    moveItemInArray(this.columns, previousIndex, currentIndex);
+    this.columnMove.emit(this._getColumnIds(this.columns));
   }
 
   private _getColumnIds(columns: IngredientType[]): string[] {
