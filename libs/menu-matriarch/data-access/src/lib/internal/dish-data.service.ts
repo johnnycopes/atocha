@@ -52,7 +52,13 @@ export class DishDataService {
     });
 
     if (dish.ingredientIds) {
-      // TODO: write batch logic
+      batch.updateMultiple(
+        this._batchService.getIngredientUpdates({
+          initialIngredientIds: [],
+          finalIngredientIds: dish.ingredientIds,
+          entityId: id,
+        })
+      );
     }
 
     if (dish.tagIds) {
