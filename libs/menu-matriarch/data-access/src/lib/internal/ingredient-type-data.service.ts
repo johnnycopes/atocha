@@ -81,14 +81,12 @@ export class IngredientTypeDataService {
   async deleteIngredientType(ingredientType: IngredientType): Promise<void> {
     const batch = this._batchService.createBatch();
 
-    batch
-      .update(
-        this._batchService.getUserUpdate({
-          uid: ingredientType.uid,
-          ingredientTypeIdToDelete: ingredientType.id,
-        })
-      )
-      .delete(this._endpoint, ingredientType.id);
+    batch.delete(this._endpoint, ingredientType.id).update(
+      this._batchService.getUserUpdate({
+        uid: ingredientType.uid,
+        ingredientTypeIdToDelete: ingredientType.id,
+      })
+    );
 
     await batch.commit();
   }
