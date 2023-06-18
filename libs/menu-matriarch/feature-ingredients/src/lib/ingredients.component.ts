@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { combineLatest, map } from 'rxjs';
+import { map, withLatestFrom } from 'rxjs';
 
 import {
   IngredientService,
@@ -28,13 +28,10 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class IngredientsComponent {
-  vm$ = combineLatest([
-    this._ingredientTypeService.getIngredientTypes(),
-    this._userService
-      .getPreferences()
-      .pipe(map((preferences) => preferences?.ingredientTypeOrder ?? [])),
-  ]).pipe(
-    map(([ingredientTypes, columnIds]) => {
+  vm$ = this._userService.getPreferences().pipe(
+    withLatestFrom(this._ingredientTypeService.getIngredientTypes()),
+    map(([preferences, ingredientTypes]) => {
+      const columnIds = preferences?.ingredientTypeOrder ?? [];
       const ingredientTypesKeyedById = ingredientTypes.reduce<
         Record<string, IngredientType>
       >((record, type) => {

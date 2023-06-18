@@ -75,18 +75,17 @@ export class IngredientTypeDataService {
   }
 
   async deleteIngredientType(ingredientType: IngredientType): Promise<void> {
-    const userBatch = this._batchService.createBatch();
-    const ingredientTypeBatch = this._batchService.createBatch();
+    const batch = this._batchService.createBatch();
 
-    userBatch.update(
-      this._batchService.getUserUpdate({
-        uid: ingredientType.uid,
-        ingredientIdToDelete: ingredientType.id,
-      })
-    );
-    ingredientTypeBatch.delete(Endpoint.ingredientTypes, ingredientType.id);
+    batch
+      .update(
+        this._batchService.getUserUpdate({
+          uid: ingredientType.uid,
+          ingredientIdToDelete: ingredientType.id,
+        })
+      )
+      .delete(Endpoint.ingredientTypes, ingredientType.id);
 
-    await userBatch.commit();
-    await ingredientTypeBatch.commit();
+    await batch.commit();
   }
 }
