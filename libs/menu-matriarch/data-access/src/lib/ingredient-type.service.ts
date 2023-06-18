@@ -78,7 +78,7 @@ export class IngredientTypeService {
     );
   }
 
-  updateIngredientType(
+  async updateIngredientType(
     ingredientType: IngredientType,
     updates: EditableIngredientTypeData
   ): Promise<void> {
@@ -88,7 +88,7 @@ export class IngredientTypeService {
     );
   }
 
-  deleteIngredientType(ingredientType: IngredientType): Promise<void> {
+  async deleteIngredientType(ingredientType: IngredientType): Promise<void> {
     return this._ingredientTypeDataService.deleteIngredientType(ingredientType);
   }
 }
