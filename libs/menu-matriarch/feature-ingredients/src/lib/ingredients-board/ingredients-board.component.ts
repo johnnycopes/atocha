@@ -21,8 +21,8 @@ import {
   IngredientsBoardColumnComponent,
 } from './ingredients-board-column/ingredients-board-column.component';
 
-export interface ColumnRename {
-  column: IngredientType;
+export interface TypeRename {
+  type: IngredientType;
   name: string;
 }
 
@@ -37,7 +37,7 @@ export interface ColumnRename {
 export class IngredientsBoardComponent {
   @Input() types: IngredientType[] = [];
   @Output() typeMove = new EventEmitter<string[]>();
-  @Output() typeRename = new EventEmitter<ColumnRename>();
+  @Output() typeRename = new EventEmitter<TypeRename>();
   @Output() typeDelete = new EventEmitter<IngredientType>();
   @Output() ingredientAdd = new EventEmitter<IngredientAdd>();
   @Output() ingredientMove = new EventEmitter<IngredientMove>();

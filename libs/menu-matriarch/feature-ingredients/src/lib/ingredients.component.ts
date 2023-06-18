@@ -12,7 +12,7 @@ import { InlineNameEditComponent } from '@atocha/menu-matriarch/ui-domain';
 import { SectionComponent } from '@atocha/menu-matriarch/ui-generic';
 import { Ingredient, IngredientType } from '@atocha/menu-matriarch/util';
 import {
-  ColumnRename,
+  TypeRename,
   IngredientsBoardComponent,
 } from './ingredients-board/ingredients-board.component';
 import {
@@ -78,27 +78,27 @@ export class IngredientsComponent {
     this._ingredientTypeService.createIngredientType({ name }).subscribe();
   }
 
-  onTypeMove(columns: string[]): void {
+  onTypeMove(typeIds: string[]): void {
     this._userService
-      .updatePreferences({ ingredientTypeOrder: columns })
+      .updatePreferences({ ingredientTypeOrder: typeIds })
       .subscribe();
   }
 
-  async onTypeRename({ column, name }: ColumnRename) {
-    this._ingredientTypeService.updateIngredientType(column, {
+  async onTypeRename({ type, name }: TypeRename) {
+    this._ingredientTypeService.updateIngredientType(type, {
       name,
     });
   }
 
-  async onTypeDelete(column: IngredientType): Promise<void> {
-    this._ingredientTypeService.deleteIngredientType(column);
+  async onTypeDelete(type: IngredientType): Promise<void> {
+    this._ingredientTypeService.deleteIngredientType(type);
   }
 
-  onIngredientAdd({ ingredientName, columnId }: IngredientAdd) {
+  onIngredientAdd({ name, typeId }: IngredientAdd) {
     this._ingredientService
       .createIngredient({
-        name: ingredientName,
-        typeId: columnId,
+        name,
+        typeId,
         dishIds: [],
       })
       .subscribe();
@@ -106,11 +106,11 @@ export class IngredientsComponent {
 
   async onIngredientMove({
     ingredient,
-    columnId,
+    typeId,
   }: IngredientMove): Promise<void> {
     this._ingredientService.updateIngredient(ingredient, {
       ...ingredient,
-      typeId: columnId,
+      typeId,
     });
   }
 

@@ -11,7 +11,7 @@
     [id]="type.id"
     [name]="type.name"
     [ingredients]="type.ingredients"
-    (rename)="typeRename.emit({ column: type, name: $event })"
+    (rename)="typeRename.emit({ type: type, name: $event })"
     (delete)="typeDelete.emit(type)"
     (ingredientAdd)="ingredientAdd.emit($event)"
     (ingredientMove)="ingredientMove.emit($event)"

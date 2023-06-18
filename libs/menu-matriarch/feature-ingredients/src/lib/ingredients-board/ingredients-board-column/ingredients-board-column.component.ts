@@ -29,13 +29,13 @@ import {
 import { IngredientCardComponent } from '../../ingredient-card/ingredient-card.component';
 
 export interface IngredientAdd {
-  ingredientName: string;
-  columnId: string;
+  name: string;
+  typeId: string;
 }
 
 export interface IngredientMove {
   ingredient: Ingredient;
-  columnId: string;
+  typeId: string;
 }
 
 export interface IngredientRename {
@@ -102,7 +102,7 @@ export class IngredientsBoardColumnComponent {
     );
     this.ingredientMove.emit({
       ingredient: item.data,
-      columnId: this.id,
+      typeId: this.id,
     });
   }
 
@@ -124,7 +124,7 @@ export class IngredientsBoardColumnComponent {
   }
 
   onAddIngredientSave(name: string): void {
-    this.ingredientAdd.emit({ ingredientName: name, columnId: this.id });
+    this.ingredientAdd.emit({ name: name, typeId: this.id });
     this._stateSubject.next('default');
   }
 }
