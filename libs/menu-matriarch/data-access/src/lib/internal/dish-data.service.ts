@@ -11,7 +11,13 @@ import { Endpoint } from './endpoint.enum';
 
 export type EditableDishData = Pick<
   DishDto,
-  'name' | 'description' | 'link' | 'type' | 'tagIds' | 'notes'
+  | 'name'
+  | 'description'
+  | 'link'
+  | 'type'
+  | 'ingredientIds'
+  | 'tagIds'
+  | 'notes'
 >;
 
 @Injectable({
@@ -44,6 +50,17 @@ export class DishDataService {
       id,
       data: createDishDto({ id, uid, ...dish }),
     });
+
+    if (dish.ingredientIds) {
+      batch.updateMultiple(
+        this._batchService.getIngredientUpdates({
+          initialIngredientIds: [],
+          finalIngredientIds: dish.ingredientIds,
+          entityId: id,
+        })
+      );
+    }
+
     if (dish.tagIds) {
       batch.updateMultiple(
         this._batchService.getTagUpdates({
@@ -67,6 +84,17 @@ export class DishDataService {
       id: dish.id,
       data,
     });
+
+    if (data.ingredientIds) {
+      batch.updateMultiple(
+        this._batchService.getIngredientUpdates({
+          initialIngredientIds: dish.ingredients.map(({ id }) => id),
+          finalIngredientIds: data.ingredientIds,
+          entityId: dish.id,
+        })
+      );
+    }
+
     if (data.tagIds) {
       batch.updateMultiple(
         this._batchService.getTagUpdates({

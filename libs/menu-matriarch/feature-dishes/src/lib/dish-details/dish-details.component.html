@@ -35,28 +35,29 @@
         Included in {{ dish.mealIds.length }} {{ dish.mealIds.length | corePlural : 'meal' }}.
       </p>
     </div>
-    <div class="details">
-      <ui-tags-list
-        *ngIf="dish.tags.length"
-        [tags]="dish.tags"
-      >
-        <ui-tag *uiTagDef="let tag"
-          [id]="tag.id"
-          [name]="tag.name"
-        ></ui-tag>
-      </ui-tags-list>
-    </div>
     <div *ngIf="dish?.notes"
       class="details notes"
     >
       <div [innerHTML]="dish.notes | coreSafe : 'html'"></div>
     </div>
-    <div class="details">
-      <ul *ngIf="dish.ingredients.length">
+    <div *ngIf="dish.ingredients.length"
+      class="details"
+    >
+      <ul>
         <li *ngFor="let ingredient of dish.ingredients; trackBy: ingredientTrackByFn">
           {{ ingredient.name }}
         </li>
       </ul>
+    </div>
+    <div *ngIf="dish.tags.length"
+      class="details"
+    >
+      <ui-tags-list [tags]="dish.tags">
+        <ui-tag *uiTagDef="let tag"
+          [id]="tag.id"
+          [name]="tag.name"
+        ></ui-tag>
+      </ui-tags-list>
     </div>
   </div>
 </ui-section>
