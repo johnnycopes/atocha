@@ -67,7 +67,8 @@
   <ui-input class="input"
     label="ingredients"
   >
-    <ul *ngIf="dish.ingredientModels.length; else noIngredientsPlaceholder"
+    <ul class="ingredients"
+      *ngIf="dish.ingredientModels.length; else noIngredientsPlaceholder"
       formGroupName="ingredientIds"
     >
       <li *ngFor="let ingredient of dish.ingredientModels; trackBy: ingredientTrackByFn">
