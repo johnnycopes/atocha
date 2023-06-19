@@ -24,6 +24,8 @@ export interface UserPreferences {
   emptyMealText: string;
   /** Which direction to display the dishes belonging to a meal  */
   mealOrientation: Orientation;
+  /** Tracks the desired display order of the ingredient type IDs */
+  ingredientTypeOrder: string[];
 }
 
 export type DayNameDisplay = 'full';

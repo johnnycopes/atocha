@@ -18,6 +18,7 @@ export function createUserDto({
       defaultMenuStartDay: preferences?.defaultMenuStartDay ?? 'Monday',
       emptyMealText: preferences?.emptyMealText ?? 'undecided',
       mealOrientation: preferences?.mealOrientation ?? 'horizontal',
+      ingredientTypeOrder: preferences?.ingredientTypeOrder ?? [],
     },
   };
 }

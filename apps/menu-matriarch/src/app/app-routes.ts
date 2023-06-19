@@ -72,6 +72,15 @@ export const APP_ROUTES: Routes = [
           ),
       },
       {
+        path: Route.ingredients,
+        title: 'Menu Matriarch | Ingredients',
+        data: { state: Route.ingredients },
+        loadComponent: () =>
+          import('@atocha/menu-matriarch/feature-ingredients').then(
+            (m) => m.IngredientsComponent
+          ),
+      },
+      {
         path: Route.tags,
         title: 'Menu Matriarch | Tags',
         data: { state: Route.tags },

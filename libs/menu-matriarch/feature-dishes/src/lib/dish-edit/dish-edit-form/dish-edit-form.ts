@@ -13,6 +13,7 @@ export class DishEditForm extends FormGroup<{
   description: FormControl<string>;
   link: FormControl<string>;
   type: FormControl<DishType>;
+  ingredientIds: FormGroup<Record<string, FormControl<boolean>>>;
   tagIds: FormGroup<Record<string, FormControl<boolean>>>;
   notes: FormControl<string>;
 }> {
@@ -26,6 +27,15 @@ export class DishEditForm extends FormGroup<{
         description: fb.nonNullable.control(dish.description),
         link: fb.nonNullable.control(dish.link),
         type: fb.nonNullable.control(dish.type),
+        ingredientIds: fb.nonNullable.group(
+          dish.ingredientModels.reduce<Record<string, FormControl<boolean>>>(
+            (group, ingredient) => {
+              group[ingredient.id] = fb.nonNullable.control(ingredient.checked);
+              return group;
+            },
+            {}
+          )
+        ),
         tagIds: fb.nonNullable.group(
           dish.tagModels.reduce<Record<string, FormControl<boolean>>>(
             (group, tag) => {

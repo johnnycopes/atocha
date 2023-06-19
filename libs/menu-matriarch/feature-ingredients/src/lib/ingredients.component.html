@@ -1,0 +1,28 @@
+<ui-section *ngIf="vm$ | async as vm">
+  <div class="ui-section__toolbar">
+    <h2 class="title">
+      Ingredients ({{ vm.totalIngredients }})
+    </h2>
+    <button core-button
+      [disabled]="vm.adding"
+      (click)="addingSubject.next(true)"
+    >
+      New Ingredient Type
+    </button>
+    <ui-inline-name-edit class="form"
+      *ngIf="vm.adding"
+      (cancel)="addingSubject.next(false)"
+      (save)="onTypeAdd($event)"
+    ></ui-inline-name-edit>
+  </div>
+  <app-ingredients-board class="ui-section__content ingredients"
+    [types]="vm.types"
+    (typeMove)="onTypeMove($event)"
+    (typeRename)="onTypeRename($event)"
+    (typeDelete)="onTypeDelete($event)"
+    (ingredientAdd)="onIngredientAdd($event)"
+    (ingredientMove)="onIngredientMove($event)"
+    (ingredientRename)="onIngredientRename($event)"
+    (ingredientDelete)="onIngredientDelete($event)"
+  ></app-ingredients-board>
+</ui-section>

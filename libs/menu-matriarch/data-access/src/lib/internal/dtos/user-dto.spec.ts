@@ -13,6 +13,7 @@ describe('createUserDto', () => {
         defaultMenuStartDay: 'Monday',
         emptyMealText: 'undecided',
         mealOrientation: 'horizontal',
+        ingredientTypeOrder: [],
       },
     });
   });
@@ -28,6 +29,7 @@ describe('createUserDto', () => {
         defaultMenuStartDay: 'Wednesday',
         emptyMealText: 'nothing',
         mealOrientation: 'vertical',
+        ingredientTypeOrder: ['2', '1', '3'],
       },
     });
     expect(user).toEqual({
@@ -40,6 +42,7 @@ describe('createUserDto', () => {
         defaultMenuStartDay: 'Wednesday',
         emptyMealText: 'nothing',
         mealOrientation: 'vertical',
+        ingredientTypeOrder: ['2', '1', '3'],
       },
     });
   });

@@ -197,7 +197,7 @@ strong {
 
 // Component styling overrides
 
-app-root {
+body {
   .core-button {
     @mixin box-shadow($color) {
       box-shadow: 0 2px 0 #{$color};

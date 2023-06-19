@@ -4,6 +4,8 @@ import { DataService } from '@atocha/core/data-access';
 import { BatchService } from './internal/batch.service';
 import { Endpoint } from './internal/endpoint.enum';
 import { createDishDto } from './internal/dtos/dish-dto';
+import { createIngredientDto } from './internal/dtos/ingredient-dto';
+import { createIngredientTypeDto } from './internal/dtos/ingredient-type-dto';
 import { createMealDto } from './internal/dtos/meal-dto';
 import { createMenuDto } from './internal/dtos/menu-dto';
 import { createTagDto } from './internal/dtos/tag-dto';
@@ -34,6 +36,7 @@ export class SeedDataService {
     const enchiladasDishId = this._dataService.createId();
     const friedChickenDishId = this._dataService.createId();
     const greekSaladDishId = this._dataService.createId();
+    const huevosRotosDishId = this._dataService.createId();
     const macAndCheeseDishId = this._dataService.createId();
     const misoSoupDishId = this._dataService.createId();
     const pizzaDishId = this._dataService.createId();
@@ -46,6 +49,17 @@ export class SeedDataService {
     const thaiCurryDishId = this._dataService.createId();
     const easyTagId = this._dataService.createId();
     const pescatarianTagId = this._dataService.createId();
+    const produceIngredientTypeId = this._dataService.createId();
+    const refrigeratedIngredientTypeId = this._dataService.createId();
+    const spiceIngredientTypeId = this._dataService.createId();
+    const eggsIngredientId = this._dataService.createId();
+    const garlicIngredientId = this._dataService.createId();
+    const oliveOilIngredientId = this._dataService.createId();
+    const onionIngredientId = this._dataService.createId();
+    const paprikaIngredientId = this._dataService.createId();
+    const pepperIngredientId = this._dataService.createId();
+    const potatoIngredientId = this._dataService.createId();
+    const saltIngredientId = this._dataService.createId();
     const veganTagId = this._dataService.createId();
     const vegetarianTagId = this._dataService.createId();
     const batch = this._batchService.createBatch();
@@ -54,7 +68,23 @@ export class SeedDataService {
       .set({
         endpoint: Endpoint.users,
         id: uid,
-        data: createUserDto({ uid, name, email }),
+        data: createUserDto({
+          uid,
+          name,
+          email,
+          preferences: {
+            darkMode: false,
+            dayNameDisplay: 'full',
+            defaultMenuStartDay: 'Monday',
+            emptyMealText: 'undecided',
+            mealOrientation: 'vertical',
+            ingredientTypeOrder: [
+              produceIngredientTypeId,
+              refrigeratedIngredientTypeId,
+              spiceIngredientTypeId,
+            ],
+          },
+        }),
       })
       .set({
         endpoint: Endpoint.menus,
@@ -143,6 +173,27 @@ export class SeedDataService {
           id: greekSaladDishId,
           uid,
           name: 'Greek Salad',
+          tagIds: [vegetarianTagId],
+        }),
+      })
+      .set({
+        endpoint: Endpoint.dishes,
+        id: huevosRotosDishId,
+        data: createDishDto({
+          id: huevosRotosDishId,
+          uid,
+          name: 'Huevos Rotos',
+          link: 'https://cooking.nytimes.com/recipes/1020055-huevos-rotos-broken-eggs',
+          ingredientIds: [
+            eggsIngredientId,
+            garlicIngredientId,
+            oliveOilIngredientId,
+            onionIngredientId,
+            paprikaIngredientId,
+            pepperIngredientId,
+            potatoIngredientId,
+            saltIngredientId,
+          ],
           tagIds: [vegetarianTagId],
         }),
       })
@@ -285,6 +336,132 @@ export class SeedDataService {
         }),
       })
       .set({
+        endpoint: Endpoint.ingredientTypes,
+        id: produceIngredientTypeId,
+        data: createIngredientTypeDto({
+          id: produceIngredientTypeId,
+          uid,
+          name: 'Produce',
+          ingredientIds: [
+            garlicIngredientId,
+            onionIngredientId,
+            potatoIngredientId,
+          ],
+        }),
+      })
+      .set({
+        endpoint: Endpoint.ingredientTypes,
+        id: refrigeratedIngredientTypeId,
+        data: createIngredientTypeDto({
+          id: refrigeratedIngredientTypeId,
+          uid,
+          name: 'Refrigerated',
+          ingredientIds: [eggsIngredientId, oliveOilIngredientId],
+        }),
+      })
+      .set({
+        endpoint: Endpoint.ingredientTypes,
+        id: spiceIngredientTypeId,
+        data: createIngredientTypeDto({
+          id: spiceIngredientTypeId,
+          uid,
+          name: 'Spice',
+          ingredientIds: [
+            paprikaIngredientId,
+            pepperIngredientId,
+            saltIngredientId,
+          ],
+        }),
+      })
+      .set({
+        endpoint: Endpoint.ingredients,
+        id: eggsIngredientId,
+        data: createIngredientDto({
+          id: eggsIngredientId,
+          uid,
+          name: 'Eggs',
+          typeId: refrigeratedIngredientTypeId,
+          dishIds: [huevosRotosDishId],
+        }),
+      })
+      .set({
+        endpoint: Endpoint.ingredients,
+        id: garlicIngredientId,
+        data: createIngredientDto({
+          id: garlicIngredientId,
+          uid,
+          name: 'Garlic',
+          typeId: produceIngredientTypeId,
+          dishIds: [huevosRotosDishId],
+        }),
+      })
+      .set({
+        endpoint: Endpoint.ingredients,
+        id: oliveOilIngredientId,
+        data: createIngredientDto({
+          id: oliveOilIngredientId,
+          uid,
+          name: 'Olive Oil',
+          typeId: refrigeratedIngredientTypeId,
+          dishIds: [huevosRotosDishId],
+        }),
+      })
+      .set({
+        endpoint: Endpoint.ingredients,
+        id: onionIngredientId,
+        data: createIngredientDto({
+          id: onionIngredientId,
+          uid,
+          name: 'Onion',
+          typeId: produceIngredientTypeId,
+          dishIds: [huevosRotosDishId],
+        }),
+      })
+      .set({
+        endpoint: Endpoint.ingredients,
+        id: paprikaIngredientId,
+        data: createIngredientDto({
+          id: paprikaIngredientId,
+          uid,
+          name: 'Paprika',
+          typeId: spiceIngredientTypeId,
+          dishIds: [huevosRotosDishId],
+        }),
+      })
+      .set({
+        endpoint: Endpoint.ingredients,
+        id: pepperIngredientId,
+        data: createIngredientDto({
+          id: pepperIngredientId,
+          uid,
+          name: 'Pepper',
+          typeId: spiceIngredientTypeId,
+          dishIds: [huevosRotosDishId],
+        }),
+      })
+      .set({
+        endpoint: Endpoint.ingredients,
+        id: potatoIngredientId,
+        data: createIngredientDto({
+          id: potatoIngredientId,
+          uid,
+          name: 'Potato',
+          typeId: produceIngredientTypeId,
+          dishIds: [huevosRotosDishId],
+        }),
+      })
+      .set({
+        endpoint: Endpoint.ingredients,
+        id: saltIngredientId,
+        data: createIngredientDto({
+          id: saltIngredientId,
+          uid,
+          name: 'Salt',
+          typeId: spiceIngredientTypeId,
+          dishIds: [huevosRotosDishId],
+        }),
+      })
+      .set({
         endpoint: Endpoint.tags,
         id: easyTagId,
         data: createTagDto({
@@ -331,6 +508,7 @@ export class SeedDataService {
           dishIds: [
             cornbreadDishId,
             greekSaladDishId,
+            huevosRotosDishId,
             macAndCheeseDishId,
             misoSoupDishId,
             pizzaDishId,
@@ -341,7 +519,6 @@ export class SeedDataService {
           ],
         }),
       });
-
     await batch.commit();
     return menuId;
   }
