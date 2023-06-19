@@ -7,6 +7,6 @@ export interface IngredientType {
   uid: string;
   /** Display name of the ingredient type */
   name: string;
-  /** The unique IDs of any ingredients classified as the ingredient type */
+  /** The ingredients classified as the ingredient type */
   ingredients: Ingredient[];
 }
