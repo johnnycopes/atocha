@@ -36,7 +36,7 @@ import { DishEditForm } from './dish-edit-form';
 export type DishConfig = Pick<
   Dish,
   'name' | 'description' | 'link' | 'type' | 'notes'
-> & { tagModels: TagModel[]; ingredientModels: IngredientModel[] };
+> & { ingredientModels: IngredientModel[]; tagModels: TagModel[] };
 
 @Component({
   standalone: true,
