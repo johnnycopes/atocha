@@ -39,7 +39,9 @@ export class FirestoreService {
 
   getMany<T>(endpoint: string, uid: string): Observable<T[]> {
     return this._firestore
-      .collection<T>(endpoint, (ref) => ref.where('uid', '==', uid))
+      .collection<T>(endpoint, (ref) =>
+        ref.where('uid', '==', uid).orderBy('name')
+      )
       .valueChanges()
       .pipe(
         catchError(() => of([])),
