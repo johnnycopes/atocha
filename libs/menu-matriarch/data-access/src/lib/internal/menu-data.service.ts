@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 
 import { DataService } from '@atocha/core/data-access';
-import { flattenValues, lower, sort } from '@atocha/core/util';
+import { flattenValues } from '@atocha/core/util';
 import { Day, Menu } from '@atocha/menu-matriarch/util';
 import { MenuDto, createMenuDto } from './dtos/menu-dto';
 import { BatchService } from './batch.service';
@@ -27,9 +26,7 @@ export class MenuDataService {
   }
 
   getMenus(uid: string): Observable<MenuDto[]> {
-    return this._dataService
-      .getMany<MenuDto>(this._endpoint, uid)
-      .pipe(map((menuDtos) => sort(menuDtos, ({ name }) => lower(name))));
+    return this._dataService.getMany<MenuDto>(this._endpoint, uid);
   }
 
   async createMenu(uid: string, menu: EditableMenuData): Promise<string> {

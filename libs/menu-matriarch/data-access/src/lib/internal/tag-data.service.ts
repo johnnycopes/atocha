@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 
 import { DataService } from '@atocha/core/data-access';
-import { lower, sort } from '@atocha/core/util';
 import { Tag } from '@atocha/menu-matriarch/util';
 import { TagDto, createTagDto } from './dtos/tag-dto';
 import { BatchService } from './batch.service';
@@ -27,9 +25,7 @@ export class TagDataService {
   }
 
   getTags(uid: string): Observable<Tag[]> {
-    return this._dataService
-      .getMany<TagDto>(this._endpoint, uid)
-      .pipe(map((tags) => sort(tags, ({ name }) => lower(name))));
+    return this._dataService.getMany<TagDto>(this._endpoint, uid);
   }
 
   async createTag(uid: string, tag: EditableTagData): Promise<string> {
