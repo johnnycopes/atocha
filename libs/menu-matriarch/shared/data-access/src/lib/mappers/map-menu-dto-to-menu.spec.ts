@@ -4,7 +4,7 @@ import {
   INGREDIENT_DTOS,
   TAG_DTOS,
   SALAD_DTO,
-} from '@atocha/menu-matriarch/shared/data-access';
+} from '../dtos/mock-data';
 import { mapDishDtoToDish } from './map-dish-dto-to-dish';
 import { mapMenuDtoToMenu } from './map-menu-dto-to-menu';
 

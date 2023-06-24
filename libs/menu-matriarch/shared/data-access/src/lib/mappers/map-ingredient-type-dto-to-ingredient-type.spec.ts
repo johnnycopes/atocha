@@ -1,7 +1,4 @@
-import {
-  INGREDIENT_TYPE_DTOS,
-  INGREDIENT_DTOS,
-} from '@atocha/menu-matriarch/shared/data-access';
+import { INGREDIENT_DTOS, INGREDIENT_TYPE_DTOS } from '../dtos/mock-data';
 import { mapIngredientTypeDtoToIngredientType } from './map-ingredient-type-dto-to-ingredient-type';
 
 describe('mapIngredientTypeDtoToIngredientType', () => {

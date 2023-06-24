@@ -1,8 +1,4 @@
-import {
-  INGREDIENT_DTOS,
-  PIZZA_DTO,
-  TAG_DTOS,
-} from '@atocha/menu-matriarch/shared/data-access';
+import { PIZZA_DTO, INGREDIENT_DTOS, TAG_DTOS } from '../dtos/mock-data';
 import { mapDishDtoToDish } from './map-dish-dto-to-dish';
 
 describe('mapDishDtoToDish', () => {
