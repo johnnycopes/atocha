@@ -85,7 +85,7 @@ export const APP_ROUTES: Routes = [
         title: 'Menu Matriarch | Tags',
         data: { state: Route.tags },
         loadComponent: () =>
-          import('@atocha/menu-matriarch/feature-tags').then(
+          import('@atocha/menu-matriarch/tags/feature').then(
             (m) => m.TagsComponent
           ),
       },

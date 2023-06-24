@@ -65,8 +65,8 @@
       "@atocha/menu-matriarch/feature-shell": [
         "libs/menu-matriarch/feature-shell/src/index.ts"
       ],
-      "@atocha/menu-matriarch/feature-tags": [
-        "libs/menu-matriarch/feature-tags/src/index.ts"
+      "@atocha/menu-matriarch/tags/feature": [
+        "libs/menu-matriarch/tags/feature/src/index.ts"
       ],
       "@atocha/menu-matriarch/ui-domain": [
         "libs/menu-matriarch/ui-domain/src/index.ts"
