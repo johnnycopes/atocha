@@ -49,7 +49,7 @@ export const APP_ROUTES: Routes = [
         title: 'Menu Matriarch | Menus',
         data: { state: Route.menus },
         loadComponent: () =>
-          import('@atocha/menu-matriarch/feature-menus').then(
+          import('@atocha/menu-matriarch/menus/feature').then(
             (m) => m.MenusComponent
           ),
       },

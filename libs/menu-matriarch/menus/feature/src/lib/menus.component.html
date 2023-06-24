@@ -1,22 +1,23 @@
 <ui-section *ngIf="vm$ | async as vm">
   <div class="ui-section__toolbar">
-    <h2 class="title">
-      Menus ({{ vm.menus.length }})
-    </h2>
-    <button core-button
+    <h2 class="title">Menus ({{ vm.menus.length }})</h2>
+    <button
+      core-button
       [disabled]="vm.adding"
       (click)="addingSubject.next(true)"
     >
       New Menu
     </button>
-    <ui-inline-name-edit class="form"
+    <ui-inline-name-edit
+      class="form"
       *ngIf="vm.adding"
       (cancel)="addingSubject.next(false)"
       (save)="onSave($event)"
     ></ui-inline-name-edit>
   </div>
   <ul class="ui-section__content menus">
-    <li app-menu-card
+    <li
+      app-menu-card
       *ngFor="let menu of vm.menus; trackBy: trackByFn"
       [id]="menu.id"
       [name]="menu.name"
