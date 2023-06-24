@@ -5,11 +5,9 @@ import { concatMap, first, map } from 'rxjs/operators';
 import { AuthService } from '@atocha/core/data-access';
 import { Meal } from '@atocha/menu-matriarch/shared/util';
 import { EditableMealData, MealDataService } from './meal-data.service';
-import {
-  RouterService,
-  mapMealDtoToMeal,
-} from '@atocha/menu-matriarch/data-access';
+import { mapMealDtoToMeal } from '@atocha/menu-matriarch/data-access';
 import { DishService } from '@atocha/menu-matriarch/dishes/data-access';
+import { RouterService } from '@atocha/menu-matriarch/shared/data-access';
 import { TagService } from '@atocha/menu-matriarch/tags/data-access';
 
 export type MealData = EditableMealData;
