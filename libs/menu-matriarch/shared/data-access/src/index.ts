@@ -8,5 +8,6 @@ export * from './lib/dtos/ingredient-dto';
 export * from './lib/dtos/ingredient-type-dto';
 export * from './lib/dtos/meal-dto';
 export * from './lib/dtos/menu-dto';
+export * from './lib/dtos/mock-data';
 export * from './lib/dtos/tag-dto';
 export * from './lib/dtos/user-dto';

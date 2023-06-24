@@ -1,12 +1,12 @@
-import { mapDishDtoToDish } from './map-dish-dto-to-dish';
-import { mapMenuDtoToMenu } from './map-menu-dto-to-menu';
 import {
-  INGREDIENT_DTOS,
   MENU_DTO,
   PIZZA_DTO,
+  INGREDIENT_DTOS,
   TAG_DTOS,
   SALAD_DTO,
-} from './mock-data';
+} from '@atocha/menu-matriarch/shared/data-access';
+import { mapDishDtoToDish } from './map-dish-dto-to-dish';
+import { mapMenuDtoToMenu } from './map-menu-dto-to-menu';
 
 describe('mapMenuDtoToMenu', () => {
   it('returns a menu when passed a menuDto, dishes, and userPreferences', () => {

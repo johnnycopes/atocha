@@ -1,5 +1,9 @@
+import {
+  INGREDIENT_DTOS,
+  PIZZA_DTO,
+  TAG_DTOS,
+} from '@atocha/menu-matriarch/shared/data-access';
 import { mapDishDtoToDish } from './map-dish-dto-to-dish';
-import { INGREDIENT_DTOS, PIZZA_DTO, TAG_DTOS } from './mock-data';
 
 describe('mapDishDtoToDish', () => {
   it('returns a dish when passed a dishDto and tags', () => {
