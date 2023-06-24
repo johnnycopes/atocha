@@ -77,6 +77,9 @@
       "@atocha/menu-matriarch/shell/feature": [
         "libs/menu-matriarch/shell/feature/src/index.ts"
       ],
+      "@atocha/menu-matriarch/tags/data-access": [
+        "libs/menu-matriarch/tags/data-access/src/index.ts"
+      ],
       "@atocha/menu-matriarch/tags/feature": [
         "libs/menu-matriarch/tags/feature/src/index.ts"
       ],
