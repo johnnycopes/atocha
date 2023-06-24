@@ -3,7 +3,7 @@
   "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/menu-matriarch/planner/data-access/src",
   "prefix": "atocha",
-  "tags": [],
+  "tags": ["scope:menu-matriarch", "type:data-access"],
   "projectType": "library",
   "targets": {
     "test": {
