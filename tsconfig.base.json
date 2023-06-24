@@ -44,9 +44,6 @@
       "@atocha/menu-matriarch/dishes/feature": [
         "libs/menu-matriarch/dishes/feature/src/index.ts"
       ],
-      "@atocha/menu-matriarch/feature-entities": [
-        "libs/menu-matriarch/feature-entities/src/index.ts"
-      ],
       "@atocha/menu-matriarch/ingredients/feature": [
         "libs/menu-matriarch/ingredients/feature/src/index.ts"
       ],
@@ -61,6 +58,9 @@
       ],
       "@atocha/menu-matriarch/settings/feature": [
         "libs/menu-matriarch/settings/feature/src/index.ts"
+      ],
+      "@atocha/menu-matriarch/shared/feature": [
+        "libs/menu-matriarch/shared/feature/src/index.ts"
       ],
       "@atocha/menu-matriarch/shared/util": [
         "libs/menu-matriarch/shared/util/src/index.ts"

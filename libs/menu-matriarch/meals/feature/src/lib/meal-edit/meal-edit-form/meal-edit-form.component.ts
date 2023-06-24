@@ -20,7 +20,7 @@ import { MealData } from '@atocha/menu-matriarch/data-access';
 import {
   DishDefDirective,
   DishesListComponent,
-} from '@atocha/menu-matriarch/feature-entities';
+} from '@atocha/menu-matriarch/shared/feature';
 import {
   DishSummaryComponent,
   MealSummaryComponent,

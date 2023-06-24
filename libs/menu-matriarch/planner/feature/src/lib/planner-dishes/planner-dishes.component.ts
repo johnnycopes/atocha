@@ -10,7 +10,7 @@ import { MenuService } from '@atocha/menu-matriarch/data-access';
 import {
   DishDefDirective,
   DishesListComponent,
-} from '@atocha/menu-matriarch/feature-entities';
+} from '@atocha/menu-matriarch/shared/feature';
 import { Day, Menu } from '@atocha/menu-matriarch/shared/util';
 import { PlannerDishComponent } from './planner-dish/planner-dish.component';
 

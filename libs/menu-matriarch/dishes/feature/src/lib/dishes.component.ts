@@ -5,7 +5,7 @@ import { DishCardComponent } from './dish-card/dish-card.component';
 import {
   DishDefDirective,
   DishesListComponent,
-} from '@atocha/menu-matriarch/feature-entities';
+} from '@atocha/menu-matriarch/shared/feature';
 
 @Component({
   standalone: true,

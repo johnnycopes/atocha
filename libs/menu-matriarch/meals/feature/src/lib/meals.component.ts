@@ -5,7 +5,7 @@ import { MealCardComponent } from './meal-card/meal-card.component';
 import {
   MealDefDirective,
   MealsListComponent,
-} from '@atocha/menu-matriarch/feature-entities';
+} from '@atocha/menu-matriarch/shared/feature';
 
 @Component({
   standalone: true,
