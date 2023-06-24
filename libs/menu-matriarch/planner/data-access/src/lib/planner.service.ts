@@ -3,7 +3,6 @@ import { map, tap } from 'rxjs/operators';
 
 import { State } from '@atocha/core/util';
 import { LocalStorageService } from '@atocha/core/data-access';
-// eslint-disable-next-line @nx/enforce-module-boundaries
 import { MenuService } from '@atocha/menu-matriarch/menus/data-access';
 import { LocalStorageKey } from '@atocha/menu-matriarch/shared/data-access';
 import { PlannerView, Route } from '@atocha/menu-matriarch/shared/util';

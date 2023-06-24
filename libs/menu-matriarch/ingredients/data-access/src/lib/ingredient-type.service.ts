@@ -3,7 +3,6 @@ import { Observable, combineLatest, of } from 'rxjs';
 import { concatMap, first, map } from 'rxjs/operators';
 
 import { AuthService } from '@atocha/core/data-access';
-// eslint-disable-next-line @nx/enforce-module-boundaries
 import { mapIngredientTypeDtoToIngredientType } from '@atocha/menu-matriarch/data-access';
 import { IngredientType } from '@atocha/menu-matriarch/shared/util';
 import {

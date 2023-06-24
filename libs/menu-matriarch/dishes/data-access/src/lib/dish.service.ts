@@ -5,14 +5,11 @@ import { concatMap, first, map } from 'rxjs/operators';
 import { AuthService } from '@atocha/core/data-access';
 import { Dish } from '@atocha/menu-matriarch/shared/util';
 import { DishDataService, EditableDishData } from './dish-data.service';
-// eslint-disable-next-line @nx/enforce-module-boundaries
 import {
   RouterService,
   mapDishDtoToDish,
 } from '@atocha/menu-matriarch/data-access';
-// eslint-disable-next-line @nx/enforce-module-boundaries
 import { IngredientService } from '@atocha/menu-matriarch/ingredients/data-access';
-// eslint-disable-next-line @nx/enforce-module-boundaries
 import { TagService } from '@atocha/menu-matriarch/tags/data-access';
 
 export type DishData = EditableDishData;
