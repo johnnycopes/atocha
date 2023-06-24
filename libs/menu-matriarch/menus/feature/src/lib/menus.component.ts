@@ -7,7 +7,7 @@ import { ButtonComponent, trackByFactory } from '@atocha/core/ui';
 import { MenuService, PrintService } from '@atocha/menu-matriarch/data-access';
 import { Day, Menu } from '@atocha/menu-matriarch/shared/util';
 import { InlineNameEditComponent } from '@atocha/menu-matriarch/shared/ui-domain';
-import { SectionComponent } from '@atocha/menu-matriarch/ui-generic';
+import { SectionComponent } from '@atocha/menu-matriarch/shared/ui-generic';
 import { MenuCardComponent } from './menu-card/menu-card.component';
 
 @Component({

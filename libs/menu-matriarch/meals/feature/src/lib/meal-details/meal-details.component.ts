@@ -14,7 +14,7 @@ import {
   TagsListComponent,
   dishTrackByFn,
 } from '@atocha/menu-matriarch/shared/ui-domain';
-import { SectionComponent } from '@atocha/menu-matriarch/ui-generic';
+import { SectionComponent } from '@atocha/menu-matriarch/shared/ui-generic';
 
 @Component({
   standalone: true,

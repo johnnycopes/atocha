@@ -24,7 +24,7 @@ import {
 import {
   TabComponent,
   TabsetComponent,
-} from '@atocha/menu-matriarch/ui-generic';
+} from '@atocha/menu-matriarch/shared/ui-generic';
 import { DishContext, DishDefDirective } from './dish-def.directive';
 
 @Component({

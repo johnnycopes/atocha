@@ -15,7 +15,7 @@ import {
   InlineNameEditComponent,
   TagComponent,
 } from '@atocha/menu-matriarch/shared/ui-domain';
-import { CardComponent } from '@atocha/menu-matriarch/ui-generic';
+import { CardComponent } from '@atocha/menu-matriarch/shared/ui-generic';
 
 @Component({
   standalone: true,

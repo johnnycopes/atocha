@@ -9,7 +9,7 @@ import {
 import { FormsModule } from '@angular/forms';
 
 import { ButtonComponent, CheckboxComponent } from '@atocha/core/ui';
-import { CardComponent } from '@atocha/menu-matriarch/ui-generic';
+import { CardComponent } from '@atocha/menu-matriarch/shared/ui-generic';
 import { Tag } from '@atocha/menu-matriarch/shared/util';
 import { TagComponent } from '../tags/tag/tag.component';
 import { TagDefDirective } from '../tags/tags-list/tag-def.directive';

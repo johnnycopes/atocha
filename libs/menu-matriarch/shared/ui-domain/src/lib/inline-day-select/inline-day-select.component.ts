@@ -12,7 +12,7 @@ import { trackBySelf } from '@atocha/core/ui';
 import {
   InlineFormComponent,
   InputComponent,
-} from '@atocha/menu-matriarch/ui-generic';
+} from '@atocha/menu-matriarch/shared/ui-generic';
 import { Day, getDays } from '@atocha/menu-matriarch/shared/util';
 
 @Component({

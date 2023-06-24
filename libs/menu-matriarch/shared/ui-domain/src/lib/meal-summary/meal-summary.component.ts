@@ -8,7 +8,7 @@ import {
   Orientation,
   getDishTypes,
 } from '@atocha/menu-matriarch/shared/util';
-import { SmallCapsLabelComponent } from '@atocha/menu-matriarch/ui-generic';
+import { SmallCapsLabelComponent } from '@atocha/menu-matriarch/shared/ui-generic';
 import { dishTrackByFn, groupTrackByFn } from '../track-by-functions';
 
 @Component({

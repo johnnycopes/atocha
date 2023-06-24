@@ -32,7 +32,7 @@ import {
   CardComponent,
   InputComponent,
   SectionComponent,
-} from '@atocha/menu-matriarch/ui-generic';
+} from '@atocha/menu-matriarch/shared/ui-generic';
 import {
   DishModel,
   Meal,

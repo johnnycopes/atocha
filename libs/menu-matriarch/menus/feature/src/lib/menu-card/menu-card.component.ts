@@ -29,7 +29,7 @@ import {
   OptionsMenuItemComponent,
   OptionsMenuTriggerDirective,
   SmallCapsLabelComponent,
-} from '@atocha/menu-matriarch/ui-generic';
+} from '@atocha/menu-matriarch/shared/ui-generic';
 
 type State = 'default' | 'renaming' | 'changingStartDay';
 

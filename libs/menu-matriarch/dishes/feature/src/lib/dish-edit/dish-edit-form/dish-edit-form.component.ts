@@ -24,7 +24,7 @@ import {
   TagsListComponent,
   ingredientTrackByFn,
 } from '@atocha/menu-matriarch/shared/ui-domain';
-import { InputComponent } from '@atocha/menu-matriarch/ui-generic';
+import { InputComponent } from '@atocha/menu-matriarch/shared/ui-generic';
 import {
   Dish,
   IngredientModel,
