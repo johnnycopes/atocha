@@ -5,9 +5,13 @@ import { map } from 'rxjs/operators';
 import { DataService } from '@atocha/core/data-access';
 import { flattenValues, lower, sort } from '@atocha/core/util';
 import { Day, Menu } from '@atocha/menu-matriarch/shared/util';
-import { MenuDto, createMenuDto } from './dtos/menu-dto';
-import { BatchService } from './batch.service';
-import { Endpoint } from './endpoint.enum';
+// eslint-disable-next-line @nx/enforce-module-boundaries
+import {
+  MenuDto,
+  Endpoint,
+  BatchService,
+  createMenuDto,
+} from '@atocha/menu-matriarch/data-access';
 
 export type EditableMenuData = Partial<Pick<MenuDto, 'name' | 'startDay'>>;
 

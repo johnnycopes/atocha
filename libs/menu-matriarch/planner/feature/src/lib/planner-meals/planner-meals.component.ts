@@ -6,7 +6,7 @@ import {
   EventEmitter,
 } from '@angular/core';
 
-import { MenuService } from '@atocha/menu-matriarch/data-access';
+import { MenuService } from '@atocha/menu-matriarch/menus/data-access';
 import {
   MealDefDirective,
   MealsListComponent,

@@ -16,7 +16,6 @@ export * from './lib/internal/dish-data.service';
 export * from './lib/internal/endpoint.enum';
 export * from './lib/internal/local-storage-key.enum';
 export * from './lib/internal/meal-data.service';
-export * from './lib/internal/menu-data.service';
 export * from './lib/internal/router.service';
 export * from './lib/internal/user-data.service';
 
@@ -26,7 +25,6 @@ export * from './lib/filter.service';
 export * from './lib/loading.service';
 export * from './lib/logged-in-auth.guard';
 export * from './lib/meal.service';
-export * from './lib/menu.service';
 export * from './lib/planner.service';
 export * from './lib/print.service';
 export * from './lib/seed-data.service';

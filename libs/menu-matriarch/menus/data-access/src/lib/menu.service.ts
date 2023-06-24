@@ -4,14 +4,14 @@ import { concatMap, first, map } from 'rxjs/operators';
 
 import { AuthService } from '@atocha/core/data-access';
 import { Day, Menu } from '@atocha/menu-matriarch/shared/util';
-import { DishService } from './dish.service';
-import { mapMenuDtoToMenu } from './internal/mappers/map-menu-dto-to-menu';
+import { EditableMenuData, MenuDataService } from './menu-data.service';
+// eslint-disable-next-line @nx/enforce-module-boundaries
 import {
-  EditableMenuData,
-  MenuDataService,
-} from './internal/menu-data.service';
-import { RouterService } from './internal/router.service';
-import { UserService } from './user.service';
+  DishService,
+  RouterService,
+  UserService,
+  mapMenuDtoToMenu,
+} from '@atocha/menu-matriarch/data-access';
 
 @Injectable({
   providedIn: 'root',
