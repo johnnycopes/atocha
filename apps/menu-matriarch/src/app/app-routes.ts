@@ -1,7 +1,9 @@
 import { Routes } from '@angular/router';
 
-import { LoggedInAuthGuard } from '@atocha/menu-matriarch/data-access';
-import { AuthGuard } from '@atocha/menu-matriarch/shell/data-access';
+import {
+  AuthGuard,
+  LoggedInAuthGuard,
+} from '@atocha/menu-matriarch/shell/data-access';
 import {
   WelcomeComponent,
   PageNotFoundComponent,
