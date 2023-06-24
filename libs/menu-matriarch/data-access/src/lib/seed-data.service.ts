@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { DataService } from '@atocha/core/data-access';
 import { BatchService } from './internal/batch.service';
-import { Endpoint } from './internal/endpoint.enum';
+import { Endpoint } from '@atocha/menu-matriarch/shared/data-access';
 import { createDishDto } from './internal/dtos/dish-dto';
 import { createIngredientDto } from './internal/dtos/ingredient-dto';
 import { createIngredientTypeDto } from './internal/dtos/ingredient-type-dto';

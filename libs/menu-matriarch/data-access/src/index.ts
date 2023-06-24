@@ -12,7 +12,6 @@ export * from './lib/internal/mappers/map-meal-dto-to-meal';
 export * from './lib/internal/mappers/map-menu-dto-to-menu';
 
 export * from './lib/internal/batch.service';
-export * from './lib/internal/endpoint.enum';
 export * from './lib/internal/local-storage-key.enum';
 export * from './lib/internal/router.service';
 

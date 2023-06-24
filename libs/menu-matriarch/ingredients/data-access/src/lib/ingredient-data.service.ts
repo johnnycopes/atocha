@@ -4,11 +4,11 @@ import { map } from 'rxjs/operators';
 
 import { DataService } from '@atocha/core/data-access';
 import { lower, sort } from '@atocha/core/util';
+import { Endpoint } from '@atocha/menu-matriarch/shared/data-access';
 import { Ingredient } from '@atocha/menu-matriarch/shared/util';
 // eslint-disable-next-line @nx/enforce-module-boundaries
 import {
   BatchService,
-  Endpoint,
   IngredientDto,
   createIngredientDto,
 } from '@atocha/menu-matriarch/data-access';
