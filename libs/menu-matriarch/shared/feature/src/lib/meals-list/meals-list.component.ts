@@ -19,7 +19,7 @@ import {
   TagService,
   UserService,
 } from '@atocha/menu-matriarch/data-access';
-import { FilterableListComponent } from '@atocha/menu-matriarch/ui-domain';
+import { FilterableListComponent } from '@atocha/menu-matriarch/shared/ui-domain';
 import { MealDefContext, MealDefDirective } from './meal-def.directive';
 
 @Component({

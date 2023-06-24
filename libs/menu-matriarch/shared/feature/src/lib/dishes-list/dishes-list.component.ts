@@ -20,7 +20,7 @@ import {
   FilterableListComponent,
   dishTrackByFn,
   groupTrackByFn,
-} from '@atocha/menu-matriarch/ui-domain';
+} from '@atocha/menu-matriarch/shared/ui-domain';
 import {
   TabComponent,
   TabsetComponent,

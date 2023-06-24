@@ -23,7 +23,7 @@ import {
   TagDefDirective,
   TagsListComponent,
   ingredientTrackByFn,
-} from '@atocha/menu-matriarch/ui-domain';
+} from '@atocha/menu-matriarch/shared/ui-domain';
 import { InputComponent } from '@atocha/menu-matriarch/ui-generic';
 import {
   Dish,

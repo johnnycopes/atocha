@@ -20,7 +20,7 @@ import { Ingredient } from '@atocha/menu-matriarch/shared/util';
 import {
   InlineNameEditComponent,
   ingredientTrackByFn,
-} from '@atocha/menu-matriarch/ui-domain';
+} from '@atocha/menu-matriarch/shared/ui-domain';
 import {
   OptionsMenuComponent,
   OptionsMenuItemComponent,

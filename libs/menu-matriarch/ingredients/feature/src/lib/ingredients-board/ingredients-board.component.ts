@@ -12,7 +12,7 @@ import {
   moveItemInArray,
 } from '@angular/cdk/drag-drop';
 
-import { ingredientTypeTrackByFn } from '@atocha/menu-matriarch/ui-domain';
+import { ingredientTypeTrackByFn } from '@atocha/menu-matriarch/shared/ui-domain';
 import { Ingredient, IngredientType } from '@atocha/menu-matriarch/shared/util';
 import {
   IngredientAdd,

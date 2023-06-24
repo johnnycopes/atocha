@@ -4,7 +4,7 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { ButtonComponent } from '@atocha/core/ui';
 import { MenuService, PrintService } from '@atocha/menu-matriarch/data-access';
 import { Menu, MenuEntry } from '@atocha/menu-matriarch/shared/util';
-import { menuEntryTrackByFn } from '@atocha/menu-matriarch/ui-domain';
+import { menuEntryTrackByFn } from '@atocha/menu-matriarch/shared/ui-domain';
 import { SectionComponent } from '@atocha/menu-matriarch/ui-generic';
 import { PlannerDayComponent } from './planner-day/planner-day.component';
 

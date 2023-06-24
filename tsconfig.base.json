@@ -62,6 +62,9 @@
       "@atocha/menu-matriarch/shared/feature": [
         "libs/menu-matriarch/shared/feature/src/index.ts"
       ],
+      "@atocha/menu-matriarch/shared/ui-domain": [
+        "libs/menu-matriarch/shared/ui-domain/src/index.ts"
+      ],
       "@atocha/menu-matriarch/shared/util": [
         "libs/menu-matriarch/shared/util/src/index.ts"
       ],
@@ -70,9 +73,6 @@
       ],
       "@atocha/menu-matriarch/tags/feature": [
         "libs/menu-matriarch/tags/feature/src/index.ts"
-      ],
-      "@atocha/menu-matriarch/ui-domain": [
-        "libs/menu-matriarch/ui-domain/src/index.ts"
       ],
       "@atocha/menu-matriarch/ui-generic": [
         "libs/menu-matriarch/ui-generic/src/index.ts"

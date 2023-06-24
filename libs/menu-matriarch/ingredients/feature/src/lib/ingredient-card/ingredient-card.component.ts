@@ -14,7 +14,7 @@ import { ButtonComponent } from '@atocha/core/ui';
 import {
   CountComponent,
   InlineNameEditComponent,
-} from '@atocha/menu-matriarch/ui-domain';
+} from '@atocha/menu-matriarch/shared/ui-domain';
 import {
   CardComponent,
   OptionsMenuComponent,

@@ -8,7 +8,7 @@ import {
   IngredientTypeService,
   UserService,
 } from '@atocha/menu-matriarch/data-access';
-import { InlineNameEditComponent } from '@atocha/menu-matriarch/ui-domain';
+import { InlineNameEditComponent } from '@atocha/menu-matriarch/shared/ui-domain';
 import { SectionComponent } from '@atocha/menu-matriarch/ui-generic';
 import { Ingredient, IngredientType } from '@atocha/menu-matriarch/shared/util';
 import {
