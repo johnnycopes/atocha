@@ -11,7 +11,7 @@ import {
   TagService,
   UserService,
 } from '@atocha/menu-matriarch/data-access';
-import { DishModel, TagModel } from '@atocha/menu-matriarch/util';
+import { DishModel, TagModel } from '@atocha/menu-matriarch/shared/util';
 import {
   MealEditFormComponent,
   MealConfig,

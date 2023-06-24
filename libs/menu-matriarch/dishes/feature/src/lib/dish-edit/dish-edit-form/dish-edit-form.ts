@@ -5,7 +5,7 @@ import {
   Validators,
 } from '@angular/forms';
 
-import { DishType } from '@atocha/menu-matriarch/util';
+import { DishType } from '@atocha/menu-matriarch/shared/util';
 import { DishConfig } from './dish-edit-form.component';
 
 export class DishEditForm extends FormGroup<{

@@ -30,7 +30,7 @@ import {
   IngredientModel,
   TagModel,
   getDishTypes,
-} from '@atocha/menu-matriarch/util';
+} from '@atocha/menu-matriarch/shared/util';
 import { DishEditForm } from './dish-edit-form';
 
 export type DishConfig = Pick<

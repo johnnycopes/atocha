@@ -5,7 +5,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faLink } from '@fortawesome/free-solid-svg-icons';
 
 import { ExternalLinkDirective } from '@atocha/core/ui';
-import { Tag } from '@atocha/menu-matriarch/util';
+import { Tag } from '@atocha/menu-matriarch/shared/util';
 import { CountComponent } from '../count/count.component';
 import { TagComponent } from '../tags/tag/tag.component';
 import { TagsListComponent } from '../tags/tags-list/tags-list.component';

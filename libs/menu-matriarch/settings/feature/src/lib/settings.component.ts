@@ -18,7 +18,7 @@ import {
   InputComponent,
   SectionComponent,
 } from '@atocha/menu-matriarch/ui-generic';
-import { UserPreferences, getDays } from '@atocha/menu-matriarch/util';
+import { UserPreferences, getDays } from '@atocha/menu-matriarch/shared/util';
 
 @Component({
   standalone: true,

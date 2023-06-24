@@ -13,7 +13,7 @@ import {
   InlineFormComponent,
   InputComponent,
 } from '@atocha/menu-matriarch/ui-generic';
-import { Day, getDays } from '@atocha/menu-matriarch/util';
+import { Day, getDays } from '@atocha/menu-matriarch/shared/util';
 
 @Component({
   standalone: true,

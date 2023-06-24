@@ -1,4 +1,4 @@
-import { Ingredient } from '@atocha/menu-matriarch/util';
+import { Ingredient } from '@atocha/menu-matriarch/shared/util';
 
 export type IngredientDto = Ingredient;
 

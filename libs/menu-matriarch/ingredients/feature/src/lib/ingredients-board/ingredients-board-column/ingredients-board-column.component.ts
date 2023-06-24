@@ -16,7 +16,7 @@ import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 import { BehaviorSubject } from 'rxjs';
 
 import { ButtonComponent } from '@atocha/core/ui';
-import { Ingredient } from '@atocha/menu-matriarch/util';
+import { Ingredient } from '@atocha/menu-matriarch/shared/util';
 import {
   InlineNameEditComponent,
   ingredientTrackByFn,

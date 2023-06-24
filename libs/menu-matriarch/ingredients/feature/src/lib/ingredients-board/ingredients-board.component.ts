@@ -13,7 +13,7 @@ import {
 } from '@angular/cdk/drag-drop';
 
 import { ingredientTypeTrackByFn } from '@atocha/menu-matriarch/ui-domain';
-import { Ingredient, IngredientType } from '@atocha/menu-matriarch/util';
+import { Ingredient, IngredientType } from '@atocha/menu-matriarch/shared/util';
 import {
   IngredientAdd,
   IngredientMove,

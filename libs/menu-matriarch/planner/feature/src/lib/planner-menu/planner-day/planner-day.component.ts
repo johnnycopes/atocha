@@ -13,7 +13,7 @@ import { faPlusSquare, faTimes } from '@fortawesome/free-solid-svg-icons';
 
 import { MealSummaryComponent } from '@atocha/menu-matriarch/ui-domain';
 import { SmallCapsLabelComponent } from '@atocha/menu-matriarch/ui-generic';
-import { Day, Dish, Orientation } from '@atocha/menu-matriarch/util';
+import { Day, Dish, Orientation } from '@atocha/menu-matriarch/shared/util';
 
 @Component({
   standalone: true,

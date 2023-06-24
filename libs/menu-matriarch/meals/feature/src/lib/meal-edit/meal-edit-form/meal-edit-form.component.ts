@@ -38,7 +38,7 @@ import {
   Meal,
   TagModel,
   UserPreferences,
-} from '@atocha/menu-matriarch/util';
+} from '@atocha/menu-matriarch/shared/util';
 import { MealEditForm } from './meal-edit-form';
 
 export type MealConfig = Pick<Meal, 'name' | 'description'> &

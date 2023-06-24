@@ -10,7 +10,7 @@ import {
   IngredientService,
   TagService,
 } from '@atocha/menu-matriarch/data-access';
-import { IngredientModel, TagModel } from '@atocha/menu-matriarch/util';
+import { IngredientModel, TagModel } from '@atocha/menu-matriarch/shared/util';
 import {
   DishConfig,
   DishEditFormComponent,

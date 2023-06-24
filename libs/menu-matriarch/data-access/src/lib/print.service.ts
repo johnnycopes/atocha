@@ -7,7 +7,7 @@ import {
   MenuEntry,
   Orientation,
   getDishTypes,
-} from '@atocha/menu-matriarch/util';
+} from '@atocha/menu-matriarch/shared/util';
 
 type PrintMenu = Pick<
   Menu,

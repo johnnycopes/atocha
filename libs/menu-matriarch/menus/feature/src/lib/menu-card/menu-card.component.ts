@@ -12,7 +12,11 @@ import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 import { BehaviorSubject } from 'rxjs';
 
 import { ButtonComponent } from '@atocha/core/ui';
-import { Day, MenuEntry, Orientation } from '@atocha/menu-matriarch/util';
+import {
+  Day,
+  MenuEntry,
+  Orientation,
+} from '@atocha/menu-matriarch/shared/util';
 import {
   InlineDaySelectComponent,
   InlineNameEditComponent,

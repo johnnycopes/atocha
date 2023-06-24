@@ -11,7 +11,7 @@ import {
   MealDefDirective,
   MealsListComponent,
 } from '@atocha/menu-matriarch/feature-entities';
-import { Day, Menu } from '@atocha/menu-matriarch/util';
+import { Day, Menu } from '@atocha/menu-matriarch/shared/util';
 import { PlannerMealComponent } from './planner-meal/planner-meal.component';
 
 @Component({

@@ -6,7 +6,7 @@ import {
   FilteredDishesGroup,
   Meal,
   getDishTypes,
-} from '@atocha/menu-matriarch/util';
+} from '@atocha/menu-matriarch/shared/util';
 
 @Injectable({
   providedIn: 'root',

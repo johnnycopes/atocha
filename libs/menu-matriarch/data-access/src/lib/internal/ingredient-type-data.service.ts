@@ -4,7 +4,7 @@ import { map } from 'rxjs/operators';
 
 import { DataService } from '@atocha/core/data-access';
 import { lower, sort } from '@atocha/core/util';
-import { IngredientType } from '@atocha/menu-matriarch/util';
+import { IngredientType } from '@atocha/menu-matriarch/shared/util';
 import {
   IngredientTypeDto,
   createIngredientTypeDto,

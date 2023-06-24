@@ -11,7 +11,7 @@ import { FormsModule } from '@angular/forms';
 import { CheckboxComponent, trackByFactory } from '@atocha/core/ui';
 import { DishSummaryComponent } from '@atocha/menu-matriarch/ui-domain';
 import { CardComponent } from '@atocha/menu-matriarch/ui-generic';
-import { Day, DishType, Menu, Tag } from '@atocha/menu-matriarch/util';
+import { Day, DishType, Menu, Tag } from '@atocha/menu-matriarch/shared/util';
 
 interface EntryModel {
   day: Day;

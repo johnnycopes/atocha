@@ -17,7 +17,13 @@ import {
   TagsListComponent,
 } from '@atocha/menu-matriarch/ui-domain';
 import { CardComponent } from '@atocha/menu-matriarch/ui-generic';
-import { Day, Dish, Menu, Orientation, Tag } from '@atocha/menu-matriarch/util';
+import {
+  Day,
+  Dish,
+  Menu,
+  Orientation,
+  Tag,
+} from '@atocha/menu-matriarch/shared/util';
 
 interface EntryModel {
   day: Day;

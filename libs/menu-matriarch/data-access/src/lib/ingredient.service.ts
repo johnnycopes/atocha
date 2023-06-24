@@ -3,7 +3,7 @@ import { Observable, of } from 'rxjs';
 import { concatMap, first } from 'rxjs/operators';
 
 import { AuthService } from '@atocha/core/data-access';
-import { Ingredient } from '@atocha/menu-matriarch/util';
+import { Ingredient } from '@atocha/menu-matriarch/shared/util';
 import {
   EditableIngredientData,
   IngredientDataService,

@@ -5,7 +5,7 @@ import {
   Ingredient,
   IngredientType,
   MenuEntry,
-} from '@atocha/menu-matriarch/util';
+} from '@atocha/menu-matriarch/shared/util';
 
 export const dishTrackByFn = trackByFactory<Dish>(({ id }) => id);
 export const ingredientTypeTrackByFn = trackByFactory<IngredientType>(

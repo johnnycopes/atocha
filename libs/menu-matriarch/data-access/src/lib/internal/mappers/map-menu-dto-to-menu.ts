@@ -3,7 +3,7 @@ import {
   UserPreferences,
   Menu,
   getDays,
-} from '@atocha/menu-matriarch/util';
+} from '@atocha/menu-matriarch/shared/util';
 import { MenuDto } from '../dtos/menu-dto';
 
 export function mapMenuDtoToMenu({

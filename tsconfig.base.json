@@ -62,6 +62,9 @@
       "@atocha/menu-matriarch/settings/feature": [
         "libs/menu-matriarch/settings/feature/src/index.ts"
       ],
+      "@atocha/menu-matriarch/shared/util": [
+        "libs/menu-matriarch/shared/util/src/index.ts"
+      ],
       "@atocha/menu-matriarch/shell/feature": [
         "libs/menu-matriarch/shell/feature/src/index.ts"
       ],
@@ -74,7 +77,6 @@
       "@atocha/menu-matriarch/ui-generic": [
         "libs/menu-matriarch/ui-generic/src/index.ts"
       ],
-      "@atocha/menu-matriarch/util": ["libs/menu-matriarch/util/src/index.ts"],
       "@atocha/spirit-islander/data-access": [
         "libs/spirit-islander/data-access/src/index.ts"
       ],

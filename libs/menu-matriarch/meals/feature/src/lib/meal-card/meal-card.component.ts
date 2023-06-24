@@ -9,7 +9,7 @@ import {
   TagsListComponent,
 } from '@atocha/menu-matriarch/ui-domain';
 import { CardComponent } from '@atocha/menu-matriarch/ui-generic';
-import { Dish, Orientation, Tag } from '@atocha/menu-matriarch/util';
+import { Dish, Orientation, Tag } from '@atocha/menu-matriarch/shared/util';
 
 @Component({
   standalone: true,

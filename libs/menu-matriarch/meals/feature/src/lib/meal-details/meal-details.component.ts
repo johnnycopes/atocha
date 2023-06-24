@@ -6,7 +6,7 @@ import { concatMap, first, map, switchMap } from 'rxjs/operators';
 
 import { ButtonComponent, trackBySelf } from '@atocha/core/ui';
 import { MealService, UserService } from '@atocha/menu-matriarch/data-access';
-import { getDishTypes } from '@atocha/menu-matriarch/util';
+import { getDishTypes } from '@atocha/menu-matriarch/shared/util';
 import {
   MealSummaryComponent,
   TagComponent,

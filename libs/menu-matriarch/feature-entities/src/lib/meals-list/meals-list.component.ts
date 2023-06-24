@@ -12,7 +12,7 @@ import { combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { trackByFactory } from '@atocha/core/ui';
-import { Meal } from '@atocha/menu-matriarch/util';
+import { Meal } from '@atocha/menu-matriarch/shared/util';
 import {
   FilterService,
   MealService,
