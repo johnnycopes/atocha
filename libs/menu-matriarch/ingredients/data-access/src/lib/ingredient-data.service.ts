@@ -5,9 +5,13 @@ import { map } from 'rxjs/operators';
 import { DataService } from '@atocha/core/data-access';
 import { lower, sort } from '@atocha/core/util';
 import { Ingredient } from '@atocha/menu-matriarch/shared/util';
-import { IngredientDto, createIngredientDto } from './dtos/ingredient-dto';
-import { BatchService } from './batch.service';
-import { Endpoint } from './endpoint.enum';
+// eslint-disable-next-line @nx/enforce-module-boundaries
+import {
+  BatchService,
+  Endpoint,
+  IngredientDto,
+  createIngredientDto,
+} from '@atocha/menu-matriarch/data-access';
 
 export type EditableIngredientData = Pick<
   IngredientDto,

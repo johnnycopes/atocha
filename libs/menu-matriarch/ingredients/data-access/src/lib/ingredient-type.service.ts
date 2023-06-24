@@ -3,12 +3,13 @@ import { Observable, combineLatest, of } from 'rxjs';
 import { concatMap, first, map } from 'rxjs/operators';
 
 import { AuthService } from '@atocha/core/data-access';
+// eslint-disable-next-line @nx/enforce-module-boundaries
+import { mapIngredientTypeDtoToIngredientType } from '@atocha/menu-matriarch/data-access';
 import { IngredientType } from '@atocha/menu-matriarch/shared/util';
 import {
   EditableIngredientTypeData,
   IngredientTypeDataService,
-} from './internal/ingredient-type-data.service';
-import { mapIngredientTypeDtoToIngredientType } from './internal/mappers/map-ingredient-type-dto-to-ingredient-type';
+} from './ingredient-type-data.service';
 import { IngredientService } from './ingredient.service';
 
 @Injectable({

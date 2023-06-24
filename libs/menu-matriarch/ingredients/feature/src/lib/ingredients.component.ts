@@ -3,11 +3,11 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { BehaviorSubject, combineLatest, map } from 'rxjs';
 
 import { ButtonComponent } from '@atocha/core/ui';
+import { UserService } from '@atocha/menu-matriarch/data-access';
 import {
   IngredientService,
   IngredientTypeService,
-  UserService,
-} from '@atocha/menu-matriarch/data-access';
+} from '@atocha/menu-matriarch/ingredients/data-access';
 import { InlineNameEditComponent } from '@atocha/menu-matriarch/shared/ui-domain';
 import { SectionComponent } from '@atocha/menu-matriarch/shared/ui-generic';
 import { Ingredient, IngredientType } from '@atocha/menu-matriarch/shared/util';
