@@ -11,7 +11,6 @@ import { Router } from '@angular/router';
 import { combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { FilterService } from '@atocha/menu-matriarch/data-access';
 import { DishService } from '@atocha/menu-matriarch/dishes/data-access';
 import { TagService } from '@atocha/menu-matriarch/tags/data-access';
 import {
@@ -24,6 +23,7 @@ import {
   TabsetComponent,
 } from '@atocha/menu-matriarch/shared/ui-generic';
 import { DishContext, DishDefDirective } from './dish-def.directive';
+import { FilterService } from '../filter.service';
 
 @Component({
   standalone: true,
