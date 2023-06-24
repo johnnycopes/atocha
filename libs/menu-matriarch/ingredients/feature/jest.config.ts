@@ -1,7 +1,7 @@
 /* eslint-disable */
 export default {
-  displayName: 'menu-matriarch-feature-ingredients',
-  preset: '../../../jest.preset.js',
+  displayName: 'menu-matriarch-ingredients-feature',
+  preset: '../../../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
     'ts-jest': {
@@ -10,7 +10,7 @@ export default {
     },
   },
   coverageDirectory:
-    '../../../coverage/libs/menu-matriarch/feature-ingredients',
+    '../../../../coverage/libs/menu-matriarch/ingredients/feature',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': 'jest-preset-angular',
   },

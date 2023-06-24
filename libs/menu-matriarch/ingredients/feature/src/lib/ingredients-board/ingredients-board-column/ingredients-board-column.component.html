@@ -9,29 +9,18 @@
     ></ui-inline-name-edit>
 
     <ng-template #headerTemplate>
-      <h2 class="name">
-        {{ name }} ({{ ingredients.length }})
-      </h2>
+      <h2 class="name">{{ name }} ({{ ingredients.length }})</h2>
 
-      <button core-button="tertiary"
-        [uiOptionsMenuTrigger]="optionsMenu"
-      >
-        <fa-icon class="icon"
-          [icon]="menuToggleIcon"
-        ></fa-icon>
+      <button core-button="tertiary" [uiOptionsMenuTrigger]="optionsMenu">
+        <fa-icon class="icon" [icon]="menuToggleIcon"></fa-icon>
       </button>
       <ui-options-menu #optionsMenu>
-        <li ui-options-menu-item
-          (click)="onAddNewIngredient()"
-        >
+        <li ui-options-menu-item (click)="onAddNewIngredient()">
           New Ingredient
         </li>
-        <li ui-options-menu-item
-          (click)="onRename()"
-        >
-          Rename
-        </li>
-        <li ui-options-menu-item
+        <li ui-options-menu-item (click)="onRename()">Rename</li>
+        <li
+          ui-options-menu-item
           *ngIf="!ingredients.length"
           (click)="delete.emit()"
         >
@@ -48,12 +37,14 @@
     (save)="onAddIngredientSave($event)"
   ></ui-inline-name-edit>
 
-  <ul class="ingredients"
+  <ul
+    class="ingredients"
     cdkDropList
     [cdkDropListData]="ingredients"
     (cdkDropListDropped)="onDrop($event)"
   >
-    <li app-ingredient-card
+    <li
+      app-ingredient-card
       *ngFor="let ingredient of ingredients; trackBy: trackByFn"
       class="ingredient"
       [name]="ingredient.name"
