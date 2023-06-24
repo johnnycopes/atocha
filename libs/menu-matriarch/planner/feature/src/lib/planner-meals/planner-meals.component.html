@@ -1,8 +1,9 @@
 <app-meals-list (nameDblClick)="nameDblClick.emit()">
-  <app-planner-meal *appMealDef="
+  <app-planner-meal
+    *appMealDef="
       let meal;
       let fallbackText = fallbackText;
-      let orientation = orientation;
+      let orientation = orientation
     "
     [id]="meal.id"
     [name]="meal.name"

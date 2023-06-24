@@ -3,22 +3,19 @@
     <h2 class="title">
       {{ menu.name }}
     </h2>
-    <button core-button="secondary"
+    <button
+      core-button="secondary"
       class="button"
       buttonStyle="secondary"
       (click)="onClearAll()"
     >
       Clear All
     </button>
-    <button core-button
-      class="button"
-      (click)="onPrint()"
-    >
-      Print
-    </button>
+    <button core-button class="button" (click)="onPrint()">Print</button>
   </div>
   <ul class="ui-section__content">
-    <li app-planner-day
+    <li
+      app-planner-day
       *ngFor="let entry of menu.entries; trackBy: trackByFn"
       [day]="entry.day"
       [dishes]="entry.dishes"

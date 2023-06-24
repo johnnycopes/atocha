@@ -1,0 +1,29 @@
+{
+  "name": "menu-matriarch-planner-feature",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/menu-matriarch/planner/feature/src",
+  "prefix": "app",
+  "targets": {
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": [
+        "{workspaceRoot}/coverage/libs/menu-matriarch/planner/feature"
+      ],
+      "options": {
+        "jestConfig": "libs/menu-matriarch/planner/feature/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/menu-matriarch/planner/feature/**/*.ts",
+          "libs/menu-matriarch/planner/feature/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": ["scope:menu-matriarch", "type:feature"]
+}

@@ -1,10 +1,10 @@
 /* eslint-disable */
 export default {
-  displayName: 'menu-matriarch-feature-planner',
-  preset: '../../../jest.preset.js',
+  displayName: 'menu-matriarch-planner-feature',
+  preset: '../../../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {},
-  coverageDirectory: '../../../coverage/libs/menu-matriarch/feature-planner',
+  coverageDirectory: '../../../../coverage/libs/menu-matriarch/planner/feature',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': [
       'jest-preset-angular',
