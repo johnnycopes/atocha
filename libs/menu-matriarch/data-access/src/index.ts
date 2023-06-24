@@ -6,4 +6,3 @@ export * from './lib/internal/mappers/map-menu-dto-to-menu';
 export * from './lib/error.service';
 export * from './lib/filter.service';
 export * from './lib/loading.service';
-export * from './lib/seed-data.service';
