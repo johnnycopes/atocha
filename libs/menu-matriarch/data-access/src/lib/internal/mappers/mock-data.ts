@@ -1,9 +1,9 @@
-import { createDishDto } from '../dtos/dish-dto';
-import { createIngredientDto } from '../dtos/ingredient-dto';
-import { createIngredientTypeDto } from '../dtos/ingredient-type-dto';
-import { createMealDto } from '../dtos/meal-dto';
-import { createMenuDto } from '../dtos/menu-dto';
-import { createTagDto } from '../dtos/tag-dto';
+import { createDishDto } from '../../../../../shared/data-access/src/lib/dtos/dish-dto';
+import { createIngredientDto } from '../../../../../shared/data-access/src/lib/dtos/ingredient-dto';
+import { createIngredientTypeDto } from '../../../../../shared/data-access/src/lib/dtos/ingredient-type-dto';
+import { createMealDto } from '../../../../../shared/data-access/src/lib/dtos/meal-dto';
+import { createMenuDto } from '../../../../../shared/data-access/src/lib/dtos/menu-dto';
+import { createTagDto } from '../../../../../shared/data-access/src/lib/dtos/tag-dto';
 
 export const MENU_DTO = createMenuDto({
   id: 'menu-1',

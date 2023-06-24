@@ -3,13 +3,13 @@ import { Injectable } from '@angular/core';
 import { DataService } from '@atocha/core/data-access';
 import { BatchService } from './internal/batch.service';
 import { Endpoint } from '@atocha/menu-matriarch/shared/data-access';
-import { createDishDto } from './internal/dtos/dish-dto';
-import { createIngredientDto } from './internal/dtos/ingredient-dto';
-import { createIngredientTypeDto } from './internal/dtos/ingredient-type-dto';
-import { createMealDto } from './internal/dtos/meal-dto';
-import { createMenuDto } from './internal/dtos/menu-dto';
-import { createTagDto } from './internal/dtos/tag-dto';
-import { createUserDto } from './internal/dtos/user-dto';
+import { createDishDto } from '../../../shared/data-access/src/lib/dtos/dish-dto';
+import { createIngredientDto } from '../../../shared/data-access/src/lib/dtos/ingredient-dto';
+import { createIngredientTypeDto } from '../../../shared/data-access/src/lib/dtos/ingredient-type-dto';
+import { createMealDto } from '../../../shared/data-access/src/lib/dtos/meal-dto';
+import { createMenuDto } from '../../../shared/data-access/src/lib/dtos/menu-dto';
+import { createTagDto } from '../../../shared/data-access/src/lib/dtos/tag-dto';
+import { createUserDto } from '../../../shared/data-access/src/lib/dtos/user-dto';
 
 @Injectable({
   providedIn: 'root',

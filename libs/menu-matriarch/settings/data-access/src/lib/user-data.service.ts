@@ -3,9 +3,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { DataService } from '@atocha/core/data-access';
-import { Endpoint } from '@atocha/menu-matriarch/shared/data-access';
-// eslint-disable-next-line @nx/enforce-module-boundaries
-import { UserDto } from '@atocha/menu-matriarch/data-access';
+import { Endpoint, UserDto } from '@atocha/menu-matriarch/shared/data-access';
 import { User, UserPreferences } from '@atocha/menu-matriarch/shared/util';
 
 @Injectable({

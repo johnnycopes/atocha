@@ -1,5 +1,5 @@
+import { DishDto } from '@atocha/menu-matriarch/shared/data-access';
 import { Tag, Dish, Ingredient } from '@atocha/menu-matriarch/shared/util';
-import { DishDto } from '../dtos/dish-dto';
 
 export function mapDishDtoToDish(
   dishDto: DishDto,

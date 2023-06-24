@@ -1,11 +1,3 @@
-export * from './lib/internal/dtos/dish-dto';
-export * from './lib/internal/dtos/ingredient-dto';
-export * from './lib/internal/dtos/ingredient-type-dto';
-export * from './lib/internal/dtos/meal-dto';
-export * from './lib/internal/dtos/menu-dto';
-export * from './lib/internal/dtos/tag-dto';
-export * from './lib/internal/dtos/user-dto';
-
 export * from './lib/internal/mappers/map-dish-dto-to-dish';
 export * from './lib/internal/mappers/map-ingredient-type-dto-to-ingredient-type';
 export * from './lib/internal/mappers/map-meal-dto-to-meal';
