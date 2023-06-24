@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Router, UrlTree } from '@angular/router';
-import { PlannerService } from '@atocha/menu-matriarch/data-access';
 import { Observable } from 'rxjs';
 import { first, map } from 'rxjs/operators';
+
+import { PlannerService } from './planner.service';
 
 @Injectable({
   providedIn: 'root',

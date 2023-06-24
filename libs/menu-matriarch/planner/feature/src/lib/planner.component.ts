@@ -5,7 +5,7 @@ import { of } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 
 import { ButtonComponent } from '@atocha/core/ui';
-import { PlannerService } from '@atocha/menu-matriarch/data-access';
+import { PlannerService } from '@atocha/menu-matriarch/planner/data-access';
 import { MenuService } from '@atocha/menu-matriarch/menus/data-access';
 import { EmptyViewPlaceholderComponent } from '@atocha/menu-matriarch/shared/ui-generic';
 import { PlannerView } from '@atocha/menu-matriarch/shared/util';

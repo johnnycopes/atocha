@@ -4,8 +4,7 @@ import { Observable, of } from 'rxjs';
 import { first, map, switchMap } from 'rxjs/operators';
 
 import { AuthService } from '@atocha/core/data-access';
-// eslint-disable-next-line @nx/enforce-module-boundaries
-import { PlannerService } from '@atocha/menu-matriarch/data-access';
+import { PlannerService } from '@atocha/menu-matriarch/planner/data-access';
 
 @Injectable({
   providedIn: 'root',

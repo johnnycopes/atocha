@@ -4,10 +4,8 @@ import { first } from 'rxjs/operators';
 
 import { AuthService } from '@atocha/core/data-access';
 import { ButtonComponent } from '@atocha/core/ui';
-import {
-  PlannerService,
-  SeedDataService,
-} from '@atocha/menu-matriarch/data-access';
+import { PlannerService } from '@atocha/menu-matriarch/planner/data-access';
+import { SeedDataService } from '@atocha/menu-matriarch/data-access';
 
 @Component({
   standalone: true,
