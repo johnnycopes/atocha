@@ -9,7 +9,7 @@ import {
   WelcomeComponent,
   PageNotFoundComponent,
   ShellComponent,
-} from '@atocha/menu-matriarch/feature-shell';
+} from '@atocha/menu-matriarch/shell/feature';
 import { Route } from '@atocha/menu-matriarch/util';
 
 export const APP_ROUTES: Routes = [
