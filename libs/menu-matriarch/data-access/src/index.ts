@@ -33,7 +33,6 @@ export * from './lib/loading.service';
 export * from './lib/logged-in-auth.guard';
 export * from './lib/meal.service';
 export * from './lib/menu.service';
-export * from './lib/planner.guard';
 export * from './lib/planner.service';
 export * from './lib/print.service';
 export * from './lib/seed-data.service';
