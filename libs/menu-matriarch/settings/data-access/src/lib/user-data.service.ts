@@ -3,9 +3,8 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { DataService } from '@atocha/core/data-access';
+import { Endpoint, UserDto } from '@atocha/menu-matriarch/data-access';
 import { User, UserPreferences } from '@atocha/menu-matriarch/shared/util';
-import { UserDto } from './dtos/user-dto';
-import { Endpoint } from './endpoint.enum';
 
 @Injectable({
   providedIn: 'root',

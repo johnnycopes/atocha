@@ -15,7 +15,6 @@ export * from './lib/internal/batch.service';
 export * from './lib/internal/endpoint.enum';
 export * from './lib/internal/local-storage-key.enum';
 export * from './lib/internal/router.service';
-export * from './lib/internal/user-data.service';
 
 export * from './lib/error.service';
 export * from './lib/filter.service';
@@ -24,4 +23,3 @@ export * from './lib/logged-in-auth.guard';
 export * from './lib/planner.service';
 export * from './lib/print.service';
 export * from './lib/seed-data.service';
-export * from './lib/user.service';

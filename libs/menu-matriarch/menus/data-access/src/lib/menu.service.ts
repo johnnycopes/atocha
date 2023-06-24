@@ -10,9 +10,10 @@ import { DishService } from '@atocha/menu-matriarch/dishes/data-access';
 // eslint-disable-next-line @nx/enforce-module-boundaries
 import {
   RouterService,
-  UserService,
   mapMenuDtoToMenu,
 } from '@atocha/menu-matriarch/data-access';
+// eslint-disable-next-line @nx/enforce-module-boundaries
+import { UserService } from '@atocha/menu-matriarch/settings/data-access';
 
 @Injectable({
   providedIn: 'root',

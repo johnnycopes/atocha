@@ -5,8 +5,8 @@ import { combineLatest, of } from 'rxjs';
 import { concatMap, first, map, switchMap } from 'rxjs/operators';
 
 import { ButtonComponent, trackBySelf } from '@atocha/core/ui';
-import { UserService } from '@atocha/menu-matriarch/data-access';
 import { MealService } from '@atocha/menu-matriarch/meals/data-access';
+import { UserService } from '@atocha/menu-matriarch/settings/data-access';
 import { getDishTypes } from '@atocha/menu-matriarch/shared/util';
 import {
   MealSummaryComponent,

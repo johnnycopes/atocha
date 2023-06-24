@@ -4,12 +4,12 @@ import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { Observable, combineLatest, of } from 'rxjs';
 import { concatMap, first, map } from 'rxjs/operators';
 
-import { UserService } from '@atocha/menu-matriarch/data-access';
 import { DishService } from '@atocha/menu-matriarch/dishes/data-access';
 import {
   MealData,
   MealService,
 } from '@atocha/menu-matriarch/meals/data-access';
+import { UserService } from '@atocha/menu-matriarch/settings/data-access';
 import { TagService } from '@atocha/menu-matriarch/tags/data-access';
 import { DishModel, TagModel } from '@atocha/menu-matriarch/shared/util';
 import {

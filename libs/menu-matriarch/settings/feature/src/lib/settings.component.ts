@@ -12,7 +12,7 @@ import { debounceTime, switchMap, takeUntil } from 'rxjs/operators';
 
 import { ButtonComponent, trackBySelf } from '@atocha/core/ui';
 import { AuthService } from '@atocha/core/data-access';
-import { UserService } from '@atocha/menu-matriarch/data-access';
+import { UserService } from '@atocha/menu-matriarch/settings/data-access';
 import {
   CardComponent,
   InputComponent,
