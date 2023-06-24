@@ -8,9 +8,9 @@ import {
   DishService,
   MealData,
   MealService,
-  TagService,
   UserService,
 } from '@atocha/menu-matriarch/data-access';
+import { TagService } from '@atocha/menu-matriarch/tags/data-access';
 import { DishModel, TagModel } from '@atocha/menu-matriarch/shared/util';
 import {
   MealEditFormComponent,

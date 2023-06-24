@@ -4,7 +4,7 @@ import { concatMap, first } from 'rxjs/operators';
 
 import { AuthService } from '@atocha/core/data-access';
 import { Tag } from '@atocha/menu-matriarch/shared/util';
-import { EditableTagData, TagDataService } from './internal/tag-data.service';
+import { EditableTagData, TagDataService } from './tag-data.service';
 
 @Injectable({
   providedIn: 'root',

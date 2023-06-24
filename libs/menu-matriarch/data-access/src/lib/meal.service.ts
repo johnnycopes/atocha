@@ -11,7 +11,8 @@ import {
 } from './internal/meal-data.service';
 import { RouterService } from './internal/router.service';
 import { DishService } from './dish.service';
-import { TagService } from './tag.service';
+// eslint-disable-next-line @nx/enforce-module-boundaries
+import { TagService } from '@atocha/menu-matriarch/tags/data-access';
 
 export type MealData = EditableMealData;
 

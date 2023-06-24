@@ -16,11 +16,11 @@ import { Meal } from '@atocha/menu-matriarch/shared/util';
 import {
   FilterService,
   MealService,
-  TagService,
   UserService,
 } from '@atocha/menu-matriarch/data-access';
 import { FilterableListComponent } from '@atocha/menu-matriarch/shared/ui-domain';
 import { MealDefContext, MealDefDirective } from './meal-def.directive';
+import { TagService } from '@atocha/menu-matriarch/tags/data-access';
 
 @Component({
   standalone: true,

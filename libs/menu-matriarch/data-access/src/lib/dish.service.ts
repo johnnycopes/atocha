@@ -11,7 +11,8 @@ import {
 } from './internal/dish-data.service';
 import { IngredientService } from './ingredient.service';
 import { RouterService } from './internal/router.service';
-import { TagService } from './tag.service';
+// eslint-disable-next-line @nx/enforce-module-boundaries
+import { TagService } from '@atocha/menu-matriarch/tags/data-access';
 
 export type DishData = EditableDishData;
 

@@ -8,8 +8,8 @@ import {
   DishData,
   DishService,
   IngredientService,
-  TagService,
 } from '@atocha/menu-matriarch/data-access';
+import { TagService } from '@atocha/menu-matriarch/tags/data-access';
 import { IngredientModel, TagModel } from '@atocha/menu-matriarch/shared/util';
 import {
   DishConfig,

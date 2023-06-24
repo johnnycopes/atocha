@@ -5,9 +5,13 @@ import { map } from 'rxjs/operators';
 import { DataService } from '@atocha/core/data-access';
 import { lower, sort } from '@atocha/core/util';
 import { Tag } from '@atocha/menu-matriarch/shared/util';
-import { TagDto, createTagDto } from './dtos/tag-dto';
-import { BatchService } from './batch.service';
-import { Endpoint } from './endpoint.enum';
+// eslint-disable-next-line @nx/enforce-module-boundaries
+import {
+  BatchService,
+  Endpoint,
+  TagDto,
+  createTagDto,
+} from '@atocha/menu-matriarch/data-access';
 
 export type EditableTagData = Pick<TagDto, 'name'>;
 

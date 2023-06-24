@@ -20,7 +20,6 @@ export * from './lib/internal/local-storage-key.enum';
 export * from './lib/internal/meal-data.service';
 export * from './lib/internal/menu-data.service';
 export * from './lib/internal/router.service';
-export * from './lib/internal/tag-data.service';
 export * from './lib/internal/user-data.service';
 
 export * from './lib/dish.service';
@@ -35,5 +34,4 @@ export * from './lib/menu.service';
 export * from './lib/planner.service';
 export * from './lib/print.service';
 export * from './lib/seed-data.service';
-export * from './lib/tag.service';
 export * from './lib/user.service';
