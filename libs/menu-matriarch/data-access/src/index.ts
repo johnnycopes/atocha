@@ -3,7 +3,6 @@ export * from './lib/internal/mappers/map-ingredient-type-dto-to-ingredient-type
 export * from './lib/internal/mappers/map-meal-dto-to-meal';
 export * from './lib/internal/mappers/map-menu-dto-to-menu';
 
-export * from './lib/internal/local-storage-key.enum';
 export * from './lib/internal/router.service';
 
 export * from './lib/error.service';
