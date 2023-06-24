@@ -5,11 +5,11 @@ import { Observable, combineLatest, of } from 'rxjs';
 import { concatMap, first, map } from 'rxjs/operators';
 
 import {
-  DishService,
   MealData,
   MealService,
   UserService,
 } from '@atocha/menu-matriarch/data-access';
+import { DishService } from '@atocha/menu-matriarch/dishes/data-access';
 import { TagService } from '@atocha/menu-matriarch/tags/data-access';
 import { DishModel, TagModel } from '@atocha/menu-matriarch/shared/util';
 import {

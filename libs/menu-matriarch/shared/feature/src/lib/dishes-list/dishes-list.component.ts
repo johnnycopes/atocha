@@ -11,7 +11,8 @@ import { Router } from '@angular/router';
 import { combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { DishService, FilterService } from '@atocha/menu-matriarch/data-access';
+import { FilterService } from '@atocha/menu-matriarch/data-access';
+import { DishService } from '@atocha/menu-matriarch/dishes/data-access';
 import { TagService } from '@atocha/menu-matriarch/tags/data-access';
 import {
   FilterableListComponent,

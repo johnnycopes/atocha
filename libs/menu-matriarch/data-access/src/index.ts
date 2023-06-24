@@ -12,14 +12,12 @@ export * from './lib/internal/mappers/map-meal-dto-to-meal';
 export * from './lib/internal/mappers/map-menu-dto-to-menu';
 
 export * from './lib/internal/batch.service';
-export * from './lib/internal/dish-data.service';
 export * from './lib/internal/endpoint.enum';
 export * from './lib/internal/local-storage-key.enum';
 export * from './lib/internal/meal-data.service';
 export * from './lib/internal/router.service';
 export * from './lib/internal/user-data.service';
 
-export * from './lib/dish.service';
 export * from './lib/error.service';
 export * from './lib/filter.service';
 export * from './lib/loading.service';

@@ -6,8 +6,9 @@ import { AuthService } from '@atocha/core/data-access';
 import { Day, Menu } from '@atocha/menu-matriarch/shared/util';
 import { EditableMenuData, MenuDataService } from './menu-data.service';
 // eslint-disable-next-line @nx/enforce-module-boundaries
+import { DishService } from '@atocha/menu-matriarch/dishes/data-access';
+// eslint-disable-next-line @nx/enforce-module-boundaries
 import {
-  DishService,
   RouterService,
   UserService,
   mapMenuDtoToMenu,

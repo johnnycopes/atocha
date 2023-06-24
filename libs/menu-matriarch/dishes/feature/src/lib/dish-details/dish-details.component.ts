@@ -11,7 +11,7 @@ import {
   SafePipe,
   trackBySelf,
 } from '@atocha/core/ui';
-import { DishService } from '@atocha/menu-matriarch/data-access';
+import { DishService } from '@atocha/menu-matriarch/dishes/data-access';
 import {
   TagComponent,
   TagDefDirective,

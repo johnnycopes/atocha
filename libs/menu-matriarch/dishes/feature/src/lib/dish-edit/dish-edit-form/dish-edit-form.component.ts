@@ -17,7 +17,7 @@ import {
   trackBySelf,
 } from '@atocha/core/ui';
 import { recordToArray } from '@atocha/core/util';
-import { DishData } from '@atocha/menu-matriarch/data-access';
+import { DishData } from '@atocha/menu-matriarch/dishes/data-access';
 import {
   TagComponent,
   TagDefDirective,

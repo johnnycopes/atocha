@@ -5,9 +5,13 @@ import { map } from 'rxjs/operators';
 import { DataService } from '@atocha/core/data-access';
 import { lower, sort } from '@atocha/core/util';
 import { Dish } from '@atocha/menu-matriarch/shared/util';
-import { DishDto, createDishDto } from './dtos/dish-dto';
-import { BatchService } from './batch.service';
-import { Endpoint } from './endpoint.enum';
+// eslint-disable-next-line @nx/enforce-module-boundaries
+import {
+  DishDto,
+  Endpoint,
+  BatchService,
+  createDishDto,
+} from '@atocha/menu-matriarch/data-access';
 
 export type EditableDishData = Pick<
   DishDto,

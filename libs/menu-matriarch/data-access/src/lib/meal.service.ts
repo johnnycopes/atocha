@@ -10,7 +10,8 @@ import {
   MealDataService,
 } from './internal/meal-data.service';
 import { RouterService } from './internal/router.service';
-import { DishService } from './dish.service';
+// eslint-disable-next-line @nx/enforce-module-boundaries
+import { DishService } from '@atocha/menu-matriarch/dishes/data-access';
 // eslint-disable-next-line @nx/enforce-module-boundaries
 import { TagService } from '@atocha/menu-matriarch/tags/data-access';
 
