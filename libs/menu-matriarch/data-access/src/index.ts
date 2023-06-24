@@ -29,6 +29,7 @@ export * from './lib/filter.service';
 export * from './lib/ingredient-type.service';
 export * from './lib/ingredient.service';
 export * from './lib/loading.service';
+export * from './lib/logged-in-auth.guard';
 export * from './lib/meal.service';
 export * from './lib/menu.service';
 export * from './lib/planner.service';
