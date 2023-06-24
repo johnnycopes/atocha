@@ -67,7 +67,7 @@ export const APP_ROUTES: Routes = [
         title: 'Menu Matriarch | Dishes',
         data: { state: Route.dishes },
         loadChildren: () =>
-          import('@atocha/menu-matriarch/feature-dishes').then(
+          import('@atocha/menu-matriarch/dishes/feature').then(
             (m) => m.DISHES_ROUTES
           ),
       },

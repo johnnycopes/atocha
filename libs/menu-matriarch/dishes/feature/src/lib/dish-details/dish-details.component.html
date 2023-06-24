@@ -1,0 +1,49 @@
+<ui-section *ngIf="dish$ | async as dish">
+  <div class="ui-section__toolbar">
+    <button core-button="danger" class="button" (click)="onDelete()">
+      Delete
+    </button>
+    <a core-button="secondary" class="button" routerLink="edit"> Edit </a>
+  </div>
+  <div class="ui-section__content">
+    <h2 class="name">
+      {{ dish.name }}
+    </h2>
+    <p *ngIf="dish.description" class="description">
+      {{ dish.description }}
+    </p>
+    <a [coreExternalLink]="dish.link" *ngIf="dish.link">
+      {{ dish.link }}
+    </a>
+    <div class="details">
+      <p>{{ dish.type | uppercase }}</p>
+      <p>
+        Included {{ dish.usages }} {{ dish.usages | corePlural : 'time' }} in
+        {{ dish.menuIds.length }} different
+        {{ dish.menuIds.length | corePlural : 'menu' }}. Included in
+        {{ dish.mealIds.length }}
+        {{ dish.mealIds.length | corePlural : 'meal' }}.
+      </p>
+    </div>
+    <div *ngIf="dish?.notes" class="details notes">
+      <div [innerHTML]="dish.notes | coreSafe : 'html'"></div>
+    </div>
+    <div *ngIf="dish.ingredients.length" class="details">
+      <ul>
+        <li
+          *ngFor="
+            let ingredient of dish.ingredients;
+            trackBy: ingredientTrackByFn
+          "
+        >
+          {{ ingredient.name }}
+        </li>
+      </ul>
+    </div>
+    <div *ngIf="dish.tags.length" class="details">
+      <ui-tags-list [tags]="dish.tags">
+        <ui-tag *uiTagDef="let tag" [id]="tag.id" [name]="tag.name"></ui-tag>
+      </ui-tags-list>
+    </div>
+  </div>
+</ui-section>
