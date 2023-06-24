@@ -2,8 +2,10 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 import { ButtonComponent } from '@atocha/core/ui';
-import { PrintService } from '@atocha/menu-matriarch/data-access';
-import { MenuService } from '@atocha/menu-matriarch/menus/data-access';
+import {
+  MenuService,
+  PrintService,
+} from '@atocha/menu-matriarch/menus/data-access';
 import { Menu, MenuEntry } from '@atocha/menu-matriarch/shared/util';
 import { menuEntryTrackByFn } from '@atocha/menu-matriarch/shared/ui-domain';
 import { SectionComponent } from '@atocha/menu-matriarch/shared/ui-generic';

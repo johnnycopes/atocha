@@ -4,8 +4,10 @@ import { BehaviorSubject, combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { ButtonComponent, trackByFactory } from '@atocha/core/ui';
-import { PrintService } from '@atocha/menu-matriarch/data-access';
-import { MenuService } from '@atocha/menu-matriarch/menus/data-access';
+import {
+  MenuService,
+  PrintService,
+} from '@atocha/menu-matriarch/menus/data-access';
 import { Day, Menu } from '@atocha/menu-matriarch/shared/util';
 import { InlineNameEditComponent } from '@atocha/menu-matriarch/shared/ui-domain';
 import { SectionComponent } from '@atocha/menu-matriarch/shared/ui-generic';

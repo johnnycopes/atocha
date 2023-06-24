@@ -8,5 +8,4 @@ export * from './lib/internal/router.service';
 export * from './lib/error.service';
 export * from './lib/filter.service';
 export * from './lib/loading.service';
-export * from './lib/print.service';
 export * from './lib/seed-data.service';
