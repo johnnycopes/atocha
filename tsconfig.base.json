@@ -59,6 +59,9 @@
       "@atocha/menu-matriarch/planner/feature": [
         "libs/menu-matriarch/planner/feature/src/index.ts"
       ],
+      "@atocha/menu-matriarch/settings/data-access": [
+        "libs/menu-matriarch/settings/data-access/src/index.ts"
+      ],
       "@atocha/menu-matriarch/settings/feature": [
         "libs/menu-matriarch/settings/feature/src/index.ts"
       ],
