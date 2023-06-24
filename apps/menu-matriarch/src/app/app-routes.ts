@@ -94,7 +94,7 @@ export const APP_ROUTES: Routes = [
         title: 'Menu Matriarch | Settings',
         data: { state: Route.settings },
         loadComponent: () =>
-          import('@atocha/menu-matriarch/feature-settings').then(
+          import('@atocha/menu-matriarch/settings/feature').then(
             (m) => m.SettingsComponent
           ),
       },
