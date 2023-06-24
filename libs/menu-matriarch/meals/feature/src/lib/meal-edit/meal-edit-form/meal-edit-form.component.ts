@@ -16,7 +16,7 @@ import {
   CheckboxComponent,
 } from '@atocha/core/ui';
 import { recordToArray } from '@atocha/core/util';
-import { MealData } from '@atocha/menu-matriarch/data-access';
+import { MealData } from '@atocha/menu-matriarch/meals/data-access';
 import {
   DishDefDirective,
   DishesListComponent,

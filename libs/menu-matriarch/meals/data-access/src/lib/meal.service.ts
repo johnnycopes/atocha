@@ -4,12 +4,11 @@ import { concatMap, first, map } from 'rxjs/operators';
 
 import { AuthService } from '@atocha/core/data-access';
 import { Meal } from '@atocha/menu-matriarch/shared/util';
-import { mapMealDtoToMeal } from './internal/mappers/map-meal-dto-to-meal';
+import { EditableMealData, MealDataService } from './meal-data.service';
 import {
-  EditableMealData,
-  MealDataService,
-} from './internal/meal-data.service';
-import { RouterService } from './internal/router.service';
+  RouterService,
+  mapMealDtoToMeal,
+} from '@atocha/menu-matriarch/data-access';
 // eslint-disable-next-line @nx/enforce-module-boundaries
 import { DishService } from '@atocha/menu-matriarch/dishes/data-access';
 // eslint-disable-next-line @nx/enforce-module-boundaries

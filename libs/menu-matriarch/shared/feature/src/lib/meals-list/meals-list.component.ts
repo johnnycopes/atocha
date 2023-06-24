@@ -13,11 +13,8 @@ import { map } from 'rxjs/operators';
 
 import { trackByFactory } from '@atocha/core/ui';
 import { Meal } from '@atocha/menu-matriarch/shared/util';
-import {
-  FilterService,
-  MealService,
-  UserService,
-} from '@atocha/menu-matriarch/data-access';
+import { FilterService, UserService } from '@atocha/menu-matriarch/data-access';
+import { MealService } from '@atocha/menu-matriarch/meals/data-access';
 import { FilterableListComponent } from '@atocha/menu-matriarch/shared/ui-domain';
 import { MealDefContext, MealDefDirective } from './meal-def.directive';
 import { TagService } from '@atocha/menu-matriarch/tags/data-access';
