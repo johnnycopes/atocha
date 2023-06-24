@@ -1,4 +1,3 @@
-export * from './lib/menu-matriarch-shared-data-access.module';
 export * from './lib/batch.service';
 export * from './lib/endpoint.enum';
 export * from './lib/local-storage-key.enum';
