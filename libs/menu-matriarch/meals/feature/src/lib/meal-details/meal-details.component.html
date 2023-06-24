@@ -1,36 +1,20 @@
 <ng-container *ngIf="vm$ | async as vm">
   <ui-section *ngIf="vm.meal as meal">
     <div class="ui-section__toolbar">
-      <button core-button="danger"
-        class="button"
-        (click)="onDelete()"
-      >
+      <button core-button="danger" class="button" (click)="onDelete()">
         Delete
       </button>
-      <a core-button="secondary"
-        class="button"
-        routerLink="edit"
-      >
-        Edit
-      </a>
+      <a core-button="secondary" class="button" routerLink="edit"> Edit </a>
     </div>
     <div class="ui-section__content">
       <h2 class="name">
         {{ meal.name }}
       </h2>
-      <p *ngIf="meal.description"
-        class="description"
-      >
+      <p *ngIf="meal.description" class="description">
         {{ meal.description }}
       </p>
-      <ui-tags-list
-        *ngIf="meal.tags.length"
-        [tags]="meal.tags"
-      >
-        <ui-tag *uiTagDef="let tag"
-          [id]="tag.id"
-          [name]="tag.name"
-        ></ui-tag>
+      <ui-tags-list *ngIf="meal.tags.length" [tags]="meal.tags">
+        <ui-tag *uiTagDef="let tag" [id]="tag.id" [name]="tag.name"></ui-tag>
       </ui-tags-list>
       <div class="details">
         <ui-meal-summary
