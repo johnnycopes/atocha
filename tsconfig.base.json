@@ -89,6 +89,9 @@
       "@atocha/menu-matriarch/shared/util": [
         "libs/menu-matriarch/shared/util/src/index.ts"
       ],
+      "@atocha/menu-matriarch/shell/data-access": [
+        "libs/menu-matriarch/shell/data-access/src/index.ts"
+      ],
       "@atocha/menu-matriarch/shell/feature": [
         "libs/menu-matriarch/shell/feature/src/index.ts"
       ],
