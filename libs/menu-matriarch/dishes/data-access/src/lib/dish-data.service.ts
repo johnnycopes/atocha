@@ -4,14 +4,13 @@ import { map } from 'rxjs/operators';
 
 import { DataService } from '@atocha/core/data-access';
 import { lower, sort } from '@atocha/core/util';
-import { Dish } from '@atocha/menu-matriarch/shared/util';
 import {
+  BatchService,
   DishDto,
   Endpoint,
   createDishDto,
 } from '@atocha/menu-matriarch/shared/data-access';
-// eslint-disable-next-line @nx/enforce-module-boundaries
-import { BatchService } from '@atocha/menu-matriarch/data-access';
+import { Dish } from '@atocha/menu-matriarch/shared/util';
 
 export type EditableDishData = Pick<
   DishDto,

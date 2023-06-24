@@ -9,7 +9,7 @@ import {
   uniqueDiff,
 } from '@atocha/core/util';
 import { Day, Menu } from '@atocha/menu-matriarch/shared/util';
-import { Endpoint } from '../../../../shared/data-access/src/lib/endpoint.enum';
+import { Endpoint } from './endpoint.enum';
 
 @Injectable({
   providedIn: 'root',
