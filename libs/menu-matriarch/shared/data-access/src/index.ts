@@ -3,6 +3,7 @@ export * from './lib/endpoint.enum';
 export * from './lib/error.service';
 export * from './lib/local-storage-key.enum';
 export * from './lib/loading.service';
+export * from './lib/route.enum';
 export * from './lib/router.service';
 
 export * from './lib/dtos/dish-dto';

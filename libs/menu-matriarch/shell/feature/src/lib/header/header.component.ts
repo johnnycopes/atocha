@@ -3,7 +3,7 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { PlannerService } from '@atocha/menu-matriarch/planner/data-access';
-import { Route } from '@atocha/menu-matriarch/shared/util';
+import { Route } from '@atocha/menu-matriarch/shared/data-access';
 
 @Component({
   standalone: true,
