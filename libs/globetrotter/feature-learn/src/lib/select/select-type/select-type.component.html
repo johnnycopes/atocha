@@ -1,7 +1,8 @@
 <ui-small-caps header="Type">
   <div class="container">
     <p>Front / back of cards:</p>
-    <ui-radio-buttons class="radio-buttons"
+    <ui-radio-buttons
+      class="radio-buttons"
       [options]="options"
       [ngModel]="selectedOption"
       (ngModelChange)="typeChange.emit($event.value)"

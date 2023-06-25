@@ -7,22 +7,16 @@
     [favorite]="favorite"
     (favoriteChange)="favoriteChange.emit($event)"
   >
-    <h4 class="number">
-      #{{ data.id }}
-    </h4>
+    <h4 class="number">#{{ data.id }}</h4>
     | {{ data.cost ? 'Costs ' + data.cost : 'Free' }}
   </ui-card-header>
 
   <p class="ui-card-section immediate">
-    <span class="ui-card-label effect">
-      Immediate:
-    </span>
+    <span class="ui-card-label effect"> Immediate: </span>
     {{ data.immediateEffect ?? 'None' }}
   </p>
   <p class="ui-card-section permanent">
-    <span class="ui-card-label effect">
-      Permanent:
-    </span>
+    <span class="ui-card-label effect"> Permanent: </span>
     {{ data.permanentEffect ?? 'None' }}
   </p>
 </ui-card>

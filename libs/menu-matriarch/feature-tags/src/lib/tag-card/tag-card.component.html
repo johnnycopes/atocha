@@ -1,5 +1,6 @@
 <ui-card>
-  <ui-inline-name-edit *ngIf="editing$ | async; else detailsTemplate"
+  <ui-inline-name-edit
+    *ngIf="editing$ | async; else detailsTemplate"
     class="form"
     [name]="name"
     (cancel)="finishEdit$.next()"
@@ -8,31 +9,14 @@
 </ui-card>
 
 <ng-template #detailsTemplate>
-  <ui-tag
-    [id]="id"
-    [name]="name"
-  ></ui-tag>
+  <ui-tag [id]="id" [name]="name"></ui-tag>
   <div class="container">
-    <ui-count
-      class="count"
-      type="meals"
-      [count]="mealIds.length"
-    ></ui-count>
-    <ui-count
-      class="count"
-      type="dishes"
-      [count]="dishIds.length"
-    ></ui-count>
-    <button core-button="danger"
-      class="button"
-      (click)="delete.emit()"
-    >
+    <ui-count class="count" type="meals" [count]="mealIds.length"></ui-count>
+    <ui-count class="count" type="dishes" [count]="dishIds.length"></ui-count>
+    <button core-button="danger" class="button" (click)="delete.emit()">
       Delete
     </button>
-    <button core-button="secondary"
-      class="button"
-      (click)="startEdit$.next()"
-    >
+    <button core-button="secondary" class="button" (click)="startEdit$.next()">
       Edit
     </button>
   </div>

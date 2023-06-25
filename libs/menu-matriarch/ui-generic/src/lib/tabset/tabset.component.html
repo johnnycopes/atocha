@@ -1,8 +1,7 @@
 <ng-template #defaultControlsTemplate>
-  <ul class="tabs"
-    #tabsElement
-  >
-    <li *ngFor="let tab of tabs; trackBy: trackByFn"
+  <ul class="tabs" #tabsElement>
+    <li
+      *ngFor="let tab of tabs; trackBy: trackByFn"
       class="tab"
       [class.tab--selected]="tab.selected"
       (click)="onSelectTab(tab)"
@@ -12,11 +11,14 @@
   </ul>
 </ng-template>
 
-<ng-container *ngTemplateOutlet="
-  controlsTemplate ? controlsTemplate : defaultControlsTemplate;
-  context: { tabs: this.tabs }
-"></ng-container>
-<div class="content"
+<ng-container
+  *ngTemplateOutlet="
+    controlsTemplate ? controlsTemplate : defaultControlsTemplate;
+    context: { tabs: this.tabs }
+  "
+></ng-container>
+<div
+  class="content"
   @fadeIn
   [@visibility]="contentVisibility"
   (@fadeIn.start)="onAnimationStart($event)"

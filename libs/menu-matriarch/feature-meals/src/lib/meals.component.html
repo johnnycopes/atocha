@@ -1,9 +1,10 @@
 <app-meals-list class="list">
-  <app-meal-card *appMealDef="
+  <app-meal-card
+    *appMealDef="
       let meal;
       let activeMeal = activeMeal;
       let fallbackText = fallbackText;
-      let orientation = orientation;
+      let orientation = orientation
     "
     [id]="meal.id"
     [name]="meal.name"

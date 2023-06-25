@@ -1,6 +1,4 @@
-<ng-container *ngIf="form"
-  [formGroup]="form"
->
+<ng-container *ngIf="form" [formGroup]="form">
   <core-selection-tree
     [formControlName]="controlName"
     [getId]="getId"
@@ -11,14 +9,16 @@
   ></core-selection-tree>
 </ng-container>
 
-<ng-template #checkboxTemplate
+<ng-template
+  #checkboxTemplate
   let-item
   let-level="level"
   let-checked="checked"
   let-indeterminate="indeterminate"
   let-onChange="onChange"
 >
-  <core-checkbox ui-card-header
+  <core-checkbox
+    ui-card-header
     *ngIf="level === 0"
     [indeterminate]="indeterminate"
     size="normal"
@@ -28,7 +28,8 @@
     {{ item.display?.name ?? item.id }}
   </core-checkbox>
 
-  <core-checkbox class="checkbox"
+  <core-checkbox
+    class="checkbox"
     *ngIf="level > 0"
     [style.margin-left.px]="(level - 1) * 24"
     [indeterminate]="indeterminate"

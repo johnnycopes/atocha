@@ -1,22 +1,23 @@
 <ui-section *ngIf="tags$ | async as tags">
   <div class="ui-section__toolbar">
-    <h2 class="title">
-      Tags ({{ tags.length }})
-    </h2>
-    <button core-button
+    <h2 class="title">Tags ({{ tags.length }})</h2>
+    <button
+      core-button
       [disabled]="(adding$ | async) ?? false"
       (click)="startAdd$.next()"
     >
       New Tag
     </button>
-    <ui-inline-name-edit class="form"
+    <ui-inline-name-edit
+      class="form"
       *ngIf="adding$ | async"
       (cancel)="finishAdd$.next()"
       (save)="onNewTagSave($event)"
     ></ui-inline-name-edit>
   </div>
   <ul class="ui-section__content tags">
-    <li app-tag-card
+    <li
+      app-tag-card
       *ngFor="let tag of tags; trackBy: trackByFn"
       [id]="tag.id"
       [name]="tag.name"

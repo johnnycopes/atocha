@@ -9,10 +9,9 @@
     [mealIds]="mealIds"
     [usages]="usages"
   ></ui-dish-summary>
-  <div *ngIf="entryModels.length"
-    class="schedule"
-  >
-    <core-checkbox *ngFor="let model of entryModels; trackBy: trackByFn"
+  <div *ngIf="entryModels.length" class="schedule">
+    <core-checkbox
+      *ngFor="let model of entryModels; trackBy: trackByFn"
       class="checkbox"
       [ngModel]="model.checked"
       (ngModelChange)="dayChange.emit({ id, day: model.day, selected: $event })"

@@ -1,5 +1,6 @@
 <app-dishes-list class="list">
-  <app-dish-card *appDishDef=" let dish; let activeDish = activeDish"
+  <app-dish-card
+    *appDishDef="let dish; let activeDish = activeDish"
     [id]="dish.id"
     [name]="dish.name"
     [description]="dish.description"

@@ -1,10 +1,12 @@
-<ul class="columns"
+<ul
+  class="columns"
   cdkDropList
   cdkDropListGroup
   cdkDropListOrientation="horizontal"
   (cdkDropListDropped)="onDrop($event)"
 >
-  <li app-ingredients-board-column
+  <li
+    app-ingredients-board-column
     *ngFor="let type of types; trackBy: trackByFn"
     class="column"
     cdkDrag
