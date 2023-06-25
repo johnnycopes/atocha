@@ -1,10 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-
 import {
   ErrorService,
   LoadingService,
-} from '@atocha/menu-matriarch/data-access';
+} from '@atocha/menu-matriarch/shared/data-access';
 
 @Component({
   standalone: true,
