@@ -2,46 +2,27 @@
   [position]="position"
   (animationFinished)="onMenuAnimationFinish($event)"
 >
-  <ui-container *ngIf="!isComplete"
-    class="progress"
-    header
-  >
-    <ui-icon left
+  <ui-container *ngIf="!isComplete" class="progress" header>
+    <ui-icon
+      left
       class="back"
       icon="Cancel"
       [highlighted]="true"
       (clicked)="exit.emit()"
     ></ui-icon>
-    <p class="prompt"
-      center>
+    <p class="prompt" center>
       {{ prompt }}
     </p>
-    <div class="details"
-      right
-    >
+    <div class="details" right>
       <h4 class="details__tally">
         {{ correctGuesses }} / {{ totalCountries }}
       </h4>
-      <h4 class="details__guess">
-        Guess #{{ guess }}
-      </h4>
+      <h4 class="details__guess">Guess #{{ guess }}</h4>
     </div>
   </ui-container>
-  <div *ngIf="isComplete"
-    class="outcome"
-    content
-  >
-    <p class="text">
-      Quiz complete! You scored
-    </p>
-    <h1 class="accuracy">
-      {{ accuracy }}%
-    </h1>
-    <button core-button
-      class="reset"
-      (click)="exit.emit()"
-    >
-      Reset
-    </button>
+  <div *ngIf="isComplete" class="outcome" content>
+    <p class="text">Quiz complete! You scored</p>
+    <h1 class="accuracy">{{ accuracy }}%</h1>
+    <button core-button class="reset" (click)="exit.emit()">Reset</button>
   </div>
 </ui-fixed-slideable-panel>

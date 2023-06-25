@@ -1,10 +1,12 @@
-<ui-input class="input"
+<ui-input
+  class="input"
   label="Quantity"
   [showError]="invalid"
   errorMessage="Invalid quantity"
 >
   <div class="container">
-    <input type="number"
+    <input
+      type="number"
       [ngModel]="quantity"
       (ngModelChange)="quantityChange.emit($event)"
     />

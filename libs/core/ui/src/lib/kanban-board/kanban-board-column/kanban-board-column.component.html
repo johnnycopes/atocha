@@ -1,18 +1,21 @@
 <div class="core-kbc__toolbar">
   <h2 class="name">
-    {{name}}
+    {{ name }}
   </h2>
-  <fa-icon class="core-kbc__menu-icon"
+  <fa-icon
+    class="core-kbc__menu-icon"
     *ngIf="actions.length"
     [icon]="menuIcon"
   ></fa-icon>
 </div>
-<ul class="core-kbc__list"
+<ul
+  class="core-kbc__list"
   cdkDropList
   [cdkDropListData]="items"
   (cdkDropListDropped)="onDropItem($event)"
 >
-  <li class="core-kbc__list-item"
+  <li
+    class="core-kbc__list-item"
     [class.list-item--moving]="moving"
     *ngFor="let item of items; trackBy: trackByFn"
     cdkDrag
@@ -21,11 +24,11 @@
       item: item
     }"
     (cdkDragStarted)="onDragItem()"
-    >
-      <ng-container
-        [ngTemplateOutlet]="itemTemplate ? itemTemplate : defaultTemplate"
-        [ngTemplateOutletContext]="{ $implicit: item }"
-      ></ng-container>
+  >
+    <ng-container
+      [ngTemplateOutlet]="itemTemplate ? itemTemplate : defaultTemplate"
+      [ngTemplateOutletContext]="{ $implicit: item }"
+    ></ng-container>
   </li>
 </ul>
 <core-kanban-board-form
@@ -33,8 +36,6 @@
   (add)="onItemAdd($event)"
 ></core-kanban-board-form>
 
-<ng-template #defaultTemplate
-  let-item
->
+<ng-template #defaultTemplate let-item>
   {{ getItemId(item) }}
 </ng-template>

@@ -1,29 +1,24 @@
-<div *ngIf="vm$ | async as vm"
-  class="container"
->
+<div *ngIf="vm$ | async as vm" class="container">
   <nav class="top">
     <div class="title">
       <h1 class="name">
         Lorenzo
-        <span class="surname">
-          il Magnifico
-        </span>
+        <span class="surname"> il Magnifico </span>
       </h1>
-      <button core-button
-        class="export"
-        (click)="exportCsv()"
-      >
+      <button core-button class="export" (click)="exportCsv()">
         Export to CSV
       </button>
     </div>
     <ul class="views">
-      <li class="view"
+      <li
+        class="view"
         [class.view--selected]="vm.view === 'all'"
         (click)="onViewChange('all')"
       >
         All
       </li>
-      <li class="view"
+      <li
+        class="view"
         [class.view--selected]="vm.view === 'favorites'"
         (click)="onViewChange('favorites')"
       >
@@ -31,7 +26,8 @@
       </li>
     </ul>
   </nav>
-  <core-search-input class="search"
+  <core-search-input
+    class="search"
     placeholder="Enter name or number"
     [text]="vm.text"
     (textChange)="onTextChange($event)"

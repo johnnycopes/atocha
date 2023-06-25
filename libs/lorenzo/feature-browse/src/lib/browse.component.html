@@ -1,12 +1,12 @@
 <ng-container *ngIf="vm$ | async as vm">
   <header app-header></header>
 
-  <main class="content"
+  <main
+    class="content"
     [scrollTop]="vm.position"
     (scroll)="onScroll($event, vm.view)"
   >
-    <app-toolbar class="container">
-    </app-toolbar>
+    <app-toolbar class="container"> </app-toolbar>
 
     <div class="cards container">
       <app-developments
