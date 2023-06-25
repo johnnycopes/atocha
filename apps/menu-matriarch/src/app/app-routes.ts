@@ -4,12 +4,12 @@ import {
   AuthGuard,
   LoggedInAuthGuard,
 } from '@atocha/menu-matriarch/shell/data-access';
+import { PlannerGuard } from '@atocha/menu-matriarch/planner/data-access';
 import {
   WelcomeComponent,
   PageNotFoundComponent,
   ShellComponent,
 } from '@atocha/menu-matriarch/shell/feature';
-import { PlannerGuard } from '@atocha/menu-matriarch/planner/data-access';
 import { Route } from '@atocha/menu-matriarch/shared/util';
 
 export const APP_ROUTES: Routes = [

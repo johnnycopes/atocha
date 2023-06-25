@@ -2,7 +2,7 @@
   "name": "menu-matriarch-ingredients-data-access",
   "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/menu-matriarch/ingredients/data-access/src",
-  "prefix": "atocha",
+  "prefix": "app",
   "tags": ["scope:menu-matriarch", "type:data-access"],
   "projectType": "library",
   "targets": {

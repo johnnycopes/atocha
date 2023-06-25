@@ -3,7 +3,7 @@
   "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "sourceRoot": "libs/menu-matriarch/shared/ui-generic/src",
-  "prefix": "atocha",
+  "prefix": "app",
   "targets": {
     "test": {
       "executor": "@nx/jest:jest",
