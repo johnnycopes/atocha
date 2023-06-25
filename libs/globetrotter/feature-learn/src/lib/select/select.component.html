@@ -1,15 +1,7 @@
-<div class="wrapper"
-  *ngIf="vm$ | async as vm"
-  @fadeIn
->
+<div class="wrapper" *ngIf="vm$ | async as vm" @fadeIn>
   <div class="launchpad">
-    <h1 class="header">
-      Create Quiz
-    </h1>
-    <button core-button
-      [disabled]="vm.invalidQuantity"
-      (click)="onLaunch()"
-    >
+    <h1 class="header">Create Quiz</h1>
+    <button core-button [disabled]="vm.invalidQuantity" (click)="onLaunch()">
       Launch
     </button>
   </div>

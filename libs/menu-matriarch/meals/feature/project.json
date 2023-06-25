@@ -1,0 +1,27 @@
+{
+  "name": "menu-matriarch-meals-feature",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/menu-matriarch/meals/feature/src",
+  "prefix": "app",
+  "targets": {
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/libs/menu-matriarch/meals/feature"],
+      "options": {
+        "jestConfig": "libs/menu-matriarch/meals/feature/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/menu-matriarch/meals/feature/**/*.ts",
+          "libs/menu-matriarch/meals/feature/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": ["scope:menu-matriarch", "type:feature"]
+}

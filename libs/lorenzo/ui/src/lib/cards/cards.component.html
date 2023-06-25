@@ -1,41 +1,23 @@
 <section class="section developments">
   <div class="header">
-    <h2 class="type"
-      (click)="visibleChange.emit(!visible)"
-    >
+    <h2 class="type" (click)="visibleChange.emit(!visible)">
       <span class="caret">
         {{ visible ? '▼' : '▲' }}
       </span>
       {{ type }}
-      <span class="count">
-        ({{ cards.length }} / {{ total }})
-      </span>
+      <span class="count"> ({{ cards.length }} / {{ total }}) </span>
     </h2>
     <div class="ordinals">
-      <button core-button
-        *ngIf="showMoveUp"
-        (click)="moveUp.emit()"
-      >
-        <span class="left-arrow">
-          ↑
-        </span>
+      <button core-button *ngIf="showMoveUp" (click)="moveUp.emit()">
+        <span class="left-arrow"> ↑ </span>
       </button>
-      <button core-button
-        *ngIf="showMoveDown"
-        (click)="moveDown.emit()"
-      >
-        <span class="right-arrow">
-          ↓
-        </span>
+      <button core-button *ngIf="showMoveDown" (click)="moveDown.emit()">
+        <span class="right-arrow"> ↓ </span>
       </button>
     </div>
   </div>
-  <ul [hidden]="!visible"
-    class="cards"
-  >
-    <li *ngFor="let card of cards; trackBy: trackByFn"
-      class="card"
-    >
+  <ul [hidden]="!visible" class="cards">
+    <li *ngFor="let card of cards; trackBy: trackByFn" class="card">
       <ng-container
         [ngTemplateOutlet]="cardTemplate"
         [ngTemplateOutletContext]="{
@@ -44,8 +26,6 @@
         }"
       ></ng-container>
     </li>
-    <li *ngIf="!cards.length">
-      No matching cards
-    </li>
+    <li *ngIf="!cards.length">No matching cards</li>
   </ul>
 </section>

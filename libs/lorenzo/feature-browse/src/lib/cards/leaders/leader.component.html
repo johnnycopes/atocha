@@ -1,5 +1,6 @@
 <ui-card *ngIf="data">
-  <ui-card-header class="name"
+  <ui-card-header
+    class="name"
     [favorite]="favorite"
     (favoriteChange)="favoriteChange.emit($event)"
   >
@@ -9,15 +10,11 @@
   </ui-card-header>
 
   <p class="ui-card-section requirement">
-    <span class="ui-card-label requires">
-      Requires:
-    </span>
+    <span class="ui-card-label requires"> Requires: </span>
     {{ data.requirement }}
   </p>
   <p class="ui-card-section ability">
-    <span class="ui-card-label type">
-      {{ data.type | titlecase }}:
-    </span>
+    <span class="ui-card-label type"> {{ data.type | titlecase }}: </span>
     {{ data.ability }}
   </p>
 </ui-card>

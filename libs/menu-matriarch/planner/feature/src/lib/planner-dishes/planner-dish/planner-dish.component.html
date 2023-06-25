@@ -1,0 +1,22 @@
+<ui-card class="card">
+  <ui-dish-summary
+    [id]="id"
+    [name]="name"
+    [description]="description"
+    [link]="link"
+    [tags]="tags"
+    [menuIds]="menuIds"
+    [mealIds]="mealIds"
+    [usages]="usages"
+  ></ui-dish-summary>
+  <div *ngIf="entryModels.length" class="schedule">
+    <core-checkbox
+      *ngFor="let model of entryModels; trackBy: trackByFn"
+      class="checkbox"
+      [ngModel]="model.checked"
+      (ngModelChange)="dayChange.emit({ id, day: model.day, selected: $event })"
+    >
+      {{ model.day | slice : 0 : 3 }}
+    </core-checkbox>
+  </div>
+</ui-card>

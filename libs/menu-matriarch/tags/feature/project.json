@@ -1,0 +1,27 @@
+{
+  "name": "menu-matriarch-tags-feature",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/menu-matriarch/tags/feature/src",
+  "prefix": "app",
+  "targets": {
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/libs/menu-matriarch/tags/feature"],
+      "options": {
+        "jestConfig": "libs/menu-matriarch/tags/feature/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/menu-matriarch/tags/feature/**/*.ts",
+          "libs/menu-matriarch/tags/feature/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": ["scope:menu-matriarch", "type:feature"]
+}

@@ -1,0 +1,20 @@
+<app-dishes-list class="list">
+  <app-dish-card
+    *appDishDef="let dish; let activeDish = activeDish"
+    [id]="dish.id"
+    [name]="dish.name"
+    [description]="dish.description"
+    [link]="dish.link"
+    [type]="dish.type"
+    [favorited]="dish.favorited"
+    [tags]="dish.tags"
+    [menuIds]="dish.menuIds"
+    [mealIds]="dish.mealIds"
+    [usages]="dish.usages"
+    [active]="activeDish === dish"
+  ></app-dish-card>
+</app-dishes-list>
+
+<section class="details">
+  <router-outlet></router-outlet>
+</section>

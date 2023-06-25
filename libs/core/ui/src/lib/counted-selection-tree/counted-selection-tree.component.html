@@ -7,7 +7,8 @@
   (ngModelChange)="onChange($event)"
 ></core-selection-tree>
 
-<ng-template #checkboxTemplate
+<ng-template
+  #checkboxTemplate
   let-node
   let-level="level"
   let-checked="checked"
@@ -35,9 +36,5 @@
   let-total="total"
 >
   {{ getId(node) }}
-  ({{
-    getChildren(node).length
-      ? selected + ' / ' + total
-      : total
-  }})
+  ({{ getChildren(node).length ? selected + ' / ' + total : total }})
 </ng-template>

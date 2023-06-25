@@ -1,7 +1,8 @@
 <div>
   <ng-content></ng-content>
 </div>
-<fa-icon class="favorite"
+<fa-icon
+  class="favorite"
   [icon]="favorite ? favoriteIcon : notFavoriteIcon"
   (click)="favoriteChange.emit(!favorite)"
 ></fa-icon>

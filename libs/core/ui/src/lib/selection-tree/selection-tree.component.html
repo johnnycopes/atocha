@@ -1,15 +1,12 @@
-<core-tree *ngIf="tree"
+<core-tree
+  *ngIf="tree"
   [tree]="tree"
   [getId]="getId"
   [getChildren]="getChildren"
   [template]="checkboxTemplate"
 ></core-tree>
 
-<ng-template
-  #checkboxTemplate
-  let-node
-  let-level="level"
->
+<ng-template #checkboxTemplate let-node let-level="level">
   <ng-container
     [ngTemplateOutlet]="template ? template : defaultTemplate"
     [ngTemplateOutletContext]="{

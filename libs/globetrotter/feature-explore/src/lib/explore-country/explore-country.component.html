@@ -8,13 +8,11 @@
         {{ country.capital }}
       </h2>
     </div>
-    <img class="flag"
-      [src]="country.flag"
-      alt="Flag of {{country.name}}"
-    />
+    <img class="flag" [src]="country.flag" alt="Flag of {{ country.name }}" />
   </div>
   <div class="table">
-    <ui-small-caps *ngFor="let tableDatum of tableData; trackBy: tableDataTrackByFn"
+    <ui-small-caps
+      *ngFor="let tableDatum of tableData; trackBy: tableDataTrackByFn"
       class="table-header"
       [header]="tableDatum.header"
       [template]="tableDatum?.template"
@@ -22,24 +20,30 @@
       {{ tableDatum?.content }}
     </ui-small-caps>
   </div>
-  <p *ngIf="summary"
-    class="summary"
-  >
+  <p *ngIf="summary" class="summary">
     {{ summary }}
   </p>
 
-
-
   <ng-template #language>
-    <ng-container *ngTemplateOutlet="list; context: {
-      items: country.languages
-    }"></ng-container>
+    <ng-container
+      *ngTemplateOutlet="
+        list;
+        context: {
+          items: country.languages
+        }
+      "
+    ></ng-container>
   </ng-template>
 
   <ng-template #currency>
-    <ng-container *ngTemplateOutlet="list; context: {
-      items: country.currencies
-    }"></ng-container>
+    <ng-container
+      *ngTemplateOutlet="
+        list;
+        context: {
+          items: country.currencies
+        }
+      "
+    ></ng-container>
   </ng-template>
 
   <ng-template #population>
@@ -47,27 +51,27 @@
   </ng-template>
 
   <ng-template #size>
+    <div>{{ country.area | number }} km<sup>2</sup></div>
     <div>
-      {{ country.area | number }} km<sup>2</sup>
-    </div>
-    <div>
-      {{ country.area | coreMeasurement: 'sqKm' : 'sqMi' | number: '0.0-0' }} mi<sup>2</sup>
+      {{ country.area | coreMeasurement : 'sqKm' : 'sqMi' | number : '0.0-0' }}
+      mi<sup>2</sup>
     </div>
   </ng-template>
 
-  <ng-template #list
-    let-items="items"
-  >
+  <ng-template #list let-items="items">
     <span *ngFor="let item of items; last as last; trackBy: itemTrackByFn">
       {{ item }}{{ !last ? ',' : '' }}
     </span>
   </ng-template>
 
   <ng-template #callingCodes>
-    <ng-container *ngTemplateOutlet="list; context: {
-      items: country.callingCodes
-    }"
+    <ng-container
+      *ngTemplateOutlet="
+        list;
+        context: {
+          items: country.callingCodes
+        }
+      "
     ></ng-container>
   </ng-template>
 </ng-container>
-

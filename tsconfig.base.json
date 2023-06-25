@@ -38,43 +38,69 @@
       ],
       "@atocha/lorenzo/ui": ["libs/lorenzo/ui/src/index.ts"],
       "@atocha/lorenzo/util": ["libs/lorenzo/util/src/index.ts"],
-      "@atocha/menu-matriarch/data-access": [
-        "libs/menu-matriarch/data-access/src/index.ts"
+      "@atocha/menu-matriarch/dishes/data-access": [
+        "libs/menu-matriarch/dishes/data-access/src/index.ts"
       ],
-      "@atocha/menu-matriarch/feature-dishes": [
-        "libs/menu-matriarch/feature-dishes/src/index.ts"
+      "@atocha/menu-matriarch/dishes/feature": [
+        "libs/menu-matriarch/dishes/feature/src/index.ts"
       ],
-      "@atocha/menu-matriarch/feature-entities": [
-        "libs/menu-matriarch/feature-entities/src/index.ts"
+      "@atocha/menu-matriarch/ingredients/data-access": [
+        "libs/menu-matriarch/ingredients/data-access/src/index.ts"
       ],
-      "@atocha/menu-matriarch/feature-ingredients": [
-        "libs/menu-matriarch/feature-ingredients/src/index.ts"
+      "@atocha/menu-matriarch/ingredients/feature": [
+        "libs/menu-matriarch/ingredients/feature/src/index.ts"
       ],
-      "@atocha/menu-matriarch/feature-meals": [
-        "libs/menu-matriarch/feature-meals/src/index.ts"
+      "@atocha/menu-matriarch/meals/data-access": [
+        "libs/menu-matriarch/meals/data-access/src/index.ts"
       ],
-      "@atocha/menu-matriarch/feature-menus": [
-        "libs/menu-matriarch/feature-menus/src/index.ts"
+      "@atocha/menu-matriarch/meals/feature": [
+        "libs/menu-matriarch/meals/feature/src/index.ts"
       ],
-      "@atocha/menu-matriarch/feature-planner": [
-        "libs/menu-matriarch/feature-planner/src/index.ts"
+      "@atocha/menu-matriarch/menus/data-access": [
+        "libs/menu-matriarch/menus/data-access/src/index.ts"
       ],
-      "@atocha/menu-matriarch/feature-settings": [
-        "libs/menu-matriarch/feature-settings/src/index.ts"
+      "@atocha/menu-matriarch/menus/feature": [
+        "libs/menu-matriarch/menus/feature/src/index.ts"
       ],
-      "@atocha/menu-matriarch/feature-shell": [
-        "libs/menu-matriarch/feature-shell/src/index.ts"
+      "@atocha/menu-matriarch/planner/data-access": [
+        "libs/menu-matriarch/planner/data-access/src/index.ts"
       ],
-      "@atocha/menu-matriarch/feature-tags": [
-        "libs/menu-matriarch/feature-tags/src/index.ts"
+      "@atocha/menu-matriarch/planner/feature": [
+        "libs/menu-matriarch/planner/feature/src/index.ts"
       ],
-      "@atocha/menu-matriarch/ui-domain": [
-        "libs/menu-matriarch/ui-domain/src/index.ts"
+      "@atocha/menu-matriarch/settings/data-access": [
+        "libs/menu-matriarch/settings/data-access/src/index.ts"
       ],
-      "@atocha/menu-matriarch/ui-generic": [
-        "libs/menu-matriarch/ui-generic/src/index.ts"
+      "@atocha/menu-matriarch/settings/feature": [
+        "libs/menu-matriarch/settings/feature/src/index.ts"
       ],
-      "@atocha/menu-matriarch/util": ["libs/menu-matriarch/util/src/index.ts"],
+      "@atocha/menu-matriarch/shared/data-access": [
+        "libs/menu-matriarch/shared/data-access/src/index.ts"
+      ],
+      "@atocha/menu-matriarch/shared/feature": [
+        "libs/menu-matriarch/shared/feature/src/index.ts"
+      ],
+      "@atocha/menu-matriarch/shared/ui-domain": [
+        "libs/menu-matriarch/shared/ui-domain/src/index.ts"
+      ],
+      "@atocha/menu-matriarch/shared/ui-generic": [
+        "libs/menu-matriarch/shared/ui-generic/src/index.ts"
+      ],
+      "@atocha/menu-matriarch/shared/util": [
+        "libs/menu-matriarch/shared/util/src/index.ts"
+      ],
+      "@atocha/menu-matriarch/shell/data-access": [
+        "libs/menu-matriarch/shell/data-access/src/index.ts"
+      ],
+      "@atocha/menu-matriarch/shell/feature": [
+        "libs/menu-matriarch/shell/feature/src/index.ts"
+      ],
+      "@atocha/menu-matriarch/tags/data-access": [
+        "libs/menu-matriarch/tags/data-access/src/index.ts"
+      ],
+      "@atocha/menu-matriarch/tags/feature": [
+        "libs/menu-matriarch/tags/feature/src/index.ts"
+      ],
       "@atocha/spirit-islander/data-access": [
         "libs/spirit-islander/data-access/src/index.ts"
       ],

@@ -13,7 +13,8 @@
           No Expansions
         </li>
         <ng-template #expansionsTemplate>
-          <li *ngFor="let expansion of setup.expansions; trackBy: trackByFn"
+          <li
+            *ngFor="let expansion of setup.expansions; trackBy: trackByFn"
             class="datum"
           >
             {{ expansion }}
@@ -23,23 +24,15 @@
     </ui-card>
 
     <ui-card name="players">
-      <h3 ui-card-header>
-        Players
-      </h3>
-      <p ui-card-content
-        class="datum"
-      >
+      <h3 ui-card-header>Players</h3>
+      <p ui-card-content class="datum">
         {{ setup.players }}
       </p>
     </ui-card>
 
     <ui-card name="difficulty">
-      <h3 ui-card-header>
-        Difficulty
-      </h3>
-      <p ui-card-content
-        class="datum"
-      >
+      <h3 ui-card-header>Difficulty</h3>
+      <p ui-card-content class="datum">
         {{ setup.difficulty }}
       </p>
     </ui-card>
@@ -51,7 +44,12 @@
         {{ setup.players | corePlural : 'Spirit' }}
       </h3>
       <ul ui-card-content>
-        <li *ngFor="let spirit of setup.spirits; index as index; trackBy: trackByFn"
+        <li
+          *ngFor="
+            let spirit of setup.spirits;
+            index as index;
+            trackBy: trackByFn
+          "
           class="datum"
         >
           <ui-board-emblem
@@ -62,19 +60,16 @@
           {{ spirit.name }}
           <ui-expansion-emblem
             *ngIf="spirit.expansion"
-            [value]="spirit.expansion">
+            [value]="spirit.expansion"
+          >
           </ui-expansion-emblem>
         </li>
       </ul>
     </ui-card>
 
     <ui-card name="map">
-      <h3 ui-card-header>
-        Map
-      </h3>
-      <p ui-card-content
-        class="datum"
-      >
+      <h3 ui-card-header>Map</h3>
+      <p ui-card-content class="datum">
         {{ setup.map.name }}
         <ui-difficulty-emblem
           *ngIf="mapDifficulty"
@@ -84,12 +79,8 @@
     </ui-card>
 
     <ui-card name="scenario">
-      <h3 ui-card-header>
-        Scenario
-      </h3>
-      <p ui-card-content
-        class="datum"
-      >
+      <h3 ui-card-header>Scenario</h3>
+      <p ui-card-content class="datum">
         {{ setup.scenario.name }}
         <ui-difficulty-emblem
           *ngIf="scenarioDifficulty"
@@ -97,24 +88,22 @@
         ></ui-difficulty-emblem>
         <ui-expansion-emblem
           *ngIf="setup.scenario.expansion"
-          [value]="setup.scenario.expansion">
+          [value]="setup.scenario.expansion"
+        >
         </ui-expansion-emblem>
       </p>
     </ui-card>
 
     <ui-card name="adversary">
-      <h3 ui-card-header>
-        Adversary
-      </h3>
-      <p ui-card-content
-        class="datum"
-      >
+      <h3 ui-card-header>Adversary</h3>
+      <p ui-card-content class="datum">
         {{ adversaryName }}
         <ng-container *ngIf="adversaryName !== 'No Adversary'">
           {{ setup.adversaryLevel.name }}
           <ui-difficulty-emblem
             *ngIf="adversaryDifficulty"
-            [value]="adversaryDifficulty">
+            [value]="adversaryDifficulty"
+          >
           </ui-difficulty-emblem>
         </ng-container>
       </p>
@@ -122,15 +111,7 @@
   </ui-card-group>
 
   <div ui-page-actions>
-    <button core-button
-      (click)="edit.emit()"
-    >
-      Edit
-    </button>
-    <button core-button
-      (click)="regenerate.emit()"
-    >
-      Regenerate
-    </button>
+    <button core-button (click)="edit.emit()">Edit</button>
+    <button core-button (click)="regenerate.emit()">Regenerate</button>
   </div>
 </ng-container>

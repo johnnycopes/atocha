@@ -1,0 +1,27 @@
+{
+  "name": "menu-matriarch-menus-feature",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/menu-matriarch/menus/feature/src",
+  "prefix": "app",
+  "targets": {
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/libs/menu-matriarch/menus/feature"],
+      "options": {
+        "jestConfig": "libs/menu-matriarch/menus/feature/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/menu-matriarch/menus/feature/**/*.ts",
+          "libs/menu-matriarch/menus/feature/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": ["scope:menu-matriarch", "type:feature"]
+}
