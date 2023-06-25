@@ -1,12 +1,12 @@
 <div class="menu min">
-  <label for="min-{{ label }}">
-    Min
-  </label>
-  <select id="min-{{ label }}"
+  <label for="min-{{ label }}"> Min </label>
+  <select
+    id="min-{{ label }}"
     [ngModel]="range[0]"
     (ngModelChange)="onMinChange($event)"
   >
-    <option *ngFor="let option of options; trackBy: trackByFn"
+    <option
+      *ngFor="let option of options; trackBy: trackByFn"
       [ngValue]="option"
     >
       {{ option }}
@@ -15,14 +15,14 @@
 </div>
 
 <div class="menu max">
-  <label for="max-{{ label }}">
-    Max
-  </label>
-  <select id="max-{{ label }}"
+  <label for="max-{{ label }}"> Max </label>
+  <select
+    id="max-{{ label }}"
     [ngModel]="range[1]"
     (ngModelChange)="onMaxChange($event)"
   >
-    <option *ngFor="let option of options; trackBy: trackByFn"
+    <option
+      *ngFor="let option of options; trackBy: trackByFn"
       [ngValue]="option"
     >
       {{ option }}

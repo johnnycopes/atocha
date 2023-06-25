@@ -5,19 +5,11 @@
         {{ name }}
       </h3>
     </a>
-    <p *ngIf="description"
-      class="description"
-    >
+    <p *ngIf="description" class="description">
       {{ description }}
     </p>
-    <ui-tags-list *ngIf="tags.length"
-      class="tags"
-      [tags]="tags"
-    >
-      <ui-tag *uiTagDef="let tag"
-        [id]="tag.id"
-        [name]="tag.name"
-      ></ui-tag>
+    <ui-tags-list *ngIf="tags.length" class="tags" [tags]="tags">
+      <ui-tag *uiTagDef="let tag" [id]="tag.id" [name]="tag.name"></ui-tag>
     </ui-tags-list>
   </div>
   <ui-meal-summary

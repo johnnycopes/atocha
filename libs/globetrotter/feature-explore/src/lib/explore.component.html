@@ -1,6 +1,4 @@
-<div @fadeIn
-  *ngIf="vm$ | async as vm"
->
+<div @fadeIn *ngIf="vm$ | async as vm">
   <ui-list-details
     [items]="vm.filteredCountries"
     [listItemTemplate]="listItemTemplate"
@@ -13,9 +11,7 @@
     (searchTermChange)="onSearch($event)"
   ></ui-list-details>
 
-  <ng-template #listItemTemplate
-    let-country
-  >
+  <ng-template #listItemTemplate let-country>
     <div class="list-item">
       <h3>
         {{ country.name }}
@@ -23,9 +19,7 @@
     </div>
   </ng-template>
 
-  <ng-template #detailsTemplate
-    let-country
-  >
+  <ng-template #detailsTemplate let-country>
     <app-explore-country
       [country]="country"
       [summary]="vm.summary"

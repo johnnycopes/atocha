@@ -1,5 +1,6 @@
 <app-dishes-list (nameDblClick)="nameDblClick.emit()">
-  <app-planner-dish *appDishDef="let dish"
+  <app-planner-dish
+    *appDishDef="let dish"
     [id]="dish.id"
     [type]="dish.type"
     [name]="dish.name"

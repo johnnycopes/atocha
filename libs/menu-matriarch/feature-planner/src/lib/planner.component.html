@@ -1,20 +1,20 @@
 <ng-container *ngIf="menu$ | async as menu">
   <ng-container *ngIf="menu !== 'INVALID'; else invalidMenuTemplate">
     <ng-container *ngIf="view$ | async as view">
-      <app-planner-dishes class="left"
+      <app-planner-dishes
+        class="left"
         *ngIf="view === 'dishes'"
         [menu]="menu"
         (nameDblClick)="updateView('meals')"
       ></app-planner-dishes>
-      <app-planner-meals class="left"
+      <app-planner-meals
+        class="left"
         *ngIf="view === 'meals'"
         [menu]="menu"
         (nameDblClick)="updateView('dishes')"
       ></app-planner-meals>
     </ng-container>
-    <app-planner-menu class="right"
-      [menu]="menu"
-    ></app-planner-menu>
+    <app-planner-menu class="right" [menu]="menu"></app-planner-menu>
   </ng-container>
 
   <ng-template #invalidMenuTemplate>
@@ -22,11 +22,7 @@
       headerText="Invalid Menu"
       messageText="Please select a different menu to view the planner."
     >
-      <a core-button
-        routerLink="/menus"
-      >
-        Go To Menus
-      </a>
+      <a core-button routerLink="/menus"> Go To Menus </a>
     </ui-empty-view-placeholder>
   </ng-template>
 </ng-container>

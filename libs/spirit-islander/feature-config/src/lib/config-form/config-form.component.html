@@ -1,13 +1,11 @@
-<form *ngIf="config"
+<form
+  *ngIf="config"
   class="config"
   ui-page-content
   [formGroup]="form"
   (ngSubmit)="onSubmit()"
 >
-  <ui-card-group
-    name="You"
-    description="What are you playing with?"
-  >
+  <ui-card-group name="You" description="What are you playing with?">
     <ui-card name="expansions">
       <app-checkbox-tree
         [tree]="expansionsTree"
@@ -17,24 +15,14 @@
       ></app-checkbox-tree>
     </ui-card>
 
-    <ui-card name="players"
-      [error]="form.playersError"
-    >
-      <h3 ui-card-header>
-        Players
-      </h3>
-      <app-select-players [form]="form">
-      </app-select-players>
+    <ui-card name="players" [error]="form.playersError">
+      <h3 ui-card-header>Players</h3>
+      <app-select-players [form]="form"> </app-select-players>
     </ui-card>
 
-    <ui-card name="difficulty"
-      [error]="form.difficultyError"
-    >
-      <h3 ui-card-header>
-        Difficulty
-      </h3>
-      <app-select-difficulty-range [form]="form">
-      </app-select-difficulty-range>
+    <ui-card name="difficulty" [error]="form.difficultyError">
+      <h3 ui-card-header>Difficulty</h3>
+      <app-select-difficulty-range [form]="form"> </app-select-difficulty-range>
     </ui-card>
   </ui-card-group>
 
@@ -42,9 +30,7 @@
     name="The Game"
     description="What are you open to playing with?"
   >
-    <ui-card name="spirits"
-      [error]="form.spiritsError"
-    >
+    <ui-card name="spirits" [error]="form.spiritsError">
       <app-checkbox-tree
         [tree]="spiritsTree"
         [form]="form"
@@ -52,9 +38,7 @@
       ></app-checkbox-tree>
     </ui-card>
 
-    <ui-card name="maps"
-      [error]="form.mapsError"
-    >
+    <ui-card name="maps" [error]="form.mapsError">
       <app-checkbox-tree
         [tree]="mapsTree"
         [form]="form"
@@ -62,9 +46,7 @@
       ></app-checkbox-tree>
     </ui-card>
 
-    <ui-card name="boards"
-      [error]="form.boardsError"
-    >
+    <ui-card name="boards" [error]="form.boardsError">
       <app-checkbox-tree
         [tree]="boardsTree"
         [form]="form"
@@ -72,9 +54,7 @@
       ></app-checkbox-tree>
     </ui-card>
 
-    <ui-card name="scenarios"
-      [error]="form.scenariosError"
-    >
+    <ui-card name="scenarios" [error]="form.scenariosError">
       <app-checkbox-tree
         [tree]="scenariosTree"
         [form]="form"
@@ -82,9 +62,7 @@
       ></app-checkbox-tree>
     </ui-card>
 
-    <ui-card name="adversaries"
-      [error]="form.adversariesError"
-    >
+    <ui-card name="adversaries" [error]="form.adversariesError">
       <app-checkbox-tree
         [tree]="adversariesTree"
         [form]="form"
@@ -94,10 +72,6 @@
   </ui-card-group>
 
   <div ui-page-actions>
-    <button core-button
-      [disabled]="!form.valid"
-    >
-      Generate
-    </button>
+    <button core-button [disabled]="!form.valid">Generate</button>
   </div>
 </form>
