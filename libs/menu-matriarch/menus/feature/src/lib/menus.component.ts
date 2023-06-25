@@ -8,9 +8,9 @@ import {
   MenuService,
   PrintService,
 } from '@atocha/menu-matriarch/menus/data-access';
-import { Day, Menu } from '@atocha/menu-matriarch/shared/util';
 import { InlineNameEditComponent } from '@atocha/menu-matriarch/shared/ui-domain';
 import { SectionComponent } from '@atocha/menu-matriarch/shared/ui-generic';
+import { Day, Menu } from '@atocha/menu-matriarch/shared/util';
 import { MenuCardComponent } from './menu-card/menu-card.component';
 
 @Component({

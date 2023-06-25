@@ -6,11 +6,11 @@ import {
   Output,
 } from '@angular/core';
 
+import { MenuService } from '@atocha/menu-matriarch/menus/data-access';
 import {
   DishDefDirective,
   DishesListComponent,
 } from '@atocha/menu-matriarch/shared/feature';
-import { MenuService } from '@atocha/menu-matriarch/menus/data-access';
 import { Day, Menu } from '@atocha/menu-matriarch/shared/util';
 import { PlannerDishComponent } from './planner-dish/planner-dish.component';
 

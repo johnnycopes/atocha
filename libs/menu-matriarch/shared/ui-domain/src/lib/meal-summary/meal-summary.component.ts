@@ -2,13 +2,13 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
+import { SmallCapsLabelComponent } from '@atocha/menu-matriarch/shared/ui-generic';
 import {
   Dish,
   FilteredDishesGroup,
   Orientation,
   getDishTypes,
 } from '@atocha/menu-matriarch/shared/util';
-import { SmallCapsLabelComponent } from '@atocha/menu-matriarch/shared/ui-generic';
 import { dishTrackByFn, groupTrackByFn } from '../track-by-functions';
 
 @Component({

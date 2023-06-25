@@ -3,14 +3,14 @@ import { combineLatest, Observable, of } from 'rxjs';
 import { concatMap, first, map } from 'rxjs/operators';
 
 import { AuthService } from '@atocha/core/data-access';
-import { Meal } from '@atocha/menu-matriarch/shared/util';
-import { EditableMealData, MealDataService } from './meal-data.service';
 import { DishService } from '@atocha/menu-matriarch/dishes/data-access';
 import {
   mapMealDtoToMeal,
   RouterService,
 } from '@atocha/menu-matriarch/shared/data-access';
+import { Meal } from '@atocha/menu-matriarch/shared/util';
 import { TagService } from '@atocha/menu-matriarch/tags/data-access';
+import { EditableMealData, MealDataService } from './meal-data.service';
 
 export type MealData = EditableMealData;
 

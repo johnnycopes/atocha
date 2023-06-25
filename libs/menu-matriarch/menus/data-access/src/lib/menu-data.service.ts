@@ -4,13 +4,13 @@ import { map } from 'rxjs/operators';
 
 import { DataService } from '@atocha/core/data-access';
 import { flattenValues, lower, sort } from '@atocha/core/util';
-import { Day, Menu } from '@atocha/menu-matriarch/shared/util';
 import {
   BatchService,
   Endpoint,
   MenuDto,
   createMenuDto,
 } from '@atocha/menu-matriarch/shared/data-access';
+import { Day, Menu } from '@atocha/menu-matriarch/shared/util';
 
 export type EditableMenuData = Partial<Pick<MenuDto, 'name' | 'startDay'>>;
 
