@@ -3,14 +3,14 @@ import { Routes } from '@angular/router';
 import {
   AuthGuard,
   LoggedInAuthGuard,
-  PlannerGuard,
-} from '@atocha/menu-matriarch/data-access';
+} from '@atocha/menu-matriarch/shell/data-access';
+import { PlannerGuard } from '@atocha/menu-matriarch/planner/data-access';
+import { Route } from '@atocha/menu-matriarch/shared/data-access';
 import {
   WelcomeComponent,
   PageNotFoundComponent,
   ShellComponent,
-} from '@atocha/menu-matriarch/feature-shell';
-import { Route } from '@atocha/menu-matriarch/util';
+} from '@atocha/menu-matriarch/shell/feature';
 
 export const APP_ROUTES: Routes = [
   {
@@ -30,7 +30,7 @@ export const APP_ROUTES: Routes = [
         title: 'Menu Matriarch | Planner',
         data: { state: Route.planner },
         loadComponent: () =>
-          import('@atocha/menu-matriarch/feature-planner').then(
+          import('@atocha/menu-matriarch/planner/feature').then(
             (m) => m.PlannerComponent
           ),
       },
@@ -40,7 +40,7 @@ export const APP_ROUTES: Routes = [
         data: { state: Route.planner },
         canActivate: [PlannerGuard],
         loadComponent: () =>
-          import('@atocha/menu-matriarch/feature-planner').then(
+          import('@atocha/menu-matriarch/planner/feature').then(
             (m) => m.PlannerComponent
           ),
       },
@@ -49,7 +49,7 @@ export const APP_ROUTES: Routes = [
         title: 'Menu Matriarch | Menus',
         data: { state: Route.menus },
         loadComponent: () =>
-          import('@atocha/menu-matriarch/feature-menus').then(
+          import('@atocha/menu-matriarch/menus/feature').then(
             (m) => m.MenusComponent
           ),
       },
@@ -58,7 +58,7 @@ export const APP_ROUTES: Routes = [
         title: 'Menu Matriarch | Meals',
         data: { state: Route.meals },
         loadChildren: () =>
-          import('@atocha/menu-matriarch/feature-meals').then(
+          import('@atocha/menu-matriarch/meals/feature').then(
             (m) => m.MEALS_ROUTES
           ),
       },
@@ -67,7 +67,7 @@ export const APP_ROUTES: Routes = [
         title: 'Menu Matriarch | Dishes',
         data: { state: Route.dishes },
         loadChildren: () =>
-          import('@atocha/menu-matriarch/feature-dishes').then(
+          import('@atocha/menu-matriarch/dishes/feature').then(
             (m) => m.DISHES_ROUTES
           ),
       },
@@ -76,7 +76,7 @@ export const APP_ROUTES: Routes = [
         title: 'Menu Matriarch | Ingredients',
         data: { state: Route.ingredients },
         loadComponent: () =>
-          import('@atocha/menu-matriarch/feature-ingredients').then(
+          import('@atocha/menu-matriarch/ingredients/feature').then(
             (m) => m.IngredientsComponent
           ),
       },
@@ -85,7 +85,7 @@ export const APP_ROUTES: Routes = [
         title: 'Menu Matriarch | Tags',
         data: { state: Route.tags },
         loadComponent: () =>
-          import('@atocha/menu-matriarch/feature-tags').then(
+          import('@atocha/menu-matriarch/tags/feature').then(
             (m) => m.TagsComponent
           ),
       },
@@ -94,7 +94,7 @@ export const APP_ROUTES: Routes = [
         title: 'Menu Matriarch | Settings',
         data: { state: Route.settings },
         loadComponent: () =>
-          import('@atocha/menu-matriarch/feature-settings').then(
+          import('@atocha/menu-matriarch/settings/feature').then(
             (m) => m.SettingsComponent
           ),
       },
