@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { RouterService } from '@atocha/menu-matriarch/shared/data-access';
+import { RouterService } from './router.service';
 
 @Injectable({
   providedIn: 'root',
