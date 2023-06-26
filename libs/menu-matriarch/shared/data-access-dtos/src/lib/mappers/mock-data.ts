@@ -1,9 +1,9 @@
-import { createDishDto } from './dish-dto';
-import { createIngredientDto } from './ingredient-dto';
-import { createIngredientTypeDto } from './ingredient-type-dto';
-import { createMealDto } from './meal-dto';
-import { createMenuDto } from './menu-dto';
-import { createTagDto } from './tag-dto';
+import { createDishDto } from '../dish-dto';
+import { createIngredientDto } from '../ingredient-dto';
+import { createIngredientTypeDto } from '../ingredient-type-dto';
+import { createMealDto } from '../meal-dto';
+import { createMenuDto } from '../menu-dto';
+import { createTagDto } from '../tag-dto';
 
 export const MENU_DTO = createMenuDto({
   id: 'menu-1',
