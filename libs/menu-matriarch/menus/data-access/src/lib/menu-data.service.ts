@@ -8,10 +8,12 @@ import {
   BatchService,
   DishUpdateService,
   Endpoint,
-  MenuDto,
   MenuUpdateService,
+} from '@atocha/menu-matriarch/shared/data-access-api';
+import {
+  MenuDto,
   createMenuDto,
-} from '@atocha/menu-matriarch/shared/data-access';
+} from '@atocha/menu-matriarch/shared/data-access-dtos';
 import { Day, Menu } from '@atocha/menu-matriarch/shared/util';
 
 export type EditableMenuData = Partial<Pick<MenuDto, 'name' | 'startDay'>>;

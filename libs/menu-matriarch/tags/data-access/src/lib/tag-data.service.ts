@@ -9,9 +9,11 @@ import {
   DishUpdateService,
   Endpoint,
   MealUpdateService,
+} from '@atocha/menu-matriarch/shared/data-access-api';
+import {
   TagDto,
   createTagDto,
-} from '@atocha/menu-matriarch/shared/data-access';
+} from '@atocha/menu-matriarch/shared/data-access-dtos';
 import { Tag } from '@atocha/menu-matriarch/shared/util';
 
 export type EditableTagData = Pick<TagDto, 'name'>;

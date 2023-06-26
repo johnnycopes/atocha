@@ -4,6 +4,8 @@ import { DataService } from '@atocha/core/data-access';
 import {
   BatchService,
   Endpoint,
+} from '@atocha/menu-matriarch/shared/data-access-api';
+import {
   createDishDto,
   createIngredientDto,
   createIngredientTypeDto,
@@ -11,7 +13,7 @@ import {
   createMenuDto,
   createTagDto,
   createUserDto,
-} from '@atocha/menu-matriarch/shared/data-access';
+} from '@atocha/menu-matriarch/shared/data-access-dtos';
 
 @Injectable({
   providedIn: 'root',

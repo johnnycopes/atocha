@@ -7,7 +7,7 @@ import { MenuService } from '@atocha/menu-matriarch/menus/data-access';
 import {
   LocalStorageKey,
   Route,
-} from '@atocha/menu-matriarch/shared/data-access';
+} from '@atocha/menu-matriarch/shared/data-access-routing';
 import { PlannerView } from '@atocha/menu-matriarch/shared/util';
 
 @Injectable({
