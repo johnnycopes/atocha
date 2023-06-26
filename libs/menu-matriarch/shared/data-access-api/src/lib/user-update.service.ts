@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BatchUpdate } from '@atocha/core/data-access';
 
-import { ApiService } from './api.service';
+import { ApiService } from './batch.service';
 import { Endpoint } from './endpoint.enum';
 
 @Injectable({

@@ -1,7 +1,12 @@
 import { DocumentReference } from '@angular/fire/compat/firestore';
 import firebase from 'firebase/compat/app';
 
-import { BatchUpdate } from './batch-update.interface';
+export interface BatchUpdate {
+  endpoint: string;
+  id: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  data: { [key: string]: any };
+}
 
 export class Batch {
   constructor(
