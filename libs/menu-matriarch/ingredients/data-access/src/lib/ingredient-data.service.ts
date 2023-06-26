@@ -6,8 +6,10 @@ import { DataService } from '@atocha/core/data-access';
 import { lower, sort } from '@atocha/core/util';
 import {
   BatchService,
+  DishUpdateService,
   Endpoint,
   IngredientDto,
+  IngredientTypeUpdateService,
   createIngredientDto,
 } from '@atocha/menu-matriarch/shared/data-access';
 import { Ingredient } from '@atocha/menu-matriarch/shared/util';
@@ -25,7 +27,9 @@ export class IngredientDataService {
 
   constructor(
     private _batchService: BatchService,
-    private _dataService: DataService
+    private _dataService: DataService,
+    private _dishUpdateService: DishUpdateService,
+    private _ingredientTypeUpdateService: IngredientTypeUpdateService
   ) {}
 
   getIngredient(id: string): Observable<IngredientDto | undefined> {
@@ -56,7 +60,7 @@ export class IngredientDataService {
         data: createIngredientDto({ id, uid, ...ingredient }),
       })
       .updateMultiple(
-        this._batchService.getIngredientTypeUpdates({
+        this._ingredientTypeUpdateService.getUpdates({
           ingredientId: id,
           typeIdToAddTo: ingredient.typeId,
         })
@@ -80,7 +84,7 @@ export class IngredientDataService {
 
     if (updates.typeId) {
       batch.updateMultiple(
-        this._batchService.getIngredientTypeUpdates({
+        this._ingredientTypeUpdateService.getUpdates({
           ingredientId: ingredient.id,
           typeIdToRemoveFrom: ingredient.typeId,
           typeIdToAddTo: updates.typeId,
@@ -95,11 +99,11 @@ export class IngredientDataService {
     const batch = this._batchService.createBatch();
 
     batch.delete(Endpoint.ingredients, ingredient.id).updateMultiple([
-      ...this._batchService.getIngredientTypeUpdates({
+      ...this._ingredientTypeUpdateService.getUpdates({
         ingredientId: ingredient.id,
         typeIdToRemoveFrom: ingredient.typeId,
       }),
-      ...this._batchService.getDishUpdates({
+      ...this._dishUpdateService.getUpdates({
         key: 'ingredientIds',
         initialDishIds: ingredient.dishIds,
         finalDishIds: [],

@@ -6,8 +6,10 @@ import { DataService } from '@atocha/core/data-access';
 import { flattenValues, lower, sort } from '@atocha/core/util';
 import {
   BatchService,
+  DishUpdateService,
   Endpoint,
   MenuDto,
+  MenuUpdateService,
   createMenuDto,
 } from '@atocha/menu-matriarch/shared/data-access';
 import { Day, Menu } from '@atocha/menu-matriarch/shared/util';
@@ -22,7 +24,9 @@ export class MenuDataService {
 
   constructor(
     private _batchService: BatchService,
-    private _dataService: DataService
+    private _dataService: DataService,
+    private _dishUpdateService: DishUpdateService,
+    private _menuUpdateService: MenuUpdateService
   ) {}
 
   getMenu(id: string): Observable<MenuDto | undefined> {
@@ -69,12 +73,12 @@ export class MenuDataService {
     const batch = this._batchService.createBatch();
 
     batch.updateMultiple([
-      ...this._batchService.getDishCountersUpdates({
+      ...this._dishUpdateService.getCountersUpdates({
         dishIds,
         menu,
         change: selected ? 'increment' : 'decrement',
       }),
-      ...this._batchService.getMenuContentsUpdates({
+      ...this._menuUpdateService.getContentsUpdates({
         menuIds: [menu.id],
         dishIds,
         day,
@@ -89,7 +93,7 @@ export class MenuDataService {
     const batch = this._batchService.createBatch();
 
     batch.delete(this._endpoint, menu.id).updateMultiple(
-      this._batchService.getDishCountersUpdates({
+      this._dishUpdateService.getCountersUpdates({
         dishIds: flattenValues(menu.contents),
         menu,
         change: 'clear',
@@ -105,12 +109,12 @@ export class MenuDataService {
     // Clear a single day's contents
     if (day) {
       batch.updateMultiple([
-        ...this._batchService.getMenuContentsUpdates({
+        ...this._menuUpdateService.getContentsUpdates({
           menuIds: [menu.id],
           dishIds: [],
           day,
         }),
-        ...this._batchService.getDishCountersUpdates({
+        ...this._dishUpdateService.getCountersUpdates({
           dishIds: menu.contents[day],
           menu,
           change: 'decrement',
@@ -120,11 +124,11 @@ export class MenuDataService {
     // Clear all days' contents
     else {
       batch.updateMultiple([
-        ...this._batchService.getMenuContentsUpdates({
+        ...this._menuUpdateService.getContentsUpdates({
           menuIds: [menu.id],
           dishIds: [],
         }),
-        ...this._batchService.getDishCountersUpdates({
+        ...this._dishUpdateService.getCountersUpdates({
           dishIds: flattenValues(menu.contents),
           menu,
           change: 'clear',
