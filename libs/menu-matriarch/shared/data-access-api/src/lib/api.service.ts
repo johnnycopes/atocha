@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { Batch, BatchService, BatchUpdate } from '@atocha/core/data-access';
+import { BatchService, BatchUpdate } from '@atocha/core/data-access';
 import { uniqueDiff } from '@atocha/core/util';
 
 export type KeyToUpdate = 'mealIds' | 'dishIds' | 'ingredientIds' | 'tagIds';
@@ -11,7 +11,7 @@ export type KeyToUpdate = 'mealIds' | 'dishIds' | 'ingredientIds' | 'tagIds';
 export class ApiService {
   constructor(private _batchService: BatchService) {}
 
-  createBatch(): Batch {
+  createBatch() {
     return this._batchService.createBatch();
   }
 

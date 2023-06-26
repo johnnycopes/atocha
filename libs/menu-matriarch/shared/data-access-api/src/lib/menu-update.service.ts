@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BatchUpdate } from '@atocha/core/data-access';
 
 import { Day } from '@atocha/menu-matriarch/shared/util';
-import { ApiService } from './batch.service';
+import { ApiService } from './api.service';
 import { Endpoint } from './endpoint.enum';
 
 @Injectable({
