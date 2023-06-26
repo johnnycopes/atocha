@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { BatchUpdate } from '@atocha/core/data-access';
 
-import { ApiService } from './batch.service';
+import { BatchService } from './batch.service';
 import { Endpoint } from './endpoint.enum';
 
 @Injectable({
   providedIn: 'root',
 })
 export class IngredientUpdateService {
-  constructor(private _batchService: ApiService) {}
+  constructor(private _batchService: BatchService) {}
 
   getUpdates({
     initialIngredientIds,

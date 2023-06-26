@@ -5,7 +5,7 @@ import { map } from 'rxjs/operators';
 import { DataService } from '@atocha/core/data-access';
 import { lower, sort } from '@atocha/core/util';
 import {
-  ApiService,
+  BatchService,
   DishUpdateService,
   Endpoint,
   IngredientTypeUpdateService,
@@ -28,7 +28,7 @@ export class IngredientDataService {
   private _endpoint = Endpoint.ingredients;
 
   constructor(
-    private _batchService: ApiService,
+    private _batchService: BatchService,
     private _dataService: DataService,
     private _dishUpdateService: DishUpdateService,
     private _ingredientTypeUpdateService: IngredientTypeUpdateService

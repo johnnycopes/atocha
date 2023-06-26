@@ -8,7 +8,7 @@ export type KeyToUpdate = 'mealIds' | 'dishIds' | 'ingredientIds' | 'tagIds';
 @Injectable({
   providedIn: 'root',
 })
-export class ApiService {
+export class BatchService {
   constructor(private _firestoreService: FirestoreService) {}
 
   createBatch(): Batch {
