@@ -6,6 +6,7 @@ import {
   BatchService,
   Endpoint,
   IngredientTypeDto,
+  UserUpdateService,
   createIngredientTypeDto,
 } from '@atocha/menu-matriarch/shared/data-access';
 import { IngredientType } from '@atocha/menu-matriarch/shared/util';
@@ -22,7 +23,8 @@ export class IngredientTypeDataService {
 
   constructor(
     private _batchService: BatchService,
-    private _dataService: DataService
+    private _dataService: DataService,
+    private _userUpdateService: UserUpdateService
   ) {}
 
   getIngredientType(id: string): Observable<IngredientTypeDto | undefined> {
@@ -47,7 +49,7 @@ export class IngredientTypeDataService {
         data: createIngredientTypeDto({ id, uid, ...ingredientType }),
       })
       .update(
-        this._batchService.getUserUpdate({
+        this._userUpdateService.getUpdate({
           uid,
           ingredientTypeIdToAdd: id,
         })
@@ -72,7 +74,7 @@ export class IngredientTypeDataService {
     const batch = this._batchService.createBatch();
 
     batch.delete(this._endpoint, ingredientType.id).update(
-      this._batchService.getUserUpdate({
+      this._userUpdateService.getUpdate({
         uid: ingredientType.uid,
         ingredientTypeIdToDelete: ingredientType.id,
       })
