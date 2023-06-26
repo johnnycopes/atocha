@@ -8,10 +8,12 @@ import {
   BatchService,
   DishUpdateService,
   Endpoint,
-  MealDto,
   TagUpdateService,
-  createMealDto,
 } from '@atocha/menu-matriarch/shared/data-access';
+import {
+  MealDto,
+  createMealDto,
+} from '@atocha/menu-matriarch/shared/data-access-dtos';
 import { Meal } from '@atocha/menu-matriarch/shared/util';
 
 export type EditableMealData = Pick<

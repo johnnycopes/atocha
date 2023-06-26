@@ -8,10 +8,12 @@ import {
   BatchService,
   DishUpdateService,
   Endpoint,
-  IngredientDto,
   IngredientTypeUpdateService,
-  createIngredientDto,
 } from '@atocha/menu-matriarch/shared/data-access';
+import {
+  IngredientDto,
+  createIngredientDto,
+} from '@atocha/menu-matriarch/shared/data-access-dtos';
 import { Ingredient } from '@atocha/menu-matriarch/shared/util';
 
 export type EditableIngredientData = Pick<

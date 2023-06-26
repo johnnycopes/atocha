@@ -7,10 +7,12 @@ import { lower, sort } from '@atocha/core/util';
 import {
   BatchService,
   Endpoint,
-  IngredientTypeDto,
   UserUpdateService,
-  createIngredientTypeDto,
 } from '@atocha/menu-matriarch/shared/data-access';
+import {
+  IngredientTypeDto,
+  createIngredientTypeDto,
+} from '@atocha/menu-matriarch/shared/data-access-dtos';
 import { IngredientType } from '@atocha/menu-matriarch/shared/util';
 
 export type EditableIngredientTypeData = Partial<
