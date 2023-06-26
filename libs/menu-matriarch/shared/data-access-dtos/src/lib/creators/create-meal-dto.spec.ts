@@ -1,4 +1,4 @@
-import { createMealDto } from './meal-dto';
+import { createMealDto } from './create-meal-dto';
 
 describe('createMealDto', () => {
   it('creates default meal when no arguments are passed in', () => {

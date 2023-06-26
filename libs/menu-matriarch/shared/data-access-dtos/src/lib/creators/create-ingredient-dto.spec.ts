@@ -1,4 +1,4 @@
-import { createIngredientDto } from './ingredient-dto';
+import { createIngredientDto } from './create-ingredient-dto';
 
 describe('createIngredientDto', () => {
   it('creates default ingredient when no arguments are passed in', () => {

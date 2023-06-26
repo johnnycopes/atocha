@@ -1,4 +1,4 @@
-import { createUserDto } from './user-dto';
+import { createUserDto } from './create-user-dto';
 
 describe('createUserDto', () => {
   it('creates default user when no arguments are passed in', () => {

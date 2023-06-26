@@ -1,4 +1,4 @@
-import { createTagDto } from './tag-dto';
+import { createTagDto } from './create-tag-dto';
 
 describe('createTagDto', () => {
   it('creates default tag when no arguments are passed in', () => {

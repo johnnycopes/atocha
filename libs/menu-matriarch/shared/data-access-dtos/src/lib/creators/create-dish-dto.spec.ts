@@ -1,4 +1,4 @@
-import { createDishDto } from './dish-dto';
+import { createDishDto } from './create-dish-dto';
 
 describe('createDishDto', () => {
   it('creates default dish when no arguments are passed in', () => {

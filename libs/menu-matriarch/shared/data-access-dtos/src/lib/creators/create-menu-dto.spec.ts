@@ -1,4 +1,4 @@
-import { createMenuDto } from './menu-dto';
+import { createMenuDto } from './create-menu-dto';
 
 describe('createMenuDto', () => {
   it('creates default menu when no arguments are passed in', () => {
