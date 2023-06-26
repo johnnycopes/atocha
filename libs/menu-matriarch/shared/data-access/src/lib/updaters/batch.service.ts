@@ -1,13 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { Batch, BatchUpdate, FirestoreService } from '@atocha/core/data-access';
-import {
-  calculateTallyChange,
-  flattenValues,
-  tally,
-  TallyChange,
-  uniqueDiff,
-} from '@atocha/core/util';
+import { uniqueDiff } from '@atocha/core/util';
 
 @Injectable({
   providedIn: 'root',
@@ -39,12 +33,12 @@ export class BatchService {
       ...added.map((id) => ({
         endpoint,
         id,
-        data: { [key]: this._firestoreService.addToArray(entityId) },
+        data: { [key]: this.addToArray(entityId) },
       })),
       ...removed.map((id) => ({
         endpoint,
         id,
-        data: { [key]: this._firestoreService.removeFromArray(entityId) },
+        data: { [key]: this.removeFromArray(entityId) },
       })),
     ];
 
