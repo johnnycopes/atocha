@@ -8,8 +8,6 @@ import { Endpoint } from '../endpoint.enum';
   providedIn: 'root',
 })
 export class MealUpdateService {
-  private readonly _endpoint = Endpoint.meals;
-
   constructor(private _batchService: BatchService) {}
 
   getUpdates({
@@ -24,7 +22,7 @@ export class MealUpdateService {
     entityId: string;
   }): BatchUpdate[] {
     return this._batchService.getBatchUpdates({
-      endpoint: this._endpoint,
+      endpoint: Endpoint.meals,
       key,
       initialIds: initialMealIds,
       finalIds: finalMealIds,

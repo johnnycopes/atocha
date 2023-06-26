@@ -8,8 +8,6 @@ import { Endpoint } from '../endpoint.enum';
   providedIn: 'root',
 })
 export class IngredientTypeUpdateService {
-  private readonly _endpoint = Endpoint.ingredientTypes;
-
   constructor(private _batchService: BatchService) {}
 
   getUpdates({
@@ -21,7 +19,7 @@ export class IngredientTypeUpdateService {
     typeIdToRemoveFrom?: string;
     typeIdToAddTo?: string;
   }): BatchUpdate[] {
-    const endpoint = this._endpoint;
+    const endpoint = Endpoint.ingredientTypes;
     const updates: BatchUpdate[] = [];
 
     if (typeIdToRemoveFrom) {

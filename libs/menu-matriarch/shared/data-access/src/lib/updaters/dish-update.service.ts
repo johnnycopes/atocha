@@ -62,7 +62,7 @@ export class DishUpdateService {
           : this._batchService.removeFromArray(menu.id);
 
       return {
-        endpoint: Endpoint.dishes,
+        endpoint: this._endpoint,
         id: dishId,
         data: {
           usages: this._batchService.changeCounter(

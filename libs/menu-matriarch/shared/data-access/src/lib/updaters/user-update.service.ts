@@ -8,8 +8,6 @@ import { Endpoint } from '../endpoint.enum';
   providedIn: 'root',
 })
 export class UserUpdateService {
-  private readonly _endpoint = Endpoint.users;
-
   constructor(private _batchService: BatchService) {}
 
   getUpdate({
@@ -22,7 +20,7 @@ export class UserUpdateService {
     ingredientTypeIdToDelete?: string;
   }): BatchUpdate {
     return {
-      endpoint: this._endpoint,
+      endpoint: Endpoint.users,
       id: uid,
       data: {
         'preferences.ingredientTypeOrder': ingredientTypeIdToAdd

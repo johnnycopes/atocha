@@ -8,8 +8,6 @@ import { Endpoint } from '../endpoint.enum';
   providedIn: 'root',
 })
 export class TagUpdateService {
-  private readonly _endpoint = Endpoint.tags;
-
   constructor(private _batchService: BatchService) {}
 
   getUpdates({
@@ -24,7 +22,7 @@ export class TagUpdateService {
     entityId: string;
   }): BatchUpdate[] {
     return this._batchService.getBatchUpdates({
-      endpoint: this._endpoint,
+      endpoint: Endpoint.tags,
       key,
       initialIds: initialTagIds,
       finalIds: finalTagIds,

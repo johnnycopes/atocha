@@ -9,8 +9,6 @@ import { Endpoint } from '../endpoint.enum';
   providedIn: 'root',
 })
 export class MenuUpdateService {
-  private readonly _endpoint = Endpoint.menus;
-
   constructor(private _batchService: BatchService) {}
 
   getContentsUpdates({
@@ -38,7 +36,7 @@ export class MenuUpdateService {
     }
 
     return menuIds.map((menuId) => ({
-      endpoint: this._endpoint,
+      endpoint: Endpoint.menus,
       id: menuId,
       data: this._getMenuContentsData(updatedDishIds, day),
     }));
