@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BatchUpdate } from '@atocha/core/data-access';
 
-import { BatchService } from './batch.service';
+import { BatchService, KeyToUpdate } from './batch.service';
 import { Endpoint } from '../endpoint.enum';
 import {
   TallyChange,
@@ -25,7 +25,7 @@ export class DishUpdateService {
     finalDishIds,
     entityId,
   }: {
-    key: 'mealIds' | 'ingredientIds' | 'tagIds';
+    key: Extract<'mealIds' | 'ingredientIds' | 'tagIds', KeyToUpdate>;
     initialDishIds: string[];
     finalDishIds: string[];
     entityId: string;

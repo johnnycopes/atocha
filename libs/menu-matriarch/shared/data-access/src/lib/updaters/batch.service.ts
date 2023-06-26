@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { Batch, BatchUpdate, FirestoreService } from '@atocha/core/data-access';
 import { uniqueDiff } from '@atocha/core/util';
 
+export type KeyToUpdate = 'mealIds' | 'dishIds' | 'ingredientIds' | 'tagIds';
+
 @Injectable({
   providedIn: 'root',
 })
@@ -23,7 +25,7 @@ export class BatchService {
     entityId,
   }: {
     endpoint: string;
-    key: 'mealIds' | 'dishIds' | 'ingredientIds' | 'tagIds';
+    key: KeyToUpdate;
     initialIds: string[];
     finalIds: string[];
     entityId: string;
