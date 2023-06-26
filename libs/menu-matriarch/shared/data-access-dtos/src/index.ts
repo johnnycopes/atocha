@@ -1,10 +1,10 @@
-export * from './lib/dtos/dish-dto';
-export * from './lib/dtos/ingredient-dto';
-export * from './lib/dtos/ingredient-type-dto';
-export * from './lib/dtos/meal-dto';
-export * from './lib/dtos/menu-dto';
-export * from './lib/dtos/tag-dto';
-export * from './lib/dtos/user-dto';
+export * from './lib/dish-dto';
+export * from './lib/ingredient-dto';
+export * from './lib/ingredient-type-dto';
+export * from './lib/meal-dto';
+export * from './lib/menu-dto';
+export * from './lib/tag-dto';
+export * from './lib/user-dto';
 
 export * from './lib/mappers/map-dish-dto-to-dish';
 export * from './lib/mappers/map-ingredient-type-dto-to-ingredient-type';
