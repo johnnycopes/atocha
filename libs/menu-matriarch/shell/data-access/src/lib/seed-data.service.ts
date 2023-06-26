@@ -4,7 +4,7 @@ import { DataService } from '@atocha/core/data-access';
 import {
   BatchService,
   Endpoint,
-} from '@atocha/menu-matriarch/shared/data-access-updaters';
+} from '@atocha/menu-matriarch/shared/data-access-api';
 import {
   createDishDto,
   createIngredientDto,

@@ -11,7 +11,7 @@ import {
   MealUpdateService,
   MenuUpdateService,
   TagUpdateService,
-} from '@atocha/menu-matriarch/shared/data-access-updaters';
+} from '@atocha/menu-matriarch/shared/data-access-api';
 import {
   DishDto,
   createDishDto,

@@ -77,11 +77,11 @@
       "@atocha/menu-matriarch/shared/data-access": [
         "libs/menu-matriarch/shared/data-access/src/index.ts"
       ],
+      "@atocha/menu-matriarch/shared/data-access-api": [
+        "libs/menu-matriarch/shared/data-access-api/src/index.ts"
+      ],
       "@atocha/menu-matriarch/shared/data-access-dtos": [
         "libs/menu-matriarch/shared/data-access-dtos/src/index.ts"
-      ],
-      "@atocha/menu-matriarch/shared/data-access-updaters": [
-        "libs/menu-matriarch/shared/data-access-updaters/src/index.ts"
       ],
       "@atocha/menu-matriarch/shared/feature": [
         "libs/menu-matriarch/shared/feature/src/index.ts"

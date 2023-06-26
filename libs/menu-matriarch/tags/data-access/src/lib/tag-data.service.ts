@@ -9,7 +9,7 @@ import {
   DishUpdateService,
   Endpoint,
   MealUpdateService,
-} from '@atocha/menu-matriarch/shared/data-access-updaters';
+} from '@atocha/menu-matriarch/shared/data-access-api';
 import {
   TagDto,
   createTagDto,

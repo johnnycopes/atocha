@@ -9,7 +9,7 @@ import {
   DishUpdateService,
   Endpoint,
   MenuUpdateService,
-} from '@atocha/menu-matriarch/shared/data-access-updaters';
+} from '@atocha/menu-matriarch/shared/data-access-api';
 import {
   MenuDto,
   createMenuDto,

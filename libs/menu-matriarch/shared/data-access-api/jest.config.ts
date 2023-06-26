@@ -1,10 +1,10 @@
 /* eslint-disable */
 export default {
-  displayName: 'menu-matriarch-shared-data-access-updaters',
+  displayName: 'menu-matriarch-shared-data-access-api',
   preset: '../../../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   coverageDirectory:
-    '../../../../coverage/libs/menu-matriarch/shared/data-access-updaters',
+    '../../../../coverage/libs/menu-matriarch/shared/data-access-api',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': [
       'jest-preset-angular',
