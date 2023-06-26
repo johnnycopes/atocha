@@ -6,7 +6,9 @@ import { DataService } from '@atocha/core/data-access';
 import { lower, sort } from '@atocha/core/util';
 import {
   BatchService,
+  DishUpdateService,
   Endpoint,
+  MealUpdateService,
   TagDto,
   createTagDto,
 } from '@atocha/menu-matriarch/shared/data-access';
@@ -22,7 +24,9 @@ export class TagDataService {
 
   constructor(
     private _batchService: BatchService,
-    private _dataService: DataService
+    private _dataService: DataService,
+    private _dishUpdateService: DishUpdateService,
+    private _mealUpdateService: MealUpdateService
   ) {}
 
   getTag(id: string): Observable<Tag | undefined> {
@@ -55,13 +59,13 @@ export class TagDataService {
     const batch = this._batchService.createBatch();
 
     batch.delete(this._endpoint, tag.id).updateMultiple([
-      ...this._batchService.getMealUpdates({
+      ...this._mealUpdateService.getUpdates({
         key: 'tagIds',
         initialMealIds: tag.mealIds,
         finalMealIds: [],
         entityId: tag.id,
       }),
-      ...this._batchService.getDishUpdates({
+      ...this._dishUpdateService.getUpdates({
         key: 'tagIds',
         initialDishIds: tag.dishIds,
         finalDishIds: [],

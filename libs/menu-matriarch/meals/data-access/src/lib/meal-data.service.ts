@@ -6,8 +6,10 @@ import { DataService } from '@atocha/core/data-access';
 import { lower, sort } from '@atocha/core/util';
 import {
   BatchService,
+  DishUpdateService,
   Endpoint,
   MealDto,
+  TagUpdateService,
   createMealDto,
 } from '@atocha/menu-matriarch/shared/data-access';
 import { Meal } from '@atocha/menu-matriarch/shared/util';
@@ -25,7 +27,9 @@ export class MealDataService {
 
   constructor(
     private _batchService: BatchService,
-    private _dataService: DataService
+    private _dataService: DataService,
+    private _dishUpdateService: DishUpdateService,
+    private _tagUpdateService: TagUpdateService
   ) {}
 
   getMeal(id: string): Observable<MealDto | undefined> {
@@ -49,7 +53,7 @@ export class MealDataService {
     });
     if (meal.dishIds) {
       batch.updateMultiple(
-        this._batchService.getDishUpdates({
+        this._dishUpdateService.getUpdates({
           key: 'mealIds',
           initialDishIds: [],
           finalDishIds: meal.dishIds,
@@ -59,7 +63,7 @@ export class MealDataService {
     }
     if (meal.tagIds) {
       batch.updateMultiple(
-        this._batchService.getTagUpdates({
+        this._tagUpdateService.getUpdates({
           key: 'mealIds',
           initialTagIds: [],
           finalTagIds: meal.tagIds,
@@ -82,7 +86,7 @@ export class MealDataService {
     });
     if (data.dishIds) {
       batch.updateMultiple(
-        this._batchService.getDishUpdates({
+        this._dishUpdateService.getUpdates({
           key: 'mealIds',
           initialDishIds: meal.dishes.map(({ id }) => id),
           finalDishIds: data.dishIds,
@@ -92,7 +96,7 @@ export class MealDataService {
     }
     if (data.tagIds) {
       batch.updateMultiple(
-        this._batchService.getTagUpdates({
+        this._tagUpdateService.getUpdates({
           key: 'mealIds',
           initialTagIds: meal.tags.map(({ id }) => id),
           finalTagIds: data.tagIds,
@@ -108,13 +112,13 @@ export class MealDataService {
     const batch = this._batchService.createBatch();
 
     batch.delete(this._endpoint, meal.id).updateMultiple([
-      ...this._batchService.getDishUpdates({
+      ...this._dishUpdateService.getUpdates({
         key: 'mealIds',
         initialDishIds: meal.dishes.map(({ id }) => id),
         finalDishIds: [],
         entityId: meal.id,
       }),
-      ...this._batchService.getTagUpdates({
+      ...this._tagUpdateService.getUpdates({
         key: 'mealIds',
         initialTagIds: meal.tags.map(({ id }) => id),
         finalTagIds: [],
