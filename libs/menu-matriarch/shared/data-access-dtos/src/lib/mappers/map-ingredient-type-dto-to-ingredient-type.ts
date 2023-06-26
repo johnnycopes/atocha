@@ -1,5 +1,5 @@
 import { Ingredient, IngredientType } from '@atocha/menu-matriarch/shared/util';
-import { IngredientTypeDto } from '../dtos/ingredient-type-dto';
+import { IngredientTypeDto } from '../../../../data-access-dtos/src/lib/dtos/ingredient-type-dto';
 
 export function mapIngredientTypeDtoToIngredientType(
   ingredientTypeDto: IngredientTypeDto,
