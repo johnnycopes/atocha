@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { Batch, BatchUpdate, FirestoreService } from '@atocha/core/data-access';
+import { Batch, BatchService, BatchUpdate } from '@atocha/core/data-access';
 import { uniqueDiff } from '@atocha/core/util';
 
 export type KeyToUpdate = 'mealIds' | 'dishIds' | 'ingredientIds' | 'tagIds';
@@ -9,12 +9,10 @@ export type KeyToUpdate = 'mealIds' | 'dishIds' | 'ingredientIds' | 'tagIds';
   providedIn: 'root',
 })
 export class ApiService {
-  constructor(private _firestoreService: FirestoreService) {}
+  constructor(private _batchService: BatchService) {}
 
   createBatch(): Batch {
-    return new Batch(this._firestoreService.createBatch(), (endpoint, id) =>
-      this._firestoreService.getDocRef(endpoint, id)
-    );
+    return this._batchService.createBatch();
   }
 
   getBatchUpdates({
@@ -48,14 +46,14 @@ export class ApiService {
   }
 
   addToArray(...ids: string[]): string[] {
-    return this._firestoreService.addToArray(...ids);
+    return this._batchService.addToArray(...ids);
   }
 
   removeFromArray(...ids: string[]): string[] {
-    return this._firestoreService.removeFromArray(...ids);
+    return this._batchService.removeFromArray(...ids);
   }
 
   changeCounter(value: number): number {
-    return this._firestoreService.changeCounter(value);
+    return this._batchService.changeCounter(value);
   }
 }
