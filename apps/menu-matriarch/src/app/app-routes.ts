@@ -5,7 +5,7 @@ import {
   LoggedInAuthGuard,
 } from '@atocha/menu-matriarch/shell/data-access';
 import { PlannerGuard } from '@atocha/menu-matriarch/planner/data-access';
-import { Route } from '@atocha/menu-matriarch/shared/data-access';
+import { Route } from '@atocha/menu-matriarch/shared/data-access-routing';
 import {
   WelcomeComponent,
   PageNotFoundComponent,

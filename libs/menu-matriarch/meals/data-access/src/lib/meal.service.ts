@@ -4,7 +4,7 @@ import { concatMap, first, map } from 'rxjs/operators';
 
 import { AuthService } from '@atocha/core/data-access';
 import { DishService } from '@atocha/menu-matriarch/dishes/data-access';
-import { RouterService } from '@atocha/menu-matriarch/shared/data-access';
+import { RouterService } from '@atocha/menu-matriarch/shared/data-access-routing';
 import { mapMealDtoToMeal } from '@atocha/menu-matriarch/shared/data-access-dtos';
 import { Meal } from '@atocha/menu-matriarch/shared/util';
 import { TagService } from '@atocha/menu-matriarch/tags/data-access';
