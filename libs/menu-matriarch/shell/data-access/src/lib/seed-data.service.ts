@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { DataService } from '@atocha/core/data-access';
 import {
-  BatchService,
+  ApiService,
   Endpoint,
 } from '@atocha/menu-matriarch/shared/data-access-api';
 import {
@@ -20,7 +20,7 @@ import {
 })
 export class SeedDataService {
   constructor(
-    private _batchService: BatchService,
+    private _batchService: ApiService,
     private _dataService: DataService
   ) {}
 

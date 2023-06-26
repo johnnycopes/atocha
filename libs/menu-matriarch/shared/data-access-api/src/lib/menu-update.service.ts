@@ -2,14 +2,14 @@ import { Injectable } from '@angular/core';
 import { BatchUpdate } from '@atocha/core/data-access';
 
 import { Day } from '@atocha/menu-matriarch/shared/util';
-import { BatchService } from './batch.service';
+import { ApiService } from './batch.service';
 import { Endpoint } from './endpoint.enum';
 
 @Injectable({
   providedIn: 'root',
 })
 export class MenuUpdateService {
-  constructor(private _batchService: BatchService) {}
+  constructor(private _batchService: ApiService) {}
 
   getContentsUpdates({
     menuIds,

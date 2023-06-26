@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BatchUpdate } from '@atocha/core/data-access';
 
-import { BatchService, KeyToUpdate } from './batch.service';
+import { ApiService, KeyToUpdate } from './batch.service';
 import { Endpoint } from './endpoint.enum';
 import {
   TallyChange,
@@ -17,7 +17,7 @@ import { Menu } from '@atocha/menu-matriarch/shared/util';
 export class DishUpdateService {
   private readonly _endpoint = Endpoint.dishes;
 
-  constructor(private _batchService: BatchService) {}
+  constructor(private _batchService: ApiService) {}
 
   getUpdates({
     key,
