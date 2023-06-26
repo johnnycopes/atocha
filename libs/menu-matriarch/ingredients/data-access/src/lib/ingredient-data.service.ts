@@ -10,7 +10,6 @@ import {
   Endpoint,
   IngredientDto,
   IngredientTypeUpdateService,
-  IngredientUpdateService,
   createIngredientDto,
 } from '@atocha/menu-matriarch/shared/data-access';
 import { Ingredient } from '@atocha/menu-matriarch/shared/util';
