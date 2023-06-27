@@ -1,4 +1,3 @@
-export * from './lib/batch.service';
 export * from './lib/dish-update.service';
 export * from './lib/endpoint.enum';
 export * from './lib/ingredient-type-update.service';
