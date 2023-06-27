@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
-import { BatchUpdate } from '@atocha/core/data-access';
+import { BatchService, BatchUpdate } from '@atocha/core/data-access';
 
-import { BatchService, KeyToUpdate } from './batch.service';
-import { Endpoint } from './endpoint.enum';
 import {
   TallyChange,
   calculateTallyChange,
@@ -10,6 +8,8 @@ import {
   tally,
 } from '@atocha/core/util';
 import { Menu } from '@atocha/menu-matriarch/shared/util';
+import { Endpoint } from './endpoint.enum';
+import { KeyToUpdate } from './key-to-update.type';
 
 @Injectable({
   providedIn: 'root',

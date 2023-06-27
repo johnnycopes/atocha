@@ -1,50 +1,19 @@
 import { Injectable } from '@angular/core';
 
-import { Batch, BatchUpdate, FirestoreService } from '@atocha/core/data-access';
 import { uniqueDiff } from '@atocha/core/util';
-
-export type KeyToUpdate = 'mealIds' | 'dishIds' | 'ingredientIds' | 'tagIds';
+import { Batch, BatchUpdate } from './firestore/batch';
+import { FirestoreService } from './firestore/firestore.service';
 
 @Injectable({
   providedIn: 'root',
 })
-export class BatchService {
+class BatchService {
   constructor(private _firestoreService: FirestoreService) {}
 
   createBatch(): Batch {
     return new Batch(this._firestoreService.createBatch(), (endpoint, id) =>
       this._firestoreService.getDocRef(endpoint, id)
     );
-  }
-
-  getBatchUpdates({
-    endpoint,
-    key,
-    initialIds,
-    finalIds,
-    entityId,
-  }: {
-    endpoint: string;
-    key: KeyToUpdate;
-    initialIds: string[];
-    finalIds: string[];
-    entityId: string;
-  }): BatchUpdate[] {
-    const { added, removed } = uniqueDiff(initialIds, finalIds);
-    const batchUpdates: BatchUpdate[] = [
-      ...added.map((id) => ({
-        endpoint,
-        id,
-        data: { [key]: this.addToArray(entityId) },
-      })),
-      ...removed.map((id) => ({
-        endpoint,
-        id,
-        data: { [key]: this.removeFromArray(entityId) },
-      })),
-    ];
-
-    return batchUpdates;
   }
 
   addToArray(...ids: string[]): string[] {
@@ -58,4 +27,36 @@ export class BatchService {
   changeCounter(value: number): number {
     return this._firestoreService.changeCounter(value);
   }
+
+  getBatchUpdates<T extends string>({
+    endpoint,
+    key,
+    initialIds,
+    finalIds,
+    entityId,
+  }: {
+    endpoint: string;
+    key: T;
+    initialIds: string[];
+    finalIds: string[];
+    entityId: string;
+  }): BatchUpdate[] {
+    const { added, removed } = uniqueDiff(initialIds, finalIds);
+    const batchUpdates: BatchUpdate[] = [
+      ...added.map((id) => ({
+        endpoint,
+        id,
+        data: { [key]: this._firestoreService.addToArray(entityId) },
+      })),
+      ...removed.map((id) => ({
+        endpoint,
+        id,
+        data: { [key]: this._firestoreService.removeFromArray(entityId) },
+      })),
+    ];
+
+    return batchUpdates;
+  }
 }
+
+export { BatchUpdate, BatchService };

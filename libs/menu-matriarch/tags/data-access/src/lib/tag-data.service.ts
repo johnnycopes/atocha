@@ -2,10 +2,9 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { DataService } from '@atocha/core/data-access';
+import { BatchService, DataService } from '@atocha/core/data-access';
 import { lower, sort } from '@atocha/core/util';
 import {
-  BatchService,
   DishUpdateService,
   Endpoint,
   MealUpdateService,

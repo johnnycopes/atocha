@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { BatchUpdate } from '@atocha/core/data-access';
 
-import { BatchService, KeyToUpdate } from './batch.service';
+import { BatchService, BatchUpdate } from '@atocha/core/data-access';
 import { Endpoint } from './endpoint.enum';
+import { KeyToUpdate } from './key-to-update.type';
 
 @Injectable({
   providedIn: 'root',
