@@ -5,10 +5,8 @@ import { concatMap, first, map } from 'rxjs/operators';
 import { AuthService } from '@atocha/core/data-access';
 import { DishService } from '@atocha/menu-matriarch/dishes/data-access';
 import { UserService } from '@atocha/menu-matriarch/settings/data-access';
-import {
-  mapMenuDtoToMenu,
-  RouterService,
-} from '@atocha/menu-matriarch/shared/data-access';
+import { RouterService } from '@atocha/menu-matriarch/shared/data-access-routing';
+import { mapMenuDtoToMenu } from '@atocha/menu-matriarch/shared/data-access-dtos';
 import { Day, Menu } from '@atocha/menu-matriarch/shared/util';
 import { EditableMenuData, MenuDataService } from './menu-data.service';
 

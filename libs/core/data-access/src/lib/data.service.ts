@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { FirestoreService } from './firestore.service';
+import { FirestoreService } from './firestore/firestore.service';
 
 @Injectable({
   providedIn: 'root',
@@ -33,7 +33,7 @@ export class DataService {
     return await this._firestoreService.update(endpoint, id, data);
   }
 
-  async delete(endpoint: string, id: string): Promise<void> {
-    return await this._firestoreService.delete(endpoint, id);
+  async delete<T>(endpoint: string, id: string): Promise<void> {
+    return await this._firestoreService.delete<T>(endpoint, id);
   }
 }

@@ -1,14 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { DataService } from '@atocha/core/data-access';
+import { BatchService, DataService } from '@atocha/core/data-access';
 import {
-  BatchService,
   Endpoint,
-  IngredientTypeDto,
   UserUpdateService,
+} from '@atocha/menu-matriarch/shared/data-access-api';
+import {
+  IngredientTypeDto,
   createIngredientTypeDto,
-} from '@atocha/menu-matriarch/shared/data-access';
+} from '@atocha/menu-matriarch/shared/data-access-dtos';
 import { IngredientType } from '@atocha/menu-matriarch/shared/util';
 
 export type EditableIngredientTypeData = Partial<

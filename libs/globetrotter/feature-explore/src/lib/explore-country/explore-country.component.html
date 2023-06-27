@@ -53,7 +53,7 @@
   <ng-template #size>
     <div>{{ country.area | number }} km<sup>2</sup></div>
     <div>
-      {{ country.area | coreMeasurement : 'sqKm' : 'sqMi' | number : '0.0-0' }}
+      {{ country.area | uiMeasurement : 'sqKm' : 'sqMi' | number : '0.0-0' }}
       mi<sup>2</sup>
     </div>
   </ng-template>

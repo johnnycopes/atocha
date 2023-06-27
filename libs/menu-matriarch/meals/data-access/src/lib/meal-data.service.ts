@@ -1,15 +1,16 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { DataService } from '@atocha/core/data-access';
+import { BatchService, DataService } from '@atocha/core/data-access';
 import {
-  BatchService,
   DishUpdateService,
   Endpoint,
-  MealDto,
   TagUpdateService,
+} from '@atocha/menu-matriarch/shared/data-access-api';
+import {
+  MealDto,
   createMealDto,
-} from '@atocha/menu-matriarch/shared/data-access';
+} from '@atocha/menu-matriarch/shared/data-access-dtos';
 import { Meal } from '@atocha/menu-matriarch/shared/util';
 
 export type EditableMealData = Pick<

@@ -3,7 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import {
   ErrorService,
   LoadingService,
-} from '@atocha/menu-matriarch/shared/data-access';
+} from '@atocha/menu-matriarch/shared/data-access-routing';
 
 @Component({
   standalone: true,
