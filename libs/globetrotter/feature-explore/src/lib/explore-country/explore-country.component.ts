@@ -11,9 +11,9 @@ import {
   SimpleChanges,
 } from '@angular/core';
 
-import { MeasurementPipe, trackByFactory, trackBySelf } from '@atocha/core/ui';
+import { trackByFactory, trackBySelf } from '@atocha/core/ui';
 import { pluralize } from '@atocha/core/util';
-import { SmallCapsComponent } from '@atocha/globetrotter/ui';
+import { MeasurementPipe, SmallCapsComponent } from '@atocha/globetrotter/ui';
 import { Country } from '@atocha/globetrotter/util';
 
 interface TableData {
