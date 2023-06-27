@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 
 import { uniqueDiff } from '@atocha/core/util';
-import { Batch, BatchUpdate } from './batch';
-import { FirestoreService } from './firestore.service';
+import { Batch, BatchUpdate } from './firestore/batch';
+import { FirestoreService } from './firestore/firestore.service';
 
 @Injectable({
   providedIn: 'root',
