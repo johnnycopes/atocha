@@ -4,7 +4,7 @@ type Unit = 'km' | 'mi' | 'sqKm' | 'sqMi';
 
 @Pipe({
   standalone: true,
-  name: 'coreMeasurement',
+  name: 'uiMeasurement',
 })
 export class MeasurementPipe implements PipeTransform {
   transform(value: number, fromUnit: Unit, toUnit: Unit): number {
