@@ -10,6 +10,7 @@
     ]
   },
   "firestore": {
-    "rules": "./apps/menu-matriarch/firestore.rules"
+    "rules": "./apps/menu-matriarch/firestore.rules",
+    "indexes": "./apps/menu-matriarch/firestore.indexes.json"
   }
 }
