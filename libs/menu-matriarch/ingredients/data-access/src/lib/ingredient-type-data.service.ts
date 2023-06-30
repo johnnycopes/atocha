@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 
 import { BatchService, DataService } from '@atocha/core/data-access';
-import { lower, sort } from '@atocha/core/util';
 import {
   Endpoint,
   UserUpdateService,
@@ -35,15 +33,7 @@ export class IngredientTypeDataService {
   }
 
   getIngredientTypes(uid: string): Observable<IngredientTypeDto[]> {
-    return this._dataService
-      .getMany<IngredientTypeDto>(this._endpoint, uid)
-      .pipe(
-        map((ingredientTypeDtos) =>
-          sort(ingredientTypeDtos, (ingredientTypeDto) =>
-            lower(ingredientTypeDto.name)
-          )
-        )
-      );
+    return this._dataService.getMany<IngredientTypeDto>(this._endpoint, uid);
   }
 
   async createIngredientType(
