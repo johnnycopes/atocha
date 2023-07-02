@@ -1,6 +1,4 @@
 export class SeedDataIds {
-  readonly batchId = this._createId();
-
   readonly menuIds = {
     menu: this._createId(),
   };
