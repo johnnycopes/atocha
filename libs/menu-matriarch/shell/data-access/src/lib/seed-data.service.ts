@@ -11,6 +11,7 @@ import {
   createTagDto,
   createUserDto,
 } from '@atocha/menu-matriarch/shared/data-access-dtos';
+import { SeedDataIds } from './seed-data-ids';
 
 @Injectable({
   providedIn: 'root',
@@ -30,39 +31,7 @@ export class SeedDataService {
     name: string;
     email: string;
   }): Promise<string> {
-    const menuId = this._dataService.createId();
-    const southernClassicMealId = this._dataService.createId();
-    const sushiDinnerMealId = this._dataService.createId();
-    const cornbreadDishId = this._dataService.createId();
-    const enchiladasDishId = this._dataService.createId();
-    const friedChickenDishId = this._dataService.createId();
-    const greekSaladDishId = this._dataService.createId();
-    const huevosRotosDishId = this._dataService.createId();
-    const macAndCheeseDishId = this._dataService.createId();
-    const misoSoupDishId = this._dataService.createId();
-    const pizzaDishId = this._dataService.createId();
-    const redLentilSoupDishId = this._dataService.createId();
-    const roastedCauliflowerDishId = this._dataService.createId();
-    const salmonBurgersDishId = this._dataService.createId();
-    const sushiDishId = this._dataService.createId();
-    const sweetPotatoFriesDishId = this._dataService.createId();
-    const tiramisuDishId = this._dataService.createId();
-    const thaiCurryDishId = this._dataService.createId();
-    const easyTagId = this._dataService.createId();
-    const pescatarianTagId = this._dataService.createId();
-    const produceIngredientTypeId = this._dataService.createId();
-    const refrigeratedIngredientTypeId = this._dataService.createId();
-    const spiceIngredientTypeId = this._dataService.createId();
-    const eggsIngredientId = this._dataService.createId();
-    const garlicIngredientId = this._dataService.createId();
-    const oliveOilIngredientId = this._dataService.createId();
-    const onionIngredientId = this._dataService.createId();
-    const paprikaIngredientId = this._dataService.createId();
-    const pepperIngredientId = this._dataService.createId();
-    const potatoIngredientId = this._dataService.createId();
-    const saltIngredientId = this._dataService.createId();
-    const veganTagId = this._dataService.createId();
-    const vegetarianTagId = this._dataService.createId();
+    const ids = new SeedDataIds(this._dataService.createId);
     const batch = this._batchService.createBatch();
 
     batch
@@ -80,447 +49,455 @@ export class SeedDataService {
             emptyMealText: 'undecided',
             mealOrientation: 'vertical',
             ingredientTypeOrder: [
-              produceIngredientTypeId,
-              refrigeratedIngredientTypeId,
-              spiceIngredientTypeId,
+              ids.produceIngredientType,
+              ids.refrigeratedIngredientType,
+              ids.spiceIngredientType,
             ],
           },
         }),
       })
       .set({
         endpoint: Endpoint.menus,
-        id: menuId,
+        id: ids.menu,
         data: createMenuDto({
-          id: menuId,
+          id: ids.menu,
           uid,
           name: 'Menu #1',
           contents: {
-            Monday: [enchiladasDishId],
-            Tuesday: [sushiDishId, misoSoupDishId],
-            Wednesday: [salmonBurgersDishId, sweetPotatoFriesDishId],
-            Thursday: [redLentilSoupDishId],
-            Friday: [pizzaDishId, tiramisuDishId],
-            Saturday: [thaiCurryDishId, tiramisuDishId],
-            Sunday: [friedChickenDishId, cornbreadDishId, macAndCheeseDishId],
+            Monday: [ids.enchiladasDish],
+            Tuesday: [ids.sushiDish, ids.misoSoupDish],
+            Wednesday: [ids.salmonBurgersDish, ids.sweetPotatoFriesDish],
+            Thursday: [ids.redLentilSoupDish],
+            Friday: [ids.pizzaDish, ids.tiramisuDish],
+            Saturday: [ids.thaiCurryDish, ids.tiramisuDish],
+            Sunday: [
+              ids.friedChickenDish,
+              ids.cornbreadDish,
+              ids.macAndCheeseDish,
+            ],
           },
         }),
       })
       .set({
         endpoint: Endpoint.meals,
-        id: southernClassicMealId,
+        id: ids.southernClassicMeal,
         data: createMealDto({
-          id: southernClassicMealId,
+          id: ids.southernClassicMeal,
           uid,
           name: 'Southern Classic',
-          dishIds: [cornbreadDishId, friedChickenDishId, macAndCheeseDishId],
+          dishIds: [
+            ids.cornbreadDish,
+            ids.friedChickenDish,
+            ids.macAndCheeseDish,
+          ],
         }),
       })
       .set({
         endpoint: Endpoint.meals,
-        id: sushiDinnerMealId,
+        id: ids.sushiDinnerMeal,
         data: createMealDto({
-          id: sushiDinnerMealId,
+          id: ids.sushiDinnerMeal,
           uid,
           name: 'Sushi Dinner',
-          dishIds: [sushiDishId, misoSoupDishId],
-          tagIds: [pescatarianTagId],
+          dishIds: [ids.sushiDish, ids.misoSoupDish],
+          tagIds: [ids.pescatarianTag],
         }),
       })
       .set({
         endpoint: Endpoint.dishes,
-        id: cornbreadDishId,
+        id: ids.cornbreadDish,
         data: createDishDto({
-          id: cornbreadDishId,
+          id: ids.cornbreadDish,
           uid,
           name: 'Cornbread',
           description: 'Made in the skillet with brown butter',
           type: 'side',
           link: 'https://cooking.nytimes.com/recipes/1016965-brown-butter-skillet-cornbread',
-          menuIds: [menuId],
-          mealIds: [southernClassicMealId],
-          tagIds: [vegetarianTagId],
+          menuIds: [ids.menu],
+          mealIds: [ids.southernClassicMeal],
+          tagIds: [ids.vegetarianTag],
           usages: 1,
         }),
       })
       .set({
         endpoint: Endpoint.dishes,
-        id: enchiladasDishId,
+        id: ids.enchiladasDish,
         data: createDishDto({
-          id: enchiladasDishId,
+          id: ids.enchiladasDish,
           uid,
           name: 'Enchiladas',
           link: 'https://cooking.nytimes.com/recipes/1018152-enchiladas-con-carne',
-          menuIds: [menuId],
+          menuIds: [ids.menu],
           usages: 1,
         }),
       })
       .set({
         endpoint: Endpoint.dishes,
-        id: friedChickenDishId,
+        id: ids.friedChickenDish,
         data: createDishDto({
-          id: friedChickenDishId,
+          id: ids.friedChickenDish,
           uid,
           name: 'Fried Chicken',
           link: 'https://cooking.nytimes.com/recipes/1018219-buttermilk-fried-chicken',
-          menuIds: [menuId],
-          mealIds: [southernClassicMealId],
+          menuIds: [ids.menu],
+          mealIds: [ids.southernClassicMeal],
           usages: 1,
         }),
       })
       .set({
         endpoint: Endpoint.dishes,
-        id: greekSaladDishId,
+        id: ids.greekSaladDish,
         data: createDishDto({
-          id: greekSaladDishId,
+          id: ids.greekSaladDish,
           uid,
           name: 'Greek Salad',
-          tagIds: [vegetarianTagId],
+          tagIds: [ids.vegetarianTag],
         }),
       })
       .set({
         endpoint: Endpoint.dishes,
-        id: huevosRotosDishId,
+        id: ids.huevosRotosDish,
         data: createDishDto({
-          id: huevosRotosDishId,
+          id: ids.huevosRotosDish,
           uid,
           name: 'Huevos Rotos',
           link: 'https://cooking.nytimes.com/recipes/1020055-huevos-rotos-broken-eggs',
           ingredientIds: [
-            eggsIngredientId,
-            garlicIngredientId,
-            oliveOilIngredientId,
-            onionIngredientId,
-            paprikaIngredientId,
-            pepperIngredientId,
-            potatoIngredientId,
-            saltIngredientId,
+            ids.eggsIngredient,
+            ids.garlicIngredient,
+            ids.oliveOilIngredient,
+            ids.onionIngredient,
+            ids.paprikaIngredient,
+            ids.pepperIngredient,
+            ids.potatoIngredient,
+            ids.saltIngredient,
           ],
-          tagIds: [vegetarianTagId],
+          tagIds: [ids.vegetarianTag],
         }),
       })
       .set({
         endpoint: Endpoint.dishes,
-        id: macAndCheeseDishId,
+        id: ids.macAndCheeseDish,
         data: createDishDto({
-          id: macAndCheeseDishId,
+          id: ids.macAndCheeseDish,
           uid,
           name: 'Macaroni and Cheese',
           description: 'Delicious baked noodles from the USA',
           type: 'side',
           link: 'https://cooking.nytimes.com/recipes/1015825-creamy-macaroni-and-cheese',
-          menuIds: [menuId],
-          mealIds: [southernClassicMealId],
-          tagIds: [vegetarianTagId],
+          menuIds: [ids.menu],
+          mealIds: [ids.southernClassicMeal],
+          tagIds: [ids.vegetarianTag],
           usages: 1,
         }),
       })
       .set({
         endpoint: Endpoint.dishes,
-        id: misoSoupDishId,
+        id: ids.misoSoupDish,
         data: createDishDto({
-          id: misoSoupDishId,
+          id: ids.misoSoupDish,
           uid,
           name: 'Miso Soup',
           type: 'side',
-          menuIds: [menuId],
-          mealIds: [sushiDinnerMealId],
-          tagIds: [veganTagId, vegetarianTagId],
+          menuIds: [ids.menu],
+          mealIds: [ids.sushiDinnerMeal],
+          tagIds: [ids.veganTag, ids.vegetarianTag],
           usages: 1,
         }),
       })
       .set({
         endpoint: Endpoint.dishes,
-        id: pizzaDishId,
+        id: ids.pizzaDish,
         data: createDishDto({
-          id: pizzaDishId,
+          id: ids.pizzaDish,
           uid,
           name: 'Pizza',
           description: 'Delicious round vessel from Italy',
           link: 'https://cooking.nytimes.com/guides/1-how-to-make-pizza',
-          menuIds: [menuId],
-          tagIds: [vegetarianTagId],
+          menuIds: [ids.menu],
+          tagIds: [ids.vegetarianTag],
           usages: 1,
         }),
       })
       .set({
         endpoint: Endpoint.dishes,
-        id: redLentilSoupDishId,
+        id: ids.redLentilSoupDish,
         data: createDishDto({
-          id: redLentilSoupDishId,
+          id: ids.redLentilSoupDish,
           uid,
           name: 'Red Lentil Soup',
           link: 'https://cooking.nytimes.com/recipes/1016062-red-lentil-soup-with-lemon',
-          menuIds: [menuId],
-          tagIds: [veganTagId, vegetarianTagId],
+          menuIds: [ids.menu],
+          tagIds: [ids.veganTag, ids.vegetarianTag],
           usages: 1,
         }),
       })
       .set({
         endpoint: Endpoint.dishes,
-        id: roastedCauliflowerDishId,
+        id: ids.roastedCauliflowerDish,
         data: createDishDto({
-          id: roastedCauliflowerDishId,
+          id: ids.roastedCauliflowerDish,
           uid,
           name: 'Roasted Cauliflower',
           link: 'https://cooking.nytimes.com/recipes/7588-roasted-cauliflower',
           type: 'side',
-          tagIds: [easyTagId, veganTagId, vegetarianTagId],
+          tagIds: [ids.easyTag, ids.veganTag, ids.vegetarianTag],
         }),
       })
       .set({
         endpoint: Endpoint.dishes,
-        id: salmonBurgersDishId,
+        id: ids.salmonBurgersDish,
         data: createDishDto({
-          id: salmonBurgersDishId,
+          id: ids.salmonBurgersDish,
           uid,
           name: 'Salmon Burgers',
           link: 'https://cooking.nytimes.com/recipes/7131-salmon-burgers',
-          menuIds: [menuId],
-          tagIds: [pescatarianTagId],
+          menuIds: [ids.menu],
+          tagIds: [ids.pescatarianTag],
           usages: 1,
         }),
       })
       .set({
         endpoint: Endpoint.dishes,
-        id: sushiDishId,
+        id: ids.sushiDish,
         data: createDishDto({
-          id: sushiDishId,
+          id: ids.sushiDish,
           uid,
           name: 'Sushi',
           description: 'Delicious tiny vessels from Japan',
-          menuIds: [menuId],
-          mealIds: [sushiDinnerMealId],
-          tagIds: [pescatarianTagId],
+          menuIds: [ids.menu],
+          mealIds: [ids.sushiDinnerMeal],
+          tagIds: [ids.pescatarianTag],
           usages: 1,
         }),
       })
       .set({
         endpoint: Endpoint.dishes,
-        id: sweetPotatoFriesDishId,
+        id: ids.sweetPotatoFriesDish,
         data: createDishDto({
-          id: sweetPotatoFriesDishId,
+          id: ids.sweetPotatoFriesDish,
           uid,
           name: 'Sweet Potato Fries',
           type: 'side',
-          menuIds: [menuId],
-          tagIds: [veganTagId, vegetarianTagId],
+          menuIds: [ids.menu],
+          tagIds: [ids.veganTag, ids.vegetarianTag],
           usages: 1,
         }),
       })
       .set({
         endpoint: Endpoint.dishes,
-        id: tiramisuDishId,
+        id: ids.tiramisuDish,
         data: createDishDto({
-          id: tiramisuDishId,
+          id: ids.tiramisuDish,
           uid,
           name: 'Tiramisu',
           description: 'Delicious coffee-flavored Italian cake',
           link: 'https://cooking.nytimes.com/recipes/1018684-classic-tiramisu',
           type: 'dessert',
-          menuIds: [menuId],
+          menuIds: [ids.menu],
           tagIds: [],
           usages: 2,
         }),
       })
       .set({
         endpoint: Endpoint.dishes,
-        id: thaiCurryDishId,
+        id: ids.thaiCurryDish,
         data: createDishDto({
-          id: thaiCurryDishId,
+          id: ids.thaiCurryDish,
           uid,
           name: 'Thai Curry',
           description: 'Delicious fragrant stew from Thailand',
           link: 'https://cooking.nytimes.com/recipes/1015694-vegan-thai-curry-vegetables',
-          menuIds: [menuId],
-          tagIds: [easyTagId, veganTagId, vegetarianTagId],
+          menuIds: [ids.menu],
+          tagIds: [ids.easyTag, ids.veganTag, ids.vegetarianTag],
           usages: 1,
         }),
       })
       .set({
         endpoint: Endpoint.ingredientTypes,
-        id: produceIngredientTypeId,
+        id: ids.produceIngredientType,
         data: createIngredientTypeDto({
-          id: produceIngredientTypeId,
+          id: ids.produceIngredientType,
           uid,
           name: 'Produce',
           ingredientIds: [
-            garlicIngredientId,
-            onionIngredientId,
-            potatoIngredientId,
+            ids.garlicIngredient,
+            ids.onionIngredient,
+            ids.potatoIngredient,
           ],
         }),
       })
       .set({
         endpoint: Endpoint.ingredientTypes,
-        id: refrigeratedIngredientTypeId,
+        id: ids.refrigeratedIngredientType,
         data: createIngredientTypeDto({
-          id: refrigeratedIngredientTypeId,
+          id: ids.refrigeratedIngredientType,
           uid,
           name: 'Refrigerated',
-          ingredientIds: [eggsIngredientId, oliveOilIngredientId],
+          ingredientIds: [ids.eggsIngredient, ids.oliveOilIngredient],
         }),
       })
       .set({
         endpoint: Endpoint.ingredientTypes,
-        id: spiceIngredientTypeId,
+        id: ids.spiceIngredientType,
         data: createIngredientTypeDto({
-          id: spiceIngredientTypeId,
+          id: ids.spiceIngredientType,
           uid,
           name: 'Spice',
           ingredientIds: [
-            paprikaIngredientId,
-            pepperIngredientId,
-            saltIngredientId,
+            ids.paprikaIngredient,
+            ids.pepperIngredient,
+            ids.saltIngredient,
           ],
         }),
       })
       .set({
         endpoint: Endpoint.ingredients,
-        id: eggsIngredientId,
+        id: ids.eggsIngredient,
         data: createIngredientDto({
-          id: eggsIngredientId,
+          id: ids.eggsIngredient,
           uid,
           name: 'Eggs',
-          typeId: refrigeratedIngredientTypeId,
-          dishIds: [huevosRotosDishId],
+          typeId: ids.refrigeratedIngredientType,
+          dishIds: [ids.huevosRotosDish],
         }),
       })
       .set({
         endpoint: Endpoint.ingredients,
-        id: garlicIngredientId,
+        id: ids.garlicIngredient,
         data: createIngredientDto({
-          id: garlicIngredientId,
+          id: ids.garlicIngredient,
           uid,
           name: 'Garlic',
-          typeId: produceIngredientTypeId,
-          dishIds: [huevosRotosDishId],
+          typeId: ids.produceIngredientType,
+          dishIds: [ids.huevosRotosDish],
         }),
       })
       .set({
         endpoint: Endpoint.ingredients,
-        id: oliveOilIngredientId,
+        id: ids.oliveOilIngredient,
         data: createIngredientDto({
-          id: oliveOilIngredientId,
+          id: ids.oliveOilIngredient,
           uid,
           name: 'Olive Oil',
-          typeId: refrigeratedIngredientTypeId,
-          dishIds: [huevosRotosDishId],
+          typeId: ids.refrigeratedIngredientType,
+          dishIds: [ids.huevosRotosDish],
         }),
       })
       .set({
         endpoint: Endpoint.ingredients,
-        id: onionIngredientId,
+        id: ids.onionIngredient,
         data: createIngredientDto({
-          id: onionIngredientId,
+          id: ids.onionIngredient,
           uid,
           name: 'Onion',
-          typeId: produceIngredientTypeId,
-          dishIds: [huevosRotosDishId],
+          typeId: ids.produceIngredientType,
+          dishIds: [ids.huevosRotosDish],
         }),
       })
       .set({
         endpoint: Endpoint.ingredients,
-        id: paprikaIngredientId,
+        id: ids.paprikaIngredient,
         data: createIngredientDto({
-          id: paprikaIngredientId,
+          id: ids.paprikaIngredient,
           uid,
           name: 'Paprika',
-          typeId: spiceIngredientTypeId,
-          dishIds: [huevosRotosDishId],
+          typeId: ids.spiceIngredientType,
+          dishIds: [ids.huevosRotosDish],
         }),
       })
       .set({
         endpoint: Endpoint.ingredients,
-        id: pepperIngredientId,
+        id: ids.pepperIngredient,
         data: createIngredientDto({
-          id: pepperIngredientId,
+          id: ids.pepperIngredient,
           uid,
           name: 'Pepper',
-          typeId: spiceIngredientTypeId,
-          dishIds: [huevosRotosDishId],
+          typeId: ids.spiceIngredientType,
+          dishIds: [ids.huevosRotosDish],
         }),
       })
       .set({
         endpoint: Endpoint.ingredients,
-        id: potatoIngredientId,
+        id: ids.potatoIngredient,
         data: createIngredientDto({
-          id: potatoIngredientId,
+          id: ids.potatoIngredient,
           uid,
           name: 'Potato',
-          typeId: produceIngredientTypeId,
-          dishIds: [huevosRotosDishId],
+          typeId: ids.produceIngredientType,
+          dishIds: [ids.huevosRotosDish],
         }),
       })
       .set({
         endpoint: Endpoint.ingredients,
-        id: saltIngredientId,
+        id: ids.saltIngredient,
         data: createIngredientDto({
-          id: saltIngredientId,
+          id: ids.saltIngredient,
           uid,
           name: 'Salt',
-          typeId: spiceIngredientTypeId,
-          dishIds: [huevosRotosDishId],
+          typeId: ids.spiceIngredientType,
+          dishIds: [ids.huevosRotosDish],
         }),
       })
       .set({
         endpoint: Endpoint.tags,
-        id: easyTagId,
+        id: ids.easyTag,
         data: createTagDto({
-          id: easyTagId,
+          id: ids.easyTag,
           uid,
           name: 'Easy',
-          dishIds: [roastedCauliflowerDishId, thaiCurryDishId],
+          dishIds: [ids.roastedCauliflowerDish, ids.thaiCurryDish],
         }),
       })
       .set({
         endpoint: Endpoint.tags,
-        id: pescatarianTagId,
+        id: ids.pescatarianTag,
         data: createTagDto({
-          id: pescatarianTagId,
+          id: ids.pescatarianTag,
           uid,
           name: 'Pescatarian',
-          dishIds: [salmonBurgersDishId, sushiDishId],
-          mealIds: [sushiDinnerMealId],
+          dishIds: [ids.salmonBurgersDish, ids.sushiDish],
+          mealIds: [ids.sushiDinnerMeal],
         }),
       })
       .set({
         endpoint: Endpoint.tags,
-        id: veganTagId,
+        id: ids.veganTag,
         data: createTagDto({
-          id: veganTagId,
+          id: ids.veganTag,
           uid,
           name: 'Vegan',
           dishIds: [
-            misoSoupDishId,
-            redLentilSoupDishId,
-            roastedCauliflowerDishId,
-            sweetPotatoFriesDishId,
-            thaiCurryDishId,
+            ids.misoSoupDish,
+            ids.redLentilSoupDish,
+            ids.roastedCauliflowerDish,
+            ids.sweetPotatoFriesDish,
+            ids.thaiCurryDish,
           ],
         }),
       })
       .set({
         endpoint: Endpoint.tags,
-        id: vegetarianTagId,
+        id: ids.vegetarianTag,
         data: createTagDto({
-          id: vegetarianTagId,
+          id: ids.vegetarianTag,
           uid,
           name: 'Vegetarian',
           dishIds: [
-            cornbreadDishId,
-            greekSaladDishId,
-            huevosRotosDishId,
-            macAndCheeseDishId,
-            misoSoupDishId,
-            pizzaDishId,
-            redLentilSoupDishId,
-            roastedCauliflowerDishId,
-            sweetPotatoFriesDishId,
-            thaiCurryDishId,
+            ids.cornbreadDish,
+            ids.greekSaladDish,
+            ids.huevosRotosDish,
+            ids.macAndCheeseDish,
+            ids.misoSoupDish,
+            ids.pizzaDish,
+            ids.redLentilSoupDish,
+            ids.roastedCauliflowerDish,
+            ids.sweetPotatoFriesDish,
+            ids.thaiCurryDish,
           ],
         }),
       });
     await batch.commit();
-    return menuId;
+    return ids.menu;
   }
 }
