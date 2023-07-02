@@ -1,14 +1,14 @@
 export class SeedDataIds {
-  readonly menuIds = {
+  protected readonly menuIds = {
     menu: this._createId(),
   };
 
-  readonly mealIds = {
+  protected readonly mealIds = {
     southernClassic: this._createId(),
     sushiDinner: this._createId(),
   };
 
-  readonly dishIds = {
+  protected readonly dishIds = {
     cornbread: this._createId(),
     enchiladas: this._createId(),
     friedChicken: this._createId(),
@@ -26,20 +26,20 @@ export class SeedDataIds {
     thaiCurry: this._createId(),
   };
 
-  readonly tagIds = {
+  protected readonly tagIds = {
     easy: this._createId(),
     pescatarian: this._createId(),
     vegan: this._createId(),
     vegetarian: this._createId(),
   };
 
-  readonly ingredientTypesIds = {
+  protected readonly ingredientTypesIds = {
     produce: this._createId(),
     refrigerated: this._createId(),
     spice: this._createId(),
   };
 
-  readonly ingredientIds = {
+  protected readonly ingredientIds = {
     eggs: this._createId(),
     garlic: this._createId(),
     oliveOil: this._createId(),
