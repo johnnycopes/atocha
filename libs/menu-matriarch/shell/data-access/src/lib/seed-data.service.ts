@@ -31,7 +31,9 @@ export class SeedDataService {
     name: string;
     email: string;
   }): Promise<string> {
-    const ids = new SeedDataIds(this._dataService.createId);
+    const ids = new SeedDataIds(
+      this._dataService.createId.bind(this._dataService)
+    );
     const batch = this._batchService.createBatch();
 
     batch
