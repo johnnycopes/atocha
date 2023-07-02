@@ -1,38 +1,56 @@
 export class SeedDataIds {
-  menu = this._createId();
-  southernClassicMeal = this._createId();
-  sushiDinnerMeal = this._createId();
-  cornbreadDish = this._createId();
-  enchiladasDish = this._createId();
-  friedChickenDish = this._createId();
-  greekSaladDish = this._createId();
-  huevosRotosDish = this._createId();
-  macAndCheeseDish = this._createId();
-  misoSoupDish = this._createId();
-  pizzaDish = this._createId();
-  redLentilSoupDish = this._createId();
-  roastedCauliflowerDish = this._createId();
-  salmonBurgersDish = this._createId();
-  sushiDish = this._createId();
-  sweetPotatoFriesDish = this._createId();
-  tiramisuDish = this._createId();
-  thaiCurryDish = this._createId();
-  easyTag = this._createId();
-  pescatarianTag = this._createId();
-  produceIngredientType = this._createId();
-  refrigeratedIngredientType = this._createId();
-  spiceIngredientType = this._createId();
-  eggsIngredient = this._createId();
-  garlicIngredient = this._createId();
-  oliveOilIngredient = this._createId();
-  onionIngredient = this._createId();
-  paprikaIngredient = this._createId();
-  pepperIngredient = this._createId();
-  potatoIngredient = this._createId();
-  saltIngredient = this._createId();
-  veganTag = this._createId();
-  vegetarianTag = this._createId();
-  batch = this._createId();
+  readonly batch = this._createId();
+
+  readonly menus = {
+    menu: this._createId(),
+  };
+
+  readonly meals = {
+    southernClassic: this._createId(),
+    sushiDinner: this._createId(),
+  };
+
+  readonly dishes = {
+    cornbread: this._createId(),
+    enchiladas: this._createId(),
+    friedChicken: this._createId(),
+    greekSalad: this._createId(),
+    huevosRotos: this._createId(),
+    macAndCheese: this._createId(),
+    misoSoup: this._createId(),
+    pizza: this._createId(),
+    redLentilSoup: this._createId(),
+    roastedCauliflower: this._createId(),
+    salmonBurgers: this._createId(),
+    sushi: this._createId(),
+    sweetPotatoFries: this._createId(),
+    tiramisu: this._createId(),
+    thaiCurry: this._createId(),
+  };
+
+  readonly tags = {
+    easy: this._createId(),
+    pescatarian: this._createId(),
+    vegan: this._createId(),
+    vegetarian: this._createId(),
+  };
+
+  readonly ingredientTypes = {
+    produce: this._createId(),
+    refrigerated: this._createId(),
+    spice: this._createId(),
+  };
+
+  readonly ingredients = {
+    eggs: this._createId(),
+    garlic: this._createId(),
+    oliveOil: this._createId(),
+    onion: this._createId(),
+    paprika: this._createId(),
+    pepper: this._createId(),
+    potato: this._createId(),
+    salt: this._createId(),
+  };
 
   constructor(private _createId: () => string) {}
 }
