@@ -3,25 +3,21 @@ import { SeedDataIds } from './seed-data-ids';
 
 export function createMealData(
   uid: string,
-  ids: SeedDataIds
+  { dishIds, mealIds, tagIds }: SeedDataIds
 ): Partial<MealDto>[] {
   return [
     {
-      id: ids.mealIds.southernClassic,
+      id: mealIds.southernClassic,
       uid,
       name: 'Southern Classic',
-      dishIds: [
-        ids.dishIds.cornbread,
-        ids.dishIds.friedChicken,
-        ids.dishIds.macAndCheese,
-      ],
+      dishIds: [dishIds.cornbread, dishIds.friedChicken, dishIds.macAndCheese],
     },
     {
-      id: ids.mealIds.sushiDinner,
+      id: mealIds.sushiDinner,
       uid,
       name: 'Sushi Dinner',
-      dishIds: [ids.dishIds.sushi, ids.dishIds.misoSoup],
-      tagIds: [ids.tagIds.pescatarian],
+      dishIds: [dishIds.sushi, dishIds.misoSoup],
+      tagIds: [tagIds.pescatarian],
     },
   ];
 }

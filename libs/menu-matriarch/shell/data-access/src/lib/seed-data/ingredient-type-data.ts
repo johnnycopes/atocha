@@ -3,33 +3,33 @@ import { SeedDataIds } from './seed-data-ids';
 
 export function createIngredientTypeData(
   uid: string,
-  ids: SeedDataIds
+  { ingredientIds, ingredientTypesIds }: SeedDataIds
 ): Partial<IngredientTypeDto>[] {
   return [
     {
-      id: ids.ingredientTypesIds.produce,
+      id: ingredientTypesIds.produce,
       uid,
       name: 'Produce',
       ingredientIds: [
-        ids.ingredientIds.garlic,
-        ids.ingredientIds.onion,
-        ids.ingredientIds.potato,
+        ingredientIds.garlic,
+        ingredientIds.onion,
+        ingredientIds.potato,
       ],
     },
     {
-      id: ids.ingredientTypesIds.refrigerated,
+      id: ingredientTypesIds.refrigerated,
       uid,
       name: 'Refrigerated',
-      ingredientIds: [ids.ingredientIds.eggs, ids.ingredientIds.oliveOil],
+      ingredientIds: [ingredientIds.eggs, ingredientIds.oliveOil],
     },
     {
-      id: ids.ingredientTypesIds.spice,
+      id: ingredientTypesIds.spice,
       uid,
       name: 'Spice',
       ingredientIds: [
-        ids.ingredientIds.paprika,
-        ids.ingredientIds.pepper,
-        ids.ingredientIds.salt,
+        ingredientIds.paprika,
+        ingredientIds.pepper,
+        ingredientIds.salt,
       ],
     },
   ];

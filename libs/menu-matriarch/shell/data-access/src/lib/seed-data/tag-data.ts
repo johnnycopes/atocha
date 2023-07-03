@@ -3,49 +3,49 @@ import { SeedDataIds } from './seed-data-ids';
 
 export function createTagData(
   uid: string,
-  ids: SeedDataIds
+  { dishIds, mealIds, tagIds }: SeedDataIds
 ): Partial<TagDto>[] {
   return [
     {
-      id: ids.tagIds.easy,
+      id: tagIds.easy,
       uid,
       name: 'Easy',
-      dishIds: [ids.dishIds.roastedCauliflower, ids.dishIds.thaiCurry],
+      dishIds: [dishIds.roastedCauliflower, dishIds.thaiCurry],
     },
     {
-      id: ids.tagIds.pescatarian,
+      id: tagIds.pescatarian,
       uid,
       name: 'Pescatarian',
-      dishIds: [ids.dishIds.salmonBurgers, ids.dishIds.sushi],
-      mealIds: [ids.mealIds.sushiDinner],
+      dishIds: [dishIds.salmonBurgers, dishIds.sushi],
+      mealIds: [mealIds.sushiDinner],
     },
     {
-      id: ids.tagIds.vegan,
+      id: tagIds.vegan,
       uid,
       name: 'Vegan',
       dishIds: [
-        ids.dishIds.misoSoup,
-        ids.dishIds.redLentilSoup,
-        ids.dishIds.roastedCauliflower,
-        ids.dishIds.sweetPotatoFries,
-        ids.dishIds.thaiCurry,
+        dishIds.misoSoup,
+        dishIds.redLentilSoup,
+        dishIds.roastedCauliflower,
+        dishIds.sweetPotatoFries,
+        dishIds.thaiCurry,
       ],
     },
     {
-      id: ids.tagIds.vegetarian,
+      id: tagIds.vegetarian,
       uid,
       name: 'Vegetarian',
       dishIds: [
-        ids.dishIds.cornbread,
-        ids.dishIds.greekSalad,
-        ids.dishIds.huevosRotos,
-        ids.dishIds.macAndCheese,
-        ids.dishIds.misoSoup,
-        ids.dishIds.pizza,
-        ids.dishIds.redLentilSoup,
-        ids.dishIds.roastedCauliflower,
-        ids.dishIds.sweetPotatoFries,
-        ids.dishIds.thaiCurry,
+        dishIds.cornbread,
+        dishIds.greekSalad,
+        dishIds.huevosRotos,
+        dishIds.macAndCheese,
+        dishIds.misoSoup,
+        dishIds.pizza,
+        dishIds.redLentilSoup,
+        dishIds.roastedCauliflower,
+        dishIds.sweetPotatoFries,
+        dishIds.thaiCurry,
       ],
     },
   ];

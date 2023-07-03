@@ -3,25 +3,21 @@ import { SeedDataIds } from './seed-data-ids';
 
 export function createMenuData(
   uid: string,
-  ids: SeedDataIds
+  { dishIds, menuIds }: SeedDataIds
 ): Partial<MenuDto>[] {
   return [
     {
-      id: ids.menuIds.menu,
+      id: menuIds.menu,
       uid: uid,
       name: 'Menu #1',
       contents: {
-        Monday: [ids.dishIds.enchiladas],
-        Tuesday: [ids.dishIds.sushi, ids.dishIds.misoSoup],
-        Wednesday: [ids.dishIds.salmonBurgers, ids.dishIds.sweetPotatoFries],
-        Thursday: [ids.dishIds.redLentilSoup],
-        Friday: [ids.dishIds.pizza, ids.dishIds.tiramisu],
-        Saturday: [ids.dishIds.thaiCurry, ids.dishIds.tiramisu],
-        Sunday: [
-          ids.dishIds.friedChicken,
-          ids.dishIds.cornbread,
-          ids.dishIds.macAndCheese,
-        ],
+        Monday: [dishIds.enchiladas],
+        Tuesday: [dishIds.sushi, dishIds.misoSoup],
+        Wednesday: [dishIds.salmonBurgers, dishIds.sweetPotatoFries],
+        Thursday: [dishIds.redLentilSoup],
+        Friday: [dishIds.pizza, dishIds.tiramisu],
+        Saturday: [dishIds.thaiCurry, dishIds.tiramisu],
+        Sunday: [dishIds.friedChicken, dishIds.cornbread, dishIds.macAndCheese],
       },
     },
   ];
