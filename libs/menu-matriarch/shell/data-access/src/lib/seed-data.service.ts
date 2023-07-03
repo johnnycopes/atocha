@@ -29,16 +29,17 @@ export class SeedDataService {
     );
     const batch = this._batchService.createBatch();
 
-    data.dishes.forEach(batch.set.bind(batch));
-    data.meals.forEach(batch.set.bind(batch));
-    data.menus.forEach(batch.set.bind(batch));
-    data.ingredientTypes.forEach(batch.set.bind(batch));
-    data.ingredients.forEach(batch.set.bind(batch));
-    data.tags.forEach(batch.set.bind(batch));
-    batch.set(data.user);
+    batch.setMultiple([
+      ...data.dishes,
+      ...data.meals,
+      ...data.menus,
+      ...data.ingredientTypes,
+      ...data.ingredients,
+      ...data.tags,
+      data.user,
+    ]);
 
     await batch.commit();
-
     return data.menus[0].id;
   }
 }
