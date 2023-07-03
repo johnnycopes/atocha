@@ -23,10 +23,10 @@ export class SeedDataService {
   }): Promise<string> {
     const { dishes, meals, menus, ingredientTypes, ingredients, tags, user } =
       new SeedData(
-        this._dataService.createId.bind(this._dataService),
         uid,
         name,
-        email
+        email,
+        this._dataService.createId.bind(this._dataService)
       );
     const batch = this._batchService.createBatch();
 
