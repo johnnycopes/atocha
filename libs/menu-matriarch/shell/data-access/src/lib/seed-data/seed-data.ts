@@ -38,7 +38,7 @@ export class SeedData extends SeedDataDtos {
 
   ingredientTypes: BatchSet<IngredientTypeDto>[] = this._createBatchSets({
     endpoint: Endpoint.ingredientTypes,
-    getId: (ingredientType) => ingredientType.id,
+    getId: ({ id }) => id,
     dtos: this.ingredientTypeDtos,
   });
 
