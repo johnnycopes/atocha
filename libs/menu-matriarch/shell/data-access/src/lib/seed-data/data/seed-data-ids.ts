@@ -34,8 +34,16 @@ export class SeedDataIds {
   };
 
   readonly ingredientTypeIds = {
+    bread: this._createId(),
+    condiment: this._createId(),
+    dryGood: this._createId(),
+    frozen: this._createId(),
+    meat: this._createId(),
+    preserved: this._createId(),
     produce: this._createId(),
+    oil: this._createId(),
     refrigerated: this._createId(),
+    seafood: this._createId(),
     spice: this._createId(),
   };
 
