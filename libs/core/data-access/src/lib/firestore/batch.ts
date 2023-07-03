@@ -10,8 +10,7 @@ export interface BatchSet<T> {
 export interface BatchUpdate {
   endpoint: string;
   id: string;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  data: { [key: string]: any };
+  data: { [fieldPath: string]: unknown };
 }
 
 export class Batch {
