@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { BatchService, DataService } from '@atocha/core/data-access';
-import { SeedData } from './seed-data';
+import { SeedData } from './seed-data/seed-data';
 
 @Injectable({
   providedIn: 'root',
