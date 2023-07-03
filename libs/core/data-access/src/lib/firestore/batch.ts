@@ -7,11 +7,7 @@ export interface BatchSet<T> {
   data: T;
 }
 
-export interface BatchUpdate {
-  endpoint: string;
-  id: string;
-  data: { [fieldPath: string]: unknown };
-}
+export type BatchUpdate = BatchSet<{ [fieldPath: string]: unknown }>;
 
 export class Batch {
   constructor(
