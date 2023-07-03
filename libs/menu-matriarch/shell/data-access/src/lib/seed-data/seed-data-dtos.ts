@@ -17,7 +17,7 @@ import {
 import { SeedDataIds } from './seed-data-ids';
 
 export class SeedDataDtos extends SeedDataIds {
-  readonly userDto: UserDto = createUserDto({
+  protected readonly userDto: UserDto = createUserDto({
     uid: this.uid,
     name: this._name,
     email: this._email,
@@ -35,7 +35,7 @@ export class SeedDataDtos extends SeedDataIds {
     },
   });
 
-  readonly menuDtos: readonly MenuDto[] = [
+  protected readonly menuDtos: readonly MenuDto[] = [
     createMenuDto({
       id: this.menuIds.menu,
       uid: this.uid,
@@ -56,7 +56,7 @@ export class SeedDataDtos extends SeedDataIds {
     }),
   ];
 
-  readonly mealDtos: readonly MealDto[] = [
+  protected readonly mealDtos: readonly MealDto[] = [
     createMealDto({
       id: this.mealIds.southernClassic,
       uid: this.uid,
@@ -76,7 +76,7 @@ export class SeedDataDtos extends SeedDataIds {
     }),
   ];
 
-  readonly dishDtos: readonly DishDto[] = [
+  protected readonly dishDtos: readonly DishDto[] = [
     createDishDto({
       id: this.dishIds.cornbread,
       uid: this.uid,
@@ -229,7 +229,7 @@ export class SeedDataDtos extends SeedDataIds {
     }),
   ];
 
-  readonly ingredientTypeDtos: readonly IngredientTypeDto[] = [
+  protected readonly ingredientTypeDtos: readonly IngredientTypeDto[] = [
     createIngredientTypeDto({
       id: this.ingredientTypesIds.produce,
       uid: this.uid,
@@ -258,7 +258,7 @@ export class SeedDataDtos extends SeedDataIds {
     }),
   ];
 
-  readonly ingredientDtos: readonly IngredientDto[] = [
+  protected readonly ingredientDtos: readonly IngredientDto[] = [
     createIngredientDto({
       id: this.ingredientIds.eggs,
       uid: this.uid,
@@ -317,7 +317,7 @@ export class SeedDataDtos extends SeedDataIds {
     }),
   ];
 
-  readonly _tagDtos: readonly TagDto[] = [
+  protected readonly _tagDtos: readonly TagDto[] = [
     createTagDto({
       id: this.tagIds.easy,
       uid: this.uid,
