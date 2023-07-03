@@ -18,7 +18,7 @@ export function createIngredientData(
       uid,
       name: 'Garlic',
       typeId: ingredientTypesIds.produce,
-      dishIds: [ingredientTypesIds.refrigerated],
+      dishIds: [dishIds.huevosRotos],
     },
     {
       id: ingredientIds.oliveOil,
@@ -32,7 +32,7 @@ export function createIngredientData(
       uid,
       name: 'Onion',
       typeId: ingredientTypesIds.produce,
-      dishIds: [ingredientTypesIds.refrigerated],
+      dishIds: [dishIds.huevosRotos],
     },
     {
       id: ingredientIds.paprika,
@@ -53,7 +53,7 @@ export function createIngredientData(
       uid,
       name: 'Potato',
       typeId: ingredientTypesIds.produce,
-      dishIds: [ingredientTypesIds.refrigerated],
+      dishIds: [dishIds.huevosRotos],
     },
     {
       id: ingredientIds.salt,
