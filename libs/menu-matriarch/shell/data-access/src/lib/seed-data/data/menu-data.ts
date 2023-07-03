@@ -8,7 +8,7 @@ export function createMenuData(
   return [
     {
       id: menuIds.menu,
-      uid: uid,
+      uid,
       name: 'Menu #1',
       contents: {
         Monday: [dishIds.enchiladas],
