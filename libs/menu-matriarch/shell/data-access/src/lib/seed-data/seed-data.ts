@@ -6,7 +6,7 @@ import { SeedDataDtos } from './seed-data-dtos';
 export class SeedData extends SeedDataDtos {
   user: BatchSet<UserDto> = {
     endpoint: Endpoint.users,
-    id: this.uid,
+    id: this._uid,
     data: this.userDto,
   };
 
@@ -47,12 +47,12 @@ export class SeedData extends SeedDataDtos {
   });
 
   constructor(
-    _createId: () => string,
-    _uid: string,
-    _name: string,
-    _email: string
+    uid: string,
+    name: string,
+    email: string,
+    createId: () => string
   ) {
-    super(_createId, _uid, _name, _email);
+    super(uid, name, email, createId);
   }
 
   private _createBatchSets<T>({
