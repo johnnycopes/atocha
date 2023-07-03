@@ -30,7 +30,7 @@ export class Batch {
   }
 
   setMultiple<T>(sets: BatchSet<T>[]): Batch {
-    sets.forEach(({ endpoint, id, data }) => this.set({ endpoint, id, data }));
+    sets.forEach((set) => this.set(set));
     return this;
   }
 
@@ -41,9 +41,7 @@ export class Batch {
   }
 
   updateMultiple(updates: BatchUpdate[]): Batch {
-    updates.forEach(({ endpoint, id, data }) =>
-      this.update({ endpoint, id, data })
-    );
+    updates.forEach((update) => this.update(update));
     return this;
   }
 
