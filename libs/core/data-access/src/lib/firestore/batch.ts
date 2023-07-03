@@ -1,6 +1,12 @@
 import { DocumentReference } from '@angular/fire/compat/firestore';
 import firebase from 'firebase/compat/app';
 
+export interface BatchSet<T> {
+  endpoint: string;
+  id: string;
+  data: T;
+}
+
 export interface BatchUpdate {
   endpoint: string;
   id: string;
@@ -17,15 +23,7 @@ export class Batch {
     ) => DocumentReference<T>
   ) {}
 
-  set<T>({
-    endpoint,
-    id,
-    data,
-  }: {
-    endpoint: string;
-    id: string;
-    data: T;
-  }): Batch {
+  set<T>({ endpoint, id, data }: BatchSet<T>): Batch {
     const docRef = this._getDocRef<T>(endpoint, id);
     this._batch.set<T>(docRef, data);
     return this;
