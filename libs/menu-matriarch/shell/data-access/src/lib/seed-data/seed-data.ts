@@ -442,7 +442,7 @@ export class SeedData extends SeedDataIds {
     },
   ];
 
-  private _tagDtos: TagDto[] = [
+  private readonly _tagDtos: readonly TagDto[] = [
     createTagDto({
       id: this.tagIds.easy,
       uid: this._uid,
@@ -487,7 +487,7 @@ export class SeedData extends SeedDataIds {
     }),
   ];
 
-  tags: BatchSet<TagDto>[] = this._generateBatchSets({
+  tags: BatchSet<TagDto>[] = this._createBatchSets({
     endpoint: Endpoint.tags,
     getId: (dto) => dto.id,
     dtos: this._tagDtos,
@@ -502,14 +502,14 @@ export class SeedData extends SeedDataIds {
     super(_createId);
   }
 
-  private _generateBatchSets<T>({
+  private _createBatchSets<T>({
     endpoint,
     getId,
     dtos,
   }: {
     endpoint: Endpoint;
     getId: (dto: T) => string;
-    dtos: T[];
+    dtos: readonly T[];
   }) {
     return dtos.map<BatchSet<T>>((dto) => ({
       endpoint,
