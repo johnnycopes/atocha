@@ -442,66 +442,56 @@ export class SeedData extends SeedDataIds {
     },
   ];
 
-  tags: BatchSet<TagDto>[] = [
-    {
-      endpoint: Endpoint.tags,
+  private _tagDtos: TagDto[] = [
+    createTagDto({
       id: this.tagIds.easy,
-      data: createTagDto({
-        id: this.tagIds.easy,
-        uid: this._uid,
-        name: 'Easy',
-        dishIds: [this.dishIds.roastedCauliflower, this.dishIds.thaiCurry],
-      }),
-    },
-    {
-      endpoint: Endpoint.tags,
+      uid: this._uid,
+      name: 'Easy',
+      dishIds: [this.dishIds.roastedCauliflower, this.dishIds.thaiCurry],
+    }),
+    createTagDto({
       id: this.tagIds.pescatarian,
-      data: createTagDto({
-        id: this.tagIds.pescatarian,
-        uid: this._uid,
-        name: 'Pescatarian',
-        dishIds: [this.dishIds.salmonBurgers, this.dishIds.sushi],
-        mealIds: [this.mealIds.sushiDinner],
-      }),
-    },
-    {
-      endpoint: Endpoint.tags,
+      uid: this._uid,
+      name: 'Pescatarian',
+      dishIds: [this.dishIds.salmonBurgers, this.dishIds.sushi],
+      mealIds: [this.mealIds.sushiDinner],
+    }),
+    createTagDto({
       id: this.tagIds.vegan,
-      data: createTagDto({
-        id: this.tagIds.vegan,
-        uid: this._uid,
-        name: 'Vegan',
-        dishIds: [
-          this.dishIds.misoSoup,
-          this.dishIds.redLentilSoup,
-          this.dishIds.roastedCauliflower,
-          this.dishIds.sweetPotatoFries,
-          this.dishIds.thaiCurry,
-        ],
-      }),
-    },
-    {
-      endpoint: Endpoint.tags,
+      uid: this._uid,
+      name: 'Vegan',
+      dishIds: [
+        this.dishIds.misoSoup,
+        this.dishIds.redLentilSoup,
+        this.dishIds.roastedCauliflower,
+        this.dishIds.sweetPotatoFries,
+        this.dishIds.thaiCurry,
+      ],
+    }),
+    createTagDto({
       id: this.tagIds.vegetarian,
-      data: createTagDto({
-        id: this.tagIds.vegetarian,
-        uid: this._uid,
-        name: 'Vegetarian',
-        dishIds: [
-          this.dishIds.cornbread,
-          this.dishIds.greekSalad,
-          this.dishIds.huevosRotos,
-          this.dishIds.macAndCheese,
-          this.dishIds.misoSoup,
-          this.dishIds.pizza,
-          this.dishIds.redLentilSoup,
-          this.dishIds.roastedCauliflower,
-          this.dishIds.sweetPotatoFries,
-          this.dishIds.thaiCurry,
-        ],
-      }),
-    },
+      uid: this._uid,
+      name: 'Vegetarian',
+      dishIds: [
+        this.dishIds.cornbread,
+        this.dishIds.greekSalad,
+        this.dishIds.huevosRotos,
+        this.dishIds.macAndCheese,
+        this.dishIds.misoSoup,
+        this.dishIds.pizza,
+        this.dishIds.redLentilSoup,
+        this.dishIds.roastedCauliflower,
+        this.dishIds.sweetPotatoFries,
+        this.dishIds.thaiCurry,
+      ],
+    }),
   ];
+
+  tags: BatchSet<TagDto>[] = this._generateBatchSets({
+    endpoint: Endpoint.tags,
+    getId: (dto) => dto.id,
+    dtos: this._tagDtos,
+  });
 
   constructor(
     _createId: () => string,
@@ -510,5 +500,21 @@ export class SeedData extends SeedDataIds {
     private _email: string
   ) {
     super(_createId);
+  }
+
+  private _generateBatchSets<T>({
+    endpoint,
+    getId,
+    dtos,
+  }: {
+    endpoint: Endpoint;
+    getId: (dto: T) => string;
+    dtos: T[];
+  }) {
+    return dtos.map<BatchSet<T>>((dto) => ({
+      endpoint,
+      id: getId(dto),
+      data: dto,
+    }));
   }
 }
