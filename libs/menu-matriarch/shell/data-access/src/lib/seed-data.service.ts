@@ -21,25 +21,25 @@ export class SeedDataService {
     name: string;
     email: string;
   }): Promise<string> {
-    const data = new SeedData(
-      this._dataService.createId.bind(this._dataService),
-      uid,
-      name,
-      email
-    );
+    const { dishes, meals, menus, ingredientTypes, ingredients, tags, user } =
+      new SeedData(
+        this._dataService.createId.bind(this._dataService),
+        uid,
+        name,
+        email
+      );
     const batch = this._batchService.createBatch();
 
-    batch.setMultiple([
-      ...data.dishes,
-      ...data.meals,
-      ...data.menus,
-      ...data.ingredientTypes,
-      ...data.ingredients,
-      ...data.tags,
-      data.user,
-    ]);
+    batch
+      .setMultiple(dishes)
+      .setMultiple(meals)
+      .setMultiple(menus)
+      .setMultiple(ingredientTypes)
+      .setMultiple(ingredients)
+      .setMultiple(tags)
+      .set(user);
 
     await batch.commit();
-    return data.menus[0].id;
+    return menus[0].id;
   }
 }

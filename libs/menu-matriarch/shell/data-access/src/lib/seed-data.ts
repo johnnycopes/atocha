@@ -1,6 +1,13 @@
+import { BatchSet } from '@atocha/core/data-access';
 import { Endpoint } from '@atocha/menu-matriarch/shared/data-access-api';
-import { SeedDataIds } from './seed-data-ids';
 import {
+  DishDto,
+  IngredientDto,
+  IngredientTypeDto,
+  MealDto,
+  MenuDto,
+  TagDto,
+  UserDto,
   createDishDto,
   createIngredientDto,
   createIngredientTypeDto,
@@ -9,10 +16,10 @@ import {
   createTagDto,
   createUserDto,
 } from '@atocha/menu-matriarch/shared/data-access-dtos';
-import { BatchUpdate } from '@atocha/core/data-access';
+import { SeedDataIds } from './seed-data-ids';
 
 export class SeedData extends SeedDataIds {
-  readonly user: BatchUpdate = {
+  user: BatchSet<UserDto> = {
     endpoint: Endpoint.users,
     id: this._uid,
     data: createUserDto({
@@ -34,7 +41,7 @@ export class SeedData extends SeedDataIds {
     }),
   };
 
-  readonly menus: readonly BatchUpdate[] = [
+  menus: BatchSet<MenuDto>[] = [
     {
       endpoint: Endpoint.menus,
       id: this.menuIds.menu,
@@ -62,7 +69,7 @@ export class SeedData extends SeedDataIds {
     },
   ];
 
-  readonly meals: readonly BatchUpdate[] = [
+  meals: BatchSet<MealDto>[] = [
     {
       endpoint: Endpoint.meals,
       id: this.mealIds.southernClassic,
@@ -90,7 +97,7 @@ export class SeedData extends SeedDataIds {
     },
   ];
 
-  readonly dishes: readonly BatchUpdate[] = [
+  dishes: BatchSet<DishDto>[] = [
     {
       endpoint: Endpoint.dishes,
       id: this.dishIds.cornbread,
@@ -303,7 +310,7 @@ export class SeedData extends SeedDataIds {
     },
   ];
 
-  readonly ingredientTypes: readonly BatchUpdate[] = [
+  ingredientTypes: BatchSet<IngredientTypeDto>[] = [
     {
       endpoint: Endpoint.ingredientTypes,
       id: this.ingredientTypesIds.produce,
@@ -344,7 +351,7 @@ export class SeedData extends SeedDataIds {
     },
   ];
 
-  readonly ingredients: readonly BatchUpdate[] = [
+  ingredients: BatchSet<IngredientDto>[] = [
     {
       endpoint: Endpoint.ingredients,
       id: this.ingredientIds.eggs,
@@ -435,7 +442,7 @@ export class SeedData extends SeedDataIds {
     },
   ];
 
-  readonly tags: readonly BatchUpdate[] = [
+  tags: BatchSet<TagDto>[] = [
     {
       endpoint: Endpoint.tags,
       id: this.tagIds.easy,
