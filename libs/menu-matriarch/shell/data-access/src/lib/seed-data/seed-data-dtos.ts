@@ -1,11 +1,4 @@
 import {
-  DishDto,
-  IngredientDto,
-  IngredientTypeDto,
-  MealDto,
-  MenuDto,
-  TagDto,
-  UserDto,
   createDishDto,
   createIngredientDto,
   createIngredientTypeDto,
@@ -17,7 +10,7 @@ import {
 import { SeedDataIds } from './seed-data-ids';
 
 export class SeedDataDtos extends SeedDataIds {
-  protected readonly userDto: UserDto = createUserDto({
+  protected readonly userDto = createUserDto({
     uid: this.uid,
     name: this._name,
     email: this._email,
@@ -35,8 +28,8 @@ export class SeedDataDtos extends SeedDataIds {
     },
   });
 
-  protected readonly menuDtos: readonly MenuDto[] = [
-    createMenuDto({
+  protected readonly menuDtos = this._createDtos(createMenuDto, [
+    {
       id: this.menuIds.menu,
       uid: this.uid,
       name: 'Menu #1',
@@ -53,11 +46,11 @@ export class SeedDataDtos extends SeedDataIds {
           this.dishIds.macAndCheese,
         ],
       },
-    }),
-  ];
+    },
+  ]);
 
-  protected readonly mealDtos: readonly MealDto[] = [
-    createMealDto({
+  protected readonly mealDtos = this._createDtos(createMealDto, [
+    {
       id: this.mealIds.southernClassic,
       uid: this.uid,
       name: 'Southern Classic',
@@ -66,18 +59,18 @@ export class SeedDataDtos extends SeedDataIds {
         this.dishIds.friedChicken,
         this.dishIds.macAndCheese,
       ],
-    }),
-    createMealDto({
+    },
+    {
       id: this.mealIds.sushiDinner,
       uid: this.uid,
       name: 'Sushi Dinner',
       dishIds: [this.dishIds.sushi, this.dishIds.misoSoup],
       tagIds: [this.tagIds.pescatarian],
-    }),
-  ];
+    },
+  ]);
 
-  protected readonly dishDtos: readonly DishDto[] = [
-    createDishDto({
+  protected readonly dishDtos = this._createDtos(createDishDto, [
+    {
       id: this.dishIds.cornbread,
       uid: this.uid,
       name: 'Cornbread',
@@ -88,16 +81,16 @@ export class SeedDataDtos extends SeedDataIds {
       mealIds: [this.mealIds.southernClassic],
       tagIds: [this.tagIds.vegetarian],
       usages: 1,
-    }),
-    createDishDto({
+    },
+    {
       id: this.dishIds.enchiladas,
       uid: this.uid,
       name: 'Enchiladas',
       link: 'https://cooking.nytimes.com/recipes/1018152-enchiladas-con-carne',
       menuIds: [this.menuIds.menu],
       usages: 1,
-    }),
-    createDishDto({
+    },
+    {
       id: this.dishIds.friedChicken,
       uid: this.uid,
       name: 'Fried Chicken',
@@ -105,14 +98,14 @@ export class SeedDataDtos extends SeedDataIds {
       menuIds: [this.menuIds.menu],
       mealIds: [this.mealIds.southernClassic],
       usages: 1,
-    }),
-    createDishDto({
+    },
+    {
       id: this.dishIds.greekSalad,
       uid: this.uid,
       name: 'Greek Salad',
       tagIds: [this.tagIds.vegetarian],
-    }),
-    createDishDto({
+    },
+    {
       id: this.dishIds.huevosRotos,
       uid: this.uid,
       name: 'Huevos Rotos',
@@ -128,8 +121,8 @@ export class SeedDataDtos extends SeedDataIds {
         this.ingredientIds.salt,
       ],
       tagIds: [this.tagIds.vegetarian],
-    }),
-    createDishDto({
+    },
+    {
       id: this.dishIds.macAndCheese,
       uid: this.uid,
       name: 'Macaroni and Cheese',
@@ -140,8 +133,8 @@ export class SeedDataDtos extends SeedDataIds {
       mealIds: [this.mealIds.southernClassic],
       tagIds: [this.tagIds.vegetarian],
       usages: 1,
-    }),
-    createDishDto({
+    },
+    {
       id: this.dishIds.misoSoup,
       uid: this.uid,
       name: 'Miso Soup',
@@ -150,8 +143,8 @@ export class SeedDataDtos extends SeedDataIds {
       mealIds: [this.mealIds.sushiDinner],
       tagIds: [this.tagIds.vegan, this.tagIds.vegetarian],
       usages: 1,
-    }),
-    createDishDto({
+    },
+    {
       id: this.dishIds.pizza,
       uid: this.uid,
       name: 'Pizza',
@@ -160,8 +153,8 @@ export class SeedDataDtos extends SeedDataIds {
       menuIds: [this.menuIds.menu],
       tagIds: [this.tagIds.vegetarian],
       usages: 1,
-    }),
-    createDishDto({
+    },
+    {
       id: this.dishIds.redLentilSoup,
       uid: this.uid,
       name: 'Red Lentil Soup',
@@ -169,16 +162,16 @@ export class SeedDataDtos extends SeedDataIds {
       menuIds: [this.menuIds.menu],
       tagIds: [this.tagIds.vegan, this.tagIds.vegetarian],
       usages: 1,
-    }),
-    createDishDto({
+    },
+    {
       id: this.dishIds.roastedCauliflower,
       uid: this.uid,
       name: 'Roasted Cauliflower',
       link: 'https://cooking.nytimes.com/recipes/7588-roasted-cauliflower',
       type: 'side',
       tagIds: [this.tagIds.easy, this.tagIds.vegan, this.tagIds.vegetarian],
-    }),
-    createDishDto({
+    },
+    {
       id: this.dishIds.salmonBurgers,
       uid: this.uid,
       name: 'Salmon Burgers',
@@ -186,8 +179,8 @@ export class SeedDataDtos extends SeedDataIds {
       menuIds: [this.menuIds.menu],
       tagIds: [this.tagIds.pescatarian],
       usages: 1,
-    }),
-    createDishDto({
+    },
+    {
       id: this.dishIds.sushi,
       uid: this.uid,
       name: 'Sushi',
@@ -196,8 +189,8 @@ export class SeedDataDtos extends SeedDataIds {
       mealIds: [this.mealIds.sushiDinner],
       tagIds: [this.tagIds.pescatarian],
       usages: 1,
-    }),
-    createDishDto({
+    },
+    {
       id: this.dishIds.sweetPotatoFries,
       uid: this.uid,
       name: 'Sweet Potato Fries',
@@ -205,8 +198,8 @@ export class SeedDataDtos extends SeedDataIds {
       menuIds: [this.menuIds.menu],
       tagIds: [this.tagIds.vegan, this.tagIds.vegetarian],
       usages: 1,
-    }),
-    createDishDto({
+    },
+    {
       id: this.dishIds.tiramisu,
       uid: this.uid,
       name: 'Tiramisu',
@@ -216,8 +209,8 @@ export class SeedDataDtos extends SeedDataIds {
       menuIds: [this.menuIds.menu],
       tagIds: [],
       usages: 2,
-    }),
-    createDishDto({
+    },
+    {
       id: this.dishIds.thaiCurry,
       uid: this.uid,
       name: 'Thai Curry',
@@ -226,112 +219,115 @@ export class SeedDataDtos extends SeedDataIds {
       menuIds: [this.menuIds.menu],
       tagIds: [this.tagIds.easy, this.tagIds.vegan, this.tagIds.vegetarian],
       usages: 1,
-    }),
-  ];
+    },
+  ]);
 
-  protected readonly ingredientTypeDtos: readonly IngredientTypeDto[] = [
-    createIngredientTypeDto({
-      id: this.ingredientTypesIds.produce,
-      uid: this.uid,
-      name: 'Produce',
-      ingredientIds: [
-        this.ingredientIds.garlic,
-        this.ingredientIds.onion,
-        this.ingredientIds.potato,
-      ],
-    }),
-    createIngredientTypeDto({
-      id: this.ingredientTypesIds.refrigerated,
-      uid: this.uid,
-      name: 'Refrigerated',
-      ingredientIds: [this.ingredientIds.eggs, this.ingredientIds.oliveOil],
-    }),
-    createIngredientTypeDto({
-      id: this.ingredientTypesIds.spice,
-      uid: this.uid,
-      name: 'Spice',
-      ingredientIds: [
-        this.ingredientIds.paprika,
-        this.ingredientIds.pepper,
-        this.ingredientIds.salt,
-      ],
-    }),
-  ];
+  protected readonly ingredientTypeDtos = this._createDtos(
+    createIngredientTypeDto,
+    [
+      {
+        id: this.ingredientTypesIds.produce,
+        uid: this.uid,
+        name: 'Produce',
+        ingredientIds: [
+          this.ingredientIds.garlic,
+          this.ingredientIds.onion,
+          this.ingredientIds.potato,
+        ],
+      },
+      {
+        id: this.ingredientTypesIds.refrigerated,
+        uid: this.uid,
+        name: 'Refrigerated',
+        ingredientIds: [this.ingredientIds.eggs, this.ingredientIds.oliveOil],
+      },
+      {
+        id: this.ingredientTypesIds.spice,
+        uid: this.uid,
+        name: 'Spice',
+        ingredientIds: [
+          this.ingredientIds.paprika,
+          this.ingredientIds.pepper,
+          this.ingredientIds.salt,
+        ],
+      },
+    ]
+  );
 
-  protected readonly ingredientDtos: readonly IngredientDto[] = [
-    createIngredientDto({
+  protected readonly ingredientDtos = this._createDtos(createIngredientDto, [
+    {
       id: this.ingredientIds.eggs,
       uid: this.uid,
       name: 'Eggs',
       typeId: this.ingredientTypesIds.refrigerated,
       dishIds: [this.dishIds.huevosRotos],
-    }),
-    createIngredientDto({
+    },
+    {
       id: this.ingredientIds.garlic,
       uid: this.uid,
       name: 'Garlic',
       typeId: this.ingredientTypesIds.produce,
       dishIds: [this.ingredientTypesIds.refrigerated],
-    }),
-    createIngredientDto({
+    },
+    {
       id: this.ingredientIds.oliveOil,
       uid: this.uid,
       name: 'Olive Oil',
       typeId: this.ingredientTypesIds.refrigerated,
       dishIds: [this.dishIds.huevosRotos],
-    }),
-    createIngredientDto({
+    },
+    {
       id: this.ingredientIds.onion,
       uid: this.uid,
       name: 'Onion',
       typeId: this.ingredientTypesIds.produce,
       dishIds: [this.ingredientTypesIds.refrigerated],
-    }),
-    createIngredientDto({
+    },
+    {
       id: this.ingredientIds.paprika,
       uid: this.uid,
       name: 'Paprika',
       typeId: this.ingredientTypesIds.spice,
       dishIds: [this.dishIds.huevosRotos],
-    }),
-    createIngredientDto({
+    },
+    {
       id: this.ingredientIds.pepper,
       uid: this.uid,
       name: 'Pepper',
       typeId: this.ingredientTypesIds.spice,
       dishIds: [this.dishIds.huevosRotos],
-    }),
-    createIngredientDto({
+    },
+    {
       id: this.ingredientIds.potato,
       uid: this.uid,
       name: 'Potato',
       typeId: this.ingredientTypesIds.produce,
       dishIds: [this.ingredientTypesIds.refrigerated],
-    }),
-    createIngredientDto({
+    },
+    {
       id: this.ingredientIds.salt,
       uid: this.uid,
       name: 'Salt',
       typeId: this.ingredientTypesIds.spice,
       dishIds: [this.dishIds.huevosRotos],
-    }),
-  ];
+    },
+  ]);
 
-  protected readonly _tagDtos: readonly TagDto[] = [
-    createTagDto({
+  protected readonly _tagDtos = this._createDtos(createTagDto, [
+    {
       id: this.tagIds.easy,
       uid: this.uid,
       name: 'Easy',
       dishIds: [this.dishIds.roastedCauliflower, this.dishIds.thaiCurry],
-    }),
-    createTagDto({
+    },
+    {
       id: this.tagIds.pescatarian,
       uid: this.uid,
       name: 'Pescatarian',
       dishIds: [this.dishIds.salmonBurgers, this.dishIds.sushi],
       mealIds: [this.mealIds.sushiDinner],
-    }),
-    createTagDto({
+    },
+    {
       id: this.tagIds.vegan,
       uid: this.uid,
       name: 'Vegan',
@@ -342,8 +338,8 @@ export class SeedDataDtos extends SeedDataIds {
         this.dishIds.sweetPotatoFries,
         this.dishIds.thaiCurry,
       ],
-    }),
-    createTagDto({
+    },
+    {
       id: this.tagIds.vegetarian,
       uid: this.uid,
       name: 'Vegetarian',
@@ -359,8 +355,8 @@ export class SeedDataDtos extends SeedDataIds {
         this.dishIds.sweetPotatoFries,
         this.dishIds.thaiCurry,
       ],
-    }),
-  ];
+    },
+  ]);
 
   constructor(
     _createId: () => string,
@@ -369,5 +365,12 @@ export class SeedDataDtos extends SeedDataIds {
     private _email: string
   ) {
     super(_createId);
+  }
+
+  private _createDtos<T>(
+    createDto: (datum: Partial<T>) => T,
+    data: Partial<T>[]
+  ): readonly T[] {
+    return data.map(createDto);
   }
 }
