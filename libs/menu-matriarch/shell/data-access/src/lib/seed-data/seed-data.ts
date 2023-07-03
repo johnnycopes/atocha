@@ -1,14 +1,6 @@
 import { BatchSet } from '@atocha/core/data-access';
 import { Endpoint } from '@atocha/menu-matriarch/shared/data-access-api';
-import {
-  DishDto,
-  IngredientDto,
-  IngredientTypeDto,
-  MealDto,
-  MenuDto,
-  TagDto,
-  UserDto,
-} from '@atocha/menu-matriarch/shared/data-access-dtos';
+import { UserDto } from '@atocha/menu-matriarch/shared/data-access-dtos';
 import { SeedDataDtos } from './seed-data-dtos';
 
 export class SeedData extends SeedDataDtos {
@@ -18,37 +10,37 @@ export class SeedData extends SeedDataDtos {
     data: this.userDto,
   };
 
-  menus: BatchSet<MenuDto>[] = this._createBatchSets({
+  menus = this._createBatchSets({
     endpoint: Endpoint.menus,
     getId: ({ id }) => id,
     dtos: this.menuDtos,
   });
 
-  meals: BatchSet<MealDto>[] = this._createBatchSets({
+  meals = this._createBatchSets({
     endpoint: Endpoint.meals,
     getId: ({ id }) => id,
     dtos: this.mealDtos,
   });
 
-  dishes: BatchSet<DishDto>[] = this._createBatchSets({
+  dishes = this._createBatchSets({
     endpoint: Endpoint.dishes,
     getId: ({ id }) => id,
     dtos: this.dishDtos,
   });
 
-  ingredientTypes: BatchSet<IngredientTypeDto>[] = this._createBatchSets({
+  ingredientTypes = this._createBatchSets({
     endpoint: Endpoint.ingredientTypes,
     getId: ({ id }) => id,
     dtos: this.ingredientTypeDtos,
   });
 
-  ingredients: BatchSet<IngredientDto>[] = this._createBatchSets({
+  ingredients = this._createBatchSets({
     endpoint: Endpoint.ingredients,
     getId: ({ id }) => id,
     dtos: this.ingredientDtos,
   });
 
-  tags: BatchSet<TagDto>[] = this._createBatchSets({
+  tags = this._createBatchSets({
     endpoint: Endpoint.tags,
     getId: ({ id }) => id,
     dtos: this._tagDtos,
