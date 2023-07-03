@@ -17,8 +17,8 @@ import {
 import { SeedDataIds } from './seed-data-ids';
 
 export class SeedDataDtos extends SeedDataIds {
-  readonly _userDto: UserDto = createUserDto({
-    uid: this._uid,
+  readonly userDto: UserDto = createUserDto({
+    uid: this.uid,
     name: this._name,
     email: this._email,
     preferences: {
@@ -35,10 +35,10 @@ export class SeedDataDtos extends SeedDataIds {
     },
   });
 
-  readonly _menuDtos: readonly MenuDto[] = [
+  readonly menuDtos: readonly MenuDto[] = [
     createMenuDto({
       id: this.menuIds.menu,
-      uid: this._uid,
+      uid: this.uid,
       name: 'Menu #1',
       contents: {
         Monday: [this.dishIds.enchiladas],
@@ -56,10 +56,10 @@ export class SeedDataDtos extends SeedDataIds {
     }),
   ];
 
-  readonly _mealDtos: readonly MealDto[] = [
+  readonly mealDtos: readonly MealDto[] = [
     createMealDto({
       id: this.mealIds.southernClassic,
-      uid: this._uid,
+      uid: this.uid,
       name: 'Southern Classic',
       dishIds: [
         this.dishIds.cornbread,
@@ -69,17 +69,17 @@ export class SeedDataDtos extends SeedDataIds {
     }),
     createMealDto({
       id: this.mealIds.sushiDinner,
-      uid: this._uid,
+      uid: this.uid,
       name: 'Sushi Dinner',
       dishIds: [this.dishIds.sushi, this.dishIds.misoSoup],
       tagIds: [this.tagIds.pescatarian],
     }),
   ];
 
-  readonly _dishDtos: readonly DishDto[] = [
+  readonly dishDtos: readonly DishDto[] = [
     createDishDto({
       id: this.dishIds.cornbread,
-      uid: this._uid,
+      uid: this.uid,
       name: 'Cornbread',
       description: 'Made in the skillet with brown butter',
       type: 'side',
@@ -91,7 +91,7 @@ export class SeedDataDtos extends SeedDataIds {
     }),
     createDishDto({
       id: this.dishIds.enchiladas,
-      uid: this._uid,
+      uid: this.uid,
       name: 'Enchiladas',
       link: 'https://cooking.nytimes.com/recipes/1018152-enchiladas-con-carne',
       menuIds: [this.menuIds.menu],
@@ -99,7 +99,7 @@ export class SeedDataDtos extends SeedDataIds {
     }),
     createDishDto({
       id: this.dishIds.friedChicken,
-      uid: this._uid,
+      uid: this.uid,
       name: 'Fried Chicken',
       link: 'https://cooking.nytimes.com/recipes/1018219-buttermilk-fried-chicken',
       menuIds: [this.menuIds.menu],
@@ -108,13 +108,13 @@ export class SeedDataDtos extends SeedDataIds {
     }),
     createDishDto({
       id: this.dishIds.greekSalad,
-      uid: this._uid,
+      uid: this.uid,
       name: 'Greek Salad',
       tagIds: [this.tagIds.vegetarian],
     }),
     createDishDto({
       id: this.dishIds.huevosRotos,
-      uid: this._uid,
+      uid: this.uid,
       name: 'Huevos Rotos',
       link: 'https://cooking.nytimes.com/recipes/1020055-huevos-rotos-broken-eggs',
       ingredientIds: [
@@ -131,7 +131,7 @@ export class SeedDataDtos extends SeedDataIds {
     }),
     createDishDto({
       id: this.dishIds.macAndCheese,
-      uid: this._uid,
+      uid: this.uid,
       name: 'Macaroni and Cheese',
       description: 'Delicious baked noodles from the USA',
       type: 'side',
@@ -143,7 +143,7 @@ export class SeedDataDtos extends SeedDataIds {
     }),
     createDishDto({
       id: this.dishIds.misoSoup,
-      uid: this._uid,
+      uid: this.uid,
       name: 'Miso Soup',
       type: 'side',
       menuIds: [this.menuIds.menu],
@@ -153,7 +153,7 @@ export class SeedDataDtos extends SeedDataIds {
     }),
     createDishDto({
       id: this.dishIds.pizza,
-      uid: this._uid,
+      uid: this.uid,
       name: 'Pizza',
       description: 'Delicious round vessel from Italy',
       link: 'https://cooking.nytimes.com/guides/1-how-to-make-pizza',
@@ -163,7 +163,7 @@ export class SeedDataDtos extends SeedDataIds {
     }),
     createDishDto({
       id: this.dishIds.redLentilSoup,
-      uid: this._uid,
+      uid: this.uid,
       name: 'Red Lentil Soup',
       link: 'https://cooking.nytimes.com/recipes/1016062-red-lentil-soup-with-lemon',
       menuIds: [this.menuIds.menu],
@@ -172,7 +172,7 @@ export class SeedDataDtos extends SeedDataIds {
     }),
     createDishDto({
       id: this.dishIds.roastedCauliflower,
-      uid: this._uid,
+      uid: this.uid,
       name: 'Roasted Cauliflower',
       link: 'https://cooking.nytimes.com/recipes/7588-roasted-cauliflower',
       type: 'side',
@@ -180,7 +180,7 @@ export class SeedDataDtos extends SeedDataIds {
     }),
     createDishDto({
       id: this.dishIds.salmonBurgers,
-      uid: this._uid,
+      uid: this.uid,
       name: 'Salmon Burgers',
       link: 'https://cooking.nytimes.com/recipes/7131-salmon-burgers',
       menuIds: [this.menuIds.menu],
@@ -189,7 +189,7 @@ export class SeedDataDtos extends SeedDataIds {
     }),
     createDishDto({
       id: this.dishIds.sushi,
-      uid: this._uid,
+      uid: this.uid,
       name: 'Sushi',
       description: 'Delicious tiny vessels from Japan',
       menuIds: [this.menuIds.menu],
@@ -199,7 +199,7 @@ export class SeedDataDtos extends SeedDataIds {
     }),
     createDishDto({
       id: this.dishIds.sweetPotatoFries,
-      uid: this._uid,
+      uid: this.uid,
       name: 'Sweet Potato Fries',
       type: 'side',
       menuIds: [this.menuIds.menu],
@@ -208,7 +208,7 @@ export class SeedDataDtos extends SeedDataIds {
     }),
     createDishDto({
       id: this.dishIds.tiramisu,
-      uid: this._uid,
+      uid: this.uid,
       name: 'Tiramisu',
       description: 'Delicious coffee-flavored Italian cake',
       link: 'https://cooking.nytimes.com/recipes/1018684-classic-tiramisu',
@@ -219,7 +219,7 @@ export class SeedDataDtos extends SeedDataIds {
     }),
     createDishDto({
       id: this.dishIds.thaiCurry,
-      uid: this._uid,
+      uid: this.uid,
       name: 'Thai Curry',
       description: 'Delicious fragrant stew from Thailand',
       link: 'https://cooking.nytimes.com/recipes/1015694-vegan-thai-curry-vegetables',
@@ -229,10 +229,10 @@ export class SeedDataDtos extends SeedDataIds {
     }),
   ];
 
-  readonly _ingredientTypeDtos: readonly IngredientTypeDto[] = [
+  readonly ingredientTypeDtos: readonly IngredientTypeDto[] = [
     createIngredientTypeDto({
       id: this.ingredientTypesIds.produce,
-      uid: this._uid,
+      uid: this.uid,
       name: 'Produce',
       ingredientIds: [
         this.ingredientIds.garlic,
@@ -242,13 +242,13 @@ export class SeedDataDtos extends SeedDataIds {
     }),
     createIngredientTypeDto({
       id: this.ingredientTypesIds.refrigerated,
-      uid: this._uid,
+      uid: this.uid,
       name: 'Refrigerated',
       ingredientIds: [this.ingredientIds.eggs, this.ingredientIds.oliveOil],
     }),
     createIngredientTypeDto({
       id: this.ingredientTypesIds.spice,
-      uid: this._uid,
+      uid: this.uid,
       name: 'Spice',
       ingredientIds: [
         this.ingredientIds.paprika,
@@ -258,59 +258,59 @@ export class SeedDataDtos extends SeedDataIds {
     }),
   ];
 
-  readonly _ingredientDtos: readonly IngredientDto[] = [
+  readonly ingredientDtos: readonly IngredientDto[] = [
     createIngredientDto({
       id: this.ingredientIds.eggs,
-      uid: this._uid,
+      uid: this.uid,
       name: 'Eggs',
       typeId: this.ingredientTypesIds.refrigerated,
       dishIds: [this.dishIds.huevosRotos],
     }),
     createIngredientDto({
       id: this.ingredientIds.garlic,
-      uid: this._uid,
+      uid: this.uid,
       name: 'Garlic',
       typeId: this.ingredientTypesIds.produce,
       dishIds: [this.ingredientTypesIds.refrigerated],
     }),
     createIngredientDto({
       id: this.ingredientIds.oliveOil,
-      uid: this._uid,
+      uid: this.uid,
       name: 'Olive Oil',
       typeId: this.ingredientTypesIds.refrigerated,
       dishIds: [this.dishIds.huevosRotos],
     }),
     createIngredientDto({
       id: this.ingredientIds.onion,
-      uid: this._uid,
+      uid: this.uid,
       name: 'Onion',
       typeId: this.ingredientTypesIds.produce,
       dishIds: [this.ingredientTypesIds.refrigerated],
     }),
     createIngredientDto({
       id: this.ingredientIds.paprika,
-      uid: this._uid,
+      uid: this.uid,
       name: 'Paprika',
       typeId: this.ingredientTypesIds.spice,
       dishIds: [this.dishIds.huevosRotos],
     }),
     createIngredientDto({
       id: this.ingredientIds.pepper,
-      uid: this._uid,
+      uid: this.uid,
       name: 'Pepper',
       typeId: this.ingredientTypesIds.spice,
       dishIds: [this.dishIds.huevosRotos],
     }),
     createIngredientDto({
       id: this.ingredientIds.potato,
-      uid: this._uid,
+      uid: this.uid,
       name: 'Potato',
       typeId: this.ingredientTypesIds.produce,
       dishIds: [this.ingredientTypesIds.refrigerated],
     }),
     createIngredientDto({
       id: this.ingredientIds.salt,
-      uid: this._uid,
+      uid: this.uid,
       name: 'Salt',
       typeId: this.ingredientTypesIds.spice,
       dishIds: [this.dishIds.huevosRotos],
@@ -320,20 +320,20 @@ export class SeedDataDtos extends SeedDataIds {
   readonly _tagDtos: readonly TagDto[] = [
     createTagDto({
       id: this.tagIds.easy,
-      uid: this._uid,
+      uid: this.uid,
       name: 'Easy',
       dishIds: [this.dishIds.roastedCauliflower, this.dishIds.thaiCurry],
     }),
     createTagDto({
       id: this.tagIds.pescatarian,
-      uid: this._uid,
+      uid: this.uid,
       name: 'Pescatarian',
       dishIds: [this.dishIds.salmonBurgers, this.dishIds.sushi],
       mealIds: [this.mealIds.sushiDinner],
     }),
     createTagDto({
       id: this.tagIds.vegan,
-      uid: this._uid,
+      uid: this.uid,
       name: 'Vegan',
       dishIds: [
         this.dishIds.misoSoup,
@@ -345,7 +345,7 @@ export class SeedDataDtos extends SeedDataIds {
     }),
     createTagDto({
       id: this.tagIds.vegetarian,
-      uid: this._uid,
+      uid: this.uid,
       name: 'Vegetarian',
       dishIds: [
         this.dishIds.cornbread,
@@ -364,7 +364,7 @@ export class SeedDataDtos extends SeedDataIds {
 
   constructor(
     _createId: () => string,
-    private _uid: string,
+    protected uid: string,
     private _name: string,
     private _email: string
   ) {
