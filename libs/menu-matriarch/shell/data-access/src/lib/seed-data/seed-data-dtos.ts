@@ -28,32 +28,32 @@ export class SeedDataDtos {
     })
   );
 
-  protected readonly menuDtos = this._createDtos(
+  protected readonly menuDtos = this._mapDataToDtos(
     createMenuData(this._uid, this._ids),
     createMenuDto
   );
 
-  protected readonly mealDtos = this._createDtos(
+  protected readonly mealDtos = this._mapDataToDtos(
     createMealData(this._uid, this._ids),
     createMealDto
   );
 
-  protected readonly dishDtos = this._createDtos(
+  protected readonly dishDtos = this._mapDataToDtos(
     createDishData(this._uid, this._ids),
     createDishDto
   );
 
-  protected readonly ingredientTypeDtos = this._createDtos(
+  protected readonly ingredientTypeDtos = this._mapDataToDtos(
     createIngredientTypeData(this._uid, this._ids),
     createIngredientTypeDto
   );
 
-  protected readonly ingredientDtos = this._createDtos(
+  protected readonly ingredientDtos = this._mapDataToDtos(
     createIngredientData(this._uid, this._ids),
     createIngredientDto
   );
 
-  protected readonly _tagDtos = this._createDtos(
+  protected readonly _tagDtos = this._mapDataToDtos(
     createTagData(this._uid, this._ids),
     createTagDto
   );
@@ -65,7 +65,7 @@ export class SeedDataDtos {
     private _createId: () => string
   ) {}
 
-  private _createDtos<T>(
+  private _mapDataToDtos<T>(
     data: Partial<T>[],
     createDto: (datum: Partial<T>) => T
   ): readonly T[] {

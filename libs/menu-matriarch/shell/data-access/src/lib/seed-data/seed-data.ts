@@ -10,37 +10,37 @@ export class SeedData extends SeedDataDtos {
     data: this.userDto,
   };
 
-  menus = this._createBatchSets({
+  menus = this._mapDtosToBatchSets({
     endpoint: Endpoint.menus,
     getId: ({ id }) => id,
     dtos: this.menuDtos,
   });
 
-  meals = this._createBatchSets({
+  meals = this._mapDtosToBatchSets({
     endpoint: Endpoint.meals,
     getId: ({ id }) => id,
     dtos: this.mealDtos,
   });
 
-  dishes = this._createBatchSets({
+  dishes = this._mapDtosToBatchSets({
     endpoint: Endpoint.dishes,
     getId: ({ id }) => id,
     dtos: this.dishDtos,
   });
 
-  ingredientTypes = this._createBatchSets({
+  ingredientTypes = this._mapDtosToBatchSets({
     endpoint: Endpoint.ingredientTypes,
     getId: ({ id }) => id,
     dtos: this.ingredientTypeDtos,
   });
 
-  ingredients = this._createBatchSets({
+  ingredients = this._mapDtosToBatchSets({
     endpoint: Endpoint.ingredients,
     getId: ({ id }) => id,
     dtos: this.ingredientDtos,
   });
 
-  tags = this._createBatchSets({
+  tags = this._mapDtosToBatchSets({
     endpoint: Endpoint.tags,
     getId: ({ id }) => id,
     dtos: this._tagDtos,
@@ -55,7 +55,7 @@ export class SeedData extends SeedDataDtos {
     super(uid, name, email, createId);
   }
 
-  private _createBatchSets<T>({
+  private _mapDtosToBatchSets<T>({
     endpoint,
     getId,
     dtos,
