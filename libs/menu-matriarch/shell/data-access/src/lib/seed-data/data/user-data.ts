@@ -23,9 +23,9 @@ export function createUserData({
       emptyMealText: 'undecided',
       mealOrientation: 'vertical',
       ingredientTypeOrder: [
-        ids.ingredientTypesIds.produce,
-        ids.ingredientTypesIds.refrigerated,
-        ids.ingredientTypesIds.spice,
+        ids.ingredientTypeIds.produce,
+        ids.ingredientTypeIds.refrigerated,
+        ids.ingredientTypeIds.spice,
       ],
     },
   };

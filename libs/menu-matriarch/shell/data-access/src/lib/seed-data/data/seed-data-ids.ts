@@ -33,7 +33,7 @@ export class SeedDataIds {
     vegetarian: this._createId(),
   };
 
-  readonly ingredientTypesIds = {
+  readonly ingredientTypeIds = {
     produce: this._createId(),
     refrigerated: this._createId(),
     spice: this._createId(),

@@ -3,7 +3,7 @@ import { SeedDataIds } from './seed-data-ids';
 
 export function createIngredientTypeData(
   uid: string,
-  { ingredientIds, ingredientTypesIds }: SeedDataIds
+  { ingredientIds, ingredientTypeIds: ingredientTypesIds }: SeedDataIds
 ): Partial<IngredientTypeDto>[] {
   return [
     {
