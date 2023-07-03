@@ -1,12 +1,13 @@
 import { DocumentReference } from '@angular/fire/compat/firestore';
 import firebase from 'firebase/compat/app';
 
-export interface BatchUpdate {
+export interface BatchSet<T> {
   endpoint: string;
   id: string;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  data: { [key: string]: any };
+  data: T;
 }
+
+export type BatchUpdate = BatchSet<{ [fieldPath: string]: unknown }>;
 
 export class Batch {
   constructor(
@@ -17,17 +18,14 @@ export class Batch {
     ) => DocumentReference<T>
   ) {}
 
-  set<T>({
-    endpoint,
-    id,
-    data,
-  }: {
-    endpoint: string;
-    id: string;
-    data: T;
-  }): Batch {
+  set<T>({ endpoint, id, data }: BatchSet<T>): Batch {
     const docRef = this._getDocRef<T>(endpoint, id);
     this._batch.set<T>(docRef, data);
+    return this;
+  }
+
+  setMultiple<T>(sets: BatchSet<T>[]): Batch {
+    sets.forEach((set) => this.set(set));
     return this;
   }
 
@@ -38,9 +36,7 @@ export class Batch {
   }
 
   updateMultiple(updates: BatchUpdate[]): Batch {
-    updates.forEach(({ endpoint, id, data }) =>
-      this.update({ endpoint, id, data })
-    );
+    updates.forEach((update) => this.update(update));
     return this;
   }
 
