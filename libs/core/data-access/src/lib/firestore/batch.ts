@@ -29,6 +29,11 @@ export class Batch {
     return this;
   }
 
+  setMultiple<T>(sets: BatchSet<T>[]): Batch {
+    sets.forEach(({ endpoint, id, data }) => this.set({ endpoint, id, data }));
+    return this;
+  }
+
   update({ endpoint, id, data }: BatchUpdate): Batch {
     const docRef = this._getDocRef(endpoint, id);
     this._batch.update(docRef, data);
