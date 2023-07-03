@@ -7,14 +7,14 @@ import {
   createTagDto,
   createUserDto,
 } from '@atocha/menu-matriarch/shared/data-access-dtos';
-import { createDishData } from './dish-data';
-import { createMealData } from './meal-data';
-import { createMenuData } from './menu-data';
-import { createIngredientTypeData } from './ingredient-type-data';
-import { createIngredientData } from './ingredient-data';
-import { createTagData } from './tag-data';
-import { createUserData } from './user-data';
-import { SeedDataIds } from './seed-data-ids';
+import { createDishData } from './data/dish-data';
+import { createIngredientData } from './data/ingredient-data';
+import { createIngredientTypeData } from './data/ingredient-type-data';
+import { createMealData } from './data/meal-data';
+import { createMenuData } from './data/menu-data';
+import { createTagData } from './data/tag-data';
+import { createUserData } from './data/user-data';
+import { SeedDataIds } from './data/seed-data-ids';
 
 export class SeedDataDtos {
   private readonly _ids = new SeedDataIds(this._createId);
