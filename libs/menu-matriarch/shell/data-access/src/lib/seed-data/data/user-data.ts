@@ -2,7 +2,7 @@ import { UserDto } from '@atocha/menu-matriarch/shared/data-access-dtos';
 import { SeedDataIds } from './seed-data-ids';
 
 export function createUserData({
-  ids,
+  ids: { ingredientTypeIds },
   uid,
   name,
   email,
@@ -13,9 +13,9 @@ export function createUserData({
   email: string;
 }): Partial<UserDto> {
   return {
-    uid: uid,
-    name: name,
-    email: email,
+    uid,
+    name,
+    email,
     preferences: {
       darkMode: false,
       dayNameDisplay: 'full',
@@ -23,9 +23,9 @@ export function createUserData({
       emptyMealText: 'undecided',
       mealOrientation: 'vertical',
       ingredientTypeOrder: [
-        ids.ingredientTypeIds.produce,
-        ids.ingredientTypeIds.refrigerated,
-        ids.ingredientTypeIds.spice,
+        ingredientTypeIds.produce,
+        ingredientTypeIds.refrigerated,
+        ingredientTypeIds.spice,
       ],
     },
   };
