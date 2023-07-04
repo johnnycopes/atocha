@@ -40,7 +40,7 @@ export function createIngredientTypeData(
       id: ingredientTypesIds.oil,
       uid,
       name: 'Oil',
-      ingredientIds: [],
+      ingredientIds: [ingredientIds.oliveOil],
     },
     {
       id: ingredientTypesIds.preserved,

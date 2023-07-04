@@ -102,7 +102,7 @@ export function createIngredientData(
       id: ingredientIds.oliveOil,
       uid,
       name: 'Olive Oil',
-      typeId: ingredientTypesIds.refrigerated,
+      typeId: ingredientTypesIds.oil,
       dishIds: [dishIds.huevosRotos],
     },
     {
