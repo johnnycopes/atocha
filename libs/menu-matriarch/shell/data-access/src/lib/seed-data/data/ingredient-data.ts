@@ -7,6 +7,72 @@ export function createIngredientData(
 ): Partial<IngredientDto>[] {
   return [
     {
+      id: ingredientIds.adobo,
+      uid,
+      name: 'Adobo',
+      typeId: ingredientTypesIds.spice,
+    },
+    {
+      id: ingredientIds.basil,
+      uid,
+      name: 'Basil',
+      typeId: ingredientTypesIds.spice,
+    },
+    {
+      id: ingredientIds.bayLeaves,
+      uid,
+      name: 'Bay Leaves',
+      typeId: ingredientTypesIds.spice,
+    },
+    {
+      id: ingredientIds.cardamom,
+      uid,
+      name: 'Cardamom',
+      typeId: ingredientTypesIds.spice,
+    },
+    {
+      id: ingredientIds.chiliPowder,
+      uid,
+      name: 'Chili Powder',
+      typeId: ingredientTypesIds.spice,
+    },
+    {
+      id: ingredientIds.chives,
+      uid,
+      name: 'Chives',
+      typeId: ingredientTypesIds.spice,
+    },
+    {
+      id: ingredientIds.cinnamon,
+      uid,
+      name: 'Cinnamon',
+      typeId: ingredientTypesIds.spice,
+    },
+    {
+      id: ingredientIds.coriander,
+      uid,
+      name: 'Coriander',
+      typeId: ingredientTypesIds.spice,
+    },
+    {
+      id: ingredientIds.coriander,
+      uid,
+      name: 'Coriander',
+      typeId: ingredientTypesIds.spice,
+    },
+    {
+      id: ingredientIds.crushedRedPepper,
+      uid,
+      name: 'Crushed Red Pepper',
+      typeId: ingredientTypesIds.spice,
+    },
+    {
+      id: ingredientIds.cumin,
+      uid,
+      name: 'Cumin',
+      typeId: ingredientTypesIds.spice,
+    },
+    {
       id: ingredientIds.eggs,
       uid,
       name: 'Eggs',
@@ -19,6 +85,18 @@ export function createIngredientData(
       name: 'Garlic',
       typeId: ingredientTypesIds.produce,
       dishIds: [dishIds.huevosRotos],
+    },
+    {
+      id: ingredientIds.garlicPowder,
+      uid,
+      name: 'Garlic Powder',
+      typeId: ingredientTypesIds.spice,
+    },
+    {
+      id: ingredientIds.nutmeg,
+      uid,
+      name: 'Nutmeg',
+      typeId: ingredientTypesIds.spice,
     },
     {
       id: ingredientIds.oliveOil,
@@ -35,11 +113,23 @@ export function createIngredientData(
       dishIds: [dishIds.huevosRotos],
     },
     {
+      id: ingredientIds.oregano,
+      uid,
+      name: 'Oregano',
+      typeId: ingredientTypesIds.spice,
+    },
+    {
       id: ingredientIds.paprika,
       uid,
       name: 'Paprika',
       typeId: ingredientTypesIds.spice,
       dishIds: [dishIds.huevosRotos],
+    },
+    {
+      id: ingredientIds.parsley,
+      uid,
+      name: 'Parsley',
+      typeId: ingredientTypesIds.spice,
     },
     {
       id: ingredientIds.pepper,
@@ -56,11 +146,29 @@ export function createIngredientData(
       dishIds: [dishIds.huevosRotos],
     },
     {
+      id: ingredientIds.sage,
+      uid,
+      name: 'Sage',
+      typeId: ingredientTypesIds.spice,
+    },
+    {
       id: ingredientIds.salt,
       uid,
       name: 'Salt',
       typeId: ingredientTypesIds.spice,
       dishIds: [dishIds.huevosRotos],
+    },
+    {
+      id: ingredientIds.thyme,
+      uid,
+      name: 'Thyme',
+      typeId: ingredientTypesIds.spice,
+    },
+    {
+      id: ingredientIds.turmeric,
+      uid,
+      name: 'Turmeric',
+      typeId: ingredientTypesIds.spice,
     },
   ];
 }

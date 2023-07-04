@@ -48,14 +48,32 @@ export class SeedDataIds {
   };
 
   readonly ingredientIds = {
+    adobo: this._createId(),
+    basil: this._createId(),
+    bayLeaves: this._createId(),
+    cardamom: this._createId(),
+    cayennePepper: this._createId(),
+    chiliPowder: this._createId(),
+    chives: this._createId(),
+    cinnamon: this._createId(),
+    coriander: this._createId(),
+    crushedRedPepper: this._createId(),
+    cumin: this._createId(),
     eggs: this._createId(),
     garlic: this._createId(),
+    garlicPowder: this._createId(),
+    nutmeg: this._createId(),
     oliveOil: this._createId(),
     onion: this._createId(),
+    oregano: this._createId(),
     paprika: this._createId(),
+    parsley: this._createId(),
     pepper: this._createId(),
     potato: this._createId(),
+    sage: this._createId(),
     salt: this._createId(),
+    thyme: this._createId(),
+    turmeric: this._createId(),
   };
 
   constructor(private _createId: () => string) {}
