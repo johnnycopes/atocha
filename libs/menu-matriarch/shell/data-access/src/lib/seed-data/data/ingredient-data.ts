@@ -23,6 +23,7 @@ export function createIngredientData(
       uid,
       name: 'Avocado oil',
       typeId: ingredientTypesIds.oil,
+      dishIds: [dishIds.enchiladas],
     },
     {
       id: ingredientIds.basil,
@@ -65,6 +66,7 @@ export function createIngredientData(
       uid,
       name: 'Canned tomatoes',
       typeId: ingredientTypesIds.preserved,
+      dishIds: [dishIds.enchiladas],
     },
     {
       id: ingredientIds.cardamom,
@@ -89,12 +91,14 @@ export function createIngredientData(
       uid,
       name: 'Cheddar cheese',
       typeId: ingredientTypesIds.refrigerated,
+      dishIds: [dishIds.enchiladas],
     },
     {
       id: ingredientIds.chickenStock,
       uid,
       name: 'Chicken stock',
       typeId: ingredientTypesIds.preserved,
+      dishIds: [dishIds.enchiladas],
     },
     {
       id: ingredientIds.chickenThighs,
@@ -113,6 +117,7 @@ export function createIngredientData(
       uid,
       name: 'Chili powder',
       typeId: ingredientTypesIds.spice,
+      dishIds: [dishIds.enchiladas],
     },
     {
       id: ingredientIds.chives,
@@ -155,6 +160,7 @@ export function createIngredientData(
       uid,
       name: 'Cumin',
       typeId: ingredientTypesIds.spice,
+      dishIds: [dishIds.enchiladas],
     },
     {
       id: ingredientIds.eggplant,
@@ -174,13 +180,14 @@ export function createIngredientData(
       uid,
       name: 'Flour',
       typeId: ingredientTypesIds.spice,
+      dishIds: [dishIds.enchiladas],
     },
     {
       id: ingredientIds.garlic,
       uid,
       name: 'Garlic',
       typeId: ingredientTypesIds.produce,
-      dishIds: [dishIds.huevosRotos],
+      dishIds: [dishIds.enchiladas, dishIds.huevosRotos],
     },
     {
       id: ingredientIds.garlicPowder,
@@ -193,6 +200,7 @@ export function createIngredientData(
       uid,
       name: 'Ground beef',
       typeId: ingredientTypesIds.meat,
+      dishIds: [dishIds.enchiladas],
     },
     {
       id: ingredientIds.jasmineRice,
@@ -248,13 +256,14 @@ export function createIngredientData(
       uid,
       name: 'Onion',
       typeId: ingredientTypesIds.produce,
-      dishIds: [dishIds.huevosRotos],
+      dishIds: [dishIds.enchiladas, dishIds.huevosRotos],
     },
     {
       id: ingredientIds.oregano,
       uid,
       name: 'Oregano',
       typeId: ingredientTypesIds.spice,
+      dishIds: [dishIds.enchiladas],
     },
     {
       id: ingredientIds.paprika,
@@ -274,7 +283,7 @@ export function createIngredientData(
       uid,
       name: 'Pepper',
       typeId: ingredientTypesIds.spice,
-      dishIds: [dishIds.huevosRotos],
+      dishIds: [dishIds.enchiladas, dishIds.huevosRotos],
     },
     {
       id: ingredientIds.potato,
@@ -300,13 +309,14 @@ export function createIngredientData(
       uid,
       name: 'Salt',
       typeId: ingredientTypesIds.spice,
-      dishIds: [dishIds.huevosRotos],
+      dishIds: [dishIds.enchiladas, dishIds.huevosRotos],
     },
     {
       id: ingredientIds.salt,
       uid,
       name: 'Serrano pepper',
       typeId: ingredientTypesIds.produce,
+      dishIds: [dishIds.enchiladas],
     },
     {
       id: ingredientIds.sesameOil,
@@ -343,6 +353,7 @@ export function createIngredientData(
       uid,
       name: 'Tortillas',
       typeId: ingredientTypesIds.bread,
+      dishIds: [dishIds.enchiladas],
     },
     {
       id: ingredientIds.tuna,
