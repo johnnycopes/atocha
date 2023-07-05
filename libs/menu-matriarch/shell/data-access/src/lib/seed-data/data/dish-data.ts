@@ -24,6 +24,7 @@ export function createDishData(
       name: 'Enchiladas',
       link: 'https://cooking.nytimes.com/recipes/1018152-enchiladas-con-carne',
       menuIds: [menuIds.menu],
+      mealIds: [mealIds.mexicanMedley],
       ingredientIds: [
         ingredientIds.avocadoOil,
         ingredientIds.cannedTomatoes,
@@ -63,6 +64,7 @@ export function createDishData(
       uid,
       name: 'Guacamole',
       type: 'side',
+      mealIds: [mealIds.mexicanMedley],
       ingredientIds: [
         ingredientIds.avocado,
         ingredientIds.cilantro,

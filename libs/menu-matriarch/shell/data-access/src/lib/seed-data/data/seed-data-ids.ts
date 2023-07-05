@@ -4,6 +4,7 @@ export class SeedDataIds {
   };
 
   readonly mealIds = {
+    mexicanMedley: this._createId(),
     southernClassic: this._createId(),
     sushiDinner: this._createId(),
   };
