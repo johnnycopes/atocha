@@ -352,7 +352,7 @@ export function createIngredientData(
       ],
     },
     {
-      id: ingredientIds.salt,
+      id: ingredientIds.serranoPepper,
       uid,
       name: 'Serrano pepper',
       typeId: ingredientTypesIds.produce,
