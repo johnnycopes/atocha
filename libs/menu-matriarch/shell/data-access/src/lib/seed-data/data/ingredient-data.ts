@@ -33,13 +33,13 @@ export function createIngredientData(
     {
       id: ingredientIds.basmatiRice,
       uid,
-      name: 'Basmati Rice',
+      name: 'Basmati rice',
       typeId: ingredientTypesIds.dryGood,
     },
     {
       id: ingredientIds.bayLeaves,
       uid,
-      name: 'Bay Leaves',
+      name: 'Bay leaves',
       typeId: ingredientTypesIds.spice,
     },
     {
@@ -77,6 +77,12 @@ export function createIngredientData(
       uid,
       name: 'Cauliflower',
       typeId: ingredientTypesIds.produce,
+    },
+    {
+      id: ingredientIds.cayennePepper,
+      uid,
+      name: 'Cayenne pepper',
+      typeId: ingredientTypesIds.spice,
     },
     {
       id: ingredientIds.cheddarCheese,

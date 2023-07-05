@@ -112,6 +112,7 @@ export function createIngredientTypeData(
         ingredientIds.chiliPowder,
         ingredientIds.chives,
         ingredientIds.cinnamon,
+        ingredientIds.cilantro,
         ingredientIds.coriander,
         ingredientIds.crushedRedPepper,
         ingredientIds.cumin,
