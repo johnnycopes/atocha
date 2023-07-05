@@ -147,6 +147,12 @@ export function createDishData(
       name: 'Roasted Cauliflower',
       link: 'https://cooking.nytimes.com/recipes/7588-roasted-cauliflower',
       type: 'side',
+      ingredientIds: [
+        ingredientIds.cauliflower,
+        ingredientIds.oliveOil,
+        ingredientIds.pepper,
+        ingredientIds.salt,
+      ],
       tagIds: [tagIds.easy, tagIds.vegan, tagIds.vegetarian],
     },
     {

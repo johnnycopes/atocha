@@ -87,6 +87,7 @@ export function createIngredientData(
       uid,
       name: 'Cauliflower',
       typeId: ingredientTypesIds.produce,
+      dishIds: [dishIds.roastedCauliflower],
     },
     {
       id: ingredientIds.cayennePepper,
@@ -272,7 +273,7 @@ export function createIngredientData(
       uid,
       name: 'Olive oil',
       typeId: ingredientTypesIds.oil,
-      dishIds: [dishIds.huevosRotos, dishIds.pizza],
+      dishIds: [dishIds.huevosRotos, dishIds.pizza, dishIds.roastedCauliflower],
     },
     {
       id: ingredientIds.onion,
@@ -306,7 +307,11 @@ export function createIngredientData(
       uid,
       name: 'Pepper',
       typeId: ingredientTypesIds.spice,
-      dishIds: [dishIds.enchiladas, dishIds.huevosRotos],
+      dishIds: [
+        dishIds.enchiladas,
+        dishIds.huevosRotos,
+        dishIds.roastedCauliflower,
+      ],
     },
     {
       id: ingredientIds.pizzaDough,
@@ -339,7 +344,12 @@ export function createIngredientData(
       uid,
       name: 'Salt',
       typeId: ingredientTypesIds.spice,
-      dishIds: [dishIds.enchiladas, dishIds.guacamole, dishIds.huevosRotos],
+      dishIds: [
+        dishIds.enchiladas,
+        dishIds.guacamole,
+        dishIds.huevosRotos,
+        dishIds.roastedCauliflower,
+      ],
     },
     {
       id: ingredientIds.salt,
