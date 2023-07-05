@@ -10,7 +10,7 @@ export function createIngredientTypeData(
       id: ingredientTypesIds.bread,
       uid,
       name: 'Bread',
-      ingredientIds: [],
+      ingredientIds: [ingredientIds.tortillas],
     },
     {
       id: ingredientTypesIds.condiment,
@@ -60,9 +60,10 @@ export function createIngredientTypeData(
       uid,
       name: 'Preserved',
       ingredientIds: [
-        ingredientIds.chickpeas,
         ingredientIds.cannedSalmon,
         ingredientIds.cannedTomatoes,
+        ingredientIds.chickpeas,
+        ingredientIds.chickenStock,
       ],
     },
     {
@@ -79,6 +80,7 @@ export function createIngredientTypeData(
         ingredientIds.mushroom,
         ingredientIds.potato,
         ingredientIds.tomato,
+        ingredientIds.serranoPepper,
         ingredientIds.spinach,
         ingredientIds.sweetPotato,
       ],
@@ -116,6 +118,7 @@ export function createIngredientTypeData(
         ingredientIds.coriander,
         ingredientIds.crushedRedPepper,
         ingredientIds.cumin,
+        ingredientIds.flour,
         ingredientIds.garlicPowder,
         ingredientIds.nutmeg,
         ingredientIds.oregano,

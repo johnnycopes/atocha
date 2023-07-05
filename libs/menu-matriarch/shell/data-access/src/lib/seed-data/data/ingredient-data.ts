@@ -91,6 +91,12 @@ export function createIngredientData(
       typeId: ingredientTypesIds.refrigerated,
     },
     {
+      id: ingredientIds.chickenStock,
+      uid,
+      name: 'Chicken stock',
+      typeId: ingredientTypesIds.preserved,
+    },
+    {
       id: ingredientIds.chickenThighs,
       uid,
       name: 'Chicken thighs',
@@ -162,6 +168,12 @@ export function createIngredientData(
       name: 'Eggs',
       typeId: ingredientTypesIds.refrigerated,
       dishIds: [dishIds.huevosRotos],
+    },
+    {
+      id: ingredientIds.flour,
+      uid,
+      name: 'Flour',
+      typeId: ingredientTypesIds.spice,
     },
     {
       id: ingredientIds.garlic,
@@ -291,6 +303,12 @@ export function createIngredientData(
       dishIds: [dishIds.huevosRotos],
     },
     {
+      id: ingredientIds.salt,
+      uid,
+      name: 'Serrano pepper',
+      typeId: ingredientTypesIds.produce,
+    },
+    {
       id: ingredientIds.sesameOil,
       uid,
       name: 'Sesame oil',
@@ -319,6 +337,12 @@ export function createIngredientData(
       uid,
       name: 'Tomato',
       typeId: ingredientTypesIds.produce,
+    },
+    {
+      id: ingredientIds.tortillas,
+      uid,
+      name: 'Tortillas',
+      typeId: ingredientTypesIds.bread,
     },
     {
       id: ingredientIds.tuna,
