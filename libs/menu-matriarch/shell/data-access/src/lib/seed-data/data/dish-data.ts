@@ -73,7 +73,7 @@ export function createDishData(
         ingredientIds.salt,
         ingredientIds.tomato,
       ],
-      tagIds: [tagIds.easy, tagIds.vegan],
+      tagIds: [tagIds.easy, tagIds.vegetarian, tagIds.vegan],
     },
     {
       id: dishIds.huevosRotos,
