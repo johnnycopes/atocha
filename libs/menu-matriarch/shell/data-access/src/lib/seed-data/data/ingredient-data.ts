@@ -204,6 +204,18 @@ export function createIngredientData(
       dishIds: [dishIds.enchiladas],
     },
     {
+      id: ingredientIds.lemon,
+      uid,
+      name: 'Lemon',
+      typeId: ingredientTypesIds.produce,
+    },
+    {
+      id: ingredientIds.lime,
+      uid,
+      name: 'Lime',
+      typeId: ingredientTypesIds.produce,
+    },
+    {
       id: ingredientIds.jasmineRice,
       uid,
       name: 'Jasmine rice',

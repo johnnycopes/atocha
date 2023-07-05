@@ -81,6 +81,8 @@ export class SeedDataIds {
     groundBeef: this._createId(),
     jasmineRice: this._createId(),
     ketchup: this._createId(),
+    lemon: this._createId(),
+    lime: this._createId(),
     mayonnaise: this._createId(),
     mozzarellaCheese: this._createId(),
     mushroom: this._createId(),
