@@ -19,6 +19,12 @@ export function createIngredientData(
       typeId: ingredientTypesIds.dryGood,
     },
     {
+      id: ingredientIds.avocado,
+      uid,
+      name: 'Avocado',
+      typeId: ingredientTypesIds.produce,
+    },
+    {
       id: ingredientIds.avocadoOil,
       uid,
       name: 'Avocado oil',

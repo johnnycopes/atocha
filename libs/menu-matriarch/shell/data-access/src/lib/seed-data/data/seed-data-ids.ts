@@ -50,6 +50,7 @@ export class SeedDataIds {
   readonly ingredientIds = {
     adobo: this._createId(),
     arborioRice: this._createId(),
+    avocado: this._createId(),
     avocadoOil: this._createId(),
     basil: this._createId(),
     basmatiRice: this._createId(),

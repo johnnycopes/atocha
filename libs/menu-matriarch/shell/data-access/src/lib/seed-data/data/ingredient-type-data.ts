@@ -72,6 +72,7 @@ export function createIngredientTypeData(
       uid,
       name: 'Produce',
       ingredientIds: [
+        ingredientIds.avocado,
         ingredientIds.bellPepper,
         ingredientIds.broccoli,
         ingredientIds.cauliflower,
