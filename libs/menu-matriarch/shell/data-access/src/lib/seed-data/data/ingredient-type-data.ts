@@ -10,7 +10,7 @@ export function createIngredientTypeData(
       id: ingredientTypesIds.bread,
       uid,
       name: 'Bread',
-      ingredientIds: [ingredientIds.tortillas],
+      ingredientIds: [ingredientIds.pizzaDough, ingredientIds.tortillas],
     },
     {
       id: ingredientTypesIds.condiment,
@@ -64,6 +64,7 @@ export function createIngredientTypeData(
         ingredientIds.cannedTomatoes,
         ingredientIds.chickpeas,
         ingredientIds.chickenStock,
+        ingredientIds.tomatoSauce,
       ],
     },
     {

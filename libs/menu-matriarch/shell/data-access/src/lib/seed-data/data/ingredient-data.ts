@@ -30,6 +30,7 @@ export function createIngredientData(
       uid,
       name: 'Basil',
       typeId: ingredientTypesIds.spice,
+      dishIds: [dishIds.pizza],
     },
     {
       id: ingredientIds.basmatiRice,
@@ -225,6 +226,7 @@ export function createIngredientData(
       uid,
       name: 'Mozzarella cheese',
       typeId: ingredientTypesIds.refrigerated,
+      dishIds: [dishIds.pizza],
     },
     {
       id: ingredientIds.mushroom,
@@ -249,7 +251,7 @@ export function createIngredientData(
       uid,
       name: 'Olive oil',
       typeId: ingredientTypesIds.oil,
-      dishIds: [dishIds.huevosRotos],
+      dishIds: [dishIds.huevosRotos, dishIds.pizza],
     },
     {
       id: ingredientIds.onion,
@@ -263,7 +265,7 @@ export function createIngredientData(
       uid,
       name: 'Oregano',
       typeId: ingredientTypesIds.spice,
-      dishIds: [dishIds.enchiladas],
+      dishIds: [dishIds.enchiladas, dishIds.pizza],
     },
     {
       id: ingredientIds.paprika,
@@ -284,6 +286,13 @@ export function createIngredientData(
       name: 'Pepper',
       typeId: ingredientTypesIds.spice,
       dishIds: [dishIds.enchiladas, dishIds.huevosRotos],
+    },
+    {
+      id: ingredientIds.pizzaDough,
+      uid,
+      name: 'Pizza dough',
+      typeId: ingredientTypesIds.bread,
+      dishIds: [dishIds.pizza],
     },
     {
       id: ingredientIds.potato,
@@ -347,6 +356,13 @@ export function createIngredientData(
       uid,
       name: 'Tomato',
       typeId: ingredientTypesIds.produce,
+    },
+    {
+      id: ingredientIds.tomatoSauce,
+      uid,
+      name: 'Tomato sauce',
+      typeId: ingredientTypesIds.preserved,
+      dishIds: [dishIds.pizza],
     },
     {
       id: ingredientIds.tortillas,
