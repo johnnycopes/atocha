@@ -13,10 +13,28 @@ export function createIngredientData(
       typeId: ingredientTypesIds.spice,
     },
     {
+      id: ingredientIds.arborioRice,
+      uid,
+      name: 'Arborio rice',
+      typeId: ingredientTypesIds.dryGood,
+    },
+    {
+      id: ingredientIds.avocadoOil,
+      uid,
+      name: 'Avocado oil',
+      typeId: ingredientTypesIds.oil,
+    },
+    {
       id: ingredientIds.basil,
       uid,
       name: 'Basil',
       typeId: ingredientTypesIds.spice,
+    },
+    {
+      id: ingredientIds.basmatiRice,
+      uid,
+      name: 'Basmati Rice',
+      typeId: ingredientTypesIds.dryGood,
     },
     {
       id: ingredientIds.bayLeaves,
@@ -25,15 +43,63 @@ export function createIngredientData(
       typeId: ingredientTypesIds.spice,
     },
     {
+      id: ingredientIds.bellPepper,
+      uid,
+      name: 'Bell pepper',
+      typeId: ingredientTypesIds.produce,
+    },
+    {
+      id: ingredientIds.broccoli,
+      uid,
+      name: 'Broccoli',
+      typeId: ingredientTypesIds.produce,
+    },
+    {
+      id: ingredientIds.cannedSalmon,
+      uid,
+      name: 'Canned salmon',
+      typeId: ingredientTypesIds.preserved,
+    },
+    {
+      id: ingredientIds.cannedTomatoes,
+      uid,
+      name: 'Canned tomatoes',
+      typeId: ingredientTypesIds.preserved,
+    },
+    {
       id: ingredientIds.cardamom,
       uid,
       name: 'Cardamom',
       typeId: ingredientTypesIds.spice,
     },
     {
+      id: ingredientIds.cauliflower,
+      uid,
+      name: 'Cauliflower',
+      typeId: ingredientTypesIds.produce,
+    },
+    {
+      id: ingredientIds.cheddarCheese,
+      uid,
+      name: 'Cheddar cheese',
+      typeId: ingredientTypesIds.refrigerated,
+    },
+    {
+      id: ingredientIds.chickenThighs,
+      uid,
+      name: 'Chicken thighs',
+      typeId: ingredientTypesIds.meat,
+    },
+    {
+      id: ingredientIds.chickpeas,
+      uid,
+      name: 'Chickpeas',
+      typeId: ingredientTypesIds.preserved,
+    },
+    {
       id: ingredientIds.chiliPowder,
       uid,
-      name: 'Chili Powder',
+      name: 'Chili powder',
       typeId: ingredientTypesIds.spice,
     },
     {
@@ -43,16 +109,22 @@ export function createIngredientData(
       typeId: ingredientTypesIds.spice,
     },
     {
+      id: ingredientIds.cilantro,
+      uid,
+      name: 'Cilantro',
+      typeId: ingredientTypesIds.spice,
+    },
+    {
       id: ingredientIds.cinnamon,
       uid,
       name: 'Cinnamon',
       typeId: ingredientTypesIds.spice,
     },
     {
-      id: ingredientIds.coriander,
+      id: ingredientIds.coconutOil,
       uid,
-      name: 'Coriander',
-      typeId: ingredientTypesIds.spice,
+      name: 'Coconut oil',
+      typeId: ingredientTypesIds.oil,
     },
     {
       id: ingredientIds.coriander,
@@ -63,7 +135,7 @@ export function createIngredientData(
     {
       id: ingredientIds.crushedRedPepper,
       uid,
-      name: 'Crushed Red Pepper',
+      name: 'Crushed red pepper',
       typeId: ingredientTypesIds.spice,
     },
     {
@@ -71,6 +143,12 @@ export function createIngredientData(
       uid,
       name: 'Cumin',
       typeId: ingredientTypesIds.spice,
+    },
+    {
+      id: ingredientIds.eggplant,
+      uid,
+      name: 'Eggplant',
+      typeId: ingredientTypesIds.produce,
     },
     {
       id: ingredientIds.eggs,
@@ -89,8 +167,50 @@ export function createIngredientData(
     {
       id: ingredientIds.garlicPowder,
       uid,
-      name: 'Garlic Powder',
+      name: 'Garlic powder',
       typeId: ingredientTypesIds.spice,
+    },
+    {
+      id: ingredientIds.groundBeef,
+      uid,
+      name: 'Ground beef',
+      typeId: ingredientTypesIds.meat,
+    },
+    {
+      id: ingredientIds.jasmineRice,
+      uid,
+      name: 'Jasmine rice',
+      typeId: ingredientTypesIds.dryGood,
+    },
+    {
+      id: ingredientIds.ketchup,
+      uid,
+      name: 'Ketchup',
+      typeId: ingredientTypesIds.condiment,
+    },
+    {
+      id: ingredientIds.mayonnaise,
+      uid,
+      name: 'Mayonnaise',
+      typeId: ingredientTypesIds.condiment,
+    },
+    {
+      id: ingredientIds.mozzarellaCheese,
+      uid,
+      name: 'Mozzarella cheese',
+      typeId: ingredientTypesIds.refrigerated,
+    },
+    {
+      id: ingredientIds.mushroom,
+      uid,
+      name: 'Mushroom',
+      typeId: ingredientTypesIds.produce,
+    },
+    {
+      id: ingredientIds.mustard,
+      uid,
+      name: 'Mustard',
+      typeId: ingredientTypesIds.condiment,
     },
     {
       id: ingredientIds.nutmeg,
@@ -101,7 +221,7 @@ export function createIngredientData(
     {
       id: ingredientIds.oliveOil,
       uid,
-      name: 'Olive Oil',
+      name: 'Olive oil',
       typeId: ingredientTypesIds.oil,
       dishIds: [dishIds.huevosRotos],
     },
@@ -152,6 +272,12 @@ export function createIngredientData(
       typeId: ingredientTypesIds.spice,
     },
     {
+      id: ingredientIds.salmon,
+      uid,
+      name: 'Salmon',
+      typeId: ingredientTypesIds.seafood,
+    },
+    {
       id: ingredientIds.salt,
       uid,
       name: 'Salt',
@@ -159,10 +285,40 @@ export function createIngredientData(
       dishIds: [dishIds.huevosRotos],
     },
     {
+      id: ingredientIds.sesameOil,
+      uid,
+      name: 'Sesame oil',
+      typeId: ingredientTypesIds.oil,
+    },
+    {
+      id: ingredientIds.spinach,
+      uid,
+      name: 'Spinach',
+      typeId: ingredientTypesIds.produce,
+    },
+    {
+      id: ingredientIds.sweetPotato,
+      uid,
+      name: 'Sweet potato',
+      typeId: ingredientTypesIds.produce,
+    },
+    {
       id: ingredientIds.thyme,
       uid,
       name: 'Thyme',
       typeId: ingredientTypesIds.spice,
+    },
+    {
+      id: ingredientIds.tomato,
+      uid,
+      name: 'Tomato',
+      typeId: ingredientTypesIds.produce,
+    },
+    {
+      id: ingredientIds.tuna,
+      uid,
+      name: 'Tuna',
+      typeId: ingredientTypesIds.seafood,
     },
     {
       id: ingredientIds.turmeric,
