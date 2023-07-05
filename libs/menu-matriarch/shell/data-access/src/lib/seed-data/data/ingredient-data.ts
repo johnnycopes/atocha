@@ -23,6 +23,7 @@ export function createIngredientData(
       uid,
       name: 'Avocado',
       typeId: ingredientTypesIds.produce,
+      dishIds: [dishIds.guacamole],
     },
     {
       id: ingredientIds.avocadoOil,
@@ -137,6 +138,7 @@ export function createIngredientData(
       uid,
       name: 'Cilantro',
       typeId: ingredientTypesIds.spice,
+      dishIds: [dishIds.guacamole],
     },
     {
       id: ingredientIds.cinnamon,
@@ -220,6 +222,7 @@ export function createIngredientData(
       uid,
       name: 'Lime',
       typeId: ingredientTypesIds.produce,
+      dishIds: [dishIds.guacamole],
     },
     {
       id: ingredientIds.jasmineRice,
@@ -276,7 +279,7 @@ export function createIngredientData(
       uid,
       name: 'Onion',
       typeId: ingredientTypesIds.produce,
-      dishIds: [dishIds.enchiladas, dishIds.huevosRotos],
+      dishIds: [dishIds.enchiladas, dishIds.guacamole, dishIds.huevosRotos],
     },
     {
       id: ingredientIds.oregano,
@@ -336,7 +339,7 @@ export function createIngredientData(
       uid,
       name: 'Salt',
       typeId: ingredientTypesIds.spice,
-      dishIds: [dishIds.enchiladas, dishIds.huevosRotos],
+      dishIds: [dishIds.enchiladas, dishIds.guacamole, dishIds.huevosRotos],
     },
     {
       id: ingredientIds.salt,
@@ -374,6 +377,7 @@ export function createIngredientData(
       uid,
       name: 'Tomato',
       typeId: ingredientTypesIds.produce,
+      dishIds: [dishIds.guacamole],
     },
     {
       id: ingredientIds.tomatoSauce,

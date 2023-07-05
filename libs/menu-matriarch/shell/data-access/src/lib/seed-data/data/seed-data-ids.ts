@@ -13,6 +13,7 @@ export class SeedDataIds {
     enchiladas: this._createId(),
     friedChicken: this._createId(),
     greekSalad: this._createId(),
+    guacamole: this._createId(),
     huevosRotos: this._createId(),
     macAndCheese: this._createId(),
     misoSoup: this._createId(),

@@ -59,6 +59,21 @@ export function createDishData(
       tagIds: [tagIds.vegetarian],
     },
     {
+      id: dishIds.guacamole,
+      uid,
+      name: 'Guacamole',
+      type: 'side',
+      ingredientIds: [
+        ingredientIds.avocado,
+        ingredientIds.cilantro,
+        ingredientIds.lime,
+        ingredientIds.onion,
+        ingredientIds.salt,
+        ingredientIds.tomato,
+      ],
+      tagIds: [tagIds.easy, tagIds.vegan],
+    },
+    {
       id: dishIds.huevosRotos,
       uid,
       name: 'Huevos Rotos',
