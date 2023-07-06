@@ -11,7 +11,7 @@ export function createMenuData(
       uid,
       name: 'Menu #1',
       contents: {
-        Monday: [dishIds.enchiladas],
+        Monday: [dishIds.enchiladas, dishIds.guacamole],
         Tuesday: [dishIds.sushi, dishIds.misoSoup],
         Wednesday: [dishIds.salmonBurgers, dishIds.sweetPotatoFries],
         Thursday: [dishIds.redLentilSoup],

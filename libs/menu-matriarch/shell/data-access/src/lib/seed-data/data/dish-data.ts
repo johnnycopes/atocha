@@ -64,6 +64,7 @@ export function createDishData(
       uid,
       name: 'Guacamole',
       type: 'side',
+      menuIds: [menuIds.menu],
       mealIds: [mealIds.mexicanMedley],
       ingredientIds: [
         ingredientIds.avocado,
