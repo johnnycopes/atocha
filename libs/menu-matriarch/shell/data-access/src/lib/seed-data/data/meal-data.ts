@@ -7,6 +7,12 @@ export function createMealData(
 ): Partial<MealDto>[] {
   return [
     {
+      id: mealIds.mexicanMedley,
+      uid,
+      name: 'Mexican Medley',
+      dishIds: [dishIds.enchiladas, dishIds.guacamole],
+    },
+    {
       id: mealIds.southernClassic,
       uid,
       name: 'Southern Classic',

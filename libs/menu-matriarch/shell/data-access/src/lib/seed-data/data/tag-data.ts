@@ -10,7 +10,11 @@ export function createTagData(
       id: tagIds.easy,
       uid,
       name: 'Easy',
-      dishIds: [dishIds.roastedCauliflower, dishIds.thaiCurry],
+      dishIds: [
+        dishIds.guacamole,
+        dishIds.roastedCauliflower,
+        dishIds.thaiCurry,
+      ],
     },
     {
       id: tagIds.pescatarian,
@@ -24,6 +28,7 @@ export function createTagData(
       uid,
       name: 'Vegan',
       dishIds: [
+        dishIds.guacamole,
         dishIds.misoSoup,
         dishIds.redLentilSoup,
         dishIds.roastedCauliflower,
@@ -38,6 +43,7 @@ export function createTagData(
       dishIds: [
         dishIds.cornbread,
         dishIds.greekSalad,
+        dishIds.guacamole,
         dishIds.huevosRotos,
         dishIds.macAndCheese,
         dishIds.misoSoup,
