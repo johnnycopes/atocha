@@ -30,7 +30,7 @@ export function createIngredientData(
       uid,
       name: 'Avocado oil',
       typeId: ingredientTypesIds.oil,
-      dishIds: [dishIds.enchiladas],
+      dishIds: [dishIds.enchiladas, dishIds.sweetPotatoFries],
     },
     {
       id: ingredientIds.basil,
@@ -94,6 +94,7 @@ export function createIngredientData(
       uid,
       name: 'Cayenne pepper',
       typeId: ingredientTypesIds.spice,
+      dishIds: [dishIds.sweetPotatoFries],
     },
     {
       id: ingredientIds.cheddarCheese,
@@ -126,7 +127,7 @@ export function createIngredientData(
       uid,
       name: 'Chili powder',
       typeId: ingredientTypesIds.spice,
-      dishIds: [dishIds.enchiladas],
+      dishIds: [dishIds.enchiladas, dishIds.sweetPotatoFries],
     },
     {
       id: ingredientIds.chives,
@@ -294,7 +295,7 @@ export function createIngredientData(
       uid,
       name: 'Paprika',
       typeId: ingredientTypesIds.spice,
-      dishIds: [dishIds.huevosRotos],
+      dishIds: [dishIds.huevosRotos, dishIds.sweetPotatoFries],
     },
     {
       id: ingredientIds.parsley,
@@ -311,6 +312,7 @@ export function createIngredientData(
         dishIds.enchiladas,
         dishIds.huevosRotos,
         dishIds.roastedCauliflower,
+        dishIds.sweetPotatoFries,
       ],
     },
     {
@@ -349,6 +351,7 @@ export function createIngredientData(
         dishIds.guacamole,
         dishIds.huevosRotos,
         dishIds.roastedCauliflower,
+        dishIds.sweetPotatoFries,
       ],
     },
     {
@@ -375,6 +378,7 @@ export function createIngredientData(
       uid,
       name: 'Sweet potato',
       typeId: ingredientTypesIds.produce,
+      dishIds: [dishIds.sweetPotatoFries],
     },
     {
       id: ingredientIds.thyme,
