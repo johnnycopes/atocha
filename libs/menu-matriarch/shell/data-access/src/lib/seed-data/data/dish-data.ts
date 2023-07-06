@@ -71,6 +71,7 @@ export function createDishData(
         ingredientIds.lime,
         ingredientIds.onion,
         ingredientIds.salt,
+        ingredientIds.serranoPepper,
         ingredientIds.tomato,
       ],
       tagIds: [tagIds.easy, tagIds.vegetarian, tagIds.vegan],

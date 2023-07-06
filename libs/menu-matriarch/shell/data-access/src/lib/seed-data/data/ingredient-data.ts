@@ -356,7 +356,7 @@ export function createIngredientData(
       uid,
       name: 'Serrano pepper',
       typeId: ingredientTypesIds.produce,
-      dishIds: [dishIds.enchiladas],
+      dishIds: [dishIds.enchiladas, dishIds.guacamole],
     },
     {
       id: ingredientIds.sesameOil,
