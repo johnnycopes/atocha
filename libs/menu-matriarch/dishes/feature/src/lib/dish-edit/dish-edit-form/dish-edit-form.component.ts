@@ -12,6 +12,7 @@ import { RouterLink } from '@angular/router';
 import { EditorComponent } from '@tinymce/tinymce-angular';
 
 import {
+  AutofocusDirective,
   ButtonComponent,
   CheckboxComponent,
   trackBySelf,
@@ -42,6 +43,7 @@ export type DishConfig = Pick<
   standalone: true,
   selector: 'app-dish-edit-form',
   imports: [
+    AutofocusDirective,
     ButtonComponent,
     CheckboxComponent,
     CommonModule,
