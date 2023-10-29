@@ -1,9 +1,8 @@
 import { reduceRecursively } from '@atocha/core/util';
 
+export type SelectionModel = string[] | Set<string>;
 export type SelectionState = 'checked' | 'indeterminate';
 export type SelectionStates = Record<string, SelectionState>;
-
-type Model = string[] | Set<string>;
 
 type IdsMap = Map<
   string,
@@ -35,7 +34,7 @@ export class ModelTransformer<T> {
     this._ids = Array.from(this._idsMap.keys());
   }
 
-  toArray(states: SelectionStates): Extract<Model, string[]> {
+  toArray(states: SelectionStates): Extract<SelectionModel, string[]> {
     const model: string[] = [];
 
     for (const id of this._ids) {
@@ -50,11 +49,11 @@ export class ModelTransformer<T> {
     return model;
   }
 
-  toSet(states: SelectionStates): Extract<Model, Set<string>> {
+  toSet(states: SelectionStates): Extract<SelectionModel, Set<string>> {
     return new Set(this.toArray(states));
   }
 
-  toStates(model: Model): SelectionStates {
+  toStates(model: SelectionModel): SelectionStates {
     const states: SelectionStates = {};
     const idsModel = Array.isArray(model) ? new Set(model) : model;
 
