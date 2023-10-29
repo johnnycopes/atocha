@@ -49,29 +49,32 @@ export class ModelTransformer<T> {
   }
 
   toStates(model: string[]): SelectionStates {
-    return this._ids.reduce((state, curr) => {
-      if (model.includes(curr)) {
-        state[curr] = 'checked';
+    const states: SelectionStates = {};
+
+    for (const id of this._ids) {
+      if (model.includes(id)) {
+        states[id] = 'checked';
       } else {
-        const ids = this._idsMap.get(curr)?.childrenIds ?? [];
+        const ids = this._idsMap.get(id)?.childrenIds ?? [];
         if (ids.length) {
           const idsInState = ids.reduce(
-            (total, id) => total + (state[id] ? 1 : 0),
+            (total, id) => total + (states[id] ? 1 : 0),
             0
           );
           const totalIds = ids.length;
 
-          if (totalIds === 1 && state[ids[0]] === 'indeterminate') {
-            state[curr] = 'indeterminate';
+          if (totalIds === 1 && states[ids[0]] === 'indeterminate') {
+            states[id] = 'indeterminate';
           } else if (totalIds === idsInState) {
-            state[curr] = 'checked';
+            states[id] = 'checked';
           } else if (idsInState > 0) {
-            state[curr] = 'indeterminate';
+            states[id] = 'indeterminate';
           }
         }
       }
-      return state;
-    }, {} as SelectionStates);
+    }
+
+    return states;
   }
 
   updateStates(
