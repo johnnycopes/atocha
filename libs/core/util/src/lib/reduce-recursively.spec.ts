@@ -46,10 +46,10 @@ describe('reduceRecursively', () => {
     };
 
     expect(
-      reduceRecursively({
+      reduceRecursively<Item, Item[]>({
         item,
         getItems,
-        initialValue: [] as Item[],
+        initialValue: [],
         reducer: (accumulator, item) => [...accumulator, item],
       })
     ).toEqual([
@@ -103,10 +103,10 @@ describe('reduceRecursively', () => {
     };
 
     expect(
-      reduceRecursively({
+      reduceRecursively<Item, Record<string, string>>({
         item,
         getItems,
-        initialValue: {} as Record<string, string>,
+        initialValue: {},
         reducer: (accumulator, item) => ({
           ...accumulator,
           [item.name]: item.description ?? 'No description',

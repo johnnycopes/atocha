@@ -11,12 +11,12 @@ import { CheckboxComponent } from '../checkbox/checkbox.component';
 import { StorybookWrapperComponent } from '../../../.storybook/storybook-wrapper/storybook-wrapper.component';
 import {
   AFRICA,
-  ALL_SELECTED_MODEL,
+  ALL_SELECTED_ARRAY_MODEL,
   getChildren,
   getCounts,
   getId,
   SMALL_AFRICA,
-  SOME_SELECTED_MODEL,
+  SOME_SELECTED_ARRAY_MODEL,
   TestItem,
 } from '../selection-tree/mock-data';
 import { CountedSelectionTreeComponent } from './counted-selection-tree.component';
@@ -113,7 +113,7 @@ export const someSelected: StoryObj<CountedSelectionTreeComponent<TestItem>> = {
   render: Template,
 
   args: createArgs({
-    model: SOME_SELECTED_MODEL,
+    model: SOME_SELECTED_ARRAY_MODEL,
   }),
 };
 
@@ -121,7 +121,7 @@ export const allSelected: StoryObj<CountedSelectionTreeComponent<TestItem>> = {
   render: Template,
 
   args: createArgs({
-    model: ALL_SELECTED_MODEL,
+    model: ALL_SELECTED_ARRAY_MODEL,
   }),
 };
 
@@ -131,7 +131,7 @@ export const withCustomStyling: StoryObj<
   render: Template,
 
   args: createArgs({
-    model: SOME_SELECTED_MODEL,
+    model: SOME_SELECTED_ARRAY_MODEL,
     className: 'custom-counted-selection-tree',
   }),
 };

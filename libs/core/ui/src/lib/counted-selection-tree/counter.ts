@@ -1,4 +1,5 @@
 import { reduceRecursively } from '@atocha/core/util';
+import { SelectionModel } from '../selection-tree/model-transformer';
 
 export type Counts = Record<string, number>;
 
@@ -13,28 +14,27 @@ export class Counter<T> {
     return this._getCounts(tree, this._getLeafNodeCount);
   }
 
-  getSelectedCounts(tree: T, model: string[]): Counts {
+  getSelectedCounts(tree: T, model: SelectionModel): Counts {
+    const setModel = Array.isArray(model) ? new Set(model) : model;
     return this._getCounts(tree, (leafNode: T): number =>
-      model.includes(this._getId(leafNode))
-        ? this._getLeafNodeCount(leafNode)
-        : 0
+      setModel.has(this._getId(leafNode)) ? this._getLeafNodeCount(leafNode) : 0
     );
   }
 
   private _getCounts(tree: T, getLeafNodeCount: (item: T) => number): Counts {
-    return reduceRecursively({
+    return reduceRecursively<T, Counts>({
       item: tree,
       getItems: this._getChildren,
-      initialValue: {} as Counts,
-      reducer: (accum, curr) => ({
-        ...accum,
-        [this._getId(curr)]: reduceRecursively({
+      initialValue: {},
+      reducer: (accum, curr) => {
+        accum[this._getId(curr)] = reduceRecursively({
           item: curr,
           getItems: this._getChildren,
           initialValue: 0,
           reducer: (total, item) => total + getLeafNodeCount(item),
-        }),
-      }),
+        });
+        return accum;
+      },
     });
   }
 }

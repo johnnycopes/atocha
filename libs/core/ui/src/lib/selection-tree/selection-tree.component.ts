@@ -94,7 +94,7 @@ export class SelectionTreeComponent<T>
 
     this.nodeClick.emit(nodeId);
     this.states = this._transformer.updateStates(checked, nodeId, this.states);
-    this.model = this._transformer.toModel(this.states);
+    this.model = this._transformer.toArray(this.states);
     this._onChangeFn(this.model);
   };
 }

@@ -1,5 +1,6 @@
 import { reduceRecursively } from '@atocha/core/util';
 
+export type SelectionModel = string[] | Set<string>;
 export type SelectionState = 'checked' | 'indeterminate';
 export type SelectionStates = Record<string, SelectionState>;
 
@@ -9,18 +10,18 @@ type IdsMap = Map<
 >;
 
 export class ModelTransformer<T> {
-  private _idsMap: IdsMap;
-  private _ids: readonly string[];
+  private readonly _idsMap: IdsMap;
+  private readonly _ids: readonly string[];
 
   constructor(
     private _tree: T,
     private _getId: (tree: T) => string,
     private _getChildren: (tree: T) => T[]
   ) {
-    this._idsMap = reduceRecursively({
+    this._idsMap = reduceRecursively<T, IdsMap>({
       item: this._tree,
       getItems: this._getChildren,
-      initialValue: new Map() as IdsMap,
+      initialValue: new Map(),
       reducer: (accum, item, parent) =>
         accum.set(this._getId(item), {
           parentId: parent ? this._getId(parent) : undefined,
@@ -30,46 +31,63 @@ export class ModelTransformer<T> {
         }),
     });
 
-    // Reverse the keys because we want to ascend the tree starting from the leaf nodes
-    this._ids = Array.from(this._idsMap.keys()).reverse();
+    this._ids = Array.from(this._idsMap.keys());
   }
 
-  toModel(states: SelectionStates): string[] {
-    return this._ids.reduce((state, id) => {
+  toArray(states: SelectionStates): Extract<SelectionModel, string[]> {
+    const model: string[] = [];
+
+    for (const id of this._ids) {
       if (
         states[id] === 'checked' &&
-        !(this._idsMap.get(id)?.childrenIds ?? []).length
+        (this._idsMap.get(id)?.childrenIds ?? []).length === 0
       ) {
-        state.unshift(id);
+        model.push(id);
       }
-      return state;
-    }, [] as string[]);
+    }
+
+    return model;
   }
 
-  toStates(model: string[]): SelectionStates {
-    return this._ids.reduce((state, curr) => {
-      if (model.includes(curr)) {
-        state[curr] = 'checked';
+  toSet(states: SelectionStates): Extract<SelectionModel, Set<string>> {
+    return new Set(this.toArray(states));
+  }
+
+  toStates(model: SelectionModel): SelectionStates {
+    const states: SelectionStates = {};
+    const idsModel = Array.isArray(model) ? new Set(model) : model;
+
+    /*
+      Iterating through the IDs backwards builds up `states` from the leaf nodes
+      of the tree up towards the root. The code is procedural and highly depends
+      on this order but is more performant since each node reliably knows the state
+      of all of its children.
+    */
+    for (let i = this._ids.length - 1; i >= 0; i--) {
+      const id = this._ids[i];
+      if (idsModel.has(id)) {
+        states[id] = 'checked';
       } else {
-        const ids = this._idsMap.get(curr)?.childrenIds ?? [];
+        const ids = this._idsMap.get(id)?.childrenIds ?? [];
         if (ids.length) {
           const idsInState = ids.reduce(
-            (total, id) => total + (state[id] ? 1 : 0),
+            (total, id) => total + (states[id] ? 1 : 0),
             0
           );
           const totalIds = ids.length;
 
-          if (totalIds === 1 && state[ids[0]] === 'indeterminate') {
-            state[curr] = 'indeterminate';
+          if (totalIds === 1 && states[ids[0]] === 'indeterminate') {
+            states[id] = 'indeterminate';
           } else if (totalIds === idsInState) {
-            state[curr] = 'checked';
+            states[id] = 'checked';
           } else if (idsInState > 0) {
-            state[curr] = 'indeterminate';
+            states[id] = 'indeterminate';
           }
         }
       }
-      return state;
-    }, {} as SelectionStates);
+    }
+
+    return states;
   }
 
   updateStates(
@@ -77,8 +95,7 @@ export class ModelTransformer<T> {
     id: string,
     states: SelectionStates
   ): SelectionStates {
-    let updatedStates = { ...states };
-    updatedStates = this._updateItemAndDescendantStates({
+    let updatedStates = this._updateItemAndDescendantStates({
       id,
       checked,
       states,
@@ -96,11 +113,14 @@ export class ModelTransformer<T> {
     checked: boolean;
     states: SelectionStates;
   }): SelectionStates {
-    const itemAndDescendantsIds = reduceRecursively({
+    const itemAndDescendantsIds = reduceRecursively<string, string[]>({
       item: id,
       getItems: (id: string) => this._idsMap.get(id)?.childrenIds ?? [],
-      initialValue: [] as string[],
-      reducer: (accum, curr) => [...accum, curr],
+      initialValue: [],
+      reducer: (accum, curr) => {
+        accum.push(curr);
+        return accum;
+      },
     });
 
     itemAndDescendantsIds.forEach((id) => {
@@ -118,14 +138,18 @@ export class ModelTransformer<T> {
     id: string,
     states: SelectionStates
   ): SelectionStates {
-    const ancestorIds = reduceRecursively({
+    const ancestorIds = reduceRecursively<string, string[]>({
       item: id,
       getItems: (id) => {
         const parentId = this._idsMap.get(id)?.parentId;
         return parentId ? [parentId] : [];
       },
-      initialValue: [] as string[],
-      reducer: (accum, curr) => (id === curr ? [...accum] : [...accum, curr]),
+      initialValue: [],
+      reducer: (accum, curr) => {
+        if (id === curr) return accum;
+        accum.push(curr);
+        return accum;
+      },
     });
 
     ancestorIds.forEach((ancestorId) => {
