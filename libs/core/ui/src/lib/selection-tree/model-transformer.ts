@@ -9,8 +9,8 @@ type IdsRecord = Record<
 >;
 
 export class ModelTransformer<T> {
-  private _idsRecord: IdsRecord;
-  private _ids: readonly string[];
+  private readonly _idsRecord: IdsRecord;
+  private readonly _ids: readonly string[];
 
   constructor(
     private _tree: T,
@@ -34,14 +34,15 @@ export class ModelTransformer<T> {
 
     // Reverse the keys because we want to ascend the tree starting from the leaf nodes
     this._ids = Object.keys(this._idsRecord).reverse();
+
+    console.log(this._ids, this._idsRecord);
   }
 
   toModel(states: SelectionStates): string[] {
     const model: string[] = [];
 
     for (const id of this._ids) {
-      const hasNoChildren = this._idsRecord[id].childrenIds.length === 0;
-      if (states[id] === 'checked' && hasNoChildren) {
+      if (states[id] === 'checked' && !this._idsRecord[id].childrenIds.length) {
         model.push(id);
       }
     }
