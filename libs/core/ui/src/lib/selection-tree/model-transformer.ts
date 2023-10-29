@@ -82,8 +82,7 @@ export class ModelTransformer<T> {
     id: string,
     states: SelectionStates
   ): SelectionStates {
-    let updatedStates = { ...states };
-    updatedStates = this._updateItemAndDescendantStates({
+    let updatedStates = this._updateItemAndDescendantStates({
       id,
       checked,
       states,
