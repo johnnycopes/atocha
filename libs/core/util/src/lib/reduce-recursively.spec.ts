@@ -1,4 +1,4 @@
-import { flattenRecursively } from './flatten-recursively';
+import { reduceRecursively } from './reduce-recursively';
 
 interface Item {
   name: string;
@@ -6,7 +6,7 @@ interface Item {
   children?: Item[];
 }
 
-describe('flattenRecursively', () => {
+describe('reduceRecursively', () => {
   let getItems: (item: Item) => Item[];
 
   beforeEach(() => {
@@ -17,7 +17,7 @@ describe('flattenRecursively', () => {
     const pusher = (accumulator: Item[], item: Item) => [...accumulator, item];
 
     expect(
-      flattenRecursively({
+      reduceRecursively({
         item: { name: 'Item 1' },
         getItems,
         initialValue: [],
@@ -26,7 +26,7 @@ describe('flattenRecursively', () => {
     ).toEqual([{ name: 'Item 1' }]);
 
     expect(
-      flattenRecursively({
+      reduceRecursively({
         item: { name: 'Item 2', children: [] },
         getItems,
         initialValue: [],
@@ -46,7 +46,7 @@ describe('flattenRecursively', () => {
     };
 
     expect(
-      flattenRecursively({
+      reduceRecursively({
         item,
         getItems,
         initialValue: [] as Item[],
@@ -79,7 +79,7 @@ describe('flattenRecursively', () => {
     };
 
     expect(
-      flattenRecursively<Item, string[]>({
+      reduceRecursively<Item, string[]>({
         item,
         getItems,
         initialValue: [],
@@ -103,7 +103,7 @@ describe('flattenRecursively', () => {
     };
 
     expect(
-      flattenRecursively({
+      reduceRecursively({
         item,
         getItems,
         initialValue: {} as Record<string, string>,
