@@ -26,15 +26,15 @@ export class Counter<T> {
       item: tree,
       getItems: this._getChildren,
       initialValue: {},
-      reducer: (accum, curr) => ({
-        ...accum,
-        [this._getId(curr)]: reduceRecursively({
+      reducer: (accum, curr) => {
+        accum[this._getId(curr)] = reduceRecursively({
           item: curr,
           getItems: this._getChildren,
           initialValue: 0,
           reducer: (total, item) => total + getLeafNodeCount(item),
-        }),
-      }),
+        });
+        return accum;
+      },
     });
   }
 }
