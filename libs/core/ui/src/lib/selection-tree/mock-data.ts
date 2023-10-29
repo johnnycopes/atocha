@@ -60,7 +60,8 @@ export const SOME_SELECTED_STATES: SelectionStates = {
   Fes: 'checked',
 };
 
-export const SOME_SELECTED_MODEL = ['Swaziland', 'Fes'];
+export const SOME_SELECTED_ARRAY_MODEL = ['Swaziland', 'Fes'];
+export const SOME_SELECTED_SET_MODEL = new Set(SOME_SELECTED_ARRAY_MODEL);
 
 export const ALL_SELECTED_STATES: SelectionStates = {
   Africa: 'checked',
@@ -74,13 +75,14 @@ export const ALL_SELECTED_STATES: SelectionStates = {
   Fes: 'checked',
 };
 
-export const ALL_SELECTED_MODEL = [
+export const ALL_SELECTED_ARRAY_MODEL = [
   'Central Africa',
   'Swaziland',
   'Namibia',
   'Marrakesh',
   'Fes',
 ];
+export const ALL_SELECTED_SET_MODEL = new Set(ALL_SELECTED_ARRAY_MODEL);
 
 export const getId = ({ id }: TestItem) => id;
 export const getChildren = ({ children }: TestItem) => children ?? [];

@@ -1,11 +1,11 @@
 import { Counter } from './counter';
 import {
   AFRICA,
-  ALL_SELECTED_MODEL,
+  ALL_SELECTED_ARRAY_MODEL,
   getChildren,
   getCounts,
   getId,
-  SOME_SELECTED_MODEL,
+  SOME_SELECTED_ARRAY_MODEL,
 } from '../selection-tree/mock-data';
 
 describe('Counter', () => {
@@ -47,7 +47,9 @@ describe('Counter', () => {
     });
 
     it('returns selected counts record with partial model', () => {
-      expect(counter.getSelectedCounts(AFRICA, SOME_SELECTED_MODEL)).toEqual({
+      expect(
+        counter.getSelectedCounts(AFRICA, SOME_SELECTED_ARRAY_MODEL)
+      ).toEqual({
         Africa: 39,
         'Central Africa': 0,
         Fes: 11,
@@ -61,7 +63,9 @@ describe('Counter', () => {
     });
 
     it('returns selected counts record with full model', () => {
-      expect(counter.getSelectedCounts(AFRICA, ALL_SELECTED_MODEL)).toEqual({
+      expect(
+        counter.getSelectedCounts(AFRICA, ALL_SELECTED_ARRAY_MODEL)
+      ).toEqual({
         Africa: 130,
         'Central Africa': 65,
         Fes: 11,

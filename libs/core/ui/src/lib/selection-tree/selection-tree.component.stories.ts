@@ -12,11 +12,11 @@ import { TreeComponent } from '../tree/tree.component';
 import { StorybookWrapperComponent } from '../../../.storybook/storybook-wrapper/storybook-wrapper.component';
 import {
   AFRICA,
-  ALL_SELECTED_MODEL,
+  SMALL_AFRICA,
+  ALL_SELECTED_ARRAY_MODEL,
+  SOME_SELECTED_ARRAY_MODEL,
   getChildren,
   getId,
-  SMALL_AFRICA,
-  SOME_SELECTED_MODEL,
   TestItem,
 } from './mock-data';
 import { SelectionTreeComponent } from './selection-tree.component';
@@ -98,7 +98,7 @@ export const someSelected: StoryObj<SelectionTreeComponent<TestItem>> = {
   render: Template,
 
   args: createArgs({
-    model: SOME_SELECTED_MODEL,
+    model: SOME_SELECTED_ARRAY_MODEL,
   }),
 };
 
@@ -106,7 +106,7 @@ export const allSelected: StoryObj<SelectionTreeComponent<TestItem>> = {
   render: Template,
 
   args: createArgs({
-    model: ALL_SELECTED_MODEL,
+    model: ALL_SELECTED_ARRAY_MODEL,
   }),
 };
 
