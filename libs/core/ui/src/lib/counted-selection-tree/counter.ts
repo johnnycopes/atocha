@@ -1,4 +1,4 @@
-import { reduceRecursively } from '@atocha/core/util';
+import { flattenRecursively } from '@atocha/core/util';
 
 export type Counts = Record<string, number>;
 
@@ -22,13 +22,13 @@ export class Counter<T> {
   }
 
   private _getCounts(tree: T, getLeafNodeCount: (item: T) => number): Counts {
-    return reduceRecursively({
+    return flattenRecursively({
       item: tree,
       getItems: this._getChildren,
       initialValue: {} as Counts,
       reducer: (accum, curr) => ({
         ...accum,
-        [this._getId(curr)]: reduceRecursively({
+        [this._getId(curr)]: flattenRecursively({
           item: curr,
           getItems: this._getChildren,
           initialValue: 0,

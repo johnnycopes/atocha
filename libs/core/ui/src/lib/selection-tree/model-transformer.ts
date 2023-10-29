@@ -1,4 +1,4 @@
-import { reduceRecursively } from '@atocha/core/util';
+import { flattenRecursively } from '@atocha/core/util';
 
 export type SelectionState = 'checked' | 'indeterminate';
 export type SelectionStates = Record<string, SelectionState>;
@@ -17,7 +17,7 @@ export class ModelTransformer<T> {
     private _getId: (tree: T) => string,
     private _getChildren: (tree: T) => T[]
   ) {
-    this._idsMap = reduceRecursively({
+    this._idsMap = flattenRecursively({
       item: this._tree,
       getItems: this._getChildren,
       initialValue: new Map() as IdsMap,
@@ -96,7 +96,7 @@ export class ModelTransformer<T> {
     checked: boolean;
     states: SelectionStates;
   }): SelectionStates {
-    const itemAndDescendantsIds = reduceRecursively({
+    const itemAndDescendantsIds = flattenRecursively({
       item: id,
       getItems: (id: string) => this._idsMap.get(id)?.childrenIds ?? [],
       initialValue: [] as string[],
@@ -118,7 +118,7 @@ export class ModelTransformer<T> {
     id: string,
     states: SelectionStates
   ): SelectionStates {
-    const ancestorIds = reduceRecursively({
+    const ancestorIds = flattenRecursively({
       item: id,
       getItems: (id) => {
         const parentId = this._idsMap.get(id)?.parentId;

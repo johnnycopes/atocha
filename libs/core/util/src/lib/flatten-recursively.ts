@@ -1,4 +1,4 @@
-export function reduceRecursively<T, U>({
+export function flattenRecursively<T, U>({
   item,
   getItems,
   reducer,

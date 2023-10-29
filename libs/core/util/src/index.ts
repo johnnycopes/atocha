@@ -10,7 +10,7 @@ export * from './lib/pluralize';
 export * from './lib/quiz';
 export * from './lib/range';
 export * from './lib/record-to-array';
-export * from './lib/reduce-recursively';
+export * from './lib/flatten-recursively';
 export * from './lib/remove-whitespace';
 export * from './lib/select-random';
 export * from './lib/snake-case';
