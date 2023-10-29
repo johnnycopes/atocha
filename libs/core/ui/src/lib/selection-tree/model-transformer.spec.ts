@@ -19,20 +19,38 @@ describe('ModelTransformer', () => {
     transformer = new ModelTransformer(AFRICA, getId, getChildren);
   });
 
-  describe('toModel', () => {
+  describe('toArray', () => {
     it('transforms empty states', () => {
-      expect(transformer.toModel({})).toEqual([]);
+      expect(transformer.toArray({})).toEqual([]);
     });
 
     it('transforms partial states', () => {
-      expect(transformer.toModel(SOME_SELECTED_STATES)).toEqual(
+      expect(transformer.toArray(SOME_SELECTED_STATES)).toEqual(
         SOME_SELECTED_ARRAY_MODEL
       );
     });
 
     it('transforms full states', () => {
-      expect(transformer.toModel(ALL_SELECTED_STATES)).toEqual(
+      expect(transformer.toArray(ALL_SELECTED_STATES)).toEqual(
         ALL_SELECTED_ARRAY_MODEL
+      );
+    });
+  });
+
+  describe('toSet', () => {
+    it('transforms empty states', () => {
+      expect(transformer.toSet({})).toEqual(new Set<string>());
+    });
+
+    it('transforms partial states', () => {
+      expect(transformer.toSet(SOME_SELECTED_STATES)).toEqual(
+        SOME_SELECTED_SET_MODEL
+      );
+    });
+
+    it('transforms full states', () => {
+      expect(transformer.toSet(ALL_SELECTED_STATES)).toEqual(
+        ALL_SELECTED_SET_MODEL
       );
     });
   });

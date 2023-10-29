@@ -33,7 +33,7 @@ export class ModelTransformer<T> {
     this._ids = Array.from(this._idsMap.keys());
   }
 
-  toModel(states: SelectionStates): string[] {
+  toArray(states: SelectionStates): string[] {
     const model: string[] = [];
 
     for (const id of this._ids) {
@@ -46,6 +46,10 @@ export class ModelTransformer<T> {
     }
 
     return model;
+  }
+
+  toSet(states: SelectionStates): Set<string> {
+    return new Set(this.toArray(states));
   }
 
   toStates(model: string[] | Set<string>): SelectionStates {
