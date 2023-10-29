@@ -114,21 +114,29 @@ function createTree<T, U extends string>({
 }): ConfigTree<T> {
   return {
     id: root,
-    children: items.map((item) => ({
-      id: getId(item),
-      ...(getDisplay &&
-        Object.keys(getDisplay(item)).length > 0 && {
-          display: getDisplay(item),
-        }), // Only include display properties if specified
-      ...(getChildren(item).length > 0 && {
-        children: getChildren(item).map((item) => ({
-          id: getId(item),
-          ...(getDisplay &&
-            Object.keys(getDisplay(item)).length > 0 && {
-              display: getDisplay(item),
-            }), // Only include display properties if specified
-        })),
-      }), // Only include `children` property if children exist
-    })),
+    children: items.map((item) =>
+      createChild(item, getId, getDisplay, getChildren)
+    ),
   };
+}
+
+function createChild<T, U extends string>(
+  item: T,
+  getId: (item: T) => U,
+  getDisplay?: (item: T) => Partial<T>,
+  getChildren?: (item: T) => T[]
+): ConfigTree<T> {
+  const configTree: ConfigTree<T> = { id: getId(item) };
+
+  if (getDisplay && Object.keys(getDisplay(item)).length > 0) {
+    configTree.display = getDisplay(item);
+  }
+
+  if (getChildren && getChildren(item).length > 0) {
+    configTree.children = getChildren(item).map((child) =>
+      createChild(child, getId, getDisplay, getChildren)
+    );
+  }
+
+  return configTree;
 }
