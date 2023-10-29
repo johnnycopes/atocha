@@ -24,9 +24,9 @@ export class ModelTransformer<T> {
       reducer: (accum, item, parent) => {
         accum[this._getId(item)] = {
           parentId: parent ? this._getId(parent) : undefined,
-          childrenIds: this._getChildren(item).length
-            ? this._getChildren(item).map((child) => this._getId(child))
-            : [],
+          childrenIds: this._getChildren(item).map((child) =>
+            this._getId(child)
+          ),
         };
         return accum;
       },
