@@ -32,8 +32,7 @@ export class ModelTransformer<T> {
       },
     });
 
-    // Reverse the keys because we want to ascend the tree starting from the leaf nodes
-    this._ids = Object.keys(this._idsRecord).reverse();
+    this._ids = Object.keys(this._idsRecord);
   }
 
   toModel(states: SelectionStates): string[] {
@@ -45,14 +44,16 @@ export class ModelTransformer<T> {
       }
     }
 
-    return model.reverse();
+    return model;
   }
 
   toStates(model: string[] | Set<string>): SelectionStates {
     const states: SelectionStates = {};
     const idsModel = Array.isArray(model) ? new Set(model) : model;
 
-    for (const id of this._ids) {
+    // Iterating through the IDs backwards is equivalent to traversing the tree from the leaf nodes upward
+    for (let i = this._ids.length - 1; i >= 0; i--) {
+      const id = this._ids[i];
       if (idsModel.has(id)) {
         states[id] = 'checked';
       } else {
