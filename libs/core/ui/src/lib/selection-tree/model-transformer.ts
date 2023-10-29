@@ -104,7 +104,10 @@ export class ModelTransformer<T> {
       item: id,
       getItems: (id: string) => this._idsMap.get(id)?.childrenIds ?? [],
       initialValue: [],
-      reducer: (accum, curr) => [...accum, curr],
+      reducer: (accum, curr) => {
+        accum.push(curr);
+        return accum;
+      },
     });
 
     itemAndDescendantsIds.forEach((id) => {
@@ -129,7 +132,11 @@ export class ModelTransformer<T> {
         return parentId ? [parentId] : [];
       },
       initialValue: [],
-      reducer: (accum, curr) => (id === curr ? [...accum] : [...accum, curr]),
+      reducer: (accum, curr) => {
+        if (id === curr) return accum;
+        accum.push(curr);
+        return accum;
+      },
     });
 
     ancestorIds.forEach((ancestorId) => {
