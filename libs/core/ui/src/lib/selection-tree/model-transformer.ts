@@ -52,7 +52,12 @@ export class ModelTransformer<T> {
     const states: SelectionStates = {};
     const idsModel = Array.isArray(model) ? new Set(model) : model;
 
-    // Iterating through the IDs backwards is equivalent to traversing the tree from the leaf nodes upward
+    /*
+      Iterating through the IDs backwards builds up `states` from the leaf nodes
+      of the tree up towards the root. The code is procedural and highly depends
+      on this order but is more performant since each node reliably knows the state
+      of all of its children.
+    */
     for (let i = this._ids.length - 1; i >= 0; i--) {
       const id = this._ids[i];
       if (idsModel.has(id)) {
