@@ -35,15 +35,17 @@ export class ModelTransformer<T> {
   }
 
   toModel(states: SelectionStates): string[] {
-    return this._ids.reduce((state, id) => {
-      if (
-        states[id] === 'checked' &&
-        !(this._idsMap.get(id)?.childrenIds ?? []).length
-      ) {
-        state.unshift(id);
+    const model: string[] = [];
+
+    for (const id of this._ids) {
+      const hasNoChildren =
+        (this._idsMap.get(id)?.childrenIds ?? []).length === 0;
+      if (states[id] === 'checked' && hasNoChildren) {
+        model.push(id);
       }
-      return state;
-    }, [] as string[]);
+    }
+
+    return model.reverse();
   }
 
   toStates(model: string[]): SelectionStates {
