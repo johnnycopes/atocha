@@ -22,10 +22,10 @@ export class Counter<T> {
   }
 
   private _getCounts(tree: T, getLeafNodeCount: (item: T) => number): Counts {
-    return reduceRecursively({
+    return reduceRecursively<T, Counts>({
       item: tree,
       getItems: this._getChildren,
-      initialValue: {} as Counts,
+      initialValue: {},
       reducer: (accum, curr) => ({
         ...accum,
         [this._getId(curr)]: reduceRecursively({

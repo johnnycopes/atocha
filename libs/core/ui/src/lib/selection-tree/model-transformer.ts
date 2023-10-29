@@ -17,10 +17,10 @@ export class ModelTransformer<T> {
     private _getId: (tree: T) => string,
     private _getChildren: (tree: T) => T[]
   ) {
-    this._idsMap = reduceRecursively({
+    this._idsMap = reduceRecursively<T, IdsMap>({
       item: this._tree,
       getItems: this._getChildren,
-      initialValue: new Map() as IdsMap,
+      initialValue: new Map(),
       reducer: (accum, item, parent) =>
         accum.set(this._getId(item), {
           parentId: parent ? this._getId(parent) : undefined,
@@ -96,10 +96,10 @@ export class ModelTransformer<T> {
     checked: boolean;
     states: SelectionStates;
   }): SelectionStates {
-    const itemAndDescendantsIds = reduceRecursively({
+    const itemAndDescendantsIds = reduceRecursively<string, string[]>({
       item: id,
       getItems: (id: string) => this._idsMap.get(id)?.childrenIds ?? [],
-      initialValue: [] as string[],
+      initialValue: [],
       reducer: (accum, curr) => [...accum, curr],
     });
 
@@ -118,13 +118,13 @@ export class ModelTransformer<T> {
     id: string,
     states: SelectionStates
   ): SelectionStates {
-    const ancestorIds = reduceRecursively({
+    const ancestorIds = reduceRecursively<string, string[]>({
       item: id,
       getItems: (id) => {
         const parentId = this._idsMap.get(id)?.parentId;
         return parentId ? [parentId] : [];
       },
-      initialValue: [] as string[],
+      initialValue: [],
       reducer: (accum, curr) => (id === curr ? [...accum] : [...accum, curr]),
     });
 
