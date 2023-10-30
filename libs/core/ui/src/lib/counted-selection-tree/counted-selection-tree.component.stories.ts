@@ -16,7 +16,7 @@ import {
   getChildren,
   getCounts,
   getId,
-} from '@atocha/core/util-selection-tree';
+} from '@atocha/core/util-selection';
 import { CheckboxComponent } from '../checkbox/checkbox.component';
 import { CountedSelectionTreeComponent } from './counted-selection-tree.component';
 import { StorybookWrapperComponent } from '../../../.storybook/storybook-wrapper/storybook-wrapper.component';
