@@ -1,5 +1,5 @@
 import { createIdsMap, IdsMap } from './create-ids-map';
-import { AFRICA, getChildren, getId } from '../mock-data';
+import { AFRICA, getChildren, getId } from '../../mock-data';
 
 describe('createIdsMap', () => {
   it("returns a flat map structure with references to every node's parent ID and children IDs", () => {

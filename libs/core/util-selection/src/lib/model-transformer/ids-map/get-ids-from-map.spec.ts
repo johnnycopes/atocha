@@ -1,6 +1,6 @@
 import { getIdsFromMap } from './get-ids-from-map';
 import { createIdsMap } from './create-ids-map';
-import { AFRICA, getChildren, getId } from '../mock-data';
+import { AFRICA, getChildren, getId } from '../../mock-data';
 
 describe('getIdsFromMap', () => {
   it('returns all IDs from an IdsMap', () => {

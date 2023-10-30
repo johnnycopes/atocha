@@ -1,4 +1,4 @@
-import { reduceRecursively } from '../reduce-recursively';
+import { reduceRecursively } from '../../reduce-recursively';
 
 export type IdsMap = Map<
   string,
