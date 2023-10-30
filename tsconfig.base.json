@@ -16,11 +16,11 @@
     "baseUrl": ".",
     "paths": {
       "@atocha/core/data-access": ["libs/core/data-access/src/index.ts"],
-      "@atocha/core/selection-tree/util": [
-        "libs/core/selection-tree/util/src/index.ts"
-      ],
       "@atocha/core/ui": ["libs/core/ui/src/index.ts"],
       "@atocha/core/util": ["libs/core/util/src/index.ts"],
+      "@atocha/core/util/selection-tree": [
+        "libs/core/util/selection-tree/src/index.ts"
+      ],
       "@atocha/globetrotter/data-access": [
         "libs/globetrotter/data-access/src/index.ts"
       ],

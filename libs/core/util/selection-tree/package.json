@@ -1,5 +1,5 @@
 {
-  "name": "@atocha/core/selection-tree/util",
+  "name": "@atocha/core/util/selection-tree",
   "version": "0.0.1",
   "type": "commonjs"
 }
