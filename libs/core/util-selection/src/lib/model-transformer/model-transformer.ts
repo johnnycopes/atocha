@@ -11,7 +11,7 @@ export type IdsMap = Map<
 
 export class ModelTransformer<T> {
   private readonly _idsMap: IdsMap;
-  private readonly _ids: readonly string[];
+  private readonly _idsArr: readonly string[];
 
   constructor(
     private _tree: T,
@@ -31,13 +31,13 @@ export class ModelTransformer<T> {
         }),
     });
 
-    this._ids = Array.from(this._idsMap.keys());
+    this._idsArr = Array.from(this._idsMap.keys());
   }
 
   toArray(states: SelectionStates): Extract<SelectionModel, string[]> {
     const model: string[] = [];
 
-    for (const id of this._ids) {
+    for (const id of this._idsArr) {
       if (
         states[id] === 'checked' &&
         (this._idsMap.get(id)?.childrenIds ?? []).length === 0
@@ -63,8 +63,8 @@ export class ModelTransformer<T> {
       on this order but is more performant since each node reliably knows the state
       of all of its children.
     */
-    for (let i = this._ids.length - 1; i >= 0; i--) {
-      const id = this._ids[i];
+    for (let i = this._idsArr.length - 1; i >= 0; i--) {
+      const id = this._idsArr[i];
       if (idsModel.has(id)) {
         states[id] = 'checked';
       } else {
