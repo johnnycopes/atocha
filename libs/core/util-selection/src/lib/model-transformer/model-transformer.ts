@@ -1,12 +1,9 @@
 import { reduceRecursively } from '../reduce-recursively';
+import { SelectionModel, SelectionState, SelectionStates } from './types';
 import { Ids, IdsMap } from './ids';
 import { toArray } from './to-array';
 import { toSet } from './to-set';
 import { toStates } from './to-states';
-
-export type SelectionModel = string[] | Set<string>;
-export type SelectionState = 'checked' | 'indeterminate';
-export type SelectionStates = Record<string, SelectionState>;
 
 export class ModelTransformer<T> {
   private readonly _ids: Ids<T>;
