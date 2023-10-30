@@ -10,12 +10,10 @@ export function toStates<T>(
 
   /*
     Iterating through the IDs backwards builds up `states` from the leaf nodes
-    of the tree up towards the root. The code is procedural and highly depends
-    on this order but is more performant since each node reliably knows the state
-    of all of its children.
+    of the tree up towards the root. This approach is more performant since each node
+    reliably knows the state of all of its children up front.
   */
-  for (let i = ids.descending.length - 1; i >= 0; i--) {
-    const id = ids.descending[i];
+  for (const id of ids.ascending) {
     if (idsModel.has(id)) {
       states[id] = 'checked';
     } else {
