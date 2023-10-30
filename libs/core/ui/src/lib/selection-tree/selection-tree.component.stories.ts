@@ -7,19 +7,19 @@ import {
   StoryObj,
 } from '@storybook/angular';
 
-import { CheckboxComponent } from '../checkbox/checkbox.component';
-import { TreeComponent } from '../tree/tree.component';
-import { StorybookWrapperComponent } from '../../../.storybook/storybook-wrapper/storybook-wrapper.component';
 import {
   AFRICA,
-  SMALL_AFRICA,
   ALL_SELECTED_ARRAY_MODEL,
+  SMALL_AFRICA,
   SOME_SELECTED_ARRAY_MODEL,
+  TestItem,
   getChildren,
   getId,
-  TestItem,
-} from './mock-data';
+} from '@atocha/core/selection-tree/util';
+import { CheckboxComponent } from '../checkbox/checkbox.component';
 import { SelectionTreeComponent } from './selection-tree.component';
+import { StorybookWrapperComponent } from '../../../.storybook/storybook-wrapper/storybook-wrapper.component';
+import { TreeComponent } from '../tree/tree.component';
 
 export default {
   title: 'Selection Tree',
