@@ -6,6 +6,7 @@ export type SelectionState = 'checked' | 'indeterminate';
 export type SelectionStates = Record<string, SelectionState>;
 
 export class ModelTransformer<T> {
+  private readonly _ids: Ids<T>;
   private readonly _idsMap: IdsMap;
   private readonly _idsArr: readonly string[];
 
@@ -14,9 +15,9 @@ export class ModelTransformer<T> {
     private _getId: (tree: T) => string,
     private _getChildren: (tree: T) => T[]
   ) {
-    const ids = new Ids(this._tree, this._getId, this._getChildren);
-    this._idsMap = ids.map;
-    this._idsArr = ids.descending;
+    this._ids = new Ids(this._tree, this._getId, this._getChildren);
+    this._idsMap = this._ids.map;
+    this._idsArr = this._ids.descending;
   }
 
   toArray(states: SelectionStates): Extract<SelectionModel, string[]> {
