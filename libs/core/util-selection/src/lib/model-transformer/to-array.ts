@@ -1,5 +1,5 @@
 import { Ids } from './ids';
-import { SelectionModel, SelectionStates } from './model-transformer';
+import { SelectionModel, SelectionStates } from './types';
 
 export function toArray<T>(
   states: SelectionStates,
