@@ -1,14 +1,9 @@
 import { reduceRecursively } from '../reduce-recursively';
-import { Ids } from './ids';
+import { Ids, IdsMap } from './ids';
 
 export type SelectionModel = string[] | Set<string>;
 export type SelectionState = 'checked' | 'indeterminate';
 export type SelectionStates = Record<string, SelectionState>;
-
-export type IdsMap = Map<
-  string,
-  { parentId: string | undefined; childrenIds: string[] }
->;
 
 export class ModelTransformer<T> {
   private readonly _idsMap: IdsMap;
