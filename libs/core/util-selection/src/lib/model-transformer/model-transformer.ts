@@ -1,5 +1,6 @@
 import { reduceRecursively } from '../reduce-recursively';
 import { Ids, IdsMap } from './ids';
+import { toArray } from './to-array';
 
 export type SelectionModel = string[] | Set<string>;
 export type SelectionState = 'checked' | 'indeterminate';
@@ -21,18 +22,7 @@ export class ModelTransformer<T> {
   }
 
   toArray(states: SelectionStates): Extract<SelectionModel, string[]> {
-    const model: string[] = [];
-
-    for (const id of this._idsArr) {
-      if (
-        states[id] === 'checked' &&
-        (this._idsMap.get(id)?.childrenIds ?? []).length === 0
-      ) {
-        model.push(id);
-      }
-    }
-
-    return model;
+    return toArray(states, this._ids);
   }
 
   toSet(states: SelectionStates): Extract<SelectionModel, Set<string>> {
