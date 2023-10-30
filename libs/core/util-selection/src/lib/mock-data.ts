@@ -1,4 +1,4 @@
-import { SelectionStates } from './model-transformer';
+import { SelectionStates } from './model-transformer/model-transformer';
 
 export interface TestItem {
   id: string;
