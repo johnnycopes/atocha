@@ -4,7 +4,7 @@ export type SelectionModel = string[] | Set<string>;
 export type SelectionState = 'checked' | 'indeterminate';
 export type SelectionStates = Record<string, SelectionState>;
 
-type IdsMap = Map<
+export type IdsMap = Map<
   string,
   { parentId: string | undefined; childrenIds: string[] }
 >;
@@ -25,9 +25,9 @@ export class ModelTransformer<T> {
       reducer: (accum, item, parent) =>
         accum.set(this._getId(item), {
           parentId: parent ? this._getId(parent) : undefined,
-          childrenIds: this._getChildren(item).length
-            ? this._getChildren(item).map((child) => this._getId(child))
-            : [],
+          childrenIds: this._getChildren(item).map((child) =>
+            this._getId(child)
+          ),
         }),
     });
 
