@@ -19,8 +19,8 @@ import {
   FormsModule,
 } from '@angular/forms';
 
+import { SelectionStates, ModelTransformer } from '@atocha/core/util-selection';
 import { TreeComponent } from '../tree/tree.component';
-import { SelectionStates, ModelTransformer } from './model-transformer';
 
 @Component({
   standalone: true,

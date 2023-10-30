@@ -1,5 +1,5 @@
-import { reduceRecursively } from '@atocha/core/util';
-import { SelectionModel } from '../selection-tree/model-transformer';
+import { reduceRecursively } from './reduce-recursively';
+import { SelectionModel } from './model-transformer';
 
 export type Counts = Record<string, number>;
 

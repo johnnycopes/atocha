@@ -1,4 +1,4 @@
-import { reduceRecursively } from '@atocha/core/util';
+import { reduceRecursively } from './reduce-recursively';
 
 export type SelectionModel = string[] | Set<string>;
 export type SelectionState = 'checked' | 'indeterminate';
