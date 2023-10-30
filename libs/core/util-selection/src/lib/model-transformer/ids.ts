@@ -7,7 +7,8 @@ export type IdsMap = Map<
 
 export class Ids<T> {
   readonly map: IdsMap;
-  readonly arr: readonly string[];
+  readonly descending: readonly string[];
+  readonly ascending: readonly string[];
 
   constructor(
     private _tree: T,
@@ -25,6 +26,7 @@ export class Ids<T> {
         }),
     });
 
-    this.arr = Array.from(this.map.keys());
+    this.descending = Array.from(this.map.keys());
+    this.ascending = this.descending.slice().reverse();
   }
 }

@@ -42,9 +42,9 @@ describe('Ids', () => {
     });
   });
 
-  describe('.arr', () => {
-    it("contains a flat array of all node's IDs", () => {
-      expect(ids.arr).toEqual([
+  describe('.descending', () => {
+    it("contains a flat array of all tree nodes' IDs in order from root to leaves", () => {
+      expect(ids.descending).toEqual([
         'Africa',
         'Southern Africa',
         'Central Africa',
@@ -54,6 +54,22 @@ describe('Ids', () => {
         'Morocco',
         'Marrakesh',
         'Fes',
+      ]);
+    });
+  });
+
+  describe('.ascending', () => {
+    it("contains a flat array of all tree nodes' IDs in order from leaves to root", () => {
+      expect(ids.ascending).toEqual([
+        'Fes',
+        'Marrakesh',
+        'Morocco',
+        'Namibia',
+        'Swaziland',
+        'Northern Africa',
+        'Central Africa',
+        'Southern Africa',
+        'Africa',
       ]);
     });
   });
