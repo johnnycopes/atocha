@@ -22,7 +22,7 @@ import {
 import {
   SelectionStates,
   ModelTransformer,
-} from '@atocha/core/selection-tree/util';
+} from '@atocha/core/util-selection-tree';
 import { TreeComponent } from '../tree/tree.component';
 
 @Component({
