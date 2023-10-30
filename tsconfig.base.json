@@ -16,9 +16,6 @@
     "baseUrl": ".",
     "paths": {
       "@atocha/core/data-access": ["libs/core/data-access/src/index.ts"],
-      "@atocha/core/selection-tree/ui": [
-        "libs/core/selection-tree/ui/src/index.ts"
-      ],
       "@atocha/core/selection-tree/util": [
         "libs/core/selection-tree/util/src/index.ts"
       ],
