@@ -1,4 +1,5 @@
 import { reduceRecursively } from '../reduce-recursively';
+import { Ids } from './ids';
 
 export type SelectionModel = string[] | Set<string>;
 export type SelectionState = 'checked' | 'indeterminate';
@@ -18,20 +19,9 @@ export class ModelTransformer<T> {
     private _getId: (tree: T) => string,
     private _getChildren: (tree: T) => T[]
   ) {
-    this._idsMap = reduceRecursively<T, IdsMap>({
-      item: this._tree,
-      getItems: this._getChildren,
-      initialValue: new Map(),
-      reducer: (accum, item, parent) =>
-        accum.set(this._getId(item), {
-          parentId: parent ? this._getId(parent) : undefined,
-          childrenIds: this._getChildren(item).map((child) =>
-            this._getId(child)
-          ),
-        }),
-    });
-
-    this._idsArr = Array.from(this._idsMap.keys());
+    const ids = new Ids(this._tree, this._getId, this._getChildren);
+    this._idsMap = ids.map;
+    this._idsArr = ids.descending;
   }
 
   toArray(states: SelectionStates): Extract<SelectionModel, string[]> {
