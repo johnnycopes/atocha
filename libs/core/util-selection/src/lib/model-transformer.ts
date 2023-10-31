@@ -1,4 +1,4 @@
-import { SelectionModel, SelectionStates } from './internal/types';
+import { Model, States } from './internal/types';
 import { Ids } from './internal/ids';
 import { toArray } from './internal/to-array';
 import { toSet } from './internal/to-set';
@@ -16,23 +16,19 @@ export class ModelTransformer<T> {
     this._ids = new Ids(this._tree, this._getId, this._getChildren);
   }
 
-  toArray(states: SelectionStates): Extract<SelectionModel, string[]> {
+  toArray(states: States): Extract<Model, string[]> {
     return toArray(states, this._ids);
   }
 
-  toSet(states: SelectionStates): Extract<SelectionModel, Set<string>> {
+  toSet(states: States): Extract<Model, Set<string>> {
     return toSet(states, this._ids);
   }
 
-  toStates(model: SelectionModel): SelectionStates {
+  toStates(model: Model): States {
     return toStates(model, this._ids);
   }
 
-  updateStates(
-    checked: boolean,
-    id: string,
-    states: SelectionStates
-  ): SelectionStates {
+  updateStates(checked: boolean, id: string, states: States): States {
     return updateStates(checked, id, states, this._ids);
   }
 }

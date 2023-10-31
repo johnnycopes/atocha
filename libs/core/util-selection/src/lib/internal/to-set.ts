@@ -1,10 +1,10 @@
 import { Ids } from './ids';
-import { SelectionModel, SelectionStates } from './types';
+import { Model, States } from './types';
 import { toArray } from './to-array';
 
 export function toSet<T>(
-  states: SelectionStates,
+  states: States,
   ids: Ids<T>
-): Extract<SelectionModel, Set<string>> {
+): Extract<Model, Set<string>> {
   return new Set(toArray(states, ids));
 }

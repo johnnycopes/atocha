@@ -1,12 +1,12 @@
 import { Ids } from './ids';
-import { SelectionState, SelectionStates } from './types';
+import { State, States } from './types';
 
 export function updateStates<T>(
   checked: boolean,
   id: string,
-  states: SelectionStates,
+  states: States,
   ids: Ids<T>
-): SelectionStates {
+): States {
   const { ancestorIds, itemAndDescendantsIds } = ids.getConnectedIds(id);
 
   for (const id of itemAndDescendantsIds) {
@@ -19,7 +19,7 @@ export function updateStates<T>(
 
   for (const ancestorId of ancestorIds) {
     const ancestorChildrenIds = ids.getChildrenIds(ancestorId);
-    const ancestorChildrenStates: Record<SelectionState, number> = {
+    const ancestorChildrenStates: Record<State, number> = {
       checked: 0,
       indeterminate: 0,
     };

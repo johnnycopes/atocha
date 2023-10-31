@@ -1,11 +1,8 @@
 import { Ids } from './ids';
-import { SelectionModel, SelectionStates } from './types';
+import { Model, States } from './types';
 
-export function toStates<T>(
-  model: SelectionModel,
-  ids: Ids<T>
-): SelectionStates {
-  const states: SelectionStates = {};
+export function toStates<T>(model: Model, ids: Ids<T>): States {
+  const states: States = {};
   const idsModel = Array.isArray(model) ? new Set(model) : model;
 
   /*

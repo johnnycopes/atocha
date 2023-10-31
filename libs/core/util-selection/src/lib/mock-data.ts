@@ -1,5 +1,5 @@
 import { Ids } from './internal/ids';
-import { SelectionStates } from './internal/types';
+import { States } from './internal/types';
 
 export interface TestItem {
   id: string;
@@ -52,7 +52,7 @@ export const SMALL_AFRICA: TestItem = {
   ],
 };
 
-export const SOME_SELECTED_STATES: SelectionStates = {
+export const SOME_SELECTED_STATES: States = {
   Africa: 'indeterminate',
   Morocco: 'indeterminate',
   'Southern Africa': 'indeterminate',
@@ -64,7 +64,7 @@ export const SOME_SELECTED_STATES: SelectionStates = {
 export const SOME_SELECTED_ARRAY_MODEL = ['Swaziland', 'Fes'];
 export const SOME_SELECTED_SET_MODEL = new Set(SOME_SELECTED_ARRAY_MODEL);
 
-export const ALL_SELECTED_STATES: SelectionStates = {
+export const ALL_SELECTED_STATES: States = {
   Africa: 'checked',
   'Southern Africa': 'checked',
   Swaziland: 'checked',

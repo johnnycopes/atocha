@@ -1,4 +1,4 @@
-import { SelectionModel } from './internal/types';
+import { Model } from './internal/types';
 import { Counts as CountsRecord, getCounts } from './internal/get-counts';
 
 export type Counts = CountsRecord;
@@ -14,7 +14,7 @@ export class Counter<T> {
     return this._getCounts(tree, this._getLeafNodeCount);
   }
 
-  getSelectedCounts(tree: T, model: SelectionModel): Counts {
+  getSelectedCounts(tree: T, model: Model): Counts {
     const setModel = Array.isArray(model) ? new Set(model) : model;
     return this._getCounts(tree, (leafNode: T): number =>
       setModel.has(this._getId(leafNode)) ? this._getLeafNodeCount(leafNode) : 0

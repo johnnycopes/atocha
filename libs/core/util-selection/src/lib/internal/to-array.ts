@@ -1,10 +1,10 @@
 import { Ids } from './ids';
-import { SelectionModel, SelectionStates } from './types';
+import { Model, States } from './types';
 
 export function toArray<T>(
-  states: SelectionStates,
+  states: States,
   ids: Ids<T>
-): Extract<SelectionModel, string[]> {
+): Extract<Model, string[]> {
   const model: string[] = [];
 
   for (const id of ids.descending) {
