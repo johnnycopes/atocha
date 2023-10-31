@@ -1,9 +1,9 @@
-import { SelectionModel, SelectionStates } from './model-transformer/types';
-import { Ids } from './model-transformer/ids';
-import { toArray } from './model-transformer/to-array';
-import { toSet } from './model-transformer/to-set';
-import { toStates } from './model-transformer/to-states';
-import { updateStates } from './model-transformer/update-states';
+import { SelectionModel, SelectionStates } from './internal/types';
+import { Ids } from './internal/ids';
+import { toArray } from './internal/to-array';
+import { toSet } from './internal/to-set';
+import { toStates } from './internal/to-states';
+import { updateStates } from './internal/update-states';
 
 export class ModelTransformer<T> {
   private readonly _ids: Ids<T>;
