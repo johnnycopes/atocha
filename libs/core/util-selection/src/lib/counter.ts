@@ -6,7 +6,7 @@ export type Counts = CountsRecord;
 export class Counter<T> {
   constructor(
     private _getId: (tree: T) => string,
-    private _getChildren: (tree: T) => T[],
+    private _getChildren: (tree: T) => readonly T[],
     private _getLeafNodeCount: (tree: T) => number = () => 0
   ) {}
 
