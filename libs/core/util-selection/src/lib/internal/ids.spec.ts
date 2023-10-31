@@ -74,6 +74,28 @@ describe('Ids', () => {
     });
   });
 
+  describe('getChildrenIds', () => {
+    it('returns children for root item', () => {
+      expect(ids.getChildrenIds('Africa')).toEqual([
+        'Southern Africa',
+        'Central Africa',
+        'Northern Africa',
+      ]);
+    });
+
+    it('returns children for middle item', () => {
+      expect(ids.getChildrenIds('Northern Africa')).toEqual(['Morocco']);
+    });
+
+    it('returns empty array for leaf item', () => {
+      expect(ids.getChildrenIds('Marrakesh')).toEqual([]);
+    });
+
+    it('returns empty array for non-existent item', () => {
+      expect(ids.getChildrenIds('Narnia')).toEqual([]);
+    });
+  });
+
   describe('getConnectedIds', () => {
     let item: TestItem = AFRICA;
 

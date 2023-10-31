@@ -30,6 +30,10 @@ export class Ids<T> {
     this.ascending = this.descending.slice().reverse();
   }
 
+  getChildrenIds(id: string): readonly string[] {
+    return this.map.get(id)?.childrenIds ?? [];
+  }
+
   getConnectedIds(id: string): {
     itemAndDescendantsIds: string[];
     ancestorIds: string[];
