@@ -75,7 +75,7 @@ describe('Ids', () => {
   });
 
   describe('getChildrenIds', () => {
-    it('returns children for root item', () => {
+    it('returns children for root item in tree', () => {
       expect(ids.getChildrenIds('Africa')).toEqual([
         'Southern Africa',
         'Central Africa',
@@ -83,15 +83,15 @@ describe('Ids', () => {
       ]);
     });
 
-    it('returns children for middle item', () => {
+    it('returns children for middle item in tree', () => {
       expect(ids.getChildrenIds('Northern Africa')).toEqual(['Morocco']);
     });
 
-    it('returns empty array for leaf item', () => {
+    it('returns empty array for leaf item in tree', () => {
       expect(ids.getChildrenIds('Marrakesh')).toEqual([]);
     });
 
-    it('returns empty array for non-existent item', () => {
+    it('returns empty array for non-existent item in tree', () => {
       expect(ids.getChildrenIds('Narnia')).toEqual([]);
     });
   });
