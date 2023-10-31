@@ -8,7 +8,7 @@ export type IdsMap = Map<
 export function createMap<T>(
   tree: T,
   getId: (item: T) => string,
-  getChildren: (item: T) => T[]
+  getChildren: (item: T) => readonly T[]
 ) {
   return reduceRecursively<T, IdsMap>({
     item: tree,

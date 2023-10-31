@@ -9,7 +9,7 @@ export class Ids<T> {
   constructor(
     private _tree: T,
     private _getId: (tree: T) => string,
-    private _getChildren: (tree: T) => T[]
+    private _getChildren: (tree: T) => readonly T[]
   ) {
     this._map = createMap(this._tree, this._getId, this._getChildren);
     this.descending = Array.from(this._map.keys());
