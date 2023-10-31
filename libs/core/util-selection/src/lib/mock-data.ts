@@ -1,5 +1,5 @@
 import { Ids } from './model-transformer/ids';
-import { SelectionStates } from './model-transformer/model-transformer';
+import { SelectionStates } from './model-transformer/types';
 
 export interface TestItem {
   id: string;
