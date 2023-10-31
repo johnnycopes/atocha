@@ -16,13 +16,9 @@ export function reduceRecursively<T, U>({
     const current = items.shift();
 
     if (current) {
-      const children = getItems(current);
-
-      if (children.length) {
-        children.forEach((child) => {
-          value = reducer(value, child, current);
-          items.push(child);
-        });
+      for (const child of getItems(current)) {
+        value = reducer(value, child, current);
+        items.push(child);
       }
     }
   }
