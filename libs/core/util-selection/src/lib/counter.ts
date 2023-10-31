@@ -1,7 +1,7 @@
 import { SelectionModel } from './internal/types';
-import { reduceRecursively } from './internal/reduce-recursively';
+import { Counts as CountsRecord, getCounts } from './internal/get-counts';
 
-export type Counts = Record<string, number>;
+export type Counts = CountsRecord;
 
 export class Counter<T> {
   constructor(
@@ -22,19 +22,6 @@ export class Counter<T> {
   }
 
   private _getCounts(tree: T, getLeafNodeCount: (item: T) => number): Counts {
-    return reduceRecursively<T, Counts>({
-      item: tree,
-      getItems: this._getChildren,
-      initialValue: {},
-      reducer: (accum, curr) => {
-        accum[this._getId(curr)] = reduceRecursively({
-          item: curr,
-          getItems: this._getChildren,
-          initialValue: 0,
-          reducer: (total, item) => total + getLeafNodeCount(item),
-        });
-        return accum;
-      },
-    });
+    return getCounts(tree, this._getId, this._getChildren, getLeafNodeCount);
   }
 }
