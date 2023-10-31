@@ -1,12 +1,8 @@
+import { IdsMap, createMap } from './create-map';
 import { reduceRecursively } from './reduce-recursively';
 
-export type IdsMap = Map<
-  string,
-  { parentId: string | undefined; childrenIds: readonly string[] }
->;
-
 export class Ids<T> {
-  readonly map: IdsMap;
+  private readonly _map: IdsMap;
   readonly descending: readonly string[];
   readonly ascending: readonly string[];
 
@@ -15,23 +11,13 @@ export class Ids<T> {
     private _getId: (tree: T) => string,
     private _getChildren: (tree: T) => T[]
   ) {
-    this.map = reduceRecursively<T, IdsMap>({
-      item: this._tree,
-      getItems: this._getChildren,
-      initialValue: new Map(),
-      reducer: (accum, item, parent) =>
-        accum.set(this._getId(item), {
-          parentId: parent ? this._getId(parent) : undefined,
-          childrenIds: this._getChildren(item).map(this._getId),
-        }),
-    });
-
-    this.descending = Array.from(this.map.keys());
+    this._map = createMap(this._tree, this._getId, this._getChildren);
+    this.descending = Array.from(this._map.keys());
     this.ascending = this.descending.slice().reverse();
   }
 
   getChildrenIds(id: string): readonly string[] {
-    return this.map.get(id)?.childrenIds ?? [];
+    return this._map.get(id)?.childrenIds ?? [];
   }
 
   getConnectedIds(id: string): {
@@ -40,7 +26,7 @@ export class Ids<T> {
   } {
     const itemAndDescendantsIds = reduceRecursively<string, string[]>({
       item: id,
-      getItems: (id: string) => this.map.get(id)?.childrenIds ?? [],
+      getItems: (id: string) => this._map.get(id)?.childrenIds ?? [], // TODO: call getChildrenIds
       initialValue: [],
       reducer: (accum, curr) => {
         accum.push(curr);
@@ -51,7 +37,7 @@ export class Ids<T> {
     const ancestorIds = reduceRecursively<string, string[]>({
       item: id,
       getItems: (id) => {
-        const parentId = this.map.get(id)?.parentId;
+        const parentId = this._map.get(id)?.parentId;
         return parentId ? [parentId] : [];
       },
       initialValue: [],
