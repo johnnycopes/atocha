@@ -8,10 +8,7 @@ export function toArray<T>(
   const model: string[] = [];
 
   for (const id of ids.descending) {
-    if (
-      states[id] === 'checked' &&
-      (ids.map.get(id)?.childrenIds ?? []).length === 0
-    ) {
+    if (states[id] === 'checked' && !ids.getChildrenIds(id).length) {
       model.push(id);
     }
   }

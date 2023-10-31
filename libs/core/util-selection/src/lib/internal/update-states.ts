@@ -18,7 +18,7 @@ export function updateStates<T>(
   }
 
   for (const ancestorId of ancestorIds) {
-    const ancestorChildrenIds = ids.map.get(ancestorId)?.childrenIds ?? [];
+    const ancestorChildrenIds = ids.getChildrenIds(ancestorId);
     const ancestorChildrenStates: Record<SelectionState, number> = {
       checked: 0,
       indeterminate: 0,

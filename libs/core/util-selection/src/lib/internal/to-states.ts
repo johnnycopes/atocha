@@ -17,7 +17,7 @@ export function toStates<T>(
     if (idsModel.has(id)) {
       states[id] = 'checked';
     } else {
-      const childrenIds = ids.map.get(id)?.childrenIds ?? [];
+      const childrenIds = ids.getChildrenIds(id);
       if (childrenIds.length) {
         const idsInState = childrenIds.reduce(
           (total, id) => total + (states[id] ? 1 : 0),
