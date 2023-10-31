@@ -1,4 +1,4 @@
-import { reduceRecursively } from '../reduce-recursively';
+import { reduceRecursively } from './reduce-recursively';
 import { Ids } from './ids';
 import { SelectionState, SelectionStates } from './types';
 
