@@ -26,7 +26,7 @@ export function updateStates<T>(
 
     for (const childId of ancestorChildrenIds) {
       const childState = states[childId];
-      if (states[childId]) {
+      if (childState) {
         ancestorChildrenStates[childState]++;
       }
     }
