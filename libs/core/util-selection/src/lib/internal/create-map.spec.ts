@@ -1,4 +1,4 @@
-import { AFRICA, getChildren, getId } from '../mock-data';
+import { AFRICA, getChildren, getId } from './mock-data';
 import { IdsMap, createMap } from './create-map';
 
 describe('createMap', () => {

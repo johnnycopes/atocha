@@ -4,7 +4,7 @@ import {
   getChildren,
   getId,
   getCounts as getNumberOfTargets,
-} from '../mock-data';
+} from './mock-data';
 
 describe('getCounts', () => {
   it('returns total counts record based on number of children', () => {

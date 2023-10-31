@@ -1,7 +1,5 @@
 import { Model } from './internal/types';
-import { Counts as CountsRecord, getCounts } from './internal/get-counts';
-
-export type Counts = CountsRecord;
+import { Counts, getCounts } from './internal/get-counts';
 
 export class Counter<T> {
   constructor(

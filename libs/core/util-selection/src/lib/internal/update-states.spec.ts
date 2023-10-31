@@ -5,7 +5,7 @@ import {
   MOCK_IDS,
   SOME_SELECTED_STATES,
   TestItem,
-} from '../mock-data';
+} from './mock-data';
 
 describe('updateStates', () => {
   let item: TestItem = AFRICA;

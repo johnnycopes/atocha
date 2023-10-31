@@ -6,7 +6,7 @@ import {
   getCounts,
   getId,
   SOME_SELECTED_ARRAY_MODEL,
-} from './mock-data';
+} from './internal/mock-data';
 
 describe('Counter', () => {
   let counter = new Counter(getId, getChildren, getCounts);

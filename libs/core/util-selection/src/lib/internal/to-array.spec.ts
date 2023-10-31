@@ -5,7 +5,7 @@ import {
   MOCK_IDS,
   SOME_SELECTED_ARRAY_MODEL,
   SOME_SELECTED_STATES,
-} from '../mock-data';
+} from './mock-data';
 
 describe('toArray', () => {
   it('transforms empty states', () => {

@@ -7,7 +7,7 @@ import {
   SOME_SELECTED_ARRAY_MODEL,
   SOME_SELECTED_SET_MODEL,
   SOME_SELECTED_STATES,
-} from '../mock-data';
+} from './mock-data';
 
 describe('toStates', () => {
   describe('passing in an array model', () => {

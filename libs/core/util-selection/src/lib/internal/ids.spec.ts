@@ -1,5 +1,5 @@
 import { Ids } from './ids';
-import { AFRICA, getId, getChildren, TestItem } from '../mock-data';
+import { AFRICA, getId, getChildren, TestItem } from './mock-data';
 
 describe('Ids', () => {
   let ids = new Ids(AFRICA, getId, getChildren);
