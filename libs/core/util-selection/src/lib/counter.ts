@@ -1,5 +1,5 @@
+import { SelectionModel } from './model-transformer/types';
 import { reduceRecursively } from './reduce-recursively';
-import { SelectionModel } from './model-transformer/model-transformer';
 
 export type Counts = Record<string, number>;
 
