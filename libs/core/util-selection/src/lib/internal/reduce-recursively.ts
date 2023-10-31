@@ -5,7 +5,7 @@ export function reduceRecursively<T, U>({
   initialValue,
 }: {
   item: T;
-  getItems: (item: T) => T[];
+  getItems: (item: T) => readonly T[];
   initialValue: U;
   reducer: (accumulator: U, item: T, parent?: T) => U;
 }): U {

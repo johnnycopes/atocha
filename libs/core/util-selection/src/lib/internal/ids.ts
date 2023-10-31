@@ -2,7 +2,7 @@ import { reduceRecursively } from './reduce-recursively';
 
 export type IdsMap = Map<
   string,
-  { parentId: string | undefined; childrenIds: string[] }
+  { parentId: string | undefined; childrenIds: readonly string[] }
 >;
 
 export class Ids<T> {
