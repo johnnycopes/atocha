@@ -24,12 +24,12 @@ export function updateStates<T>(
       indeterminate: 0,
     };
 
-    ancestorChildrenIds.forEach((childId) => {
+    for (const childId of ancestorChildrenIds) {
       const childState = states[childId];
       if (states[childId]) {
         ancestorChildrenStates[childState]++;
       }
-    });
+    }
 
     if (ancestorChildrenStates.checked === ancestorChildrenIds.length) {
       states[ancestorId] = 'checked';
