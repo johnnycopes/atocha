@@ -9,15 +9,15 @@ export function updateStates<T>(
 ): SelectionStates {
   const { ancestorIds, itemAndDescendantsIds } = ids.getConnectedIds(id);
 
-  itemAndDescendantsIds.forEach((id) => {
+  for (const id of itemAndDescendantsIds) {
     if (checked) {
       states[id] = 'checked';
     } else {
       delete states[id];
     }
-  });
+  }
 
-  ancestorIds.forEach((ancestorId) => {
+  for (const ancestorId of ancestorIds) {
     const ancestorChildrenIds = ids.map.get(ancestorId)?.childrenIds ?? [];
     const ancestorChildrenStates: Record<SelectionState, number> = {
       checked: 0,
@@ -41,7 +41,7 @@ export function updateStates<T>(
     } else {
       delete states[ancestorId];
     }
-  });
+  }
 
   return states;
 }
