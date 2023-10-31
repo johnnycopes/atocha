@@ -1,5 +1,5 @@
 import { Ids, IdsMap } from './ids';
-import { AFRICA, getId, getChildren } from '../mock-data';
+import { AFRICA, getId, getChildren, TestItem } from '../mock-data';
 
 describe('Ids', () => {
   let ids = new Ids(AFRICA, getId, getChildren);
@@ -71,6 +71,53 @@ describe('Ids', () => {
         'Southern Africa',
         'Africa',
       ]);
+    });
+  });
+
+  describe('getConnectedIds', () => {
+    let item: TestItem = AFRICA;
+
+    beforeEach(() => {
+      item = AFRICA;
+    });
+
+    it('for root item in tree', () => {
+      expect(ids.getConnectedIds(item.id)).toEqual({
+        ancestorIds: [],
+        itemAndDescendantsIds: [
+          'Africa',
+          'Southern Africa',
+          'Central Africa',
+          'Northern Africa',
+          'Swaziland',
+          'Namibia',
+          'Morocco',
+          'Marrakesh',
+          'Fes',
+        ],
+      });
+    });
+
+    it('for middle item in tree', () => {
+      item = AFRICA.children
+        ?.find(({ id }) => id === 'Northern Africa')
+        ?.children?.find(({ id }) => id === 'Morocco') ?? { id: 'Morocco' };
+
+      expect(ids.getConnectedIds(item.id)).toEqual({
+        ancestorIds: ['Northern Africa', 'Africa'],
+        itemAndDescendantsIds: ['Morocco', 'Marrakesh', 'Fes'],
+      });
+    });
+
+    it('for leaf item in tree', () => {
+      item = AFRICA.children
+        ?.find(({ id }) => id === 'Southern Africa')
+        ?.children?.find(({ id }) => id === 'Namibia') ?? { id: 'Namibia' };
+
+      expect(ids.getConnectedIds(item.id)).toEqual({
+        ancestorIds: ['Southern Africa', 'Africa'],
+        itemAndDescendantsIds: ['Namibia'],
+      });
     });
   });
 });

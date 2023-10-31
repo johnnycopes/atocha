@@ -29,4 +29,35 @@ export class Ids<T> {
     this.descending = Array.from(this.map.keys());
     this.ascending = this.descending.slice().reverse();
   }
+
+  getConnectedIds(id: string): {
+    itemAndDescendantsIds: string[];
+    ancestorIds: string[];
+  } {
+    const itemAndDescendantsIds = reduceRecursively<string, string[]>({
+      item: id,
+      getItems: (id: string) => this.map.get(id)?.childrenIds ?? [],
+      initialValue: [],
+      reducer: (accum, curr) => {
+        accum.push(curr);
+        return accum;
+      },
+    });
+
+    const ancestorIds = reduceRecursively<string, string[]>({
+      item: id,
+      getItems: (id) => {
+        const parentId = this.map.get(id)?.parentId;
+        return parentId ? [parentId] : [];
+      },
+      initialValue: [],
+      reducer: (accum, curr) => {
+        if (id === curr) return accum;
+        accum.push(curr);
+        return accum;
+      },
+    });
+
+    return { ancestorIds, itemAndDescendantsIds };
+  }
 }
