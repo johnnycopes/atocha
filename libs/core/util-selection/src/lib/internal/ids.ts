@@ -52,8 +52,7 @@ export class Ids<T> {
       },
       initialValue: [],
       reducer: (accum, curr) => {
-        if (id === curr) return accum;
-        accum.push(curr);
+        if (id !== curr) accum.push(curr);
         return accum;
       },
     });
