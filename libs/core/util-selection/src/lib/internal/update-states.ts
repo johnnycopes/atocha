@@ -2,7 +2,7 @@ import { Ids } from './ids';
 import { State, States } from './types';
 
 export function updateStates<T>(
-  checked: boolean,
+  selected: boolean,
   id: string,
   states: States,
   ids: Ids<T>
@@ -10,7 +10,7 @@ export function updateStates<T>(
   const { ancestorIds, itemAndDescendantsIds } = ids.getConnectedIds(id);
 
   for (const id of itemAndDescendantsIds) {
-    if (checked) {
+    if (selected) {
       states[id] = 'checked';
     } else {
       delete states[id];
