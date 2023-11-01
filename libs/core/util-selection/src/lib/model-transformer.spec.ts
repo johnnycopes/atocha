@@ -10,7 +10,7 @@ import {
   SOME_SELECTED_ARRAY_MODEL,
   SOME_SELECTED_SET_MODEL,
   TestItem,
-} from './mock-data';
+} from './internal/mock-data';
 
 describe('ModelTransformer', () => {
   let transformer = new ModelTransformer(AFRICA, getId, getChildren);

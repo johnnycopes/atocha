@@ -1,12 +1,10 @@
-import { reduceRecursively } from './reduce-recursively';
-import { SelectionModel } from './model-transformer';
-
-export type Counts = Record<string, number>;
+import { Model } from './internal/types';
+import { Counts, getCounts } from './internal/get-counts';
 
 export class Counter<T> {
   constructor(
     private _getId: (tree: T) => string,
-    private _getChildren: (tree: T) => T[],
+    private _getChildren: (tree: T) => readonly T[],
     private _getLeafNodeCount: (tree: T) => number = () => 0
   ) {}
 
@@ -14,7 +12,7 @@ export class Counter<T> {
     return this._getCounts(tree, this._getLeafNodeCount);
   }
 
-  getSelectedCounts(tree: T, model: SelectionModel): Counts {
+  getSelectedCounts(tree: T, model: Model): Counts {
     const setModel = Array.isArray(model) ? new Set(model) : model;
     return this._getCounts(tree, (leafNode: T): number =>
       setModel.has(this._getId(leafNode)) ? this._getLeafNodeCount(leafNode) : 0
@@ -22,19 +20,6 @@ export class Counter<T> {
   }
 
   private _getCounts(tree: T, getLeafNodeCount: (item: T) => number): Counts {
-    return reduceRecursively<T, Counts>({
-      item: tree,
-      getItems: this._getChildren,
-      initialValue: {},
-      reducer: (accum, curr) => {
-        accum[this._getId(curr)] = reduceRecursively({
-          item: curr,
-          getItems: this._getChildren,
-          initialValue: 0,
-          reducer: (total, item) => total + getLeafNodeCount(item),
-        });
-        return accum;
-      },
-    });
+    return getCounts(tree, this._getId, this._getChildren, getLeafNodeCount);
   }
 }

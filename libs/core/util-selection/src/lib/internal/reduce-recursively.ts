@@ -5,7 +5,7 @@ export function reduceRecursively<T, U>({
   initialValue,
 }: {
   item: T;
-  getItems: (item: T) => T[];
+  getItems: (item: T) => readonly T[];
   initialValue: U;
   reducer: (accumulator: U, item: T, parent?: T) => U;
 }): U {
@@ -16,13 +16,9 @@ export function reduceRecursively<T, U>({
     const current = items.shift();
 
     if (current) {
-      const children = getItems(current);
-
-      if (children.length) {
-        children.forEach((child) => {
-          value = reducer(value, child, current);
-          items.push(child);
-        });
+      for (const child of getItems(current)) {
+        value = reducer(value, child, current);
+        items.push(child);
       }
     }
   }
