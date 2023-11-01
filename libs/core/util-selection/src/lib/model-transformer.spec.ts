@@ -12,7 +12,7 @@ import {
 } from './internal/mock-data';
 
 describe('ModelTransformer', () => {
-  describe('initializing states', () => {
+  describe('initializing', () => {
     it('registers empty states', () => {
       const transformer = new ModelTransformer(AFRICA, getId, getChildren);
 
@@ -48,7 +48,7 @@ describe('ModelTransformer', () => {
     });
   });
 
-  describe('updating states', () => {
+  describe('updating individual items', () => {
     it('selects all items when none are selected and the root item is selected', () => {
       const transformer = new ModelTransformer(AFRICA, getId, getChildren);
 
@@ -125,6 +125,44 @@ describe('ModelTransformer', () => {
         Morocco: 'checked',
         Marrakesh: 'checked',
         Fes: 'checked',
+      });
+    });
+  });
+
+  describe('updating the model', () => {
+    it('registers partial states', () => {
+      const transformer = new ModelTransformer(AFRICA, getId, getChildren);
+
+      transformer.updateModel(SOME_SELECTED_ARRAY_MODEL);
+
+      expect(transformer.toArray()).toEqual(SOME_SELECTED_ARRAY_MODEL);
+      expect(transformer.toSet()).toEqual(SOME_SELECTED_SET_MODEL);
+      expect(transformer.toStates()).toEqual(SOME_SELECTED_STATES);
+    });
+
+    it('registers multiple changes correctly', () => {
+      const transformer = new ModelTransformer(
+        AFRICA,
+        getId,
+        getChildren,
+        ALL_SELECTED_ARRAY_MODEL
+      );
+
+      transformer
+        .updateStates(false, 'Namibia')
+        .updateModel([])
+        .updateStates(true, 'Swaziland')
+        .updateStates(true, 'Central Africa');
+
+      expect(transformer.toArray()).toEqual(['Central Africa', 'Swaziland']);
+      expect(transformer.toSet()).toEqual(
+        new Set(['Central Africa', 'Swaziland'])
+      );
+      expect(transformer.toStates()).toEqual({
+        Africa: 'indeterminate',
+        'Central Africa': 'checked',
+        'Southern Africa': 'indeterminate',
+        Swaziland: 'checked',
       });
     });
   });

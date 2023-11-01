@@ -16,7 +16,7 @@ export class ModelTransformer<T> {
     private _initialValue: Model = []
   ) {
     this._ids = new Ids(this._tree, this._getId, this._getChildren);
-    this._states = toStates(this._initialValue, this._ids);
+    this._states = this._toStates(this._initialValue);
   }
 
   toArray(): Extract<Model, string[]> {
@@ -34,5 +34,14 @@ export class ModelTransformer<T> {
   updateStates(checked: boolean, id: string): ModelTransformer<T> {
     updateStates(checked, id, this._states, this._ids);
     return this;
+  }
+
+  updateModel(value: Model): ModelTransformer<T> {
+    this._states = this._toStates(value);
+    return this;
+  }
+
+  private _toStates(model: Model): States {
+    return toStates(model, this._ids);
   }
 }
