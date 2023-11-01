@@ -16,9 +16,9 @@ describe('ModelTransformer', () => {
     it('registers empty states', () => {
       const transformer = new ModelTransformer(AFRICA, getId, getChildren);
 
-      expect(transformer.toArray()).toEqual([]);
-      expect(transformer.toSet()).toEqual<Set<string>>(new Set());
-      expect(transformer.toStates()).toEqual({});
+      expect(transformer.array).toEqual([]);
+      expect(transformer.set).toEqual<Set<string>>(new Set());
+      expect(transformer.states).toEqual({});
     });
 
     it('registers partial states', () => {
@@ -29,9 +29,9 @@ describe('ModelTransformer', () => {
         SOME_SELECTED_ARRAY_MODEL
       );
 
-      expect(transformer.toArray()).toEqual(SOME_SELECTED_ARRAY_MODEL);
-      expect(transformer.toSet()).toEqual(SOME_SELECTED_SET_MODEL);
-      expect(transformer.toStates()).toEqual(SOME_SELECTED_STATES);
+      expect(transformer.array).toEqual(SOME_SELECTED_ARRAY_MODEL);
+      expect(transformer.set).toEqual(SOME_SELECTED_SET_MODEL);
+      expect(transformer.states).toEqual(SOME_SELECTED_STATES);
     });
 
     it('registers all states', () => {
@@ -42,9 +42,9 @@ describe('ModelTransformer', () => {
         ALL_SELECTED_ARRAY_MODEL
       );
 
-      expect(transformer.toArray()).toEqual(ALL_SELECTED_ARRAY_MODEL);
-      expect(transformer.toSet()).toEqual<Set<string>>(ALL_SELECTED_SET_MODEL);
-      expect(transformer.toStates()).toEqual(ALL_SELECTED_STATES);
+      expect(transformer.array).toEqual(ALL_SELECTED_ARRAY_MODEL);
+      expect(transformer.set).toEqual<Set<string>>(ALL_SELECTED_SET_MODEL);
+      expect(transformer.states).toEqual(ALL_SELECTED_STATES);
     });
   });
 
@@ -54,9 +54,9 @@ describe('ModelTransformer', () => {
 
       transformer.updateStates(true, 'Africa');
 
-      expect(transformer.toArray()).toEqual(ALL_SELECTED_ARRAY_MODEL);
-      expect(transformer.toSet()).toEqual<Set<string>>(ALL_SELECTED_SET_MODEL);
-      expect(transformer.toStates()).toEqual(ALL_SELECTED_STATES);
+      expect(transformer.array).toEqual(ALL_SELECTED_ARRAY_MODEL);
+      expect(transformer.set).toEqual<Set<string>>(ALL_SELECTED_SET_MODEL);
+      expect(transformer.states).toEqual(ALL_SELECTED_STATES);
     });
 
     it('deselects all items when all are selected and the root item is deselected', () => {
@@ -69,9 +69,9 @@ describe('ModelTransformer', () => {
 
       transformer.updateStates(false, 'Africa');
 
-      expect(transformer.toArray()).toEqual([]);
-      expect(transformer.toSet()).toEqual<Set<string>>(new Set());
-      expect(transformer.toStates()).toEqual({});
+      expect(transformer.array).toEqual([]);
+      expect(transformer.set).toEqual<Set<string>>(new Set());
+      expect(transformer.states).toEqual({});
     });
 
     it('correctly affects tree when middle item is selected', () => {
@@ -79,9 +79,9 @@ describe('ModelTransformer', () => {
 
       transformer.updateStates(true, 'Morocco');
 
-      expect(transformer.toArray()).toEqual(['Marrakesh', 'Fes']);
-      expect(transformer.toSet()).toEqual(new Set(['Marrakesh', 'Fes']));
-      expect(transformer.toStates()).toEqual({
+      expect(transformer.array).toEqual(['Marrakesh', 'Fes']);
+      expect(transformer.set).toEqual(new Set(['Marrakesh', 'Fes']));
+      expect(transformer.states).toEqual({
         Africa: 'indeterminate',
         Fes: 'checked',
         Marrakesh: 'checked',
@@ -95,9 +95,9 @@ describe('ModelTransformer', () => {
 
       transformer.updateStates(true, 'Namibia');
 
-      expect(transformer.toArray()).toEqual(['Namibia']);
-      expect(transformer.toSet()).toEqual<Set<string>>(new Set(['Namibia']));
-      expect(transformer.toStates()).toEqual({
+      expect(transformer.array).toEqual(['Namibia']);
+      expect(transformer.set).toEqual<Set<string>>(new Set(['Namibia']));
+      expect(transformer.states).toEqual({
         Africa: 'indeterminate',
         Namibia: 'checked',
         'Southern Africa': 'indeterminate',
@@ -117,9 +117,9 @@ describe('ModelTransformer', () => {
         .updateStates(false, 'Southern Africa')
         .updateStates(true, 'Northern Africa');
 
-      expect(transformer.toArray()).toEqual(['Marrakesh', 'Fes']);
-      expect(transformer.toSet()).toEqual(new Set(['Marrakesh', 'Fes']));
-      expect(transformer.toStates()).toEqual({
+      expect(transformer.array).toEqual(['Marrakesh', 'Fes']);
+      expect(transformer.set).toEqual(new Set(['Marrakesh', 'Fes']));
+      expect(transformer.states).toEqual({
         Africa: 'indeterminate',
         'Northern Africa': 'checked',
         Morocco: 'checked',
@@ -135,9 +135,9 @@ describe('ModelTransformer', () => {
 
       transformer.updateModel(SOME_SELECTED_ARRAY_MODEL);
 
-      expect(transformer.toArray()).toEqual(SOME_SELECTED_ARRAY_MODEL);
-      expect(transformer.toSet()).toEqual(SOME_SELECTED_SET_MODEL);
-      expect(transformer.toStates()).toEqual(SOME_SELECTED_STATES);
+      expect(transformer.array).toEqual(SOME_SELECTED_ARRAY_MODEL);
+      expect(transformer.set).toEqual(SOME_SELECTED_SET_MODEL);
+      expect(transformer.states).toEqual(SOME_SELECTED_STATES);
     });
 
     it('registers multiple changes correctly', () => {
@@ -154,11 +154,9 @@ describe('ModelTransformer', () => {
         .updateStates(true, 'Swaziland')
         .updateStates(true, 'Central Africa');
 
-      expect(transformer.toArray()).toEqual(['Central Africa', 'Swaziland']);
-      expect(transformer.toSet()).toEqual(
-        new Set(['Central Africa', 'Swaziland'])
-      );
-      expect(transformer.toStates()).toEqual({
+      expect(transformer.array).toEqual(['Central Africa', 'Swaziland']);
+      expect(transformer.set).toEqual(new Set(['Central Africa', 'Swaziland']));
+      expect(transformer.states).toEqual({
         Africa: 'indeterminate',
         'Central Africa': 'checked',
         'Southern Africa': 'indeterminate',

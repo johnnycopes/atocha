@@ -67,7 +67,8 @@ export class SelectionTreeComponent<T>
       this._transformer = new ModelTransformer(
         tree,
         this.getId,
-        this.getChildren
+        this.getChildren,
+        this.model
       );
 
       this.writeValue(this.model);
@@ -77,7 +78,7 @@ export class SelectionTreeComponent<T>
   writeValue(model: string[]): void {
     if (model) {
       this.model = model;
-      this.states = this._transformer.toStates(model);
+      this.states = this._transformer.updateModel(model).states;
     }
     this._changeDetectorRef.markForCheck();
   }
@@ -93,8 +94,9 @@ export class SelectionTreeComponent<T>
     const nodeId = this.getId(node);
 
     this.nodeClick.emit(nodeId);
-    this.states = this._transformer.updateStates(checked, nodeId, this.states);
-    this.model = this._transformer.toArray(this.states);
+    this._transformer.updateStates(checked, nodeId);
+    this.states = this._transformer.states;
+    this.model = this._transformer.array;
     this._onChangeFn(this.model);
   };
 }
