@@ -52,7 +52,7 @@ describe('ModelTransformer', () => {
     it('selects all items when none are selected and the root item is selected', () => {
       const transformer = new ModelTransformer(AFRICA, getId, getChildren);
 
-      transformer.updateStates(true, 'Africa');
+      transformer.updateOne(true, 'Africa');
 
       expect(transformer.array).toEqual(ALL_SELECTED_ARRAY_MODEL);
       expect(transformer.set).toEqual<Set<string>>(ALL_SELECTED_SET_MODEL);
@@ -67,7 +67,7 @@ describe('ModelTransformer', () => {
         ALL_SELECTED_ARRAY_MODEL
       );
 
-      transformer.updateStates(false, 'Africa');
+      transformer.updateOne(false, 'Africa');
 
       expect(transformer.array).toEqual([]);
       expect(transformer.set).toEqual<Set<string>>(new Set());
@@ -77,7 +77,7 @@ describe('ModelTransformer', () => {
     it('correctly affects tree when middle item is selected', () => {
       const transformer = new ModelTransformer(AFRICA, getId, getChildren);
 
-      transformer.updateStates(true, 'Morocco');
+      transformer.updateOne(true, 'Morocco');
 
       expect(transformer.array).toEqual(['Marrakesh', 'Fes']);
       expect(transformer.set).toEqual(new Set(['Marrakesh', 'Fes']));
@@ -93,7 +93,7 @@ describe('ModelTransformer', () => {
     it('correctly affects tree when leaf item is selected', () => {
       const transformer = new ModelTransformer(AFRICA, getId, getChildren);
 
-      transformer.updateStates(true, 'Namibia');
+      transformer.updateOne(true, 'Namibia');
 
       expect(transformer.array).toEqual(['Namibia']);
       expect(transformer.set).toEqual<Set<string>>(new Set(['Namibia']));
@@ -113,9 +113,9 @@ describe('ModelTransformer', () => {
       );
 
       transformer
-        .updateStates(true, 'Southern Africa')
-        .updateStates(false, 'Southern Africa')
-        .updateStates(true, 'Northern Africa');
+        .updateOne(true, 'Southern Africa')
+        .updateOne(false, 'Southern Africa')
+        .updateOne(true, 'Northern Africa');
 
       expect(transformer.array).toEqual(['Marrakesh', 'Fes']);
       expect(transformer.set).toEqual(new Set(['Marrakesh', 'Fes']));
@@ -149,10 +149,10 @@ describe('ModelTransformer', () => {
       );
 
       transformer
-        .updateStates(false, 'Namibia')
+        .updateOne(false, 'Namibia')
         .updateModel([])
-        .updateStates(true, 'Swaziland')
-        .updateStates(true, 'Central Africa');
+        .updateOne(true, 'Swaziland')
+        .updateOne(true, 'Central Africa');
 
       expect(transformer.array).toEqual(['Central Africa', 'Swaziland']);
       expect(transformer.set).toEqual(new Set(['Central Africa', 'Swaziland']));
