@@ -36,8 +36,8 @@ export class ModelTransformer<T> {
     return this;
   }
 
-  updateModel(value: Model): ModelTransformer<T> {
-    this._states = this._toStates(value);
+  updateMultiple(model: Model): ModelTransformer<T> {
+    this._states = this._toStates(model);
     return this;
   }
 

@@ -133,7 +133,7 @@ describe('ModelTransformer', () => {
     it('registers partial states', () => {
       const transformer = new ModelTransformer(AFRICA, getId, getChildren);
 
-      transformer.updateModel(SOME_SELECTED_ARRAY_MODEL);
+      transformer.updateMultiple(SOME_SELECTED_ARRAY_MODEL);
 
       expect(transformer.array).toEqual(SOME_SELECTED_ARRAY_MODEL);
       expect(transformer.set).toEqual(SOME_SELECTED_SET_MODEL);
@@ -150,7 +150,7 @@ describe('ModelTransformer', () => {
 
       transformer
         .updateOne(false, 'Namibia')
-        .updateModel([])
+        .updateMultiple([])
         .updateOne(true, 'Swaziland')
         .updateOne(true, 'Central Africa');
 

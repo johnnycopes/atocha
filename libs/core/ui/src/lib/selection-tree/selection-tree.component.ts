@@ -78,7 +78,7 @@ export class SelectionTreeComponent<T>
   writeValue(model: string[]): void {
     if (model) {
       this.model = model;
-      this.states = this._transformer.updateModel(model).states;
+      this.states = this._transformer.updateMultiple(model).states;
     }
     this._changeDetectorRef.markForCheck();
   }
