@@ -15,23 +15,30 @@ describe('updateStates', () => {
   });
 
   it('selects all states when the top node is selected', () => {
-    expect(updateStates(true, item.id, {}, MOCK_IDS)).toEqual(
-      ALL_SELECTED_STATES
-    );
+    const states = {};
+
+    updateStates(true, item.id, states, MOCK_IDS);
+
+    expect(states).toEqual(ALL_SELECTED_STATES);
   });
 
   it('deselects all states when the top node is deselected', () => {
-    expect(updateStates(false, item.id, ALL_SELECTED_STATES, MOCK_IDS)).toEqual(
-      {}
-    );
+    const states = ALL_SELECTED_STATES;
+
+    updateStates(false, item.id, ALL_SELECTED_STATES, MOCK_IDS);
+
+    expect(states).toEqual({});
   });
 
   it('updates states when middle checkbox is selected', () => {
+    const states = {};
     item = AFRICA.children
       ?.find(({ id }) => id === 'Northern Africa')
       ?.children?.find(({ id }) => id === 'Morocco') ?? { id: 'Morocco' };
 
-    expect(updateStates(true, item.id, {}, MOCK_IDS)).toEqual({
+    updateStates(true, item.id, states, MOCK_IDS);
+
+    expect(states).toEqual({
       Africa: 'indeterminate',
       Fes: 'checked',
       Marrakesh: 'checked',
@@ -41,11 +48,14 @@ describe('updateStates', () => {
   });
 
   it('updates states when leaf checkbox is selected', () => {
+    const states = {};
     item = AFRICA.children
       ?.find(({ id }) => id === 'Southern Africa')
       ?.children?.find(({ id }) => id === 'Namibia') ?? { id: 'Namibia' };
 
-    expect(updateStates(true, item.id, {}, MOCK_IDS)).toEqual({
+    updateStates(true, item.id, states, MOCK_IDS);
+
+    expect(states).toEqual({
       Africa: 'indeterminate',
       Namibia: 'checked',
       'Southern Africa': 'indeterminate',
@@ -53,20 +63,21 @@ describe('updateStates', () => {
   });
 
   it('updates indeterminate states to checked when selected', () => {
+    const states = SOME_SELECTED_STATES;
     item = AFRICA.children?.find(({ id }) => id === 'Southern Africa') ?? {
       id: 'Southern Africa',
     };
 
-    expect(updateStates(true, item.id, SOME_SELECTED_STATES, MOCK_IDS)).toEqual(
-      {
-        Africa: 'indeterminate',
-        Fes: 'checked',
-        Morocco: 'indeterminate',
-        Namibia: 'checked',
-        'Northern Africa': 'indeterminate',
-        'Southern Africa': 'checked',
-        Swaziland: 'checked',
-      }
-    );
+    updateStates(true, item.id, SOME_SELECTED_STATES, MOCK_IDS);
+
+    expect(states).toEqual({
+      Africa: 'indeterminate',
+      Fes: 'checked',
+      Morocco: 'indeterminate',
+      Namibia: 'checked',
+      'Northern Africa': 'indeterminate',
+      'Southern Africa': 'checked',
+      Swaziland: 'checked',
+    });
   });
 });

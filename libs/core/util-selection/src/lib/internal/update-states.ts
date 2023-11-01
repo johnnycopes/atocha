@@ -6,7 +6,7 @@ export function updateStates<T>(
   id: string,
   states: States,
   ids: Ids<T>
-): States {
+): void {
   const { ancestorIds, itemAndDescendantsIds } = ids.getConnectedIds(id);
 
   for (const id of itemAndDescendantsIds) {
@@ -42,6 +42,4 @@ export function updateStates<T>(
       delete states[ancestorId];
     }
   }
-
-  return states;
 }
