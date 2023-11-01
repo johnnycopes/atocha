@@ -32,11 +32,8 @@ describe('updateStates', () => {
 
   it('updates states when middle checkbox is selected', () => {
     const states = {};
-    item = AFRICA.children
-      ?.find(({ id }) => id === 'Northern Africa')
-      ?.children?.find(({ id }) => id === 'Morocco') ?? { id: 'Morocco' };
 
-    updateStates(true, item.id, states, MOCK_IDS);
+    updateStates(true, 'Morocco', states, MOCK_IDS);
 
     expect(states).toEqual({
       Africa: 'indeterminate',
@@ -49,11 +46,8 @@ describe('updateStates', () => {
 
   it('updates states when leaf checkbox is selected', () => {
     const states = {};
-    item = AFRICA.children
-      ?.find(({ id }) => id === 'Southern Africa')
-      ?.children?.find(({ id }) => id === 'Namibia') ?? { id: 'Namibia' };
 
-    updateStates(true, item.id, states, MOCK_IDS);
+    updateStates(true, 'Namibia', states, MOCK_IDS);
 
     expect(states).toEqual({
       Africa: 'indeterminate',
@@ -64,11 +58,8 @@ describe('updateStates', () => {
 
   it('updates indeterminate states to checked when selected', () => {
     const states = SOME_SELECTED_STATES;
-    item = AFRICA.children?.find(({ id }) => id === 'Southern Africa') ?? {
-      id: 'Southern Africa',
-    };
 
-    updateStates(true, item.id, SOME_SELECTED_STATES, MOCK_IDS);
+    updateStates(true, 'Southern Africa', SOME_SELECTED_STATES, MOCK_IDS);
 
     expect(states).toEqual({
       Africa: 'indeterminate',
