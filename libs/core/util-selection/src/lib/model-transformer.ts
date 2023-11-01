@@ -31,7 +31,7 @@ export class ModelTransformer<T> {
     this._states = this._toStates(this._initialValue);
   }
 
-  updateOne(selected: boolean, id: string): ModelTransformer<T> {
+  updateOne(id: string, selected: boolean): ModelTransformer<T> {
     updateStates(selected, id, this._states, this._ids);
     return this;
   }
