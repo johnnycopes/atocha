@@ -7,28 +7,32 @@ import { updateStates } from './internal/update-states';
 
 export class ModelTransformer<T> {
   private readonly _ids: Ids<T>;
+  private _states: States;
 
   constructor(
     private _tree: T,
     private _getId: (tree: T) => string,
-    private _getChildren: (tree: T) => T[]
+    private _getChildren: (tree: T) => T[],
+    private _initialValue: Model = []
   ) {
     this._ids = new Ids(this._tree, this._getId, this._getChildren);
+    this._states = toStates(this._initialValue, this._ids);
   }
 
-  toArray(states: States): Extract<Model, string[]> {
-    return toArray(states, this._ids);
+  toArray(): Extract<Model, string[]> {
+    return toArray(this._states, this._ids);
   }
 
-  toSet(states: States): Extract<Model, Set<string>> {
-    return toSet(states, this._ids);
+  toSet(): Extract<Model, Set<string>> {
+    return toSet(this._states, this._ids);
   }
 
-  toStates(model: Model): States {
-    return toStates(model, this._ids);
+  toStates(): States {
+    return { ...this._states };
   }
 
-  updateStates(checked: boolean, id: string, states: States): States {
-    return updateStates(checked, id, states, this._ids);
+  updateStates(checked: boolean, id: string): ModelTransformer<T> {
+    updateStates(checked, id, this._states, this._ids);
+    return this;
   }
 }
