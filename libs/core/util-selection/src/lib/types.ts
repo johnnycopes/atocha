@@ -1,7 +1,11 @@
-import { Model, State, States } from './internal/types';
+import {
+  Model as InternalModel,
+  State as InternalState,
+  States as InternalStates,
+} from './internal/types';
 import { Counts as InternalCounts } from './internal/get-counts';
 
-export type SelectionModel = Model;
-export type SelectionState = State;
-export type SelectionStates = States;
+export type Model = InternalModel;
+export type State = InternalState;
+export type States = InternalStates;
 export type Counts = InternalCounts;
