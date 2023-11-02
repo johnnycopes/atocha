@@ -1,4 +1,4 @@
-import { ModelTransformer } from './model-transformer';
+import { Transformer } from './transformer';
 import {
   getChildren,
   getId,
@@ -11,10 +11,10 @@ import {
   SOME_SELECTED_SET_MODEL,
 } from './internal/mock-data';
 
-describe('ModelTransformer', () => {
+describe('Transformer', () => {
   describe('initializing', () => {
     it('registers empty states', () => {
-      const transformer = new ModelTransformer(AFRICA, getId, getChildren);
+      const transformer = new Transformer(AFRICA, getId, getChildren);
 
       expect(transformer.array).toEqual([]);
       expect(transformer.set).toEqual<Set<string>>(new Set());
@@ -22,7 +22,7 @@ describe('ModelTransformer', () => {
     });
 
     it('registers partial states', () => {
-      const transformer = new ModelTransformer(
+      const transformer = new Transformer(
         AFRICA,
         getId,
         getChildren,
@@ -35,7 +35,7 @@ describe('ModelTransformer', () => {
     });
 
     it('registers all states', () => {
-      const transformer = new ModelTransformer(
+      const transformer = new Transformer(
         AFRICA,
         getId,
         getChildren,
@@ -50,7 +50,7 @@ describe('ModelTransformer', () => {
 
   describe('updating individual items', () => {
     it('selects all items when none are selected and the root item is selected', () => {
-      const transformer = new ModelTransformer(AFRICA, getId, getChildren);
+      const transformer = new Transformer(AFRICA, getId, getChildren);
 
       transformer.updateOne('Africa');
 
@@ -60,7 +60,7 @@ describe('ModelTransformer', () => {
     });
 
     it('deselects all items when all are selected and the root item is deselected', () => {
-      const transformer = new ModelTransformer(
+      const transformer = new Transformer(
         AFRICA,
         getId,
         getChildren,
@@ -75,7 +75,7 @@ describe('ModelTransformer', () => {
     });
 
     it('correctly affects tree when middle item is selected', () => {
-      const transformer = new ModelTransformer(AFRICA, getId, getChildren);
+      const transformer = new Transformer(AFRICA, getId, getChildren);
 
       transformer.updateOne('Morocco');
 
@@ -91,7 +91,7 @@ describe('ModelTransformer', () => {
     });
 
     it('correctly affects tree when leaf item is selected', () => {
-      const transformer = new ModelTransformer(AFRICA, getId, getChildren);
+      const transformer = new Transformer(AFRICA, getId, getChildren);
 
       transformer.updateOne('Namibia');
 
@@ -105,7 +105,7 @@ describe('ModelTransformer', () => {
     });
 
     it('converts indeterminate states to selected when toggled', () => {
-      const transformer = new ModelTransformer(
+      const transformer = new Transformer(
         AFRICA,
         getId,
         getChildren,
@@ -131,7 +131,7 @@ describe('ModelTransformer', () => {
 
   describe('updating the model', () => {
     it('registers partial states', () => {
-      const transformer = new ModelTransformer(AFRICA, getId, getChildren);
+      const transformer = new Transformer(AFRICA, getId, getChildren);
 
       transformer.updateMultiple(SOME_SELECTED_ARRAY_MODEL);
 
@@ -141,7 +141,7 @@ describe('ModelTransformer', () => {
     });
 
     it('registers multiple changes correctly', () => {
-      const transformer = new ModelTransformer(
+      const transformer = new Transformer(
         AFRICA,
         getId,
         getChildren,

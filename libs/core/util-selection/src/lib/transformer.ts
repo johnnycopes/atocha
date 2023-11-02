@@ -5,7 +5,7 @@ import { toSet } from './internal/to-set';
 import { toStates } from './internal/to-states';
 import { updateStates } from './internal/update-states';
 
-export class ModelTransformer<T> {
+export class Transformer<T> {
   private readonly _ids: Ids<T>;
   private _states: States;
 
@@ -31,7 +31,7 @@ export class ModelTransformer<T> {
     this._states = this._toStates(this._initialValue);
   }
 
-  updateOne(id: string): ModelTransformer<T> {
+  updateOne(id: string): Transformer<T> {
     updateStates({
       states: this._states,
       ids: this._ids,
@@ -40,7 +40,7 @@ export class ModelTransformer<T> {
     return this;
   }
 
-  updateMultiple(ids: Model): ModelTransformer<T> {
+  updateMultiple(ids: Model): Transformer<T> {
     this._states = this._toStates(ids);
     return this;
   }

@@ -19,7 +19,7 @@ import {
   FormsModule,
 } from '@angular/forms';
 
-import { States, ModelTransformer } from '@atocha/core/util-selection';
+import { States, Transformer } from '@atocha/core/util-selection';
 import { TreeComponent } from '../tree/tree.component';
 
 @Component({
@@ -51,7 +51,7 @@ export class SelectionTreeComponent<T>
   @Output() nodeClick = new EventEmitter<string>();
   model: string[] = [];
   states: States = {};
-  private _transformer = new ModelTransformer<T>(
+  private _transformer = new Transformer<T>(
     {} as T,
     this.getId,
     this.getChildren
@@ -64,7 +64,7 @@ export class SelectionTreeComponent<T>
     if (changes['tree']) {
       const tree: T = changes['tree'].currentValue;
 
-      this._transformer = new ModelTransformer(
+      this._transformer = new Transformer(
         tree,
         this.getId,
         this.getChildren,
