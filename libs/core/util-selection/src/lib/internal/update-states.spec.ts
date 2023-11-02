@@ -17,7 +17,7 @@ describe('updateStates', () => {
   it('selects all states when the top node is selected', () => {
     const states = {};
 
-    updateStates(true, item.id, states, MOCK_IDS);
+    updateStates({ states, ids: MOCK_IDS, targetId: item.id, selected: true });
 
     expect(states).toEqual(ALL_SELECTED_STATES);
   });
@@ -25,7 +25,7 @@ describe('updateStates', () => {
   it('deselects all states when the top node is deselected', () => {
     const states = ALL_SELECTED_STATES;
 
-    updateStates(false, item.id, ALL_SELECTED_STATES, MOCK_IDS);
+    updateStates({ states, ids: MOCK_IDS, targetId: item.id, selected: false });
 
     expect(states).toEqual({});
   });
@@ -33,7 +33,12 @@ describe('updateStates', () => {
   it('updates states when middle checkbox is selected', () => {
     const states = {};
 
-    updateStates(true, 'Morocco', states, MOCK_IDS);
+    updateStates({
+      states,
+      ids: MOCK_IDS,
+      targetId: 'Morocco',
+      selected: true,
+    });
 
     expect(states).toEqual({
       Africa: 'indeterminate',
@@ -47,7 +52,12 @@ describe('updateStates', () => {
   it('updates states when leaf checkbox is selected', () => {
     const states = {};
 
-    updateStates(true, 'Namibia', states, MOCK_IDS);
+    updateStates({
+      states,
+      ids: MOCK_IDS,
+      targetId: 'Namibia',
+      selected: true,
+    });
 
     expect(states).toEqual({
       Africa: 'indeterminate',
@@ -59,7 +69,12 @@ describe('updateStates', () => {
   it('updates indeterminate states to checked when selected', () => {
     const states = SOME_SELECTED_STATES;
 
-    updateStates(true, 'Southern Africa', SOME_SELECTED_STATES, MOCK_IDS);
+    updateStates({
+      states,
+      ids: MOCK_IDS,
+      targetId: 'Southern Africa',
+      selected: true,
+    });
 
     expect(states).toEqual({
       Africa: 'indeterminate',

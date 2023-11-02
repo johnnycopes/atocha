@@ -1,13 +1,18 @@
 import { Ids } from './ids';
 import { State, States } from './types';
 
-export function updateStates<T>(
-  selected: boolean,
-  id: string,
-  states: States,
-  ids: Ids<T>
-): void {
-  const { ancestorIds, itemAndDescendantsIds } = ids.getConnectedIds(id);
+export function updateStates<T>({
+  states,
+  ids,
+  targetId,
+  selected,
+}: {
+  states: States;
+  ids: Ids<T>;
+  targetId: string;
+  selected: boolean;
+}): void {
+  const { ancestorIds, itemAndDescendantsIds } = ids.getConnectedIds(targetId);
 
   for (const id of itemAndDescendantsIds) {
     if (selected) {

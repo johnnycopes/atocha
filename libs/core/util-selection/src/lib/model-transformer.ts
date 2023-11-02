@@ -32,12 +32,17 @@ export class ModelTransformer<T> {
   }
 
   updateOne(id: string, selected: boolean): ModelTransformer<T> {
-    updateStates(selected, id, this._states, this._ids);
+    updateStates({
+      states: this._states,
+      ids: this._ids,
+      targetId: id,
+      selected,
+    });
     return this;
   }
 
-  updateMultiple(model: Model): ModelTransformer<T> {
-    this._states = this._toStates(model);
+  updateMultiple(ids: Model): ModelTransformer<T> {
+    this._states = this._toStates(ids);
     return this;
   }
 
