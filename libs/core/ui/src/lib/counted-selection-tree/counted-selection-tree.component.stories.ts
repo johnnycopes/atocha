@@ -88,7 +88,7 @@ const Template: StoryFn<CountedSelectionTreeComponent<TestItem>> = (
         [indeterminate]="indeterminate"
         size="normal"
         [ngModel]="checked"
-        (ngModelChange)="onChange($event, node)"
+        (ngModelChange)="onChange(node)"
       >
         {{ this.getId(node) }}
         ({{
