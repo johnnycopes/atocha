@@ -1,4 +1,4 @@
-import { Model, States } from './internal/types';
+import { GetChildren, GetId, Model, States, Tree } from './internal/types';
 import { Ids } from './internal/ids';
 import { toArray } from './internal/to-array';
 import { toSet } from './internal/to-set';
@@ -22,9 +22,9 @@ export class ModelTransformer<T> {
   }
 
   constructor(
-    private _tree: T,
-    private _getId: (tree: T) => string,
-    private _getChildren: (tree: T) => readonly T[],
+    private _tree: Tree<T>,
+    private _getId: GetId<T>,
+    private _getChildren: GetChildren<T>,
     private _initialValue: Model = []
   ) {
     this._ids = new Ids(this._tree, this._getId, this._getChildren);
