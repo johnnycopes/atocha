@@ -24,7 +24,7 @@ export class ModelTransformer<T> {
   constructor(
     private _tree: T,
     private _getId: (tree: T) => string,
-    private _getChildren: (tree: T) => T[],
+    private _getChildren: (tree: T) => readonly T[],
     private _initialValue: Model = []
   ) {
     this._ids = new Ids(this._tree, this._getId, this._getChildren);
