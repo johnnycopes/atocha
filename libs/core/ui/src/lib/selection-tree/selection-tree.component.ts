@@ -90,7 +90,7 @@ export class SelectionTreeComponent<T>
   // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-empty-function
   registerOnTouched(_fn: (value: string[]) => void): void {}
 
-  onChange = (node: T): void => {
+  onChange = (checked: boolean, node: T): void => {
     const nodeId = this.getId(node);
 
     this.nodeClick.emit(nodeId);

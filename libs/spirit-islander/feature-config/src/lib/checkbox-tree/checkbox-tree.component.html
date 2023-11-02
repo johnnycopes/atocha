@@ -23,7 +23,7 @@
     [indeterminate]="indeterminate"
     size="normal"
     [ngModel]="checked"
-    (ngModelChange)="onChange(item)"
+    (ngModelChange)="onChange($event, item)"
   >
     {{ item.display?.name ?? item.id }}
   </core-checkbox>
@@ -35,7 +35,7 @@
     [indeterminate]="indeterminate"
     size="normal"
     [ngModel]="checked"
-    (ngModelChange)="onChange(item)"
+    (ngModelChange)="onChange($event, item)"
   >
     {{ item.display?.name ?? item.id }}
     <ui-difficulty-emblem

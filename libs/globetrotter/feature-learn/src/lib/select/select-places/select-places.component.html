@@ -60,7 +60,7 @@
         [indeterminate]="indeterminate"
         size="large"
         [ngModel]="checked"
-        (ngModelChange)="onChange(node)"
+        (ngModelChange)="onChange($event, node)"
       >
         {{ this.getId(node) }}
         ({{ this.getChildren(node).length ? selected + ' / ' + total : total }})
@@ -73,7 +73,7 @@
       [indeterminate]="indeterminate"
       size="large"
       [ngModel]="checked"
-      (ngModelChange)="onChange(node)"
+      (ngModelChange)="onChange($event, node)"
     >
       {{ getId(node) }} ({{ total }})
     </core-checkbox>
