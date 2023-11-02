@@ -31,12 +31,11 @@ export class ModelTransformer<T> {
     this._states = this._toStates(this._initialValue);
   }
 
-  updateOne(id: string, selected: boolean): ModelTransformer<T> {
+  updateOne(id: string): ModelTransformer<T> {
     updateStates({
       states: this._states,
       ids: this._ids,
       targetId: id,
-      selected,
     });
     return this;
   }

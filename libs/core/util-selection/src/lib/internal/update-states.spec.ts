@@ -17,7 +17,7 @@ describe('updateStates', () => {
   it('selects all states when the top node is selected', () => {
     const states = {};
 
-    updateStates({ states, ids: MOCK_IDS, targetId: item.id, selected: true });
+    updateStates({ states, ids: MOCK_IDS, targetId: item.id });
 
     expect(states).toEqual(ALL_SELECTED_STATES);
   });
@@ -25,7 +25,7 @@ describe('updateStates', () => {
   it('deselects all states when the top node is deselected', () => {
     const states = ALL_SELECTED_STATES;
 
-    updateStates({ states, ids: MOCK_IDS, targetId: item.id, selected: false });
+    updateStates({ states, ids: MOCK_IDS, targetId: item.id });
 
     expect(states).toEqual({});
   });
@@ -37,7 +37,6 @@ describe('updateStates', () => {
       states,
       ids: MOCK_IDS,
       targetId: 'Morocco',
-      selected: true,
     });
 
     expect(states).toEqual({
@@ -56,7 +55,6 @@ describe('updateStates', () => {
       states,
       ids: MOCK_IDS,
       targetId: 'Namibia',
-      selected: true,
     });
 
     expect(states).toEqual({
@@ -73,7 +71,6 @@ describe('updateStates', () => {
       states,
       ids: MOCK_IDS,
       targetId: 'Southern Africa',
-      selected: true,
     });
 
     expect(states).toEqual({

@@ -5,12 +5,10 @@ export function updateStates<T>({
   states,
   ids,
   targetId,
-  selected,
 }: {
   states: States;
   ids: Ids<T>;
   targetId: string;
-  selected: boolean;
 }): void {
   const { ancestorIds, itemAndDescendantsIds } = ids.getConnectedIds(targetId);
   const shouldMarkChecked = states[targetId] !== 'checked';
