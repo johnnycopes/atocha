@@ -1,12 +1,13 @@
 import { reduceRecursively } from './reduce-recursively';
+import { GetChildren, GetId, GetLeafCount } from './types';
 
 export type Counts = Record<string, number>;
 
 export function getCounts<T>(
   tree: T,
-  getId: (item: T) => string,
-  getChildren: (item: T) => readonly T[],
-  getLeafNodeCount: (item: T) => number
+  getId: GetId<T>,
+  getChildren: GetChildren<T>,
+  getLeafNodeCount: GetLeafCount<T>
 ) {
   return reduceRecursively<T, Counts>({
     item: tree,

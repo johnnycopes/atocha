@@ -87,22 +87,14 @@ describe('Ids', () => {
     });
 
     it('for middle item in tree', () => {
-      item = AFRICA.children
-        ?.find(({ id }) => id === 'Northern Africa')
-        ?.children?.find(({ id }) => id === 'Morocco') ?? { id: 'Morocco' };
-
-      expect(ids.getConnectedIds(item.id)).toEqual({
+      expect(ids.getConnectedIds('Morocco')).toEqual({
         ancestorIds: ['Northern Africa', 'Africa'],
         itemAndDescendantsIds: ['Morocco', 'Marrakesh', 'Fes'],
       });
     });
 
     it('for leaf item in tree', () => {
-      item = AFRICA.children
-        ?.find(({ id }) => id === 'Southern Africa')
-        ?.children?.find(({ id }) => id === 'Namibia') ?? { id: 'Namibia' };
-
-      expect(ids.getConnectedIds(item.id)).toEqual({
+      expect(ids.getConnectedIds('Namibia')).toEqual({
         ancestorIds: ['Southern Africa', 'Africa'],
         itemAndDescendantsIds: ['Namibia'],
       });

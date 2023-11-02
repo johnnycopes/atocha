@@ -1,11 +1,13 @@
+import { GetChildren, Tree } from './types';
+
 export function reduceRecursively<T, U>({
   item,
   getItems,
   reducer,
   initialValue,
 }: {
-  item: T;
-  getItems: (item: T) => readonly T[];
+  item: Tree<T>;
+  getItems: GetChildren<T>;
   initialValue: U;
   reducer: (accumulator: U, item: T, parent?: T) => U;
 }): U {

@@ -1,11 +1,11 @@
-import { Model } from './internal/types';
+import { GetChildren, GetId, GetLeafCount, Model } from './internal/types';
 import { Counts, getCounts } from './internal/get-counts';
 
 export class Counter<T> {
   constructor(
-    private _getId: (tree: T) => string,
-    private _getChildren: (tree: T) => readonly T[],
-    private _getLeafNodeCount: (tree: T) => number = () => 0
+    private _getId: GetId<T>,
+    private _getChildren: GetChildren<T>,
+    private _getLeafNodeCount: GetLeafCount<T> = () => 0
   ) {}
 
   getTotalCounts(tree: T): Counts {

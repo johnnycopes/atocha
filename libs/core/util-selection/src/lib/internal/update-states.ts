@@ -1,16 +1,20 @@
 import { Ids } from './ids';
 import { State, States } from './types';
 
-export function updateStates<T>(
-  checked: boolean,
-  id: string,
-  states: States,
-  ids: Ids<T>
-): States {
-  const { ancestorIds, itemAndDescendantsIds } = ids.getConnectedIds(id);
+export function updateStates<T>({
+  states,
+  ids,
+  targetId,
+}: {
+  states: States;
+  ids: Ids<T>;
+  targetId: string;
+}): void {
+  const { ancestorIds, itemAndDescendantsIds } = ids.getConnectedIds(targetId);
+  const shouldMarkChecked = states[targetId] !== 'checked';
 
   for (const id of itemAndDescendantsIds) {
-    if (checked) {
+    if (shouldMarkChecked) {
       states[id] = 'checked';
     } else {
       delete states[id];
@@ -42,6 +46,4 @@ export function updateStates<T>(
       delete states[ancestorId];
     }
   }
-
-  return states;
 }

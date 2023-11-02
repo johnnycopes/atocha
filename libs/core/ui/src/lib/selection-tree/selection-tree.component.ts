@@ -19,7 +19,7 @@ import {
   FormsModule,
 } from '@angular/forms';
 
-import { SelectionStates, ModelTransformer } from '@atocha/core/util-selection';
+import { States, ModelTransformer } from '@atocha/core/util-selection';
 import { TreeComponent } from '../tree/tree.component';
 
 @Component({
@@ -50,7 +50,7 @@ export class SelectionTreeComponent<T>
   @Input() template: TemplateRef<unknown> | undefined;
   @Output() nodeClick = new EventEmitter<string>();
   model: string[] = [];
-  states: SelectionStates = {};
+  states: States = {};
   private _transformer = new ModelTransformer<T>(
     {} as T,
     this.getId,
@@ -67,7 +67,8 @@ export class SelectionTreeComponent<T>
       this._transformer = new ModelTransformer(
         tree,
         this.getId,
-        this.getChildren
+        this.getChildren,
+        this.model
       );
 
       this.writeValue(this.model);
@@ -77,7 +78,7 @@ export class SelectionTreeComponent<T>
   writeValue(model: string[]): void {
     if (model) {
       this.model = model;
-      this.states = this._transformer.toStates(model);
+      this.states = this._transformer.updateMultiple(model).states;
     }
     this._changeDetectorRef.markForCheck();
   }
@@ -93,8 +94,9 @@ export class SelectionTreeComponent<T>
     const nodeId = this.getId(node);
 
     this.nodeClick.emit(nodeId);
-    this.states = this._transformer.updateStates(checked, nodeId, this.states);
-    this.model = this._transformer.toArray(this.states);
+    this._transformer.updateOne(nodeId);
+    this.states = this._transformer.states;
+    this.model = this._transformer.array;
     this._onChangeFn(this.model);
   };
 }
