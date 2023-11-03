@@ -1,0 +1,24 @@
+<ng-container
+  [ngTemplateOutlet]="template ? template : defaultTemplate"
+  [ngTemplateOutletContext]="{
+    $implicit: tree,
+    level: level
+  }"
+></ng-container>
+
+<ng-container *ngIf="getChildren(tree)?.length">
+  <core-tree
+    *ngFor="let child of getChildren(tree); trackBy: trackByFn"
+    [tree]="child"
+    [template]="template ? template : defaultTemplate"
+    [level]="level + 1"
+    [getId]="getId"
+    [getChildren]="getChildren"
+  ></core-tree>
+</ng-container>
+
+<ng-template #defaultTemplate let-node>
+  <span data-test="core-tree-default-node">
+    {{ getId(node) }}
+  </span>
+</ng-template>
