@@ -1,3 +1,4 @@
+import { GetChildren, GetId, Tree } from './types';
 import { reduceRecursively } from './reduce-recursively';
 
 export type IdsMap = Map<
@@ -6,9 +7,9 @@ export type IdsMap = Map<
 >;
 
 export function createMap<T>(
-  tree: T,
-  getId: (item: T) => string,
-  getChildren: (item: T) => readonly T[]
+  tree: Tree<T>,
+  getId: GetId<T>,
+  getChildren: GetChildren<T>
 ) {
   return reduceRecursively<T, IdsMap>({
     item: tree,

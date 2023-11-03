@@ -1,25 +1,39 @@
-import { Model } from './internal/types';
+import { Tree } from './internal/types';
+import { GetChildren, GetId, GetLeafCount, Model } from './internal/types';
 import { Counts, getCounts } from './internal/get-counts';
 
 export class Counter<T> {
+  private _totalCounts: Counts = {};
+  private _selectedCounts: Counts = {};
+
+  get totalCounts(): Counts {
+    return { ...this._totalCounts };
+  }
+
+  get selectedCounts(): Counts {
+    return { ...this._selectedCounts };
+  }
+
   constructor(
-    private _getId: (tree: T) => string,
-    private _getChildren: (tree: T) => readonly T[],
-    private _getLeafNodeCount: (tree: T) => number = () => 0
-  ) {}
-
-  getTotalCounts(tree: T): Counts {
-    return this._getCounts(tree, this._getLeafNodeCount);
+    private _tree: Tree<T>,
+    private _getId: GetId<T>,
+    private _getChildren: GetChildren<T>,
+    private _getLeafCount: GetLeafCount<T>,
+    model: Model = new Set<string>()
+  ) {
+    this._totalCounts = this._getCounts(this._getLeafCount);
+    this.update(model);
   }
 
-  getSelectedCounts(tree: T, model: Model): Counts {
-    const setModel = Array.isArray(model) ? new Set(model) : model;
-    return this._getCounts(tree, (leafNode: T): number =>
-      setModel.has(this._getId(leafNode)) ? this._getLeafNodeCount(leafNode) : 0
+  update(model: Model): Counter<T> {
+    const set = Array.isArray(model) ? new Set(model) : model;
+    this._selectedCounts = this._getCounts((leaf: T): number =>
+      set.has(this._getId(leaf)) ? this._getLeafCount(leaf) : 0
     );
+    return this;
   }
 
-  private _getCounts(tree: T, getLeafNodeCount: (item: T) => number): Counts {
-    return getCounts(tree, this._getId, this._getChildren, getLeafNodeCount);
+  private _getCounts(getLeafCount: GetLeafCount<T>): Counts {
+    return getCounts(this._tree, this._getId, this._getChildren, getLeafCount);
   }
 }

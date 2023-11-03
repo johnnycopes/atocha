@@ -1,3 +1,4 @@
+import { GetChildren, GetId, Tree } from './types';
 import { IdsMap, createMap } from './create-map';
 import { reduceRecursively } from './reduce-recursively';
 
@@ -7,9 +8,9 @@ export class Ids<T> {
   readonly ascending: readonly string[];
 
   constructor(
-    private _tree: T,
-    private _getId: (tree: T) => string,
-    private _getChildren: (tree: T) => readonly T[]
+    private _tree: Tree<T>,
+    private _getId: GetId<T>,
+    private _getChildren: GetChildren<T>
   ) {
     this._map = createMap(this._tree, this._getId, this._getChildren);
     this.descending = Array.from(this._map.keys());
