@@ -19,7 +19,7 @@ import {
   FormsModule,
 } from '@angular/forms';
 
-import { States, Transformer } from '@atocha/core/util-selection';
+import { States, Transformer } from '@atocha/tree/util';
 import { TreeComponent } from '../tree/tree.component';
 
 @Component({

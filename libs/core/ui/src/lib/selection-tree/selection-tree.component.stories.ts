@@ -15,7 +15,7 @@ import {
   TestItem,
   getChildren,
   getId,
-} from '@atocha/core/util-selection';
+} from '@atocha/tree/util';
 import { CheckboxComponent } from '../checkbox/checkbox.component';
 import { SelectionTreeComponent } from './selection-tree.component';
 import { StorybookWrapperComponent } from '../../../.storybook/storybook-wrapper/storybook-wrapper.component';

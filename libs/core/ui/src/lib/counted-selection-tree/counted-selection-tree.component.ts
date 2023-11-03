@@ -19,7 +19,7 @@ import {
   NG_VALUE_ACCESSOR,
 } from '@angular/forms';
 
-import { Counter, Counts } from '@atocha/core/util-selection';
+import { Counter, Counts } from '@atocha/tree/util';
 import { SelectionTreeComponent } from '../selection-tree/selection-tree.component';
 
 @Component({
