@@ -14,19 +14,19 @@ import {
   SOME_SELECTED_ARRAY_MODEL,
   TestItem,
   getChildren,
+  getCounts,
   getId,
-} from '@atocha/core/util-selection';
+} from '@atocha/tree/util';
 import { CheckboxComponent } from '@atocha/core/ui';
-import { SelectionTreeComponent } from './selection-tree.component';
+import { CountedSelectionTreeComponent } from './counted-selection-tree.component';
 import { StorybookWrapperComponent } from '../../../.storybook/storybook-wrapper/storybook-wrapper.component';
-import { TreeComponent } from '../tree/tree.component';
 
 export default {
-  title: 'Selection Tree',
-  component: SelectionTreeComponent,
+  title: 'Counted Selection Tree',
+  component: CountedSelectionTreeComponent,
   decorators: [
     moduleMetadata({
-      imports: [FormsModule, CheckboxComponent, TreeComponent],
+      imports: [FormsModule, CheckboxComponent],
       declarations: [StorybookWrapperComponent],
     }),
     componentWrapperDecorator(StorybookWrapperComponent),
@@ -44,26 +44,34 @@ export default {
         'Small Africa': SMALL_AFRICA,
       },
     },
-    onClick: { action: 'clicked' },
+    onNgModelChange: { action: 'ngModelChange' },
+    onSelectedChange: { action: 'selectedChange' },
+    onTotalChange: { action: 'totalChange' },
   },
-} as Meta<SelectionTreeComponent<TestItem>>;
+} as Meta<CountedSelectionTreeComponent<TestItem>>;
 
-const Template: StoryFn<SelectionTreeComponent<TestItem>> = (args: Args) => ({
+const Template: StoryFn<CountedSelectionTreeComponent<TestItem>> = (
+  args: Args
+) => ({
   props: {
     ...args,
     getId,
     getChildren,
+    getCounts,
   },
   template: `
-    <core-selection-tree
+    <core-counted-selection-tree
       [class]="className"
       [tree]="tree"
       [getId]="getId"
       [getChildren]="getChildren"
+      [getLeafNodeCount]="getCounts"
       [template]="checkboxTemplate"
       [ngModel]="model"
-      (ngModelChange)="model = $event; onClick($event)"
-    ></core-selection-tree>
+      (ngModelChange)="model = $event; onNgModelChange($event)"
+      (selectedChange)="onSelectedChange($event)"
+      (totalChange)="onTotalChange($event)"
+    ></core-counted-selection-tree>
 
     <ng-template #checkboxTemplate
       let-node
@@ -71,6 +79,8 @@ const Template: StoryFn<SelectionTreeComponent<TestItem>> = (args: Args) => ({
       let-checked="checked"
       let-indeterminate="indeterminate"
       let-onChange="onChange"
+      let-selected="selected"
+      let-total="total"
     >
       <core-checkbox
         [style.margin-left.px]="level * 24"
@@ -81,12 +91,17 @@ const Template: StoryFn<SelectionTreeComponent<TestItem>> = (args: Args) => ({
         (ngModelChange)="onChange(node)"
       >
         {{ this.getId(node) }}
+        ({{
+          this.getChildren(node).length
+            ? selected + ' / ' + total
+            : total
+        }})
       </core-checkbox>
     </ng-template>
   `,
 });
 
-export const noneSelected: StoryObj<SelectionTreeComponent<TestItem>> = {
+export const noneSelected: StoryObj<CountedSelectionTreeComponent<TestItem>> = {
   render: Template,
 
   args: createArgs({
@@ -94,7 +109,7 @@ export const noneSelected: StoryObj<SelectionTreeComponent<TestItem>> = {
   }),
 };
 
-export const someSelected: StoryObj<SelectionTreeComponent<TestItem>> = {
+export const someSelected: StoryObj<CountedSelectionTreeComponent<TestItem>> = {
   render: Template,
 
   args: createArgs({
@@ -102,7 +117,7 @@ export const someSelected: StoryObj<SelectionTreeComponent<TestItem>> = {
   }),
 };
 
-export const allSelected: StoryObj<SelectionTreeComponent<TestItem>> = {
+export const allSelected: StoryObj<CountedSelectionTreeComponent<TestItem>> = {
   render: Template,
 
   args: createArgs({
@@ -110,16 +125,18 @@ export const allSelected: StoryObj<SelectionTreeComponent<TestItem>> = {
   }),
 };
 
-export const withCustomStyling: StoryObj<SelectionTreeComponent<TestItem>> = {
+export const withCustomStyling: StoryObj<
+  CountedSelectionTreeComponent<TestItem>
+> = {
   render: Template,
 
   args: createArgs({
-    model: [],
-    className: 'custom-selection-tree',
+    model: SOME_SELECTED_ARRAY_MODEL,
+    className: 'custom-counted-selection-tree',
   }),
 };
 
-type Args = Partial<SelectionTreeComponent<TestItem>> & {
+type Args = Partial<CountedSelectionTreeComponent<TestItem>> & {
   className?: string;
 };
 

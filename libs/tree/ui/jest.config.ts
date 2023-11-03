@@ -1,9 +1,9 @@
 /* eslint-disable */
 export default {
-  displayName: 'core-ui-selection',
+  displayName: 'tree-ui',
   preset: '../../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
-  coverageDirectory: '../../../coverage/libs/core/ui-selection',
+  coverageDirectory: '../../../coverage/libs/tree/ui',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': [
       'jest-preset-angular',
