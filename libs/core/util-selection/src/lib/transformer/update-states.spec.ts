@@ -2,10 +2,10 @@ import { updateStates } from './update-states';
 import {
   AFRICA,
   ALL_SELECTED_STATES,
-  MOCK_IDS,
   SOME_SELECTED_STATES,
   TestItem,
-} from './mock-data';
+} from '../shared/mock-data';
+import { MOCK_IDS } from './ids/mock-ids';
 
 describe('updateStates', () => {
   let item: TestItem = AFRICA;

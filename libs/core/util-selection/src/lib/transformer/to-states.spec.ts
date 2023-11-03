@@ -3,11 +3,11 @@ import {
   ALL_SELECTED_ARRAY_MODEL,
   ALL_SELECTED_SET_MODEL,
   ALL_SELECTED_STATES,
-  MOCK_IDS,
   SOME_SELECTED_ARRAY_MODEL,
   SOME_SELECTED_SET_MODEL,
   SOME_SELECTED_STATES,
-} from './mock-data';
+} from '../shared/mock-data';
+import { MOCK_IDS } from './ids/mock-ids';
 
 describe('toStates', () => {
   describe('passing in an array model', () => {

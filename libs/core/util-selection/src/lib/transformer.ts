@@ -1,9 +1,9 @@
-import { GetChildren, GetId, Model, States, Tree } from './internal/types';
-import { Ids } from './internal/ids';
-import { toArray } from './internal/to-array';
-import { toSet } from './internal/to-set';
-import { toStates } from './internal/to-states';
-import { updateStates } from './internal/update-states';
+import { GetChildren, GetId, Model, States, Tree } from './shared/types';
+import { Ids } from './transformer/ids/ids';
+import { toArray } from './transformer/to-array';
+import { toSet } from './transformer/to-set';
+import { toStates } from './transformer/to-states';
+import { updateStates } from './transformer/update-states';
 
 export class Transformer<T> {
   private readonly _ids: Ids<T>;

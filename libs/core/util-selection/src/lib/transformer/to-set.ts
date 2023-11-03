@@ -1,5 +1,5 @@
-import { Ids } from './ids';
-import { Model, States } from './types';
+import { Model, States } from '../shared/types';
+import { Ids } from './ids/ids';
 import { toArray } from './to-array';
 
 export function toSet<T>(

@@ -1,4 +1,3 @@
-import { Ids } from './ids';
 import { States } from './types';
 
 export interface TestItem {
@@ -88,4 +87,3 @@ export const ALL_SELECTED_SET_MODEL = new Set(ALL_SELECTED_ARRAY_MODEL);
 export const getId = ({ id }: TestItem) => id;
 export const getChildren = ({ children }: TestItem) => children ?? [];
 export const getCounts = ({ targets }: TestItem) => targets ?? 0;
-export const MOCK_IDS = new Ids(AFRICA, getId, getChildren);

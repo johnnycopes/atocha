@@ -6,8 +6,8 @@ import {
   GetId as InternalGetId,
   GetChildren as InternalGetChildren,
   GetLeafCount as InternalGetLeafcount,
-} from './internal/types';
-import { Counts as InternalCounts } from './internal/get-counts';
+} from './shared/types';
+import { Counts as InternalCounts } from './counter/get-counts';
 
 export type Model = InternalModel;
 export type State = InternalState;
