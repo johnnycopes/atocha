@@ -78,7 +78,7 @@ const Template: StoryFn<SelectionTreeComponent<TestItem>> = (args: Args) => ({
         [indeterminate]="indeterminate"
         size="normal"
         [ngModel]="checked"
-        (ngModelChange)="onChange($event, node)"
+        (ngModelChange)="onChange(node)"
       >
         {{ this.getId(node) }}
       </core-checkbox>
