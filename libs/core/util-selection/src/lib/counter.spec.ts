@@ -8,7 +8,7 @@ import {
 } from './mock-data';
 import { Counter } from './counter';
 
-describe('NewCounter', () => {
+describe('Counter', () => {
   describe('initializing', () => {
     it('returns total counts when passed empty model', () => {
       const counter = new Counter(AFRICA, getId, getChildren, getCounts);
