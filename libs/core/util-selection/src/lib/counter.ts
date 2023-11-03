@@ -2,7 +2,7 @@ import { Tree } from './internal/types';
 import { GetChildren, GetId, GetLeafCount, Model } from './internal/types';
 import { Counts, getCounts } from './internal/get-counts';
 
-export class NewCounter<T> {
+export class Counter<T> {
   private _totalCounts: Counts = {};
   private _selectedCounts: Counts = {};
 
@@ -25,7 +25,7 @@ export class NewCounter<T> {
     this.update(model);
   }
 
-  update(model: Model): NewCounter<T> {
+  update(model: Model): Counter<T> {
     const set = Array.isArray(model) ? new Set(model) : model;
     this._selectedCounts = this._getCounts((leafNode: T): number =>
       set.has(this._getId(leafNode)) ? this._getLeafCount(leafNode) : 0
