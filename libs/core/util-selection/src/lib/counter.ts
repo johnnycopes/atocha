@@ -27,8 +27,8 @@ export class Counter<T> {
 
   update(model: Model): Counter<T> {
     const set = Array.isArray(model) ? new Set(model) : model;
-    this._selectedCounts = this._getCounts((leafNode: T): number =>
-      set.has(this._getId(leafNode)) ? this._getLeafCount(leafNode) : 0
+    this._selectedCounts = this._getCounts((leaf: T): number =>
+      set.has(this._getId(leaf)) ? this._getLeafCount(leaf) : 0
     );
     return this;
   }
