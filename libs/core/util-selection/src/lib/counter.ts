@@ -1,5 +1,4 @@
-import { Tree } from './shared/types';
-import { GetChildren, GetId, GetLeafCount, Model } from './shared/types';
+import { GetChildren, GetId, GetLeafCount, Model, Tree } from './shared/types';
 import { Counts, getCounts } from './counter/get-counts';
 
 export class Counter<T> {

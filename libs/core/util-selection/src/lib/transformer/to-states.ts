@@ -1,5 +1,5 @@
-import { Ids } from './ids/ids';
 import { Model, States } from '../shared/types';
+import { Ids } from './ids/ids';
 
 export function toStates<T>(model: Model, ids: Ids<T>): States {
   const states: States = {};
