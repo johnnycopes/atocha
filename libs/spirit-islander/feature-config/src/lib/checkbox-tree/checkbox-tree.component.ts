@@ -8,8 +8,7 @@ import {
 import { CommonModule } from '@angular/common';
 import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { CheckboxComponent } from '@atocha/core/ui';
-import { SelectionTreeComponent } from '@atocha/core/ui-selection';
+import { CheckboxComponent, SelectionTreeComponent } from '@atocha/core/ui';
 import {
   DifficultyEmblemComponent,
   ExpansionEmblemComponent,
