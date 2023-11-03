@@ -1,5 +1,5 @@
-import { Ids } from './ids';
-import { State, States } from './types';
+import { Ids } from './ids/ids';
+import { State, States } from '../shared/types';
 
 export function updateStates<T>({
   states,

@@ -1,5 +1,5 @@
-import { Ids } from './ids';
-import { Model, States } from './types';
+import { Ids } from './ids/ids';
+import { Model, States } from '../shared/types';
 
 export function toArray<T>(
   states: States,

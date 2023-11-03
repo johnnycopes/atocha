@@ -1,5 +1,5 @@
-import { GetChildren, GetId, Tree } from './types';
-import { reduceRecursively } from './reduce-recursively';
+import { GetChildren, GetId, Tree } from '../../shared/types';
+import { reduceRecursively } from '../../shared/reduce-recursively';
 
 export type IdsMap = Map<
   string,

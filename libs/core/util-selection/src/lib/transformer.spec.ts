@@ -9,7 +9,7 @@ import {
   SOME_SELECTED_STATES,
   SOME_SELECTED_ARRAY_MODEL,
   SOME_SELECTED_SET_MODEL,
-} from './internal/mock-data';
+} from './shared/mock-data';
 
 describe('Transformer', () => {
   describe('initializing', () => {

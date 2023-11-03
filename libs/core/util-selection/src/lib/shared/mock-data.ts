@@ -1,4 +1,4 @@
-import { Ids } from './ids';
+import { Ids } from '../transformer/ids/ids';
 import { States } from './types';
 
 export interface TestItem {

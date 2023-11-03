@@ -1,1 +1,1 @@
-export * from './internal/mock-data';
+export * from './shared/mock-data';

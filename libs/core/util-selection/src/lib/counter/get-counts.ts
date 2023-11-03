@@ -1,5 +1,5 @@
-import { reduceRecursively } from './reduce-recursively';
-import { GetChildren, GetId, GetLeafCount } from './types';
+import { reduceRecursively } from '../shared/reduce-recursively';
+import { GetChildren, GetId, GetLeafCount } from '../shared/types';
 
 export type Counts = Record<string, number>;
 

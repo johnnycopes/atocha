@@ -1,6 +1,6 @@
-import { Tree } from './internal/types';
-import { GetChildren, GetId, GetLeafCount, Model } from './internal/types';
-import { Counts, getCounts } from './internal/get-counts';
+import { Tree } from './shared/types';
+import { GetChildren, GetId, GetLeafCount, Model } from './shared/types';
+import { Counts, getCounts } from './counter/get-counts';
 
 export class Counter<T> {
   private _totalCounts: Counts = {};
