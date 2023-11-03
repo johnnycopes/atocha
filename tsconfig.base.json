@@ -18,6 +18,7 @@
       "@atocha/core/data-access": ["libs/core/data-access/src/index.ts"],
       "@atocha/core/ui": ["libs/core/ui/src/index.ts"],
       "@atocha/core/ui-selection": ["libs/core/ui-selection/src/index.ts"],
+      "@atocha/core/ui-storybook": ["libs/core/ui-storybook/src/index.ts"],
       "@atocha/core/util": ["libs/core/util/src/index.ts"],
       "@atocha/core/util-selection": ["libs/core/util-selection/src/index.ts"],
       "@atocha/globetrotter/data-access": [
