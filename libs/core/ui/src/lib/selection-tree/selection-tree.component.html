@@ -3,10 +3,10 @@
   [tree]="tree"
   [getId]="getId"
   [getChildren]="getChildren"
-  [template]="checkboxTemplate"
+  [template]="nodeTemplate"
 ></core-tree>
 
-<ng-template #checkboxTemplate let-node let-level="level">
+<ng-template #nodeTemplate let-node let-level="level">
   <ng-container
     [ngTemplateOutlet]="template ? template : defaultTemplate"
     [ngTemplateOutletContext]="{

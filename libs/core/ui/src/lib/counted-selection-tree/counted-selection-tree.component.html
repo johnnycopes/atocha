@@ -2,13 +2,13 @@
   [tree]="tree"
   [getId]="getId"
   [getChildren]="getChildren"
-  [template]="checkboxTemplate"
+  [template]="nodeTemplate"
   [ngModel]="model"
   (ngModelChange)="onChange($event)"
 ></core-selection-tree>
 
 <ng-template
-  #checkboxTemplate
+  #nodeTemplate
   let-node
   let-level="level"
   let-checked="checked"
