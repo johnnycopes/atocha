@@ -6,7 +6,7 @@ import {
   ALL_SELECTED_ARRAY_MODEL,
   SOME_SELECTED_ARRAY_MODEL,
 } from './mock-data';
-import { NewCounter } from './new-counter';
+import { NewCounter } from './counter';
 
 describe('NewCounter', () => {
   describe('initializing', () => {
