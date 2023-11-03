@@ -1,0 +1,106 @@
+:host::ng-deep {
+  .custom-checkbox {
+    --checkbox-color-hover: beige;
+    --label-margin: 12px;
+
+    &.core-checkbox--checked {
+      --checkbox-border: aquamarine;
+      --checkmark-color: darkblue;
+      --checkbox-color: aquamarine;
+    }
+
+    &.core-checkbox--indeterminate {
+      --checkbox-border: goldenrod;
+      --checkmark-color: goldenrod;
+    }
+
+    &.core-checkbox--unchecked {
+      --checkbox-border: darkseagreen;
+      color: darkgray;
+    }
+  }
+
+  .custom-selection-tree {
+    --checkbox-margin: 8px;
+
+    .core-checkbox {
+      --checkbox-color-hover: beige;
+      --label-margin: 12px;
+    }
+
+    [data-level='0'] {
+      > .core-checkbox--checked,
+      > .core-checkbox--indeterminate {
+        --checkbox-border: aquamarine;
+        --checkmark-color: darkblue;
+        --checkbox-color: aquamarine;
+      }
+    }
+
+    .core-checkbox--checked,
+    .core-checkbox--indeterminate {
+      --checkbox-border: goldenrod;
+      --checkmark-color: goldenrod;
+    }
+
+    .checkbox--unchecked {
+      --checkbox-border: darkseagreen;
+      color: darkgray;
+    }
+  }
+
+  .custom-counted-selection-tree {
+    .core-selection-tree {
+      --checkbox-margin: 8px;
+    }
+
+    .core-checkbox {
+      --checkbox-color-hover: beige;
+      --label-margin: 12px;
+    }
+
+    [data-level='0'] {
+      > .core-checkbox--checked,
+      > .core-checkbox--indeterminate {
+        --checkbox-border: aquamarine;
+        --checkmark-color: darkblue;
+        --checkbox-color: aquamarine;
+      }
+    }
+
+    .core-checkbox--checked,
+    .core-checkbox--indeterminate {
+      --checkbox-border: goldenrod;
+      --checkmark-color: goldenrod;
+    }
+
+    .checkbox--unchecked {
+      --checkbox-border: darkseagreen;
+      color: darkgray;
+    }
+  }
+
+  .custom-search-input {
+    .core-search-input__field {
+      padding: 12px 32px 12px 12px;
+      border: 2px solid cadetblue;
+      font-family: monospace;
+      font-size: 20px;
+      outline: none;
+
+      &::placeholder {
+        color: darkmagenta;
+      }
+
+      &:focus {
+        border-color: goldenrod;
+      }
+    }
+
+    .core-search-input__clear {
+      font-size: 24px;
+      width: 32px;
+      color: darkolivegreen;
+    }
+  }
+}
