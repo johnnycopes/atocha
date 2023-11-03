@@ -30,7 +30,7 @@
     "storybook": {
       "executor": "@storybook/angular:start-storybook",
       "options": {
-        "port": 4400,
+        "port": 4700,
         "configDir": "libs/tree/ui/.storybook",
         "browserTarget": "tree-ui:build-storybook",
         "compodoc": false
