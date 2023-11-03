@@ -8,12 +8,12 @@
       "executor": "@nx/cypress:cypress",
       "options": {
         "cypressConfig": "apps/tree-ui-e2e/cypress.config.ts",
-        "devServerTarget": "tree-ui:serve",
+        "devServerTarget": "tree-ui:storybook",
         "testingType": "e2e"
       },
       "configurations": {
-        "production": {
-          "devServerTarget": "tree-ui:serve:production"
+        "ci": {
+          "devServerTarget": "tree-ui:storybook:ci"
         }
       }
     },
@@ -25,6 +25,6 @@
       }
     }
   },
-  "tags": [],
+  "tags": ["scope:core", "type:app"],
   "implicitDependencies": ["tree-ui"]
 }
