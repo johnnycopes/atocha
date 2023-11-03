@@ -8,11 +8,12 @@ import {
 import { CommonModule } from '@angular/common';
 import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { CheckboxComponent, SelectionTreeComponent } from '@atocha/core/ui';
+import { CheckboxComponent } from '@atocha/core/ui';
 import {
   DifficultyEmblemComponent,
   ExpansionEmblemComponent,
 } from '@atocha/spirit-islander/ui';
+import { SelectionTreeComponent } from '@atocha/tree/ui';
 import { ConfigTree } from './create-tree';
 
 @Component({
