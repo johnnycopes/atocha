@@ -8,7 +8,6 @@ export * from './lib/forms/form.type';
 export * from './lib/performance/track-by';
 export * from './lib/sanitization/safe.pipe';
 export * from './lib/search-input/search-input.component';
-export * from './lib/selection-tree/selection-tree.component';
 export * from './lib/strings/plural.pipe';
 export * from './lib/strings/snake-case.pipe';
 export * from './lib/tree/tree.component';
