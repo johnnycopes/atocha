@@ -42,7 +42,7 @@ describe('NewCounter', () => {
     it('returns correct counts records after updating to partial model', () => {
       const counter = new NewCounter(AFRICA, getId, getChildren, getCounts);
 
-      counter.updateModel(SOME_SELECTED_ARRAY_MODEL);
+      counter.update(SOME_SELECTED_ARRAY_MODEL);
 
       expect(counter.totalCounts).toEqual({
         Africa: 130,
@@ -71,7 +71,7 @@ describe('NewCounter', () => {
     it('returns correct counts records after updating to full model', () => {
       const counter = new NewCounter(AFRICA, getId, getChildren, getCounts);
 
-      counter.updateModel(ALL_SELECTED_ARRAY_MODEL);
+      counter.update(ALL_SELECTED_ARRAY_MODEL);
 
       expect(counter.totalCounts).toEqual({
         Africa: 130,
