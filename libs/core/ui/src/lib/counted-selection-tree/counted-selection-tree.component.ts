@@ -19,7 +19,7 @@ import {
   NG_VALUE_ACCESSOR,
 } from '@angular/forms';
 
-import { Counter, Counts } from '@atocha/core/util-selection';
+import { NewCounter as Counter, Counts } from '@atocha/core/util-selection';
 import { SelectionTreeComponent } from '../selection-tree/selection-tree.component';
 
 @Component({
@@ -56,6 +56,7 @@ export class CountedSelectionTreeComponent<T>
   totalCounts: Counts = {};
   private _id = '';
   private _counter = new Counter<T>(
+    {} as T,
     this.getId,
     this.getChildren,
     this.getLeafNodeCount
@@ -70,11 +71,13 @@ export class CountedSelectionTreeComponent<T>
 
       this._id = this.getId(tree);
       this._counter = new Counter<T>(
+        tree,
         this.getId,
         this.getChildren,
-        this.getLeafNodeCount
+        this.getLeafNodeCount,
+        this.model
       );
-      this.totalCounts = this._counter.getTotalCounts(tree);
+      this.totalCounts = this._counter.totalCounts;
       this.totalChange.emit(this.totalCounts[this._id]);
 
       this.writeValue(this.model);
@@ -84,10 +87,7 @@ export class CountedSelectionTreeComponent<T>
   writeValue(model: string[]): void {
     if (model && this.tree) {
       this.model = model;
-      this.selectedCounts = this._counter.getSelectedCounts(
-        this.tree,
-        this.model
-      );
+      this.selectedCounts = this._counter.update(this.model).selectedCounts;
       this.selectedChange.emit(this.selectedCounts[this._id]);
     }
     this._changeDetectorRef.markForCheck();
@@ -105,10 +105,7 @@ export class CountedSelectionTreeComponent<T>
       this.model = model;
       this._onChangeFn(this.model);
 
-      this.selectedCounts = this._counter.getSelectedCounts(
-        this.tree,
-        this.model
-      );
+      this.selectedCounts = this._counter.update(model).selectedCounts;
       this.selectedChange.emit(this.selectedCounts[this._id]);
     }
   }
