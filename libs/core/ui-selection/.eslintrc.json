@@ -9,7 +9,7 @@
           "error",
           {
             "type": "attribute",
-            "prefix": "atocha",
+            "prefix": "core",
             "style": "camelCase"
           }
         ],
@@ -17,10 +17,11 @@
           "error",
           {
             "type": "element",
-            "prefix": "atocha",
+            "prefix": "core",
             "style": "kebab-case"
           }
-        ]
+        ],
+        "@angular-eslint/no-host-metadata-property": ["off"]
       },
       "extends": [
         "plugin:@nx/angular",
