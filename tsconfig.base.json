@@ -17,7 +17,6 @@
     "paths": {
       "@atocha/core/data-access": ["libs/core/data-access/src/index.ts"],
       "@atocha/core/ui": ["libs/core/ui/src/index.ts"],
-      "@atocha/core/ui-selection": ["libs/core/ui-selection/src/index.ts"],
       "@atocha/core/util": ["libs/core/util/src/index.ts"],
       "@atocha/globetrotter/data-access": [
         "libs/globetrotter/data-access/src/index.ts"
@@ -124,6 +123,7 @@
       "@atocha/spirit-islander/util": [
         "libs/spirit-islander/util/src/index.ts"
       ],
+      "@atocha/tree/ui": ["libs/tree/ui/src/index.ts"],
       "@atocha/tree/util": ["libs/tree/util/src/index.ts"]
     }
   },
