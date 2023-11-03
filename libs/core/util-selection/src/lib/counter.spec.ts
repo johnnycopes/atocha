@@ -1,23 +1,19 @@
-import { Counter } from './counter';
 import {
-  AFRICA,
-  ALL_SELECTED_ARRAY_MODEL,
+  getId,
   getChildren,
   getCounts,
-  getId,
+  AFRICA,
+  ALL_SELECTED_ARRAY_MODEL,
   SOME_SELECTED_ARRAY_MODEL,
-} from './internal/mock-data';
+} from './mock-data';
+import { Counter } from './counter';
 
-describe('Counter', () => {
-  let counter = new Counter(getId, getChildren, getCounts);
+describe('NewCounter', () => {
+  describe('initializing', () => {
+    it('returns total counts when passed empty model', () => {
+      const counter = new Counter(AFRICA, getId, getChildren, getCounts);
 
-  beforeEach(() => {
-    counter = new Counter(getId, getChildren, getCounts);
-  });
-
-  describe('getTotalCounts', () => {
-    it('returns total counts record', () => {
-      expect(counter.getTotalCounts(AFRICA)).toEqual({
+      expect(counter.totalCounts).toEqual({
         Africa: 130,
         'Central Africa': 65,
         Fes: 11,
@@ -28,12 +24,7 @@ describe('Counter', () => {
         'Southern Africa': 45,
         Swaziland: 28,
       });
-    });
-  });
-
-  describe('getSelectedCounts', () => {
-    it('returns selected counts record with empty model', () => {
-      expect(counter.getSelectedCounts(AFRICA, [])).toEqual({
+      expect(counter.selectedCounts).toEqual({
         Africa: 0,
         'Central Africa': 0,
         Fes: 0,
@@ -45,11 +36,26 @@ describe('Counter', () => {
         Swaziland: 0,
       });
     });
+  });
 
-    it('returns selected counts record with partial model', () => {
-      expect(
-        counter.getSelectedCounts(AFRICA, SOME_SELECTED_ARRAY_MODEL)
-      ).toEqual({
+  describe('updating', () => {
+    it('returns correct counts records after updating to partial model', () => {
+      const counter = new Counter(AFRICA, getId, getChildren, getCounts);
+
+      counter.update(SOME_SELECTED_ARRAY_MODEL);
+
+      expect(counter.totalCounts).toEqual({
+        Africa: 130,
+        'Central Africa': 65,
+        Fes: 11,
+        Marrakesh: 9,
+        Morocco: 20,
+        Namibia: 17,
+        'Northern Africa': 20,
+        'Southern Africa': 45,
+        Swaziland: 28,
+      });
+      expect(counter.selectedCounts).toEqual({
         Africa: 39,
         'Central Africa': 0,
         Fes: 11,
@@ -62,10 +68,23 @@ describe('Counter', () => {
       });
     });
 
-    it('returns selected counts record with full model', () => {
-      expect(
-        counter.getSelectedCounts(AFRICA, ALL_SELECTED_ARRAY_MODEL)
-      ).toEqual({
+    it('returns correct counts records after updating to full model', () => {
+      const counter = new Counter(AFRICA, getId, getChildren, getCounts);
+
+      counter.update(ALL_SELECTED_ARRAY_MODEL);
+
+      expect(counter.totalCounts).toEqual({
+        Africa: 130,
+        'Central Africa': 65,
+        Fes: 11,
+        Marrakesh: 9,
+        Morocco: 20,
+        Namibia: 17,
+        'Northern Africa': 20,
+        'Southern Africa': 45,
+        Swaziland: 28,
+      });
+      expect(counter.selectedCounts).toEqual({
         Africa: 130,
         'Central Africa': 65,
         Fes: 11,

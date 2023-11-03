@@ -7,7 +7,7 @@ export function getCounts<T>(
   tree: T,
   getId: GetId<T>,
   getChildren: GetChildren<T>,
-  getLeafNodeCount: GetLeafCount<T>
+  getLeafCount: GetLeafCount<T>
 ) {
   return reduceRecursively<T, Counts>({
     item: tree,
@@ -18,7 +18,7 @@ export function getCounts<T>(
         item: curr,
         getItems: getChildren,
         initialValue: 0,
-        reducer: (total, item) => total + getLeafNodeCount(item),
+        reducer: (total, item) => total + getLeafCount(item),
       });
       return accum;
     },
