@@ -1,4 +1,4 @@
-import { removeWhitespace } from './remove-whitespace';
+import { removeWhitespace } from './format';
 
 export class Csv {
   constructor(private _document: Document) {
