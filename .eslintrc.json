@@ -14,28 +14,31 @@
             "allow": [],
             "depConstraints": [
               {
-                "sourceTag": "scope:core",
-                "onlyDependOnLibsWithTags": ["scope:core"]
+                "sourceTag": "scope:shared",
+                "onlyDependOnLibsWithTags": ["scope:shared"]
               },
               {
                 "sourceTag": "scope:globetrotter",
-                "onlyDependOnLibsWithTags": ["scope:core", "scope:globetrotter"]
+                "onlyDependOnLibsWithTags": [
+                  "scope:shared",
+                  "scope:globetrotter"
+                ]
               },
               {
                 "sourceTag": "scope:lorenzo",
-                "onlyDependOnLibsWithTags": ["scope:core", "scope:lorenzo"]
+                "onlyDependOnLibsWithTags": ["scope:shared", "scope:lorenzo"]
               },
               {
                 "sourceTag": "scope:menu-matriarch",
                 "onlyDependOnLibsWithTags": [
-                  "scope:core",
+                  "scope:shared",
                   "scope:menu-matriarch"
                 ]
               },
               {
                 "sourceTag": "scope:spirit-islander",
                 "onlyDependOnLibsWithTags": [
-                  "scope:core",
+                  "scope:shared",
                   "scope:spirit-islander"
                 ]
               },

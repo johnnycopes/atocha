@@ -35,12 +35,17 @@ A kitchen management app where you can add your favorite dishes, group them into
 
 A dictionary app for the board game [Lorenzo il Magnifico](https://boardgamegeek.com/boardgame/203993/lorenzo-il-magnifico). All the game data is hard-coded and it uses the browser's LocalStorage API for state management.
 
-## Libraries
-
-### Core
+## Shared libraries
 
 Generic, well-tested collections of code. Minimally opinionated for maximum reusability.
 
-1. **core/data-access**: abstractions for interacting with Firebase.
-1. **core/ui**: generic, customizable Angular components.
-1. **core/util**: framework-agnostic TypeScript functions/classes.
+### Core
+
+1. **data-access**: abstractions for interacting with Firebase.
+1. **ui**: generic, customizable Angular components.
+1. **util**: framework-agnostic TypeScript functions/classes.
+
+### Tree
+
+1. **ui**: generic Angular components to render trees of any height with selectable nodes
+2. **util**: framework-agnostic TypeScript logic to transform tree state and count data within a given tree
