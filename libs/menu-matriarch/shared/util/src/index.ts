@@ -1,3 +1,4 @@
+export * from './lib/functions/flatten-values';
 export * from './lib/functions/get-days';
 export * from './lib/functions/get-dish-types';
 
