@@ -14,7 +14,12 @@
       "cache": true
     },
     "build-storybook": {
-      "inputs": ["default", "^production", "!{projectRoot}/.storybook/**/*"],
+      "inputs": [
+        "default",
+        "^production",
+        "{projectRoot}/.storybook/**/*",
+        "{projectRoot}/tsconfig.storybook.json"
+      ],
       "cache": true
     },
     "test": {
@@ -46,7 +51,8 @@
       "default",
       "!{projectRoot}/**/*.stories.@(js|jsx|ts|tsx|mdx)",
       "!{projectRoot}/.storybook/**/*",
-      "!{projectRoot}/src/test-setup.[jt]s"
+      "!{projectRoot}/src/test-setup.[jt]s",
+      "!{projectRoot}/tsconfig.storybook.json"
     ]
   },
   "nxCloudAccessToken": "YjFlYTJlYzgtNWYzZi00NjkzLTg3ZjUtM2U4MGI3ZjcyNWU0fHJlYWQtd3JpdGU="
