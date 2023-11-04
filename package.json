@@ -76,7 +76,6 @@
     "jest-environment-jsdom": "29.4.3",
     "jest-preset-angular": "13.1.1",
     "nx": "17.0.3",
-    "nx-cloud": "16.5.2",
     "prettier": "^2.6.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -88,4 +87,3 @@
     "@nx/angular": "17.0.3"
   }
 }
-
