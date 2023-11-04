@@ -19,7 +19,10 @@
               },
               {
                 "sourceTag": "scope:globetrotter",
-                "onlyDependOnLibsWithTags": ["scope:shared", "scope:globetrotter"]
+                "onlyDependOnLibsWithTags": [
+                  "scope:shared",
+                  "scope:globetrotter"
+                ]
               },
               {
                 "sourceTag": "scope:lorenzo",
