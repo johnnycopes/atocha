@@ -3,7 +3,7 @@ import type { BalancedBoardName, Board } from '../types/game/board';
 import type { MapName } from '../types/game/maps';
 import type { Players } from '../types/game/players';
 import { getOptionsByName } from './get-options';
-import { selectRandom } from './select-random';
+import { selectRandom } from './internal/select-random';
 
 export function selectBoards(
   mapName: MapName,

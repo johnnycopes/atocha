@@ -9,7 +9,7 @@ import type { Scenario, ScenarioName } from '../types/game/scenarios';
 import { ADVERSARIES } from '../data/adversaries';
 import { MAPS } from '../data/maps';
 import { SCENARIOS } from '../data/scenarios';
-import { ComboAnalyzer } from './combo-analyzer';
+import { ComboAnalyzer } from './internal/combo-analyzer';
 import { getDifficulty } from './get-difficulty';
 
 const comboAnalyzer = new ComboAnalyzer<
