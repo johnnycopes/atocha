@@ -25,6 +25,6 @@
       }
     }
   },
-  "tags": ["scope:shared", "type:app"],
+  "tags": ["scope:core", "type:app"],
   "implicitDependencies": ["core-ui"]
 }
