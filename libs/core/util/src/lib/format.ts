@@ -15,3 +15,7 @@ export const upperFirst = formatter(
 export const snakeCase = formatter((str) =>
   str.split(' ').map(lower).join('-')
 );
+
+export const removeWhitespace = formatter((str) =>
+  str.replace(/\s+/g, ' ').trim()
+);
