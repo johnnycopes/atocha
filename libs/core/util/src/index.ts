@@ -1,8 +1,6 @@
-export * from './lib/calculate-tally-change';
 export * from './lib/combo-analyzer';
 export * from './lib/csv';
 export * from './lib/dedupe';
-export * from './lib/flatten-values';
 export * from './lib/format';
 export * from './lib/get-dynamic-value';
 export * from './lib/includes';
@@ -15,6 +13,5 @@ export * from './lib/select-random';
 export * from './lib/snake-case';
 export * from './lib/sort';
 export * from './lib/state';
-export * from './lib/tally';
 export * from './lib/unique-diff';
 export * from './lib/wait';
