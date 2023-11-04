@@ -1,4 +1,3 @@
-import { ComboAnalyzer } from '@atocha/core/util';
 import type { DifficultyOption } from '../types/game/difficulty';
 import type { Config } from '../types/config.interface';
 import type {
@@ -10,6 +9,7 @@ import type { Scenario, ScenarioName } from '../types/game/scenarios';
 import { ADVERSARIES } from '../data/adversaries';
 import { MAPS } from '../data/maps';
 import { SCENARIOS } from '../data/scenarios';
+import { ComboAnalyzer } from './combo-analyzer';
 import { getDifficulty } from './get-difficulty';
 
 const comboAnalyzer = new ComboAnalyzer<
