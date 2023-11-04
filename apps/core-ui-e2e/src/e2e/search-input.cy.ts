@@ -25,13 +25,10 @@ describe('SearchInputComponent', () => {
 
   it('Updates when text is typed and cleared', () => {
     cy.visit(stories.base);
-    cy.get(field);
-    cy.click();
-    cy.type('search term');
+    cy.get(field).type('search term');
     cy.should('have.value', 'search term');
     cy.get(icon);
-    cy.should('exist');
-    cy.click();
+    cy.should('exist').click();
     cy.get(field);
     cy.should('have.value', '');
     cy.get(icon);

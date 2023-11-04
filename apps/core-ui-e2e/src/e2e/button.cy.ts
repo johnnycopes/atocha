@@ -24,8 +24,7 @@ describe('ButtonComponent', () => {
   it('Can be attached to <button> element', () => {
     cy.visit(stories.base);
     cy.get(button);
-    cy.should('not.be.disabled');
-    cy.click();
+    cy.should('not.be.disabled').click();
     cy.should('have.focus');
   });
 
