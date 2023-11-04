@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { filter, map } from 'rxjs/operators';
 
-import { Quiz, QuizState, State } from '@atocha/core/util';
+import { State } from '@atocha/core/util';
 import { Route, Country, Selection } from '@atocha/globetrotter/util';
+import { Quiz, QuizState } from './internal/quiz';
 import { PlaceService } from './place.service';
 import { RouterService } from './router.service';
 import { shuffle } from 'lodash-es';

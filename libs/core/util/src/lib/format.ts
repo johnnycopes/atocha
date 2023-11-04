@@ -11,3 +11,11 @@ export const upper = formatter((str) => str.toUpperCase());
 export const upperFirst = formatter(
   (str) => upper(str[0]) + lower(str.substring(1))
 );
+
+export const snakeCase = formatter((str) =>
+  str.split(' ').map(lower).join('-')
+);
+
+export const removeWhitespace = formatter((str) =>
+  str.replace(/\s+/g, ' ').trim()
+);

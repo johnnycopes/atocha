@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { BatchService, DataService } from '@atocha/core/data-access';
-import { flattenValues } from '@atocha/core/util';
 import {
   DishUpdateService,
   Endpoint,
@@ -12,7 +11,7 @@ import {
   MenuDto,
   createMenuDto,
 } from '@atocha/menu-matriarch/shared/data-access-dtos';
-import { Day, Menu } from '@atocha/menu-matriarch/shared/util';
+import { Day, Menu, flattenValues } from '@atocha/menu-matriarch/shared/util';
 
 export type EditableMenuData = Partial<Pick<MenuDto, 'name' | 'startDay'>>;
 

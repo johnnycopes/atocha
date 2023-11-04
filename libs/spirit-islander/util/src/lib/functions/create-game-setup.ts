@@ -1,12 +1,12 @@
-import { selectRandom } from '@atocha/core/util';
 import { SPIRITS } from '../data/spirits';
 import type { Config } from '../types/config.interface';
 import type { GameSetup } from '../types/game-setup.interface';
 import type { Difficulty } from '../types/game/difficulty';
-import { selectBoards } from './select-boards';
 import { getValidCombos } from './get-valid-combos';
 import { getOptionsByName } from './get-options';
 import { getDifficulty } from './get-difficulty';
+import { selectBoards } from './select-boards';
+import { selectRandom } from './internal/select-random';
 
 export function createGameSetup(config: Config): GameSetup {
   const { players, expansions, spiritNames, boardNames } = config;
