@@ -1,13 +1,13 @@
-import { tally } from './tally';
+import { createTally } from './create-tally';
 
-describe('tally', () => {
+describe('createTally', () => {
   it('tallies nothing', () => {
-    expect(tally([])).toEqual({});
+    expect(createTally([])).toEqual({});
   });
 
   it('tallies strings', () => {
     expect(
-      tally([
+      createTally([
         'apple',
         'banana',
         'kiwi',

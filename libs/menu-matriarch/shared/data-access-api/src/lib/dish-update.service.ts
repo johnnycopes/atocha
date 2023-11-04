@@ -4,7 +4,7 @@ import { BatchService, BatchUpdate } from '@atocha/core/data-access';
 import { Menu, flattenValues } from '@atocha/menu-matriarch/shared/util';
 import { Endpoint } from './endpoint.enum';
 import { KeyToUpdate } from './key-to-update.type';
-import { tally } from './internal/tally';
+import { createTally } from './internal/create-tally';
 import {
   TallyChange,
   calculateTallyChange,
@@ -47,7 +47,7 @@ export class DishUpdateService {
     menu: Menu;
     change: TallyChange;
   }): BatchUpdate[] {
-    const dishCounts = tally(flattenValues(menu.contents));
+    const dishCounts = createTally(flattenValues(menu.contents));
 
     return dishIds.map((dishId) => {
       const menusChange = calculateTallyChange({

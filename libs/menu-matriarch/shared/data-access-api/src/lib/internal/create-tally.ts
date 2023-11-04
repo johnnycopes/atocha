@@ -1,4 +1,4 @@
-export function tally(arr: readonly string[]): Record<string, number> {
+export function createTally(arr: readonly string[]): Record<string, number> {
   const map: Record<string, number> = {};
 
   for (const item of arr) {
