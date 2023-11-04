@@ -15,7 +15,6 @@ import {
   ButtonComponent,
   CheckboxComponent,
 } from '@atocha/core/ui';
-import { recordToArray } from '@atocha/core/util';
 import { MealData } from '@atocha/menu-matriarch/meals/data-access';
 import {
   DishDefDirective,
@@ -38,6 +37,7 @@ import {
   Meal,
   TagModel,
   UserPreferences,
+  recordToArray,
 } from '@atocha/menu-matriarch/shared/util';
 import { MealEditForm } from './meal-edit-form';
 

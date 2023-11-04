@@ -17,7 +17,6 @@ import {
   CheckboxComponent,
   trackBySelf,
 } from '@atocha/core/ui';
-import { recordToArray } from '@atocha/core/util';
 import { DishData } from '@atocha/menu-matriarch/dishes/data-access';
 import {
   TagComponent,
@@ -31,6 +30,7 @@ import {
   IngredientModel,
   TagModel,
   getDishTypes,
+  recordToArray,
 } from '@atocha/menu-matriarch/shared/util';
 import { DishEditForm } from './dish-edit-form';
 
