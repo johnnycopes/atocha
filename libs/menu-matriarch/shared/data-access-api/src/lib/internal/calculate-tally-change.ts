@@ -1,12 +1,12 @@
 export type TallyChange = 'increment' | 'decrement' | 'clear';
 
-export function calculateTallyChange<T extends string | symbol | number>({
+export function calculateTallyChange({
   tally,
   key,
   change,
 }: {
-  tally: Record<T, number>;
-  key: T;
+  tally: Record<string, number>;
+  key: string;
   change: TallyChange;
 }): 1 | 0 | -1 {
   if (!(key in tally) && (change === 'decrement' || change === 'clear')) {
