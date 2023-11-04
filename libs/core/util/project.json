@@ -11,7 +11,8 @@
         "outputPath": "dist/libs/new/util2",
         "main": "libs/new/util2/src/index.ts",
         "tsConfig": "libs/new/util2/tsconfig.lib.json",
-        "assets": ["libs/new/util2/*.md"]
+        "assets": ["libs/new/util2/*.md"],
+        "updateBuildableProjectDepsInPackageJson": true
       }
     },
     "publish": {
