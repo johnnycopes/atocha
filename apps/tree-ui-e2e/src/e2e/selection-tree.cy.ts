@@ -43,9 +43,8 @@ describe('SelectionTreeComponent', () => {
   });
 
   it('Renders checkboxes correctly', () => {
-    cy.visit(stories.noneSelected)
-      .get(checkboxSelector)
-      .should('have.length', 9);
+    cy.visit(stories.noneSelected).get(checkboxSelector);
+    cy.should('have.length', 9);
 
     assertIndentation('Africa', 0);
     assertIndentation('Southern Africa', 24);
@@ -73,10 +72,8 @@ describe('SelectionTreeComponent', () => {
   });
 
   it('Selects entire tree when none are checked and the top one is clicked', () => {
-    cy.visit(stories.noneSelected)
-      .get(checkboxSelector)
-      .contains('Africa')
-      .click();
+    cy.visit(stories.noneSelected).get(checkboxSelector);
+    cy.contains('Africa').click();
 
     assertState('Africa', 'checked');
     assertState('Southern Africa', 'checked');
@@ -90,10 +87,8 @@ describe('SelectionTreeComponent', () => {
   });
 
   it('Deselects entire tree when all are checked and the top one is clicked', () => {
-    cy.visit(stories.allSelected)
-      .get(checkboxSelector)
-      .contains('Africa')
-      .click();
+    cy.visit(stories.allSelected).get(checkboxSelector);
+    cy.contains('Africa').click();
 
     assertState('Africa', 'unchecked');
     assertState('Southern Africa', 'unchecked');
@@ -107,10 +102,8 @@ describe('SelectionTreeComponent', () => {
   });
 
   it('Correctly affects tree when middle checkbox is clicked', () => {
-    cy.visit(stories.noneSelected)
-      .get(checkboxSelector)
-      .contains('Morocco')
-      .click();
+    cy.visit(stories.noneSelected).get(checkboxSelector);
+    cy.contains('Morocco').click();
 
     assertState('Africa', 'indeterminate');
     assertState('Southern Africa', 'unchecked');
@@ -141,14 +134,10 @@ describe('SelectionTreeComponent', () => {
   });
 
   it('Converts indeterminate states to checked when clicked', () => {
-    cy.visit(stories.someSelected)
-      .get(checkboxSelector)
-      .contains('Southern Africa')
-      .click()
-      .click()
-      .get(checkboxSelector)
-      .contains('Northern Africa')
-      .click();
+    cy.visit(stories.someSelected);
+    cy.get(checkboxSelector).contains('Southern Africa').click();
+    cy.get(checkboxSelector).contains('Southern Africa').click();
+    cy.get(checkboxSelector).contains('Northern Africa').click();
 
     assertState('Africa', 'indeterminate');
     assertState('Southern Africa', 'unchecked');
