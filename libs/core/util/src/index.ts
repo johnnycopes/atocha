@@ -1,6 +1,5 @@
 export * from './lib/csv';
 export * from './lib/format';
-export * from './lib/get-dynamic-value';
 export * from './lib/includes';
 export * from './lib/pluralize';
 export * from './lib/range';
