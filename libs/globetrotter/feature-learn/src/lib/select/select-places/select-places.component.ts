@@ -9,11 +9,8 @@ import {
 import { FormsModule } from '@angular/forms';
 
 import { IconComponent, SmallCapsComponent } from '@atocha/globetrotter/ui';
-import {
-  ButtonComponent,
-  CheckboxComponent,
-  CountedSelectionTreeComponent,
-} from '@atocha/core/ui';
+import { ButtonComponent, CheckboxComponent } from '@atocha/core/ui';
+import { CountedSelectionTreeComponent } from '@atocha/tree/ui';
 import { Region, mapRegionsToPlacesModel } from '@atocha/globetrotter/util';
 import {
   createPlaceTree,
