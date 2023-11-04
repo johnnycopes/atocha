@@ -14,37 +14,37 @@ describe('SearchInputComponent', () => {
   });
 
   it('Renders base state', () => {
-    cy.visit(stories.base)
-      .get(field)
-      .should('exist')
-      .should('not.have.focus')
-      .should('have.value', '')
-      .get(icon)
-      .should('not.exist');
+    cy.visit(stories.base);
+    cy.get(field);
+    cy.should('exist');
+    cy.should('not.have.focus');
+    cy.should('have.value', '');
+    cy.get(icon);
+    cy.should('not.exist');
   });
 
   it('Updates when text is typed and cleared', () => {
-    cy.visit(stories.base)
-      .get(field)
-      .click()
-      .type('search term')
-      .should('have.value', 'search term')
-      .get(icon)
-      .should('exist')
-      .click()
-      .get(field)
-      .should('have.value', '')
-      .get(icon)
-      .should('not.exist')
-      .get(field)
-      .should('have.focus');
+    cy.visit(stories.base);
+    cy.get(field);
+    cy.click();
+    cy.type('search term');
+    cy.should('have.value', 'search term');
+    cy.get(icon);
+    cy.should('exist');
+    cy.click();
+    cy.get(field);
+    cy.should('have.value', '');
+    cy.get(icon);
+    cy.should('not.exist');
+    cy.get(field);
+    cy.should('have.focus');
   });
 
   it("Can't be interacted with in disabled state", () => {
-    cy.visit(stories.disabled)
-      .get(field)
-      .should('have.value', '')
-      .should('be.disabled');
+    cy.visit(stories.disabled);
+    cy.get(field);
+    cy.should('have.value', '');
+    cy.should('be.disabled');
   });
 
   it('Has focus state when autofocus binding is set to true', () => {

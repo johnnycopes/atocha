@@ -16,17 +16,17 @@ describe('ButtonComponent', () => {
   });
 
   it('Renders primary variant by default', () => {
-    cy.visit(stories.base)
-      .get(button)
-      .should('has.class', 'core-button--primary');
+    cy.visit(stories.base);
+    cy.get(button);
+    cy.should('has.class', 'core-button--primary');
   });
 
   it('Can be attached to <button> element', () => {
-    cy.visit(stories.base)
-      .get(button)
-      .should('not.be.disabled')
-      .click()
-      .should('have.focus');
+    cy.visit(stories.base);
+    cy.get(button);
+    cy.should('not.be.disabled');
+    cy.click();
+    cy.should('have.focus');
   });
 
   it('Can be attached to <a> element', () => {
@@ -34,20 +34,20 @@ describe('ButtonComponent', () => {
   });
 
   it('Renders appropriate variant', () => {
-    cy.visit(stories.primary)
-      .get(button)
-      .should('have.class', 'core-button--primary');
+    cy.visit(stories.primary);
+    cy.get(button);
+    cy.should('have.class', 'core-button--primary');
 
-    cy.visit(stories.secondary)
-      .get(button)
-      .should('have.class', 'core-button--secondary');
+    cy.visit(stories.secondary);
+    cy.get(button);
+    cy.should('have.class', 'core-button--secondary');
 
-    cy.visit(stories.tertiary)
-      .get(button)
-      .should('have.class', 'core-button--tertiary');
+    cy.visit(stories.tertiary);
+    cy.get(button);
+    cy.should('have.class', 'core-button--tertiary');
 
-    cy.visit(stories.danger)
-      .get(button)
-      .should('have.class', 'core-button--danger');
+    cy.visit(stories.danger);
+    cy.get(button);
+    cy.should('have.class', 'core-button--danger');
   });
 });
