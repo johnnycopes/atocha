@@ -10,7 +10,7 @@ import {
 } from '@atocha/globetrotter/util';
 import { COUNTRY_SUMMARY_NAMES } from '../data/country-modifications';
 import { ApiService } from './api.service';
-import { sort } from './sort';
+import { sort } from './internal/sort';
 
 @Injectable({
   providedIn: 'root',
