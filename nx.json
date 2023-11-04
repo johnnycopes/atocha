@@ -45,7 +45,8 @@
     "production": [
       "default",
       "!{projectRoot}/**/*.stories.@(js|jsx|ts|tsx|mdx)",
-      "!{projectRoot}/.storybook/**/*"
+      "!{projectRoot}/.storybook/**/*",
+      "!{projectRoot}/src/test-setup.[jt]s"
     ]
   },
   "nxCloudAccessToken": "YjFlYTJlYzgtNWYzZi00NjkzLTg3ZjUtM2U4MGI3ZjcyNWU0fHJlYWQtd3JpdGU="
