@@ -1,5 +1,4 @@
 export * from './lib/csv';
-export * from './lib/dedupe';
 export * from './lib/format';
 export * from './lib/get-dynamic-value';
 export * from './lib/includes';
@@ -12,5 +11,4 @@ export * from './lib/select-random';
 export * from './lib/snake-case';
 export * from './lib/sort';
 export * from './lib/state';
-export * from './lib/unique-diff';
 export * from './lib/wait';
