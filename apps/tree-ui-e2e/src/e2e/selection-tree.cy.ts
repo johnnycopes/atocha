@@ -4,10 +4,10 @@ describe('SelectionTreeComponent', () => {
   let stories: Record<string, string> = {};
 
   function assertIndentation(place: string, indentation: number): void {
-    cy.get(checkboxSelector);
-    cy.contains(place);
-    cy.parent();
-    cy.should('have.css', 'margin-left', `${indentation}px`);
+    cy.get(checkboxSelector)
+      .contains(place)
+      .parent()
+      .should('have.css', 'margin-left', `${indentation}px`);
   }
 
   function assertState(
@@ -15,20 +15,20 @@ describe('SelectionTreeComponent', () => {
     state: 'checked' | 'unchecked' | 'indeterminate'
   ): void {
     if (state === 'checked') {
-      cy.get(checkboxSelector);
-      cy.contains(place);
-      cy.find(inputSelector);
-      cy.should('be.checked');
+      cy.get(checkboxSelector)
+        .contains(place)
+        .find(inputSelector)
+        .should('be.checked');
     } else if (state === 'unchecked') {
-      cy.get(checkboxSelector);
-      cy.contains(place);
-      cy.find(inputSelector);
-      cy.should('not.be.checked');
+      cy.get(checkboxSelector)
+        .contains(place)
+        .find(inputSelector)
+        .should('not.be.checked');
     } else {
-      cy.get(checkboxSelector);
-      cy.contains(place);
-      cy.find(inputSelector);
-      cy.should('have.prop', 'indeterminate');
+      cy.get(checkboxSelector)
+        .contains(place)
+        .find(inputSelector)
+        .should('have.prop', 'indeterminate');
     }
   }
 
@@ -117,8 +117,10 @@ describe('SelectionTreeComponent', () => {
   });
 
   it('Correctly affects tree when leaf checkbox is clicked', () => {
-    cy.visit(stories.noneSelected).get(checkboxSelector);
-    cy.contains('Namibia').click();
+    cy.visit(stories.noneSelected)
+      .get(checkboxSelector)
+      .contains('Namibia')
+      .click();
 
     assertState('Africa', 'indeterminate');
     assertState('Southern Africa', 'indeterminate');
@@ -132,13 +134,10 @@ describe('SelectionTreeComponent', () => {
   });
 
   it('Converts indeterminate states to checked when clicked', () => {
-    cy.visit(stories.someSelected).get(checkboxSelector);
-    cy.contains('Southern Africa');
-    cy.click();
-    cy.click();
-    cy.get(checkboxSelector);
-    cy.contains('Northern Africa');
-    cy.click();
+    cy.visit(stories.someSelected);
+    cy.get(checkboxSelector).contains('Southern Africa').click();
+    cy.get(checkboxSelector).contains('Southern Africa').click();
+    cy.get(checkboxSelector).contains('Northern Africa').click();
 
     assertState('Africa', 'indeterminate');
     assertState('Southern Africa', 'unchecked');

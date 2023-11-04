@@ -32,9 +32,7 @@ describe('CountedSelectionTreeComponent', () => {
 
   it('Selects entire tree when none are checked and the top one is clicked', () => {
     cy.visit(stories.noneSelected);
-    cy.get(checkboxSelector);
-    cy.contains('Africa');
-    cy.click();
+    cy.get(checkboxSelector).contains('Africa').click();
 
     assertCount('Africa', '130 / 130');
     assertCount('Southern Africa', '45 / 45');
@@ -49,9 +47,7 @@ describe('CountedSelectionTreeComponent', () => {
 
   it('Deselects entire tree when all are checked and the top one is clicked', () => {
     cy.visit(stories.allSelected);
-    cy.get(checkboxSelector);
-    cy.contains('Africa');
-    cy.click();
+    cy.get(checkboxSelector).contains('Africa').click();
 
     assertCount('Africa', '0 / 130');
     assertCount('Southern Africa', '0 / 45');
@@ -66,9 +62,7 @@ describe('CountedSelectionTreeComponent', () => {
 
   it('Correctly affects tree when middle checkbox is clicked', () => {
     cy.visit(stories.noneSelected);
-    cy.get(checkboxSelector);
-    cy.contains('Morocco');
-    cy.click();
+    cy.get(checkboxSelector).contains('Morocco').click();
 
     assertCount('Africa', '20 / 130');
     assertCount('Southern Africa', '0 / 45');
@@ -83,9 +77,7 @@ describe('CountedSelectionTreeComponent', () => {
 
   it('Correctly affects tree when leaf checkbox is clicked', () => {
     cy.visit(stories.noneSelected);
-    cy.get(checkboxSelector);
-    cy.contains('Namibia');
-    cy.click();
+    cy.get(checkboxSelector).contains('Namibia').click();
 
     assertCount('Africa', '17 / 130');
     assertCount('Southern Africa', '17 / 45');
@@ -100,13 +92,9 @@ describe('CountedSelectionTreeComponent', () => {
 
   it('Converts indeterminate states to checked when clicked', () => {
     cy.visit(stories.someSelected);
-    cy.get(checkboxSelector);
-    cy.contains('Southern Africa');
-    cy.click();
-    cy.click();
-    cy.get(checkboxSelector);
-    cy.contains('Northern Africa');
-    cy.click();
+    cy.get(checkboxSelector).contains('Southern Africa').click();
+    cy.get(checkboxSelector).contains('Southern Africa').click();
+    cy.get(checkboxSelector).contains('Northern Africa').click();
 
     assertCount('Africa', '20 / 130');
     assertCount('Southern Africa', '0 / 45');
