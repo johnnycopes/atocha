@@ -1,11 +1,9 @@
-export function tally<T extends string | number | symbol>(
-  arr: T[]
-): Record<T, number> {
-  return arr.reduce(
-    (hashMap, item) => ({
-      ...hashMap,
-      [item]: hashMap[item] ? hashMap[item] + 1 : 1,
-    }),
-    {} as Record<T, number>
-  );
+export function tally(arr: readonly string[]): Record<string, number> {
+  const map: Record<string, number> = {};
+
+  for (const item of arr) {
+    map[item] = (map[item] ?? 0) + 1;
+  }
+
+  return map;
 }

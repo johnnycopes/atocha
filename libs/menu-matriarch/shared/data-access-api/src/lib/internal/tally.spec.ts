@@ -26,12 +26,4 @@ describe('tally', () => {
       watermelon: 1,
     });
   });
-
-  it('tallies numbers', () => {
-    expect(tally([1, 2, 3, 3])).toEqual({
-      1: 1,
-      2: 1,
-      3: 2,
-    });
-  });
 });
