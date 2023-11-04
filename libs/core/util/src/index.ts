@@ -4,6 +4,5 @@ export * from './lib/get-dynamic-value';
 export * from './lib/includes';
 export * from './lib/pluralize';
 export * from './lib/range';
-export * from './lib/remove-whitespace';
 export * from './lib/state';
 export * from './lib/wait';
