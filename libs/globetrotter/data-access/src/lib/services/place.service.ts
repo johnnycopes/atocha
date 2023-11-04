@@ -2,14 +2,15 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { groupBy } from 'lodash-es';
 
-import { sort, State } from '@atocha/core/util';
+import { State } from '@atocha/core/util';
 import {
   Country,
   mapCountryDtoToCountry,
   Region,
 } from '@atocha/globetrotter/util';
-import { ApiService } from './api.service';
 import { COUNTRY_SUMMARY_NAMES } from '../data/country-modifications';
+import { ApiService } from './api.service';
+import { sort } from './sort';
 
 @Injectable({
   providedIn: 'root',
