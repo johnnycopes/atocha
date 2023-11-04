@@ -1,9 +1,9 @@
-import { selectRandom } from '@atocha/core/util';
 import { BOARDS } from '../data/boards';
 import type { BalancedBoardName, Board } from '../types/game/board';
 import type { MapName } from '../types/game/maps';
 import type { Players } from '../types/game/players';
 import { getOptionsByName } from './get-options';
+import { selectRandom } from './select-random';
 
 export function selectBoards(
   mapName: MapName,
