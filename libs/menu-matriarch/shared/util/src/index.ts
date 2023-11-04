@@ -1,6 +1,7 @@
 export * from './lib/functions/flatten-values';
 export * from './lib/functions/get-days';
 export * from './lib/functions/get-dish-types';
+export * from './lib/functions/record-to-array';
 
 export * from './lib/day.type';
 export * from './lib/dish.interface';
