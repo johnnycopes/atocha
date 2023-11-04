@@ -4,7 +4,6 @@ export * from './lib/get-dynamic-value';
 export * from './lib/includes';
 export * from './lib/pluralize';
 export * from './lib/range';
-export * from './lib/record-to-array';
 export * from './lib/remove-whitespace';
 export * from './lib/select-random';
 export * from './lib/snake-case';
