@@ -3,7 +3,6 @@ export * from './lib/format';
 export * from './lib/get-dynamic-value';
 export * from './lib/includes';
 export * from './lib/pluralize';
-export * from './lib/quiz';
 export * from './lib/range';
 export * from './lib/record-to-array';
 export * from './lib/remove-whitespace';
