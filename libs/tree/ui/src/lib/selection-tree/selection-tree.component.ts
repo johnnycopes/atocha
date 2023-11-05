@@ -51,9 +51,9 @@ import { TreeComponent } from '../tree/tree.component';
 export class SelectionTreeComponent<T>
   implements OnChanges, ControlValueAccessor
 {
-  @Input() tree: T | undefined;
-  @Input() getId: (node: T) => string = () => '';
-  @Input() getChildren: (node: T) => readonly T[] = () => [];
+  @Input() tree: Tree<T> | undefined;
+  @Input() getId: GetId<T> = () => '';
+  @Input() getChildren: GetChildren<T> = () => [];
   @Input() template: TemplateRef<unknown> | undefined;
   @Output() nodeClick = new EventEmitter<string>();
   model: Model = new Set();

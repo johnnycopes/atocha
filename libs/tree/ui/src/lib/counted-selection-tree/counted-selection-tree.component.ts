@@ -52,10 +52,10 @@ import { SelectionTreeComponent } from '../selection-tree/selection-tree.compone
 export class CountedSelectionTreeComponent<T>
   implements ControlValueAccessor, OnChanges
 {
-  @Input() tree: T | undefined;
-  @Input() getId: (node: T) => string = () => '';
-  @Input() getChildren: (node: T) => T[] = () => [];
-  @Input() getLeafNodeCount: (node: T) => number = () => 0;
+  @Input() tree: Tree<T> | undefined;
+  @Input() getId: GetId<T> = () => '';
+  @Input() getChildren: GetChildren<T> = () => [];
+  @Input() getLeafNodeCount: GetLeafCount<T> = () => 0;
   @Input() template: TemplateRef<unknown> | undefined;
   @Output() selectedChange = new EventEmitter<number>();
   @Output() totalChange = new EventEmitter<number>();
