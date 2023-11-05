@@ -1,17 +1,18 @@
-import { TallyChange } from './calculate-tally-change';
+export type Change = 'increment' | 'decrement' | 'clear';
+type Values = Record<string, number>;
 
 export class Tally {
-  private _tally: Record<string, number> = {};
+  private _tally: Values = {};
 
-  get values() {
-    return { ...this._tally };
+  get values(): Readonly<Values> {
+    return this._tally;
   }
 
   constructor(arr: readonly string[] = []) {
     this._tally = this._createTally(arr);
   }
 
-  calculateChange(key: string, change: TallyChange): -1 | 0 | 1 {
+  calculateChange(key: string, change: Change): -1 | 0 | 1 {
     if (
       !(key in this._tally) &&
       (change === 'decrement' || change === 'clear')
@@ -31,7 +32,7 @@ export class Tally {
   }
 
   private _createTally(arr: readonly string[]) {
-    const map: Record<string, number> = {};
+    const map: Values = {};
     for (const item of arr) {
       map[item] = (map[item] ?? 0) + 1;
     }
