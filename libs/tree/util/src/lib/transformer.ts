@@ -4,8 +4,9 @@ import {
   GetId,
   Model,
   SetModel,
-  States,
+  MutableStates,
   Tree,
+  States,
 } from './shared/types';
 import { Ids } from './transformer/ids/ids';
 import { toArray } from './transformer/to-array';
@@ -15,18 +16,18 @@ import { updateStates } from './transformer/update-states';
 
 export class Transformer<T> {
   private readonly _ids: Ids<T>;
-  private _states: States;
+  private _states: MutableStates;
 
-  get states(): Readonly<States> {
+  get states(): States {
     return this._states;
   }
 
   get array(): ArrayModel {
-    return toArray(this._states, this._ids);
+    return toArray(this.states, this._ids);
   }
 
   get set(): SetModel {
-    return toSet(this._states, this._ids);
+    return toSet(this.states, this._ids);
   }
 
   constructor(
@@ -53,7 +54,7 @@ export class Transformer<T> {
     return this;
   }
 
-  private _toStates(model: Model): States {
+  private _toStates(model: Model): MutableStates {
     return toStates(model, this._ids);
   }
 }

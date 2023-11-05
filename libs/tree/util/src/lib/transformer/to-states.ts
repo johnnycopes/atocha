@@ -1,8 +1,8 @@
-import { Model, States, isArrayModel } from '../shared/types';
+import { Model, MutableStates, isArrayModel } from '../shared/types';
 import { Ids } from './ids/ids';
 
-export function toStates<T>(model: Model, ids: Ids<T>): States {
-  const states: States = {};
+export function toStates<T>(model: Model, ids: Ids<T>): MutableStates {
+  const states: MutableStates = {};
   const idsModel = isArrayModel(model) ? new Set(model) : model;
 
   /*
