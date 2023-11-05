@@ -1,4 +1,5 @@
 import {
+  Counts,
   GetChildren,
   GetId,
   GetLeafCount,
@@ -6,7 +7,7 @@ import {
   Tree,
   isArrayModel,
 } from './shared/types';
-import { Counts, getCounts } from './counter/get-counts';
+import { getCounts } from './counter/get-counts';
 
 export class Counter<T> {
   private _totalCounts: Counts = {};
