@@ -1,15 +1,16 @@
 import { reduceRecursively } from '../shared/reduce-recursively';
-import { GetChildren, GetId, GetLeafCount } from '../shared/types';
+import { GetChildren, GetId, GetLeafCount, Tree } from '../shared/types';
 
-export type Counts = Record<string, number>;
+export type Counts = Readonly<MutableCounts>;
+type MutableCounts = Record<string, number>;
 
 export function getCounts<T>(
-  tree: T,
+  tree: Tree<T>,
   getId: GetId<T>,
   getChildren: GetChildren<T>,
   getLeafCount: GetLeafCount<T>
-) {
-  return reduceRecursively<T, Counts>({
+): Counts {
+  return reduceRecursively<T, MutableCounts>({
     item: tree,
     getItems: getChildren,
     initialValue: {},

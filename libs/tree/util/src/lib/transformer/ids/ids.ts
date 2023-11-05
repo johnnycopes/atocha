@@ -21,13 +21,13 @@ export class Ids<T> {
     return this._map.get(id)?.childrenIds ?? [];
   }
 
-  getConnectedIds(id: string): {
-    itemAndDescendantsIds: string[];
-    ancestorIds: string[];
-  } {
+  getConnectedIds(id: string): Readonly<{
+    itemAndDescendantsIds: readonly string[];
+    ancestorIds: readonly string[];
+  }> {
     const itemAndDescendantsIds = reduceRecursively<string, string[]>({
       item: id,
-      getItems: (id: string) => this._map.get(id)?.childrenIds ?? [], // TODO: call getChildrenIds
+      getItems: (id) => this.getChildrenIds(id),
       initialValue: [],
       reducer: (accum, curr) => {
         accum.push(curr);
