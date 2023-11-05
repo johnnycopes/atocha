@@ -13,11 +13,11 @@ export class Counter<T> {
   private _selectedCounts: Counts = {};
 
   get totalCounts(): Counts {
-    return { ...this._totalCounts };
+    return this._totalCounts;
   }
 
   get selectedCounts(): Counts {
-    return { ...this._selectedCounts };
+    return this._selectedCounts;
   }
 
   constructor(
