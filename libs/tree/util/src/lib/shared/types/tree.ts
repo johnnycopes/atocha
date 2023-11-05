@@ -1,7 +1,7 @@
 /**
- * The root node of the tree.
+ * A node in the tree.
  */
-export type Tree<T> = Readonly<T>;
+export type Tree<T> = T;
 
 /**
  * Callback function that retrieves the given node's unique ID.
