@@ -1,31 +1,64 @@
 import { Tally } from './tally';
 
 describe('Tally', () => {
-  describe('initializing', () => {
-    it('returns values when passed nothing', () => {
+  const MOCK_ITEMS: readonly string[] = [
+    'fruits',
+    'vegetables',
+    'fruits',
+    'fruits',
+  ];
+
+  describe('.values', () => {
+    it('returns correct values when passed nothing', () => {
       const tally = new Tally();
       expect(tally.values).toEqual({});
     });
 
-    it('returns values when passed items', () => {
-      const tally = new Tally([
-        'apple',
-        'banana',
-        'kiwi',
-        'kiwi',
-        'strawberry',
-        'apple',
-        'kiwi',
-        'watermelon',
-        'banana',
-      ]);
+    it('returns correct values when passed items', () => {
+      const tally = new Tally(MOCK_ITEMS);
       expect(tally.values).toEqual({
-        apple: 2,
-        banana: 2,
-        kiwi: 3,
-        strawberry: 1,
-        watermelon: 1,
+        fruits: 3,
+        vegetables: 1,
       });
+    });
+  });
+
+  describe('calculateChange', () => {
+    let tally: Tally;
+
+    beforeEach(() => {
+      tally = new Tally(MOCK_ITEMS);
+    });
+
+    it('throws an error on decrement or clear when value does not exist in tally', () => {
+      expect(() => tally.calculateChange('fake', 'decrement')).toThrowError(
+        'Cannot decrement or clear value: key is not present in tally'
+      );
+
+      expect(() => tally.calculateChange('fake', 'clear')).toThrowError(
+        'Cannot decrement or clear value: key is not present in tally'
+      );
+    });
+
+    it('returns 1 on increment when value does not exist in tally', () => {
+      expect(tally.calculateChange('produce', 'increment')).toBe(1);
+    });
+
+    it('returns 0 on increment when value is greater than 0', () => {
+      expect(tally.calculateChange('vegetables', 'increment')).toBe(0);
+    });
+
+    it('returns 0 on decrement when value is greater than 1', () => {
+      expect(tally.calculateChange('fruits', 'decrement')).toBe(0);
+    });
+
+    it('returns -1 on decrement when value is 1', () => {
+      expect(tally.calculateChange('vegetables', 'decrement')).toBe(-1);
+    });
+
+    it('returns -1 on clear, regardless of value', () => {
+      expect(tally.calculateChange('fruits', 'clear')).toBe(-1);
+      expect(tally.calculateChange('vegetables', 'clear')).toBe(-1);
     });
   });
 });
