@@ -1,5 +1,5 @@
 /**
- * A `readonly` record of the tree's partially or completely selected states.
+ * A `readonly` record of the tree nodes' partially or completely selected states, keyed by node ID.
  */
 export type MutableStates = Record<string, State>;
 
