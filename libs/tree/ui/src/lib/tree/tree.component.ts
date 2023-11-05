@@ -28,30 +28,22 @@ interface TreeNodeContext<T> {
   },
 })
 export class TreeComponent<T> implements OnInit {
-  /**
-   * The item to render in the tree.
-   */
   @Input() tree!: Tree<T>;
+  @Input() getId: GetId<T> = () => '';
+  @Input() getChildren: GetChildren<T> = () => [];
+
   /**
    * The template of the node to pass into the tree.
    */
   @Input() template?: TemplateRef<TreeNodeContext<T>> | undefined;
+
   /**
    * **Do not modify**. Used internally to track number of levels of recursion and exposed via the template context.
    */
   @HostBinding('attr.data-level')
   @Input()
   level = 0;
-  /**
-   * Callback function that tells the tree how to retrieve the given node's unique ID.
-   */
-  @Input() getId: GetId<T> = () => '';
-  /**
-   * Callback function that tells the tree how to retrieve the given node's children to recurse over, if it has any.
-   */
-  @Input() getChildren: GetChildren<T> = () => [];
 
-  // eslint-disable-next-line @typescript-eslint/member-ordering
   trackByFn = trackByFactory(this.getId);
 
   ngOnInit(): void {
