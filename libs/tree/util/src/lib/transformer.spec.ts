@@ -17,7 +17,7 @@ describe('Transformer', () => {
       const transformer = new Transformer(AFRICA, getId, getChildren);
 
       expect(transformer.array).toEqual([]);
-      expect(transformer.set).toEqual<Set<string>>(new Set());
+      expect(transformer.set).toEqual(new Set());
       expect(transformer.states).toEqual({});
     });
 
@@ -43,7 +43,7 @@ describe('Transformer', () => {
       );
 
       expect(transformer.array).toEqual(ALL_SELECTED_ARRAY_MODEL);
-      expect(transformer.set).toEqual<Set<string>>(ALL_SELECTED_SET_MODEL);
+      expect(transformer.set).toEqual(ALL_SELECTED_SET_MODEL);
       expect(transformer.states).toEqual(ALL_SELECTED_STATES);
     });
   });
@@ -55,7 +55,7 @@ describe('Transformer', () => {
       transformer.updateOne('Africa');
 
       expect(transformer.array).toEqual(ALL_SELECTED_ARRAY_MODEL);
-      expect(transformer.set).toEqual<Set<string>>(ALL_SELECTED_SET_MODEL);
+      expect(transformer.set).toEqual(ALL_SELECTED_SET_MODEL);
       expect(transformer.states).toEqual(ALL_SELECTED_STATES);
     });
 
@@ -70,7 +70,7 @@ describe('Transformer', () => {
       transformer.updateOne('Africa');
 
       expect(transformer.array).toEqual([]);
-      expect(transformer.set).toEqual<Set<string>>(new Set());
+      expect(transformer.set).toEqual(new Set());
       expect(transformer.states).toEqual({});
     });
 
@@ -96,7 +96,7 @@ describe('Transformer', () => {
       transformer.updateOne('Namibia');
 
       expect(transformer.array).toEqual(['Namibia']);
-      expect(transformer.set).toEqual<Set<string>>(new Set(['Namibia']));
+      expect(transformer.set).toEqual(new Set(['Namibia']));
       expect(transformer.states).toEqual({
         Africa: 'indeterminate',
         Namibia: 'checked',
