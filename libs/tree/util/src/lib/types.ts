@@ -20,6 +20,6 @@ export type States = InternalStates;
 export type Counts = InternalCounts;
 
 export type Tree<T> = InternalTree<T>;
-export type GetId<T> = InternalGetId<Tree<T>>;
-export type GetChildren<T> = InternalGetChildren<Tree<T>>;
-export type GetLeafCount<T> = InternalGetLeafcount<Tree<T>>;
+export type GetId<T> = InternalGetId<T>;
+export type GetChildren<T> = InternalGetChildren<T>;
+export type GetLeafCount<T> = InternalGetLeafcount<T>;
