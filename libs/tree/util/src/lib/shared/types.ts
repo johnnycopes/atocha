@@ -1,6 +1,9 @@
-export type Model = string[] | Set<string>;
-export type State = 'checked' | 'indeterminate';
+export type Model = ArrayModel | SetModel;
+export type ArrayModel = string[];
+export type SetModel = Set<string>;
+
 export type States = Record<string, State>;
+export type State = 'checked' | 'indeterminate';
 
 export type Tree<T> = T;
 export type GetId<T> = (item: T) => string;
