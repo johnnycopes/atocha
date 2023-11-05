@@ -1,6 +1,6 @@
 export type Model = ArrayModel | SetModel;
 export type ArrayModel = string[];
-export type SetModel = Set<string>;
+export type SetModel = ReadonlySet<string>;
 
 export type States = Record<string, State>;
 export type State = 'checked' | 'indeterminate';
