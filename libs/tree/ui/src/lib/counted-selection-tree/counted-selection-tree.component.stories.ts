@@ -65,7 +65,7 @@ const Template: StoryFn<CountedSelectionTreeComponent<TestItem>> = (
       [tree]="tree"
       [getId]="getId"
       [getChildren]="getChildren"
-      [getLeafNodeCount]="getCounts"
+      [getLeafNodeCount]="getTargetCount"
       [template]="checkboxTemplate"
       [ngModel]="model"
       (ngModelChange)="model = $event; onNgModelChange($event)"
