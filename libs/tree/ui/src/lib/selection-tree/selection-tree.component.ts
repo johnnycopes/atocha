@@ -19,7 +19,7 @@ import {
   FormsModule,
 } from '@angular/forms';
 
-import { States, Transformer } from '@atocha/tree/util';
+import { ArrayModel, States, Transformer } from '@atocha/tree/util';
 import { TreeComponent } from '../tree/tree.component';
 
 @Component({
@@ -49,14 +49,14 @@ export class SelectionTreeComponent<T>
   @Input() getChildren: (node: T) => T[] = () => [];
   @Input() template: TemplateRef<unknown> | undefined;
   @Output() nodeClick = new EventEmitter<string>();
-  model: string[] = [];
+  model: ArrayModel = [];
   states: States = {};
   private _transformer = new Transformer<T>(
     {} as T,
     this.getId,
     this.getChildren
   );
-  private _onChangeFn: (value: string[]) => void = () => [];
+  private _onChangeFn: (value: ArrayModel) => void = () => [];
 
   constructor(private _changeDetectorRef: ChangeDetectorRef) {}
 
@@ -75,7 +75,7 @@ export class SelectionTreeComponent<T>
     }
   }
 
-  writeValue(model: string[]): void {
+  writeValue(model: ArrayModel): void {
     if (model) {
       this.model = model;
       this.states = this._transformer.updateMultiple(model).states;
@@ -83,12 +83,12 @@ export class SelectionTreeComponent<T>
     this._changeDetectorRef.markForCheck();
   }
 
-  registerOnChange(fn: (value: string[]) => void): void {
+  registerOnChange(fn: (value: ArrayModel) => void): void {
     this._onChangeFn = fn;
   }
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-empty-function
-  registerOnTouched(_fn: (value: string[]) => void): void {}
+  registerOnTouched(_fn: (value: ArrayModel) => void): void {}
 
   onChange = (node: T): void => {
     const nodeId = this.getId(node);
