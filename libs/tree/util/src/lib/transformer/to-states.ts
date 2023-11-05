@@ -1,9 +1,9 @@
-import { Model, States } from '../shared/types';
+import { Model, States, isArrayModel } from '../shared/types';
 import { Ids } from './ids/ids';
 
 export function toStates<T>(model: Model, ids: Ids<T>): States {
   const states: States = {};
-  const idsModel = Array.isArray(model) ? new Set(model) : model;
+  const idsModel = isArrayModel(model) ? new Set(model) : model;
 
   /*
     Iterating through the IDs backwards builds up `states` from the leaf nodes
