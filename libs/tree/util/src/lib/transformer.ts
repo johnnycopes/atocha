@@ -1,4 +1,12 @@
-import { GetChildren, GetId, Model, States, Tree } from './shared/types';
+import {
+  ArrayModel,
+  GetChildren,
+  GetId,
+  Model,
+  SetModel,
+  States,
+  Tree,
+} from './shared/types';
 import { Ids } from './transformer/ids/ids';
 import { toArray } from './transformer/to-array';
 import { toSet } from './transformer/to-set';
@@ -13,11 +21,11 @@ export class Transformer<T> {
     return this._states;
   }
 
-  get array(): Extract<Model, string[]> {
+  get array(): ArrayModel {
     return toArray(this._states, this._ids);
   }
 
-  get set(): Extract<Model, Set<string>> {
+  get set(): SetModel {
     return toSet(this._states, this._ids);
   }
 
