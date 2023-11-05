@@ -11,7 +11,7 @@ import {
   AFRICA,
   ALL_SELECTED_ARRAY_MODEL,
   SMALL_AFRICA,
-  SOME_SELECTED_ARRAY_MODEL,
+  SOME_SELECTED_SET_MODEL,
   TestItem,
   getChildren,
   getId,
@@ -98,7 +98,7 @@ export const someSelected: StoryObj<SelectionTreeComponent<TestItem>> = {
   render: Template,
 
   args: createArgs({
-    model: SOME_SELECTED_ARRAY_MODEL,
+    model: SOME_SELECTED_SET_MODEL,
   }),
 };
 

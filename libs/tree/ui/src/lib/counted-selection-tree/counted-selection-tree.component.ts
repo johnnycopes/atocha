@@ -19,7 +19,7 @@ import {
   NG_VALUE_ACCESSOR,
 } from '@angular/forms';
 
-import { Counter, Counts } from '@atocha/tree/util';
+import { Counter, Counts, Model } from '@atocha/tree/util';
 import { SelectionTreeComponent } from '../selection-tree/selection-tree.component';
 
 @Component({
@@ -51,7 +51,7 @@ export class CountedSelectionTreeComponent<T>
   @Input() template: TemplateRef<unknown> | undefined;
   @Output() selectedChange = new EventEmitter<number>();
   @Output() totalChange = new EventEmitter<number>();
-  model: string[] = [];
+  model: Model = new Set();
   selectedCounts: Counts = {};
   totalCounts: Counts = {};
   private _id = '';
@@ -61,7 +61,7 @@ export class CountedSelectionTreeComponent<T>
     this.getChildren,
     this.getLeafNodeCount
   );
-  private _onChangeFn: (model: string[]) => void = () => [];
+  private _onChangeFn: (model: Model) => void = () => [];
 
   constructor(private _changeDetectorRef: ChangeDetectorRef) {}
 
@@ -84,7 +84,7 @@ export class CountedSelectionTreeComponent<T>
     }
   }
 
-  writeValue(model: string[]): void {
+  writeValue(model: Model): void {
     if (model && this.tree) {
       this.model = model;
       this.selectedCounts = this._counter.update(this.model).selectedCounts;
@@ -93,14 +93,14 @@ export class CountedSelectionTreeComponent<T>
     this._changeDetectorRef.markForCheck();
   }
 
-  registerOnChange(fn: (model: string[]) => void): void {
+  registerOnChange(fn: (model: Model) => void): void {
     this._onChangeFn = fn;
   }
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-empty-function
-  registerOnTouched(fn: (model: string[]) => void): void {}
+  registerOnTouched(fn: (model: Model) => void): void {}
 
-  onChange(model: string[]): void {
+  onChange(model: Model): void {
     if (this.tree) {
       this.model = model;
       this._onChangeFn(this.model);
