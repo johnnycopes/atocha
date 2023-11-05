@@ -34,7 +34,7 @@ export class Transformer<T> {
     private _tree: Tree<T>,
     private _getId: GetId<T>,
     private _getChildren: GetChildren<T>,
-    private _initialValue: Model = []
+    private _initialValue: Model = new Set()
   ) {
     this._ids = new Ids(this._tree, this._getId, this._getChildren);
     this._states = this._toStates(this._initialValue);
