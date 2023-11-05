@@ -1,9 +1,9 @@
 import { GetChildren, GetId, Tree } from '../../shared/types';
 import { reduceRecursively } from '../../shared/reduce-recursively';
-import { createMap } from './create-map';
+import { IdsMap, createMap } from './create-map';
 
 export class Ids<T> {
-  private readonly _map;
+  private readonly _map: IdsMap;
   readonly descending: readonly string[];
   readonly ascending: readonly string[];
 
