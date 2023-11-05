@@ -99,4 +99,5 @@ export const ALL_SELECTED_SET_MODEL: SetModel = new Set(
 export const getId: GetId<TestItem> = ({ id }) => id;
 export const getChildren: GetChildren<TestItem> = ({ children }) =>
   children ?? [];
-export const getCounts: GetLeafCount<TestItem> = ({ targets }) => targets ?? 0;
+export const getTargetCount: GetLeafCount<TestItem> = ({ targets }) =>
+  targets ?? 0;
