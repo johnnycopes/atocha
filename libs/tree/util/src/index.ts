@@ -1,6 +1,6 @@
 export * from './lib/counter';
-export * from './lib/mock-data';
 export * from './lib/transformer';
+export * from './lib/shared/mock-data';
 export {
   ArrayModel,
   Counts,
