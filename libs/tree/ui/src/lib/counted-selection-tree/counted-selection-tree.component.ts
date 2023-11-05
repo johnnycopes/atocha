@@ -19,7 +19,15 @@ import {
   NG_VALUE_ACCESSOR,
 } from '@angular/forms';
 
-import { Counter, Counts } from '@atocha/tree/util';
+import {
+  Counter,
+  Counts,
+  GetChildren,
+  GetId,
+  GetLeafCount,
+  Model,
+  Tree,
+} from '@atocha/tree/util';
 import { SelectionTreeComponent } from '../selection-tree/selection-tree.component';
 
 @Component({
@@ -44,14 +52,14 @@ import { SelectionTreeComponent } from '../selection-tree/selection-tree.compone
 export class CountedSelectionTreeComponent<T>
   implements ControlValueAccessor, OnChanges
 {
-  @Input() tree: T | undefined;
-  @Input() getId: (node: T) => string = () => '';
-  @Input() getChildren: (node: T) => T[] = () => [];
-  @Input() getLeafNodeCount: (node: T) => number = () => 0;
+  @Input() tree: Tree<T> | undefined;
+  @Input() getId: GetId<T> = () => '';
+  @Input() getChildren: GetChildren<T> = () => [];
+  @Input() getLeafNodeCount: GetLeafCount<T> = () => 0;
   @Input() template: TemplateRef<unknown> | undefined;
   @Output() selectedChange = new EventEmitter<number>();
   @Output() totalChange = new EventEmitter<number>();
-  model: string[] = [];
+  model: Model = [];
   selectedCounts: Counts = {};
   totalCounts: Counts = {};
   private _id = '';
@@ -61,13 +69,13 @@ export class CountedSelectionTreeComponent<T>
     this.getChildren,
     this.getLeafNodeCount
   );
-  private _onChangeFn: (model: string[]) => void = () => [];
+  private _onChangeFn: (model: Model) => void = () => [];
 
   constructor(private _changeDetectorRef: ChangeDetectorRef) {}
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['tree']) {
-      const tree: T = changes['tree'].currentValue;
+      const tree: Tree<T> = changes['tree'].currentValue;
 
       this._id = this.getId(tree);
       this._counter = new Counter<T>(
@@ -84,7 +92,7 @@ export class CountedSelectionTreeComponent<T>
     }
   }
 
-  writeValue(model: string[]): void {
+  writeValue(model: Model): void {
     if (model && this.tree) {
       this.model = model;
       this.selectedCounts = this._counter.update(this.model).selectedCounts;
@@ -93,14 +101,14 @@ export class CountedSelectionTreeComponent<T>
     this._changeDetectorRef.markForCheck();
   }
 
-  registerOnChange(fn: (model: string[]) => void): void {
+  registerOnChange(fn: (model: Model) => void): void {
     this._onChangeFn = fn;
   }
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-empty-function
-  registerOnTouched(fn: (model: string[]) => void): void {}
+  registerOnTouched(fn: (model: Model) => void): void {}
 
-  onChange(model: string[]): void {
+  onChange(model: Model): void {
     if (this.tree) {
       this.model = model;
       this._onChangeFn(this.model);
