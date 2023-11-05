@@ -2,16 +2,16 @@ import { Counter } from './counter';
 import {
   getId,
   getChildren,
-  getCounts,
+  getTargetCount,
   AFRICA,
   ALL_SELECTED_ARRAY_MODEL,
   SOME_SELECTED_ARRAY_MODEL,
-} from './mock-data';
+} from './shared/mock-data';
 
 describe('Counter', () => {
   describe('initializing', () => {
     it('returns total counts when passed empty model', () => {
-      const counter = new Counter(AFRICA, getId, getChildren, getCounts);
+      const counter = new Counter(AFRICA, getId, getChildren, getTargetCount);
 
       expect(counter.totalCounts).toEqual({
         Africa: 130,
@@ -40,7 +40,7 @@ describe('Counter', () => {
 
   describe('updating', () => {
     it('returns correct counts records after updating to partial model', () => {
-      const counter = new Counter(AFRICA, getId, getChildren, getCounts);
+      const counter = new Counter(AFRICA, getId, getChildren, getTargetCount);
 
       counter.update(SOME_SELECTED_ARRAY_MODEL);
 
@@ -69,7 +69,7 @@ describe('Counter', () => {
     });
 
     it('returns correct counts records after updating to full model', () => {
-      const counter = new Counter(AFRICA, getId, getChildren, getCounts);
+      const counter = new Counter(AFRICA, getId, getChildren, getTargetCount);
 
       counter.update(ALL_SELECTED_ARRAY_MODEL);
 
