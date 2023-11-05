@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 
 import { View } from '@atocha/lorenzo/util';
-import { CsvService } from './_state/csv.service';
-import { FilterService } from './_state/filter.service';
-import { PositionService } from './_state/position.service';
+import { CsvService } from './state/csv.service';
+import { FilterService } from './state/filter.service';
+import { PositionService } from './state/position.service';
 
 @Injectable({
   providedIn: 'root',

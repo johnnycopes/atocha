@@ -13,11 +13,11 @@ import {
   Leader,
   Ordinal,
 } from '@atocha/lorenzo/util';
-import { CardService } from './_state/card.service';
-import { FavoriteService } from './_state/favorite.service';
-import { FilterService } from './_state/filter.service';
-import { OrdinalService } from './_state/ordinal.service';
-import { VisibilityService } from './_state/visibility.service';
+import { CardService } from './state/card.service';
+import { FavoriteService } from './state/favorite.service';
+import { FilterService } from './state/filter.service';
+import { OrdinalService } from './state/ordinal.service';
+import { VisibilityService } from './state/visibility.service';
 
 export interface State<T> {
   ordinal: Ordinal;
