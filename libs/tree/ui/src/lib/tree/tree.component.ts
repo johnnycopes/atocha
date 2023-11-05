@@ -28,9 +28,9 @@ interface TreeNodeContext<T> {
   },
 })
 export class TreeComponent<T> implements OnInit {
-  @Input() tree!: Tree<T>;
-  @Input() getId: GetId<T> = () => '';
-  @Input() getChildren: GetChildren<T> = () => [];
+  @Input() tree!: T;
+  @Input() getId: (node: T) => string = () => '';
+  @Input() getChildren: (node: T) => readonly T[] = () => [];
 
   /**
    * The template of the node to pass into the tree.
