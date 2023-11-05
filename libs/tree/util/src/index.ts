@@ -2,14 +2,14 @@ export * from './lib/counter';
 export * from './lib/mock-data';
 export * from './lib/transformer';
 export {
-  Model,
   ArrayModel,
+  Counts,
+  GetChildren,
+  GetId,
+  GetLeafCount,
+  Model,
   SetModel,
   State,
   States,
-  Counts,
   Tree,
-  GetId,
-  GetChildren,
-  GetLeafCount,
 } from './lib/shared/types';
