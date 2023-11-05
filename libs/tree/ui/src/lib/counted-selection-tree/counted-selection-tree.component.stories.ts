@@ -14,8 +14,8 @@ import {
   SOME_SELECTED_ARRAY_MODEL,
   TestItem,
   getChildren,
-  getCounts,
   getId,
+  getTargetCount,
 } from '@atocha/tree/util';
 import { CheckboxComponent } from '@atocha/core/ui';
 import { CountedSelectionTreeComponent } from './counted-selection-tree.component';
@@ -57,7 +57,7 @@ const Template: StoryFn<CountedSelectionTreeComponent<TestItem>> = (
     ...args,
     getId,
     getChildren,
-    getCounts,
+    getTargetCount,
   },
   template: `
     <core-counted-selection-tree
