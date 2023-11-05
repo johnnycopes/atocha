@@ -3,7 +3,7 @@ import {
   AFRICA,
   getChildren,
   getId,
-  getCounts as getNumberOfTargets,
+  getTargetCount,
 } from '../shared/mock-data';
 
 describe('getCounts', () => {
@@ -29,7 +29,7 @@ describe('getCounts', () => {
   });
 
   it('returns total counts record based on arbitrary targets property', () => {
-    expect(getCounts(AFRICA, getId, getChildren, getNumberOfTargets)).toEqual({
+    expect(getCounts(AFRICA, getId, getChildren, getTargetCount)).toEqual({
       Africa: 130,
       'Central Africa': 65,
       Fes: 11,

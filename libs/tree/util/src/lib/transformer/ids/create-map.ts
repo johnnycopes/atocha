@@ -10,7 +10,7 @@ export function createMap<T>(
   tree: Tree<T>,
   getId: GetId<T>,
   getChildren: GetChildren<T>
-) {
+): IdsMap {
   return reduceRecursively<T, IdsMap>({
     item: tree,
     getItems: getChildren,
