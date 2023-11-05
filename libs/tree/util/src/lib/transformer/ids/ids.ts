@@ -27,7 +27,7 @@ export class Ids<T> {
   }> {
     const itemAndDescendantsIds = reduceRecursively<string, string[]>({
       item: id,
-      getItems: (id: string) => this._map.get(id)?.childrenIds ?? [], // TODO: call getChildrenIds
+      getItems: (id) => this.getChildrenIds(id),
       initialValue: [],
       reducer: (accum, curr) => {
         accum.push(curr);
