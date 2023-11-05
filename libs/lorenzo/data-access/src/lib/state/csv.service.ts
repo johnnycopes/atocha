@@ -5,9 +5,9 @@ import { startCase } from 'lodash-es';
 import { APP_NAME_TOKEN } from '@atocha/core/data-access';
 import { Csv } from '@atocha/core/util';
 import { Card, Development, Family, Leader } from '@atocha/lorenzo/util';
-import { DEVELOPMENTS } from './_cards/developments';
-import { FAMILIES } from './_cards/families';
-import { LEADERS } from './_cards/leaders';
+import { DEVELOPMENTS } from './cards/developments';
+import { FAMILIES } from './cards/families';
+import { LEADERS } from './cards/leaders';
 
 type CsvMapping<T> = Required<{
   [Property in keyof T]: string;

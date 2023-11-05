@@ -10,9 +10,9 @@ import {
   getFamilyId,
   getLeaderId,
 } from '@atocha/lorenzo/util';
-import { DEVELOPMENTS } from './_cards/developments';
-import { FAMILIES } from './_cards/families';
-import { LEADERS } from './_cards/leaders';
+import { DEVELOPMENTS } from './cards/developments';
+import { FAMILIES } from './cards/families';
+import { LEADERS } from './cards/leaders';
 import { FavoriteService } from './favorite.service';
 
 type Cards = {
