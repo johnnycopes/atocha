@@ -2,13 +2,9 @@ import { Injectable } from '@angular/core';
 import { BatchService, BatchUpdate } from '@atocha/core/data-access';
 
 import { Menu, flattenValues } from '@atocha/menu-matriarch/shared/util';
+import { Change, Tally } from './internal/tally';
 import { Endpoint } from './endpoint.enum';
 import { KeyToUpdate } from './key-to-update.type';
-import { tally } from './internal/tally';
-import {
-  TallyChange,
-  calculateTallyChange,
-} from './internal/calculate-tally-change';
 
 @Injectable({
   providedIn: 'root',
@@ -45,16 +41,12 @@ export class DishUpdateService {
   }: {
     dishIds: string[];
     menu: Menu;
-    change: TallyChange;
+    change: Change;
   }): BatchUpdate[] {
-    const dishCounts = tally(flattenValues(menu.contents));
+    const dishTally = new Tally(flattenValues(menu.contents));
 
     return dishIds.map((dishId) => {
-      const menusChange = calculateTallyChange({
-        tally: dishCounts,
-        key: dishId,
-        change,
-      });
+      const menusChange = dishTally.calculateChange(dishId, change);
       const menuIds =
         menusChange > 0
           ? this._batchService.addToArray(menu.id)
