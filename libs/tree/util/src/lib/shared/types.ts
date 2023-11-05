@@ -1,6 +1,9 @@
 export type Model = ArrayModel | SetModel;
-export type ArrayModel = string[];
+export type ArrayModel = readonly string[];
 export type SetModel = ReadonlySet<string>;
+export function isArrayModel(model: Model): model is ArrayModel {
+  return Array.isArray(model);
+}
 
 export type States = Record<string, State>;
 export type State = 'checked' | 'indeterminate';
