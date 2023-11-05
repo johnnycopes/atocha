@@ -19,7 +19,14 @@ import {
   FormsModule,
 } from '@angular/forms';
 
-import { Model, States, Transformer } from '@atocha/tree/util';
+import {
+  GetChildren,
+  GetId,
+  Model,
+  States,
+  Transformer,
+  Tree,
+} from '@atocha/tree/util';
 import { TreeComponent } from '../tree/tree.component';
 
 @Component({
@@ -44,9 +51,9 @@ import { TreeComponent } from '../tree/tree.component';
 export class SelectionTreeComponent<T>
   implements OnChanges, ControlValueAccessor
 {
-  @Input() tree: T | undefined;
-  @Input() getId: (node: T) => string = () => '';
-  @Input() getChildren: (node: T) => T[] = () => [];
+  @Input() tree: Tree<T> | undefined;
+  @Input() getId: GetId<T> = () => '';
+  @Input() getChildren: GetChildren<T> = () => [];
   @Input() template: TemplateRef<unknown> | undefined;
   @Output() nodeClick = new EventEmitter<string>();
   model: Model = new Set();
@@ -62,7 +69,7 @@ export class SelectionTreeComponent<T>
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['tree']) {
-      const tree: T = changes['tree'].currentValue;
+      const tree: Tree<T> = changes['tree'].currentValue;
 
       this._transformer = new Transformer(
         tree,
@@ -90,7 +97,7 @@ export class SelectionTreeComponent<T>
   // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-empty-function
   registerOnTouched(_fn: (value: Model) => void): void {}
 
-  onChange = (node: T): void => {
+  onChange = (node: Tree<T>): void => {
     const nodeId = this.getId(node);
 
     this.nodeClick.emit(nodeId);

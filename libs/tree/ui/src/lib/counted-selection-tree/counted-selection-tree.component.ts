@@ -19,7 +19,15 @@ import {
   NG_VALUE_ACCESSOR,
 } from '@angular/forms';
 
-import { Counter, Counts, Model } from '@atocha/tree/util';
+import {
+  Counter,
+  Counts,
+  GetChildren,
+  GetId,
+  GetLeafCount,
+  Model,
+  Tree,
+} from '@atocha/tree/util';
 import { SelectionTreeComponent } from '../selection-tree/selection-tree.component';
 
 @Component({
@@ -44,10 +52,10 @@ import { SelectionTreeComponent } from '../selection-tree/selection-tree.compone
 export class CountedSelectionTreeComponent<T>
   implements ControlValueAccessor, OnChanges
 {
-  @Input() tree: T | undefined;
-  @Input() getId: (node: T) => string = () => '';
-  @Input() getChildren: (node: T) => T[] = () => [];
-  @Input() getLeafNodeCount: (node: T) => number = () => 0;
+  @Input() tree: Tree<T> | undefined;
+  @Input() getId: GetId<T> = () => '';
+  @Input() getChildren: GetChildren<T> = () => [];
+  @Input() getLeafNodeCount: GetLeafCount<T> = () => 0;
   @Input() template: TemplateRef<unknown> | undefined;
   @Output() selectedChange = new EventEmitter<number>();
   @Output() totalChange = new EventEmitter<number>();
@@ -67,7 +75,7 @@ export class CountedSelectionTreeComponent<T>
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['tree']) {
-      const tree: T = changes['tree'].currentValue;
+      const tree: Tree<T> = changes['tree'].currentValue;
 
       this._id = this.getId(tree);
       this._counter = new Counter<T>(
