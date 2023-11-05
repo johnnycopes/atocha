@@ -5,7 +5,7 @@ import {
   AFRICA,
   ALL_SELECTED_ARRAY_MODEL,
   SOME_SELECTED_ARRAY_MODEL,
-} from './mock-data';
+} from './shared/mock-data';
 import { Counter } from './counter';
 
 describe('Counter', () => {
