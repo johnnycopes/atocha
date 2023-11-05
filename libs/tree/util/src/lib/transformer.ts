@@ -9,8 +9,8 @@ export class Transformer<T> {
   private readonly _ids: Ids<T>;
   private _states: States;
 
-  get states(): States {
-    return { ...this._states };
+  get states(): Readonly<States> {
+    return this._states;
   }
 
   get array(): Extract<Model, string[]> {
