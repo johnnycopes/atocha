@@ -8,11 +8,11 @@ export class Ids<T> {
   readonly ascending: readonly string[];
 
   constructor(
-    private _tree: Node<T>,
+    private _root: Node<T>,
     private _getId: GetId<T>,
     private _getChildren: GetChildren<T>
   ) {
-    this._map = createMap(this._tree, this._getId, this._getChildren);
+    this._map = createMap(this._root, this._getId, this._getChildren);
     this.descending = Array.from(this._map.keys());
     this.ascending = this.descending.slice().reverse();
   }

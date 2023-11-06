@@ -9,13 +9,13 @@ import {
 } from '../shared/types';
 
 export function getCounts<T>(
-  tree: Node<T>,
+  root: Node<T>,
   getId: GetId<T>,
   getChildren: GetChildren<T>,
   getLeafCount: GetLeafCount<T>
 ): Counts {
   return reduceRecursively<T, MutableCounts>({
-    item: tree,
+    item: root,
     getItems: getChildren,
     initialValue: {},
     reducer: (accum, curr) => {

@@ -7,12 +7,12 @@ export type IdsMap = Map<
 >;
 
 export function createMap<T>(
-  tree: Node<T>,
+  root: Node<T>,
   getId: GetId<T>,
   getChildren: GetChildren<T>
 ): IdsMap {
   return reduceRecursively<T, IdsMap>({
-    item: tree,
+    item: root,
     getItems: getChildren,
     initialValue: new Map(),
     reducer: (accum, item, parent) =>
