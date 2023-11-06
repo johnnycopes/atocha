@@ -21,7 +21,7 @@ export function getCounts<T>(
     reducer: (accum, node) => {
       accum[getId(node)] = bfsReduce({
         root: node,
-        getChildren: getChildren,
+        getChildren,
         initialValue: 0,
         reducer: (total, node) => total + getLeafCount(node),
       });
