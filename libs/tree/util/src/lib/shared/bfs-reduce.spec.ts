@@ -1,4 +1,4 @@
-import { bfsReduce } from './reduce-recursively';
+import { bfsReduce } from './bfs-reduce';
 
 interface Item {
   name: string;
@@ -19,7 +19,7 @@ describe('bfsReduce', () => {
     expect(
       bfsReduce({
         root: { name: 'Item 1' },
-        getChildren: getChildren,
+        getChildren,
         initialValue: [],
         reducer: pusher,
       })
@@ -28,7 +28,7 @@ describe('bfsReduce', () => {
     expect(
       bfsReduce({
         root: { name: 'Item 2', children: [] },
-        getChildren: getChildren,
+        getChildren,
         initialValue: [],
         reducer: pusher,
       })
@@ -48,7 +48,7 @@ describe('bfsReduce', () => {
     expect(
       bfsReduce<Item, Item[]>({
         root: item,
-        getChildren: getChildren,
+        getChildren,
         initialValue: [],
         reducer: (accumulator, item) => [...accumulator, item],
       })
@@ -81,7 +81,7 @@ describe('bfsReduce', () => {
     expect(
       bfsReduce<Item, string[]>({
         root: item,
-        getChildren: getChildren,
+        getChildren,
         initialValue: [],
         reducer: (accumulator, item) => [...accumulator, item.name],
       })
@@ -105,7 +105,7 @@ describe('bfsReduce', () => {
     expect(
       bfsReduce<Item, Record<string, string>>({
         root: item,
-        getChildren: getChildren,
+        getChildren,
         initialValue: {},
         reducer: (accumulator, node) => ({
           ...accumulator,

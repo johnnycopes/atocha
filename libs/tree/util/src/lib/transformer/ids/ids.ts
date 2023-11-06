@@ -1,5 +1,5 @@
 import { GetChildren, GetId, Node } from '../../shared/types';
-import { bfsReduce } from '../../shared/reduce-recursively';
+import { bfsReduce } from '../../shared/bfs-reduce';
 import { IdsMap, createMap } from './create-map';
 
 export class Ids<T> {

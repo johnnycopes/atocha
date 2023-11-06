@@ -1,4 +1,4 @@
-import { bfsReduce } from '../shared/reduce-recursively';
+import { bfsReduce } from '../shared/bfs-reduce';
 import {
   Counts,
   GetChildren,
