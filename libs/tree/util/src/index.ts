@@ -9,5 +9,5 @@ export {
   Model,
   State,
   States,
-  Tree,
+  Node as Tree,
 } from './lib/shared/types';

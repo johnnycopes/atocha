@@ -4,7 +4,7 @@ import {
   GetId,
   GetLeafCount,
   Model,
-  Tree,
+  Node,
   isArrayModel,
 } from './shared/types';
 import { getCounts } from './counter/get-counts';
@@ -22,7 +22,7 @@ export class Counter<T> {
   }
 
   constructor(
-    private _tree: Tree<T>,
+    private _tree: Node<T>,
     private _getId: GetId<T>,
     private _getChildren: GetChildren<T>,
     private _getLeafCount: GetLeafCount<T>,

@@ -1,4 +1,4 @@
-import { GetChildren, Tree } from './types';
+import { GetChildren, Node } from './types';
 
 export function reduceRecursively<T, U>({
   item,
@@ -6,10 +6,10 @@ export function reduceRecursively<T, U>({
   reducer,
   initialValue,
 }: {
-  item: Tree<T>;
+  item: Node<T>;
   getItems: GetChildren<T>;
   initialValue: U;
-  reducer: (accumulator: U, item: Tree<T>, parent?: T) => U;
+  reducer: (accumulator: U, item: Node<T>, parent?: T) => U;
 }): U {
   const items = [item];
   let value = reducer(initialValue, item);

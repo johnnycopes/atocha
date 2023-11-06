@@ -1,4 +1,4 @@
-import { GetChildren, GetId, Tree } from '../../shared/types';
+import { GetChildren, GetId, Node } from '../../shared/types';
 import { reduceRecursively } from '../../shared/reduce-recursively';
 
 export type IdsMap = Map<
@@ -7,7 +7,7 @@ export type IdsMap = Map<
 >;
 
 export function createMap<T>(
-  tree: Tree<T>,
+  tree: Node<T>,
   getId: GetId<T>,
   getChildren: GetChildren<T>
 ): IdsMap {

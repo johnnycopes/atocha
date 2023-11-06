@@ -5,7 +5,7 @@ import {
   GetLeafCount,
   SetModel,
   States,
-  Tree,
+  Node,
 } from './types';
 
 export interface TestItem {
@@ -14,7 +14,7 @@ export interface TestItem {
   targets?: number;
 }
 
-export const AFRICA: Tree<TestItem> = {
+export const AFRICA: Node<TestItem> = {
   id: 'Africa',
   children: [
     {
@@ -40,7 +40,7 @@ export const AFRICA: Tree<TestItem> = {
   ],
 };
 
-export const SMALL_AFRICA: Tree<TestItem> = {
+export const SMALL_AFRICA: Node<TestItem> = {
   id: 'Africa',
   children: [
     {
