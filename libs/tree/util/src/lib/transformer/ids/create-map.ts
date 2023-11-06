@@ -12,13 +12,13 @@ export function createMap<T>(
   getChildren: GetChildren<T>
 ): IdsMap {
   return reduceRecursively<T, IdsMap>({
-    item: root,
-    getItems: getChildren,
+    root,
+    getChildren,
     initialValue: new Map(),
-    reducer: (accum, item, parent) =>
-      accum.set(getId(item), {
+    reducer: (accum, node, parent) =>
+      accum.set(getId(node), {
         parentId: parent ? getId(parent) : undefined,
-        childrenIds: getChildren(item).map(getId),
+        childrenIds: getChildren(node).map(getId),
       }),
   });
 }

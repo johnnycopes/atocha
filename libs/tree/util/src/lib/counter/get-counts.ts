@@ -15,15 +15,15 @@ export function getCounts<T>(
   getLeafCount: GetLeafCount<T>
 ): Counts {
   return reduceRecursively<T, MutableCounts>({
-    item: root,
-    getItems: getChildren,
+    root,
+    getChildren,
     initialValue: {},
-    reducer: (accum, curr) => {
-      accum[getId(curr)] = reduceRecursively({
-        item: curr,
-        getItems: getChildren,
+    reducer: (accum, node) => {
+      accum[getId(node)] = reduceRecursively({
+        root: node,
+        getChildren: getChildren,
         initialValue: 0,
-        reducer: (total, item) => total + getLeafCount(item),
+        reducer: (total, node) => total + getLeafCount(node),
       });
       return accum;
     },
