@@ -1,4 +1,4 @@
-import { reduceRecursively } from './reduce-recursively';
+import { bfsReduce } from './reduce-recursively';
 
 interface Item {
   name: string;
@@ -6,7 +6,7 @@ interface Item {
   children?: Item[];
 }
 
-describe('reduceRecursively', () => {
+describe('bfsReduce', () => {
   let getChildren: (node: Item) => Item[];
 
   beforeEach(() => {
@@ -17,7 +17,7 @@ describe('reduceRecursively', () => {
     const pusher = (accumulator: Item[], node: Item) => [...accumulator, node];
 
     expect(
-      reduceRecursively({
+      bfsReduce({
         root: { name: 'Item 1' },
         getChildren: getChildren,
         initialValue: [],
@@ -26,7 +26,7 @@ describe('reduceRecursively', () => {
     ).toEqual([{ name: 'Item 1' }]);
 
     expect(
-      reduceRecursively({
+      bfsReduce({
         root: { name: 'Item 2', children: [] },
         getChildren: getChildren,
         initialValue: [],
@@ -46,7 +46,7 @@ describe('reduceRecursively', () => {
     };
 
     expect(
-      reduceRecursively<Item, Item[]>({
+      bfsReduce<Item, Item[]>({
         root: item,
         getChildren: getChildren,
         initialValue: [],
@@ -79,7 +79,7 @@ describe('reduceRecursively', () => {
     };
 
     expect(
-      reduceRecursively<Item, string[]>({
+      bfsReduce<Item, string[]>({
         root: item,
         getChildren: getChildren,
         initialValue: [],
@@ -103,7 +103,7 @@ describe('reduceRecursively', () => {
     };
 
     expect(
-      reduceRecursively<Item, Record<string, string>>({
+      bfsReduce<Item, Record<string, string>>({
         root: item,
         getChildren: getChildren,
         initialValue: {},

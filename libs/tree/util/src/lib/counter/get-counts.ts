@@ -1,4 +1,4 @@
-import { reduceRecursively } from '../shared/reduce-recursively';
+import { bfsReduce } from '../shared/reduce-recursively';
 import {
   Counts,
   GetChildren,
@@ -14,12 +14,12 @@ export function getCounts<T>(
   getChildren: GetChildren<T>,
   getLeafCount: GetLeafCount<T>
 ): Counts {
-  return reduceRecursively<T, MutableCounts>({
+  return bfsReduce<T, MutableCounts>({
     root,
     getChildren,
     initialValue: {},
     reducer: (accum, node) => {
-      accum[getId(node)] = reduceRecursively({
+      accum[getId(node)] = bfsReduce({
         root: node,
         getChildren: getChildren,
         initialValue: 0,

@@ -1,5 +1,5 @@
 import { GetChildren, GetId, Node } from '../../shared/types';
-import { reduceRecursively } from '../../shared/reduce-recursively';
+import { bfsReduce } from '../../shared/reduce-recursively';
 
 export type IdsMap = Map<
   string,
@@ -11,7 +11,7 @@ export function createMap<T>(
   getId: GetId<T>,
   getChildren: GetChildren<T>
 ): IdsMap {
-  return reduceRecursively<T, IdsMap>({
+  return bfsReduce<T, IdsMap>({
     root,
     getChildren,
     initialValue: new Map(),

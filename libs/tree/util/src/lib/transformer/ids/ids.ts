@@ -1,5 +1,5 @@
 import { GetChildren, GetId, Node } from '../../shared/types';
-import { reduceRecursively } from '../../shared/reduce-recursively';
+import { bfsReduce } from '../../shared/reduce-recursively';
 import { IdsMap, createMap } from './create-map';
 
 export class Ids<T> {
@@ -25,7 +25,7 @@ export class Ids<T> {
     itemAndDescendantsIds: readonly string[];
     ancestorIds: readonly string[];
   }> {
-    const itemAndDescendantsIds = reduceRecursively<string, string[]>({
+    const itemAndDescendantsIds = bfsReduce<string, string[]>({
       root: id,
       getChildren: (id) => this.getChildrenIds(id),
       initialValue: [],
@@ -35,7 +35,7 @@ export class Ids<T> {
       },
     });
 
-    const ancestorIds = reduceRecursively<string, string[]>({
+    const ancestorIds = bfsReduce<string, string[]>({
       root: id,
       getChildren: (id) => {
         const parentId = this._map.get(id)?.parentId;

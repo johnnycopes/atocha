@@ -1,6 +1,6 @@
 import { GetChildren, Node } from './types';
 
-export function reduceRecursively<T, U>({
+export function bfsReduce<T, U>({
   root,
   getChildren,
   reducer,
