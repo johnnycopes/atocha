@@ -36,7 +36,7 @@ export default {
       control: { type: 'select' },
       options: ['normal', 'large'],
     },
-    tree: {
+    root: {
       control: { type: 'select' },
       options: ['Africa', 'Small Africa'],
       mapping: {
