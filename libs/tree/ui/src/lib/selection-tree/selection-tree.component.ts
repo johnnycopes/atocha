@@ -51,7 +51,7 @@ import { TreeComponent } from '../tree/tree.component';
 export class SelectionTreeComponent<T>
   implements OnChanges, ControlValueAccessor
 {
-  @Input() tree: Node<T> | undefined;
+  @Input() root: Node<T> | undefined;
   @Input() getId: GetId<T> = () => '';
   @Input() getChildren: GetChildren<T> = () => [];
   @Input() template: TemplateRef<unknown> | undefined;
@@ -68,8 +68,8 @@ export class SelectionTreeComponent<T>
   constructor(private _changeDetectorRef: ChangeDetectorRef) {}
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes['tree']) {
-      const tree: Node<T> = changes['tree'].currentValue;
+    if (changes['root']) {
+      const tree: Node<T> = changes['root'].currentValue;
 
       this._transformer = new Transformer(
         tree,

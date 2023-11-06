@@ -52,7 +52,7 @@ export const leaf: StoryFn<TreeComponent<Item>> = () => ({
   },
   template: `
     <core-tree
-      [tree]="item"
+      [root]="item"
       [getId]="getId"
     ></core-tree>
   `,
@@ -66,7 +66,7 @@ export const withChildren: StoryFn<TreeComponent<Item>> = () => ({
   },
   template: `
     <core-tree
-      [tree]="item"
+      [root]="item"
       [getId]="getId"
       [getChildren]="getChildren"
     ></core-tree>
@@ -81,7 +81,7 @@ export const withCustomTemplate: StoryFn<TreeComponent<Item>> = () => ({
   },
   template: `
     <core-tree
-      [tree]="item"
+      [root]="item"
       [template]="itemTemplate"
       [getId]="getId"
       [getChildren]="getChildren"

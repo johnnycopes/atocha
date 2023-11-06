@@ -1,15 +1,15 @@
 <ng-container
   [ngTemplateOutlet]="template ? template : defaultTemplate"
   [ngTemplateOutletContext]="{
-    $implicit: tree,
+    $implicit: root,
     level: level
   }"
 ></ng-container>
 
-<ng-container *ngIf="getChildren(tree)?.length">
+<ng-container *ngIf="getChildren(root)?.length">
   <core-tree
-    *ngFor="let child of getChildren(tree); trackBy: trackByFn"
-    [tree]="child"
+    *ngFor="let child of getChildren(root); trackBy: trackByFn"
+    [root]="child"
     [template]="template ? template : defaultTemplate"
     [level]="level + 1"
     [getId]="getId"

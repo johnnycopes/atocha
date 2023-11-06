@@ -52,7 +52,7 @@ import { SelectionTreeComponent } from '../selection-tree/selection-tree.compone
 export class CountedSelectionTreeComponent<T>
   implements ControlValueAccessor, OnChanges
 {
-  @Input() tree: Node<T> | undefined;
+  @Input() root: Node<T> | undefined;
   @Input() getId: GetId<T> = () => '';
   @Input() getChildren: GetChildren<T> = () => [];
   @Input() getLeafNodeCount: GetLeafCount<T> = () => 0;
@@ -74,12 +74,12 @@ export class CountedSelectionTreeComponent<T>
   constructor(private _changeDetectorRef: ChangeDetectorRef) {}
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes['tree']) {
-      const tree: Node<T> = changes['tree'].currentValue;
+    if (changes['root']) {
+      const root: Node<T> = changes['root'].currentValue;
 
-      this._id = this.getId(tree);
+      this._id = this.getId(root);
       this._counter = new Counter<T>(
-        tree,
+        root,
         this.getId,
         this.getChildren,
         this.getLeafNodeCount,
@@ -93,7 +93,7 @@ export class CountedSelectionTreeComponent<T>
   }
 
   writeValue(model: Model): void {
-    if (model && this.tree) {
+    if (model && this.root) {
       this.model = model;
       this.selectedCounts = this._counter.update(this.model).selectedCounts;
       this.selectedChange.emit(this.selectedCounts[this._id]);
@@ -109,7 +109,7 @@ export class CountedSelectionTreeComponent<T>
   registerOnTouched(fn: (model: Model) => void): void {}
 
   onChange(model: Model): void {
-    if (this.tree) {
+    if (this.root) {
       this.model = model;
       this._onChangeFn(this.model);
 
