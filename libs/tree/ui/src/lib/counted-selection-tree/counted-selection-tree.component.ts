@@ -26,7 +26,7 @@ import {
   GetId,
   GetLeafCount,
   Model,
-  Tree,
+  Node,
 } from '@atocha/tree/util';
 import { SelectionTreeComponent } from '../selection-tree/selection-tree.component';
 
@@ -52,7 +52,7 @@ import { SelectionTreeComponent } from '../selection-tree/selection-tree.compone
 export class CountedSelectionTreeComponent<T>
   implements ControlValueAccessor, OnChanges
 {
-  @Input() tree: Tree<T> | undefined;
+  @Input() tree: Node<T> | undefined;
   @Input() getId: GetId<T> = () => '';
   @Input() getChildren: GetChildren<T> = () => [];
   @Input() getLeafNodeCount: GetLeafCount<T> = () => 0;
@@ -75,7 +75,7 @@ export class CountedSelectionTreeComponent<T>
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['tree']) {
-      const tree: Tree<T> = changes['tree'].currentValue;
+      const tree: Node<T> = changes['tree'].currentValue;
 
       this._id = this.getId(tree);
       this._counter = new Counter<T>(
