@@ -12,13 +12,13 @@ interface Item {
 @Component({
   template: `
     <core-tree
-      [tree]="leafItem"
+      [root]="leafItem"
       [template]="itemTemplate"
       [getId]="getId"
       [getChildren]="getItems"
     ></core-tree>
     <core-tree
-      [tree]="nestedItem"
+      [root]="nestedItem"
       [template]="itemTemplate"
       [getId]="getId"
       [getChildren]="getItems"
