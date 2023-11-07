@@ -4,7 +4,7 @@ import {
   GetId,
   GetLeafCount,
   Model,
-  isArrayModel,
+  isArrayIds,
 } from './shared/types';
 import { getCounts } from './counter/get-counts';
 
@@ -32,7 +32,7 @@ export class Counter<T> {
   }
 
   update(model: Model): Counter<T> {
-    const set = isArrayModel(model) ? new Set(model) : model;
+    const set = isArrayIds(model) ? new Set(model) : model;
     this._selectedCounts = this._getCounts((leaf: T): number =>
       set.has(this._getId(leaf)) ? this._getLeafCount(leaf) : 0
     );

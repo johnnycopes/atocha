@@ -1,7 +1,7 @@
-import { ArrayModel, States } from '../shared/types';
+import { ArrayIds, States } from '../shared/types';
 import { IdsTree } from './ids/ids-tree';
 
-export function toArray<T>(states: States, tree: IdsTree<T>): ArrayModel {
+export function toArray<T>(states: States, tree: IdsTree<T>): ArrayIds {
   const model: string[] = [];
 
   for (const id of tree.descendingIds) {

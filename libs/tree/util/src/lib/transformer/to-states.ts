@@ -1,9 +1,9 @@
-import { Model, MutableStates, isArrayModel } from '../shared/types';
+import { Model, MutableStates, isArrayIds } from '../shared/types';
 import { IdsTree } from './ids/ids-tree';
 
 export function toStates<T>(model: Model, tree: IdsTree<T>): MutableStates {
   const states: MutableStates = {};
-  const idsModel = isArrayModel(model) ? new Set(model) : model;
+  const idsModel = isArrayIds(model) ? new Set(model) : model;
 
   /*
     Iterating through the IDs backwards builds up `states` from the leaves of

@@ -1,9 +1,9 @@
 import {
-  ArrayModel,
+  ArrayIds,
   GetChildren,
   GetId,
   Model,
-  SetModel,
+  SetIds,
   MutableStates,
   States,
 } from './shared/types';
@@ -21,11 +21,11 @@ export class Transformer<T> {
     return this._states;
   }
 
-  get array(): ArrayModel {
+  get array(): ArrayIds {
     return toArray(this.states, this._ids);
   }
 
-  get set(): SetModel {
+  get set(): SetIds {
     return toSet(this.states, this._ids);
   }
 
