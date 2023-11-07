@@ -1,9 +1,9 @@
 import {
-  ArrayIds,
   GetChildren,
   GetId,
   GetLeafCount,
-  SetIds,
+  IdsArray,
+  IdsSet,
   States,
 } from './types';
 
@@ -67,8 +67,8 @@ export const SOME_SELECTED_STATES: States = {
   Fes: 'checked',
 };
 
-export const SOME_SELECTED_ARRAY_MODEL: ArrayIds = ['Swaziland', 'Fes'];
-export const SOME_SELECTED_SET_MODEL: SetIds = new Set(
+export const SOME_SELECTED_ARRAY_MODEL: IdsArray = ['Swaziland', 'Fes'];
+export const SOME_SELECTED_SET_MODEL: IdsSet = new Set(
   SOME_SELECTED_ARRAY_MODEL
 );
 
@@ -84,14 +84,14 @@ export const ALL_SELECTED_STATES: States = {
   Fes: 'checked',
 };
 
-export const ALL_SELECTED_ARRAY_MODEL: ArrayIds = [
+export const ALL_SELECTED_ARRAY_MODEL: IdsArray = [
   'Central Africa',
   'Swaziland',
   'Namibia',
   'Marrakesh',
   'Fes',
 ];
-export const ALL_SELECTED_SET_MODEL: SetIds = new Set(ALL_SELECTED_ARRAY_MODEL);
+export const ALL_SELECTED_SET_MODEL: IdsSet = new Set(ALL_SELECTED_ARRAY_MODEL);
 
 export const getId: GetId<TestItem> = ({ id }) => id;
 export const getChildren: GetChildren<TestItem> = ({ children }) =>
