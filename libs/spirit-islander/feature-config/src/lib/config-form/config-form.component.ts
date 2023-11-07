@@ -23,7 +23,7 @@ import {
   createMapsRoot,
   createScenariosRoot,
   createSpiritsRoot,
-} from '../checkbox-tree/create-tree';
+} from '../checkbox-tree/create-root';
 import { ConfigForm } from './config-form';
 import { CheckboxTreeComponent } from '../checkbox-tree/checkbox-tree.component';
 import { SelectDifficultyRangeComponent } from '../select-difficulty-range/select-difficulty-range.component';
