@@ -10,7 +10,7 @@ export function toStates<T>(model: Model, tree: IdsTree<T>): MutableStates {
     the tree up towards the root. This approach is more performant since each node
     reliably knows the state of all of its children up front.
   */
-  for (const id of tree.ascending) {
+  for (const id of tree.ascendingIds) {
     if (idsModel.has(id)) {
       states[id] = 'checked';
     } else {

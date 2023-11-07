@@ -4,8 +4,8 @@ import { IdsMap, createMap } from './create-map';
 
 export class IdsTree<T> {
   private readonly _map: IdsMap;
-  readonly descending: readonly string[];
-  readonly ascending: readonly string[];
+  readonly descendingIds: readonly string[];
+  readonly ascendingIds: readonly string[];
 
   constructor(
     private _root: T,
@@ -13,8 +13,8 @@ export class IdsTree<T> {
     private _getChildren: GetChildren<T>
   ) {
     this._map = createMap(this._root, this._getId, this._getChildren);
-    this.descending = Array.from(this._map.keys());
-    this.ascending = this.descending.slice().reverse();
+    this.descendingIds = Array.from(this._map.keys());
+    this.ascendingIds = this.descendingIds.slice().reverse();
   }
 
   getChildrenIds(id: string): readonly string[] {

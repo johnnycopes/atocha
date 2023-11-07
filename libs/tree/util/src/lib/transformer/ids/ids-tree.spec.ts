@@ -8,9 +8,9 @@ describe('IdsTree', () => {
     tree = new IdsTree(AFRICA, getId, getChildren);
   });
 
-  describe('.descending', () => {
+  describe('.descendingIds', () => {
     it("contains a flat array of all nodes' IDs in order from root to leaves", () => {
-      expect(tree.descending).toEqual([
+      expect(tree.descendingIds).toEqual([
         'Africa',
         'Southern Africa',
         'Central Africa',
@@ -24,9 +24,9 @@ describe('IdsTree', () => {
     });
   });
 
-  describe('.ascending', () => {
+  describe('.ascendingIds', () => {
     it("contains a flat array of all nodes' IDs in order from leaves to root", () => {
-      expect(tree.ascending).toEqual([
+      expect(tree.ascendingIds).toEqual([
         'Fes',
         'Marrakesh',
         'Morocco',
