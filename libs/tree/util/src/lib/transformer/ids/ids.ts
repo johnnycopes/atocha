@@ -2,7 +2,7 @@ import { GetChildren, GetId } from '../../shared/types';
 import { bfsReduce } from '../../shared/bfs-reduce';
 import { IdsMap, createMap } from './create-map';
 
-export class Ids<T> {
+export class IdsTree<T> {
   private readonly _map: IdsMap;
   readonly descending: readonly string[];
   readonly ascending: readonly string[];

@@ -7,14 +7,14 @@ import {
   MutableStates,
   States,
 } from './shared/types';
-import { Ids } from './transformer/ids/ids';
+import { IdsTree } from './transformer/ids/ids';
 import { toArray } from './transformer/to-array';
 import { toSet } from './transformer/to-set';
 import { toStates } from './transformer/to-states';
 import { updateStates } from './transformer/update-states';
 
 export class Transformer<T> {
-  private readonly _ids: Ids<T>;
+  private readonly _ids: IdsTree<T>;
   private _states: MutableStates;
 
   get states(): States {
@@ -35,7 +35,7 @@ export class Transformer<T> {
     private _getChildren: GetChildren<T>,
     private _initialValue: Model = []
   ) {
-    this._ids = new Ids(this._root, this._getId, this._getChildren);
+    this._ids = new IdsTree(this._root, this._getId, this._getChildren);
     this._states = this._toStates(this._initialValue);
   }
 

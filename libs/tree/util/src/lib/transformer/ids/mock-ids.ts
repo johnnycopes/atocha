@@ -1,4 +1,4 @@
 import { AFRICA, getId, getChildren } from '../../shared/mock-data';
-import { Ids } from './ids';
+import { IdsTree } from './ids';
 
-export const MOCK_IDS = new Ids(AFRICA, getId, getChildren);
+export const MOCK_IDS = new IdsTree(AFRICA, getId, getChildren);

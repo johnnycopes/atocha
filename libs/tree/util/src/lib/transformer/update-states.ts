@@ -1,5 +1,5 @@
 import { State, MutableStates } from '../shared/types';
-import { Ids } from './ids/ids';
+import { IdsTree } from './ids/ids';
 
 export function updateStates<T>({
   states,
@@ -7,7 +7,7 @@ export function updateStates<T>({
   targetId,
 }: {
   states: MutableStates;
-  ids: Ids<T>;
+  ids: IdsTree<T>;
   targetId: string;
 }): void {
   const { ancestorIds, nodeAndDescendantIds } = ids.getConnectedIds(targetId);
