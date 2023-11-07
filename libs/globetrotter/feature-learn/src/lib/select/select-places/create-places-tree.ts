@@ -5,38 +5,38 @@ import {
   Region,
 } from '@atocha/globetrotter/util';
 
-export type PlaceTree = Root | Place;
-
-interface Root {
+export interface Root {
   name: string;
   regions: Region[];
 }
 
-export function createPlaceTree(name: string, regions: Region[]): PlaceTree {
+type Node = Root | Place;
+
+export function createPlaceRoot(name: string, regions: Region[]): Root {
   return {
     name,
     regions,
   };
 }
 
-export function getId({ name }: PlaceTree): string {
+export function getId({ name }: Node): string {
   return name;
 }
 
-export function getChildren(tree: PlaceTree): Place[] {
-  if (isRoot(tree)) {
-    return tree.regions;
-  } else if (isRegion(tree)) {
-    return tree.subregions;
+export function getChildren(node: Node): Place[] {
+  if (isRoot(node)) {
+    return node.regions;
+  } else if (isRegion(node)) {
+    return node.subregions;
   } else {
     return [];
   }
 }
 
-export function getNumberOfCountries(tree: PlaceTree): number {
-  return !isRoot(tree) && isSubregion(tree) ? tree.countries.length : 0;
+export function getNumberOfCountries(node: Node): number {
+  return !isRoot(node) && isSubregion(node) ? node.countries.length : 0;
 }
 
-function isRoot(tree: PlaceTree): tree is Root {
-  return 'regions' in tree;
+function isRoot(node: Node): node is Root {
+  return 'regions' in node;
 }
