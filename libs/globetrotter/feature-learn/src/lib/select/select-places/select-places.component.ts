@@ -13,12 +13,12 @@ import { ButtonComponent, CheckboxComponent } from '@atocha/core/ui';
 import { CountedSelectionTreeComponent } from '@atocha/tree/ui';
 import { Region, mapRegionsToPlacesModel } from '@atocha/globetrotter/util';
 import {
-  createPlaceTree,
+  createPlaceRoot,
   getId,
   getChildren,
   getNumberOfCountries,
-  PlaceTree,
-} from './create-places-tree';
+  Root,
+} from './create-places-root';
 
 @Component({
   standalone: true,
@@ -40,12 +40,12 @@ export class SelectPlacesComponent {
   @Input()
   set regions(regions: Region[]) {
     this._allPlaces = mapRegionsToPlacesModel(regions);
-    this.tree = createPlaceTree('Places', regions);
+    this.root = createPlaceRoot('Places', regions);
   }
   @Input() places: string[] = [];
   @Output() placesChange = new EventEmitter<string[]>();
 
-  tree: PlaceTree | undefined;
+  root: Root | undefined;
   getId = getId;
   getChildren = getChildren;
   getNumberOfCountries = getNumberOfCountries;

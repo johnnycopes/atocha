@@ -1,7 +1,7 @@
 import { Country, Region } from '@atocha/globetrotter/util';
-import { createPlaceTree } from './create-places-tree';
+import { createPlaceRoot } from './create-places-root';
 
-describe('createTree', () => {
+describe('createPlaceRoot', () => {
   it('returns a consistent tree from regions data', () => {
     const MOCK_REGIONS: Region[] = [
       {
@@ -19,7 +19,7 @@ describe('createTree', () => {
       },
     ];
 
-    expect(createPlaceTree('Places', MOCK_REGIONS)).toEqual({
+    expect(createPlaceRoot('Places', MOCK_REGIONS)).toEqual({
       name: 'Places',
       regions: [
         {

@@ -14,7 +14,7 @@ import {
   ExpansionEmblemComponent,
 } from '@atocha/spirit-islander/ui';
 import { SelectionTreeComponent } from '@atocha/tree/ui';
-import { ConfigTree } from './create-tree';
+import { Node } from './create-root';
 
 @Component({
   selector: 'app-checkbox-tree',
@@ -33,11 +33,11 @@ import { ConfigTree } from './create-tree';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CheckboxTreeComponent<T> {
-  @Input() tree: ConfigTree<T> | undefined;
+  @Input() root: Node<T> | undefined;
   @Input() form: FormGroup | undefined;
   @Input() controlName = '';
   @Output() nodeClick = new EventEmitter<string>();
 
-  getId = <T>({ id }: ConfigTree<T>) => id;
-  getChildren = <T>({ children }: ConfigTree<T>) => children ?? [];
+  getId = <T>({ id }: Node<T>) => id;
+  getChildren = <T>({ children }: Node<T>) => children ?? [];
 }

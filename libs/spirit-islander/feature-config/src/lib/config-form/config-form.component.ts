@@ -17,13 +17,13 @@ import { ButtonComponent } from '@atocha/core/ui';
 import { CardComponent, CardGroupComponent } from '@atocha/spirit-islander/ui';
 import { Config, ExpansionName } from '@atocha/spirit-islander/util';
 import {
-  createAdversariesTree,
-  createBoardsTree,
-  createExpansionsTree,
-  createMapsTree,
-  createScenariosTree,
-  createSpiritsTree,
-} from '../checkbox-tree/create-tree';
+  createAdversariesRoot,
+  createBoardsRoot,
+  createExpansionsRoot,
+  createMapsRoot,
+  createScenariosRoot,
+  createSpiritsRoot,
+} from '../checkbox-tree/create-root';
 import { ConfigForm } from './config-form';
 import { CheckboxTreeComponent } from '../checkbox-tree/checkbox-tree.component';
 import { SelectDifficultyRangeComponent } from '../select-difficulty-range/select-difficulty-range.component';
@@ -65,12 +65,12 @@ export class ConfigFormComponent implements OnInit, OnDestroy {
   subscriptions = new Subscription();
   expansionsClickSubject = new Subject<'Expansions' | ExpansionName>();
 
-  expansionsTree = createExpansionsTree();
-  spiritsTree = createSpiritsTree([]);
-  mapsTree = createMapsTree([]);
-  boardsTree = createBoardsTree([]);
-  scenariosTree = createScenariosTree([]);
-  adversariesTree = createAdversariesTree([]);
+  expansionsRoot = createExpansionsRoot();
+  spiritsRoot = createSpiritsRoot([]);
+  mapsRoot = createMapsRoot([]);
+  boardsRoot = createBoardsRoot([]);
+  scenariosRoot = createScenariosRoot([]);
+  adversariesRoot = createAdversariesRoot([]);
   jaggedEarth = false;
 
   ngOnInit(): void {
@@ -105,11 +105,11 @@ export class ConfigFormComponent implements OnInit, OnDestroy {
   }
 
   private _updateFormData(expansions: ExpansionName[]): void {
-    this.spiritsTree = createSpiritsTree(expansions);
-    this.mapsTree = createMapsTree(expansions);
-    this.boardsTree = createBoardsTree(expansions);
-    this.scenariosTree = createScenariosTree(expansions);
-    this.adversariesTree = createAdversariesTree(expansions);
+    this.spiritsRoot = createSpiritsRoot(expansions);
+    this.mapsRoot = createMapsRoot(expansions);
+    this.boardsRoot = createBoardsRoot(expansions);
+    this.scenariosRoot = createScenariosRoot(expansions);
+    this.adversariesRoot = createAdversariesRoot(expansions);
     this.jaggedEarth = expansions.includes('Jagged Earth');
   }
 }

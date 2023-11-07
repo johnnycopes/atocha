@@ -1,8 +1,8 @@
 <ui-small-caps header="Places">
   <core-counted-selection-tree
-    *ngIf="tree"
+    *ngIf="root"
     class="places"
-    [root]="tree"
+    [root]="root"
     [getId]="getId"
     [getChildren]="getChildren"
     [getLeafNodeCount]="getNumberOfCountries"
