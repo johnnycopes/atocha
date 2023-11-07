@@ -10,7 +10,7 @@ import {
 
 describe('Counter', () => {
   describe('initializing', () => {
-    it('returns total counts when passed empty model', () => {
+    it('returns total counts when passed empty IDs collection', () => {
       const counter = new Counter(AFRICA, getId, getChildren, getTargetCount);
 
       expect(counter.totalCounts).toEqual({
@@ -39,7 +39,7 @@ describe('Counter', () => {
   });
 
   describe('updating', () => {
-    it('returns correct counts records after updating to partial model', () => {
+    it('returns correct counts records after updating to partial IDs collection', () => {
       const counter = new Counter(AFRICA, getId, getChildren, getTargetCount);
 
       counter.update(SOME_SELECTED_IDS_ARRAY);
@@ -68,7 +68,7 @@ describe('Counter', () => {
       });
     });
 
-    it('returns correct counts records after updating to full model', () => {
+    it('returns correct counts records after updating to full IDs collection', () => {
       const counter = new Counter(AFRICA, getId, getChildren, getTargetCount);
 
       counter.update(ALL_SELECTED_IDS_ARRAY);

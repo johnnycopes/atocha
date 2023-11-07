@@ -10,36 +10,36 @@ import {
 import { MOCK_TREE } from './ids/mock-ids';
 
 describe('toStates', () => {
-  describe('passing in an array model', () => {
-    it('transforms empty model', () => {
+  describe('passing in an IDs array', () => {
+    it('transforms empty IDs array', () => {
       expect(toStates([], MOCK_TREE)).toEqual({});
     });
 
-    it('transforms partial model', () => {
+    it('transforms partial IDs array', () => {
       expect(toStates(SOME_SELECTED_IDS_ARRAY, MOCK_TREE)).toEqual(
         SOME_SELECTED_STATES
       );
     });
 
-    it('transforms full model', () => {
+    it('transforms full IDs array', () => {
       expect(toStates(ALL_SELECTED_IDS_ARRAY, MOCK_TREE)).toEqual(
         ALL_SELECTED_STATES
       );
     });
   });
 
-  describe('passing in a set model', () => {
-    it('transforms empty model', () => {
+  describe('passing in an IDs set', () => {
+    it('transforms empty IDs set', () => {
       expect(toStates(new Set(), MOCK_TREE)).toEqual({});
     });
 
-    it('transforms partial model', () => {
+    it('transforms partial IDs set', () => {
       expect(toStates(SOME_SELECTED_IDS_SET, MOCK_TREE)).toEqual(
         SOME_SELECTED_STATES
       );
     });
 
-    it('transforms full model', () => {
+    it('transforms full IDs set', () => {
       expect(toStates(ALL_SELECTED_IDS_SET, MOCK_TREE)).toEqual(
         ALL_SELECTED_STATES
       );
