@@ -6,7 +6,7 @@ export {
   GetChildren,
   GetId,
   GetLeafCount,
-  Ids as Model,
+  Ids as Ids,
   State,
   States,
 } from './lib/shared/types';

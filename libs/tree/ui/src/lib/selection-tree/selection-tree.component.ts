@@ -22,7 +22,7 @@ import {
 import {
   GetChildren,
   GetId,
-  Model,
+  Ids,
   States,
   Transformer,
 } from '@atocha/tree/util';
@@ -55,14 +55,14 @@ export class SelectionTreeComponent<T>
   @Input() getChildren: GetChildren<T> = () => [];
   @Input() template: TemplateRef<unknown> | undefined;
   @Output() nodeClick = new EventEmitter<string>();
-  model: Model = [];
+  ids: Ids = [];
   states: States = {};
   private _transformer = new Transformer<T>(
     {} as T,
     this.getId,
     this.getChildren
   );
-  private _onChangeFn: (value: Model) => void = () => [];
+  private _onChangeFn: (value: Ids) => void = () => [];
 
   constructor(private _changeDetectorRef: ChangeDetectorRef) {}
 
@@ -74,27 +74,27 @@ export class SelectionTreeComponent<T>
         tree,
         this.getId,
         this.getChildren,
-        this.model
+        this.ids
       );
 
-      this.writeValue(this.model);
+      this.writeValue(this.ids);
     }
   }
 
-  writeValue(model: Model): void {
-    if (model) {
-      this.model = model;
-      this.states = this._transformer.updateMultiple(model).states;
+  writeValue(ids: Ids): void {
+    if (ids) {
+      this.ids = ids;
+      this.states = this._transformer.updateMultiple(ids).states;
     }
     this._changeDetectorRef.markForCheck();
   }
 
-  registerOnChange(fn: (value: Model) => void): void {
+  registerOnChange(fn: (value: Ids) => void): void {
     this._onChangeFn = fn;
   }
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-empty-function
-  registerOnTouched(_fn: (value: Model) => void): void {}
+  registerOnTouched(_fn: (value: Ids) => void): void {}
 
   onChange = (node: T): void => {
     const nodeId = this.getId(node);
@@ -102,7 +102,7 @@ export class SelectionTreeComponent<T>
     this.nodeClick.emit(nodeId);
     this._transformer.updateOne(nodeId);
     this.states = this._transformer.states;
-    this.model = this._transformer.array;
-    this._onChangeFn(this.model);
+    this.ids = this._transformer.array;
+    this._onChangeFn(this.ids);
   };
 }
