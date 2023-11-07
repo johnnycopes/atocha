@@ -9,7 +9,7 @@ import {
 } from '@angular/core';
 
 import { trackByFactory } from '@atocha/core/ui';
-import { GetChildren, GetId, Tree } from '@atocha/tree/util';
+import { GetChildren, GetId, Node } from '@atocha/tree/util';
 
 interface TreeNodeContext<T> {
   $implicit: T;
@@ -28,7 +28,7 @@ interface TreeNodeContext<T> {
   },
 })
 export class TreeComponent<T> implements OnInit {
-  @Input() tree!: Tree<T>;
+  @Input() root!: Node<T>;
   @Input() getId: GetId<T> = () => '';
   @Input() getChildren: GetChildren<T> = () => [];
 
@@ -47,7 +47,7 @@ export class TreeComponent<T> implements OnInit {
   trackByFn = trackByFactory(this.getId);
 
   ngOnInit(): void {
-    if (!this.tree) {
+    if (!this.root) {
       throw new Error('A node must be passed into the TreeComponent');
     }
   }

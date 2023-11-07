@@ -1,29 +1,29 @@
-import { reduceRecursively } from '../shared/reduce-recursively';
+import { bfsReduce } from '../shared/bfs-reduce';
 import {
   Counts,
   GetChildren,
   GetId,
   GetLeafCount,
   MutableCounts,
-  Tree,
+  Node,
 } from '../shared/types';
 
 export function getCounts<T>(
-  tree: Tree<T>,
+  root: Node<T>,
   getId: GetId<T>,
   getChildren: GetChildren<T>,
   getLeafCount: GetLeafCount<T>
 ): Counts {
-  return reduceRecursively<T, MutableCounts>({
-    item: tree,
-    getItems: getChildren,
+  return bfsReduce<T, MutableCounts>({
+    root,
+    getChildren,
     initialValue: {},
-    reducer: (accum, curr) => {
-      accum[getId(curr)] = reduceRecursively({
-        item: curr,
-        getItems: getChildren,
+    reducer: (accum, node) => {
+      accum[getId(node)] = bfsReduce({
+        root: node,
+        getChildren,
         initialValue: 0,
-        reducer: (total, item) => total + getLeafCount(item),
+        reducer: (total, node) => total + getLeafCount(node),
       });
       return accum;
     },

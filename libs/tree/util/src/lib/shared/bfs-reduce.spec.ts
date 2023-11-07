@@ -1,4 +1,4 @@
-import { reduceRecursively } from './reduce-recursively';
+import { bfsReduce } from './bfs-reduce';
 
 interface Item {
   name: string;
@@ -6,36 +6,36 @@ interface Item {
   children?: Item[];
 }
 
-describe('reduceRecursively', () => {
-  let getItems: (item: Item) => Item[];
+describe('bfsReduce', () => {
+  let getChildren: (node: Item) => Item[];
 
   beforeEach(() => {
-    getItems = (item) => item?.children ?? [];
+    getChildren = (node) => node?.children ?? [];
   });
 
-  it('returns a array of only the item when it has no children', () => {
-    const pusher = (accumulator: Item[], item: Item) => [...accumulator, item];
+  it('returns a array of only the root when it has no children', () => {
+    const pusher = (accumulator: Item[], node: Item) => [...accumulator, node];
 
     expect(
-      reduceRecursively({
-        item: { name: 'Item 1' },
-        getItems,
+      bfsReduce({
+        root: { name: 'Item 1' },
+        getChildren,
         initialValue: [],
         reducer: pusher,
       })
     ).toEqual([{ name: 'Item 1' }]);
 
     expect(
-      reduceRecursively({
-        item: { name: 'Item 2', children: [] },
-        getItems,
+      bfsReduce({
+        root: { name: 'Item 2', children: [] },
+        getChildren,
         initialValue: [],
         reducer: pusher,
       })
     ).toEqual([{ name: 'Item 2', children: [] }]);
   });
 
-  it('returns an array of nested items', () => {
+  it('returns an array of nested nodes', () => {
     const item: Item = {
       name: 'Item 1',
       children: [
@@ -46,9 +46,9 @@ describe('reduceRecursively', () => {
     };
 
     expect(
-      reduceRecursively<Item, Item[]>({
-        item,
-        getItems,
+      bfsReduce<Item, Item[]>({
+        root: item,
+        getChildren,
         initialValue: [],
         reducer: (accumulator, item) => [...accumulator, item],
       })
@@ -68,7 +68,7 @@ describe('reduceRecursively', () => {
     ]);
   });
 
-  it('returns an array of a property on all items', () => {
+  it('returns an array of a property on all nodes', () => {
     const item: Item = {
       name: 'Item 1',
       children: [
@@ -79,9 +79,9 @@ describe('reduceRecursively', () => {
     };
 
     expect(
-      reduceRecursively<Item, string[]>({
-        item,
-        getItems,
+      bfsReduce<Item, string[]>({
+        root: item,
+        getChildren,
         initialValue: [],
         reducer: (accumulator, item) => [...accumulator, item.name],
       })
@@ -103,13 +103,13 @@ describe('reduceRecursively', () => {
     };
 
     expect(
-      reduceRecursively<Item, Record<string, string>>({
-        item,
-        getItems,
+      bfsReduce<Item, Record<string, string>>({
+        root: item,
+        getChildren,
         initialValue: {},
-        reducer: (accumulator, item) => ({
+        reducer: (accumulator, node) => ({
           ...accumulator,
-          [item.name]: item.description ?? 'No description',
+          [node.name]: node.description ?? 'No description',
         }),
       })
     ).toEqual({

@@ -1,5 +1,5 @@
-import { GetChildren, GetId, Tree } from '../../shared/types';
-import { reduceRecursively } from '../../shared/reduce-recursively';
+import { GetChildren, GetId, Node } from '../../shared/types';
+import { bfsReduce } from '../../shared/bfs-reduce';
 import { IdsMap, createMap } from './create-map';
 
 export class Ids<T> {
@@ -8,11 +8,11 @@ export class Ids<T> {
   readonly ascending: readonly string[];
 
   constructor(
-    private _tree: Tree<T>,
+    private _root: Node<T>,
     private _getId: GetId<T>,
     private _getChildren: GetChildren<T>
   ) {
-    this._map = createMap(this._tree, this._getId, this._getChildren);
+    this._map = createMap(this._root, this._getId, this._getChildren);
     this.descending = Array.from(this._map.keys());
     this.ascending = this.descending.slice().reverse();
   }
@@ -22,12 +22,12 @@ export class Ids<T> {
   }
 
   getConnectedIds(id: string): Readonly<{
-    itemAndDescendantsIds: readonly string[];
+    nodeAndDescendantIds: readonly string[];
     ancestorIds: readonly string[];
   }> {
-    const itemAndDescendantsIds = reduceRecursively<string, string[]>({
-      item: id,
-      getItems: (id) => this.getChildrenIds(id),
+    const nodeAndDescendantIds = bfsReduce<string, string[]>({
+      root: id,
+      getChildren: (id) => this.getChildrenIds(id),
       initialValue: [],
       reducer: (accum, curr) => {
         accum.push(curr);
@@ -35,9 +35,9 @@ export class Ids<T> {
       },
     });
 
-    const ancestorIds = reduceRecursively<string, string[]>({
-      item: id,
-      getItems: (id) => {
+    const ancestorIds = bfsReduce<string, string[]>({
+      root: id,
+      getChildren: (id) => {
         const parentId = this._map.get(id)?.parentId;
         return parentId ? [parentId] : [];
       },
@@ -48,6 +48,6 @@ export class Ids<T> {
       },
     });
 
-    return { ancestorIds, itemAndDescendantsIds };
+    return { ancestorIds, nodeAndDescendantIds };
   }
 }

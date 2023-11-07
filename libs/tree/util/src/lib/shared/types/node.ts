@@ -1,19 +1,19 @@
 /**
  * A node in the tree.
  */
-export type Tree<T> = T;
+export type Node<T> = T;
 
 /**
  * Callback function that retrieves the given node's unique ID.
  */
-export type GetId<T> = (node: Tree<T>) => string;
+export type GetId<T> = (node: Node<T>) => string;
 
 /**
  * Callback function that retrieves the given node's children to recurse over.
  */
-export type GetChildren<T> = (node: Tree<T>) => readonly Tree<T>[];
+export type GetChildren<T> = (node: Node<T>) => readonly Node<T>[];
 
 /**
  * Callback function that retrieves the given node's countable quantity.
  */
-export type GetLeafCount<T> = (node: Tree<T>) => number;
+export type GetLeafCount<T> = (node: Node<T>) => number;

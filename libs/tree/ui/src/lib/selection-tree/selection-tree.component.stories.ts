@@ -36,7 +36,7 @@ export default {
       control: { type: 'select' },
       options: ['normal', 'large'],
     },
-    tree: {
+    root: {
       control: { type: 'select' },
       options: ['Africa', 'Small Africa'],
       mapping: {
@@ -57,7 +57,7 @@ const Template: StoryFn<SelectionTreeComponent<TestItem>> = (args: Args) => ({
   template: `
     <core-selection-tree
       [class]="className"
-      [tree]="tree"
+      [root]="root"
       [getId]="getId"
       [getChildren]="getChildren"
       [template]="checkboxTemplate"
@@ -124,7 +124,7 @@ type Args = Partial<SelectionTreeComponent<TestItem>> & {
 };
 
 function createArgs(
-  { tree = AFRICA, model = [], className = '' } = {} as Args
+  { root = AFRICA, model = [], className = '' } = {} as Args
 ): Args {
-  return { tree, model, className };
+  return { root, model, className };
 }

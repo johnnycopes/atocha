@@ -1,5 +1,5 @@
-import { GetChildren, GetId, Tree } from '../../shared/types';
-import { reduceRecursively } from '../../shared/reduce-recursively';
+import { GetChildren, GetId, Node } from '../../shared/types';
+import { bfsReduce } from '../../shared/bfs-reduce';
 
 export type IdsMap = Map<
   string,
@@ -7,18 +7,18 @@ export type IdsMap = Map<
 >;
 
 export function createMap<T>(
-  tree: Tree<T>,
+  root: Node<T>,
   getId: GetId<T>,
   getChildren: GetChildren<T>
 ): IdsMap {
-  return reduceRecursively<T, IdsMap>({
-    item: tree,
-    getItems: getChildren,
+  return bfsReduce<T, IdsMap>({
+    root,
+    getChildren,
     initialValue: new Map(),
-    reducer: (accum, item, parent) =>
-      accum.set(getId(item), {
+    reducer: (accum, node, parent) =>
+      accum.set(getId(node), {
         parentId: parent ? getId(parent) : undefined,
-        childrenIds: getChildren(item).map(getId),
+        childrenIds: getChildren(node).map(getId),
       }),
   });
 }
