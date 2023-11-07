@@ -2,7 +2,7 @@ import {
   ArrayIds,
   GetChildren,
   GetId,
-  Model,
+  Ids,
   SetIds,
   MutableStates,
   States,
@@ -33,10 +33,10 @@ export class Transformer<T> {
     private _root: T,
     private _getId: GetId<T>,
     private _getChildren: GetChildren<T>,
-    private _initialValue: Model = []
+    private _initialIds: Ids = []
   ) {
     this._ids = new IdsTree(this._root, this._getId, this._getChildren);
-    this._states = this._toStates(this._initialValue);
+    this._states = this._toStates(this._initialIds);
   }
 
   updateOne(id: string): Transformer<T> {
@@ -48,12 +48,12 @@ export class Transformer<T> {
     return this;
   }
 
-  updateMultiple(ids: Model): Transformer<T> {
+  updateMultiple(ids: Ids): Transformer<T> {
     this._states = this._toStates(ids);
     return this;
   }
 
-  private _toStates(model: Model): MutableStates {
-    return toStates(model, this._ids);
+  private _toStates(ids: Ids): MutableStates {
+    return toStates(ids, this._ids);
   }
 }

@@ -3,7 +3,7 @@ import {
   GetChildren,
   GetId,
   GetLeafCount,
-  Model,
+  Ids,
   isArrayIds,
 } from './shared/types';
 import { getCounts } from './counter/get-counts';
@@ -25,14 +25,14 @@ export class Counter<T> {
     private _getId: GetId<T>,
     private _getChildren: GetChildren<T>,
     private _getLeafCount: GetLeafCount<T>,
-    model: Model = new Set<string>()
+    ids: Ids = new Set<string>()
   ) {
     this._totalCounts = this._getCounts(this._getLeafCount);
-    this.update(model);
+    this.update(ids);
   }
 
-  update(model: Model): Counter<T> {
-    const set = isArrayIds(model) ? new Set(model) : model;
+  update(ids: Ids): Counter<T> {
+    const set = isArrayIds(ids) ? new Set(ids) : ids;
     this._selectedCounts = this._getCounts((leaf: T): number =>
       set.has(this._getId(leaf)) ? this._getLeafCount(leaf) : 0
     );
