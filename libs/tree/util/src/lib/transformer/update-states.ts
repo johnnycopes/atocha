@@ -1,16 +1,16 @@
 import { State, MutableStates } from '../shared/types';
-import { Ids } from './ids/ids';
+import { IdsTree } from './ids/ids-tree';
 
 export function updateStates<T>({
   states,
-  ids,
+  tree,
   targetId,
 }: {
   states: MutableStates;
-  ids: Ids<T>;
+  tree: IdsTree<T>;
   targetId: string;
 }): void {
-  const { ancestorIds, nodeAndDescendantIds } = ids.getConnectedIds(targetId);
+  const { ancestorIds, nodeAndDescendantIds } = tree.getConnectedIds(targetId);
   const shouldMarkChecked = states[targetId] !== 'checked';
 
   for (const id of nodeAndDescendantIds) {
@@ -22,7 +22,7 @@ export function updateStates<T>({
   }
 
   for (const ancestorId of ancestorIds) {
-    const ancestorChildrenIds = ids.getChildrenIds(ancestorId);
+    const ancestorChildrenIds = tree.getChildrenIds(ancestorId);
     const ancestorChildrenStates: Record<State, number> = {
       checked: 0,
       indeterminate: 0,

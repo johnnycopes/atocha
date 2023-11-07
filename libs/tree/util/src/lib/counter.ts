@@ -3,9 +3,8 @@ import {
   GetChildren,
   GetId,
   GetLeafCount,
-  Model,
-  Node,
-  isArrayModel,
+  Ids,
+  isIdsArray,
 } from './shared/types';
 import { getCounts } from './counter/get-counts';
 
@@ -22,18 +21,18 @@ export class Counter<T> {
   }
 
   constructor(
-    private _root: Node<T>,
+    private _root: T,
     private _getId: GetId<T>,
     private _getChildren: GetChildren<T>,
     private _getLeafCount: GetLeafCount<T>,
-    model: Model = new Set<string>()
+    ids: Ids = new Set<string>()
   ) {
     this._totalCounts = this._getCounts(this._getLeafCount);
-    this.update(model);
+    this.update(ids);
   }
 
-  update(model: Model): Counter<T> {
-    const set = isArrayModel(model) ? new Set(model) : model;
+  update(ids: Ids): Counter<T> {
+    const set = isIdsArray(ids) ? new Set(ids) : ids;
     this._selectedCounts = this._getCounts((leaf: T): number =>
       set.has(this._getId(leaf)) ? this._getLeafCount(leaf) : 0
     );

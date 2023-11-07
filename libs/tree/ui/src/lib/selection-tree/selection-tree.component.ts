@@ -22,10 +22,9 @@ import {
 import {
   GetChildren,
   GetId,
-  Model,
+  Ids,
   States,
   Transformer,
-  Node,
 } from '@atocha/tree/util';
 import { TreeComponent } from '../tree/tree.component';
 
@@ -51,59 +50,59 @@ import { TreeComponent } from '../tree/tree.component';
 export class SelectionTreeComponent<T>
   implements OnChanges, ControlValueAccessor
 {
-  @Input() root: Node<T> | undefined;
+  @Input() root: T | undefined;
   @Input() getId: GetId<T> = () => '';
   @Input() getChildren: GetChildren<T> = () => [];
   @Input() template: TemplateRef<unknown> | undefined;
   @Output() nodeClick = new EventEmitter<string>();
-  model: Model = [];
+  ids: Ids = [];
   states: States = {};
   private _transformer = new Transformer<T>(
     {} as T,
     this.getId,
     this.getChildren
   );
-  private _onChangeFn: (value: Model) => void = () => [];
+  private _onChangeFn: (ids: Ids) => void = () => [];
 
   constructor(private _changeDetectorRef: ChangeDetectorRef) {}
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['root']) {
-      const tree: Node<T> = changes['root'].currentValue;
+      const root: T = changes['root'].currentValue;
 
       this._transformer = new Transformer(
-        tree,
+        root,
         this.getId,
         this.getChildren,
-        this.model
+        this.ids
       );
 
-      this.writeValue(this.model);
+      this.writeValue(this.ids);
     }
   }
 
-  writeValue(model: Model): void {
-    if (model) {
-      this.model = model;
-      this.states = this._transformer.updateMultiple(model).states;
+  writeValue(ids: Ids): void {
+    if (ids) {
+      this.ids = ids;
+      this.states = this._transformer.updateMultiple(ids).states;
     }
     this._changeDetectorRef.markForCheck();
   }
 
-  registerOnChange(fn: (value: Model) => void): void {
+  registerOnChange(fn: (value: Ids) => void): void {
     this._onChangeFn = fn;
   }
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-empty-function
-  registerOnTouched(_fn: (value: Model) => void): void {}
+  registerOnTouched(_fn: (value: Ids) => void): void {}
 
-  onChange = (node: Node<T>): void => {
+  onChange = (node: T): void => {
     const nodeId = this.getId(node);
 
     this.nodeClick.emit(nodeId);
     this._transformer.updateOne(nodeId);
     this.states = this._transformer.states;
-    this.model = this._transformer.array;
-    this._onChangeFn(this.model);
+    this.ids = this._transformer.array;
+    this._onChangeFn(this.ids);
   };
 }

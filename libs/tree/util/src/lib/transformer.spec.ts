@@ -4,11 +4,11 @@ import {
   getId,
   AFRICA,
   ALL_SELECTED_STATES,
-  ALL_SELECTED_ARRAY_MODEL,
-  ALL_SELECTED_SET_MODEL,
+  ALL_SELECTED_IDS_ARRAY,
+  ALL_SELECTED_IDS_SET,
   SOME_SELECTED_STATES,
-  SOME_SELECTED_ARRAY_MODEL,
-  SOME_SELECTED_SET_MODEL,
+  SOME_SELECTED_IDS_ARRAY,
+  SOME_SELECTED_IDS_SET,
 } from './shared/mock-data';
 
 describe('Transformer', () => {
@@ -26,11 +26,11 @@ describe('Transformer', () => {
         AFRICA,
         getId,
         getChildren,
-        SOME_SELECTED_ARRAY_MODEL
+        SOME_SELECTED_IDS_ARRAY
       );
 
-      expect(transformer.array).toEqual(SOME_SELECTED_ARRAY_MODEL);
-      expect(transformer.set).toEqual(SOME_SELECTED_SET_MODEL);
+      expect(transformer.array).toEqual(SOME_SELECTED_IDS_ARRAY);
+      expect(transformer.set).toEqual(SOME_SELECTED_IDS_SET);
       expect(transformer.states).toEqual(SOME_SELECTED_STATES);
     });
 
@@ -39,11 +39,11 @@ describe('Transformer', () => {
         AFRICA,
         getId,
         getChildren,
-        ALL_SELECTED_ARRAY_MODEL
+        ALL_SELECTED_IDS_ARRAY
       );
 
-      expect(transformer.array).toEqual(ALL_SELECTED_ARRAY_MODEL);
-      expect(transformer.set).toEqual(ALL_SELECTED_SET_MODEL);
+      expect(transformer.array).toEqual(ALL_SELECTED_IDS_ARRAY);
+      expect(transformer.set).toEqual(ALL_SELECTED_IDS_SET);
       expect(transformer.states).toEqual(ALL_SELECTED_STATES);
     });
   });
@@ -54,8 +54,8 @@ describe('Transformer', () => {
 
       transformer.updateOne('Africa');
 
-      expect(transformer.array).toEqual(ALL_SELECTED_ARRAY_MODEL);
-      expect(transformer.set).toEqual(ALL_SELECTED_SET_MODEL);
+      expect(transformer.array).toEqual(ALL_SELECTED_IDS_ARRAY);
+      expect(transformer.set).toEqual(ALL_SELECTED_IDS_SET);
       expect(transformer.states).toEqual(ALL_SELECTED_STATES);
     });
 
@@ -64,7 +64,7 @@ describe('Transformer', () => {
         AFRICA,
         getId,
         getChildren,
-        ALL_SELECTED_ARRAY_MODEL
+        ALL_SELECTED_IDS_ARRAY
       );
 
       transformer.updateOne('Africa');
@@ -109,7 +109,7 @@ describe('Transformer', () => {
         AFRICA,
         getId,
         getChildren,
-        SOME_SELECTED_ARRAY_MODEL
+        SOME_SELECTED_IDS_ARRAY
       );
 
       transformer
@@ -133,10 +133,10 @@ describe('Transformer', () => {
     it('registers partial states', () => {
       const transformer = new Transformer(AFRICA, getId, getChildren);
 
-      transformer.updateMultiple(SOME_SELECTED_ARRAY_MODEL);
+      transformer.updateMultiple(SOME_SELECTED_IDS_ARRAY);
 
-      expect(transformer.array).toEqual(SOME_SELECTED_ARRAY_MODEL);
-      expect(transformer.set).toEqual(SOME_SELECTED_SET_MODEL);
+      expect(transformer.array).toEqual(SOME_SELECTED_IDS_ARRAY);
+      expect(transformer.set).toEqual(SOME_SELECTED_IDS_SET);
       expect(transformer.states).toEqual(SOME_SELECTED_STATES);
     });
 
@@ -145,7 +145,7 @@ describe('Transformer', () => {
         AFRICA,
         getId,
         getChildren,
-        ALL_SELECTED_ARRAY_MODEL
+        ALL_SELECTED_IDS_ARRAY
       );
 
       transformer

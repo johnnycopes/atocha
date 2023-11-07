@@ -1,21 +1,23 @@
+import { ReadonlyCollection, isReadonlyArray } from './collection';
+
 /**
  * A `readonly` collection of selected node IDs.
  */
-export type Model = ArrayModel | SetModel;
+export type Ids = ReadonlyCollection<string>;
 
 /**
  * A `readonly` array of selected node IDs.
  */
-export type ArrayModel = readonly string[];
+export type IdsArray = Extract<Ids, readonly string[]>;
 
 /**
  * A `readonly` set of selected node IDs.
  */
-export type SetModel = ReadonlySet<string>;
+export type IdsSet = Extract<Ids, ReadonlySet<string>>;
 
 /**
  * Used to distinguish between array vs. set models.
  */
-export function isArrayModel(model: Model): model is ArrayModel {
-  return Array.isArray(model);
+export function isIdsArray(ids: Ids): ids is IdsArray {
+  return isReadonlyArray<string>(ids);
 }

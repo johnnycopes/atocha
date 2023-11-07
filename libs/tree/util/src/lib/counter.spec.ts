@@ -4,8 +4,8 @@ import {
   getChildren,
   getTargetCount,
   AFRICA,
-  ALL_SELECTED_ARRAY_MODEL,
-  SOME_SELECTED_ARRAY_MODEL,
+  ALL_SELECTED_IDS_ARRAY,
+  SOME_SELECTED_IDS_ARRAY,
 } from './shared/mock-data';
 
 describe('Counter', () => {
@@ -42,7 +42,7 @@ describe('Counter', () => {
     it('returns correct counts records after updating to partial model', () => {
       const counter = new Counter(AFRICA, getId, getChildren, getTargetCount);
 
-      counter.update(SOME_SELECTED_ARRAY_MODEL);
+      counter.update(SOME_SELECTED_IDS_ARRAY);
 
       expect(counter.totalCounts).toEqual({
         Africa: 130,
@@ -71,7 +71,7 @@ describe('Counter', () => {
     it('returns correct counts records after updating to full model', () => {
       const counter = new Counter(AFRICA, getId, getChildren, getTargetCount);
 
-      counter.update(ALL_SELECTED_ARRAY_MODEL);
+      counter.update(ALL_SELECTED_IDS_ARRAY);
 
       expect(counter.totalCounts).toEqual({
         Africa: 130,

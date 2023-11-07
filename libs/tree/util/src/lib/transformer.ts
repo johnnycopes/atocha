@@ -1,60 +1,59 @@
 import {
-  ArrayModel,
+  IdsArray,
   GetChildren,
   GetId,
-  Model,
-  SetModel,
+  Ids,
+  IdsSet,
   MutableStates,
-  Node,
   States,
 } from './shared/types';
-import { Ids } from './transformer/ids/ids';
+import { IdsTree } from './transformer/ids/ids-tree';
 import { toArray } from './transformer/to-array';
 import { toSet } from './transformer/to-set';
 import { toStates } from './transformer/to-states';
 import { updateStates } from './transformer/update-states';
 
 export class Transformer<T> {
-  private readonly _ids: Ids<T>;
+  private readonly _tree: IdsTree<T>;
   private _states: MutableStates;
 
   get states(): States {
     return this._states;
   }
 
-  get array(): ArrayModel {
-    return toArray(this.states, this._ids);
+  get array(): IdsArray {
+    return toArray(this.states, this._tree);
   }
 
-  get set(): SetModel {
-    return toSet(this.states, this._ids);
+  get set(): IdsSet {
+    return toSet(this.states, this._tree);
   }
 
   constructor(
-    private _root: Node<T>,
+    private _root: T,
     private _getId: GetId<T>,
     private _getChildren: GetChildren<T>,
-    private _initialValue: Model = []
+    ids: Ids = []
   ) {
-    this._ids = new Ids(this._root, this._getId, this._getChildren);
-    this._states = this._toStates(this._initialValue);
+    this._tree = new IdsTree(this._root, this._getId, this._getChildren);
+    this._states = this._toStates(ids);
   }
 
   updateOne(id: string): Transformer<T> {
     updateStates({
       states: this._states,
-      ids: this._ids,
+      tree: this._tree,
       targetId: id,
     });
     return this;
   }
 
-  updateMultiple(ids: Model): Transformer<T> {
+  updateMultiple(ids: Ids): Transformer<T> {
     this._states = this._toStates(ids);
     return this;
   }
 
-  private _toStates(model: Model): MutableStates {
-    return toStates(model, this._ids);
+  private _toStates(ids: Ids): MutableStates {
+    return toStates(ids, this._tree);
   }
 }

@@ -5,7 +5,7 @@ import {
   SOME_SELECTED_STATES,
   TestItem,
 } from '../shared/mock-data';
-import { MOCK_IDS } from './ids/mock-ids';
+import { MOCK_TREE } from './ids/mock-ids';
 
 describe('updateStates', () => {
   let item: TestItem = AFRICA;
@@ -17,7 +17,7 @@ describe('updateStates', () => {
   it('selects all states when the top node is selected', () => {
     const states = {};
 
-    updateStates({ states, ids: MOCK_IDS, targetId: item.id });
+    updateStates({ states, tree: MOCK_TREE, targetId: item.id });
 
     expect(states).toEqual(ALL_SELECTED_STATES);
   });
@@ -25,7 +25,7 @@ describe('updateStates', () => {
   it('deselects all states when the top node is deselected', () => {
     const states = ALL_SELECTED_STATES;
 
-    updateStates({ states, ids: MOCK_IDS, targetId: item.id });
+    updateStates({ states, tree: MOCK_TREE, targetId: item.id });
 
     expect(states).toEqual({});
   });
@@ -35,7 +35,7 @@ describe('updateStates', () => {
 
     updateStates({
       states,
-      ids: MOCK_IDS,
+      tree: MOCK_TREE,
       targetId: 'Morocco',
     });
 
@@ -53,7 +53,7 @@ describe('updateStates', () => {
 
     updateStates({
       states,
-      ids: MOCK_IDS,
+      tree: MOCK_TREE,
       targetId: 'Namibia',
     });
 
@@ -69,7 +69,7 @@ describe('updateStates', () => {
 
     updateStates({
       states,
-      ids: MOCK_IDS,
+      tree: MOCK_TREE,
       targetId: 'Southern Africa',
     });
 

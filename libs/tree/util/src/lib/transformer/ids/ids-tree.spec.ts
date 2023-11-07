@@ -1,16 +1,16 @@
-import { Ids } from './ids';
+import { IdsTree } from './ids-tree';
 import { AFRICA, getId, getChildren, TestItem } from '../../shared/mock-data';
 
-describe('Ids', () => {
-  let ids = new Ids(AFRICA, getId, getChildren);
+describe('IdsTree', () => {
+  let tree = new IdsTree(AFRICA, getId, getChildren);
 
   beforeEach(() => {
-    ids = new Ids(AFRICA, getId, getChildren);
+    tree = new IdsTree(AFRICA, getId, getChildren);
   });
 
-  describe('.descending', () => {
+  describe('.descendingIds', () => {
     it("contains a flat array of all nodes' IDs in order from root to leaves", () => {
-      expect(ids.descending).toEqual([
+      expect(tree.descendingIds).toEqual([
         'Africa',
         'Southern Africa',
         'Central Africa',
@@ -24,9 +24,9 @@ describe('Ids', () => {
     });
   });
 
-  describe('.ascending', () => {
+  describe('.ascendingIds', () => {
     it("contains a flat array of all nodes' IDs in order from leaves to root", () => {
-      expect(ids.ascending).toEqual([
+      expect(tree.ascendingIds).toEqual([
         'Fes',
         'Marrakesh',
         'Morocco',
@@ -42,7 +42,7 @@ describe('Ids', () => {
 
   describe('getChildrenIds', () => {
     it('returns children for tree root', () => {
-      expect(ids.getChildrenIds('Africa')).toEqual([
+      expect(tree.getChildrenIds('Africa')).toEqual([
         'Southern Africa',
         'Central Africa',
         'Northern Africa',
@@ -50,15 +50,15 @@ describe('Ids', () => {
     });
 
     it('returns children for middle node in tree', () => {
-      expect(ids.getChildrenIds('Northern Africa')).toEqual(['Morocco']);
+      expect(tree.getChildrenIds('Northern Africa')).toEqual(['Morocco']);
     });
 
     it('returns empty array for leaf in tree', () => {
-      expect(ids.getChildrenIds('Marrakesh')).toEqual([]);
+      expect(tree.getChildrenIds('Marrakesh')).toEqual([]);
     });
 
     it('returns empty array for non-existent node in tree', () => {
-      expect(ids.getChildrenIds('Narnia')).toEqual([]);
+      expect(tree.getChildrenIds('Narnia')).toEqual([]);
     });
   });
 
@@ -70,7 +70,7 @@ describe('Ids', () => {
     });
 
     it('for tree root', () => {
-      expect(ids.getConnectedIds(item.id)).toEqual({
+      expect(tree.getConnectedIds(item.id)).toEqual({
         ancestorIds: [],
         nodeAndDescendantIds: [
           'Africa',
@@ -87,14 +87,14 @@ describe('Ids', () => {
     });
 
     it('for middle node in tree', () => {
-      expect(ids.getConnectedIds('Morocco')).toEqual({
+      expect(tree.getConnectedIds('Morocco')).toEqual({
         ancestorIds: ['Northern Africa', 'Africa'],
         nodeAndDescendantIds: ['Morocco', 'Marrakesh', 'Fes'],
       });
     });
 
     it('for leaf in tree', () => {
-      expect(ids.getConnectedIds('Namibia')).toEqual({
+      expect(tree.getConnectedIds('Namibia')).toEqual({
         ancestorIds: ['Southern Africa', 'Africa'],
         nodeAndDescendantIds: ['Namibia'],
       });

@@ -9,9 +9,9 @@ import {
 
 import {
   AFRICA,
-  ALL_SELECTED_ARRAY_MODEL,
+  ALL_SELECTED_IDS_ARRAY,
   SMALL_AFRICA,
-  SOME_SELECTED_ARRAY_MODEL,
+  SOME_SELECTED_IDS_ARRAY,
   TestItem,
   getChildren,
   getId,
@@ -61,8 +61,8 @@ const Template: StoryFn<SelectionTreeComponent<TestItem>> = (args: Args) => ({
       [getId]="getId"
       [getChildren]="getChildren"
       [template]="checkboxTemplate"
-      [ngModel]="model"
-      (ngModelChange)="model = $event; onClick($event)"
+      [ngModel]="ids"
+      (ngModelChange)="ids = $event; onClick($event)"
     ></core-selection-tree>
 
     <ng-template #checkboxTemplate
@@ -90,7 +90,7 @@ export const noneSelected: StoryObj<SelectionTreeComponent<TestItem>> = {
   render: Template,
 
   args: createArgs({
-    model: [],
+    ids: [],
   }),
 };
 
@@ -98,7 +98,7 @@ export const someSelected: StoryObj<SelectionTreeComponent<TestItem>> = {
   render: Template,
 
   args: createArgs({
-    model: SOME_SELECTED_ARRAY_MODEL,
+    ids: SOME_SELECTED_IDS_ARRAY,
   }),
 };
 
@@ -106,7 +106,7 @@ export const allSelected: StoryObj<SelectionTreeComponent<TestItem>> = {
   render: Template,
 
   args: createArgs({
-    model: ALL_SELECTED_ARRAY_MODEL,
+    ids: ALL_SELECTED_IDS_ARRAY,
   }),
 };
 
@@ -114,7 +114,7 @@ export const withCustomStyling: StoryObj<SelectionTreeComponent<TestItem>> = {
   render: Template,
 
   args: createArgs({
-    model: [],
+    ids: [],
     className: 'custom-selection-tree',
   }),
 };
@@ -124,7 +124,7 @@ type Args = Partial<SelectionTreeComponent<TestItem>> & {
 };
 
 function createArgs(
-  { root = AFRICA, model = [], className = '' } = {} as Args
+  { root = AFRICA, ids = [], className = '' } = {} as Args
 ): Args {
-  return { root, model, className };
+  return { root, ids, className };
 }

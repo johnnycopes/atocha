@@ -9,9 +9,9 @@ import {
 
 import {
   AFRICA,
-  ALL_SELECTED_ARRAY_MODEL,
+  ALL_SELECTED_IDS_ARRAY,
   SMALL_AFRICA,
-  SOME_SELECTED_ARRAY_MODEL,
+  SOME_SELECTED_IDS_ARRAY,
   TestItem,
   getChildren,
   getId,
@@ -67,8 +67,8 @@ const Template: StoryFn<CountedSelectionTreeComponent<TestItem>> = (
       [getChildren]="getChildren"
       [getLeafNodeCount]="getTargetCount"
       [template]="checkboxTemplate"
-      [ngModel]="model"
-      (ngModelChange)="model = $event; onNgModelChange($event)"
+      [ngModel]="ids"
+      (ngModelChange)="ids = $event; onNgModelChange($event)"
       (selectedChange)="onSelectedChange($event)"
       (totalChange)="onTotalChange($event)"
     ></core-counted-selection-tree>
@@ -105,7 +105,7 @@ export const noneSelected: StoryObj<CountedSelectionTreeComponent<TestItem>> = {
   render: Template,
 
   args: createArgs({
-    model: [],
+    ids: [],
   }),
 };
 
@@ -113,7 +113,7 @@ export const someSelected: StoryObj<CountedSelectionTreeComponent<TestItem>> = {
   render: Template,
 
   args: createArgs({
-    model: SOME_SELECTED_ARRAY_MODEL,
+    ids: SOME_SELECTED_IDS_ARRAY,
   }),
 };
 
@@ -121,7 +121,7 @@ export const allSelected: StoryObj<CountedSelectionTreeComponent<TestItem>> = {
   render: Template,
 
   args: createArgs({
-    model: ALL_SELECTED_ARRAY_MODEL,
+    ids: ALL_SELECTED_IDS_ARRAY,
   }),
 };
 
@@ -131,7 +131,7 @@ export const withCustomStyling: StoryObj<
   render: Template,
 
   args: createArgs({
-    model: SOME_SELECTED_ARRAY_MODEL,
+    ids: SOME_SELECTED_IDS_ARRAY,
     className: 'custom-counted-selection-tree',
   }),
 };
@@ -141,7 +141,7 @@ type Args = Partial<CountedSelectionTreeComponent<TestItem>> & {
 };
 
 function createArgs(
-  { root = AFRICA, model = [], className = '' } = {} as Args
+  { root = AFRICA, ids = [], className = '' } = {} as Args
 ): Args {
-  return { root, model, className };
+  return { root, ids, className };
 }

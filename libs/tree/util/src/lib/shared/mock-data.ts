@@ -1,11 +1,10 @@
 import {
-  ArrayModel,
   GetChildren,
   GetId,
   GetLeafCount,
-  SetModel,
+  IdsArray,
+  IdsSet,
   States,
-  Node,
 } from './types';
 
 export interface TestItem {
@@ -14,7 +13,7 @@ export interface TestItem {
   targets?: number;
 }
 
-export const AFRICA: Node<TestItem> = {
+export const AFRICA: TestItem = {
   id: 'Africa',
   children: [
     {
@@ -40,7 +39,7 @@ export const AFRICA: Node<TestItem> = {
   ],
 };
 
-export const SMALL_AFRICA: Node<TestItem> = {
+export const SMALL_AFRICA: TestItem = {
   id: 'Africa',
   children: [
     {
@@ -68,10 +67,8 @@ export const SOME_SELECTED_STATES: States = {
   Fes: 'checked',
 };
 
-export const SOME_SELECTED_ARRAY_MODEL: ArrayModel = ['Swaziland', 'Fes'];
-export const SOME_SELECTED_SET_MODEL: SetModel = new Set(
-  SOME_SELECTED_ARRAY_MODEL
-);
+export const SOME_SELECTED_IDS_ARRAY: IdsArray = ['Swaziland', 'Fes'];
+export const SOME_SELECTED_IDS_SET: IdsSet = new Set(SOME_SELECTED_IDS_ARRAY);
 
 export const ALL_SELECTED_STATES: States = {
   Africa: 'checked',
@@ -85,16 +82,14 @@ export const ALL_SELECTED_STATES: States = {
   Fes: 'checked',
 };
 
-export const ALL_SELECTED_ARRAY_MODEL: ArrayModel = [
+export const ALL_SELECTED_IDS_ARRAY: IdsArray = [
   'Central Africa',
   'Swaziland',
   'Namibia',
   'Marrakesh',
   'Fes',
 ];
-export const ALL_SELECTED_SET_MODEL: SetModel = new Set(
-  ALL_SELECTED_ARRAY_MODEL
-);
+export const ALL_SELECTED_IDS_SET: IdsSet = new Set(ALL_SELECTED_IDS_ARRAY);
 
 export const getId: GetId<TestItem> = ({ id }) => id;
 export const getChildren: GetChildren<TestItem> = ({ children }) =>
