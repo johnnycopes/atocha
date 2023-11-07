@@ -13,7 +13,7 @@ describe('getCounts', () => {
         AFRICA,
         getId,
         getChildren,
-        (item) => item.children?.length ?? 0
+        (node) => node.children?.length ?? 0
       )
     ).toEqual({
       Africa: 8,

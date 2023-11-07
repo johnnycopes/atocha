@@ -6,8 +6,8 @@ export function toStates<T>(model: Model, ids: Ids<T>): MutableStates {
   const idsModel = isArrayModel(model) ? new Set(model) : model;
 
   /*
-    Iterating through the IDs backwards builds up `states` from the leaf nodes
-    of the tree up towards the root. This approach is more performant since each node
+    Iterating through the IDs backwards builds up `states` from the leaves of
+    the tree up towards the root. This approach is more performant since each node
     reliably knows the state of all of its children up front.
   */
   for (const id of ids.ascending) {

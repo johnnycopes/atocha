@@ -22,10 +22,10 @@ export class Ids<T> {
   }
 
   getConnectedIds(id: string): Readonly<{
-    itemAndDescendantsIds: readonly string[];
+    nodeAndDescendantIds: readonly string[];
     ancestorIds: readonly string[];
   }> {
-    const itemAndDescendantsIds = bfsReduce<string, string[]>({
+    const nodeAndDescendantIds = bfsReduce<string, string[]>({
       root: id,
       getChildren: (id) => this.getChildrenIds(id),
       initialValue: [],
@@ -48,6 +48,6 @@ export class Ids<T> {
       },
     });
 
-    return { ancestorIds, itemAndDescendantsIds };
+    return { ancestorIds, nodeAndDescendantIds };
   }
 }

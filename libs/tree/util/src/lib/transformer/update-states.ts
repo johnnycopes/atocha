@@ -10,7 +10,8 @@ export function updateStates<T>({
   ids: Ids<T>;
   targetId: string;
 }): void {
-  const { ancestorIds, itemAndDescendantsIds } = ids.getConnectedIds(targetId);
+  const { ancestorIds, nodeAndDescendantIds: itemAndDescendantsIds } =
+    ids.getConnectedIds(targetId);
   const shouldMarkChecked = states[targetId] !== 'checked';
 
   for (const id of itemAndDescendantsIds) {

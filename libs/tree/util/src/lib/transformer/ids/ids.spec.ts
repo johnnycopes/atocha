@@ -9,7 +9,7 @@ describe('Ids', () => {
   });
 
   describe('.descending', () => {
-    it("contains a flat array of all tree nodes' IDs in order from root to leaves", () => {
+    it("contains a flat array of all nodes' IDs in order from root to leaves", () => {
       expect(ids.descending).toEqual([
         'Africa',
         'Southern Africa',
@@ -25,7 +25,7 @@ describe('Ids', () => {
   });
 
   describe('.ascending', () => {
-    it("contains a flat array of all tree nodes' IDs in order from leaves to root", () => {
+    it("contains a flat array of all nodes' IDs in order from leaves to root", () => {
       expect(ids.ascending).toEqual([
         'Fes',
         'Marrakesh',
@@ -41,7 +41,7 @@ describe('Ids', () => {
   });
 
   describe('getChildrenIds', () => {
-    it('returns children for root item in tree', () => {
+    it('returns children for root in tree', () => {
       expect(ids.getChildrenIds('Africa')).toEqual([
         'Southern Africa',
         'Central Africa',
@@ -49,15 +49,15 @@ describe('Ids', () => {
       ]);
     });
 
-    it('returns children for middle item in tree', () => {
+    it('returns children for middle node in tree', () => {
       expect(ids.getChildrenIds('Northern Africa')).toEqual(['Morocco']);
     });
 
-    it('returns empty array for leaf item in tree', () => {
+    it('returns empty array for leaf in tree', () => {
       expect(ids.getChildrenIds('Marrakesh')).toEqual([]);
     });
 
-    it('returns empty array for non-existent item in tree', () => {
+    it('returns empty array for non-existent node in tree', () => {
       expect(ids.getChildrenIds('Narnia')).toEqual([]);
     });
   });
@@ -69,7 +69,7 @@ describe('Ids', () => {
       item = AFRICA;
     });
 
-    it('for root item in tree', () => {
+    it('for root of tree', () => {
       expect(ids.getConnectedIds(item.id)).toEqual({
         ancestorIds: [],
         itemAndDescendantsIds: [
@@ -86,14 +86,14 @@ describe('Ids', () => {
       });
     });
 
-    it('for middle item in tree', () => {
+    it('for middle node in tree', () => {
       expect(ids.getConnectedIds('Morocco')).toEqual({
         ancestorIds: ['Northern Africa', 'Africa'],
         itemAndDescendantsIds: ['Morocco', 'Marrakesh', 'Fes'],
       });
     });
 
-    it('for leaf item in tree', () => {
+    it('for leaf in tree', () => {
       expect(ids.getConnectedIds('Namibia')).toEqual({
         ancestorIds: ['Southern Africa', 'Africa'],
         itemAndDescendantsIds: ['Namibia'],

@@ -48,8 +48,8 @@ describe('Transformer', () => {
     });
   });
 
-  describe('updating individual items', () => {
-    it('selects all items when none are selected and the root item is selected', () => {
+  describe('updating individual nodes', () => {
+    it('selects all nodes when none are selected and the root is selected', () => {
       const transformer = new Transformer(AFRICA, getId, getChildren);
 
       transformer.updateOne('Africa');
@@ -59,7 +59,7 @@ describe('Transformer', () => {
       expect(transformer.states).toEqual(ALL_SELECTED_STATES);
     });
 
-    it('deselects all items when all are selected and the root item is deselected', () => {
+    it('deselects all nodes when all are selected and the root is deselected', () => {
       const transformer = new Transformer(
         AFRICA,
         getId,
@@ -74,7 +74,7 @@ describe('Transformer', () => {
       expect(transformer.states).toEqual({});
     });
 
-    it('correctly affects tree when middle item is selected', () => {
+    it('correctly affects tree when middle node is selected', () => {
       const transformer = new Transformer(AFRICA, getId, getChildren);
 
       transformer.updateOne('Morocco');
@@ -90,7 +90,7 @@ describe('Transformer', () => {
       });
     });
 
-    it('correctly affects tree when leaf item is selected', () => {
+    it('correctly affects tree when leaf is selected', () => {
       const transformer = new Transformer(AFRICA, getId, getChildren);
 
       transformer.updateOne('Namibia');
