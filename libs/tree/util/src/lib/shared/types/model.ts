@@ -16,7 +16,7 @@ export type IdsArray = Extract<Ids, readonly string[]>;
 export type IdsSet = Extract<Ids, ReadonlySet<string>>;
 
 /**
- * Used to distinguish between array vs. set models.
+ * Used to distinguish between an array vs. a set of IDs.
  */
 export function isIdsArray(ids: Ids): ids is IdsArray {
   return isReadonlyArray<string>(ids);
