@@ -72,7 +72,7 @@ describe('Ids', () => {
     it('for tree root', () => {
       expect(ids.getConnectedIds(item.id)).toEqual({
         ancestorIds: [],
-        itemAndDescendantsIds: [
+        nodeAndDescendantIds: [
           'Africa',
           'Southern Africa',
           'Central Africa',
@@ -89,14 +89,14 @@ describe('Ids', () => {
     it('for middle node in tree', () => {
       expect(ids.getConnectedIds('Morocco')).toEqual({
         ancestorIds: ['Northern Africa', 'Africa'],
-        itemAndDescendantsIds: ['Morocco', 'Marrakesh', 'Fes'],
+        nodeAndDescendantIds: ['Morocco', 'Marrakesh', 'Fes'],
       });
     });
 
     it('for leaf in tree', () => {
       expect(ids.getConnectedIds('Namibia')).toEqual({
         ancestorIds: ['Southern Africa', 'Africa'],
-        itemAndDescendantsIds: ['Namibia'],
+        nodeAndDescendantIds: ['Namibia'],
       });
     });
   });
