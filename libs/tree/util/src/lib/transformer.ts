@@ -42,7 +42,7 @@ export class Transformer<T> {
   updateOne(id: string): Transformer<T> {
     updateStates({
       states: this._states,
-      ids: this._ids,
+      tree: this._ids,
       targetId: id,
     });
     return this;

@@ -1,7 +1,7 @@
 import { Model, MutableStates, isArrayModel } from '../shared/types';
 import { IdsTree } from './ids/ids-tree';
 
-export function toStates<T>(model: Model, ids: IdsTree<T>): MutableStates {
+export function toStates<T>(model: Model, tree: IdsTree<T>): MutableStates {
   const states: MutableStates = {};
   const idsModel = isArrayModel(model) ? new Set(model) : model;
 
@@ -10,11 +10,11 @@ export function toStates<T>(model: Model, ids: IdsTree<T>): MutableStates {
     the tree up towards the root. This approach is more performant since each node
     reliably knows the state of all of its children up front.
   */
-  for (const id of ids.ascending) {
+  for (const id of tree.ascending) {
     if (idsModel.has(id)) {
       states[id] = 'checked';
     } else {
-      const childrenIds = ids.getChildrenIds(id);
+      const childrenIds = tree.getChildrenIds(id);
       if (childrenIds.length) {
         const idsInState = childrenIds.reduce(
           (total, id) => total + (states[id] ? 1 : 0),
