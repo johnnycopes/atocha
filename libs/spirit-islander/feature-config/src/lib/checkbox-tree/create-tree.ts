@@ -14,22 +14,22 @@ import {
   SPIRITS,
 } from '@atocha/spirit-islander/util';
 
-export interface ConfigTree<T> {
+export interface Node<T> {
   id: string;
   display?: Partial<T>;
-  children?: ConfigTree<T>[];
+  children?: Node<T>[];
 }
 
-export function createExpansionsTree() {
-  return createTree({
+export function createExpansionsRoot() {
+  return createRoot({
     root: 'Expansions',
     items: EXPANSIONS,
     getId: (item) => item,
   });
 }
 
-export function createSpiritsTree(expansions: ExpansionName[]) {
-  return createTree({
+export function createSpiritsRoot(expansions: ExpansionName[]) {
+  return createRoot({
     root: 'Spirits',
     items: getOptionsByExpansion(SPIRITS, expansions),
     getId: ({ name }) => name,
@@ -37,8 +37,8 @@ export function createSpiritsTree(expansions: ExpansionName[]) {
   });
 }
 
-export function createMapsTree(expansions: ExpansionName[]) {
-  return createTree({
+export function createMapsRoot(expansions: ExpansionName[]) {
+  return createRoot({
     root: 'Maps',
     items: getOptionsByExpansion(MAPS, expansions),
     getId: ({ name }) => name,
@@ -48,8 +48,8 @@ export function createMapsTree(expansions: ExpansionName[]) {
   });
 }
 
-export function createBoardsTree(expansions: ExpansionName[]) {
-  return createTree({
+export function createBoardsRoot(expansions: ExpansionName[]) {
+  return createRoot({
     root: 'Boards',
     items: getOptionsByExpansion(BOARDS, expansions),
     getId: ({ name }) => name,
@@ -57,8 +57,8 @@ export function createBoardsTree(expansions: ExpansionName[]) {
   });
 }
 
-export function createScenariosTree(expansions: ExpansionName[]) {
-  return createTree({
+export function createScenariosRoot(expansions: ExpansionName[]) {
+  return createRoot({
     root: 'Scenarios',
     items: getOptionsByExpansion(SCENARIOS, expansions),
     getId: ({ name }) => name,
@@ -69,8 +69,8 @@ export function createScenariosTree(expansions: ExpansionName[]) {
   });
 }
 
-export function createAdversariesTree(expansions: ExpansionName[]) {
-  return createTree<
+export function createAdversariesRoot(expansions: ExpansionName[]) {
+  return createRoot<
     Adversary | AdversaryLevel,
     AdversaryName | AdversaryLevelId
   >({
@@ -99,7 +99,7 @@ function isAdversaryLevel(
   return 'id' in entity;
 }
 
-function createTree<T, U extends string>({
+function createRoot<T, U extends string>({
   root,
   items,
   getId,
@@ -111,7 +111,7 @@ function createTree<T, U extends string>({
   getId: (item: T) => U;
   getDisplay?: (item: T) => Partial<T>;
   getChildren?: (item: T) => T[];
-}): ConfigTree<T> {
+}): Node<T> {
   return {
     id: root,
     children: items.map((item) =>
@@ -125,8 +125,8 @@ function createChild<T, U extends string>(
   getId: (item: T) => U,
   getDisplay?: (item: T) => Partial<T>,
   getChildren?: (item: T) => T[]
-): ConfigTree<T> {
-  const configTree: ConfigTree<T> = { id: getId(item) };
+): Node<T> {
+  const configTree: Node<T> = { id: getId(item) };
 
   if (getDisplay && Object.keys(getDisplay(item)).length > 0) {
     configTree.display = getDisplay(item);
