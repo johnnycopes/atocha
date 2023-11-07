@@ -41,7 +41,7 @@ describe('Ids', () => {
   });
 
   describe('getChildrenIds', () => {
-    it('returns children for root in tree', () => {
+    it('returns children for tree root', () => {
       expect(ids.getChildrenIds('Africa')).toEqual([
         'Southern Africa',
         'Central Africa',
@@ -69,7 +69,7 @@ describe('Ids', () => {
       item = AFRICA;
     });
 
-    it('for root of tree', () => {
+    it('for tree root', () => {
       expect(ids.getConnectedIds(item.id)).toEqual({
         ancestorIds: [],
         itemAndDescendantsIds: [
