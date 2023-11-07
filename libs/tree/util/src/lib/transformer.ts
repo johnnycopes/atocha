@@ -14,7 +14,7 @@ import { toStates } from './transformer/to-states';
 import { updateStates } from './transformer/update-states';
 
 export class Transformer<T> {
-  private readonly _ids: IdsTree<T>;
+  private readonly _tree: IdsTree<T>;
   private _states: MutableStates;
 
   get states(): States {
@@ -22,11 +22,11 @@ export class Transformer<T> {
   }
 
   get array(): IdsArray {
-    return toArray(this.states, this._ids);
+    return toArray(this.states, this._tree);
   }
 
   get set(): IdsSet {
-    return toSet(this.states, this._ids);
+    return toSet(this.states, this._tree);
   }
 
   constructor(
@@ -35,14 +35,14 @@ export class Transformer<T> {
     private _getChildren: GetChildren<T>,
     ids: Ids = []
   ) {
-    this._ids = new IdsTree(this._root, this._getId, this._getChildren);
+    this._tree = new IdsTree(this._root, this._getId, this._getChildren);
     this._states = this._toStates(ids);
   }
 
   updateOne(id: string): Transformer<T> {
     updateStates({
       states: this._states,
-      tree: this._ids,
+      tree: this._tree,
       targetId: id,
     });
     return this;
@@ -54,6 +54,6 @@ export class Transformer<T> {
   }
 
   private _toStates(ids: Ids): MutableStates {
-    return toStates(ids, this._ids);
+    return toStates(ids, this._tree);
   }
 }
