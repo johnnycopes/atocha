@@ -68,10 +68,10 @@ export class SelectionTreeComponent<T>
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['root']) {
-      const tree: T = changes['root'].currentValue;
+      const root: T = changes['root'].currentValue;
 
       this._transformer = new Transformer(
-        tree,
+        root,
         this.getId,
         this.getChildren,
         this.ids
