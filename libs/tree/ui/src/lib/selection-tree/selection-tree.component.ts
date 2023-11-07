@@ -62,7 +62,7 @@ export class SelectionTreeComponent<T>
     this.getId,
     this.getChildren
   );
-  private _onChangeFn: (value: Ids) => void = () => [];
+  private _onChangeFn: (ids: Ids) => void = () => [];
 
   constructor(private _changeDetectorRef: ChangeDetectorRef) {}
 
