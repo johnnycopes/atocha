@@ -1,5 +1,5 @@
 import { State, MutableStates } from '../shared/types';
-import { IdsTree } from './ids/ids';
+import { IdsTree } from './ids/ids-tree';
 
 export function updateStates<T>({
   states,

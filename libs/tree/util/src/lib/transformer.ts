@@ -7,7 +7,7 @@ import {
   MutableStates,
   States,
 } from './shared/types';
-import { IdsTree } from './transformer/ids/ids';
+import { IdsTree } from './transformer/ids/ids-tree';
 import { toArray } from './transformer/to-array';
 import { toSet } from './transformer/to-set';
 import { toStates } from './transformer/to-states';

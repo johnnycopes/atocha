@@ -1,7 +1,7 @@
-import { IdsTree } from './ids';
+import { IdsTree } from './ids-tree';
 import { AFRICA, getId, getChildren, TestItem } from '../../shared/mock-data';
 
-describe('Ids', () => {
+describe('IdsTree', () => {
   let ids = new IdsTree(AFRICA, getId, getChildren);
 
   beforeEach(() => {
