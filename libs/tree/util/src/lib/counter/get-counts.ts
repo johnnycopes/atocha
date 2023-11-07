@@ -5,11 +5,10 @@ import {
   GetId,
   GetLeafCount,
   MutableCounts,
-  Node,
 } from '../shared/types';
 
 export function getCounts<T>(
-  root: Node<T>,
+  root: T,
   getId: GetId<T>,
   getChildren: GetChildren<T>,
   getLeafCount: GetLeafCount<T>

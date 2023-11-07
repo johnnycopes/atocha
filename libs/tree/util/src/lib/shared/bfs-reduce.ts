@@ -1,4 +1,4 @@
-import { GetChildren, Node } from './types';
+import { GetChildren } from './types';
 
 export function bfsReduce<T, U>({
   root,
@@ -6,10 +6,10 @@ export function bfsReduce<T, U>({
   reducer,
   initialValue,
 }: {
-  root: Node<T>;
+  root: T;
   getChildren: GetChildren<T>;
   initialValue: U;
-  reducer: (accumulator: U, node: Node<T>, parent?: T) => U;
+  reducer: (accumulator: U, node: T, parent?: T) => U;
 }): U {
   const queue = [root];
   let value = reducer(initialValue, root);

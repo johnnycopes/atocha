@@ -1,4 +1,4 @@
-import { GetChildren, GetId, Node } from '../../shared/types';
+import { GetChildren, GetId } from '../../shared/types';
 import { bfsReduce } from '../../shared/bfs-reduce';
 import { IdsMap, createMap } from './create-map';
 
@@ -8,7 +8,7 @@ export class Ids<T> {
   readonly ascending: readonly string[];
 
   constructor(
-    private _root: Node<T>,
+    private _root: T,
     private _getId: GetId<T>,
     private _getChildren: GetChildren<T>
   ) {

@@ -5,7 +5,6 @@ import {
   Model,
   SetModel,
   MutableStates,
-  Node,
   States,
 } from './shared/types';
 import { Ids } from './transformer/ids/ids';
@@ -31,7 +30,7 @@ export class Transformer<T> {
   }
 
   constructor(
-    private _root: Node<T>,
+    private _root: T,
     private _getId: GetId<T>,
     private _getChildren: GetChildren<T>,
     private _initialValue: Model = []

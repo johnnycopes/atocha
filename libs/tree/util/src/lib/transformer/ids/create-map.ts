@@ -1,4 +1,4 @@
-import { GetChildren, GetId, Node } from '../../shared/types';
+import { GetChildren, GetId } from '../../shared/types';
 import { bfsReduce } from '../../shared/bfs-reduce';
 
 export type IdsMap = Map<
@@ -7,7 +7,7 @@ export type IdsMap = Map<
 >;
 
 export function createMap<T>(
-  root: Node<T>,
+  root: T,
   getId: GetId<T>,
   getChildren: GetChildren<T>
 ): IdsMap {
