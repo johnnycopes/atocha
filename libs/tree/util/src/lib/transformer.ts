@@ -33,10 +33,10 @@ export class Transformer<T> {
     private _root: T,
     private _getId: GetId<T>,
     private _getChildren: GetChildren<T>,
-    private _initialIds: Ids = []
+    ids: Ids = []
   ) {
     this._ids = new IdsTree(this._root, this._getId, this._getChildren);
-    this._states = this._toStates(this._initialIds);
+    this._states = this._toStates(ids);
   }
 
   updateOne(id: string): Transformer<T> {
