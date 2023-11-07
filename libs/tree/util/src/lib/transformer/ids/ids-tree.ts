@@ -1,11 +1,11 @@
-import { GetChildren, GetId } from '../../shared/types';
+import { GetChildren, GetId, IdsArray } from '../../shared/types';
 import { bfsReduce } from '../../shared/bfs-reduce';
 import { IdsMap, createMap } from './create-map';
 
 export class IdsTree<T> {
   private readonly _map: IdsMap;
-  readonly descendingIds: readonly string[];
-  readonly ascendingIds: readonly string[];
+  readonly descendingIds: IdsArray;
+  readonly ascendingIds: IdsArray;
 
   constructor(
     private _root: T,
@@ -17,13 +17,13 @@ export class IdsTree<T> {
     this.ascendingIds = this.descendingIds.slice().reverse();
   }
 
-  getChildrenIds(id: string): readonly string[] {
+  getChildrenIds(id: string): IdsArray {
     return this._map.get(id)?.childrenIds ?? [];
   }
 
   getConnectedIds(id: string): Readonly<{
-    nodeAndDescendantIds: readonly string[];
-    ancestorIds: readonly string[];
+    nodeAndDescendantIds: IdsArray;
+    ancestorIds: IdsArray;
   }> {
     const nodeAndDescendantIds = bfsReduce<string, string[]>({
       root: id,

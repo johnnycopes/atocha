@@ -1,9 +1,9 @@
-import { GetChildren, GetId } from '../../shared/types';
+import { GetChildren, GetId, IdsArray } from '../../shared/types';
 import { bfsReduce } from '../../shared/bfs-reduce';
 
 export type IdsMap = Map<
   string,
-  { parentId: string | undefined; childrenIds: readonly string[] }
+  { parentId: string | undefined; childrenIds: IdsArray }
 >;
 
 export function createMap<T>(
