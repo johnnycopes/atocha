@@ -18,7 +18,7 @@ import {
   getChildren,
   getNumberOfCountries,
   Root,
-} from './create-places-tree';
+} from './create-places-root';
 
 @Component({
   standalone: true,
