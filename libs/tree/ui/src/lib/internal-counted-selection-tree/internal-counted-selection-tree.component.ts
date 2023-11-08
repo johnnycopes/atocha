@@ -30,7 +30,7 @@ export class InternalCountedSelectionTreeComponent<T>
   implements InternalCountedSelectionTreeComponentAPI<T>, OnInit
 {
   @Input({ required: true }) tree!: ICountedSelectionTree<T>;
-  @Input() ids: Ids = [];
+  @Input({ required: true }) ids: Ids = [];
   @Input() template: TemplateRef<unknown> | undefined;
   @Output() changed = new EventEmitter<Ids>();
   @Output() nodeClick = new EventEmitter<string>();

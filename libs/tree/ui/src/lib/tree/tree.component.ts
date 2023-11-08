@@ -30,8 +30,8 @@ interface TreeNodeContext<T> {
 })
 export class TreeComponent<T> implements TreeComponentAPI<T>, OnInit {
   @Input({ required: true }) root!: T;
-  @Input() getId: GetId<T> = () => '';
-  @Input() getChildren: GetChildren<T> = () => [];
+  @Input({ required: true }) getId: GetId<T> = () => '';
+  @Input({ required: true }) getChildren: GetChildren<T> = () => [];
 
   /**
    * The template of the node to pass into the tree.

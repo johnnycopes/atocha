@@ -53,9 +53,9 @@ export class CountedSelectionTreeComponent<T>
     OnChanges
 {
   @Input({ required: true }) root!: T;
-  @Input() getId: GetId<T> = () => '';
-  @Input() getChildren: GetChildren<T> = () => [];
-  @Input() getLeafNodeCount: GetLeafCount<T> = () => 0;
+  @Input({ required: true }) getId: GetId<T> = () => '';
+  @Input({ required: true }) getChildren: GetChildren<T> = () => [];
+  @Input({ required: true }) getLeafNodeCount: GetLeafCount<T> = () => 0;
   @Input() template: TemplateRef<unknown> | undefined;
   @Output() nodeClick = new EventEmitter<string>();
   @Output() selectedChange = new EventEmitter<number>();

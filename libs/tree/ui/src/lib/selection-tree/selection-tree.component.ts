@@ -45,8 +45,8 @@ export class SelectionTreeComponent<T>
   implements SelectionTreeComponentAPI<T>, OnChanges, ControlValueAccessor
 {
   @Input({ required: true }) root!: T;
-  @Input() getId: GetId<T> = () => '';
-  @Input() getChildren: GetChildren<T> = () => [];
+  @Input({ required: true }) getId: GetId<T> = () => '';
+  @Input({ required: true }) getChildren: GetChildren<T> = () => [];
   @Input() template: TemplateRef<unknown> | undefined;
   @Output() nodeClick = new EventEmitter<string>();
   ids: Ids = [];

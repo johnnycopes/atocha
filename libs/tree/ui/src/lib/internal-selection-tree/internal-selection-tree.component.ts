@@ -32,7 +32,7 @@ export class InternalSelectionTreeComponent<T>
   implements InternalSelectionTreeComponentAPI<T>, OnChanges
 {
   @Input({ required: true }) tree!: ISelectionTree<T>;
-  @Input() ids: Ids = [];
+  @Input({ required: true }) ids: Ids = [];
   @Input() template: TemplateRef<unknown> | undefined;
   @Output() nodeClick = new EventEmitter<string>();
   @Output() changed = new EventEmitter<Ids>();
