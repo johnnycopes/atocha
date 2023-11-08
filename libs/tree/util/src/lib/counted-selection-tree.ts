@@ -11,6 +11,7 @@ import { getCounts } from './counted-selection-tree/get-counts';
 import { ISelectionTree, SelectionTree } from './selection-tree';
 
 export interface ICountedSelectionTree<T> extends ISelectionTree<T> {
+  getLeafCount: GetLeafCount<T>;
   totalCounts: Counts;
   selectedCounts: Counts;
   updateCounts(ids: Ids): CountedSelectionTree<T>;
@@ -27,7 +28,7 @@ export class CountedSelectionTree<T>
     root: T,
     getId: GetId<T>,
     getChildren: GetChildren<T>,
-    public getLeafCount: GetLeafCount<T>,
+    readonly getLeafCount: GetLeafCount<T>,
     ids: Ids = new Set<string>()
   ) {
     super(root, getId, getChildren, ids);
