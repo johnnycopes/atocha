@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/member-ordering */
 import { CommonModule } from '@angular/common';
 import {
   Component,
@@ -6,7 +5,6 @@ import {
   Output,
   EventEmitter,
   TemplateRef,
-  ChangeDetectorRef,
   ChangeDetectionStrategy,
   forwardRef,
   SimpleChanges,
@@ -64,52 +62,32 @@ export class CountedSelectionTreeComponent<T>
     this.getChildren,
     this.getLeafNodeCount
   );
-  private _id = '';
-  private _onChangeFn: (ids: Ids) => void = () => [];
-
-  constructor(private _changeDetectorRef: ChangeDetectorRef) {}
+  onChange: (ids: Ids) => void = () => [];
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes['root'].currentValue) {
-      const root: T = changes['root'].currentValue;
-
-      this._id = this.getId(root);
+    if (changes['root']) {
       this.tree = new CountableTree(
-        root,
+        changes['root'].currentValue,
         this.getId,
         this.getChildren,
         this.getLeafNodeCount,
         this.ids
       );
-      this.totalChange.emit(this.tree.totalCounts[this._id]);
-
       this.writeValue(this.ids);
     }
   }
 
-  writeValue(ids: Ids): void {
-    if (ids && this.root) {
+  writeValue(ids: Ids | null): void {
+    if (ids) {
       this.ids = ids;
       this.tree.updateCounts(this.ids);
-      this.selectedChange.emit(this.tree.selectedCounts[this._id]);
     }
-    this._changeDetectorRef.markForCheck();
   }
 
   registerOnChange(fn: (ids: Ids) => void): void {
-    this._onChangeFn = fn;
+    this.onChange = fn;
   }
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-empty-function
   registerOnTouched(fn: (ids: Ids) => void): void {}
-
-  onChange(ids: Ids): void {
-    if (this.root) {
-      this.ids = ids;
-      this._onChangeFn(this.ids);
-
-      this.tree.updateCounts(ids);
-      this.selectedChange.emit(this.tree.selectedCounts[this._id]);
-    }
-  }
 }

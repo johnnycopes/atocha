@@ -1,15 +1,13 @@
 import { CommonModule } from '@angular/common';
 import {
-  Component,
-  Input,
-  TemplateRef,
   ChangeDetectionStrategy,
-  ViewEncapsulation,
-  Output,
+  Component,
   EventEmitter,
-  OnChanges,
-  SimpleChanges,
+  Input,
   OnInit,
+  Output,
+  TemplateRef,
+  ViewEncapsulation,
 } from '@angular/core';
 
 import { ICountableTree, Ids } from '@atocha/tree/util';
