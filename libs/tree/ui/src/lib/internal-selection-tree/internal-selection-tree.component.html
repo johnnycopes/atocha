@@ -12,9 +12,9 @@
     [ngTemplateOutletContext]="{
       $implicit: node,
       level: level,
-      checked: this.tree.states[this.tree.getId(node)] === 'checked',
+      checked: this.tree.getState(this.tree.getId(node)) === 'checked',
       indeterminate:
-        this.tree.states[this.tree.getId(node)] === 'indeterminate',
+        this.tree.getState(this.tree.getId(node)) === 'indeterminate',
       onChange: this.onChange
     }"
   ></ng-container>
