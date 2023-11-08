@@ -70,9 +70,10 @@ export class CountedSelectionTreeComponent<T>
   onChange: (ids: Ids) => void = () => [];
 
   ngOnChanges(changes: SimpleChanges): void {
+    const root = changes['root']?.currentValue;
     if (changes['root']) {
       this.tree = new CountableTree(
-        changes['root'].currentValue,
+        root,
         this.getId,
         this.getChildren,
         this.getLeafNodeCount,
