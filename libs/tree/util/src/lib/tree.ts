@@ -7,11 +7,11 @@ import {
   IdsSet,
   States,
 } from './shared/types';
-import { IdsTree } from './transformer/ids/ids-tree';
-import { toArray } from './transformer/to-array';
-import { toSet } from './transformer/to-set';
-import { toStates } from './transformer/to-states';
-import { updateStates } from './transformer/update-states';
+import { IdsTree } from './tree/ids/ids-tree';
+import { toArray } from './tree/to-array';
+import { toSet } from './tree/to-set';
+import { toStates } from './tree/to-states';
+import { updateStates } from './tree/update-states';
 
 export interface ITree<T> {
   root: Readonly<T>;
