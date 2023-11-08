@@ -26,12 +26,12 @@ import {
   GetLeafCount,
   Ids,
 } from '@atocha/tree/util';
-import { SelectionTreeComponent } from '../selection-tree/selection-tree.component';
+import { InternalCountedSelectionTreeComponent } from '../internal-counted-selection-tree/internal-counted-selection-tree.component';
 
 @Component({
   standalone: true,
   selector: 'core-counted-selection-tree',
-  imports: [CommonModule, FormsModule, SelectionTreeComponent],
+  imports: [CommonModule, FormsModule, InternalCountedSelectionTreeComponent],
   templateUrl: './counted-selection-tree.component.html',
   styleUrls: ['./counted-selection-tree.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -70,7 +70,7 @@ export class CountedSelectionTreeComponent<T>
   constructor(private _changeDetectorRef: ChangeDetectorRef) {}
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes['root']) {
+    if (changes['root'].currentValue) {
       const root: T = changes['root'].currentValue;
 
       this._id = this.getId(root);
