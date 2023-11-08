@@ -18,7 +18,7 @@ import {
 } from '@angular/forms';
 
 import {
-  CountableTree,
+  CountedSelectionTree,
   GetChildren,
   GetId,
   GetLeafCount,
@@ -61,7 +61,7 @@ export class CountedSelectionTreeComponent<T>
   @Output() selectedChange = new EventEmitter<number>();
   @Output() totalChange = new EventEmitter<number>();
   ids: Ids = [];
-  tree: CountableTree<T> = new CountableTree(
+  tree: CountedSelectionTree<T> = new CountedSelectionTree(
     {} as T,
     this.getId,
     this.getChildren,
@@ -72,7 +72,7 @@ export class CountedSelectionTreeComponent<T>
   ngOnChanges(changes: SimpleChanges): void {
     const root = changes['root']?.currentValue;
     if (root) {
-      this.tree = new CountableTree(
+      this.tree = new CountedSelectionTree(
         root,
         this.getId,
         this.getChildren,

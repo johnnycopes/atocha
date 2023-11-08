@@ -12,8 +12,8 @@ import {
   ALL_SELECTED_IDS_ARRAY,
   SMALL_AFRICA,
   SOME_SELECTED_IDS_ARRAY,
+  SelectionTree,
   TestItem,
-  Tree,
   getChildren,
   getId,
 } from '@atocha/tree/util';
@@ -105,7 +105,12 @@ export const someSelected: StoryObj<InternalSelectionTreeComponent<TestItem>> =
     render: Template,
 
     args: createArgs({
-      tree: new Tree(AFRICA, getId, getChildren, SOME_SELECTED_IDS_ARRAY),
+      tree: new SelectionTree(
+        AFRICA,
+        getId,
+        getChildren,
+        SOME_SELECTED_IDS_ARRAY
+      ),
     }),
   };
 
@@ -113,7 +118,7 @@ export const allSelected: StoryObj<InternalSelectionTreeComponent<TestItem>> = {
   render: Template,
 
   args: createArgs({
-    tree: new Tree(AFRICA, getId, getChildren, ALL_SELECTED_IDS_ARRAY),
+    tree: new SelectionTree(AFRICA, getId, getChildren, ALL_SELECTED_IDS_ARRAY),
   }),
 };
 
@@ -133,7 +138,10 @@ type Args = Partial<InternalSelectionTreeComponent<TestItem>> & {
 };
 
 function createArgs(
-  { tree = new Tree(AFRICA, getId, getChildren), className = '' } = {} as Args
+  {
+    tree = new SelectionTree(AFRICA, getId, getChildren),
+    className = '',
+  } = {} as Args
 ): Args {
   return { tree, className };
 }

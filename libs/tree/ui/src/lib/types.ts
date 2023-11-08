@@ -5,7 +5,9 @@ import {
   ITree,
   Ids,
   GetLeafCount,
-  ICountableTree,
+  CountedSelectionTree,
+  ISelectionTree,
+  ICountedSelectionTree,
 } from '@atocha/tree/util';
 
 export interface CountedSelectionTreeComponentAPI<T>
@@ -28,13 +30,14 @@ export interface TreeComponentAPI<T> {
 
 export interface InternalCountedSelectionTreeComponentAPI<T>
   extends InternalSelectionTreeComponentAPI<T> {
-  tree: ICountableTree<T>;
+  tree: ICountedSelectionTree<T>;
   selectedChange: EventEmitter<number>;
   totalChange: EventEmitter<number>;
 }
 
 export interface InternalSelectionTreeComponentAPI<T>
   extends InternalTreeComponentAPI<T> {
+  tree: ISelectionTree<T>;
   ids: Ids;
   changed: EventEmitter<Ids>;
   nodeClick: EventEmitter<string>;

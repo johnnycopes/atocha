@@ -18,7 +18,7 @@ import {
   FormsModule,
 } from '@angular/forms';
 
-import { GetChildren, GetId, Ids, Tree } from '@atocha/tree/util';
+import { GetChildren, GetId, Ids, SelectionTree } from '@atocha/tree/util';
 import { InternalSelectionTreeComponent } from '../internal-selection-tree/internal-selection-tree.component';
 import { SelectionTreeComponentAPI } from '../types';
 
@@ -50,13 +50,18 @@ export class SelectionTreeComponent<T>
   @Input() template: TemplateRef<unknown> | undefined;
   @Output() nodeClick = new EventEmitter<string>();
   ids: Ids = [];
-  tree = new Tree({} as T, this.getId, this.getChildren);
+  tree = new SelectionTree({} as T, this.getId, this.getChildren);
   onChange: (ids: Ids) => void = () => [];
 
   ngOnChanges(changes: SimpleChanges): void {
     const root = changes['root']?.currentValue;
     if (root) {
-      this.tree = new Tree(root, this.getId, this.getChildren, this.ids);
+      this.tree = new SelectionTree(
+        root,
+        this.getId,
+        this.getChildren,
+        this.ids
+      );
       this.writeValue(this.ids);
     }
   }

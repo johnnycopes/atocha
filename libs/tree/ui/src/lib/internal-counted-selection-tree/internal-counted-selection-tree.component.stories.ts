@@ -10,7 +10,7 @@ import {
 import {
   AFRICA,
   ALL_SELECTED_IDS_ARRAY,
-  CountableTree,
+  CountedSelectionTree,
   SMALL_AFRICA,
   SOME_SELECTED_IDS_ARRAY,
   TestItem,
@@ -118,7 +118,7 @@ export const someSelected: StoryObj<
   render: Template,
 
   args: createArgs({
-    tree: new CountableTree(
+    tree: new CountedSelectionTree(
       AFRICA,
       getId,
       getChildren,
@@ -134,7 +134,7 @@ export const allSelected: StoryObj<
   render: Template,
 
   args: createArgs({
-    tree: new CountableTree(
+    tree: new CountedSelectionTree(
       AFRICA,
       getId,
       getChildren,
@@ -161,7 +161,7 @@ type Args = Partial<InternalCountedSelectionTreeComponent<TestItem>> & {
 
 function createArgs(
   {
-    tree = new CountableTree(AFRICA, getId, getChildren, getTargetCount),
+    tree = new CountedSelectionTree(AFRICA, getId, getChildren, getTargetCount),
     className = '',
   } = {} as Args
 ): Args {

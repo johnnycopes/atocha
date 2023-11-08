@@ -10,7 +10,7 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 
-import { ICountableTree, Ids } from '@atocha/tree/util';
+import { ICountedSelectionTree, Ids } from '@atocha/tree/util';
 import { InternalSelectionTreeComponent } from '../internal-selection-tree/internal-selection-tree.component';
 import { InternalCountedSelectionTreeComponentAPI } from '../types';
 
@@ -29,7 +29,7 @@ import { InternalCountedSelectionTreeComponentAPI } from '../types';
 export class InternalCountedSelectionTreeComponent<T>
   implements InternalCountedSelectionTreeComponentAPI<T>, OnInit
 {
-  @Input({ required: true }) tree!: ICountableTree<T>;
+  @Input({ required: true }) tree!: ICountedSelectionTree<T>;
   @Input() ids: Ids = [];
   @Input() template: TemplateRef<unknown> | undefined;
   @Output() changed = new EventEmitter<Ids>();

@@ -12,7 +12,7 @@ import {
   SimpleChanges,
 } from '@angular/core';
 
-import { ITree, Ids } from '@atocha/tree/util';
+import { ISelectionTree, Ids } from '@atocha/tree/util';
 import { TreeComponent } from '../tree/tree.component';
 import { InternalSelectionTreeComponentAPI } from '../types';
 
@@ -31,7 +31,7 @@ import { InternalSelectionTreeComponentAPI } from '../types';
 export class InternalSelectionTreeComponent<T>
   implements InternalSelectionTreeComponentAPI<T>, OnChanges
 {
-  @Input({ required: true }) tree!: ITree<T>;
+  @Input({ required: true }) tree!: ISelectionTree<T>;
   @Input() ids: Ids = [];
   @Input() template: TemplateRef<unknown> | undefined;
   @Output() nodeClick = new EventEmitter<string>();
