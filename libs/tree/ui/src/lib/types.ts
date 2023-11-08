@@ -1,13 +1,10 @@
 import { EventEmitter, TemplateRef } from '@angular/core';
 import {
-  GetId,
-  GetChildren,
-  ITree,
   Ids,
   GetLeafCount,
-  CountedSelectionTree,
   ISelectionTree,
   ICountedSelectionTree,
+  ITree,
 } from '@atocha/tree/util';
 
 export interface CountedSelectionTreeComponentAPI<T>
@@ -21,10 +18,7 @@ export interface SelectionTreeComponentAPI<T> extends TreeComponentAPI<T> {
   nodeClick: EventEmitter<string>;
 }
 
-export interface TreeComponentAPI<T> {
-  root: T | undefined;
-  getId: GetId<T>;
-  getChildren: GetChildren<T>;
+export interface TreeComponentAPI<T> extends ITree<T> {
   template?: TemplateRef<unknown> | undefined;
 }
 
@@ -35,15 +29,10 @@ export interface InternalCountedSelectionTreeComponentAPI<T>
   totalChange: EventEmitter<number>;
 }
 
-export interface InternalSelectionTreeComponentAPI<T>
-  extends InternalTreeComponentAPI<T> {
+export interface InternalSelectionTreeComponentAPI<T> {
   tree: ISelectionTree<T>;
   ids: Ids;
+  template?: TemplateRef<unknown> | undefined;
   changed: EventEmitter<Ids>;
   nodeClick: EventEmitter<string>;
-}
-
-export interface InternalTreeComponentAPI<T> {
-  tree: ITree<T>;
-  template?: TemplateRef<unknown> | undefined;
 }

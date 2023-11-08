@@ -44,7 +44,7 @@ import { SelectionTreeComponentAPI } from '../types';
 export class SelectionTreeComponent<T>
   implements SelectionTreeComponentAPI<T>, OnChanges, ControlValueAccessor
 {
-  @Input() root: T | undefined;
+  @Input({ required: true }) root!: T;
   @Input() getId: GetId<T> = () => '';
   @Input() getChildren: GetChildren<T> = () => [];
   @Input() template: TemplateRef<unknown> | undefined;

@@ -52,7 +52,7 @@ export class CountedSelectionTreeComponent<T>
     ControlValueAccessor,
     OnChanges
 {
-  @Input() root: T | undefined;
+  @Input({ required: true }) root!: T;
   @Input() getId: GetId<T> = () => '';
   @Input() getChildren: GetChildren<T> = () => [];
   @Input() getLeafNodeCount: GetLeafCount<T> = () => 0;

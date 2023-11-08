@@ -29,7 +29,7 @@ interface TreeNodeContext<T> {
   },
 })
 export class TreeComponent<T> implements TreeComponentAPI<T>, OnInit {
-  @Input() root!: T;
+  @Input({ required: true }) root!: T;
   @Input() getId: GetId<T> = () => '';
   @Input() getChildren: GetChildren<T> = () => [];
 
