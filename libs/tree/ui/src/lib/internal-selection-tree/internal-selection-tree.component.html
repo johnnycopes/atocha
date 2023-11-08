@@ -1,0 +1,24 @@
+<core-tree
+  *ngIf="tree.root"
+  [root]="tree.root"
+  [getId]="tree.getId"
+  [getChildren]="tree.getChildren"
+  [template]="nodeTemplate"
+></core-tree>
+
+<ng-template #nodeTemplate let-node let-level="level">
+  <ng-container
+    [ngTemplateOutlet]="template ? template : defaultTemplate"
+    [ngTemplateOutletContext]="{
+      $implicit: node,
+      level: level,
+      checked: this.tree.states[this.tree.getId(node)] === 'checked',
+      indeterminate: this.tree.states[this.tree.getId(node)] === 'indeterminate',
+      onChange: this.onChange
+    }"
+  ></ng-container>
+</ng-template>
+
+<ng-template #defaultTemplate let-node>
+  {{ this.tree.getId(node) }}
+</ng-template>
