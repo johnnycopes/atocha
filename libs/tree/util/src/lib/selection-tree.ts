@@ -12,11 +12,9 @@ import { toArray } from './selection-tree/to-array';
 import { toSet } from './selection-tree/to-set';
 import { toStates } from './selection-tree/to-states';
 import { updateStates } from './selection-tree/update-states';
+import { ITree } from './tree';
 
-export interface ISelectionTree<T> {
-  root: Readonly<T>;
-  getId: GetId<T>;
-  getChildren: GetChildren<T>;
+export interface ISelectionTree<T> extends ITree<T> {
   states: States;
   array: IdsArray;
   set: IdsSet;
