@@ -1,4 +1,4 @@
-import { State, MutableStates } from '../shared/types';
+import { State, States } from '../shared/types';
 import { IdsTree } from './ids/ids-tree';
 
 export function updateStates<T>({
@@ -6,7 +6,7 @@ export function updateStates<T>({
   tree,
   targetId,
 }: {
-  states: MutableStates;
+  states: States;
   tree: IdsTree<T>;
   targetId: string;
 }): void {

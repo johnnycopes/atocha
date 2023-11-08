@@ -3,7 +3,7 @@ import {
   GetChildren,
   GetId,
   Ids,
-  MutableStates,
+  States,
   IdsSet,
   State,
 } from './shared/types';
@@ -23,7 +23,7 @@ export interface ISelectionTree<T> extends ITree<T> {
 }
 
 export class SelectionTree<T> extends Tree<T> implements ISelectionTree<T> {
-  private _states: MutableStates;
+  private _states: States;
   private readonly _tree: IdsTree<T>;
 
   constructor(
@@ -63,7 +63,7 @@ export class SelectionTree<T> extends Tree<T> implements ISelectionTree<T> {
     return this;
   }
 
-  private _toStates(ids: Ids): MutableStates {
+  private _toStates(ids: Ids): States {
     return toStates(ids, this._tree);
   }
 }
