@@ -20,6 +20,7 @@ import {
 
 import { GetChildren, GetId, Ids, Tree } from '@atocha/tree/util';
 import { InternalSelectionTreeComponent } from '../internal-selection-tree/internal-selection-tree.component';
+import { SelectionTreeComponentAPI } from '../types';
 
 @Component({
   standalone: true,
@@ -41,7 +42,7 @@ import { InternalSelectionTreeComponent } from '../internal-selection-tree/inter
   ],
 })
 export class SelectionTreeComponent<T>
-  implements OnChanges, ControlValueAccessor
+  implements SelectionTreeComponentAPI<T>, OnChanges, ControlValueAccessor
 {
   @Input() root: T | undefined;
   @Input() getId: GetId<T> = () => '';

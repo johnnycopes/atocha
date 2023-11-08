@@ -12,6 +12,7 @@ import {
 
 import { ICountableTree, Ids } from '@atocha/tree/util';
 import { InternalSelectionTreeComponent } from '../internal-selection-tree/internal-selection-tree.component';
+import { InternalCountedSelectionTreeComponentAPI } from '../types';
 
 @Component({
   standalone: true,
@@ -25,7 +26,9 @@ import { InternalSelectionTreeComponent } from '../internal-selection-tree/inter
     class: 'core-selection-tree',
   },
 })
-export class InternalCountedSelectionTreeComponent<T> implements OnInit {
+export class InternalCountedSelectionTreeComponent<T>
+  implements InternalCountedSelectionTreeComponentAPI<T>, OnInit
+{
   @Input({ required: true }) tree!: ICountableTree<T>;
   @Input() ids: Ids = [];
   @Input() template: TemplateRef<unknown> | undefined;

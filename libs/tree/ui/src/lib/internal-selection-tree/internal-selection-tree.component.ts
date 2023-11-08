@@ -14,6 +14,7 @@ import {
 
 import { ITree, Ids } from '@atocha/tree/util';
 import { TreeComponent } from '../tree/tree.component';
+import { InternalSelectionTreeComponentAPI } from '../types';
 
 @Component({
   standalone: true,
@@ -27,7 +28,9 @@ import { TreeComponent } from '../tree/tree.component';
     class: 'core-selection-tree',
   },
 })
-export class InternalSelectionTreeComponent<T> implements OnChanges {
+export class InternalSelectionTreeComponent<T>
+  implements InternalSelectionTreeComponentAPI<T>, OnChanges
+{
   @Input({ required: true }) tree!: ITree<T>;
   @Input() ids: Ids = [];
   @Input() template: TemplateRef<unknown> | undefined;
