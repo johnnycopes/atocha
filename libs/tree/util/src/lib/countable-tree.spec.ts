@@ -10,7 +10,7 @@ import {
 
 describe('CountableTree', () => {
   describe('initializing', () => {
-    it('returns total counts when passed empty model', () => {
+    it('returns total counts when passed empty collection of IDs', () => {
       const tree = new CountableTree(
         AFRICA,
         getId,
@@ -44,7 +44,7 @@ describe('CountableTree', () => {
   });
 
   describe('updating', () => {
-    it('returns correct counts records after updating to partial model', () => {
+    it('returns correct counts records after updating to partial collection of IDs', () => {
       const tree = new CountableTree(
         AFRICA,
         getId,
@@ -78,7 +78,7 @@ describe('CountableTree', () => {
       });
     });
 
-    it('returns correct counts records after updating to full model', () => {
+    it('returns correct counts records after updating to full collection of IDs', () => {
       const tree = new CountableTree(
         AFRICA,
         getId,

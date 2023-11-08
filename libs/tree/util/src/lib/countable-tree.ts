@@ -60,8 +60,8 @@ export class CountableTree<T> implements ICountableTree<T> {
     return this._selectedCounts;
   }
 
-  updateCounts(model: Ids): CountableTree<T> {
-    const set = isIdsArray(model) ? new Set(model) : model;
+  updateCounts(ids: Ids): CountableTree<T> {
+    const set = isIdsArray(ids) ? new Set(ids) : ids;
     this._selectedCounts = this._getCounts((leaf: T): number =>
       set.has(this._tree.getId(leaf)) ? this.getLeafCount(leaf) : 0
     );

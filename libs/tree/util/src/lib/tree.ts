@@ -68,7 +68,7 @@ export class Tree<T> implements ITree<T> {
     return this;
   }
 
-  private _toStates(model: Ids): MutableStates {
-    return toStates(model, this._tree);
+  private _toStates(ids: Ids): MutableStates {
+    return toStates(ids, this._tree);
   }
 }

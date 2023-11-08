@@ -127,7 +127,7 @@ describe('Tree', () => {
     });
   });
 
-  describe('updating the model', () => {
+  describe('updating', () => {
     it('registers partial states', () => {
       const tree = new Tree(AFRICA, getId, getChildren);
 
