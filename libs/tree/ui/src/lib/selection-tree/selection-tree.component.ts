@@ -54,13 +54,9 @@ export class SelectionTreeComponent<T>
   onChange: (ids: Ids) => void = () => [];
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes['root']) {
-      this.tree = new Tree(
-        changes['root'].currentValue,
-        this.getId,
-        this.getChildren,
-        this.ids
-      );
+    const root = changes['root']?.currentValue;
+    if (root) {
+      this.tree = new Tree(root, this.getId, this.getChildren, this.ids);
       this.writeValue(this.ids);
     }
   }

@@ -38,7 +38,7 @@ export class InternalSelectionTreeComponent<T>
   @Output() changed = new EventEmitter<Ids>();
 
   ngOnChanges(changes: SimpleChanges): void {
-    const ids = changes['ids'].currentValue;
+    const ids = changes['ids']?.currentValue;
     if (ids) {
       this.tree.updateMultiple(ids);
     }
