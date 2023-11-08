@@ -15,8 +15,8 @@ describe('SelectionTree', () => {
       const tree = new SelectionTree(AFRICA, getId, getChildren);
 
       expect(tree.root).toEqual(AFRICA);
-      expect(tree.array).toEqual([]);
-      expect(tree.set).toEqual(new Set());
+      expect(tree.getIdsArray()).toEqual([]);
+      expect(tree.getIdsSet()).toEqual(new Set());
     });
 
     it('returns correct data with some node IDs selected', () => {
@@ -28,8 +28,8 @@ describe('SelectionTree', () => {
       );
 
       expect(tree.root).toEqual(AFRICA);
-      expect(tree.array).toEqual(SOME_SELECTED_IDS_ARRAY);
-      expect(tree.set).toEqual(SOME_SELECTED_IDS_SET);
+      expect(tree.getIdsArray()).toEqual(SOME_SELECTED_IDS_ARRAY);
+      expect(tree.getIdsSet()).toEqual(SOME_SELECTED_IDS_SET);
     });
 
     it('returns correct data with all IDs selected', () => {
@@ -41,8 +41,8 @@ describe('SelectionTree', () => {
       );
 
       expect(tree.root).toEqual(AFRICA);
-      expect(tree.array).toEqual(ALL_SELECTED_IDS_ARRAY);
-      expect(tree.set).toEqual(ALL_SELECTED_IDS_SET);
+      expect(tree.getIdsArray()).toEqual(ALL_SELECTED_IDS_ARRAY);
+      expect(tree.getIdsSet()).toEqual(ALL_SELECTED_IDS_SET);
     });
   });
 
@@ -53,8 +53,8 @@ describe('SelectionTree', () => {
       tree.updateOne('Africa');
 
       expect(tree.root).toEqual(AFRICA);
-      expect(tree.array).toEqual(ALL_SELECTED_IDS_ARRAY);
-      expect(tree.set).toEqual(ALL_SELECTED_IDS_SET);
+      expect(tree.getIdsArray()).toEqual(ALL_SELECTED_IDS_ARRAY);
+      expect(tree.getIdsSet()).toEqual(ALL_SELECTED_IDS_SET);
     });
 
     it('deselects all items when all are selected and the root item is deselected', () => {
@@ -68,8 +68,8 @@ describe('SelectionTree', () => {
       tree.updateOne('Africa');
 
       expect(tree.root).toEqual(AFRICA);
-      expect(tree.array).toEqual([]);
-      expect(tree.set).toEqual(new Set());
+      expect(tree.getIdsArray()).toEqual([]);
+      expect(tree.getIdsSet()).toEqual(new Set());
     });
 
     it('correctly affects tree when middle item is selected', () => {
@@ -78,8 +78,8 @@ describe('SelectionTree', () => {
       tree.updateOne('Morocco');
 
       expect(tree.root).toEqual(AFRICA);
-      expect(tree.array).toEqual(['Marrakesh', 'Fes']);
-      expect(tree.set).toEqual(new Set(['Marrakesh', 'Fes']));
+      expect(tree.getIdsArray()).toEqual(['Marrakesh', 'Fes']);
+      expect(tree.getIdsSet()).toEqual(new Set(['Marrakesh', 'Fes']));
     });
 
     it('correctly affects tree when leaf item is selected', () => {
@@ -88,8 +88,8 @@ describe('SelectionTree', () => {
       tree.updateOne('Namibia');
 
       expect(tree.root).toEqual(AFRICA);
-      expect(tree.array).toEqual(['Namibia']);
-      expect(tree.set).toEqual(new Set(['Namibia']));
+      expect(tree.getIdsArray()).toEqual(['Namibia']);
+      expect(tree.getIdsSet()).toEqual(new Set(['Namibia']));
     });
 
     it('converts indeterminate states to selected when toggled', () => {
@@ -106,8 +106,8 @@ describe('SelectionTree', () => {
         .updateOne('Northern Africa');
 
       expect(tree.root).toEqual(AFRICA);
-      expect(tree.array).toEqual(['Marrakesh', 'Fes']);
-      expect(tree.set).toEqual(new Set(['Marrakesh', 'Fes']));
+      expect(tree.getIdsArray()).toEqual(['Marrakesh', 'Fes']);
+      expect(tree.getIdsSet()).toEqual(new Set(['Marrakesh', 'Fes']));
     });
   });
 
@@ -118,8 +118,8 @@ describe('SelectionTree', () => {
       tree.updateMultiple(SOME_SELECTED_IDS_ARRAY);
 
       expect(tree.root).toEqual(AFRICA);
-      expect(tree.array).toEqual(SOME_SELECTED_IDS_ARRAY);
-      expect(tree.set).toEqual(SOME_SELECTED_IDS_SET);
+      expect(tree.getIdsArray()).toEqual(SOME_SELECTED_IDS_ARRAY);
+      expect(tree.getIdsSet()).toEqual(SOME_SELECTED_IDS_SET);
     });
 
     it('registers multiple changes correctly', () => {
@@ -137,8 +137,10 @@ describe('SelectionTree', () => {
         .updateOne('Central Africa');
 
       expect(tree.root).toEqual(AFRICA);
-      expect(tree.array).toEqual(['Central Africa', 'Swaziland']);
-      expect(tree.set).toEqual(new Set(['Central Africa', 'Swaziland']));
+      expect(tree.getIdsArray()).toEqual(['Central Africa', 'Swaziland']);
+      expect(tree.getIdsSet()).toEqual(
+        new Set(['Central Africa', 'Swaziland'])
+      );
     });
   });
 });
