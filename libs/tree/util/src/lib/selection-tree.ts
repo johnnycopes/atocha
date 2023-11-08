@@ -7,11 +7,11 @@ import {
   IdsSet,
   States,
 } from './shared/types';
-import { IdsTree } from './tree/ids/ids-tree';
-import { toArray } from './tree/to-array';
-import { toSet } from './tree/to-set';
-import { toStates } from './tree/to-states';
-import { updateStates } from './tree/update-states';
+import { IdsTree } from './selection-tree/ids/ids-tree';
+import { toArray } from './selection-tree/to-array';
+import { toSet } from './selection-tree/to-set';
+import { toStates } from './selection-tree/to-states';
+import { updateStates } from './selection-tree/update-states';
 
 export interface ISelectionTree<T> {
   root: Readonly<T>;

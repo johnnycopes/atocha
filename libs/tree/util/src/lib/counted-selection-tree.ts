@@ -10,7 +10,7 @@ import {
   States,
   isIdsArray,
 } from './shared/types';
-import { getCounts } from './countable-tree/get-counts';
+import { getCounts } from './counted-selection-tree/get-counts';
 import { ISelectionTree, SelectionTree } from './selection-tree';
 
 export interface ICountedSelectionTree<T> extends ISelectionTree<T> {
