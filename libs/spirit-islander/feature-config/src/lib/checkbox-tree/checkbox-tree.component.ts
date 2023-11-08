@@ -33,8 +33,8 @@ import { Node } from './create-root';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CheckboxTreeComponent<T> {
-  @Input() root: Node<T> | undefined;
-  @Input() form: FormGroup | undefined;
+  @Input({ required: true }) root!: Node<T>;
+  @Input({ required: true }) form!: FormGroup;
   @Input() controlName = '';
   @Output() nodeClick = new EventEmitter<string>();
 
