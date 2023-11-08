@@ -55,7 +55,7 @@ export class CountedSelectionTreeComponent<T>
   @Input({ required: true }) root!: T;
   @Input({ required: true }) getId: GetId<T> = () => '';
   @Input({ required: true }) getChildren: GetChildren<T> = () => [];
-  @Input({ required: true }) getLeafNodeCount: GetLeafCount<T> = () => 0;
+  @Input({ required: true }) getLeafCount: GetLeafCount<T> = () => 0;
   @Input() template: TemplateRef<unknown> | undefined;
   @Output() nodeClick = new EventEmitter<string>();
   @Output() selectedChange = new EventEmitter<number>();
@@ -65,7 +65,7 @@ export class CountedSelectionTreeComponent<T>
     {} as T,
     this.getId,
     this.getChildren,
-    this.getLeafNodeCount
+    this.getLeafCount
   );
   onChange: (ids: Ids) => void = () => [];
 
@@ -76,7 +76,7 @@ export class CountedSelectionTreeComponent<T>
         root,
         this.getId,
         this.getChildren,
-        this.getLeafNodeCount,
+        this.getLeafCount,
         this.ids
       );
       this.writeValue(this.ids);

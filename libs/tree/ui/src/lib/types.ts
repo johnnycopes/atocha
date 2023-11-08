@@ -9,7 +9,7 @@ import {
 
 export interface CountedSelectionTreeComponentAPI<T>
   extends SelectionTreeComponentAPI<T> {
-  getLeafNodeCount: GetLeafCount<T>;
+  getLeafCount: GetLeafCount<T>;
   selectedChange: EventEmitter<number>;
   totalChange: EventEmitter<number>;
 }
