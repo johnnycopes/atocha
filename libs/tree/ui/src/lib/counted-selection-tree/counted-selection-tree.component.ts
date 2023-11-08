@@ -20,8 +20,7 @@ import {
 } from '@angular/forms';
 
 import {
-  Counter,
-  Counts,
+  CountableTree,
   GetChildren,
   GetId,
   GetLeafCount,
@@ -59,15 +58,13 @@ export class CountedSelectionTreeComponent<T>
   @Output() selectedChange = new EventEmitter<number>();
   @Output() totalChange = new EventEmitter<number>();
   ids: Ids = [];
-  selectedCounts: Counts = {};
-  totalCounts: Counts = {};
-  private _id = '';
-  private _counter = new Counter<T>(
+  tree: CountableTree<T> = new CountableTree(
     {} as T,
     this.getId,
     this.getChildren,
     this.getLeafNodeCount
   );
+  private _id = '';
   private _onChangeFn: (ids: Ids) => void = () => [];
 
   constructor(private _changeDetectorRef: ChangeDetectorRef) {}
@@ -77,15 +74,14 @@ export class CountedSelectionTreeComponent<T>
       const root: T = changes['root'].currentValue;
 
       this._id = this.getId(root);
-      this._counter = new Counter<T>(
+      this.tree = new CountableTree(
         root,
         this.getId,
         this.getChildren,
         this.getLeafNodeCount,
         this.ids
       );
-      this.totalCounts = this._counter.totalCounts;
-      this.totalChange.emit(this.totalCounts[this._id]);
+      this.totalChange.emit(this.tree.totalCounts[this._id]);
 
       this.writeValue(this.ids);
     }
@@ -94,8 +90,8 @@ export class CountedSelectionTreeComponent<T>
   writeValue(ids: Ids): void {
     if (ids && this.root) {
       this.ids = ids;
-      this.selectedCounts = this._counter.update(this.ids).selectedCounts;
-      this.selectedChange.emit(this.selectedCounts[this._id]);
+      this.tree.updateCounts(this.ids);
+      this.selectedChange.emit(this.tree.selectedCounts[this._id]);
     }
     this._changeDetectorRef.markForCheck();
   }
@@ -112,8 +108,8 @@ export class CountedSelectionTreeComponent<T>
       this.ids = ids;
       this._onChangeFn(this.ids);
 
-      this.selectedCounts = this._counter.update(ids).selectedCounts;
-      this.selectedChange.emit(this.selectedCounts[this._id]);
+      this.tree.updateCounts(ids);
+      this.selectedChange.emit(this.tree.selectedCounts[this._id]);
     }
   }
 }

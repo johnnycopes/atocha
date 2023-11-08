@@ -19,13 +19,7 @@ import {
   FormsModule,
 } from '@angular/forms';
 
-import {
-  GetChildren,
-  GetId,
-  Ids,
-  States,
-  Transformer,
-} from '@atocha/tree/util';
+import { GetChildren, GetId, Ids, Tree } from '@atocha/tree/util';
 import { TreeComponent } from '../tree/tree.component';
 
 @Component({
@@ -56,27 +50,19 @@ export class SelectionTreeComponent<T>
   @Input() template: TemplateRef<unknown> | undefined;
   @Output() nodeClick = new EventEmitter<string>();
   ids: Ids = [];
-  states: States = {};
-  private _transformer = new Transformer<T>(
-    {} as T,
-    this.getId,
-    this.getChildren
-  );
+  tree = new Tree({} as T, this.getId, this.getChildren);
   private _onChangeFn: (ids: Ids) => void = () => [];
 
   constructor(private _changeDetectorRef: ChangeDetectorRef) {}
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['root']) {
-      const root: T = changes['root'].currentValue;
-
-      this._transformer = new Transformer(
-        root,
+      this.tree = new Tree(
+        changes['root'].currentValue,
         this.getId,
         this.getChildren,
         this.ids
       );
-
       this.writeValue(this.ids);
     }
   }
@@ -84,7 +70,7 @@ export class SelectionTreeComponent<T>
   writeValue(ids: Ids): void {
     if (ids) {
       this.ids = ids;
-      this.states = this._transformer.updateMultiple(ids).states;
+      this.tree.updateMultiple(this.ids);
     }
     this._changeDetectorRef.markForCheck();
   }
@@ -98,11 +84,8 @@ export class SelectionTreeComponent<T>
 
   onChange = (node: T): void => {
     const nodeId = this.getId(node);
-
     this.nodeClick.emit(nodeId);
-    this._transformer.updateOne(nodeId);
-    this.states = this._transformer.states;
-    this.ids = this._transformer.array;
+    this.ids = this.tree.updateOne(nodeId).array;
     this._onChangeFn(this.ids);
   };
 }

@@ -1,19 +1,24 @@
-import { Counter } from './counter';
+import { CountableTree } from './countable-tree';
 import {
   getId,
   getChildren,
   getTargetCount,
   AFRICA,
   ALL_SELECTED_IDS_ARRAY,
-  SOME_SELECTED_IDS_ARRAY,
+  SOME_SELECTED_IDS_SET,
 } from './shared/mock-data';
 
-describe('Counter', () => {
+describe('CountableTree', () => {
   describe('initializing', () => {
-    it('returns total counts when passed empty IDs collection', () => {
-      const counter = new Counter(AFRICA, getId, getChildren, getTargetCount);
+    it('returns total counts when passed empty collection of IDs', () => {
+      const tree = new CountableTree(
+        AFRICA,
+        getId,
+        getChildren,
+        getTargetCount
+      );
 
-      expect(counter.totalCounts).toEqual({
+      expect(tree.totalCounts).toEqual({
         Africa: 130,
         'Central Africa': 65,
         Fes: 11,
@@ -24,7 +29,7 @@ describe('Counter', () => {
         'Southern Africa': 45,
         Swaziland: 28,
       });
-      expect(counter.selectedCounts).toEqual({
+      expect(tree.selectedCounts).toEqual({
         Africa: 0,
         'Central Africa': 0,
         Fes: 0,
@@ -39,12 +44,17 @@ describe('Counter', () => {
   });
 
   describe('updating', () => {
-    it('returns correct counts records after updating to partial IDs collection', () => {
-      const counter = new Counter(AFRICA, getId, getChildren, getTargetCount);
+    it('returns correct counts records after updating to partial collection of IDs', () => {
+      const tree = new CountableTree(
+        AFRICA,
+        getId,
+        getChildren,
+        getTargetCount
+      );
 
-      counter.update(SOME_SELECTED_IDS_ARRAY);
+      tree.updateCounts(SOME_SELECTED_IDS_SET);
 
-      expect(counter.totalCounts).toEqual({
+      expect(tree.totalCounts).toEqual({
         Africa: 130,
         'Central Africa': 65,
         Fes: 11,
@@ -55,7 +65,7 @@ describe('Counter', () => {
         'Southern Africa': 45,
         Swaziland: 28,
       });
-      expect(counter.selectedCounts).toEqual({
+      expect(tree.selectedCounts).toEqual({
         Africa: 39,
         'Central Africa': 0,
         Fes: 11,
@@ -68,12 +78,17 @@ describe('Counter', () => {
       });
     });
 
-    it('returns correct counts records after updating to full IDs collection', () => {
-      const counter = new Counter(AFRICA, getId, getChildren, getTargetCount);
+    it('returns correct counts records after updating to full collection of IDs', () => {
+      const tree = new CountableTree(
+        AFRICA,
+        getId,
+        getChildren,
+        getTargetCount
+      );
 
-      counter.update(ALL_SELECTED_IDS_ARRAY);
+      tree.updateCounts(ALL_SELECTED_IDS_ARRAY);
 
-      expect(counter.totalCounts).toEqual({
+      expect(tree.totalCounts).toEqual({
         Africa: 130,
         'Central Africa': 65,
         Fes: 11,
@@ -84,7 +99,7 @@ describe('Counter', () => {
         'Southern Africa': 45,
         Swaziland: 28,
       });
-      expect(counter.selectedCounts).toEqual({
+      expect(tree.selectedCounts).toEqual({
         Africa: 130,
         'Central Africa': 65,
         Fes: 11,
