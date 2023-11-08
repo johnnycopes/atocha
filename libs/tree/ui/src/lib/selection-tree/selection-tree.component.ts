@@ -19,7 +19,7 @@ import {
   FormsModule,
 } from '@angular/forms';
 
-import { GetChildren, GetId, Ids, Tree } from '@atocha/tree/util';
+import { GetChildren, GetId, Ids, SelectionTree } from '@atocha/tree/util';
 import { TreeComponent } from '../tree/tree.component';
 
 @Component({
@@ -50,14 +50,14 @@ export class SelectionTreeComponent<T>
   @Input() template: TemplateRef<unknown> | undefined;
   @Output() nodeClick = new EventEmitter<string>();
   ids: Ids = [];
-  tree = new Tree({} as T, this.getId, this.getChildren);
+  tree = new SelectionTree({} as T, this.getId, this.getChildren);
   private _onChangeFn: (ids: Ids) => void = () => [];
 
   constructor(private _changeDetectorRef: ChangeDetectorRef) {}
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['root']) {
-      this.tree = new Tree(
+      this.tree = new SelectionTree(
         changes['root'].currentValue,
         this.getId,
         this.getChildren,

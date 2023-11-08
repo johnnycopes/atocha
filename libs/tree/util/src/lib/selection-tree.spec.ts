@@ -1,4 +1,4 @@
-import { Tree } from './tree';
+import { SelectionTree } from './selection-tree';
 import {
   getChildren,
   getId,
@@ -11,10 +11,10 @@ import {
   SOME_SELECTED_IDS_SET,
 } from './shared/mock-data';
 
-describe('Tree', () => {
+describe('SelectionTree', () => {
   describe('initializing', () => {
     it('returns correct data without any nodes selected', () => {
-      const tree = new Tree(AFRICA, getId, getChildren);
+      const tree = new SelectionTree(AFRICA, getId, getChildren);
 
       expect(tree.root).toEqual(AFRICA);
       expect(tree.array).toEqual([]);
@@ -23,7 +23,7 @@ describe('Tree', () => {
     });
 
     it('returns correct data with some node IDs selected', () => {
-      const tree = new Tree(
+      const tree = new SelectionTree(
         AFRICA,
         getId,
         getChildren,
@@ -37,7 +37,12 @@ describe('Tree', () => {
     });
 
     it('returns correct data with all IDs selected', () => {
-      const tree = new Tree(AFRICA, getId, getChildren, ALL_SELECTED_IDS_ARRAY);
+      const tree = new SelectionTree(
+        AFRICA,
+        getId,
+        getChildren,
+        ALL_SELECTED_IDS_ARRAY
+      );
 
       expect(tree.root).toEqual(AFRICA);
       expect(tree.array).toEqual(ALL_SELECTED_IDS_ARRAY);
@@ -48,7 +53,7 @@ describe('Tree', () => {
 
   describe('updating individual items', () => {
     it('selects all items when none are selected and the root item is selected', () => {
-      const tree = new Tree(AFRICA, getId, getChildren);
+      const tree = new SelectionTree(AFRICA, getId, getChildren);
 
       tree.updateOne('Africa');
 
@@ -59,7 +64,12 @@ describe('Tree', () => {
     });
 
     it('deselects all items when all are selected and the root item is deselected', () => {
-      const tree = new Tree(AFRICA, getId, getChildren, ALL_SELECTED_IDS_ARRAY);
+      const tree = new SelectionTree(
+        AFRICA,
+        getId,
+        getChildren,
+        ALL_SELECTED_IDS_ARRAY
+      );
 
       tree.updateOne('Africa');
 
@@ -70,7 +80,7 @@ describe('Tree', () => {
     });
 
     it('correctly affects tree when middle item is selected', () => {
-      const tree = new Tree(AFRICA, getId, getChildren);
+      const tree = new SelectionTree(AFRICA, getId, getChildren);
 
       tree.updateOne('Morocco');
 
@@ -87,7 +97,7 @@ describe('Tree', () => {
     });
 
     it('correctly affects tree when leaf item is selected', () => {
-      const tree = new Tree(AFRICA, getId, getChildren);
+      const tree = new SelectionTree(AFRICA, getId, getChildren);
 
       tree.updateOne('Namibia');
 
@@ -102,7 +112,7 @@ describe('Tree', () => {
     });
 
     it('converts indeterminate states to selected when toggled', () => {
-      const tree = new Tree(
+      const tree = new SelectionTree(
         AFRICA,
         getId,
         getChildren,
@@ -129,7 +139,7 @@ describe('Tree', () => {
 
   describe('updating', () => {
     it('registers partial states', () => {
-      const tree = new Tree(AFRICA, getId, getChildren);
+      const tree = new SelectionTree(AFRICA, getId, getChildren);
 
       tree.updateMultiple(SOME_SELECTED_IDS_ARRAY);
 
@@ -140,7 +150,12 @@ describe('Tree', () => {
     });
 
     it('registers multiple changes correctly', () => {
-      const tree = new Tree(AFRICA, getId, getChildren, ALL_SELECTED_IDS_ARRAY);
+      const tree = new SelectionTree(
+        AFRICA,
+        getId,
+        getChildren,
+        ALL_SELECTED_IDS_ARRAY
+      );
 
       tree
         .updateOne('Namibia')

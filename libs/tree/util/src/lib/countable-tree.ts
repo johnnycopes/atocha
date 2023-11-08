@@ -11,9 +11,9 @@ import {
   isIdsArray,
 } from './shared/types';
 import { getCounts } from './countable-tree/get-counts';
-import { ITree, Tree } from './tree';
+import { ISelectionTree, SelectionTree } from './selection-tree';
 
-export interface ICountableTree<T> extends ITree<T> {
+export interface ICountableTree<T> extends ISelectionTree<T> {
   totalCounts: Counts;
   selectedCounts: Counts;
   updateCounts(ids: Ids): CountableTree<T>;
@@ -22,7 +22,7 @@ export interface ICountableTree<T> extends ITree<T> {
 export class CountableTree<T> implements ICountableTree<T> {
   private _selectedCounts: Readonly<MutableCounts> = {};
   private readonly _totalCounts: Readonly<MutableCounts> = {};
-  private readonly _tree: Tree<T>;
+  private readonly _tree: SelectionTree<T>;
 
   constructor(
     root: T,
@@ -31,7 +31,7 @@ export class CountableTree<T> implements ICountableTree<T> {
     readonly getLeafCount: GetLeafCount<T>,
     ids: Ids = new Set<string>()
   ) {
-    this._tree = new Tree(root, getId, getChildren, ids);
+    this._tree = new SelectionTree(root, getId, getChildren, ids);
     this._totalCounts = this._getCounts(getLeafCount);
     this.updateCounts(ids);
   }
@@ -68,11 +68,11 @@ export class CountableTree<T> implements ICountableTree<T> {
     return this;
   }
 
-  updateOne(id: string): Tree<T> {
+  updateOne(id: string): SelectionTree<T> {
     return this._tree.updateOne(id);
   }
 
-  updateMultiple(ids: Ids): Tree<T> {
+  updateMultiple(ids: Ids): SelectionTree<T> {
     return this._tree.updateMultiple(ids);
   }
 
