@@ -40,12 +40,12 @@ export class InternalCountedSelectionTreeComponent<T>
 
   ngOnInit(): void {
     this._rootId = this.tree.getId(this.tree.root);
-    this.totalChange.emit(this.tree.totalCounts[this._rootId]);
+    this.totalChange.emit(this.tree.getTotalCount(this._rootId));
   }
 
   onChange(ids: Ids): void {
     this.tree.updateCounts(ids);
     this.changed.emit(ids);
-    this.selectedChange.emit(this.tree.selectedCounts[this._rootId]);
+    this.selectedChange.emit(this.tree.getSelectedCount(this._rootId));
   }
 }

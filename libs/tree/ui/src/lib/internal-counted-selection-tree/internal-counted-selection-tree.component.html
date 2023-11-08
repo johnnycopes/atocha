@@ -22,8 +22,8 @@
       checked: checked,
       indeterminate: indeterminate,
       onChange: onChange,
-      selected: this.tree.selectedCounts[this.tree.getId(node)],
-      total: this.tree.totalCounts[this.tree.getId(node)]
+      selected: this.tree.getSelectedCount(this.tree.getId(node)),
+      total: this.tree.getTotalCount(this.tree.getId(node))
     }"
   ></ng-container>
 </ng-template>

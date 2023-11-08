@@ -12,8 +12,8 @@ import { ISelectionTree, SelectionTree } from './selection-tree';
 
 export interface ICountedSelectionTree<T> extends ISelectionTree<T> {
   getLeafCount: GetLeafCount<T>;
-  totalCounts: Counts;
-  selectedCounts: Counts;
+  getTotalCount(id: string): number;
+  getSelectedCount(id: string): number;
   updateCounts(ids: Ids): CountedSelectionTree<T>;
 }
 
@@ -36,12 +36,12 @@ export class CountedSelectionTree<T>
     this.updateCounts(ids);
   }
 
-  get totalCounts(): Counts {
-    return this._totalCounts;
+  getTotalCount(id: string): number {
+    return this._totalCounts[id];
   }
 
-  get selectedCounts(): Counts {
-    return this._selectedCounts;
+  getSelectedCount(id: string): number {
+    return this._selectedCounts[id];
   }
 
   updateCounts(ids: Ids): CountedSelectionTree<T> {
