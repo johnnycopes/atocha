@@ -13,13 +13,13 @@ import {
 import { getCounts } from './countable-tree/get-counts';
 import { ISelectionTree, SelectionTree } from './selection-tree';
 
-export interface ICountableTree<T> extends ISelectionTree<T> {
+export interface ICountedSelectionTree<T> extends ISelectionTree<T> {
   totalCounts: Counts;
   selectedCounts: Counts;
-  updateCounts(ids: Ids): CountableTree<T>;
+  updateCounts(ids: Ids): CountedSelectionTree<T>;
 }
 
-export class CountableTree<T> implements ICountableTree<T> {
+export class CountedSelectionTree<T> implements ICountedSelectionTree<T> {
   private _selectedCounts: Readonly<MutableCounts> = {};
   private readonly _totalCounts: Readonly<MutableCounts> = {};
   private readonly _tree: SelectionTree<T>;
@@ -60,7 +60,7 @@ export class CountableTree<T> implements ICountableTree<T> {
     return this._selectedCounts;
   }
 
-  updateCounts(ids: Ids): CountableTree<T> {
+  updateCounts(ids: Ids): CountedSelectionTree<T> {
     const set = isIdsArray(ids) ? new Set(ids) : ids;
     this._selectedCounts = this._getCounts((leaf: T): number =>
       set.has(this._tree.getId(leaf)) ? this.getLeafCount(leaf) : 0

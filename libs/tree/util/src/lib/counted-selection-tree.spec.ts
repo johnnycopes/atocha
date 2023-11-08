@@ -1,4 +1,4 @@
-import { CountableTree } from './countable-tree';
+import { CountedSelectionTree } from './counted-selection-tree';
 import {
   getId,
   getChildren,
@@ -8,10 +8,10 @@ import {
   SOME_SELECTED_IDS_SET,
 } from './shared/mock-data';
 
-describe('CountableTree', () => {
+describe('CountedSelectionTree', () => {
   describe('initializing', () => {
     it('returns total counts when passed empty collection of IDs', () => {
-      const tree = new CountableTree(
+      const tree = new CountedSelectionTree(
         AFRICA,
         getId,
         getChildren,
@@ -45,7 +45,7 @@ describe('CountableTree', () => {
 
   describe('updating', () => {
     it('returns correct counts records after updating to partial collection of IDs', () => {
-      const tree = new CountableTree(
+      const tree = new CountedSelectionTree(
         AFRICA,
         getId,
         getChildren,
@@ -79,7 +79,7 @@ describe('CountableTree', () => {
     });
 
     it('returns correct counts records after updating to full collection of IDs', () => {
-      const tree = new CountableTree(
+      const tree = new CountedSelectionTree(
         AFRICA,
         getId,
         getChildren,
