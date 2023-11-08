@@ -45,6 +45,7 @@ export default {
       },
     },
     onNgModelChange: { action: 'ngModelChange' },
+    onNodeClick: { action: 'nodeClick' },
     onSelectedChange: { action: 'selectedChange' },
     onTotalChange: { action: 'totalChange' },
   },
@@ -69,6 +70,7 @@ const Template: StoryFn<CountedSelectionTreeComponent<TestItem>> = (
       [template]="checkboxTemplate"
       [ngModel]="ids"
       (ngModelChange)="ids = $event; onNgModelChange($event)"
+      (nodeClick)="onNodeClick($event)"
       (selectedChange)="onSelectedChange($event)"
       (totalChange)="onTotalChange($event)"
     ></core-counted-selection-tree>

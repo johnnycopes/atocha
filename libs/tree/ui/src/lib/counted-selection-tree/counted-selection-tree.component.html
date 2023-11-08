@@ -3,6 +3,7 @@
   [ids]="ids"
   [template]="template"
   (changed)="onChange($event)"
+  (nodeClick)="nodeClick.emit($event)"
   (selectedChange)="selectedChange.emit($event)"
   (totalChange)="totalChange.emit($event)"
 ></core-internal-counted-selection-tree>

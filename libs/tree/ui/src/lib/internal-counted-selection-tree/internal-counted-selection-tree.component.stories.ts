@@ -49,7 +49,8 @@ export default {
         'Small Africa': SMALL_AFRICA,
       },
     },
-    onClick: { action: 'clicked' },
+    onNodeClick: { action: 'nodeClick' },
+    onChanged: { action: 'changed' },
     onSelectedChange: { action: 'selectedChange' },
     onTotalChange: { action: 'totalChange' },
   },
@@ -69,7 +70,8 @@ const Template: StoryFn<InternalCountedSelectionTreeComponent<TestItem>> = (
       [tree]="tree"
       [template]="checkboxTemplate"
       [ids]="ids"
-      (changed)="ids = $event; onClick($event)"
+      (nodeClick)="onNodeClick($event)"
+      (changed)="ids = $event; onChanged($event)"
       (selectedChange)="onSelectedChange($event)"
       (totalChange)="onTotalChange($event)"
     ></core-internal-counted-selection-tree>
