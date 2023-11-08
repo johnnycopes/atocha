@@ -10,7 +10,7 @@ import {
   States,
   isIdsArray,
 } from './shared/types';
-import { getCounts } from './counter/get-counts';
+import { getCounts } from './countable-tree/get-counts';
 import { ITree, Tree } from './tree';
 
 export interface ICountableTree<T> extends ITree<T> {
