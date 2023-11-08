@@ -5,7 +5,6 @@ import {
   Input,
   TemplateRef,
   ChangeDetectionStrategy,
-  ChangeDetectorRef,
   ViewEncapsulation,
   Output,
   EventEmitter,
@@ -32,21 +31,19 @@ export class InternalSelectionTreeComponent<T> implements OnChanges {
   @Input({ required: true }) tree!: Tree<T>;
   @Input() ids: Ids = [];
   @Input() template: TemplateRef<unknown> | undefined;
-  @Output() changed = new EventEmitter<Ids>();
   @Output() nodeClick = new EventEmitter<string>();
-
-  constructor(private _changeDetectorRef: ChangeDetectorRef) {}
+  @Output() changed = new EventEmitter<Ids>();
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes['ids']) {
-      this.tree.updateMultiple(this.ids);
+    const ids = changes['ids'].currentValue;
+    if (ids) {
+      this.tree.updateMultiple(ids);
     }
   }
 
   onChange = (node: T): void => {
     const nodeId = this.tree.getId(node);
     this.nodeClick.emit(nodeId);
-    console.log('ok', node);
     this.changed.emit(this.tree.updateOne(nodeId).array);
   };
 }

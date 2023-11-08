@@ -6,7 +6,6 @@ import {
   TemplateRef,
   forwardRef,
   ChangeDetectionStrategy,
-  ChangeDetectorRef,
   OnChanges,
   SimpleChanges,
   ViewEncapsulation,
@@ -20,12 +19,12 @@ import {
 } from '@angular/forms';
 
 import { GetChildren, GetId, Ids, Tree } from '@atocha/tree/util';
-import { TreeComponent } from '../tree/tree.component';
+import { InternalSelectionTreeComponent } from '../internal-selection-tree/internal-selection-tree.component';
 
 @Component({
   standalone: true,
   selector: 'core-selection-tree',
-  imports: [CommonModule, FormsModule, TreeComponent],
+  imports: [CommonModule, FormsModule, InternalSelectionTreeComponent],
   templateUrl: './selection-tree.component.html',
   styleUrls: ['./selection-tree.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -51,9 +50,7 @@ export class SelectionTreeComponent<T>
   @Output() nodeClick = new EventEmitter<string>();
   ids: Ids = [];
   tree = new Tree({} as T, this.getId, this.getChildren);
-  private _onChangeFn: (ids: Ids) => void = () => [];
-
-  constructor(private _changeDetectorRef: ChangeDetectorRef) {}
+  onChange: (ids: Ids) => void = () => [];
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['root']) {
@@ -67,25 +64,16 @@ export class SelectionTreeComponent<T>
     }
   }
 
-  writeValue(ids: Ids): void {
+  writeValue(ids: Ids | null): void {
     if (ids) {
       this.ids = ids;
-      this.tree.updateMultiple(this.ids);
     }
-    this._changeDetectorRef.markForCheck();
   }
 
   registerOnChange(fn: (value: Ids) => void): void {
-    this._onChangeFn = fn;
+    this.onChange = fn;
   }
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-empty-function
   registerOnTouched(_fn: (value: Ids) => void): void {}
-
-  onChange = (node: T): void => {
-    const nodeId = this.getId(node);
-    this.nodeClick.emit(nodeId);
-    this.ids = this.tree.updateOne(nodeId).array;
-    this._onChangeFn(this.ids);
-  };
 }
