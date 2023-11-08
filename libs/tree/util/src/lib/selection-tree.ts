@@ -12,7 +12,7 @@ import { toArray } from './selection-tree/to-array';
 import { toSet } from './selection-tree/to-set';
 import { toStates } from './selection-tree/to-states';
 import { updateStates } from './selection-tree/update-states';
-import { ITree } from './tree';
+import { ITree, Tree } from './tree';
 
 export interface ISelectionTree<T> extends ITree<T> {
   states: States;
@@ -22,22 +22,19 @@ export interface ISelectionTree<T> extends ITree<T> {
   updateMultiple(ids: Ids): SelectionTree<T>;
 }
 
-export class SelectionTree<T> implements ISelectionTree<T> {
+export class SelectionTree<T> extends Tree<T> implements ISelectionTree<T> {
   private _states: MutableStates;
   private readonly _tree: IdsTree<T>;
 
   constructor(
-    private _root: T,
-    readonly getId: GetId<T>,
-    readonly getChildren: GetChildren<T>,
+    root: T,
+    getId: GetId<T>,
+    getChildren: GetChildren<T>,
     ids: Ids = []
   ) {
-    this._tree = new IdsTree(this._root, this.getId, this.getChildren);
+    super(root, getId, getChildren);
+    this._tree = new IdsTree(root, getId, getChildren);
     this._states = this._toStates(ids);
-  }
-
-  get root(): Readonly<T> {
-    return this._root;
   }
 
   get states(): States {
