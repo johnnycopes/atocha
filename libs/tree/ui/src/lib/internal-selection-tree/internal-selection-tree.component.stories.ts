@@ -45,7 +45,8 @@ export default {
         'Small Africa': SMALL_AFRICA,
       },
     },
-    onClick: { action: 'clicked' },
+    changed: { action: 'changed' },
+    nodeClick: { action: 'nodeClick' },
   },
 } as Meta<InternalSelectionTreeComponent<TestItem>>;
 
@@ -63,7 +64,8 @@ const Template: StoryFn<InternalSelectionTreeComponent<TestItem>> = (
       [tree]="tree"
       [template]="checkboxTemplate"
       [ids]="ids"
-      (changed)="ids = $event; onClick($event)"
+      (changed)="ids = $event; changed($event)"
+      (nodeClick)="nodeClick($event)"
     ></core-internal-selection-tree>
 
     <ng-template #checkboxTemplate
