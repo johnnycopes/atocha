@@ -12,21 +12,22 @@ import {
   ALL_SELECTED_IDS_ARRAY,
   SMALL_AFRICA,
   SOME_SELECTED_IDS_ARRAY,
+  SelectionTree,
   TestItem,
   getChildren,
   getId,
 } from '@atocha/tree/util';
 import { CheckboxComponent } from '@atocha/core/ui';
-import { SelectionTreeComponent } from './selection-tree.component';
+import { InternalSelectionTreeComponent } from './internal-selection-tree.component';
 import { StorybookWrapperComponent } from '../../../.storybook/storybook-wrapper/storybook-wrapper.component';
 import { TreeComponent } from '../tree/tree.component';
 
 export default {
-  title: 'Selection Tree',
-  component: SelectionTreeComponent,
+  title: 'Internal Selection Tree',
+  component: InternalSelectionTreeComponent,
   decorators: [
     moduleMetadata({
-      imports: [FormsModule, CheckboxComponent, TreeComponent],
+      imports: [CheckboxComponent, FormsModule, TreeComponent],
       declarations: [StorybookWrapperComponent],
     }),
     componentWrapperDecorator(StorybookWrapperComponent),
@@ -44,28 +45,32 @@ export default {
         'Small Africa': SMALL_AFRICA,
       },
     },
-    ngModelChange: { action: 'ngModelChange' },
+    changed: { action: 'changed' },
     nodeClick: { action: 'nodeClick' },
+    selectedChange: { action: 'selectedChange' },
+    totalChange: { action: 'totalChange' },
   },
-} as Meta<SelectionTreeComponent<TestItem>>;
+} as Meta<InternalSelectionTreeComponent<TestItem>>;
 
-const Template: StoryFn<SelectionTreeComponent<TestItem>> = (args: Args) => ({
+const Template: StoryFn<InternalSelectionTreeComponent<TestItem>> = (
+  args: Args
+) => ({
   props: {
     ...args,
     getId,
     getChildren,
   },
   template: `
-    <core-selection-tree
+    <core-internal-selection-tree
       [class]="className"
-      [root]="root"
-      [getId]="getId"
-      [getChildren]="getChildren"
+      [tree]="tree"
       [template]="checkboxTemplate"
-      [ngModel]="ids"
-      (ngModelChange)="ids = $event; ngModelChange($event)"
+      [ids]="ids"
+      (changed)="ids = $event; changed($event)"
       (nodeClick)="nodeClick($event)"
-    ></core-selection-tree>
+      (selectedChange)="selectedChange($event)"
+      (totalChange)="totalChange($event)"
+    ></core-internal-selection-tree>
 
     <ng-template #checkboxTemplate
       let-node
@@ -88,31 +93,38 @@ const Template: StoryFn<SelectionTreeComponent<TestItem>> = (args: Args) => ({
   `,
 });
 
-export const noneSelected: StoryObj<SelectionTreeComponent<TestItem>> = {
+export const noneSelected: StoryObj<InternalSelectionTreeComponent<TestItem>> =
+  {
+    render: Template,
+
+    args: createArgs({}),
+  };
+
+export const someSelected: StoryObj<InternalSelectionTreeComponent<TestItem>> =
+  {
+    render: Template,
+
+    args: createArgs({
+      tree: new SelectionTree(
+        AFRICA,
+        getId,
+        getChildren,
+        SOME_SELECTED_IDS_ARRAY
+      ),
+    }),
+  };
+
+export const allSelected: StoryObj<InternalSelectionTreeComponent<TestItem>> = {
   render: Template,
 
   args: createArgs({
-    ids: [],
+    tree: new SelectionTree(AFRICA, getId, getChildren, ALL_SELECTED_IDS_ARRAY),
   }),
 };
 
-export const someSelected: StoryObj<SelectionTreeComponent<TestItem>> = {
-  render: Template,
-
-  args: createArgs({
-    ids: SOME_SELECTED_IDS_ARRAY,
-  }),
-};
-
-export const allSelected: StoryObj<SelectionTreeComponent<TestItem>> = {
-  render: Template,
-
-  args: createArgs({
-    ids: ALL_SELECTED_IDS_ARRAY,
-  }),
-};
-
-export const withCustomStyling: StoryObj<SelectionTreeComponent<TestItem>> = {
+export const withCustomStyling: StoryObj<
+  InternalSelectionTreeComponent<TestItem>
+> = {
   render: Template,
 
   args: createArgs({
@@ -121,12 +133,15 @@ export const withCustomStyling: StoryObj<SelectionTreeComponent<TestItem>> = {
   }),
 };
 
-type Args = Partial<SelectionTreeComponent<TestItem>> & {
+type Args = Partial<InternalSelectionTreeComponent<TestItem>> & {
   className?: string;
 };
 
 function createArgs(
-  { root = AFRICA, ids = [], className = '' } = {} as Args
+  {
+    tree = new SelectionTree(AFRICA, getId, getChildren),
+    className = '',
+  } = {} as Args
 ): Args {
-  return { root, ids, className };
+  return { tree, className };
 }

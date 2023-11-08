@@ -10,6 +10,7 @@ import {
 
 import { trackByFactory } from '@atocha/core/ui';
 import { GetChildren, GetId } from '@atocha/tree/util';
+import { TreeComponentAPI } from '../types';
 
 interface TreeNodeContext<T> {
   $implicit: T;
@@ -27,8 +28,8 @@ interface TreeNodeContext<T> {
     class: 'core-tree',
   },
 })
-export class TreeComponent<T> implements OnInit {
-  @Input() root!: T;
+export class TreeComponent<T> implements TreeComponentAPI<T>, OnInit {
+  @Input({ required: true }) root!: T;
   @Input() getId: GetId<T> = () => '';
   @Input() getChildren: GetChildren<T> = () => [];
 

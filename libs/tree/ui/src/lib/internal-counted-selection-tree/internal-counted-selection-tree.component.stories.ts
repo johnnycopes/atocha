@@ -10,6 +10,7 @@ import {
 import {
   AFRICA,
   ALL_SELECTED_IDS_ARRAY,
+  CountedSelectionTree,
   SMALL_AFRICA,
   SOME_SELECTED_IDS_ARRAY,
   TestItem,
@@ -18,15 +19,19 @@ import {
   getTargetCount,
 } from '@atocha/tree/util';
 import { CheckboxComponent } from '@atocha/core/ui';
-import { CountedSelectionTreeComponent } from './counted-selection-tree.component';
+import { InternalCountedSelectionTreeComponent } from './internal-counted-selection-tree.component';
 import { StorybookWrapperComponent } from '../../../.storybook/storybook-wrapper/storybook-wrapper.component';
 
 export default {
-  title: 'Counted Selection Tree',
-  component: CountedSelectionTreeComponent,
+  title: 'Internal Counted Selection Tree',
+  component: InternalCountedSelectionTreeComponent,
   decorators: [
     moduleMetadata({
-      imports: [FormsModule, CheckboxComponent],
+      imports: [
+        CheckboxComponent,
+        FormsModule,
+        InternalCountedSelectionTreeComponent,
+      ],
       declarations: [StorybookWrapperComponent],
     }),
     componentWrapperDecorator(StorybookWrapperComponent),
@@ -44,36 +49,32 @@ export default {
         'Small Africa': SMALL_AFRICA,
       },
     },
-    onNgModelChange: { action: 'ngModelChange' },
     onNodeClick: { action: 'nodeClick' },
+    onChanged: { action: 'changed' },
     onSelectedChange: { action: 'selectedChange' },
     onTotalChange: { action: 'totalChange' },
   },
-} as Meta<CountedSelectionTreeComponent<TestItem>>;
+} as Meta<InternalCountedSelectionTreeComponent<TestItem>>;
 
-const Template: StoryFn<CountedSelectionTreeComponent<TestItem>> = (
+const Template: StoryFn<InternalCountedSelectionTreeComponent<TestItem>> = (
   args: Args
 ) => ({
   props: {
     ...args,
     getId,
     getChildren,
-    getTargetCount,
   },
   template: `
-    <core-counted-selection-tree
+    <core-internal-counted-selection-tree
       [class]="className"
-      [root]="root"
-      [getId]="getId"
-      [getChildren]="getChildren"
-      [getLeafNodeCount]="getTargetCount"
+      [tree]="tree"
       [template]="checkboxTemplate"
-      [ngModel]="ids"
-      (ngModelChange)="ids = $event; onNgModelChange($event)"
+      [ids]="ids"
       (nodeClick)="onNodeClick($event)"
+      (changed)="ids = $event; onChanged($event)"
       (selectedChange)="onSelectedChange($event)"
       (totalChange)="onTotalChange($event)"
-    ></core-counted-selection-tree>
+    ></core-internal-counted-selection-tree>
 
     <ng-template #checkboxTemplate
       let-node
@@ -103,47 +104,66 @@ const Template: StoryFn<CountedSelectionTreeComponent<TestItem>> = (
   `,
 });
 
-export const noneSelected: StoryObj<CountedSelectionTreeComponent<TestItem>> = {
+export const noneSelected: StoryObj<
+  InternalCountedSelectionTreeComponent<TestItem>
+> = {
   render: Template,
 
-  args: createArgs({
-    ids: [],
-  }),
+  args: createArgs({}),
 };
 
-export const someSelected: StoryObj<CountedSelectionTreeComponent<TestItem>> = {
-  render: Template,
-
-  args: createArgs({
-    ids: SOME_SELECTED_IDS_ARRAY,
-  }),
-};
-
-export const allSelected: StoryObj<CountedSelectionTreeComponent<TestItem>> = {
-  render: Template,
-
-  args: createArgs({
-    ids: ALL_SELECTED_IDS_ARRAY,
-  }),
-};
-
-export const withCustomStyling: StoryObj<
-  CountedSelectionTreeComponent<TestItem>
+export const someSelected: StoryObj<
+  InternalCountedSelectionTreeComponent<TestItem>
 > = {
   render: Template,
 
   args: createArgs({
-    ids: SOME_SELECTED_IDS_ARRAY,
-    className: 'custom-counted-selection-tree',
+    tree: new CountedSelectionTree(
+      AFRICA,
+      getId,
+      getChildren,
+      getTargetCount,
+      SOME_SELECTED_IDS_ARRAY
+    ),
   }),
 };
 
-type Args = Partial<CountedSelectionTreeComponent<TestItem>> & {
+export const allSelected: StoryObj<
+  InternalCountedSelectionTreeComponent<TestItem>
+> = {
+  render: Template,
+
+  args: createArgs({
+    tree: new CountedSelectionTree(
+      AFRICA,
+      getId,
+      getChildren,
+      getTargetCount,
+      ALL_SELECTED_IDS_ARRAY
+    ),
+  }),
+};
+
+export const withCustomStyling: StoryObj<
+  InternalCountedSelectionTreeComponent<TestItem>
+> = {
+  render: Template,
+
+  args: createArgs({
+    ids: [],
+    className: 'custom-selection-tree',
+  }),
+};
+
+type Args = Partial<InternalCountedSelectionTreeComponent<TestItem>> & {
   className?: string;
 };
 
 function createArgs(
-  { root = AFRICA, ids = [], className = '' } = {} as Args
+  {
+    tree = new CountedSelectionTree(AFRICA, getId, getChildren, getTargetCount),
+    className = '',
+  } = {} as Args
 ): Args {
-  return { root, ids, className };
+  return { tree, className };
 }

@@ -1,0 +1,39 @@
+<core-internal-selection-tree
+  [tree]="tree"
+  [ids]="ids"
+  [template]="nodeTemplate"
+  (changed)="onChange($event)"
+  (nodeClick)="nodeClick.emit($event)"
+></core-internal-selection-tree>
+
+<ng-template
+  #nodeTemplate
+  let-node
+  let-level="level"
+  let-checked="checked"
+  let-indeterminate="indeterminate"
+  let-onChange="onChange"
+>
+  <ng-container
+    [ngTemplateOutlet]="template ? template : defaultTemplate"
+    [ngTemplateOutletContext]="{
+      $implicit: node,
+      level: level,
+      checked: checked,
+      indeterminate: indeterminate,
+      onChange: onChange,
+      selected: this.tree.selectedCounts[this.tree.getId(node)],
+      total: this.tree.totalCounts[this.tree.getId(node)]
+    }"
+  ></ng-container>
+</ng-template>
+
+<ng-template
+  #defaultTemplate
+  let-node
+  let-selected="selected"
+  let-total="total"
+>
+  {{ tree.getId(node) }}
+  ({{ tree.getChildren(node).length ? selected + ' / ' + total : total }})
+</ng-template>
