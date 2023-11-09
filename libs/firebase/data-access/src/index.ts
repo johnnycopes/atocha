@@ -1,1 +1,3 @@
-export * from './lib/libs/firebase/data-access.module';
+export * from './lib/auth.service';
+export * from './lib/batch.service';
+export * from './lib/data.service';
