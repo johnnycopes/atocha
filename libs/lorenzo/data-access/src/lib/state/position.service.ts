@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { tap } from 'rxjs';
 
-import { LocalStorageService } from '@atocha/core/data-access';
-import { State } from '@atocha/core/data-access';
+import { LocalStorageService, State } from '@atocha/core/data-access';
 import { View } from '@atocha/lorenzo/util';
 
 @Injectable({
