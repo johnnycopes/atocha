@@ -1,4 +1,4 @@
-import { toIds } from './to-array';
+import { toIds } from './to-ids';
 import {
   ALL_SELECTED_IDS,
   ALL_SELECTED_STATES,
@@ -7,7 +7,7 @@ import {
 } from '../shared/mock-data';
 import { MOCK_TREE } from './ids/mock-ids';
 
-describe('toArray', () => {
+describe('toIds', () => {
   it('transforms empty states', () => {
     expect(toIds({}, MOCK_TREE)).toEqual([]);
   });

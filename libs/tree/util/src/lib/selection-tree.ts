@@ -1,6 +1,6 @@
 import { GetChildren, GetId, Ids, States, State } from './shared/types';
 import { IdsTree } from './selection-tree/ids/ids-tree';
-import { toIds } from './selection-tree/to-array';
+import { toIds } from './selection-tree/to-ids';
 import { toStates } from './selection-tree/to-states';
 import { updateStates } from './selection-tree/update-states';
 import { ITree, Tree } from './tree';
