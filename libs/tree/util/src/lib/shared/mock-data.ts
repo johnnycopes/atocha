@@ -3,7 +3,6 @@ import {
   GetId,
   GetLeafCount,
   IdsArray,
-  IdsSet,
   ReadonlyStates,
 } from './types';
 
@@ -68,7 +67,6 @@ export const SOME_SELECTED_STATES: ReadonlyStates = {
 };
 
 export const SOME_SELECTED_IDS_ARRAY: IdsArray = ['Swaziland', 'Fes'];
-export const SOME_SELECTED_IDS_SET: IdsSet = new Set(SOME_SELECTED_IDS_ARRAY);
 
 export const ALL_SELECTED_STATES: ReadonlyStates = {
   Africa: 'checked',
@@ -89,7 +87,6 @@ export const ALL_SELECTED_IDS_ARRAY: IdsArray = [
   'Marrakesh',
   'Fes',
 ];
-export const ALL_SELECTED_IDS_SET: IdsSet = new Set(ALL_SELECTED_IDS_ARRAY);
 
 export const getId: GetId<TestItem> = ({ id }) => id;
 export const getChildren: GetChildren<TestItem> = ({ children }) =>

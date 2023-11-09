@@ -5,7 +5,7 @@ import {
   getTargetCount,
   AFRICA,
   ALL_SELECTED_IDS_ARRAY,
-  SOME_SELECTED_IDS_SET,
+  SOME_SELECTED_IDS_ARRAY,
 } from './shared/mock-data';
 
 describe('CountedSelectionTree', () => {
@@ -49,7 +49,7 @@ describe('CountedSelectionTree', () => {
         getTargetCount
       );
 
-      tree.updateCounts(SOME_SELECTED_IDS_SET);
+      tree.updateCounts(SOME_SELECTED_IDS_ARRAY);
 
       expect(tree.getSelectedCount('Africa')).toBe(39);
       expect(tree.getSelectedCount('Central Africa')).toBe(0);
