@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { BatchService, DataService } from '@atocha/core/data-access';
+import { BatchService, DataService } from '@atocha/firebase/data-access';
 import { SeedData } from './seed-data/seed-data';
 
 @Injectable({

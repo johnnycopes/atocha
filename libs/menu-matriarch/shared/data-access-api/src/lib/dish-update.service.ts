@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BatchService, BatchUpdate } from '@atocha/core/data-access';
+import { BatchService, BatchUpdate } from '@atocha/firebase/data-access';
 
 import { Menu, flattenValues } from '@atocha/menu-matriarch/shared/util';
 import { Change, Tally } from './internal/tally';

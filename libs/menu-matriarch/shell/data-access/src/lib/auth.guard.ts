@@ -3,7 +3,7 @@ import { Router, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
 import { first, map } from 'rxjs/operators';
 
-import { AuthService } from '@atocha/core/data-access';
+import { AuthService } from '@atocha/firebase/data-access';
 
 @Injectable({
   providedIn: 'root',
