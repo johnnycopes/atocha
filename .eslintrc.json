@@ -18,8 +18,8 @@
                 "onlyDependOnLibsWithTags": ["scope:shared"]
               },
               {
-                "sourceTag": "scope:experimental",
-                "onlyDependOnLibsWithTags": ["scope:shared", "scope:experimental"]
+                "sourceTag": "scope:sandbox",
+                "onlyDependOnLibsWithTags": ["scope:shared", "scope:sandbox"]
               },
               {
                 "sourceTag": "scope:globetrotter",
