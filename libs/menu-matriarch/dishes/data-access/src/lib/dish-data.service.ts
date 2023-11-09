@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { BatchService, DataService } from '@atocha/core/data-access';
+import { BatchService, DataService } from '@atocha/firebase/data-access';
 import {
   Endpoint,
   IngredientUpdateService,

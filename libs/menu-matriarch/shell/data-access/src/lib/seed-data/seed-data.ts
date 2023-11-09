@@ -1,4 +1,4 @@
-import { BatchSet } from '@atocha/core/data-access';
+import { BatchSet } from '@atocha/firebase/data-access';
 import { Endpoint } from '@atocha/menu-matriarch/shared/data-access-api';
 import { UserDto } from '@atocha/menu-matriarch/shared/data-access-dtos';
 import { SeedDataDtos } from './seed-data-dtos';

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { concatMap, first } from 'rxjs/operators';
 
-import { AuthService } from '@atocha/core/data-access';
+import { AuthService } from '@atocha/firebase/data-access';
 import { Tag } from '@atocha/menu-matriarch/shared/util';
 import { EditableTagData, TagDataService } from './tag-data.service';
 

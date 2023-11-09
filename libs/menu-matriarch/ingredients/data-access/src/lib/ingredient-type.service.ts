@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable, combineLatest, of } from 'rxjs';
 import { concatMap, first, map } from 'rxjs/operators';
 
-import { AuthService } from '@atocha/core/data-access';
+import { AuthService } from '@atocha/firebase/data-access';
 import { mapIngredientTypeDtoToIngredientType } from '@atocha/menu-matriarch/shared/data-access-dtos';
 import { IngredientType } from '@atocha/menu-matriarch/shared/util';
 import {

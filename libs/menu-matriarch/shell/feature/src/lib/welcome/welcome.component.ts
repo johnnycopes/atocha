@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { first } from 'rxjs/operators';
 
-import { AuthService } from '@atocha/core/data-access';
+import { AuthService } from '@atocha/firebase/data-access';
 import { ButtonComponent } from '@atocha/core/ui';
 import { PlannerService } from '@atocha/menu-matriarch/planner/data-access';
 import { SeedDataService } from '@atocha/menu-matriarch/shell/data-access';

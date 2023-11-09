@@ -11,7 +11,7 @@ import { Subject } from 'rxjs';
 import { debounceTime, switchMap, takeUntil } from 'rxjs/operators';
 
 import { ButtonComponent, trackBySelf } from '@atocha/core/ui';
-import { AuthService } from '@atocha/core/data-access';
+import { AuthService } from '@atocha/firebase/data-access';
 import { UserService } from '@atocha/menu-matriarch/settings/data-access';
 import {
   CardComponent,

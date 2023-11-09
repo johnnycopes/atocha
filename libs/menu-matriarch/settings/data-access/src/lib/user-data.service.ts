@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { DataService } from '@atocha/core/data-access';
+import { DataService } from '@atocha/firebase/data-access';
 import { Endpoint } from '@atocha/menu-matriarch/shared/data-access-api';
 import { UserDto } from '@atocha/menu-matriarch/shared/data-access-dtos';
 import { User, UserPreferences } from '@atocha/menu-matriarch/shared/util';
