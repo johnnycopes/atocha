@@ -8,10 +8,10 @@
       "executor": "@nx/js:tsc",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/libs/new/util2",
-        "main": "libs/new/util2/src/index.ts",
-        "tsConfig": "libs/new/util2/tsconfig.lib.json",
-        "assets": ["libs/new/util2/*.md"]
+        "outputPath": "dist/libs/core/util",
+        "main": "libs/core/util/src/index.ts",
+        "tsConfig": "libs/core/util/tsconfig.lib.json",
+        "assets": ["libs/core/util/*.md"]
       }
     },
     "publish": {
