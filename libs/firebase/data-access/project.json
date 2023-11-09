@@ -3,7 +3,7 @@
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/firebase/data-access/src",
   "prefix": "app",
-  "tags": ["scope:shared", "tags:data-access"],
+  "tags": ["scope:shared", "type:data-access"],
   "projectType": "library",
   "targets": {
     "test": {
