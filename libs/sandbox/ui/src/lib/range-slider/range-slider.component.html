@@ -1,0 +1,61 @@
+<div class="labels">
+	<ng-container *ngIf="steps.length; else noSteps">
+		<p class="labels__start">
+			<ng-container *ngTemplateOutlet="
+				labelTemplate ? labelTemplate : defaultTemplate;
+				context: { $implicit: currentModel?.start }
+			">
+			</ng-container>
+		</p>
+		<p class="labels__end">
+			<ng-container *ngTemplateOutlet="
+				labelTemplate ? labelTemplate : defaultTemplate;
+				context: { $implicit: currentModel?.end }
+			">
+			</ng-container>
+		</p>
+	</ng-container>
+	<ng-template #noSteps>
+		<p class="labels__unavailable">
+			Range selection unavailable
+		</p>
+	</ng-template>
+</div>
+<div class="slider-container"
+	#container
+	>
+	<div class="line"
+		[class]="{'line--disabled': !steps.length}"
+		>
+	</div>
+	<div class="track"
+		*ngIf="steps.length"
+		>
+		<div class="marker start-marker"
+			[class.marker--elevated]="elevatedMarker === markerEnum.start"
+			[style.left.%]="startIndex / (steps.length - 1) * 100"
+			cdkDrag
+			cdkDragBoundary=".track"
+			[cdkDragFreeDragPosition]="baseDragPosition"
+			(cdkDragMoved)="updateStart($event)"
+			(cdkDragReleased)="onDragRelease()"
+			>
+		</div>
+		<div class="marker end-marker"
+			[class.marker--elevated]="elevatedMarker === markerEnum.end"
+			[style.left.%]="endIndex / (steps.length - 1) * 100"
+			cdkDrag
+			cdkDragBoundary=".track"
+			[cdkDragFreeDragPosition]="baseDragPosition"
+			(cdkDragMoved)="updateEnd($event)"
+			(cdkDragReleased)="onDragRelease()"
+			>
+		</div>
+	</div>
+</div>
+
+<ng-template #defaultTemplate
+	let-value
+	>
+	{{value}}
+</ng-template>

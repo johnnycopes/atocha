@@ -1,0 +1,88 @@
+$marker-size: 16px;
+$container-width: 400px;
+$track-width: $container-width + $marker-size;
+
+:host {
+	display: inline-block;
+	width: $track-width;
+	position: relative;
+}
+
+.labels {
+	display: flex;
+	justify-content: space-between;
+  font-family: monospace;
+
+	&__start,
+	&__end,
+	&__unavailable {
+		margin: 0;
+	}
+
+	&__unavailable {
+		color: lightgray;
+		font-style: italic;
+		width: 100%;
+		text-align: center;
+	}
+}
+
+.slider-container {
+	width: $container-width;
+	height: $marker-size;
+	position: relative;
+}
+
+.line {
+	position: absolute;
+	height: 5px;
+	top: 50%;
+	width: 100%;
+	background: lavender;
+	transform: translate(calc(#{$marker-size} / 2), -50%);
+
+	&--disabled {
+		background: lightgray;
+	}
+}
+
+.track {
+	height: 100%;
+	width: $track-width;
+}
+
+.marker {
+	height: $marker-size;
+	width: $marker-size;
+	position: absolute;
+	border-radius: 50%;
+	cursor: pointer;
+
+	&::after {
+		content: "";
+		position: absolute;
+		width: 4px;
+		height: 4px;
+		top: 50%;
+		left: 50%;
+		border-radius: 50%;
+		transform: translate(-50%, -50%);
+		background: white;
+	}
+
+	&:active {
+		background: gold;
+	}
+
+	&--elevated {
+		z-index: 1;
+	}
+}
+
+.start-marker {
+	background: salmon;
+}
+
+.end-marker {
+	background: cadetblue;
+}
