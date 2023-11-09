@@ -2,8 +2,7 @@ import { DOCUMENT } from '@angular/common';
 import { Inject, Injectable } from '@angular/core';
 import { startCase } from 'lodash-es';
 
-import { APP_NAME_TOKEN } from '@atocha/core/data-access';
-import { Csv } from '@atocha/core/data-access';
+import { APP_NAME_TOKEN, Csv } from '@atocha/core/data-access';
 import { Card, Development, Family, Leader } from '@atocha/lorenzo/util';
 import { DEVELOPMENTS } from './cards/developments';
 import { FAMILIES } from './cards/families';
