@@ -7,6 +7,7 @@ export interface ListItemContext {
 }
 
 @Directive({
+  standalone: true,
   selector: '[appListItemDef]',
 })
 export class ListItemDefDirective {
