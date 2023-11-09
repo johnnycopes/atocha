@@ -3,8 +3,8 @@ import {
   getChildren,
   getId,
   AFRICA,
-  ALL_SELECTED_IDS_ARRAY,
-  SOME_SELECTED_IDS_ARRAY,
+  ALL_SELECTED_IDS,
+  SOME_SELECTED_IDS,
 } from './shared/mock-data';
 
 describe('SelectionTree', () => {
@@ -21,11 +21,11 @@ describe('SelectionTree', () => {
         AFRICA,
         getId,
         getChildren,
-        SOME_SELECTED_IDS_ARRAY
+        SOME_SELECTED_IDS
       );
 
       expect(tree.root).toEqual(AFRICA);
-      expect(tree.selectedIds).toEqual(SOME_SELECTED_IDS_ARRAY);
+      expect(tree.selectedIds).toEqual(SOME_SELECTED_IDS);
     });
 
     it('returns correct data with all IDs selected', () => {
@@ -33,11 +33,11 @@ describe('SelectionTree', () => {
         AFRICA,
         getId,
         getChildren,
-        ALL_SELECTED_IDS_ARRAY
+        ALL_SELECTED_IDS
       );
 
       expect(tree.root).toEqual(AFRICA);
-      expect(tree.selectedIds).toEqual(ALL_SELECTED_IDS_ARRAY);
+      expect(tree.selectedIds).toEqual(ALL_SELECTED_IDS);
     });
   });
 
@@ -48,7 +48,7 @@ describe('SelectionTree', () => {
       tree.updateOne('Africa');
 
       expect(tree.root).toEqual(AFRICA);
-      expect(tree.selectedIds).toEqual(ALL_SELECTED_IDS_ARRAY);
+      expect(tree.selectedIds).toEqual(ALL_SELECTED_IDS);
     });
 
     it('deselects all items when all are selected and the root item is deselected', () => {
@@ -56,7 +56,7 @@ describe('SelectionTree', () => {
         AFRICA,
         getId,
         getChildren,
-        ALL_SELECTED_IDS_ARRAY
+        ALL_SELECTED_IDS
       );
 
       tree.updateOne('Africa');
@@ -88,7 +88,7 @@ describe('SelectionTree', () => {
         AFRICA,
         getId,
         getChildren,
-        SOME_SELECTED_IDS_ARRAY
+        SOME_SELECTED_IDS
       );
 
       tree
@@ -105,10 +105,10 @@ describe('SelectionTree', () => {
     it('registers partial states', () => {
       const tree = new SelectionTree(AFRICA, getId, getChildren);
 
-      tree.updateMultiple(SOME_SELECTED_IDS_ARRAY);
+      tree.updateMultiple(SOME_SELECTED_IDS);
 
       expect(tree.root).toEqual(AFRICA);
-      expect(tree.selectedIds).toEqual(SOME_SELECTED_IDS_ARRAY);
+      expect(tree.selectedIds).toEqual(SOME_SELECTED_IDS);
     });
 
     it('registers multiple changes correctly', () => {
@@ -116,7 +116,7 @@ describe('SelectionTree', () => {
         AFRICA,
         getId,
         getChildren,
-        ALL_SELECTED_IDS_ARRAY
+        ALL_SELECTED_IDS
       );
 
       tree

@@ -4,8 +4,8 @@ import {
   getChildren,
   getTargetCount,
   AFRICA,
-  ALL_SELECTED_IDS_ARRAY,
-  SOME_SELECTED_IDS_ARRAY,
+  ALL_SELECTED_IDS,
+  SOME_SELECTED_IDS,
 } from './shared/mock-data';
 
 describe('CountedSelectionTree', () => {
@@ -49,7 +49,7 @@ describe('CountedSelectionTree', () => {
         getTargetCount
       );
 
-      tree.updateCounts(SOME_SELECTED_IDS_ARRAY);
+      tree.updateCounts(SOME_SELECTED_IDS);
 
       expect(tree.getSelectedCount('Africa')).toBe(39);
       expect(tree.getSelectedCount('Central Africa')).toBe(0);
@@ -80,7 +80,7 @@ describe('CountedSelectionTree', () => {
         getTargetCount
       );
 
-      tree.updateCounts(ALL_SELECTED_IDS_ARRAY);
+      tree.updateCounts(ALL_SELECTED_IDS);
 
       expect(tree.getSelectedCount('Africa')).toBe(130);
       expect(tree.getSelectedCount('Central Africa')).toBe(65);

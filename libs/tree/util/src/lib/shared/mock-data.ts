@@ -60,7 +60,7 @@ export const SOME_SELECTED_STATES: ReadonlyStates = {
   Fes: 'checked',
 };
 
-export const SOME_SELECTED_IDS_ARRAY: Ids = ['Swaziland', 'Fes'];
+export const SOME_SELECTED_IDS: Ids = ['Swaziland', 'Fes'];
 
 export const ALL_SELECTED_STATES: ReadonlyStates = {
   Africa: 'checked',
@@ -74,7 +74,7 @@ export const ALL_SELECTED_STATES: ReadonlyStates = {
   Fes: 'checked',
 };
 
-export const ALL_SELECTED_IDS_ARRAY: Ids = [
+export const ALL_SELECTED_IDS: Ids = [
   'Central Africa',
   'Swaziland',
   'Namibia',
