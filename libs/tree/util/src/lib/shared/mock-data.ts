@@ -1,4 +1,4 @@
-import { GetChildren, GetId, GetLeafCount, Ids, ReadonlyStates } from './types';
+import { GetChildren, GetId, GetLeafCount, Ids, States } from './types';
 
 export interface TestItem {
   id: string;
@@ -51,7 +51,7 @@ export const SMALL_AFRICA: TestItem = {
   ],
 };
 
-export const SOME_SELECTED_STATES: ReadonlyStates = {
+export const SOME_SELECTED_STATES: Readonly<States> = {
   Africa: 'indeterminate',
   Morocco: 'indeterminate',
   'Southern Africa': 'indeterminate',
@@ -62,7 +62,7 @@ export const SOME_SELECTED_STATES: ReadonlyStates = {
 
 export const SOME_SELECTED_IDS: Ids = ['Swaziland', 'Fes'];
 
-export const ALL_SELECTED_STATES: ReadonlyStates = {
+export const ALL_SELECTED_STATES: Readonly<States> = {
   Africa: 'checked',
   'Southern Africa': 'checked',
   Swaziland: 'checked',

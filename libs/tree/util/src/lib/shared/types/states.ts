@@ -4,11 +4,6 @@
 export type State = 'checked' | 'indeterminate';
 
 /**
- * A mutable record of the tree nodes' partially or completely selected states, keyed by node ID.
+ * A record of the tree nodes' partially or completely selected states, keyed by node ID.
  */
 export type States = Record<string, State>;
-
-/**
- * A readonly version of `MutableStates`.
- */
-export type ReadonlyStates = Readonly<States>;
