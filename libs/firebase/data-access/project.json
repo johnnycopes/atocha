@@ -1,5 +1,5 @@
 {
-  "name": "libs/firebase/data-access",
+  "name": "firebase-data-access",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/firebase/data-access/src",
   "prefix": "app",
