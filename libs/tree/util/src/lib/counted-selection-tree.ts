@@ -37,7 +37,7 @@ export class CountedSelectionTree<T>
   }
 
   updateCounts(ids: Ids): CountedSelectionTree<T> {
-    const idsSet = new Set(ids);
+    const idsSet: ReadonlySet<string> = new Set(ids);
     this._selectedCounts = this._getCounts((leaf: T): number =>
       idsSet.has(this.getId(leaf)) ? this.getLeafCount(leaf) : 0
     );
