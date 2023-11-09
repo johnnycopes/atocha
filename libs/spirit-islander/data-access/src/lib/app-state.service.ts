@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { first, tap } from 'rxjs';
 
 import { LocalStorageService } from '@atocha/core/data-access';
-import { State } from '@atocha/core/util';
+import { State } from '@atocha/core/data-access';
 import {
   Config,
   createAdversariesModel,

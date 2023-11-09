@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 
-import { includes, State } from '@atocha/core/util';
+import { State } from '@atocha/core/data-access';
+import { includes } from '@atocha/core/util';
 import {
   Dish,
   FilteredDishesGroup,

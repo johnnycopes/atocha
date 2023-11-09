@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 
-import { State } from '@atocha/core/util';
+import { State } from '@atocha/core/data-access';
 import {
   QuizType,
   Selection,

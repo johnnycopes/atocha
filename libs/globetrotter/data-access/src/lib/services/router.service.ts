@@ -9,7 +9,7 @@ import {
 } from '@angular/router';
 import { map, filter, distinctUntilChanged } from 'rxjs/operators';
 
-import { State } from '@atocha/core/util';
+import { State } from '@atocha/core/data-access';
 import { LoaderService } from './loader.service';
 
 @Injectable({

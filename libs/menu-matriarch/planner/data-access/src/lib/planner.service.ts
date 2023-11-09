@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { map, tap } from 'rxjs/operators';
 
-import { State } from '@atocha/core/util';
+import { State } from '@atocha/core/data-access';
 import { LocalStorageService } from '@atocha/core/data-access';
 import { MenuService } from '@atocha/menu-matriarch/menus/data-access';
 import {

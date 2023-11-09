@@ -9,7 +9,7 @@ import {
 import { map, filter, tap } from 'rxjs/operators';
 
 import { LocalStorageService } from '@atocha/core/data-access';
-import { State } from '@atocha/core/util';
+import { State } from '@atocha/core/data-access';
 import { LocalStorageKey } from './local-storage-key.enum';
 import { Route } from './route.enum';
 
