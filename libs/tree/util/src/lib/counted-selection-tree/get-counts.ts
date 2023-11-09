@@ -3,7 +3,7 @@ import {
   GetChildren,
   GetId,
   GetLeafCount,
-  MutableCounts,
+  Counts,
   ReadonlyCounts,
 } from '../shared/types';
 
@@ -13,7 +13,7 @@ export function getCounts<T>(
   getChildren: GetChildren<T>,
   getLeafCount: GetLeafCount<T>
 ): ReadonlyCounts {
-  return bfsReduce<T, MutableCounts>({
+  return bfsReduce<T, Counts>({
     root,
     getChildren,
     initialValue: {},

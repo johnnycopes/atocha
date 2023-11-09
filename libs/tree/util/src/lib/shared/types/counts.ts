@@ -1,9 +1,9 @@
 /**
- * A `readonly` record of the total counts of all a tree node's descendants, keyed by node ID.
+ * A mutable record of all of a tree node's descendants, keyed by node ID.
  */
-export type MutableCounts = Record<string, number>;
+export type Counts = Record<string, number>;
 
 /**
  * A readonly version of `MutableCounts`.
  */
-export type ReadonlyCounts = Readonly<MutableCounts>;
+export type ReadonlyCounts = Readonly<Counts>;
