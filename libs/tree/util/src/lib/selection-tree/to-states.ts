@@ -3,7 +3,7 @@ import { IdsTree } from './ids/ids-tree';
 
 export function toStates<T>(ids: Ids, tree: IdsTree<T>): States {
   const states: States = {};
-  const idsSet = new Set(ids);
+  const idsSet: ReadonlySet<string> = new Set(ids);
 
   /*
     Iterating through the IDs backwards builds up `states` from the leaves of
