@@ -1,39 +1,7 @@
 import { StoryFn, moduleMetadata, Meta } from '@storybook/angular';
 
+import { AFRICA, TestItem, getChildren, getId } from '@atocha/tree/util';
 import { TreeComponent } from './tree.component';
-
-interface Item {
-  id: string;
-  name: string;
-  children?: Item[];
-}
-
-const leafItem: Item = {
-  id: '1',
-  name: 'Item 1',
-};
-const nestedItem: Item = {
-  id: '2',
-  name: 'Item 2',
-  children: [
-    {
-      id: '2A',
-      name: 'Item 2A',
-    },
-    {
-      id: '2B',
-      name: 'Item 2B',
-      children: [
-        {
-          id: '2B.1',
-          name: 'Item 2B1',
-        },
-      ],
-    },
-  ],
-};
-const getId = ({ id }: Item) => id;
-const getChildren = ({ children }: Item) => children ?? [];
 
 export default {
   title: 'Tree',
@@ -43,52 +11,52 @@ export default {
       imports: [],
     }),
   ],
-} as Meta<TreeComponent<Item>>;
+} as Meta<TreeComponent<TestItem>>;
 
-export const leaf: StoryFn<TreeComponent<Item>> = () => ({
+export const leaf: StoryFn<TreeComponent<TestItem>> = () => ({
   props: {
-    item: leafItem,
+    root: AFRICA,
     getId,
   },
   template: `
     <core-tree
-      [root]="item"
+      [root]="root"
       [getId]="getId"
     ></core-tree>
   `,
 });
 
-export const withChildren: StoryFn<TreeComponent<Item>> = () => ({
+export const withChildren: StoryFn<TreeComponent<TestItem>> = () => ({
   props: {
-    item: nestedItem,
+    root: AFRICA,
     getId,
     getChildren,
   },
   template: `
     <core-tree
-      [root]="item"
+      [root]="root"
       [getId]="getId"
       [getChildren]="getChildren"
     ></core-tree>
   `,
 });
 
-export const withCustomTemplate: StoryFn<TreeComponent<Item>> = () => ({
+export const withCustomTemplate: StoryFn<TreeComponent<TestItem>> = () => ({
   props: {
-    item: nestedItem,
+    root: AFRICA,
     getId,
     getChildren,
   },
   template: `
     <core-tree
-      [root]="item"
-      [template]="itemTemplate"
+      [root]="root"
+      [template]="nodeTemplate"
       [getId]="getId"
       [getChildren]="getChildren"
     ></core-tree>
 
-    <ng-template #itemTemplate
-      let-item
+    <ng-template #nodeTemplate
+      let-node
       let-level="level"
       let-isTop="level === 0"
     >
@@ -96,7 +64,7 @@ export const withCustomTemplate: StoryFn<TreeComponent<Item>> = () => ({
         [style.fontWeight]="isTop ? '700' : '400'"
         [style.margin-left.px]="level * 16"
       >
-        {{ item.name }}{{ isTop ? ' | 👑' : '' }}
+        {{ getId(node) }} {{ isTop ? ' | 👑' : '' }}
       </span>
     </ng-template>
   `,

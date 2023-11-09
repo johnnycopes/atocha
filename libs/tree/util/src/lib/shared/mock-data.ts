@@ -4,7 +4,7 @@ import {
   GetLeafCount,
   IdsArray,
   IdsSet,
-  States,
+  ReadonlyStates,
 } from './types';
 
 export interface TestItem {
@@ -58,7 +58,7 @@ export const SMALL_AFRICA: TestItem = {
   ],
 };
 
-export const SOME_SELECTED_STATES: States = {
+export const SOME_SELECTED_STATES: ReadonlyStates = {
   Africa: 'indeterminate',
   Morocco: 'indeterminate',
   'Southern Africa': 'indeterminate',
@@ -70,7 +70,7 @@ export const SOME_SELECTED_STATES: States = {
 export const SOME_SELECTED_IDS_ARRAY: IdsArray = ['Swaziland', 'Fes'];
 export const SOME_SELECTED_IDS_SET: IdsSet = new Set(SOME_SELECTED_IDS_ARRAY);
 
-export const ALL_SELECTED_STATES: States = {
+export const ALL_SELECTED_STATES: ReadonlyStates = {
   Africa: 'checked',
   'Southern Africa': 'checked',
   Swaziland: 'checked',

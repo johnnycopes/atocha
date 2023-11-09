@@ -25,7 +25,10 @@ import {
   Ids,
 } from '@atocha/tree/util';
 import { InternalCountedSelectionTreeComponent } from '../internal-counted-selection-tree/internal-counted-selection-tree.component';
-import { CountedSelectionTreeComponentAPI } from '../types';
+import {
+  CountedSelectionTreeComponentAPI,
+  CountedSelectionTreeNodeContext,
+} from '../types';
 
 @Component({
   standalone: true,
@@ -53,10 +56,10 @@ export class CountedSelectionTreeComponent<T>
     OnChanges
 {
   @Input({ required: true }) root!: T;
-  @Input() getId: GetId<T> = () => '';
-  @Input() getChildren: GetChildren<T> = () => [];
-  @Input() getLeafNodeCount: GetLeafCount<T> = () => 0;
-  @Input() template: TemplateRef<unknown> | undefined;
+  @Input({ required: true }) getId: GetId<T> = () => '';
+  @Input({ required: true }) getChildren: GetChildren<T> = () => [];
+  @Input({ required: true }) getLeafCount: GetLeafCount<T> = () => 0;
+  @Input() template?: TemplateRef<CountedSelectionTreeNodeContext<T>>;
   @Output() nodeClick = new EventEmitter<string>();
   @Output() selectedChange = new EventEmitter<number>();
   @Output() totalChange = new EventEmitter<number>();
@@ -65,7 +68,7 @@ export class CountedSelectionTreeComponent<T>
     {} as T,
     this.getId,
     this.getChildren,
-    this.getLeafNodeCount
+    this.getLeafCount
   );
   onChange: (ids: Ids) => void = () => [];
 
@@ -76,7 +79,7 @@ export class CountedSelectionTreeComponent<T>
         root,
         this.getId,
         this.getChildren,
-        this.getLeafNodeCount,
+        this.getLeafCount,
         this.ids
       );
       this.writeValue(this.ids);

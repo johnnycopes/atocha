@@ -18,28 +18,25 @@ describe('CountedSelectionTree', () => {
         getTargetCount
       );
 
-      expect(tree.totalCounts).toEqual({
-        Africa: 130,
-        'Central Africa': 65,
-        Fes: 11,
-        Marrakesh: 9,
-        Morocco: 20,
-        Namibia: 17,
-        'Northern Africa': 20,
-        'Southern Africa': 45,
-        Swaziland: 28,
-      });
-      expect(tree.selectedCounts).toEqual({
-        Africa: 0,
-        'Central Africa': 0,
-        Fes: 0,
-        Marrakesh: 0,
-        Morocco: 0,
-        Namibia: 0,
-        'Northern Africa': 0,
-        'Southern Africa': 0,
-        Swaziland: 0,
-      });
+      expect(tree.getSelectedCount('Africa')).toBe(0);
+      expect(tree.getSelectedCount('Central Africa')).toBe(0);
+      expect(tree.getSelectedCount('Fes')).toBe(0);
+      expect(tree.getSelectedCount('Marrakesh')).toBe(0);
+      expect(tree.getSelectedCount('Morocco')).toBe(0);
+      expect(tree.getSelectedCount('Namibia')).toBe(0);
+      expect(tree.getSelectedCount('Northern Africa')).toBe(0);
+      expect(tree.getSelectedCount('Southern Africa')).toBe(0);
+      expect(tree.getSelectedCount('Swaziland')).toBe(0);
+
+      expect(tree.getTotalCount('Africa')).toBe(130);
+      expect(tree.getTotalCount('Central Africa')).toBe(65);
+      expect(tree.getTotalCount('Fes')).toBe(11);
+      expect(tree.getTotalCount('Marrakesh')).toBe(9);
+      expect(tree.getTotalCount('Morocco')).toBe(20);
+      expect(tree.getTotalCount('Namibia')).toBe(17);
+      expect(tree.getTotalCount('Northern Africa')).toBe(20);
+      expect(tree.getTotalCount('Southern Africa')).toBe(45);
+      expect(tree.getTotalCount('Swaziland')).toBe(28);
     });
   });
 
@@ -54,28 +51,25 @@ describe('CountedSelectionTree', () => {
 
       tree.updateCounts(SOME_SELECTED_IDS_SET);
 
-      expect(tree.totalCounts).toEqual({
-        Africa: 130,
-        'Central Africa': 65,
-        Fes: 11,
-        Marrakesh: 9,
-        Morocco: 20,
-        Namibia: 17,
-        'Northern Africa': 20,
-        'Southern Africa': 45,
-        Swaziland: 28,
-      });
-      expect(tree.selectedCounts).toEqual({
-        Africa: 39,
-        'Central Africa': 0,
-        Fes: 11,
-        Marrakesh: 0,
-        Morocco: 11,
-        Namibia: 0,
-        'Northern Africa': 11,
-        'Southern Africa': 28,
-        Swaziland: 28,
-      });
+      expect(tree.getSelectedCount('Africa')).toBe(39);
+      expect(tree.getSelectedCount('Central Africa')).toBe(0);
+      expect(tree.getSelectedCount('Fes')).toBe(11);
+      expect(tree.getSelectedCount('Marrakesh')).toBe(0);
+      expect(tree.getSelectedCount('Morocco')).toBe(11);
+      expect(tree.getSelectedCount('Namibia')).toBe(0);
+      expect(tree.getSelectedCount('Northern Africa')).toBe(11);
+      expect(tree.getSelectedCount('Southern Africa')).toBe(28);
+      expect(tree.getSelectedCount('Swaziland')).toBe(28);
+
+      expect(tree.getTotalCount('Africa')).toBe(130);
+      expect(tree.getTotalCount('Central Africa')).toBe(65);
+      expect(tree.getTotalCount('Fes')).toBe(11);
+      expect(tree.getTotalCount('Marrakesh')).toBe(9);
+      expect(tree.getTotalCount('Morocco')).toBe(20);
+      expect(tree.getTotalCount('Namibia')).toBe(17);
+      expect(tree.getTotalCount('Northern Africa')).toBe(20);
+      expect(tree.getTotalCount('Southern Africa')).toBe(45);
+      expect(tree.getTotalCount('Swaziland')).toBe(28);
     });
 
     it('returns correct counts records after updating to full collection of IDs', () => {
@@ -88,28 +82,25 @@ describe('CountedSelectionTree', () => {
 
       tree.updateCounts(ALL_SELECTED_IDS_ARRAY);
 
-      expect(tree.totalCounts).toEqual({
-        Africa: 130,
-        'Central Africa': 65,
-        Fes: 11,
-        Marrakesh: 9,
-        Morocco: 20,
-        Namibia: 17,
-        'Northern Africa': 20,
-        'Southern Africa': 45,
-        Swaziland: 28,
-      });
-      expect(tree.selectedCounts).toEqual({
-        Africa: 130,
-        'Central Africa': 65,
-        Fes: 11,
-        Marrakesh: 9,
-        Morocco: 20,
-        Namibia: 17,
-        'Northern Africa': 20,
-        'Southern Africa': 45,
-        Swaziland: 28,
-      });
+      expect(tree.getSelectedCount('Africa')).toBe(130);
+      expect(tree.getSelectedCount('Central Africa')).toBe(65);
+      expect(tree.getSelectedCount('Fes')).toBe(11);
+      expect(tree.getSelectedCount('Marrakesh')).toBe(9);
+      expect(tree.getSelectedCount('Morocco')).toBe(20);
+      expect(tree.getSelectedCount('Namibia')).toBe(17);
+      expect(tree.getSelectedCount('Northern Africa')).toBe(20);
+      expect(tree.getSelectedCount('Southern Africa')).toBe(45);
+      expect(tree.getSelectedCount('Swaziland')).toBe(28);
+
+      expect(tree.getTotalCount('Africa')).toBe(130);
+      expect(tree.getTotalCount('Central Africa')).toBe(65);
+      expect(tree.getTotalCount('Fes')).toBe(11);
+      expect(tree.getTotalCount('Marrakesh')).toBe(9);
+      expect(tree.getTotalCount('Morocco')).toBe(20);
+      expect(tree.getTotalCount('Namibia')).toBe(17);
+      expect(tree.getTotalCount('Northern Africa')).toBe(20);
+      expect(tree.getTotalCount('Southern Africa')).toBe(45);
+      expect(tree.getTotalCount('Swaziland')).toBe(28);
     });
   });
 });

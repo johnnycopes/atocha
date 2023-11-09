@@ -7,12 +7,8 @@ export class IdsTree<T> {
   readonly descendingIds: IdsArray;
   readonly ascendingIds: IdsArray;
 
-  constructor(
-    private _root: T,
-    private _getId: GetId<T>,
-    private _getChildren: GetChildren<T>
-  ) {
-    this._map = createMap(this._root, this._getId, this._getChildren);
+  constructor(root: T, getId: GetId<T>, getChildren: GetChildren<T>) {
+    this._map = createMap(root, getId, getChildren);
     this.descendingIds = Array.from(this._map.keys());
     this.ascendingIds = this.descendingIds.slice().reverse();
   }

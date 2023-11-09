@@ -14,7 +14,10 @@ import {
 
 import { ISelectionTree, Ids } from '@atocha/tree/util';
 import { TreeComponent } from '../tree/tree.component';
-import { InternalSelectionTreeComponentAPI } from '../types';
+import {
+  InternalSelectionTreeComponentAPI,
+  SelectionTreeNodeContext,
+} from '../types';
 
 @Component({
   standalone: true,
@@ -32,8 +35,8 @@ export class InternalSelectionTreeComponent<T>
   implements InternalSelectionTreeComponentAPI<T>, OnChanges
 {
   @Input({ required: true }) tree!: ISelectionTree<T>;
-  @Input() ids: Ids = [];
-  @Input() template: TemplateRef<unknown> | undefined;
+  @Input({ required: true }) ids: Ids = [];
+  @Input() template?: TemplateRef<SelectionTreeNodeContext<T>>;
   @Output() nodeClick = new EventEmitter<string>();
   @Output() changed = new EventEmitter<Ids>();
 
@@ -47,6 +50,6 @@ export class InternalSelectionTreeComponent<T>
   onChange = (node: T): void => {
     const nodeId = this.tree.getId(node);
     this.nodeClick.emit(nodeId);
-    this.changed.emit(this.tree.updateOne(nodeId).array);
+    this.changed.emit(this.tree.updateOne(nodeId).idsArray);
   };
 }

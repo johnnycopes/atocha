@@ -10,12 +10,7 @@ import {
 
 import { trackByFactory } from '@atocha/core/ui';
 import { GetChildren, GetId } from '@atocha/tree/util';
-import { TreeComponentAPI } from '../types';
-
-interface TreeNodeContext<T> {
-  $implicit: T;
-  level: number;
-}
+import { TreeComponentAPI, TreeNodeContext } from '../types';
 
 @Component({
   standalone: true,
@@ -30,13 +25,13 @@ interface TreeNodeContext<T> {
 })
 export class TreeComponent<T> implements TreeComponentAPI<T>, OnInit {
   @Input({ required: true }) root!: T;
-  @Input() getId: GetId<T> = () => '';
-  @Input() getChildren: GetChildren<T> = () => [];
+  @Input({ required: true }) getId: GetId<T> = () => '';
+  @Input({ required: true }) getChildren: GetChildren<T> = () => [];
 
   /**
    * The template of the node to pass into the tree.
    */
-  @Input() template?: TemplateRef<TreeNodeContext<T>> | undefined;
+  @Input() template?: TemplateRef<TreeNodeContext<T>>;
 
   /**
    * **Do not modify**. Used internally to track number of levels of recursion and exposed via the template context.
