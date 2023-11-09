@@ -47,6 +47,6 @@ export class InternalSelectionTreeComponent<T>
   onChange = (node: T): void => {
     const nodeId = this.tree.getId(node);
     this.nodeClick.emit(nodeId);
-    this.changed.emit(this.tree.updateOne(nodeId).array);
+    this.changed.emit(this.tree.updateOne(nodeId).idsArray);
   };
 }
