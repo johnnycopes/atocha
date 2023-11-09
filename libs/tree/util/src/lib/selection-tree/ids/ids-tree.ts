@@ -1,18 +1,21 @@
 import { GetChildren, GetId, IdsArray } from '../../shared/types';
 import { bfsReduce } from '../../shared/bfs-reduce';
 import { IdsMap, createMap } from './create-map';
+import { ITree, Tree } from '../../tree';
 
-export class IdsTree<T> {
+export interface IIdsTree<T> extends ITree<T> {
+  readonly descendingIds: IdsArray;
+  readonly ascendingIds: IdsArray;
+}
+
+export class IdsTree<T> extends Tree<T> implements IIdsTree<T> {
   private readonly _map: IdsMap;
   readonly descendingIds: IdsArray;
   readonly ascendingIds: IdsArray;
 
-  constructor(
-    private _root: T,
-    private _getId: GetId<T>,
-    private _getChildren: GetChildren<T>
-  ) {
-    this._map = createMap(this._root, this._getId, this._getChildren);
+  constructor(root: T, getId: GetId<T>, getChildren: GetChildren<T>) {
+    super(root, getId, getChildren);
+    this._map = createMap(this.root, this.getId, this.getChildren);
     this.descendingIds = Array.from(this._map.keys());
     this.ascendingIds = this.descendingIds.slice().reverse();
   }
