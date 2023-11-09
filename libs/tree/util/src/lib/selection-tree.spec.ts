@@ -3,10 +3,8 @@ import {
   getChildren,
   getId,
   AFRICA,
-  ALL_SELECTED_IDS_ARRAY,
-  ALL_SELECTED_IDS_SET,
-  SOME_SELECTED_IDS_ARRAY,
-  SOME_SELECTED_IDS_SET,
+  ALL_SELECTED_IDS,
+  SOME_SELECTED_IDS,
 } from './shared/mock-data';
 
 describe('SelectionTree', () => {
@@ -14,9 +12,7 @@ describe('SelectionTree', () => {
     it('returns correct data without any nodes selected', () => {
       const tree = new SelectionTree(AFRICA, getId, getChildren);
 
-      expect(tree.root).toEqual(AFRICA);
-      expect(tree.idsArray).toEqual([]);
-      expect(tree.idsSet).toEqual(new Set());
+      expect(tree.selectedIds).toEqual([]);
     });
 
     it('returns correct data with some node IDs selected', () => {
@@ -24,12 +20,10 @@ describe('SelectionTree', () => {
         AFRICA,
         getId,
         getChildren,
-        SOME_SELECTED_IDS_ARRAY
+        SOME_SELECTED_IDS
       );
 
-      expect(tree.root).toEqual(AFRICA);
-      expect(tree.idsArray).toEqual(SOME_SELECTED_IDS_ARRAY);
-      expect(tree.idsSet).toEqual(SOME_SELECTED_IDS_SET);
+      expect(tree.selectedIds).toEqual(SOME_SELECTED_IDS);
     });
 
     it('returns correct data with all IDs selected', () => {
@@ -37,24 +31,20 @@ describe('SelectionTree', () => {
         AFRICA,
         getId,
         getChildren,
-        ALL_SELECTED_IDS_ARRAY
+        ALL_SELECTED_IDS
       );
 
-      expect(tree.root).toEqual(AFRICA);
-      expect(tree.idsArray).toEqual(ALL_SELECTED_IDS_ARRAY);
-      expect(tree.idsSet).toEqual(ALL_SELECTED_IDS_SET);
+      expect(tree.selectedIds).toEqual(ALL_SELECTED_IDS);
     });
   });
 
-  describe('updating individual items', () => {
+  describe('updating individual nodes', () => {
     it('selects all items when none are selected and the root item is selected', () => {
       const tree = new SelectionTree(AFRICA, getId, getChildren);
 
       tree.updateOne('Africa');
 
-      expect(tree.root).toEqual(AFRICA);
-      expect(tree.idsArray).toEqual(ALL_SELECTED_IDS_ARRAY);
-      expect(tree.idsSet).toEqual(ALL_SELECTED_IDS_SET);
+      expect(tree.selectedIds).toEqual(ALL_SELECTED_IDS);
     });
 
     it('deselects all items when all are selected and the root item is deselected', () => {
@@ -62,14 +52,12 @@ describe('SelectionTree', () => {
         AFRICA,
         getId,
         getChildren,
-        ALL_SELECTED_IDS_ARRAY
+        ALL_SELECTED_IDS
       );
 
       tree.updateOne('Africa');
 
-      expect(tree.root).toEqual(AFRICA);
-      expect(tree.idsArray).toEqual([]);
-      expect(tree.idsSet).toEqual(new Set());
+      expect(tree.selectedIds).toEqual([]);
     });
 
     it('correctly affects tree when middle item is selected', () => {
@@ -77,9 +65,7 @@ describe('SelectionTree', () => {
 
       tree.updateOne('Morocco');
 
-      expect(tree.root).toEqual(AFRICA);
-      expect(tree.idsArray).toEqual(['Marrakesh', 'Fes']);
-      expect(tree.idsSet).toEqual(new Set(['Marrakesh', 'Fes']));
+      expect(tree.selectedIds).toEqual(['Marrakesh', 'Fes']);
     });
 
     it('correctly affects tree when leaf item is selected', () => {
@@ -87,9 +73,7 @@ describe('SelectionTree', () => {
 
       tree.updateOne('Namibia');
 
-      expect(tree.root).toEqual(AFRICA);
-      expect(tree.idsArray).toEqual(['Namibia']);
-      expect(tree.idsSet).toEqual(new Set(['Namibia']));
+      expect(tree.selectedIds).toEqual(['Namibia']);
     });
 
     it('converts indeterminate states to selected when toggled', () => {
@@ -97,7 +81,7 @@ describe('SelectionTree', () => {
         AFRICA,
         getId,
         getChildren,
-        SOME_SELECTED_IDS_ARRAY
+        SOME_SELECTED_IDS
       );
 
       tree
@@ -105,21 +89,27 @@ describe('SelectionTree', () => {
         .updateOne('Southern Africa')
         .updateOne('Northern Africa');
 
-      expect(tree.root).toEqual(AFRICA);
-      expect(tree.idsArray).toEqual(['Marrakesh', 'Fes']);
-      expect(tree.idsSet).toEqual(new Set(['Marrakesh', 'Fes']));
+      expect(tree.selectedIds).toEqual(['Marrakesh', 'Fes']);
+    });
+
+    it('reads individual node states correctly', () => {
+      const tree = new SelectionTree(AFRICA, getId, getChildren);
+
+      tree.updateOne('Namibia');
+
+      expect(tree.getState('Southern Africa')).toBe('indeterminate');
+      expect(tree.getState('Swaziland')).toBe(undefined);
+      expect(tree.getState('Namibia')).toBe('checked');
     });
   });
 
-  describe('updating', () => {
+  describe('passing in selected node IDs', () => {
     it('registers partial states', () => {
       const tree = new SelectionTree(AFRICA, getId, getChildren);
 
-      tree.updateMultiple(SOME_SELECTED_IDS_ARRAY);
+      tree.updateMultiple(SOME_SELECTED_IDS);
 
-      expect(tree.root).toEqual(AFRICA);
-      expect(tree.idsArray).toEqual(SOME_SELECTED_IDS_ARRAY);
-      expect(tree.idsSet).toEqual(SOME_SELECTED_IDS_SET);
+      expect(tree.selectedIds).toEqual(SOME_SELECTED_IDS);
     });
 
     it('registers multiple changes correctly', () => {
@@ -127,7 +117,7 @@ describe('SelectionTree', () => {
         AFRICA,
         getId,
         getChildren,
-        ALL_SELECTED_IDS_ARRAY
+        ALL_SELECTED_IDS
       );
 
       tree
@@ -136,9 +126,17 @@ describe('SelectionTree', () => {
         .updateOne('Swaziland')
         .updateOne('Central Africa');
 
-      expect(tree.root).toEqual(AFRICA);
-      expect(tree.idsArray).toEqual(['Central Africa', 'Swaziland']);
-      expect(tree.idsSet).toEqual(new Set(['Central Africa', 'Swaziland']));
+      expect(tree.selectedIds).toEqual(['Central Africa', 'Swaziland']);
+    });
+
+    it('reads individual node states correctly', () => {
+      const tree = new SelectionTree(AFRICA, getId, getChildren);
+
+      tree.updateMultiple(SOME_SELECTED_IDS);
+
+      expect(tree.getState('Southern Africa')).toBe('indeterminate');
+      expect(tree.getState('Swaziland')).toBe('checked');
+      expect(tree.getState('Namibia')).toBe(undefined);
     });
   });
 });

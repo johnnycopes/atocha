@@ -1,7 +1,7 @@
-import { IdsArray, ReadonlyStates } from '../shared/types';
+import { Ids, States } from '../shared/types';
 import { IdsTree } from './ids/ids-tree';
 
-export function toArray<T>(states: ReadonlyStates, tree: IdsTree<T>): IdsArray {
+export function toIds<T>(states: Readonly<States>, tree: IdsTree<T>): Ids {
   const ids: string[] = [];
 
   for (const id of tree.descendingIds) {

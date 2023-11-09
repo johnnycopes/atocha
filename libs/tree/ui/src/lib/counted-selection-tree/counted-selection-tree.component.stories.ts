@@ -9,9 +9,9 @@ import {
 
 import {
   AFRICA,
-  ALL_SELECTED_IDS_ARRAY,
+  ALL_SELECTED_IDS,
   SMALL_AFRICA,
-  SOME_SELECTED_IDS_ARRAY,
+  SOME_SELECTED_IDS,
   TestItem,
   getChildren,
   getId,
@@ -115,7 +115,7 @@ export const someSelected: StoryObj<CountedSelectionTreeComponent<TestItem>> = {
   render: Template,
 
   args: createArgs({
-    ids: SOME_SELECTED_IDS_ARRAY,
+    ids: SOME_SELECTED_IDS,
   }),
 };
 
@@ -123,7 +123,7 @@ export const allSelected: StoryObj<CountedSelectionTreeComponent<TestItem>> = {
   render: Template,
 
   args: createArgs({
-    ids: ALL_SELECTED_IDS_ARRAY,
+    ids: ALL_SELECTED_IDS,
   }),
 };
 
@@ -133,7 +133,7 @@ export const withCustomStyling: StoryObj<
   render: Template,
 
   args: createArgs({
-    ids: SOME_SELECTED_IDS_ARRAY,
+    ids: SOME_SELECTED_IDS,
     className: 'custom-counted-selection-tree',
   }),
 };

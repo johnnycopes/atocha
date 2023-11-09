@@ -1,10 +1,7 @@
-import { GetChildren, GetId, IdsArray } from '../../shared/types';
+import { GetChildren, GetId, Ids } from '../../shared/types';
 import { bfsReduce } from '../../shared/bfs-reduce';
 
-export type IdsMap = Map<
-  string,
-  { parentId: string | undefined; childrenIds: IdsArray }
->;
+export type IdsMap = Map<string, { parentId?: string; childrenIds: Ids }>;
 
 export function createMap<T>(
   root: T,

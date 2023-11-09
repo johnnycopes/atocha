@@ -1,11 +1,4 @@
-import {
-  GetChildren,
-  GetId,
-  GetLeafCount,
-  IdsArray,
-  IdsSet,
-  ReadonlyStates,
-} from './types';
+import { GetChildren, GetId, GetLeafCount, Ids, States } from './types';
 
 export interface TestItem {
   id: string;
@@ -58,7 +51,7 @@ export const SMALL_AFRICA: TestItem = {
   ],
 };
 
-export const SOME_SELECTED_STATES: ReadonlyStates = {
+export const SOME_SELECTED_STATES: Readonly<States> = {
   Africa: 'indeterminate',
   Morocco: 'indeterminate',
   'Southern Africa': 'indeterminate',
@@ -67,10 +60,9 @@ export const SOME_SELECTED_STATES: ReadonlyStates = {
   Fes: 'checked',
 };
 
-export const SOME_SELECTED_IDS_ARRAY: IdsArray = ['Swaziland', 'Fes'];
-export const SOME_SELECTED_IDS_SET: IdsSet = new Set(SOME_SELECTED_IDS_ARRAY);
+export const SOME_SELECTED_IDS: Ids = ['Swaziland', 'Fes'];
 
-export const ALL_SELECTED_STATES: ReadonlyStates = {
+export const ALL_SELECTED_STATES: Readonly<States> = {
   Africa: 'checked',
   'Southern Africa': 'checked',
   Swaziland: 'checked',
@@ -82,14 +74,13 @@ export const ALL_SELECTED_STATES: ReadonlyStates = {
   Fes: 'checked',
 };
 
-export const ALL_SELECTED_IDS_ARRAY: IdsArray = [
+export const ALL_SELECTED_IDS: Ids = [
   'Central Africa',
   'Swaziland',
   'Namibia',
   'Marrakesh',
   'Fes',
 ];
-export const ALL_SELECTED_IDS_SET: IdsSet = new Set(ALL_SELECTED_IDS_ARRAY);
 
 export const getId: GetId<TestItem> = ({ id }) => id;
 export const getChildren: GetChildren<TestItem> = ({ children }) =>

@@ -1,12 +1,4 @@
-import {
-  Counts,
-  GetChildren,
-  GetId,
-  GetLeafCount,
-  Ids,
-  MutableCounts,
-  isIdsArray,
-} from './shared/types';
+import { Counts, GetChildren, GetId, GetLeafCount, Ids } from './shared/types';
 import { getCounts } from './counted-selection-tree/get-counts';
 import { ISelectionTree, SelectionTree } from './selection-tree';
 
@@ -21,19 +13,19 @@ export class CountedSelectionTree<T>
   extends SelectionTree<T>
   implements ICountedSelectionTree<T>
 {
-  private _selectedCounts: Readonly<MutableCounts> = {};
-  private readonly _totalCounts: Readonly<MutableCounts> = {};
+  private _selectedCounts: Readonly<Counts> = {};
+  private readonly _totalCounts: Readonly<Counts> = {};
 
   constructor(
     root: T,
     getId: GetId<T>,
     getChildren: GetChildren<T>,
     readonly getLeafCount: GetLeafCount<T>,
-    ids: Ids = new Set<string>()
+    selectedIds: Ids = []
   ) {
-    super(root, getId, getChildren, ids);
+    super(root, getId, getChildren, selectedIds);
     this._totalCounts = this._getCounts(getLeafCount);
-    this.updateCounts(ids);
+    this.updateCounts(selectedIds);
   }
 
   getTotalCount(id: string): number {
@@ -45,14 +37,14 @@ export class CountedSelectionTree<T>
   }
 
   updateCounts(ids: Ids): CountedSelectionTree<T> {
-    const set = isIdsArray(ids) ? new Set(ids) : ids;
+    const idsSet: ReadonlySet<string> = new Set(ids);
     this._selectedCounts = this._getCounts((leaf: T): number =>
-      set.has(this.getId(leaf)) ? this.getLeafCount(leaf) : 0
+      idsSet.has(this.getId(leaf)) ? this.getLeafCount(leaf) : 0
     );
     return this;
   }
 
-  private _getCounts(getLeafCount: GetLeafCount<T>): Counts {
+  private _getCounts(getLeafCount: GetLeafCount<T>): Readonly<Counts> {
     return getCounts(this.root, this.getId, this.getChildren, getLeafCount);
   }
 }

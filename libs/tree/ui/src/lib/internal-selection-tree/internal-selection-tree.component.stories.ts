@@ -9,9 +9,9 @@ import {
 
 import {
   AFRICA,
-  ALL_SELECTED_IDS_ARRAY,
+  ALL_SELECTED_IDS,
   SMALL_AFRICA,
-  SOME_SELECTED_IDS_ARRAY,
+  SOME_SELECTED_IDS,
   SelectionTree,
   TestItem,
   getChildren,
@@ -105,12 +105,7 @@ export const someSelected: StoryObj<InternalSelectionTreeComponent<TestItem>> =
     render: Template,
 
     args: createArgs({
-      tree: new SelectionTree(
-        AFRICA,
-        getId,
-        getChildren,
-        SOME_SELECTED_IDS_ARRAY
-      ),
+      tree: new SelectionTree(AFRICA, getId, getChildren, SOME_SELECTED_IDS),
     }),
   };
 
@@ -118,7 +113,7 @@ export const allSelected: StoryObj<InternalSelectionTreeComponent<TestItem>> = {
   render: Template,
 
   args: createArgs({
-    tree: new SelectionTree(AFRICA, getId, getChildren, ALL_SELECTED_IDS_ARRAY),
+    tree: new SelectionTree(AFRICA, getId, getChildren, ALL_SELECTED_IDS),
   }),
 };
 

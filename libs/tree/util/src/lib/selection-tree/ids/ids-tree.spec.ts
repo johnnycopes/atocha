@@ -1,11 +1,11 @@
-import { IdsTree } from './ids-tree';
-import { AFRICA, getId, getChildren, TestItem } from '../../shared/mock-data';
+import { AFRICA, TestItem } from '../../shared/mock-data';
+import { MOCK_TREE } from './mock-ids';
 
 describe('IdsTree', () => {
-  let tree = new IdsTree(AFRICA, getId, getChildren);
+  let tree = MOCK_TREE;
 
   beforeEach(() => {
-    tree = new IdsTree(AFRICA, getId, getChildren);
+    tree = MOCK_TREE;
   });
 
   describe('.descendingIds', () => {

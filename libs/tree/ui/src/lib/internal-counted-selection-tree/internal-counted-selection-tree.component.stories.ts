@@ -9,10 +9,10 @@ import {
 
 import {
   AFRICA,
-  ALL_SELECTED_IDS_ARRAY,
+  ALL_SELECTED_IDS,
   CountedSelectionTree,
   SMALL_AFRICA,
-  SOME_SELECTED_IDS_ARRAY,
+  SOME_SELECTED_IDS,
   TestItem,
   getChildren,
   getId,
@@ -123,7 +123,7 @@ export const someSelected: StoryObj<
       getId,
       getChildren,
       getTargetCount,
-      SOME_SELECTED_IDS_ARRAY
+      SOME_SELECTED_IDS
     ),
   }),
 };
@@ -139,7 +139,7 @@ export const allSelected: StoryObj<
       getId,
       getChildren,
       getTargetCount,
-      ALL_SELECTED_IDS_ARRAY
+      ALL_SELECTED_IDS
     ),
   }),
 };

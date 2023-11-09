@@ -1,22 +1,12 @@
-import {
-  IdsArray,
-  GetChildren,
-  GetId,
-  Ids,
-  States,
-  IdsSet,
-  State,
-} from './shared/types';
+import { GetChildren, GetId, Ids, States, State } from './shared/types';
 import { IdsTree } from './selection-tree/ids/ids-tree';
-import { toArray } from './selection-tree/to-array';
-import { toSet } from './selection-tree/to-set';
+import { toIds } from './selection-tree/to-ids';
 import { toStates } from './selection-tree/to-states';
 import { updateStates } from './selection-tree/update-states';
 import { ITree, Tree } from './tree';
 
 export interface ISelectionTree<T> extends ITree<T> {
-  idsArray: IdsArray;
-  idsSet: IdsSet;
+  selectedIds: Ids;
   getState(id: string): State | undefined;
   updateOne(id: string): SelectionTree<T>;
   updateMultiple(ids: Ids): SelectionTree<T>;
@@ -30,19 +20,15 @@ export class SelectionTree<T> extends Tree<T> implements ISelectionTree<T> {
     root: T,
     getId: GetId<T>,
     getChildren: GetChildren<T>,
-    ids: Ids = []
+    selectedIds: Ids = []
   ) {
     super(root, getId, getChildren);
     this._tree = new IdsTree(root, getId, getChildren);
-    this._states = this._toStates(ids);
+    this._states = this._toStates(selectedIds);
   }
 
-  get idsArray(): IdsArray {
-    return toArray(this._states, this._tree);
-  }
-
-  get idsSet(): IdsSet {
-    return toSet(this._states, this._tree);
+  get selectedIds(): Ids {
+    return toIds(this._states, this._tree);
   }
 
   getState(id: string): State | undefined {

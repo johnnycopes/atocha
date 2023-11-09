@@ -1,9 +1,9 @@
-import { Ids, States, isIdsArray } from '../shared/types';
+import { Ids, States } from '../shared/types';
 import { IdsTree } from './ids/ids-tree';
 
 export function toStates<T>(ids: Ids, tree: IdsTree<T>): States {
   const states: States = {};
-  const idsSet = isIdsArray(ids) ? new Set(ids) : ids;
+  const idsSet: ReadonlySet<string> = new Set(ids);
 
   /*
     Iterating through the IDs backwards builds up `states` from the leaves of
@@ -16,7 +16,7 @@ export function toStates<T>(ids: Ids, tree: IdsTree<T>): States {
     } else {
       const childrenIds = tree.getChildrenIds(id);
       if (childrenIds.length) {
-        const idsInState = childrenIds.reduce(
+        const idsInStates = childrenIds.reduce(
           (total, id) => total + (states[id] ? 1 : 0),
           0
         );
@@ -24,9 +24,9 @@ export function toStates<T>(ids: Ids, tree: IdsTree<T>): States {
 
         if (totalIds === 1 && states[childrenIds[0]] === 'indeterminate') {
           states[id] = 'indeterminate';
-        } else if (totalIds === idsInState) {
+        } else if (totalIds === idsInStates) {
           states[id] = 'checked';
-        } else if (idsInState > 0) {
+        } else if (idsInStates > 0) {
           states[id] = 'indeterminate';
         }
       }
