@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { State } from '@atocha/core/util';
+import { State } from '@atocha/core/data-access';
 
 @Injectable({
   providedIn: 'root',

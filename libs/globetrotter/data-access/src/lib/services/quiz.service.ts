@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { filter, map } from 'rxjs/operators';
 
-import { State } from '@atocha/core/util';
+import { State } from '@atocha/core/data-access';
 import { Route, Country, Selection } from '@atocha/globetrotter/util';
 import { Quiz, QuizState } from './internal/quiz';
 import { PlaceService } from './place.service';

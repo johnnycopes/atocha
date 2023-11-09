@@ -1,4 +1,4 @@
-import { removeWhitespace } from './format';
+import { removeWhitespace } from '@atocha/core/util';
 
 export class Csv {
   constructor(private _document: Document) {

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { groupBy } from 'lodash-es';
 
-import { State } from '@atocha/core/util';
+import { State } from '@atocha/core/data-access';
 import {
   Country,
   mapCountryDtoToCountry,
