@@ -28,11 +28,11 @@ export class CountedSelectionTree<T>
     getId: GetId<T>,
     getChildren: GetChildren<T>,
     readonly getLeafCount: GetLeafCount<T>,
-    ids: Ids = []
+    selectedIds: Ids = []
   ) {
-    super(root, getId, getChildren, ids);
+    super(root, getId, getChildren, selectedIds);
     this._totalCounts = this._getCounts(getLeafCount);
-    this.updateCounts(ids);
+    this.updateCounts(selectedIds);
   }
 
   getTotalCount(id: string): number {

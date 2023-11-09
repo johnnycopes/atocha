@@ -20,11 +20,11 @@ export class SelectionTree<T> extends Tree<T> implements ISelectionTree<T> {
     root: T,
     getId: GetId<T>,
     getChildren: GetChildren<T>,
-    ids: Ids = []
+    selectedIds: Ids = []
   ) {
     super(root, getId, getChildren);
     this._tree = new IdsTree(root, getId, getChildren);
-    this._states = this._toStates(ids);
+    this._states = this._toStates(selectedIds);
   }
 
   get selectedIds(): Ids {
