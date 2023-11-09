@@ -1,11 +1,4 @@
-import {
-  IdsArray,
-  GetChildren,
-  GetId,
-  Ids,
-  States,
-  State,
-} from './shared/types';
+import { GetChildren, GetId, Ids, States, State } from './shared/types';
 import { IdsTree } from './selection-tree/ids/ids-tree';
 import { toArray } from './selection-tree/to-array';
 import { toStates } from './selection-tree/to-states';
@@ -13,7 +6,7 @@ import { updateStates } from './selection-tree/update-states';
 import { ITree, Tree } from './tree';
 
 export interface ISelectionTree<T> extends ITree<T> {
-  idsArray: IdsArray;
+  idsArray: Ids;
   getState(id: string): State | undefined;
   updateOne(id: string): SelectionTree<T>;
   updateMultiple(ids: Ids): SelectionTree<T>;
@@ -34,7 +27,7 @@ export class SelectionTree<T> extends Tree<T> implements ISelectionTree<T> {
     this._states = this._toStates(ids);
   }
 
-  get idsArray(): IdsArray {
+  get idsArray(): Ids {
     return toArray(this._states, this._tree);
   }
 

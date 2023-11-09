@@ -1,9 +1,9 @@
-import { Ids, States, isIdsArray } from '../shared/types';
+import { Ids, States } from '../shared/types';
 import { IdsTree } from './ids/ids-tree';
 
 export function toStates<T>(ids: Ids, tree: IdsTree<T>): States {
   const states: States = {};
-  const idsSet = isIdsArray(ids) ? new Set(ids) : ids;
+  const idsSet = new Set(ids);
 
   /*
     Iterating through the IDs backwards builds up `states` from the leaves of

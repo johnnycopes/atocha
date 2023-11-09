@@ -5,7 +5,6 @@ import {
   GetLeafCount,
   Ids,
   MutableCounts,
-  isIdsArray,
 } from './shared/types';
 import { getCounts } from './counted-selection-tree/get-counts';
 import { ISelectionTree, SelectionTree } from './selection-tree';
@@ -29,7 +28,7 @@ export class CountedSelectionTree<T>
     getId: GetId<T>,
     getChildren: GetChildren<T>,
     readonly getLeafCount: GetLeafCount<T>,
-    ids: Ids = new Set<string>()
+    ids: Ids = []
   ) {
     super(root, getId, getChildren, ids);
     this._totalCounts = this._getCounts(getLeafCount);
@@ -45,9 +44,9 @@ export class CountedSelectionTree<T>
   }
 
   updateCounts(ids: Ids): CountedSelectionTree<T> {
-    const set = isIdsArray(ids) ? new Set(ids) : ids;
+    const idsSet = new Set(ids);
     this._selectedCounts = this._getCounts((leaf: T): number =>
-      set.has(this.getId(leaf)) ? this.getLeafCount(leaf) : 0
+      idsSet.has(this.getId(leaf)) ? this.getLeafCount(leaf) : 0
     );
     return this;
   }
