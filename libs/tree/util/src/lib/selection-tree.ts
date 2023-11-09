@@ -6,7 +6,7 @@ import { updateStates } from './selection-tree/update-states';
 import { ITree, Tree } from './tree';
 
 export interface ISelectionTree<T> extends ITree<T> {
-  idsArray: Ids;
+  selectedIds: Ids;
   getState(id: string): State | undefined;
   updateOne(id: string): SelectionTree<T>;
   updateMultiple(ids: Ids): SelectionTree<T>;
@@ -27,7 +27,7 @@ export class SelectionTree<T> extends Tree<T> implements ISelectionTree<T> {
     this._states = this._toStates(ids);
   }
 
-  get idsArray(): Ids {
+  get selectedIds(): Ids {
     return toArray(this._states, this._tree);
   }
 
