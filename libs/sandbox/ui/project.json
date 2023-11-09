@@ -2,7 +2,7 @@
   "name": "sandbox-ui",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/sandbox/ui/src",
-  "prefix": "lib",
+  "prefix": "app",
   "tags": [],
   "projectType": "library",
   "targets": {

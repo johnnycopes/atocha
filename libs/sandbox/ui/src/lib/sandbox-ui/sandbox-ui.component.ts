@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app',
+  selector: 'app-sandbox-ui',
   standalone: true,
   imports: [CommonModule],
   templateUrl: './sandbox-ui.component.html',
