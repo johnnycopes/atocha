@@ -25,7 +25,10 @@ import {
   Ids,
 } from '@atocha/tree/util';
 import { InternalCountedSelectionTreeComponent } from '../internal-counted-selection-tree/internal-counted-selection-tree.component';
-import { CountedSelectionTreeComponentAPI } from '../types';
+import {
+  CountedSelectionTreeComponentAPI,
+  CountedSelectionTreeNodeContext,
+} from '../types';
 
 @Component({
   standalone: true,
@@ -56,7 +59,7 @@ export class CountedSelectionTreeComponent<T>
   @Input({ required: true }) getId: GetId<T> = () => '';
   @Input({ required: true }) getChildren: GetChildren<T> = () => [];
   @Input({ required: true }) getLeafCount: GetLeafCount<T> = () => 0;
-  @Input() template: TemplateRef<unknown> | undefined;
+  @Input() template?: TemplateRef<CountedSelectionTreeNodeContext<T>>;
   @Output() nodeClick = new EventEmitter<string>();
   @Output() selectedChange = new EventEmitter<number>();
   @Output() totalChange = new EventEmitter<number>();

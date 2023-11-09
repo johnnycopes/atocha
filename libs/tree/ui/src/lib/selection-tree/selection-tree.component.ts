@@ -20,7 +20,7 @@ import {
 
 import { GetChildren, GetId, Ids, SelectionTree } from '@atocha/tree/util';
 import { InternalSelectionTreeComponent } from '../internal-selection-tree/internal-selection-tree.component';
-import { SelectionTreeComponentAPI } from '../types';
+import { SelectionTreeComponentAPI, SelectionTreeNodeContext } from '../types';
 
 @Component({
   standalone: true,
@@ -47,7 +47,7 @@ export class SelectionTreeComponent<T>
   @Input({ required: true }) root!: T;
   @Input({ required: true }) getId: GetId<T> = () => '';
   @Input({ required: true }) getChildren: GetChildren<T> = () => [];
-  @Input() template: TemplateRef<unknown> | undefined;
+  @Input() template?: TemplateRef<SelectionTreeNodeContext<T>>;
   @Output() nodeClick = new EventEmitter<string>();
   ids: Ids = [];
   tree = new SelectionTree({} as T, this.getId, this.getChildren);

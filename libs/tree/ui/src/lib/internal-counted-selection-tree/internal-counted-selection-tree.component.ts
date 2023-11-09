@@ -12,7 +12,10 @@ import {
 
 import { ICountedSelectionTree, Ids } from '@atocha/tree/util';
 import { InternalSelectionTreeComponent } from '../internal-selection-tree/internal-selection-tree.component';
-import { InternalCountedSelectionTreeComponentAPI } from '../types';
+import {
+  CountedSelectionTreeNodeContext,
+  InternalCountedSelectionTreeComponentAPI,
+} from '../types';
 
 @Component({
   standalone: true,
@@ -31,7 +34,7 @@ export class InternalCountedSelectionTreeComponent<T>
 {
   @Input({ required: true }) tree!: ICountedSelectionTree<T>;
   @Input({ required: true }) ids: Ids = [];
-  @Input() template: TemplateRef<unknown> | undefined;
+  @Input() template?: TemplateRef<CountedSelectionTreeNodeContext<T>>;
   @Output() changed = new EventEmitter<Ids>();
   @Output() nodeClick = new EventEmitter<string>();
   @Output() selectedChange = new EventEmitter<number>();
