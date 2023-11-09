@@ -12,7 +12,6 @@ describe('SelectionTree', () => {
     it('returns correct data without any nodes selected', () => {
       const tree = new SelectionTree(AFRICA, getId, getChildren);
 
-      expect(tree.root).toEqual(AFRICA);
       expect(tree.selectedIds).toEqual([]);
     });
 
@@ -24,7 +23,6 @@ describe('SelectionTree', () => {
         SOME_SELECTED_IDS
       );
 
-      expect(tree.root).toEqual(AFRICA);
       expect(tree.selectedIds).toEqual(SOME_SELECTED_IDS);
     });
 
@@ -36,18 +34,16 @@ describe('SelectionTree', () => {
         ALL_SELECTED_IDS
       );
 
-      expect(tree.root).toEqual(AFRICA);
       expect(tree.selectedIds).toEqual(ALL_SELECTED_IDS);
     });
   });
 
-  describe('updating individual items', () => {
+  describe('updating individual nodes', () => {
     it('selects all items when none are selected and the root item is selected', () => {
       const tree = new SelectionTree(AFRICA, getId, getChildren);
 
       tree.updateOne('Africa');
 
-      expect(tree.root).toEqual(AFRICA);
       expect(tree.selectedIds).toEqual(ALL_SELECTED_IDS);
     });
 
@@ -61,7 +57,6 @@ describe('SelectionTree', () => {
 
       tree.updateOne('Africa');
 
-      expect(tree.root).toEqual(AFRICA);
       expect(tree.selectedIds).toEqual([]);
     });
 
@@ -70,7 +65,6 @@ describe('SelectionTree', () => {
 
       tree.updateOne('Morocco');
 
-      expect(tree.root).toEqual(AFRICA);
       expect(tree.selectedIds).toEqual(['Marrakesh', 'Fes']);
     });
 
@@ -79,7 +73,6 @@ describe('SelectionTree', () => {
 
       tree.updateOne('Namibia');
 
-      expect(tree.root).toEqual(AFRICA);
       expect(tree.selectedIds).toEqual(['Namibia']);
     });
 
@@ -96,18 +89,26 @@ describe('SelectionTree', () => {
         .updateOne('Southern Africa')
         .updateOne('Northern Africa');
 
-      expect(tree.root).toEqual(AFRICA);
       expect(tree.selectedIds).toEqual(['Marrakesh', 'Fes']);
+    });
+
+    it('reads individual node states correctly', () => {
+      const tree = new SelectionTree(AFRICA, getId, getChildren);
+
+      tree.updateOne('Namibia');
+
+      expect(tree.getState('Southern Africa')).toBe('indeterminate');
+      expect(tree.getState('Swaziland')).toBe(undefined);
+      expect(tree.getState('Namibia')).toBe('checked');
     });
   });
 
-  describe('updating', () => {
+  describe('passing in selected node IDs', () => {
     it('registers partial states', () => {
       const tree = new SelectionTree(AFRICA, getId, getChildren);
 
       tree.updateMultiple(SOME_SELECTED_IDS);
 
-      expect(tree.root).toEqual(AFRICA);
       expect(tree.selectedIds).toEqual(SOME_SELECTED_IDS);
     });
 
@@ -125,8 +126,17 @@ describe('SelectionTree', () => {
         .updateOne('Swaziland')
         .updateOne('Central Africa');
 
-      expect(tree.root).toEqual(AFRICA);
       expect(tree.selectedIds).toEqual(['Central Africa', 'Swaziland']);
+    });
+
+    it('reads individual node states correctly', () => {
+      const tree = new SelectionTree(AFRICA, getId, getChildren);
+
+      tree.updateMultiple(SOME_SELECTED_IDS);
+
+      expect(tree.getState('Southern Africa')).toBe('indeterminate');
+      expect(tree.getState('Swaziland')).toBe('checked');
+      expect(tree.getState('Namibia')).toBe(undefined);
     });
   });
 });
