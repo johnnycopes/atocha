@@ -6,4 +6,4 @@ export type MutableCounts = Record<string, number>;
 /**
  * A readonly version of `MutableCounts`.
  */
-export type Counts = Readonly<MutableCounts>;
+export type ReadonlyCounts = Readonly<MutableCounts>;

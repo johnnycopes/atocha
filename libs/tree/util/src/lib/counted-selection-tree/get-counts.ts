@@ -1,10 +1,10 @@
 import { bfsReduce } from '../shared/bfs-reduce';
 import {
-  Counts,
   GetChildren,
   GetId,
   GetLeafCount,
   MutableCounts,
+  ReadonlyCounts,
 } from '../shared/types';
 
 export function getCounts<T>(
@@ -12,7 +12,7 @@ export function getCounts<T>(
   getId: GetId<T>,
   getChildren: GetChildren<T>,
   getLeafCount: GetLeafCount<T>
-): Counts {
+): ReadonlyCounts {
   return bfsReduce<T, MutableCounts>({
     root,
     getChildren,

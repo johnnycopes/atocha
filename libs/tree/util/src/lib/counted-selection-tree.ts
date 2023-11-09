@@ -1,10 +1,10 @@
 import {
-  Counts,
   GetChildren,
   GetId,
   GetLeafCount,
   Ids,
   MutableCounts,
+  ReadonlyCounts,
 } from './shared/types';
 import { getCounts } from './counted-selection-tree/get-counts';
 import { ISelectionTree, SelectionTree } from './selection-tree';
@@ -51,7 +51,7 @@ export class CountedSelectionTree<T>
     return this;
   }
 
-  private _getCounts(getLeafCount: GetLeafCount<T>): Counts {
+  private _getCounts(getLeafCount: GetLeafCount<T>): ReadonlyCounts {
     return getCounts(this.root, this.getId, this.getChildren, getLeafCount);
   }
 }
