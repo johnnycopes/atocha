@@ -59,7 +59,7 @@ $track-width: $container-width + $marker-size;
   cursor: pointer;
 
   &::after {
-    content: "";
+    content: '';
     position: absolute;
     width: 4px;
     height: 4px;
