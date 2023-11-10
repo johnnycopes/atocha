@@ -23,7 +23,7 @@ export default {
 } as Meta<RangeSliderComponent<number>>;
 
 const STEPS = range({ start: 1, stop: 500 });
-const model: Position<number> = {
+const position: Position<number> = {
   start: 153,
   end: 347,
 };
@@ -33,13 +33,13 @@ export const withNumbers: StoryObj<RangeSliderComponent<number>> = {
     props: {
       ...args,
       steps: STEPS,
-      model,
+      position,
     },
     template: `
       <app-range-slider
         [steps]="steps"
-        [model]="model"
-        (modelChange)="model = $event; onChange($event)"
+        [position]="position"
+        (positionChange)="position = $event; onChange($event)"
       ></app-range-slider>
     `,
   }),

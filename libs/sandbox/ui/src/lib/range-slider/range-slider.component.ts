@@ -32,18 +32,18 @@ export class RangeSliderComponent<T> implements OnInit, AfterViewInit {
   @Input() steps: T[] = [];
   @Input() labelTemplate: TemplateRef<{ myValue: T }> | undefined;
   @Input()
-  set model(model: Position<T>) {
-    this.startIndex = this.steps.indexOf(model.start);
-    this.endIndex = this.steps.indexOf(model.end);
-    this.currentModel = model;
+  set position(position: Position<T>) {
+    this.startIndex = this.steps.indexOf(position.start);
+    this.endIndex = this.steps.indexOf(position.end);
+    this.currentPosition = position;
     this.elevatedMarker = this.endIndex < 10 ? 'end' : 'start';
   }
-  @Output() modelChange: EventEmitter<Position<T>> = new EventEmitter();
+  @Output() positionChange: EventEmitter<Position<T>> = new EventEmitter();
   @ViewChild('container') container: ElementRef | undefined;
   startIndex = 0;
   endIndex = 100;
   baseDragPosition: { x: number; y: number } = { x: 0, y: 0 };
-  currentModel: Position<T> | undefined;
+  currentPosition: Position<T> | undefined;
   elevatedMarker: Marker<T> = 'start';
   private _containerWidth = 100;
 
@@ -56,7 +56,7 @@ export class RangeSliderComponent<T> implements OnInit, AfterViewInit {
   }
 
   onDragRelease(): void {
-    this.modelChange.emit(this.currentModel);
+    this.positionChange.emit(this.currentPosition);
     this.resetDragPositions();
   }
 
@@ -74,10 +74,10 @@ export class RangeSliderComponent<T> implements OnInit, AfterViewInit {
       start = this.steps[this.endIndex];
     }
 
-    if (this.currentModel) {
-      this.currentModel = {
+    if (this.currentPosition) {
+      this.currentPosition = {
         start,
-        end: this.currentModel.end,
+        end: this.currentPosition.end,
       };
     }
   }
@@ -91,9 +91,9 @@ export class RangeSliderComponent<T> implements OnInit, AfterViewInit {
     } else {
       end = this.steps[this.startIndex];
     }
-    if (this.currentModel) {
-      this.currentModel = {
-        start: this.currentModel.start,
+    if (this.currentPosition) {
+      this.currentPosition = {
+        start: this.currentPosition.start,
         end,
       };
     }

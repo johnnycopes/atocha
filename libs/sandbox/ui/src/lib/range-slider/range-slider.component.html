@@ -3,14 +3,14 @@
 		<p class="labels__start">
 			<ng-container *ngTemplateOutlet="
 				labelTemplate ? labelTemplate : defaultTemplate;
-				context: { $implicit: currentModel?.start }
+				context: { $implicit: currentPosition?.start }
 			">
 			</ng-container>
 		</p>
 		<p class="labels__end">
 			<ng-container *ngTemplateOutlet="
 				labelTemplate ? labelTemplate : defaultTemplate;
-				context: { $implicit: currentModel?.end }
+				context: { $implicit: currentPosition?.end }
 			">
 			</ng-container>
 		</p>
