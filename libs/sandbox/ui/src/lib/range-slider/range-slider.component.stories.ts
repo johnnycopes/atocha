@@ -5,7 +5,7 @@ import {
   componentWrapperDecorator,
 } from '@storybook/angular';
 
-import { Position, RangeSliderComponent } from './range-slider.component';
+import { RangeSliderComponent } from './range-slider.component';
 import { StorybookWrapperComponent } from '../../../.storybook/storybook-wrapper.component';
 import { range } from '@atocha/core/util';
 
@@ -22,17 +22,17 @@ export default {
   },
 } as Meta<RangeSliderComponent<number>>;
 
-const NUMBER_STEPS = range({ start: 1, stop: 500 });
-const numberPosition: Position<number> = {
-  start: 153,
-  end: 347,
-};
 export const withNumbers: StoryObj<RangeSliderComponent<number>> = {
+  args: {
+    position: {
+      start: 23,
+      end: 47,
+    },
+    steps: range({ start: 1, stop: 50 }),
+  },
   render: (args) => ({
     props: {
       ...args,
-      steps: NUMBER_STEPS,
-      position: numberPosition,
     },
     template: `
       <app-range-slider
@@ -44,19 +44,17 @@ export const withNumbers: StoryObj<RangeSliderComponent<number>> = {
   }),
 };
 
-const STRING_STEPS = range({ start: 50, stop: 450 }).map((num) =>
-  num.toString()
-);
-const stringPosition: Position<string> = {
-  start: '230',
-  end: '400',
-};
-export const withStrings: StoryObj<RangeSliderComponent<number>> = {
+export const withStrings: StoryObj<RangeSliderComponent<string>> = {
+  args: {
+    position: {
+      start: '23',
+      end: '40',
+    },
+    steps: range({ start: 50, stop: 450 }).map((num) => num.toString()),
+  },
   render: (args) => ({
     props: {
       ...args,
-      steps: STRING_STEPS,
-      position: stringPosition,
     },
     template: `
       <app-range-slider
@@ -69,11 +67,16 @@ export const withStrings: StoryObj<RangeSliderComponent<number>> = {
 };
 
 export const withCustomTemplate: StoryObj<RangeSliderComponent<number>> = {
+  args: {
+    position: {
+      start: 3,
+      end: 26,
+    },
+    steps: range({ start: 1, stop: 40 }),
+  },
   render: (args) => ({
     props: {
       ...args,
-      steps: NUMBER_STEPS,
-      position: numberPosition,
     },
     template: `
       <app-range-slider
