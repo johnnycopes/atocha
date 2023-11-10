@@ -5,9 +5,9 @@ import {
   componentWrapperDecorator,
 } from '@storybook/angular';
 
+import { range } from '@atocha/core/util';
 import { RangeSliderComponent } from './range-slider.component';
 import { StorybookWrapperComponent } from '../../../.storybook/storybook-wrapper.component';
-import { range } from '@atocha/core/util';
 
 export default {
   title: 'RangeSliderComponent',
