@@ -9,7 +9,7 @@ import {
   ChangeDetectionStrategy,
   TemplateRef,
 } from '@angular/core';
-import { CdkDragMove, DragDropModule } from '@angular/cdk/drag-drop';
+import { CdkDragMove, DragDropModule, Point } from '@angular/cdk/drag-drop';
 import { CommonModule } from '@angular/common';
 
 export interface Position<T> {
@@ -41,22 +41,17 @@ export class RangeSliderComponent<T> implements OnInit {
   @ViewChild('container', { static: true }) container: ElementRef | undefined;
   startIndex = 0;
   endIndex = 100;
-  baseDragPosition: { x: number; y: number } = { x: 0, y: 0 };
+  baseDragPosition: Point = { x: 0, y: 0 };
   currentPosition: Position<T> | undefined;
   elevatedMarker: Marker<T> = 'start';
   private _containerWidth = 100;
 
   ngOnInit(): void {
-    this.resetDragPositions();
     this._containerWidth = this.container?.nativeElement.offsetWidth;
   }
 
   onDragRelease(): void {
     this.positionChange.emit(this.currentPosition);
-    this.resetDragPositions();
-  }
-
-  private resetDragPositions(): void {
     this.baseDragPosition = { x: 0, y: 0 };
   }
 
