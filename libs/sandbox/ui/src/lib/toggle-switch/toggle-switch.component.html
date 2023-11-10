@@ -1,0 +1,13 @@
+<input
+  id="toggle"
+  type="checkbox"
+  [disabled]="disabled"
+  [ngModel]="state"
+  (ngModelChange)="stateChange.emit(!state)"
+/>
+
+<label class="container" [class.container--on]="state" for="toggle">
+  <span *ngIf="state" class="icon icon__on">✅</span>
+  <div class="switch" [class.switch--on]="state"></div>
+  <span *ngIf="!state" class="icon icon__off">❌</span>
+</label>
