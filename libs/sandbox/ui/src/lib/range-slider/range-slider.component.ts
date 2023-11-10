@@ -40,7 +40,7 @@ export class RangeSliderComponent<T> implements OnInit {
   @Output() positionChange: EventEmitter<Position<T>> = new EventEmitter();
   @ViewChild('container', { static: true }) container: ElementRef | undefined;
   startIndex = 0;
-  endIndex = 100;
+  endIndex = 0;
   baseDragPosition: Point = { x: 0, y: 0 };
   currentPosition: Position<T> | undefined;
   elevatedMarker: Marker<T> = 'start';
