@@ -28,16 +28,17 @@ type Marker<T> = keyof Position<T>;
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RangeSliderComponent<T> implements OnInit {
-  @Input() steps: T[] = [];
-  @Input() labelTemplate: TemplateRef<{ myValue: T }> | undefined;
-  @Input()
+  @Input({ required: true }) steps: T[] = [];
+  @Input({ required: true })
   set position(position: Position<T>) {
     this.startIndex = this.steps.indexOf(position.start);
     this.endIndex = this.steps.indexOf(position.end);
     this.currentPosition = position;
     this.elevatedMarker = this.endIndex < 10 ? 'end' : 'start';
   }
+  @Input() labelTemplate?: TemplateRef<{ myValue: T }>;
   @Output() positionChange: EventEmitter<Position<T>> = new EventEmitter();
+
   @ViewChild('container', { static: true }) container: ElementRef | undefined;
   startIndex = 0;
   endIndex = 0;
