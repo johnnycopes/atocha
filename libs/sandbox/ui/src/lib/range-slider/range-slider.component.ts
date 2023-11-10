@@ -58,12 +58,10 @@ export class RangeSliderComponent<T> implements OnInit {
   updateStart(dragEvent: CdkDragMove<T>): void {
     const indexChange = this._calculateIndexChange(dragEvent);
     const newStartIndex = this._calculateNewIndex(this.startIndex, indexChange);
-    let start: T;
-    if (newStartIndex < this.endIndex) {
-      start = this.steps[newStartIndex];
-    } else {
-      start = this.steps[this.endIndex];
-    }
+    const start =
+      newStartIndex < this.endIndex
+        ? this.steps[newStartIndex]
+        : this.steps[this.endIndex];
 
     if (this.currentPosition) {
       this.currentPosition = {
@@ -76,12 +74,10 @@ export class RangeSliderComponent<T> implements OnInit {
   updateEnd(dragEvent: CdkDragMove<T>): void {
     const indexChange = this._calculateIndexChange(dragEvent);
     const newEndIndex = this._calculateNewIndex(this.endIndex, indexChange);
-    let end: T;
-    if (newEndIndex > this.startIndex) {
-      end = this.steps[newEndIndex];
-    } else {
-      end = this.steps[this.startIndex];
-    }
+    const end =
+      newEndIndex > this.startIndex
+        ? this.steps[newEndIndex]
+        : this.steps[this.startIndex];
     if (this.currentPosition) {
       this.currentPosition = {
         start: this.currentPosition.start,
