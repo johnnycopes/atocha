@@ -19,6 +19,10 @@ export interface Position<T> {
 
 type Marker<T> = keyof Position<T>;
 
+export interface RangeSliderLabelContext<T> {
+  $implicit: T;
+}
+
 @Component({
   standalone: true,
   selector: 'app-range-slider',
@@ -36,7 +40,7 @@ export class RangeSliderComponent<T> implements OnInit {
     this.currentPosition = position;
     this.elevatedMarker = this.endIndex < 10 ? 'end' : 'start';
   }
-  @Input() labelTemplate?: TemplateRef<{ myValue: T }>;
+  @Input() template?: TemplateRef<RangeSliderLabelContext<T>>;
   @Output() positionChange: EventEmitter<Position<T>> = new EventEmitter();
 
   @ViewChild('container', { static: true }) container: ElementRef | undefined;

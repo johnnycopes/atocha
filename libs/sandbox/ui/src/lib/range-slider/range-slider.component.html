@@ -2,14 +2,14 @@
 	<ng-container *ngIf="steps.length; else noSteps">
 		<p class="labels__start">
 			<ng-container *ngTemplateOutlet="
-				labelTemplate ? labelTemplate : defaultTemplate;
+				template ? template : defaultTemplate;
 				context: { $implicit: currentPosition?.start }
 			">
 			</ng-container>
 		</p>
 		<p class="labels__end">
 			<ng-container *ngTemplateOutlet="
-				labelTemplate ? labelTemplate : defaultTemplate;
+				template ? template : defaultTemplate;
 				context: { $implicit: currentPosition?.end }
 			">
 			</ng-container>
@@ -56,6 +56,6 @@
 
 <ng-template #defaultTemplate
 	let-value
-	>
-	{{value}}
+>
+	{{ value }}
 </ng-template>
