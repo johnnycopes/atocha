@@ -13,12 +13,12 @@ import {
 import { CdkDragMove, DragDropModule } from '@angular/cdk/drag-drop';
 import { CommonModule } from '@angular/common';
 
-export interface IRangeSliderModel<T> {
+export interface Position<T> {
   start: T;
   end: T;
 }
 
-type Marker = 'start' | 'end';
+type Marker<T> = keyof Position<T>;
 
 @Component({
   standalone: true,
@@ -32,20 +32,19 @@ export class RangeSliderComponent<T> implements OnInit, AfterViewInit {
   @Input() steps: T[] = [];
   @Input() labelTemplate: TemplateRef<{ myValue: T }> | undefined;
   @Input()
-  set model(model: IRangeSliderModel<T>) {
+  set model(model: Position<T>) {
     this.startIndex = this.steps.indexOf(model.start);
     this.endIndex = this.steps.indexOf(model.end);
     this.currentModel = model;
     this.elevatedMarker = this.endIndex < 10 ? 'end' : 'start';
   }
-  @Output() modelChange: EventEmitter<IRangeSliderModel<T>> =
-    new EventEmitter();
+  @Output() modelChange: EventEmitter<Position<T>> = new EventEmitter();
   @ViewChild('container') container: ElementRef | undefined;
   startIndex = 0;
   endIndex = 100;
   baseDragPosition: { x: number; y: number } = { x: 0, y: 0 };
-  currentModel: IRangeSliderModel<T> | undefined;
-  elevatedMarker: Marker = 'start';
+  currentModel: Position<T> | undefined;
+  elevatedMarker: Marker<T> = 'start';
   private _containerWidth = 100;
 
   ngOnInit(): void {

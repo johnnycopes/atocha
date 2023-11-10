@@ -5,10 +5,7 @@ import {
   componentWrapperDecorator,
 } from '@storybook/angular';
 
-import {
-  IRangeSliderModel,
-  RangeSliderComponent,
-} from './range-slider.component';
+import { Position, RangeSliderComponent } from './range-slider.component';
 import { StorybookWrapperComponent } from '../../../.storybook/storybook-wrapper.component';
 import { range } from '@atocha/core/util';
 
@@ -26,7 +23,7 @@ export default {
 } as Meta<RangeSliderComponent<number>>;
 
 const STEPS = range({ start: 1, stop: 500 });
-const model: IRangeSliderModel<number> = {
+const model: Position<number> = {
   start: 153,
   end: 347,
 };
