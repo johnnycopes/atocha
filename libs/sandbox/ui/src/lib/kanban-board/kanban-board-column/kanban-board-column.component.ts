@@ -18,7 +18,7 @@ import {
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faEllipsisH } from '@fortawesome/free-solid-svg-icons';
 
-import { trackByFactory } from '../../performance/track-by';
+import { trackByFactory } from '@atocha/core/ui';
 import { KanbanBoardFormComponent } from '../kanban-board-form/kanban-board-form.component';
 
 export interface KanbanBoardActionClick {
@@ -41,7 +41,7 @@ export interface KanbanBoardItemMove {
 
 @Component({
   standalone: true,
-  selector: 'core-kanban-board-column',
+  selector: 'app-kanban-board-column',
   imports: [
     CommonModule,
     DragDropModule,
@@ -53,7 +53,7 @@ export interface KanbanBoardItemMove {
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   host: {
-    class: 'core-kbc',
+    class: 'app-kbc',
   },
 })
 export class KanbanBoardColumnComponent<TItem> {

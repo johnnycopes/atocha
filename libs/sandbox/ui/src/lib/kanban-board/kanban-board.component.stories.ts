@@ -6,7 +6,7 @@ import {
   componentWrapperDecorator,
 } from '@storybook/angular';
 
-import { StorybookWrapperComponent } from '../../../.storybook/storybook-wrapper/storybook-wrapper.component';
+import { StorybookWrapperComponent } from '../../../.storybook/storybook-wrapper.component';
 import { KanbanBoardComponent } from './kanban-board.component';
 
 export interface KitchenLocation {
@@ -25,8 +25,7 @@ export default {
   component: KanbanBoardComponent,
   decorators: [
     moduleMetadata({
-      imports: [DragDropModule],
-      declarations: [StorybookWrapperComponent],
+      imports: [DragDropModule, StorybookWrapperComponent],
     }),
     componentWrapperDecorator(StorybookWrapperComponent),
   ],
@@ -50,7 +49,7 @@ const Template: StoryFn<KanbanBoardComponent<KitchenLocation, string>> = (
     getItemId,
   },
   template: `
-    <core-kanban-board
+    <app-kanban-board
       [columns]="columns"
       [actions]="actions"
       [getColumnId]="getColumnId"
@@ -62,7 +61,7 @@ const Template: StoryFn<KanbanBoardComponent<KitchenLocation, string>> = (
       (itemAdd)="onItemAdd($event)"
       (itemMove)="onItemMove($event)"
       (actionClick)="onActionClick($event)"
-    ></core-kanban-board>
+    ></app-kanban-board>
   `,
 });
 

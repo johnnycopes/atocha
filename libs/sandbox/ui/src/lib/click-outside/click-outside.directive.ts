@@ -11,10 +11,10 @@ import { filter, takeUntil } from 'rxjs/operators';
 
 @Directive({
   standalone: true,
-  selector: '[coreClickOutside]',
+  selector: '[appClickOutside]',
 })
 export class ClickOutsideDirective implements OnInit, OnDestroy {
-  @Output('coreClickOutside') clickOutside: EventEmitter<void> =
+  @Output('appClickOutside') clickOutside: EventEmitter<void> =
     new EventEmitter();
   private _animationFrame: number | undefined;
   private _destroy$ = new Subject<void>();

@@ -15,7 +15,7 @@ import {
   moveItemInArray,
 } from '@angular/cdk/drag-drop';
 
-import { trackByFactory } from '../performance/track-by';
+import { trackByFactory } from '@atocha/core/ui';
 import {
   KanbanBoardItemAdd,
   KanbanBoardActionClick,
@@ -32,7 +32,7 @@ export interface KanbanColumnMove {
 
 @Component({
   standalone: true,
-  selector: 'core-kanban-board',
+  selector: 'app-kanban-board',
   imports: [
     CommonModule,
     DragDropModule,
@@ -44,7 +44,7 @@ export interface KanbanColumnMove {
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   host: {
-    class: 'core-kb',
+    class: 'app-kb',
   },
 })
 export class KanbanBoardComponent<TColumn, TItem> {

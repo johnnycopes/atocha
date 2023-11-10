@@ -1,0 +1,12 @@
+<input
+  #fileInput
+  type="file"
+  [attr.accept]="accept"
+  [attr.multiple]="multiple ? '' : null"
+  (change)="onFileSelectChange($event)"
+/>
+<ng-container
+  *ngIf="fileSelectDef"
+  [ngTemplateOutlet]="fileSelectDef.template"
+  [ngTemplateOutletContext]="fileSelectDefContext"
+></ng-container>
