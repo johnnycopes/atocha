@@ -32,7 +32,7 @@
 		*ngIf="steps.length"
 		>
 		<div class="marker start-marker"
-			[class.marker--elevated]="elevatedMarker === markerEnum.start"
+			[class.marker--elevated]="elevatedMarker === 'start'"
 			[style.left.%]="startIndex / (steps.length - 1) * 100"
 			cdkDrag
 			cdkDragBoundary=".track"
@@ -42,7 +42,7 @@
 			>
 		</div>
 		<div class="marker end-marker"
-			[class.marker--elevated]="elevatedMarker === markerEnum.end"
+			[class.marker--elevated]="elevatedMarker === 'end'"
 			[style.left.%]="endIndex / (steps.length - 1) * 100"
 			cdkDrag
 			cdkDragBoundary=".track"

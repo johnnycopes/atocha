@@ -18,10 +18,7 @@ export interface IRangeSliderModel<T> {
   end: T;
 }
 
-enum EMarker {
-  start = 'start',
-  end = 'end',
-}
+type Marker = 'start' | 'end';
 
 @Component({
   standalone: true,
@@ -39,7 +36,7 @@ export class RangeSliderComponent<T> implements OnInit, AfterViewInit {
     this.startIndex = this.steps.indexOf(model.start);
     this.endIndex = this.steps.indexOf(model.end);
     this.currentModel = model;
-    this.elevatedMarker = this.endIndex < 10 ? EMarker.end : EMarker.start;
+    this.elevatedMarker = this.endIndex < 10 ? 'end' : 'start';
   }
   @Output() modelChange: EventEmitter<IRangeSliderModel<T>> =
     new EventEmitter();
@@ -48,8 +45,7 @@ export class RangeSliderComponent<T> implements OnInit, AfterViewInit {
   endIndex = 100;
   baseDragPosition: { x: number; y: number } = { x: 0, y: 0 };
   currentModel: IRangeSliderModel<T> | undefined;
-  markerEnum: typeof EMarker = EMarker;
-  elevatedMarker: EMarker = EMarker.start;
+  elevatedMarker: Marker = 'start';
   private _containerWidth = 100;
 
   ngOnInit(): void {
