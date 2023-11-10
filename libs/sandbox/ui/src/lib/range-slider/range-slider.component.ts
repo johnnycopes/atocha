@@ -5,7 +5,6 @@ import {
   EventEmitter,
   OnInit,
   ViewChild,
-  AfterViewInit,
   ElementRef,
   ChangeDetectionStrategy,
   TemplateRef,
@@ -28,7 +27,7 @@ type Marker<T> = keyof Position<T>;
   styleUrls: ['./range-slider.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class RangeSliderComponent<T> implements OnInit, AfterViewInit {
+export class RangeSliderComponent<T> implements OnInit {
   @Input() steps: T[] = [];
   @Input() labelTemplate: TemplateRef<{ myValue: T }> | undefined;
   @Input()
@@ -39,7 +38,7 @@ export class RangeSliderComponent<T> implements OnInit, AfterViewInit {
     this.elevatedMarker = this.endIndex < 10 ? 'end' : 'start';
   }
   @Output() positionChange: EventEmitter<Position<T>> = new EventEmitter();
-  @ViewChild('container') container: ElementRef | undefined;
+  @ViewChild('container', { static: true }) container: ElementRef | undefined;
   startIndex = 0;
   endIndex = 100;
   baseDragPosition: { x: number; y: number } = { x: 0, y: 0 };
@@ -49,9 +48,6 @@ export class RangeSliderComponent<T> implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.resetDragPositions();
-  }
-
-  ngAfterViewInit(): void {
     this._containerWidth = this.container?.nativeElement.offsetWidth;
   }
 
