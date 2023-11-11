@@ -32,7 +32,6 @@ export default {
         FormsModule,
         InternalCountedSelectionTreeComponent,
       ],
-      declarations: [StorybookWrapperComponent],
     }),
     componentWrapperDecorator(StorybookWrapperComponent),
   ],

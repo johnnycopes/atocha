@@ -19,8 +19,8 @@ import {
 } from '@atocha/tree/util';
 import { CheckboxComponent } from '@atocha/core/ui';
 import { InternalSelectionTreeComponent } from './internal-selection-tree.component';
-import { StorybookWrapperComponent } from '../../../.storybook/storybook-wrapper/storybook-wrapper.component';
 import { TreeComponent } from '../tree/tree.component';
+import { StorybookWrapperComponent } from '../../../.storybook/storybook-wrapper/storybook-wrapper.component';
 
 export default {
   title: 'Internal Selection Tree',
@@ -28,7 +28,6 @@ export default {
   decorators: [
     moduleMetadata({
       imports: [CheckboxComponent, FormsModule, TreeComponent],
-      declarations: [StorybookWrapperComponent],
     }),
     componentWrapperDecorator(StorybookWrapperComponent),
   ],
