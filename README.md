@@ -41,11 +41,20 @@ Generic, well-tested collections of code. Minimally opinionated for maximum reus
 
 ### Core
 
-1. **data-access**: abstractions for interacting with Firebase.
+1. **data-access**: framework-agnostic helpers for common data management functionality.
 1. **ui**: generic, customizable Angular components.
-1. **util**: framework-agnostic TypeScript functions/classes.
+1. **util**: framework-agnostic TypeScript utility functions and classes.
+
+### Firebase
+
+1. **data-access**: abstractions for interacting with Firebase.
 
 ### Tree
 
-1. **ui**: generic Angular components to render trees of any height with selectable nodes
-2. **util**: framework-agnostic TypeScript logic to transform tree state and count data within a given tree
+1. **ui**: generic Angular components to render trees of any height with selectable nodes.
+2. **util**: framework-agnostic TypeScript logic to transform tree state and count data within a given tree.
+
+### Sandbox
+
+1. **ui**: Angular components that aren't used in any applications, are under development, or are used for experiments/learning.
+2. **util**: framework-agnostic functionality not used in any application but might be in the future.
