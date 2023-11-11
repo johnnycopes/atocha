@@ -1,20 +1,13 @@
-import {
-  StoryObj,
-  moduleMetadata,
-  Meta,
-  componentWrapperDecorator,
-} from '@storybook/angular';
+import { StoryObj, moduleMetadata, Meta } from '@storybook/angular';
 
 import { ClickOutsideDirective } from './click-outside.directive';
-import { StorybookWrapperComponent } from '../../../.storybook/storybook-wrapper.component';
 
 export default {
   title: 'Click Outside',
   decorators: [
     moduleMetadata({
-      imports: [ClickOutsideDirective, StorybookWrapperComponent],
+      imports: [ClickOutsideDirective],
     }),
-    componentWrapperDecorator(StorybookWrapperComponent),
   ],
   argTypes: {
     inside: { action: 'INSIDE' },

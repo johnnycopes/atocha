@@ -1,14 +1,8 @@
-import {
-  StoryObj,
-  moduleMetadata,
-  Meta,
-  componentWrapperDecorator,
-} from '@storybook/angular';
+import { StoryObj, moduleMetadata, Meta } from '@storybook/angular';
 
 import { ListComponent } from './list.component';
 import { ListItemComponent } from './list-item.component';
 import { ListItemDefDirective } from './list-item-def.directive';
-import { StorybookWrapperComponent } from '../../../.storybook/storybook-wrapper.component';
 import { Item } from './item.interface';
 
 const FAKE_ITEMS: Item[] = [
@@ -30,14 +24,8 @@ export default {
   title: 'ListComponent',
   decorators: [
     moduleMetadata({
-      imports: [
-        ListComponent,
-        ListItemComponent,
-        ListItemDefDirective,
-        StorybookWrapperComponent,
-      ],
+      imports: [ListComponent, ListItemComponent, ListItemDefDirective],
     }),
-    componentWrapperDecorator(StorybookWrapperComponent),
   ],
 } as Meta<ListComponent>;
 

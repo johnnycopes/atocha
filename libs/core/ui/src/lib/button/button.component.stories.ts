@@ -11,10 +11,9 @@ import { ButtonComponent, ButtonVariant } from './button.component';
 
 export default {
   title: 'ButtonComponent',
-  component: ButtonComponent,
   decorators: [
     moduleMetadata({
-      declarations: [StorybookWrapperComponent],
+      imports: [ButtonComponent, StorybookWrapperComponent],
     }),
     componentWrapperDecorator(StorybookWrapperComponent),
   ],

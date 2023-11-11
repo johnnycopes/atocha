@@ -1,12 +1,6 @@
 import { DragDropModule } from '@angular/cdk/drag-drop';
-import {
-  Meta,
-  moduleMetadata,
-  StoryFn,
-  componentWrapperDecorator,
-} from '@storybook/angular';
+import { Meta, moduleMetadata, StoryFn } from '@storybook/angular';
 
-import { StorybookWrapperComponent } from '../../../.storybook/storybook-wrapper.component';
 import { KanbanBoardComponent } from './kanban-board.component';
 
 export interface KitchenLocation {
@@ -25,9 +19,8 @@ export default {
   component: KanbanBoardComponent,
   decorators: [
     moduleMetadata({
-      imports: [DragDropModule, StorybookWrapperComponent],
+      imports: [DragDropModule],
     }),
-    componentWrapperDecorator(StorybookWrapperComponent),
   ],
   argTypes: {
     onColumnAdd: { action: 'columnAdd' },
