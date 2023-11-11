@@ -1,4 +1,4 @@
-import { StoryFn, moduleMetadata, Meta } from '@storybook/angular';
+import { StoryFn, Meta } from '@storybook/angular';
 
 import { AFRICA, TestItem, getChildren, getId } from '@atocha/tree/util';
 import { TreeComponent } from './tree.component';
@@ -6,11 +6,6 @@ import { TreeComponent } from './tree.component';
 export default {
   title: 'Tree',
   component: TreeComponent,
-  decorators: [
-    moduleMetadata({
-      imports: [],
-    }),
-  ],
 } as Meta<TreeComponent<TestItem>>;
 
 export const leaf: StoryFn<TreeComponent<TestItem>> = () => ({
