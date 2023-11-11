@@ -48,9 +48,9 @@ export const withStrings: StoryObj<RangeSliderComponent<string>> = {
   args: {
     position: {
       start: '23',
-      end: '40',
+      end: '38',
     },
-    steps: range({ start: 50, stop: 450 }).map((num) => num.toString()),
+    steps: range({ start: 1, stop: 40 }).map((num) => num.toString()),
   },
   render: (args) => ({
     props: {
