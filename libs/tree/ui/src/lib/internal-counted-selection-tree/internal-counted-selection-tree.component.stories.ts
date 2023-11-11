@@ -31,6 +31,7 @@ export default {
         CheckboxComponent,
         FormsModule,
         InternalCountedSelectionTreeComponent,
+        StorybookWrapperComponent,
       ],
     }),
     componentWrapperDecorator(StorybookWrapperComponent),

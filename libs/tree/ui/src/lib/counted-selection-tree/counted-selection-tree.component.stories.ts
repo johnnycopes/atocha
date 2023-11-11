@@ -26,7 +26,7 @@ export default {
   component: CountedSelectionTreeComponent,
   decorators: [
     moduleMetadata({
-      imports: [CheckboxComponent, FormsModule],
+      imports: [CheckboxComponent, FormsModule, StorybookWrapperComponent],
     }),
     componentWrapperDecorator(StorybookWrapperComponent),
   ],

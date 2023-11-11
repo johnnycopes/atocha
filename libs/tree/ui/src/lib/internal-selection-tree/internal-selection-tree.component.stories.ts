@@ -27,7 +27,12 @@ export default {
   component: InternalSelectionTreeComponent,
   decorators: [
     moduleMetadata({
-      imports: [CheckboxComponent, FormsModule, TreeComponent],
+      imports: [
+        CheckboxComponent,
+        FormsModule,
+        TreeComponent,
+        StorybookWrapperComponent,
+      ],
     }),
     componentWrapperDecorator(StorybookWrapperComponent),
   ],
