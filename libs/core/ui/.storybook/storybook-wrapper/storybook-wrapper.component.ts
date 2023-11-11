@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   selector: 'core-storybook-wrapper',
-  templateUrl: './storybook-wrapper.component.html',
+  template: `<ng-content></ng-content>`,
   styleUrls: ['./storybook-wrapper.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
