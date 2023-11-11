@@ -21,7 +21,9 @@ export type EditableIngredientData = Pick<
 @Injectable({
   providedIn: 'root',
 })
-export class IngredientDataService implements DtoService<IngredientDto> {
+export class IngredientDataService
+  implements DtoService<Ingredient, IngredientDto>
+{
   private _endpoint = Endpoint.ingredients;
 
   constructor(
