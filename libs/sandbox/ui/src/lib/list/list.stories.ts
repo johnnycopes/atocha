@@ -11,7 +11,7 @@ import { ListItemDefDirective } from './list-item-def.directive';
 import { StorybookWrapperComponent } from '../../../.storybook/storybook-wrapper.component';
 import { Item } from './item.interface';
 
-const FAKE_ITEMS: Item[] = [
+const FAKE_ITEMS: readonly Item[] = [
   {
     name: 'Item 1',
     description: "It's cool",
@@ -30,12 +30,7 @@ export default {
   title: 'ListComponent',
   decorators: [
     moduleMetadata({
-      imports: [
-        ListComponent,
-        ListItemComponent,
-        ListItemDefDirective,
-        StorybookWrapperComponent,
-      ],
+      imports: [ListComponent, ListItemComponent, ListItemDefDirective],
     }),
     componentWrapperDecorator(StorybookWrapperComponent),
   ],

@@ -12,7 +12,7 @@ export default {
   title: 'Click Outside',
   decorators: [
     moduleMetadata({
-      imports: [ClickOutsideDirective, StorybookWrapperComponent],
+      imports: [ClickOutsideDirective],
     }),
     componentWrapperDecorator(StorybookWrapperComponent),
   ],

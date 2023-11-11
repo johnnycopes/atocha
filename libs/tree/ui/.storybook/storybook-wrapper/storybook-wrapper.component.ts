@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 
 @Component({
   standalone: true,
@@ -6,5 +10,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   templateUrl: './storybook-wrapper.component.html',
   styleUrls: ['./storybook-wrapper.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
 })
 export class StorybookWrapperComponent {}
