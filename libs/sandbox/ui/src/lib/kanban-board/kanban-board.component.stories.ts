@@ -25,7 +25,7 @@ export default {
   component: KanbanBoardComponent,
   decorators: [
     moduleMetadata({
-      imports: [DragDropModule],
+      imports: [DragDropModule, StorybookWrapperComponent],
     }),
     componentWrapperDecorator(StorybookWrapperComponent),
   ],

@@ -13,7 +13,7 @@ export default {
   title: 'RangeSliderComponent',
   decorators: [
     moduleMetadata({
-      imports: [RangeSliderComponent],
+      imports: [RangeSliderComponent, StorybookWrapperComponent],
     }),
     componentWrapperDecorator(StorybookWrapperComponent),
   ],
@@ -25,8 +25,8 @@ export default {
 export const withNumbers: StoryObj<RangeSliderComponent<number>> = {
   args: {
     position: {
-      start: 3,
-      end: 42,
+      start: 23,
+      end: 47,
     },
     steps: range({ start: 1, stop: 50 }),
   },
