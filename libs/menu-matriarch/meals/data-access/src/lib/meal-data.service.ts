@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 
 import { BatchService, DataService } from '@atocha/firebase/data-access';
 import {
@@ -8,6 +7,7 @@ import {
   TagUpdateService,
 } from '@atocha/menu-matriarch/shared/data-access-api';
 import {
+  DtoService,
   MealDto,
   createMealDto,
 } from '@atocha/menu-matriarch/shared/data-access-dtos';
@@ -21,7 +21,7 @@ export type EditableMealData = Pick<
 @Injectable({
   providedIn: 'root',
 })
-export class MealDataService {
+export class MealDataService implements DtoService<Meal, MealDto> {
   private _endpoint = Endpoint.meals;
 
   constructor(
@@ -31,15 +31,15 @@ export class MealDataService {
     private _tagUpdateService: TagUpdateService
   ) {}
 
-  getMeal(id: string): Observable<MealDto | undefined> {
+  getOne(id: string) {
     return this._dataService.getOne(this._endpoint, id);
   }
 
-  getMeals(uid: string): Observable<MealDto[]> {
+  getMany(uid: string) {
     return this._dataService.getMany(this._endpoint, uid);
   }
 
-  async createMeal(uid: string, meal: EditableMealData): Promise<string> {
+  async create(uid: string, meal: EditableMealData) {
     const id = this._dataService.createId();
     const batch = this._batchService.createBatch();
 
@@ -73,7 +73,7 @@ export class MealDataService {
     return id;
   }
 
-  async updateMeal(meal: Meal, data: EditableMealData): Promise<void> {
+  async update(meal: Meal, data: EditableMealData) {
     const batch = this._batchService.createBatch();
 
     batch.update({
@@ -105,7 +105,7 @@ export class MealDataService {
     await batch.commit();
   }
 
-  async deleteMeal(meal: Meal): Promise<void> {
+  async delete(meal: Meal) {
     const batch = this._batchService.createBatch();
 
     batch.delete(this._endpoint, meal.id).updateMultiple([

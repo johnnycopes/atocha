@@ -28,7 +28,7 @@ export class MealService {
 
   getMeal(id: string): Observable<Meal | undefined> {
     return combineLatest([
-      this._mealDataService.getMeal(id),
+      this._mealDataService.getOne(id),
       this._dishService.getDishes(),
       this._tagService.getTags(),
     ]).pipe(
@@ -47,7 +47,7 @@ export class MealService {
       concatMap((uid) => {
         if (uid) {
           return combineLatest([
-            this._mealDataService.getMeals(uid),
+            this._mealDataService.getMany(uid),
             this._dishService.getDishes(),
             this._tagService.getTags(),
           ]).pipe(
@@ -68,7 +68,7 @@ export class MealService {
       first(),
       concatMap(async (uid) => {
         if (uid) {
-          const id = await this._mealDataService.createMeal(uid, meal);
+          const id = await this._mealDataService.create(uid, meal);
           return id;
         } else {
           return undefined;
@@ -78,10 +78,10 @@ export class MealService {
   }
 
   async updateMeal(meal: Meal, data: EditableMealData): Promise<void> {
-    return this._mealDataService.updateMeal(meal, data);
+    return this._mealDataService.update(meal, data);
   }
 
   async deleteMeal(meal: Meal): Promise<void> {
-    return this._mealDataService.deleteMeal(meal);
+    return this._mealDataService.delete(meal);
   }
 }
