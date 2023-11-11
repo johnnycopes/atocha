@@ -16,7 +16,7 @@ export class TagService {
   ) {}
 
   getTag(id: string): Observable<Tag | undefined> {
-    return this._tagDataService.getTag(id);
+    return this._tagDataService.getOne(id);
   }
 
   getTags(): Observable<Tag[]> {
@@ -24,7 +24,7 @@ export class TagService {
       first(),
       concatMap((uid) => {
         if (uid) {
-          return this._tagDataService.getTags(uid);
+          return this._tagDataService.getMultiple(uid);
         }
         return of([]);
       })
@@ -36,7 +36,7 @@ export class TagService {
       first(),
       concatMap(async (uid) => {
         if (uid) {
-          const id = await this._tagDataService.createTag(uid, tag);
+          const id = await this._tagDataService.create(uid, tag);
           return id;
         } else {
           return undefined;
@@ -46,10 +46,10 @@ export class TagService {
   }
 
   async updateTag(tag: Tag, data: EditableTagData): Promise<void> {
-    return this._tagDataService.updateTag(tag, data);
+    return this._tagDataService.update(tag, data);
   }
 
   async deleteTag(tag: Tag): Promise<void> {
-    return this._tagDataService.deleteTag(tag);
+    return this._tagDataService.delete(tag);
   }
 }

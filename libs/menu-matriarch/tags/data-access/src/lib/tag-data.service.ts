@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 
 import { BatchService, DataService } from '@atocha/firebase/data-access';
 import {
@@ -8,6 +7,7 @@ import {
   MealUpdateService,
 } from '@atocha/menu-matriarch/shared/data-access-api';
 import {
+  DtoService,
   TagDto,
   createTagDto,
 } from '@atocha/menu-matriarch/shared/data-access-dtos';
@@ -18,7 +18,7 @@ export type EditableTagData = Pick<TagDto, 'name'>;
 @Injectable({
   providedIn: 'root',
 })
-export class TagDataService {
+export class TagDataService implements DtoService<TagDto> {
   private _endpoint = Endpoint.tags;
 
   constructor(
@@ -28,15 +28,15 @@ export class TagDataService {
     private _mealUpdateService: MealUpdateService
   ) {}
 
-  getTag(id: string): Observable<Tag | undefined> {
+  getOne(id: string) {
     return this._dataService.getOne(this._endpoint, id);
   }
 
-  getTags(uid: string): Observable<Tag[]> {
+  getMultiple(uid: string) {
     return this._dataService.getMany(this._endpoint, uid);
   }
 
-  async createTag(uid: string, tag: EditableTagData): Promise<string> {
+  async create(uid: string, tag: EditableTagData) {
     const id = this._dataService.createId();
 
     await this._dataService.create(
@@ -48,11 +48,11 @@ export class TagDataService {
     return id;
   }
 
-  async updateTag(tag: Tag, data: EditableTagData): Promise<void> {
+  async update(tag: Tag, data: EditableTagData) {
     return this._dataService.update(this._endpoint, tag.id, data);
   }
 
-  async deleteTag(tag: Tag): Promise<void> {
+  async delete(tag: Tag) {
     const batch = this._batchService.createBatch();
 
     batch.delete(this._endpoint, tag.id).updateMultiple([
