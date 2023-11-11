@@ -26,17 +26,17 @@ export class MealDataService {
 
   constructor(
     private _batchService: BatchService,
-    private _dataService: DataService,
+    private _dataService: DataService<MealDto>,
     private _dishUpdateService: DishUpdateService,
     private _tagUpdateService: TagUpdateService
   ) {}
 
   getMeal(id: string): Observable<MealDto | undefined> {
-    return this._dataService.getOne<MealDto>(this._endpoint, id);
+    return this._dataService.getOne(this._endpoint, id);
   }
 
   getMeals(uid: string): Observable<MealDto[]> {
-    return this._dataService.getMany<MealDto>(this._endpoint, uid);
+    return this._dataService.getMany(this._endpoint, uid);
   }
 
   async createMeal(uid: string, meal: EditableMealData): Promise<string> {

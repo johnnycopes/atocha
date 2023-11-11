@@ -26,17 +26,17 @@ export class IngredientDataService {
 
   constructor(
     private _batchService: BatchService,
-    private _dataService: DataService,
+    private _dataService: DataService<IngredientDto>,
     private _dishUpdateService: DishUpdateService,
     private _ingredientTypeUpdateService: IngredientTypeUpdateService
   ) {}
 
   getIngredient(id: string): Observable<IngredientDto | undefined> {
-    return this._dataService.getOne<IngredientDto>(this._endpoint, id);
+    return this._dataService.getOne(this._endpoint, id);
   }
 
   getIngredients(uid: string): Observable<IngredientDto[]> {
-    return this._dataService.getMany<IngredientDto>(this._endpoint, uid);
+    return this._dataService.getMany(this._endpoint, uid);
   }
 
   async createIngredient(

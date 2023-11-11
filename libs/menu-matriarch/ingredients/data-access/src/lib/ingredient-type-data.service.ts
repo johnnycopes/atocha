@@ -24,16 +24,16 @@ export class IngredientTypeDataService {
 
   constructor(
     private _batchService: BatchService,
-    private _dataService: DataService,
+    private _dataService: DataService<IngredientTypeDto>,
     private _userUpdateService: UserUpdateService
   ) {}
 
   getIngredientType(id: string): Observable<IngredientTypeDto | undefined> {
-    return this._dataService.getOne<IngredientTypeDto>(this._endpoint, id);
+    return this._dataService.getOne(this._endpoint, id);
   }
 
   getIngredientTypes(uid: string): Observable<IngredientTypeDto[]> {
-    return this._dataService.getMany<IngredientTypeDto>(this._endpoint, uid);
+    return this._dataService.getMany(this._endpoint, uid);
   }
 
   async createIngredientType(
@@ -64,11 +64,7 @@ export class IngredientTypeDataService {
     ingredientType: IngredientType,
     updates: EditableIngredientTypeData
   ): Promise<void> {
-    return this._dataService.update<IngredientTypeDto>(
-      this._endpoint,
-      ingredientType.id,
-      updates
-    );
+    return this._dataService.update(this._endpoint, ingredientType.id, updates);
   }
 
   async deleteIngredientType(ingredientType: IngredientType): Promise<void> {

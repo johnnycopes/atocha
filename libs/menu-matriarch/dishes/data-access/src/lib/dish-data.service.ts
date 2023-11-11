@@ -34,7 +34,7 @@ export class DishDataService {
 
   constructor(
     private _batchService: BatchService,
-    private _dataService: DataService,
+    private _dataService: DataService<DishDto>,
     private _mealUpdateService: MealUpdateService,
     private _menuUpdateService: MenuUpdateService,
     private _ingredientUpdateService: IngredientUpdateService,
@@ -42,11 +42,11 @@ export class DishDataService {
   ) {}
 
   getDish(id: string): Observable<DishDto | undefined> {
-    return this._dataService.getOne<DishDto>(this._endpoint, id);
+    return this._dataService.getOne(this._endpoint, id);
   }
 
   getDishes(uid: string): Observable<DishDto[]> {
-    return this._dataService.getMany<DishDto>(this._endpoint, uid);
+    return this._dataService.getMany(this._endpoint, uid);
   }
 
   async createDish(uid: string, dish: EditableDishData): Promise<string> {

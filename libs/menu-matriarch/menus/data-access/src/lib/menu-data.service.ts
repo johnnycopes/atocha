@@ -23,23 +23,23 @@ export class MenuDataService {
 
   constructor(
     private _batchService: BatchService,
-    private _dataService: DataService,
+    private _dataService: DataService<MenuDto>,
     private _dishUpdateService: DishUpdateService,
     private _menuUpdateService: MenuUpdateService
   ) {}
 
   getMenu(id: string): Observable<MenuDto | undefined> {
-    return this._dataService.getOne<MenuDto>(this._endpoint, id);
+    return this._dataService.getOne(this._endpoint, id);
   }
 
   getMenus(uid: string): Observable<MenuDto[]> {
-    return this._dataService.getMany<MenuDto>(this._endpoint, uid);
+    return this._dataService.getMany(this._endpoint, uid);
   }
 
   async createMenu(uid: string, menu: EditableMenuData): Promise<string> {
     const id = this._dataService.createId();
 
-    await this._dataService.create<MenuDto>(
+    await this._dataService.create(
       this._endpoint,
       id,
       createMenuDto({
@@ -53,7 +53,7 @@ export class MenuDataService {
   }
 
   async updateMenu(id: string, data: EditableMenuData): Promise<void> {
-    return await this._dataService.update<MenuDto>(this._endpoint, id, data);
+    return await this._dataService.update(this._endpoint, id, data);
   }
 
   async updateMenuContents({
