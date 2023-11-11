@@ -27,7 +27,7 @@ export class IngredientService {
       first(),
       concatMap((uid) => {
         if (uid) {
-          return this._ingredientDataService.getMultiple(uid);
+          return this._ingredientDataService.getMany(uid);
         }
         return of([]);
       })

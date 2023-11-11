@@ -35,7 +35,7 @@ export class IngredientDataService implements DtoService<IngredientDto> {
     return this._dataService.getOne(this._endpoint, id);
   }
 
-  getMultiple(uid: string) {
+  getMany(uid: string) {
     return this._dataService.getMany(this._endpoint, uid);
   }
 

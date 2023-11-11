@@ -24,7 +24,7 @@ export class TagService {
       first(),
       concatMap((uid) => {
         if (uid) {
-          return this._tagDataService.getMultiple(uid);
+          return this._tagDataService.getMany(uid);
         }
         return of([]);
       })
