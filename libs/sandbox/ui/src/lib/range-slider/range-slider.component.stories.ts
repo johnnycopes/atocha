@@ -1,21 +1,14 @@
-import {
-  StoryObj,
-  moduleMetadata,
-  Meta,
-  componentWrapperDecorator,
-} from '@storybook/angular';
+import { StoryObj, moduleMetadata, Meta } from '@storybook/angular';
 
 import { range } from '@atocha/core/util';
 import { RangeSliderComponent } from './range-slider.component';
-import { StorybookWrapperComponent } from '../../../.storybook/storybook-wrapper.component';
 
 export default {
   title: 'RangeSliderComponent',
   decorators: [
     moduleMetadata({
-      imports: [RangeSliderComponent, StorybookWrapperComponent],
+      imports: [RangeSliderComponent],
     }),
-    componentWrapperDecorator(StorybookWrapperComponent),
   ],
   argTypes: {
     onChange: { action: 'modelChange' },
