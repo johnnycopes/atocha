@@ -23,7 +23,7 @@ export class IngredientTypeService {
 
   getIngredientType(id: string): Observable<IngredientType | undefined> {
     return combineLatest([
-      this._ingredientTypeDataService.getIngredientType(id),
+      this._ingredientTypeDataService.getOne(id),
       this._ingredientService.getIngredients(),
     ]).pipe(
       map(([ingredientTypeDto, ingredients]) => {
@@ -44,7 +44,7 @@ export class IngredientTypeService {
       concatMap((uid) => {
         if (uid) {
           return combineLatest([
-            this._ingredientTypeDataService.getIngredientTypes(uid),
+            this._ingredientTypeDataService.getMany(uid),
             this._ingredientService.getIngredients(),
           ]).pipe(
             map(([dishDtos, ingredients]) =>
@@ -66,7 +66,7 @@ export class IngredientTypeService {
       first(),
       concatMap(async (uid) => {
         if (uid) {
-          const id = await this._ingredientTypeDataService.createIngredientType(
+          const id = await this._ingredientTypeDataService.create(
             uid,
             ingredientType
           );
@@ -82,13 +82,10 @@ export class IngredientTypeService {
     ingredientType: IngredientType,
     updates: EditableIngredientTypeData
   ): Promise<void> {
-    return this._ingredientTypeDataService.updateIngredientType(
-      ingredientType,
-      updates
-    );
+    return this._ingredientTypeDataService.update(ingredientType, updates);
   }
 
   async deleteIngredientType(ingredientType: IngredientType): Promise<void> {
-    return this._ingredientTypeDataService.deleteIngredientType(ingredientType);
+    return this._ingredientTypeDataService.delete(ingredientType);
   }
 }

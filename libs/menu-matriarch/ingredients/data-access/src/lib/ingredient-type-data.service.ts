@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 
 import { BatchService, DataService } from '@atocha/firebase/data-access';
 import {
@@ -7,6 +6,7 @@ import {
   UserUpdateService,
 } from '@atocha/menu-matriarch/shared/data-access-api';
 import {
+  DtoService,
   IngredientTypeDto,
   createIngredientTypeDto,
 } from '@atocha/menu-matriarch/shared/data-access-dtos';
@@ -19,7 +19,9 @@ export type EditableIngredientTypeData = Partial<
 @Injectable({
   providedIn: 'root',
 })
-export class IngredientTypeDataService {
+export class IngredientTypeDataService
+  implements DtoService<IngredientType, IngredientTypeDto>
+{
   private _endpoint = Endpoint.ingredientTypes;
 
   constructor(
@@ -28,18 +30,15 @@ export class IngredientTypeDataService {
     private _userUpdateService: UserUpdateService
   ) {}
 
-  getIngredientType(id: string): Observable<IngredientTypeDto | undefined> {
+  getOne(id: string) {
     return this._dataService.getOne(this._endpoint, id);
   }
 
-  getIngredientTypes(uid: string): Observable<IngredientTypeDto[]> {
+  getMany(uid: string) {
     return this._dataService.getMany(this._endpoint, uid);
   }
 
-  async createIngredientType(
-    uid: string,
-    ingredientType: EditableIngredientTypeData
-  ): Promise<string> {
+  async create(uid: string, ingredientType: EditableIngredientTypeData) {
     const id = this._dataService.createId();
     const batch = this._batchService.createBatch();
 
@@ -60,14 +59,14 @@ export class IngredientTypeDataService {
     return id;
   }
 
-  async updateIngredientType(
+  async update(
     ingredientType: IngredientType,
     updates: EditableIngredientTypeData
-  ): Promise<void> {
+  ) {
     return this._dataService.update(this._endpoint, ingredientType.id, updates);
   }
 
-  async deleteIngredientType(ingredientType: IngredientType): Promise<void> {
+  async delete(ingredientType: IngredientType) {
     const batch = this._batchService.createBatch();
 
     batch.delete(this._endpoint, ingredientType.id).update(
