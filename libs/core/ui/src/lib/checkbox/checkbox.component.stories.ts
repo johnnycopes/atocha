@@ -12,11 +12,9 @@ import { CheckboxComponent, CheckboxSize } from './checkbox.component';
 
 export default {
   title: 'Checkbox',
-  component: CheckboxComponent,
   decorators: [
     moduleMetadata({
-      imports: [FormsModule],
-      declarations: [StorybookWrapperComponent],
+      imports: [CheckboxComponent, FormsModule, StorybookWrapperComponent],
     }),
     componentWrapperDecorator(StorybookWrapperComponent),
   ],

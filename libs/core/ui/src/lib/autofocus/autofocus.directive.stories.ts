@@ -12,8 +12,7 @@ export default {
   title: 'Autofocus',
   decorators: [
     moduleMetadata({
-      imports: [AutofocusDirective],
-      declarations: [StorybookWrapperComponent],
+      imports: [AutofocusDirective, StorybookWrapperComponent],
     }),
     componentWrapperDecorator(StorybookWrapperComponent),
   ],

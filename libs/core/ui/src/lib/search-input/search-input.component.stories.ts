@@ -15,7 +15,6 @@ import { SearchInputComponent } from './search-input.component';
 
 export default {
   title: 'Search Input',
-  component: SearchInputComponent,
   decorators: [
     moduleMetadata({
       imports: [
@@ -23,8 +22,9 @@ export default {
         CommonModule,
         FormsModule,
         FontAwesomeModule,
+        SearchInputComponent,
+        StorybookWrapperComponent,
       ],
-      declarations: [StorybookWrapperComponent],
     }),
     componentWrapperDecorator(StorybookWrapperComponent),
   ],
