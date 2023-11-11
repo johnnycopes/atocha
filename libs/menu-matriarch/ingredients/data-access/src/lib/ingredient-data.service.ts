@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 
 import { BatchService, DataService } from '@atocha/firebase/data-access';
 import {
@@ -8,6 +7,7 @@ import {
   IngredientTypeUpdateService,
 } from '@atocha/menu-matriarch/shared/data-access-api';
 import {
+  DtoService,
   IngredientDto,
   createIngredientDto,
 } from '@atocha/menu-matriarch/shared/data-access-dtos';
@@ -21,7 +21,7 @@ export type EditableIngredientData = Pick<
 @Injectable({
   providedIn: 'root',
 })
-export class IngredientDataService {
+export class IngredientDataService implements DtoService<IngredientDto> {
   private _endpoint = Endpoint.ingredients;
 
   constructor(
@@ -31,18 +31,15 @@ export class IngredientDataService {
     private _ingredientTypeUpdateService: IngredientTypeUpdateService
   ) {}
 
-  getIngredient(id: string): Observable<IngredientDto | undefined> {
+  getOne(id: string) {
     return this._dataService.getOne(this._endpoint, id);
   }
 
-  getIngredients(uid: string): Observable<IngredientDto[]> {
+  getMultiple(uid: string) {
     return this._dataService.getMany(this._endpoint, uid);
   }
 
-  async createIngredient(
-    uid: string,
-    ingredient: EditableIngredientData
-  ): Promise<string> {
+  async create(uid: string, ingredient: EditableIngredientData) {
     const id = this._dataService.createId();
     const batch = this._batchService.createBatch();
 
@@ -63,10 +60,7 @@ export class IngredientDataService {
     return id;
   }
 
-  async updateIngredient(
-    ingredient: Ingredient,
-    updates: EditableIngredientData
-  ): Promise<void> {
+  async update(ingredient: Ingredient, updates: EditableIngredientData) {
     const batch = this._batchService.createBatch();
 
     batch.update({
@@ -88,7 +82,7 @@ export class IngredientDataService {
     await batch.commit();
   }
 
-  async deleteIngredient(ingredient: Ingredient): Promise<void> {
+  async delete(ingredient: Ingredient) {
     const batch = this._batchService.createBatch();
 
     batch.delete(Endpoint.ingredients, ingredient.id).updateMultiple([
