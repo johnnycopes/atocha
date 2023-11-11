@@ -1,9 +1,9 @@
 import { Observable } from 'rxjs';
 
-export interface DtoService<T> {
-  getOne(id: string): Observable<T | undefined>;
-  getMultiple(uid: string): Observable<T[]>;
-  create(uid: string, data: Partial<T>): Promise<string>;
-  update(item: T, data: Partial<T>): Promise<void>;
-  delete(item: T): Promise<void>;
+export interface DtoService<TEntity, TData = Partial<TEntity>> {
+  getOne(id: string): Observable<TEntity | undefined>;
+  getMultiple(uid: string): Observable<TEntity[]>;
+  create(uid: string, data: TData): Promise<string>;
+  update(item: TEntity, data: TData): Promise<void>;
+  delete(item: TEntity): Promise<void>;
 }
