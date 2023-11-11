@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 
 import { BatchService, DataService } from '@atocha/firebase/data-access';
 import {
@@ -11,6 +10,7 @@ import {
 } from '@atocha/menu-matriarch/shared/data-access-api';
 import {
   DishDto,
+  DtoService,
   createDishDto,
 } from '@atocha/menu-matriarch/shared/data-access-dtos';
 import { Dish } from '@atocha/menu-matriarch/shared/util';
@@ -29,7 +29,7 @@ export type EditableDishData = Pick<
 @Injectable({
   providedIn: 'root',
 })
-export class DishDataService {
+export class DishDataService implements DtoService<Dish, DishDto> {
   private _endpoint = Endpoint.dishes;
 
   constructor(
@@ -41,15 +41,15 @@ export class DishDataService {
     private _tagUpdateService: TagUpdateService
   ) {}
 
-  getDish(id: string): Observable<DishDto | undefined> {
+  getOne(id: string) {
     return this._dataService.getOne(this._endpoint, id);
   }
 
-  getDishes(uid: string): Observable<DishDto[]> {
+  getMany(uid: string) {
     return this._dataService.getMany(this._endpoint, uid);
   }
 
-  async createDish(uid: string, dish: EditableDishData): Promise<string> {
+  async create(uid: string, dish: EditableDishData) {
     const id = this._dataService.createId();
     const batch = this._batchService.createBatch();
 
@@ -84,7 +84,7 @@ export class DishDataService {
     return id;
   }
 
-  async updateDish(dish: Dish, data: EditableDishData): Promise<void> {
+  async update(dish: Dish, data: EditableDishData) {
     const batch = this._batchService.createBatch();
 
     batch.update({
@@ -117,7 +117,7 @@ export class DishDataService {
     await batch.commit();
   }
 
-  async deleteDish(dish: Dish): Promise<void> {
+  async delete(dish: Dish) {
     const batch = this._batchService.createBatch();
 
     batch.delete(this._endpoint, dish.id).updateMultiple([
