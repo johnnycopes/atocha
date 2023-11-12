@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 import { BatchService, DataService } from '@atocha/firebase/data-access';
 import {
@@ -30,15 +31,18 @@ export class IngredientTypeDataService
     private _userUpdateService: UserUpdateService
   ) {}
 
-  getOne(id: string) {
+  getOne(id: string): Observable<IngredientTypeDto | undefined> {
     return this._dataService.getOne(this._endpoint, id);
   }
 
-  getMany(uid: string) {
+  getMany(uid: string): Observable<IngredientTypeDto[]> {
     return this._dataService.getMany(this._endpoint, uid);
   }
 
-  async create(uid: string, ingredientType: EditableIngredientTypeData) {
+  async create(
+    uid: string,
+    ingredientType: EditableIngredientTypeData
+  ): Promise<string> {
     const id = this._dataService.createId();
     const batch = this._batchService.createBatch();
 
@@ -62,11 +66,11 @@ export class IngredientTypeDataService
   async update(
     ingredientType: IngredientType,
     updates: EditableIngredientTypeData
-  ) {
+  ): Promise<void> {
     return this._dataService.update(this._endpoint, ingredientType.id, updates);
   }
 
-  async delete(ingredientType: IngredientType) {
+  async delete(ingredientType: IngredientType): Promise<void> {
     const batch = this._batchService.createBatch();
 
     batch.delete(this._endpoint, ingredientType.id).update(

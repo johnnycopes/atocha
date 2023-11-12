@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 import { BatchService, DataService } from '@atocha/firebase/data-access';
 import {
@@ -31,15 +32,15 @@ export class MealDataService implements DtoService<Meal, MealDto> {
     private _tagUpdateService: TagUpdateService
   ) {}
 
-  getOne(id: string) {
+  getOne(id: string): Observable<MealDto | undefined> {
     return this._dataService.getOne(this._endpoint, id);
   }
 
-  getMany(uid: string) {
+  getMany(uid: string): Observable<MealDto[]> {
     return this._dataService.getMany(this._endpoint, uid);
   }
 
-  async create(uid: string, meal: EditableMealData) {
+  async create(uid: string, meal: EditableMealData): Promise<string> {
     const id = this._dataService.createId();
     const batch = this._batchService.createBatch();
 
@@ -73,7 +74,7 @@ export class MealDataService implements DtoService<Meal, MealDto> {
     return id;
   }
 
-  async update(meal: Meal, data: EditableMealData) {
+  async update(meal: Meal, data: EditableMealData): Promise<void> {
     const batch = this._batchService.createBatch();
 
     batch.update({
@@ -105,7 +106,7 @@ export class MealDataService implements DtoService<Meal, MealDto> {
     await batch.commit();
   }
 
-  async delete(meal: Meal) {
+  async delete(meal: Meal): Promise<void> {
     const batch = this._batchService.createBatch();
 
     batch.delete(this._endpoint, meal.id).updateMultiple([

@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 import { BatchService, DataService } from '@atocha/firebase/data-access';
 import {
@@ -28,15 +29,15 @@ export class MenuDataService implements DtoService<Menu, MenuDto> {
     private _menuUpdateService: MenuUpdateService
   ) {}
 
-  getOne(id: string) {
+  getOne(id: string): Observable<MenuDto | undefined> {
     return this._dataService.getOne(this._endpoint, id);
   }
 
-  getMany(uid: string) {
+  getMany(uid: string): Observable<MenuDto[]> {
     return this._dataService.getMany(this._endpoint, uid);
   }
 
-  async create(uid: string, menu: EditableMenuData) {
+  async create(uid: string, menu: EditableMenuData): Promise<string> {
     const id = this._dataService.createId();
 
     await this._dataService.create(
@@ -52,7 +53,7 @@ export class MenuDataService implements DtoService<Menu, MenuDto> {
     return id;
   }
 
-  async update({ id }: Menu, data: EditableMenuData) {
+  async update({ id }: Menu, data: EditableMenuData): Promise<void> {
     return await this._dataService.update(this._endpoint, id, data);
   }
 
@@ -86,7 +87,7 @@ export class MenuDataService implements DtoService<Menu, MenuDto> {
     await batch.commit();
   }
 
-  async delete(menu: Menu) {
+  async delete(menu: Menu): Promise<void> {
     const batch = this._batchService.createBatch();
 
     batch.delete(this._endpoint, menu.id).updateMultiple(
@@ -100,7 +101,7 @@ export class MenuDataService implements DtoService<Menu, MenuDto> {
     await batch.commit();
   }
 
-  async deleteMenuContents(menu: Menu, day?: Day) {
+  async deleteMenuContents(menu: Menu, day?: Day): Promise<void> {
     const batch = this._batchService.createBatch();
 
     // Clear a single day's contents
