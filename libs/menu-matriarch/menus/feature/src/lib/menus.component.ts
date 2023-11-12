@@ -59,12 +59,12 @@ export class MenusComponent {
     });
   }
 
-  onRename(id: string, name: string): void {
-    this._menuService.updateMenuName(id, name);
+  onRename(menu: Menu, name: string): void {
+    this._menuService.updateMenuName(menu, name);
   }
 
-  onStartDayChange(id: string, startDay: Day): void {
-    this._menuService.updateMenuStartDay(id, startDay);
+  onStartDayChange(menu: Menu, startDay: Day): void {
+    this._menuService.updateMenuStartDay(menu, startDay);
   }
 
   onDelete(menu: Menu): void {

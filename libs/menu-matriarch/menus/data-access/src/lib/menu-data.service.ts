@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 
 import { BatchService, DataService } from '@atocha/firebase/data-access';
 import {
@@ -8,6 +7,7 @@ import {
   MenuUpdateService,
 } from '@atocha/menu-matriarch/shared/data-access-api';
 import {
+  DtoService,
   MenuDto,
   createMenuDto,
 } from '@atocha/menu-matriarch/shared/data-access-dtos';
@@ -18,7 +18,7 @@ export type EditableMenuData = Partial<Pick<MenuDto, 'name' | 'startDay'>>;
 @Injectable({
   providedIn: 'root',
 })
-export class MenuDataService {
+export class MenuDataService implements DtoService<Menu, MenuDto> {
   private _endpoint = Endpoint.menus;
 
   constructor(
@@ -28,15 +28,15 @@ export class MenuDataService {
     private _menuUpdateService: MenuUpdateService
   ) {}
 
-  getMenu(id: string): Observable<MenuDto | undefined> {
+  getOne(id: string) {
     return this._dataService.getOne(this._endpoint, id);
   }
 
-  getMenus(uid: string): Observable<MenuDto[]> {
+  getMany(uid: string) {
     return this._dataService.getMany(this._endpoint, uid);
   }
 
-  async createMenu(uid: string, menu: EditableMenuData): Promise<string> {
+  async create(uid: string, menu: EditableMenuData) {
     const id = this._dataService.createId();
 
     await this._dataService.create(
@@ -52,7 +52,7 @@ export class MenuDataService {
     return id;
   }
 
-  async updateMenu(id: string, data: EditableMenuData): Promise<void> {
+  async update({ id }: Menu, data: EditableMenuData) {
     return await this._dataService.update(this._endpoint, id, data);
   }
 
@@ -86,7 +86,7 @@ export class MenuDataService {
     await batch.commit();
   }
 
-  async deleteMenu(menu: Menu): Promise<void> {
+  async delete(menu: Menu) {
     const batch = this._batchService.createBatch();
 
     batch.delete(this._endpoint, menu.id).updateMultiple(
@@ -100,7 +100,7 @@ export class MenuDataService {
     await batch.commit();
   }
 
-  async deleteMenuContents(menu: Menu, day?: Day): Promise<void> {
+  async deleteMenuContents(menu: Menu, day?: Day) {
     const batch = this._batchService.createBatch();
 
     // Clear a single day's contents

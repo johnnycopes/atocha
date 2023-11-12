@@ -26,7 +26,7 @@ export class MenuService {
 
   getMenu(id: string): Observable<Menu | undefined> {
     return combineLatest([
-      this._menuDataService.getMenu(id),
+      this._menuDataService.getOne(id),
       this._dishService.getDishes(),
       this._userService.getPreferences(),
     ]).pipe(
@@ -45,7 +45,7 @@ export class MenuService {
       concatMap((uid) => {
         if (uid) {
           return combineLatest([
-            this._menuDataService.getMenus(uid),
+            this._menuDataService.getMany(uid),
             this._dishService.getDishes(),
             this._userService.getPreferences(),
           ]).pipe(
@@ -69,7 +69,7 @@ export class MenuService {
       first(),
       concatMap(async (user) => {
         if (user) {
-          const id = await this._menuDataService.createMenu(user.uid, {
+          const id = await this._menuDataService.create(user.uid, {
             name,
             startDay: user.preferences.defaultMenuStartDay,
           });
@@ -81,12 +81,12 @@ export class MenuService {
     );
   }
 
-  async updateMenuName(id: string, name: string): Promise<void> {
-    return this._menuDataService.updateMenu(id, { name });
+  async updateMenuName(menu: Menu, name: string): Promise<void> {
+    return this._menuDataService.update(menu, { name });
   }
 
-  async updateMenuStartDay(id: string, startDay: Day): Promise<void> {
-    return this._menuDataService.updateMenu(id, { startDay });
+  async updateMenuStartDay(menu: Menu, startDay: Day): Promise<void> {
+    return this._menuDataService.update(menu, { startDay });
   }
 
   async updateMenuContents({
@@ -109,7 +109,7 @@ export class MenuService {
   }
 
   async deleteMenu(menu: Menu): Promise<void> {
-    return this._menuDataService.deleteMenu(menu);
+    return this._menuDataService.delete(menu);
   }
 
   async deleteMenuContents(menu: Menu, day?: Day): Promise<void> {
