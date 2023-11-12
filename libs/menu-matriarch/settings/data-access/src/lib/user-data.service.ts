@@ -11,12 +11,12 @@ import { User, UserPreferences } from '@atocha/menu-matriarch/shared/util';
   providedIn: 'root',
 })
 export class UserDataService {
-  private _endpoint = Endpoint.users;
+  private readonly _endpoint = Endpoint.users;
 
-  constructor(private _dataService: DataService) {}
+  constructor(private _dataService: DataService<UserDto>) {}
 
   getUser(uid: string): Observable<User | undefined> {
-    return this._dataService.getOne<UserDto>(this._endpoint, uid);
+    return this._dataService.getOne(this._endpoint, uid);
   }
 
   getPreferences(uid: string): Observable<UserPreferences | undefined> {
@@ -27,7 +27,7 @@ export class UserDataService {
     { uid, preferences }: User,
     data: Partial<UserPreferences>
   ): Promise<void> {
-    return this._dataService.update<UserDto>(this._endpoint, uid, {
+    return this._dataService.update(this._endpoint, uid, {
       preferences: {
         ...preferences,
         ...data,

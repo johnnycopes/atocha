@@ -7,6 +7,7 @@ import {
   UserUpdateService,
 } from '@atocha/menu-matriarch/shared/data-access-api';
 import {
+  DtoService,
   IngredientTypeDto,
   createIngredientTypeDto,
 } from '@atocha/menu-matriarch/shared/data-access-dtos';
@@ -19,24 +20,26 @@ export type EditableIngredientTypeData = Partial<
 @Injectable({
   providedIn: 'root',
 })
-export class IngredientTypeDataService {
-  private _endpoint = Endpoint.ingredientTypes;
+export class IngredientTypeDataService
+  implements DtoService<IngredientType, IngredientTypeDto>
+{
+  private readonly _endpoint = Endpoint.ingredientTypes;
 
   constructor(
     private _batchService: BatchService,
-    private _dataService: DataService,
+    private _dataService: DataService<IngredientTypeDto>,
     private _userUpdateService: UserUpdateService
   ) {}
 
-  getIngredientType(id: string): Observable<IngredientTypeDto | undefined> {
-    return this._dataService.getOne<IngredientTypeDto>(this._endpoint, id);
+  getOne(id: string): Observable<IngredientTypeDto | undefined> {
+    return this._dataService.getOne(this._endpoint, id);
   }
 
-  getIngredientTypes(uid: string): Observable<IngredientTypeDto[]> {
-    return this._dataService.getMany<IngredientTypeDto>(this._endpoint, uid);
+  getMany(uid: string): Observable<IngredientTypeDto[]> {
+    return this._dataService.getMany(this._endpoint, uid);
   }
 
-  async createIngredientType(
+  async create(
     uid: string,
     ingredientType: EditableIngredientTypeData
   ): Promise<string> {
@@ -60,18 +63,14 @@ export class IngredientTypeDataService {
     return id;
   }
 
-  async updateIngredientType(
+  async update(
     ingredientType: IngredientType,
     updates: EditableIngredientTypeData
   ): Promise<void> {
-    return this._dataService.update<IngredientTypeDto>(
-      this._endpoint,
-      ingredientType.id,
-      updates
-    );
+    return this._dataService.update(this._endpoint, ingredientType.id, updates);
   }
 
-  async deleteIngredientType(ingredientType: IngredientType): Promise<void> {
+  async delete(ingredientType: IngredientType): Promise<void> {
     const batch = this._batchService.createBatch();
 
     batch.delete(this._endpoint, ingredientType.id).update(

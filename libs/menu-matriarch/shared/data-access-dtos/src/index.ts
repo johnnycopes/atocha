@@ -1,3 +1,5 @@
+export * from './lib/dto-service.interface';
+
 export * from './lib/dish-dto';
 export * from './lib/ingredient-dto';
 export * from './lib/ingredient-type-dto';

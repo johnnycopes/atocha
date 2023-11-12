@@ -19,7 +19,7 @@ export class IngredientService {
   ) {}
 
   getIngredient(id: string): Observable<Ingredient | undefined> {
-    return this._ingredientDataService.getIngredient(id);
+    return this._ingredientDataService.getOne(id);
   }
 
   getIngredients(): Observable<Ingredient[]> {
@@ -27,7 +27,7 @@ export class IngredientService {
       first(),
       concatMap((uid) => {
         if (uid) {
-          return this._ingredientDataService.getIngredients(uid);
+          return this._ingredientDataService.getMany(uid);
         }
         return of([]);
       })
@@ -41,10 +41,7 @@ export class IngredientService {
       first(),
       concatMap(async (uid) => {
         if (uid) {
-          const id = await this._ingredientDataService.createIngredient(
-            uid,
-            ingredient
-          );
+          const id = await this._ingredientDataService.create(uid, ingredient);
           return id;
         } else {
           return undefined;
@@ -57,10 +54,10 @@ export class IngredientService {
     ingredient: Ingredient,
     updates: EditableIngredientData
   ): Promise<void> {
-    return this._ingredientDataService.updateIngredient(ingredient, updates);
+    return this._ingredientDataService.update(ingredient, updates);
   }
 
   deleteIngredient(ingredient: Ingredient): Promise<void> {
-    return this._ingredientDataService.deleteIngredient(ingredient);
+    return this._ingredientDataService.delete(ingredient);
   }
 }

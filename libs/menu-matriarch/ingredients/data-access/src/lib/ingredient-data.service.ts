@@ -8,6 +8,7 @@ import {
   IngredientTypeUpdateService,
 } from '@atocha/menu-matriarch/shared/data-access-api';
 import {
+  DtoService,
   IngredientDto,
   createIngredientDto,
 } from '@atocha/menu-matriarch/shared/data-access-dtos';
@@ -21,25 +22,27 @@ export type EditableIngredientData = Pick<
 @Injectable({
   providedIn: 'root',
 })
-export class IngredientDataService {
-  private _endpoint = Endpoint.ingredients;
+export class IngredientDataService
+  implements DtoService<Ingredient, IngredientDto>
+{
+  private readonly _endpoint = Endpoint.ingredients;
 
   constructor(
     private _batchService: BatchService,
-    private _dataService: DataService,
+    private _dataService: DataService<IngredientDto>,
     private _dishUpdateService: DishUpdateService,
     private _ingredientTypeUpdateService: IngredientTypeUpdateService
   ) {}
 
-  getIngredient(id: string): Observable<IngredientDto | undefined> {
-    return this._dataService.getOne<IngredientDto>(this._endpoint, id);
+  getOne(id: string): Observable<IngredientDto | undefined> {
+    return this._dataService.getOne(this._endpoint, id);
   }
 
-  getIngredients(uid: string): Observable<IngredientDto[]> {
-    return this._dataService.getMany<IngredientDto>(this._endpoint, uid);
+  getMany(uid: string): Observable<IngredientDto[]> {
+    return this._dataService.getMany(this._endpoint, uid);
   }
 
-  async createIngredient(
+  async create(
     uid: string,
     ingredient: EditableIngredientData
   ): Promise<string> {
@@ -63,7 +66,7 @@ export class IngredientDataService {
     return id;
   }
 
-  async updateIngredient(
+  async update(
     ingredient: Ingredient,
     updates: EditableIngredientData
   ): Promise<void> {
@@ -88,7 +91,7 @@ export class IngredientDataService {
     await batch.commit();
   }
 
-  async deleteIngredient(ingredient: Ingredient): Promise<void> {
+  async delete(ingredient: Ingredient): Promise<void> {
     const batch = this._batchService.createBatch();
 
     batch.delete(Endpoint.ingredients, ingredient.id).updateMultiple([

@@ -8,6 +8,7 @@ import {
   MenuUpdateService,
 } from '@atocha/menu-matriarch/shared/data-access-api';
 import {
+  DtoService,
   MenuDto,
   createMenuDto,
 } from '@atocha/menu-matriarch/shared/data-access-dtos';
@@ -18,28 +19,28 @@ export type EditableMenuData = Partial<Pick<MenuDto, 'name' | 'startDay'>>;
 @Injectable({
   providedIn: 'root',
 })
-export class MenuDataService {
-  private _endpoint = Endpoint.menus;
+export class MenuDataService implements DtoService<Menu, MenuDto> {
+  private readonly _endpoint = Endpoint.menus;
 
   constructor(
     private _batchService: BatchService,
-    private _dataService: DataService,
+    private _dataService: DataService<MenuDto>,
     private _dishUpdateService: DishUpdateService,
     private _menuUpdateService: MenuUpdateService
   ) {}
 
-  getMenu(id: string): Observable<MenuDto | undefined> {
-    return this._dataService.getOne<MenuDto>(this._endpoint, id);
+  getOne(id: string): Observable<MenuDto | undefined> {
+    return this._dataService.getOne(this._endpoint, id);
   }
 
-  getMenus(uid: string): Observable<MenuDto[]> {
-    return this._dataService.getMany<MenuDto>(this._endpoint, uid);
+  getMany(uid: string): Observable<MenuDto[]> {
+    return this._dataService.getMany(this._endpoint, uid);
   }
 
-  async createMenu(uid: string, menu: EditableMenuData): Promise<string> {
+  async create(uid: string, menu: EditableMenuData): Promise<string> {
     const id = this._dataService.createId();
 
-    await this._dataService.create<MenuDto>(
+    await this._dataService.create(
       this._endpoint,
       id,
       createMenuDto({
@@ -52,8 +53,8 @@ export class MenuDataService {
     return id;
   }
 
-  async updateMenu(id: string, data: EditableMenuData): Promise<void> {
-    return await this._dataService.update<MenuDto>(this._endpoint, id, data);
+  async update({ id }: Menu, data: EditableMenuData): Promise<void> {
+    return await this._dataService.update(this._endpoint, id, data);
   }
 
   async updateMenuContents({
@@ -86,7 +87,7 @@ export class MenuDataService {
     await batch.commit();
   }
 
-  async deleteMenu(menu: Menu): Promise<void> {
+  async delete(menu: Menu): Promise<void> {
     const batch = this._batchService.createBatch();
 
     batch.delete(this._endpoint, menu.id).updateMultiple(

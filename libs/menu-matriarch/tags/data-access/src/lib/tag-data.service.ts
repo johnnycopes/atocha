@@ -8,6 +8,7 @@ import {
   MealUpdateService,
 } from '@atocha/menu-matriarch/shared/data-access-api';
 import {
+  DtoService,
   TagDto,
   createTagDto,
 } from '@atocha/menu-matriarch/shared/data-access-dtos';
@@ -18,28 +19,28 @@ export type EditableTagData = Pick<TagDto, 'name'>;
 @Injectable({
   providedIn: 'root',
 })
-export class TagDataService {
-  private _endpoint = Endpoint.tags;
+export class TagDataService implements DtoService<Tag, TagDto> {
+  private readonly _endpoint = Endpoint.tags;
 
   constructor(
     private _batchService: BatchService,
-    private _dataService: DataService,
+    private _dataService: DataService<TagDto>,
     private _dishUpdateService: DishUpdateService,
     private _mealUpdateService: MealUpdateService
   ) {}
 
-  getTag(id: string): Observable<Tag | undefined> {
-    return this._dataService.getOne<TagDto>(this._endpoint, id);
+  getOne(id: string): Observable<TagDto | undefined> {
+    return this._dataService.getOne(this._endpoint, id);
   }
 
-  getTags(uid: string): Observable<Tag[]> {
-    return this._dataService.getMany<TagDto>(this._endpoint, uid);
+  getMany(uid: string): Observable<TagDto[]> {
+    return this._dataService.getMany(this._endpoint, uid);
   }
 
-  async createTag(uid: string, tag: EditableTagData): Promise<string> {
+  async create(uid: string, tag: EditableTagData): Promise<string> {
     const id = this._dataService.createId();
 
-    await this._dataService.create<TagDto>(
+    await this._dataService.create(
       this._endpoint,
       id,
       createTagDto({ id, uid, ...tag })
@@ -48,11 +49,11 @@ export class TagDataService {
     return id;
   }
 
-  async updateTag(tag: Tag, data: EditableTagData): Promise<void> {
-    return this._dataService.update<TagDto>(this._endpoint, tag.id, data);
+  async update(tag: Tag, data: EditableTagData): Promise<void> {
+    return this._dataService.update(this._endpoint, tag.id, data);
   }
 
-  async deleteTag(tag: Tag): Promise<void> {
+  async delete(tag: Tag): Promise<void> {
     const batch = this._batchService.createBatch();
 
     batch.delete(this._endpoint, tag.id).updateMultiple([

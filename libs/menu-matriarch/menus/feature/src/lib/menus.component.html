@@ -28,8 +28,8 @@
       [canDelete]="vm.menus.length > 1"
       [active]="menu.id === vm.activeMenuId"
       (print)="onPrint(menu)"
-      (rename)="onRename(menu.id, $event)"
-      (startDayChange)="onStartDayChange(menu.id, $event)"
+      (rename)="onRename(menu, $event)"
+      (startDayChange)="onStartDayChange(menu, $event)"
       (delete)="onDelete(menu)"
     ></li>
   </ul>

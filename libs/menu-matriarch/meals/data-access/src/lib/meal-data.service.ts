@@ -8,6 +8,7 @@ import {
   TagUpdateService,
 } from '@atocha/menu-matriarch/shared/data-access-api';
 import {
+  DtoService,
   MealDto,
   createMealDto,
 } from '@atocha/menu-matriarch/shared/data-access-dtos';
@@ -21,25 +22,25 @@ export type EditableMealData = Pick<
 @Injectable({
   providedIn: 'root',
 })
-export class MealDataService {
-  private _endpoint = Endpoint.meals;
+export class MealDataService implements DtoService<Meal, MealDto> {
+  private readonly _endpoint = Endpoint.meals;
 
   constructor(
     private _batchService: BatchService,
-    private _dataService: DataService,
+    private _dataService: DataService<MealDto>,
     private _dishUpdateService: DishUpdateService,
     private _tagUpdateService: TagUpdateService
   ) {}
 
-  getMeal(id: string): Observable<MealDto | undefined> {
-    return this._dataService.getOne<MealDto>(this._endpoint, id);
+  getOne(id: string): Observable<MealDto | undefined> {
+    return this._dataService.getOne(this._endpoint, id);
   }
 
-  getMeals(uid: string): Observable<MealDto[]> {
-    return this._dataService.getMany<MealDto>(this._endpoint, uid);
+  getMany(uid: string): Observable<MealDto[]> {
+    return this._dataService.getMany(this._endpoint, uid);
   }
 
-  async createMeal(uid: string, meal: EditableMealData): Promise<string> {
+  async create(uid: string, meal: EditableMealData): Promise<string> {
     const id = this._dataService.createId();
     const batch = this._batchService.createBatch();
 
@@ -73,7 +74,7 @@ export class MealDataService {
     return id;
   }
 
-  async updateMeal(meal: Meal, data: EditableMealData): Promise<void> {
+  async update(meal: Meal, data: EditableMealData): Promise<void> {
     const batch = this._batchService.createBatch();
 
     batch.update({
@@ -105,7 +106,7 @@ export class MealDataService {
     await batch.commit();
   }
 
-  async deleteMeal(meal: Meal): Promise<void> {
+  async delete(meal: Meal): Promise<void> {
     const batch = this._batchService.createBatch();
 
     batch.delete(this._endpoint, meal.id).updateMultiple([

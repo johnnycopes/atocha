@@ -11,6 +11,7 @@ import {
 } from '@atocha/menu-matriarch/shared/data-access-api';
 import {
   DishDto,
+  DtoService,
   createDishDto,
 } from '@atocha/menu-matriarch/shared/data-access-dtos';
 import { Dish } from '@atocha/menu-matriarch/shared/util';
@@ -29,27 +30,27 @@ export type EditableDishData = Pick<
 @Injectable({
   providedIn: 'root',
 })
-export class DishDataService {
-  private _endpoint = Endpoint.dishes;
+export class DishDataService implements DtoService<Dish, DishDto> {
+  private readonly _endpoint = Endpoint.dishes;
 
   constructor(
     private _batchService: BatchService,
-    private _dataService: DataService,
+    private _dataService: DataService<DishDto>,
     private _mealUpdateService: MealUpdateService,
     private _menuUpdateService: MenuUpdateService,
     private _ingredientUpdateService: IngredientUpdateService,
     private _tagUpdateService: TagUpdateService
   ) {}
 
-  getDish(id: string): Observable<DishDto | undefined> {
-    return this._dataService.getOne<DishDto>(this._endpoint, id);
+  getOne(id: string): Observable<DishDto | undefined> {
+    return this._dataService.getOne(this._endpoint, id);
   }
 
-  getDishes(uid: string): Observable<DishDto[]> {
-    return this._dataService.getMany<DishDto>(this._endpoint, uid);
+  getMany(uid: string): Observable<DishDto[]> {
+    return this._dataService.getMany(this._endpoint, uid);
   }
 
-  async createDish(uid: string, dish: EditableDishData): Promise<string> {
+  async create(uid: string, dish: EditableDishData): Promise<string> {
     const id = this._dataService.createId();
     const batch = this._batchService.createBatch();
 
@@ -84,7 +85,7 @@ export class DishDataService {
     return id;
   }
 
-  async updateDish(dish: Dish, data: EditableDishData): Promise<void> {
+  async update(dish: Dish, data: EditableDishData): Promise<void> {
     const batch = this._batchService.createBatch();
 
     batch.update({
@@ -117,7 +118,7 @@ export class DishDataService {
     await batch.commit();
   }
 
-  async deleteDish(dish: Dish): Promise<void> {
+  async delete(dish: Dish): Promise<void> {
     const batch = this._batchService.createBatch();
 
     batch.delete(this._endpoint, dish.id).updateMultiple([

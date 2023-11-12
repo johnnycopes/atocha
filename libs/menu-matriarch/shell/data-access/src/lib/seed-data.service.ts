@@ -9,7 +9,7 @@ import { SeedData } from './seed-data/seed-data';
 export class SeedDataService {
   constructor(
     private _batchService: BatchService,
-    private _dataService: DataService
+    private _dataService: DataService<unknown>
   ) {}
 
   async createUserData({
