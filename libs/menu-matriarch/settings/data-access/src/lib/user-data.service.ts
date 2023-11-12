@@ -11,7 +11,7 @@ import { User, UserPreferences } from '@atocha/menu-matriarch/shared/util';
   providedIn: 'root',
 })
 export class UserDataService {
-  private _endpoint = Endpoint.users;
+  private readonly _endpoint = Endpoint.users;
 
   constructor(private _dataService: DataService<UserDto>) {}
 

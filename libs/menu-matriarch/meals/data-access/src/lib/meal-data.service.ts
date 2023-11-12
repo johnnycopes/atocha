@@ -23,7 +23,7 @@ export type EditableMealData = Pick<
   providedIn: 'root',
 })
 export class MealDataService implements DtoService<Meal, MealDto> {
-  private _endpoint = Endpoint.meals;
+  private readonly _endpoint = Endpoint.meals;
 
   constructor(
     private _batchService: BatchService,

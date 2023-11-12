@@ -23,7 +23,7 @@ export type EditableIngredientTypeData = Partial<
 export class IngredientTypeDataService
   implements DtoService<IngredientType, IngredientTypeDto>
 {
-  private _endpoint = Endpoint.ingredientTypes;
+  private readonly _endpoint = Endpoint.ingredientTypes;
 
   constructor(
     private _batchService: BatchService,

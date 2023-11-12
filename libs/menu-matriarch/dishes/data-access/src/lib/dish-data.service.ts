@@ -31,7 +31,7 @@ export type EditableDishData = Pick<
   providedIn: 'root',
 })
 export class DishDataService implements DtoService<Dish, DishDto> {
-  private _endpoint = Endpoint.dishes;
+  private readonly _endpoint = Endpoint.dishes;
 
   constructor(
     private _batchService: BatchService,

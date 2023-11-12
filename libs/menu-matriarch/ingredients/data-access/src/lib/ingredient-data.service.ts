@@ -25,7 +25,7 @@ export type EditableIngredientData = Pick<
 export class IngredientDataService
   implements DtoService<Ingredient, IngredientDto>
 {
-  private _endpoint = Endpoint.ingredients;
+  private readonly _endpoint = Endpoint.ingredients;
 
   constructor(
     private _batchService: BatchService,

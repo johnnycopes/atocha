@@ -20,7 +20,7 @@ export type EditableMenuData = Partial<Pick<MenuDto, 'name' | 'startDay'>>;
   providedIn: 'root',
 })
 export class MenuDataService implements DtoService<Menu, MenuDto> {
-  private _endpoint = Endpoint.menus;
+  private readonly _endpoint = Endpoint.menus;
 
   constructor(
     private _batchService: BatchService,

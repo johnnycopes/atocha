@@ -20,7 +20,7 @@ export type EditableTagData = Pick<TagDto, 'name'>;
   providedIn: 'root',
 })
 export class TagDataService implements DtoService<Tag, TagDto> {
-  private _endpoint = Endpoint.tags;
+  private readonly _endpoint = Endpoint.tags;
 
   constructor(
     private _batchService: BatchService,
