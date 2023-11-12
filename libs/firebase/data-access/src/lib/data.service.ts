@@ -3,42 +3,33 @@ import { Observable } from 'rxjs';
 
 import { FirestoreService } from './firestore/firestore.service';
 
-interface IDataService<T> {
-  createId(): string;
-  getOne(endpoint: string, id: string): Observable<T | undefined>;
-  getMany(endpoint: string, uid: string): Observable<T[]>;
-  create(endpoint: string, id: string, details: T): Promise<void>;
-  update(endpoint: string, id: string, data: Partial<T>): Promise<void>;
-  delete(endpoint: string, id: string): Promise<void>;
-}
-
 @Injectable({
   providedIn: 'root',
 })
-export class DataService<T> implements IDataService<T> {
+export class DataService<T> {
   constructor(private _firestoreService: FirestoreService) {}
 
-  createId() {
+  createId(): string {
     return this._firestoreService.createId();
   }
 
-  getOne(endpoint: string, id: string) {
+  getOne(endpoint: string, id: string): Observable<T | undefined> {
     return this._firestoreService.getOne<T>(endpoint, id);
   }
 
-  getMany(endpoint: string, uid: string) {
+  getMany(endpoint: string, uid: string): Observable<T[]> {
     return this._firestoreService.getMany<T>(endpoint, uid);
   }
 
-  async create(endpoint: string, id: string, details: T) {
+  async create(endpoint: string, id: string, details: T): Promise<void> {
     return this._firestoreService.create<T>(endpoint, id, details);
   }
 
-  async update(endpoint: string, id: string, data: Partial<T>) {
+  async update(endpoint: string, id: string, data: Partial<T>): Promise<void> {
     return await this._firestoreService.update<T>(endpoint, id, data);
   }
 
-  async delete(endpoint: string, id: string) {
+  async delete(endpoint: string, id: string): Promise<void> {
     return await this._firestoreService.delete<T>(endpoint, id);
   }
 }
