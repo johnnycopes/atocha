@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { BatchService, DataService } from '@atocha/firebase/data-access';
+import { BatchService, DtoService } from '@atocha/firebase/data-access';
 import {
   IDtoService,
   Endpoint,
@@ -25,7 +25,7 @@ export class IngredientTypeDtoService
 
   constructor(
     private _batchService: BatchService,
-    private _dataService: DataService<IngredientTypeDto>,
+    private _dataService: DtoService<IngredientTypeDto>,
     private _userUpdateService: UserUpdateService
   ) {}
 

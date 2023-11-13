@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { BatchService, DataService } from '@atocha/firebase/data-access';
+import { BatchService, DtoService } from '@atocha/firebase/data-access';
 import {
   DishUpdateService,
   IDtoService,
@@ -22,7 +22,7 @@ export class TagDtoService implements IDtoService<Tag, TagDto> {
 
   constructor(
     private _batchService: BatchService,
-    private _dataService: DataService<TagDto>,
+    private _dataService: DtoService<TagDto>,
     private _dishUpdateService: DishUpdateService,
     private _mealUpdateService: MealUpdateService
   ) {}
