@@ -3,6 +3,7 @@ import { combineLatest, Observable, of } from 'rxjs';
 import { concatMap, first, map } from 'rxjs/operators';
 
 import { AuthService } from '@atocha/firebase/data-access';
+import { EntityService } from '@atocha/menu-matriarch/shared/data-access-api';
 import { DishService } from '@atocha/menu-matriarch/dishes/data-access';
 import { RouterService } from '@atocha/menu-matriarch/shared/data-access-routing';
 import { mapMealDtoToMeal } from '@atocha/menu-matriarch/shared/data-access-dtos';
@@ -15,7 +16,7 @@ export type MealData = EditableMealData;
 @Injectable({
   providedIn: 'root',
 })
-export class MealService {
+export class MealService implements EntityService<Meal, EditableMealData> {
   activeMealId$ = this._routerService.activeMealId$;
 
   constructor(
@@ -26,7 +27,7 @@ export class MealService {
     private _tagService: TagService
   ) {}
 
-  getMeal(id: string): Observable<Meal | undefined> {
+  getOne(id: string): Observable<Meal | undefined> {
     return combineLatest([
       this._mealDataService.getOne(id),
       this._dishService.getMany(),
@@ -41,7 +42,7 @@ export class MealService {
     );
   }
 
-  getMeals(): Observable<Meal[]> {
+  getMany(): Observable<Meal[]> {
     return this._authService.uid$.pipe(
       first(),
       concatMap((uid) => {
@@ -63,7 +64,7 @@ export class MealService {
     );
   }
 
-  createMeal(meal: EditableMealData): Observable<string | undefined> {
+  create(meal: EditableMealData): Observable<string | undefined> {
     return this._authService.uid$.pipe(
       first(),
       concatMap(async (uid) => {
@@ -77,11 +78,11 @@ export class MealService {
     );
   }
 
-  async updateMeal(meal: Meal, data: EditableMealData): Promise<void> {
+  async update(meal: Meal, data: EditableMealData): Promise<void> {
     return this._mealDataService.update(meal, data);
   }
 
-  async deleteMeal(meal: Meal): Promise<void> {
+  async delete(meal: Meal): Promise<void> {
     return this._mealDataService.delete(meal);
   }
 }

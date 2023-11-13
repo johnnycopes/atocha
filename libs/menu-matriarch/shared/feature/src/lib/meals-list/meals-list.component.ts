@@ -31,7 +31,7 @@ import { MealDefContext, MealDefDirective } from './meal-def.directive';
 export class MealsListComponent {
   @Output() nameDblClick = new EventEmitter<void>();
   vm$ = combineLatest([
-    this._mealService.getMeals(),
+    this._mealService.getMany(),
     this._tagService.getMany(),
     this._userService.getPreferences(),
     this._filterService.state$,
