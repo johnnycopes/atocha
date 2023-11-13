@@ -17,7 +17,7 @@ export type EditableMenuData = Partial<Pick<MenuDto, 'name' | 'startDay'>>;
 @Injectable({
   providedIn: 'root',
 })
-export class MenuDataService implements IDtoService<Menu, MenuDto> {
+export class MenuDtoService implements IDtoService<Menu, MenuDto> {
   private readonly _endpoint = Endpoint.menus;
 
   constructor(

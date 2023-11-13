@@ -8,10 +8,7 @@ import { DishService } from '@atocha/menu-matriarch/dishes/data-access';
 import { UserService } from '@atocha/menu-matriarch/settings/data-access';
 import { RouterService } from '@atocha/menu-matriarch/shared/data-access-routing';
 import { Day, Menu } from '@atocha/menu-matriarch/shared/util';
-import {
-  EditableMenuData,
-  MenuDataService,
-} from './internal/menu-data.service';
+import { EditableMenuData, MenuDtoService } from './internal/menu-data.service';
 import { mapMenuDtoToMenu } from './internal/map-menu-dto-to-menu';
 
 @Injectable({
@@ -23,7 +20,7 @@ export class MenuService implements IEntityService<Menu, EditableMenuData> {
   constructor(
     private _authService: AuthService,
     private _dishService: DishService,
-    private _menuDataService: MenuDataService,
+    private _menuDataService: MenuDtoService,
     private _routerService: RouterService,
     private _userService: UserService
   ) {}

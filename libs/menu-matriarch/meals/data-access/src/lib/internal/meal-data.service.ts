@@ -20,7 +20,7 @@ export type EditableMealData = Pick<
 @Injectable({
   providedIn: 'root',
 })
-export class MealDataService implements IDtoService<Meal, MealDto> {
+export class MealDtoService implements IDtoService<Meal, MealDto> {
   private readonly _endpoint = Endpoint.meals;
 
   constructor(

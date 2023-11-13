@@ -10,7 +10,7 @@ import { UserDto } from './user-dto';
 @Injectable({
   providedIn: 'root',
 })
-export class UserDataService {
+export class UserDtoService {
   private readonly _endpoint = Endpoint.users;
 
   constructor(private _dataService: DataService<UserDto>) {}

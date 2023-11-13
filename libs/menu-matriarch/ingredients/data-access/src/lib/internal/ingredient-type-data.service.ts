@@ -18,7 +18,7 @@ export type EditableIngredientTypeData = Partial<
 @Injectable({
   providedIn: 'root',
 })
-export class IngredientTypeDataService
+export class IngredientTypeDtoService
   implements IDtoService<IngredientType, IngredientTypeDto>
 {
   private readonly _endpoint = Endpoint.ingredientTypes;

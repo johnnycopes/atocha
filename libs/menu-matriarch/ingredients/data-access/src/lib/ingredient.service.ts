@@ -7,7 +7,7 @@ import { IEntityService } from '@atocha/menu-matriarch/shared/data-access-api';
 import { Ingredient } from '@atocha/menu-matriarch/shared/util';
 import {
   EditableIngredientData,
-  IngredientDataService,
+  IngredientDtoService,
 } from './internal/ingredient-data.service';
 
 @Injectable({
@@ -18,7 +18,7 @@ export class IngredientService
 {
   constructor(
     private _authService: AuthService,
-    private _ingredientDataService: IngredientDataService
+    private _ingredientDataService: IngredientDtoService
   ) {}
 
   getOne(id: string): Observable<Ingredient | undefined> {

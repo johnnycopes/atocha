@@ -7,7 +7,7 @@ import { IEntityService } from '@atocha/menu-matriarch/shared/data-access-api';
 import { IngredientType } from '@atocha/menu-matriarch/shared/util';
 import {
   EditableIngredientTypeData,
-  IngredientTypeDataService,
+  IngredientTypeDtoService,
 } from './internal/ingredient-type-data.service';
 import { IngredientService } from './ingredient.service';
 import { mapIngredientTypeDtoToIngredientType } from './internal/map-ingredient-type-dto-to-ingredient-type';
@@ -20,7 +20,7 @@ export class IngredientTypeService
 {
   constructor(
     private _authService: AuthService,
-    private _ingredientTypeDataService: IngredientTypeDataService,
+    private _ingredientTypeDataService: IngredientTypeDtoService,
     private _ingredientService: IngredientService
   ) {}
 

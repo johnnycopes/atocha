@@ -17,7 +17,7 @@ export type EditableTagData = Pick<TagDto, 'name'>;
 @Injectable({
   providedIn: 'root',
 })
-export class TagDataService implements IDtoService<Tag, TagDto> {
+export class TagDtoService implements IDtoService<Tag, TagDto> {
   private readonly _endpoint = Endpoint.tags;
 
   constructor(

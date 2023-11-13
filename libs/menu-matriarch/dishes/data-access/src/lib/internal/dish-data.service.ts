@@ -28,7 +28,7 @@ export type EditableDishData = Pick<
 @Injectable({
   providedIn: 'root',
 })
-export class DishDataService implements IDtoService<Dish, DishDto> {
+export class DishDtoService implements IDtoService<Dish, DishDto> {
   private readonly _endpoint = Endpoint.dishes;
 
   constructor(

@@ -5,7 +5,7 @@ import { concatMap, first } from 'rxjs/operators';
 import { AuthService } from '@atocha/firebase/data-access';
 import { Tag } from '@atocha/menu-matriarch/shared/util';
 import { IEntityService } from '@atocha/menu-matriarch/shared/data-access-api';
-import { EditableTagData, TagDataService } from './internal/tag-data.service';
+import { EditableTagData, TagDtoService } from './internal/tag-data.service';
 
 @Injectable({
   providedIn: 'root',
@@ -13,7 +13,7 @@ import { EditableTagData, TagDataService } from './internal/tag-data.service';
 export class TagService implements IEntityService<Tag, EditableTagData> {
   constructor(
     private _authService: AuthService,
-    private _tagDataService: TagDataService
+    private _tagDataService: TagDtoService
   ) {}
 
   getOne(id: string): Observable<Tag | undefined> {

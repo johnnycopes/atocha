@@ -4,7 +4,7 @@ import { concatMap, first, tap } from 'rxjs/operators';
 
 import { AuthService } from '@atocha/firebase/data-access';
 import { User, UserPreferences } from '@atocha/menu-matriarch/shared/util';
-import { UserDataService } from './internal/user-data.service';
+import { UserDtoService } from './internal/user-data.service';
 
 @Injectable({
   providedIn: 'root',
@@ -12,7 +12,7 @@ import { UserDataService } from './internal/user-data.service';
 export class UserService {
   constructor(
     private _authService: AuthService,
-    private _userDataService: UserDataService
+    private _userDataService: UserDtoService
   ) {}
 
   getUser(): Observable<User | undefined> {
