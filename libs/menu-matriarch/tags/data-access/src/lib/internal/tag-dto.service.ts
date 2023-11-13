@@ -22,23 +22,23 @@ export class TagDtoService implements IDtoService<Tag, TagDto> {
 
   constructor(
     private _batchService: BatchService,
-    private _dataService: DtoService<TagDto>,
+    private _dtoService: DtoService<TagDto>,
     private _dishUpdateService: DishUpdateService,
     private _mealUpdateService: MealUpdateService
   ) {}
 
   getOne(id: string): Observable<TagDto | undefined> {
-    return this._dataService.getOne(this._endpoint, id);
+    return this._dtoService.getOne(this._endpoint, id);
   }
 
   getMany(uid: string): Observable<TagDto[]> {
-    return this._dataService.getMany(this._endpoint, uid);
+    return this._dtoService.getMany(this._endpoint, uid);
   }
 
   async create(uid: string, tag: EditableTagData): Promise<string> {
-    const id = this._dataService.createId();
+    const id = this._dtoService.createId();
 
-    await this._dataService.create(
+    await this._dtoService.create(
       this._endpoint,
       id,
       createTagDto({ id, uid, ...tag })
@@ -48,7 +48,7 @@ export class TagDtoService implements IDtoService<Tag, TagDto> {
   }
 
   async update(tag: Tag, data: EditableTagData): Promise<void> {
-    return this._dataService.update(this._endpoint, tag.id, data);
+    return this._dtoService.update(this._endpoint, tag.id, data);
   }
 
   async delete(tag: Tag): Promise<void> {

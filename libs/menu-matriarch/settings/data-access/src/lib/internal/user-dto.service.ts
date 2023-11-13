@@ -13,10 +13,10 @@ import { UserDto } from './user-dto';
 export class UserDtoService {
   private readonly _endpoint = Endpoint.users;
 
-  constructor(private _dataService: DtoService<UserDto>) {}
+  constructor(private _dtoService: DtoService<UserDto>) {}
 
   getUser(uid: string): Observable<User | undefined> {
-    return this._dataService.getOne(this._endpoint, uid);
+    return this._dtoService.getOne(this._endpoint, uid);
   }
 
   getPreferences(uid: string): Observable<UserPreferences | undefined> {
@@ -27,7 +27,7 @@ export class UserDtoService {
     { uid, preferences }: User,
     data: Partial<UserPreferences>
   ): Promise<void> {
-    return this._dataService.update(this._endpoint, uid, {
+    return this._dtoService.update(this._endpoint, uid, {
       preferences: {
         ...preferences,
         ...data,

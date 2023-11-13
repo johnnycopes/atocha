@@ -9,7 +9,7 @@ import { SeedData } from './seed-data/seed-data';
 export class SeedDataService {
   constructor(
     private _batchService: BatchService,
-    private _dataService: DtoService<unknown>
+    private _dtoService: DtoService<unknown>
   ) {}
 
   async createUserData({
@@ -26,7 +26,7 @@ export class SeedDataService {
         uid,
         name,
         email,
-        this._dataService.createId.bind(this._dataService)
+        this._dtoService.createId.bind(this._dtoService)
       );
     const batch = this._batchService.createBatch();
 
