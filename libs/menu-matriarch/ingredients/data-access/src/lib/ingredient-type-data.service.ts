@@ -3,10 +3,10 @@ import { Observable } from 'rxjs';
 
 import { BatchService, DataService } from '@atocha/firebase/data-access';
 import {
+  DtoService,
   Endpoint,
   UserUpdateService,
 } from '@atocha/menu-matriarch/shared/data-access-api';
-import { DtoService } from '@atocha/menu-matriarch/shared/data-access-dtos';
 import { IngredientType } from '@atocha/menu-matriarch/shared/util';
 import { IngredientTypeDto } from './ingredient-type-dto';
 import { createIngredientTypeDto } from './create-ingredient-type-dto';

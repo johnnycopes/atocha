@@ -4,10 +4,10 @@ import { Observable } from 'rxjs';
 import { BatchService, DataService } from '@atocha/firebase/data-access';
 import {
   DishUpdateService,
+  DtoService,
   Endpoint,
   MenuUpdateService,
 } from '@atocha/menu-matriarch/shared/data-access-api';
-import { DtoService } from '@atocha/menu-matriarch/shared/data-access-dtos';
 import { Day, Menu, flattenValues } from '@atocha/menu-matriarch/shared/util';
 import { MenuDto } from './menu-dto';
 import { createMenuDto } from './create-menu-dto';
