@@ -8,7 +8,7 @@ import { DishService } from '@atocha/menu-matriarch/dishes/data-access';
 import { RouterService } from '@atocha/menu-matriarch/shared/data-access-routing';
 import { Meal } from '@atocha/menu-matriarch/shared/util';
 import { TagService } from '@atocha/menu-matriarch/tags/data-access';
-import { EditableMealData, MealDtoService } from './internal/meal-data.service';
+import { EditableMealData, MealDtoService } from './internal/meal-dto.service';
 import { mapMealDtoToMeal } from './internal/map-meal-dto-to-meal';
 
 export type MealData = EditableMealData;

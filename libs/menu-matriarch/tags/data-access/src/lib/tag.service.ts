@@ -5,7 +5,7 @@ import { concatMap, first } from 'rxjs/operators';
 import { AuthService } from '@atocha/firebase/data-access';
 import { Tag } from '@atocha/menu-matriarch/shared/util';
 import { IEntityService } from '@atocha/menu-matriarch/shared/data-access-api';
-import { EditableTagData, TagDtoService } from './internal/tag-data.service';
+import { EditableTagData, TagDtoService } from './internal/tag-dto.service';
 
 @Injectable({
   providedIn: 'root',

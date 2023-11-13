@@ -8,7 +8,7 @@ import { DishService } from '@atocha/menu-matriarch/dishes/data-access';
 import { UserService } from '@atocha/menu-matriarch/settings/data-access';
 import { RouterService } from '@atocha/menu-matriarch/shared/data-access-routing';
 import { Day, Menu } from '@atocha/menu-matriarch/shared/util';
-import { EditableMenuData, MenuDtoService } from './internal/menu-data.service';
+import { EditableMenuData, MenuDtoService } from './internal/menu-dto.service';
 import { mapMenuDtoToMenu } from './internal/map-menu-dto-to-menu';
 
 @Injectable({

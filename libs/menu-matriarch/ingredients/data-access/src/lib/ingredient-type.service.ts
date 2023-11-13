@@ -8,7 +8,7 @@ import { IngredientType } from '@atocha/menu-matriarch/shared/util';
 import {
   EditableIngredientTypeData,
   IngredientTypeDtoService,
-} from './internal/ingredient-type-data.service';
+} from './internal/ingredient-type-dto.service';
 import { IngredientService } from './ingredient.service';
 import { mapIngredientTypeDtoToIngredientType } from './internal/map-ingredient-type-dto-to-ingredient-type';
 

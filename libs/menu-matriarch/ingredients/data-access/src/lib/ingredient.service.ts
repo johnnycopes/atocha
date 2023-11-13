@@ -8,7 +8,7 @@ import { Ingredient } from '@atocha/menu-matriarch/shared/util';
 import {
   EditableIngredientData,
   IngredientDtoService,
-} from './internal/ingredient-data.service';
+} from './internal/ingredient-dto.service';
 
 @Injectable({
   providedIn: 'root',

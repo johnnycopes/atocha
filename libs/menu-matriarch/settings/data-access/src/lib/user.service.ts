@@ -4,7 +4,7 @@ import { concatMap, first, tap } from 'rxjs/operators';
 
 import { AuthService } from '@atocha/firebase/data-access';
 import { User, UserPreferences } from '@atocha/menu-matriarch/shared/util';
-import { UserDtoService } from './internal/user-data.service';
+import { UserDtoService } from './internal/user-dto.service';
 
 @Injectable({
   providedIn: 'root',
