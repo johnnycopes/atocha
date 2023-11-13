@@ -32,12 +32,12 @@ import {
 export class DishEditComponent {
   private _routeId = this._route.snapshot.paramMap.get('id');
   private _dish$ = this._routeId
-    ? this._dishService.getDish(this._routeId)
+    ? this._dishService.getOne(this._routeId)
     : of(undefined);
   dish$: Observable<DishConfig> = combineLatest([
     this._dish$,
-    this._ingredientService.getIngredients(),
-    this._tagService.getTags(),
+    this._ingredientService.getMany(),
+    this._tagService.getMany(),
   ]).pipe(
     map(([dish, ingredients, tags]) => ({
       name: dish?.name ?? '',
@@ -68,7 +68,7 @@ export class DishEditComponent {
   async onSave(data: DishData): Promise<void> {
     if (!this._routeId) {
       this._dishService
-        .createDish(data)
+        .create(data)
         .subscribe((newId) =>
           this._router.navigate(['..', newId], { relativeTo: this._route })
         );
@@ -78,7 +78,7 @@ export class DishEditComponent {
           first(),
           concatMap((dish) => {
             if (dish) {
-              return this._dishService.updateDish(dish, data);
+              return this._dishService.update(dish, data);
             } else {
               return of(undefined);
             }

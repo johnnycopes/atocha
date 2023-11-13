@@ -31,7 +31,7 @@ export class MenusComponent {
   addingSubject = new BehaviorSubject<boolean>(false);
 
   vm$ = combineLatest([
-    this._menuService.getMenus(),
+    this._menuService.getMany(),
     this._menuService.activeMenuId$,
     this.addingSubject.asObservable(),
   ]).pipe(
@@ -46,7 +46,7 @@ export class MenusComponent {
   ) {}
 
   onSave(name: string): void {
-    this._menuService.createMenu({ name }).subscribe();
+    this._menuService.create({ name }).subscribe();
     this.addingSubject.next(false);
   }
 
@@ -60,14 +60,14 @@ export class MenusComponent {
   }
 
   onRename(menu: Menu, name: string): void {
-    this._menuService.updateMenuName(menu, name);
+    this._menuService.update(menu, { name });
   }
 
   onStartDayChange(menu: Menu, startDay: Day): void {
-    this._menuService.updateMenuStartDay(menu, startDay);
+    this._menuService.update(menu, { startDay });
   }
 
   onDelete(menu: Menu): void {
-    this._menuService.deleteMenu(menu);
+    this._menuService.delete(menu);
   }
 }

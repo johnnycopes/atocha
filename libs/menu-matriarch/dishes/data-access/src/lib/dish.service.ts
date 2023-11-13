@@ -3,6 +3,7 @@ import { combineLatest, Observable, of } from 'rxjs';
 import { concatMap, first, map } from 'rxjs/operators';
 
 import { AuthService } from '@atocha/firebase/data-access';
+import { EntityService } from '@atocha/menu-matriarch/shared/data-access-api';
 import { IngredientService } from '@atocha/menu-matriarch/ingredients/data-access';
 import { RouterService } from '@atocha/menu-matriarch/shared/data-access-routing';
 import { mapDishDtoToDish } from '@atocha/menu-matriarch/shared/data-access-dtos';
@@ -15,7 +16,7 @@ export type DishData = EditableDishData;
 @Injectable({
   providedIn: 'root',
 })
-export class DishService {
+export class DishService implements EntityService<Dish, EditableDishData> {
   activeDishId$ = this._routerService.activeDishId$;
 
   constructor(
@@ -26,11 +27,11 @@ export class DishService {
     private _tagService: TagService
   ) {}
 
-  getDish(id: string): Observable<Dish | undefined> {
+  getOne(id: string): Observable<Dish | undefined> {
     return combineLatest([
       this._dishDataService.getOne(id),
-      this._ingredientService.getIngredients(),
-      this._tagService.getTags(),
+      this._ingredientService.getMany(),
+      this._tagService.getMany(),
     ]).pipe(
       map(([dishDto, ingredients, tags]) => {
         if (!dishDto) {
@@ -41,15 +42,15 @@ export class DishService {
     );
   }
 
-  getDishes(): Observable<Dish[]> {
+  getMany(): Observable<Dish[]> {
     return this._authService.uid$.pipe(
       first(),
       concatMap((uid) => {
         if (uid) {
           return combineLatest([
             this._dishDataService.getMany(uid),
-            this._ingredientService.getIngredients(),
-            this._tagService.getTags(),
+            this._ingredientService.getMany(),
+            this._tagService.getMany(),
           ]).pipe(
             map(([dishDtos, ingredients, tags]) =>
               dishDtos.map((dishDto) =>
@@ -63,7 +64,7 @@ export class DishService {
     );
   }
 
-  createDish(dish: EditableDishData): Observable<string | undefined> {
+  create(dish: EditableDishData): Observable<string | undefined> {
     return this._authService.uid$.pipe(
       first(),
       concatMap(async (uid) => {
@@ -77,11 +78,11 @@ export class DishService {
     );
   }
 
-  async updateDish(dish: Dish, data: EditableDishData): Promise<void> {
+  async update(dish: Dish, data: EditableDishData): Promise<void> {
     return this._dishDataService.update(dish, data);
   }
 
-  async deleteDish(dish: Dish): Promise<void> {
+  async delete(dish: Dish): Promise<void> {
     return this._dishDataService.delete(dish);
   }
 }

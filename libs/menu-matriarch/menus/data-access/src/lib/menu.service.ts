@@ -3,6 +3,7 @@ import { combineLatest, Observable, of } from 'rxjs';
 import { concatMap, first, map } from 'rxjs/operators';
 
 import { AuthService } from '@atocha/firebase/data-access';
+import { EntityService } from '@atocha/menu-matriarch/shared/data-access-api';
 import { DishService } from '@atocha/menu-matriarch/dishes/data-access';
 import { UserService } from '@atocha/menu-matriarch/settings/data-access';
 import { RouterService } from '@atocha/menu-matriarch/shared/data-access-routing';
@@ -13,7 +14,7 @@ import { EditableMenuData, MenuDataService } from './menu-data.service';
 @Injectable({
   providedIn: 'root',
 })
-export class MenuService {
+export class MenuService implements EntityService<Menu, EditableMenuData> {
   activeMenuId$ = this._routerService.activeMenuId$;
 
   constructor(
@@ -24,10 +25,10 @@ export class MenuService {
     private _userService: UserService
   ) {}
 
-  getMenu(id: string): Observable<Menu | undefined> {
+  getOne(id: string): Observable<Menu | undefined> {
     return combineLatest([
       this._menuDataService.getOne(id),
-      this._dishService.getDishes(),
+      this._dishService.getMany(),
       this._userService.getPreferences(),
     ]).pipe(
       map(([menuDto, dishes, preferences]) => {
@@ -39,14 +40,14 @@ export class MenuService {
     );
   }
 
-  getMenus(): Observable<Menu[]> {
+  getMany(): Observable<Menu[]> {
     return this._authService.uid$.pipe(
       first(),
       concatMap((uid) => {
         if (uid) {
           return combineLatest([
             this._menuDataService.getMany(uid),
-            this._dishService.getDishes(),
+            this._dishService.getMany(),
             this._userService.getPreferences(),
           ]).pipe(
             map(([menuDtos, dishes, preferences]) => {
@@ -64,7 +65,7 @@ export class MenuService {
     );
   }
 
-  createMenu({ name }: EditableMenuData): Observable<string | undefined> {
+  create({ name }: EditableMenuData): Observable<string | undefined> {
     return this._userService.getUser().pipe(
       first(),
       concatMap(async (user) => {
@@ -81,12 +82,8 @@ export class MenuService {
     );
   }
 
-  async updateMenuName(menu: Menu, name: string): Promise<void> {
-    return this._menuDataService.update(menu, { name });
-  }
-
-  async updateMenuStartDay(menu: Menu, startDay: Day): Promise<void> {
-    return this._menuDataService.update(menu, { startDay });
+  async update(menu: Menu, data: EditableMenuData): Promise<void> {
+    return this._menuDataService.update(menu, data);
   }
 
   async updateMenuContents({
@@ -108,7 +105,7 @@ export class MenuService {
     });
   }
 
-  async deleteMenu(menu: Menu): Promise<void> {
+  async delete(menu: Menu): Promise<void> {
     return this._menuDataService.delete(menu);
   }
 

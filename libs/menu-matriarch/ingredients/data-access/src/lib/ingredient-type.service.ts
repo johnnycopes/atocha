@@ -3,6 +3,7 @@ import { Observable, combineLatest, of } from 'rxjs';
 import { concatMap, first, map } from 'rxjs/operators';
 
 import { AuthService } from '@atocha/firebase/data-access';
+import { EntityService } from '@atocha/menu-matriarch/shared/data-access-api';
 import { mapIngredientTypeDtoToIngredientType } from '@atocha/menu-matriarch/shared/data-access-dtos';
 import { IngredientType } from '@atocha/menu-matriarch/shared/util';
 import {
@@ -14,17 +15,19 @@ import { IngredientService } from './ingredient.service';
 @Injectable({
   providedIn: 'root',
 })
-export class IngredientTypeService {
+export class IngredientTypeService
+  implements EntityService<IngredientType, EditableIngredientTypeData>
+{
   constructor(
     private _authService: AuthService,
     private _ingredientTypeDataService: IngredientTypeDataService,
     private _ingredientService: IngredientService
   ) {}
 
-  getIngredientType(id: string): Observable<IngredientType | undefined> {
+  getOne(id: string): Observable<IngredientType | undefined> {
     return combineLatest([
       this._ingredientTypeDataService.getOne(id),
-      this._ingredientService.getIngredients(),
+      this._ingredientService.getMany(),
     ]).pipe(
       map(([ingredientTypeDto, ingredients]) => {
         if (!ingredientTypeDto) {
@@ -38,14 +41,14 @@ export class IngredientTypeService {
     );
   }
 
-  getIngredientTypes(): Observable<IngredientType[]> {
+  getMany(): Observable<IngredientType[]> {
     return this._authService.uid$.pipe(
       first(),
       concatMap((uid) => {
         if (uid) {
           return combineLatest([
             this._ingredientTypeDataService.getMany(uid),
-            this._ingredientService.getIngredients(),
+            this._ingredientService.getMany(),
           ]).pipe(
             map(([dishDtos, ingredients]) =>
               dishDtos.map((dishDto) =>
@@ -59,7 +62,7 @@ export class IngredientTypeService {
     );
   }
 
-  createIngredientType(
+  create(
     ingredientType: EditableIngredientTypeData
   ): Observable<string | undefined> {
     return this._authService.uid$.pipe(
@@ -78,14 +81,14 @@ export class IngredientTypeService {
     );
   }
 
-  async updateIngredientType(
+  async update(
     ingredientType: IngredientType,
     updates: EditableIngredientTypeData
   ): Promise<void> {
     return this._ingredientTypeDataService.update(ingredientType, updates);
   }
 
-  async deleteIngredientType(ingredientType: IngredientType): Promise<void> {
+  async delete(ingredientType: IngredientType): Promise<void> {
     return this._ingredientTypeDataService.delete(ingredientType);
   }
 }

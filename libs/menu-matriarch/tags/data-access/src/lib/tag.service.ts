@@ -4,22 +4,23 @@ import { concatMap, first } from 'rxjs/operators';
 
 import { AuthService } from '@atocha/firebase/data-access';
 import { Tag } from '@atocha/menu-matriarch/shared/util';
+import { EntityService } from '@atocha/menu-matriarch/shared/data-access-api';
 import { EditableTagData, TagDataService } from './tag-data.service';
 
 @Injectable({
   providedIn: 'root',
 })
-export class TagService {
+export class TagService implements EntityService<Tag, EditableTagData> {
   constructor(
     private _authService: AuthService,
     private _tagDataService: TagDataService
   ) {}
 
-  getTag(id: string): Observable<Tag | undefined> {
+  getOne(id: string): Observable<Tag | undefined> {
     return this._tagDataService.getOne(id);
   }
 
-  getTags(): Observable<Tag[]> {
+  getMany(): Observable<Tag[]> {
     return this._authService.uid$.pipe(
       first(),
       concatMap((uid) => {
@@ -31,7 +32,7 @@ export class TagService {
     );
   }
 
-  createTag(tag: EditableTagData): Observable<string | undefined> {
+  create(tag: EditableTagData): Observable<string | undefined> {
     return this._authService.uid$.pipe(
       first(),
       concatMap(async (uid) => {
@@ -45,11 +46,11 @@ export class TagService {
     );
   }
 
-  async updateTag(tag: Tag, data: EditableTagData): Promise<void> {
+  async update(tag: Tag, data: EditableTagData): Promise<void> {
     return this._tagDataService.update(tag, data);
   }
 
-  async deleteTag(tag: Tag): Promise<void> {
+  async delete(tag: Tag): Promise<void> {
     return this._tagDataService.delete(tag);
   }
 }

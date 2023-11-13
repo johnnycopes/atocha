@@ -34,13 +34,13 @@ export class MealEditComponent {
   private _routeId = this._route.snapshot.paramMap.get('id');
   private _dishIds = this._route.snapshot.queryParamMap.get('dishes') ?? '';
   _meal$ = this._routeId
-    ? this._mealService.getMeal(this._routeId)
+    ? this._mealService.getOne(this._routeId)
     : of(undefined);
 
   meal$: Observable<MealConfig> = combineLatest([
     this._meal$,
-    this._dishService.getDishes(),
-    this._tagService.getTags(),
+    this._dishService.getMany(),
+    this._tagService.getMany(),
     this._userService.getPreferences(),
   ]).pipe(
     map(([meal, dishes, tags, preferences]) => ({
@@ -75,7 +75,7 @@ export class MealEditComponent {
   async onSave(data: MealData): Promise<void> {
     if (!this._routeId) {
       this._mealService
-        .createMeal(data)
+        .create(data)
         .subscribe((newId) =>
           this._router.navigate(['..', newId], { relativeTo: this._route })
         );
@@ -85,7 +85,7 @@ export class MealEditComponent {
           first(),
           concatMap((meal) => {
             if (meal) {
-              return this._mealService.updateMeal(meal, data);
+              return this._mealService.update(meal, data);
             } else {
               return of(undefined);
             }

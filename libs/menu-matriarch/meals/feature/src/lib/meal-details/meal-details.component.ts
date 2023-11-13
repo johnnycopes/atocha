@@ -41,7 +41,7 @@ export class MealDetailsComponent {
         if (!id) {
           return of(undefined);
         }
-        return this._mealService.getMeal(id);
+        return this._mealService.getOne(id);
       })
     ),
     this._userService.getPreferences(),
@@ -71,7 +71,7 @@ export class MealDetailsComponent {
           if (!meal) {
             return of(undefined);
           }
-          return this._mealService.deleteMeal(meal);
+          return this._mealService.delete(meal);
         })
       )
       .subscribe(() =>

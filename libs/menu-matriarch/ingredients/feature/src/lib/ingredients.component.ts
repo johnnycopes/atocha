@@ -40,7 +40,7 @@ export class IngredientsComponent {
 
   vm$ = combineLatest([
     this._userService.getPreferences(),
-    this._ingredientTypeService.getIngredientTypes(),
+    this._ingredientTypeService.getMany(),
     this.addingSubject.asObservable(),
   ]).pipe(
     map(([preferences, ingredientTypes, adding]) => {
@@ -75,7 +75,7 @@ export class IngredientsComponent {
   ) {}
 
   onTypeAdd(name: string): void {
-    this._ingredientTypeService.createIngredientType({ name }).subscribe();
+    this._ingredientTypeService.create({ name }).subscribe();
   }
 
   onTypeMove(typeIds: string[]): void {
@@ -85,18 +85,18 @@ export class IngredientsComponent {
   }
 
   async onTypeRename({ type, name }: TypeRename) {
-    this._ingredientTypeService.updateIngredientType(type, {
+    this._ingredientTypeService.update(type, {
       name,
     });
   }
 
   async onTypeDelete(type: IngredientType): Promise<void> {
-    this._ingredientTypeService.deleteIngredientType(type);
+    this._ingredientTypeService.delete(type);
   }
 
   onIngredientAdd({ name, typeId }: IngredientAdd) {
     this._ingredientService
-      .createIngredient({
+      .create({
         name,
         typeId,
         dishIds: [],
@@ -108,20 +108,20 @@ export class IngredientsComponent {
     ingredient,
     typeId,
   }: IngredientMove): Promise<void> {
-    this._ingredientService.updateIngredient(ingredient, {
+    this._ingredientService.update(ingredient, {
       ...ingredient,
       typeId,
     });
   }
 
   onIngredientRename({ ingredient, name }: IngredientRename): void {
-    this._ingredientService.updateIngredient(ingredient, {
+    this._ingredientService.update(ingredient, {
       ...ingredient,
       name,
     });
   }
 
   async onIngredientDelete(ingredient: Ingredient): Promise<void> {
-    this._ingredientService.deleteIngredient(ingredient);
+    this._ingredientService.delete(ingredient);
   }
 }
