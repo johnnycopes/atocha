@@ -96,7 +96,7 @@ export class IngredientsComponent {
 
   onIngredientAdd({ name, typeId }: IngredientAdd) {
     this._ingredientService
-      .createIngredient({
+      .create({
         name,
         typeId,
         dishIds: [],
@@ -108,20 +108,20 @@ export class IngredientsComponent {
     ingredient,
     typeId,
   }: IngredientMove): Promise<void> {
-    this._ingredientService.updateIngredient(ingredient, {
+    this._ingredientService.update(ingredient, {
       ...ingredient,
       typeId,
     });
   }
 
   onIngredientRename({ ingredient, name }: IngredientRename): void {
-    this._ingredientService.updateIngredient(ingredient, {
+    this._ingredientService.update(ingredient, {
       ...ingredient,
       name,
     });
   }
 
   async onIngredientDelete(ingredient: Ingredient): Promise<void> {
-    this._ingredientService.deleteIngredient(ingredient);
+    this._ingredientService.delete(ingredient);
   }
 }

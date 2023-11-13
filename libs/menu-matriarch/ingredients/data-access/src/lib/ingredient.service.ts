@@ -8,21 +8,24 @@ import {
   EditableIngredientData,
   IngredientDataService,
 } from './ingredient-data.service';
+import { EntityService } from '@atocha/menu-matriarch/shared/data-access-api';
 
 @Injectable({
   providedIn: 'root',
 })
-export class IngredientService {
+export class IngredientService
+  implements EntityService<Ingredient, EditableIngredientData>
+{
   constructor(
     private _authService: AuthService,
     private _ingredientDataService: IngredientDataService
   ) {}
 
-  getIngredient(id: string): Observable<Ingredient | undefined> {
+  getOne(id: string): Observable<Ingredient | undefined> {
     return this._ingredientDataService.getOne(id);
   }
 
-  getIngredients(): Observable<Ingredient[]> {
+  getMany(): Observable<Ingredient[]> {
     return this._authService.uid$.pipe(
       first(),
       concatMap((uid) => {
@@ -34,9 +37,7 @@ export class IngredientService {
     );
   }
 
-  createIngredient(
-    ingredient: EditableIngredientData
-  ): Observable<string | undefined> {
+  create(ingredient: EditableIngredientData): Observable<string | undefined> {
     return this._authService.uid$.pipe(
       first(),
       concatMap(async (uid) => {
@@ -50,14 +51,14 @@ export class IngredientService {
     );
   }
 
-  updateIngredient(
+  update(
     ingredient: Ingredient,
     updates: EditableIngredientData
   ): Promise<void> {
     return this._ingredientDataService.update(ingredient, updates);
   }
 
-  deleteIngredient(ingredient: Ingredient): Promise<void> {
+  delete(ingredient: Ingredient): Promise<void> {
     return this._ingredientDataService.delete(ingredient);
   }
 }

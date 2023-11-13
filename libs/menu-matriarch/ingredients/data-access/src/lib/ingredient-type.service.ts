@@ -27,7 +27,7 @@ export class IngredientTypeService
   getOne(id: string): Observable<IngredientType | undefined> {
     return combineLatest([
       this._ingredientTypeDataService.getOne(id),
-      this._ingredientService.getIngredients(),
+      this._ingredientService.getMany(),
     ]).pipe(
       map(([ingredientTypeDto, ingredients]) => {
         if (!ingredientTypeDto) {
@@ -48,7 +48,7 @@ export class IngredientTypeService
         if (uid) {
           return combineLatest([
             this._ingredientTypeDataService.getMany(uid),
-            this._ingredientService.getIngredients(),
+            this._ingredientService.getMany(),
           ]).pipe(
             map(([dishDtos, ingredients]) =>
               dishDtos.map((dishDto) =>
