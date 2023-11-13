@@ -30,7 +30,7 @@ export class DishService {
     return combineLatest([
       this._dishDataService.getOne(id),
       this._ingredientService.getIngredients(),
-      this._tagService.getTags(),
+      this._tagService.getMany(),
     ]).pipe(
       map(([dishDto, ingredients, tags]) => {
         if (!dishDto) {
@@ -49,7 +49,7 @@ export class DishService {
           return combineLatest([
             this._dishDataService.getMany(uid),
             this._ingredientService.getIngredients(),
-            this._tagService.getTags(),
+            this._tagService.getMany(),
           ]).pipe(
             map(([dishDtos, ingredients, tags]) =>
               dishDtos.map((dishDto) =>

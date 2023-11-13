@@ -25,7 +25,7 @@ import { TagCardComponent } from './tag-card/tag-card.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TagsComponent {
-  tags$ = this._tagService.getTags();
+  tags$ = this._tagService.getMany();
   startAdd$ = new Subject<void>();
   finishAdd$ = new Subject<void>();
   adding$ = merge(
@@ -37,15 +37,15 @@ export class TagsComponent {
   constructor(private _tagService: TagService) {}
 
   onNewTagSave(name: string): void {
-    this._tagService.createTag({ name }).subscribe();
+    this._tagService.create({ name }).subscribe();
     this.finishAdd$.next();
   }
 
   onTagEdit(tag: Tag, name: string): void {
-    this._tagService.updateTag(tag, { name });
+    this._tagService.update(tag, { name });
   }
 
   onTagDelete(tag: Tag): void {
-    this._tagService.deleteTag(tag);
+    this._tagService.delete(tag);
   }
 }

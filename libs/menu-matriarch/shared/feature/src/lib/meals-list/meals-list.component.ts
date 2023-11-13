@@ -32,7 +32,7 @@ export class MealsListComponent {
   @Output() nameDblClick = new EventEmitter<void>();
   vm$ = combineLatest([
     this._mealService.getMeals(),
-    this._tagService.getTags(),
+    this._tagService.getMany(),
     this._userService.getPreferences(),
     this._filterService.state$,
     this._mealService.activeMealId$,
