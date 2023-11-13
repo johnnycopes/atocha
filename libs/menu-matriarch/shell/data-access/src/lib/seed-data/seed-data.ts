@@ -1,14 +1,13 @@
 import { BatchSet } from '@atocha/firebase/data-access';
 import { Endpoint } from '@atocha/menu-matriarch/shared/data-access-api';
-import { UserDto } from '@atocha/menu-matriarch/shared/data-access-dtos';
 import { SeedDataDtos } from './seed-data-dtos';
 
 export class SeedData extends SeedDataDtos {
-  user: BatchSet<UserDto> = {
+  user = this._mapDtosToBatchSets({
     endpoint: Endpoint.users,
-    id: this._uid,
-    data: this.userDto,
-  };
+    getId: () => this._uid,
+    dtos: [this.userDto],
+  })[0];
 
   menus = this._mapDtosToBatchSets({
     endpoint: Endpoint.menus,
