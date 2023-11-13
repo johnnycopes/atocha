@@ -3,12 +3,12 @@ import { Observable, combineLatest, of } from 'rxjs';
 import { concatMap, first, map } from 'rxjs/operators';
 
 import { AuthService } from '@atocha/firebase/data-access';
-import { EntityService } from '@atocha/menu-matriarch/shared/data-access-api';
+import { IEntityService } from '@atocha/menu-matriarch/shared/data-access-api';
 import { IngredientType } from '@atocha/menu-matriarch/shared/util';
 import {
   EditableIngredientTypeData,
-  IngredientTypeDataService,
-} from './internal/ingredient-type-data.service';
+  IngredientTypeDtoService,
+} from './internal/ingredient-type-dto.service';
 import { IngredientService } from './ingredient.service';
 import { mapIngredientTypeDtoToIngredientType } from './internal/map-ingredient-type-dto-to-ingredient-type';
 
@@ -16,17 +16,17 @@ import { mapIngredientTypeDtoToIngredientType } from './internal/map-ingredient-
   providedIn: 'root',
 })
 export class IngredientTypeService
-  implements EntityService<IngredientType, EditableIngredientTypeData>
+  implements IEntityService<IngredientType, EditableIngredientTypeData>
 {
   constructor(
     private _authService: AuthService,
-    private _ingredientTypeDataService: IngredientTypeDataService,
+    private _ingredientTypeDtoService: IngredientTypeDtoService,
     private _ingredientService: IngredientService
   ) {}
 
   getOne(id: string): Observable<IngredientType | undefined> {
     return combineLatest([
-      this._ingredientTypeDataService.getOne(id),
+      this._ingredientTypeDtoService.getOne(id),
       this._ingredientService.getMany(),
     ]).pipe(
       map(([ingredientTypeDto, ingredients]) => {
@@ -47,7 +47,7 @@ export class IngredientTypeService
       concatMap((uid) => {
         if (uid) {
           return combineLatest([
-            this._ingredientTypeDataService.getMany(uid),
+            this._ingredientTypeDtoService.getMany(uid),
             this._ingredientService.getMany(),
           ]).pipe(
             map(([dishDtos, ingredients]) =>
@@ -69,7 +69,7 @@ export class IngredientTypeService
       first(),
       concatMap(async (uid) => {
         if (uid) {
-          const id = await this._ingredientTypeDataService.create(
+          const id = await this._ingredientTypeDtoService.create(
             uid,
             ingredientType
           );
@@ -85,10 +85,10 @@ export class IngredientTypeService
     ingredientType: IngredientType,
     updates: EditableIngredientTypeData
   ): Promise<void> {
-    return this._ingredientTypeDataService.update(ingredientType, updates);
+    return this._ingredientTypeDtoService.update(ingredientType, updates);
   }
 
   async delete(ingredientType: IngredientType): Promise<void> {
-    return this._ingredientTypeDataService.delete(ingredientType);
+    return this._ingredientTypeDtoService.delete(ingredientType);
   }
 }

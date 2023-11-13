@@ -3,26 +3,26 @@ import { Observable, of } from 'rxjs';
 import { concatMap, first } from 'rxjs/operators';
 
 import { AuthService } from '@atocha/firebase/data-access';
-import { EntityService } from '@atocha/menu-matriarch/shared/data-access-api';
+import { IEntityService } from '@atocha/menu-matriarch/shared/data-access-api';
 import { Ingredient } from '@atocha/menu-matriarch/shared/util';
 import {
   EditableIngredientData,
-  IngredientDataService,
-} from './internal/ingredient-data.service';
+  IngredientDtoService,
+} from './internal/ingredient-dto.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class IngredientService
-  implements EntityService<Ingredient, EditableIngredientData>
+  implements IEntityService<Ingredient, EditableIngredientData>
 {
   constructor(
     private _authService: AuthService,
-    private _ingredientDataService: IngredientDataService
+    private _ingredientDtoService: IngredientDtoService
   ) {}
 
   getOne(id: string): Observable<Ingredient | undefined> {
-    return this._ingredientDataService.getOne(id);
+    return this._ingredientDtoService.getOne(id);
   }
 
   getMany(): Observable<Ingredient[]> {
@@ -30,7 +30,7 @@ export class IngredientService
       first(),
       concatMap((uid) => {
         if (uid) {
-          return this._ingredientDataService.getMany(uid);
+          return this._ingredientDtoService.getMany(uid);
         }
         return of([]);
       })
@@ -42,7 +42,7 @@ export class IngredientService
       first(),
       concatMap(async (uid) => {
         if (uid) {
-          const id = await this._ingredientDataService.create(uid, ingredient);
+          const id = await this._ingredientDtoService.create(uid, ingredient);
           return id;
         } else {
           return undefined;
@@ -55,10 +55,10 @@ export class IngredientService
     ingredient: Ingredient,
     updates: EditableIngredientData
   ): Promise<void> {
-    return this._ingredientDataService.update(ingredient, updates);
+    return this._ingredientDtoService.update(ingredient, updates);
   }
 
   delete(ingredient: Ingredient): Promise<void> {
-    return this._ingredientDataService.delete(ingredient);
+    return this._ingredientDtoService.delete(ingredient);
   }
 }

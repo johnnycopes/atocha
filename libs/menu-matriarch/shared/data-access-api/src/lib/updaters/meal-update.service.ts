@@ -1,31 +1,31 @@
 import { Injectable } from '@angular/core';
 
 import { BatchService, BatchUpdate } from '@atocha/firebase/data-access';
-import { Endpoint } from './endpoint.enum';
-import { KeyToUpdate } from './key-to-update.type';
+import { Endpoint } from '../types/endpoint.enum';
+import { KeyToUpdate } from './internal/key-to-update.type';
 
 @Injectable({
   providedIn: 'root',
 })
-export class TagUpdateService {
+export class MealUpdateService {
   constructor(private _batchService: BatchService) {}
 
   getUpdates({
     key,
-    initialTagIds,
-    finalTagIds,
+    initialMealIds,
+    finalMealIds,
     entityId,
   }: {
-    key: Extract<'mealIds' | 'dishIds', KeyToUpdate>;
-    initialTagIds: string[];
-    finalTagIds: string[];
+    key: Extract<'dishIds' | 'tagIds', KeyToUpdate>;
+    initialMealIds: string[];
+    finalMealIds: string[];
     entityId: string;
   }): BatchUpdate[] {
     return this._batchService.getBatchUpdates({
-      endpoint: Endpoint.tags,
+      endpoint: Endpoint.meals,
       key,
-      initialIds: initialTagIds,
-      finalIds: finalTagIds,
+      initialIds: initialMealIds,
+      finalIds: finalMealIds,
       entityId,
     });
   }

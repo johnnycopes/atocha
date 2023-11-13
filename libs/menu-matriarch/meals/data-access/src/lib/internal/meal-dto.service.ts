@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { BatchService, DataService } from '@atocha/firebase/data-access';
+import { BatchService, DtoService } from '@atocha/firebase/data-access';
 import {
   DishUpdateService,
-  DtoService,
+  IDtoService,
   Endpoint,
   TagUpdateService,
 } from '@atocha/menu-matriarch/shared/data-access-api';
@@ -20,26 +20,26 @@ export type EditableMealData = Pick<
 @Injectable({
   providedIn: 'root',
 })
-export class MealDataService implements DtoService<Meal, MealDto> {
+export class MealDtoService implements IDtoService<Meal, MealDto> {
   private readonly _endpoint = Endpoint.meals;
 
   constructor(
     private _batchService: BatchService,
-    private _dataService: DataService<MealDto>,
+    private _dtoService: DtoService<MealDto>,
     private _dishUpdateService: DishUpdateService,
     private _tagUpdateService: TagUpdateService
   ) {}
 
   getOne(id: string): Observable<MealDto | undefined> {
-    return this._dataService.getOne(this._endpoint, id);
+    return this._dtoService.getOne(this._endpoint, id);
   }
 
   getMany(uid: string): Observable<MealDto[]> {
-    return this._dataService.getMany(this._endpoint, uid);
+    return this._dtoService.getMany(this._endpoint, uid);
   }
 
   async create(uid: string, meal: EditableMealData): Promise<string> {
-    const id = this._dataService.createId();
+    const id = this._dtoService.createId();
     const batch = this._batchService.createBatch();
 
     batch.set({

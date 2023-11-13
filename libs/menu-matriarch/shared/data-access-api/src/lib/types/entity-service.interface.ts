@@ -1,6 +1,6 @@
 import { Observable } from 'rxjs';
 
-export interface EntityService<TEntity, TData = Partial<TEntity>> {
+export interface IEntityService<TEntity, TData = Partial<TEntity>> {
   getOne(id: string): Observable<TEntity | undefined>;
   getMany(): Observable<TEntity[]>;
   create(data: TData): Observable<string | undefined>;

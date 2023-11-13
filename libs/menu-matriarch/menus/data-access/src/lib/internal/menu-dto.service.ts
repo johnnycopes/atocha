@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { BatchService, DataService } from '@atocha/firebase/data-access';
+import { BatchService, DtoService } from '@atocha/firebase/data-access';
 import {
   DishUpdateService,
-  DtoService,
+  IDtoService,
   Endpoint,
   MenuUpdateService,
 } from '@atocha/menu-matriarch/shared/data-access-api';
@@ -17,28 +17,28 @@ export type EditableMenuData = Partial<Pick<MenuDto, 'name' | 'startDay'>>;
 @Injectable({
   providedIn: 'root',
 })
-export class MenuDataService implements DtoService<Menu, MenuDto> {
+export class MenuDtoService implements IDtoService<Menu, MenuDto> {
   private readonly _endpoint = Endpoint.menus;
 
   constructor(
     private _batchService: BatchService,
-    private _dataService: DataService<MenuDto>,
+    private _dtoService: DtoService<MenuDto>,
     private _dishUpdateService: DishUpdateService,
     private _menuUpdateService: MenuUpdateService
   ) {}
 
   getOne(id: string): Observable<MenuDto | undefined> {
-    return this._dataService.getOne(this._endpoint, id);
+    return this._dtoService.getOne(this._endpoint, id);
   }
 
   getMany(uid: string): Observable<MenuDto[]> {
-    return this._dataService.getMany(this._endpoint, uid);
+    return this._dtoService.getMany(this._endpoint, uid);
   }
 
   async create(uid: string, menu: EditableMenuData): Promise<string> {
-    const id = this._dataService.createId();
+    const id = this._dtoService.createId();
 
-    await this._dataService.create(
+    await this._dtoService.create(
       this._endpoint,
       id,
       createMenuDto({
@@ -52,7 +52,7 @@ export class MenuDataService implements DtoService<Menu, MenuDto> {
   }
 
   async update({ id }: Menu, data: EditableMenuData): Promise<void> {
-    return await this._dataService.update(this._endpoint, id, data);
+    return await this._dtoService.update(this._endpoint, id, data);
   }
 
   async updateMenuContents({

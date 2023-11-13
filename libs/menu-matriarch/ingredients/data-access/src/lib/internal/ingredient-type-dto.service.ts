@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { BatchService, DataService } from '@atocha/firebase/data-access';
+import { BatchService, DtoService } from '@atocha/firebase/data-access';
 import {
-  DtoService,
+  IDtoService,
   Endpoint,
   UserUpdateService,
 } from '@atocha/menu-matriarch/shared/data-access-api';
@@ -18,30 +18,30 @@ export type EditableIngredientTypeData = Partial<
 @Injectable({
   providedIn: 'root',
 })
-export class IngredientTypeDataService
-  implements DtoService<IngredientType, IngredientTypeDto>
+export class IngredientTypeDtoService
+  implements IDtoService<IngredientType, IngredientTypeDto>
 {
   private readonly _endpoint = Endpoint.ingredientTypes;
 
   constructor(
     private _batchService: BatchService,
-    private _dataService: DataService<IngredientTypeDto>,
+    private _dtoService: DtoService<IngredientTypeDto>,
     private _userUpdateService: UserUpdateService
   ) {}
 
   getOne(id: string): Observable<IngredientTypeDto | undefined> {
-    return this._dataService.getOne(this._endpoint, id);
+    return this._dtoService.getOne(this._endpoint, id);
   }
 
   getMany(uid: string): Observable<IngredientTypeDto[]> {
-    return this._dataService.getMany(this._endpoint, uid);
+    return this._dtoService.getMany(this._endpoint, uid);
   }
 
   async create(
     uid: string,
     ingredientType: EditableIngredientTypeData
   ): Promise<string> {
-    const id = this._dataService.createId();
+    const id = this._dtoService.createId();
     const batch = this._batchService.createBatch();
 
     batch
@@ -65,7 +65,7 @@ export class IngredientTypeDataService
     ingredientType: IngredientType,
     updates: EditableIngredientTypeData
   ): Promise<void> {
-    return this._dataService.update(this._endpoint, ingredientType.id, updates);
+    return this._dtoService.update(this._endpoint, ingredientType.id, updates);
   }
 
   async delete(ingredientType: IngredientType): Promise<void> {
