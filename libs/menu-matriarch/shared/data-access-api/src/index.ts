@@ -1,7 +1,8 @@
+export * from './lib/types/endpoint.enum';
+export * from './lib/types/dto-service.interface';
+export * from './lib/types/entity-service.interface';
+
 export * from './lib/dish-update.service';
-export * from './lib/endpoint.enum';
-export * from './lib/dto-service.interface';
-export * from './lib/entity-service.interface';
 export * from './lib/ingredient-type-update.service';
 export * from './lib/ingredient-update.service';
 export * from './lib/meal-update.service';
