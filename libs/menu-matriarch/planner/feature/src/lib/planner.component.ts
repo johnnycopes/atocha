@@ -37,7 +37,7 @@ export class PlannerComponent {
       if (!menuId) {
         return of<'INVALID'>('INVALID');
       }
-      return this._menuService.getMenu(menuId);
+      return this._menuService.getOne(menuId);
     }),
     map((menu) => (menu ? menu : 'INVALID'))
   );
