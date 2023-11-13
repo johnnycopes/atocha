@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 
 import { BatchService, DataService } from '@atocha/firebase/data-access';
 import {
-  DtoService,
+  IDtoService,
   Endpoint,
   UserUpdateService,
 } from '@atocha/menu-matriarch/shared/data-access-api';
@@ -19,7 +19,7 @@ export type EditableIngredientTypeData = Partial<
   providedIn: 'root',
 })
 export class IngredientTypeDataService
-  implements DtoService<IngredientType, IngredientTypeDto>
+  implements IDtoService<IngredientType, IngredientTypeDto>
 {
   private readonly _endpoint = Endpoint.ingredientTypes;
 

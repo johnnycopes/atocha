@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 
 import { BatchService, DataService } from '@atocha/firebase/data-access';
 import {
-  DtoService,
+  IDtoService,
   Endpoint,
   IngredientUpdateService,
   MealUpdateService,
@@ -28,7 +28,7 @@ export type EditableDishData = Pick<
 @Injectable({
   providedIn: 'root',
 })
-export class DishDataService implements DtoService<Dish, DishDto> {
+export class DishDataService implements IDtoService<Dish, DishDto> {
   private readonly _endpoint = Endpoint.dishes;
 
   constructor(
