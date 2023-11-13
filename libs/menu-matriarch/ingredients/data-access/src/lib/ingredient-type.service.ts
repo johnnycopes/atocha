@@ -3,7 +3,7 @@ import { Observable, combineLatest, of } from 'rxjs';
 import { concatMap, first, map } from 'rxjs/operators';
 
 import { AuthService } from '@atocha/firebase/data-access';
-import { EntityService } from '@atocha/menu-matriarch/shared/data-access-api';
+import { IEntityService } from '@atocha/menu-matriarch/shared/data-access-api';
 import { IngredientType } from '@atocha/menu-matriarch/shared/util';
 import {
   EditableIngredientTypeData,
@@ -16,7 +16,7 @@ import { mapIngredientTypeDtoToIngredientType } from './internal/map-ingredient-
   providedIn: 'root',
 })
 export class IngredientTypeService
-  implements EntityService<IngredientType, EditableIngredientTypeData>
+  implements IEntityService<IngredientType, EditableIngredientTypeData>
 {
   constructor(
     private _authService: AuthService,

@@ -3,7 +3,7 @@ import { combineLatest, Observable, of } from 'rxjs';
 import { concatMap, first, map } from 'rxjs/operators';
 
 import { AuthService } from '@atocha/firebase/data-access';
-import { EntityService } from '@atocha/menu-matriarch/shared/data-access-api';
+import { IEntityService } from '@atocha/menu-matriarch/shared/data-access-api';
 import { IngredientService } from '@atocha/menu-matriarch/ingredients/data-access';
 import { RouterService } from '@atocha/menu-matriarch/shared/data-access-routing';
 import { Dish } from '@atocha/menu-matriarch/shared/util';
@@ -19,7 +19,7 @@ export type DishData = EditableDishData;
 @Injectable({
   providedIn: 'root',
 })
-export class DishService implements EntityService<Dish, EditableDishData> {
+export class DishService implements IEntityService<Dish, EditableDishData> {
   activeDishId$ = this._routerService.activeDishId$;
 
   constructor(

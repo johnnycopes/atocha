@@ -3,7 +3,7 @@ import { combineLatest, Observable, of } from 'rxjs';
 import { concatMap, first, map } from 'rxjs/operators';
 
 import { AuthService } from '@atocha/firebase/data-access';
-import { EntityService } from '@atocha/menu-matriarch/shared/data-access-api';
+import { IEntityService } from '@atocha/menu-matriarch/shared/data-access-api';
 import { DishService } from '@atocha/menu-matriarch/dishes/data-access';
 import { UserService } from '@atocha/menu-matriarch/settings/data-access';
 import { RouterService } from '@atocha/menu-matriarch/shared/data-access-routing';
@@ -17,7 +17,7 @@ import { mapMenuDtoToMenu } from './internal/map-menu-dto-to-menu';
 @Injectable({
   providedIn: 'root',
 })
-export class MenuService implements EntityService<Menu, EditableMenuData> {
+export class MenuService implements IEntityService<Menu, EditableMenuData> {
   activeMenuId$ = this._routerService.activeMenuId$;
 
   constructor(

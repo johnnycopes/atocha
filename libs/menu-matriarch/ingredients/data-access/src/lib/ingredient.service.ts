@@ -3,7 +3,7 @@ import { Observable, of } from 'rxjs';
 import { concatMap, first } from 'rxjs/operators';
 
 import { AuthService } from '@atocha/firebase/data-access';
-import { EntityService } from '@atocha/menu-matriarch/shared/data-access-api';
+import { IEntityService } from '@atocha/menu-matriarch/shared/data-access-api';
 import { Ingredient } from '@atocha/menu-matriarch/shared/util';
 import {
   EditableIngredientData,
@@ -14,7 +14,7 @@ import {
   providedIn: 'root',
 })
 export class IngredientService
-  implements EntityService<Ingredient, EditableIngredientData>
+  implements IEntityService<Ingredient, EditableIngredientData>
 {
   constructor(
     private _authService: AuthService,
