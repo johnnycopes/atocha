@@ -1,12 +1,12 @@
-import { DishDto } from '@atocha/menu-matriarch/shared/data-access-dtos';
+import { createDishDto } from '@atocha/menu-matriarch/dishes/data-access';
 import { SeedDataIds } from './seed-data-ids';
 
 export function createDishData(
   uid: string,
   { dishIds, ingredientIds, mealIds, menuIds, tagIds }: SeedDataIds
-): Partial<DishDto>[] {
+) {
   return [
-    {
+    createDishDto({
       id: dishIds.cornbread,
       uid,
       name: 'Cornbread',
@@ -17,8 +17,8 @@ export function createDishData(
       mealIds: [mealIds.southernClassic],
       tagIds: [tagIds.vegetarian],
       usages: 1,
-    },
-    {
+    }),
+    createDishDto({
       id: dishIds.enchiladas,
       uid,
       name: 'Enchiladas',
@@ -43,8 +43,8 @@ export function createDishData(
         ingredientIds.tortillas,
       ],
       usages: 1,
-    },
-    {
+    }),
+    createDishDto({
       id: dishIds.friedChicken,
       uid,
       name: 'Fried Chicken',
@@ -52,14 +52,14 @@ export function createDishData(
       menuIds: [menuIds.menu],
       mealIds: [mealIds.southernClassic],
       usages: 1,
-    },
-    {
+    }),
+    createDishDto({
       id: dishIds.greekSalad,
       uid,
       name: 'Greek Salad',
       tagIds: [tagIds.vegetarian],
-    },
-    {
+    }),
+    createDishDto({
       id: dishIds.guacamole,
       uid,
       name: 'Guacamole',
@@ -76,8 +76,8 @@ export function createDishData(
         ingredientIds.tomato,
       ],
       tagIds: [tagIds.easy, tagIds.vegetarian, tagIds.vegan],
-    },
-    {
+    }),
+    createDishDto({
       id: dishIds.huevosRotos,
       uid,
       name: 'Huevos Rotos',
@@ -93,8 +93,8 @@ export function createDishData(
         ingredientIds.salt,
       ],
       tagIds: [tagIds.vegetarian],
-    },
-    {
+    }),
+    createDishDto({
       id: dishIds.macAndCheese,
       uid,
       name: 'Macaroni and Cheese',
@@ -105,8 +105,8 @@ export function createDishData(
       mealIds: [mealIds.southernClassic],
       tagIds: [tagIds.vegetarian],
       usages: 1,
-    },
-    {
+    }),
+    createDishDto({
       id: dishIds.misoSoup,
       uid,
       name: 'Miso Soup',
@@ -115,8 +115,8 @@ export function createDishData(
       mealIds: [mealIds.sushiDinner],
       tagIds: [tagIds.vegan, tagIds.vegetarian],
       usages: 1,
-    },
-    {
+    }),
+    createDishDto({
       id: dishIds.pizza,
       uid,
       name: 'Pizza',
@@ -133,8 +133,8 @@ export function createDishData(
       ],
       tagIds: [tagIds.vegetarian],
       usages: 1,
-    },
-    {
+    }),
+    createDishDto({
       id: dishIds.redLentilSoup,
       uid,
       name: 'Red Lentil Soup',
@@ -142,8 +142,8 @@ export function createDishData(
       menuIds: [menuIds.menu],
       tagIds: [tagIds.vegan, tagIds.vegetarian],
       usages: 1,
-    },
-    {
+    }),
+    createDishDto({
       id: dishIds.roastedCauliflower,
       uid,
       name: 'Roasted Cauliflower',
@@ -156,8 +156,8 @@ export function createDishData(
         ingredientIds.salt,
       ],
       tagIds: [tagIds.easy, tagIds.vegan, tagIds.vegetarian],
-    },
-    {
+    }),
+    createDishDto({
       id: dishIds.salmonBurgers,
       uid,
       name: 'Salmon Burgers',
@@ -165,8 +165,8 @@ export function createDishData(
       menuIds: [menuIds.menu],
       tagIds: [tagIds.pescatarian],
       usages: 1,
-    },
-    {
+    }),
+    createDishDto({
       id: dishIds.sushi,
       uid,
       name: 'Sushi',
@@ -175,8 +175,8 @@ export function createDishData(
       mealIds: [mealIds.sushiDinner],
       tagIds: [tagIds.pescatarian],
       usages: 1,
-    },
-    {
+    }),
+    createDishDto({
       id: dishIds.sweetPotatoFries,
       uid,
       name: 'Sweet Potato Fries',
@@ -193,8 +193,8 @@ export function createDishData(
       ],
       tagIds: [tagIds.vegan, tagIds.vegetarian],
       usages: 1,
-    },
-    {
+    }),
+    createDishDto({
       id: dishIds.tiramisu,
       uid,
       name: 'Tiramisu',
@@ -204,8 +204,8 @@ export function createDishData(
       menuIds: [menuIds.menu],
       tagIds: [],
       usages: 2,
-    },
-    {
+    }),
+    createDishDto({
       id: dishIds.thaiCurry,
       uid,
       name: 'Thai Curry',
@@ -214,6 +214,6 @@ export function createDishData(
       menuIds: [menuIds.menu],
       tagIds: [tagIds.easy, tagIds.vegan, tagIds.vegetarian],
       usages: 1,
-    },
+    }),
   ];
 }
