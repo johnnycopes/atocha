@@ -1,6 +1,4 @@
-import { ISeedDataIds } from './seed-data-ids.interface';
-
-export class SeedDataIds implements ISeedDataIds {
+export class SeedDataIds {
   readonly menuIds = {
     menu: this._createId(),
   };
