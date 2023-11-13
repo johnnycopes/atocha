@@ -1,10 +1,7 @@
-import { MenuDto } from '@atocha/menu-matriarch/shared/data-access-dtos';
+import { createMenuDto } from '@atocha/menu-matriarch/menus/data-access';
 import { SeedDataIds } from './seed-data-ids';
 
-export function createMenuData(
-  uid: string,
-  { dishIds, menuIds }: SeedDataIds
-): Partial<MenuDto>[] {
+export function createMenuData(uid: string, { dishIds, menuIds }: SeedDataIds) {
   return [
     {
       id: menuIds.menu,
@@ -20,5 +17,5 @@ export function createMenuData(
         Sunday: [dishIds.friedChicken, dishIds.cornbread, dishIds.macAndCheese],
       },
     },
-  ];
+  ].map(createMenuDto);
 }

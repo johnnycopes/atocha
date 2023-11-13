@@ -1,10 +1,10 @@
-import { TagDto } from '@atocha/menu-matriarch/shared/data-access-dtos';
+import { createTagDto } from '@atocha/menu-matriarch/tags/data-access';
 import { SeedDataIds } from './seed-data-ids';
 
 export function createTagData(
   uid: string,
   { dishIds, mealIds, tagIds }: SeedDataIds
-): Partial<TagDto>[] {
+) {
   return [
     {
       id: tagIds.easy,
@@ -54,5 +54,5 @@ export function createTagData(
         dishIds.thaiCurry,
       ],
     },
-  ];
+  ].map(createTagDto);
 }

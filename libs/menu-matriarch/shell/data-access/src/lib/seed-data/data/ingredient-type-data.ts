@@ -1,10 +1,10 @@
-import { IngredientTypeDto } from '@atocha/menu-matriarch/shared/data-access-dtos';
+import { createIngredientTypeDto } from '@atocha/menu-matriarch/ingredients/data-access';
 import { SeedDataIds } from './seed-data-ids';
 
 export function createIngredientTypeData(
   uid: string,
   { ingredientIds, ingredientTypeIds: ingredientTypesIds }: SeedDataIds
-): Partial<IngredientTypeDto>[] {
+) {
   return [
     {
       id: ingredientTypesIds.bread,
@@ -135,5 +135,5 @@ export function createIngredientTypeData(
         ingredientIds.turmeric,
       ],
     },
-  ];
+  ].map(createIngredientTypeDto);
 }
