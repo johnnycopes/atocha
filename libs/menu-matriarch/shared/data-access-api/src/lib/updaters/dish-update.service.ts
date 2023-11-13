@@ -3,8 +3,8 @@ import { BatchService, BatchUpdate } from '@atocha/firebase/data-access';
 
 import { Menu, flattenValues } from '@atocha/menu-matriarch/shared/util';
 import { Change, Tally } from './internal/tally';
-import { Endpoint } from './types/endpoint.enum';
-import { KeyToUpdate } from './key-to-update.type';
+import { Endpoint } from '../types/endpoint.enum';
+import { KeyToUpdate } from './internal/key-to-update.type';
 
 @Injectable({
   providedIn: 'root',

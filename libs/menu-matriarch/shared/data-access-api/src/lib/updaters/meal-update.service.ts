@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 
 import { BatchService, BatchUpdate } from '@atocha/firebase/data-access';
-import { Endpoint } from './types/endpoint.enum';
-import { KeyToUpdate } from './key-to-update.type';
+import { Endpoint } from '../types/endpoint.enum';
+import { KeyToUpdate } from './internal/key-to-update.type';
 
 @Injectable({
   providedIn: 'root',
