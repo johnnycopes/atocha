@@ -8,21 +8,6 @@ describe('Tally', () => {
     'fruits',
   ];
 
-  describe('.values', () => {
-    it('returns correct values when passed nothing', () => {
-      const tally = new Tally();
-      expect(tally.values).toEqual({});
-    });
-
-    it('returns correct values when passed items', () => {
-      const tally = new Tally(MOCK_ITEMS);
-      expect(tally.values).toEqual({
-        fruits: 3,
-        vegetables: 1,
-      });
-    });
-  });
-
   describe('calculateChange', () => {
     let tally: Tally;
 

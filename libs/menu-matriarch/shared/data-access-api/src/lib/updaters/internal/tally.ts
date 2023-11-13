@@ -2,11 +2,7 @@ export type Change = 'increment' | 'decrement' | 'clear';
 type Values = Record<string, number>;
 
 export class Tally {
-  private _tally: Values = {};
-
-  get values(): Readonly<Values> {
-    return this._tally;
-  }
+  private readonly _tally: Values = {};
 
   constructor(arr: readonly string[] = []) {
     this._tally = this._createTally(arr);
