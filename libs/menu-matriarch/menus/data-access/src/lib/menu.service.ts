@@ -27,7 +27,7 @@ export class MenuService {
   getMenu(id: string): Observable<Menu | undefined> {
     return combineLatest([
       this._menuDataService.getOne(id),
-      this._dishService.getDishes(),
+      this._dishService.getMany(),
       this._userService.getPreferences(),
     ]).pipe(
       map(([menuDto, dishes, preferences]) => {
@@ -46,7 +46,7 @@ export class MenuService {
         if (uid) {
           return combineLatest([
             this._menuDataService.getMany(uid),
-            this._dishService.getDishes(),
+            this._dishService.getMany(),
             this._userService.getPreferences(),
           ]).pipe(
             map(([menuDtos, dishes, preferences]) => {

@@ -29,7 +29,7 @@ export class MealService {
   getMeal(id: string): Observable<Meal | undefined> {
     return combineLatest([
       this._mealDataService.getOne(id),
-      this._dishService.getDishes(),
+      this._dishService.getMany(),
       this._tagService.getMany(),
     ]).pipe(
       map(([mealDto, dishes, tags]) => {
@@ -48,7 +48,7 @@ export class MealService {
         if (uid) {
           return combineLatest([
             this._mealDataService.getMany(uid),
-            this._dishService.getDishes(),
+            this._dishService.getMany(),
             this._tagService.getMany(),
           ]).pipe(
             map(([mealDtos, dishes, tags]) =>

@@ -44,7 +44,7 @@ export class DishDetailsComponent {
       if (!id) {
         return of(undefined);
       }
-      return this._dishService.getDish(id);
+      return this._dishService.getOne(id);
     })
   );
   readonly ingredientTrackByFn = trackBySelf;
@@ -63,7 +63,7 @@ export class DishDetailsComponent {
           if (!dish) {
             return of(undefined);
           }
-          return this._dishService.deleteDish(dish);
+          return this._dishService.delete(dish);
         })
       )
       .subscribe(() =>
