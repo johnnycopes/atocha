@@ -1,9 +1,9 @@
 import { Observable } from 'rxjs';
 
 export interface EntityService<TEntity, TData = Partial<TEntity>> {
-  getOne(): Observable<TEntity | undefined>;
+  getOne(id: string): Observable<TEntity | undefined>;
   getMany(): Observable<TEntity[]>;
-  create(data: TData): Promise<string>;
+  create(data: TData): Observable<string | undefined>;
   update(item: TEntity, data: TData): Promise<void>;
   delete(item: TEntity): Promise<void>;
 }
