@@ -3,12 +3,12 @@ import { Observable, of } from 'rxjs';
 import { concatMap, first } from 'rxjs/operators';
 
 import { AuthService } from '@atocha/firebase/data-access';
+import { EntityService } from '@atocha/menu-matriarch/shared/data-access-api';
 import { Ingredient } from '@atocha/menu-matriarch/shared/util';
 import {
   EditableIngredientData,
   IngredientDataService,
 } from './ingredient-data.service';
-import { EntityService } from '@atocha/menu-matriarch/shared/data-access-api';
 
 @Injectable({
   providedIn: 'root',
