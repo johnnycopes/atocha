@@ -9,12 +9,10 @@ import {
   MenuUpdateService,
   TagUpdateService,
 } from '@atocha/menu-matriarch/shared/data-access-api';
-import {
-  DishDto,
-  DtoService,
-  createDishDto,
-} from '@atocha/menu-matriarch/shared/data-access-dtos';
+import { DtoService } from '@atocha/menu-matriarch/shared/data-access-dtos';
 import { Dish } from '@atocha/menu-matriarch/shared/util';
+import { DishDto } from './dish-dto';
+import { createDishDto } from './create-dish-dto';
 
 export type EditableDishData = Pick<
   DishDto,

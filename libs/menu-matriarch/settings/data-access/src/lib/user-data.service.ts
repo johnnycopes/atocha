@@ -4,8 +4,8 @@ import { map } from 'rxjs/operators';
 
 import { DataService } from '@atocha/firebase/data-access';
 import { Endpoint } from '@atocha/menu-matriarch/shared/data-access-api';
-import { UserDto } from '@atocha/menu-matriarch/shared/data-access-dtos';
 import { User, UserPreferences } from '@atocha/menu-matriarch/shared/util';
+import { UserDto } from './user-dto';
 
 @Injectable({
   providedIn: 'root',

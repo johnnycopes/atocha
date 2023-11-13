@@ -7,12 +7,10 @@ import {
   Endpoint,
   MealUpdateService,
 } from '@atocha/menu-matriarch/shared/data-access-api';
-import {
-  DtoService,
-  TagDto,
-  createTagDto,
-} from '@atocha/menu-matriarch/shared/data-access-dtos';
+import { DtoService } from '@atocha/menu-matriarch/shared/data-access-dtos';
 import { Tag } from '@atocha/menu-matriarch/shared/util';
+import { TagDto } from './tag-dto';
+import { createTagDto } from './create-tag-dto';
 
 export type EditableTagData = Pick<TagDto, 'name'>;
 

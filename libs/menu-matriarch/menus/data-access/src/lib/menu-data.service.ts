@@ -7,12 +7,10 @@ import {
   Endpoint,
   MenuUpdateService,
 } from '@atocha/menu-matriarch/shared/data-access-api';
-import {
-  DtoService,
-  MenuDto,
-  createMenuDto,
-} from '@atocha/menu-matriarch/shared/data-access-dtos';
+import { DtoService } from '@atocha/menu-matriarch/shared/data-access-dtos';
 import { Day, Menu, flattenValues } from '@atocha/menu-matriarch/shared/util';
+import { MenuDto } from './menu-dto';
+import { createMenuDto } from './create-menu-dto';
 
 export type EditableMenuData = Partial<Pick<MenuDto, 'name' | 'startDay'>>;
 

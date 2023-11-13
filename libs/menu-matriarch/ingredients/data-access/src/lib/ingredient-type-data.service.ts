@@ -6,12 +6,10 @@ import {
   Endpoint,
   UserUpdateService,
 } from '@atocha/menu-matriarch/shared/data-access-api';
-import {
-  DtoService,
-  IngredientTypeDto,
-  createIngredientTypeDto,
-} from '@atocha/menu-matriarch/shared/data-access-dtos';
+import { DtoService } from '@atocha/menu-matriarch/shared/data-access-dtos';
 import { IngredientType } from '@atocha/menu-matriarch/shared/util';
+import { IngredientTypeDto } from './ingredient-type-dto';
+import { createIngredientTypeDto } from './create-ingredient-type-dto';
 
 export type EditableIngredientTypeData = Partial<
   Pick<IngredientTypeDto, 'name' | 'ingredientIds'>
