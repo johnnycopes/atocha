@@ -12,7 +12,7 @@ import { UserDtoService } from './internal/user-dto.service';
 export class UserService {
   constructor(
     private _authService: AuthService,
-    private _userDataService: UserDtoService
+    private _userDtoService: UserDtoService
   ) {}
 
   getUser(): Observable<User | undefined> {
@@ -20,7 +20,7 @@ export class UserService {
       first(),
       concatMap((uid) => {
         if (uid) {
-          return this._userDataService.getUser(uid);
+          return this._userDtoService.getUser(uid);
         }
         return of(undefined);
       })
@@ -32,7 +32,7 @@ export class UserService {
       first(),
       concatMap((uid) => {
         if (uid) {
-          return this._userDataService.getPreferences(uid);
+          return this._userDtoService.getPreferences(uid);
         }
         return of(undefined);
       })
@@ -48,7 +48,7 @@ export class UserService {
         if (!user?.uid) {
           return;
         }
-        await this._userDataService.updatePreferences(user, data);
+        await this._userDtoService.updatePreferences(user, data);
       })
     );
   }

@@ -21,7 +21,7 @@ export class DishService implements IEntityService<Dish, EditableDishData> {
 
   constructor(
     private _authService: AuthService,
-    private _dishDataService: DishDtoService,
+    private _dishDtoService: DishDtoService,
     private _ingredientService: IngredientService,
     private _routerService: RouterService,
     private _tagService: TagService
@@ -29,7 +29,7 @@ export class DishService implements IEntityService<Dish, EditableDishData> {
 
   getOne(id: string): Observable<Dish | undefined> {
     return combineLatest([
-      this._dishDataService.getOne(id),
+      this._dishDtoService.getOne(id),
       this._ingredientService.getMany(),
       this._tagService.getMany(),
     ]).pipe(
@@ -48,7 +48,7 @@ export class DishService implements IEntityService<Dish, EditableDishData> {
       concatMap((uid) => {
         if (uid) {
           return combineLatest([
-            this._dishDataService.getMany(uid),
+            this._dishDtoService.getMany(uid),
             this._ingredientService.getMany(),
             this._tagService.getMany(),
           ]).pipe(
@@ -69,7 +69,7 @@ export class DishService implements IEntityService<Dish, EditableDishData> {
       first(),
       concatMap(async (uid) => {
         if (uid) {
-          const id = await this._dishDataService.create(uid, dish);
+          const id = await this._dishDtoService.create(uid, dish);
           return id;
         } else {
           return undefined;
@@ -79,10 +79,10 @@ export class DishService implements IEntityService<Dish, EditableDishData> {
   }
 
   async update(dish: Dish, data: EditableDishData): Promise<void> {
-    return this._dishDataService.update(dish, data);
+    return this._dishDtoService.update(dish, data);
   }
 
   async delete(dish: Dish): Promise<void> {
-    return this._dishDataService.delete(dish);
+    return this._dishDtoService.delete(dish);
   }
 }

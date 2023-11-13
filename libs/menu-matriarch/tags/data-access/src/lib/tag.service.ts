@@ -13,11 +13,11 @@ import { EditableTagData, TagDtoService } from './internal/tag-dto.service';
 export class TagService implements IEntityService<Tag, EditableTagData> {
   constructor(
     private _authService: AuthService,
-    private _tagDataService: TagDtoService
+    private _tagDtoService: TagDtoService
   ) {}
 
   getOne(id: string): Observable<Tag | undefined> {
-    return this._tagDataService.getOne(id);
+    return this._tagDtoService.getOne(id);
   }
 
   getMany(): Observable<Tag[]> {
@@ -25,7 +25,7 @@ export class TagService implements IEntityService<Tag, EditableTagData> {
       first(),
       concatMap((uid) => {
         if (uid) {
-          return this._tagDataService.getMany(uid);
+          return this._tagDtoService.getMany(uid);
         }
         return of([]);
       })
@@ -37,7 +37,7 @@ export class TagService implements IEntityService<Tag, EditableTagData> {
       first(),
       concatMap(async (uid) => {
         if (uid) {
-          const id = await this._tagDataService.create(uid, tag);
+          const id = await this._tagDtoService.create(uid, tag);
           return id;
         } else {
           return undefined;
@@ -47,10 +47,10 @@ export class TagService implements IEntityService<Tag, EditableTagData> {
   }
 
   async update(tag: Tag, data: EditableTagData): Promise<void> {
-    return this._tagDataService.update(tag, data);
+    return this._tagDtoService.update(tag, data);
   }
 
   async delete(tag: Tag): Promise<void> {
-    return this._tagDataService.delete(tag);
+    return this._tagDtoService.delete(tag);
   }
 }

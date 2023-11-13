@@ -22,14 +22,14 @@ export class MealService implements IEntityService<Meal, EditableMealData> {
   constructor(
     private _authService: AuthService,
     private _dishService: DishService,
-    private _mealDataService: MealDtoService,
+    private _mealDtoService: MealDtoService,
     private _routerService: RouterService,
     private _tagService: TagService
   ) {}
 
   getOne(id: string): Observable<Meal | undefined> {
     return combineLatest([
-      this._mealDataService.getOne(id),
+      this._mealDtoService.getOne(id),
       this._dishService.getMany(),
       this._tagService.getMany(),
     ]).pipe(
@@ -48,7 +48,7 @@ export class MealService implements IEntityService<Meal, EditableMealData> {
       concatMap((uid) => {
         if (uid) {
           return combineLatest([
-            this._mealDataService.getMany(uid),
+            this._mealDtoService.getMany(uid),
             this._dishService.getMany(),
             this._tagService.getMany(),
           ]).pipe(
@@ -69,7 +69,7 @@ export class MealService implements IEntityService<Meal, EditableMealData> {
       first(),
       concatMap(async (uid) => {
         if (uid) {
-          const id = await this._mealDataService.create(uid, meal);
+          const id = await this._mealDtoService.create(uid, meal);
           return id;
         } else {
           return undefined;
@@ -79,10 +79,10 @@ export class MealService implements IEntityService<Meal, EditableMealData> {
   }
 
   async update(meal: Meal, data: EditableMealData): Promise<void> {
-    return this._mealDataService.update(meal, data);
+    return this._mealDtoService.update(meal, data);
   }
 
   async delete(meal: Meal): Promise<void> {
-    return this._mealDataService.delete(meal);
+    return this._mealDtoService.delete(meal);
   }
 }

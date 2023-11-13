@@ -20,14 +20,14 @@ export class MenuService implements IEntityService<Menu, EditableMenuData> {
   constructor(
     private _authService: AuthService,
     private _dishService: DishService,
-    private _menuDataService: MenuDtoService,
+    private _menuDtoService: MenuDtoService,
     private _routerService: RouterService,
     private _userService: UserService
   ) {}
 
   getOne(id: string): Observable<Menu | undefined> {
     return combineLatest([
-      this._menuDataService.getOne(id),
+      this._menuDtoService.getOne(id),
       this._dishService.getMany(),
       this._userService.getPreferences(),
     ]).pipe(
@@ -46,7 +46,7 @@ export class MenuService implements IEntityService<Menu, EditableMenuData> {
       concatMap((uid) => {
         if (uid) {
           return combineLatest([
-            this._menuDataService.getMany(uid),
+            this._menuDtoService.getMany(uid),
             this._dishService.getMany(),
             this._userService.getPreferences(),
           ]).pipe(
@@ -70,7 +70,7 @@ export class MenuService implements IEntityService<Menu, EditableMenuData> {
       first(),
       concatMap(async (user) => {
         if (user) {
-          const id = await this._menuDataService.create(user.uid, {
+          const id = await this._menuDtoService.create(user.uid, {
             name,
             startDay: user.preferences.defaultMenuStartDay,
           });
@@ -83,7 +83,7 @@ export class MenuService implements IEntityService<Menu, EditableMenuData> {
   }
 
   async update(menu: Menu, data: EditableMenuData): Promise<void> {
-    return this._menuDataService.update(menu, data);
+    return this._menuDtoService.update(menu, data);
   }
 
   async updateMenuContents({
@@ -97,7 +97,7 @@ export class MenuService implements IEntityService<Menu, EditableMenuData> {
     dishIds: string[];
     selected: boolean;
   }): Promise<void> {
-    return this._menuDataService.updateMenuContents({
+    return this._menuDtoService.updateMenuContents({
       menu,
       day,
       dishIds,
@@ -106,10 +106,10 @@ export class MenuService implements IEntityService<Menu, EditableMenuData> {
   }
 
   async delete(menu: Menu): Promise<void> {
-    return this._menuDataService.delete(menu);
+    return this._menuDtoService.delete(menu);
   }
 
   async deleteMenuContents(menu: Menu, day?: Day): Promise<void> {
-    return this._menuDataService.deleteMenuContents(menu, day);
+    return this._menuDtoService.deleteMenuContents(menu, day);
   }
 }
