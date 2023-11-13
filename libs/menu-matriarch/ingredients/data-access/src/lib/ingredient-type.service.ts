@@ -4,13 +4,13 @@ import { concatMap, first, map } from 'rxjs/operators';
 
 import { AuthService } from '@atocha/firebase/data-access';
 import { EntityService } from '@atocha/menu-matriarch/shared/data-access-api';
-import { mapIngredientTypeDtoToIngredientType } from '@atocha/menu-matriarch/shared/data-access-dtos';
 import { IngredientType } from '@atocha/menu-matriarch/shared/util';
 import {
   EditableIngredientTypeData,
   IngredientTypeDataService,
 } from './ingredient-type-data.service';
 import { IngredientService } from './ingredient.service';
+import { mapIngredientTypeDtoToIngredientType } from './map-ingredient-type-dto-to-ingredient-type';
 
 @Injectable({
   providedIn: 'root',
