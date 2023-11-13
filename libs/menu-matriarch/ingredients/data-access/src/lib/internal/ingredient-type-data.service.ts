@@ -9,7 +9,7 @@ import {
 } from '@atocha/menu-matriarch/shared/data-access-api';
 import { IngredientType } from '@atocha/menu-matriarch/shared/util';
 import { IngredientTypeDto } from './ingredient-type-dto';
-import { createIngredientTypeDto } from './create-ingredient-type-dto';
+import { createIngredientTypeDto } from '../create-ingredient-type-dto';
 
 export type EditableIngredientTypeData = Partial<
   Pick<IngredientTypeDto, 'name' | 'ingredientIds'>

@@ -1,6 +1,6 @@
 import { PIZZA, SALAD } from '@atocha/menu-matriarch/dishes/data-access';
 import { mapMenuDtoToMenu } from './map-menu-dto-to-menu';
-import { MENU_DTO } from './mock-data';
+import { MENU_DTO } from '../mock-data';
 
 describe('mapMenuDtoToMenu', () => {
   it('returns a menu when passed a menuDto, dishes, and userPreferences', () => {

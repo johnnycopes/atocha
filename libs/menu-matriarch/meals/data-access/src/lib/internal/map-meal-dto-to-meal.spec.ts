@@ -1,7 +1,7 @@
 import { PIZZA, SALAD } from '@atocha/menu-matriarch/dishes/data-access';
 import { TAG_DTOS } from '@atocha/menu-matriarch/tags/data-access';
 import { mapMealDtoToMeal } from './map-meal-dto-to-meal';
-import { MEAL_DTO } from './mock-data';
+import { MEAL_DTO } from '../mock-data';
 
 describe('mapMealDtoToMeal', () => {
   it('returns a meal when passed a mealDto, dishes, and tags', () => {

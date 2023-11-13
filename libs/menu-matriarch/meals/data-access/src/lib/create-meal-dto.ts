@@ -1,4 +1,4 @@
-import { MealDto } from './meal-dto';
+import { MealDto } from './internal/meal-dto';
 
 export function createMealDto({
   id,

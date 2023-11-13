@@ -1,7 +1,7 @@
 import { INGREDIENT_DTOS } from '@atocha/menu-matriarch/ingredients/data-access';
 import { TAG_DTOS } from '@atocha/menu-matriarch/tags/data-access';
 import { createDishDto } from './create-dish-dto';
-import { mapDishDtoToDish } from './map-dish-dto-to-dish';
+import { mapDishDtoToDish } from './internal/map-dish-dto-to-dish';
 
 export const PIZZA_DTO = createDishDto({
   id: 'dish-1',

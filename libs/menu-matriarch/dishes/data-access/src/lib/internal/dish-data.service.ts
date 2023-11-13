@@ -12,7 +12,7 @@ import {
 } from '@atocha/menu-matriarch/shared/data-access-api';
 import { Dish } from '@atocha/menu-matriarch/shared/util';
 import { DishDto } from './dish-dto';
-import { createDishDto } from './create-dish-dto';
+import { createDishDto } from '../create-dish-dto';
 
 export type EditableDishData = Pick<
   DishDto,

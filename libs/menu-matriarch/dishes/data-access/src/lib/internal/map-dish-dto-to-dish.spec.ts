@@ -2,7 +2,7 @@ import { TAG_DTOS } from '@atocha/menu-matriarch/tags/data-access';
 import { INGREDIENT_DTOS } from '@atocha/menu-matriarch/ingredients/data-access';
 
 import { mapDishDtoToDish } from './map-dish-dto-to-dish';
-import { PIZZA_DTO } from './mock-data';
+import { PIZZA_DTO } from '../mock-data';
 
 describe('mapDishDtoToDish', () => {
   it('returns a dish when passed a dishDto and tags', () => {

@@ -10,7 +10,7 @@ import {
 } from '@atocha/menu-matriarch/shared/data-access-api';
 import { Tag } from '@atocha/menu-matriarch/shared/util';
 import { TagDto } from './tag-dto';
-import { createTagDto } from './create-tag-dto';
+import { createTagDto } from '../create-tag-dto';
 
 export type EditableTagData = Pick<TagDto, 'name'>;
 

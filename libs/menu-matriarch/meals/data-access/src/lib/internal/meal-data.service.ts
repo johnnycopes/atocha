@@ -10,7 +10,7 @@ import {
 } from '@atocha/menu-matriarch/shared/data-access-api';
 import { Meal } from '@atocha/menu-matriarch/shared/util';
 import { MealDto } from './meal-dto';
-import { createMealDto } from './create-meal-dto';
+import { createMealDto } from '../create-meal-dto';
 
 export type EditableMealData = Pick<
   MealDto,

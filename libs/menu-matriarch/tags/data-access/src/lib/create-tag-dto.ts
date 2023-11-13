@@ -1,4 +1,4 @@
-import { TagDto } from './tag-dto';
+import { TagDto } from './internal/tag-dto';
 
 export function createTagDto({
   id,

@@ -8,8 +8,11 @@ import { IngredientService } from '@atocha/menu-matriarch/ingredients/data-acces
 import { RouterService } from '@atocha/menu-matriarch/shared/data-access-routing';
 import { Dish } from '@atocha/menu-matriarch/shared/util';
 import { TagService } from '@atocha/menu-matriarch/tags/data-access';
-import { DishDataService, EditableDishData } from './dish-data.service';
-import { mapDishDtoToDish } from './map-dish-dto-to-dish';
+import {
+  DishDataService,
+  EditableDishData,
+} from './internal/dish-data.service';
+import { mapDishDtoToDish } from './internal/map-dish-dto-to-dish';
 
 export type DishData = EditableDishData;
 

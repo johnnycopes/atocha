@@ -1,4 +1,4 @@
-import { MenuDto } from './menu-dto';
+import { MenuDto } from './internal/menu-dto';
 
 export function createMenuDto({
   id,

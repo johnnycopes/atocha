@@ -1,4 +1,4 @@
-import { UserDto } from './user-dto';
+import { UserDto } from './internal/user-dto';
 
 export function createUserDto({
   uid,

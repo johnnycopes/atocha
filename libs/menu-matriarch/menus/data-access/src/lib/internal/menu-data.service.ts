@@ -10,7 +10,7 @@ import {
 } from '@atocha/menu-matriarch/shared/data-access-api';
 import { Day, Menu, flattenValues } from '@atocha/menu-matriarch/shared/util';
 import { MenuDto } from './menu-dto';
-import { createMenuDto } from './create-menu-dto';
+import { createMenuDto } from '../create-menu-dto';
 
 export type EditableMenuData = Partial<Pick<MenuDto, 'name' | 'startDay'>>;
 

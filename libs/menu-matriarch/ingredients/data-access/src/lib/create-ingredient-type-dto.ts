@@ -1,4 +1,4 @@
-import { IngredientTypeDto } from './ingredient-type-dto';
+import { IngredientTypeDto } from './internal/ingredient-type-dto';
 
 export function createIngredientTypeDto({
   id,

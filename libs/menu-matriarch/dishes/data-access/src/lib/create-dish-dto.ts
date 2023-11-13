@@ -1,4 +1,4 @@
-import { DishDto } from './dish-dto';
+import { DishDto } from './internal/dish-dto';
 
 export function createDishDto({
   id,

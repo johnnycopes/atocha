@@ -10,7 +10,7 @@ import {
 } from '@atocha/menu-matriarch/shared/data-access-api';
 import { Ingredient } from '@atocha/menu-matriarch/shared/util';
 import { IngredientDto } from './ingredient-dto';
-import { createIngredientDto } from './create-ingredient-dto';
+import { createIngredientDto } from '../create-ingredient-dto';
 
 export type EditableIngredientData = Pick<
   IngredientDto,

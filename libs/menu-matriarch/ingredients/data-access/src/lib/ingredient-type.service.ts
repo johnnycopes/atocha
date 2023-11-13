@@ -8,9 +8,9 @@ import { IngredientType } from '@atocha/menu-matriarch/shared/util';
 import {
   EditableIngredientTypeData,
   IngredientTypeDataService,
-} from './ingredient-type-data.service';
+} from './internal/ingredient-type-data.service';
 import { IngredientService } from './ingredient.service';
-import { mapIngredientTypeDtoToIngredientType } from './map-ingredient-type-dto-to-ingredient-type';
+import { mapIngredientTypeDtoToIngredientType } from './internal/map-ingredient-type-dto-to-ingredient-type';
 
 @Injectable({
   providedIn: 'root',
