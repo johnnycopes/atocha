@@ -1,22 +1,14 @@
-import { mapDishDtoToDish } from './map-dish-dto-to-dish';
+import { PIZZA, SALAD } from '@atocha/menu-matriarch/dishes/data-access';
+import { TAG_DTOS } from '@atocha/menu-matriarch/tags/data-access';
 import { mapMealDtoToMeal } from './map-meal-dto-to-meal';
-import {
-  INGREDIENT_DTOS,
-  MEAL_DTO,
-  PIZZA_DTO,
-  SALAD_DTO,
-  TAG_DTOS,
-} from './mock-data';
+import { MEAL_DTO } from './mock-data';
 
 describe('mapMealDtoToMeal', () => {
   it('returns a meal when passed a mealDto, dishes, and tags', () => {
     expect(
       mapMealDtoToMeal({
         mealDto: MEAL_DTO,
-        dishes: [
-          mapDishDtoToDish(PIZZA_DTO, INGREDIENT_DTOS, TAG_DTOS),
-          mapDishDtoToDish(SALAD_DTO, INGREDIENT_DTOS, TAG_DTOS),
-        ],
+        dishes: [PIZZA, SALAD],
         tags: TAG_DTOS,
       })
     ).toEqual({

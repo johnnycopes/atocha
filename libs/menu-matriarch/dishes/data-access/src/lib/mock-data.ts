@@ -1,4 +1,7 @@
+import { INGREDIENT_DTOS } from '@atocha/menu-matriarch/ingredients/data-access';
+import { TAG_DTOS } from '@atocha/menu-matriarch/tags/data-access';
 import { createDishDto } from './create-dish-dto';
+import { mapDishDtoToDish } from './map-dish-dto-to-dish';
 
 export const PIZZA_DTO = createDishDto({
   id: 'dish-1',
@@ -12,6 +15,8 @@ export const PIZZA_DTO = createDishDto({
   usages: 2,
 });
 
+export const PIZZA = mapDishDtoToDish(PIZZA_DTO, INGREDIENT_DTOS, TAG_DTOS);
+
 export const SALAD_DTO = createDishDto({
   id: 'dish-2',
   uid: 'abc',
@@ -23,3 +28,5 @@ export const SALAD_DTO = createDishDto({
   tagIds: ['tag-1'],
   usages: 4,
 });
+
+export const SALAD = mapDishDtoToDish(SALAD_DTO, INGREDIENT_DTOS, TAG_DTOS);
