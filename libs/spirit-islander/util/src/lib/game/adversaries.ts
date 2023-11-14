@@ -174,4 +174,4 @@ export const ADVERSARIES: readonly Adversary[] = [
       { id: 'sw-6', name: 'Level 6', difficulty: 8 },
     ],
   },
-] as const;
+];
