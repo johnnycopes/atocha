@@ -6,7 +6,7 @@ import { getValidCombos } from './get-valid-combos';
 import { getOptionsByName } from '../game/get-options';
 import { getDifficulty } from '../game/get-difficulty';
 import { selectBoards } from './select-boards';
-import { selectRandom } from './internal/select-random';
+import { selectRandom } from '../app/select-random';
 
 export function createGameSetup(config: Config): GameSetup {
   const { players, expansions, spiritNames, boardNames } = config;
