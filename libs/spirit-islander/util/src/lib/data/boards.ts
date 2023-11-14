@@ -1,6 +1,6 @@
 import type { Board } from '../types/game/board';
 
-export const BOARDS: Board[] = [
+export const BOARDS: readonly Board[] = [
   {
     name: 'A',
     thematicName: 'Northeast',
@@ -27,4 +27,4 @@ export const BOARDS: Board[] = [
     thematicName: 'Southwest',
     expansion: 'Jagged Earth',
   },
-];
+] as const;

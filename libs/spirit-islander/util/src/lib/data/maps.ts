@@ -1,6 +1,6 @@
 import type { Map } from '../types/game/maps';
 
-export const MAPS: Map[] = [
+export const MAPS: readonly Map[] = [
   {
     name: 'Balanced',
     difficulty: 0,
@@ -16,4 +16,4 @@ export const MAPS: Map[] = [
         : 3;
     },
   },
-];
+] as const;

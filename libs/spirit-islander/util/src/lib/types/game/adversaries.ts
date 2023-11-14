@@ -78,5 +78,5 @@ export type AdversaryLevelId =
   | 'sw-6';
 
 export interface Adversary extends ExpansionOption<AdversaryName> {
-  levels: AdversaryLevel[];
+  levels: readonly AdversaryLevel[];
 }

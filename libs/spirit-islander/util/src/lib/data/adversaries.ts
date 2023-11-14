@@ -1,6 +1,6 @@
 import type { Adversary } from '../types/game/adversaries';
 
-export const ADVERSARIES: Adversary[] = [
+export const ADVERSARIES: readonly Adversary[] = [
   {
     name: 'No Adversary',
     levels: [{ id: 'none', name: 'N/A', difficulty: 0 }],
@@ -93,4 +93,4 @@ export const ADVERSARIES: Adversary[] = [
       { id: 'sw-6', name: 'Level 6', difficulty: 8 },
     ],
   },
-];
+] as const;

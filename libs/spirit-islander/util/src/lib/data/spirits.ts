@@ -1,6 +1,6 @@
 import type { Spirit } from '../types/game/spirits';
 
-export const SPIRITS: Spirit[] = [
+export const SPIRITS: readonly Spirit[] = [
   { name: 'A Spread of Rampant Green' },
   { name: 'Bringer of Dreams and Nightmares' },
   { name: 'Devouring Teeth Lurk Underfoot', expansion: 'Horizons' },
@@ -30,4 +30,4 @@ export const SPIRITS: Spirit[] = [
   { name: 'Vengeance as a Burning Plague', expansion: 'Jagged Earth' },
   { name: 'Vital Strength of the Earth' },
   { name: 'Volcano Looming High', expansion: 'Jagged Earth' },
-];
+] as const;

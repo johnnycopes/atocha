@@ -1,6 +1,6 @@
 import type { Scenario } from '../types/game/scenarios';
 
-export const SCENARIOS: Scenario[] = [
+export const SCENARIOS: readonly Scenario[] = [
   {
     name: 'No Scenario',
     difficulty: 0,
@@ -66,4 +66,4 @@ export const SCENARIOS: Scenario[] = [
     name: 'Dahan Insurrection',
     difficulty: 4,
   },
-];
+] as const;
