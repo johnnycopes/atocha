@@ -1,8 +1,4 @@
-import {
-  ADVERSARIES,
-  AdversaryLevelId,
-  AdversaryName,
-} from '../game/adversaries';
+import { ADVERSARIES, AdversaryLevelId, AdversaryName } from './adversaries';
 
 const adversaryLevelIdDict = ADVERSARIES.reduce(
   (accum, adversary) => {
