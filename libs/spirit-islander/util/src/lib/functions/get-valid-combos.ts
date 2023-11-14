@@ -1,5 +1,5 @@
 import type { DifficultyOption } from '../game/difficulty';
-import type { Config } from '../types/config.interface';
+import type { Config } from '../app/config.interface';
 import { MAPS, Map, MapName } from '../game/maps';
 import { SCENARIOS, Scenario, ScenarioName } from '../game/scenarios';
 import {

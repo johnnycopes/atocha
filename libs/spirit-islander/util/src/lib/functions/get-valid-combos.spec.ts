@@ -1,9 +1,9 @@
 import { getValidCombos } from './get-valid-combos';
-import type { Config } from '../types/config.interface';
-import type { AdversaryLevelId } from '../types/game/adversaries';
+import type { Config } from '../app/config.interface';
+import type { AdversaryLevelId } from '../app/game/adversaries';
 import { ADVERSARIES } from '../data/adversaries';
 import { BOARDS } from '../data/boards';
-import { EXPANSIONS } from '../types/game/expansions';
+import { EXPANSIONS } from '../app/game/expansions';
 import { MAPS } from '../data/maps';
 import { SCENARIOS } from '../data/scenarios';
 import { SPIRITS } from '../data/spirits';
