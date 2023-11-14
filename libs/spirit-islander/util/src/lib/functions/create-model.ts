@@ -47,7 +47,7 @@ export function createAdversariesModel(
 }
 
 function createModel<TName extends string>(
-  options: ExpansionOption<TName>[],
+  options: readonly ExpansionOption<TName>[],
   expansions: ExpansionName[]
 ): TName[] {
   return getOptionsByExpansion(options, expansions).map(
