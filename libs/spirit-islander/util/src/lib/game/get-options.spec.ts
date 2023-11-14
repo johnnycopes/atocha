@@ -1,6 +1,6 @@
 import { getOptionsByExpansion, getOptionsByName } from './get-options';
-import type { BalancedBoardName, Board } from '../app/game/board';
-import type { Spirit, SpiritName } from '../app/game/spirits';
+import type { BalancedBoardName, Board } from './boards';
+import type { Spirit, SpiritName } from './spirits';
 
 describe('getOptions', () => {
   let mockSpirits: Spirit[];

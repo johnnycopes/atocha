@@ -4,7 +4,7 @@ import { MAPS, MapName } from '../game/maps';
 import { SCENARIOS, ScenarioName } from '../game/scenarios';
 import { SPIRITS, SpiritName } from '../game/spirits';
 import type { ExpansionName, ExpansionOption } from '../game/expansions';
-import { getOptionsByExpansion } from './get-options';
+import { getOptionsByExpansion } from '../game/get-options';
 
 export function createSpiritsModel(
   expansions: ExpansionName[] = []

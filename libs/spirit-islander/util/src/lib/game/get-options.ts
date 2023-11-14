@@ -1,5 +1,5 @@
-import type { ExpansionName, ExpansionOption } from '../game/expansions';
-import type { Option } from '../game/option';
+import type { ExpansionName, ExpansionOption } from './expansions';
+import type { Option } from './option';
 
 /**
  * Get options that have specified names
