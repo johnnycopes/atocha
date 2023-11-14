@@ -1,5 +1,5 @@
 import { selectBoards } from './select-boards';
-import { BOARDS } from '../data/boards';
+import { BOARDS } from '../game/boards';
 
 describe('selectBoards', () => {
   describe('balanced board selection', () => {

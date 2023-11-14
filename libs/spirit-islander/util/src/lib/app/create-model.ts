@@ -1,15 +1,10 @@
-import { ADVERSARIES } from '../data/adversaries';
-import { BOARDS } from '../data/boards';
-import { MAPS } from '../data/maps';
-import { SCENARIOS } from '../data/scenarios';
-import { SPIRITS } from '../data/spirits';
-import type { AdversaryLevelId } from '../types/game/adversaries';
-import type { BalancedBoardName } from '../types/game/board';
-import type { ExpansionName, ExpansionOption } from '../types/game/expansions';
-import type { MapName } from '../types/game/maps';
-import type { ScenarioName } from '../types/game/scenarios';
-import type { SpiritName } from '../types/game/spirits';
-import { getOptionsByExpansion } from './get-options';
+import { ADVERSARIES, AdversaryLevelId } from '../game/adversaries';
+import { BOARDS, BalancedBoardName } from '../game/boards';
+import { MAPS, MapName } from '../game/maps';
+import { SCENARIOS, ScenarioName } from '../game/scenarios';
+import { SPIRITS, SpiritName } from '../game/spirits';
+import type { ExpansionName, ExpansionOption } from '../game/expansions';
+import { getOptionsByExpansion } from '../game/get-options';
 
 export function createSpiritsModel(
   expansions: ExpansionName[] = []
@@ -47,7 +42,7 @@ export function createAdversariesModel(
 }
 
 function createModel<TName extends string>(
-  options: ExpansionOption<TName>[],
+  options: readonly ExpansionOption<TName>[],
   expansions: ExpansionName[]
 ): TName[] {
   return getOptionsByExpansion(options, expansions).map(

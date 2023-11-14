@@ -1,6 +1,6 @@
-import type { Map } from './game/maps';
-import type { AdversaryLevel } from './game/adversaries';
-import type { Scenario } from './game/scenarios';
+import type { Map } from '../game/maps';
+import type { AdversaryLevel } from '../game/adversaries';
+import type { Scenario } from '../game/scenarios';
 
 /**
  * A valid combination of game setup options that

@@ -1,11 +1,10 @@
-import { ADVERSARIES } from '../data/adversaries';
-import { BOARDS } from '../data/boards';
-import { EXPANSIONS } from '../types/game/expansions';
-import { MAPS } from '../data/maps';
-import { SCENARIOS } from '../data/scenarios';
-import { SPIRITS } from '../data/spirits';
-import type { Config } from '../types/config.interface';
-import type { AdversaryLevelId } from '../types/game/adversaries';
+import { ADVERSARIES, AdversaryLevelId } from '../game/adversaries';
+import { BOARDS } from '../game/boards';
+import { EXPANSIONS } from '../game/expansions';
+import { MAPS } from '../game/maps';
+import { SCENARIOS } from '../game/scenarios';
+import { SPIRITS } from '../game/spirits';
+import type { Config } from './config.interface';
 import { createGameSetup } from './create-game-setup';
 
 describe('createGameSetup', () => {

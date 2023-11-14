@@ -1,16 +1,14 @@
-import type { DifficultyOption } from '../types/game/difficulty';
-import type { Config } from '../types/config.interface';
-import type {
+import type { DifficultyOption } from '../game/difficulty';
+import { MAPS, Map, MapName } from '../game/maps';
+import { SCENARIOS, Scenario, ScenarioName } from '../game/scenarios';
+import {
+  ADVERSARIES,
   AdversaryLevel,
   AdversaryLevelName,
-} from '../types/game/adversaries';
-import type { Map, MapName } from '../types/game/maps';
-import type { Scenario, ScenarioName } from '../types/game/scenarios';
-import { ADVERSARIES } from '../data/adversaries';
-import { MAPS } from '../data/maps';
-import { SCENARIOS } from '../data/scenarios';
-import { ComboAnalyzer } from './internal/combo-analyzer';
-import { getDifficulty } from './get-difficulty';
+} from '../game/adversaries';
+import { getDifficulty } from '../game/get-difficulty';
+import { ComboAnalyzer } from './combo-analyzer';
+import type { Config } from './config.interface';
 
 const comboAnalyzer = new ComboAnalyzer<
   DifficultyOption<MapName | AdversaryLevelName | ScenarioName>

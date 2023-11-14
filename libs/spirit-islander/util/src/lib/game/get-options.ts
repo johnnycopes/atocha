@@ -1,5 +1,5 @@
-import type { ExpansionName, ExpansionOption } from '../types/game/expansions';
-import type { Option } from '../types/game/option';
+import type { ExpansionName, ExpansionOption } from './expansions';
+import type { Option } from './option';
 
 /**
  * Get options that have specified names
@@ -13,7 +13,7 @@ import type { Option } from '../types/game/option';
 export function getOptionsByName<
   TName extends string,
   TOption extends Option<TName>
->(options: TOption[], names: TName[]): TOption[] {
+>(options: readonly TOption[], names: TName[]): TOption[] {
   const filteredOptions: TOption[] = [];
 
   for (const name of names) {
@@ -38,7 +38,10 @@ export function getOptionsByName<
 export function getOptionsByExpansion<
   TName extends string,
   TOption extends ExpansionOption<TName>
->(options: TOption[], expansions: ExpansionName[]): TOption[] {
+>(
+  options: readonly TOption[],
+  expansions: ExpansionName[]
+): readonly TOption[] {
   return options.filter((item) => {
     if (item.expansion) {
       return expansions.includes(item.expansion);

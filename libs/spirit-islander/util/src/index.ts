@@ -1,34 +1,25 @@
-// Data
-export * from './lib/data/adversaries';
-export * from './lib/data/boards';
-export * from './lib/data/maps';
-export * from './lib/data/scenarios';
-export * from './lib/data/spirits';
+// Game data and types
+export * from './lib/game/adversaries';
+export * from './lib/game/boards';
+export * from './lib/game/difficulty';
+export * from './lib/game/expansions';
+export * from './lib/game/get-adversary-by-id';
+export * from './lib/game/get-difficulty';
+export * from './lib/game/get-options';
+export * from './lib/game/maps';
+export * from './lib/game/option';
+export * from './lib/game/players';
+export * from './lib/game/scenarios';
+export * from './lib/game/spirits';
 
-// App types
-export * from './lib/types/combo.interface';
-export * from './lib/types/config.interface';
-export * from './lib/types/game-setup.interface';
-export * from './lib/types/route.enum';
-
-// Game types
-export * from './lib/types/game/adversaries';
-export * from './lib/types/game/board';
-export * from './lib/types/game/difficulty';
-export * from './lib/types/game/expansions';
-export * from './lib/types/game/maps';
-export * from './lib/types/game/option';
-export * from './lib/types/game/players';
-export * from './lib/types/game/scenarios';
-export * from './lib/types/game/spirits';
-
-// Functions
-export * from './lib/functions/app-migration';
-export * from './lib/functions/create-game-setup';
-export * from './lib/functions/create-model';
-export * from './lib/functions/get-adversary-by-id';
-export * from './lib/functions/get-difficulty';
-export * from './lib/functions/get-options';
-export * from './lib/functions/get-valid-combos';
-export * from './lib/functions/select-boards';
-export * from './lib/functions/update-model';
+// App data and types
+export * from './lib/app/app-migration';
+export * from './lib/app/combo.interface';
+export * from './lib/app/config.interface';
+export * from './lib/app/create-game-setup';
+export * from './lib/app/create-model';
+export * from './lib/app/game-setup.interface';
+export * from './lib/app/get-valid-combos';
+export * from './lib/app/route.enum';
+export * from './lib/app/select-boards';
+export * from './lib/app/update-model';

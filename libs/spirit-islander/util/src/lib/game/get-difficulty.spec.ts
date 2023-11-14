@@ -1,4 +1,4 @@
-import type { DifficultyOption } from '../types/game/difficulty';
+import type { DifficultyOption } from './difficulty';
 import { getDifficulty } from './get-difficulty';
 
 describe('getDifficulty', () => {

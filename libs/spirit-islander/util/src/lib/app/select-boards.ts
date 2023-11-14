@@ -1,9 +1,8 @@
-import { BOARDS } from '../data/boards';
-import type { BalancedBoardName, Board } from '../types/game/board';
-import type { MapName } from '../types/game/maps';
-import type { Players } from '../types/game/players';
-import { getOptionsByName } from './get-options';
-import { selectRandom } from './internal/select-random';
+import { BOARDS, Board, BalancedBoardName } from '../game/boards';
+import type { MapName } from '../game/maps';
+import type { Players } from '../game/players';
+import { getOptionsByName } from '../game/get-options';
+import { selectRandom } from './select-random';
 
 export function selectBoards(
   mapName: MapName,
