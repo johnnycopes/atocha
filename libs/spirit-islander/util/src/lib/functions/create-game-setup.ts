@@ -5,7 +5,7 @@ import type { Difficulty } from '../game/difficulty';
 import { getValidCombos } from './get-valid-combos';
 import { getOptionsByName } from '../game/get-options';
 import { getDifficulty } from '../game/get-difficulty';
-import { selectBoards } from './select-boards';
+import { selectBoards } from '../app/select-boards';
 import { selectRandom } from '../app/select-random';
 
 export function createGameSetup(config: Config): GameSetup {
