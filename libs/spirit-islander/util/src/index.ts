@@ -10,13 +10,13 @@ export * from './lib/game/scenarios';
 export * from './lib/game/spirits';
 
 // App types
+export * from './lib/app/app-migration';
 export * from './lib/app/combo.interface';
 export * from './lib/app/config.interface';
 export * from './lib/app/game-setup.interface';
 export * from './lib/app/route.enum';
 
 // Functions
-export * from './lib/functions/app-migration';
 export * from './lib/functions/create-game-setup';
 export * from './lib/functions/create-model';
 export * from './lib/game/get-adversary-by-id';
