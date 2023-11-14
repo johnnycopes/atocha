@@ -12,7 +12,6 @@ export * from './lib/types/game-setup.interface';
 export * from './lib/types/route.enum';
 
 // Game types
-export * from './lib/types/game/adversaries';
 export * from './lib/types/game/difficulty';
 export * from './lib/types/game/expansions';
 export * from './lib/types/game/option';
