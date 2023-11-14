@@ -1,4 +1,4 @@
-import { createSpiritsModel } from './create-model';
+import { createSpiritsModel } from '../app/create-model';
 import { updateModel } from './update-model';
 
 describe('updateModel', () => {

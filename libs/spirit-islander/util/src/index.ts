@@ -18,7 +18,7 @@ export * from './lib/app/route.enum';
 
 // Functions
 export * from './lib/functions/create-game-setup';
-export * from './lib/functions/create-model';
+export * from './lib/app/create-model';
 export * from './lib/game/get-adversary-by-id';
 export * from './lib/game/get-difficulty';
 export * from './lib/game/get-options';
