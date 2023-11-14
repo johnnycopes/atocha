@@ -24,4 +24,4 @@ export * from './lib/game/get-difficulty';
 export * from './lib/game/get-options';
 export * from './lib/functions/get-valid-combos';
 export * from './lib/app/select-boards';
-export * from './lib/functions/update-model';
+export * from './lib/app/update-model';
