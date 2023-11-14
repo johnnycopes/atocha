@@ -4,7 +4,7 @@ import type { GameSetup } from '../app/game-setup.interface';
 import type { Difficulty } from '../game/difficulty';
 import { getValidCombos } from './get-valid-combos';
 import { getOptionsByName } from './get-options';
-import { getDifficulty } from './get-difficulty';
+import { getDifficulty } from '../game/get-difficulty';
 import { selectBoards } from './select-boards';
 import { selectRandom } from './internal/select-random';
 

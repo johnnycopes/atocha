@@ -20,7 +20,7 @@ export * from './lib/functions/app-migration';
 export * from './lib/functions/create-game-setup';
 export * from './lib/functions/create-model';
 export * from './lib/functions/get-adversary-by-id';
-export * from './lib/functions/get-difficulty';
+export * from './lib/game/get-difficulty';
 export * from './lib/functions/get-options';
 export * from './lib/functions/get-valid-combos';
 export * from './lib/functions/select-boards';

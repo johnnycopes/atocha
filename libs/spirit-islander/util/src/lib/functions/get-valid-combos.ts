@@ -8,7 +8,7 @@ import {
   AdversaryLevelName,
 } from '../game/adversaries';
 import { ComboAnalyzer } from './internal/combo-analyzer';
-import { getDifficulty } from './get-difficulty';
+import { getDifficulty } from '../game/get-difficulty';
 
 const comboAnalyzer = new ComboAnalyzer<
   DifficultyOption<MapName | AdversaryLevelName | ScenarioName>
