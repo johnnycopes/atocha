@@ -2,7 +2,7 @@ import type { Players } from './game/players';
 import type { Difficulty } from './game/difficulty';
 import type { Spirit } from '../data/spirits';
 import type { ExpansionName } from './game/expansions';
-import type { AdversaryLevel } from './game/adversaries';
+import { AdversaryLevel } from '../data/adversaries';
 import type { Scenario } from '../data/scenarios';
 import type { Map } from '../data/maps';
 import type { Board } from '../data/boards';

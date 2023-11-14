@@ -1,5 +1,5 @@
 import type { Map } from '../data/maps';
-import type { AdversaryLevel } from './game/adversaries';
+import type { AdversaryLevel } from '../data/adversaries';
 import type { Scenario } from '../data/scenarios';
 
 /**

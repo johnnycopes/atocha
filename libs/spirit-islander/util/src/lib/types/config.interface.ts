@@ -4,7 +4,7 @@ import type { MapName } from '../data/maps';
 import type { BalancedBoardName } from '../data/boards';
 import type { ExpansionName } from './game/expansions';
 import type { SpiritName } from '../data/spirits';
-import type { AdversaryLevelId } from './game/adversaries';
+import type { AdversaryLevelId } from '../data/adversaries';
 import type { ScenarioName } from '../data/scenarios';
 
 /**
