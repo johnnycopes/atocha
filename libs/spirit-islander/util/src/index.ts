@@ -15,7 +15,6 @@ export * from './lib/types/route.enum';
 export * from './lib/types/game/adversaries';
 export * from './lib/types/game/difficulty';
 export * from './lib/types/game/expansions';
-export * from './lib/types/game/maps';
 export * from './lib/types/game/option';
 export * from './lib/types/game/players';
 

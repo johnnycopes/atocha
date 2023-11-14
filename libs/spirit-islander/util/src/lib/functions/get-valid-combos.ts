@@ -4,11 +4,9 @@ import type {
   AdversaryLevel,
   AdversaryLevelName,
 } from '../types/game/adversaries';
-import type { Map, MapName } from '../types/game/maps';
-import type { Scenario, ScenarioName } from '../data/scenarios';
+import { MAPS, Map, MapName } from '../data/maps';
+import { SCENARIOS, Scenario, ScenarioName } from '../data/scenarios';
 import { ADVERSARIES } from '../data/adversaries';
-import { MAPS } from '../data/maps';
-import { SCENARIOS } from '../data/scenarios';
 import { ComboAnalyzer } from './internal/combo-analyzer';
 import { getDifficulty } from './get-difficulty';
 

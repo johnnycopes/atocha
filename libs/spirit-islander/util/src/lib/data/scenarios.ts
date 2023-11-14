@@ -87,4 +87,4 @@ export const SCENARIOS: readonly Scenario[] = [
     name: 'Dahan Insurrection',
     difficulty: 4,
   },
-] as const;
+];
