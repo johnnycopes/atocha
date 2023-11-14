@@ -110,7 +110,7 @@ function createRoot<T, U extends string>({
   items: readonly T[];
   getId: (item: T) => U;
   getDisplay?: (item: T) => Partial<T>;
-  getChildren?: (item: T) => T[];
+  getChildren?: (item: T) => readonly T[];
 }): Node<T> {
   return {
     id: root,
@@ -124,7 +124,7 @@ function createChild<T, U extends string>(
   item: T,
   getId: (item: T) => U,
   getDisplay?: (item: T) => Partial<T>,
-  getChildren?: (item: T) => T[]
+  getChildren?: (item: T) => readonly T[]
 ): Node<T> {
   const configTree: Node<T> = { id: getId(item) };
 
