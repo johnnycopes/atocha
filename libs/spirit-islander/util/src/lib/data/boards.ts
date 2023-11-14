@@ -1,4 +1,18 @@
-import type { Board } from '../types/game/board';
+import type { ExpansionOption } from '../types/game/expansions';
+
+export interface Board extends ExpansionOption<BalancedBoardName> {
+  thematicName: ThematicBoardName;
+}
+
+export type BalancedBoardName = 'A' | 'B' | 'C' | 'D' | 'E' | 'F';
+
+export type ThematicBoardName =
+  | 'Northeast'
+  | 'East'
+  | 'Northwest'
+  | 'West'
+  | 'Southeast'
+  | 'Southwest';
 
 export const BOARDS: readonly Board[] = [
   {
@@ -27,4 +41,4 @@ export const BOARDS: readonly Board[] = [
     thematicName: 'Southwest',
     expansion: 'Jagged Earth',
   },
-] as const;
+];

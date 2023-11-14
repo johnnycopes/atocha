@@ -1,5 +1,5 @@
 import { BOARDS } from '../data/boards';
-import type { BalancedBoardName, Board } from '../types/game/board';
+import type { BalancedBoardName, Board } from '../data/boards';
 import type { MapName } from '../types/game/maps';
 import type { Players } from '../types/game/players';
 import { getOptionsByName } from './get-options';

@@ -5,7 +5,7 @@ import type { ExpansionName } from './game/expansions';
 import type { AdversaryLevel } from './game/adversaries';
 import type { Scenario } from '../data/scenarios';
 import type { Map } from './game/maps';
-import type { Board } from './game/board';
+import type { Board } from '../data/boards';
 
 /**
  * Collection of options chosen before play that

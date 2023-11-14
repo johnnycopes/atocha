@@ -13,7 +13,6 @@ export * from './lib/types/route.enum';
 
 // Game types
 export * from './lib/types/game/adversaries';
-export * from './lib/types/game/board';
 export * from './lib/types/game/difficulty';
 export * from './lib/types/game/expansions';
 export * from './lib/types/game/maps';
