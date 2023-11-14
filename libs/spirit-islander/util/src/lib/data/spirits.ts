@@ -1,4 +1,4 @@
-import { ExpansionOption } from '../types/game/expansions';
+import { ExpansionOption } from './expansions';
 
 export type Spirit = ExpansionOption<SpiritName>;
 

@@ -1,8 +1,8 @@
-import type { Players } from './game/players';
-import type { Difficulty } from './game/difficulty';
+import type { Players } from '../data/players';
+import type { Difficulty } from '../data/difficulty';
 import type { MapName } from '../data/maps';
 import type { BalancedBoardName } from '../data/boards';
-import type { ExpansionName } from './game/expansions';
+import type { ExpansionName } from '../data/expansions';
 import type { SpiritName } from '../data/spirits';
 import type { AdversaryLevelId } from '../data/adversaries';
 import type { ScenarioName } from '../data/scenarios';

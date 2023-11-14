@@ -1,5 +1,5 @@
-import type { DifficultyOption } from '../types/game/difficulty';
-import type { ExpansionOption } from '../types/game/expansions';
+import type { DifficultyOption } from './difficulty';
+import type { ExpansionOption } from './expansions';
 
 export interface Adversary extends ExpansionOption<AdversaryName> {
   levels: readonly AdversaryLevel[];

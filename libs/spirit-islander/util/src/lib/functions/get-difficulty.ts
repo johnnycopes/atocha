@@ -1,5 +1,5 @@
-import type { Difficulty } from '../types/game/difficulty';
-import type { ExpansionName } from '../types/game/expansions';
+import type { Difficulty } from '../data/difficulty';
+import type { ExpansionName } from '../data/expansions';
 
 export function getDifficulty(
   difficulty: Difficulty | ((expansions: ExpansionName[]) => Difficulty),

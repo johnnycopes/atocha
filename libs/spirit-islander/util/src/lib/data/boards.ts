@@ -1,4 +1,4 @@
-import type { ExpansionOption } from '../types/game/expansions';
+import type { ExpansionOption } from './expansions';
 
 export interface Board extends ExpansionOption<BalancedBoardName> {
   thematicName: ThematicBoardName;

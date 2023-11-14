@@ -1,7 +1,7 @@
 import { SPIRITS } from '../data/spirits';
 import type { Config } from '../types/config.interface';
 import type { GameSetup } from '../types/game-setup.interface';
-import type { Difficulty } from '../types/game/difficulty';
+import type { Difficulty } from '../data/difficulty';
 import { getValidCombos } from './get-valid-combos';
 import { getOptionsByName } from './get-options';
 import { getDifficulty } from './get-difficulty';

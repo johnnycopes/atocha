@@ -3,7 +3,7 @@ import { BOARDS, BalancedBoardName } from '../data/boards';
 import { MAPS, MapName } from '../data/maps';
 import { SCENARIOS, ScenarioName } from '../data/scenarios';
 import { SPIRITS, SpiritName } from '../data/spirits';
-import type { ExpansionName, ExpansionOption } from '../types/game/expansions';
+import type { ExpansionName, ExpansionOption } from '../data/expansions';
 import { getOptionsByExpansion } from './get-options';
 
 export function createSpiritsModel(

@@ -1,4 +1,4 @@
-import type { ExpansionName } from '../types/game/expansions';
+import type { ExpansionName } from '../data/expansions';
 
 export function updateModel<TName>(
   createModel: (expansions?: ExpansionName[]) => TName[],

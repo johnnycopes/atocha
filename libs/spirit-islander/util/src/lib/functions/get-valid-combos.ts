@@ -1,4 +1,4 @@
-import type { DifficultyOption } from '../types/game/difficulty';
+import type { DifficultyOption } from '../data/difficulty';
 import type { Config } from '../types/config.interface';
 import { MAPS, Map, MapName } from '../data/maps';
 import { SCENARIOS, Scenario, ScenarioName } from '../data/scenarios';
