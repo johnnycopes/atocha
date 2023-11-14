@@ -20,7 +20,6 @@ export * from './lib/types/game/maps';
 export * from './lib/types/game/option';
 export * from './lib/types/game/players';
 export * from './lib/types/game/scenarios';
-export * from './lib/types/game/spirits';
 
 // Functions
 export * from './lib/functions/app-migration';

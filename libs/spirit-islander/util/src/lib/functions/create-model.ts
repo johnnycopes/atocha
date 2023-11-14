@@ -2,13 +2,12 @@ import { ADVERSARIES } from '../data/adversaries';
 import { BOARDS } from '../data/boards';
 import { MAPS } from '../data/maps';
 import { SCENARIOS } from '../data/scenarios';
-import { SPIRITS } from '../data/spirits';
+import { SPIRITS, SpiritName } from '../data/spirits';
 import type { AdversaryLevelId } from '../types/game/adversaries';
 import type { BalancedBoardName } from '../types/game/board';
 import type { ExpansionName, ExpansionOption } from '../types/game/expansions';
 import type { MapName } from '../types/game/maps';
 import type { ScenarioName } from '../types/game/scenarios';
-import type { SpiritName } from '../types/game/spirits';
 import { getOptionsByExpansion } from './get-options';
 
 export function createSpiritsModel(

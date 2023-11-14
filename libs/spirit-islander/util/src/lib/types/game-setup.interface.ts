@@ -1,6 +1,6 @@
 import type { Players } from './game/players';
 import type { Difficulty } from './game/difficulty';
-import type { Spirit } from './game/spirits';
+import type { Spirit } from '../data/spirits';
 import type { ExpansionName } from './game/expansions';
 import type { AdversaryLevel } from './game/adversaries';
 import type { Scenario } from './game/scenarios';
