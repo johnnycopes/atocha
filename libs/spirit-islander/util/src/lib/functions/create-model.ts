@@ -1,9 +1,9 @@
-import { ADVERSARIES, AdversaryLevelId } from '../data/adversaries';
-import { BOARDS, BalancedBoardName } from '../data/boards';
-import { MAPS, MapName } from '../data/maps';
-import { SCENARIOS, ScenarioName } from '../data/scenarios';
-import { SPIRITS, SpiritName } from '../data/spirits';
-import type { ExpansionName, ExpansionOption } from '../data/expansions';
+import { ADVERSARIES, AdversaryLevelId } from '../game/adversaries';
+import { BOARDS, BalancedBoardName } from '../game/boards';
+import { MAPS, MapName } from '../game/maps';
+import { SCENARIOS, ScenarioName } from '../game/scenarios';
+import { SPIRITS, SpiritName } from '../game/spirits';
+import type { ExpansionName, ExpansionOption } from '../game/expansions';
 import { getOptionsByExpansion } from './get-options';
 
 export function createSpiritsModel(

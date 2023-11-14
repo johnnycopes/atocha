@@ -1,12 +1,12 @@
-import type { DifficultyOption } from '../data/difficulty';
+import type { DifficultyOption } from '../game/difficulty';
 import type { Config } from '../types/config.interface';
-import { MAPS, Map, MapName } from '../data/maps';
-import { SCENARIOS, Scenario, ScenarioName } from '../data/scenarios';
+import { MAPS, Map, MapName } from '../game/maps';
+import { SCENARIOS, Scenario, ScenarioName } from '../game/scenarios';
 import {
   ADVERSARIES,
   AdversaryLevel,
   AdversaryLevelName,
-} from '../data/adversaries';
+} from '../game/adversaries';
 import { ComboAnalyzer } from './internal/combo-analyzer';
 import { getDifficulty } from './get-difficulty';
 

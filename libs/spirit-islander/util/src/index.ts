@@ -1,13 +1,13 @@
-// Data
-export * from './lib/data/adversaries';
-export * from './lib/data/boards';
-export * from './lib/data/difficulty';
-export * from './lib/data/expansions';
-export * from './lib/data/maps';
-export * from './lib/data/option';
-export * from './lib/data/players';
-export * from './lib/data/scenarios';
-export * from './lib/data/spirits';
+// Game data and types
+export * from './lib/game/adversaries';
+export * from './lib/game/boards';
+export * from './lib/game/difficulty';
+export * from './lib/game/expansions';
+export * from './lib/game/maps';
+export * from './lib/game/option';
+export * from './lib/game/players';
+export * from './lib/game/scenarios';
+export * from './lib/game/spirits';
 
 // App types
 export * from './lib/types/combo.interface';

@@ -1,11 +1,11 @@
-import type { Players } from '../data/players';
-import type { Difficulty } from '../data/difficulty';
-import type { Spirit } from '../data/spirits';
-import type { ExpansionName } from '../data/expansions';
-import { AdversaryLevel } from '../data/adversaries';
-import type { Scenario } from '../data/scenarios';
-import type { Map } from '../data/maps';
-import type { Board } from '../data/boards';
+import type { Players } from '../game/players';
+import type { Difficulty } from '../game/difficulty';
+import type { Spirit } from '../game/spirits';
+import type { ExpansionName } from '../game/expansions';
+import { AdversaryLevel } from '../game/adversaries';
+import type { Scenario } from '../game/scenarios';
+import type { Map } from '../game/maps';
+import type { Board } from '../game/boards';
 
 /**
  * Collection of options chosen before play that

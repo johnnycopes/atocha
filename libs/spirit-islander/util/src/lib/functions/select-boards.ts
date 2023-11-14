@@ -1,6 +1,6 @@
-import { BOARDS, Board, BalancedBoardName } from '../data/boards';
-import type { MapName } from '../data/maps';
-import type { Players } from '../data/players';
+import { BOARDS, Board, BalancedBoardName } from '../game/boards';
+import type { MapName } from '../game/maps';
+import type { Players } from '../game/players';
 import { getOptionsByName } from './get-options';
 import { selectRandom } from './internal/select-random';
 

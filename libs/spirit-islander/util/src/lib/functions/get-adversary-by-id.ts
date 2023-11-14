@@ -2,7 +2,7 @@ import {
   ADVERSARIES,
   AdversaryLevelId,
   AdversaryName,
-} from '../data/adversaries';
+} from '../game/adversaries';
 
 const adversaryLevelIdDict = ADVERSARIES.reduce(
   (accum, adversary) => {
