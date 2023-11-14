@@ -7,7 +7,7 @@ import {
   AdversaryLevel,
   AdversaryLevelName,
 } from '../game/adversaries';
-import { ComboAnalyzer } from './internal/combo-analyzer';
+import { ComboAnalyzer } from '../app/combo-analyzer';
 import { getDifficulty } from '../game/get-difficulty';
 
 const comboAnalyzer = new ComboAnalyzer<
