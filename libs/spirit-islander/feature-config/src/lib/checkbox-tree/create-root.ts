@@ -99,7 +99,7 @@ function isAdversaryLevel(
   return 'id' in entity;
 }
 
-function createRoot<T, U extends string>({
+export function createRoot<T, U extends string>({
   root,
   items,
   getId,
