@@ -2,7 +2,7 @@ import { SPIRITS } from '../game/spirits';
 import type { Config } from '../app/config.interface';
 import type { GameSetup } from '../app/game-setup.interface';
 import type { Difficulty } from '../game/difficulty';
-import { getValidCombos } from './get-valid-combos';
+import { getValidCombos } from '../app/get-valid-combos';
 import { getOptionsByName } from '../game/get-options';
 import { getDifficulty } from '../game/get-difficulty';
 import { selectBoards } from '../app/select-boards';

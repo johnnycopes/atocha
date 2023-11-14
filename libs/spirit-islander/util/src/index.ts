@@ -22,6 +22,6 @@ export * from './lib/app/create-model';
 export * from './lib/game/get-adversary-by-id';
 export * from './lib/game/get-difficulty';
 export * from './lib/game/get-options';
-export * from './lib/functions/get-valid-combos';
+export * from './lib/app/get-valid-combos';
 export * from './lib/app/select-boards';
 export * from './lib/app/update-model';

@@ -1,12 +1,12 @@
 import { getValidCombos } from './get-valid-combos';
-import type { Config } from '../app/config.interface';
-import type { AdversaryLevelId } from '../app/game/adversaries';
-import { ADVERSARIES } from '../data/adversaries';
-import { BOARDS } from '../data/boards';
-import { EXPANSIONS } from '../app/game/expansions';
-import { MAPS } from '../data/maps';
-import { SCENARIOS } from '../data/scenarios';
-import { SPIRITS } from '../data/spirits';
+import type { Config } from './config.interface';
+import type { AdversaryLevelId } from '../game/adversaries';
+import { ADVERSARIES } from '../game/adversaries';
+import { BOARDS } from '../game/boards';
+import { EXPANSIONS } from '../game/expansions';
+import { MAPS } from '../game/maps';
+import { SCENARIOS } from '../game/scenarios';
+import { SPIRITS } from '../game/spirits';
 
 describe('getValidCombos', () => {
   it('returns possible combinations for lowest difficulty', () => {
