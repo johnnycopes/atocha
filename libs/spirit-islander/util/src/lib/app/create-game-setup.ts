@@ -1,12 +1,12 @@
 import { SPIRITS } from '../game/spirits';
-import type { Config } from '../app/config.interface';
-import type { GameSetup } from '../app/game-setup.interface';
+import type { Config } from './config.interface';
+import type { GameSetup } from './game-setup.interface';
 import type { Difficulty } from '../game/difficulty';
-import { getValidCombos } from '../app/get-valid-combos';
+import { getValidCombos } from './get-valid-combos';
 import { getOptionsByName } from '../game/get-options';
 import { getDifficulty } from '../game/get-difficulty';
-import { selectBoards } from '../app/select-boards';
-import { selectRandom } from '../app/select-random';
+import { selectBoards } from './select-boards';
+import { selectRandom } from './select-random';
 
 export function createGameSetup(config: Config): GameSetup {
   const { players, expansions, spiritNames, boardNames } = config;
