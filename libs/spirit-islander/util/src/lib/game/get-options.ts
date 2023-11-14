@@ -38,7 +38,10 @@ export function getOptionsByName<
 export function getOptionsByExpansion<
   TName extends string,
   TOption extends ExpansionOption<TName>
->(options: readonly TOption[], expansions: ExpansionName[]): TOption[] {
+>(
+  options: readonly TOption[],
+  expansions: ExpansionName[]
+): readonly TOption[] {
   return options.filter((item) => {
     if (item.expansion) {
       return expansions.includes(item.expansion);
