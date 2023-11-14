@@ -5,7 +5,7 @@ import type { BalancedBoardName } from './game/board';
 import type { ExpansionName } from './game/expansions';
 import type { SpiritName } from '../data/spirits';
 import type { AdversaryLevelId } from './game/adversaries';
-import type { ScenarioName } from './game/scenarios';
+import type { ScenarioName } from '../data/scenarios';
 
 /**
  * Collection of selected options that a user either

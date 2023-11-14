@@ -5,7 +5,7 @@ import type {
   AdversaryLevelName,
 } from '../types/game/adversaries';
 import type { Map, MapName } from '../types/game/maps';
-import type { Scenario, ScenarioName } from '../types/game/scenarios';
+import type { Scenario, ScenarioName } from '../data/scenarios';
 import { ADVERSARIES } from '../data/adversaries';
 import { MAPS } from '../data/maps';
 import { SCENARIOS } from '../data/scenarios';

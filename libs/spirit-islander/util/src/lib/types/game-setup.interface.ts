@@ -3,7 +3,7 @@ import type { Difficulty } from './game/difficulty';
 import type { Spirit } from '../data/spirits';
 import type { ExpansionName } from './game/expansions';
 import type { AdversaryLevel } from './game/adversaries';
-import type { Scenario } from './game/scenarios';
+import type { Scenario } from '../data/scenarios';
 import type { Map } from './game/maps';
 import type { Board } from './game/board';
 

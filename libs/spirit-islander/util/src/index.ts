@@ -19,7 +19,6 @@ export * from './lib/types/game/expansions';
 export * from './lib/types/game/maps';
 export * from './lib/types/game/option';
 export * from './lib/types/game/players';
-export * from './lib/types/game/scenarios';
 
 // Functions
 export * from './lib/functions/app-migration';

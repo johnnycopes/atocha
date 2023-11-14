@@ -1,4 +1,25 @@
-import type { Scenario } from '../types/game/scenarios';
+import type { DifficultyOption } from '../types/game/difficulty';
+import type { ExpansionOption } from '../types/game/expansions';
+
+export interface Scenario
+  extends DifficultyOption<ScenarioName>,
+    ExpansionOption<ScenarioName> {}
+
+export type ScenarioName =
+  | 'No Scenario'
+  | 'A Diversity of Spirits'
+  | 'Blitz'
+  | 'Dahan Insurrection'
+  | 'Despicable Theft'
+  | 'Elemental Invocation'
+  | "Guard the Isle's Heart"
+  | 'Powers Long Forgotten'
+  | 'Rituals of Destroying Flame'
+  | 'Rituals of Terror'
+  | 'Second Wave'
+  | 'The Great River'
+  | 'Varied Terrains'
+  | 'Ward the Shores';
 
 export const SCENARIOS: readonly Scenario[] = [
   {
