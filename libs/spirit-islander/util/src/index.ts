@@ -1,3 +1,5 @@
+export * from './lib/options';
+
 // Game data and types
 export * from './lib/game/adversaries';
 export * from './lib/game/boards';
