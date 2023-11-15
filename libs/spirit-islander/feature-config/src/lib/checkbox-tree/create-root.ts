@@ -28,7 +28,7 @@ export function createExpansionsRoot() {
   });
 }
 
-export function createSpiritsRoot(expansions: ExpansionName[]) {
+export function createSpiritsRoot(expansions: readonly ExpansionName[]) {
   return createRoot({
     root: 'Spirits',
     items: getOptionsByExpansion(SPIRITS, expansions),
@@ -37,7 +37,7 @@ export function createSpiritsRoot(expansions: ExpansionName[]) {
   });
 }
 
-export function createMapsRoot(expansions: ExpansionName[]) {
+export function createMapsRoot(expansions: readonly ExpansionName[]) {
   return createRoot({
     root: 'Maps',
     items: getOptionsByExpansion(MAPS, expansions),
@@ -48,7 +48,7 @@ export function createMapsRoot(expansions: ExpansionName[]) {
   });
 }
 
-export function createBoardsRoot(expansions: ExpansionName[]) {
+export function createBoardsRoot(expansions: readonly ExpansionName[]) {
   return createRoot({
     root: 'Boards',
     items: getOptionsByExpansion(BOARDS, expansions),
@@ -57,7 +57,7 @@ export function createBoardsRoot(expansions: ExpansionName[]) {
   });
 }
 
-export function createScenariosRoot(expansions: ExpansionName[]) {
+export function createScenariosRoot(expansions: readonly ExpansionName[]) {
   return createRoot({
     root: 'Scenarios',
     items: getOptionsByExpansion(SCENARIOS, expansions),
@@ -69,7 +69,7 @@ export function createScenariosRoot(expansions: ExpansionName[]) {
   });
 }
 
-export function createAdversariesRoot(expansions: ExpansionName[]) {
+export function createAdversariesRoot(expansions: readonly ExpansionName[]) {
   return createRoot<
     Adversary | AdversaryLevel,
     AdversaryName | AdversaryLevelId

@@ -12,7 +12,7 @@ import type { AdversaryLevel } from '../game/adversaries';
  * influence how to set up a game of Spirit Island
  */
 export interface GameSetup {
-  expansions: ExpansionName[];
+  expansions: readonly ExpansionName[];
   players: Players;
   difficulty: Difficulty;
   spirits: readonly Spirit[];

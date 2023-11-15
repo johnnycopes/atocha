@@ -83,7 +83,7 @@ export class ConfigForm extends FormGroup<Form<Config>> {
   }
 
   updateModels(
-    expansions: ExpansionName[],
+    expansions: readonly ExpansionName[],
     target: 'Expansions' | ExpansionName
   ): void {
     const {
