@@ -1,6 +1,6 @@
-import { BOARDS } from './game/boards';
-import { SPIRITS } from './game/spirits';
 import { Options } from './options';
+import { BOARDS } from './boards';
+import { SPIRITS } from './spirits';
 
 describe('Options', () => {
   describe('accessing options', () => {

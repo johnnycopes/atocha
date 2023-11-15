@@ -1,4 +1,3 @@
-export * from './lib/options';
 export * from './lib/updater';
 
 // Game data and types
@@ -11,6 +10,7 @@ export * from './lib/game/get-difficulty';
 export * from './lib/game/get-options-by-expansion';
 export * from './lib/game/maps';
 export * from './lib/game/option';
+export * from './lib/game/options';
 export * from './lib/game/players';
 export * from './lib/game/scenarios';
 export * from './lib/game/spirits';
