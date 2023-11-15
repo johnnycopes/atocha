@@ -3,7 +3,7 @@ import type { ExpansionName } from '../game/expansions';
 export function updateModel<TName>(
   createModel: (expansions?: readonly ExpansionName[]) => readonly TName[],
   existingModel: readonly TName[],
-  expansions: ExpansionName[],
+  expansions: readonly ExpansionName[],
   target: 'Expansions' | ExpansionName
 ): readonly TName[] {
   if (target === 'Expansions') {
@@ -19,7 +19,7 @@ export function updateModel<TName>(
 function recreateModel<TName>(
   createModel: (expansions?: readonly ExpansionName[]) => readonly TName[],
   existingModel: readonly TName[],
-  expansions: ExpansionName[]
+  expansions: readonly ExpansionName[]
 ): readonly TName[] {
   const expansionItemNames = getExpansionItemNames(createModel, expansions);
   const allowedItemNames = createModel(expansions);
