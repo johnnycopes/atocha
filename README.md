@@ -56,5 +56,5 @@ Generic, well-tested collections of code. Minimally opinionated for maximum reus
 
 ### Sandbox
 
-1. **ui**: Angular components that aren't used in any applications, are under development, or are used for experiments/learning.
-2. **util**: framework-agnostic functionality not used in any application but might be in the future.
+1. **ui**: Angular components that are under construction or are used for experiments/learning.
+2. **util**: framework-agnostic functionality not currently used in any application, but might be useful in the future.
