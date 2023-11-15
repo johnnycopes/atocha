@@ -1,16 +1,16 @@
-import { AdversaryLevelId } from './game/adversaries';
-import { BalancedBoardName } from './game/boards';
-import { ExpansionName } from './game/expansions';
-import { MapName } from './game/maps';
-import { ScenarioName } from './game/scenarios';
-import { SpiritName } from './game/spirits';
+import { AdversaryLevelId } from '../game/adversaries';
+import { BalancedBoardName } from '../game/boards';
+import { ExpansionName } from '../game/expansions';
+import { MapName } from '../game/maps';
+import { ScenarioName } from '../game/scenarios';
+import { SpiritName } from '../game/spirits';
 import {
   createAdversariesModel,
   createBoardsModel,
   createMapsModel,
   createScenariosModel,
   createSpiritsModel,
-} from './app/create-model';
+} from './create-model';
 
 export class Updater {
   private _spiritNames: readonly SpiritName[] = [];
