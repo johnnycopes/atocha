@@ -1,49 +1,49 @@
-import { ADVERSARIES, AdversaryLevelId } from './game/adversaries';
-import { BOARDS } from './game/boards';
+import { ADVERSARIES, Adversary, AdversaryLevelId } from './game/adversaries';
+import { BOARDS, BalancedBoardName, Board } from './game/boards';
 import { ExpansionName } from './game/expansions';
-import { MAPS } from './game/maps';
-import { SCENARIOS } from './game/scenarios';
-import { SPIRITS } from './game/spirits';
+import { MAPS, Map, MapName } from './game/maps';
+import { SCENARIOS, Scenario, ScenarioName } from './game/scenarios';
+import { SPIRITS, Spirit, SpiritName } from './game/spirits';
 import { getOptionsByExpansion } from './game/get-options';
 
 export class Options {
   private _spirits = SPIRITS;
-  get spirits() {
+  get spirits(): readonly Spirit[] {
     return this._spirits;
   }
-  get spiritNames() {
+  get spiritNames(): readonly SpiritName[] {
     return this._spirits.map(({ name }) => name);
   }
 
   private _boards = BOARDS;
-  get boards() {
+  get boards(): readonly Board[] {
     return this._boards;
   }
-  get boardNames() {
+  get boardNames(): readonly BalancedBoardName[] {
     return this._boards.map(({ name }) => name);
   }
 
   private _maps = MAPS;
-  get maps() {
+  get maps(): readonly Map[] {
     return this._maps;
   }
-  get mapNames() {
+  get mapNames(): readonly MapName[] {
     return this._maps.map(({ name }) => name);
   }
 
   private _scenarios = SCENARIOS;
-  get scenarios() {
+  get scenarios(): readonly Scenario[] {
     return this._scenarios;
   }
-  get scenarioNames() {
+  get scenarioNames(): readonly ScenarioName[] {
     return this._scenarios.map(({ name }) => name);
   }
 
   private _adversaries = ADVERSARIES;
-  get adversaries() {
+  get adversaries(): readonly Adversary[] {
     return this._adversaries;
   }
-  get adversaryLevelIds() {
+  get adversaryLevelIds(): readonly AdversaryLevelId[] {
     return this._adversaries.reduce<AdversaryLevelId[]>((model, adversary) => {
       adversary.levels.forEach((level) => model.push(level.id));
       return model;
