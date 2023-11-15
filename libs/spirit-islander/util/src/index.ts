@@ -25,4 +25,3 @@ export * from './lib/app/game-setup.interface';
 export * from './lib/app/get-valid-combos';
 export * from './lib/app/route.enum';
 export * from './lib/app/select-boards';
-export * from './lib/app/update-model';
