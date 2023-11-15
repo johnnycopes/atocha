@@ -1,4 +1,5 @@
 export * from './lib/options';
+export * from './lib/updater';
 
 // Game data and types
 export * from './lib/game/adversaries';
