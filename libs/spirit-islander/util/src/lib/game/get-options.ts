@@ -40,7 +40,7 @@ export function getOptionsByExpansion<
   TOption extends ExpansionOption<TName>
 >(
   options: readonly TOption[],
-  expansions: ExpansionName[]
+  expansions: readonly ExpansionName[]
 ): readonly TOption[] {
   return options.filter((item) => {
     if (item.expansion) {
