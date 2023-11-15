@@ -10,7 +10,7 @@ import {
   createScenariosModel,
   createSpiritsModel,
   ExpansionName,
-  updateModel,
+  Updater,
 } from '@atocha/spirit-islander/util';
 import {
   invalidDifficultyRange,
@@ -93,28 +93,34 @@ export class ConfigForm extends FormGroup<Form<Config>> {
       mapNames,
       adversaryLevelIds,
     } = this.getRawValue();
+    const updater = new Updater();
 
     this.patchValue({
-      spiritNames: updateModel(
+      spiritNames: updater.updateModel(
         createSpiritsModel,
         spiritNames,
         expansions,
         target
       ),
-      boardNames: updateModel(
+      boardNames: updater.updateModel(
         createBoardsModel,
         boardNames,
         expansions,
         target
       ),
-      mapNames: updateModel(createMapsModel, mapNames, expansions, target),
-      scenarioNames: updateModel(
+      mapNames: updater.updateModel(
+        createMapsModel,
+        mapNames,
+        expansions,
+        target
+      ),
+      scenarioNames: updater.updateModel(
         createScenariosModel,
         scenarioNames,
         expansions,
         target
       ),
-      adversaryLevelIds: updateModel(
+      adversaryLevelIds: updater.updateModel(
         createAdversariesModel,
         adversaryLevelIds,
         expansions,
