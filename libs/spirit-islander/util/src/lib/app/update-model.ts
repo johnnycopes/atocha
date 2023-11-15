@@ -1,7 +1,7 @@
 import type { ExpansionName } from '../game/expansions';
 
 export function updateModel<TName>(
-  createModel: (expansions?: ExpansionName[]) => TName[],
+  createModel: (expansions?: ExpansionName[]) => readonly TName[],
   existingModel: TName[],
   expansions: ExpansionName[],
   target: 'Expansions' | ExpansionName
@@ -17,7 +17,7 @@ export function updateModel<TName>(
 }
 
 function recreateModel<TName>(
-  createModel: (expansions?: ExpansionName[]) => TName[],
+  createModel: (expansions?: ExpansionName[]) => readonly TName[],
   existingModel: TName[],
   expansions: ExpansionName[]
 ): TName[] {
@@ -30,7 +30,7 @@ function recreateModel<TName>(
 }
 
 function augmentModel<TName>(
-  createModel: (expansions?: ExpansionName[]) => TName[],
+  createModel: (expansions?: ExpansionName[]) => readonly TName[],
   existingModel: TName[],
   expansionToAdd: ExpansionName
 ): TName[] {
@@ -41,7 +41,7 @@ function augmentModel<TName>(
 }
 
 function purgeModel<TName>(
-  createModel: (expansions?: ExpansionName[]) => TName[],
+  createModel: (expansions?: ExpansionName[]) => readonly TName[],
   existingModel: TName[],
   expansionToRemove: ExpansionName
 ): TName[] {
@@ -52,7 +52,7 @@ function purgeModel<TName>(
 }
 
 function getExpansionItemNames<TName>(
-  createModel: (expansions?: ExpansionName[]) => TName[],
+  createModel: (expansions?: ExpansionName[]) => readonly TName[],
   expansions: ExpansionName[]
 ): TName[] {
   const baseItemNames = createModel();

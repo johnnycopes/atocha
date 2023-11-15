@@ -8,29 +8,31 @@ import { getOptionsByExpansion } from '../game/get-options';
 
 export function createSpiritsModel(
   expansions: ExpansionName[] = []
-): SpiritName[] {
+): readonly SpiritName[] {
   return createModel(SPIRITS, expansions);
 }
 
-export function createMapsModel(expansions: ExpansionName[] = []): MapName[] {
+export function createMapsModel(
+  expansions: ExpansionName[] = []
+): readonly MapName[] {
   return createModel(MAPS, expansions);
 }
 
 export function createBoardsModel(
   expansions: ExpansionName[] = []
-): BalancedBoardName[] {
+): readonly BalancedBoardName[] {
   return createModel(BOARDS, expansions);
 }
 
 export function createScenariosModel(
   expansions: ExpansionName[] = []
-): ScenarioName[] {
+): readonly ScenarioName[] {
   return createModel(SCENARIOS, expansions);
 }
 
 export function createAdversariesModel(
   expansions: ExpansionName[] = []
-): AdversaryLevelId[] {
+): readonly AdversaryLevelId[] {
   return getOptionsByExpansion(ADVERSARIES, expansions).reduce<
     AdversaryLevelId[]
   >((adversaries, adversary) => {
@@ -44,7 +46,7 @@ export function createAdversariesModel(
 function createModel<TName extends string>(
   options: readonly ExpansionOption<TName>[],
   expansions: ExpansionName[]
-): TName[] {
+): readonly TName[] {
   return getOptionsByExpansion(options, expansions).map(
     (option) => option.name
   );
