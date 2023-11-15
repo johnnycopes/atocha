@@ -12,12 +12,12 @@ import type { ScenarioName } from '../game/scenarios';
  * wants or would be willing to have in a `IGameSetup`
  */
 export interface Config {
-  expansions: ExpansionName[];
+  expansions: readonly ExpansionName[];
   players: Players;
-  difficultyRange: Difficulty[];
-  spiritNames: SpiritName[];
-  mapNames: MapName[];
-  boardNames: BalancedBoardName[];
-  scenarioNames: ScenarioName[];
-  adversaryLevelIds: AdversaryLevelId[];
+  difficultyRange: readonly Difficulty[];
+  spiritNames: readonly SpiritName[];
+  mapNames: readonly MapName[];
+  boardNames: readonly BalancedBoardName[];
+  scenarioNames: readonly ScenarioName[];
+  adversaryLevelIds: readonly AdversaryLevelId[];
 }

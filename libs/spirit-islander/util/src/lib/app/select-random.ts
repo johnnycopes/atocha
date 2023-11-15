@@ -1,4 +1,4 @@
-export function selectRandom<T>(options: T[], quantity = 1): T[] {
+export function selectRandom<T>(options: readonly T[], quantity = 1): T[] {
   if (quantity > options.length) {
     throw new Error('More options requested than available');
   }
