@@ -1,4 +1,3 @@
-export * from './lib/models';
 export * from './lib/options';
 
 // Game data and types
