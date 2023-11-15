@@ -16,14 +16,7 @@ import { withLatestFrom, Subject, Subscription } from 'rxjs';
 import { ButtonComponent } from '@atocha/core/ui';
 import { CardComponent, CardGroupComponent } from '@atocha/spirit-islander/ui';
 import { Config, ExpansionName } from '@atocha/spirit-islander/util';
-import {
-  createAdversariesRoot,
-  createBoardsRoot,
-  createExpansionsRoot,
-  createMapsRoot,
-  createScenariosRoot,
-  createSpiritsRoot,
-} from '../checkbox-tree/create-root';
+import { Root } from '../checkbox-tree/root';
 import { ConfigForm } from './config-form';
 import { CheckboxTreeComponent } from '../checkbox-tree/checkbox-tree.component';
 import { SelectDifficultyRangeComponent } from '../select-difficulty-range/select-difficulty-range.component';
@@ -65,12 +58,7 @@ export class ConfigFormComponent implements OnInit, OnDestroy {
   subscriptions = new Subscription();
   expansionsClickSubject = new Subject<'Expansions' | ExpansionName>();
 
-  expansionsRoot = createExpansionsRoot();
-  spiritsRoot = createSpiritsRoot([]);
-  mapsRoot = createMapsRoot([]);
-  boardsRoot = createBoardsRoot([]);
-  scenariosRoot = createScenariosRoot([]);
-  adversariesRoot = createAdversariesRoot([]);
+  readonly root = new Root([]);
   jaggedEarth = false;
 
   ngOnInit(): void {
@@ -105,11 +93,7 @@ export class ConfigFormComponent implements OnInit, OnDestroy {
   }
 
   private _updateFormData(expansions: ExpansionName[]): void {
-    this.spiritsRoot = createSpiritsRoot(expansions);
-    this.mapsRoot = createMapsRoot(expansions);
-    this.boardsRoot = createBoardsRoot(expansions);
-    this.scenariosRoot = createScenariosRoot(expansions);
-    this.adversariesRoot = createAdversariesRoot(expansions);
+    this.root.update(expansions);
     this.jaggedEarth = expansions.includes('Jagged Earth');
   }
 }

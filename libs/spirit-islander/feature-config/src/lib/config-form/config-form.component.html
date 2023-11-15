@@ -8,7 +8,7 @@
   <ui-card-group name="You" description="What are you playing with?">
     <ui-card name="expansions">
       <app-checkbox-tree
-        [root]="expansionsRoot"
+        [root]="root.expansions"
         [form]="form"
         controlName="expansions"
         (nodeClick)="onExpansionChange($event)"
@@ -32,7 +32,7 @@
   >
     <ui-card name="spirits" [error]="form.spiritsError">
       <app-checkbox-tree
-        [root]="spiritsRoot"
+        [root]="root.spirits"
         [form]="form"
         controlName="spiritNames"
       ></app-checkbox-tree>
@@ -40,7 +40,7 @@
 
     <ui-card name="maps" [error]="form.mapsError">
       <app-checkbox-tree
-        [root]="mapsRoot"
+        [root]="root.maps"
         [form]="form"
         controlName="mapNames"
       ></app-checkbox-tree>
@@ -48,7 +48,7 @@
 
     <ui-card name="boards" [error]="form.boardsError">
       <app-checkbox-tree
-        [root]="boardsRoot"
+        [root]="root.boards"
         [form]="form"
         controlName="boardNames"
       ></app-checkbox-tree>
@@ -56,7 +56,7 @@
 
     <ui-card name="scenarios" [error]="form.scenariosError">
       <app-checkbox-tree
-        [root]="scenariosRoot"
+        [root]="root.scenarios"
         [form]="form"
         controlName="scenarioNames"
       ></app-checkbox-tree>
@@ -64,7 +64,7 @@
 
     <ui-card name="adversaries" [error]="form.adversariesError">
       <app-checkbox-tree
-        [root]="adversariesRoot"
+        [root]="root.adversaries"
         [form]="form"
         controlName="adversaryLevelIds"
       ></app-checkbox-tree>
