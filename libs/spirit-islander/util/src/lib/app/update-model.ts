@@ -2,10 +2,10 @@ import type { ExpansionName } from '../game/expansions';
 
 export function updateModel<TName>(
   createModel: (expansions?: readonly ExpansionName[]) => readonly TName[],
-  existingModel: TName[],
+  existingModel: readonly TName[],
   expansions: ExpansionName[],
   target: 'Expansions' | ExpansionName
-): TName[] {
+): readonly TName[] {
   if (target === 'Expansions') {
     return recreateModel(createModel, existingModel, expansions);
   }
@@ -18,9 +18,9 @@ export function updateModel<TName>(
 
 function recreateModel<TName>(
   createModel: (expansions?: readonly ExpansionName[]) => readonly TName[],
-  existingModel: TName[],
+  existingModel: readonly TName[],
   expansions: ExpansionName[]
-): TName[] {
+): readonly TName[] {
   const expansionItemNames = getExpansionItemNames(createModel, expansions);
   const allowedItemNames = createModel(expansions);
   return [
@@ -31,9 +31,9 @@ function recreateModel<TName>(
 
 function augmentModel<TName>(
   createModel: (expansions?: readonly ExpansionName[]) => readonly TName[],
-  existingModel: TName[],
+  existingModel: readonly TName[],
   expansionToAdd: ExpansionName
-): TName[] {
+): readonly TName[] {
   const expansionItemNames = getExpansionItemNames(createModel, [
     expansionToAdd,
   ]);
@@ -42,9 +42,9 @@ function augmentModel<TName>(
 
 function purgeModel<TName>(
   createModel: (expansions?: readonly ExpansionName[]) => readonly TName[],
-  existingModel: TName[],
+  existingModel: readonly TName[],
   expansionToRemove: ExpansionName
-): TName[] {
+): readonly TName[] {
   const expansionItemNames = getExpansionItemNames(createModel, [
     expansionToRemove,
   ]);
@@ -54,7 +54,7 @@ function purgeModel<TName>(
 function getExpansionItemNames<TName>(
   createModel: (expansions?: readonly ExpansionName[]) => readonly TName[],
   expansions: readonly ExpansionName[]
-): TName[] {
+): readonly TName[] {
   const baseItemNames = createModel();
   return createModel(expansions).filter(
     (name) => !baseItemNames.includes(name)

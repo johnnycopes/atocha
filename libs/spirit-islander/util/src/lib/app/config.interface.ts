@@ -15,9 +15,9 @@ export interface Config {
   expansions: ExpansionName[];
   players: Players;
   difficultyRange: Difficulty[];
-  spiritNames: SpiritName[];
-  mapNames: MapName[];
-  boardNames: BalancedBoardName[];
-  scenarioNames: ScenarioName[];
-  adversaryLevelIds: AdversaryLevelId[];
+  spiritNames: readonly SpiritName[];
+  mapNames: readonly MapName[];
+  boardNames: readonly BalancedBoardName[];
+  scenarioNames: readonly ScenarioName[];
+  adversaryLevelIds: readonly AdversaryLevelId[];
 }
