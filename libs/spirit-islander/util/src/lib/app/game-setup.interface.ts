@@ -15,9 +15,9 @@ export interface GameSetup {
   expansions: ExpansionName[];
   players: Players;
   difficulty: Difficulty;
-  spirits: Spirit[];
+  spirits: readonly Spirit[];
   map: Map;
-  boards: Board[];
+  boards: readonly Board[];
   scenario: Scenario;
   adversaryLevel: AdversaryLevel;
 }

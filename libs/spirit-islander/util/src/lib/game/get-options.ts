@@ -13,7 +13,7 @@ import type { Option } from './option';
 export function getOptionsByName<
   TName extends string,
   TOption extends Option<TName>
->(options: readonly TOption[], names: TName[]): TOption[] {
+>(options: readonly TOption[], names: TName[]): readonly TOption[] {
   const filteredOptions: TOption[] = [];
 
   for (const name of names) {
