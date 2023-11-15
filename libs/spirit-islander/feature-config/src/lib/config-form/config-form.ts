@@ -2,16 +2,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { of } from 'rxjs';
 
 import { Form } from '@atocha/core/ui';
-import {
-  Config,
-  createAdversariesModel,
-  createBoardsModel,
-  createMapsModel,
-  createScenariosModel,
-  createSpiritsModel,
-  ExpansionName,
-  Updater,
-} from '@atocha/spirit-islander/util';
+import { Config, ExpansionName, Updater } from '@atocha/spirit-islander/util';
 import {
   invalidDifficultyRange,
   playersOutnumberSelectedBoards,
@@ -93,39 +84,22 @@ export class ConfigForm extends FormGroup<Form<Config>> {
       mapNames,
       adversaryLevelIds,
     } = this.getRawValue();
-    const updater = new Updater();
+    const updater = new Updater({
+      spiritNames,
+      boardNames,
+      mapNames,
+      scenarioNames,
+      adversaryLevelIds,
+    });
+
+    updater.update(expansions, target);
 
     this.patchValue({
-      spiritNames: updater.updateModel(
-        createSpiritsModel,
-        spiritNames,
-        expansions,
-        target
-      ),
-      boardNames: updater.updateModel(
-        createBoardsModel,
-        boardNames,
-        expansions,
-        target
-      ),
-      mapNames: updater.updateModel(
-        createMapsModel,
-        mapNames,
-        expansions,
-        target
-      ),
-      scenarioNames: updater.updateModel(
-        createScenariosModel,
-        scenarioNames,
-        expansions,
-        target
-      ),
-      adversaryLevelIds: updater.updateModel(
-        createAdversariesModel,
-        adversaryLevelIds,
-        expansions,
-        target
-      ),
+      spiritNames: updater.spiritNames,
+      boardNames: updater.boardNames,
+      mapNames: updater.mapNames,
+      scenarioNames: updater.scenarioNames,
+      adversaryLevelIds: updater.adversaryLevelIds,
     });
   }
 }
