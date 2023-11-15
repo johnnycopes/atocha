@@ -34,7 +34,7 @@ export class Options {
     return this._adversaries;
   }
 
-  constructor(expansions: ExpansionName[]) {
+  constructor(expansions: ExpansionName[] = []) {
     this.update(expansions);
   }
 
