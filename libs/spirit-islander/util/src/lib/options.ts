@@ -7,11 +7,6 @@ import { SPIRITS } from './game/spirits';
 import { getOptionsByExpansion } from './game/get-options';
 
 export class Options {
-  private _expansions: ExpansionName[] = [];
-  get expansions(): readonly ExpansionName[] {
-    return this._expansions;
-  }
-
   private _spirits = SPIRITS;
   get spirits() {
     return this._spirits;
@@ -42,11 +37,10 @@ export class Options {
   }
 
   update(expansions: ExpansionName[]): void {
-    this._expansions = expansions;
-    this._spirits = getOptionsByExpansion(SPIRITS, this._expansions);
-    this._boards = getOptionsByExpansion(BOARDS, this._expansions);
-    this._maps = getOptionsByExpansion(MAPS, this._expansions);
-    this._scenarios = getOptionsByExpansion(SCENARIOS, this._expansions);
-    this._adversaries = getOptionsByExpansion(ADVERSARIES, this._expansions);
+    this._spirits = getOptionsByExpansion(SPIRITS, expansions);
+    this._boards = getOptionsByExpansion(BOARDS, expansions);
+    this._maps = getOptionsByExpansion(MAPS, expansions);
+    this._scenarios = getOptionsByExpansion(SCENARIOS, expansions);
+    this._adversaries = getOptionsByExpansion(ADVERSARIES, expansions);
   }
 }
