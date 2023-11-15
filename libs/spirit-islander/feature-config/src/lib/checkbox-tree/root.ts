@@ -12,7 +12,12 @@ import {
   Spirit,
   getDifficulty,
 } from '@atocha/spirit-islander/util';
-import { Node } from './create-root';
+
+export interface Node<T> {
+  id: string;
+  display?: Partial<T>;
+  children?: Node<T>[];
+}
 
 export class Root {
   readonly expansions = this._createRoot({
