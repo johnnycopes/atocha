@@ -4,7 +4,7 @@ import { ExpansionName } from './game/expansions';
 import { MAPS, Map, MapName } from './game/maps';
 import { SCENARIOS, Scenario, ScenarioName } from './game/scenarios';
 import { SPIRITS, Spirit, SpiritName } from './game/spirits';
-import { getOptionsByExpansion } from './game/get-options';
+import { getOptionsByExpansion } from './game/get-options-by-expansion';
 
 export class Options {
   private _spirits = SPIRITS;
