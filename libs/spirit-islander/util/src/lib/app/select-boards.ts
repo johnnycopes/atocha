@@ -7,8 +7,8 @@ import { selectRandom } from './select-random';
 export function selectBoards(
   mapName: MapName,
   players: Players,
-  boardNames: BalancedBoardName[]
-): Board[] {
+  boardNames: readonly BalancedBoardName[]
+): readonly Board[] {
   if (mapName === 'Balanced') {
     const randomBoardNames = selectRandom(boardNames, players);
     return getBoardsByName(randomBoardNames);
@@ -35,6 +35,6 @@ export function selectBoards(
   }
 }
 
-function getBoardsByName(boardNames: BalancedBoardName[]): Board[] {
+function getBoardsByName(boardNames: BalancedBoardName[]): readonly Board[] {
   return getOptionsByName(BOARDS, boardNames);
 }

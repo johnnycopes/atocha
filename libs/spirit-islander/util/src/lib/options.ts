@@ -50,11 +50,11 @@ export class Options {
     }, []);
   }
 
-  constructor(expansions?: ExpansionName[]) {
+  constructor(expansions?: readonly ExpansionName[]) {
     this.update(expansions);
   }
 
-  update(expansions?: ExpansionName[]): void {
+  update(expansions?: readonly ExpansionName[]): void {
     this._spirits = expansions
       ? getOptionsByExpansion(SPIRITS, expansions)
       : SPIRITS;

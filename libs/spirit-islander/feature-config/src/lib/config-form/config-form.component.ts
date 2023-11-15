@@ -92,7 +92,7 @@ export class ConfigFormComponent implements OnInit, OnDestroy {
     this.generate.emit(config);
   }
 
-  private _updateFormData(expansions: ExpansionName[]): void {
+  private _updateFormData(expansions: readonly ExpansionName[]): void {
     this.root.update(expansions);
     this.jaggedEarth = expansions.includes('Jagged Earth');
   }

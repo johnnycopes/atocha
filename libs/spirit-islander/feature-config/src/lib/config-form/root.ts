@@ -57,7 +57,7 @@ export class Root {
     this.update(expansions);
   }
 
-  update(expansions: ExpansionName[]) {
+  update(expansions: readonly ExpansionName[]) {
     this._options.update(expansions);
 
     this._spirits = this._createRoot({

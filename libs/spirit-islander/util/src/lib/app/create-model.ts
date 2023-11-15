@@ -7,30 +7,32 @@ import type { ExpansionName, ExpansionOption } from '../game/expansions';
 import { getOptionsByExpansion } from '../game/get-options';
 
 export function createSpiritsModel(
-  expansions: ExpansionName[] = []
-): SpiritName[] {
+  expansions: readonly ExpansionName[] = []
+): readonly SpiritName[] {
   return createModel(SPIRITS, expansions);
 }
 
-export function createMapsModel(expansions: ExpansionName[] = []): MapName[] {
+export function createMapsModel(
+  expansions: readonly ExpansionName[] = []
+): readonly MapName[] {
   return createModel(MAPS, expansions);
 }
 
 export function createBoardsModel(
-  expansions: ExpansionName[] = []
-): BalancedBoardName[] {
+  expansions: readonly ExpansionName[] = []
+): readonly BalancedBoardName[] {
   return createModel(BOARDS, expansions);
 }
 
 export function createScenariosModel(
-  expansions: ExpansionName[] = []
-): ScenarioName[] {
+  expansions: readonly ExpansionName[] = []
+): readonly ScenarioName[] {
   return createModel(SCENARIOS, expansions);
 }
 
 export function createAdversariesModel(
-  expansions: ExpansionName[] = []
-): AdversaryLevelId[] {
+  expansions: readonly ExpansionName[] = []
+): readonly AdversaryLevelId[] {
   return getOptionsByExpansion(ADVERSARIES, expansions).reduce<
     AdversaryLevelId[]
   >((adversaries, adversary) => {
@@ -43,8 +45,8 @@ export function createAdversariesModel(
 
 function createModel<TName extends string>(
   options: readonly ExpansionOption<TName>[],
-  expansions: ExpansionName[]
-): TName[] {
+  expansions: readonly ExpansionName[]
+): readonly TName[] {
   return getOptionsByExpansion(options, expansions).map(
     (option) => option.name
   );

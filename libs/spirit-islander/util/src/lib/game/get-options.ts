@@ -13,7 +13,7 @@ import type { Option } from './option';
 export function getOptionsByName<
   TName extends string,
   TOption extends Option<TName>
->(options: readonly TOption[], names: TName[]): TOption[] {
+>(options: readonly TOption[], names: TName[]): readonly TOption[] {
   const filteredOptions: TOption[] = [];
 
   for (const name of names) {
@@ -40,7 +40,7 @@ export function getOptionsByExpansion<
   TOption extends ExpansionOption<TName>
 >(
   options: readonly TOption[],
-  expansions: ExpansionName[]
+  expansions: readonly ExpansionName[]
 ): readonly TOption[] {
   return options.filter((item) => {
     if (item.expansion) {
