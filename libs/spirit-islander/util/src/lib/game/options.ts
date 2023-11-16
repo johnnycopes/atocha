@@ -4,10 +4,14 @@ import { EXPANSIONS, ExpansionName } from './expansions';
 import { MAPS, Map, MapName } from './maps';
 import { SCENARIOS, Scenario, ScenarioName } from './scenarios';
 import { SPIRITS, Spirit, SpiritName } from './spirits';
+import { DIFFICULTIES } from './difficulty';
+import { PLAYERS } from './players';
 import { getOptionsByExpansion } from './get-options-by-expansion';
 
 export class Options {
   static allExpansions = EXPANSIONS;
+  static allDifficulties = DIFFICULTIES;
+  static allPlayers = PLAYERS;
 
   private _spirits = SPIRITS;
   get spirits(): readonly Spirit[] {
