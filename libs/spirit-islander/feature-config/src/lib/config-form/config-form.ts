@@ -2,7 +2,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { of } from 'rxjs';
 
 import { Form } from '@atocha/core/ui';
-import { Config, ExpansionName, Updater } from '@atocha/spirit-islander/util';
+import { Config, ExpansionName, Models } from '@atocha/spirit-islander/util';
 import {
   invalidDifficultyRange,
   playersOutnumberSelectedBoards,
@@ -84,7 +84,7 @@ export class ConfigForm extends FormGroup<Form<Config>> {
       mapNames,
       adversaryLevelIds,
     } = this.getRawValue();
-    const updater = new Updater({
+    const models = new Models({
       spiritNames,
       boardNames,
       mapNames,
@@ -92,14 +92,14 @@ export class ConfigForm extends FormGroup<Form<Config>> {
       adversaryLevelIds,
     });
 
-    updater.update(expansions, target);
+    models.update(expansions, target);
 
     this.patchValue({
-      spiritNames: updater.spiritNames,
-      boardNames: updater.boardNames,
-      mapNames: updater.mapNames,
-      scenarioNames: updater.scenarioNames,
-      adversaryLevelIds: updater.adversaryLevelIds,
+      spiritNames: models.spiritNames,
+      boardNames: models.boardNames,
+      mapNames: models.mapNames,
+      scenarioNames: models.scenarioNames,
+      adversaryLevelIds: models.adversaryLevelIds,
     });
   }
 }

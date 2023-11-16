@@ -1,27 +1,27 @@
-import { Updater } from './updater';
+import { Models } from './models';
 
-describe('Updater', () => {
+describe('Models', () => {
   describe("adding individual expansion's options", () => {
     it('starting with no names selected', () => {
-      const updater = new Updater();
+      const models = new Models();
 
       expect(
-        updater.update(['Branch & Claw'], 'Branch & Claw').spiritNames
+        models.update(['Branch & Claw'], 'Branch & Claw').spiritNames
       ).toEqual([
         'Keeper of the Forbidden Wilds',
         'Sharp Fangs Behind the Leaves',
       ]);
 
-      expect(updater.update([], 'Branch & Claw').spiritNames).toStrictEqual([]);
+      expect(models.update([], 'Branch & Claw').spiritNames).toStrictEqual([]);
     });
 
     it('starting with some names selected', () => {
-      const updater = new Updater({
+      const models = new Models({
         spiritNames: ['Heart of the Wildfire', 'Thunderspeaker'],
       });
 
       expect(
-        updater.update(['Branch & Claw', 'Promo Pack 1'], 'Branch & Claw')
+        models.update(['Branch & Claw', 'Promo Pack 1'], 'Branch & Claw')
           .spiritNames
       ).toEqual([
         'Heart of the Wildfire',
@@ -34,10 +34,10 @@ describe('Updater', () => {
 
   describe("adding all expansion's options", () => {
     it('starting with no names selected', () => {
-      const updater = new Updater();
+      const models = new Models();
 
       expect(
-        updater.update(
+        models.update(
           ['Branch & Claw', 'Jagged Earth', 'Promo Pack 1', 'Promo Pack 2'],
           'Expansions'
         ).spiritNames
@@ -62,10 +62,10 @@ describe('Updater', () => {
     });
 
     it('starting with one name selected', () => {
-      const updater = new Updater({ spiritNames: ['Thunderspeaker'] });
+      const models = new Models({ spiritNames: ['Thunderspeaker'] });
 
       expect(
-        updater.update(
+        models.update(
           ['Branch & Claw', 'Jagged Earth', 'Promo Pack 1', 'Promo Pack 2'],
           'Expansions'
         ).spiritNames
@@ -91,12 +91,12 @@ describe('Updater', () => {
     });
 
     it('starting with multiple names selected', () => {
-      const updater = new Updater({
+      const models = new Models({
         spiritNames: ['Keeper of the Forbidden Wilds', 'Thunderspeaker'],
       });
 
       expect(
-        updater.update(
+        models.update(
           ['Branch & Claw', 'Jagged Earth', 'Promo Pack 1', 'Promo Pack 2'],
           'Expansions'
         ).spiritNames
@@ -124,18 +124,18 @@ describe('Updater', () => {
 
   describe("removing individual expansion's options", () => {
     it('leaves zero names', () => {
-      const updater = new Updater({
+      const models = new Models({
         spiritNames: [
           'Keeper of the Forbidden Wilds',
           'Sharp Fangs Behind the Leaves',
         ],
       });
 
-      expect(updater.update([], 'Branch & Claw').spiritNames).toEqual([]);
+      expect(models.update([], 'Branch & Claw').spiritNames).toEqual([]);
     });
 
     it('leaves one name', () => {
-      const updater = new Updater({
+      const models = new Models({
         spiritNames: [
           'Keeper of the Forbidden Wilds',
           'Sharp Fangs Behind the Leaves',
@@ -143,13 +143,13 @@ describe('Updater', () => {
         ],
       });
 
-      expect(updater.update([], 'Branch & Claw').spiritNames).toEqual([
+      expect(models.update([], 'Branch & Claw').spiritNames).toEqual([
         'Thunderspeaker',
       ]);
     });
 
     it('leaves two names', () => {
-      const updater = new Updater({
+      const models = new Models({
         spiritNames: [
           'Heart of the Wildfire',
           'Keeper of the Forbidden Wilds',
@@ -159,34 +159,34 @@ describe('Updater', () => {
       });
 
       expect(
-        updater.update(['Promo Pack 1'], 'Branch & Claw').spiritNames
+        models.update(['Promo Pack 1'], 'Branch & Claw').spiritNames
       ).toEqual(['Heart of the Wildfire', 'Thunderspeaker']);
     });
   });
 
   describe("removing all expansion's options", () => {
     it('leaves zero options', () => {
-      const updater = new Updater();
+      const models = new Models();
 
-      expect(updater.update([], 'Expansions').spiritNames).toEqual([]);
+      expect(models.update([], 'Expansions').spiritNames).toEqual([]);
     });
 
     it('leaves zero options when nothing selected', () => {
-      const updater = new Updater();
+      const models = new Models();
 
-      expect(updater.update([], 'Expansions').spiritNames).toEqual([]);
+      expect(models.update([], 'Expansions').spiritNames).toEqual([]);
     });
 
     it('leaves base option(s) selected', () => {
-      const updater = new Updater({ spiritNames: ['Thunderspeaker'] });
+      const models = new Models({ spiritNames: ['Thunderspeaker'] });
 
-      expect(updater.update([], 'Expansions').spiritNames).toEqual([
+      expect(models.update([], 'Expansions').spiritNames).toEqual([
         'Thunderspeaker',
       ]);
     });
 
     it('leaves base option(s) selected, removing expansion options', () => {
-      const updater = new Updater({
+      const models = new Models({
         spiritNames: [
           'Downpour Drenches the World',
           'Finder of Paths Unseen',
@@ -208,7 +208,7 @@ describe('Updater', () => {
         ],
       });
 
-      expect(updater.update([], 'Expansions').spiritNames).toEqual([
+      expect(models.update([], 'Expansions').spiritNames).toEqual([
         'Thunderspeaker',
       ]);
     });

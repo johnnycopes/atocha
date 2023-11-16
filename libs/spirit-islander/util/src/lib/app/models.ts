@@ -12,7 +12,7 @@ import {
   createSpiritsModel,
 } from './create-model';
 
-export class Updater {
+export class Models {
   private _spiritNames: readonly SpiritName[] = [];
   get spiritNames() {
     return this._spiritNames;
@@ -61,7 +61,7 @@ export class Updater {
   update(
     expansions: readonly ExpansionName[],
     target: 'Expansions' | ExpansionName
-  ): Updater {
+  ): Models {
     this._spiritNames = this._updateModel(
       createSpiritsModel,
       this._spiritNames,
