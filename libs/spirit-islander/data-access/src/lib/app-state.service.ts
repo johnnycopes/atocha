@@ -66,7 +66,7 @@ export class AppStateService {
     return config
       ? JSON.parse(migrateConfig(config))
       : {
-          expansions: expansions,
+          expansions,
           players: 5,
           difficultyRange: [0, 8],
           spiritNames,
