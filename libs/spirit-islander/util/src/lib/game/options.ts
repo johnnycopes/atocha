@@ -1,12 +1,14 @@
 import { ADVERSARIES, Adversary, AdversaryLevelId } from './adversaries';
 import { BOARDS, BalancedBoardName, Board } from './boards';
-import { ExpansionName } from './expansions';
+import { EXPANSIONS, ExpansionName } from './expansions';
 import { MAPS, Map, MapName } from './maps';
 import { SCENARIOS, Scenario, ScenarioName } from './scenarios';
 import { SPIRITS, Spirit, SpiritName } from './spirits';
 import { getOptionsByExpansion } from './get-options-by-expansion';
 
 export class Options {
+  static allExpansions = EXPANSIONS;
+
   private _spirits = SPIRITS;
   get spirits(): readonly Spirit[] {
     return this._spirits;

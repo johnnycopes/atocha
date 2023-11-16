@@ -4,7 +4,6 @@ import {
   AdversaryLevelId,
   AdversaryName,
   Board,
-  EXPANSIONS,
   ExpansionName,
   Map,
   Options,
@@ -22,7 +21,7 @@ export interface Node<T> {
 export class Root {
   readonly expansions = this._createRoot({
     root: 'Expansions',
-    items: EXPANSIONS,
+    items: Options.allExpansions,
     getId: (item) => item,
   });
 

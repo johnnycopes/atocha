@@ -1,30 +1,26 @@
 import { getValidCombos } from './get-valid-combos';
 import type { Config } from './config.interface';
-import type { AdversaryLevelId } from '../game/adversaries';
-import { ADVERSARIES } from '../game/adversaries';
-import { BOARDS } from '../game/boards';
-import { EXPANSIONS } from '../game/expansions';
-import { MAPS } from '../game/maps';
-import { SCENARIOS } from '../game/scenarios';
-import { SPIRITS } from '../game/spirits';
+import { Options } from '../game/options';
 
 describe('getValidCombos', () => {
   it('returns possible combinations for lowest difficulty', () => {
+    const {
+      spiritNames,
+      mapNames,
+      boardNames,
+      scenarioNames,
+      adversaryLevelIds,
+    } = new Options();
+
     const mockConfig: Config = {
-      expansions: [...EXPANSIONS],
+      expansions: Options.allExpansions,
       players: 1,
       difficultyRange: [0, 0],
-      spiritNames: SPIRITS.map((spirit) => spirit.name),
-      mapNames: MAPS.map((map) => map.name),
-      boardNames: BOARDS.map((board) => board.name),
-      scenarioNames: SCENARIOS.map((scenario) => scenario.name),
-      adversaryLevelIds: ADVERSARIES.reduce<AdversaryLevelId[]>(
-        (model, adversary) => {
-          adversary.levels.forEach((level) => model.push(level.id));
-          return model;
-        },
-        []
-      ),
+      spiritNames: spiritNames,
+      mapNames: mapNames,
+      boardNames: boardNames,
+      scenarioNames: scenarioNames,
+      adversaryLevelIds: adversaryLevelIds,
     };
     expect(getValidCombos(mockConfig)).toStrictEqual([
       [
@@ -69,18 +65,23 @@ describe('getValidCombos', () => {
   });
 
   it('returns all possible combinations', () => {
+    const {
+      spiritNames,
+      mapNames,
+      boardNames,
+      scenarioNames,
+      adversaryLevelIds,
+    } = new Options();
+
     const mockConfig: Config = {
-      expansions: [...EXPANSIONS],
+      expansions: Options.allExpansions,
       players: 1,
       difficultyRange: [0, 11],
-      spiritNames: SPIRITS.map((spirit) => spirit.name),
-      mapNames: MAPS.map((map) => map.name),
-      boardNames: BOARDS.map((board) => board.name),
-      scenarioNames: SCENARIOS.map((scenario) => scenario.name),
-      adversaryLevelIds: ADVERSARIES.reduce((model, adversary) => {
-        adversary.levels.forEach((level) => model.push(level.id));
-        return model;
-      }, [] as AdversaryLevelId[]),
+      spiritNames,
+      mapNames,
+      boardNames,
+      scenarioNames,
+      adversaryLevelIds,
     };
     expect(getValidCombos(mockConfig)).toHaveLength(1215);
   });

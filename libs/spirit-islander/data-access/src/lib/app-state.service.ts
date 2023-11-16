@@ -5,7 +5,6 @@ import { LocalStorageService, State } from '@atocha/core/data-access';
 import {
   Config,
   createGameSetup,
-  EXPANSIONS,
   GameSetup,
   migrateConfig,
   Options,
@@ -54,7 +53,7 @@ export class AppStateService {
       this._localStorageService.removeItem(this._oldKey);
     }
 
-    const expansions = EXPANSIONS.slice();
+    const expansions = Options.allExpansions;
     const {
       spiritNames,
       mapNames,
