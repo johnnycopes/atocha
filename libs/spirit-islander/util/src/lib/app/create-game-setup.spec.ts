@@ -1,5 +1,5 @@
 import { EXPANSIONS } from '../game/expansions';
-import { Options } from '../options';
+import { Options } from '../game/options';
 import type { Config } from './config.interface';
 import { createGameSetup } from './create-game-setup';
 
