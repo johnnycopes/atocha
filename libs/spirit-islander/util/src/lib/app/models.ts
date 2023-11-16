@@ -100,7 +100,7 @@ export class Models {
     return this;
   }
 
-  _updateModel<TName>(
+  private _updateModel<TName>(
     createModel: (expansions?: readonly ExpansionName[]) => readonly TName[],
     existingModel: readonly TName[],
     expansions: readonly ExpansionName[],
