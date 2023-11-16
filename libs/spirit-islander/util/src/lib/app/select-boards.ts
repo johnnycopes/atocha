@@ -1,7 +1,8 @@
-import { BOARDS, Board, BalancedBoardName } from '../game/boards';
+import { Board, BalancedBoardName } from '../game/boards';
 import type { MapName } from '../game/maps';
 import type { Players } from '../game/players';
 import { getOptionsByName } from '../game/get-options-by-name';
+import { Options } from '../game/options';
 import { selectRandom } from './select-random';
 
 export function selectBoards(
@@ -36,5 +37,5 @@ export function selectBoards(
 }
 
 function getBoardsByName(boardNames: BalancedBoardName[]): readonly Board[] {
-  return getOptionsByName(BOARDS, boardNames);
+  return getOptionsByName(Options.allBoards, boardNames);
 }

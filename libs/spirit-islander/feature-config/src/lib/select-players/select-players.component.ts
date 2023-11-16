@@ -3,7 +3,7 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { trackBySelf } from '@atocha/core/ui';
-import { PLAYERS } from '@atocha/spirit-islander/util';
+import { Options } from '@atocha/spirit-islander/util';
 
 @Component({
   selector: 'app-select-players',
@@ -17,5 +17,5 @@ export class SelectPlayersComponent {
   @Input() form: FormGroup | undefined;
 
   readonly trackByFn = trackBySelf;
-  players = PLAYERS;
+  players = Options.allPlayers;
 }

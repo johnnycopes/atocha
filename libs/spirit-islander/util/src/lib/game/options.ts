@@ -1,12 +1,36 @@
-import { ADVERSARIES, Adversary, AdversaryLevelId } from './adversaries';
-import { BOARDS, BalancedBoardName, Board } from './boards';
+import {
+  EXPANSIONS,
+  DIFFICULTIES,
+  PLAYERS,
+  SPIRITS,
+  BOARDS,
+  MAPS,
+  SCENARIOS,
+  ADVERSARIES,
+} from './data';
+import { Adversary, AdversaryLevelId } from './adversaries';
+import { BalancedBoardName, Board } from './boards';
 import { ExpansionName } from './expansions';
-import { MAPS, Map, MapName } from './maps';
-import { SCENARIOS, Scenario, ScenarioName } from './scenarios';
-import { SPIRITS, Spirit, SpiritName } from './spirits';
+import { Map, MapName } from './maps';
+import { Scenario, ScenarioName } from './scenarios';
+import { Spirit, SpiritName } from './spirits';
 import { getOptionsByExpansion } from './get-options-by-expansion';
 
 export class Options {
+  static allExpansions = EXPANSIONS;
+  static allDifficulties = DIFFICULTIES;
+  static allPlayers = PLAYERS;
+  static allSpirits = SPIRITS;
+  static allSpiritNames = SPIRITS.map(({ name }) => name);
+  static allBoards = BOARDS;
+  static allBoardNames = BOARDS.map(({ name }) => name);
+  static allMaps = MAPS;
+  static allMapNames = MAPS.map(({ name }) => name);
+  static allScenarios = SCENARIOS;
+  static allScenarioNames = SCENARIOS.map(({ name }) => name);
+  static allAdversaries = ADVERSARIES;
+  static allAdversaryLevelIds = getAdversaryLevelIds(this.allAdversaries);
+
   private _spirits = SPIRITS;
   get spirits(): readonly Spirit[] {
     return this._spirits;
@@ -44,29 +68,28 @@ export class Options {
     return this._adversaries;
   }
   get adversaryLevelIds(): readonly AdversaryLevelId[] {
-    return this._adversaries.reduce<AdversaryLevelId[]>((model, adversary) => {
-      adversary.levels.forEach((level) => model.push(level.id));
-      return model;
-    }, []);
+    return getAdversaryLevelIds(this._adversaries);
   }
 
-  constructor(expansions?: readonly ExpansionName[]) {
+  constructor(expansions: readonly ExpansionName[]) {
     this.update(expansions);
   }
 
-  update(expansions?: readonly ExpansionName[]): void {
-    this._spirits = expansions
-      ? getOptionsByExpansion(SPIRITS, expansions)
-      : SPIRITS;
-    this._boards = expansions
-      ? getOptionsByExpansion(BOARDS, expansions)
-      : BOARDS;
-    this._maps = expansions ? getOptionsByExpansion(MAPS, expansions) : MAPS;
-    this._scenarios = expansions
-      ? getOptionsByExpansion(SCENARIOS, expansions)
-      : SCENARIOS;
-    this._adversaries = expansions
-      ? getOptionsByExpansion(ADVERSARIES, expansions)
-      : ADVERSARIES;
+  update(expansions: readonly ExpansionName[]): void {
+    this._spirits = getOptionsByExpansion(Options.allSpirits, expansions);
+    this._boards = getOptionsByExpansion(Options.allBoards, expansions);
+    this._maps = getOptionsByExpansion(Options.allMaps, expansions);
+    this._scenarios = getOptionsByExpansion(Options.allScenarios, expansions);
+    this._adversaries = getOptionsByExpansion(
+      Options.allAdversaries,
+      expansions
+    );
   }
+}
+
+function getAdversaryLevelIds(adversaries: readonly Adversary[]) {
+  return adversaries.reduce<AdversaryLevelId[]>((model, adversary) => {
+    adversary.levels.forEach((level) => model.push(level.id));
+    return model;
+  }, []);
 }

@@ -4,7 +4,6 @@ import {
   AdversaryLevelId,
   AdversaryName,
   Board,
-  EXPANSIONS,
   ExpansionName,
   Map,
   Options,
@@ -22,7 +21,7 @@ export interface Node<T> {
 export class Root {
   readonly expansions = this._createRoot({
     root: 'Expansions',
-    items: EXPANSIONS,
+    items: Options.allExpansions,
     getId: (item) => item,
   });
 
@@ -51,7 +50,7 @@ export class Root {
     return this._adversaries;
   }
 
-  private readonly _options = new Options();
+  private readonly _options = new Options([]);
 
   constructor(expansions: ExpansionName[] = []) {
     this.update(expansions);

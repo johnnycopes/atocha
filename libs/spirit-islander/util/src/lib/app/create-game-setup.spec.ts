@@ -1,20 +1,18 @@
-import { EXPANSIONS } from '../game/expansions';
 import { Options } from '../game/options';
 import type { Config } from './config.interface';
 import { createGameSetup } from './create-game-setup';
 
 describe('createGameSetup', () => {
   it('returns a randomly-generated game setup', () => {
-    const options = new Options();
     const mockConfig: Config = {
-      expansions: [...EXPANSIONS],
+      expansions: Options.allExpansions,
       players: 4,
       difficultyRange: [5, 8],
-      spiritNames: options.spiritNames,
-      mapNames: options.mapNames,
-      boardNames: options.boardNames,
-      scenarioNames: options.scenarioNames,
-      adversaryLevelIds: options.adversaryLevelIds,
+      spiritNames: Options.allSpiritNames,
+      mapNames: Options.allMapNames,
+      boardNames: Options.allBoardNames,
+      scenarioNames: Options.allScenarioNames,
+      adversaryLevelIds: Options.allAdversaryLevelIds,
     };
     const { boards, spirits, expansions, difficulty } =
       createGameSetup(mockConfig);

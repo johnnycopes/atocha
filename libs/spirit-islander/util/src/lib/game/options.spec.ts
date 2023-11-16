@@ -1,14 +1,11 @@
 import { Options } from './options';
-import { BOARDS } from './boards';
-import { SPIRITS } from './spirits';
+import { SPIRITS, BOARDS } from './data';
 
 describe('Options', () => {
   describe('accessing options', () => {
-    it('returns all options when initialized with nothing', () => {
-      const options = new Options();
-
-      expect(options.spirits).toEqual(SPIRITS);
-      expect(options.boards).toEqual(BOARDS);
+    it('returns all options statically', () => {
+      expect(Options.allSpirits).toEqual(SPIRITS);
+      expect(Options.allBoards).toEqual(BOARDS);
     });
 
     it('returns correct options when initialized with no expansions', () => {
@@ -112,10 +109,8 @@ describe('Options', () => {
   });
 
   describe("accessing options' unique IDs", () => {
-    it('returns all IDs when initialized with nothing', () => {
-      const options = new Options();
-
-      expect(options.adversaryLevelIds).toEqual([
+    it('returns all IDs statically', () => {
+      expect(Options.allAdversaryLevelIds).toEqual([
         'none',
         'bp-0',
         'bp-1',
@@ -168,7 +163,7 @@ describe('Options', () => {
         'sw-6',
       ]);
 
-      expect(options.boardNames).toEqual(['A', 'B', 'C', 'D', 'E', 'F']);
+      expect(Options.allBoardNames).toEqual(['A', 'B', 'C', 'D', 'E', 'F']);
     });
 
     it('returns correct IDs when initialized with no expansions', () => {

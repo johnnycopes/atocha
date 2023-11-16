@@ -1,10 +1,10 @@
-import { SPIRITS } from '../game/spirits';
-import type { Config } from './config.interface';
 import type { GameSetup } from './game-setup.interface';
 import type { Difficulty } from '../game/difficulty';
 import { getValidCombos } from './get-valid-combos';
 import { getOptionsByName } from '../game/get-options-by-name';
 import { getDifficulty } from '../game/get-difficulty';
+import { Options } from '../game/options';
+import type { Config } from './config.interface';
 import { selectBoards } from './select-boards';
 import { selectRandom } from './select-random';
 
@@ -21,7 +21,10 @@ export function createGameSetup(config: Config): GameSetup {
 
   // Randomly select spirits and boards
   const randomSpiritNames = selectRandom(spiritNames, players);
-  const selectedSpirits = getOptionsByName(SPIRITS, randomSpiritNames);
+  const selectedSpirits = getOptionsByName(
+    Options.allSpirits,
+    randomSpiritNames
+  );
   const selectedBoards = selectBoards(selectedMap.name, players, boardNames);
 
   return {
