@@ -1,4 +1,4 @@
-import { DIFFICULTIES } from './data/difficulty';
+import { DIFFICULTIES } from './data';
 import type { ExpansionName } from './expansions';
 import type { Option } from './option';
 

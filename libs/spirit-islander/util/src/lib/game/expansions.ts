@@ -1,4 +1,4 @@
-import { EXPANSIONS } from './data/expansions';
+import { EXPANSIONS } from './data';
 import type { Option } from './option';
 
 export type ExpansionName = (typeof EXPANSIONS)[number];
