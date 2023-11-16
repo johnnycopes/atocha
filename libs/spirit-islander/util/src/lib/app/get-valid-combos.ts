@@ -1,28 +1,27 @@
 import type { DifficultyOption } from '../game/difficulty';
-import { MAPS, Map, MapName } from '../game/maps';
-import { SCENARIOS, Scenario, ScenarioName } from '../game/scenarios';
-import {
-  ADVERSARIES,
-  AdversaryLevel,
-  AdversaryLevelName,
-} from '../game/adversaries';
+import { Map, MapName } from '../game/maps';
+import { Scenario, ScenarioName } from '../game/scenarios';
+import { AdversaryLevel, AdversaryLevelName } from '../game/adversaries';
 import { getDifficulty } from '../game/get-difficulty';
 import { ComboAnalyzer } from './combo-analyzer';
 import type { Config } from './config.interface';
+import { Options } from '../game/options';
 
 const comboAnalyzer = new ComboAnalyzer<
   DifficultyOption<MapName | AdversaryLevelName | ScenarioName>
 >();
 
+const options = new Options();
+
 export function getValidCombos(
   config: Config
 ): [Map, AdversaryLevel, Scenario][] {
   const { mapNames, scenarioNames, adversaryLevelIds } = config;
-  const maps = MAPS.filter((map) => mapNames.includes(map.name));
-  const scenarios = SCENARIOS.filter((scenario) =>
+  const maps = options.maps.filter((map) => mapNames.includes(map.name));
+  const scenarios = options.scenarios.filter((scenario) =>
     scenarioNames.includes(scenario.name)
   );
-  const adversaries = ADVERSARIES.reduce<AdversaryLevel[]>(
+  const adversaries = options.adversaries.reduce<AdversaryLevel[]>(
     (levels, adversary) => {
       const adversaryLevels = adversary.levels.filter((level) =>
         adversaryLevelIds.includes(level.id)
