@@ -1,6 +1,5 @@
 import { Options } from './options';
-import { BOARDS } from './boards';
-import { SPIRITS } from './spirits';
+import { SPIRITS, BOARDS } from './data';
 
 describe('Options', () => {
   describe('accessing options', () => {

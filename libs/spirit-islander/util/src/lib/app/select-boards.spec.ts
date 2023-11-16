@@ -1,5 +1,5 @@
 import { selectBoards } from './select-boards';
-import { BOARDS } from '../game/boards';
+import { Options } from '../game/options';
 
 describe('selectBoards', () => {
   describe('balanced board selection', () => {
@@ -30,8 +30,8 @@ describe('selectBoards', () => {
         'F',
       ]);
       expect(selectedBoards).toHaveLength(2);
-      expect(BOARDS).toContainEqual(selectedBoards[0]);
-      expect(BOARDS).toContainEqual(selectedBoards[1]);
+      expect(Options.allBoards).toContainEqual(selectedBoards[0]);
+      expect(Options.allBoards).toContainEqual(selectedBoards[1]);
     });
   });
 

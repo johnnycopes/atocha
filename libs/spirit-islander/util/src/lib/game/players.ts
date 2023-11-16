@@ -1,3 +1,3 @@
-export const PLAYERS = [1, 2, 3, 4, 5, 6] as const;
+import { PLAYERS } from './data/players';
 
 export type Players = (typeof PLAYERS)[number];

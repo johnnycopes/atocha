@@ -1,11 +1,19 @@
-import { ADVERSARIES, Adversary, AdversaryLevelId } from './adversaries';
-import { BOARDS, BalancedBoardName, Board } from './boards';
-import { EXPANSIONS, ExpansionName } from './expansions';
-import { MAPS, Map, MapName } from './maps';
-import { SCENARIOS, Scenario, ScenarioName } from './scenarios';
-import { SPIRITS, Spirit, SpiritName } from './spirits';
-import { DIFFICULTIES } from './difficulty';
-import { PLAYERS } from './players';
+import {
+  EXPANSIONS,
+  DIFFICULTIES,
+  PLAYERS,
+  SPIRITS,
+  BOARDS,
+  MAPS,
+  SCENARIOS,
+  ADVERSARIES,
+} from './data';
+import { Adversary, AdversaryLevelId } from './adversaries';
+import { BalancedBoardName, Board } from './boards';
+import { ExpansionName } from './expansions';
+import { Map, MapName } from './maps';
+import { Scenario, ScenarioName } from './scenarios';
+import { Spirit, SpiritName } from './spirits';
 import { getOptionsByExpansion } from './get-options-by-expansion';
 
 export class Options {
