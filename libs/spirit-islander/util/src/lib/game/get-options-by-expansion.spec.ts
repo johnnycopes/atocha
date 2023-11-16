@@ -22,6 +22,7 @@ describe('getOptionsByExpansion', () => {
       { name: 'E', thematicName: 'Southeast', expansion: 'Jagged Earth' },
     ];
   });
+
   it('get spirits by expansion name', () => {
     expect(getOptionsByExpansion(mockSpirits, [])).toStrictEqual([
       { name: 'Bringer of Dreams and Nightmares' },
