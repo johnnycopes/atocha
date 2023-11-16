@@ -6,22 +6,20 @@ import { SCENARIOS, Scenario, ScenarioName } from './scenarios';
 import { SPIRITS, Spirit, SpiritName } from './spirits';
 import { DIFFICULTIES } from './difficulty';
 import { PLAYERS } from './players';
-import { Option } from './option';
 import { getOptionsByExpansion } from './get-options-by-expansion';
 
 export class Options {
   static allExpansions = EXPANSIONS;
   static allDifficulties = DIFFICULTIES;
   static allPlayers = PLAYERS;
-
   static allSpirits = SPIRITS;
-  static allSpiritNames = getNames(this.allSpirits);
+  static allSpiritNames = SPIRITS.map(({ name }) => name);
   static allBoards = BOARDS;
-  static allBoardNames = getNames(this.allBoards);
+  static allBoardNames = BOARDS.map(({ name }) => name);
   static allMaps = MAPS;
-  static allMapNames = getNames(this.allMaps);
+  static allMapNames = MAPS.map(({ name }) => name);
   static allScenarios = SCENARIOS;
-  static allScenarioNames = getNames(this.allScenarios);
+  static allScenarioNames = SCENARIOS.map(({ name }) => name);
   static allAdversaries = ADVERSARIES;
   static allAdversaryLevelIds = getAdversaryLevelIds(this.allAdversaries);
 
@@ -30,7 +28,7 @@ export class Options {
     return this._spirits;
   }
   get spiritNames(): readonly SpiritName[] {
-    return getNames(this._spirits);
+    return this._spirits.map(({ name }) => name);
   }
 
   private _boards = BOARDS;
@@ -38,7 +36,7 @@ export class Options {
     return this._boards;
   }
   get boardNames(): readonly BalancedBoardName[] {
-    return getNames(this._boards);
+    return this._boards.map(({ name }) => name);
   }
 
   private _maps = MAPS;
@@ -46,7 +44,7 @@ export class Options {
     return this._maps;
   }
   get mapNames(): readonly MapName[] {
-    return getNames(this._maps);
+    return this._maps.map(({ name }) => name);
   }
 
   private _scenarios = SCENARIOS;
@@ -54,7 +52,7 @@ export class Options {
     return this._scenarios;
   }
   get scenarioNames(): readonly ScenarioName[] {
-    return getNames(this._scenarios);
+    return this._scenarios.map(({ name }) => name);
   }
 
   private _adversaries = ADVERSARIES;
@@ -65,31 +63,20 @@ export class Options {
     return getAdversaryLevelIds(this._adversaries);
   }
 
-  constructor(expansions?: readonly ExpansionName[]) {
+  constructor(expansions: readonly ExpansionName[]) {
     this.update(expansions);
   }
 
-  update(expansions?: readonly ExpansionName[]): void {
-    this._spirits = expansions
-      ? getOptionsByExpansion(SPIRITS, expansions)
-      : SPIRITS;
-    this._boards = expansions
-      ? getOptionsByExpansion(BOARDS, expansions)
-      : BOARDS;
-    this._maps = expansions ? getOptionsByExpansion(MAPS, expansions) : MAPS;
-    this._scenarios = expansions
-      ? getOptionsByExpansion(SCENARIOS, expansions)
-      : SCENARIOS;
-    this._adversaries = expansions
-      ? getOptionsByExpansion(ADVERSARIES, expansions)
-      : ADVERSARIES;
+  update(expansions: readonly ExpansionName[]): void {
+    this._spirits = getOptionsByExpansion(Options.allSpirits, expansions);
+    this._boards = getOptionsByExpansion(Options.allBoards, expansions);
+    this._maps = getOptionsByExpansion(Options.allMaps, expansions);
+    this._scenarios = getOptionsByExpansion(Options.allScenarios, expansions);
+    this._adversaries = getOptionsByExpansion(
+      Options.allAdversaries,
+      expansions
+    );
   }
-}
-
-function getNames<TName extends string, TOption extends Option<TName>>(
-  options: readonly TOption[]
-) {
-  return options.map(({ name }) => name);
 }
 
 function getAdversaryLevelIds(adversaries: readonly Adversary[]) {

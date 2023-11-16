@@ -53,26 +53,17 @@ export class AppStateService {
       this._localStorageService.removeItem(this._oldKey);
     }
 
-    const expansions = Options.allExpansions;
-    const {
-      spiritNames,
-      mapNames,
-      boardNames,
-      scenarioNames,
-      adversaryLevelIds,
-    } = new Options(expansions);
-
     return config
       ? JSON.parse(migrateConfig(config))
       : {
-          expansions,
+          expansions: Options.allExpansions,
           players: 5,
           difficultyRange: [0, 8],
-          spiritNames,
-          mapNames,
-          boardNames,
-          scenarioNames,
-          adversaryLevelIds,
+          spiritNames: Options.allSpiritNames,
+          mapNames: Options.allMapNames,
+          boardNames: Options.allBoardNames,
+          scenarioNames: Options.allScenarioNames,
+          adversaryLevelIds: Options.allAdversaryLevelIds,
         };
   }
 

@@ -11,17 +11,15 @@ const comboAnalyzer = new ComboAnalyzer<
   DifficultyOption<MapName | AdversaryLevelName | ScenarioName>
 >();
 
-const options = new Options();
-
 export function getValidCombos(
   config: Config
 ): [Map, AdversaryLevel, Scenario][] {
   const { mapNames, scenarioNames, adversaryLevelIds } = config;
-  const maps = options.maps.filter((map) => mapNames.includes(map.name));
-  const scenarios = options.scenarios.filter((scenario) =>
+  const maps = Options.allMaps.filter((map) => mapNames.includes(map.name));
+  const scenarios = Options.allScenarios.filter((scenario) =>
     scenarioNames.includes(scenario.name)
   );
-  const adversaries = options.adversaries.reduce<AdversaryLevel[]>(
+  const adversaries = Options.allAdversaries.reduce<AdversaryLevel[]>(
     (levels, adversary) => {
       const adversaryLevels = adversary.levels.filter((level) =>
         adversaryLevelIds.includes(level.id)

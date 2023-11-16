@@ -7,36 +7,34 @@ import type { ExpansionName, ExpansionOption } from '../game/expansions';
 import { getOptionsByExpansion } from '../game/get-options-by-expansion';
 import { Options } from '../game/options';
 
-const { spirits, maps, boards, scenarios, adversaries } = new Options();
-
 export function createSpiritsModel(
   expansions: readonly ExpansionName[] = []
 ): readonly SpiritName[] {
-  return createModel(spirits, expansions);
+  return createModel(Options.allSpirits, expansions);
 }
 
 export function createMapsModel(
   expansions: readonly ExpansionName[] = []
 ): readonly MapName[] {
-  return createModel(maps, expansions);
+  return createModel(Options.allMaps, expansions);
 }
 
 export function createBoardsModel(
   expansions: readonly ExpansionName[] = []
 ): readonly BalancedBoardName[] {
-  return createModel(boards, expansions);
+  return createModel(Options.allBoards, expansions);
 }
 
 export function createScenariosModel(
   expansions: readonly ExpansionName[] = []
 ): readonly ScenarioName[] {
-  return createModel(scenarios, expansions);
+  return createModel(Options.allScenarios, expansions);
 }
 
 export function createAdversariesModel(
   expansions: readonly ExpansionName[] = []
 ): readonly AdversaryLevelId[] {
-  return getOptionsByExpansion(adversaries, expansions).reduce<
+  return getOptionsByExpansion(Options.allAdversaries, expansions).reduce<
     AdversaryLevelId[]
   >((adversaries, adversary) => {
     adversary.levels.forEach((level) => {

@@ -4,23 +4,15 @@ import { Options } from '../game/options';
 
 describe('getValidCombos', () => {
   it('returns possible combinations for lowest difficulty', () => {
-    const {
-      spiritNames,
-      mapNames,
-      boardNames,
-      scenarioNames,
-      adversaryLevelIds,
-    } = new Options();
-
     const mockConfig: Config = {
       expansions: Options.allExpansions,
       players: 1,
       difficultyRange: [0, 0],
-      spiritNames: spiritNames,
-      mapNames: mapNames,
-      boardNames: boardNames,
-      scenarioNames: scenarioNames,
-      adversaryLevelIds: adversaryLevelIds,
+      spiritNames: Options.allSpiritNames,
+      mapNames: Options.allMapNames,
+      boardNames: Options.allBoardNames,
+      scenarioNames: Options.allScenarioNames,
+      adversaryLevelIds: Options.allAdversaryLevelIds,
     };
     expect(getValidCombos(mockConfig)).toStrictEqual([
       [
@@ -65,23 +57,15 @@ describe('getValidCombos', () => {
   });
 
   it('returns all possible combinations', () => {
-    const {
-      spiritNames,
-      mapNames,
-      boardNames,
-      scenarioNames,
-      adversaryLevelIds,
-    } = new Options();
-
     const mockConfig: Config = {
       expansions: Options.allExpansions,
       players: 1,
       difficultyRange: [0, 11],
-      spiritNames,
-      mapNames,
-      boardNames,
-      scenarioNames,
-      adversaryLevelIds,
+      spiritNames: Options.allSpiritNames,
+      mapNames: Options.allMapNames,
+      boardNames: Options.allBoardNames,
+      scenarioNames: Options.allScenarioNames,
+      adversaryLevelIds: Options.allAdversaryLevelIds,
     };
     expect(getValidCombos(mockConfig)).toHaveLength(1215);
   });

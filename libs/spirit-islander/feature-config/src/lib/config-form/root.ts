@@ -50,7 +50,7 @@ export class Root {
     return this._adversaries;
   }
 
-  private readonly _options = new Options();
+  private readonly _options = new Options([]);
 
   constructor(expansions: ExpansionName[] = []) {
     this.update(expansions);

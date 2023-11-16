@@ -1,8 +1,7 @@
 import { AdversaryLevelId, AdversaryName } from './adversaries';
 import { Options } from './options';
 
-const { adversaries } = new Options();
-const adversaryLevelIdDict = adversaries.reduce(
+const adversaryLevelIdDict = Options.allAdversaries.reduce(
   (accum, adversary) => {
     adversary.levels.forEach((level) => (accum[level.id] = adversary.name));
     return accum;
