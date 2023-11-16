@@ -4,15 +4,11 @@ import { first, tap } from 'rxjs';
 import { LocalStorageService, State } from '@atocha/core/data-access';
 import {
   Config,
-  createAdversariesModel,
-  createBoardsModel,
   createGameSetup,
-  createMapsModel,
-  createScenariosModel,
-  createSpiritsModel,
   EXPANSIONS,
   GameSetup,
   migrateConfig,
+  Options,
 } from '@atocha/spirit-islander/util';
 
 export interface AppState {
@@ -59,17 +55,25 @@ export class AppStateService {
     }
 
     const expansions = EXPANSIONS.slice();
+    const {
+      spiritNames,
+      mapNames,
+      boardNames,
+      scenarioNames,
+      adversaryLevelIds,
+    } = new Options(expansions);
+
     return config
       ? JSON.parse(migrateConfig(config))
       : {
-          expansions: expansions,
+          expansions,
           players: 5,
           difficultyRange: [0, 8],
-          spiritNames: createSpiritsModel(expansions),
-          mapNames: createMapsModel(expansions),
-          boardNames: createBoardsModel(expansions),
-          scenarioNames: createScenariosModel(expansions),
-          adversaryLevelIds: createAdversariesModel(expansions),
+          spiritNames,
+          mapNames,
+          boardNames,
+          scenarioNames,
+          adversaryLevelIds,
         };
   }
 

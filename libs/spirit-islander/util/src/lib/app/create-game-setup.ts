@@ -3,7 +3,7 @@ import type { Config } from './config.interface';
 import type { GameSetup } from './game-setup.interface';
 import type { Difficulty } from '../game/difficulty';
 import { getValidCombos } from './get-valid-combos';
-import { getOptionsByName } from '../game/get-options';
+import { getOptionsByName } from '../game/get-options-by-name';
 import { getDifficulty } from '../game/get-difficulty';
 import { selectBoards } from './select-boards';
 import { selectRandom } from './select-random';

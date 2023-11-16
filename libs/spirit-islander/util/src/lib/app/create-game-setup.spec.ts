@@ -1,29 +1,20 @@
-import { ADVERSARIES, AdversaryLevelId } from '../game/adversaries';
-import { BOARDS } from '../game/boards';
 import { EXPANSIONS } from '../game/expansions';
-import { MAPS } from '../game/maps';
-import { SCENARIOS } from '../game/scenarios';
-import { SPIRITS } from '../game/spirits';
+import { Options } from '../game/options';
 import type { Config } from './config.interface';
 import { createGameSetup } from './create-game-setup';
 
 describe('createGameSetup', () => {
   it('returns a randomly-generated game setup', () => {
+    const options = new Options();
     const mockConfig: Config = {
       expansions: [...EXPANSIONS],
       players: 4,
       difficultyRange: [5, 8],
-      spiritNames: SPIRITS.map((spirit) => spirit.name),
-      mapNames: MAPS.map((map) => map.name),
-      boardNames: BOARDS.map((board) => board.name),
-      scenarioNames: SCENARIOS.map((scenario) => scenario.name),
-      adversaryLevelIds: ADVERSARIES.reduce<AdversaryLevelId[]>(
-        (model, adversary) => {
-          adversary.levels.forEach((level) => model.push(level.id));
-          return model;
-        },
-        []
-      ),
+      spiritNames: options.spiritNames,
+      mapNames: options.mapNames,
+      boardNames: options.boardNames,
+      scenarioNames: options.scenarioNames,
+      adversaryLevelIds: options.adversaryLevelIds,
     };
     const { boards, spirits, expansions, difficulty } =
       createGameSetup(mockConfig);

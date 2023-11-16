@@ -1,28 +1,20 @@
-import { ExpansionName } from '@atocha/spirit-islander/util';
-import {
-  createAdversariesRoot,
-  createBoardsRoot,
-  createExpansionsRoot,
-  createMapsRoot,
-  createScenariosRoot,
-  createSpiritsRoot,
-} from './create-root';
+import { Root } from './root';
 
-describe('createRoot', () => {
-  let expansions: ExpansionName[] = [];
+describe('Root', () => {
+  let root: Root;
 
   beforeEach(() => {
-    expansions = [
+    root = new Root([
       'Horizons',
       'Jagged Earth',
       'Branch & Claw',
       'Promo Pack 1',
       'Promo Pack 2',
-    ];
+    ]);
   });
 
   it('generates expansions root', () => {
-    expect(createExpansionsRoot()).toEqual({
+    expect(root.expansions).toEqual({
       id: 'Expansions',
       children: [
         { id: 'Branch & Claw' },
@@ -35,7 +27,7 @@ describe('createRoot', () => {
   });
 
   it('generates spirits root', () => {
-    expect(createSpiritsRoot(expansions)).toEqual({
+    expect(root.spirits).toEqual({
       id: 'Spirits',
       children: [
         { id: 'A Spread of Rampant Green' },
@@ -177,7 +169,7 @@ describe('createRoot', () => {
   });
 
   it('generates maps root', () => {
-    expect(createMapsRoot(expansions)).toEqual({
+    expect(root.maps).toEqual({
       id: 'Maps',
       children: [
         { id: 'Balanced', display: { difficulty: 0 } },
@@ -187,7 +179,7 @@ describe('createRoot', () => {
   });
 
   it('generates boards root', () => {
-    expect(createBoardsRoot(expansions)).toEqual({
+    expect(root.boards).toEqual({
       id: 'Boards',
       children: [
         { id: 'A' },
@@ -201,7 +193,7 @@ describe('createRoot', () => {
   });
 
   it('generates scenarios root', () => {
-    expect(createScenariosRoot(expansions)).toEqual({
+    expect(root.scenarios).toEqual({
       id: 'Scenarios',
       children: [
         {
@@ -302,7 +294,7 @@ describe('createRoot', () => {
   });
 
   it('generates adversaries root', () => {
-    expect(createAdversariesRoot(expansions)).toEqual({
+    expect(root.adversaries).toEqual({
       id: 'Adversaries',
       children: [
         {
