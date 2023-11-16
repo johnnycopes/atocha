@@ -6,7 +6,6 @@ export * from './lib/game/expansions';
 export * from './lib/game/get-adversary-by-id';
 export * from './lib/game/get-difficulty';
 export * from './lib/game/maps';
-export * from './lib/game/option';
 export * from './lib/game/options';
 export * from './lib/game/players';
 export * from './lib/game/scenarios';
