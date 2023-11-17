@@ -1,7 +1,6 @@
 import { AdversaryLevelId } from '../game/adversaries';
 import { BalancedBoardName } from '../game/boards';
 import { ExpansionName } from '../game/expansions';
-import { getOptionsByExpansion } from '../game/get-options-by-expansion';
 import { MapName } from '../game/maps';
 import { Options } from '../game/options';
 import { ScenarioName } from '../game/scenarios';
@@ -59,7 +58,7 @@ export class Models {
   ): Models {
     this._spiritNames = this._updateModel(
       (expansions) =>
-        getOptionsByExpansion(Options.allSpirits, expansions).map(
+        Options.getOptionsByExpansion(Options.allSpirits, expansions).map(
           (option) => option.name
         ),
       this._spiritNames,
@@ -69,7 +68,7 @@ export class Models {
 
     this._boardNames = this._updateModel(
       (expansions) =>
-        getOptionsByExpansion(Options.allBoards, expansions).map(
+        Options.getOptionsByExpansion(Options.allBoards, expansions).map(
           (option) => option.name
         ),
       this._boardNames,
@@ -79,7 +78,7 @@ export class Models {
 
     this._mapNames = this._updateModel(
       (expansions) =>
-        getOptionsByExpansion(Options.allMaps, expansions).map(
+        Options.getOptionsByExpansion(Options.allMaps, expansions).map(
           (option) => option.name
         ),
       this._mapNames,
@@ -89,7 +88,7 @@ export class Models {
 
     this._scenarioNames = this._updateModel(
       (expansions) =>
-        getOptionsByExpansion(Options.allScenarios, expansions).map(
+        Options.getOptionsByExpansion(Options.allScenarios, expansions).map(
           (option) => option.name
         ),
       this._scenarioNames,
@@ -99,9 +98,10 @@ export class Models {
 
     this._adversaryLevelIds = this._updateModel(
       (expansions) =>
-        getOptionsByExpansion(Options.allAdversaries, expansions).reduce<
-          AdversaryLevelId[]
-        >((model, adversary) => {
+        Options.getOptionsByExpansion(
+          Options.allAdversaries,
+          expansions
+        ).reduce<AdversaryLevelId[]>((model, adversary) => {
           adversary.levels.forEach((level) => model.push(level.id));
           return model;
         }, []),
