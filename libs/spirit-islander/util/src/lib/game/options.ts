@@ -20,7 +20,7 @@ export class Options {
   static allExpansions = EXPANSIONS;
   static allDifficulties = DIFFICULTIES;
   static allPlayers = PLAYERS;
-  static allSpirits = SPIRITS;
+  static allSpirits: readonly Spirit[] = SPIRITS;
   static allSpiritNames = SPIRITS.map(({ name }) => name);
   static allBoards: readonly Board[] = BOARDS;
   static allBoardNames = BOARDS.map(({ name }) => name);
@@ -31,8 +31,8 @@ export class Options {
   static allAdversaries: readonly Adversary[] = ADVERSARIES;
   static allAdversaryLevelIds = getAdversaryLevelIds(this.allAdversaries);
 
-  private _spirits = SPIRITS;
-  get spirits(): readonly Spirit[] {
+  private _spirits: readonly Spirit[] = SPIRITS;
+  get spirits() {
     return this._spirits;
   }
   get spiritNames(): readonly SpiritName[] {
