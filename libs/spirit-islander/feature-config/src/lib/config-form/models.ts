@@ -60,8 +60,8 @@ export class Models {
   ): Models {
     this._spiritNames = this._updateModel(
       (expansions) =>
-        Options.getOptionsByExpansion(Options.allSpirits, expansions).map(
-          (option) => option.name
+        Options.getNames(
+          Options.getOptionsByExpansion(Options.allSpirits, expansions)
         ),
       this._spiritNames,
       expansions,
@@ -70,8 +70,8 @@ export class Models {
 
     this._boardNames = this._updateModel(
       (expansions) =>
-        Options.getOptionsByExpansion(Options.allBoards, expansions).map(
-          (option) => option.name
+        Options.getNames(
+          Options.getOptionsByExpansion(Options.allBoards, expansions)
         ),
       this._boardNames,
       expansions,
@@ -80,8 +80,8 @@ export class Models {
 
     this._mapNames = this._updateModel(
       (expansions) =>
-        Options.getOptionsByExpansion(Options.allMaps, expansions).map(
-          (option) => option.name
+        Options.getNames(
+          Options.getOptionsByExpansion(Options.allMaps, expansions)
         ),
       this._mapNames,
       expansions,
@@ -90,8 +90,8 @@ export class Models {
 
     this._scenarioNames = this._updateModel(
       (expansions) =>
-        Options.getOptionsByExpansion(Options.allScenarios, expansions).map(
-          (option) => option.name
+        Options.getNames(
+          Options.getOptionsByExpansion(Options.allScenarios, expansions)
         ),
       this._scenarioNames,
       expansions,
@@ -100,13 +100,9 @@ export class Models {
 
     this._adversaryLevelIds = this._updateModel(
       (expansions) =>
-        Options.getOptionsByExpansion(
-          Options.allAdversaries,
-          expansions
-        ).reduce<AdversaryLevelId[]>((model, adversary) => {
-          adversary.levels.forEach((level) => model.push(level.id));
-          return model;
-        }, []),
+        Options.getAdversaryLevelIds(
+          Options.getOptionsByExpansion(Options.allAdversaries, expansions)
+        ),
       this._adversaryLevelIds,
       expansions,
       target
