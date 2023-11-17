@@ -28,7 +28,7 @@ export class Options {
   static allMapNames = MAPS.map(({ name }) => name);
   static allScenarios = SCENARIOS;
   static allScenarioNames = SCENARIOS.map(({ name }) => name);
-  static allAdversaries = ADVERSARIES;
+  static allAdversaries: readonly Adversary[] = ADVERSARIES;
   static allAdversaryLevelIds = getAdversaryLevelIds(this.allAdversaries);
 
   private _spirits = SPIRITS;
@@ -63,8 +63,8 @@ export class Options {
     return this._scenarios.map(({ name }) => name);
   }
 
-  private _adversaries = ADVERSARIES;
-  get adversaries(): readonly Adversary[] {
+  private _adversaries: readonly Adversary[] = ADVERSARIES;
+  get adversaries() {
     return this._adversaries;
   }
   get adversaryLevelIds(): readonly AdversaryLevelId[] {
