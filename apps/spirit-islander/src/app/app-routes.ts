@@ -16,7 +16,7 @@ export const APP_ROUTES: Routes = [
         title: 'Config | Spirit Islander',
         data: { state: Route.config },
         loadComponent: () =>
-          import('@atocha/spirit-islander/feature-config').then(
+          import('@atocha/spirit-islander/config/feature').then(
             (m) => m.ConfigComponent
           ),
       },

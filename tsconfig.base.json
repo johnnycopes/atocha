@@ -110,11 +110,11 @@
       ],
       "@atocha/sandbox/ui": ["libs/sandbox/ui/src/index.ts"],
       "@atocha/sandbox/util": ["libs/sandbox/util/src/index.ts"],
+      "@atocha/spirit-islander/config/feature": [
+        "libs/spirit-islander/config/feature/src/index.ts"
+      ],
       "@atocha/spirit-islander/data-access": [
         "libs/spirit-islander/data-access/src/index.ts"
-      ],
-      "@atocha/spirit-islander/feature-config": [
-        "libs/spirit-islander/feature-config/src/index.ts"
       ],
       "@atocha/spirit-islander/feature-game-setup": [
         "libs/spirit-islander/feature-game-setup/src/index.ts"

@@ -1,0 +1,29 @@
+{
+  "name": "spirit-islander-config-feature",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/spirit-islander/config/feature/src",
+  "prefix": "app",
+  "targets": {
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": [
+        "{workspaceRoot}/coverage/libs/spirit-islander/config/feature"
+      ],
+      "options": {
+        "jestConfig": "libs/spirit-islander/config/feature/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/spirit-islander/config/feature/**/*.ts",
+          "libs/spirit-islander/config/feature/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": ["scope:spirit-islander", "type:feature"]
+}
