@@ -8,11 +8,11 @@ describe('getValidCombos', () => {
       expansions: Options.allExpansions,
       players: 1,
       difficultyRange: [0, 0],
-      spiritNames: Options.allSpiritNames,
-      mapNames: Options.allMapNames,
-      boardNames: Options.allBoardNames,
-      scenarioNames: Options.allScenarioNames,
-      adversaryLevelIds: Options.allAdversaryLevelIds,
+      spiritNames: Options.getNames(Options.allSpirits),
+      mapNames: Options.getNames(Options.allMaps),
+      boardNames: Options.getNames(Options.allBoards),
+      scenarioNames: Options.getNames(Options.allScenarios),
+      adversaryLevelIds: Options.getAdversaryLevelIds(Options.allAdversaries),
     };
     expect(getValidCombos(mockConfig)).toStrictEqual([
       [
@@ -61,11 +61,11 @@ describe('getValidCombos', () => {
       expansions: Options.allExpansions,
       players: 1,
       difficultyRange: [0, 11],
-      spiritNames: Options.allSpiritNames,
-      mapNames: Options.allMapNames,
-      boardNames: Options.allBoardNames,
-      scenarioNames: Options.allScenarioNames,
-      adversaryLevelIds: Options.allAdversaryLevelIds,
+      spiritNames: Options.getNames(Options.allSpirits),
+      mapNames: Options.getNames(Options.allMaps),
+      boardNames: Options.getNames(Options.allBoards),
+      scenarioNames: Options.getNames(Options.allScenarios),
+      adversaryLevelIds: Options.getAdversaryLevelIds(Options.allAdversaries),
     };
     expect(getValidCombos(mockConfig)).toHaveLength(1215);
   });

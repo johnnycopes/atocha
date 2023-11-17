@@ -9,13 +9,13 @@ import {
   SPIRITS,
 } from './data';
 import { Adversary, AdversaryLevelId } from './adversaries';
-import { BalancedBoardName, Board } from './boards';
+import { Board } from './boards';
 import { Difficulty } from './difficulty';
 import { ExpansionName } from './expansions';
-import { Map, MapName } from './maps';
+import { Map } from './maps';
 import { Players } from './players';
-import { Scenario, ScenarioName } from './scenarios';
-import { Spirit, SpiritName } from './spirits';
+import { Scenario } from './scenarios';
+import { Spirit } from './spirits';
 import { ExpansionOption, Option } from './option';
 
 export class Options {
@@ -27,15 +27,6 @@ export class Options {
   static allMaps: readonly Map[] = MAPS;
   static allScenarios: readonly Scenario[] = SCENARIOS;
   static allAdversaries: readonly Adversary[] = ADVERSARIES;
-
-  static allSpiritNames: readonly SpiritName[] = getNames(this.allSpirits);
-  static allBoardNames: readonly BalancedBoardName[] = getNames(this.allBoards);
-  static allMapNames: readonly MapName[] = getNames(this.allMaps);
-  static allScenarioNames: readonly ScenarioName[] = getNames(
-    this.allScenarios
-  );
-  static allAdversaryLevelIds: readonly AdversaryLevelId[] =
-    getAdversaryLevelIds(this.allAdversaries);
 
   static getDifficulty(
     difficulty:
