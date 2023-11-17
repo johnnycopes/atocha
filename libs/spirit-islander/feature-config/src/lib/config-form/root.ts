@@ -9,7 +9,6 @@ import {
   Options,
   Scenario,
   Spirit,
-  getDifficulty,
 } from '@atocha/spirit-islander/util';
 
 export interface Node<T> {
@@ -67,7 +66,7 @@ export class Root {
       items: Options.getOptionsByExpansion(Options.allMaps, expansions),
       getId: ({ name }) => name,
       getDisplay: ({ difficulty }) => ({
-        difficulty: getDifficulty(difficulty, expansions),
+        difficulty: Options.getDifficulty(difficulty, expansions),
       }),
     });
 
