@@ -17,7 +17,6 @@ import { Players } from './players';
 import { Scenario, ScenarioName } from './scenarios';
 import { Spirit, SpiritName } from './spirits';
 import { ExpansionOption, Option } from './option';
-import { getOptionsByExpansion } from './get-options-by-expansion';
 
 export class Options {
   static allExpansions: readonly ExpansionName[] = EXPANSIONS;
@@ -37,46 +36,6 @@ export class Options {
   );
   static allAdversaryLevelIds: readonly AdversaryLevelId[] =
     getAdversaryLevelIds(this.allAdversaries);
-
-  private _spirits: readonly Spirit[] = SPIRITS;
-  get spirits() {
-    return this._spirits;
-  }
-
-  private _boards: readonly Board[] = BOARDS;
-  get boards() {
-    return this._boards;
-  }
-
-  private _maps: readonly Map[] = MAPS;
-  get maps() {
-    return this._maps;
-  }
-
-  private _scenarios: readonly Scenario[] = SCENARIOS;
-  get scenarios() {
-    return this._scenarios;
-  }
-
-  private _adversaries: readonly Adversary[] = ADVERSARIES;
-  get adversaries() {
-    return this._adversaries;
-  }
-
-  constructor(expansions: readonly ExpansionName[]) {
-    this.update(expansions);
-  }
-
-  update(expansions: readonly ExpansionName[]): void {
-    this._spirits = getOptionsByExpansion(Options.allSpirits, expansions);
-    this._boards = getOptionsByExpansion(Options.allBoards, expansions);
-    this._maps = getOptionsByExpansion(Options.allMaps, expansions);
-    this._scenarios = getOptionsByExpansion(Options.allScenarios, expansions);
-    this._adversaries = getOptionsByExpansion(
-      Options.allAdversaries,
-      expansions
-    );
-  }
 
   static getOptionsByName<TName extends string, TOption extends Option<TName>>(
     options: readonly TOption[],
