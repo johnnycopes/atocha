@@ -1,5 +1,5 @@
 import { BOARDS } from './data';
-import type { ExpansionOption } from './expansions';
+import { ExpansionOption } from './option';
 
 export interface Board extends ExpansionOption<BalancedBoardName> {
   thematicName: ThematicBoardName;

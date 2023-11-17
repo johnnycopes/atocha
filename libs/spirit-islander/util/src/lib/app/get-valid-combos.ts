@@ -1,10 +1,10 @@
-import type { DifficultyOption } from '../game/difficulty';
 import { Map, MapName } from '../game/maps';
 import { Scenario, ScenarioName } from '../game/scenarios';
 import { AdversaryLevel, AdversaryLevelName } from '../game/adversaries';
 import { getDifficulty } from '../game/get-difficulty';
 import { ComboAnalyzer } from './combo-analyzer';
 import type { Config } from './config.interface';
+import { DifficultyOption } from '../game/option';
 import { Options } from '../game/options';
 
 const comboAnalyzer = new ComboAnalyzer<

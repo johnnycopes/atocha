@@ -1,6 +1,5 @@
 import { SCENARIOS } from './data';
-import type { DifficultyOption } from './difficulty';
-import type { ExpansionOption } from './expansions';
+import { DifficultyOption, ExpansionOption } from './option';
 
 export interface Scenario
   extends DifficultyOption<ScenarioName>,
