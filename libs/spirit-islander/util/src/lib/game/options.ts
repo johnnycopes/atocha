@@ -26,7 +26,7 @@ export class Options {
   static allBoardNames = BOARDS.map(({ name }) => name);
   static allMaps: readonly Map[] = MAPS;
   static allMapNames = MAPS.map(({ name }) => name);
-  static allScenarios = SCENARIOS;
+  static allScenarios: readonly Scenario[] = SCENARIOS;
   static allScenarioNames = SCENARIOS.map(({ name }) => name);
   static allAdversaries: readonly Adversary[] = ADVERSARIES;
   static allAdversaryLevelIds = getAdversaryLevelIds(this.allAdversaries);
@@ -55,8 +55,8 @@ export class Options {
     return this._maps.map(({ name }) => name);
   }
 
-  private _scenarios = SCENARIOS;
-  get scenarios(): readonly Scenario[] {
+  private _scenarios: readonly Scenario[] = SCENARIOS;
+  get scenarios() {
     return this._scenarios;
   }
   get scenarioNames(): readonly ScenarioName[] {
