@@ -120,32 +120,32 @@ export class Models {
     target: 'Expansions' | ExpansionName
   ): readonly TName[] {
     if (target === 'Expansions') {
-      const expansionItemNames = this._getExpansionItemNames(
+      const expansionOptionNames = this._getExpansionOptionNames(
         createModel,
         expansions
       );
-      const allowedItemNames = createModel(expansions);
+      const allowedOptionNames = createModel(expansions);
       return [
-        ...existingModel.filter((name) => allowedItemNames.includes(name)),
-        ...expansionItemNames.filter((name) => !existingModel.includes(name)),
+        ...existingModel.filter((name) => allowedOptionNames.includes(name)),
+        ...expansionOptionNames.filter((name) => !existingModel.includes(name)),
       ];
     }
 
-    const expansionItemNames = this._getExpansionItemNames(createModel, [
+    const expansionOptionNames = this._getExpansionOptionNames(createModel, [
       target,
     ]);
     return expansions.includes(target)
-      ? [...existingModel, ...expansionItemNames]
-      : existingModel.filter((name) => !expansionItemNames.includes(name));
+      ? [...existingModel, ...expansionOptionNames]
+      : existingModel.filter((name) => !expansionOptionNames.includes(name));
   }
 
-  private _getExpansionItemNames<TName>(
+  private _getExpansionOptionNames<TName>(
     createModel: (expansions: readonly ExpansionName[]) => readonly TName[],
     expansions: readonly ExpansionName[]
   ): readonly TName[] {
-    const baseItemNames = createModel([]);
+    const baseOptionNames = createModel([]);
     return createModel(expansions).filter(
-      (name) => !baseItemNames.includes(name)
+      (name) => !baseOptionNames.includes(name)
     );
   }
 }
