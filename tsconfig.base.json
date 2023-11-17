@@ -116,6 +116,9 @@
       "@atocha/spirit-islander/game-setup/feature": [
         "libs/spirit-islander/game-setup/feature/src/index.ts"
       ],
+      "@atocha/spirit-islander/game-setup/util": [
+        "libs/spirit-islander/game-setup/util/src/index.ts"
+      ],
       "@atocha/spirit-islander/shared/data-access": [
         "libs/spirit-islander/shared/data-access/src/index.ts"
       ],
