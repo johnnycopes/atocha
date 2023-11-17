@@ -48,6 +48,18 @@ export class Options {
       : difficulty;
   }
 
+  static getNames<TName extends string>(
+    options: readonly Option<TName>[]
+  ): TName[] {
+    return getNames(options);
+  }
+
+  static getAdversaryLevelIds(
+    adversaries: readonly Adversary[]
+  ): AdversaryLevelId[] {
+    return getAdversaryLevelIds(adversaries);
+  }
+
   static getOptionsByName<TName extends string, TOption extends Option<TName>>(
     options: readonly TOption[],
     names: readonly TName[]
