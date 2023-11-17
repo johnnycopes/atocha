@@ -130,17 +130,13 @@ export class Models {
         ...expansionItemNames.filter((name) => !existingModel.includes(name)),
       ];
     }
-    if (expansions.includes(target)) {
-      const expansionItemNames = this._getExpansionItemNames(createModel, [
-        target,
-      ]);
-      return [...existingModel, ...expansionItemNames];
-    } else {
-      const expansionItemNames = this._getExpansionItemNames(createModel, [
-        target,
-      ]);
-      return existingModel.filter((name) => !expansionItemNames.includes(name));
-    }
+
+    const expansionItemNames = this._getExpansionItemNames(createModel, [
+      target,
+    ]);
+    return expansions.includes(target)
+      ? [...existingModel, ...expansionItemNames]
+      : existingModel.filter((name) => !expansionItemNames.includes(name));
   }
 
   private _getExpansionItemNames<TName>(
