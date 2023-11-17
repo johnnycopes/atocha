@@ -1,6 +1,4 @@
-import { Adversary } from '../adversaries';
-
-export const ADVERSARIES: readonly Adversary[] = [
+export const ADVERSARIES = [
   {
     name: 'No Adversary',
     levels: [{ id: 'none', name: 'N/A', difficulty: 0 }],
@@ -93,4 +91,4 @@ export const ADVERSARIES: readonly Adversary[] = [
       { id: 'sw-6', name: 'Level 6', difficulty: 8 },
     ],
   },
-];
+] as const;
