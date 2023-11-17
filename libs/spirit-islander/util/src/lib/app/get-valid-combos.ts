@@ -1,7 +1,6 @@
 import { Map, MapName } from '../game/maps';
 import { Scenario, ScenarioName } from '../game/scenarios';
 import { AdversaryLevel, AdversaryLevelName } from '../game/adversaries';
-import { getDifficulty } from '../game/get-difficulty';
 import { ComboAnalyzer } from './combo-analyzer';
 import type { Config } from './config.interface';
 import { DifficultyOption } from '../game/option';
@@ -36,7 +35,7 @@ export function getValidCombos(
       const [min, max] = config.difficultyRange;
       const difficulty = options.reduce(
         (accum, option) =>
-          accum + getDifficulty(option.difficulty, config.expansions),
+          accum + Options.getDifficulty(option.difficulty, config.expansions),
         0
       );
       return difficulty >= min && difficulty <= max;

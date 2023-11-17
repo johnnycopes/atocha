@@ -8,11 +8,11 @@ describe('createGameSetup', () => {
       expansions: Options.allExpansions,
       players: 4,
       difficultyRange: [5, 8],
-      spiritNames: Options.allSpiritNames,
-      mapNames: Options.allMapNames,
-      boardNames: Options.allBoardNames,
-      scenarioNames: Options.allScenarioNames,
-      adversaryLevelIds: Options.allAdversaryLevelIds,
+      spiritNames: Options.getNames(Options.allSpirits),
+      mapNames: Options.getNames(Options.allMaps),
+      boardNames: Options.getNames(Options.allBoards),
+      scenarioNames: Options.getNames(Options.allScenarios),
+      adversaryLevelIds: Options.getAdversaryLevelIds(Options.allAdversaries),
     };
     const { boards, spirits, expansions, difficulty } =
       createGameSetup(mockConfig);

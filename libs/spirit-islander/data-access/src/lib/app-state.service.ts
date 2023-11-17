@@ -59,11 +59,13 @@ export class AppStateService {
           expansions: Options.allExpansions,
           players: 5,
           difficultyRange: [0, 8],
-          spiritNames: Options.allSpiritNames,
-          mapNames: Options.allMapNames,
-          boardNames: Options.allBoardNames,
-          scenarioNames: Options.allScenarioNames,
-          adversaryLevelIds: Options.allAdversaryLevelIds,
+          spiritNames: Options.getNames(Options.allSpirits),
+          mapNames: Options.getNames(Options.allMaps),
+          boardNames: Options.getNames(Options.allBoards),
+          scenarioNames: Options.getNames(Options.allScenarios),
+          adversaryLevelIds: Options.getAdversaryLevelIds(
+            Options.allAdversaries
+          ),
         };
   }
 

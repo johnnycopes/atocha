@@ -21,9 +21,9 @@ import {
   AdversaryName,
   Difficulty,
   GameSetup,
-  getAdversaryById,
-  getDifficulty,
+  Options,
 } from '@atocha/spirit-islander/util';
+import { getAdversaryById } from './get-adversary-by-id';
 
 @Component({
   selector: 'app-game-setup-output',
@@ -56,10 +56,13 @@ export class GameSetupOutputComponent {
     }
     const { map, expansions, scenario, adversaryLevel } = value;
     this._setup = value;
-    this.mapDifficulty = getDifficulty(map.difficulty, expansions);
-    this.scenarioDifficulty = getDifficulty(scenario.difficulty, expansions);
+    this.mapDifficulty = Options.getDifficulty(map.difficulty, expansions);
+    this.scenarioDifficulty = Options.getDifficulty(
+      scenario.difficulty,
+      expansions
+    );
     this.adversaryName = getAdversaryById(adversaryLevel.id);
-    this.adversaryDifficulty = getDifficulty(
+    this.adversaryDifficulty = Options.getDifficulty(
       adversaryLevel.difficulty,
       expansions
     );

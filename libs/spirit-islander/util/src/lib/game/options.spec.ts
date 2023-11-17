@@ -1,5 +1,8 @@
 import { Options } from './options';
 import { SPIRITS, BOARDS } from './data';
+import { DifficultyOption } from './option';
+import { Spirit, SpiritName } from './spirits';
+import { Board } from './boards';
 
 describe('Options', () => {
   describe('accessing options', () => {
@@ -7,285 +10,200 @@ describe('Options', () => {
       expect(Options.allSpirits).toEqual(SPIRITS);
       expect(Options.allBoards).toEqual(BOARDS);
     });
+  });
 
-    it('returns correct options when initialized with no expansions', () => {
-      const options = new Options([]);
-
-      expect(options.spirits).toEqual([
-        { name: 'A Spread of Rampant Green' },
-        { name: 'Bringer of Dreams and Nightmares' },
-        { name: "Lightning's Swift Strike" },
-        { name: "Ocean's Hungry Grasp" },
-        { name: 'River Surges in Sunlight' },
-        { name: 'Shadows Flicker Like Flame' },
-        { name: 'Thunderspeaker' },
-        { name: 'Vital Strength of the Earth' },
-      ]);
-
-      expect(options.boards).toEqual([
-        { name: 'A', thematicName: 'Northeast' },
-        { name: 'B', thematicName: 'East' },
-        { name: 'C', thematicName: 'Northwest' },
-        { name: 'D', thematicName: 'West' },
-      ]);
+  describe('getDifficulty', () => {
+    it('returns static difficulty value', () => {
+      const mockItem: DifficultyOption<string> = {
+        name: 'Fake Item',
+        difficulty: 4,
+      };
+      expect(Options.getDifficulty(mockItem.difficulty, [])).toBe(4);
+      expect(
+        Options.getDifficulty(mockItem.difficulty, ['Branch & Claw'])
+      ).toBe(4);
+      expect(Options.getDifficulty(mockItem.difficulty, ['Jagged Earth'])).toBe(
+        4
+      );
+      expect(
+        Options.getDifficulty(mockItem.difficulty, [
+          'Branch & Claw',
+          'Jagged Earth',
+        ])
+      ).toBe(4);
+      expect(Options.getDifficulty(mockItem.difficulty, ['Promo Pack 1'])).toBe(
+        4
+      );
+      expect(Options.getDifficulty(mockItem.difficulty, ['Promo Pack 2'])).toBe(
+        4
+      );
+      expect(
+        Options.getDifficulty(mockItem.difficulty, [
+          'Promo Pack 1',
+          'Promo Pack 2',
+        ])
+      ).toBe(4);
+      expect(
+        Options.getDifficulty(mockItem.difficulty, [
+          'Branch & Claw',
+          'Jagged Earth',
+          'Promo Pack 1',
+          'Promo Pack 2',
+        ])
+      ).toBe(4);
     });
 
-    it('returns correct options when initialized with expansions', () => {
-      const options = new Options(['Branch & Claw', 'Jagged Earth']);
-
-      expect(options.spirits).toEqual([
-        { name: 'A Spread of Rampant Green' },
-        { name: 'Bringer of Dreams and Nightmares' },
-        { name: 'Fractured Days Split the Sky', expansion: 'Jagged Earth' },
-        {
-          name: 'Grinning Trickster Stirs Up Trouble',
-          expansion: 'Jagged Earth',
+    it('returns dynamic difficulty value', () => {
+      const mockItem: DifficultyOption<string> = {
+        name: 'Fake Item',
+        difficulty: (expansions) => {
+          if (expansions.length >= 2) {
+            return 8;
+          } else if (
+            expansions.some((expansion) => expansion === 'Promo Pack 1')
+          ) {
+            return 4;
+          } else if (
+            expansions.some((expansion) => expansion === 'Promo Pack 2')
+          ) {
+            return 3;
+          }
+          return 1;
         },
-        { name: 'Keeper of the Forbidden Wilds', expansion: 'Branch & Claw' },
-        { name: "Lightning's Swift Strike" },
-        { name: 'Lure of the Deep Wilderness', expansion: 'Jagged Earth' },
-        { name: 'Many Minds Move as One', expansion: 'Jagged Earth' },
-        { name: "Ocean's Hungry Grasp" },
-        { name: 'River Surges in Sunlight' },
-        { name: 'Shadows Flicker Like Flame' },
-        { name: 'Sharp Fangs Behind the Leaves', expansion: 'Branch & Claw' },
-        { name: 'Shifting Memory of Ages', expansion: 'Jagged Earth' },
-        { name: 'Shroud of Silent Mist', expansion: 'Jagged Earth' },
-        { name: 'Starlight Seeks Its Form', expansion: 'Jagged Earth' },
-        { name: "Stone's Unyielding Defiance", expansion: 'Jagged Earth' },
-        { name: 'Thunderspeaker' },
-        { name: 'Vengeance as a Burning Plague', expansion: 'Jagged Earth' },
-        { name: 'Vital Strength of the Earth' },
-        { name: 'Volcano Looming High', expansion: 'Jagged Earth' },
-      ]);
-
-      expect(options.boards).toEqual([
-        { name: 'A', thematicName: 'Northeast' },
-        { name: 'B', thematicName: 'East' },
-        { name: 'C', thematicName: 'Northwest' },
-        { name: 'D', thematicName: 'West' },
-        {
-          name: 'E',
-          thematicName: 'Southeast',
-          expansion: 'Jagged Earth',
-        },
-        {
-          name: 'F',
-          thematicName: 'Southwest',
-          expansion: 'Jagged Earth',
-        },
-      ]);
+      };
+      expect(Options.getDifficulty(mockItem.difficulty, [])).toBe(1);
+      expect(
+        Options.getDifficulty(mockItem.difficulty, ['Branch & Claw'])
+      ).toBe(1);
+      expect(Options.getDifficulty(mockItem.difficulty, ['Jagged Earth'])).toBe(
+        1
+      );
+      expect(
+        Options.getDifficulty(mockItem.difficulty, [
+          'Branch & Claw',
+          'Jagged Earth',
+        ])
+      ).toBe(8);
+      expect(Options.getDifficulty(mockItem.difficulty, ['Promo Pack 1'])).toBe(
+        4
+      );
+      expect(Options.getDifficulty(mockItem.difficulty, ['Promo Pack 2'])).toBe(
+        3
+      );
+      expect(
+        Options.getDifficulty(mockItem.difficulty, [
+          'Promo Pack 1',
+          'Promo Pack 2',
+        ])
+      ).toBe(8);
+      expect(
+        Options.getDifficulty(mockItem.difficulty, [
+          'Branch & Claw',
+          'Jagged Earth',
+          'Promo Pack 1',
+          'Promo Pack 2',
+        ])
+      ).toBe(8);
     });
+  });
 
-    it('returns correct options when updated', () => {
-      const options = new Options(['Promo Pack 1']);
-      options.update(['Promo Pack 1', 'Promo Pack 2']);
+  describe('getOptionsByName', () => {
+    let mockSpirits: readonly Spirit[];
 
-      expect(options.spirits).toEqual([
-        { name: 'A Spread of Rampant Green' },
+    beforeEach(() => {
+      mockSpirits = [
         { name: 'Bringer of Dreams and Nightmares' },
         { name: 'Downpour Drenches the World', expansion: 'Promo Pack 2' },
-        { name: 'Finder of Paths Unseen', expansion: 'Promo Pack 2' },
-        { name: 'Heart of the Wildfire', expansion: 'Promo Pack 1' },
-        { name: "Lightning's Swift Strike" },
-        { name: "Ocean's Hungry Grasp" },
-        { name: 'River Surges in Sunlight' },
+        { name: 'Fractured Days Split the Sky', expansion: 'Jagged Earth' },
+        { name: 'Keeper of the Forbidden Wilds', expansion: 'Branch & Claw' },
         {
           name: 'Serpent Slumbering Beneath the Island',
           expansion: 'Promo Pack 1',
         },
-        { name: 'Shadows Flicker Like Flame' },
-        { name: 'Thunderspeaker' },
-        { name: 'Vital Strength of the Earth' },
+      ];
+    });
+
+    it('gets spirits by name', () => {
+      const spiritNames: SpiritName[] = [
+        'Bringer of Dreams and Nightmares',
+        'Keeper of the Forbidden Wilds',
+      ];
+      expect(Options.getOptionsByName(mockSpirits, spiritNames)).toStrictEqual([
+        { name: 'Bringer of Dreams and Nightmares' },
+        { name: 'Keeper of the Forbidden Wilds', expansion: 'Branch & Claw' },
       ]);
 
-      expect(options.boards).toEqual([
-        { name: 'A', thematicName: 'Northeast' },
-        { name: 'B', thematicName: 'East' },
-        { name: 'C', thematicName: 'Northwest' },
-        { name: 'D', thematicName: 'West' },
+      expect(
+        Options.getOptionsByName<SpiritName, Spirit>(mockSpirits, [
+          'Fractured Days Split the Sky',
+          'Downpour Drenches the World',
+        ])
+      ).toStrictEqual([
+        { name: 'Fractured Days Split the Sky', expansion: 'Jagged Earth' },
+        { name: 'Downpour Drenches the World', expansion: 'Promo Pack 2' },
       ]);
     });
   });
 
-  describe("accessing options' unique IDs", () => {
-    it('returns all IDs statically', () => {
-      expect(Options.allAdversaryLevelIds).toEqual([
-        'none',
-        'bp-0',
-        'bp-1',
-        'bp-2',
-        'bp-3',
-        'bp-4',
-        'bp-5',
-        'bp-6',
-        'en-0',
-        'en-1',
-        'en-2',
-        'en-3',
-        'en-4',
-        'en-5',
-        'en-6',
-        'fr-0',
-        'fr-1',
-        'fr-2',
-        'fr-3',
-        'fr-4',
-        'fr-5',
-        'fr-6',
-        'hm-0',
-        'hm-1',
-        'hm-2',
-        'hm-3',
-        'hm-4',
-        'hm-5',
-        'hm-6',
-        'ru-0',
-        'ru-1',
-        'ru-2',
-        'ru-3',
-        'ru-4',
-        'ru-5',
-        'ru-6',
-        'sc-0',
-        'sc-1',
-        'sc-2',
-        'sc-3',
-        'sc-4',
-        'sc-5',
-        'sc-6',
-        'sw-0',
-        'sw-1',
-        'sw-2',
-        'sw-3',
-        'sw-4',
-        'sw-5',
-        'sw-6',
-      ]);
+  describe('getOptionsByExpansion', () => {
+    let mockSpirits: readonly Spirit[];
+    let mockBoards: readonly Board[];
 
-      expect(Options.allBoardNames).toEqual(['A', 'B', 'C', 'D', 'E', 'F']);
+    beforeEach(() => {
+      mockSpirits = [
+        { name: 'Bringer of Dreams and Nightmares' },
+        { name: 'Downpour Drenches the World', expansion: 'Promo Pack 2' },
+        { name: 'Fractured Days Split the Sky', expansion: 'Jagged Earth' },
+        { name: 'Keeper of the Forbidden Wilds', expansion: 'Branch & Claw' },
+        {
+          name: 'Serpent Slumbering Beneath the Island',
+          expansion: 'Promo Pack 1',
+        },
+      ];
+      mockBoards = [
+        { name: 'D', thematicName: 'West' },
+        { name: 'E', thematicName: 'Southeast', expansion: 'Jagged Earth' },
+      ];
     });
 
-    it('returns correct IDs when initialized with no expansions', () => {
-      const options = new Options([]);
-
-      expect(options.adversaryLevelIds).toEqual([
-        'none',
-        'bp-0',
-        'bp-1',
-        'bp-2',
-        'bp-3',
-        'bp-4',
-        'bp-5',
-        'bp-6',
-        'en-0',
-        'en-1',
-        'en-2',
-        'en-3',
-        'en-4',
-        'en-5',
-        'en-6',
-        'sw-0',
-        'sw-1',
-        'sw-2',
-        'sw-3',
-        'sw-4',
-        'sw-5',
-        'sw-6',
+    it('get spirits by expansion name', () => {
+      expect(Options.getOptionsByExpansion(mockSpirits, [])).toStrictEqual([
+        { name: 'Bringer of Dreams and Nightmares' },
       ]);
 
-      expect(options.boardNames).toEqual(['A', 'B', 'C', 'D']);
+      expect(
+        Options.getOptionsByExpansion(mockSpirits, ['Branch & Claw'])
+      ).toStrictEqual([
+        { name: 'Bringer of Dreams and Nightmares' },
+        { name: 'Keeper of the Forbidden Wilds', expansion: 'Branch & Claw' },
+      ]);
+
+      expect(
+        Options.getOptionsByExpansion(mockSpirits, [
+          'Promo Pack 1',
+          'Promo Pack 2',
+        ])
+      ).toStrictEqual([
+        { name: 'Bringer of Dreams and Nightmares' },
+        { name: 'Downpour Drenches the World', expansion: 'Promo Pack 2' },
+        {
+          name: 'Serpent Slumbering Beneath the Island',
+          expansion: 'Promo Pack 1',
+        },
+      ]);
     });
 
-    it('returns correct IDs when initialized with with expansions', () => {
-      const options = new Options(['Branch & Claw', 'Jagged Earth']);
-
-      expect(options.adversaryLevelIds).toEqual([
-        'none',
-        'bp-0',
-        'bp-1',
-        'bp-2',
-        'bp-3',
-        'bp-4',
-        'bp-5',
-        'bp-6',
-        'en-0',
-        'en-1',
-        'en-2',
-        'en-3',
-        'en-4',
-        'en-5',
-        'en-6',
-        'fr-0',
-        'fr-1',
-        'fr-2',
-        'fr-3',
-        'fr-4',
-        'fr-5',
-        'fr-6',
-        'hm-0',
-        'hm-1',
-        'hm-2',
-        'hm-3',
-        'hm-4',
-        'hm-5',
-        'hm-6',
-        'ru-0',
-        'ru-1',
-        'ru-2',
-        'ru-3',
-        'ru-4',
-        'ru-5',
-        'ru-6',
-        'sw-0',
-        'sw-1',
-        'sw-2',
-        'sw-3',
-        'sw-4',
-        'sw-5',
-        'sw-6',
+    it('gets boards by expansion name', () => {
+      expect(Options.getOptionsByExpansion(mockBoards, [])).toStrictEqual([
+        { name: 'D', thematicName: 'West' },
       ]);
 
-      expect(options.boardNames).toEqual(['A', 'B', 'C', 'D', 'E', 'F']);
-    });
-
-    it('returns correct IDs when updated', () => {
-      const options = new Options(['Promo Pack 1']);
-      options.update(['Promo Pack 1', 'Promo Pack 2']);
-
-      expect(options.adversaryLevelIds).toEqual([
-        'none',
-        'bp-0',
-        'bp-1',
-        'bp-2',
-        'bp-3',
-        'bp-4',
-        'bp-5',
-        'bp-6',
-        'en-0',
-        'en-1',
-        'en-2',
-        'en-3',
-        'en-4',
-        'en-5',
-        'en-6',
-        'sc-0',
-        'sc-1',
-        'sc-2',
-        'sc-3',
-        'sc-4',
-        'sc-5',
-        'sc-6',
-        'sw-0',
-        'sw-1',
-        'sw-2',
-        'sw-3',
-        'sw-4',
-        'sw-5',
-        'sw-6',
+      expect(
+        Options.getOptionsByExpansion(mockBoards, ['Jagged Earth'])
+      ).toStrictEqual([
+        { name: 'D', thematicName: 'West' },
+        { name: 'E', thematicName: 'Southeast', expansion: 'Jagged Earth' },
       ]);
-
-      expect(options.boardNames).toEqual(['A', 'B', 'C', 'D']);
     });
   });
 });
