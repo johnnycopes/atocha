@@ -1,11 +1,11 @@
 /* eslint-disable */
 export default {
-  displayName: 'spirit-islander-feature-game-setup',
-  preset: '../../../jest.preset.js',
+  displayName: 'spirit-islander-game-setup-feature',
+  preset: '../../../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {},
   coverageDirectory:
-    '../../../coverage/libs/spirit-islander/feature-game-setup',
+    '../../../../coverage/libs/spirit-islander/game-setup/feature',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': [
       'jest-preset-angular',

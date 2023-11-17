@@ -1,0 +1,29 @@
+{
+  "name": "spirit-islander-game-setup-feature",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/spirit-islander/game-setup/feature/src",
+  "prefix": "app",
+  "targets": {
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": [
+        "{workspaceRoot}/coverage/libs/spirit-islander/game-setup/feature"
+      ],
+      "options": {
+        "jestConfig": "libs/spirit-islander/game-setup/feature/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/spirit-islander/game-setup/feature/**/*.ts",
+          "libs/spirit-islander/game-setup/feature/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": ["scope:spirit-islander", "type:feature"]
+}

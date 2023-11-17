@@ -25,7 +25,7 @@ export const APP_ROUTES: Routes = [
         title: 'Game Setup | Spirit Islander',
         data: { state: Route.gameSetup },
         loadComponent: () =>
-          import('@atocha/spirit-islander/feature-game-setup').then(
+          import('@atocha/spirit-islander/game-setup/feature').then(
             (m) => m.GameSetupComponent
           ),
       },
