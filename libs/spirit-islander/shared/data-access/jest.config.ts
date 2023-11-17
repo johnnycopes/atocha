@@ -1,10 +1,11 @@
 /* eslint-disable */
 export default {
-  displayName: 'spirit-islander-data-access',
-  preset: '../../../jest.preset.js',
+  displayName: 'spirit-islander-shared-data-access',
+  preset: '../../../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {},
-  coverageDirectory: '../../../coverage/libs/spirit-islander/data-access',
+  coverageDirectory:
+    '../../../../coverage/libs/spirit-islander/shared/data-access',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': [
       'jest-preset-angular',

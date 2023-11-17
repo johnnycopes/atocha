@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { ButtonComponent } from '@atocha/core/ui';
-import { AppFacadeService } from '@atocha/spirit-islander/data-access';
+import { AppFacadeService } from '@atocha/spirit-islander/shared/data-access';
 
 @Component({
   selector: 'app-page-not-found',

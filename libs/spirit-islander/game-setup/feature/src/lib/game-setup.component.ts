@@ -3,7 +3,7 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { first, map } from 'rxjs';
 
-import { AppFacadeService } from '@atocha/spirit-islander/data-access';
+import { AppFacadeService } from '@atocha/spirit-islander/shared/data-access';
 import { GameSetupOutputComponent } from './game-setup-output/game-setup-output.component';
 
 @Component({

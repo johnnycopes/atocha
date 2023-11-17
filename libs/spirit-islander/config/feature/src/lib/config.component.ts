@@ -3,7 +3,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { first, map } from 'rxjs';
 
 import { Config } from '@atocha/spirit-islander/util';
-import { AppFacadeService } from '@atocha/spirit-islander/data-access';
+import { AppFacadeService } from '@atocha/spirit-islander/shared/data-access';
 import { ConfigFormComponent } from './config-form/config-form.component';
 
 @Component({

@@ -113,14 +113,14 @@
       "@atocha/spirit-islander/config/feature": [
         "libs/spirit-islander/config/feature/src/index.ts"
       ],
-      "@atocha/spirit-islander/data-access": [
-        "libs/spirit-islander/data-access/src/index.ts"
-      ],
       "@atocha/spirit-islander/feature-shell": [
         "libs/spirit-islander/feature-shell/src/index.ts"
       ],
       "@atocha/spirit-islander/game-setup/feature": [
         "libs/spirit-islander/game-setup/feature/src/index.ts"
+      ],
+      "@atocha/spirit-islander/shared/data-access": [
+        "libs/spirit-islander/shared/data-access/src/index.ts"
       ],
       "@atocha/spirit-islander/ui": ["libs/spirit-islander/ui/src/index.ts"],
       "@atocha/spirit-islander/util": [
