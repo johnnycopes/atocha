@@ -16,7 +16,6 @@ import { Map, MapName } from './maps';
 import { Players } from './players';
 import { Scenario, ScenarioName } from './scenarios';
 import { Spirit, SpiritName } from './spirits';
-
 import { Option } from './option';
 import { getOptionsByExpansion } from './get-options-by-expansion';
 
@@ -30,11 +29,14 @@ export class Options {
   static allScenarios: readonly Scenario[] = SCENARIOS;
   static allAdversaries: readonly Adversary[] = ADVERSARIES;
 
-  static allSpiritNames = getNames(this.allSpirits);
-  static allBoardNames = getNames(this.allBoards);
-  static allMapNames = getNames(this.allMaps);
-  static allScenarioNames = getNames(this.allScenarios);
-  static allAdversaryLevelIds = getAdversaryLevelIds(this.allAdversaries);
+  static allSpiritNames: readonly SpiritName[] = getNames(this.allSpirits);
+  static allBoardNames: readonly BalancedBoardName[] = getNames(this.allBoards);
+  static allMapNames: readonly MapName[] = getNames(this.allMaps);
+  static allScenarioNames: readonly ScenarioName[] = getNames(
+    this.allScenarios
+  );
+  static allAdversaryLevelIds: readonly AdversaryLevelId[] =
+    getAdversaryLevelIds(this.allAdversaries);
 
   private _spirits: readonly Spirit[] = SPIRITS;
   get spirits() {
@@ -92,11 +94,15 @@ export class Options {
   }
 }
 
-function getNames<TName extends string>(options: readonly Option<TName>[]) {
+function getNames<TName extends string>(
+  options: readonly Option<TName>[]
+): TName[] {
   return options.map(({ name }) => name);
 }
 
-function getAdversaryLevelIds(adversaries: readonly Adversary[]) {
+function getAdversaryLevelIds(
+  adversaries: readonly Adversary[]
+): AdversaryLevelId[] {
   return adversaries.reduce<AdversaryLevelId[]>((model, adversary) => {
     adversary.levels.forEach((level) => model.push(level.id));
     return model;
