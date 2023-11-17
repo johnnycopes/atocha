@@ -16,7 +16,7 @@ import { Map, MapName } from './maps';
 import { Players } from './players';
 import { Scenario, ScenarioName } from './scenarios';
 import { Spirit, SpiritName } from './spirits';
-import { Option } from './option';
+import { ExpansionOption, Option } from './option';
 import { getOptionsByExpansion } from './get-options-by-expansion';
 
 export class Options {
@@ -76,6 +76,38 @@ export class Options {
       Options.allAdversaries,
       expansions
     );
+  }
+
+  static getOptionsByName<TName extends string, TOption extends Option<TName>>(
+    options: readonly TOption[],
+    names: readonly TName[]
+  ): readonly TOption[] {
+    const filteredOptions: TOption[] = [];
+
+    for (const name of names) {
+      const foundOption = options.find((option) => option.name === name);
+      if (foundOption) {
+        filteredOptions.push(foundOption);
+      }
+    }
+
+    return filteredOptions;
+  }
+
+  static getOptionsByExpansion<
+    TName extends string,
+    TOption extends ExpansionOption<TName>
+  >(
+    options: readonly TOption[],
+    expansions: readonly ExpansionName[]
+  ): readonly TOption[] {
+    return options.filter((item) => {
+      if (item.expansion) {
+        return expansions.includes(item.expansion);
+      } else {
+        return true;
+      }
+    });
   }
 }
 
