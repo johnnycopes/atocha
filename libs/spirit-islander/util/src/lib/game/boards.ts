@@ -1,15 +1,10 @@
-import type { ExpansionOption } from './expansions';
+import { BOARDS } from './data';
+import { ExpansionOption } from './option';
 
 export interface Board extends ExpansionOption<BalancedBoardName> {
   thematicName: ThematicBoardName;
 }
 
-export type BalancedBoardName = 'A' | 'B' | 'C' | 'D' | 'E' | 'F';
+export type BalancedBoardName = (typeof BOARDS)[number]['name'];
 
-export type ThematicBoardName =
-  | 'Northeast'
-  | 'East'
-  | 'Northwest'
-  | 'West'
-  | 'Southeast'
-  | 'Southwest';
+export type ThematicBoardName = (typeof BOARDS)[number]['thematicName'];

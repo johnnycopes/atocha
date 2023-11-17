@@ -1,6 +1,4 @@
-import { Scenario } from '../scenarios';
-
-export const SCENARIOS: readonly Scenario[] = [
+export const SCENARIOS = [
   {
     name: 'No Scenario',
     difficulty: 0,
@@ -66,4 +64,4 @@ export const SCENARIOS: readonly Scenario[] = [
     name: 'Dahan Insurrection',
     difficulty: 4,
   },
-];
+] as const;

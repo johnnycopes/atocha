@@ -1,6 +1,4 @@
-import { Board } from '../boards';
-
-export const BOARDS: readonly Board[] = [
+export const BOARDS = [
   {
     name: 'A',
     thematicName: 'Northeast',
@@ -27,4 +25,4 @@ export const BOARDS: readonly Board[] = [
     thematicName: 'Southwest',
     expansion: 'Jagged Earth',
   },
-];
+] as const;

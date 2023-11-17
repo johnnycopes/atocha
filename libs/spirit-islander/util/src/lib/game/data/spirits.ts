@@ -1,6 +1,4 @@
-import { Spirit } from '../spirits';
-
-export const SPIRITS: readonly Spirit[] = [
+export const SPIRITS = [
   { name: 'A Spread of Rampant Green' },
   { name: 'Bringer of Dreams and Nightmares' },
   { name: 'Devouring Teeth Lurk Underfoot', expansion: 'Horizons' },
@@ -30,4 +28,4 @@ export const SPIRITS: readonly Spirit[] = [
   { name: 'Vengeance as a Burning Plague', expansion: 'Jagged Earth' },
   { name: 'Vital Strength of the Earth' },
   { name: 'Volcano Looming High', expansion: 'Jagged Earth' },
-];
+] as const;
