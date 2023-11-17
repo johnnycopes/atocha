@@ -42,40 +42,25 @@ export class Options {
   get spirits() {
     return this._spirits;
   }
-  get spiritNames(): readonly SpiritName[] {
-    return getNames(this._spirits);
-  }
 
   private _boards: readonly Board[] = BOARDS;
   get boards() {
     return this._boards;
-  }
-  get boardNames(): readonly BalancedBoardName[] {
-    return getNames(this._boards);
   }
 
   private _maps: readonly Map[] = MAPS;
   get maps() {
     return this._maps;
   }
-  get mapNames(): readonly MapName[] {
-    return getNames(this._maps);
-  }
 
   private _scenarios: readonly Scenario[] = SCENARIOS;
   get scenarios() {
     return this._scenarios;
   }
-  get scenarioNames(): readonly ScenarioName[] {
-    return getNames(this._scenarios);
-  }
 
   private _adversaries: readonly Adversary[] = ADVERSARIES;
   get adversaries() {
     return this._adversaries;
-  }
-  get adversaryLevelIds(): readonly AdversaryLevelId[] {
-    return getAdversaryLevelIds(this._adversaries);
   }
 
   constructor(expansions: readonly ExpansionName[]) {
