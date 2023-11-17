@@ -1,16 +1,11 @@
 import { AdversaryLevelId } from '../game/adversaries';
 import { BalancedBoardName } from '../game/boards';
 import { ExpansionName } from '../game/expansions';
+import { getOptionsByExpansion } from '../game/get-options-by-expansion';
 import { MapName } from '../game/maps';
+import { Options } from '../game/options';
 import { ScenarioName } from '../game/scenarios';
 import { SpiritName } from '../game/spirits';
-import {
-  createAdversariesModel,
-  createBoardsModel,
-  createMapsModel,
-  createScenariosModel,
-  createSpiritsModel,
-} from './create-model';
 
 export class Models {
   private _spiritNames: readonly SpiritName[] = [];
@@ -63,35 +58,53 @@ export class Models {
     target: 'Expansions' | ExpansionName
   ): Models {
     this._spiritNames = this._updateModel(
-      createSpiritsModel,
+      (expansions) =>
+        getOptionsByExpansion(Options.allSpirits, expansions).map(
+          (option) => option.name
+        ),
       this._spiritNames,
       expansions,
       target
     );
 
     this._boardNames = this._updateModel(
-      createBoardsModel,
+      (expansions) =>
+        getOptionsByExpansion(Options.allBoards, expansions).map(
+          (option) => option.name
+        ),
       this._boardNames,
       expansions,
       target
     );
 
     this._mapNames = this._updateModel(
-      createMapsModel,
+      (expansions) =>
+        getOptionsByExpansion(Options.allMaps, expansions).map(
+          (option) => option.name
+        ),
       this._mapNames,
       expansions,
       target
     );
 
     this._scenarioNames = this._updateModel(
-      createScenariosModel,
+      (expansions) =>
+        getOptionsByExpansion(Options.allScenarios, expansions).map(
+          (option) => option.name
+        ),
       this._scenarioNames,
       expansions,
       target
     );
 
     this._adversaryLevelIds = this._updateModel(
-      createAdversariesModel,
+      (expansions) =>
+        getOptionsByExpansion(Options.allAdversaries, expansions).reduce<
+          AdversaryLevelId[]
+        >((model, adversary) => {
+          adversary.levels.forEach((level) => model.push(level.id));
+          return model;
+        }, []),
       this._adversaryLevelIds,
       expansions,
       target
@@ -101,66 +114,38 @@ export class Models {
   }
 
   private _updateModel<TName>(
-    createModel: (expansions?: readonly ExpansionName[]) => readonly TName[],
+    createModel: (expansions: readonly ExpansionName[]) => readonly TName[],
     existingModel: readonly TName[],
     expansions: readonly ExpansionName[],
     target: 'Expansions' | ExpansionName
   ): readonly TName[] {
     if (target === 'Expansions') {
-      return this._recreateModel(createModel, existingModel, expansions);
+      const expansionOptionNames = this._getExpansionOptionNames(
+        createModel,
+        expansions
+      );
+      const allowedOptionNames = createModel(expansions);
+      return [
+        ...existingModel.filter((name) => allowedOptionNames.includes(name)),
+        ...expansionOptionNames.filter((name) => !existingModel.includes(name)),
+      ];
     }
-    if (expansions.includes(target)) {
-      return this._augmentModel(createModel, existingModel, target);
-    } else {
-      return this._purgeModel(createModel, existingModel, target);
-    }
+
+    const expansionOptionNames = this._getExpansionOptionNames(createModel, [
+      target,
+    ]);
+    return expansions.includes(target)
+      ? [...existingModel, ...expansionOptionNames]
+      : existingModel.filter((name) => !expansionOptionNames.includes(name));
   }
 
-  private _recreateModel<TName>(
-    createModel: (expansions?: readonly ExpansionName[]) => readonly TName[],
-    existingModel: readonly TName[],
+  private _getExpansionOptionNames<TName>(
+    createModel: (expansions: readonly ExpansionName[]) => readonly TName[],
     expansions: readonly ExpansionName[]
   ): readonly TName[] {
-    const expansionItemNames = this._getExpansionItemNames(
-      createModel,
-      expansions
-    );
-    const allowedItemNames = createModel(expansions);
-    return [
-      ...existingModel.filter((name) => allowedItemNames.includes(name)),
-      ...expansionItemNames.filter((name) => !existingModel.includes(name)),
-    ];
-  }
-
-  private _augmentModel<TName>(
-    createModel: (expansions?: readonly ExpansionName[]) => readonly TName[],
-    existingModel: readonly TName[],
-    expansionToAdd: ExpansionName
-  ): readonly TName[] {
-    const expansionItemNames = this._getExpansionItemNames(createModel, [
-      expansionToAdd,
-    ]);
-    return [...existingModel, ...expansionItemNames];
-  }
-
-  private _purgeModel<TName>(
-    createModel: (expansions?: readonly ExpansionName[]) => readonly TName[],
-    existingModel: readonly TName[],
-    expansionToRemove: ExpansionName
-  ): readonly TName[] {
-    const expansionItemNames = this._getExpansionItemNames(createModel, [
-      expansionToRemove,
-    ]);
-    return existingModel.filter((name) => !expansionItemNames.includes(name));
-  }
-
-  private _getExpansionItemNames<TName>(
-    createModel: (expansions?: readonly ExpansionName[]) => readonly TName[],
-    expansions: readonly ExpansionName[]
-  ): readonly TName[] {
-    const baseItemNames = createModel();
+    const baseOptionNames = createModel([]);
     return createModel(expansions).filter(
-      (name) => !baseItemNames.includes(name)
+      (name) => !baseOptionNames.includes(name)
     );
   }
 }
