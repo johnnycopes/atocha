@@ -42,13 +42,16 @@ export class Options {
   static getNames<TName extends string>(
     options: readonly Option<TName>[]
   ): TName[] {
-    return getNames(options);
+    return options.map(({ name }) => name);
   }
 
   static getAdversaryLevelIds(
     adversaries: readonly Adversary[]
   ): AdversaryLevelId[] {
-    return getAdversaryLevelIds(adversaries);
+    return adversaries.reduce<AdversaryLevelId[]>((model, adversary) => {
+      adversary.levels.forEach((level) => model.push(level.id));
+      return model;
+    }, []);
   }
 
   static getOptionsByName<TName extends string, TOption extends Option<TName>>(
@@ -82,19 +85,4 @@ export class Options {
       }
     });
   }
-}
-
-function getNames<TName extends string>(
-  options: readonly Option<TName>[]
-): TName[] {
-  return options.map(({ name }) => name);
-}
-
-function getAdversaryLevelIds(
-  adversaries: readonly Adversary[]
-): AdversaryLevelId[] {
-  return adversaries.reduce<AdversaryLevelId[]>((model, adversary) => {
-    adversary.levels.forEach((level) => model.push(level.id));
-    return model;
-  }, []);
 }
