@@ -50,25 +50,21 @@ export class Root {
     return this._adversaries;
   }
 
-  private readonly _options = new Options([]);
-
   constructor(expansions: ExpansionName[] = []) {
     this.update(expansions);
   }
 
   update(expansions: readonly ExpansionName[]) {
-    this._options.update(expansions);
-
     this._spirits = this._createRoot({
       root: 'Spirits',
-      items: this._options.spirits,
+      items: Options.getOptionsByExpansion(Options.allSpirits, expansions),
       getId: ({ name }) => name,
       getDisplay: ({ expansion }) => (expansion ? { expansion } : {}),
     });
 
     this._maps = this._createRoot({
       root: 'Maps',
-      items: this._options.maps,
+      items: Options.getOptionsByExpansion(Options.allMaps, expansions),
       getId: ({ name }) => name,
       getDisplay: ({ difficulty }) => ({
         difficulty: getDifficulty(difficulty, expansions),
@@ -77,14 +73,14 @@ export class Root {
 
     this._boards = this._createRoot({
       root: 'Boards',
-      items: this._options.boards,
+      items: Options.getOptionsByExpansion(Options.allBoards, expansions),
       getId: ({ name }) => name,
       getDisplay: ({ expansion }) => (expansion ? { expansion } : {}),
     });
 
     this._scenarios = this._createRoot({
       root: 'Scenarios',
-      items: this._options.scenarios,
+      items: Options.getOptionsByExpansion(Options.allScenarios, expansions),
       getId: ({ name }) => name,
       getDisplay: ({ expansion, difficulty }) => ({
         difficulty,
@@ -97,7 +93,7 @@ export class Root {
       AdversaryName | AdversaryLevelId
     >({
       root: 'Adversaries',
-      items: this._options.adversaries,
+      items: Options.getOptionsByExpansion(Options.allAdversaries, expansions),
       getId: (entity) =>
         this._isAdversaryLevel(entity) ? entity.id : entity.name,
       getChildren: (entity) => (this._isAdversary(entity) ? entity.levels : []),
