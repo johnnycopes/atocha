@@ -1,25 +1,27 @@
 import {
-  EXPANSIONS,
-  DIFFICULTIES,
-  PLAYERS,
-  SPIRITS,
-  BOARDS,
-  MAPS,
-  SCENARIOS,
   ADVERSARIES,
+  BOARDS,
+  DIFFICULTIES,
+  EXPANSIONS,
+  MAPS,
+  PLAYERS,
+  SCENARIOS,
+  SPIRITS,
 } from './data';
 import { Adversary, AdversaryLevelId } from './adversaries';
 import { BalancedBoardName, Board } from './boards';
+import { Difficulty } from './difficulty';
 import { ExpansionName } from './expansions';
 import { Map, MapName } from './maps';
+import { Players } from './players';
 import { Scenario, ScenarioName } from './scenarios';
 import { Spirit, SpiritName } from './spirits';
 import { getOptionsByExpansion } from './get-options-by-expansion';
 
 export class Options {
-  static allExpansions = EXPANSIONS;
-  static allDifficulties = DIFFICULTIES;
-  static allPlayers = PLAYERS;
+  static allExpansions: readonly ExpansionName[] = EXPANSIONS;
+  static allDifficulties: readonly Difficulty[] = DIFFICULTIES;
+  static allPlayers: readonly Players[] = PLAYERS;
   static allSpirits: readonly Spirit[] = SPIRITS;
   static allSpiritNames = SPIRITS.map(({ name }) => name);
   static allBoards: readonly Board[] = BOARDS;
