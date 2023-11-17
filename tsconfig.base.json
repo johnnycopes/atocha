@@ -113,6 +113,9 @@
       "@atocha/spirit-islander/config/feature": [
         "libs/spirit-islander/config/feature/src/index.ts"
       ],
+      "@atocha/spirit-islander/config/util": [
+        "libs/spirit-islander/config/util/src/index.ts"
+      ],
       "@atocha/spirit-islander/game-setup/feature": [
         "libs/spirit-islander/game-setup/feature/src/index.ts"
       ],
