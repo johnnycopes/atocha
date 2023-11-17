@@ -1,5 +1,8 @@
-import { AdversaryLevelId, AdversaryName } from './adversaries';
-import { Options } from './options';
+import {
+  AdversaryLevelId,
+  AdversaryName,
+  Options,
+} from '@atocha/spirit-islander/util';
 
 const adversaryLevelIdDict = Options.allAdversaries.reduce(
   (accum, adversary) => {

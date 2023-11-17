@@ -22,8 +22,8 @@ import {
   Difficulty,
   GameSetup,
   Options,
-  getAdversaryById,
 } from '@atocha/spirit-islander/util';
+import { getAdversaryById } from './get-adversary-by-id';
 
 @Component({
   selector: 'app-game-setup-output',
