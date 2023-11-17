@@ -1,6 +1,5 @@
 import { ADVERSARIES } from './data';
-import type { DifficultyOption } from './difficulty';
-import type { ExpansionOption } from './expansions';
+import { ExpansionOption, DifficultyOption } from './option';
 
 export interface Adversary extends ExpansionOption<AdversaryName> {
   levels: readonly AdversaryLevel[];
