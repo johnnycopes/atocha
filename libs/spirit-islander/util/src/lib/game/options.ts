@@ -22,7 +22,7 @@ export class Options {
   static allPlayers = PLAYERS;
   static allSpirits = SPIRITS;
   static allSpiritNames = SPIRITS.map(({ name }) => name);
-  static allBoards = BOARDS;
+  static allBoards: readonly Board[] = BOARDS;
   static allBoardNames = BOARDS.map(({ name }) => name);
   static allMaps = MAPS;
   static allMapNames = MAPS.map(({ name }) => name);
@@ -39,8 +39,8 @@ export class Options {
     return this._spirits.map(({ name }) => name);
   }
 
-  private _boards = BOARDS;
-  get boards(): readonly Board[] {
+  private _boards: readonly Board[] = BOARDS;
+  get boards() {
     return this._boards;
   }
   get boardNames(): readonly BalancedBoardName[] {
