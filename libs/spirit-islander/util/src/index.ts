@@ -18,6 +18,5 @@ export * from './lib/app/config.interface';
 export * from './lib/app/create-game-setup';
 export * from './lib/app/game-setup.interface';
 export * from './lib/app/get-valid-combos';
-export * from './lib/app/models';
 export * from './lib/app/route.enum';
 export * from './lib/app/select-boards';

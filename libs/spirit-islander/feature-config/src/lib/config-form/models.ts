@@ -1,10 +1,12 @@
-import { AdversaryLevelId } from '../game/adversaries';
-import { BalancedBoardName } from '../game/boards';
-import { ExpansionName } from '../game/expansions';
-import { MapName } from '../game/maps';
-import { Options } from '../game/options';
-import { ScenarioName } from '../game/scenarios';
-import { SpiritName } from '../game/spirits';
+import {
+  SpiritName,
+  BalancedBoardName,
+  MapName,
+  ScenarioName,
+  AdversaryLevelId,
+  ExpansionName,
+  Options,
+} from '@atocha/spirit-islander/util';
 
 export class Models {
   private _spiritNames: readonly SpiritName[] = [];
