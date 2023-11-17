@@ -1,5 +1,5 @@
-import type { DifficultyOption } from './difficulty';
 import { getDifficulty } from './get-difficulty';
+import { DifficultyOption } from './option';
 
 describe('getDifficulty', () => {
   it('returns static difficulty value', () => {
