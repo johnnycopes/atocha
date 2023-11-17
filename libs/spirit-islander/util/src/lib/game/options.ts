@@ -24,7 +24,7 @@ export class Options {
   static allSpiritNames = SPIRITS.map(({ name }) => name);
   static allBoards: readonly Board[] = BOARDS;
   static allBoardNames = BOARDS.map(({ name }) => name);
-  static allMaps = MAPS;
+  static allMaps: readonly Map[] = MAPS;
   static allMapNames = MAPS.map(({ name }) => name);
   static allScenarios = SCENARIOS;
   static allScenarioNames = SCENARIOS.map(({ name }) => name);
@@ -47,8 +47,8 @@ export class Options {
     return this._boards.map(({ name }) => name);
   }
 
-  private _maps = MAPS;
-  get maps(): readonly Map[] {
+  private _maps: readonly Map[] = MAPS;
+  get maps() {
     return this._maps;
   }
   get mapNames(): readonly MapName[] {
