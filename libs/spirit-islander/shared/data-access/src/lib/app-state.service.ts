@@ -8,7 +8,7 @@ import {
   GameSetup,
   migrateConfig,
   Options,
-} from '@atocha/spirit-islander/util';
+} from '@atocha/spirit-islander/shared/util';
 
 export interface AppState {
   config: Config;

@@ -4,7 +4,7 @@ import {
   PageNotFoundComponent,
   ShellComponent,
 } from '@atocha/spirit-islander/feature-shell';
-import { Route } from '@atocha/spirit-islander/util';
+import { Route } from '@atocha/spirit-islander/shared/util';
 
 export const APP_ROUTES: Routes = [
   {

@@ -22,7 +22,7 @@ import {
   Difficulty,
   GameSetup,
   Options,
-} from '@atocha/spirit-islander/util';
+} from '@atocha/spirit-islander/shared/util';
 import { getAdversaryById } from './get-adversary-by-id';
 
 @Component({

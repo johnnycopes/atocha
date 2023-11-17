@@ -6,7 +6,7 @@ import {
   AdversaryLevelId,
   ExpansionName,
   Options,
-} from '@atocha/spirit-islander/util';
+} from '@atocha/spirit-islander/shared/util';
 
 export class Models {
   private _spiritNames: readonly SpiritName[] = [];

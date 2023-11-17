@@ -1,7 +1,7 @@
 import { FormBuilder } from '@angular/forms';
 
 import { Form } from '@atocha/core/ui';
-import { Config } from '@atocha/spirit-islander/util';
+import { Config } from '@atocha/spirit-islander/shared/util';
 
 import {
   playersOutnumberSelectedBoards,

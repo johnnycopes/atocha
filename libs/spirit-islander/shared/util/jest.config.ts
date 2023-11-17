@@ -1,7 +1,7 @@
 /* eslint-disable */
 export default {
-  displayName: 'spirit-islander-util',
-  preset: '../../../jest.preset.js',
+  displayName: 'spirit-islander-shared-util',
+  preset: '../../../../jest.preset.js',
   globals: {},
   testEnvironment: 'node',
   transform: {
@@ -13,5 +13,5 @@ export default {
     ],
   },
   moduleFileExtensions: ['ts', 'js', 'html'],
-  coverageDirectory: '../../../coverage/libs/spirit-islander/util',
+  coverageDirectory: '../../../../coverage/libs/spirit-islander/shared/util',
 };

@@ -125,8 +125,8 @@
       "@atocha/spirit-islander/shared/ui": [
         "libs/spirit-islander/shared/ui/src/index.ts"
       ],
-      "@atocha/spirit-islander/util": [
-        "libs/spirit-islander/util/src/index.ts"
+      "@atocha/spirit-islander/shared/util": [
+        "libs/spirit-islander/shared/util/src/index.ts"
       ],
       "@atocha/tree/ui": ["libs/tree/ui/src/index.ts"],
       "@atocha/tree/util": ["libs/tree/util/src/index.ts"]

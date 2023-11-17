@@ -6,7 +6,7 @@ import {
 } from '@angular/forms';
 
 import { pluralize } from '@atocha/core/util';
-import { Config, getValidCombos } from '@atocha/spirit-islander/util';
+import { Config, getValidCombos } from '@atocha/spirit-islander/shared/util';
 
 export const required: ValidatorFn = (
   control: AbstractControl<string[]>

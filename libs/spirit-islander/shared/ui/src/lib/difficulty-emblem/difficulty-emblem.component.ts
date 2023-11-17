@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
-import { Difficulty } from '@atocha/spirit-islander/util';
+import { Difficulty } from '@atocha/spirit-islander/shared/util';
 import { EmblemComponent } from '../emblem/emblem.component';
 
 @Component({

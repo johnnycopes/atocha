@@ -9,7 +9,7 @@ import {
   Options,
   Scenario,
   Spirit,
-} from '@atocha/spirit-islander/util';
+} from '@atocha/spirit-islander/shared/util';
 
 export interface Node<T> {
   id: string;
