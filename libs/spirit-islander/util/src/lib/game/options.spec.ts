@@ -1,5 +1,6 @@
 import { Options } from './options';
 import { SPIRITS, BOARDS } from './data';
+import { DifficultyOption } from './option';
 import { Spirit, SpiritName } from './spirits';
 import { Board } from './boards';
 
@@ -8,6 +9,101 @@ describe('Options', () => {
     it('returns all options statically', () => {
       expect(Options.allSpirits).toEqual(SPIRITS);
       expect(Options.allBoards).toEqual(BOARDS);
+    });
+  });
+
+  describe('getDifficulty', () => {
+    it('returns static difficulty value', () => {
+      const mockItem: DifficultyOption<string> = {
+        name: 'Fake Item',
+        difficulty: 4,
+      };
+      expect(Options.getDifficulty(mockItem.difficulty, [])).toBe(4);
+      expect(
+        Options.getDifficulty(mockItem.difficulty, ['Branch & Claw'])
+      ).toBe(4);
+      expect(Options.getDifficulty(mockItem.difficulty, ['Jagged Earth'])).toBe(
+        4
+      );
+      expect(
+        Options.getDifficulty(mockItem.difficulty, [
+          'Branch & Claw',
+          'Jagged Earth',
+        ])
+      ).toBe(4);
+      expect(Options.getDifficulty(mockItem.difficulty, ['Promo Pack 1'])).toBe(
+        4
+      );
+      expect(Options.getDifficulty(mockItem.difficulty, ['Promo Pack 2'])).toBe(
+        4
+      );
+      expect(
+        Options.getDifficulty(mockItem.difficulty, [
+          'Promo Pack 1',
+          'Promo Pack 2',
+        ])
+      ).toBe(4);
+      expect(
+        Options.getDifficulty(mockItem.difficulty, [
+          'Branch & Claw',
+          'Jagged Earth',
+          'Promo Pack 1',
+          'Promo Pack 2',
+        ])
+      ).toBe(4);
+    });
+
+    it('returns dynamic difficulty value', () => {
+      const mockItem: DifficultyOption<string> = {
+        name: 'Fake Item',
+        difficulty: (expansions) => {
+          if (expansions.length >= 2) {
+            return 8;
+          } else if (
+            expansions.some((expansion) => expansion === 'Promo Pack 1')
+          ) {
+            return 4;
+          } else if (
+            expansions.some((expansion) => expansion === 'Promo Pack 2')
+          ) {
+            return 3;
+          }
+          return 1;
+        },
+      };
+      expect(Options.getDifficulty(mockItem.difficulty, [])).toBe(1);
+      expect(
+        Options.getDifficulty(mockItem.difficulty, ['Branch & Claw'])
+      ).toBe(1);
+      expect(Options.getDifficulty(mockItem.difficulty, ['Jagged Earth'])).toBe(
+        1
+      );
+      expect(
+        Options.getDifficulty(mockItem.difficulty, [
+          'Branch & Claw',
+          'Jagged Earth',
+        ])
+      ).toBe(8);
+      expect(Options.getDifficulty(mockItem.difficulty, ['Promo Pack 1'])).toBe(
+        4
+      );
+      expect(Options.getDifficulty(mockItem.difficulty, ['Promo Pack 2'])).toBe(
+        3
+      );
+      expect(
+        Options.getDifficulty(mockItem.difficulty, [
+          'Promo Pack 1',
+          'Promo Pack 2',
+        ])
+      ).toBe(8);
+      expect(
+        Options.getDifficulty(mockItem.difficulty, [
+          'Branch & Claw',
+          'Jagged Earth',
+          'Promo Pack 1',
+          'Promo Pack 2',
+        ])
+      ).toBe(8);
     });
   });
 

@@ -37,6 +37,17 @@ export class Options {
   static allAdversaryLevelIds: readonly AdversaryLevelId[] =
     getAdversaryLevelIds(this.allAdversaries);
 
+  static getDifficulty(
+    difficulty:
+      | Difficulty
+      | ((expansions: readonly ExpansionName[]) => Difficulty),
+    expansions: readonly ExpansionName[]
+  ): Difficulty {
+    return typeof difficulty === 'function'
+      ? difficulty(expansions)
+      : difficulty;
+  }
+
   static getOptionsByName<TName extends string, TOption extends Option<TName>>(
     options: readonly TOption[],
     names: readonly TName[]
