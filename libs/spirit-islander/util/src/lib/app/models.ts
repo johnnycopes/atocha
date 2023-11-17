@@ -120,51 +120,27 @@ export class Models {
     target: 'Expansions' | ExpansionName
   ): readonly TName[] {
     if (target === 'Expansions') {
-      return this._recreateModel(createModel, existingModel, expansions);
+      const expansionItemNames = this._getExpansionItemNames(
+        createModel,
+        expansions
+      );
+      const allowedItemNames = createModel(expansions);
+      return [
+        ...existingModel.filter((name) => allowedItemNames.includes(name)),
+        ...expansionItemNames.filter((name) => !existingModel.includes(name)),
+      ];
     }
     if (expansions.includes(target)) {
-      return this._augmentModel(createModel, existingModel, target);
+      const expansionItemNames = this._getExpansionItemNames(createModel, [
+        target,
+      ]);
+      return [...existingModel, ...expansionItemNames];
     } else {
-      return this._purgeModel(createModel, existingModel, target);
+      const expansionItemNames = this._getExpansionItemNames(createModel, [
+        target,
+      ]);
+      return existingModel.filter((name) => !expansionItemNames.includes(name));
     }
-  }
-
-  private _recreateModel<TName>(
-    createModel: (expansions: readonly ExpansionName[]) => readonly TName[],
-    existingModel: readonly TName[],
-    expansions: readonly ExpansionName[]
-  ): readonly TName[] {
-    const expansionItemNames = this._getExpansionItemNames(
-      createModel,
-      expansions
-    );
-    const allowedItemNames = createModel(expansions);
-    return [
-      ...existingModel.filter((name) => allowedItemNames.includes(name)),
-      ...expansionItemNames.filter((name) => !existingModel.includes(name)),
-    ];
-  }
-
-  private _augmentModel<TName>(
-    createModel: (expansions: readonly ExpansionName[]) => readonly TName[],
-    existingModel: readonly TName[],
-    expansionToAdd: ExpansionName
-  ): readonly TName[] {
-    const expansionItemNames = this._getExpansionItemNames(createModel, [
-      expansionToAdd,
-    ]);
-    return [...existingModel, ...expansionItemNames];
-  }
-
-  private _purgeModel<TName>(
-    createModel: (expansions: readonly ExpansionName[]) => readonly TName[],
-    existingModel: readonly TName[],
-    expansionToRemove: ExpansionName
-  ): readonly TName[] {
-    const expansionItemNames = this._getExpansionItemNames(createModel, [
-      expansionToRemove,
-    ]);
-    return existingModel.filter((name) => !expansionItemNames.includes(name));
   }
 
   private _getExpansionItemNames<TName>(
