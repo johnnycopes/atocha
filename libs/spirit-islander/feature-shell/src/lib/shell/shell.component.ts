@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterModule, RouterOutlet } from '@angular/router';
 
 import { routerTransition } from '@atocha/core/ui';
-import { PageComponent } from '@atocha/spirit-islander/ui';
+import { PageComponent } from '@atocha/spirit-islander/shared/ui';
 import { HeaderComponent } from '../header/header.component';
 import { FooterComponent } from '../footer/footer.component';
 

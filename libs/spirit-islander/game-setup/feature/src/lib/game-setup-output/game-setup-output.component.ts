@@ -16,7 +16,7 @@ import {
   DifficultyEmblemComponent,
   ExpansionEmblemComponent,
   SeparatorComponent,
-} from '@atocha/spirit-islander/ui';
+} from '@atocha/spirit-islander/shared/ui';
 import {
   AdversaryName,
   Difficulty,

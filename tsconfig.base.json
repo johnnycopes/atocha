@@ -122,7 +122,9 @@
       "@atocha/spirit-islander/shared/data-access": [
         "libs/spirit-islander/shared/data-access/src/index.ts"
       ],
-      "@atocha/spirit-islander/ui": ["libs/spirit-islander/ui/src/index.ts"],
+      "@atocha/spirit-islander/shared/ui": [
+        "libs/spirit-islander/shared/ui/src/index.ts"
+      ],
       "@atocha/spirit-islander/util": [
         "libs/spirit-islander/util/src/index.ts"
       ],

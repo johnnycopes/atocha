@@ -14,7 +14,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { withLatestFrom, Subject, Subscription } from 'rxjs';
 
 import { ButtonComponent } from '@atocha/core/ui';
-import { CardComponent, CardGroupComponent } from '@atocha/spirit-islander/ui';
+import {
+  CardComponent,
+  CardGroupComponent,
+} from '@atocha/spirit-islander/shared/ui';
 import { Config, ExpansionName } from '@atocha/spirit-islander/util';
 import { CheckboxTreeComponent } from '../checkbox-tree/checkbox-tree.component';
 import { SelectDifficultyRangeComponent } from '../select-difficulty-range/select-difficulty-range.component';

@@ -12,7 +12,7 @@ import { CheckboxComponent } from '@atocha/core/ui';
 import {
   DifficultyEmblemComponent,
   ExpansionEmblemComponent,
-} from '@atocha/spirit-islander/ui';
+} from '@atocha/spirit-islander/shared/ui';
 import { SelectionTreeComponent } from '@atocha/tree/ui';
 import { Node } from '../config-form/root';
 
