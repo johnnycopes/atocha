@@ -110,21 +110,29 @@
       ],
       "@atocha/sandbox/ui": ["libs/sandbox/ui/src/index.ts"],
       "@atocha/sandbox/util": ["libs/sandbox/util/src/index.ts"],
-      "@atocha/spirit-islander/data-access": [
-        "libs/spirit-islander/data-access/src/index.ts"
+      "@atocha/spirit-islander/config/feature": [
+        "libs/spirit-islander/config/feature/src/index.ts"
       ],
-      "@atocha/spirit-islander/feature-config": [
-        "libs/spirit-islander/feature-config/src/index.ts"
+      "@atocha/spirit-islander/config/util": [
+        "libs/spirit-islander/config/util/src/index.ts"
       ],
-      "@atocha/spirit-islander/feature-game-setup": [
-        "libs/spirit-islander/feature-game-setup/src/index.ts"
+      "@atocha/spirit-islander/game-setup/feature": [
+        "libs/spirit-islander/game-setup/feature/src/index.ts"
       ],
-      "@atocha/spirit-islander/feature-shell": [
-        "libs/spirit-islander/feature-shell/src/index.ts"
+      "@atocha/spirit-islander/game-setup/util": [
+        "libs/spirit-islander/game-setup/util/src/index.ts"
       ],
-      "@atocha/spirit-islander/ui": ["libs/spirit-islander/ui/src/index.ts"],
-      "@atocha/spirit-islander/util": [
-        "libs/spirit-islander/util/src/index.ts"
+      "@atocha/spirit-islander/shared/data-access": [
+        "libs/spirit-islander/shared/data-access/src/index.ts"
+      ],
+      "@atocha/spirit-islander/shared/ui": [
+        "libs/spirit-islander/shared/ui/src/index.ts"
+      ],
+      "@atocha/spirit-islander/shared/util": [
+        "libs/spirit-islander/shared/util/src/index.ts"
+      ],
+      "@atocha/spirit-islander/shell/feature": [
+        "libs/spirit-islander/shell/feature/src/index.ts"
       ],
       "@atocha/tree/ui": ["libs/tree/ui/src/index.ts"],
       "@atocha/tree/util": ["libs/tree/util/src/index.ts"]

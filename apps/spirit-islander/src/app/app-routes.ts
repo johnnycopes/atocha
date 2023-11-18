@@ -3,8 +3,8 @@ import { Routes } from '@angular/router';
 import {
   PageNotFoundComponent,
   ShellComponent,
-} from '@atocha/spirit-islander/feature-shell';
-import { Route } from '@atocha/spirit-islander/util';
+} from '@atocha/spirit-islander/shell/feature';
+import { Route } from '@atocha/spirit-islander/shared/util';
 
 export const APP_ROUTES: Routes = [
   {
@@ -16,7 +16,7 @@ export const APP_ROUTES: Routes = [
         title: 'Config | Spirit Islander',
         data: { state: Route.config },
         loadComponent: () =>
-          import('@atocha/spirit-islander/feature-config').then(
+          import('@atocha/spirit-islander/config/feature').then(
             (m) => m.ConfigComponent
           ),
       },
@@ -25,7 +25,7 @@ export const APP_ROUTES: Routes = [
         title: 'Game Setup | Spirit Islander',
         data: { state: Route.gameSetup },
         loadComponent: () =>
-          import('@atocha/spirit-islander/feature-game-setup').then(
+          import('@atocha/spirit-islander/game-setup/feature').then(
             (m) => m.GameSetupComponent
           ),
       },
