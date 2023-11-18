@@ -10,7 +10,6 @@ export * from './lib/game/scenarios';
 export * from './lib/game/spirits';
 
 // App data and types
-export * from './lib/app/app-migration';
 export * from './lib/app/combo.interface';
 export * from './lib/app/config.interface';
 export * from './lib/app/get-valid-combos';

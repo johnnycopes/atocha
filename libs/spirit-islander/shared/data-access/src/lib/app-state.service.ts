@@ -2,15 +2,12 @@ import { Injectable } from '@angular/core';
 import { first, tap } from 'rxjs';
 
 import { LocalStorageService, State } from '@atocha/core/data-access';
-import {
-  Config,
-  migrateConfig,
-  Options,
-} from '@atocha/spirit-islander/shared/util';
+import { Config, Options } from '@atocha/spirit-islander/shared/util';
 import {
   GameSetup,
   createGameSetup,
 } from '@atocha/spirit-islander/game-setup/util';
+import { migrateConfig } from './app-migration';
 
 export interface AppState {
   config: Config;
