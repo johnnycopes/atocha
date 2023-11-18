@@ -19,13 +19,13 @@ export function getValidCombos(
   const scenarios = Options.allScenarios.filter(({ name }) =>
     scenarioNames.includes(name)
   );
-  const adversaries = Options.allAdversaries.reduce<AdversaryLevel[]>(
-    (levels, adversary) => {
+  const adversaryLevels = Options.allAdversaries.reduce<AdversaryLevel[]>(
+    (accum, adversary) => {
       const adversaryLevels = adversary.levels.filter((level) =>
         adversaryLevelIds.includes(level.id)
       );
-      levels.push(...adversaryLevels);
-      return levels;
+      accum.push(...adversaryLevels);
+      return accum;
     },
     []
   );
@@ -33,7 +33,7 @@ export function getValidCombos(
   return getPossibleCombos({
     expansions,
     maps,
-    adversaries,
+    adversaryLevels,
     scenarios,
     difficultyRange,
   });

@@ -14,19 +14,19 @@ const comboAnalyzer = new ComboAnalyzer<
 export function getPossibleCombos({
   expansions,
   maps,
-  adversaries,
+  adversaryLevels,
   scenarios,
   difficultyRange,
 }: {
   expansions: readonly ExpansionName[];
   maps: readonly Map[];
-  adversaries: readonly AdversaryLevel[];
+  adversaryLevels: readonly AdversaryLevel[];
   scenarios: readonly Scenario[];
   difficultyRange: readonly Difficulty[];
 }) {
   const [min, max] = difficultyRange;
   return comboAnalyzer.getPossibleCombos(
-    [maps, adversaries, scenarios],
+    [maps, adversaryLevels, scenarios],
     (options) => {
       const difficulty = options.reduce(
         (accum, option) =>
