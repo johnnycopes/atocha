@@ -2,8 +2,8 @@ import {
   Config,
   Difficulty,
   Options,
-  getValidCombos,
 } from '@atocha/spirit-islander/shared/util';
+import { getValidCombos } from '@atocha/spirit-islander/config/util';
 import { GameSetup } from './game-setup.interface';
 import { selectRandom } from './select-random';
 import { selectBoards } from './select-boards';

@@ -1,9 +1,11 @@
-import { Map } from '../game/maps';
-import { Scenario } from '../game/scenarios';
-import { AdversaryLevel } from '../game/adversaries';
-import { Options } from '../game/options';
-import type { Config } from './config.interface';
-import { getPossibleCombos } from './get-possible-combos';
+import {
+  AdversaryLevel,
+  Config,
+  Map,
+  Options,
+  Scenario,
+  getPossibleCombos,
+} from '@atocha/spirit-islander/shared/util';
 
 export function getValidCombos(
   config: Config
