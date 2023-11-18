@@ -20,9 +20,9 @@ export function getValidCombos(
     scenarioNames.includes(name)
   );
   const adversaryLevels = Options.allAdversaries.reduce<AdversaryLevel[]>(
-    (accum, adversary) => {
-      const adversaryLevels = adversary.levels.filter((level) =>
-        adversaryLevelIds.includes(level.id)
+    (accum, { levels }) => {
+      const adversaryLevels = levels.filter(({ id }) =>
+        adversaryLevelIds.includes(id)
       );
       accum.push(...adversaryLevels);
       return accum;
