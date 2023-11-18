@@ -16,8 +16,8 @@ interface MockMap extends MockOption {
 
 describe('ComboAnalyzer', () => {
   let analyzer: ComboAnalyzer<MockOption>;
-  let adversaries: MockAdversary[];
-  let maps: MockMap[];
+  let adversaries: readonly MockAdversary[];
+  let maps: readonly MockMap[];
 
   beforeEach(() => {
     analyzer = new ComboAnalyzer<MockOption>();
@@ -75,15 +75,15 @@ describe('ComboAnalyzer', () => {
   });
 
   it('returns only combos that meet criteria', () => {
-    function isEasy(options: MockOption[]): boolean {
+    function isEasy(options: readonly MockOption[]): boolean {
       return getDifficulty(options) <= 2;
     }
 
-    function isHard(options: MockOption[]): boolean {
+    function isHard(options: readonly MockOption[]): boolean {
       return getDifficulty(options) >= 5;
     }
 
-    function getDifficulty(options: MockOption[]): number {
+    function getDifficulty(options: readonly MockOption[]): number {
       return options.reduce((accum, { difficulty }) => accum + difficulty, 0);
     }
 
