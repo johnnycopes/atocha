@@ -1,0 +1,27 @@
+{
+  "name": "spirit-islander-shared-ui",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/spirit-islander/shared/ui/src",
+  "prefix": "ui",
+  "targets": {
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/libs/spirit-islander/shared/ui"],
+      "options": {
+        "jestConfig": "libs/spirit-islander/shared/ui/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/spirit-islander/shared/ui/**/*.ts",
+          "libs/spirit-islander/shared/ui/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": ["scope:spirit-islander", "type:ui"]
+}

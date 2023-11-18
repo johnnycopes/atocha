@@ -1,0 +1,29 @@
+{
+  "name": "spirit-islander-shared-data-access",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/spirit-islander/shared/data-access/src",
+  "prefix": "app",
+  "targets": {
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": [
+        "{workspaceRoot}/coverage/libs/spirit-islander/shared/data-access"
+      ],
+      "options": {
+        "jestConfig": "libs/spirit-islander/shared/data-access/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/spirit-islander/shared/data-access/**/*.ts",
+          "libs/spirit-islander/shared/data-access/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": ["scope:spirit-islander", "type:data-access"]
+}
