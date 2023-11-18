@@ -1,14 +1,9 @@
-import { Map, MapName } from '../game/maps';
-import { Scenario, ScenarioName } from '../game/scenarios';
-import { AdversaryLevel, AdversaryLevelName } from '../game/adversaries';
-import { ComboAnalyzer } from './combo-analyzer';
-import type { Config } from './config.interface';
-import { DifficultyOption } from '../game/option';
+import { Map } from '../game/maps';
+import { Scenario } from '../game/scenarios';
+import { AdversaryLevel } from '../game/adversaries';
 import { Options } from '../game/options';
-
-const comboAnalyzer = new ComboAnalyzer<
-  DifficultyOption<MapName | AdversaryLevelName | ScenarioName>
->();
+import type { Config } from './config.interface';
+import { getPossibleCombos } from './get-possible-combos';
 
 export function getValidCombos(
   config: Config
@@ -29,16 +24,15 @@ export function getValidCombos(
     []
   );
 
-  return comboAnalyzer.getPossibleCombos(
-    [maps, adversaries, scenarios],
-    (options) => {
-      const [min, max] = config.difficultyRange;
-      const difficulty = options.reduce(
-        (accum, option) =>
-          accum + Options.getDifficulty(option.difficulty, config.expansions),
-        0
-      );
-      return difficulty >= min && difficulty <= max;
-    }
-  );
+  // Create mutable copies to satisfy ComboAnalyzer param types
+  const expansions = config.expansions.slice();
+  const difficultyRange = config.difficultyRange.slice();
+
+  return getPossibleCombos({
+    expansions,
+    maps,
+    adversaries,
+    scenarios,
+    difficultyRange,
+  });
 }
