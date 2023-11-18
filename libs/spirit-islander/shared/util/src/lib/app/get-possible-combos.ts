@@ -18,11 +18,11 @@ export function getPossibleCombos({
   scenarios,
   difficultyRange,
 }: {
-  expansions: ExpansionName[];
-  maps: Map[];
-  adversaries: AdversaryLevel[];
-  scenarios: Scenario[];
-  difficultyRange: Difficulty[];
+  expansions: readonly ExpansionName[];
+  maps: readonly Map[];
+  adversaries: readonly AdversaryLevel[];
+  scenarios: readonly Scenario[];
+  difficultyRange: readonly Difficulty[];
 }) {
   const [min, max] = difficultyRange;
   return comboAnalyzer.getPossibleCombos(

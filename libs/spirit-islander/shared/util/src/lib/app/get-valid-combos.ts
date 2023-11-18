@@ -7,8 +7,14 @@ import { getPossibleCombos } from './get-possible-combos';
 
 export function getValidCombos(
   config: Config
-): [Map, AdversaryLevel, Scenario][] {
-  const { mapNames, scenarioNames, adversaryLevelIds } = config;
+): readonly [Map, AdversaryLevel, Scenario][] {
+  const {
+    expansions,
+    mapNames,
+    scenarioNames,
+    adversaryLevelIds,
+    difficultyRange,
+  } = config;
   const maps = Options.allMaps.filter((map) => mapNames.includes(map.name));
   const scenarios = Options.allScenarios.filter((scenario) =>
     scenarioNames.includes(scenario.name)
@@ -23,10 +29,6 @@ export function getValidCombos(
     },
     []
   );
-
-  // Create mutable copies to satisfy ComboAnalyzer param types
-  const expansions = config.expansions.slice();
-  const difficultyRange = config.difficultyRange.slice();
 
   return getPossibleCombos({
     expansions,
