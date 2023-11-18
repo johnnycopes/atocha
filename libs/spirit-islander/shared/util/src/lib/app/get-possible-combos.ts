@@ -16,14 +16,15 @@ export function getPossibleCombos({
   maps,
   adversaries,
   scenarios,
-  difficultyRange: [min, max],
+  difficultyRange,
 }: {
   expansions: ExpansionName[];
   maps: Map[];
   adversaries: AdversaryLevel[];
   scenarios: Scenario[];
-  difficultyRange: [Difficulty, Difficulty];
+  difficultyRange: Difficulty[];
 }) {
+  const [min, max] = difficultyRange;
   return comboAnalyzer.getPossibleCombos(
     [maps, adversaries, scenarios],
     (options) => {
