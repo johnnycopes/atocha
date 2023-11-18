@@ -4,9 +4,9 @@ import {
   GameSetup,
   Options,
   getValidCombos,
-  selectBoards,
-  selectRandom,
 } from '@atocha/spirit-islander/shared/util';
+import { selectRandom } from './select-random';
+import { selectBoards } from './select-boards';
 
 export function createGameSetup(config: Config): GameSetup {
   const { players, expansions, spiritNames, boardNames } = config;
