@@ -4,11 +4,11 @@ import { first, tap } from 'rxjs';
 import { LocalStorageService, State } from '@atocha/core/data-access';
 import {
   Config,
-  createGameSetup,
   GameSetup,
   migrateConfig,
   Options,
 } from '@atocha/spirit-islander/shared/util';
+import { createGameSetup } from '@atocha/spirit-islander/game-setup/util';
 
 export interface AppState {
   config: Config;
