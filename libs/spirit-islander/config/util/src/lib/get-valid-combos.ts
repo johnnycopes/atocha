@@ -5,7 +5,7 @@ import {
   Scenario,
 } from '@atocha/spirit-islander/shared/util';
 import { Config } from './config.interface';
-import { getPossibleCombos } from './get-possible-combos';
+import { getPossibleCombos } from './internal/get-possible-combos';
 
 export function getValidCombos(
   config: Config
