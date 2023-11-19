@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { Options } from '@atocha/spirit-islander/shared/util';
+import { DIFFICULTIES } from '@atocha/spirit-islander/shared/util';
 import { SelectRangeComponent } from '../select-range/select-range.component';
 
 @Component({
@@ -21,5 +21,5 @@ import { SelectRangeComponent } from '../select-range/select-range.component';
 export class SelectDifficultyRangeComponent {
   @Input() form: FormGroup | undefined;
 
-  difficulties = Options.allDifficulties;
+  difficulties = DIFFICULTIES;
 }

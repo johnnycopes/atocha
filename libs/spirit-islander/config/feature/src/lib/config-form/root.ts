@@ -1,14 +1,21 @@
 import {
+  ADVERSARIES,
   Adversary,
   AdversaryLevel,
   AdversaryLevelId,
   AdversaryName,
+  BOARDS,
   Board,
+  EXPANSIONS,
   ExpansionName,
+  MAPS,
   Map,
-  Options,
+  SCENARIOS,
+  SPIRITS,
   Scenario,
   Spirit,
+  getDifficulty,
+  getOptionsByExpansion,
 } from '@atocha/spirit-islander/shared/util';
 
 export interface Node<T> {
@@ -20,7 +27,7 @@ export interface Node<T> {
 export class Root {
   readonly expansions = this._createRoot({
     root: 'Expansions',
-    items: Options.allExpansions,
+    items: EXPANSIONS,
     getId: (item) => item,
   });
 
@@ -56,30 +63,30 @@ export class Root {
   update(expansions: readonly ExpansionName[]) {
     this._spirits = this._createRoot({
       root: 'Spirits',
-      items: Options.getOptionsByExpansion(Options.allSpirits, expansions),
+      items: getOptionsByExpansion(SPIRITS, expansions),
       getId: ({ name }) => name,
       getDisplay: ({ expansion }) => (expansion ? { expansion } : {}),
     });
 
     this._maps = this._createRoot({
       root: 'Maps',
-      items: Options.getOptionsByExpansion(Options.allMaps, expansions),
+      items: getOptionsByExpansion(MAPS, expansions),
       getId: ({ name }) => name,
       getDisplay: ({ difficulty }) => ({
-        difficulty: Options.getDifficulty(difficulty, expansions),
+        difficulty: getDifficulty(difficulty, expansions),
       }),
     });
 
     this._boards = this._createRoot({
       root: 'Boards',
-      items: Options.getOptionsByExpansion(Options.allBoards, expansions),
+      items: getOptionsByExpansion(BOARDS, expansions),
       getId: ({ name }) => name,
       getDisplay: ({ expansion }) => (expansion ? { expansion } : {}),
     });
 
     this._scenarios = this._createRoot({
       root: 'Scenarios',
-      items: Options.getOptionsByExpansion(Options.allScenarios, expansions),
+      items: getOptionsByExpansion(SCENARIOS, expansions),
       getId: ({ name }) => name,
       getDisplay: ({ expansion, difficulty }) => ({
         difficulty,
@@ -92,7 +99,7 @@ export class Root {
       AdversaryName | AdversaryLevelId
     >({
       root: 'Adversaries',
-      items: Options.getOptionsByExpansion(Options.allAdversaries, expansions),
+      items: getOptionsByExpansion(ADVERSARIES, expansions),
       getId: (entity) =>
         this._isAdversaryLevel(entity) ? entity.id : entity.name,
       getChildren: (entity) => (this._isAdversary(entity) ? entity.levels : []),

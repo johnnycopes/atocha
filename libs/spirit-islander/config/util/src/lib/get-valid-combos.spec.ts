@@ -1,18 +1,27 @@
-import { Options } from '@atocha/spirit-islander/shared/util';
+import {
+  ADVERSARIES,
+  BOARDS,
+  EXPANSIONS,
+  MAPS,
+  SCENARIOS,
+  SPIRITS,
+  getAdversaryLevelIds,
+  getNames,
+} from '@atocha/spirit-islander/shared/util';
 import { Config } from './config.interface';
 import { getValidCombos } from './get-valid-combos';
 
 describe('getValidCombos', () => {
   it('returns possible combinations for lowest difficulty', () => {
     const mockConfig: Config = {
-      expansions: Options.allExpansions,
+      expansions: EXPANSIONS,
       players: 1,
       difficultyRange: [0, 0],
-      spiritNames: Options.getNames(Options.allSpirits),
-      mapNames: Options.getNames(Options.allMaps),
-      boardNames: Options.getNames(Options.allBoards),
-      scenarioNames: Options.getNames(Options.allScenarios),
-      adversaryLevelIds: Options.getAdversaryLevelIds(Options.allAdversaries),
+      spiritNames: getNames(SPIRITS),
+      mapNames: getNames(MAPS),
+      boardNames: getNames(BOARDS),
+      scenarioNames: getNames(SCENARIOS),
+      adversaryLevelIds: getAdversaryLevelIds(ADVERSARIES),
     };
     expect(getValidCombos(mockConfig)).toStrictEqual([
       [
@@ -58,14 +67,14 @@ describe('getValidCombos', () => {
 
   it('returns all possible combinations', () => {
     const mockConfig: Config = {
-      expansions: Options.allExpansions,
+      expansions: EXPANSIONS,
       players: 1,
       difficultyRange: [0, 11],
-      spiritNames: Options.getNames(Options.allSpirits),
-      mapNames: Options.getNames(Options.allMaps),
-      boardNames: Options.getNames(Options.allBoards),
-      scenarioNames: Options.getNames(Options.allScenarios),
-      adversaryLevelIds: Options.getAdversaryLevelIds(Options.allAdversaries),
+      spiritNames: getNames(SPIRITS),
+      mapNames: getNames(MAPS),
+      boardNames: getNames(BOARDS),
+      scenarioNames: getNames(SCENARIOS),
+      adversaryLevelIds: getAdversaryLevelIds(ADVERSARIES),
     };
     expect(getValidCombos(mockConfig)).toHaveLength(1215);
   });

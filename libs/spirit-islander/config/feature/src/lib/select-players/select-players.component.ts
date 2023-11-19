@@ -2,8 +2,8 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+import { PLAYERS } from '@atocha/spirit-islander/shared/util';
 import { trackBySelf } from '@atocha/core/ui';
-import { Options } from '@atocha/spirit-islander/shared/util';
 
 @Component({
   selector: 'app-select-players',
@@ -17,5 +17,5 @@ export class SelectPlayersComponent {
   @Input() form: FormGroup | undefined;
 
   readonly trackByFn = trackBySelf;
-  players = Options.allPlayers;
+  players = PLAYERS;
 }

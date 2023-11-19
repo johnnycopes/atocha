@@ -1,4 +1,4 @@
-import { SPIRITS } from './data';
+import { SPIRITS } from '../data';
 import { ExpansionOption } from './option';
 
 export type Spirit = ExpansionOption<SpiritName>;

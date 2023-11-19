@@ -1,4 +1,4 @@
-import { ADVERSARIES } from './data';
+import { ADVERSARIES } from '../data';
 import { ExpansionOption, DifficultyOption } from './option';
 
 export interface Adversary extends ExpansionOption<AdversaryName> {

@@ -1,4 +1,4 @@
-import { ExpansionName } from '../expansions';
+import { ExpansionName } from '../types/expansions';
 
 export const MAPS = [
   {
