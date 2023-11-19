@@ -30,9 +30,9 @@ export class AspectEmblemComponent {
   abbreviation!: string;
 
   private readonly _abbreviations: Record<SpiritWithAspects, string> = {
-    "Lightning's Swift Strike": 'lightning',
-    'River Surges in Sunlight': 'river',
-    'Shadows Flicker Like Flame': 'shadow',
-    'Vital Strength of the Earth': 'earth',
+    "Lightning's Swift Strike": 'Lightning',
+    'River Surges in Sunlight': 'River',
+    'Shadows Flicker Like Flame': 'Shadow',
+    'Vital Strength of the Earth': 'Earth',
   };
 }
