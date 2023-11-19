@@ -1,7 +1,10 @@
-import { Board, BalancedBoardName } from '../game/boards';
-import type { MapName } from '../game/maps';
-import type { Players } from '../game/players';
-import { Options } from '../game/options';
+import {
+  BalancedBoardName,
+  Board,
+  MapName,
+  Options,
+  Players,
+} from '@atocha/spirit-islander/shared/util';
 import { selectRandom } from './select-random';
 
 export function selectBoards(

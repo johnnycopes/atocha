@@ -1,4 +1,4 @@
-import { Config } from '@atocha/spirit-islander/shared/util';
+import { Config } from '@atocha/spirit-islander/config/util';
 import { ConfigForm } from './config-form';
 
 describe('ConfigForm', () => {

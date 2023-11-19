@@ -20,9 +20,9 @@ import {
 import {
   AdversaryName,
   Difficulty,
-  GameSetup,
   Options,
 } from '@atocha/spirit-islander/shared/util';
+import { GameSetup } from '@atocha/spirit-islander/game-setup/util';
 import { getAdversaryById } from './get-adversary-by-id';
 
 @Component({

@@ -1,10 +1,10 @@
 import { Routes } from '@angular/router';
 
+import { Route } from '@atocha/spirit-islander/shared/data-access';
 import {
   PageNotFoundComponent,
   ShellComponent,
 } from '@atocha/spirit-islander/shell/feature';
-import { Route } from '@atocha/spirit-islander/shared/util';
 
 export const APP_ROUTES: Routes = [
   {

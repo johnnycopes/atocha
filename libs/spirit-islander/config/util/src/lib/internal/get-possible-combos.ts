@@ -1,11 +1,17 @@
-import { AdversaryLevel, AdversaryLevelName } from '../game/adversaries';
-import { Difficulty } from '../game/difficulty';
-import { Map, MapName } from '../game/maps';
-import { DifficultyOption } from '../game/option';
-import { Options } from '../game/options';
-import { Scenario, ScenarioName } from '../game/scenarios';
-import { ExpansionName } from '../game/expansions';
+import {
+  AdversaryLevel,
+  AdversaryLevelName,
+  Difficulty,
+  DifficultyOption,
+  ExpansionName,
+  Map,
+  MapName,
+  Options,
+  Scenario,
+  ScenarioName,
+} from '@atocha/spirit-islander/shared/util';
 import { ComboAnalyzer } from './combo-analyzer';
+import { Combos } from './combo.interface';
 
 const comboAnalyzer = new ComboAnalyzer<
   DifficultyOption<MapName | AdversaryLevelName | ScenarioName>
@@ -23,7 +29,7 @@ export function getPossibleCombos({
   adversaryLevels: readonly AdversaryLevel[];
   scenarios: readonly Scenario[];
   difficultyRange: readonly Difficulty[];
-}) {
+}): Combos {
   const [min, max] = difficultyRange;
   return comboAnalyzer.getPossibleCombos(
     [maps, adversaryLevels, scenarios],

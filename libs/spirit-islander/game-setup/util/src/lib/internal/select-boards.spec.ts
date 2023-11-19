@@ -1,5 +1,5 @@
 import { selectBoards } from './select-boards';
-import { Options } from '../game/options';
+import { Options } from '@atocha/spirit-islander/shared/util';
 
 describe('selectBoards', () => {
   describe('balanced board selection', () => {

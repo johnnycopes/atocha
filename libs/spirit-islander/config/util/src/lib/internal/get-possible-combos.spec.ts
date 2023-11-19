@@ -1,4 +1,4 @@
-import { Options } from '../game/options';
+import { Options } from '@atocha/spirit-islander/shared/util';
 import { getPossibleCombos } from './get-possible-combos';
 
 describe('getPossibleCombos', () => {

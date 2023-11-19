@@ -1,11 +1,13 @@
-import type { Players } from '../game/players';
-import type { Difficulty } from '../game/difficulty';
-import type { MapName } from '../game/maps';
-import type { BalancedBoardName } from '../game/boards';
-import type { ExpansionName } from '../game/expansions';
-import type { SpiritName } from '../game/spirits';
-import type { AdversaryLevelId } from '../game/adversaries';
-import type { ScenarioName } from '../game/scenarios';
+import {
+  ExpansionName,
+  Players,
+  Difficulty,
+  SpiritName,
+  MapName,
+  BalancedBoardName,
+  ScenarioName,
+  AdversaryLevelId,
+} from '@atocha/spirit-islander/shared/util';
 
 /**
  * Collection of selected options that a user either
