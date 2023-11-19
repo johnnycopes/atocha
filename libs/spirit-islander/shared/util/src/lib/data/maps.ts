@@ -1,4 +1,4 @@
-import { ExpansionName } from '../types/expansions';
+import { Expansion } from '../types/expansions';
 
 export const MAPS = [
   {
@@ -7,7 +7,7 @@ export const MAPS = [
   },
   {
     name: 'Thematic',
-    difficulty: (expansions: readonly ExpansionName[]) => {
+    difficulty: (expansions: readonly Expansion[]) => {
       return expansions.some(
         (expansion) =>
           expansion === 'Branch & Claw' || expansion === 'Jagged Earth'

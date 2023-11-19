@@ -9,7 +9,7 @@ import {
   MapName,
   ScenarioName,
   AdversaryLevelId,
-  ExpansionName,
+  Expansion,
   getAdversaryLevelIds,
   getOptionsByExpansion,
   getNames,
@@ -62,8 +62,8 @@ export class Models {
   }
 
   update(
-    expansions: readonly ExpansionName[],
-    target: 'Expansions' | ExpansionName
+    expansions: readonly Expansion[],
+    target: 'Expansions' | Expansion
   ): Models {
     this._spiritNames = this._updateModel(
       (expansions) => getNames(getOptionsByExpansion(SPIRITS, expansions)),
@@ -105,10 +105,10 @@ export class Models {
   }
 
   private _updateModel<TName>(
-    createModel: (expansions: readonly ExpansionName[]) => readonly TName[],
+    createModel: (expansions: readonly Expansion[]) => readonly TName[],
     existingModel: readonly TName[],
-    expansions: readonly ExpansionName[],
-    target: 'Expansions' | ExpansionName
+    expansions: readonly Expansion[],
+    target: 'Expansions' | Expansion
   ): readonly TName[] {
     if (target === 'Expansions') {
       const expansionOptionNames = this._getExpansionOptionNames(
@@ -131,8 +131,8 @@ export class Models {
   }
 
   private _getExpansionOptionNames<TName>(
-    createModel: (expansions: readonly ExpansionName[]) => readonly TName[],
-    expansions: readonly ExpansionName[]
+    createModel: (expansions: readonly Expansion[]) => readonly TName[],
+    expansions: readonly Expansion[]
   ): readonly TName[] {
     const baseOptionNames = createModel([]);
     return createModel(expansions).filter(

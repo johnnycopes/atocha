@@ -2,7 +2,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { of } from 'rxjs';
 
 import { Form } from '@atocha/core/ui';
-import { ExpansionName } from '@atocha/spirit-islander/shared/util';
+import { Expansion } from '@atocha/spirit-islander/shared/util';
 import { Config } from '@atocha/spirit-islander/config/util';
 import { Models } from './models';
 import {
@@ -76,8 +76,8 @@ export class ConfigForm extends FormGroup<Form<Config>> {
   }
 
   updateModels(
-    expansions: readonly ExpansionName[],
-    target: 'Expansions' | ExpansionName
+    expansions: readonly Expansion[],
+    target: 'Expansions' | Expansion
   ): void {
     const {
       spiritNames,

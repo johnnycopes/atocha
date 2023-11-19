@@ -1,5 +1,5 @@
 import {
-  ExpansionName,
+  Expansion,
   Players,
   Difficulty,
   Spirit,
@@ -14,7 +14,7 @@ import {
  * influence how to set up a game of Spirit Island
  */
 export interface GameSetup {
-  expansions: readonly ExpansionName[];
+  expansions: readonly Expansion[];
   players: Players;
   difficulty: Difficulty;
   spirits: readonly Spirit[];

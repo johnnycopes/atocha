@@ -1,5 +1,5 @@
 import {
-  ExpansionName,
+  Expansion,
   Players,
   Difficulty,
   SpiritName,
@@ -14,7 +14,7 @@ import {
  * wants or would be willing to have in a `IGameSetup`
  */
 export interface Config {
-  expansions: readonly ExpansionName[];
+  expansions: readonly Expansion[];
   players: Players;
   difficultyRange: readonly Difficulty[];
   spiritNames: readonly SpiritName[];

@@ -9,7 +9,7 @@ import {
   ADVERSARIES as ADVERSARIES_DATA,
 } from './data';
 import {
-  ExpansionName,
+  Expansion,
   Difficulty,
   Players,
   Spirit,
@@ -19,7 +19,7 @@ import {
   Adversary,
 } from './types';
 
-export const EXPANSIONS: readonly ExpansionName[] = EXPANSIONS_DATA;
+export const EXPANSIONS: readonly Expansion[] = EXPANSIONS_DATA;
 export const DIFFICULTIES: readonly Difficulty[] = DIFFICULTIES_DATA;
 export const PLAYERS: readonly Players[] = PLAYERS_DATA;
 export const SPIRITS: readonly Spirit[] = SPIRITS_DATA;
