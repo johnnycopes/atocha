@@ -1,4 +1,4 @@
-import { SCENARIOS } from './data';
+import { SCENARIOS } from '../data';
 import { DifficultyOption, ExpansionOption } from './option';
 
 export interface Scenario

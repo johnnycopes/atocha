@@ -1,4 +1,4 @@
-import { BOARDS } from './data';
+import { BOARDS } from '../data';
 import { ExpansionOption } from './option';
 
 export interface Board extends ExpansionOption<BalancedBoardName> {

@@ -1,4 +1,4 @@
-import { MAPS } from './data';
+import { MAPS } from '../data';
 import { DifficultyOption, ExpansionOption } from './option';
 
 export interface Map
