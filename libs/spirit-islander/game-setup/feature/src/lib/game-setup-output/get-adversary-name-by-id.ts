@@ -12,6 +12,6 @@ const adversaryLevelIdDict = ADVERSARIES.reduce(
   { none: 'No Adversary' } as Record<AdversaryLevelId, AdversaryName>
 );
 
-export function getAdversaryById(id: AdversaryLevelId): AdversaryName {
+export function getAdversaryNameById(id: AdversaryLevelId): AdversaryName {
   return adversaryLevelIdDict[id];
 }
