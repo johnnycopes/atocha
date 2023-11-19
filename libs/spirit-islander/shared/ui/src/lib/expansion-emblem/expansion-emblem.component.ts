@@ -14,8 +14,8 @@ import { EmblemComponent } from '../emblem/emblem.component';
 })
 export class ExpansionEmblemComponent {
   @Input()
-  set value(name: Expansion | undefined) {
-    this.abbreviation = name ? this._abbreviations[name] : '-';
+  set value(expansion: Expansion | undefined) {
+    this.abbreviation = expansion ? this._abbreviations[expansion] : '-';
   }
 
   abbreviation = '-';
