@@ -1,10 +1,10 @@
 import {
+  ADVERSARIES,
   AdversaryLevelId,
   AdversaryName,
-  Options,
 } from '@atocha/spirit-islander/shared/util';
 
-const adversaryLevelIdDict = Options.allAdversaries.reduce(
+const adversaryLevelIdDict = ADVERSARIES.reduce(
   (accum, adversary) => {
     adversary.levels.forEach((level) => (accum[level.id] = adversary.name));
     return accum;

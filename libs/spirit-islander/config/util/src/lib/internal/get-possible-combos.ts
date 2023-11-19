@@ -6,9 +6,9 @@ import {
   ExpansionName,
   Map,
   MapName,
-  Options,
   Scenario,
   ScenarioName,
+  getDifficulty,
 } from '@atocha/spirit-islander/shared/util';
 import { ComboAnalyzer } from './combo-analyzer';
 import { Combos } from './combo.interface';
@@ -35,8 +35,7 @@ export function getPossibleCombos({
     [maps, adversaryLevels, scenarios],
     (options) => {
       const difficulty = options.reduce(
-        (accum, option) =>
-          accum + Options.getDifficulty(option.difficulty, expansions),
+        (accum, option) => accum + getDifficulty(option.difficulty, expansions),
         0
       );
       return difficulty >= min && difficulty <= max;

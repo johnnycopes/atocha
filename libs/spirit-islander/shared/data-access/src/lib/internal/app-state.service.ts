@@ -2,13 +2,22 @@ import { Injectable } from '@angular/core';
 import { first, tap } from 'rxjs';
 
 import { LocalStorageService, State } from '@atocha/core/data-access';
-import { Options } from '@atocha/spirit-islander/shared/util';
 import { Config } from '@atocha/spirit-islander/config/util';
 import {
   GameSetup,
   createGameSetup,
 } from '@atocha/spirit-islander/game-setup/util';
 import { migrateConfig } from './app-migration';
+import {
+  BOARDS,
+  EXPANSIONS,
+  MAPS,
+  SCENARIOS,
+  SPIRITS,
+  getNames,
+  getAdversaryLevelIds,
+  ADVERSARIES,
+} from '@atocha/spirit-islander/shared/util';
 
 export interface AppState {
   config: Config;
@@ -56,16 +65,14 @@ export class AppStateService {
     return config
       ? JSON.parse(migrateConfig(config))
       : {
-          expansions: Options.allExpansions,
+          expansions: EXPANSIONS,
           players: 5,
           difficultyRange: [0, 8],
-          spiritNames: Options.getNames(Options.allSpirits),
-          mapNames: Options.getNames(Options.allMaps),
-          boardNames: Options.getNames(Options.allBoards),
-          scenarioNames: Options.getNames(Options.allScenarios),
-          adversaryLevelIds: Options.getAdversaryLevelIds(
-            Options.allAdversaries
-          ),
+          spiritNames: getNames(SPIRITS),
+          mapNames: getNames(MAPS),
+          boardNames: getNames(BOARDS),
+          scenarioNames: getNames(SCENARIOS),
+          adversaryLevelIds: getAdversaryLevelIds(ADVERSARIES),
         };
   }
 
