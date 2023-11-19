@@ -25,7 +25,6 @@ export class AspectEmblemComponent {
   @Input({ required: true })
   set name(name: SpiritWithAspects) {
     this.abbreviation = this._abbreviations[name];
-    console.log(this.abbreviation);
   }
   abbreviation!: string;
 
