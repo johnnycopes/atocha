@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { ParamMap, Router } from '@angular/router';
 
 import { Config } from '@atocha/spirit-islander/config/util';
+import { Route } from './route.enum';
 import { AppStateService } from './internal/app-state.service';
-import { Route } from './internal/route.enum';
 import { mapConfigToParams, mapParamsToConfig } from './internal/url-mappers';
 
 @Injectable({
