@@ -1,11 +1,18 @@
 import {
+  MAPS,
+  SCENARIOS,
+  BOARDS,
+  SPIRITS,
+  ADVERSARIES,
   SpiritName,
   BalancedBoardName,
   MapName,
   ScenarioName,
   AdversaryLevelId,
   ExpansionName,
-  Options,
+  getAdversaryLevelIds,
+  getOptionsByExpansion,
+  getNames,
 } from '@atocha/spirit-islander/shared/util';
 
 export class Models {
@@ -59,40 +66,28 @@ export class Models {
     target: 'Expansions' | ExpansionName
   ): Models {
     this._spiritNames = this._updateModel(
-      (expansions) =>
-        Options.getNames(
-          Options.getOptionsByExpansion(Options.allSpirits, expansions)
-        ),
+      (expansions) => getNames(getOptionsByExpansion(SPIRITS, expansions)),
       this._spiritNames,
       expansions,
       target
     );
 
     this._boardNames = this._updateModel(
-      (expansions) =>
-        Options.getNames(
-          Options.getOptionsByExpansion(Options.allBoards, expansions)
-        ),
+      (expansions) => getNames(getOptionsByExpansion(BOARDS, expansions)),
       this._boardNames,
       expansions,
       target
     );
 
     this._mapNames = this._updateModel(
-      (expansions) =>
-        Options.getNames(
-          Options.getOptionsByExpansion(Options.allMaps, expansions)
-        ),
+      (expansions) => getNames(getOptionsByExpansion(MAPS, expansions)),
       this._mapNames,
       expansions,
       target
     );
 
     this._scenarioNames = this._updateModel(
-      (expansions) =>
-        Options.getNames(
-          Options.getOptionsByExpansion(Options.allScenarios, expansions)
-        ),
+      (expansions) => getNames(getOptionsByExpansion(SCENARIOS, expansions)),
       this._scenarioNames,
       expansions,
       target
@@ -100,9 +95,7 @@ export class Models {
 
     this._adversaryLevelIds = this._updateModel(
       (expansions) =>
-        Options.getAdversaryLevelIds(
-          Options.getOptionsByExpansion(Options.allAdversaries, expansions)
-        ),
+        getAdversaryLevelIds(getOptionsByExpansion(ADVERSARIES, expansions)),
       this._adversaryLevelIds,
       expansions,
       target
