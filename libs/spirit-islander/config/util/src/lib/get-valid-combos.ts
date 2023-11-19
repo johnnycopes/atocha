@@ -1,15 +1,9 @@
-import {
-  AdversaryLevel,
-  Map,
-  Options,
-  Scenario,
-} from '@atocha/spirit-islander/shared/util';
+import { AdversaryLevel, Options } from '@atocha/spirit-islander/shared/util';
 import { Config } from './config.interface';
 import { getPossibleCombos } from './internal/get-possible-combos';
+import { Combos } from './internal/combo.interface';
 
-export function getValidCombos(
-  config: Config
-): readonly [Map, AdversaryLevel, Scenario][] {
+export function getValidCombos(config: Config): Combos {
   const {
     expansions,
     mapNames,
