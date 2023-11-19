@@ -1,4 +1,5 @@
-import { Config, Options } from '@atocha/spirit-islander/shared/util';
+import { Options } from '@atocha/spirit-islander/shared/util';
+import { Config } from '@atocha/spirit-islander/config/util';
 import { createGameSetup } from './create-game-setup';
 
 describe('createGameSetup', () => {

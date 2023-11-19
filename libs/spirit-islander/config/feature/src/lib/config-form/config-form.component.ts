@@ -18,7 +18,8 @@ import {
   CardComponent,
   CardGroupComponent,
 } from '@atocha/spirit-islander/shared/ui';
-import { Config, ExpansionName } from '@atocha/spirit-islander/shared/util';
+import { ExpansionName } from '@atocha/spirit-islander/shared/util';
+import { Config } from '@atocha/spirit-islander/config/util';
 import { CheckboxTreeComponent } from '../checkbox-tree/checkbox-tree.component';
 import { SelectDifficultyRangeComponent } from '../select-difficulty-range/select-difficulty-range.component';
 import { SelectPlayersComponent } from '../select-players/select-players.component';

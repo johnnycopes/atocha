@@ -1,6 +1,6 @@
 import { ParamMap } from '@angular/router';
 
-import { Config } from '@atocha/spirit-islander/shared/util';
+import { Config } from '@atocha/spirit-islander/config/util';
 
 type ConfigQueryParams = Required<{
   [Property in keyof Config]: string;

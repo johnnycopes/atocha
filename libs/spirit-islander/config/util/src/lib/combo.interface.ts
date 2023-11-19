@@ -1,6 +1,8 @@
-import type { Map } from '../game/maps';
-import type { AdversaryLevel } from '../game/adversaries';
-import type { Scenario } from '../game/scenarios';
+import {
+  Map,
+  AdversaryLevel,
+  Scenario,
+} from '@atocha/spirit-islander/shared/util';
 
 /**
  * A valid combination of game setup options that

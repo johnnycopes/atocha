@@ -2,7 +2,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { of } from 'rxjs';
 
 import { Form } from '@atocha/core/ui';
-import { Config, ExpansionName } from '@atocha/spirit-islander/shared/util';
+import { ExpansionName } from '@atocha/spirit-islander/shared/util';
+import { Config } from '@atocha/spirit-islander/config/util';
 import { Models } from './models';
 import {
   invalidDifficultyRange,

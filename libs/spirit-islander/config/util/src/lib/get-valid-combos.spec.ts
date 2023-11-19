@@ -1,5 +1,6 @@
+import { Options } from '@atocha/spirit-islander/shared/util';
+import { Config } from './config.interface';
 import { getValidCombos } from './get-valid-combos';
-import { Config, Options } from '@atocha/spirit-islander/shared/util';
 
 describe('getValidCombos', () => {
   it('returns possible combinations for lowest difficulty', () => {
