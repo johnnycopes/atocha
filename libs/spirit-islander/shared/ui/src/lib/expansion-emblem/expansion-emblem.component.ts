@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
-import { ExpansionName } from '@atocha/spirit-islander/shared/util';
+import { Expansion } from '@atocha/spirit-islander/shared/util';
 import { EmblemComponent } from '../emblem/emblem.component';
 
 @Component({
@@ -14,13 +14,13 @@ import { EmblemComponent } from '../emblem/emblem.component';
 })
 export class ExpansionEmblemComponent {
   @Input()
-  set value(name: ExpansionName | undefined) {
+  set value(name: Expansion | undefined) {
     this.abbreviation = name ? this._abbreviations[name] : '-';
   }
 
   abbreviation = '-';
 
-  private _abbreviations: Record<ExpansionName, string> = {
+  private _abbreviations: Record<Expansion, string> = {
     'Branch & Claw': 'BC',
     Horizons: 'H',
     'Jagged Earth': 'JE',

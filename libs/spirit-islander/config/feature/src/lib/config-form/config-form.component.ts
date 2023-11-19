@@ -18,7 +18,7 @@ import {
   CardComponent,
   CardGroupComponent,
 } from '@atocha/spirit-islander/shared/ui';
-import { ExpansionName } from '@atocha/spirit-islander/shared/util';
+import { Expansion } from '@atocha/spirit-islander/shared/util';
 import { Config } from '@atocha/spirit-islander/config/util';
 import { CheckboxTreeComponent } from '../checkbox-tree/checkbox-tree.component';
 import { SelectDifficultyRangeComponent } from '../select-difficulty-range/select-difficulty-range.component';
@@ -60,7 +60,7 @@ export class ConfigFormComponent implements OnInit, OnDestroy {
     adversaryLevelIds: [],
   });
   subscriptions = new Subscription();
-  expansionsClickSubject = new Subject<'Expansions' | ExpansionName>();
+  expansionsClickSubject = new Subject<'Expansions' | Expansion>();
 
   readonly root = new Root();
   jaggedEarth = false;
@@ -88,7 +88,7 @@ export class ConfigFormComponent implements OnInit, OnDestroy {
   }
 
   onExpansionChange(id: string): void {
-    this.expansionsClickSubject.next(id as 'Expansions' | ExpansionName);
+    this.expansionsClickSubject.next(id as 'Expansions' | Expansion);
   }
 
   onSubmit(): void {
@@ -96,7 +96,7 @@ export class ConfigFormComponent implements OnInit, OnDestroy {
     this.generate.emit(config);
   }
 
-  private _updateFormData(expansions: readonly ExpansionName[]): void {
+  private _updateFormData(expansions: readonly Expansion[]): void {
     this.root.update(expansions);
     this.jaggedEarth = expansions.includes('Jagged Earth');
   }

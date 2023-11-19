@@ -1,11 +1,11 @@
-import { ExpansionName, ExpansionOption } from '../types';
+import { Expansion, ExpansionOption } from '../types';
 
 export function getOptionsByExpansion<
   TName extends string,
   TOption extends ExpansionOption<TName>
 >(
   options: readonly TOption[],
-  expansions: readonly ExpansionName[]
+  expansions: readonly Expansion[]
 ): readonly TOption[] {
   return options.filter((item) => {
     if (item.expansion) {

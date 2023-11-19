@@ -1,3 +1,3 @@
 import { EXPANSIONS } from '../data';
 
-export type ExpansionName = (typeof EXPANSIONS)[number];
+export type Expansion = (typeof EXPANSIONS)[number];

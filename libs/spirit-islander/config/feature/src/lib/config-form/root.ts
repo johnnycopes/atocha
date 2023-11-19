@@ -7,7 +7,7 @@ import {
   BOARDS,
   Board,
   EXPANSIONS,
-  ExpansionName,
+  Expansion,
   MAPS,
   Map,
   SCENARIOS,
@@ -56,11 +56,11 @@ export class Root {
     return this._adversaries;
   }
 
-  constructor(expansions: ExpansionName[] = []) {
+  constructor(expansions: Expansion[] = []) {
     this.update(expansions);
   }
 
-  update(expansions: readonly ExpansionName[]) {
+  update(expansions: readonly Expansion[]) {
     this._spirits = this._createRoot({
       root: 'Spirits',
       items: getOptionsByExpansion(SPIRITS, expansions),

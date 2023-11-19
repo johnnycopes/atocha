@@ -3,7 +3,7 @@ import {
   AdversaryLevelName,
   Difficulty,
   DifficultyOption,
-  ExpansionName,
+  Expansion,
   Map,
   MapName,
   Scenario,
@@ -24,7 +24,7 @@ export function getPossibleCombos({
   scenarios,
   difficultyRange,
 }: {
-  expansions: readonly ExpansionName[];
+  expansions: readonly Expansion[];
   maps: readonly Map[];
   adversaryLevels: readonly AdversaryLevel[];
   scenarios: readonly Scenario[];
