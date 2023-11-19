@@ -14,6 +14,7 @@ import {
   SPIRITS,
   Scenario,
   Spirit,
+  SpiritName,
   getDifficulty,
   getOptionsByExpansion,
 } from '@atocha/spirit-islander/shared/util';
@@ -66,10 +67,9 @@ export class Root {
       items: getOptionsByExpansion(SPIRITS, expansions),
       getId: ({ name }) => name,
       getDisplay: ({ expansion, derivesFrom }) => {
-        const display: { expansion?: Expansion; isAspect: boolean } = {
-          isAspect: !!derivesFrom,
-        };
+        const display: { expansion?: Expansion; derivesFrom?: SpiritName } = {};
         if (expansion) display.expansion = expansion;
+        if (derivesFrom) display.derivesFrom = derivesFrom;
         return display;
       },
     });

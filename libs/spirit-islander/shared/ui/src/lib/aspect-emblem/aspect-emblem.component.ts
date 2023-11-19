@@ -5,6 +5,14 @@ import { SnakeCasePipe } from '@atocha/core/ui';
 import { SpiritName } from '@atocha/spirit-islander/shared/util';
 import { EmblemComponent } from '../emblem/emblem.component';
 
+type SpiritWithAspects = Extract<
+  SpiritName,
+  | "Lightning's Swift Strike"
+  | 'River Surges in Sunlight'
+  | 'Shadows Flicker Like Flame'
+  | 'Vital Strength of the Earth'
+>;
+
 @Component({
   selector: 'ui-aspect-emblem',
   standalone: true,
@@ -14,5 +22,17 @@ import { EmblemComponent } from '../emblem/emblem.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AspectEmblemComponent {
-  @Input({ required: true }) name!: SpiritName;
+  @Input({ required: true })
+  set name(name: SpiritWithAspects) {
+    this.abbreviation = this._abbreviations[name];
+    console.log(this.abbreviation);
+  }
+  abbreviation!: string;
+
+  private readonly _abbreviations: Record<SpiritWithAspects, string> = {
+    "Lightning's Swift Strike": 'lightning',
+    'River Surges in Sunlight': 'river',
+    'Shadows Flicker Like Flame': 'shadow',
+    'Vital Strength of the Earth': 'earth',
+  };
 }

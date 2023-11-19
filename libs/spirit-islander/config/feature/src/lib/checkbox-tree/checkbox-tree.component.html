@@ -37,7 +37,10 @@
     [ngModel]="checked"
     (ngModelChange)="onChange(item)"
   >
-    {{ item.display?.isAspect ? 'ASPECT': ''}}
+    <ui-aspect-emblem
+      *ngIf="!!item.display?.derivesFrom"
+      [name]="item.display.derivesFrom"
+    ></ui-aspect-emblem>
     {{ item.display?.name ?? item.id }}
     <ui-difficulty-emblem
       *ngIf="item.display?.difficulty"

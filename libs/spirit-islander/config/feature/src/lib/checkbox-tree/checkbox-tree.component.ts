@@ -10,6 +10,7 @@ import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { CheckboxComponent } from '@atocha/core/ui';
 import {
+  AspectEmblemComponent,
   DifficultyEmblemComponent,
   ExpansionEmblemComponent,
 } from '@atocha/spirit-islander/shared/ui';
@@ -20,6 +21,7 @@ import { Node } from '../config-form/root';
   selector: 'app-checkbox-tree',
   standalone: true,
   imports: [
+    AspectEmblemComponent,
     CheckboxComponent,
     CommonModule,
     DifficultyEmblemComponent,
