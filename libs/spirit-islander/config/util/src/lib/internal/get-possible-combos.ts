@@ -35,10 +35,11 @@ export function getPossibleCombos({
     [maps, adversaryLevels, scenarios],
     (options) => {
       const difficulty = options.reduce(
-        (accum, option) => accum + getDifficulty(option.difficulty, expansions),
+        (accum, { difficulty }) =>
+          accum + getDifficulty(difficulty, expansions),
         0
       );
-      return difficulty >= min && difficulty <= max;
+      return min <= difficulty && difficulty <= max;
     }
   );
 }
