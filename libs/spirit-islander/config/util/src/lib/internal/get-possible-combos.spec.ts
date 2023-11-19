@@ -1,4 +1,4 @@
-import { Options } from '@atocha/spirit-islander/shared/util';
+import { MAPS } from '@atocha/spirit-islander/shared/util';
 import { getPossibleCombos } from './get-possible-combos';
 
 describe('getPossibleCombos', () => {
@@ -18,7 +18,7 @@ describe('getPossibleCombos', () => {
     expect(
       getPossibleCombos({
         expansions: ['Jagged Earth', 'Promo Pack 2'],
-        maps: Options.allMaps,
+        maps: MAPS,
         adversaryLevels: [
           { id: 'bp-0', name: 'Level 0', difficulty: 1 },
           { id: 'bp-1', name: 'Level 1', difficulty: 2 },

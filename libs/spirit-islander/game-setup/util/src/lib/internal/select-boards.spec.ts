@@ -1,5 +1,5 @@
+import { BOARDS } from '@atocha/spirit-islander/shared/util';
 import { selectBoards } from './select-boards';
-import { Options } from '@atocha/spirit-islander/shared/util';
 
 describe('selectBoards', () => {
   describe('balanced board selection', () => {
@@ -30,8 +30,8 @@ describe('selectBoards', () => {
         'F',
       ]);
       expect(selectedBoards).toHaveLength(2);
-      expect(Options.allBoards).toContainEqual(selectedBoards[0]);
-      expect(Options.allBoards).toContainEqual(selectedBoards[1]);
+      expect(BOARDS).toContainEqual(selectedBoards[0]);
+      expect(BOARDS).toContainEqual(selectedBoards[1]);
     });
   });
 
