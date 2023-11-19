@@ -8,15 +8,19 @@ import {
   SCENARIOS,
   SPIRITS,
 } from './data';
-import { Adversary, AdversaryLevelId } from './types/adversaries';
-import { Board } from './types/boards';
-import { Difficulty } from './types/difficulty';
-import { ExpansionName } from './types/expansions';
-import { Map } from './types/maps';
-import { Players } from './types/players';
-import { Scenario } from './types/scenarios';
-import { Spirit } from './types/spirits';
-import { ExpansionOption, Option } from './types/option';
+import {
+  Adversary,
+  AdversaryLevelId,
+  Board,
+  Difficulty,
+  ExpansionName,
+  ExpansionOption,
+  Map,
+  Option,
+  Players,
+  Scenario,
+  Spirit,
+} from './types';
 
 export class Options {
   static allExpansions: readonly ExpansionName[] = EXPANSIONS;
