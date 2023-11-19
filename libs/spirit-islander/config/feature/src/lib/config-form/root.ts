@@ -65,7 +65,13 @@ export class Root {
       root: 'Spirits',
       items: getOptionsByExpansion(SPIRITS, expansions),
       getId: ({ name }) => name,
-      getDisplay: ({ expansion }) => (expansion ? { expansion } : {}),
+      getDisplay: ({ expansion, derivesFrom }) => {
+        const display: { expansion?: Expansion; isAspect: boolean } = {
+          isAspect: !!derivesFrom,
+        };
+        if (expansion) display.expansion = expansion;
+        return display;
+      },
     });
 
     this._maps = this._createRoot({

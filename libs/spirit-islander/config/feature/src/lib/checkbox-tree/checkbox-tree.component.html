@@ -31,7 +31,7 @@
   <core-checkbox
     class="checkbox"
     *ngIf="level > 0"
-    [style.margin-left.px]="(level - 1) * 24"
+    [style.margin-left.px]="item.display?.isAspect ? 24 : (level - 1) * 24"
     [indeterminate]="indeterminate"
     size="normal"
     [ngModel]="checked"
