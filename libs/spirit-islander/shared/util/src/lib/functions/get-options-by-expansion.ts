@@ -1,4 +1,4 @@
-import { ExpansionName, ExpansionOption } from './types';
+import { ExpansionName, ExpansionOption } from '../types';
 
 export function getOptionsByExpansion<
   TName extends string,

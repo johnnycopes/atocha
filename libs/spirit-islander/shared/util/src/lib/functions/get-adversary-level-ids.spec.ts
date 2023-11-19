@@ -1,5 +1,5 @@
 import { getAdversaryLevelIds } from './get-adversary-level-ids';
-import { ADVERSARIES } from './game';
+import { ADVERSARIES } from '../game';
 
 describe('getAdversaryLevelIds', () => {
   const adversaries = ADVERSARIES.slice(1, 3);

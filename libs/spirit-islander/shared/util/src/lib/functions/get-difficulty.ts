@@ -1,4 +1,4 @@
-import { Difficulty, ExpansionName } from './types';
+import { Difficulty, ExpansionName } from '../types';
 
 export function getDifficulty(
   difficulty:

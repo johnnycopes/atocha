@@ -1,5 +1,5 @@
 import { getNames } from './get-names';
-import { SCENARIOS } from './game';
+import { SCENARIOS } from '../game';
 
 describe('getNames', () => {
   it('returns only the names from a group of options', () => {

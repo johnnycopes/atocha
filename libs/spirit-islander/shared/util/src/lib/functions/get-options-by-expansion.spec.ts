@@ -1,5 +1,5 @@
 import { getOptionsByExpansion } from './get-options-by-expansion';
-import { Board, Spirit } from './types';
+import { Board, Spirit } from '../types';
 
 describe('getOptionsByExpansion', () => {
   let mockSpirits: readonly Spirit[];

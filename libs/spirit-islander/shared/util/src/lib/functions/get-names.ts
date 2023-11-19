@@ -1,4 +1,4 @@
-import { Option } from './types';
+import { Option } from '../types';
 
 export function getNames<TName extends string>(
   options: readonly Option<TName>[]

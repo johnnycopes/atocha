@@ -1,5 +1,5 @@
 import { getOptionsByName } from './get-options-by-name';
-import { Spirit, SpiritName } from './types';
+import { Spirit, SpiritName } from '../types';
 
 describe('getOptionsByName', () => {
   let mockSpirits: readonly Spirit[];

@@ -1,4 +1,4 @@
-import { Adversary, AdversaryLevelId } from './types';
+import { Adversary, AdversaryLevelId } from '../types';
 
 export function getAdversaryLevelIds(
   adversaries: readonly Adversary[]
