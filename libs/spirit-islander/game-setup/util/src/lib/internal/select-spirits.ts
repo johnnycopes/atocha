@@ -13,32 +13,31 @@ export function selectSpirits(
   names: readonly SpiritName[],
   players: Players
 ): readonly Spirit[] {
-  const spiritNames: SpiritName[] = [];
-  const aspectfulSpiritNames: Record<AspectsSpiritName, SpiritName[]> = {
+  const spirits: Spirit[] = [];
+  const aspectfulSpirits: Record<AspectsSpiritName, Spirit[]> = {
     "Lightning's Swift Strike": [],
     'River Surges in Sunlight': [],
     'Shadows Flicker Like Flame': [],
     'Vital Strength of the Earth': [],
   };
 
-  for (const { name, derivesFrom } of getOptionsByName(SPIRITS, names)) {
-    if (isPossibleAspect(name)) {
-      aspectfulSpiritNames[name].push(name);
-    } else if (derivesFrom && isPossibleAspect(derivesFrom)) {
-      aspectfulSpiritNames[derivesFrom].push(name);
+  for (const spirit of getOptionsByName(SPIRITS, names)) {
+    if (isPossibleAspect(spirit.name)) {
+      aspectfulSpirits[spirit.name].push(spirit);
+    } else if (spirit.derivesFrom && isPossibleAspect(spirit.derivesFrom)) {
+      aspectfulSpirits[spirit.derivesFrom].push(spirit);
     } else {
-      spiritNames.push(name);
+      spirits.push(spirit);
     }
   }
 
-  const finalNames: SpiritName[] = [];
-  for (const names of Object.values(aspectfulSpiritNames)) {
-    if (names.length > 0) {
-      finalNames.push(...selectRandom(names));
+  const finalSpirits: Spirit[] = [];
+  for (const spirits of Object.values(aspectfulSpirits)) {
+    if (spirits.length > 0) {
+      finalSpirits.push(...selectRandom(spirits));
     }
   }
-  finalNames.push(...spiritNames);
+  finalSpirits.push(...spirits);
 
-  const randomNames = selectRandom(finalNames, players);
-  return getOptionsByName(SPIRITS, randomNames);
+  return selectRandom(finalSpirits, players);
 }
