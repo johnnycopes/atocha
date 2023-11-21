@@ -1,13 +1,9 @@
-import {
-  Difficulty,
-  SPIRITS,
-  getDifficulty,
-  getOptionsByName,
-} from '@atocha/spirit-islander/shared/util';
+import { Difficulty, getDifficulty } from '@atocha/spirit-islander/shared/util';
 import { Config, getValidCombos } from '@atocha/spirit-islander/config/util';
 import { GameSetup } from './game-setup.interface';
 import { selectRandom } from './internal/select-random';
 import { selectBoards } from './internal/select-boards';
+import { selectSpirits } from './internal/select-spirits';
 
 export function createGameSetup(config: Config): GameSetup {
   const { players, expansions, spiritNames, boardNames } = config;
@@ -21,8 +17,7 @@ export function createGameSetup(config: Config): GameSetup {
     getDifficulty(selectedScenario.difficulty, expansions)) as Difficulty;
 
   // Randomly select spirits and boards
-  const randomSpiritNames = selectRandom(spiritNames, players);
-  const selectedSpirits = getOptionsByName(SPIRITS, randomSpiritNames);
+  const selectedSpirits = selectSpirits(spiritNames, players);
   const selectedBoards = selectBoards(selectedMap.name, players, boardNames);
 
   return {
