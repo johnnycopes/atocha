@@ -14,3 +14,12 @@ export type AspectsSpiritName = Extract<
   | 'Shadows Flicker Like Flame'
   | 'Vital Strength of the Earth'
 >;
+
+export function isPossibleAspect(name: SpiritName): name is AspectsSpiritName {
+  return (
+    name === "Lightning's Swift Strike" ||
+    name === 'River Surges in Sunlight' ||
+    name === 'Shadows Flicker Like Flame' ||
+    name === 'Vital Strength of the Earth'
+  );
+}
