@@ -34,6 +34,8 @@ export const playersOutnumberSpirits: ValidatorFn = (
     : null;
 };
 
+// TODO: create validator for players outnumbering selected spirits (e.g., 2 players for Immense and Pandemonium)
+
 export const playersOutnumberTotalBoards: ValidatorFn = (
   control: AbstractControl<Config>
 ): ValidationErrors | null => {
