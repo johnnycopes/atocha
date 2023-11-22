@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 import { SnakeCasePipe } from '@atocha/core/ui';
-import { MultivariantSpiritName } from '@atocha/spirit-islander/shared/util';
+import { SpiritFamilyName } from '@atocha/spirit-islander/shared/util';
 import { EmblemComponent } from '../emblem/emblem.component';
 
 @Component({
@@ -15,12 +15,12 @@ import { EmblemComponent } from '../emblem/emblem.component';
 })
 export class AspectEmblemComponent {
   @Input({ required: true })
-  set name(name: MultivariantSpiritName) {
+  set name(name: SpiritFamilyName) {
     this.abbreviation = this._abbreviations[name];
   }
   abbreviation!: string;
 
-  private readonly _abbreviations: Record<MultivariantSpiritName, string> = {
+  private readonly _abbreviations: Record<SpiritFamilyName, string> = {
     "Lightning's Swift Strike": 'Lightning',
     'River Surges in Sunlight': 'River',
     'Shadows Flicker Like Flame': 'Shadow',

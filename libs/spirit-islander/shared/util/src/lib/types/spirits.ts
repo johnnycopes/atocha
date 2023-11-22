@@ -2,12 +2,12 @@ import { SPIRITS } from '../data';
 import { ExpansionOption } from './option';
 
 export interface Spirit extends ExpansionOption<SpiritName> {
-  aspectOf?: MultivariantSpiritName;
+  aspectOf?: SpiritFamilyName;
 }
 
 export type SpiritName = (typeof SPIRITS)[number]['name'];
 
-export type MultivariantSpiritName = Extract<
+export type SpiritFamilyName = Extract<
   SpiritName,
   | "Lightning's Swift Strike"
   | 'River Surges in Sunlight'
@@ -17,7 +17,7 @@ export type MultivariantSpiritName = Extract<
 
 export function isPartOfSpiritFamily(
   name: SpiritName
-): name is MultivariantSpiritName {
+): name is SpiritFamilyName {
   return (
     name === "Lightning's Swift Strike" ||
     name === 'River Surges in Sunlight' ||

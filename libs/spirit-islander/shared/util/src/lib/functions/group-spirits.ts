@@ -1,6 +1,6 @@
 import { SPIRITS } from '../game';
 import {
-  MultivariantSpiritName,
+  SpiritFamilyName,
   Spirit,
   SpiritName,
   isPartOfSpiritFamily,
@@ -9,8 +9,8 @@ import { getOptionsByName } from './get-options-by-name';
 
 export function groupSpirits(
   names: readonly SpiritName[]
-): Readonly<Record<'General' | MultivariantSpiritName, readonly Spirit[]>> {
-  const spirits: Record<'General' | MultivariantSpiritName, Spirit[]> = {
+): Readonly<Record<'General' | SpiritFamilyName, readonly Spirit[]>> {
+  const spirits: Record<'General' | SpiritFamilyName, Spirit[]> = {
     General: [],
     "Lightning's Swift Strike": [],
     'River Surges in Sunlight': [],
