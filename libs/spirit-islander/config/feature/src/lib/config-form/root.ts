@@ -14,7 +14,7 @@ import {
   SPIRITS,
   Scenario,
   Spirit,
-  AspectsSpiritName,
+  MultivariantSpiritName,
   getDifficulty,
   getOptionsByExpansion,
 } from '@atocha/spirit-islander/shared/util';
@@ -69,7 +69,7 @@ export class Root {
       getDisplay: ({ expansion, aspectOf }) => {
         const display: {
           expansion?: Expansion;
-          aspectOf?: AspectsSpiritName;
+          aspectOf?: MultivariantSpiritName;
         } = {};
         if (expansion) display.expansion = expansion;
         if (aspectOf) display.aspectOf = aspectOf;
