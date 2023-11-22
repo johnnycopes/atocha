@@ -3,7 +3,7 @@ import {
   MultivariantSpiritName,
   Spirit,
   SpiritName,
-  isPossibleAspect,
+  isPartOfSpiritFamily,
 } from '../types';
 import { getOptionsByName } from './get-options-by-name';
 
@@ -19,9 +19,9 @@ export function groupSpirits(
   };
 
   for (const spirit of getOptionsByName(SPIRITS, names)) {
-    if (isPossibleAspect(spirit.name)) {
+    if (isPartOfSpiritFamily(spirit.name)) {
       spirits[spirit.name].push(spirit);
-    } else if (spirit.aspectOf && isPossibleAspect(spirit.aspectOf)) {
+    } else if (spirit.aspectOf && isPartOfSpiritFamily(spirit.aspectOf)) {
       spirits[spirit.aspectOf].push(spirit);
     } else {
       spirits.General.push(spirit);

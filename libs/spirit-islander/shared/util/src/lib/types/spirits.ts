@@ -15,7 +15,7 @@ export type MultivariantSpiritName = Extract<
   | 'Vital Strength of the Earth'
 >;
 
-export function isPossibleAspect(
+export function isPartOfSpiritFamily(
   name: SpiritName
 ): name is MultivariantSpiritName {
   return (
