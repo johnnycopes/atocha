@@ -1,3 +1,4 @@
+export * from './lib/aspect-emblem/aspect-emblem.component';
 export * from './lib/board-emblem/board-emblem.component';
 export * from './lib/card/card.component';
 export * from './lib/card-group/card-group.component';

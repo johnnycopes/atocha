@@ -10,6 +10,7 @@ import {
 
 import { ButtonComponent, PluralPipe, trackBySelf } from '@atocha/core/ui';
 import {
+  AspectEmblemComponent,
   BoardEmblemComponent,
   CardComponent,
   CardGroupComponent,
@@ -29,6 +30,7 @@ import { getAdversaryNameById } from './get-adversary-name-by-id';
   selector: 'app-game-setup-output',
   standalone: true,
   imports: [
+    AspectEmblemComponent,
     BoardEmblemComponent,
     ButtonComponent,
     CardComponent,

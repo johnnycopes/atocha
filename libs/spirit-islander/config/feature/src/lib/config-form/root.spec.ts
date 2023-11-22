@@ -34,135 +34,174 @@ describe('Root', () => {
         { id: 'Bringer of Dreams and Nightmares' },
         {
           id: 'Devouring Teeth Lurk Underfoot',
-          display: {
-            expansion: 'Horizons',
-          },
+          display: { expansion: 'Horizons' },
         },
         {
           id: 'Downpour Drenches the World',
-          display: {
-            expansion: 'Promo Pack 2',
-          },
+          display: { expansion: 'Promo Pack 2' },
         },
         {
           id: 'Eyes Watch From the Trees',
-          display: {
-            expansion: 'Horizons',
-          },
+          display: { expansion: 'Horizons' },
         },
         {
           id: 'Fathomless Mud of the Swamp',
-          display: {
-            expansion: 'Horizons',
-          },
+          display: { expansion: 'Horizons' },
         },
         {
           id: 'Finder of Paths Unseen',
-          display: {
-            expansion: 'Promo Pack 2',
-          },
+          display: { expansion: 'Promo Pack 2' },
         },
         {
           id: 'Fractured Days Split the Sky',
-          display: {
-            expansion: 'Jagged Earth',
-          },
+          display: { expansion: 'Jagged Earth' },
         },
         {
           id: 'Grinning Trickster Stirs Up Trouble',
-          display: {
-            expansion: 'Jagged Earth',
-          },
+          display: { expansion: 'Jagged Earth' },
         },
         {
           id: 'Heart of the Wildfire',
-          display: {
-            expansion: 'Promo Pack 1',
-          },
+          display: { expansion: 'Promo Pack 1' },
         },
         {
-          id: 'Keeper of the Forbidden Wilds',
           display: {
             expansion: 'Branch & Claw',
           },
+          id: 'Keeper of the Forbidden Wilds',
         },
-        { id: "Lightning's Swift Strike" },
         {
-          id: 'Lure of the Deep Wilderness',
+          id: "Lightning's Swift Strike",
+        },
+        {
+          id: 'Immense',
+          display: {
+            expansion: 'Promo Pack 2',
+            aspectOf: "Lightning's Swift Strike",
+          },
+        },
+        {
+          id: 'Pandemonium',
           display: {
             expansion: 'Jagged Earth',
+            aspectOf: "Lightning's Swift Strike",
           },
+        },
+        {
+          id: 'Wind',
+          display: {
+            expansion: 'Jagged Earth',
+            aspectOf: "Lightning's Swift Strike",
+          },
+        },
+        {
+          id: 'Lure of the Deep Wilderness',
+          display: { expansion: 'Jagged Earth' },
         },
         {
           id: 'Many Minds Move as One',
-          display: {
-            expansion: 'Jagged Earth',
-          },
+          display: { expansion: 'Jagged Earth' },
         },
         { id: "Ocean's Hungry Grasp" },
         {
           id: 'Rising Heat of Stone and Sand',
-          display: {
-            expansion: 'Horizons',
-          },
+          display: { expansion: 'Horizons' },
         },
         { id: 'River Surges in Sunlight' },
         {
-          id: 'Serpent Slumbering Beneath the Island',
+          id: 'Sunshine',
           display: {
-            expansion: 'Promo Pack 1',
+            expansion: 'Jagged Earth',
+            aspectOf: 'River Surges in Sunlight',
           },
+        },
+        {
+          id: 'Travel',
+          display: {
+            expansion: 'Promo Pack 2',
+            aspectOf: 'River Surges in Sunlight',
+          },
+        },
+        {
+          id: 'Serpent Slumbering Beneath the Island',
+          display: { expansion: 'Promo Pack 1' },
         },
         { id: 'Shadows Flicker Like Flame' },
         {
-          id: 'Sharp Fangs Behind the Leaves',
+          id: 'Amorphous',
           display: {
-            expansion: 'Branch & Claw',
+            expansion: 'Promo Pack 2',
+            aspectOf: 'Shadows Flicker Like Flame',
           },
+        },
+        {
+          id: 'Foreboding',
+          display: {
+            expansion: 'Promo Pack 2',
+            aspectOf: 'Shadows Flicker Like Flame',
+          },
+        },
+        {
+          id: 'Madness',
+          display: {
+            expansion: 'Jagged Earth',
+            aspectOf: 'Shadows Flicker Like Flame',
+          },
+        },
+        {
+          id: 'Reach',
+          display: {
+            expansion: 'Jagged Earth',
+            aspectOf: 'Shadows Flicker Like Flame',
+          },
+        },
+        {
+          id: 'Sharp Fangs Behind the Leaves',
+          display: { expansion: 'Branch & Claw' },
         },
         {
           id: 'Shifting Memory of Ages',
-          display: {
-            expansion: 'Jagged Earth',
-          },
+          display: { expansion: 'Jagged Earth' },
         },
         {
           id: 'Shroud of Silent Mist',
-          display: {
-            expansion: 'Jagged Earth',
-          },
+          display: { expansion: 'Jagged Earth' },
         },
         {
           id: 'Sun-Bright Whirlwind',
-          display: {
-            expansion: 'Horizons',
-          },
+          display: { expansion: 'Horizons' },
         },
         {
           id: 'Starlight Seeks Its Form',
-          display: {
-            expansion: 'Jagged Earth',
-          },
+          display: { expansion: 'Jagged Earth' },
         },
         {
           id: "Stone's Unyielding Defiance",
-          display: {
-            expansion: 'Jagged Earth',
-          },
+          display: { expansion: 'Jagged Earth' },
         },
         { id: 'Thunderspeaker' },
         {
           id: 'Vengeance as a Burning Plague',
-          display: {
-            expansion: 'Jagged Earth',
-          },
+          display: { expansion: 'Jagged Earth' },
         },
         { id: 'Vital Strength of the Earth' },
         {
-          id: 'Volcano Looming High',
+          id: 'Might',
+          display: {
+            expansion: 'Promo Pack 2',
+            aspectOf: 'Vital Strength of the Earth',
+          },
+        },
+        {
+          id: 'Resilience',
           display: {
             expansion: 'Jagged Earth',
+            aspectOf: 'Vital Strength of the Earth',
           },
+        },
+        {
+          id: 'Volcano Looming High',
+          display: { expansion: 'Jagged Earth' },
         },
       ],
     });

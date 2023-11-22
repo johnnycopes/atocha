@@ -6,7 +6,11 @@ import {
 } from '@angular/forms';
 
 import { pluralize } from '@atocha/core/util';
-import { Config, getValidCombos } from '@atocha/spirit-islander/config/util';
+import {
+  Config,
+  countUniqueSpirits,
+  getValidCombos,
+} from '@atocha/spirit-islander/config/util';
 
 export const required: ValidatorFn = (
   control: AbstractControl<string[]>
@@ -22,11 +26,11 @@ export const playersOutnumberSpirits: ValidatorFn = (
   control: AbstractControl<Config>
 ): ValidationErrors | null => {
   const players = control.value.players;
-  const numberOfSpirits = control.value.spiritNames.length;
+  const numberOfSpirits = countUniqueSpirits(control.value.spiritNames);
 
   return players > numberOfSpirits
     ? {
-        playersOutnumberSpirits: `At least ${players} ${pluralize(
+        playersOutnumberSpirits: `At least ${players} unique ${pluralize(
           players,
           'spirit'
         )} must be selected`,
