@@ -63,7 +63,7 @@ describe('selectSpirits', () => {
     ];
     const mockNames = getNames(mockSpirits);
     const result = selectSpirits(mockNames, 2);
-    expect(result[0]).toEqual(mockSpirits[0]);
-    expect(result[1]).toEqual(mockSpirits[2]);
+    expect(result[0]).toEqual(mockSpirits[2]);
+    expect(result[1]).toEqual(mockSpirits[0]);
   });
 });

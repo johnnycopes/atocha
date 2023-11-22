@@ -1,11 +1,8 @@
 import {
-  AspectsSpiritName,
   Players,
-  SPIRITS,
   Spirit,
   SpiritName,
-  getOptionsByName,
-  isPossibleAspect,
+  groupSpirits,
 } from '@atocha/spirit-islander/shared/util';
 import { selectRandom } from './select-random';
 
@@ -13,31 +10,15 @@ export function selectSpirits(
   names: readonly SpiritName[],
   players: Players
 ): readonly Spirit[] {
-  const spirits: Spirit[] = [];
-  const aspectfulSpirits: Record<AspectsSpiritName, Spirit[]> = {
-    "Lightning's Swift Strike": [],
-    'River Surges in Sunlight': [],
-    'Shadows Flicker Like Flame': [],
-    'Vital Strength of the Earth': [],
-  };
+  const possibleSpirits: Spirit[] = [];
 
-  for (const spirit of getOptionsByName(SPIRITS, names)) {
-    if (isPossibleAspect(spirit.name)) {
-      aspectfulSpirits[spirit.name].push(spirit);
-    } else if (spirit.derivesFrom && isPossibleAspect(spirit.derivesFrom)) {
-      aspectfulSpirits[spirit.derivesFrom].push(spirit);
+  for (const [group, spirits] of Object.entries(groupSpirits(names))) {
+    if (group !== 'General' && spirits.length > 0) {
+      possibleSpirits.push(...selectRandom(spirits));
     } else {
-      spirits.push(spirit);
+      possibleSpirits.push(...spirits);
     }
   }
 
-  const finalSpirits: Spirit[] = [];
-  for (const spirits of Object.values(aspectfulSpirits)) {
-    if (spirits.length > 0) {
-      finalSpirits.push(...selectRandom(spirits));
-    }
-  }
-  finalSpirits.push(...spirits);
-
-  return selectRandom(finalSpirits, players);
+  return selectRandom(possibleSpirits, players);
 }
