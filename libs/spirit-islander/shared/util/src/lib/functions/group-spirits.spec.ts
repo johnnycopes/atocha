@@ -33,12 +33,12 @@ describe('groupSpirits', () => {
           name: "Lightning's Swift Strike",
         },
         {
-          derivesFrom: "Lightning's Swift Strike",
+          aspectOf: "Lightning's Swift Strike",
           expansion: 'Promo Pack 2',
           name: 'Immense',
         },
         {
-          derivesFrom: "Lightning's Swift Strike",
+          aspectOf: "Lightning's Swift Strike",
           expansion: 'Jagged Earth',
           name: 'Pandemonium',
         },
@@ -89,17 +89,17 @@ describe('groupSpirits', () => {
         {
           name: 'Immense',
           expansion: 'Promo Pack 2',
-          derivesFrom: "Lightning's Swift Strike",
+          aspectOf: "Lightning's Swift Strike",
         },
         {
           name: 'Pandemonium',
           expansion: 'Jagged Earth',
-          derivesFrom: "Lightning's Swift Strike",
+          aspectOf: "Lightning's Swift Strike",
         },
         {
           name: 'Wind',
           expansion: 'Jagged Earth',
-          derivesFrom: "Lightning's Swift Strike",
+          aspectOf: "Lightning's Swift Strike",
         },
       ],
       'River Surges in Sunlight': [
@@ -107,12 +107,12 @@ describe('groupSpirits', () => {
         {
           name: 'Sunshine',
           expansion: 'Jagged Earth',
-          derivesFrom: 'River Surges in Sunlight',
+          aspectOf: 'River Surges in Sunlight',
         },
         {
           name: 'Travel',
           expansion: 'Promo Pack 2',
-          derivesFrom: 'River Surges in Sunlight',
+          aspectOf: 'River Surges in Sunlight',
         },
       ],
       'Shadows Flicker Like Flame': [
@@ -120,22 +120,22 @@ describe('groupSpirits', () => {
         {
           name: 'Amorphous',
           expansion: 'Promo Pack 2',
-          derivesFrom: 'Shadows Flicker Like Flame',
+          aspectOf: 'Shadows Flicker Like Flame',
         },
         {
           name: 'Foreboding',
           expansion: 'Promo Pack 2',
-          derivesFrom: 'Shadows Flicker Like Flame',
+          aspectOf: 'Shadows Flicker Like Flame',
         },
         {
           name: 'Madness',
           expansion: 'Jagged Earth',
-          derivesFrom: 'Shadows Flicker Like Flame',
+          aspectOf: 'Shadows Flicker Like Flame',
         },
         {
           name: 'Reach',
           expansion: 'Jagged Earth',
-          derivesFrom: 'Shadows Flicker Like Flame',
+          aspectOf: 'Shadows Flicker Like Flame',
         },
       ],
       'Vital Strength of the Earth': [
@@ -143,12 +143,12 @@ describe('groupSpirits', () => {
         {
           name: 'Might',
           expansion: 'Promo Pack 2',
-          derivesFrom: 'Vital Strength of the Earth',
+          aspectOf: 'Vital Strength of the Earth',
         },
         {
           name: 'Resilience',
           expansion: 'Jagged Earth',
-          derivesFrom: 'Vital Strength of the Earth',
+          aspectOf: 'Vital Strength of the Earth',
         },
       ],
     });

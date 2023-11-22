@@ -66,13 +66,13 @@ export class Root {
       root: 'Spirits',
       items: getOptionsByExpansion(SPIRITS, expansions),
       getId: ({ name }) => name,
-      getDisplay: ({ expansion, derivesFrom }) => {
+      getDisplay: ({ expansion, aspectOf }) => {
         const display: {
           expansion?: Expansion;
-          derivesFrom?: AspectsSpiritName;
+          aspectOf?: AspectsSpiritName;
         } = {};
         if (expansion) display.expansion = expansion;
-        if (derivesFrom) display.derivesFrom = derivesFrom;
+        if (aspectOf) display.aspectOf = aspectOf;
         return display;
       },
     });

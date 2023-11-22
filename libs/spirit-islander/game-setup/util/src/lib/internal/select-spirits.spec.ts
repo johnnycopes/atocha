@@ -57,7 +57,7 @@ describe('selectSpirits', () => {
       {
         name: 'Might',
         expansion: 'Promo Pack 2',
-        derivesFrom: 'Vital Strength of the Earth',
+        aspectOf: 'Vital Strength of the Earth',
       },
       { name: 'Finder of Paths Unseen', expansion: 'Promo Pack 2' },
     ];

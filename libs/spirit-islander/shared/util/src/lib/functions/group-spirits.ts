@@ -21,8 +21,8 @@ export function groupSpirits(
   for (const spirit of getOptionsByName(SPIRITS, names)) {
     if (isPossibleAspect(spirit.name)) {
       spirits[spirit.name].push(spirit);
-    } else if (spirit.derivesFrom && isPossibleAspect(spirit.derivesFrom)) {
-      spirits[spirit.derivesFrom].push(spirit);
+    } else if (spirit.aspectOf && isPossibleAspect(spirit.aspectOf)) {
+      spirits[spirit.aspectOf].push(spirit);
     } else {
       spirits.General.push(spirit);
     }

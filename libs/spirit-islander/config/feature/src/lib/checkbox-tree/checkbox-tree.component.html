@@ -38,8 +38,8 @@
     (ngModelChange)="onChange(item)"
   >
     <ui-aspect-emblem
-      *ngIf="!!item.display?.derivesFrom"
-      [name]="item.display.derivesFrom"
+      *ngIf="!!item.display?.aspectOf"
+      [name]="item.display.aspectOf"
     ></ui-aspect-emblem>
     {{ item.display?.name ?? item.id }}
     <ui-difficulty-emblem

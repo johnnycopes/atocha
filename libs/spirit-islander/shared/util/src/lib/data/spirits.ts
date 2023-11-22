@@ -14,17 +14,17 @@ export const SPIRITS = [
   {
     name: 'Immense',
     expansion: 'Promo Pack 2',
-    derivesFrom: "Lightning's Swift Strike",
+    aspectOf: "Lightning's Swift Strike",
   },
   {
     name: 'Pandemonium',
     expansion: 'Jagged Earth',
-    derivesFrom: "Lightning's Swift Strike",
+    aspectOf: "Lightning's Swift Strike",
   },
   {
     name: 'Wind',
     expansion: 'Jagged Earth',
-    derivesFrom: "Lightning's Swift Strike",
+    aspectOf: "Lightning's Swift Strike",
   },
   { name: 'Lure of the Deep Wilderness', expansion: 'Jagged Earth' },
   { name: 'Many Minds Move as One', expansion: 'Jagged Earth' },
@@ -34,34 +34,34 @@ export const SPIRITS = [
   {
     name: 'Sunshine',
     expansion: 'Jagged Earth',
-    derivesFrom: 'River Surges in Sunlight',
+    aspectOf: 'River Surges in Sunlight',
   },
   {
     name: 'Travel',
     expansion: 'Promo Pack 2',
-    derivesFrom: 'River Surges in Sunlight',
+    aspectOf: 'River Surges in Sunlight',
   },
   { name: 'Serpent Slumbering Beneath the Island', expansion: 'Promo Pack 1' },
   { name: 'Shadows Flicker Like Flame' },
   {
     name: 'Amorphous',
     expansion: 'Promo Pack 2',
-    derivesFrom: 'Shadows Flicker Like Flame',
+    aspectOf: 'Shadows Flicker Like Flame',
   },
   {
     name: 'Foreboding',
     expansion: 'Promo Pack 2',
-    derivesFrom: 'Shadows Flicker Like Flame',
+    aspectOf: 'Shadows Flicker Like Flame',
   },
   {
     name: 'Madness',
     expansion: 'Jagged Earth',
-    derivesFrom: 'Shadows Flicker Like Flame',
+    aspectOf: 'Shadows Flicker Like Flame',
   },
   {
     name: 'Reach',
     expansion: 'Jagged Earth',
-    derivesFrom: 'Shadows Flicker Like Flame',
+    aspectOf: 'Shadows Flicker Like Flame',
   },
   { name: 'Sharp Fangs Behind the Leaves', expansion: 'Branch & Claw' },
   { name: 'Shifting Memory of Ages', expansion: 'Jagged Earth' },
@@ -75,12 +75,12 @@ export const SPIRITS = [
   {
     name: 'Might',
     expansion: 'Promo Pack 2',
-    derivesFrom: 'Vital Strength of the Earth',
+    aspectOf: 'Vital Strength of the Earth',
   },
   {
     name: 'Resilience',
     expansion: 'Jagged Earth',
-    derivesFrom: 'Vital Strength of the Earth',
+    aspectOf: 'Vital Strength of the Earth',
   },
   { name: 'Volcano Looming High', expansion: 'Jagged Earth' },
 ] as const;
