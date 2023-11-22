@@ -1,4 +1,4 @@
-import { countUniqueSpirits } from './count-spirits';
+import { countUniqueSpirits } from './count-unique-spirits';
 import { SPIRITS, getNames } from '@atocha/spirit-islander/shared/util';
 
 describe('countUniqueSpirits', () => {
