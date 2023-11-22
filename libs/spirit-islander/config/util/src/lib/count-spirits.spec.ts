@@ -12,7 +12,7 @@ describe('countSpirits', () => {
     ).toBe(2);
   });
 
-  it('returns the number of unique spirits given all some spirit names', () => {
+  it('returns the number of unique spirits given all spirit names', () => {
     expect(countSpirits(getNames(SPIRITS))).toBe(29);
   });
 });
