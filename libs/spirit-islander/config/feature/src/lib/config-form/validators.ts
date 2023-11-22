@@ -8,7 +8,7 @@ import {
 import { pluralize } from '@atocha/core/util';
 import {
   Config,
-  countSpirits,
+  countUniqueSpirits,
   getValidCombos,
 } from '@atocha/spirit-islander/config/util';
 
@@ -26,7 +26,7 @@ export const playersOutnumberSpirits: ValidatorFn = (
   control: AbstractControl<Config>
 ): ValidationErrors | null => {
   const players = control.value.players;
-  const numberOfSpirits = countSpirits(control.value.spiritNames);
+  const numberOfSpirits = countUniqueSpirits(control.value.spiritNames);
 
   return players > numberOfSpirits
     ? {

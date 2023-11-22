@@ -1,10 +1,10 @@
-import { countSpirits } from './count-spirits';
+import { countUniqueSpirits } from './count-spirits';
 import { SPIRITS, getNames } from '@atocha/spirit-islander/shared/util';
 
-describe('countSpirits', () => {
+describe('countUniqueSpirits', () => {
   it('returns the number of unique spirits given some spirit names', () => {
     expect(
-      countSpirits([
+      countUniqueSpirits([
         'A Spread of Rampant Green',
         'Shadows Flicker Like Flame',
         'Madness',
@@ -13,6 +13,6 @@ describe('countSpirits', () => {
   });
 
   it('returns the number of unique spirits given all spirit names', () => {
-    expect(countSpirits(getNames(SPIRITS))).toBe(29);
+    expect(countUniqueSpirits(getNames(SPIRITS))).toBe(29);
   });
 });
