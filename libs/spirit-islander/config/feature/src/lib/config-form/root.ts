@@ -14,6 +14,7 @@ import {
   SPIRITS,
   Scenario,
   Spirit,
+  SpiritFamilyName,
   getDifficulty,
   getOptionsByExpansion,
 } from '@atocha/spirit-islander/shared/util';
@@ -65,7 +66,15 @@ export class Root {
       root: 'Spirits',
       items: getOptionsByExpansion(SPIRITS, expansions),
       getId: ({ name }) => name,
-      getDisplay: ({ expansion }) => (expansion ? { expansion } : {}),
+      getDisplay: ({ expansion, aspectOf }) => {
+        const display: {
+          expansion?: Expansion;
+          aspectOf?: SpiritFamilyName;
+        } = {};
+        if (expansion) display.expansion = expansion;
+        if (aspectOf) display.aspectOf = aspectOf;
+        return display;
+      },
     });
 
     this._maps = this._createRoot({

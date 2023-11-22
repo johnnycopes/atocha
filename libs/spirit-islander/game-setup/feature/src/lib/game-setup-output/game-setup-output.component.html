@@ -57,6 +57,10 @@
             [mapName]="setup.map.name"
           ></ui-board-emblem>
           <ui-separator></ui-separator>
+          <ui-aspect-emblem
+            *ngIf="spirit.aspectOf"
+            [name]="spirit.aspectOf"
+          ></ui-aspect-emblem>
           {{ spirit.name }}
           <ui-expansion-emblem
             *ngIf="spirit.expansion"
