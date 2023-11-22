@@ -13,11 +13,11 @@ export function selectSpirits(
   const possibleSpirits: Spirit[] = [];
 
   for (const [group, spirits] of Object.entries(groupSpirits(names))) {
-    if (group !== 'General' && spirits.length > 0) {
-      possibleSpirits.push(...selectRandom(spirits));
-    } else {
-      possibleSpirits.push(...spirits);
-    }
+    possibleSpirits.push(
+      ...(group !== 'General' && spirits.length > 0
+        ? selectRandom(spirits)
+        : spirits)
+    );
   }
 
   return selectRandom(possibleSpirits, players);
