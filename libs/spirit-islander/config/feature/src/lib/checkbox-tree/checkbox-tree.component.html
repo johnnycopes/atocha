@@ -38,7 +38,7 @@
     (ngModelChange)="onChange(item)"
   >
     <ui-aspect-emblem
-      *ngIf="!!item.display?.aspectOf"
+      *ngIf="item.display?.aspectOf"
       [name]="item.display.aspectOf"
     ></ui-aspect-emblem>
     {{ item.display?.name ?? item.id }}
