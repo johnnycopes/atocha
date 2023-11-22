@@ -35,7 +35,7 @@ describe('Validators', () => {
           })
         )
       ).toEqual({
-        playersOutnumberSpirits: 'At least 2 spirits must be selected',
+        playersOutnumberSpirits: 'At least 2 unique spirits must be selected',
       });
     });
 
