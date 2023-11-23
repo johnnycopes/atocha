@@ -17,12 +17,18 @@
 
     <ui-card name="players" [error]="form.playersError">
       <h3 ui-card-header>Players</h3>
-      <app-select-players [form]="form"> </app-select-players>
+      <app-select-players
+        ui-card-content
+        [form]="form"
+      ></app-select-players>
     </ui-card>
 
     <ui-card name="difficulty" [error]="form.difficultyError">
       <h3 ui-card-header>Difficulty</h3>
-      <app-select-difficulty-range [form]="form"> </app-select-difficulty-range>
+      <app-select-difficulty-range
+        ui-card-content
+        [form]="form">
+      </app-select-difficulty-range>
     </ui-card>
   </ui-card-group>
 

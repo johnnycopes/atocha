@@ -25,8 +25,29 @@
   }
 }
 
+.expansions,
+.spirits,
+.maps,
+.boards,
+.scenarios,
+.adversaries {
+  [ui-card-header] {
+    margin-bottom: 8px;
+  }
+}
+
+.players,
+.difficulty {
+  [ui-card-header] {
+    margin-bottom: 12px;
+  }
+}
+
+[ui-card-content] {
+  margin-bottom: 12px;
+}
+
 .core-checkbox {
-  margin-bottom: 4px;
   padding-left: 8px;
 
   @media screen and (min-width: 768px) {
@@ -37,6 +58,7 @@
 .ui-card [data-level='0'] {
   display: flex;
   flex-wrap: wrap;
+  gap: 4px;
 
   [ui-card-header],
   .core-tree {
@@ -45,7 +67,7 @@
 }
 
 .expansions [data-level='0'] .core-tree {
-  flex-basis: 50%;
+  flex-basis: calc(50% - 4px);
 }
 
 .players,
@@ -64,20 +86,21 @@ app-select-difficulty-range {
 
 .spirits [data-level='0'] .core-tree {
   @media screen and (min-width: 768px) {
-    flex-basis: 50%;
+    flex-basis: calc(50% - 4px);
   }
 }
 
 .boards [data-level='0'] .core-tree {
-  flex-basis: 25%;
+  flex-basis: calc(25% - 4px);
 }
 
 .adversaries {
   [data-level='0'] .core-tree {
-    flex-basis: 50%;
+    flex-basis: calc(50% - 4px);
+    margin-top: 4px;
 
     @media screen and (min-width: 768px) {
-      flex-basis: 25%;
+      flex-basis: calc(25% - 4px);
     }
   }
 
