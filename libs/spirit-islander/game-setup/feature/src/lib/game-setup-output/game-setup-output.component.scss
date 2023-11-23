@@ -15,6 +15,20 @@
   }
 }
 
+[ui-card-content] {
+  padding: 16px 8px;
+
+  @media screen and (min-width: 768px) {
+    padding: 16px;
+  }
+
+  ui-separator {
+    margin-left: 12px;
+    margin-right: 10px;
+    border-color: var(--gray-300);
+  }
+}
+
 .datum {
   display: flex;
   align-items: center;
