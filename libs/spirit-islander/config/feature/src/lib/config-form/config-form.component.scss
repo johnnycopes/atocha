@@ -43,11 +43,12 @@
       margin-bottom: 12px;
     }
   }
+
+  [ui-card-content] {
+    margin-bottom: 12px;
+  }
 }
 
-[ui-card-content] {
-  margin-bottom: 12px;
-}
 
 .core-checkbox {
   padding-left: 8px;
@@ -94,6 +95,10 @@ app-select-difficulty-range {
 
 .boards [data-level='0'] .core-tree {
   flex-basis: calc(25% - 4px);
+}
+
+.boards .six-boards [data-level='0'] .core-tree {
+  flex-basis: calc(33.33% - 4px);
 }
 
 .adversaries {

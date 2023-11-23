@@ -54,6 +54,7 @@
 
     <ui-card name="boards" [error]="form.boardsError">
       <app-checkbox-tree
+        [class.six-boards]="jaggedEarth"
         [root]="root.boards"
         [form]="form"
         controlName="boardNames"
