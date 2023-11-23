@@ -15,17 +15,19 @@
   }
 }
 
-[ui-card-content] {
-  padding: 16px 8px;
+.setup {
+  [ui-card-content] {
+    padding: 16px 8px;
 
-  @media screen and (min-width: 768px) {
-    padding: 16px;
-  }
+    @media screen and (min-width: 768px) {
+      padding: 16px;
+    }
 
-  ui-separator {
-    margin-left: 12px;
-    margin-right: 10px;
-    border-color: var(--gray-300);
+    ui-separator {
+      margin-left: 12px;
+      margin-right: 10px;
+      border-color: var(--gray-300);
+    }
   }
 }
 

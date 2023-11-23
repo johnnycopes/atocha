@@ -25,21 +25,23 @@
   }
 }
 
-.expansions,
-.spirits,
-.maps,
-.boards,
-.scenarios,
-.adversaries {
-  [ui-card-header] {
-    margin-bottom: 8px;
+.config {
+  .expansions,
+  .spirits,
+  .maps,
+  .boards,
+  .scenarios,
+  .adversaries {
+    [ui-card-header] {
+      margin-bottom: 8px;
+    }
   }
-}
 
-.players,
-.difficulty {
-  [ui-card-header] {
-    margin-bottom: 12px;
+  .players,
+  .difficulty {
+    [ui-card-header] {
+      margin-bottom: 12px;
+    }
   }
 }
 
@@ -97,11 +99,14 @@ app-select-difficulty-range {
 .adversaries {
   [data-level='0'] .core-tree {
     flex-basis: calc(50% - 4px);
-    margin-top: 4px;
 
     @media screen and (min-width: 768px) {
       flex-basis: calc(25% - 4px);
     }
+  }
+
+  .core-tree .core-tree [data-level='2'] {
+    margin: 4px 0;
   }
 
   // Hide the 'N/A' checkbox
