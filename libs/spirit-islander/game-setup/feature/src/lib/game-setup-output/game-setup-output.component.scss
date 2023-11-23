@@ -38,9 +38,16 @@
   [ui-card-content] {
     display: flex;
     flex-wrap: wrap;
+    gap: 4px;
   }
 
   .datum {
-    flex: 0 0 50%;
+    flex-basis: calc(50% - 4px);
+  }
+}
+
+.spirits {
+  .datum:not(:last-child) {
+    margin-bottom: 4px;
   }
 }
