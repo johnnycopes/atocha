@@ -35,6 +35,13 @@ A kitchen management app where you can add your favorite dishes, group them into
 
 A dictionary app for the board game [Lorenzo il Magnifico](https://boardgamegeek.com/boardgame/203993/lorenzo-il-magnifico). All the game data is hard-coded and it uses the browser's LocalStorage API for state management.
 
+### Spirit Islander
+
+- Live site: https://www.spiritislander.com
+- [Original repo](https://github.com/johnnycopes/spirit-islander)
+
+A setup generator for the board game [Spirit Island](https://boardgamegeek.com/boardgame/162886/spirit-island) by R. Eric Reuss. Spirit Island is a modular game with many different configurations that add interesting variety and challenge. This tool removes the burden of having to calculate these configurations manually by instantaneously generating randomized game setups tailored to players' prefences.
+
 ## Shared libraries
 
 Generic, well-tested collections of code. Minimally opinionated for maximum reusability.
