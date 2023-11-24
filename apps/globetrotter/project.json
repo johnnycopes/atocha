@@ -106,13 +106,13 @@
         "production": {
           "commands": [
             "nx build globetrotter",
-            "netlify deploy --prod --auth=${NETLIFY_AUTH_TOKEN} --site=${GLOBETROTTER_SITE_ID} --message='Via Nx command'"
+            "netlify deploy --prod --auth=${NETLIFY_AUTH_TOKEN} --site=${GLOBETROTTER_SITE_ID}  --filter=globetrotter --message='Via Nx command'"
           ]
         },
         "development": {
           "commands": [
             "nx build globetrotter",
-            "netlify deploy --auth=${NETLIFY_AUTH_TOKEN} --site=${GLOBETROTTER_SITE_ID} --message='Via Nx command'"
+            "netlify deploy --auth=${NETLIFY_AUTH_TOKEN} --site=${GLOBETROTTER_SITE_ID}  --filter=globetrotter --message='Via Nx command'"
           ]
         }
       },
