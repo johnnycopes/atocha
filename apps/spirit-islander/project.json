@@ -100,13 +100,13 @@
         "production": {
           "commands": [
             "nx build spirit-islander",
-            "netlify deploy --prod --auth=${NETLIFY_AUTH_TOKEN} --site=${SPIRIT_ISLANDER_SITE_ID} --message='Via Nx command'"
+            "netlify deploy --prod --auth=${NETLIFY_AUTH_TOKEN} --site=${SPIRIT_ISLANDER_SITE_ID} --filter=spirit-islander --message='Via Nx command'"
           ]
         },
         "development": {
           "commands": [
             "nx build spirit-islander",
-            "netlify deploy --auth=${NETLIFY_AUTH_TOKEN} --site=${SPIRIT_ISLANDER_SITE_ID} --message='Via Nx command'"
+            "netlify deploy --auth=${NETLIFY_AUTH_TOKEN} --site=${SPIRIT_ISLANDER_SITE_ID} --filter=spirit-islander --message='Via Nx command'"
           ]
         }
       },
