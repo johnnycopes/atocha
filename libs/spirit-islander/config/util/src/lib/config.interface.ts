@@ -11,7 +11,7 @@ import {
 
 /**
  * Collection of selected options that a user either
- * wants or would be willing to have in a `IGameSetup`
+ * wants or would be willing to have in a `GameSetup`
  */
 export interface Config {
   expansions: readonly Expansion[];

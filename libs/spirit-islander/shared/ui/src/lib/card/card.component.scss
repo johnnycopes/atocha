@@ -5,7 +5,6 @@
   background: var(--gray-200);
   border-radius: var(--border-radius);
   box-shadow: var(--downward-box-shadow);
-  padding-bottom: 8px;
 
   ui-aspect-emblem {
     margin-right: 8px;
@@ -23,7 +22,6 @@
 }
 
 [ui-card-header] {
-  margin-bottom: 12px;
   padding: 8px;
   background: var(--gray-300);
   border-radius: var(--border-radius) var(--border-radius) 0 0;
@@ -35,20 +33,6 @@
 
   @media screen and (min-width: 768px) {
     padding: 8px 16px;
-  }
-}
-
-[ui-card-content] {
-  padding: 16px 8px;
-
-  @media screen and (min-width: 768px) {
-    padding: 16px;
-  }
-
-  ui-separator {
-    margin-left: 12px;
-    margin-right: 10px;
-    border-color: var(--gray-300);
   }
 }
 

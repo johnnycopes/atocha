@@ -15,6 +15,22 @@
   }
 }
 
+.setup {
+  [ui-card-content] {
+    padding: 16px 8px;
+
+    @media screen and (min-width: 768px) {
+      padding: 16px;
+    }
+
+    ui-separator {
+      margin-left: 12px;
+      margin-right: 10px;
+      border-color: var(--gray-300);
+    }
+  }
+}
+
 .datum {
   display: flex;
   align-items: center;
@@ -24,9 +40,16 @@
   [ui-card-content] {
     display: flex;
     flex-wrap: wrap;
+    gap: 4px;
   }
 
   .datum {
-    flex: 0 0 50%;
+    flex-basis: calc(50% - 4px);
+  }
+}
+
+.spirits {
+  .datum:not(:last-child) {
+    margin-bottom: 4px;
   }
 }
