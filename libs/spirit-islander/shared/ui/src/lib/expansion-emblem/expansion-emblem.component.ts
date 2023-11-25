@@ -24,6 +24,7 @@ export class ExpansionEmblemComponent {
     'Branch & Claw': 'BC',
     Horizons: 'H',
     'Jagged Earth': 'JE',
+    'Nature Incarnate': 'NI',
     'Promo Pack 1': 'P1',
     'Promo Pack 2': 'P2',
   };

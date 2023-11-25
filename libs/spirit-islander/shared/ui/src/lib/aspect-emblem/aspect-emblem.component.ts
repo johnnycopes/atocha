@@ -21,9 +21,20 @@ export class AspectEmblemComponent {
   abbreviation!: string;
 
   private readonly _abbreviations: Record<SpiritFamilyName, string> = {
+    'A Spread of Rampant Green': 'Green',
+    'Bringer of Dreams and Nightmares': 'Bringer',
+    'Heart of the Wildfire': 'Wildfire',
+    'Keeper of the Forbidden Wilds': 'Keeper',
     "Lightning's Swift Strike": 'Lightning',
+    'Lure of the Deep Wilderness': 'Lure',
+    "Ocean's Hungry Grasp": 'Ocean',
     'River Surges in Sunlight': 'River',
+    'Serpent Slumbering Beneath the Island': 'Serpent',
     'Shadows Flicker Like Flame': 'Shadow',
+    'Sharp Fangs Behind the Leaves': 'Fangs',
+    'Shifting Memory of Ages': 'Memory',
+    'Shroud of Silent Mist': 'Mist',
+    Thunderspeaker: 'Thunder',
     'Vital Strength of the Earth': 'Earth',
   };
 }
