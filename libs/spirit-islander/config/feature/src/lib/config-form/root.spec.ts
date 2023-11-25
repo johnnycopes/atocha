@@ -8,6 +8,7 @@ describe('Root', () => {
       'Horizons',
       'Jagged Earth',
       'Branch & Claw',
+      'Nature Incarnate',
       'Promo Pack 1',
       'Promo Pack 2',
     ]);
@@ -20,6 +21,7 @@ describe('Root', () => {
         { id: 'Branch & Claw' },
         { id: 'Horizons' },
         { id: 'Jagged Earth' },
+        { id: 'Nature Incarnate' },
         { id: 'Promo Pack 1' },
         { id: 'Promo Pack 2' },
       ],
