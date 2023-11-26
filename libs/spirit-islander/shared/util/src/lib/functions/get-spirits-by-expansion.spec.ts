@@ -29,4 +29,25 @@ describe('getSpiritsByExpansion', () => {
       { name: 'Bringer of Dreams and Nightmares' },
     ]);
   });
+
+  it('does not return aspects matching expansions if their associated spirit was excluded', () => {
+    expect(
+      getSpiritsByExpansion(
+        [
+          { name: 'Sharp Fangs Behind the Leaves', expansion: 'Branch & Claw' },
+          {
+            name: 'Encircle',
+            expansion: 'Nature Incarnate',
+            aspectOf: 'Sharp Fangs Behind the Leaves',
+          },
+          {
+            name: 'Unconstrained',
+            expansion: 'Nature Incarnate',
+            aspectOf: 'Sharp Fangs Behind the Leaves',
+          },
+        ],
+        ['Nature Incarnate']
+      )
+    ).toEqual([]);
+  });
 });
