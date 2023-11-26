@@ -76,6 +76,6 @@ describe('getValidCombos', () => {
       scenarioNames: getNames(SCENARIOS),
       adversaryLevelIds: getAdversaryLevelIds(ADVERSARIES),
     };
-    expect(getValidCombos(mockConfig)).toHaveLength(1215);
+    expect(getValidCombos(mockConfig)).toHaveLength(1384);
   });
 });

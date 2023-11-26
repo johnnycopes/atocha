@@ -561,6 +561,19 @@ describe('Root', () => {
           ],
         },
         {
+          id: 'Habsburg Mining Expedition',
+          display: { expansion: 'Nature Incarnate' },
+          children: [
+            { id: 'hme-0', display: { name: 'Level 0', difficulty: 1 } },
+            { id: 'hme-1', display: { name: 'Level 1', difficulty: 3 } },
+            { id: 'hme-2', display: { name: 'Level 2', difficulty: 4 } },
+            { id: 'hme-3', display: { name: 'Level 3', difficulty: 5 } },
+            { id: 'hme-4', display: { name: 'Level 4', difficulty: 7 } },
+            { id: 'hme-5', display: { name: 'Level 5', difficulty: 9 } },
+            { id: 'hme-6', display: { name: 'Level 6', difficulty: 10 } },
+          ],
+        },
+        {
           id: 'Russia',
           display: { expansion: 'Jagged Earth' },
           children: [
