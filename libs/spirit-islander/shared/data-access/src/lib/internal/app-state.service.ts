@@ -12,11 +12,11 @@ import {
   ADVERSARIES,
   BOARDS,
   EXPANSIONS,
-  getAdversaryLevelIds,
-  getNames,
   MAPS,
   SCENARIOS,
   SPIRITS,
+  getAdversaryLevelIds,
+  getNames,
 } from '@atocha/spirit-islander/shared/util';
 
 export interface AppState {
