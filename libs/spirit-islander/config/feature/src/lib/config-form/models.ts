@@ -126,9 +126,14 @@ export class Models {
     const expansionOptionNames = this._getExpansionOptionNames(createModel, [
       target,
     ]);
-    return expansions.includes(target)
+    const possibleModel = createModel(expansions);
+    const updatedModel = expansions.includes(target)
       ? [...existingModel, ...expansionOptionNames]
-      : existingModel.filter((name) => !expansionOptionNames.includes(name));
+      : existingModel.filter(
+          (name) =>
+            !expansionOptionNames.includes(name) && possibleModel.includes(name)
+        );
+    return updatedModel;
   }
 
   private _getExpansionOptionNames<TName>(

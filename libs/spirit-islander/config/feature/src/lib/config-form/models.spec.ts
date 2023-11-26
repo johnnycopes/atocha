@@ -257,5 +257,15 @@ describe('Models', () => {
         "Lightning's Swift Strike",
       ]);
     });
+
+    it('removes all aspect names associated with a spirit when the spirit is removed', () => {
+      const models = new Models({
+        spiritNames: ['Sharp Fangs Behind the Leaves', 'Encircle', 'Warrior'],
+      });
+
+      expect(
+        models.update(['Nature Incarnate'], 'Branch & Claw').spiritNames
+      ).toEqual(['Warrior']);
+    });
   });
 });
