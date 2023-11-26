@@ -17,6 +17,7 @@ import {
   SpiritFamilyName,
   getDifficulty,
   getOptionsByExpansion,
+  getSpiritsByExpansion,
 } from '@atocha/spirit-islander/shared/util';
 
 export interface Node<T> {
@@ -64,7 +65,7 @@ export class Root {
   update(expansions: readonly Expansion[]) {
     this._spirits = this._createRoot({
       root: 'Spirits',
-      items: getOptionsByExpansion(SPIRITS, expansions),
+      items: getSpiritsByExpansion(SPIRITS, expansions),
       getId: ({ name }) => name,
       getDisplay: ({ expansion, aspectOf }) => {
         const display: {
