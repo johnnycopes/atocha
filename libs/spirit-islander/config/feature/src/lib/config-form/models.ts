@@ -13,7 +13,7 @@ import {
   getAdversaryLevelIds,
   getOptionsByExpansion,
   getNames,
-  getSpiritNames,
+  getSpiritsByExpansion,
 } from '@atocha/spirit-islander/shared/util';
 
 export class Models {
@@ -67,8 +67,7 @@ export class Models {
     target: 'Expansions' | Expansion
   ): Models {
     this._spiritNames = this._updateModel(
-      (expansions) =>
-        getSpiritNames(getOptionsByExpansion(SPIRITS, expansions)),
+      (expansions) => getNames(getSpiritsByExpansion(SPIRITS, expansions)),
       this._spiritNames,
       expansions,
       target

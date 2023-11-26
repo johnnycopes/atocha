@@ -3,5 +3,5 @@ export * from './get-difficulty';
 export * from './get-names';
 export * from './get-options-by-expansion';
 export * from './get-options-by-name';
-export * from './get-spirit-names';
+export * from './get-spirits-by-expansion';
 export * from './group-spirits';
