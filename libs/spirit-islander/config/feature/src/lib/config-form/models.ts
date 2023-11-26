@@ -122,18 +122,18 @@ export class Models {
         ...existingModel.filter((name) => allowedOptionNames.includes(name)),
         ...expansionOptionNames.filter((name) => !existingModel.includes(name)),
       ];
+    } else {
+      const expansionOptionNames = this._getExpansionOptionNames(createModel, [
+        target,
+      ]);
+      return expansions.includes(target)
+        ? [...existingModel, ...expansionOptionNames]
+        : existingModel.filter(
+            (name) =>
+              !expansionOptionNames.includes(name) &&
+              allowedOptionNames.includes(name)
+          );
     }
-
-    const expansionOptionNames = this._getExpansionOptionNames(createModel, [
-      target,
-    ]);
-    return expansions.includes(target)
-      ? [...existingModel, ...expansionOptionNames]
-      : existingModel.filter(
-          (name) =>
-            !expansionOptionNames.includes(name) &&
-            allowedOptionNames.includes(name)
-        );
   }
 
   private _getExpansionOptionNames<TName>(
