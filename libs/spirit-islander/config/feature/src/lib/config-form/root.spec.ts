@@ -412,6 +412,13 @@ describe('Root', () => {
           },
         },
         {
+          id: 'Destiny Unfolds',
+          display: {
+            difficulty: -1,
+            expansion: 'Nature Incarnate',
+          },
+        },
+        {
           id: 'Blitz',
           display: {
             difficulty: 0,
@@ -473,6 +480,13 @@ describe('Root', () => {
           },
         },
         {
+          id: 'Surges of Colonization',
+          display: {
+            difficulty: 2,
+            expansion: 'Nature Incarnate',
+          },
+        },
+        {
           id: 'Rituals of Destroying Flame',
           display: {
             difficulty: 3,
@@ -496,6 +510,13 @@ describe('Root', () => {
           id: 'Dahan Insurrection',
           display: {
             difficulty: 4,
+          },
+        },
+        {
+          id: 'Surges of Colonization (Hard)',
+          display: {
+            difficulty: 7,
+            expansion: 'Nature Incarnate',
           },
         },
       ],
