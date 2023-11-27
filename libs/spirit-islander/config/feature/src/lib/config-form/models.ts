@@ -111,24 +111,29 @@ export class Models {
     expansions: readonly Expansion[],
     target: 'Expansions' | Expansion
   ): readonly TName[] {
+    const allowedOptionNames = createModel(expansions);
+
     if (target === 'Expansions') {
       const expansionOptionNames = this._getExpansionOptionNames(
         createModel,
         expansions
       );
-      const allowedOptionNames = createModel(expansions);
       return [
         ...existingModel.filter((name) => allowedOptionNames.includes(name)),
         ...expansionOptionNames.filter((name) => !existingModel.includes(name)),
       ];
+    } else {
+      const expansionOptionNames = this._getExpansionOptionNames(createModel, [
+        target,
+      ]);
+      return expansions.includes(target)
+        ? [...existingModel, ...expansionOptionNames]
+        : existingModel.filter(
+            (name) =>
+              !expansionOptionNames.includes(name) &&
+              allowedOptionNames.includes(name)
+          );
     }
-
-    const expansionOptionNames = this._getExpansionOptionNames(createModel, [
-      target,
-    ]);
-    return expansions.includes(target)
-      ? [...existingModel, ...expansionOptionNames]
-      : existingModel.filter((name) => !expansionOptionNames.includes(name));
   }
 
   private _getExpansionOptionNames<TName>(

@@ -1,9 +1,37 @@
-import { Expansion, Spirit, SpiritName } from '../types';
-import { getOptionsByExpansion } from './get-options-by-expansion';
+import {
+  Expansion,
+  Spirit,
+  SpiritFamilyName,
+  isPartOfSpiritFamily,
+} from '../types';
 
 export function getSpiritsByExpansion(
   spirits: readonly Spirit[],
   expansions: readonly Expansion[]
 ): readonly Spirit[] {
-  return getOptionsByExpansion<SpiritName, Spirit>(spirits, expansions);
+  const result: Spirit[] = [];
+  const includedFamilyNames = new Set<SpiritFamilyName>();
+
+  for (const spirit of spirits) {
+    const { name, expansion, aspectOf } = spirit;
+
+    if (!aspectOf) {
+      if (!expansion || expansions.includes(expansion)) {
+        if (isPartOfSpiritFamily(name)) {
+          includedFamilyNames.add(name);
+        }
+        result.push(spirit);
+      }
+    } else {
+      if (
+        includedFamilyNames.has(aspectOf) &&
+        expansion &&
+        expansions.includes(expansion)
+      ) {
+        result.push(spirit);
+      }
+    }
+  }
+
+  return result;
 }

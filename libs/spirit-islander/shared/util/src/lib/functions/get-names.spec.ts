@@ -6,10 +6,10 @@ describe('getNames', () => {
     const scenarios = SCENARIOS.slice(0, 5);
     expect(getNames(scenarios)).toEqual([
       'No Scenario',
+      'Destiny Unfolds',
       'Blitz',
       "Guard the Isle's Heart",
       'Second Wave',
-      'A Diversity of Spirits',
     ]);
   });
 });

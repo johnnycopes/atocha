@@ -8,6 +8,7 @@ describe('Root', () => {
       'Horizons',
       'Jagged Earth',
       'Branch & Claw',
+      'Nature Incarnate',
       'Promo Pack 1',
       'Promo Pack 2',
     ]);
@@ -20,6 +21,7 @@ describe('Root', () => {
         { id: 'Branch & Claw' },
         { id: 'Horizons' },
         { id: 'Jagged Earth' },
+        { id: 'Nature Incarnate' },
         { id: 'Promo Pack 1' },
         { id: 'Promo Pack 2' },
       ],
@@ -31,7 +33,43 @@ describe('Root', () => {
       id: 'Spirits',
       children: [
         { id: 'A Spread of Rampant Green' },
+        {
+          id: 'Regrowth',
+          display: {
+            expansion: 'Nature Incarnate',
+            aspectOf: 'A Spread of Rampant Green',
+          },
+        },
+        {
+          id: 'Tangles',
+          display: {
+            expansion: 'Nature Incarnate',
+            aspectOf: 'A Spread of Rampant Green',
+          },
+        },
+        {
+          id: 'Breath of Darkness Down Your Spine',
+          display: { expansion: 'Nature Incarnate' },
+        },
         { id: 'Bringer of Dreams and Nightmares' },
+        {
+          id: 'Enticing',
+          display: {
+            expansion: 'Nature Incarnate',
+            aspectOf: 'Bringer of Dreams and Nightmares',
+          },
+        },
+        {
+          id: 'Violence',
+          display: {
+            expansion: 'Nature Incarnate',
+            aspectOf: 'Bringer of Dreams and Nightmares',
+          },
+        },
+        {
+          id: 'Dances Up Earthquakes',
+          display: { expansion: 'Nature Incarnate' },
+        },
         {
           id: 'Devouring Teeth Lurk Underfoot',
           display: { expansion: 'Horizons' },
@@ -39,6 +77,10 @@ describe('Root', () => {
         {
           id: 'Downpour Drenches the World',
           display: { expansion: 'Promo Pack 2' },
+        },
+        {
+          id: 'Ember-Eyed Behemoth',
+          display: { expansion: 'Nature Incarnate' },
         },
         {
           id: 'Eyes Watch From the Trees',
@@ -65,14 +107,28 @@ describe('Root', () => {
           display: { expansion: 'Promo Pack 1' },
         },
         {
+          id: 'Transforming',
           display: {
-            expansion: 'Branch & Claw',
+            expansion: 'Nature Incarnate',
+            aspectOf: 'Heart of the Wildfire',
           },
-          id: 'Keeper of the Forbidden Wilds',
         },
         {
-          id: "Lightning's Swift Strike",
+          id: 'Hearth-Vigil',
+          display: { expansion: 'Nature Incarnate' },
         },
+        {
+          id: 'Keeper of the Forbidden Wilds',
+          display: { expansion: 'Branch & Claw' },
+        },
+        {
+          id: 'Spreading Hostility',
+          display: {
+            expansion: 'Nature Incarnate',
+            aspectOf: 'Keeper of the Forbidden Wilds',
+          },
+        },
+        { id: "Lightning's Swift Strike" },
         {
           id: 'Immense',
           display: {
@@ -88,6 +144,13 @@ describe('Root', () => {
           },
         },
         {
+          id: 'Sparking',
+          display: {
+            expansion: 'Nature Incarnate',
+            aspectOf: "Lightning's Swift Strike",
+          },
+        },
+        {
           id: 'Wind',
           display: {
             expansion: 'Jagged Earth',
@@ -99,15 +162,40 @@ describe('Root', () => {
           display: { expansion: 'Jagged Earth' },
         },
         {
+          id: 'Lair',
+          display: {
+            expansion: 'Nature Incarnate',
+            aspectOf: 'Lure of the Deep Wilderness',
+          },
+        },
+        {
           id: 'Many Minds Move as One',
           display: { expansion: 'Jagged Earth' },
         },
         { id: "Ocean's Hungry Grasp" },
         {
+          id: 'Deeps',
+          display: {
+            expansion: 'Nature Incarnate',
+            aspectOf: "Ocean's Hungry Grasp",
+          },
+        },
+        {
+          id: 'Relentless Gaze of the Sun',
+          display: { expansion: 'Nature Incarnate' },
+        },
+        {
           id: 'Rising Heat of Stone and Sand',
           display: { expansion: 'Horizons' },
         },
         { id: 'River Surges in Sunlight' },
+        {
+          id: 'Haven',
+          display: {
+            expansion: 'Nature Incarnate',
+            aspectOf: 'River Surges in Sunlight',
+          },
+        },
         {
           id: 'Sunshine',
           display: {
@@ -126,11 +214,25 @@ describe('Root', () => {
           id: 'Serpent Slumbering Beneath the Island',
           display: { expansion: 'Promo Pack 1' },
         },
+        {
+          id: 'Locus',
+          display: {
+            expansion: 'Nature Incarnate',
+            aspectOf: 'Serpent Slumbering Beneath the Island',
+          },
+        },
         { id: 'Shadows Flicker Like Flame' },
         {
           id: 'Amorphous',
           display: {
             expansion: 'Promo Pack 2',
+            aspectOf: 'Shadows Flicker Like Flame',
+          },
+        },
+        {
+          id: 'Dark Fire',
+          display: {
+            expansion: 'Nature Incarnate',
             aspectOf: 'Shadows Flicker Like Flame',
           },
         },
@@ -160,12 +262,47 @@ describe('Root', () => {
           display: { expansion: 'Branch & Claw' },
         },
         {
+          id: 'Encircle',
+          display: {
+            expansion: 'Nature Incarnate',
+            aspectOf: 'Sharp Fangs Behind the Leaves',
+          },
+        },
+        {
+          id: 'Unconstrained',
+          display: {
+            expansion: 'Nature Incarnate',
+            aspectOf: 'Sharp Fangs Behind the Leaves',
+          },
+        },
+        {
           id: 'Shifting Memory of Ages',
           display: { expansion: 'Jagged Earth' },
         },
         {
+          id: 'Intensity',
+          display: {
+            expansion: 'Nature Incarnate',
+            aspectOf: 'Shifting Memory of Ages',
+          },
+        },
+        {
+          id: 'Mentor',
+          display: {
+            expansion: 'Nature Incarnate',
+            aspectOf: 'Shifting Memory of Ages',
+          },
+        },
+        {
           id: 'Shroud of Silent Mist',
           display: { expansion: 'Jagged Earth' },
+        },
+        {
+          id: 'Stranded',
+          display: {
+            expansion: 'Nature Incarnate',
+            aspectOf: 'Shroud of Silent Mist',
+          },
         },
         {
           id: 'Sun-Bright Whirlwind',
@@ -179,7 +316,25 @@ describe('Root', () => {
           id: "Stone's Unyielding Defiance",
           display: { expansion: 'Jagged Earth' },
         },
+        {
+          id: 'Towering Roots of the Jungle',
+          display: { expansion: 'Nature Incarnate' },
+        },
         { id: 'Thunderspeaker' },
+        {
+          id: 'Tactician',
+          display: {
+            expansion: 'Nature Incarnate',
+            aspectOf: 'Thunderspeaker',
+          },
+        },
+        {
+          id: 'Warrior',
+          display: {
+            expansion: 'Nature Incarnate',
+            aspectOf: 'Thunderspeaker',
+          },
+        },
         {
           id: 'Vengeance as a Burning Plague',
           display: { expansion: 'Jagged Earth' },
@@ -193,6 +348,13 @@ describe('Root', () => {
           },
         },
         {
+          id: 'Nourishing',
+          display: {
+            expansion: 'Nature Incarnate',
+            aspectOf: 'Vital Strength of the Earth',
+          },
+        },
+        {
           id: 'Resilience',
           display: {
             expansion: 'Jagged Earth',
@@ -202,6 +364,14 @@ describe('Root', () => {
         {
           id: 'Volcano Looming High',
           display: { expansion: 'Jagged Earth' },
+        },
+        {
+          id: 'Wandering Voice Keens Delirium',
+          display: { expansion: 'Nature Incarnate' },
+        },
+        {
+          id: 'Wounded Waters Bleeding',
+          display: { expansion: 'Nature Incarnate' },
         },
       ],
     });
@@ -239,6 +409,13 @@ describe('Root', () => {
           id: 'No Scenario',
           display: {
             difficulty: 0,
+          },
+        },
+        {
+          id: 'Destiny Unfolds',
+          display: {
+            difficulty: -1,
+            expansion: 'Nature Incarnate',
           },
         },
         {
@@ -303,6 +480,13 @@ describe('Root', () => {
           },
         },
         {
+          id: 'Surges of Colonization',
+          display: {
+            difficulty: 2,
+            expansion: 'Nature Incarnate',
+          },
+        },
+        {
           id: 'Rituals of Destroying Flame',
           display: {
             difficulty: 3,
@@ -326,6 +510,13 @@ describe('Root', () => {
           id: 'Dahan Insurrection',
           display: {
             difficulty: 4,
+          },
+        },
+        {
+          id: 'Surges of Colonization (Hard)',
+          display: {
+            difficulty: 7,
+            expansion: 'Nature Incarnate',
           },
         },
       ],
@@ -388,6 +579,19 @@ describe('Root', () => {
             { id: 'hm-4', display: { name: 'Level 4', difficulty: 8 } },
             { id: 'hm-5', display: { name: 'Level 5', difficulty: 9 } },
             { id: 'hm-6', display: { name: 'Level 6', difficulty: 10 } },
+          ],
+        },
+        {
+          id: 'Habsburg Mining Expedition',
+          display: { expansion: 'Nature Incarnate' },
+          children: [
+            { id: 'hme-0', display: { name: 'Level 0', difficulty: 1 } },
+            { id: 'hme-1', display: { name: 'Level 1', difficulty: 3 } },
+            { id: 'hme-2', display: { name: 'Level 2', difficulty: 4 } },
+            { id: 'hme-3', display: { name: 'Level 3', difficulty: 5 } },
+            { id: 'hme-4', display: { name: 'Level 4', difficulty: 7 } },
+            { id: 'hme-5', display: { name: 'Level 5', difficulty: 9 } },
+            { id: 'hme-6', display: { name: 'Level 6', difficulty: 10 } },
           ],
         },
         {

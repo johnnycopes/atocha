@@ -14,14 +14,30 @@ import { getValidCombos } from './get-valid-combos';
 describe('getValidCombos', () => {
   it('returns possible combinations for lowest difficulty', () => {
     const mockConfig: Config = {
-      expansions: EXPANSIONS,
+      expansions: [
+        'Branch & Claw',
+        'Horizons',
+        'Jagged Earth',
+        'Promo Pack 1',
+        'Promo Pack 2',
+      ],
       players: 1,
       difficultyRange: [0, 0],
-      spiritNames: getNames(SPIRITS),
-      mapNames: getNames(MAPS),
-      boardNames: getNames(BOARDS),
-      scenarioNames: getNames(SCENARIOS),
-      adversaryLevelIds: getAdversaryLevelIds(ADVERSARIES),
+      spiritNames: [
+        'Bringer of Dreams and Nightmares',
+        'Vital Strength of the Earth',
+      ],
+      mapNames: ['Balanced'],
+      boardNames: ['A', 'B', 'C'],
+      scenarioNames: [
+        'No Scenario',
+        'Blitz',
+        "Guard the Isle's Heart",
+        'Second Wave',
+        'A Diversity of Spirits',
+        'Elemental Invocation',
+      ],
+      adversaryLevelIds: ['none'],
     };
     expect(getValidCombos(mockConfig)).toStrictEqual([
       [
@@ -76,6 +92,6 @@ describe('getValidCombos', () => {
       scenarioNames: getNames(SCENARIOS),
       adversaryLevelIds: getAdversaryLevelIds(ADVERSARIES),
     };
-    expect(getValidCombos(mockConfig)).toHaveLength(1215);
+    expect(getValidCombos(mockConfig)).toHaveLength(1632);
   });
 });

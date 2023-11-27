@@ -9,14 +9,14 @@ import {
 } from '@atocha/spirit-islander/game-setup/util';
 import { migrateConfig } from './app-migration';
 import {
+  ADVERSARIES,
   BOARDS,
   EXPANSIONS,
   MAPS,
   SCENARIOS,
   SPIRITS,
-  getNames,
   getAdversaryLevelIds,
-  ADVERSARIES,
+  getNames,
 } from '@atocha/spirit-islander/shared/util';
 
 export interface AppState {

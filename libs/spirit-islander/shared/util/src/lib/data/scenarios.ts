@@ -4,6 +4,11 @@ export const SCENARIOS = [
     difficulty: 0,
   },
   {
+    name: 'Destiny Unfolds',
+    difficulty: -1,
+    expansion: 'Nature Incarnate',
+  },
+  {
     name: 'Blitz',
     difficulty: 0,
   },
@@ -47,6 +52,11 @@ export const SCENARIOS = [
     expansion: 'Branch & Claw',
   },
   {
+    name: 'Surges of Colonization',
+    difficulty: 2,
+    expansion: 'Nature Incarnate',
+  },
+  {
     name: 'Rituals of Destroying Flame',
     difficulty: 3,
     expansion: 'Branch & Claw',
@@ -63,5 +73,10 @@ export const SCENARIOS = [
   {
     name: 'Dahan Insurrection',
     difficulty: 4,
+  },
+  {
+    name: 'Surges of Colonization (Hard)',
+    difficulty: 7,
+    expansion: 'Nature Incarnate',
   },
 ] as const;
