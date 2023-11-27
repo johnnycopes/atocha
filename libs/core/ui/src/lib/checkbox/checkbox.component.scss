@@ -41,6 +41,7 @@ $large-size: 20px;
     background: var(--checkbox-color);
     border: $checkmark-width solid var(--checkbox-border);
     border-radius: var(--border-radius);
+    flex-shrink: 0;
 
     &--normal {
       height: $normal-size;
