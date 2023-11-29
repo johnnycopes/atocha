@@ -22,6 +22,16 @@ describe('getOptions', () => {
     ];
   });
 
+  describe('with both filters applied', () => {
+    it('throws error', () => {
+      expect(() =>
+        getOptions(mockSpirits, { expansions: [], names: [] })
+      ).toThrowError(
+        'Options can only be filtered by expansions OR names (not both at once)'
+      );
+    });
+  });
+
   describe('with no filters applied', () => {
     it('returns spirits untouched if filters argument is omitted', () => {
       expect(getOptions(mockSpirits)).toStrictEqual(mockSpirits);
@@ -65,6 +75,40 @@ describe('getOptions', () => {
         getOptions(mockBoards, { expansions: ['Jagged Earth'] })
       ).toStrictEqual([
         { name: 'D', thematicName: 'West' },
+        { name: 'E', thematicName: 'Southeast', expansion: 'Jagged Earth' },
+      ]);
+    });
+  });
+
+  describe('with names filter applied', () => {
+    it('returns no spirits when array is empty', () => {
+      expect(getOptions(mockSpirits, { names: [] })).toEqual([]);
+    });
+
+    it('returns no boards when array is empty', () => {
+      expect(getOptions(mockBoards, { names: [] })).toEqual([]);
+    });
+
+    it('returns matching spirits when names are specified', () => {
+      expect(
+        getOptions(mockSpirits, {
+          names: [
+            'Bringer of Dreams and Nightmares',
+            'Downpour Drenches the World',
+          ],
+        })
+      ).toEqual([
+        { name: 'Bringer of Dreams and Nightmares' },
+        { name: 'Downpour Drenches the World', expansion: 'Promo Pack 2' },
+      ]);
+    });
+
+    it('returns matching boards when names are specified', () => {
+      expect(
+        getOptions(mockBoards, {
+          names: ['E'],
+        })
+      ).toEqual([
         { name: 'E', thematicName: 'Southeast', expansion: 'Jagged Earth' },
       ]);
     });

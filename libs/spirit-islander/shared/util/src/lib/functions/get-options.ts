@@ -12,16 +12,27 @@ export function getOptions<
   options: readonly TOption[],
   { expansions, names }: Filters = {}
 ): readonly TOption[] {
-  if (!expansions) {
+  if (expansions && names) {
+    throw new Error(
+      'Options can only be filtered by expansions OR names (not both at once)'
+    );
+  } else if (!expansions && !names) {
     return options;
   }
-  names;
 
-  return options.filter((item) => {
-    if (item.expansion) {
-      return expansions.includes(item.expansion);
-    } else {
-      return true;
-    }
-  });
+  if (expansions) {
+    return options.filter((item) => {
+      if (item.expansion) {
+        return expansions.includes(item.expansion);
+      } else {
+        return true;
+      }
+    });
+  }
+
+  if (names) {
+    return options.filter((item) => names.includes(item.name));
+  }
+
+  return [];
 }
