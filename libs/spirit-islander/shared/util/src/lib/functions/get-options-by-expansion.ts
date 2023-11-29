@@ -5,8 +5,12 @@ export function getOptionsByExpansion<
   TOption extends ExpansionOption<TName>
 >(
   options: readonly TOption[],
-  expansions: readonly Expansion[]
+  expansions?: readonly Expansion[]
 ): readonly TOption[] {
+  if (!expansions) {
+    return options;
+  }
+
   return options.filter((item) => {
     if (item.expansion) {
       return expansions.includes(item.expansion);

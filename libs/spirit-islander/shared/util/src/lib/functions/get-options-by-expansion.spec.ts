@@ -22,6 +22,10 @@ describe('getOptionsByExpansion', () => {
     ];
   });
 
+  it('returns options unchanged if expansions argument is omitted', () => {
+    expect(getOptionsByExpansion(mockSpirits)).toStrictEqual(mockSpirits);
+  });
+
   it('get spirits by expansion name', () => {
     expect(getOptionsByExpansion(mockSpirits, [])).toStrictEqual([
       { name: 'Bringer of Dreams and Nightmares' },
