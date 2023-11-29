@@ -1,53 +1,118 @@
+import { SPIRITS } from '../data';
 import { getSpirits } from './get-spirits';
 
 describe('getSpirits', () => {
-  it('returns spirits from base expansions no matter what', () => {
-    expect(
-      getSpirits(
-        [
-          { name: 'Finder of Paths Unseen', expansion: 'Promo Pack 2' },
-          { name: "Ocean's Hungry Grasp" },
-          { name: 'Thunderspeaker' },
-        ],
-        []
-      )
-    ).toEqual([{ name: "Ocean's Hungry Grasp" }, { name: 'Thunderspeaker' }]);
+  it('returns all spirits if expansions argument is omitted', () => {
+    expect(getSpirits()).toEqual(SPIRITS);
   });
 
-  it('returns spirits from certain expansions', () => {
-    expect(
-      getSpirits(
-        [
-          { name: 'A Spread of Rampant Green', expansion: 'Branch & Claw' },
-          { name: 'Bringer of Dreams and Nightmares' },
-          { name: "Stone's Unyielding Defiance", expansion: 'Jagged Earth' },
-        ],
-        ['Branch & Claw']
-      )
-    ).toEqual([
-      { name: 'A Spread of Rampant Green', expansion: 'Branch & Claw' },
+  it('returns spirits from base game', () => {
+    expect(getSpirits([])).toEqual([
+      { name: 'A Spread of Rampant Green' },
       { name: 'Bringer of Dreams and Nightmares' },
+      { name: "Lightning's Swift Strike" },
+      { name: "Ocean's Hungry Grasp" },
+      { name: 'River Surges in Sunlight' },
+      { name: 'Shadows Flicker Like Flame' },
+      { name: 'Thunderspeaker' },
+      { name: 'Vital Strength of the Earth' },
     ]);
   });
 
-  it('does not return aspects matching expansions if their associated spirit was excluded', () => {
-    expect(
-      getSpirits(
-        [
-          { name: 'Sharp Fangs Behind the Leaves', expansion: 'Branch & Claw' },
-          {
-            name: 'Encircle',
-            expansion: 'Nature Incarnate',
-            aspectOf: 'Sharp Fangs Behind the Leaves',
-          },
-          {
-            name: 'Unconstrained',
-            expansion: 'Nature Incarnate',
-            aspectOf: 'Sharp Fangs Behind the Leaves',
-          },
-        ],
-        ['Nature Incarnate']
-      )
-    ).toEqual([]);
+  it('returns spirits from base game plus any specified expansions', () => {
+    expect(getSpirits(['Branch & Claw'])).toEqual([
+      { name: 'A Spread of Rampant Green' },
+      { name: 'Bringer of Dreams and Nightmares' },
+      { name: 'Keeper of the Forbidden Wilds', expansion: 'Branch & Claw' },
+      { name: "Lightning's Swift Strike" },
+      { name: "Ocean's Hungry Grasp" },
+      { name: 'River Surges in Sunlight' },
+      { name: 'Shadows Flicker Like Flame' },
+      { name: 'Sharp Fangs Behind the Leaves', expansion: 'Branch & Claw' },
+      { name: 'Thunderspeaker' },
+      { name: 'Vital Strength of the Earth' },
+    ]);
+  });
+
+  it('returns aspects only if their associated spirit is also returned', () => {
+    expect(getSpirits(['Nature Incarnate'])).toEqual([
+      { name: 'A Spread of Rampant Green' },
+      {
+        name: 'Regrowth',
+        expansion: 'Nature Incarnate',
+        aspectOf: 'A Spread of Rampant Green',
+      },
+      {
+        name: 'Tangles',
+        expansion: 'Nature Incarnate',
+        aspectOf: 'A Spread of Rampant Green',
+      },
+      {
+        name: 'Breath of Darkness Down Your Spine',
+        expansion: 'Nature Incarnate',
+      },
+      { name: 'Bringer of Dreams and Nightmares' },
+      {
+        name: 'Enticing',
+        expansion: 'Nature Incarnate',
+        aspectOf: 'Bringer of Dreams and Nightmares',
+      },
+      {
+        name: 'Violence',
+        expansion: 'Nature Incarnate',
+        aspectOf: 'Bringer of Dreams and Nightmares',
+      },
+      {
+        expansion: 'Nature Incarnate',
+        name: 'Dances Up Earthquakes',
+      },
+      { name: 'Ember-Eyed Behemoth', expansion: 'Nature Incarnate' },
+      { name: 'Hearth-Vigil', expansion: 'Nature Incarnate' },
+      { name: "Lightning's Swift Strike" },
+      {
+        name: 'Sparking',
+        expansion: 'Nature Incarnate',
+        aspectOf: "Lightning's Swift Strike",
+      },
+      { name: "Ocean's Hungry Grasp" },
+      {
+        name: 'Deeps',
+        expansion: 'Nature Incarnate',
+        aspectOf: "Ocean's Hungry Grasp",
+      },
+      { name: 'Relentless Gaze of the Sun', expansion: 'Nature Incarnate' },
+      { name: 'River Surges in Sunlight' },
+      {
+        name: 'Haven',
+        expansion: 'Nature Incarnate',
+        aspectOf: 'River Surges in Sunlight',
+      },
+      { name: 'Shadows Flicker Like Flame' },
+      {
+        name: 'Dark Fire',
+        expansion: 'Nature Incarnate',
+        aspectOf: 'Shadows Flicker Like Flame',
+      },
+      { name: 'Towering Roots of the Jungle', expansion: 'Nature Incarnate' },
+      { name: 'Thunderspeaker' },
+      {
+        name: 'Tactician',
+        expansion: 'Nature Incarnate',
+        aspectOf: 'Thunderspeaker',
+      },
+      {
+        name: 'Warrior',
+        expansion: 'Nature Incarnate',
+        aspectOf: 'Thunderspeaker',
+      },
+      { name: 'Vital Strength of the Earth' },
+      {
+        name: 'Nourishing',
+        expansion: 'Nature Incarnate',
+        aspectOf: 'Vital Strength of the Earth',
+      },
+      { name: 'Wandering Voice Keens Delirium', expansion: 'Nature Incarnate' },
+      { name: 'Wounded Waters Bleeding', expansion: 'Nature Incarnate' },
+    ]);
   });
 });
