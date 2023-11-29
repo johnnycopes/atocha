@@ -1,4 +1,3 @@
-import { SPIRITS } from '../game';
 import {
   SpiritFamilyName,
   Spirit,
@@ -6,6 +5,7 @@ import {
   isPartOfSpiritFamily,
 } from '../types';
 import { getOptionsByName } from './get-options-by-name';
+import { getSpirits } from './get-spirits';
 
 export function groupSpirits(
   names: readonly SpiritName[]
@@ -29,7 +29,7 @@ export function groupSpirits(
     'Vital Strength of the Earth': [],
   };
 
-  for (const spirit of getOptionsByName(SPIRITS, names)) {
+  for (const spirit of getOptionsByName(getSpirits(), names)) {
     if (isPartOfSpiritFamily(spirit.name)) {
       spirits[spirit.name].push(spirit);
     } else if (spirit.aspectOf && isPartOfSpiritFamily(spirit.aspectOf)) {

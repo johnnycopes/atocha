@@ -1,6 +1,6 @@
 import { groupSpirits } from './group-spirits';
-import { SPIRITS } from '../game';
 import { getNames } from './get-names';
+import { getSpirits } from './get-spirits';
 
 describe('groupSpirits', () => {
   it('returns static spirits sorted into General group', () => {
@@ -67,7 +67,7 @@ describe('groupSpirits', () => {
   });
 
   it('returns all possible spirits sorted into correct groups', () => {
-    expect(groupSpirits(getNames(SPIRITS))).toEqual({
+    expect(groupSpirits(getNames(getSpirits()))).toEqual({
       'A Spread of Rampant Green': [
         {
           name: 'A Spread of Rampant Green',

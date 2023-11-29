@@ -14,9 +14,9 @@ import {
   EXPANSIONS,
   MAPS,
   SCENARIOS,
-  SPIRITS,
   getAdversaryLevelIds,
   getNames,
+  getSpirits,
 } from '@atocha/spirit-islander/shared/util';
 
 export interface AppState {
@@ -68,7 +68,7 @@ export class AppStateService {
           expansions: EXPANSIONS,
           players: 5,
           difficultyRange: [0, 8],
-          spiritNames: getNames(SPIRITS),
+          spiritNames: getNames(getSpirits()),
           mapNames: getNames(MAPS),
           boardNames: getNames(BOARDS),
           scenarioNames: getNames(SCENARIOS),
