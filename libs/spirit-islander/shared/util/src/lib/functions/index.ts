@@ -11,4 +11,3 @@ export * from './get-players';
 export * from './get-scenarios';
 export * from './get-spirits';
 export * from './group-spirits';
-export * from './filters.interface';

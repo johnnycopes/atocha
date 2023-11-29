@@ -1,6 +1,5 @@
 import { SCENARIOS } from '../data';
-import { Scenario, ScenarioName } from '../types';
-import { Filters } from './filters.interface';
+import { Filters, Scenario, ScenarioName } from '../types';
 import { getOptions } from './get-options';
 
 export function getScenarios(filters: Filters<ScenarioName> = {}) {

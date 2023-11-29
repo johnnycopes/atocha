@@ -1,6 +1,5 @@
 import { ADVERSARIES } from '../data';
-import { Adversary, AdversaryName } from '../types';
-import { Filters } from './filters.interface';
+import { Adversary, AdversaryName, Filters } from '../types';
 import { getOptions } from './get-options';
 
 export function getAdversaries(filters: Filters<AdversaryName> = {}) {

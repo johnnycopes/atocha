@@ -1,11 +1,11 @@
 import { SPIRITS } from '../data';
 import {
+  Filters,
   Spirit,
   SpiritFamilyName,
   SpiritName,
   isPartOfSpiritFamily,
 } from '../types';
-import { Filters } from './filters.interface';
 import { getOptions } from './get-options';
 
 export function getSpirits(filters: Filters<SpiritName> = {}) {

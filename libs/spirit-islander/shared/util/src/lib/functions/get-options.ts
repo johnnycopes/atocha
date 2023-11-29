@@ -1,5 +1,4 @@
-import { ExpansionOption } from '../types';
-import { Filters } from './filters.interface';
+import { ExpansionOption, Filters } from '../types';
 
 export function getOptions<
   TName extends string,
