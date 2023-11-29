@@ -108,4 +108,22 @@ describe('getAdversaries', () => {
       },
     ]);
   });
+
+  it('returns adversaries with certain names', () => {
+    expect(getAdversaries({ names: ['Russia'] })).toEqual([
+      {
+        name: 'Russia',
+        expansion: 'Jagged Earth',
+        levels: [
+          { id: 'ru-0', name: 'Level 0', difficulty: 1 },
+          { id: 'ru-1', name: 'Level 1', difficulty: 3 },
+          { id: 'ru-2', name: 'Level 2', difficulty: 4 },
+          { id: 'ru-3', name: 'Level 3', difficulty: 6 },
+          { id: 'ru-4', name: 'Level 4', difficulty: 7 },
+          { id: 'ru-5', name: 'Level 5', difficulty: 9 },
+          { id: 'ru-6', name: 'Level 6', difficulty: 11 },
+        ],
+      },
+    ]);
+  });
 });

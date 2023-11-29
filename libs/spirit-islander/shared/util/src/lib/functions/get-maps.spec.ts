@@ -24,4 +24,10 @@ describe('getMaps', () => {
       })
     ).toEqual(MAPS);
   });
+
+  it('returns maps with certain names', () => {
+    expect(getMaps({ names: ['Balanced'] })).toEqual([
+      { name: 'Balanced', difficulty: 0 },
+    ]);
+  });
 });

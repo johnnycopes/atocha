@@ -32,4 +32,21 @@ describe('getScenarios', () => {
       { name: 'Dahan Insurrection', difficulty: 4 },
     ]);
   });
+
+  it('returns scenarios with certain names', () => {
+    expect(
+      getScenarios({ names: ['Destiny Unfolds', 'Ward the Shores'] })
+    ).toEqual([
+      {
+        name: 'Destiny Unfolds',
+        difficulty: -1,
+        expansion: 'Nature Incarnate',
+      },
+      {
+        name: 'Ward the Shores',
+        difficulty: 2,
+        expansion: 'Branch & Claw',
+      },
+    ]);
+  });
 });

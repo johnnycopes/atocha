@@ -115,4 +115,17 @@ describe('getSpirits', () => {
       { name: 'Wounded Waters Bleeding', expansion: 'Nature Incarnate' },
     ]);
   });
+
+  it('returns spirits with certain names', () => {
+    expect(
+      getSpirits({ names: ['A Spread of Rampant Green', 'Dark Fire'] })
+    ).toEqual([
+      { name: 'A Spread of Rampant Green' },
+      {
+        name: 'Dark Fire',
+        expansion: 'Nature Incarnate',
+        aspectOf: 'Shadows Flicker Like Flame',
+      },
+    ]);
+  });
 });

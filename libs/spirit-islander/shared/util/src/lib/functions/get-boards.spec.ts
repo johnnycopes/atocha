@@ -25,4 +25,11 @@ describe('getBoards', () => {
       { name: 'F', thematicName: 'Southwest', expansion: 'Jagged Earth' },
     ]);
   });
+
+  it('returns boards with certain names', () => {
+    expect(getBoards({ names: ['B', 'C'] })).toEqual([
+      { name: 'B', thematicName: 'East' },
+      { name: 'C', thematicName: 'Northwest' },
+    ]);
+  });
 });
