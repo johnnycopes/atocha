@@ -14,7 +14,6 @@ import {
   getBoards,
   getDifficulty,
   getMaps,
-  getOptions,
   getScenarios,
   getSpirits,
 } from '@atocha/spirit-islander/shared/util';
@@ -79,7 +78,7 @@ export class Root {
 
     this._maps = this._createRoot({
       root: 'Maps',
-      items: getOptions(getMaps()),
+      items: getMaps(expansions),
       getId: ({ name }) => name,
       getDisplay: ({ difficulty }) => ({
         difficulty: getDifficulty(difficulty, expansions),
