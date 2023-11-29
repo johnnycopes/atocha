@@ -1,8 +1,8 @@
 import { Config } from '@atocha/spirit-islander/config/util';
 import { createGameSetup } from './create-game-setup';
 import {
-  ADVERSARIES,
   EXPANSIONS,
+  getAdversaries,
   getAdversaryLevelIds,
   getBoards,
   getMaps,
@@ -21,7 +21,7 @@ describe('createGameSetup', () => {
       mapNames: getNames(getMaps()),
       boardNames: getNames(getBoards()),
       scenarioNames: getNames(getScenarios()),
-      adversaryLevelIds: getAdversaryLevelIds(ADVERSARIES),
+      adversaryLevelIds: getAdversaryLevelIds(getAdversaries()),
     };
     const { boards, spirits, expansions, difficulty } =
       createGameSetup(mockConfig);

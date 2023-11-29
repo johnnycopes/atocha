@@ -1,6 +1,6 @@
 import {
-  ADVERSARIES,
   EXPANSIONS,
+  getAdversaries,
   getAdversaryLevelIds,
   getBoards,
   getMaps,
@@ -90,7 +90,7 @@ describe('getValidCombos', () => {
       mapNames: getNames(getMaps()),
       boardNames: getNames(getBoards()),
       scenarioNames: getNames(getScenarios()),
-      adversaryLevelIds: getAdversaryLevelIds(ADVERSARIES),
+      adversaryLevelIds: getAdversaryLevelIds(getAdversaries()),
     };
     expect(getValidCombos(mockConfig)).toHaveLength(1632);
   });

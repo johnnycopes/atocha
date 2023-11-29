@@ -1,6 +1,6 @@
 import {
-  ADVERSARIES,
   AdversaryLevel,
+  getAdversaries,
   getMaps,
   getScenarios,
 } from '@atocha/spirit-islander/shared/util';
@@ -20,7 +20,7 @@ export function getValidCombos(config: Config): Combos {
   const scenarios = getScenarios().filter(({ name }) =>
     scenarioNames.includes(name)
   );
-  const adversaryLevels = ADVERSARIES.reduce<AdversaryLevel[]>(
+  const adversaryLevels = getAdversaries().reduce<AdversaryLevel[]>(
     (accum, { levels }) => {
       const adversaryLevels = levels.filter(({ id }) =>
         adversaryLevelIds.includes(id)

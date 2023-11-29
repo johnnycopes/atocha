@@ -1,5 +1,4 @@
 import {
-  ADVERSARIES,
   Adversary,
   AdversaryLevel,
   AdversaryLevelId,
@@ -11,6 +10,7 @@ import {
   Scenario,
   Spirit,
   SpiritFamilyName,
+  getAdversaries,
   getBoards,
   getDifficulty,
   getMaps,
@@ -108,7 +108,7 @@ export class Root {
       AdversaryName | AdversaryLevelId
     >({
       root: 'Adversaries',
-      items: getOptions(ADVERSARIES, expansions),
+      items: getAdversaries(expansions),
       getId: (entity) =>
         this._isAdversaryLevel(entity) ? entity.id : entity.name,
       getChildren: (entity) => (this._isAdversary(entity) ? entity.levels : []),
