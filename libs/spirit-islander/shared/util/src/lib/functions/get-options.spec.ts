@@ -1,4 +1,4 @@
-import { getOptions } from './get-options-by-expansion';
+import { getOptions } from './get-options';
 import { Board, Spirit } from '../types';
 
 describe('getOptionsByExpansion', () => {
