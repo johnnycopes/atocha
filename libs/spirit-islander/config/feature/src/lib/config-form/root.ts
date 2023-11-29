@@ -7,7 +7,6 @@ import {
   Board,
   EXPANSIONS,
   Expansion,
-  MAPS,
   Map,
   SCENARIOS,
   Scenario,
@@ -15,6 +14,7 @@ import {
   SpiritFamilyName,
   getBoards,
   getDifficulty,
+  getMaps,
   getOptions,
   getSpirits,
 } from '@atocha/spirit-islander/shared/util';
@@ -79,7 +79,7 @@ export class Root {
 
     this._maps = this._createRoot({
       root: 'Maps',
-      items: getOptions(MAPS, expansions),
+      items: getOptions(getMaps()),
       getId: ({ name }) => name,
       getDisplay: ({ difficulty }) => ({
         difficulty: getDifficulty(difficulty, expansions),

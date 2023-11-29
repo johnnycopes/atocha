@@ -1,10 +1,10 @@
 import {
   ADVERSARIES,
   EXPANSIONS,
-  MAPS,
   SCENARIOS,
   getAdversaryLevelIds,
   getBoards,
+  getMaps,
   getNames,
   getSpirits,
 } from '@atocha/spirit-islander/shared/util';
@@ -87,7 +87,7 @@ describe('getValidCombos', () => {
       players: 1,
       difficultyRange: [0, 11],
       spiritNames: getNames(getSpirits()),
-      mapNames: getNames(MAPS),
+      mapNames: getNames(getMaps()),
       boardNames: getNames(getBoards()),
       scenarioNames: getNames(SCENARIOS),
       adversaryLevelIds: getAdversaryLevelIds(ADVERSARIES),

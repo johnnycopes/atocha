@@ -11,10 +11,10 @@ import { migrateConfig } from './app-migration';
 import {
   ADVERSARIES,
   EXPANSIONS,
-  MAPS,
   SCENARIOS,
   getAdversaryLevelIds,
   getBoards,
+  getMaps,
   getNames,
   getSpirits,
 } from '@atocha/spirit-islander/shared/util';
@@ -69,7 +69,7 @@ export class AppStateService {
           players: 5,
           difficultyRange: [0, 8],
           spiritNames: getNames(getSpirits()),
-          mapNames: getNames(MAPS),
+          mapNames: getNames(getMaps()),
           boardNames: getNames(getBoards()),
           scenarioNames: getNames(SCENARIOS),
           adversaryLevelIds: getAdversaryLevelIds(ADVERSARIES),
