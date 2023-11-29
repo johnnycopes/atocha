@@ -1,17 +1,16 @@
 import { Expansion, ExpansionOption } from '../types';
 
+export interface Filters<TName extends string> {
+  expansions?: readonly Expansion[];
+  names?: readonly TName[];
+}
+
 export function getOptions<
   TName extends string,
   TOption extends ExpansionOption<TName>
 >(
   options: readonly TOption[],
-  {
-    expansions,
-    names,
-  }: {
-    expansions?: readonly Expansion[];
-    names?: readonly TName[];
-  } = {}
+  { expansions, names }: Filters<TName> = {}
 ): readonly TOption[] {
   if (expansions && names) {
     throw new Error(
