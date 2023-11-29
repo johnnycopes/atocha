@@ -1,6 +1,7 @@
 export * from './get-adversaries';
 export * from './get-adversary-level-ids';
 export * from './get-boards';
+export * from './get-difficulties';
 export * from './get-difficulty';
 export * from './get-expansions';
 export * from './get-maps';
