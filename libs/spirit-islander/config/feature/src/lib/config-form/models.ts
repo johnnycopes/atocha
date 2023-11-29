@@ -93,7 +93,7 @@ export class Models {
     );
 
     this._adversaryLevelIds = this._updateModel(
-      (expansions) => getAdversaryLevelIds(getAdversaries(expansions)),
+      (expansions) => getAdversaryLevelIds(getAdversaries({ expansions })),
       this._adversaryLevelIds,
       expansions,
       target

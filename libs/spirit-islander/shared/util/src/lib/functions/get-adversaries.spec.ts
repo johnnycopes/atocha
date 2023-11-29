@@ -7,7 +7,7 @@ describe('getAdversaries', () => {
   });
 
   it('returns adversaries from base game', () => {
-    expect(getAdversaries([])).toEqual([
+    expect(getAdversaries({ expansions: [] })).toEqual([
       {
         name: 'No Adversary',
         levels: [{ id: 'none', name: 'N/A', difficulty: 0 }],
@@ -52,7 +52,7 @@ describe('getAdversaries', () => {
   });
 
   it('returns adversaries from base game plus any specified expansions', () => {
-    expect(getAdversaries(['Branch & Claw'])).toEqual([
+    expect(getAdversaries({ expansions: ['Branch & Claw'] })).toEqual([
       {
         name: 'No Adversary',
         levels: [{ id: 'none', name: 'N/A', difficulty: 0 }],
