@@ -1,10 +1,10 @@
 import { Config } from '@atocha/spirit-islander/config/util';
 import { createGameSetup } from './create-game-setup';
 import {
-  EXPANSIONS,
   getAdversaries,
   getAdversaryLevelIds,
   getBoards,
+  getExpansions,
   getMaps,
   getNames,
   getScenarios,
@@ -14,7 +14,7 @@ import {
 describe('createGameSetup', () => {
   it('returns a randomly-generated game setup', () => {
     const mockConfig: Config = {
-      expansions: EXPANSIONS,
+      expansions: getExpansions(),
       players: 4,
       difficultyRange: [5, 8],
       spiritNames: getNames(getSpirits()),

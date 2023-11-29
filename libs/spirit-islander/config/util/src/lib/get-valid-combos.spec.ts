@@ -1,8 +1,8 @@
 import {
-  EXPANSIONS,
   getAdversaries,
   getAdversaryLevelIds,
   getBoards,
+  getExpansions,
   getMaps,
   getNames,
   getScenarios,
@@ -83,7 +83,7 @@ describe('getValidCombos', () => {
 
   it('returns all possible combinations', () => {
     const mockConfig: Config = {
-      expansions: EXPANSIONS,
+      expansions: getExpansions(),
       players: 1,
       difficultyRange: [0, 11],
       spiritNames: getNames(getSpirits()),

@@ -1,5 +1,6 @@
 import { Option } from '../types';
 
+// TODO: inline this logic where needed and delete function
 export function getOptionsByName<
   TName extends string,
   TOption extends Option<TName>
