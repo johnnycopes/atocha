@@ -86,7 +86,7 @@ export class Models {
     );
 
     this._scenarioNames = this._updateModel(
-      (expansions) => getNames(getScenarios(expansions)),
+      (expansions) => getNames(getScenarios({ expansions })),
       this._scenarioNames,
       expansions,
       target

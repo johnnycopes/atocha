@@ -94,7 +94,7 @@ export class Root {
 
     this._scenarios = this._createRoot({
       root: 'Scenarios',
-      items: getScenarios(expansions),
+      items: getScenarios({ expansions }),
       getId: ({ name }) => name,
       getDisplay: ({ expansion, difficulty }) => ({
         difficulty,

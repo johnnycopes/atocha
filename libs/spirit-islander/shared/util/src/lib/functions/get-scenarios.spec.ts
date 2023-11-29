@@ -6,7 +6,7 @@ describe('getScenarios', () => {
   });
 
   it('returns scenarios from base game', () => {
-    expect(getScenarios([])).toEqual([
+    expect(getScenarios({ expansions: [] })).toEqual([
       { name: 'No Scenario', difficulty: 0 },
       { name: 'Blitz', difficulty: 0 },
       { name: "Guard the Isle's Heart", difficulty: 0 },
@@ -16,7 +16,9 @@ describe('getScenarios', () => {
   });
 
   it('returns scenarios from base game plus any specified expansions', () => {
-    expect(getScenarios(['Promo Pack 1', 'Promo Pack 2'])).toEqual([
+    expect(
+      getScenarios({ expansions: ['Promo Pack 1', 'Promo Pack 2'] })
+    ).toEqual([
       { name: 'No Scenario', difficulty: 0 },
       { name: 'Blitz', difficulty: 0 },
       { name: "Guard the Isle's Heart", difficulty: 0 },
