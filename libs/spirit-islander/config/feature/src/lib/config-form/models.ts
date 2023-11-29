@@ -65,7 +65,7 @@ export class Models {
     target: 'Expansions' | Expansion
   ): Models {
     this._spiritNames = this._updateModel(
-      (expansions) => getNames(getSpirits(expansions)),
+      (expansions) => getNames(getSpirits({ expansions })),
       this._spiritNames,
       expansions,
       target

@@ -63,7 +63,7 @@ export class Root {
   update(expansions: readonly Expansion[]) {
     this._spirits = this._createRoot({
       root: 'Spirits',
-      items: getSpirits(expansions),
+      items: getSpirits({ expansions }),
       getId: ({ name }) => name,
       getDisplay: ({ expansion, aspectOf }) => {
         const display: {

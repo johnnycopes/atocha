@@ -1,20 +1,19 @@
 import { SPIRITS } from '../data';
 import {
-  Expansion,
   Spirit,
   SpiritFamilyName,
   SpiritName,
   isPartOfSpiritFamily,
 } from '../types';
+import { Filters } from './filters.interface';
 import { getOptions } from './get-options';
 
-export function getSpirits(
-  expansions?: readonly Expansion[]
-): readonly Spirit[] {
-  const spirits: readonly Spirit[] = getOptions<SpiritName, Spirit>(SPIRITS, {
-    expansions,
-  });
-  if (!expansions) {
+export function getSpirits(filters: Filters<SpiritName> = {}) {
+  const spirits: readonly Spirit[] = getOptions<SpiritName, Spirit>(
+    SPIRITS,
+    filters
+  );
+  if (!filters.expansions) {
     return spirits;
   }
 
@@ -25,7 +24,7 @@ export function getSpirits(
     const { name, expansion, aspectOf } = spirit;
 
     if (!aspectOf) {
-      if (!expansion || expansions.includes(expansion)) {
+      if (!expansion || filters.expansions.includes(expansion)) {
         if (isPartOfSpiritFamily(name)) {
           includedFamilyNames.add(name);
         }
@@ -35,7 +34,7 @@ export function getSpirits(
       if (
         includedFamilyNames.has(aspectOf) &&
         expansion &&
-        expansions.includes(expansion)
+        filters.expansions.includes(expansion)
       ) {
         result.push(spirit);
       }
