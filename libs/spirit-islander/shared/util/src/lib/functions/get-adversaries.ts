@@ -5,5 +5,5 @@ import { getOptions } from './get-options';
 export function getAdversaries(
   expansions?: readonly Expansion[]
 ): readonly Adversary[] {
-  return getOptions(ADVERSARIES, expansions);
+  return getOptions(ADVERSARIES, { expansions });
 }

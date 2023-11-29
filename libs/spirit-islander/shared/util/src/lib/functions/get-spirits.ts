@@ -10,7 +10,7 @@ import { getOptions } from './get-options';
 export function getSpirits(
   expansions?: readonly Expansion[]
 ): readonly Spirit[] {
-  const spirits: readonly Spirit[] = getOptions(SPIRITS, expansions);
+  const spirits: readonly Spirit[] = getOptions(SPIRITS, { expansions });
   if (!expansions) {
     return spirits;
   }

@@ -27,17 +27,19 @@ describe('getOptionsByExpansion', () => {
   });
 
   it('get spirits by expansion name', () => {
-    expect(getOptions(mockSpirits, [])).toStrictEqual([
+    expect(getOptions(mockSpirits, { expansions: [] })).toStrictEqual([
       { name: 'Bringer of Dreams and Nightmares' },
     ]);
 
-    expect(getOptions(mockSpirits, ['Branch & Claw'])).toStrictEqual([
+    expect(
+      getOptions(mockSpirits, { expansions: ['Branch & Claw'] })
+    ).toStrictEqual([
       { name: 'Bringer of Dreams and Nightmares' },
       { name: 'Keeper of the Forbidden Wilds', expansion: 'Branch & Claw' },
     ]);
 
     expect(
-      getOptions(mockSpirits, ['Promo Pack 1', 'Promo Pack 2'])
+      getOptions(mockSpirits, { expansions: ['Promo Pack 1', 'Promo Pack 2'] })
     ).toStrictEqual([
       { name: 'Bringer of Dreams and Nightmares' },
       { name: 'Downpour Drenches the World', expansion: 'Promo Pack 2' },
@@ -49,11 +51,13 @@ describe('getOptionsByExpansion', () => {
   });
 
   it('gets boards by expansion name', () => {
-    expect(getOptions(mockBoards, [])).toStrictEqual([
+    expect(getOptions(mockBoards, { expansions: [] })).toStrictEqual([
       { name: 'D', thematicName: 'West' },
     ]);
 
-    expect(getOptions(mockBoards, ['Jagged Earth'])).toStrictEqual([
+    expect(
+      getOptions(mockBoards, { expansions: ['Jagged Earth'] })
+    ).toStrictEqual([
       { name: 'D', thematicName: 'West' },
       { name: 'E', thematicName: 'Southeast', expansion: 'Jagged Earth' },
     ]);
