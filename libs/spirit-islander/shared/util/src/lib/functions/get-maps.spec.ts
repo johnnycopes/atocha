@@ -7,19 +7,21 @@ describe('getMaps', () => {
   });
 
   it('returns maps from base game', () => {
-    expect(getMaps([])).toEqual(MAPS);
+    expect(getMaps({ expansions: [] })).toEqual(MAPS);
   });
 
   it('returns maps from base game plus any specified expansions', () => {
     expect(
-      getMaps([
-        'Branch & Claw',
-        'Horizons',
-        'Jagged Earth',
-        'Nature Incarnate',
-        'Promo Pack 1',
-        'Promo Pack 2',
-      ])
+      getMaps({
+        expansions: [
+          'Branch & Claw',
+          'Horizons',
+          'Jagged Earth',
+          'Nature Incarnate',
+          'Promo Pack 1',
+          'Promo Pack 2',
+        ],
+      })
     ).toEqual(MAPS);
   });
 });

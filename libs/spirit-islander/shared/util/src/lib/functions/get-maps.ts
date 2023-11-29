@@ -1,7 +1,8 @@
 import { MAPS } from '../data';
-import { Expansion, Map, MapName } from '../types';
+import { Map, MapName } from '../types';
+import { Filters } from './filters.interface';
 import { getOptions } from './get-options';
 
-export function getMaps(expansions?: readonly Expansion[]): readonly Map[] {
-  return getOptions<MapName, Map>(MAPS, { expansions });
+export function getMaps(filters: Filters<MapName> = {}) {
+  return getOptions<MapName, Map>(MAPS, filters);
 }

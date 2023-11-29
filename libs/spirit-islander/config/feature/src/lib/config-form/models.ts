@@ -79,7 +79,7 @@ export class Models {
     );
 
     this._mapNames = this._updateModel(
-      (expansions) => getNames(getMaps(expansions)),
+      (expansions) => getNames(getMaps({ expansions })),
       this._mapNames,
       expansions,
       target

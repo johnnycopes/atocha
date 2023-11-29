@@ -78,7 +78,7 @@ export class Root {
 
     this._maps = this._createRoot({
       root: 'Maps',
-      items: getMaps(expansions),
+      items: getMaps({ expansions }),
       getId: ({ name }) => name,
       getDisplay: ({ difficulty }) => ({
         difficulty: getDifficulty(difficulty, expansions),
