@@ -1,26 +1,25 @@
 import { Expansion, ExpansionOption } from '../types';
 
-interface Filters {
-  expansions?: readonly Expansion[];
-  names?: readonly string[];
-}
-
 export function getOptions<
   TName extends string,
   TOption extends ExpansionOption<TName>
 >(
   options: readonly TOption[],
-  { expansions, names }: Filters = {}
+  {
+    expansions,
+    names,
+  }: {
+    expansions?: readonly Expansion[];
+    names?: readonly TName[];
+  } = {}
 ): readonly TOption[] {
   if (expansions && names) {
     throw new Error(
       'Options can only be filtered by expansions OR names (not both at once)'
     );
-  } else if (!expansions && !names) {
-    return options;
   }
 
-  if (expansions) {
+  if (expansions && !names) {
     return options.filter((item) => {
       if (item.expansion) {
         return expansions.includes(item.expansion);
@@ -30,9 +29,9 @@ export function getOptions<
     });
   }
 
-  if (names) {
+  if (names && !expansions) {
     return options.filter((item) => names.includes(item.name));
   }
 
-  return [];
+  return options;
 }

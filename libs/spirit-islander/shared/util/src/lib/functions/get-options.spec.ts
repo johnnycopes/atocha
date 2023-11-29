@@ -1,5 +1,5 @@
 import { getOptions } from './get-options';
-import { Board, Spirit } from '../types';
+import { BalancedBoardName, Board, Spirit, SpiritName } from '../types';
 
 describe('getOptions', () => {
   let mockSpirits: readonly Spirit[];
@@ -25,7 +25,10 @@ describe('getOptions', () => {
   describe('with both filters applied', () => {
     it('throws error', () => {
       expect(() =>
-        getOptions(mockSpirits, { expansions: [], names: [] })
+        getOptions<SpiritName, Spirit>(mockSpirits, {
+          expansions: [],
+          names: [],
+        })
       ).toThrowError(
         'Options can only be filtered by expansions OR names (not both at once)'
       );
@@ -44,9 +47,9 @@ describe('getOptions', () => {
 
   describe('with expansions filter applied', () => {
     it('returns base game spirits when array is empty', () => {
-      expect(getOptions(mockSpirits, { expansions: [] })).toStrictEqual([
-        { name: 'Bringer of Dreams and Nightmares' },
-      ]);
+      expect(
+        getOptions<SpiritName, Spirit>(mockSpirits, { expansions: [] })
+      ).toStrictEqual([{ name: 'Bringer of Dreams and Nightmares' }]);
     });
 
     it('returns base game + expansion spirits when expansions are specified', () => {
@@ -82,16 +85,20 @@ describe('getOptions', () => {
 
   describe('with names filter applied', () => {
     it('returns no spirits when array is empty', () => {
-      expect(getOptions(mockSpirits, { names: [] })).toEqual([]);
+      expect(
+        getOptions<SpiritName, Spirit>(mockSpirits, { names: [] })
+      ).toEqual([]);
     });
 
     it('returns no boards when array is empty', () => {
-      expect(getOptions(mockBoards, { names: [] })).toEqual([]);
+      expect(
+        getOptions<BalancedBoardName, Board>(mockBoards, { names: [] })
+      ).toEqual([]);
     });
 
     it('returns matching spirits when names are specified', () => {
       expect(
-        getOptions(mockSpirits, {
+        getOptions<SpiritName, Spirit>(mockSpirits, {
           names: [
             'Bringer of Dreams and Nightmares',
             'Downpour Drenches the World',
@@ -105,7 +112,7 @@ describe('getOptions', () => {
 
     it('returns matching boards when names are specified', () => {
       expect(
-        getOptions(mockBoards, {
+        getOptions<BalancedBoardName, Board>(mockBoards, {
           names: ['E'],
         })
       ).toEqual([
