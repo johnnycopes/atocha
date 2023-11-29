@@ -72,7 +72,7 @@ export class Models {
     );
 
     this._boardNames = this._updateModel(
-      (expansions) => getNames(getBoards(expansions)),
+      (expansions) => getNames(getBoards({ expansions })),
       this._boardNames,
       expansions,
       target

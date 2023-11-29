@@ -7,7 +7,7 @@ describe('getBoards', () => {
   });
 
   it('returns boards from base game', () => {
-    expect(getBoards([])).toEqual([
+    expect(getBoards({ expansions: [] })).toEqual([
       { name: 'A', thematicName: 'Northeast' },
       { name: 'B', thematicName: 'East' },
       { name: 'C', thematicName: 'Northwest' },
@@ -16,7 +16,7 @@ describe('getBoards', () => {
   });
 
   it('returns boards from base game plus any specified expansions', () => {
-    expect(getBoards(['Jagged Earth'])).toEqual([
+    expect(getBoards({ expansions: ['Jagged Earth'] })).toEqual([
       { name: 'A', thematicName: 'Northeast' },
       { name: 'B', thematicName: 'East' },
       { name: 'C', thematicName: 'Northwest' },

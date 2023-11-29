@@ -1,7 +1,7 @@
 import { BOARDS } from '../data';
-import { BalancedBoardName, Board, Expansion } from '../types';
-import { getOptions } from './get-options';
+import { BalancedBoardName, Board } from '../types';
+import { Filters, getOptions } from './get-options';
 
-export function getBoards(expansions?: readonly Expansion[]): readonly Board[] {
-  return getOptions<BalancedBoardName, Board>(BOARDS, { expansions });
+export function getBoards(filters: Filters<BalancedBoardName> = {}) {
+  return getOptions<BalancedBoardName, Board>(BOARDS, filters);
 }

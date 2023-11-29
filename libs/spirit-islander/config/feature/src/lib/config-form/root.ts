@@ -87,7 +87,7 @@ export class Root {
 
     this._boards = this._createRoot({
       root: 'Boards',
-      items: getBoards(expansions),
+      items: getBoards({ expansions }),
       getId: ({ name }) => name,
       getDisplay: ({ expansion }) => (expansion ? { expansion } : {}),
     });
