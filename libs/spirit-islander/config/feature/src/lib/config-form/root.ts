@@ -4,7 +4,6 @@ import {
   AdversaryLevelId,
   AdversaryName,
   Board,
-  EXPANSIONS,
   Expansion,
   Map,
   Scenario,
@@ -13,6 +12,7 @@ import {
   getAdversaries,
   getBoards,
   getDifficulty,
+  getExpansions,
   getMaps,
   getScenarios,
   getSpirits,
@@ -27,7 +27,7 @@ export interface Node<T> {
 export class Root {
   readonly expansions = this._createRoot({
     root: 'Expansions',
-    items: EXPANSIONS,
+    items: getExpansions(),
     getId: (item) => item,
   });
 

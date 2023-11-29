@@ -9,10 +9,10 @@ import {
 } from '@atocha/spirit-islander/game-setup/util';
 import { migrateConfig } from './app-migration';
 import {
-  EXPANSIONS,
   getAdversaries,
   getAdversaryLevelIds,
   getBoards,
+  getExpansions,
   getMaps,
   getNames,
   getScenarios,
@@ -65,7 +65,7 @@ export class AppStateService {
     return config
       ? JSON.parse(migrateConfig(config))
       : {
-          expansions: EXPANSIONS,
+          expansions: getExpansions(),
           players: 5,
           difficultyRange: [0, 8],
           spiritNames: getNames(getSpirits()),
