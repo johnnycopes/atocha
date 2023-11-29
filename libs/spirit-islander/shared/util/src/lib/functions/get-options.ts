@@ -24,7 +24,16 @@ export function getOptions<
   }
 
   if (names && !expansions) {
-    return options.filter((item) => names.includes(item.name));
+    const filteredOptions: TOption[] = [];
+
+    for (const name of names) {
+      const foundOption = options.find((option) => option.name === name);
+      if (foundOption) {
+        filteredOptions.push(foundOption);
+      }
+    }
+
+    return filteredOptions;
   }
 
   return options;
