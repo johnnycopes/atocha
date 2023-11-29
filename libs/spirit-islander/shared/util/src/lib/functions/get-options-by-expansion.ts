@@ -1,6 +1,6 @@
 import { Expansion, ExpansionOption } from '../types';
 
-export function getOptionsByExpansion<
+export function getOptions<
   TName extends string,
   TOption extends ExpansionOption<TName>
 >(

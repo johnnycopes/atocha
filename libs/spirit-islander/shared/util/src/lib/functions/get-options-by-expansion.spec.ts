@@ -1,4 +1,4 @@
-import { getOptionsByExpansion } from './get-options-by-expansion';
+import { getOptions } from './get-options-by-expansion';
 import { Board, Spirit } from '../types';
 
 describe('getOptionsByExpansion', () => {
@@ -23,23 +23,21 @@ describe('getOptionsByExpansion', () => {
   });
 
   it('returns options unchanged if expansions argument is omitted', () => {
-    expect(getOptionsByExpansion(mockSpirits)).toStrictEqual(mockSpirits);
+    expect(getOptions(mockSpirits)).toStrictEqual(mockSpirits);
   });
 
   it('get spirits by expansion name', () => {
-    expect(getOptionsByExpansion(mockSpirits, [])).toStrictEqual([
+    expect(getOptions(mockSpirits, [])).toStrictEqual([
       { name: 'Bringer of Dreams and Nightmares' },
     ]);
 
-    expect(getOptionsByExpansion(mockSpirits, ['Branch & Claw'])).toStrictEqual(
-      [
-        { name: 'Bringer of Dreams and Nightmares' },
-        { name: 'Keeper of the Forbidden Wilds', expansion: 'Branch & Claw' },
-      ]
-    );
+    expect(getOptions(mockSpirits, ['Branch & Claw'])).toStrictEqual([
+      { name: 'Bringer of Dreams and Nightmares' },
+      { name: 'Keeper of the Forbidden Wilds', expansion: 'Branch & Claw' },
+    ]);
 
     expect(
-      getOptionsByExpansion(mockSpirits, ['Promo Pack 1', 'Promo Pack 2'])
+      getOptions(mockSpirits, ['Promo Pack 1', 'Promo Pack 2'])
     ).toStrictEqual([
       { name: 'Bringer of Dreams and Nightmares' },
       { name: 'Downpour Drenches the World', expansion: 'Promo Pack 2' },
@@ -51,11 +49,11 @@ describe('getOptionsByExpansion', () => {
   });
 
   it('gets boards by expansion name', () => {
-    expect(getOptionsByExpansion(mockBoards, [])).toStrictEqual([
+    expect(getOptions(mockBoards, [])).toStrictEqual([
       { name: 'D', thematicName: 'West' },
     ]);
 
-    expect(getOptionsByExpansion(mockBoards, ['Jagged Earth'])).toStrictEqual([
+    expect(getOptions(mockBoards, ['Jagged Earth'])).toStrictEqual([
       { name: 'D', thematicName: 'West' },
       { name: 'E', thematicName: 'Southeast', expansion: 'Jagged Earth' },
     ]);

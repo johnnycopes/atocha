@@ -11,7 +11,7 @@ import {
   AdversaryLevelId,
   Expansion,
   getAdversaryLevelIds,
-  getOptionsByExpansion,
+  getOptions,
   getNames,
   getSpiritsByExpansion,
 } from '@atocha/spirit-islander/shared/util';
@@ -74,29 +74,28 @@ export class Models {
     );
 
     this._boardNames = this._updateModel(
-      (expansions) => getNames(getOptionsByExpansion(BOARDS, expansions)),
+      (expansions) => getNames(getOptions(BOARDS, expansions)),
       this._boardNames,
       expansions,
       target
     );
 
     this._mapNames = this._updateModel(
-      (expansions) => getNames(getOptionsByExpansion(MAPS, expansions)),
+      (expansions) => getNames(getOptions(MAPS, expansions)),
       this._mapNames,
       expansions,
       target
     );
 
     this._scenarioNames = this._updateModel(
-      (expansions) => getNames(getOptionsByExpansion(SCENARIOS, expansions)),
+      (expansions) => getNames(getOptions(SCENARIOS, expansions)),
       this._scenarioNames,
       expansions,
       target
     );
 
     this._adversaryLevelIds = this._updateModel(
-      (expansions) =>
-        getAdversaryLevelIds(getOptionsByExpansion(ADVERSARIES, expansions)),
+      (expansions) => getAdversaryLevelIds(getOptions(ADVERSARIES, expansions)),
       this._adversaryLevelIds,
       expansions,
       target

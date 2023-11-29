@@ -16,7 +16,7 @@ import {
   Spirit,
   SpiritFamilyName,
   getDifficulty,
-  getOptionsByExpansion,
+  getOptions,
   getSpiritsByExpansion,
 } from '@atocha/spirit-islander/shared/util';
 
@@ -80,7 +80,7 @@ export class Root {
 
     this._maps = this._createRoot({
       root: 'Maps',
-      items: getOptionsByExpansion(MAPS, expansions),
+      items: getOptions(MAPS, expansions),
       getId: ({ name }) => name,
       getDisplay: ({ difficulty }) => ({
         difficulty: getDifficulty(difficulty, expansions),
@@ -89,14 +89,14 @@ export class Root {
 
     this._boards = this._createRoot({
       root: 'Boards',
-      items: getOptionsByExpansion(BOARDS, expansions),
+      items: getOptions(BOARDS, expansions),
       getId: ({ name }) => name,
       getDisplay: ({ expansion }) => (expansion ? { expansion } : {}),
     });
 
     this._scenarios = this._createRoot({
       root: 'Scenarios',
-      items: getOptionsByExpansion(SCENARIOS, expansions),
+      items: getOptions(SCENARIOS, expansions),
       getId: ({ name }) => name,
       getDisplay: ({ expansion, difficulty }) => ({
         difficulty,
@@ -109,7 +109,7 @@ export class Root {
       AdversaryName | AdversaryLevelId
     >({
       root: 'Adversaries',
-      items: getOptionsByExpansion(ADVERSARIES, expansions),
+      items: getOptions(ADVERSARIES, expansions),
       getId: (entity) =>
         this._isAdversaryLevel(entity) ? entity.id : entity.name,
       getChildren: (entity) => (this._isAdversary(entity) ? entity.levels : []),
