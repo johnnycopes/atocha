@@ -4,7 +4,6 @@ import {
   AdversaryLevel,
   AdversaryLevelId,
   AdversaryName,
-  BOARDS,
   Board,
   EXPANSIONS,
   Expansion,
@@ -14,6 +13,7 @@ import {
   Scenario,
   Spirit,
   SpiritFamilyName,
+  getBoards,
   getDifficulty,
   getOptions,
   getSpirits,
@@ -88,7 +88,7 @@ export class Root {
 
     this._boards = this._createRoot({
       root: 'Boards',
-      items: getOptions(BOARDS, expansions),
+      items: getBoards(expansions),
       getId: ({ name }) => name,
       getDisplay: ({ expansion }) => (expansion ? { expansion } : {}),
     });

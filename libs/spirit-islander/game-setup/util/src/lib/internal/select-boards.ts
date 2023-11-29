@@ -1,9 +1,9 @@
 import {
-  BOARDS,
   BalancedBoardName,
   Board,
   MapName,
   Players,
+  getBoards,
   getOptionsByName,
 } from '@atocha/spirit-islander/shared/util';
 import { selectRandom } from './select-random';
@@ -40,5 +40,5 @@ export function selectBoards(
 }
 
 function getBoardsByName(boardNames: BalancedBoardName[]): readonly Board[] {
-  return getOptionsByName(BOARDS, boardNames);
+  return getOptionsByName(getBoards(), boardNames);
 }

@@ -1,7 +1,6 @@
 import {
   MAPS,
   SCENARIOS,
-  BOARDS,
   ADVERSARIES,
   SpiritName,
   BalancedBoardName,
@@ -13,6 +12,7 @@ import {
   getOptions,
   getNames,
   getSpirits,
+  getBoards,
 } from '@atocha/spirit-islander/shared/util';
 
 export class Models {
@@ -73,7 +73,7 @@ export class Models {
     );
 
     this._boardNames = this._updateModel(
-      (expansions) => getNames(getOptions(BOARDS, expansions)),
+      (expansions) => getNames(getBoards(expansions)),
       this._boardNames,
       expansions,
       target
