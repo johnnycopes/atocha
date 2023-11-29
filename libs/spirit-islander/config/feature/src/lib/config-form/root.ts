@@ -8,7 +8,6 @@ import {
   EXPANSIONS,
   Expansion,
   Map,
-  SCENARIOS,
   Scenario,
   Spirit,
   SpiritFamilyName,
@@ -16,6 +15,7 @@ import {
   getDifficulty,
   getMaps,
   getOptions,
+  getScenarios,
   getSpirits,
 } from '@atocha/spirit-islander/shared/util';
 
@@ -95,7 +95,7 @@ export class Root {
 
     this._scenarios = this._createRoot({
       root: 'Scenarios',
-      items: getOptions(SCENARIOS, expansions),
+      items: getScenarios(expansions),
       getId: ({ name }) => name,
       getDisplay: ({ expansion, difficulty }) => ({
         difficulty,

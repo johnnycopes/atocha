@@ -1,8 +1,8 @@
 import {
   ADVERSARIES,
   AdversaryLevel,
-  SCENARIOS,
   getMaps,
+  getScenarios,
 } from '@atocha/spirit-islander/shared/util';
 import { Config } from './config.interface';
 import { getPossibleCombos } from './internal/get-possible-combos';
@@ -17,7 +17,7 @@ export function getValidCombos(config: Config): Combos {
     difficultyRange,
   } = config;
   const maps = getMaps().filter(({ name }) => mapNames.includes(name));
-  const scenarios = SCENARIOS.filter(({ name }) =>
+  const scenarios = getScenarios().filter(({ name }) =>
     scenarioNames.includes(name)
   );
   const adversaryLevels = ADVERSARIES.reduce<AdversaryLevel[]>(

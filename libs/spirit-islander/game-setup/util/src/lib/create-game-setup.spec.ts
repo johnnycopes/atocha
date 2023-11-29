@@ -3,11 +3,11 @@ import { createGameSetup } from './create-game-setup';
 import {
   ADVERSARIES,
   EXPANSIONS,
-  SCENARIOS,
   getAdversaryLevelIds,
   getBoards,
   getMaps,
   getNames,
+  getScenarios,
   getSpirits,
 } from '@atocha/spirit-islander/shared/util';
 
@@ -20,7 +20,7 @@ describe('createGameSetup', () => {
       spiritNames: getNames(getSpirits()),
       mapNames: getNames(getMaps()),
       boardNames: getNames(getBoards()),
-      scenarioNames: getNames(SCENARIOS),
+      scenarioNames: getNames(getScenarios()),
       adversaryLevelIds: getAdversaryLevelIds(ADVERSARIES),
     };
     const { boards, spirits, expansions, difficulty } =

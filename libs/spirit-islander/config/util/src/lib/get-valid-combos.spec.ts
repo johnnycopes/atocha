@@ -1,11 +1,11 @@
 import {
   ADVERSARIES,
   EXPANSIONS,
-  SCENARIOS,
   getAdversaryLevelIds,
   getBoards,
   getMaps,
   getNames,
+  getScenarios,
   getSpirits,
 } from '@atocha/spirit-islander/shared/util';
 import { Config } from './config.interface';
@@ -89,7 +89,7 @@ describe('getValidCombos', () => {
       spiritNames: getNames(getSpirits()),
       mapNames: getNames(getMaps()),
       boardNames: getNames(getBoards()),
-      scenarioNames: getNames(SCENARIOS),
+      scenarioNames: getNames(getScenarios()),
       adversaryLevelIds: getAdversaryLevelIds(ADVERSARIES),
     };
     expect(getValidCombos(mockConfig)).toHaveLength(1632);

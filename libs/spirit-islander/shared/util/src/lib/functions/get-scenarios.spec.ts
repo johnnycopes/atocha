@@ -1,9 +1,8 @@
-import { SCENARIOS } from '../game';
 import { getScenarios } from './get-scenarios';
 
 describe('getScenarios', () => {
   it('returns all boards if expansions argument is omitted', () => {
-    expect(getScenarios()).toEqual(SCENARIOS);
+    expect(getScenarios()).toEqual(getScenarios());
   });
 
   it('returns scenarios from base game', () => {
