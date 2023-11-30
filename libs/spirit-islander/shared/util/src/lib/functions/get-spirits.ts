@@ -1,6 +1,5 @@
 import { SPIRITS } from '../data';
 import {
-  Filters,
   Spirit,
   SpiritFamilyName,
   SpiritName,
@@ -8,7 +7,7 @@ import {
 } from '../types';
 import { getOptionsFactory } from './get-options-factory';
 
-const getOptions = getOptionsFactory<SpiritName, Spirit>(SPIRITS, {
+export const getSpirits = getOptionsFactory<SpiritName, Spirit>(SPIRITS, {
   filterExpansions: (spirits, expansions) => {
     const result: Spirit[] = [];
     const includedFamilyNames = new Set<SpiritFamilyName>();
@@ -37,7 +36,3 @@ const getOptions = getOptionsFactory<SpiritName, Spirit>(SPIRITS, {
     return result;
   },
 });
-
-export function getSpirits(filters: Filters<SpiritName> = {}) {
-  return getOptions(filters);
-}
