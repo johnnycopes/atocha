@@ -16,10 +16,8 @@ export function getValidCombos(config: Config): Combos {
     adversaryLevelIds,
     difficultyRange,
   } = config;
-  const maps = getMaps().filter(({ name }) => mapNames.includes(name));
-  const scenarios = getScenarios().filter(({ name }) =>
-    scenarioNames.includes(name)
-  );
+  const maps = getMaps({ names: mapNames });
+  const scenarios = getScenarios({ names: scenarioNames });
   const adversaryLevels = getAdversaries().reduce<AdversaryLevel[]>(
     (accum, { levels }) => {
       const adversaryLevels = levels.filter(({ id }) =>
