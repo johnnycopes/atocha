@@ -1,14 +1,9 @@
-import { Expansion, ExpansionOption } from '../types';
+import { Expansion, ExpansionOption, Filters } from '../types';
 
 export type GetOptions<
   TName extends string,
   TOption extends ExpansionOption<TName>
 > = ({ expansions, names }: Filters<TName>) => readonly TOption[];
-
-interface Filters<TName extends string> {
-  names?: readonly TName[];
-  expansions?: readonly Expansion[];
-}
 
 export function getOptionsFactory<
   TName extends string,
@@ -16,19 +11,7 @@ export function getOptionsFactory<
 >(
   options: readonly TOption[],
   {
-    filterNames,
-    filterExpansions,
-  }: {
-    filterNames: (
-      options: readonly TOption[],
-      names: readonly TName[]
-    ) => readonly TOption[];
-    filterExpansions: (
-      options: readonly TOption[],
-      expansions: readonly Expansion[]
-    ) => readonly TOption[];
-  } = {
-    filterNames: (options, names) => {
+    filterNames = (options, names) => {
       const filteredOptions: TOption[] = [];
 
       for (const name of names) {
@@ -40,7 +23,7 @@ export function getOptionsFactory<
 
       return filteredOptions;
     },
-    filterExpansions: (options, expansions) => {
+    filterExpansions = (options, expansions) => {
       return options.filter((item) => {
         if (item.expansion) {
           return expansions.includes(item.expansion);
@@ -49,7 +32,16 @@ export function getOptionsFactory<
         }
       });
     },
-  }
+  }: {
+    filterNames?: (
+      options: readonly TOption[],
+      names: readonly TName[]
+    ) => readonly TOption[];
+    filterExpansions?: (
+      options: readonly TOption[],
+      expansions: readonly Expansion[]
+    ) => readonly TOption[];
+  } = {}
 ): GetOptions<TName, TOption> {
   return function getOptions({
     expansions,
