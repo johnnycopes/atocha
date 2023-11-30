@@ -1,10 +1,10 @@
 import {
-  SpiritName,
+  AdversaryLevelId,
   BalancedBoardName,
+  Expansion,
   MapName,
   ScenarioName,
-  AdversaryLevelId,
-  Expansion,
+  SpiritName,
   getAdversaries,
   getAdversaryLevelIds,
   getBoards,
