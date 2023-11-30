@@ -61,32 +61,32 @@ describe('getOptionsFactory', () => {
         },
       ]);
     });
+  });
 
-    describe('with names filter applied', () => {
-      it('returns no spirits when array is empty', () => {
-        const getOptions = getOptionsFactory<SpiritName, Spirit>(mockSpirits);
-        expect(getOptions({ names: [] })).toEqual([]);
-      });
+  describe('with names filter applied', () => {
+    it('returns no spirits when array is empty', () => {
+      const getOptions = getOptionsFactory<SpiritName, Spirit>(mockSpirits);
+      expect(getOptions({ names: [] })).toEqual([]);
+    });
 
-      it('returns no boards when array is empty', () => {
-        const getOptions = getOptionsFactory<SpiritName, Spirit>(mockSpirits);
-        expect(getOptions({ names: [] })).toEqual([]);
-      });
+    it('returns no boards when array is empty', () => {
+      const getOptions = getOptionsFactory<SpiritName, Spirit>(mockSpirits);
+      expect(getOptions({ names: [] })).toEqual([]);
+    });
 
-      it('returns matching spirits when names are specified', () => {
-        const getOptions = getOptionsFactory<SpiritName, Spirit>(mockSpirits);
-        expect(
-          getOptions({
-            names: [
-              'Bringer of Dreams and Nightmares',
-              'Downpour Drenches the World',
-            ],
-          })
-        ).toEqual([
-          { name: 'Bringer of Dreams and Nightmares' },
-          { name: 'Downpour Drenches the World', expansion: 'Promo Pack 2' },
-        ]);
-      });
+    it('returns matching spirits when names are specified', () => {
+      const getOptions = getOptionsFactory<SpiritName, Spirit>(mockSpirits);
+      expect(
+        getOptions({
+          names: [
+            'Bringer of Dreams and Nightmares',
+            'Downpour Drenches the World',
+          ],
+        })
+      ).toEqual([
+        { name: 'Bringer of Dreams and Nightmares' },
+        { name: 'Downpour Drenches the World', expansion: 'Promo Pack 2' },
+      ]);
     });
   });
 });
