@@ -1,9 +1,10 @@
+import { filter } from 'lodash';
 import { Expansion, ExpansionOption, Filters } from '../types';
 
 export type GetOptions<
   TName extends string,
   TOption extends ExpansionOption<TName>
-> = ({ expansions, names }?: Filters<TName>) => readonly TOption[];
+> = (filters?: Filters<TName>) => readonly TOption[];
 
 export function getOptionsFactory<
   TName extends string,
@@ -43,22 +44,19 @@ export function getOptionsFactory<
     ) => readonly TOption[];
   } = {}
 ): GetOptions<TName, TOption> {
-  return function getOptions({
-    expansions,
-    names,
-  }: Filters<TName> = {}): readonly TOption[] {
-    if (expansions && names) {
+  return function getOptions(filters: Filters<TName> = {}): readonly TOption[] {
+    if (filters?.expansions && filters?.names) {
       throw new Error(
         'Options can only be filtered by expansions OR names (not both at once)'
       );
     }
 
-    if (expansions && !names) {
-      return filterExpansions(options, expansions);
+    if (filters?.expansions && !filters?.names) {
+      return filterExpansions(options, filters?.expansions);
     }
 
-    if (names && !expansions) {
-      return filterNames(options, names);
+    if (filters?.names && !filters?.expansions) {
+      return filterNames(options, filters?.names);
     }
 
     return options;
