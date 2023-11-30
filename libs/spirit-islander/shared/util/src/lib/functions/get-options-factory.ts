@@ -1,4 +1,3 @@
-import { filter } from 'lodash';
 import { Expansion, ExpansionOption, Filters } from '../types';
 
 export type GetOptions<
