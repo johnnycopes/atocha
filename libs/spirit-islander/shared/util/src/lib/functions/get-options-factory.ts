@@ -1,4 +1,4 @@
-import { Expansion, ExpansionOption, Filters } from '../types';
+import { Expansion, ExpansionOption } from '../types';
 
 export function getOptionsFactory<
   TName extends string,
@@ -37,8 +37,16 @@ export function getOptionsFactory<
       expansions: readonly Expansion[]
     ) => readonly TOption[];
   } = {}
-): (filters?: Filters<TName>) => readonly TOption[] {
-  return function getOptions(filters: Filters<TName> = {}): readonly TOption[] {
+): (filters?: {
+  names?: readonly TName[];
+  expansions?: readonly Expansion[];
+}) => readonly TOption[] {
+  return function getOptions(
+    filters: {
+      names?: readonly TName[];
+      expansions?: readonly Expansion[];
+    } = {}
+  ): readonly TOption[] {
     if (filters?.expansions && filters?.names) {
       throw new Error(
         'Options can only be filtered by expansions OR names (not both at once)'
