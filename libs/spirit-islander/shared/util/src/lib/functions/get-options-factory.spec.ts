@@ -89,4 +89,32 @@ describe('getOptionsFactory', () => {
       ]);
     });
   });
+
+  describe('with custom filtering logic passed in', () => {
+    it('returns spirits matching names logic', () => {
+      const getOptions = getOptionsFactory<SpiritName, Spirit>(mockSpirits, {
+        filterNames: (spirits, names) =>
+          spirits.filter(
+            ({ name }) => names.includes(name) || name.includes('the')
+          ),
+      });
+      expect(
+        getOptions({
+          names: [
+            'Bringer of Dreams and Nightmares',
+            'Downpour Drenches the World',
+          ],
+        })
+      ).toEqual([
+        { name: 'Bringer of Dreams and Nightmares' },
+        { name: 'Downpour Drenches the World', expansion: 'Promo Pack 2' },
+        { name: 'Fractured Days Split the Sky', expansion: 'Jagged Earth' },
+        { name: 'Keeper of the Forbidden Wilds', expansion: 'Branch & Claw' },
+        {
+          name: 'Serpent Slumbering Beneath the Island',
+          expansion: 'Promo Pack 1',
+        },
+      ]);
+    });
+  });
 });
