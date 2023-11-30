@@ -37,7 +37,7 @@ export function getOptionsFactory<
       expansions: readonly Expansion[]
     ) => readonly TOption[];
   } = {}
-): (filters?: {
+): (filter?: {
   names?: readonly TName[];
   expansions?: readonly Expansion[];
 }) => readonly TOption[] {
