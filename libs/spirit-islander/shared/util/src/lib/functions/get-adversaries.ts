@@ -1,7 +1,7 @@
 import { ADVERSARIES } from '../data';
-import { Adversary, AdversaryName, Filters } from '../types';
-import { getOptions } from './get-options';
+import { Adversary, AdversaryName } from '../types';
+import { getOptionsFactory } from './get-options-factory';
 
-export function getAdversaries(filters: Filters<AdversaryName> = {}) {
-  return getOptions<AdversaryName, Adversary>(ADVERSARIES, filters);
-}
+export const getAdversaries = getOptionsFactory<AdversaryName, Adversary>(
+  ADVERSARIES
+);
