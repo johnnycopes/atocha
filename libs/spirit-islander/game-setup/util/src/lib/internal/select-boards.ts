@@ -13,8 +13,7 @@ export function selectBoards(
   boardNames: readonly BalancedBoardName[]
 ): readonly Board[] {
   if (mapName === 'Balanced') {
-    const randomBoardNames = selectRandom(boardNames, players);
-    return getBoards({ names: randomBoardNames });
+    return getBoards({ names: selectRandom(boardNames, players) });
   }
   switch (players) {
     case 1: {
