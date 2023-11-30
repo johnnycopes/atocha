@@ -1,10 +1,5 @@
 import { Expansion, ExpansionOption, Filters } from '../types';
 
-export type GetOptions<
-  TName extends string,
-  TOption extends ExpansionOption<TName>
-> = (filters?: Filters<TName>) => readonly TOption[];
-
 export function getOptionsFactory<
   TName extends string,
   TOption extends ExpansionOption<TName>
@@ -42,7 +37,7 @@ export function getOptionsFactory<
       expansions: readonly Expansion[]
     ) => readonly TOption[];
   } = {}
-): GetOptions<TName, TOption> {
+): (filters?: Filters<TName>) => readonly TOption[] {
   return function getOptions(filters: Filters<TName> = {}): readonly TOption[] {
     if (filters?.expansions && filters?.names) {
       throw new Error(
