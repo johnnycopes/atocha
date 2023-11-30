@@ -1,7 +1,9 @@
 import { SCENARIOS } from '../data';
 import { Filters, Scenario, ScenarioName } from '../types';
-import { getOptions } from './get-options';
+import { getOptionsFactory } from './get-options-factory';
+
+const getOptions = getOptionsFactory<ScenarioName, Scenario>(SCENARIOS);
 
 export function getScenarios(filters: Filters<ScenarioName> = {}) {
-  return getOptions<ScenarioName, Scenario>(SCENARIOS, filters);
+  return getOptions(filters);
 }

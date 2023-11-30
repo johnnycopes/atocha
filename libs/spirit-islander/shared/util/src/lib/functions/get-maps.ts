@@ -1,7 +1,9 @@
 import { MAPS } from '../data';
 import { Filters, Map, MapName } from '../types';
-import { getOptions } from './get-options';
+import { getOptionsFactory } from './get-options-factory';
+
+const getOptions = getOptionsFactory<MapName, Map>(MAPS);
 
 export function getMaps(filters: Filters<MapName> = {}) {
-  return getOptions<MapName, Map>(MAPS, filters);
+  return getOptions(filters);
 }

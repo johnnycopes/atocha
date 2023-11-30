@@ -1,7 +1,9 @@
 import { BOARDS } from '../data';
 import { BalancedBoardName, Board, Filters } from '../types';
-import { getOptions } from './get-options';
+import { getOptionsFactory } from './get-options-factory';
+
+const getOptions = getOptionsFactory<BalancedBoardName, Board>(BOARDS);
 
 export function getBoards(filters: Filters<BalancedBoardName> = {}) {
-  return getOptions<BalancedBoardName, Board>(BOARDS, filters);
+  return getOptions(filters);
 }
