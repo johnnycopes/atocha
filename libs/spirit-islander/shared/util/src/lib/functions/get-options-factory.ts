@@ -37,28 +37,29 @@ export function getOptionsFactory<
       expansions: readonly Expansion[]
     ) => readonly TOption[];
   } = {}
-): (filters?: {
+): (config?: {
   names?: readonly TName[];
   expansions?: readonly Expansion[];
 }) => readonly TOption[] {
-  return function getOptions(
-    filters: {
-      names?: readonly TName[];
-      expansions?: readonly Expansion[];
-    } = {}
-  ): readonly TOption[] {
-    if (filters?.expansions && filters?.names) {
+  return function getOptions({
+    names,
+    expansions,
+  }: {
+    names?: readonly TName[];
+    expansions?: readonly Expansion[];
+  } = {}): readonly TOption[] {
+    if (expansions && names) {
       throw new Error(
         'Options can only be filtered by expansions OR names (not both at once)'
       );
     }
 
-    if (filters?.expansions && !filters?.names) {
-      return filterExpansions(options, filters?.expansions);
+    if (expansions && !names) {
+      return filterExpansions(options, expansions);
     }
 
-    if (filters?.names && !filters?.expansions) {
-      return filterNames(options, filters?.names);
+    if (names && !expansions) {
+      return filterNames(options, names);
     }
 
     return options;
