@@ -116,23 +116,23 @@ describe('getOptionsFactory', () => {
         },
       ]);
     });
-  });
 
-  it('returns spirits matching expansions filter', () => {
-    const getOptions = getOptionsFactory<SpiritName, Spirit>(mockSpirits, {
-      filterExpansions: (spirits, expansions) =>
-        spirits.filter(
-          ({ expansion }) => !expansion || !expansions.includes(expansion)
-        ),
+    it('returns spirits matching expansions filter', () => {
+      const getOptions = getOptionsFactory<SpiritName, Spirit>(mockSpirits, {
+        filterExpansions: (spirits, expansions) =>
+          spirits.filter(
+            ({ expansion }) => !expansion || !expansions.includes(expansion)
+          ),
+      });
+      expect(
+        getOptions({
+          expansions: ['Promo Pack 1', 'Promo Pack 2'],
+        })
+      ).toEqual([
+        { name: 'Bringer of Dreams and Nightmares' },
+        { name: 'Fractured Days Split the Sky', expansion: 'Jagged Earth' },
+        { name: 'Keeper of the Forbidden Wilds', expansion: 'Branch & Claw' },
+      ]);
     });
-    expect(
-      getOptions({
-        expansions: ['Promo Pack 1', 'Promo Pack 2'],
-      })
-    ).toEqual([
-      { name: 'Bringer of Dreams and Nightmares' },
-      { name: 'Fractured Days Split the Sky', expansion: 'Jagged Earth' },
-      { name: 'Keeper of the Forbidden Wilds', expansion: 'Branch & Claw' },
-    ]);
   });
 });
