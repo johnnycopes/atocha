@@ -3,7 +3,7 @@ import { Expansion, ExpansionOption, Filters } from '../types';
 export type GetOptions<
   TName extends string,
   TOption extends ExpansionOption<TName>
-> = ({ expansions, names }: Filters<TName>) => readonly TOption[];
+> = ({ expansions, names }?: Filters<TName>) => readonly TOption[];
 
 export function getOptionsFactory<
   TName extends string,
