@@ -12,8 +12,3 @@ export interface DifficultyOption<TName extends string> extends Option<TName> {
 export interface ExpansionOption<TName extends string> extends Option<TName> {
   expansion?: Expansion;
 }
-
-export interface Filters<TName extends string> {
-  names?: readonly TName[];
-  expansions?: readonly Expansion[];
-}
