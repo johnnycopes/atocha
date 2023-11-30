@@ -1,10 +1,9 @@
 import {
-  BOARDS,
   BalancedBoardName,
   Board,
   MapName,
   Players,
-  getOptionsByName,
+  getBoards,
 } from '@atocha/spirit-islander/shared/util';
 import { selectRandom } from './select-random';
 
@@ -14,31 +13,26 @@ export function selectBoards(
   boardNames: readonly BalancedBoardName[]
 ): readonly Board[] {
   if (mapName === 'Balanced') {
-    const randomBoardNames = selectRandom(boardNames, players);
-    return getBoardsByName(randomBoardNames);
+    return getBoards({ names: selectRandom(boardNames, players) });
   }
   switch (players) {
     case 1: {
-      return getBoardsByName(['A']);
+      return getBoards({ names: ['A'] });
     }
     case 2: {
-      return getBoardsByName(['D', 'B']);
+      return getBoards({ names: ['D', 'B'] });
     }
     case 3: {
-      return getBoardsByName(['D', 'B', 'A']);
+      return getBoards({ names: ['D', 'B', 'A'] });
     }
     case 4: {
-      return getBoardsByName(['D', 'B', 'A', 'C']);
+      return getBoards({ names: ['D', 'B', 'A', 'C'] });
     }
     case 5: {
-      return getBoardsByName(['D', 'B', 'A', 'C', 'F']);
+      return getBoards({ names: ['D', 'B', 'A', 'C', 'F'] });
     }
     case 6: {
-      return getBoardsByName(['D', 'B', 'A', 'C', 'F', 'E']);
+      return getBoards({ names: ['D', 'B', 'A', 'C', 'F', 'E'] });
     }
   }
-}
-
-function getBoardsByName(boardNames: BalancedBoardName[]): readonly Board[] {
-  return getOptionsByName(BOARDS, boardNames);
 }

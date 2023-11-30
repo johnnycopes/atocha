@@ -1,27 +1,27 @@
 import { Config } from '@atocha/spirit-islander/config/util';
 import { createGameSetup } from './create-game-setup';
 import {
-  ADVERSARIES,
-  BOARDS,
-  EXPANSIONS,
-  MAPS,
-  SCENARIOS,
-  SPIRITS,
+  getAdversaries,
   getAdversaryLevelIds,
+  getBoards,
+  getExpansions,
+  getMaps,
   getNames,
+  getScenarios,
+  getSpirits,
 } from '@atocha/spirit-islander/shared/util';
 
 describe('createGameSetup', () => {
   it('returns a randomly-generated game setup', () => {
     const mockConfig: Config = {
-      expansions: EXPANSIONS,
+      expansions: getExpansions(),
       players: 4,
       difficultyRange: [5, 8],
-      spiritNames: getNames(SPIRITS),
-      mapNames: getNames(MAPS),
-      boardNames: getNames(BOARDS),
-      scenarioNames: getNames(SCENARIOS),
-      adversaryLevelIds: getAdversaryLevelIds(ADVERSARIES),
+      spiritNames: getNames(getSpirits()),
+      mapNames: getNames(getMaps()),
+      boardNames: getNames(getBoards()),
+      scenarioNames: getNames(getScenarios()),
+      adversaryLevelIds: getAdversaryLevelIds(getAdversaries()),
     };
     const { boards, spirits, expansions, difficulty } =
       createGameSetup(mockConfig);

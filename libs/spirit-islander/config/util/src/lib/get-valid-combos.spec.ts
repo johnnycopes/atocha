@@ -1,12 +1,12 @@
 import {
-  ADVERSARIES,
-  BOARDS,
-  EXPANSIONS,
-  MAPS,
-  SCENARIOS,
-  SPIRITS,
+  getAdversaries,
   getAdversaryLevelIds,
+  getBoards,
+  getExpansions,
+  getMaps,
   getNames,
+  getScenarios,
+  getSpirits,
 } from '@atocha/spirit-islander/shared/util';
 import { Config } from './config.interface';
 import { getValidCombos } from './get-valid-combos';
@@ -83,14 +83,14 @@ describe('getValidCombos', () => {
 
   it('returns all possible combinations', () => {
     const mockConfig: Config = {
-      expansions: EXPANSIONS,
+      expansions: getExpansions(),
       players: 1,
       difficultyRange: [0, 11],
-      spiritNames: getNames(SPIRITS),
-      mapNames: getNames(MAPS),
-      boardNames: getNames(BOARDS),
-      scenarioNames: getNames(SCENARIOS),
-      adversaryLevelIds: getAdversaryLevelIds(ADVERSARIES),
+      spiritNames: getNames(getSpirits()),
+      mapNames: getNames(getMaps()),
+      boardNames: getNames(getBoards()),
+      scenarioNames: getNames(getScenarios()),
+      adversaryLevelIds: getAdversaryLevelIds(getAdversaries()),
     };
     expect(getValidCombos(mockConfig)).toHaveLength(1632);
   });

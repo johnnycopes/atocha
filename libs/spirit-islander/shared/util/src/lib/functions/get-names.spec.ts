@@ -1,9 +1,9 @@
 import { getNames } from './get-names';
-import { SCENARIOS } from '../game';
+import { getScenarios } from './get-scenarios';
 
 describe('getNames', () => {
   it('returns only the names from a group of options', () => {
-    const scenarios = SCENARIOS.slice(0, 5);
+    const scenarios = getScenarios().slice(0, 5);
     expect(getNames(scenarios)).toEqual([
       'No Scenario',
       'Destiny Unfolds',

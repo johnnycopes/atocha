@@ -1,23 +1,21 @@
 import {
-  ADVERSARIES,
   Adversary,
   AdversaryLevel,
   AdversaryLevelId,
   AdversaryName,
-  BOARDS,
   Board,
-  EXPANSIONS,
   Expansion,
-  MAPS,
   Map,
-  SCENARIOS,
-  SPIRITS,
   Scenario,
   Spirit,
   SpiritFamilyName,
+  getAdversaries,
+  getBoards,
   getDifficulty,
-  getOptionsByExpansion,
-  getSpiritsByExpansion,
+  getExpansions,
+  getMaps,
+  getScenarios,
+  getSpirits,
 } from '@atocha/spirit-islander/shared/util';
 
 export interface Node<T> {
@@ -29,7 +27,7 @@ export interface Node<T> {
 export class Root {
   readonly expansions = this._createRoot({
     root: 'Expansions',
-    items: EXPANSIONS,
+    items: getExpansions(),
     getId: (item) => item,
   });
 
@@ -65,7 +63,7 @@ export class Root {
   update(expansions: readonly Expansion[]) {
     this._spirits = this._createRoot({
       root: 'Spirits',
-      items: getSpiritsByExpansion(SPIRITS, expansions),
+      items: getSpirits({ expansions }),
       getId: ({ name }) => name,
       getDisplay: ({ expansion, aspectOf }) => {
         const display: {
@@ -80,7 +78,7 @@ export class Root {
 
     this._maps = this._createRoot({
       root: 'Maps',
-      items: getOptionsByExpansion(MAPS, expansions),
+      items: getMaps({ expansions }),
       getId: ({ name }) => name,
       getDisplay: ({ difficulty }) => ({
         difficulty: getDifficulty(difficulty, expansions),
@@ -89,14 +87,14 @@ export class Root {
 
     this._boards = this._createRoot({
       root: 'Boards',
-      items: getOptionsByExpansion(BOARDS, expansions),
+      items: getBoards({ expansions }),
       getId: ({ name }) => name,
       getDisplay: ({ expansion }) => (expansion ? { expansion } : {}),
     });
 
     this._scenarios = this._createRoot({
       root: 'Scenarios',
-      items: getOptionsByExpansion(SCENARIOS, expansions),
+      items: getScenarios({ expansions }),
       getId: ({ name }) => name,
       getDisplay: ({ expansion, difficulty }) => ({
         difficulty,
@@ -109,7 +107,7 @@ export class Root {
       AdversaryName | AdversaryLevelId
     >({
       root: 'Adversaries',
-      items: getOptionsByExpansion(ADVERSARIES, expansions),
+      items: getAdversaries({ expansions }),
       getId: (entity) =>
         this._isAdversaryLevel(entity) ? entity.id : entity.name,
       getChildren: (entity) => (this._isAdversary(entity) ? entity.levels : []),

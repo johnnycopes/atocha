@@ -1,0 +1,33 @@
+import { MAPS } from '../data';
+import { getMaps } from './get-maps';
+
+describe('getMaps', () => {
+  it('returns all maps if expansions argument is omitted', () => {
+    expect(getMaps()).toEqual(MAPS);
+  });
+
+  it('returns maps from base game', () => {
+    expect(getMaps({ expansions: [] })).toEqual(MAPS);
+  });
+
+  it('returns maps from base game plus any specified expansions', () => {
+    expect(
+      getMaps({
+        expansions: [
+          'Branch & Claw',
+          'Horizons',
+          'Jagged Earth',
+          'Nature Incarnate',
+          'Promo Pack 1',
+          'Promo Pack 2',
+        ],
+      })
+    ).toEqual(MAPS);
+  });
+
+  it('returns maps with certain names', () => {
+    expect(getMaps({ names: ['Balanced'] })).toEqual([
+      { name: 'Balanced', difficulty: 0 },
+    ]);
+  });
+});

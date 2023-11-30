@@ -8,11 +8,11 @@ import {
 
 import { SnakeCasePipe } from '@atocha/core/ui';
 import {
-  BOARDS,
   BalancedBoardName,
   Board,
   MapName,
   ThematicBoardName,
+  getBoards,
 } from '@atocha/spirit-islander/shared/util';
 import { EmblemComponent } from '../emblem/emblem.component';
 
@@ -28,7 +28,7 @@ type ThematicBoardNameAbberviation = 'E' | 'NE' | 'NW' | 'SE' | 'SW' | 'W';
 })
 export class BoardEmblemComponent implements OnChanges {
   @Input() mapName: MapName = 'Balanced';
-  @Input() board: Board = BOARDS[0];
+  @Input() board: Board = getBoards()[0];
 
   boardName: BalancedBoardName | ThematicBoardNameAbberviation =
     this.board.name;

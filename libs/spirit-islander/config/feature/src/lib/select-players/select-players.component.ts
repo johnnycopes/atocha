@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { PLAYERS } from '@atocha/spirit-islander/shared/util';
+import { getPlayers } from '@atocha/spirit-islander/shared/util';
 import { trackBySelf } from '@atocha/core/ui';
 
 @Component({
@@ -17,5 +17,5 @@ export class SelectPlayersComponent {
   @Input() form: FormGroup | undefined;
 
   readonly trackByFn = trackBySelf;
-  players = PLAYERS;
+  players = getPlayers();
 }

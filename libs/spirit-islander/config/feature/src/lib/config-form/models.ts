@@ -1,19 +1,17 @@
 import {
-  MAPS,
-  SCENARIOS,
-  BOARDS,
-  SPIRITS,
-  ADVERSARIES,
-  SpiritName,
+  AdversaryLevelId,
   BalancedBoardName,
+  Expansion,
   MapName,
   ScenarioName,
-  AdversaryLevelId,
-  Expansion,
+  SpiritName,
+  getAdversaries,
   getAdversaryLevelIds,
-  getOptionsByExpansion,
+  getBoards,
+  getMaps,
   getNames,
-  getSpiritsByExpansion,
+  getScenarios,
+  getSpirits,
 } from '@atocha/spirit-islander/shared/util';
 
 export class Models {
@@ -67,36 +65,35 @@ export class Models {
     target: 'Expansions' | Expansion
   ): Models {
     this._spiritNames = this._updateModel(
-      (expansions) => getNames(getSpiritsByExpansion(SPIRITS, expansions)),
+      (expansions) => getNames(getSpirits({ expansions })),
       this._spiritNames,
       expansions,
       target
     );
 
     this._boardNames = this._updateModel(
-      (expansions) => getNames(getOptionsByExpansion(BOARDS, expansions)),
+      (expansions) => getNames(getBoards({ expansions })),
       this._boardNames,
       expansions,
       target
     );
 
     this._mapNames = this._updateModel(
-      (expansions) => getNames(getOptionsByExpansion(MAPS, expansions)),
+      (expansions) => getNames(getMaps({ expansions })),
       this._mapNames,
       expansions,
       target
     );
 
     this._scenarioNames = this._updateModel(
-      (expansions) => getNames(getOptionsByExpansion(SCENARIOS, expansions)),
+      (expansions) => getNames(getScenarios({ expansions })),
       this._scenarioNames,
       expansions,
       target
     );
 
     this._adversaryLevelIds = this._updateModel(
-      (expansions) =>
-        getAdversaryLevelIds(getOptionsByExpansion(ADVERSARIES, expansions)),
+      (expansions) => getAdversaryLevelIds(getAdversaries({ expansions })),
       this._adversaryLevelIds,
       expansions,
       target
