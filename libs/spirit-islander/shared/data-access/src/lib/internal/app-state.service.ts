@@ -30,8 +30,8 @@ export interface AppState {
   providedIn: 'root',
 })
 export class AppStateService {
-  private readonly _oldKey = 'CONFIG_NEW';
-  private readonly _key = 'CONFIG';
+  private readonly _oldConfigKey = 'CONFIG_NEW';
+  private readonly _configKey = 'CONFIG';
   private _config: Config = this._getConfig();
   private _state = new State<AppState>({
     config: this._config,
@@ -65,11 +65,12 @@ export class AppStateService {
   }
 
   private _getConfig(): Config {
-    const oldConfig = this._localStorageService.getItem(this._oldKey);
-    const config = oldConfig || this._localStorageService.getItem(this._key);
+    const oldConfig = this._localStorageService.getItem(this._oldConfigKey);
+    const config =
+      oldConfig || this._localStorageService.getItem(this._configKey);
 
     if (oldConfig) {
-      this._localStorageService.removeItem(this._oldKey);
+      this._localStorageService.removeItem(this._oldConfigKey);
     }
 
     return config
@@ -87,6 +88,6 @@ export class AppStateService {
   }
 
   private _setConfig(config: Config): void {
-    this._localStorageService.setItem(this._key, JSON.stringify(config));
+    this._localStorageService.setItem(this._configKey, JSON.stringify(config));
   }
 }
