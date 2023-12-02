@@ -18,7 +18,9 @@ export function createGameSetup(config: Config): GameSetup {
 
   // Randomly select spirits and boards
   const selectedSpirits = selectSpirits(spiritNames, players);
-  const selectedBoards = selectBoards(selectedMap.name, players, boardNames);
+  const selectedBoards = selectBoards(selectedMap.name, players, boardNames, {
+    randomizedThematic: false,
+  });
 
   return {
     players,
