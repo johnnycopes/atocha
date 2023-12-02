@@ -50,7 +50,7 @@ export class AppStateService {
 
   constructor(private _localStorageService: LocalStorageService) {}
 
-  updateState(config: Config): void {
+  updateConfig(config: Config): void {
     this._state.updateProp('config', config);
     this._state.updateProp('gameSetup', createGameSetup(config));
   }

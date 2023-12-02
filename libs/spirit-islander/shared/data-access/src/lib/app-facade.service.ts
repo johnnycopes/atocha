@@ -42,7 +42,7 @@ export class AppFacadeService {
   async processParams(params: ParamMap): Promise<void> {
     try {
       const config = mapParamsToConfig(params);
-      this._appStateService.updateState(config);
+      this._appStateService.updateConfig(config);
     } catch {
       await this.navigateToError();
     }
