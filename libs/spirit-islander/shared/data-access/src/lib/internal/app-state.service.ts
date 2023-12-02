@@ -18,10 +18,12 @@ import {
   getScenarios,
   getSpirits,
 } from '@atocha/spirit-islander/shared/util';
+import { Settings } from '@atocha/spirit-islander/settings/util';
 
 export interface AppState {
   config: Config;
   gameSetup: GameSetup | undefined;
+  settings: Settings;
 }
 
 @Injectable({
@@ -34,6 +36,7 @@ export class AppStateService {
   private _state = new State<AppState>({
     config: this._config,
     gameSetup: createGameSetup(this._config),
+    settings: { isWorking: true },
   });
 
   state$ = this._state.get().pipe(tap(({ config }) => this._setConfig(config)));
