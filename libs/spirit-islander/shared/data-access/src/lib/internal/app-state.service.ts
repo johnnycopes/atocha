@@ -48,6 +48,13 @@ export class AppStateService {
     this._state.updateProp('gameSetup', createGameSetup(config));
   }
 
+  updateSettings(changes: Partial<Settings>): void {
+    this._state.transformProp('settings', (settings) => ({
+      ...settings,
+      ...changes,
+    }));
+  }
+
   refreshGameSetup(): void {
     this._state
       .get()
