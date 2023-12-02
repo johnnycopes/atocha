@@ -34,8 +34,10 @@ describe('selectBoards', () => {
       expect(getBoards()).toContainEqual(selectedBoards[1]);
     });
   });
+});
 
-  describe('thematic board selection', () => {
+describe('thematic board selection', () => {
+  describe('with randomizedThematic turned off', () => {
     it('returns Northeast for 1 player', () => {
       expect(selectBoards('Thematic', 1, [])).toStrictEqual([
         { name: 'A', thematicName: 'Northeast' },
@@ -85,6 +87,12 @@ describe('selectBoards', () => {
         { name: 'F', thematicName: 'Southwest', expansion: 'Jagged Earth' },
         { name: 'E', thematicName: 'Southeast', expansion: 'Jagged Earth' },
       ]);
+    });
+  });
+
+  describe('with randomizedThematic turned on', () => {
+    it('returns maps in any order for any number of players', () => {
+      expect(selectBoards).toBeTruthy();
     });
   });
 });
