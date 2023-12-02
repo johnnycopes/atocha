@@ -1,1 +1,1 @@
-export * from './lib/spirit-islander-settings-util';
+export * from './lib/settings.interface';
