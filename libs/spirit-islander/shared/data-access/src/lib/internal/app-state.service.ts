@@ -18,31 +18,48 @@ import {
   getScenarios,
   getSpirits,
 } from '@atocha/spirit-islander/shared/util';
+import { Settings } from '@atocha/spirit-islander/settings/util';
 
 export interface AppState {
   config: Config;
   gameSetup: GameSetup | undefined;
+  settings: Settings;
 }
 
 @Injectable({
   providedIn: 'root',
 })
 export class AppStateService {
-  private readonly _oldKey = 'CONFIG_NEW';
-  private readonly _key = 'CONFIG';
+  private readonly _oldConfigKey = 'CONFIG_NEW';
+  private readonly _configKey = 'CONFIG';
+  private readonly _settingsKey = 'SETTINGS';
   private _config: Config = this._getConfig();
+  private _settings: Settings = this._getSettings();
   private _state = new State<AppState>({
     config: this._config,
     gameSetup: createGameSetup(this._config),
+    settings: this._settings,
   });
 
-  state$ = this._state.get().pipe(tap(({ config }) => this._setConfig(config)));
+  state$ = this._state.get().pipe(
+    tap(({ config, settings }) => {
+      this._setConfig(config);
+      this._setSettings(settings);
+    })
+  );
 
   constructor(private _localStorageService: LocalStorageService) {}
 
-  updateState(config: Config): void {
+  updateConfig(config: Config): void {
     this._state.updateProp('config', config);
     this._state.updateProp('gameSetup', createGameSetup(config));
+  }
+
+  updateSettings(changes: Partial<Settings>): void {
+    this._state.transformProp('settings', (settings) => ({
+      ...settings,
+      ...changes,
+    }));
   }
 
   refreshGameSetup(): void {
@@ -55,11 +72,12 @@ export class AppStateService {
   }
 
   private _getConfig(): Config {
-    const oldConfig = this._localStorageService.getItem(this._oldKey);
-    const config = oldConfig || this._localStorageService.getItem(this._key);
+    const oldConfig = this._localStorageService.getItem(this._oldConfigKey);
+    const config =
+      oldConfig || this._localStorageService.getItem(this._configKey);
 
     if (oldConfig) {
-      this._localStorageService.removeItem(this._oldKey);
+      this._localStorageService.removeItem(this._oldConfigKey);
     }
 
     return config
@@ -76,7 +94,19 @@ export class AppStateService {
         };
   }
 
+  private _getSettings(): Settings {
+    const settings = this._localStorageService.getItem(this._settingsKey);
+    return settings ? JSON.parse(settings) : { isWorking: true };
+  }
+
   private _setConfig(config: Config): void {
-    this._localStorageService.setItem(this._key, JSON.stringify(config));
+    this._localStorageService.setItem(this._configKey, JSON.stringify(config));
+  }
+
+  private _setSettings(settings: Settings): void {
+    this._localStorageService.setItem(
+      this._settingsKey,
+      JSON.stringify(settings)
+    );
   }
 }

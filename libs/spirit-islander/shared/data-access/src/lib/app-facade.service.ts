@@ -5,6 +5,7 @@ import { Config } from '@atocha/spirit-islander/config/util';
 import { Route } from './route.enum';
 import { AppStateService } from './internal/app-state.service';
 import { mapConfigToParams, mapParamsToConfig } from './internal/url-mappers';
+import { Settings } from '@atocha/spirit-islander/settings/util';
 
 @Injectable({
   providedIn: 'root',
@@ -41,10 +42,14 @@ export class AppFacadeService {
   async processParams(params: ParamMap): Promise<void> {
     try {
       const config = mapParamsToConfig(params);
-      this._appStateService.updateState(config);
+      this._appStateService.updateConfig(config);
     } catch {
       await this.navigateToError();
     }
+  }
+
+  updateSettings(changes: Partial<Settings>): void {
+    this._appStateService.updateSettings(changes);
   }
 
   refreshGameSetup(): void {
