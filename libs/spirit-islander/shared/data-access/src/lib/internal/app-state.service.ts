@@ -32,14 +32,21 @@ export interface AppState {
 export class AppStateService {
   private readonly _oldConfigKey = 'CONFIG_NEW';
   private readonly _configKey = 'CONFIG';
+  private readonly _settingsKey = 'SETTINGS';
   private _config: Config = this._getConfig();
+  private _settings: Settings = this._getSettings();
   private _state = new State<AppState>({
     config: this._config,
     gameSetup: createGameSetup(this._config),
-    settings: { isWorking: true },
+    settings: this._settings,
   });
 
-  state$ = this._state.get().pipe(tap(({ config }) => this._setConfig(config)));
+  state$ = this._state.get().pipe(
+    tap(({ config, settings }) => {
+      this._setConfig(config);
+      this._setSettings(settings);
+    })
+  );
 
   constructor(private _localStorageService: LocalStorageService) {}
 
@@ -87,7 +94,19 @@ export class AppStateService {
         };
   }
 
+  private _getSettings(): Settings {
+    const settings = this._localStorageService.getItem(this._settingsKey);
+    return settings ? JSON.parse(settings) : { isWorking: true };
+  }
+
   private _setConfig(config: Config): void {
     this._localStorageService.setItem(this._configKey, JSON.stringify(config));
+  }
+
+  private _setSettings(settings: Settings): void {
+    this._localStorageService.setItem(
+      this._settingsKey,
+      JSON.stringify(settings)
+    );
   }
 }
