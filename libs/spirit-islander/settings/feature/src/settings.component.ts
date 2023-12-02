@@ -11,7 +11,6 @@ import { map } from 'rxjs';
   imports: [ButtonComponent, CommonModule],
   template: `
     <p>The /settings page is currently under construction 🚧</p>
-    {{ settings$ | async | json }}
     <button core-button (click)="goToConfigPage()">Home</button>
   `,
   styles: [
@@ -35,9 +34,7 @@ export class SettingsComponent {
     map(({ settings }) => settings)
   );
 
-  constructor(private _appFacadeService: AppFacadeService) {
-    setTimeout(() => this.updateSettings({ isWorking: false }), 2000);
-  }
+  constructor(private _appFacadeService: AppFacadeService) {}
 
   goToConfigPage() {
     this._appFacadeService.navigateToConfig();
