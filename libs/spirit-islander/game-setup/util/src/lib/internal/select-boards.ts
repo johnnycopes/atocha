@@ -10,9 +10,12 @@ import { selectRandom } from './select-random';
 export function selectBoards(
   mapName: MapName,
   players: Players,
-  boardNames: readonly BalancedBoardName[]
+  boardNames: readonly BalancedBoardName[],
+  { randomizedThematic } = {
+    randomizedThematic: false,
+  }
 ): readonly Board[] {
-  if (mapName === 'Balanced') {
+  if (mapName === 'Balanced' || randomizedThematic) {
     return getBoards({ names: selectRandom(boardNames, players) });
   }
   switch (players) {

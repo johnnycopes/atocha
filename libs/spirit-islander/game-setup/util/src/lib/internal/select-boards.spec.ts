@@ -1,6 +1,18 @@
 import { getBoards } from '@atocha/spirit-islander/shared/util';
 import { selectBoards } from './select-boards';
 
+// Mock `selectRandom` to return collection untouched for predictability in testing
+import * as selectRandom from './select-random';
+
+jest
+  .spyOn(selectRandom, 'selectRandom')
+  .mockImplementation((options, quantity = 1) => {
+    if (quantity > options.length) {
+      throw new Error('More options requested than available');
+    }
+    return options.slice(0, quantity);
+  });
+
 describe('selectBoards', () => {
   describe('balanced board selection', () => {
     it('returns specific selection of maps', () => {
@@ -92,7 +104,26 @@ describe('thematic board selection', () => {
 
   describe('with randomizedThematic turned on', () => {
     it('returns maps in any order for any number of players', () => {
-      expect(selectBoards).toBeTruthy();
+      expect(
+        selectBoards('Thematic', 6, ['A', 'B', 'C', 'D', 'E', 'F'], {
+          randomizedThematic: true,
+        })
+      ).toEqual([
+        { name: 'A', thematicName: 'Northeast' },
+        { name: 'B', thematicName: 'East' },
+        { name: 'C', thematicName: 'Northwest' },
+        { name: 'D', thematicName: 'West' },
+        {
+          name: 'E',
+          thematicName: 'Southeast',
+          expansion: 'Jagged Earth',
+        },
+        {
+          name: 'F',
+          thematicName: 'Southwest',
+          expansion: 'Jagged Earth',
+        },
+      ]);
     });
   });
 });
