@@ -25,7 +25,7 @@ describe('createGameSetup', () => {
     };
     const { boards, spirits, expansions, difficulty } = createGameSetup(
       mockConfig,
-      { randomizedThematicBoards: false }
+      { randomThematicBoards: false }
     );
 
     expect(boards).toHaveLength(4);

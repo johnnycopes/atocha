@@ -12,11 +12,11 @@ export function selectBoards(
   mapName: MapName,
   players: Players,
   boardNames: readonly BalancedBoardName[],
-  { randomizedThematicBoards }: Settings = {
-    randomizedThematicBoards: false,
+  { randomThematicBoards }: Settings = {
+    randomThematicBoards: false,
   }
 ): readonly Board[] {
-  if (mapName === 'Balanced' || randomizedThematicBoards) {
+  if (mapName === 'Balanced' || randomThematicBoards) {
     return getBoards({ names: selectRandom(boardNames, players) });
   }
   switch (players) {
