@@ -30,7 +30,7 @@ import { FormsModule } from '@angular/forms';
     <ui-card-group
       ui-page-content
       name="Settings"
-      description="Options to change how the generator works"
+      description="Options that modify how the app works"
     >
       <ng-container *ngIf="settings$ | async as settings">
         <ui-card name="options">
