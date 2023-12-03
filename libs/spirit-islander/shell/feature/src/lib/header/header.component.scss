@@ -38,14 +38,17 @@
   }
 }
 
-.description {
-  position: relative;
-  top: 2px;
-  margin-left: 4px;
-  font-size: 12px;
+.nav {
+  font-size: 18px;
+}
 
-  @media screen and (min-width: 768px) {
-    font-size: unset;
-    margin-left: 0;
+.link {
+  margin-left: 16px;
+  padding: 8px 16px;
+  border-radius: var(--border-radius);
+  border: none;
+
+  &.active {
+    background: var(--gray-400);
   }
 }
