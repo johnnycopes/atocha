@@ -30,18 +30,16 @@ import { FormsModule } from '@angular/forms';
     <ui-card-group
       ui-page-content
       name="Settings"
-      description="Options to change how the randomizer works"
+      description="Options to change how the generator works"
     >
       <ng-container *ngIf="settings$ | async as settings">
         <ui-card name="options">
           <h3 ui-card-header>
             <core-checkbox
-              [ngModel]="settings['randomizedThematicBoards']"
-              (ngModelChange)="
-                updateSettings({ randomizedThematicBoards: $event })
-              "
+              [ngModel]="settings['randomThematicBoards']"
+              (ngModelChange)="updateSettings({ randomThematicBoards: $event })"
             >
-              Randomize thematic boards
+              Random thematic boards
             </core-checkbox>
           </h3>
           <p ui-card-content>
