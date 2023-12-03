@@ -1,33 +1,75 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ButtonComponent } from '@atocha/core/ui';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
+import { map } from 'rxjs';
+
+import { ButtonComponent, CheckboxComponent } from '@atocha/core/ui';
 import { Settings } from '@atocha/spirit-islander/settings/util';
 import { AppFacadeService } from '@atocha/spirit-islander/shared/data-access';
-import { map } from 'rxjs';
+import {
+  CardComponent,
+  CardGroupComponent,
+} from '@atocha/spirit-islander/shared/ui';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   standalone: true,
   selector: 'app-settings',
-  imports: [ButtonComponent, CommonModule],
+  imports: [
+    ButtonComponent,
+    CardComponent,
+    CardGroupComponent,
+    CheckboxComponent,
+    CommonModule,
+    FormsModule,
+  ],
   template: `
-    <p>The /settings page is currently under construction 🚧</p>
-    <button core-button (click)="goToConfigPage()">Home</button>
+    <ui-card-group
+      ui-page-content
+      name="Settings"
+      description="Options to change how the randomizer works"
+    >
+      <ng-container *ngIf="settings$ | async as settings">
+        <ui-card name="options">
+          <h3 ui-card-header>
+            <core-checkbox
+              [ngModel]="settings['randomizedThematicBoards']"
+              (ngModelChange)="
+                updateSettings({ randomizedThematicBoards: $event })
+              "
+            >
+              Randomize thematic boards
+            </core-checkbox>
+          </h3>
+          <p ui-card-content>
+            When playing the thematic map, specific boards are normally assigned
+            to each player (base game rulebook, page 23). This option makes it
+            so thematic boards are instead assigned at random.
+          </p>
+        </ui-card>
+      </ng-container>
+    </ui-card-group>
   `,
   styles: [
     `
-      :host {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
+      .ui-card-group-contents {
+        grid-template-areas: 'options options options options options options';
+
+        @media screen and (min-width: 768px) {
+          grid-template-areas: 'options options options options options options';
+        }
       }
 
-      button {
-        margin-top: 32px;
+      [ui-card-content] {
+        padding: 16px;
       }
     `,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
 })
 export class SettingsComponent {
   settings$ = this._appFacadeService.state$.pipe(
