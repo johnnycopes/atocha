@@ -10,13 +10,8 @@ import { ConfigFormComponent } from './config-form/config-form.component';
   standalone: true,
   selector: 'app-config',
   imports: [CommonModule, ConfigFormComponent],
-  template: `
-    <app-config-form
-      *ngIf="config$ | async as config"
-      [config]="config"
-      (generate)="onGenerate($event)"
-    ></app-config-form>
-  `,
+  templateUrl: './config.component.html',
+  styleUrls: [`./config.component.scss`],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ConfigComponent {
