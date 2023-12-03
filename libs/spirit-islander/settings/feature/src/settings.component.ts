@@ -76,10 +76,6 @@ export class SettingsComponent {
 
   constructor(private _appFacadeService: AppFacadeService) {}
 
-  goToConfigPage() {
-    this._appFacadeService.navigateToConfig();
-  }
-
   updateSettings(change: Partial<Settings>) {
     this._appFacadeService.updateSettings(change);
   }
