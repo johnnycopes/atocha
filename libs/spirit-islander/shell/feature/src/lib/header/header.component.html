@@ -6,7 +6,8 @@
       routerLinkActive="active">Generator</a>
     <a class="link"
       routerLink="/{{Route.gameSetup}}"
-      routerLinkActive="active">Game setup</a>
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: false }">Game setup</a>
     <a class="link"
       routerLink="/{{Route.settings}}"
       routerLinkActive="active">Settings</a>
