@@ -23,7 +23,7 @@ export function createGameSetup(
   // Randomly select spirits and boards
   const selectedSpirits = selectSpirits(spiritNames, players);
   const selectedBoards = selectBoards(selectedMap.name, players, boardNames, {
-    randomizedThematic: randomizedThematicBoards,
+    randomizedThematicBoards,
   });
 
   return {

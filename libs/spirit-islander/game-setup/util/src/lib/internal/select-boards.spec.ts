@@ -102,11 +102,11 @@ describe('thematic board selection', () => {
     });
   });
 
-  describe('with randomizedThematic turned on', () => {
+  describe('with randomizedThematicBoards turned on', () => {
     it('returns maps in any order for any number of players', () => {
       expect(
         selectBoards('Thematic', 6, ['A', 'B', 'C', 'D', 'E', 'F'], {
-          randomizedThematic: true,
+          randomizedThematicBoards: true,
         })
       ).toEqual([
         { name: 'A', thematicName: 'Northeast' },
