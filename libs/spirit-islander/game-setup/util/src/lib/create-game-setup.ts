@@ -1,11 +1,12 @@
 import { Difficulty, getDifficulty } from '@atocha/spirit-islander/shared/util';
 import { Config, getValidCombos } from '@atocha/spirit-islander/config/util';
+import { Settings } from '@atocha/spirit-islander/settings/util';
 import { GameSetup } from './game-setup.interface';
 import { selectBoards } from './internal/select-boards';
 import { selectRandom } from './internal/select-random';
 import { selectSpirits } from './internal/select-spirits';
 
-export function createGameSetup(config: Config): GameSetup {
+export function createGameSetup(config: Config, settings: Settings): GameSetup {
   const { players, expansions, spiritNames, boardNames } = config;
   const validCombos = getValidCombos(config);
 
@@ -19,7 +20,7 @@ export function createGameSetup(config: Config): GameSetup {
   // Randomly select spirits and boards
   const selectedSpirits = selectSpirits(spiritNames, players);
   const selectedBoards = selectBoards(selectedMap.name, players, boardNames, {
-    randomizedThematic: false,
+    randomizedThematic: settings.randomizedThematicBoards,
   });
 
   return {
