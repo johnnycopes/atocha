@@ -6,6 +6,7 @@
       routerLinkActive="active">Generator</a>
     <a class="link"
       [routerLink]="[Route.gameSetup]"
+      [queryParams]="config$ | async"
       routerLinkActive="active"
       [routerLinkActiveOptions]="{ exact: false }">Game Setup</a>
     <a class="link"
