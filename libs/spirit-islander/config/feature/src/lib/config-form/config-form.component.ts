@@ -11,7 +11,7 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { withLatestFrom, Subject, Subscription, first, map } from 'rxjs';
+import { withLatestFrom, Subject, Subscription } from 'rxjs';
 
 import { ButtonComponent } from '@atocha/core/ui';
 import { AppFacadeService } from '@atocha/spirit-islander/shared/data-access';
@@ -80,15 +80,10 @@ export class ConfigFormComponent implements OnInit, OnDestroy {
     );
 
     // Initialize form with config data
-    this._appFacadeService.state$
-      .pipe(
-        first(),
-        map(({ config }) => config)
-      )
-      .subscribe((config) => {
-        this.form.setValue(config);
-        this._updateFormData(config.expansions);
-      });
+    if (this.config) {
+      this.form.setValue(this.config);
+      this._updateFormData(this.config.expansions);
+    }
   }
 
   ngOnDestroy(): void {
