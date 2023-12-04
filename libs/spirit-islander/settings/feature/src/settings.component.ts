@@ -55,15 +55,17 @@ import { FormsModule } from '@angular/forms';
     `
       .ui-card-group-contents.settings {
         grid-template-areas: 'options options options options options options';
-
-        @media screen and (min-width: 768px) {
-          grid-template-areas: 'options options options options options options';
-        }
       }
 
       .settings {
         [ui-card-content] {
-          padding: 16px;
+          padding: 16px 8px;
+        }
+
+        @media screen and (min-width: 768px) {
+          [ui-card-content] {
+            padding: 16px;
+          }
         }
       }
     `,
