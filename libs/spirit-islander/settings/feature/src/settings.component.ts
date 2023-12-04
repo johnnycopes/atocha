@@ -53,7 +53,7 @@ import { FormsModule } from '@angular/forms';
   `,
   styles: [
     `
-      .ui-card-group-contents {
+      .ui-card-group-contents.settings {
         grid-template-areas: 'options options options options options options';
 
         @media screen and (min-width: 768px) {
@@ -61,8 +61,10 @@ import { FormsModule } from '@angular/forms';
         }
       }
 
-      [ui-card-content] {
-        padding: 16px;
+      .settings {
+        [ui-card-content] {
+          padding: 16px;
+        }
       }
     `,
   ],

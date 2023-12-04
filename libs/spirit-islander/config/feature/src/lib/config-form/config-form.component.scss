@@ -47,15 +47,16 @@
   [ui-card-content] {
     margin-bottom: 12px;
   }
-}
 
-.core-checkbox {
-  padding-left: 8px;
+  .core-checkbox {
+    padding-left: 8px;
 
-  @media screen and (min-width: 768px) {
-    padding-left: 16px;
+    @media screen and (min-width: 768px) {
+      padding-left: 16px;
+    }
   }
 }
+
 
 .ui-card [data-level='0'] {
   display: flex;
