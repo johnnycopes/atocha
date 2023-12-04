@@ -14,6 +14,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { withLatestFrom, Subject, Subscription } from 'rxjs';
 
 import { ButtonComponent } from '@atocha/core/ui';
+import { AppFacadeService } from '@atocha/spirit-islander/shared/data-access';
 import {
   CardComponent,
   CardGroupComponent,
@@ -64,6 +65,8 @@ export class ConfigFormComponent implements OnInit, OnDestroy {
 
   readonly root = new Root();
   jaggedEarth = false;
+
+  constructor(private _appFacadeService: AppFacadeService) {}
 
   ngOnInit(): void {
     // Whenever the user changes the expansions, update the other fields' models and data
