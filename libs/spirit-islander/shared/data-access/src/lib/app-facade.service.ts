@@ -1,17 +1,21 @@
 import { Injectable } from '@angular/core';
 import { ParamMap, Router } from '@angular/router';
+import { map } from 'rxjs';
 
 import { Config } from '@atocha/spirit-islander/config/util';
+import { Settings } from '@atocha/spirit-islander/settings/util';
 import { Route } from './route.enum';
 import { AppStateService } from './internal/app-state.service';
 import { mapConfigToParams, mapParamsToConfig } from './internal/url-mappers';
-import { Settings } from '@atocha/spirit-islander/settings/util';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AppFacadeService {
   state$ = this._appStateService.state$;
+  configParams$ = this._appStateService.state$.pipe(
+    map(({ config }) => mapConfigToParams(config))
+  );
 
   constructor(
     private _appStateService: AppStateService,
