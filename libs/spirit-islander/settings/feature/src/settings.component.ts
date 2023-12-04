@@ -4,6 +4,7 @@ import {
   Component,
   ViewEncapsulation,
 } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { map } from 'rxjs';
 
 import { ButtonComponent, CheckboxComponent } from '@atocha/core/ui';
@@ -13,7 +14,6 @@ import {
   CardComponent,
   CardGroupComponent,
 } from '@atocha/spirit-islander/shared/ui';
-import { FormsModule } from '@angular/forms';
 
 @Component({
   standalone: true,

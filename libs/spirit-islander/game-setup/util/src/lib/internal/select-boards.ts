@@ -1,3 +1,4 @@
+import { Settings } from '@atocha/spirit-islander/settings/util';
 import {
   BalancedBoardName,
   Board,
@@ -6,7 +7,6 @@ import {
   getBoards,
 } from '@atocha/spirit-islander/shared/util';
 import { selectRandom } from './select-random';
-import { Settings } from '@atocha/spirit-islander/settings/util';
 
 export function selectBoards(
   mapName: MapName,
