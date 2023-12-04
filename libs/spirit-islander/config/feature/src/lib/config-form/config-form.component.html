@@ -1,4 +1,6 @@
-<form class="config"
+<form
+  *ngIf="config"
+  class="config"
   ui-page-content
   [formGroup]="form"
   (ngSubmit)="onSubmit()"
