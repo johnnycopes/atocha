@@ -1,16 +1,19 @@
 <div class="container">
   <h1 class="name"><span class="icon"> 🏝️ </span>Spirit Islander</h1>
   <nav class="nav">
-    <a class="link"
-      [routerLink]="[Route.config]"
-      routerLinkActive="active">Generator</a>
-    <a class="link"
+    <a class="link" [routerLink]="[Route.config]" routerLinkActive="active"
+      >Generator</a
+    >
+    <a
+      class="link"
       [routerLink]="[Route.gameSetup]"
       [queryParams]="configParams$ | async"
       routerLinkActive="active"
-      [routerLinkActiveOptions]="{ exact: false }">Game Setup</a>
-    <a class="link"
-      [routerLink]="[Route.settings]"
-      routerLinkActive="active">Settings</a>
+      [routerLinkActiveOptions]="{ exact: false }"
+      >Game Setup</a
+    >
+    <a class="link" [routerLink]="[Route.settings]" routerLinkActive="active"
+      >Settings</a
+    >
   </nav>
 </div>
