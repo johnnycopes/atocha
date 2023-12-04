@@ -47,13 +47,13 @@
   [ui-card-content] {
     margin-bottom: 12px;
   }
-}
 
-.core-checkbox {
-  padding-left: 8px;
+  .core-checkbox {
+    padding-left: 8px;
 
-  @media screen and (min-width: 768px) {
-    padding-left: 16px;
+    @media screen and (min-width: 768px) {
+      padding-left: 16px;
+    }
   }
 }
 
@@ -83,7 +83,11 @@
 
 app-select-players,
 app-select-difficulty-range {
-  margin: 4px 16px 0;
+  margin: 4px 8px 0;
+
+  @media screen and (min-width: 768px) {
+    margin: 4px 16px 0;
+  }
 }
 
 .spirits [data-level='0'] .core-tree {

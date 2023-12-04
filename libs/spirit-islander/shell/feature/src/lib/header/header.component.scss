@@ -39,14 +39,26 @@
 }
 
 .nav {
-  font-size: 18px;
+  margin-top: 8px;
+  font-size: 14px;
+
+  @media screen and (min-width: 768px) {
+    margin: 0;
+    font-size: 18px;
+  }
 }
 
 .link {
-  margin-left: 16px;
-  padding: 8px 16px;
   border-radius: var(--border-radius);
   border: none;
+  margin-right: 8px;
+  padding: 4px 8px;
+
+  @media screen and (min-width: 768px) {
+    margin-right: 0;
+    margin-left: 16px;
+    padding: 8px 16px;
+  }
 
   &.active {
     background: var(--gray-400);

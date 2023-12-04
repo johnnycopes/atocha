@@ -1,3 +1,3 @@
 export interface Settings {
-  isWorking: boolean;
+  randomThematicBoards: boolean;
 }

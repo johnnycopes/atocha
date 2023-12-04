@@ -37,7 +37,7 @@ export class AppStateService {
   private _settings: Settings = this._getSettings();
   private _state = new State<AppState>({
     config: this._config,
-    gameSetup: createGameSetup(this._config),
+    gameSetup: createGameSetup(this._config, this._settings),
     settings: this._settings,
   });
 
@@ -51,8 +51,13 @@ export class AppStateService {
   constructor(private _localStorageService: LocalStorageService) {}
 
   updateConfig(config: Config): void {
-    this._state.updateProp('config', config);
-    this._state.updateProp('gameSetup', createGameSetup(config));
+    this._state
+      .getProp('settings')
+      .pipe(first())
+      .subscribe((settings) => {
+        this._state.updateProp('config', config);
+        this._state.updateProp('gameSetup', createGameSetup(config, settings));
+      });
   }
 
   updateSettings(changes: Partial<Settings>): void {
@@ -66,8 +71,8 @@ export class AppStateService {
     this._state
       .get()
       .pipe(first())
-      .subscribe(({ config }) =>
-        this._state.updateProp('gameSetup', createGameSetup(config))
+      .subscribe(({ config, settings }) =>
+        this._state.updateProp('gameSetup', createGameSetup(config, settings))
       );
   }
 
@@ -96,7 +101,7 @@ export class AppStateService {
 
   private _getSettings(): Settings {
     const settings = this._localStorageService.getItem(this._settingsKey);
-    return settings ? JSON.parse(settings) : { isWorking: true };
+    return settings ? JSON.parse(settings) : { randomThematicBoards: false };
   }
 
   private _setConfig(config: Config): void {
