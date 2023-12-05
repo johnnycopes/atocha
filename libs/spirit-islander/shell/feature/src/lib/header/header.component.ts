@@ -4,8 +4,8 @@ import { RouterModule } from '@angular/router';
 
 import { ExternalLinkDirective } from '@atocha/core/ui';
 import {
-  AppFacadeService,
   Route,
+  RouterService,
 } from '@atocha/spirit-islander/shared/data-access';
 
 @Component({
@@ -19,7 +19,7 @@ import {
 })
 export class HeaderComponent {
   readonly Route: typeof Route = Route;
-  configParams$ = this._appFacadeService.configParams$;
+  configParams$ = this._routerService.configParams$;
 
-  constructor(private _appFacadeService: AppFacadeService) {}
+  constructor(private _routerService: RouterService) {}
 }
