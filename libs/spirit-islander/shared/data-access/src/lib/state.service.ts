@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { tap, first } from 'rxjs';
+import { first, tap } from 'rxjs';
 
-import { State, LocalStorageService } from '@atocha/core/data-access';
+import { LocalStorageService, State } from '@atocha/core/data-access';
 import { Config } from '@atocha/spirit-islander/config/util';
 import {
   GameSetup,
