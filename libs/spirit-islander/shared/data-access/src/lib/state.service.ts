@@ -72,13 +72,6 @@ export class StateService {
       });
   }
 
-  updateSettings(changes: Partial<Settings>): void {
-    this._state.transformProp('settings', (settings) => ({
-      ...settings,
-      ...changes,
-    }));
-  }
-
   refreshGameSetup(): void {
     this._state
       .get()
@@ -86,6 +79,13 @@ export class StateService {
       .subscribe(({ config, settings }) =>
         this._state.updateProp('gameSetup', createGameSetup(config, settings))
       );
+  }
+
+  updateSettings(changes: Partial<Settings>): void {
+    this._state.transformProp('settings', (settings) => ({
+      ...settings,
+      ...changes,
+    }));
   }
 
   private _getConfig(): Config {
