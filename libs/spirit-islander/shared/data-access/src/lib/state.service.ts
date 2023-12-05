@@ -113,13 +113,13 @@ export class StateService {
         };
   }
 
+  private _setConfig(config: Config): void {
+    this._localStorageService.setItem(this._configKey, JSON.stringify(config));
+  }
+
   private _getSettings(): Settings {
     const settings = this._localStorageService.getItem(this._settingsKey);
     return settings ? JSON.parse(settings) : { randomThematicBoards: false };
-  }
-
-  private _setConfig(config: Config): void {
-    this._localStorageService.setItem(this._configKey, JSON.stringify(config));
   }
 
   private _setSettings(settings: Settings): void {
