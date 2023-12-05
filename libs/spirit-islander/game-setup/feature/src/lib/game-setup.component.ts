@@ -4,8 +4,8 @@ import { ActivatedRoute } from '@angular/router';
 import { first, map } from 'rxjs';
 
 import {
-  AppFacadeService,
   RouterService,
+  StateService,
 } from '@atocha/spirit-islander/shared/data-access';
 import { GameSetupOutputComponent } from './game-setup-output/game-setup-output.component';
 
@@ -24,14 +24,14 @@ import { GameSetupOutputComponent } from './game-setup-output/game-setup-output.
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GameSetupComponent implements OnInit {
-  gameSetup$ = this._appFacadeService.state$.pipe(
+  gameSetup$ = this._stateService.state$.pipe(
     map(({ gameSetup }) => gameSetup)
   );
 
   constructor(
-    private _appFacadeService: AppFacadeService,
     private _route: ActivatedRoute,
-    private _routerService: RouterService
+    private _routerService: RouterService,
+    private _stateService: StateService
   ) {}
 
   ngOnInit(): void {
@@ -47,6 +47,6 @@ export class GameSetupComponent implements OnInit {
   }
 
   onRegenerate(): void {
-    this._appFacadeService.refreshGameSetup();
+    this._stateService.refreshGameSetup();
   }
 }

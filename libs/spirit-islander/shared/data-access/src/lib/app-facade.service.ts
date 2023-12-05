@@ -29,7 +29,7 @@ interface AppState {
 @Injectable({
   providedIn: 'root',
 })
-export class AppFacadeService {
+export class StateService {
   private readonly _oldConfigKey = 'CONFIG_NEW';
   private readonly _configKey = 'CONFIG';
   private readonly _settingsKey = 'SETTINGS';

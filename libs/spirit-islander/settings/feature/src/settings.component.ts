@@ -9,7 +9,7 @@ import { map } from 'rxjs';
 
 import { ButtonComponent, CheckboxComponent } from '@atocha/core/ui';
 import { Settings } from '@atocha/spirit-islander/settings/util';
-import { AppFacadeService } from '@atocha/spirit-islander/shared/data-access';
+import { StateService } from '@atocha/spirit-islander/shared/data-access';
 import {
   CardComponent,
   CardGroupComponent,
@@ -74,13 +74,11 @@ import {
   encapsulation: ViewEncapsulation.None,
 })
 export class SettingsComponent {
-  settings$ = this._appFacadeService.state$.pipe(
-    map(({ settings }) => settings)
-  );
+  settings$ = this._stateService.state$.pipe(map(({ settings }) => settings));
 
-  constructor(private _appFacadeService: AppFacadeService) {}
+  constructor(private _stateService: StateService) {}
 
   updateSettings(change: Partial<Settings>) {
-    this._appFacadeService.updateSettings(change);
+    this._stateService.updateSettings(change);
   }
 }

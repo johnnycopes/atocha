@@ -4,21 +4,18 @@ import { map } from 'rxjs';
 
 import { Config } from '@atocha/spirit-islander/config/util';
 import { mapConfigToParams, mapParamsToConfig } from './internal/url-mappers';
-import { AppFacadeService } from './app-facade.service';
+import { StateService } from './app-facade.service';
 import { Route } from './route.enum';
 
 @Injectable({
   providedIn: 'root',
 })
 export class RouterService {
-  configParams$ = this._appStateService.state$.pipe(
+  configParams$ = this._stateService.state$.pipe(
     map(({ config }) => mapConfigToParams(config))
   );
 
-  constructor(
-    private _appStateService: AppFacadeService,
-    private _router: Router
-  ) {}
+  constructor(private _stateService: StateService, private _router: Router) {}
 
   async navigateToHome(): Promise<void> {
     await this._router.navigate([Route.home]);
@@ -44,7 +41,7 @@ export class RouterService {
   async processParams(params: ParamMap): Promise<void> {
     try {
       const config = mapParamsToConfig(params);
-      this._appStateService.updateConfig(config);
+      this._stateService.updateConfig(config);
     } catch {
       await this.navigateToError();
     }

@@ -3,8 +3,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { first, map } from 'rxjs';
 
 import {
-  AppFacadeService,
   RouterService,
+  StateService,
 } from '@atocha/spirit-islander/shared/data-access';
 import { Config } from '@atocha/spirit-islander/config/util';
 import { ConfigFormComponent } from './config-form/config-form.component';
@@ -23,14 +23,14 @@ import { ConfigFormComponent } from './config-form/config-form.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ConfigComponent {
-  config$ = this._appFacadeService.state$.pipe(
+  config$ = this._stateService.state$.pipe(
     first(),
     map(({ config }) => config)
   );
 
   constructor(
-    private _appFacadeService: AppFacadeService,
-    private _routerService: RouterService
+    private _routerService: RouterService,
+    private _stateService: StateService
   ) {}
 
   onGenerate(config: Config): void {
