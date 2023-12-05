@@ -36,7 +36,7 @@ export class StateService {
 
   private _state: State<AppState>;
   private _state$: Observable<AppState>;
-  private readonly _oldConfigKey = 'CONFIG_NEW';
+  private readonly _legacyConfigKey = 'CONFIG_NEW';
   private readonly _configKey = 'CONFIG';
   private readonly _settingsKey = 'SETTINGS';
 
@@ -89,12 +89,14 @@ export class StateService {
   }
 
   private _getConfig(): Config {
-    const oldConfig = this._localStorageService.getItem(this._oldConfigKey);
+    const legacyConfig = this._localStorageService.getItem(
+      this._legacyConfigKey
+    );
     const config =
-      oldConfig || this._localStorageService.getItem(this._configKey);
+      legacyConfig || this._localStorageService.getItem(this._configKey);
 
-    if (oldConfig) {
-      this._localStorageService.removeItem(this._oldConfigKey);
+    if (legacyConfig) {
+      this._localStorageService.removeItem(this._legacyConfigKey);
     }
 
     return config
