@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { first, map, tap } from 'rxjs';
+import { Observable, first, map, tap } from 'rxjs';
 
 import { LocalStorageService, State } from '@atocha/core/data-access';
 import { Config } from '@atocha/spirit-islander/config/util';
@@ -30,29 +30,37 @@ interface AppState {
   providedIn: 'root',
 })
 export class StateService {
+  config$: Observable<Config>;
+  gameSetup$: Observable<GameSetup | undefined>;
+  settings$: Observable<Settings>;
+
+  private _state: State<AppState>;
+  private _state$: Observable<AppState>;
   private readonly _oldConfigKey = 'CONFIG_NEW';
   private readonly _configKey = 'CONFIG';
   private readonly _settingsKey = 'SETTINGS';
-  private _config: Config = this._getConfig();
-  private _settings: Settings = this._getSettings();
-  private _state = new State<AppState>({
-    config: this._config,
-    gameSetup: createGameSetup(this._config, this._settings),
-    settings: this._settings,
-  });
 
-  private _state$ = this._state.get().pipe(
-    tap(({ config, settings }) => {
-      this._setConfig(config);
-      this._setSettings(settings);
-    })
-  );
+  constructor(private _localStorageService: LocalStorageService) {
+    const config = this._getConfig();
+    const settings = this._getSettings();
 
-  config$ = this._state$.pipe(map(({ config }) => config));
-  gameSetup$ = this._state$.pipe(map(({ gameSetup }) => gameSetup));
-  settings$ = this._state$.pipe(map(({ settings }) => settings));
+    this._state = new State<AppState>({
+      config,
+      gameSetup: createGameSetup(config, settings),
+      settings,
+    });
 
-  constructor(private _localStorageService: LocalStorageService) {}
+    this._state$ = this._state.get().pipe(
+      tap(({ config, settings }) => {
+        this._setConfig(config);
+        this._setSettings(settings);
+      })
+    );
+
+    this.config$ = this._state$.pipe(map(({ config }) => config));
+    this.gameSetup$ = this._state$.pipe(map(({ gameSetup }) => gameSetup));
+    this.settings$ = this._state$.pipe(map(({ settings }) => settings));
+  }
 
   updateConfig(config: Config): void {
     this._state
