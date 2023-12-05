@@ -7,20 +7,20 @@ import {
   GameSetup,
   createGameSetup,
 } from '@atocha/spirit-islander/game-setup/util';
-import { migrateConfig } from './app-migration';
-import {
-  getAdversaries,
-  getAdversaryLevelIds,
-  getBoards,
-  getExpansions,
-  getMaps,
-  getNames,
-  getScenarios,
-  getSpirits,
-} from '@atocha/spirit-islander/shared/util';
 import { Settings } from '@atocha/spirit-islander/settings/util';
+import {
+  getExpansions,
+  getNames,
+  getSpirits,
+  getMaps,
+  getBoards,
+  getScenarios,
+  getAdversaryLevelIds,
+  getAdversaries,
+} from '@atocha/spirit-islander/shared/util';
+import { migrateConfig } from './internal/app-migration';
 
-export interface AppState {
+interface AppState {
   config: Config;
   gameSetup: GameSetup | undefined;
   settings: Settings;
@@ -29,7 +29,7 @@ export interface AppState {
 @Injectable({
   providedIn: 'root',
 })
-export class AppStateService {
+export class StateService {
   private readonly _oldConfigKey = 'CONFIG_NEW';
   private readonly _configKey = 'CONFIG';
   private readonly _settingsKey = 'SETTINGS';
