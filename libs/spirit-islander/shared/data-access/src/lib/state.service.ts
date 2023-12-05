@@ -4,19 +4,19 @@ import { Observable, first, map, tap } from 'rxjs';
 import { LocalStorageService, State } from '@atocha/core/data-access';
 import { Config } from '@atocha/spirit-islander/config/util';
 import {
-  GameSetup,
   createGameSetup,
+  GameSetup,
 } from '@atocha/spirit-islander/game-setup/util';
 import { Settings } from '@atocha/spirit-islander/settings/util';
 import {
-  getExpansions,
-  getNames,
-  getSpirits,
-  getMaps,
-  getBoards,
-  getScenarios,
-  getAdversaryLevelIds,
   getAdversaries,
+  getAdversaryLevelIds,
+  getBoards,
+  getExpansions,
+  getMaps,
+  getNames,
+  getScenarios,
+  getSpirits,
 } from '@atocha/spirit-islander/shared/util';
 import { migrateConfig } from './internal/app-migration';
 
