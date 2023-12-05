@@ -72,7 +72,7 @@ export class StateService {
       });
   }
 
-  refreshGameSetup(): void {
+  updateGameSetup(): void {
     this._state
       .get()
       .pipe(first())

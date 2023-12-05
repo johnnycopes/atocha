@@ -45,6 +45,6 @@ export class GameSetupComponent implements OnInit {
   }
 
   onRegenerate(): void {
-    this._stateService.refreshGameSetup();
+    this._stateService.updateGameSetup();
   }
 }
