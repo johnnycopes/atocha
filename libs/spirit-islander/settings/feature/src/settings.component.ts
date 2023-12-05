@@ -5,7 +5,6 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { map } from 'rxjs';
 
 import { ButtonComponent, CheckboxComponent } from '@atocha/core/ui';
 import { Settings } from '@atocha/spirit-islander/settings/util';
@@ -74,7 +73,7 @@ import {
   encapsulation: ViewEncapsulation.None,
 })
 export class SettingsComponent {
-  settings$ = this._stateService.state$.pipe(map(({ settings }) => settings));
+  settings$ = this._stateService.settings$;
 
   constructor(private _stateService: StateService) {}
 

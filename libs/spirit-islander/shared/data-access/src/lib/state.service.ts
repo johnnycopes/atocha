@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { first, tap } from 'rxjs';
+import { first, map, tap } from 'rxjs';
 
 import { LocalStorageService, State } from '@atocha/core/data-access';
 import { Config } from '@atocha/spirit-islander/config/util';
@@ -41,12 +41,16 @@ export class StateService {
     settings: this._settings,
   });
 
-  state$ = this._state.get().pipe(
+  private _state$ = this._state.get().pipe(
     tap(({ config, settings }) => {
       this._setConfig(config);
       this._setSettings(settings);
     })
   );
+
+  config$ = this._state$.pipe(map(({ config }) => config));
+  gameSetup$ = this._state$.pipe(map(({ gameSetup }) => gameSetup));
+  settings$ = this._state$.pipe(map(({ settings }) => settings));
 
   constructor(private _localStorageService: LocalStorageService) {}
 

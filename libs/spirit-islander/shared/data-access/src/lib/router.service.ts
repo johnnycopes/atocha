@@ -11,9 +11,7 @@ import { StateService } from './state.service';
   providedIn: 'root',
 })
 export class RouterService {
-  configParams$ = this._stateService.state$.pipe(
-    map(({ config }) => mapConfigToParams(config))
-  );
+  configParams$ = this._stateService.config$.pipe(map(mapConfigToParams));
 
   constructor(private _stateService: StateService, private _router: Router) {}
 
