@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { first, map } from 'rxjs';
+import { first } from 'rxjs';
 
 import {
   RouterService,
@@ -24,9 +24,7 @@ import { GameSetupOutputComponent } from './game-setup-output/game-setup-output.
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GameSetupComponent implements OnInit {
-  gameSetup$ = this._stateService.state$.pipe(
-    map(({ gameSetup }) => gameSetup)
-  );
+  gameSetup$ = this._stateService.gameSetup$;
 
   constructor(
     private _route: ActivatedRoute,
@@ -47,6 +45,6 @@ export class GameSetupComponent implements OnInit {
   }
 
   onRegenerate(): void {
-    this._stateService.refreshGameSetup();
+    this._stateService.updateGameSetup();
   }
 }

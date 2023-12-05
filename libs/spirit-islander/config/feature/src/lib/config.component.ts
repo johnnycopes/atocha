@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { first, map } from 'rxjs';
+import { first } from 'rxjs';
 
 import {
   RouterService,
@@ -23,10 +23,7 @@ import { ConfigFormComponent } from './config-form/config-form.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ConfigComponent {
-  config$ = this._stateService.state$.pipe(
-    first(),
-    map(({ config }) => config)
-  );
+  config$ = this._stateService.config$.pipe(first());
 
   constructor(
     private _routerService: RouterService,
