@@ -17,15 +17,15 @@ export class ConfigForm extends FormGroup<Form<Config>> {
   readonly expansions$ = this.get('expansions')?.valueChanges ?? of([]);
 
   get playersError(): string {
-    return this.errors?.[playersOutnumberTotalBoards.name] ?? '';
+    return this.errors?.['playersOutnumberTotalBoards'] ?? '';
   }
 
   get difficultyError(): string {
-    return this.errors?.[invalidDifficultyRange.name] ?? '';
+    return this.errors?.['invalidDifficultyRange'] ?? '';
   }
 
   get spiritsError(): string {
-    return this.errors?.[playersOutnumberSpirits.name] ?? '';
+    return this.errors?.['playersOutnumberSpirits'] ?? '';
   }
 
   get mapsError(): string {
@@ -33,7 +33,7 @@ export class ConfigForm extends FormGroup<Form<Config>> {
   }
 
   get boardsError(): string {
-    return this.errors?.[playersOutnumberSelectedBoards.name] ?? '';
+    return this.errors?.['playersOutnumberSelectedBoards'] ?? '';
   }
 
   get scenariosError(): string {
