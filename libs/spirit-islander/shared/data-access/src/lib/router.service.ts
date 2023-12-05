@@ -4,7 +4,7 @@ import { map } from 'rxjs';
 
 import { Config } from '@atocha/spirit-islander/config/util';
 import { mapConfigToParams, mapParamsToConfig } from './internal/url-mappers';
-import { StateService } from './app-facade.service';
+import { StateService } from './state.service';
 import { Route } from './route.enum';
 
 @Injectable({
