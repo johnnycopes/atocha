@@ -12,8 +12,9 @@ export function selectBoards(
   mapName: MapName,
   players: Players,
   boardNames: readonly BalancedBoardName[],
-  { randomThematicBoards }: Settings = {
+  { randomThematicBoards, allowBEAndDFBoards }: Settings = {
     randomThematicBoards: false,
+    allowBEAndDFBoards: true,
   }
 ): readonly Board[] {
   if (mapName === 'Balanced' || randomThematicBoards) {

@@ -119,7 +119,9 @@ export class StateService {
 
   private _getSettings(): Settings {
     const settings = this._localStorageService.getItem(this._settingsKey);
-    return settings ? JSON.parse(settings) : { randomThematicBoards: false };
+    return settings
+      ? JSON.parse(settings)
+      : { randomThematicBoards: false, allowBEAndDFBoards: true };
   }
 
   private _setSettings(settings: Settings): void {

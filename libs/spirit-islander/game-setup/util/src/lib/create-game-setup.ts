@@ -8,7 +8,7 @@ import { selectSpirits } from './internal/select-spirits';
 
 export function createGameSetup(
   config: Config,
-  { randomThematicBoards }: Settings
+  { randomThematicBoards, allowBEAndDFBoards }: Settings
 ): GameSetup {
   const { players, expansions, spiritNames, boardNames } = config;
   const validCombos = getValidCombos(config);
@@ -24,6 +24,7 @@ export function createGameSetup(
   const selectedSpirits = selectSpirits(spiritNames, players);
   const selectedBoards = selectBoards(selectedMap.name, players, boardNames, {
     randomThematicBoards,
+    allowBEAndDFBoards,
   });
 
   return {
