@@ -122,7 +122,13 @@ export class StateService {
 
   private _getSettings(): Settings {
     const settings = this._localStorageService.getItem(this._settingsKey);
-    return settings ? JSON.parse(settings) : createDefaultSettings();
+    return settings
+      ? {
+          // Ensure newest settings are included in case user hasn't visited in a while
+          ...createDefaultSettings(),
+          ...JSON.parse(settings),
+        }
+      : createDefaultSettings();
   }
 
   private _setSettings(settings: Settings): void {
