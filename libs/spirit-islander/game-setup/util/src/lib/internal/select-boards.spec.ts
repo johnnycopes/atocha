@@ -107,6 +107,7 @@ describe('thematic board selection', () => {
       expect(
         selectBoards('Thematic', 6, ['A', 'B', 'C', 'D', 'E', 'F'], {
           randomThematicBoards: true,
+          allowBEAndDFBoards: true,
         })
       ).toEqual([
         { name: 'A', thematicName: 'Northeast' },
