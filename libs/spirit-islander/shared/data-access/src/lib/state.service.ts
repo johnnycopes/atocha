@@ -4,10 +4,13 @@ import { Observable, first, map, tap } from 'rxjs';
 import { LocalStorageService, State } from '@atocha/core/data-access';
 import { Config } from '@atocha/spirit-islander/config/util';
 import {
-  createGameSetup,
   GameSetup,
+  createGameSetup,
 } from '@atocha/spirit-islander/game-setup/util';
-import { Settings } from '@atocha/spirit-islander/settings/util';
+import {
+  Settings,
+  createDefaultSettings,
+} from '@atocha/spirit-islander/settings/util';
 import {
   getAdversaries,
   getAdversaryLevelIds,
@@ -119,9 +122,7 @@ export class StateService {
 
   private _getSettings(): Settings {
     const settings = this._localStorageService.getItem(this._settingsKey);
-    return settings
-      ? JSON.parse(settings)
-      : { randomThematicBoards: false, allowBEAndDFBoards: true };
+    return settings ? JSON.parse(settings) : createDefaultSettings();
   }
 
   private _setSettings(settings: Settings): void {
