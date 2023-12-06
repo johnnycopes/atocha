@@ -1,3 +1,4 @@
+import { Settings } from '@atocha/spirit-islander/settings/util';
 import {
   BalancedBoardName,
   Board,
@@ -10,9 +11,12 @@ import { selectRandom } from './select-random';
 export function selectBoards(
   mapName: MapName,
   players: Players,
-  boardNames: readonly BalancedBoardName[]
+  boardNames: readonly BalancedBoardName[],
+  { randomThematicBoards }: Settings = {
+    randomThematicBoards: false,
+  }
 ): readonly Board[] {
-  if (mapName === 'Balanced') {
+  if (mapName === 'Balanced' || randomThematicBoards) {
     return getBoards({ names: selectRandom(boardNames, players) });
   }
   switch (players) {

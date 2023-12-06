@@ -23,8 +23,10 @@ describe('createGameSetup', () => {
       scenarioNames: getNames(getScenarios()),
       adversaryLevelIds: getAdversaryLevelIds(getAdversaries()),
     };
-    const { boards, spirits, expansions, difficulty } =
-      createGameSetup(mockConfig);
+    const { boards, spirits, expansions, difficulty } = createGameSetup(
+      mockConfig,
+      { randomThematicBoards: false }
+    );
 
     expect(boards).toHaveLength(4);
     expect(spirits).toHaveLength(4);

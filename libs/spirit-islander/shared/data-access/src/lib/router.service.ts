@@ -1,21 +1,19 @@
 import { Injectable } from '@angular/core';
 import { ParamMap, Router } from '@angular/router';
+import { map } from 'rxjs';
 
 import { Config } from '@atocha/spirit-islander/config/util';
-import { Route } from './route.enum';
-import { AppStateService } from './internal/app-state.service';
 import { mapConfigToParams, mapParamsToConfig } from './internal/url-mappers';
+import { Route } from './route.enum';
+import { StateService } from './state.service';
 
 @Injectable({
   providedIn: 'root',
 })
-export class AppFacadeService {
-  state$ = this._appStateService.state$;
+export class RouterService {
+  configParams$ = this._stateService.config$.pipe(map(mapConfigToParams));
 
-  constructor(
-    private _appStateService: AppStateService,
-    private _router: Router
-  ) {}
+  constructor(private _stateService: StateService, private _router: Router) {}
 
   async navigateToHome(): Promise<void> {
     await this._router.navigate([Route.home]);
@@ -41,13 +39,9 @@ export class AppFacadeService {
   async processParams(params: ParamMap): Promise<void> {
     try {
       const config = mapParamsToConfig(params);
-      this._appStateService.updateState(config);
+      this._stateService.updateConfig(config);
     } catch {
       await this.navigateToError();
     }
-  }
-
-  refreshGameSetup(): void {
-    this._appStateService.refreshGameSetup();
   }
 }

@@ -30,6 +30,15 @@ export const APP_ROUTES: Routes = [
           ),
       },
       {
+        path: Route.settings,
+        title: 'Settings | Spirit Islander',
+        data: { state: Route.settings },
+        loadComponent: () =>
+          import('@atocha/spirit-islander/settings/feature').then(
+            (m) => m.SettingsComponent
+          ),
+      },
+      {
         path: Route.home,
         data: { state: Route.home },
         redirectTo: Route.config,
