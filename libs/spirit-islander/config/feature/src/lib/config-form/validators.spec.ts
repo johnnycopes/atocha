@@ -10,7 +10,7 @@ import {
   playersOutnumberSpirits,
   playersOutnumberTotalBoards,
   required,
-  restrictedBoardPairing,
+  restrictedBoardPairings,
 } from './validators';
 
 describe('Validators', () => {
@@ -119,7 +119,7 @@ describe('Validators', () => {
     });
   });
 
-  describe('restrictedBoardPairing', () => {
+  describe('restrictedBoardPairings', () => {
     let mockStateService: StateService;
 
     beforeEach(() => {
@@ -131,7 +131,7 @@ describe('Validators', () => {
         mockStateService.updateSettings({ allowBEAndDFBoards: true });
 
         expect(
-          restrictedBoardPairing(mockStateService)(
+          restrictedBoardPairings(mockStateService)(
             fbnn.group<Pick<Form<Config>, 'players' | 'boardNames'>>({
               players: fbnn.control(2),
               boardNames: fbnn.control(['A', 'B']),
@@ -144,7 +144,7 @@ describe('Validators', () => {
         mockStateService.updateSettings({ allowBEAndDFBoards: false });
 
         expect(
-          restrictedBoardPairing(mockStateService)(
+          restrictedBoardPairings(mockStateService)(
             fbnn.group<Pick<Form<Config>, 'players' | 'boardNames'>>({
               players: fbnn.control(1),
               boardNames: fbnn.control(['A', 'B']),
@@ -153,7 +153,7 @@ describe('Validators', () => {
         ).toBe(null);
 
         expect(
-          restrictedBoardPairing(mockStateService)(
+          restrictedBoardPairings(mockStateService)(
             fbnn.group<Pick<Form<Config>, 'players' | 'boardNames'>>({
               players: fbnn.control(3),
               boardNames: fbnn.control(['A', 'B', 'E']),
@@ -166,7 +166,7 @@ describe('Validators', () => {
         mockStateService.updateSettings({ allowBEAndDFBoards: false });
 
         expect(
-          restrictedBoardPairing(mockStateService)(
+          restrictedBoardPairings(mockStateService)(
             fbnn.group<Pick<Form<Config>, 'players' | 'boardNames'>>({
               players: fbnn.control(2),
               boardNames: fbnn.control(['A', 'B']),
@@ -181,14 +181,14 @@ describe('Validators', () => {
         mockStateService.updateSettings({ allowBEAndDFBoards: false });
 
         expect(
-          restrictedBoardPairing(mockStateService)(
+          restrictedBoardPairings(mockStateService)(
             fbnn.group<Pick<Form<Config>, 'players' | 'boardNames'>>({
               players: fbnn.control(2),
               boardNames: fbnn.control(['B', 'E']),
             })
           )
         ).toEqual({
-          restrictedBoardPairing:
+          restrictedBoardPairings:
             'Boards B / E and boards D / F not allowed in a 2 player game',
         });
       });
@@ -197,14 +197,14 @@ describe('Validators', () => {
         mockStateService.updateSettings({ allowBEAndDFBoards: false });
 
         expect(
-          restrictedBoardPairing(mockStateService)(
+          restrictedBoardPairings(mockStateService)(
             fbnn.group<Pick<Form<Config>, 'players' | 'boardNames'>>({
               players: fbnn.control(2),
               boardNames: fbnn.control(['D', 'F']),
             })
           )
         ).toEqual({
-          restrictedBoardPairing:
+          restrictedBoardPairings:
             'Boards B / E and boards D / F not allowed in a 2 player game',
         });
       });

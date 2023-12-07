@@ -89,7 +89,7 @@ export const invalidDifficultyRange: ValidatorFn = (
   return errorMessage ? { invalidDifficultyRange: errorMessage } : null;
 };
 
-export function restrictedBoardPairing(
+export function restrictedBoardPairings(
   stateService: StateService
 ): ValidatorFn {
   return (control: AbstractControl<Config>): ValidationErrors | null => {
@@ -111,7 +111,7 @@ export function restrictedBoardPairing(
 
     return isError
       ? {
-          restrictedBoardPairing:
+          restrictedBoardPairings:
             'Boards B / E and boards D / F not allowed in a 2 player game',
         }
       : null;
