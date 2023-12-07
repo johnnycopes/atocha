@@ -2,12 +2,15 @@ import { FormBuilder } from '@angular/forms';
 
 import { Form } from '@atocha/core/ui';
 
+import { LocalStorageService } from '@atocha/core/data-access';
 import { Config } from '@atocha/spirit-islander/config/util';
+import { StateService } from '@atocha/spirit-islander/shared/data-access';
 import {
   playersOutnumberSelectedBoards,
   playersOutnumberSpirits,
   playersOutnumberTotalBoards,
   required,
+  restrictedBoardPairing,
 } from './validators';
 
 describe('Validators', () => {
@@ -113,6 +116,98 @@ describe('Validators', () => {
           })
         )
       ).toBe(null);
+    });
+  });
+
+  describe('restrictedBoardPairing', () => {
+    let mockStateService: StateService;
+
+    beforeEach(() => {
+      mockStateService = new StateService(new LocalStorageService('test'));
+    });
+
+    describe('returns null', () => {
+      it('when `allowBEAndDFBoards` setting is true', () => {
+        mockStateService.updateSettings({ allowBEAndDFBoards: true });
+
+        expect(
+          restrictedBoardPairing(mockStateService)(
+            fbnn.group<Pick<Form<Config>, 'players' | 'boardNames'>>({
+              players: fbnn.control(2),
+              boardNames: fbnn.control(['A', 'B']),
+            })
+          )
+        ).toBe(null);
+      });
+
+      it('in games with more or fewer than 2 players', () => {
+        mockStateService.updateSettings({ allowBEAndDFBoards: false });
+
+        expect(
+          restrictedBoardPairing(mockStateService)(
+            fbnn.group<Pick<Form<Config>, 'players' | 'boardNames'>>({
+              players: fbnn.control(1),
+              boardNames: fbnn.control(['A', 'B']),
+            })
+          )
+        ).toBe(null);
+
+        expect(
+          restrictedBoardPairing(mockStateService)(
+            fbnn.group<Pick<Form<Config>, 'players' | 'boardNames'>>({
+              players: fbnn.control(3),
+              boardNames: fbnn.control(['A', 'B', 'E']),
+            })
+          )
+        ).toBe(null);
+      });
+
+      it("when restricted pairings aren't selected", () => {
+        mockStateService.updateSettings({ allowBEAndDFBoards: false });
+
+        expect(
+          restrictedBoardPairing(mockStateService)(
+            fbnn.group<Pick<Form<Config>, 'players' | 'boardNames'>>({
+              players: fbnn.control(2),
+              boardNames: fbnn.control(['A', 'B']),
+            })
+          )
+        ).toBe(null);
+      });
+    });
+
+    describe('returns error in 2 player game with setting enabled', () => {
+      it('when B and E are selected', () => {
+        mockStateService.updateSettings({ allowBEAndDFBoards: false });
+
+        expect(
+          restrictedBoardPairing(mockStateService)(
+            fbnn.group<Pick<Form<Config>, 'players' | 'boardNames'>>({
+              players: fbnn.control(2),
+              boardNames: fbnn.control(['B', 'E']),
+            })
+          )
+        ).toEqual({
+          restrictedBoardPairing:
+            'Boards B / E and boards D / F not allowed in a 2 player game',
+        });
+      });
+
+      it('when D and F are selected', () => {
+        mockStateService.updateSettings({ allowBEAndDFBoards: false });
+
+        expect(
+          restrictedBoardPairing(mockStateService)(
+            fbnn.group<Pick<Form<Config>, 'players' | 'boardNames'>>({
+              players: fbnn.control(2),
+              boardNames: fbnn.control(['D', 'F']),
+            })
+          )
+        ).toEqual({
+          restrictedBoardPairing:
+            'Boards B / E and boards D / F not allowed in a 2 player game',
+        });
+      });
     });
   });
 });

@@ -4,6 +4,7 @@ import {
   ValidatorFn,
   Validators,
 } from '@angular/forms';
+import { first } from 'rxjs';
 
 import { pluralize } from '@atocha/core/util';
 import {
@@ -11,6 +12,7 @@ import {
   countUniqueSpirits,
   getValidCombos,
 } from '@atocha/spirit-islander/config/util';
+import { StateService } from '@atocha/spirit-islander/shared/data-access';
 
 export const required: ValidatorFn = (
   control: AbstractControl<string[]>
@@ -86,3 +88,32 @@ export const invalidDifficultyRange: ValidatorFn = (
 
   return errorMessage ? { invalidDifficultyRange: errorMessage } : null;
 };
+
+export function restrictedBoardPairing(
+  stateService: StateService
+): ValidatorFn {
+  return (control: AbstractControl<Config>): ValidationErrors | null => {
+    let isError = false;
+
+    stateService.settings$.pipe(first()).subscribe(({ allowBEAndDFBoards }) => {
+      if (allowBEAndDFBoards || control.value.players !== 2) return;
+
+      const boards = control.value.boardNames;
+      if (boards.length !== 2) return;
+
+      if (
+        (boards.includes('B') && boards.includes('E')) ||
+        (boards.includes('D') && boards.includes('F'))
+      ) {
+        isError = true;
+      }
+    });
+
+    return isError
+      ? {
+          restrictedBoardPairing:
+            'Boards B / E and boards D / F not allowed in a 2 player game',
+        }
+      : null;
+  };
+}
