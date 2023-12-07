@@ -31,8 +31,8 @@ import {
       name="Settings"
       description="Options that modify how the app works"
     >
-      <ng-container *ngIf="settings$ | async as settings">
-        <ui-card name="options">
+      <div *ngIf="settings$ | async as settings" class="options">
+        <ui-card>
           <h3 ui-card-header>
             <core-checkbox
               [ngModel]="settings['randomThematicBoards']"
@@ -47,7 +47,23 @@ import {
             so thematic boards are instead assigned at random.
           </p>
         </ui-card>
-      </ng-container>
+        <ui-card>
+          <h3 ui-card-header>
+            <core-checkbox
+              [ngModel]="settings['allowBEAndDFBoards']"
+              (ngModelChange)="updateSettings({ allowBEAndDFBoards: $event })"
+            >
+              Allow B/E and D/F board pairings
+            </core-checkbox>
+          </h3>
+          <p ui-card-content>
+            TODO:<br />
+            1. Modify logic to select all boards when this is chosen<br />
+            2. Write description of rule that includes warning to user that
+            their boards will be overridden when turning on
+          </p>
+        </ui-card>
+      </div>
     </ui-card-group>
   `,
   styles: [
@@ -65,6 +81,14 @@ import {
           [ui-card-content] {
             padding: 16px;
           }
+        }
+      }
+
+      .options {
+        grid-area: options;
+
+        ui-card:not(:last-child) {
+          margin-bottom: 8px;
         }
       }
     `,
