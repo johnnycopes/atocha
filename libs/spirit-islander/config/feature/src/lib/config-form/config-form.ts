@@ -11,7 +11,9 @@ import {
   playersOutnumberSpirits,
   playersOutnumberTotalBoards,
   required,
+  restrictedBoardPairings,
 } from './validators';
+import { StateService } from '@atocha/spirit-islander/shared/data-access';
 
 export class ConfigForm extends FormGroup<Form<Config>> {
   readonly expansions$ = this.get('expansions')?.valueChanges ?? of([]);
@@ -33,7 +35,11 @@ export class ConfigForm extends FormGroup<Form<Config>> {
   }
 
   get boardsError(): string {
-    return this.errors?.['playersOutnumberSelectedBoards'] ?? '';
+    return (
+      (this.errors?.['playersOutnumberSelectedBoards'] ||
+        this.errors?.['restrictedBoardPairings']) ??
+      ''
+    );
   }
 
   get scenariosError(): string {
@@ -48,6 +54,7 @@ export class ConfigForm extends FormGroup<Form<Config>> {
 
   constructor(
     readonly model: Config,
+    readonly stateService: StateService,
     readonly fb: FormBuilder = new FormBuilder()
   ) {
     super(
@@ -70,6 +77,7 @@ export class ConfigForm extends FormGroup<Form<Config>> {
           playersOutnumberTotalBoards,
           playersOutnumberSelectedBoards,
           invalidDifficultyRange,
+          restrictedBoardPairings(stateService),
         ],
       }
     );

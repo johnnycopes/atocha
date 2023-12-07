@@ -18,6 +18,7 @@ import {
   CardComponent,
   CardGroupComponent,
 } from '@atocha/spirit-islander/shared/ui';
+import { StateService } from '@atocha/spirit-islander/shared/data-access';
 import { Expansion } from '@atocha/spirit-islander/shared/util';
 import { Config } from '@atocha/spirit-islander/config/util';
 import { CheckboxTreeComponent } from '../checkbox-tree/checkbox-tree.component';
@@ -49,21 +50,26 @@ export class ConfigFormComponent implements OnInit, OnDestroy {
   @Input() config: Config | undefined;
   @Output() generate = new EventEmitter<Config>();
 
-  form = new ConfigForm({
-    expansions: [],
-    players: 1,
-    difficultyRange: [0, 0],
-    spiritNames: [],
-    mapNames: [],
-    boardNames: [],
-    scenarioNames: [],
-    adversaryLevelIds: [],
-  });
+  form = new ConfigForm(
+    {
+      expansions: [],
+      players: 1,
+      difficultyRange: [0, 0],
+      spiritNames: [],
+      mapNames: [],
+      boardNames: [],
+      scenarioNames: [],
+      adversaryLevelIds: [],
+    },
+    this._stateService
+  );
   subscriptions = new Subscription();
   expansionsClickSubject = new Subject<'Expansions' | Expansion>();
 
   readonly root = new Root();
   jaggedEarth = false;
+
+  constructor(private _stateService: StateService) {}
 
   ngOnInit(): void {
     // Whenever the user changes the expansions, update the other fields' models and data
