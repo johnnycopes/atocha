@@ -45,6 +45,30 @@ describe('selectBoards', () => {
       expect(getBoards()).toContainEqual(selectedBoards[0]);
       expect(getBoards()).toContainEqual(selectedBoards[1]);
     });
+
+    describe('with `allowBEAndDFBoards` settings turned on', () => {
+      it('avoids pairing B and E with 2 players', () => {
+        const selectedBoards = selectBoards('Balanced', 2, ['A', 'B', 'E'], {
+          randomThematicBoards: false,
+          allowBEAndDFBoards: false,
+        });
+        expect(selectedBoards).toEqual([
+          { name: 'A', thematicName: 'Northeast' },
+          { name: 'E', thematicName: 'Southeast', expansion: 'Jagged Earth' },
+        ]);
+      });
+
+      it('avoids pairing D and F with 2 players', () => {
+        const selectedBoards = selectBoards('Balanced', 2, ['A', 'D', 'F'], {
+          randomThematicBoards: false,
+          allowBEAndDFBoards: false,
+        });
+        expect(selectedBoards).toEqual([
+          { name: 'A', thematicName: 'Northeast' },
+          { name: 'F', thematicName: 'Southwest', expansion: 'Jagged Earth' },
+        ]);
+      });
+    });
   });
 });
 
