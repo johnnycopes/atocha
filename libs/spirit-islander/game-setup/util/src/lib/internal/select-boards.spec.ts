@@ -47,6 +47,28 @@ describe('selectBoards', () => {
     });
 
     describe('with `allowBEAndDFBoards` settings turned on', () => {
+      it('throws error if B and E are the only selected boards with 2 players', () => {
+        expect(() =>
+          selectBoards('Balanced', 2, ['B', 'E'], {
+            randomThematicBoards: false,
+            allowBEAndDFBoards: false,
+          })
+        ).toThrowError(
+          'Board pairings B/E and D/F are not permitted in a 2 player game'
+        );
+      });
+
+      it('throws error if D and F are the only selected boards with 2 players', () => {
+        expect(() =>
+          selectBoards('Balanced', 2, ['D', 'F'], {
+            randomThematicBoards: false,
+            allowBEAndDFBoards: false,
+          })
+        ).toThrowError(
+          'Board pairings B/E and D/F are not permitted in a 2 player game'
+        );
+      });
+
       it('avoids pairing B and E with 2 players', () => {
         const selectedBoards = selectBoards('Balanced', 2, ['A', 'B', 'E'], {
           randomThematicBoards: false,

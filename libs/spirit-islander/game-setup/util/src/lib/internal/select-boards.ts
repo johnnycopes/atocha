@@ -45,10 +45,17 @@ export function selectBoards(
     let names = boardNames;
 
     if (!allowBEAndDFBoards && players === 2) {
-      if (names.includes('B') && names.includes('E')) {
+      const includesBAndE = names.includes('B') && names.includes('E');
+      const includesDAndF = names.includes('D') && names.includes('F');
+
+      if ((includesBAndE || includesDAndF) && names.length === 2) {
+        throw new Error(
+          'Board pairings B/E and D/F are not permitted in a 2 player game'
+        );
+      } else if (includesBAndE) {
         const excluded = selectRandom(['B', 'E'])[0];
         names = names.filter((name) => name !== excluded);
-      } else if (names.includes('D') && names.includes('F')) {
+      } else if (includesDAndF) {
         const excluded = selectRandom(['D', 'F'])[0];
         names = names.filter((name) => name !== excluded);
       }
