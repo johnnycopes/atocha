@@ -14,6 +14,7 @@ import {
   restrictedBoardPairings,
 } from './validators';
 import { StateService } from '@atocha/spirit-islander/shared/data-access';
+import { Settings } from '@atocha/spirit-islander/settings/util';
 
 export class ConfigForm extends FormGroup<Form<Config>> {
   readonly expansions$ = this.get('expansions')?.valueChanges ?? of([]);
@@ -55,6 +56,7 @@ export class ConfigForm extends FormGroup<Form<Config>> {
   constructor(
     readonly model: Config,
     readonly stateService: StateService,
+    allowBEAndDFBoards: Settings['allowBEAndDFBoards'],
     readonly fb: FormBuilder = new FormBuilder()
   ) {
     super(
@@ -77,7 +79,7 @@ export class ConfigForm extends FormGroup<Form<Config>> {
           playersOutnumberTotalBoards,
           playersOutnumberSelectedBoards,
           invalidDifficultyRange,
-          restrictedBoardPairings(stateService),
+          restrictedBoardPairings(stateService, allowBEAndDFBoards),
         ],
       }
     );

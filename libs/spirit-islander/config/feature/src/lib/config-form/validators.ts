@@ -13,6 +13,7 @@ import {
   getValidCombos,
 } from '@atocha/spirit-islander/config/util';
 import { StateService } from '@atocha/spirit-islander/shared/data-access';
+import { Settings } from '@atocha/spirit-islander/settings/util';
 
 export const required: ValidatorFn = (
   control: AbstractControl<string[]>
@@ -90,7 +91,8 @@ export const invalidDifficultyRange: ValidatorFn = (
 };
 
 export function restrictedBoardPairings(
-  stateService: StateService
+  stateService: StateService,
+  allowBEAndDFBoards: Settings['allowBEAndDFBoards']
 ): ValidatorFn {
   return (control: AbstractControl<Config>): ValidationErrors | null => {
     let isError = false;
