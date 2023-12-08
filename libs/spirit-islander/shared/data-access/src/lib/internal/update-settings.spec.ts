@@ -9,12 +9,12 @@ describe('updateSettings', () => {
 
   beforeEach(() => {
     const mockConfig: Config = {
-      expansions: [],
+      expansions: ['Jagged Earth'],
       players: 2,
       difficultyRange: [0, 1],
       spiritNames: ['Thunderspeaker', 'Vital Strength of the Earth'],
       mapNames: ['Balanced'],
-      boardNames: ['A', 'B'],
+      boardNames: ['B', 'E'],
       scenarioNames: ['No Scenario'],
       adversaryLevelIds: ['none'],
     };
