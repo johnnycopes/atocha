@@ -21,13 +21,8 @@ import {
   getScenarios,
   getSpirits,
 } from '@atocha/spirit-islander/shared/util';
+import { AppState } from './internal/app-state.interface';
 import { migrateConfig } from './internal/app-migration';
-
-interface AppState {
-  config: Config;
-  gameSetup: GameSetup | undefined;
-  settings: Settings;
-}
 
 @Injectable({
   providedIn: 'root',
