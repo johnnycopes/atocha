@@ -43,8 +43,8 @@ import {
           </h3>
           <p ui-card-content>
             When playing the thematic map, specific boards are normally assigned
-            to each player (base game rulebook, page 23). This option makes it
-            so thematic boards are instead assigned at random.
+            to each player (base game rulebook, page 23). When enabled, this
+            option makes it so thematic boards are instead assigned at random.
           </p>
         </ui-card>
         <ui-card>
@@ -57,10 +57,15 @@ import {
             </core-checkbox>
           </h3>
           <p ui-card-content>
-            TODO:<br />
-            1. Modify logic to select all boards when this is chosen<br />
-            2. Write description of rule that includes warning to user that
-            their boards will be overridden when turning on
+            The Jagged Earth expansion introduces two new island boards, E and
+            F, which can skew difficulty in games with fewer than 4 players
+            (Jagged Earth rulebook, page 6). When disabled, this option prevents
+            boards B/E and D/F from being paired together in two player games.
+            <br />
+            <br />
+            <em>NOTE:</em> Disabling this option will mark all boards as
+            selected in order to avoid potential conflicts with pre-existing
+            selections.
           </p>
         </ui-card>
       </div>
@@ -74,6 +79,7 @@ import {
 
       .settings {
         [ui-card-content] {
+          line-height: 1.3;
           padding: 16px 8px;
         }
 
