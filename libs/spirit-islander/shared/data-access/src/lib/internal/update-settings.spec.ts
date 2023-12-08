@@ -33,4 +33,20 @@ describe('updateSettings', () => {
       settings: { ...mockState.settings, randomThematicBoards: true },
     });
   });
+
+  describe('when `allowBEAndDFBoards` setting is disabled', () => {
+    it('returns a state object with all boards selected and updated settings', () => {
+      expect(updateSettings({ allowBEAndDFBoards: false }, mockState)).toEqual({
+        gameSetup: mockState.gameSetup,
+        config: {
+          ...mockState.config,
+          boardNames: ['A', 'B', 'C', 'D', 'E', 'F'],
+        },
+        settings: {
+          ...mockState.settings,
+          allowBEAndDFBoards: false,
+        },
+      });
+    });
+  });
 });
