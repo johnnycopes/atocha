@@ -23,6 +23,7 @@ import {
 } from '@atocha/spirit-islander/shared/util';
 import { AppState } from './internal/app-state.interface';
 import { migrateConfig } from './internal/app-migration';
+import { updateSettings } from './internal/update-settings';
 
 @Injectable({
   providedIn: 'root',
@@ -80,26 +81,7 @@ export class StateService {
   }
 
   updateSettings(changes: Partial<Settings>): void {
-    if (changes.allowBEAndDFBoards === false) {
-      this._state.transform((state) => ({
-        ...state,
-        config: {
-          ...state.config,
-          boardNames: getNames(
-            getBoards({ expansions: state.config.expansions })
-          ),
-        },
-        settings: {
-          ...state.settings,
-          ...changes,
-        },
-      }));
-    } else {
-      this._state.transformProp('settings', (settings) => ({
-        ...settings,
-        ...changes,
-      }));
-    }
+    this._state.transform((state) => updateSettings(changes, state));
   }
 
   private _getConfig(): Config {
