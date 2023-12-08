@@ -90,7 +90,7 @@ describe('ConfigForm', () => {
 
       expect(form.valid).toBe(false);
       expect(form.boardsError).toEqual(
-        'Boards B / E and boards D / F not allowed in a 2 player game'
+        'Boards B/E and D/F not allowed in a 2 player game'
       );
     });
 

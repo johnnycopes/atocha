@@ -103,7 +103,7 @@ export function restrictedBoardPairings(
     ) {
       return {
         restrictedBoardPairings:
-          'Boards B / E and boards D / F not allowed in a 2 player game',
+          'Boards B/E and D/F not allowed in a 2 player game',
       };
     }
 

@@ -173,7 +173,7 @@ describe('Validators', () => {
           )
         ).toEqual({
           restrictedBoardPairings:
-            'Boards B / E and boards D / F not allowed in a 2 player game',
+            'Boards B/E and D/F not allowed in a 2 player game',
         });
       });
 
@@ -187,7 +187,7 @@ describe('Validators', () => {
           )
         ).toEqual({
           restrictedBoardPairings:
-            'Boards B / E and boards D / F not allowed in a 2 player game',
+            'Boards B/E and D/F not allowed in a 2 player game',
         });
       });
     });
