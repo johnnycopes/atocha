@@ -58,23 +58,21 @@ export class ConfigFormComponent implements OnInit, OnDestroy {
   jaggedEarth = false;
 
   constructor(private _stateService: StateService) {
-    this._stateService.settings$.pipe(first()).subscribe(
-      ({ allowBEAndDFBoards }) =>
-        (this.form = new ConfigForm(
-          {
-            expansions: [],
-            players: 1,
-            difficultyRange: [0, 0],
-            spiritNames: [],
-            mapNames: [],
-            boardNames: [],
-            scenarioNames: [],
-            adversaryLevelIds: [],
-          },
-          this._stateService,
-          allowBEAndDFBoards
-        ))
-    );
+    this._stateService.settings$.pipe(first()).subscribe((settings) => {
+      this.form = new ConfigForm(
+        {
+          expansions: [],
+          players: 1,
+          difficultyRange: [0, 0],
+          spiritNames: [],
+          mapNames: [],
+          boardNames: [],
+          scenarioNames: [],
+          adversaryLevelIds: [],
+        },
+        settings
+      );
+    });
   }
 
   ngOnInit(): void {
