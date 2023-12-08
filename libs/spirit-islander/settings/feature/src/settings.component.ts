@@ -63,9 +63,8 @@ import {
             boards B/E and D/F from being paired together in two player games.
             <br />
             <br />
-            <em>NOTE:</em> Disabling this option will mark all boards as
-            selected in order to avoid potential conflicts with pre-existing
-            selections.
+            <em>NOTE:</em> Disabling this option will select all boards in order
+            to avoid potential conflicts.
           </p>
         </ui-card>
       </div>
