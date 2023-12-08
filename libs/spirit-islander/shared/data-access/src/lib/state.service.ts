@@ -85,10 +85,26 @@ export class StateService {
   }
 
   updateSettings(changes: Partial<Settings>): void {
-    this._state.transformProp('settings', (settings) => ({
-      ...settings,
-      ...changes,
-    }));
+    if (changes.allowBEAndDFBoards === false) {
+      this._state.transform((state) => ({
+        ...state,
+        config: {
+          ...state.config,
+          boardNames: getNames(
+            getBoards({ expansions: state.config.expansions })
+          ),
+        },
+        settings: {
+          ...state.settings,
+          ...changes,
+        },
+      }));
+    } else {
+      this._state.transformProp('settings', (settings) => ({
+        ...settings,
+        ...changes,
+      }));
+    }
   }
 
   private _getConfig(): Config {
