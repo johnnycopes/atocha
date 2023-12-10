@@ -4,10 +4,13 @@ import { Observable, first, map, tap } from 'rxjs';
 import { LocalStorageService, State } from '@atocha/core/data-access';
 import { Config } from '@atocha/spirit-islander/config/util';
 import {
-  createGameSetup,
   GameSetup,
+  createGameSetup,
 } from '@atocha/spirit-islander/game-setup/util';
-import { Settings } from '@atocha/spirit-islander/settings/util';
+import {
+  Settings,
+  createDefaultSettings,
+} from '@atocha/spirit-islander/settings/util';
 import {
   getAdversaries,
   getAdversaryLevelIds,
@@ -18,13 +21,9 @@ import {
   getScenarios,
   getSpirits,
 } from '@atocha/spirit-islander/shared/util';
+import { AppState } from './internal/app-state.interface';
 import { migrateConfig } from './internal/app-migration';
-
-interface AppState {
-  config: Config;
-  gameSetup: GameSetup | undefined;
-  settings: Settings;
-}
+import { updateSettings } from './internal/update-settings';
 
 @Injectable({
   providedIn: 'root',
@@ -82,10 +81,7 @@ export class StateService {
   }
 
   updateSettings(changes: Partial<Settings>): void {
-    this._state.transformProp('settings', (settings) => ({
-      ...settings,
-      ...changes,
-    }));
+    this._state.transform((state) => updateSettings(changes, state));
   }
 
   private _getConfig(): Config {
@@ -119,7 +115,13 @@ export class StateService {
 
   private _getSettings(): Settings {
     const settings = this._localStorageService.getItem(this._settingsKey);
-    return settings ? JSON.parse(settings) : { randomThematicBoards: false };
+    return settings
+      ? {
+          // Ensure newest settings are included in case user hasn't visited in a while
+          ...createDefaultSettings(),
+          ...JSON.parse(settings),
+        }
+      : createDefaultSettings();
   }
 
   private _setSettings(settings: Settings): void {

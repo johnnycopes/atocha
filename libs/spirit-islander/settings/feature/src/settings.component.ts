@@ -31,8 +31,8 @@ import {
       name="Settings"
       description="Options that modify how the app works"
     >
-      <ng-container *ngIf="settings$ | async as settings">
-        <ui-card name="options">
+      <div *ngIf="settings$ | async as settings" class="options">
+        <ui-card>
           <h3 ui-card-header>
             <core-checkbox
               [ngModel]="settings['randomThematicBoards']"
@@ -43,11 +43,31 @@ import {
           </h3>
           <p ui-card-content>
             When playing the thematic map, specific boards are normally assigned
-            to each player (base game rulebook, page 23). This option makes it
-            so thematic boards are instead assigned at random.
+            to each player (base game rulebook, page 23). When enabled, this
+            option makes it so thematic boards are instead assigned at random.
           </p>
         </ui-card>
-      </ng-container>
+        <ui-card>
+          <h3 ui-card-header>
+            <core-checkbox
+              [ngModel]="settings['allowBEAndDFBoards']"
+              (ngModelChange)="updateSettings({ allowBEAndDFBoards: $event })"
+            >
+              Allow B/E and D/F board pairings
+            </core-checkbox>
+          </h3>
+          <p ui-card-content>
+            The Jagged Earth expansion introduces two new island boards, E and
+            F, which can skew difficulty in games with fewer than 4 players
+            (Jagged Earth rulebook, page 6). When disabled, this option prevents
+            boards B/E and D/F from being paired together in two player games.
+            <br />
+            <br />
+            <em>NOTE:</em> Disabling this option will select all boards in order
+            to avoid potential conflicts.
+          </p>
+        </ui-card>
+      </div>
     </ui-card-group>
   `,
   styles: [
@@ -58,6 +78,7 @@ import {
 
       .settings {
         [ui-card-content] {
+          line-height: 1.3;
           padding: 16px 8px;
         }
 
@@ -65,6 +86,14 @@ import {
           [ui-card-content] {
             padding: 16px;
           }
+        }
+      }
+
+      .options {
+        grid-area: options;
+
+        ui-card:not(:last-child) {
+          margin-bottom: 8px;
         }
       }
     `,

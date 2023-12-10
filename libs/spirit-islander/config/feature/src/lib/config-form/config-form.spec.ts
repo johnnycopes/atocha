@@ -1,5 +1,9 @@
 import { Config } from '@atocha/spirit-islander/config/util';
 import { ConfigForm } from './config-form';
+import {
+  Settings,
+  createDefaultSettings,
+} from '@atocha/spirit-islander/settings/util';
 
 describe('ConfigForm', () => {
   let config: Config;
@@ -67,7 +71,27 @@ describe('ConfigForm', () => {
       });
 
       expect(form.valid).toBe(false);
-      expect(form.boardsError).toBeTruthy();
+      expect(form.boardsError).toEqual(
+        'At least 2 boards must be selected (must match or exceed player count)'
+      );
+    });
+
+    it('when restricted board pairings are selected', () => {
+      const settings: Settings = {
+        ...createDefaultSettings(),
+        allowBEAndDFBoards: false,
+      };
+      const form = new ConfigForm(config, settings);
+      form.patchValue({
+        expansions: ['Branch & Claw', 'Jagged Earth'],
+        players: 2,
+        boardNames: ['D', 'F'],
+      });
+
+      expect(form.valid).toBe(false);
+      expect(form.boardsError).toEqual(
+        'Boards B/E and D/F not allowed in a 2 player game'
+      );
     });
 
     it('when difficulty range is incompatible', () => {
