@@ -124,7 +124,7 @@ describe('Validators', () => {
           restrictedBoardPairings(true)(
             fbnn.group<Pick<Form<Config>, 'players' | 'boardNames'>>({
               players: fbnn.control(2),
-              boardNames: fbnn.control(['A', 'B']),
+              boardNames: fbnn.control(['B', 'E']),
             })
           )
         ).toBe(null);
@@ -135,7 +135,7 @@ describe('Validators', () => {
           restrictedBoardPairings(false)(
             fbnn.group<Pick<Form<Config>, 'players' | 'boardNames'>>({
               players: fbnn.control(1),
-              boardNames: fbnn.control(['A', 'B']),
+              boardNames: fbnn.control(['B', 'E']),
             })
           )
         ).toBe(null);
