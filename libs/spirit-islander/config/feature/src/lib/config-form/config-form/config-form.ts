@@ -17,7 +17,7 @@ import {
   playersOutnumberTotalBoards,
   required,
   restrictedBoardPairings,
-} from '../validators';
+} from './validators';
 import {
   Settings,
   createDefaultSettings,
