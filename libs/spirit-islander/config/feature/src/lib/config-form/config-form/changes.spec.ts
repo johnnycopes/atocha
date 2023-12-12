@@ -1,7 +1,7 @@
 import { Config } from '@atocha/spirit-islander/config/util';
 import { ConfigForm } from './config-form';
 
-describe('ConfigForm behavior', () => {
+describe('ConfigForm changes', () => {
   let config: Config;
 
   beforeEach(() => {
