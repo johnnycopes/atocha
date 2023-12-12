@@ -9,6 +9,10 @@ import { of } from 'rxjs';
 import { Form } from '@atocha/core/ui';
 import { Expansion } from '@atocha/spirit-islander/shared/util';
 import { Config } from '@atocha/spirit-islander/config/util';
+import {
+  Settings,
+  createDefaultSettings,
+} from '@atocha/spirit-islander/settings/util';
 import { Models } from './models';
 import {
   invalidDifficultyRange,
@@ -18,10 +22,6 @@ import {
   required,
   restrictedBoardPairings,
 } from './validators';
-import {
-  Settings,
-  createDefaultSettings,
-} from '@atocha/spirit-islander/settings/util';
 
 export class ConfigForm extends FormGroup<Form<Config>> {
   readonly expansions$ = this.get('expansions')?.valueChanges ?? of([]);
