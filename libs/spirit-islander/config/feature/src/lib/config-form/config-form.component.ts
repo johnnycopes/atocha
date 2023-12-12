@@ -24,7 +24,7 @@ import { Config } from '@atocha/spirit-islander/config/util';
 import { CheckboxTreeComponent } from '../checkbox-tree/checkbox-tree.component';
 import { SelectDifficultyRangeComponent } from '../select-difficulty-range/select-difficulty-range.component';
 import { SelectPlayersComponent } from '../select-players/select-players.component';
-import { ConfigForm } from './config-form';
+import { ConfigForm } from './config-form/config-form';
 import { Root } from './root';
 
 @Component({
