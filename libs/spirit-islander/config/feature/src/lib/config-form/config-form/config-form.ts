@@ -9,7 +9,7 @@ import { of } from 'rxjs';
 import { Form } from '@atocha/core/ui';
 import { Expansion } from '@atocha/spirit-islander/shared/util';
 import { Config } from '@atocha/spirit-islander/config/util';
-import { Models } from '../models/models';
+import { Models } from '../models';
 import {
   invalidDifficultyRange,
   playersOutnumberSelectedBoards,

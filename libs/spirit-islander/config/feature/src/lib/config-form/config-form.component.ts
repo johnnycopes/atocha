@@ -25,7 +25,7 @@ import { CheckboxTreeComponent } from '../checkbox-tree/checkbox-tree.component'
 import { SelectDifficultyRangeComponent } from '../select-difficulty-range/select-difficulty-range.component';
 import { SelectPlayersComponent } from '../select-players/select-players.component';
 import { ConfigForm } from './config-form';
-import { Root } from './root/root';
+import { Root } from './root';
 
 @Component({
   selector: 'app-config-form',
