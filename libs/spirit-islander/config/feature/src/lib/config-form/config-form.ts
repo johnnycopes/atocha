@@ -12,7 +12,7 @@ import {
   playersOutnumberTotalBoards,
   required,
   restrictedBoardPairings,
-} from './validators';
+} from './validators/validators';
 import {
   Settings,
   createDefaultSettings,
