@@ -1,9 +1,18 @@
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  NonNullableFormBuilder,
+  Validators,
+} from '@angular/forms';
 import { of } from 'rxjs';
 
 import { Form } from '@atocha/core/ui';
 import { Expansion } from '@atocha/spirit-islander/shared/util';
 import { Config } from '@atocha/spirit-islander/config/util';
+import {
+  Settings,
+  createDefaultSettings,
+} from '@atocha/spirit-islander/settings/util';
 import { Models } from './models';
 import {
   invalidDifficultyRange,
@@ -13,10 +22,6 @@ import {
   required,
   restrictedBoardPairings,
 } from './validators';
-import {
-  Settings,
-  createDefaultSettings,
-} from '@atocha/spirit-islander/settings/util';
 
 export class ConfigForm extends FormGroup<Form<Config>> {
   readonly expansions$ = this.get('expansions')?.valueChanges ?? of([]);
@@ -58,21 +63,18 @@ export class ConfigForm extends FormGroup<Form<Config>> {
   constructor(
     readonly model: Config,
     readonly settings: Settings = createDefaultSettings(),
-    readonly fb: FormBuilder = new FormBuilder()
+    readonly fb: NonNullableFormBuilder = new FormBuilder().nonNullable
   ) {
     super(
-      fb.nonNullable.group({
-        expansions: fb.nonNullable.control(model.expansions),
-        players: fb.nonNullable.control(model.players),
-        difficultyRange: fb.nonNullable.control(model.difficultyRange),
-        spiritNames: fb.nonNullable.control(model.spiritNames),
-        mapNames: fb.nonNullable.control(model.mapNames, required),
-        boardNames: fb.nonNullable.control(model.boardNames),
-        scenarioNames: fb.nonNullable.control(model.scenarioNames, required),
-        adversaryLevelIds: fb.nonNullable.control(
-          model.adversaryLevelIds,
-          required
-        ),
+      fb.group({
+        expansions: fb.control(model.expansions),
+        players: fb.control(model.players),
+        difficultyRange: fb.control(model.difficultyRange),
+        spiritNames: fb.control(model.spiritNames),
+        mapNames: fb.control(model.mapNames, required),
+        boardNames: fb.control(model.boardNames),
+        scenarioNames: fb.control(model.scenarioNames, required),
+        adversaryLevelIds: fb.control(model.adversaryLevelIds, required),
       }).controls,
       {
         validators: [
