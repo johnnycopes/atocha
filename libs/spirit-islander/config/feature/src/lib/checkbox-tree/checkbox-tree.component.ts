@@ -15,7 +15,7 @@ import {
   ExpansionEmblemComponent,
 } from '@atocha/spirit-islander/shared/ui';
 import { SelectionTreeComponent } from '@atocha/tree/ui';
-import { Node } from '../config-form/root';
+import { Node } from '../config-form/root/root';
 
 @Component({
   selector: 'app-checkbox-tree',
