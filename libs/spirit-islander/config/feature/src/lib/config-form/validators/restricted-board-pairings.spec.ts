@@ -5,15 +5,15 @@ import { Config } from '@atocha/spirit-islander/config/util';
 import { restrictedBoardPairings } from './restricted-board-pairings';
 
 describe('restrictedBoardPairings', () => {
-  const fbnn = new FormBuilder().nonNullable;
+  const fb = new FormBuilder().nonNullable;
 
   describe('returns null', () => {
     it('when `allowBEAndDFBoards` setting is true', () => {
       expect(
         restrictedBoardPairings(true)(
-          fbnn.group<Pick<Form<Config>, 'players' | 'boardNames'>>({
-            players: fbnn.control(2),
-            boardNames: fbnn.control(['B', 'E']),
+          fb.group<Pick<Form<Config>, 'players' | 'boardNames'>>({
+            players: fb.control(2),
+            boardNames: fb.control(['B', 'E']),
           })
         )
       ).toBe(null);
@@ -22,18 +22,18 @@ describe('restrictedBoardPairings', () => {
     it('in games with more or fewer than 2 players', () => {
       expect(
         restrictedBoardPairings(false)(
-          fbnn.group<Pick<Form<Config>, 'players' | 'boardNames'>>({
-            players: fbnn.control(1),
-            boardNames: fbnn.control(['B', 'E']),
+          fb.group<Pick<Form<Config>, 'players' | 'boardNames'>>({
+            players: fb.control(1),
+            boardNames: fb.control(['B', 'E']),
           })
         )
       ).toBe(null);
 
       expect(
         restrictedBoardPairings(false)(
-          fbnn.group<Pick<Form<Config>, 'players' | 'boardNames'>>({
-            players: fbnn.control(3),
-            boardNames: fbnn.control(['A', 'B', 'E']),
+          fb.group<Pick<Form<Config>, 'players' | 'boardNames'>>({
+            players: fb.control(3),
+            boardNames: fb.control(['A', 'B', 'E']),
           })
         )
       ).toBe(null);
@@ -42,9 +42,9 @@ describe('restrictedBoardPairings', () => {
     it("when restricted pairings aren't selected", () => {
       expect(
         restrictedBoardPairings(false)(
-          fbnn.group<Pick<Form<Config>, 'players' | 'boardNames'>>({
-            players: fbnn.control(2),
-            boardNames: fbnn.control(['A', 'B']),
+          fb.group<Pick<Form<Config>, 'players' | 'boardNames'>>({
+            players: fb.control(2),
+            boardNames: fb.control(['A', 'B']),
           })
         )
       ).toBe(null);
@@ -55,9 +55,9 @@ describe('restrictedBoardPairings', () => {
     it('when B and E are selected', () => {
       expect(
         restrictedBoardPairings(false)(
-          fbnn.group<Pick<Form<Config>, 'players' | 'boardNames'>>({
-            players: fbnn.control(2),
-            boardNames: fbnn.control(['B', 'E']),
+          fb.group<Pick<Form<Config>, 'players' | 'boardNames'>>({
+            players: fb.control(2),
+            boardNames: fb.control(['B', 'E']),
           })
         )
       ).toEqual({
@@ -69,9 +69,9 @@ describe('restrictedBoardPairings', () => {
     it('when D and F are selected', () => {
       expect(
         restrictedBoardPairings(false)(
-          fbnn.group<Pick<Form<Config>, 'players' | 'boardNames'>>({
-            players: fbnn.control(2),
-            boardNames: fbnn.control(['D', 'F']),
+          fb.group<Pick<Form<Config>, 'players' | 'boardNames'>>({
+            players: fb.control(2),
+            boardNames: fb.control(['D', 'F']),
           })
         )
       ).toEqual({

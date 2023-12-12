@@ -5,14 +5,14 @@ import { Config } from '@atocha/spirit-islander/config/util';
 import { playersOutnumberSelectedBoards } from './players-outnumber-selected-boards';
 
 describe('playersOutnumberSelectedBoards', () => {
-  const fbnn = new FormBuilder().nonNullable;
+  const fb = new FormBuilder().nonNullable;
 
   it('returns an error if player count is greater than boards count', () => {
     expect(
       playersOutnumberSelectedBoards(
-        fbnn.group<Pick<Form<Config>, 'players' | 'boardNames'>>({
-          players: fbnn.control(2),
-          boardNames: fbnn.control(['A']),
+        fb.group<Pick<Form<Config>, 'players' | 'boardNames'>>({
+          players: fb.control(2),
+          boardNames: fb.control(['A']),
         })
       )
     ).toEqual({
@@ -24,9 +24,9 @@ describe('playersOutnumberSelectedBoards', () => {
   it('returns null if boards count is greater than or equal to players count', () => {
     expect(
       playersOutnumberSelectedBoards(
-        fbnn.group<Pick<Form<Config>, 'players' | 'boardNames'>>({
-          players: fbnn.control(2),
-          boardNames: fbnn.control(['A', 'B']),
+        fb.group<Pick<Form<Config>, 'players' | 'boardNames'>>({
+          players: fb.control(2),
+          boardNames: fb.control(['A', 'B']),
         })
       )
     ).toBe(null);

@@ -5,14 +5,14 @@ import { Config } from '@atocha/spirit-islander/config/util';
 import { playersOutnumberSpirits } from './players-outnumber-spirits';
 
 describe('playersOutnumberSpirits', () => {
-  const fbnn = new FormBuilder().nonNullable;
+  const fb = new FormBuilder().nonNullable;
 
   it('returns an error if player count is greater than spirits count', () => {
     expect(
       playersOutnumberSpirits(
-        fbnn.group<Pick<Form<Config>, 'players' | 'spiritNames'>>({
-          players: fbnn.control(2),
-          spiritNames: fbnn.control(['Thunderspeaker']),
+        fb.group<Pick<Form<Config>, 'players' | 'spiritNames'>>({
+          players: fb.control(2),
+          spiritNames: fb.control(['Thunderspeaker']),
         })
       )
     ).toEqual({
@@ -23,9 +23,9 @@ describe('playersOutnumberSpirits', () => {
   it('returns null if spirits count is greater than or equal to spirits count', () => {
     expect(
       playersOutnumberSpirits(
-        fbnn.group<Pick<Form<Config>, 'players' | 'spiritNames'>>({
-          players: fbnn.control(1),
-          spiritNames: fbnn.control(['Thunderspeaker']),
+        fb.group<Pick<Form<Config>, 'players' | 'spiritNames'>>({
+          players: fb.control(1),
+          spiritNames: fb.control(['Thunderspeaker']),
         })
       )
     ).toBe(null);

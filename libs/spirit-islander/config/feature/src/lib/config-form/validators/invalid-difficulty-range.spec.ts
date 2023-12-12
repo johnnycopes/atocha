@@ -5,20 +5,20 @@ import { Config } from '@atocha/spirit-islander/config/util';
 import { invalidDifficultyRange } from './invalid-difficulty-range';
 
 describe('invalidDifficultyRange', () => {
-  const fbnn = new FormBuilder().nonNullable;
+  const fb = new FormBuilder().nonNullable;
 
   it('returns an error if minimum difficulty exceeds maximum difficulty', () => {
     expect(
       invalidDifficultyRange(
-        fbnn.group<Form<Config>>({
-          expansions: fbnn.control([]),
-          players: fbnn.control(1),
-          difficultyRange: fbnn.control([1, 0]),
-          spiritNames: fbnn.control(['Thunderspeaker']),
-          mapNames: fbnn.control(['Balanced']),
-          boardNames: fbnn.control(['A']),
-          scenarioNames: fbnn.control(['No Scenario']),
-          adversaryLevelIds: fbnn.control(['none']),
+        fb.group<Form<Config>>({
+          expansions: fb.control([]),
+          players: fb.control(1),
+          difficultyRange: fb.control([1, 0]),
+          spiritNames: fb.control(['Thunderspeaker']),
+          mapNames: fb.control(['Balanced']),
+          boardNames: fb.control(['A']),
+          scenarioNames: fb.control(['No Scenario']),
+          adversaryLevelIds: fb.control(['none']),
         })
       )
     ).toEqual({ invalidDifficultyRange: 'Minimum cannot exceed maximum' });
@@ -27,15 +27,15 @@ describe('invalidDifficultyRange', () => {
   it('returns an error if valid combos cannot be generated', () => {
     expect(
       invalidDifficultyRange(
-        fbnn.group<Form<Config>>({
-          expansions: fbnn.control([]),
-          players: fbnn.control(1),
-          difficultyRange: fbnn.control([10, 15]),
-          spiritNames: fbnn.control(['Thunderspeaker']),
-          mapNames: fbnn.control(['Balanced']),
-          boardNames: fbnn.control(['A']),
-          scenarioNames: fbnn.control(['No Scenario']),
-          adversaryLevelIds: fbnn.control(['none']),
+        fb.group<Form<Config>>({
+          expansions: fb.control([]),
+          players: fb.control(1),
+          difficultyRange: fb.control([10, 15]),
+          spiritNames: fb.control(['Thunderspeaker']),
+          mapNames: fb.control(['Balanced']),
+          boardNames: fb.control(['A']),
+          scenarioNames: fb.control(['No Scenario']),
+          adversaryLevelIds: fb.control(['none']),
         })
       )
     ).toEqual({
@@ -49,15 +49,15 @@ describe('invalidDifficultyRange', () => {
   it('returns null if maximum difficulty exceeds minimum difficulty and valid combos can be generated', () => {
     expect(
       invalidDifficultyRange(
-        fbnn.group<Form<Config>>({
-          expansions: fbnn.control([]),
-          players: fbnn.control(1),
-          difficultyRange: fbnn.control([0, 1]),
-          spiritNames: fbnn.control(['Thunderspeaker']),
-          mapNames: fbnn.control(['Balanced']),
-          boardNames: fbnn.control(['A']),
-          scenarioNames: fbnn.control(['No Scenario']),
-          adversaryLevelIds: fbnn.control(['none']),
+        fb.group<Form<Config>>({
+          expansions: fb.control([]),
+          players: fb.control(1),
+          difficultyRange: fb.control([0, 1]),
+          spiritNames: fb.control(['Thunderspeaker']),
+          mapNames: fb.control(['Balanced']),
+          boardNames: fb.control(['A']),
+          scenarioNames: fb.control(['No Scenario']),
+          adversaryLevelIds: fb.control(['none']),
         })
       )
     ).toBe(null);
