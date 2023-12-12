@@ -2,7 +2,7 @@ import { FormBuilder } from '@angular/forms';
 
 import { Form } from '@atocha/core/ui';
 import { Config } from '@atocha/spirit-islander/config/util';
-import { restrictedBoardPairings } from './validators';
+import { restrictedBoardPairings } from './restricted-board-pairings';
 
 describe('restrictedBoardPairings', () => {
   const fbnn = new FormBuilder().nonNullable;

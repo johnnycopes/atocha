@@ -2,7 +2,7 @@ import { FormBuilder } from '@angular/forms';
 
 import { Form } from '@atocha/core/ui';
 import { Config } from '@atocha/spirit-islander/config/util';
-import { playersOutnumberTotalBoards } from './validators';
+import { playersOutnumberTotalBoards } from './players-outnumber-total-boards';
 
 describe('playersOutnumberTotalBoards', () => {
   const fbnn = new FormBuilder().nonNullable;

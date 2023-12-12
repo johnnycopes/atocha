@@ -1,6 +1,6 @@
 import { FormBuilder } from '@angular/forms';
 
-import { required } from './validators';
+import { required } from './required';
 
 describe('required', () => {
   const fbnn = new FormBuilder().nonNullable;
