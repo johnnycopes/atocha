@@ -1,5 +1,5 @@
 import { Config } from '@atocha/spirit-islander/config/util';
-import { ConfigForm } from './config-form';
+import { ConfigForm } from '../config-form';
 import {
   Settings,
   createDefaultSettings,
