@@ -18,7 +18,7 @@ import {
   FlipCardGuess,
   FlipCardSide,
 } from '@atocha/globetrotter/ui';
-import { Country, Duration, QuizType } from '@atocha/globetrotter/util';
+import { Country, DURATION, QuizType } from '@atocha/globetrotter/util';
 
 type CardTemplate = Record<FlipCardSide, TemplateRef<unknown> | undefined>;
 
@@ -86,7 +86,7 @@ export class QuizCardComponent implements OnInit {
     // After flip animation is complete, the card is flipped back over and the guess is reset
     else if (triggerName === 'guess') {
       if (toState === 'correct' || toState === 'incorrect') {
-        await wait(Duration.cardFlipDisplay);
+        await wait(DURATION.cardFlipDisplay);
         this.guess = 'none';
         this.flipCardComponent?.flip();
         this._changeDetectorRef.markForCheck();
@@ -105,7 +105,7 @@ export class QuizCardComponent implements OnInit {
   }
 
   private async _updateQuiz() {
-    await wait(Duration.quizUpdateDelay);
+    await wait(DURATION.quizUpdateDelay);
     this.guessed.emit(this.isCurrentCountry);
     this.flipped.emit(false);
     this._processingFlip = false;
