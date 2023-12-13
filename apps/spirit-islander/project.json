@@ -56,10 +56,10 @@
       "executor": "@angular-devkit/build-angular:dev-server",
       "configurations": {
         "production": {
-          "browserTarget": "spirit-islander:build:production"
+          "buildTarget": "spirit-islander:build:production"
         },
         "development": {
-          "browserTarget": "spirit-islander:build:development"
+          "buildTarget": "spirit-islander:build:development"
         }
       },
       "defaultConfiguration": "development",
@@ -70,24 +70,17 @@
     "extract-i18n": {
       "executor": "@angular-devkit/build-angular:extract-i18n",
       "options": {
-        "browserTarget": "spirit-islander:build"
+        "buildTarget": "spirit-islander:build"
       }
     },
     "lint": {
-      "executor": "@nx/eslint:lint",
-      "options": {
-        "lintFilePatterns": [
-          "apps/spirit-islander/**/*.ts",
-          "apps/spirit-islander/**/*.html"
-        ]
-      }
+      "executor": "@nx/eslint:lint"
     },
     "test": {
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/apps/spirit-islander"],
       "options": {
-        "jestConfig": "apps/spirit-islander/jest.config.ts",
-        "passWithNoTests": true
+        "jestConfig": "apps/spirit-islander/jest.config.ts"
       }
     },
     "deploy": {

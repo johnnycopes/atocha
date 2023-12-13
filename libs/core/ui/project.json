@@ -9,15 +9,11 @@
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/libs/core/ui"],
       "options": {
-        "jestConfig": "libs/core/ui/jest.config.ts",
-        "passWithNoTests": true
+        "jestConfig": "libs/core/ui/jest.config.ts"
       }
     },
     "lint": {
-      "executor": "@nx/eslint:lint",
-      "options": {
-        "lintFilePatterns": ["libs/core/ui/**/*.ts", "libs/core/ui/**/*.html"]
-      }
+      "executor": "@nx/eslint:lint"
     },
     "storybook": {
       "executor": "@storybook/angular:start-storybook",

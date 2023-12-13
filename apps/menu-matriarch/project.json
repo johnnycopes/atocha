@@ -62,10 +62,10 @@
       },
       "configurations": {
         "production": {
-          "browserTarget": "menu-matriarch:build:production"
+          "buildTarget": "menu-matriarch:build:production"
         },
         "development": {
-          "browserTarget": "menu-matriarch:build:development"
+          "buildTarget": "menu-matriarch:build:development"
         }
       },
       "defaultConfiguration": "development"
@@ -73,24 +73,17 @@
     "extract-i18n": {
       "executor": "@angular-devkit/build-angular:extract-i18n",
       "options": {
-        "browserTarget": "menu-matriarch:build"
+        "buildTarget": "menu-matriarch:build"
       }
     },
     "lint": {
-      "executor": "@nx/eslint:lint",
-      "options": {
-        "lintFilePatterns": [
-          "apps/menu-matriarch/**/*.ts",
-          "apps/menu-matriarch/**/*.html"
-        ]
-      }
+      "executor": "@nx/eslint:lint"
     },
     "test": {
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/apps/menu-matriarch"],
       "options": {
-        "jestConfig": "apps/menu-matriarch/jest.config.ts",
-        "passWithNoTests": true
+        "jestConfig": "apps/menu-matriarch/jest.config.ts"
       }
     },
     "deploy": {

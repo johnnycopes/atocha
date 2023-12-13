@@ -11,18 +11,11 @@
         "{workspaceRoot}/coverage/libs/menu-matriarch/shared/feature"
       ],
       "options": {
-        "jestConfig": "libs/menu-matriarch/shared/feature/jest.config.ts",
-        "passWithNoTests": true
+        "jestConfig": "libs/menu-matriarch/shared/feature/jest.config.ts"
       }
     },
     "lint": {
-      "executor": "@nx/eslint:lint",
-      "options": {
-        "lintFilePatterns": [
-          "libs/menu-matriarch/shared/feature/**/*.ts",
-          "libs/menu-matriarch/shared/feature/**/*.html"
-        ]
-      }
+      "executor": "@nx/eslint:lint"
     }
   },
   "tags": ["scope:menu-matriarch", "type:feature"]
