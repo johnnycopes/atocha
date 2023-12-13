@@ -37,7 +37,7 @@ describe('ClickOutsideDirective', () => {
     jest
       .spyOn(window, 'requestAnimationFrame')
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      .mockImplementation((cb) => cb(0) as any);
+      .mockImplementation((cb: any) => cb(0) as any);
   });
 
   it('should create', () => {
