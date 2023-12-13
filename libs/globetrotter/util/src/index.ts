@@ -10,6 +10,7 @@ export * from './lib/domain/subregion.interface';
 export * from './lib/domain/summary.interface';
 
 export * from './lib/duration.enum';
+export * from './lib/duration';
 export * from './lib/quiz-type.enum';
 export * from './lib/route.enum';
 export * from './lib/selection.interface';
