@@ -1,5 +1,6 @@
 import { ApplicationConfig, importProvidersFrom } from '@angular/core';
 import { AngularFireModule } from '@angular/fire/compat';
+import { FIREBASE_OPTIONS } from '@angular/fire/compat';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { provideRouter, withInMemoryScrolling } from '@angular/router';
@@ -13,6 +14,10 @@ export const appConfig: ApplicationConfig = {
     {
       provide: APP_NAME_TOKEN,
       useValue: 'MENU_MATRIARCH',
+    },
+    {
+      provide: FIREBASE_OPTIONS,
+      useValue: environment.firebaseConfig,
     },
     provideRouter(
       APP_ROUTES,
