@@ -1,6 +1,6 @@
 import { ApplicationConfig, importProvidersFrom } from '@angular/core';
 import { AngularFireModule } from '@angular/fire/compat';
-import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { provideRouter, withInMemoryScrolling } from '@angular/router';
 
@@ -20,7 +20,7 @@ export const appConfig: ApplicationConfig = {
     ),
     importProvidersFrom([
       AngularFireModule.initializeApp(environment.firebaseConfig),
-      AngularFirestoreModule,
+      provideFirestore(() => getFirestore()),
       BrowserAnimationsModule,
     ]),
   ],
