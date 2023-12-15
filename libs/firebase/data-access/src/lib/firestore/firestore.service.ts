@@ -32,11 +32,12 @@ export class FirestoreService {
   }
 
   getDocRef<T>(endpoint: string, id: string): DocumentReference<T> {
-    return this._getDocNew<T>(endpoint, id);
+    return this._getDocRef<T>(endpoint, id);
   }
 
   getOne<T>(endpoint: string, id: string): Observable<T | undefined> {
-    return docData(this._getDocNew<T>(endpoint, id)).pipe(
+    const doc = this._getDocRef<T>(endpoint, id);
+    return docData(doc).pipe(
       catchError(() => of(undefined)),
       shareReplay({ bufferSize: 1, refCount: true })
     );
@@ -55,7 +56,7 @@ export class FirestoreService {
   }
 
   async create<T>(endpoint: string, id: string, data: T): Promise<void> {
-    const doc = this._getDocNew<T>(endpoint, id);
+    const doc = this._getDocRef<T>(endpoint, id);
     return await setDoc(doc, data);
   }
 
@@ -64,12 +65,12 @@ export class FirestoreService {
     id: string,
     data: Partial<T>
   ): Promise<void> {
-    const doc = this._getDocNew<T>(endpoint, id);
+    const doc = this._getDocRef<T>(endpoint, id);
     return await updateDoc<T>(doc, data as UpdateData<T>);
   }
 
   async delete<T>(endpoint: string, id: string): Promise<void> {
-    const doc = this._getDocNew<T>(endpoint, id);
+    const doc = this._getDocRef<T>(endpoint, id);
     return await deleteDoc(doc);
   }
 
@@ -93,7 +94,7 @@ export class FirestoreService {
     return firebase.firestore.FieldValue.increment(value) as unknown as number;
   }
 
-  private _getDocNew<T>(endpoint: string, id: string): DocumentReference<T> {
+  private _getDocRef<T>(endpoint: string, id: string): DocumentReference<T> {
     return doc(this._firestore.firestore, endpoint, id) as DocumentReference<T>;
   }
 }
