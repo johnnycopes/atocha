@@ -3,9 +3,18 @@ import {
   AngularFirestore,
   AngularFirestoreDocument,
 } from '@angular/fire/compat/firestore';
-import { DocumentReference, WriteBatch, doc } from '@angular/fire/firestore';
+import {
+  DocumentReference,
+  UpdateData,
+  WriteBatch,
+  deleteDoc,
+  doc,
+  docData,
+  setDoc,
+  updateDoc,
+  writeBatch,
+} from '@angular/fire/firestore';
 import firebase from 'firebase/compat/app';
-import { writeBatch } from 'firebase/firestore';
 import { Observable, of } from 'rxjs';
 import { catchError, shareReplay } from 'rxjs/operators';
 
@@ -26,17 +35,14 @@ export class FirestoreService {
   }
 
   getDocRef<T>(endpoint: string, id: string): DocumentReference<T> {
-    // return this._getDoc<T>(endpoint, id).ref;
     return this._getDocNew<T>(endpoint, id);
   }
 
   getOne<T>(endpoint: string, id: string): Observable<T | undefined> {
-    return this._getDoc<T>(endpoint, id)
-      .valueChanges()
-      .pipe(
-        catchError(() => of(undefined)),
-        shareReplay({ bufferSize: 1, refCount: true })
-      );
+    return docData(this._getDocNew<T>(endpoint, id)).pipe(
+      catchError(() => of(undefined)),
+      shareReplay({ bufferSize: 1, refCount: true })
+    );
   }
 
   getMany<T>(endpoint: string, uid: string): Observable<T[]> {
@@ -52,7 +58,8 @@ export class FirestoreService {
   }
 
   async create<T>(endpoint: string, id: string, data: T): Promise<void> {
-    return await this._getDoc<T>(endpoint, id).set(data);
+    const doc = this._getDocNew<T>(endpoint, id);
+    return await setDoc(doc, data);
   }
 
   async update<T>(
@@ -60,11 +67,13 @@ export class FirestoreService {
     id: string,
     data: Partial<T>
   ): Promise<void> {
-    return await this._getDoc<T>(endpoint, id).update(data);
+    const doc = this._getDocNew<T>(endpoint, id);
+    return await updateDoc<T>(doc, data as UpdateData<T>);
   }
 
   async delete<T>(endpoint: string, id: string): Promise<void> {
-    return await this._getDoc<T>(endpoint, id).delete();
+    const doc = this._getDocNew<T>(endpoint, id);
+    return await deleteDoc(doc);
   }
 
   createId(): string {
