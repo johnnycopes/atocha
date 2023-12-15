@@ -1,8 +1,5 @@
 import { Injectable } from '@angular/core';
-import {
-  AngularFirestore,
-  AngularFirestoreDocument,
-} from '@angular/fire/compat/firestore';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 import {
   DocumentReference,
   UpdateData,
@@ -94,13 +91,6 @@ export class FirestoreService {
 
   changeCounter(value: number): number {
     return firebase.firestore.FieldValue.increment(value) as unknown as number;
-  }
-
-  private _getDoc<T>(
-    endpoint: string,
-    id: string
-  ): AngularFirestoreDocument<T> {
-    return this._firestore.collection<T>(endpoint).doc(id);
   }
 
   private _getDocNew<T>(endpoint: string, id: string): DocumentReference<T> {
