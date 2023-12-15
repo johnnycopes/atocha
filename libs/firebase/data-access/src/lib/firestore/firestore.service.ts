@@ -2,9 +2,10 @@ import { Injectable } from '@angular/core';
 import {
   AngularFirestore,
   AngularFirestoreDocument,
-  DocumentReference,
 } from '@angular/fire/compat/firestore';
+import { DocumentReference, WriteBatch, doc } from '@angular/fire/firestore';
 import firebase from 'firebase/compat/app';
+import { writeBatch } from 'firebase/firestore';
 import { Observable, of } from 'rxjs';
 import { catchError, shareReplay } from 'rxjs/operators';
 
@@ -14,8 +15,8 @@ import { catchError, shareReplay } from 'rxjs/operators';
 export class FirestoreService {
   constructor(private _firestore: AngularFirestore) {}
 
-  createBatch(): firebase.firestore.WriteBatch {
-    return this._firestore.firestore.batch();
+  createBatch(): WriteBatch {
+    return writeBatch(this._firestore.firestore);
   }
 
   createTransaction<T>(
@@ -25,7 +26,8 @@ export class FirestoreService {
   }
 
   getDocRef<T>(endpoint: string, id: string): DocumentReference<T> {
-    return this._getDoc<T>(endpoint, id).ref;
+    // return this._getDoc<T>(endpoint, id).ref;
+    return this._getDocNew<T>(endpoint, id);
   }
 
   getOne<T>(endpoint: string, id: string): Observable<T | undefined> {
@@ -90,5 +92,9 @@ export class FirestoreService {
     id: string
   ): AngularFirestoreDocument<T> {
     return this._firestore.collection<T>(endpoint).doc(id);
+  }
+
+  private _getDocNew<T>(endpoint: string, id: string): DocumentReference<T> {
+    return doc(this._firestore.firestore, endpoint, id) as DocumentReference<T>;
   }
 }
