@@ -1,5 +1,4 @@
-import { DocumentReference } from '@angular/fire/compat/firestore';
-import firebase from 'firebase/compat/app';
+import { DocumentReference, WriteBatch } from '@angular/fire/firestore';
 
 export interface BatchSet<T> {
   endpoint: string;
@@ -11,7 +10,7 @@ export type BatchUpdate = BatchSet<{ [fieldPath: string]: unknown }>;
 
 export class Batch {
   constructor(
-    private _batch: firebase.firestore.WriteBatch,
+    private _batch: WriteBatch,
     private _getDocRef: <T>(
       endpoint: string,
       id: string

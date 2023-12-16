@@ -1,6 +1,7 @@
 import { ApplicationConfig, importProvidersFrom } from '@angular/core';
-import { AngularFireModule } from '@angular/fire/compat';
-import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { getAuth, provideAuth } from '@angular/fire/auth';
+import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { provideRouter, withInMemoryScrolling } from '@angular/router';
 
@@ -19,8 +20,9 @@ export const appConfig: ApplicationConfig = {
       withInMemoryScrolling({ scrollPositionRestoration: 'enabled' })
     ),
     importProvidersFrom([
-      AngularFireModule.initializeApp(environment.firebaseConfig),
-      AngularFirestoreModule,
+      provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
+      provideFirestore(() => getFirestore()),
+      provideAuth(() => getAuth()),
       BrowserAnimationsModule,
     ]),
   ],
