@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import {
   DocumentReference,
+  Transaction,
   UpdateData,
   WriteBatch,
   arrayRemove,
@@ -11,11 +12,11 @@ import {
   doc,
   docData,
   increment,
+  runTransaction,
   setDoc,
   updateDoc,
   writeBatch,
 } from '@angular/fire/firestore';
-import firebase from 'firebase/compat/app';
 import { Observable, of } from 'rxjs';
 import { catchError, shareReplay } from 'rxjs/operators';
 
@@ -30,9 +31,9 @@ export class FirestoreService {
   }
 
   createTransaction<T>(
-    updateFn: (transaction: firebase.firestore.Transaction) => Promise<T>
+    updateFn: (transaction: Transaction) => Promise<T>
   ): Promise<T> {
-    return this._firestore.firestore.runTransaction(updateFn);
+    return runTransaction(this._firestore.firestore, updateFn);
   }
 
   getDocRef<T>(endpoint: string, id: string): DocumentReference<T> {
