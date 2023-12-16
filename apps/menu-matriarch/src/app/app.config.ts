@@ -1,5 +1,4 @@
 import { ApplicationConfig, importProvidersFrom } from '@angular/core';
-import { FIREBASE_OPTIONS } from '@angular/fire/compat';
 import { getAuth, provideAuth } from '@angular/fire/auth';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
@@ -15,10 +14,6 @@ export const appConfig: ApplicationConfig = {
     {
       provide: APP_NAME_TOKEN,
       useValue: 'MENU_MATRIARCH',
-    },
-    {
-      provide: FIREBASE_OPTIONS,
-      useValue: environment.firebaseConfig,
     },
     provideRouter(
       APP_ROUTES,
