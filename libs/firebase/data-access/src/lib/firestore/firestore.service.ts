@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
 import {
   CollectionReference,
   DocumentReference,
+  Firestore,
   Transaction,
   UpdateData,
   WriteBatch,
@@ -29,16 +29,16 @@ import { catchError, shareReplay } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class FirestoreService {
-  constructor(private _firestore: AngularFirestore) {}
+  constructor(private _firestore: Firestore) {}
 
   createBatch(): WriteBatch {
-    return writeBatch(this._firestore.firestore);
+    return writeBatch(this._firestore);
   }
 
   createTransaction<T>(
     updateFn: (transaction: Transaction) => Promise<T>
   ): Promise<T> {
-    return runTransaction(this._firestore.firestore, updateFn);
+    return runTransaction(this._firestore, updateFn);
   }
 
   getDocRef<T>(endpoint: string, id: string): DocumentReference<T> {
@@ -55,7 +55,7 @@ export class FirestoreService {
 
   getMany<T>(endpoint: string, uid: string): Observable<T[]> {
     const q = query(
-      collection(this._firestore.firestore, endpoint) as CollectionReference<T>,
+      collection(this._firestore, endpoint) as CollectionReference<T>,
       where('uid', '==', uid),
       orderBy('name')
     );
@@ -86,7 +86,7 @@ export class FirestoreService {
   }
 
   createId(): string {
-    return doc(collection(this._firestore.firestore, '_')).id;
+    return doc(collection(this._firestore, '_')).id;
   }
 
   addToArray(...ids: string[]): string[] {
@@ -102,6 +102,6 @@ export class FirestoreService {
   }
 
   private _getDocRef<T>(endpoint: string, id: string): DocumentReference<T> {
-    return doc(this._firestore.firestore, endpoint, id) as DocumentReference<T>;
+    return doc(this._firestore, endpoint, id) as DocumentReference<T>;
   }
 }
