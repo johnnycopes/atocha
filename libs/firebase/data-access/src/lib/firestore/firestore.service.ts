@@ -4,9 +4,12 @@ import {
   DocumentReference,
   UpdateData,
   WriteBatch,
+  arrayRemove,
+  arrayUnion,
   deleteDoc,
   doc,
   docData,
+  increment,
   setDoc,
   updateDoc,
   writeBatch,
@@ -79,19 +82,15 @@ export class FirestoreService {
   }
 
   addToArray(...ids: string[]): string[] {
-    return firebase.firestore.FieldValue.arrayUnion(
-      ...ids
-    ) as unknown as string[];
+    return arrayUnion(...ids) as unknown as string[];
   }
 
   removeFromArray(...ids: string[]): string[] {
-    return firebase.firestore.FieldValue.arrayRemove(
-      ...ids
-    ) as unknown as string[];
+    return arrayRemove(...ids) as unknown as string[];
   }
 
   changeCounter(value: number): number {
-    return firebase.firestore.FieldValue.increment(value) as unknown as number;
+    return increment(value) as unknown as number;
   }
 
   private _getDocRef<T>(endpoint: string, id: string): DocumentReference<T> {
