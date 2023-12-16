@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import {
+  CollectionReference,
   DocumentReference,
   Transaction,
   UpdateData,
@@ -8,13 +9,17 @@ import {
   arrayRemove,
   arrayUnion,
   collection,
+  collectionData,
   deleteDoc,
   doc,
   docData,
   increment,
+  orderBy,
+  query,
   runTransaction,
   setDoc,
   updateDoc,
+  where,
   writeBatch,
 } from '@angular/fire/firestore';
 import { Observable, of } from 'rxjs';
@@ -49,15 +54,16 @@ export class FirestoreService {
   }
 
   getMany<T>(endpoint: string, uid: string): Observable<T[]> {
-    return this._firestore
-      .collection<T>(endpoint, (ref) =>
-        ref.where('uid', '==', uid).orderBy('name')
-      )
-      .valueChanges()
-      .pipe(
-        catchError(() => of([])),
-        shareReplay({ bufferSize: 1, refCount: true })
-      );
+    const q = query(
+      collection(this._firestore.firestore, endpoint) as CollectionReference<T>,
+      where('uid', '==', uid),
+      orderBy('name')
+    );
+
+    return collectionData(q).pipe(
+      catchError(() => of([])),
+      shareReplay({ bufferSize: 1, refCount: true })
+    );
   }
 
   async create<T>(endpoint: string, id: string, data: T): Promise<void> {
