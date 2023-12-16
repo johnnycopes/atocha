@@ -6,6 +6,7 @@ import {
   WriteBatch,
   arrayRemove,
   arrayUnion,
+  collection,
   deleteDoc,
   doc,
   docData,
@@ -78,7 +79,7 @@ export class FirestoreService {
   }
 
   createId(): string {
-    return this._firestore.createId();
+    return doc(collection(this._firestore.firestore, '_')).id;
   }
 
   addToArray(...ids: string[]): string[] {
