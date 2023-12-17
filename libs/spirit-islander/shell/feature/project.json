@@ -11,18 +11,11 @@
         "{workspaceRoot}/coverage/libs/spirit-islander/shell/feature"
       ],
       "options": {
-        "jestConfig": "libs/spirit-islander/shell/feature/jest.config.ts",
-        "passWithNoTests": true
+        "jestConfig": "libs/spirit-islander/shell/feature/jest.config.ts"
       }
     },
     "lint": {
-      "executor": "@nx/eslint:lint",
-      "options": {
-        "lintFilePatterns": [
-          "libs/spirit-islander/shell/feature/**/*.ts",
-          "libs/spirit-islander/shell/feature/**/*.html"
-        ]
-      }
+      "executor": "@nx/eslint:lint"
     }
   },
   "tags": ["scope:spirit-islander", "type:feature"]

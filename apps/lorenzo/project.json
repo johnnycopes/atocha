@@ -56,10 +56,10 @@
       "executor": "@angular-devkit/build-angular:dev-server",
       "configurations": {
         "production": {
-          "browserTarget": "lorenzo:build:production"
+          "buildTarget": "lorenzo:build:production"
         },
         "development": {
-          "browserTarget": "lorenzo:build:development"
+          "buildTarget": "lorenzo:build:development"
         }
       },
       "defaultConfiguration": "development",
@@ -70,21 +70,17 @@
     "extract-i18n": {
       "executor": "@angular-devkit/build-angular:extract-i18n",
       "options": {
-        "browserTarget": "lorenzo:build"
+        "buildTarget": "lorenzo:build"
       }
     },
     "lint": {
-      "executor": "@nx/eslint:lint",
-      "options": {
-        "lintFilePatterns": ["apps/lorenzo/**/*.ts", "apps/lorenzo/**/*.html"]
-      }
+      "executor": "@nx/eslint:lint"
     },
     "test": {
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/apps/lorenzo"],
       "options": {
-        "jestConfig": "apps/lorenzo/jest.config.ts",
-        "passWithNoTests": true
+        "jestConfig": "apps/lorenzo/jest.config.ts"
       }
     },
     "deploy": {
