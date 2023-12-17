@@ -4,7 +4,6 @@ import {
   DocumentReference,
   Firestore,
   Transaction,
-  UpdateData,
   WriteBatch,
   arrayRemove,
   arrayUnion,
@@ -77,7 +76,7 @@ export class FirestoreService {
     data: Partial<T>
   ): Promise<void> {
     const doc = this._getDocRef<T>(endpoint, id);
-    return await updateDoc<T>(doc, data as UpdateData<T>);
+    return await updateDoc(doc, data);
   }
 
   async delete<T>(endpoint: string, id: string): Promise<void> {
