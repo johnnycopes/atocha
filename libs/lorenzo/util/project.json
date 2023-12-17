@@ -6,17 +6,13 @@
   "targets": {
     "lint": {
       "executor": "@nx/eslint:lint",
-      "outputs": ["{options.outputFile}"],
-      "options": {
-        "lintFilePatterns": ["libs/lorenzo/util/**/*.ts"]
-      }
+      "outputs": ["{options.outputFile}"]
     },
     "test": {
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/libs/lorenzo/util"],
       "options": {
-        "jestConfig": "libs/lorenzo/util/jest.config.ts",
-        "passWithNoTests": true
+        "jestConfig": "libs/lorenzo/util/jest.config.ts"
       }
     }
   },

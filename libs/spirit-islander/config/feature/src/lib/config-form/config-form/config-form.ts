@@ -1,9 +1,18 @@
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  NonNullableFormBuilder,
+  Validators,
+} from '@angular/forms';
 import { of } from 'rxjs';
 
 import { Form } from '@atocha/core/ui';
 import { Expansion } from '@atocha/spirit-islander/shared/util';
 import { Config } from '@atocha/spirit-islander/config/util';
+import {
+  Settings,
+  createDefaultSettings,
+} from '@atocha/spirit-islander/settings/util';
 import { Models } from './models';
 import {
   invalidDifficultyRange,
@@ -11,21 +20,22 @@ import {
   playersOutnumberSpirits,
   playersOutnumberTotalBoards,
   required,
+  restrictedBoardPairings,
 } from './validators';
 
 export class ConfigForm extends FormGroup<Form<Config>> {
   readonly expansions$ = this.get('expansions')?.valueChanges ?? of([]);
 
   get playersError(): string {
-    return this.errors?.[playersOutnumberTotalBoards.name] ?? '';
+    return this.errors?.['playersOutnumberTotalBoards'] ?? '';
   }
 
   get difficultyError(): string {
-    return this.errors?.[invalidDifficultyRange.name] ?? '';
+    return this.errors?.['invalidDifficultyRange'] ?? '';
   }
 
   get spiritsError(): string {
-    return this.errors?.[playersOutnumberSpirits.name] ?? '';
+    return this.errors?.['playersOutnumberSpirits'] ?? '';
   }
 
   get mapsError(): string {
@@ -33,7 +43,11 @@ export class ConfigForm extends FormGroup<Form<Config>> {
   }
 
   get boardsError(): string {
-    return this.errors?.[playersOutnumberSelectedBoards.name] ?? '';
+    return (
+      (this.errors?.['playersOutnumberSelectedBoards'] ||
+        this.errors?.['restrictedBoardPairings']) ??
+      ''
+    );
   }
 
   get scenariosError(): string {
@@ -48,21 +62,19 @@ export class ConfigForm extends FormGroup<Form<Config>> {
 
   constructor(
     readonly model: Config,
-    readonly fb: FormBuilder = new FormBuilder()
+    readonly settings: Settings = createDefaultSettings(),
+    readonly fb: NonNullableFormBuilder = new FormBuilder().nonNullable
   ) {
     super(
-      fb.nonNullable.group({
-        expansions: fb.nonNullable.control(model.expansions),
-        players: fb.nonNullable.control(model.players),
-        difficultyRange: fb.nonNullable.control(model.difficultyRange),
-        spiritNames: fb.nonNullable.control(model.spiritNames),
-        mapNames: fb.nonNullable.control(model.mapNames, required),
-        boardNames: fb.nonNullable.control(model.boardNames),
-        scenarioNames: fb.nonNullable.control(model.scenarioNames, required),
-        adversaryLevelIds: fb.nonNullable.control(
-          model.adversaryLevelIds,
-          required
-        ),
+      fb.group({
+        expansions: fb.control(model.expansions),
+        players: fb.control(model.players),
+        difficultyRange: fb.control(model.difficultyRange),
+        spiritNames: fb.control(model.spiritNames),
+        mapNames: fb.control(model.mapNames, required),
+        boardNames: fb.control(model.boardNames),
+        scenarioNames: fb.control(model.scenarioNames, required),
+        adversaryLevelIds: fb.control(model.adversaryLevelIds, required),
       }).controls,
       {
         validators: [
@@ -70,6 +82,7 @@ export class ConfigForm extends FormGroup<Form<Config>> {
           playersOutnumberTotalBoards,
           playersOutnumberSelectedBoards,
           invalidDifficultyRange,
+          restrictedBoardPairings(settings.allowBEAndDFBoards),
         ],
       }
     );

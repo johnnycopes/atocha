@@ -10,6 +10,7 @@ import {
   getScenarios,
   getSpirits,
 } from '@atocha/spirit-islander/shared/util';
+import { createDefaultSettings } from '@atocha/spirit-islander/settings/util';
 
 describe('createGameSetup', () => {
   it('returns a randomly-generated game setup', () => {
@@ -23,8 +24,10 @@ describe('createGameSetup', () => {
       scenarioNames: getNames(getScenarios()),
       adversaryLevelIds: getAdversaryLevelIds(getAdversaries()),
     };
-    const { boards, spirits, expansions, difficulty } =
-      createGameSetup(mockConfig);
+    const { boards, spirits, expansions, difficulty } = createGameSetup(
+      mockConfig,
+      createDefaultSettings()
+    );
 
     expect(boards).toHaveLength(4);
     expect(spirits).toHaveLength(4);

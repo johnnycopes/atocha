@@ -38,14 +38,29 @@
   }
 }
 
-.description {
-  position: relative;
-  top: 2px;
-  margin-left: 4px;
-  font-size: 12px;
+.nav {
+  margin-top: 8px;
+  font-size: 14px;
 
   @media screen and (min-width: 768px) {
-    font-size: unset;
-    margin-left: 0;
+    margin: 0;
+    font-size: 18px;
+  }
+}
+
+.link {
+  border-radius: var(--border-radius);
+  border: none;
+  margin-right: 8px;
+  padding: 4px 8px;
+
+  @media screen and (min-width: 768px) {
+    margin-right: 0;
+    margin-left: 16px;
+    padding: 8px 16px;
+  }
+
+  &.active {
+    background: var(--gray-400);
   }
 }

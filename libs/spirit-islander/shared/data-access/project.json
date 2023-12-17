@@ -11,18 +11,11 @@
         "{workspaceRoot}/coverage/libs/spirit-islander/shared/data-access"
       ],
       "options": {
-        "jestConfig": "libs/spirit-islander/shared/data-access/jest.config.ts",
-        "passWithNoTests": true
+        "jestConfig": "libs/spirit-islander/shared/data-access/jest.config.ts"
       }
     },
     "lint": {
-      "executor": "@nx/eslint:lint",
-      "options": {
-        "lintFilePatterns": [
-          "libs/spirit-islander/shared/data-access/**/*.ts",
-          "libs/spirit-islander/shared/data-access/**/*.html"
-        ]
-      }
+      "executor": "@nx/eslint:lint"
     }
   },
   "tags": ["scope:spirit-islander", "type:data-access"]

@@ -9,18 +9,11 @@
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/libs/globetrotter/feature-learn"],
       "options": {
-        "jestConfig": "libs/globetrotter/feature-learn/jest.config.ts",
-        "passWithNoTests": true
+        "jestConfig": "libs/globetrotter/feature-learn/jest.config.ts"
       }
     },
     "lint": {
-      "executor": "@nx/eslint:lint",
-      "options": {
-        "lintFilePatterns": [
-          "libs/globetrotter/feature-learn/**/*.ts",
-          "libs/globetrotter/feature-learn/**/*.html"
-        ]
-      }
+      "executor": "@nx/eslint:lint"
     }
   },
   "tags": ["scope:globetrotter", "type:feature"]

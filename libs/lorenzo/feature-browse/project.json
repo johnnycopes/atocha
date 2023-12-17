@@ -9,18 +9,11 @@
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/libs/lorenzo/feature-browse"],
       "options": {
-        "jestConfig": "libs/lorenzo/feature-browse/jest.config.ts",
-        "passWithNoTests": true
+        "jestConfig": "libs/lorenzo/feature-browse/jest.config.ts"
       }
     },
     "lint": {
-      "executor": "@nx/eslint:lint",
-      "options": {
-        "lintFilePatterns": [
-          "libs/lorenzo/feature-browse/**/*.ts",
-          "libs/lorenzo/feature-browse/**/*.html"
-        ]
-      }
+      "executor": "@nx/eslint:lint"
     }
   },
   "tags": ["scope:lorenzo", "type:feature"]

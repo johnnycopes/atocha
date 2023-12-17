@@ -1,6 +1,18 @@
 import { getBoards } from '@atocha/spirit-islander/shared/util';
 import { selectBoards } from './select-boards';
 
+// Mock `selectRandom` to return collection untouched for predictability in testing
+import * as selectRandom from './select-random';
+
+jest
+  .spyOn(selectRandom, 'selectRandom')
+  .mockImplementation((options, quantity = 1) => {
+    if (quantity > options.length) {
+      throw new Error('More options requested than available');
+    }
+    return options.slice(0, quantity);
+  });
+
 describe('selectBoards', () => {
   describe('balanced board selection', () => {
     it('returns specific selection of maps', () => {
@@ -33,9 +45,57 @@ describe('selectBoards', () => {
       expect(getBoards()).toContainEqual(selectedBoards[0]);
       expect(getBoards()).toContainEqual(selectedBoards[1]);
     });
-  });
 
-  describe('thematic board selection', () => {
+    describe('with `allowBEAndDFBoards` settings turned on', () => {
+      it('throws error if B and E are the only selected boards with 2 players', () => {
+        expect(() =>
+          selectBoards('Balanced', 2, ['B', 'E'], {
+            randomThematicBoards: false,
+            allowBEAndDFBoards: false,
+          })
+        ).toThrowError(
+          'Board pairings B/E and D/F are not permitted in a 2 player game'
+        );
+      });
+
+      it('throws error if D and F are the only selected boards with 2 players', () => {
+        expect(() =>
+          selectBoards('Balanced', 2, ['D', 'F'], {
+            randomThematicBoards: false,
+            allowBEAndDFBoards: false,
+          })
+        ).toThrowError(
+          'Board pairings B/E and D/F are not permitted in a 2 player game'
+        );
+      });
+
+      it('avoids pairing B and E with 2 players', () => {
+        const selectedBoards = selectBoards('Balanced', 2, ['A', 'B', 'E'], {
+          randomThematicBoards: false,
+          allowBEAndDFBoards: false,
+        });
+        expect(selectedBoards).toEqual([
+          { name: 'A', thematicName: 'Northeast' },
+          { name: 'E', thematicName: 'Southeast', expansion: 'Jagged Earth' },
+        ]);
+      });
+
+      it('avoids pairing D and F with 2 players', () => {
+        const selectedBoards = selectBoards('Balanced', 2, ['A', 'D', 'F'], {
+          randomThematicBoards: false,
+          allowBEAndDFBoards: false,
+        });
+        expect(selectedBoards).toEqual([
+          { name: 'A', thematicName: 'Northeast' },
+          { name: 'F', thematicName: 'Southwest', expansion: 'Jagged Earth' },
+        ]);
+      });
+    });
+  });
+});
+
+describe('thematic board selection', () => {
+  describe('with randomizedThematic turned off', () => {
     it('returns Northeast for 1 player', () => {
       expect(selectBoards('Thematic', 1, [])).toStrictEqual([
         { name: 'A', thematicName: 'Northeast' },
@@ -84,6 +144,32 @@ describe('selectBoards', () => {
         { name: 'C', thematicName: 'Northwest' },
         { name: 'F', thematicName: 'Southwest', expansion: 'Jagged Earth' },
         { name: 'E', thematicName: 'Southeast', expansion: 'Jagged Earth' },
+      ]);
+    });
+  });
+
+  describe('with randomThematicBoards turned on', () => {
+    it('returns maps in any order for any number of players', () => {
+      expect(
+        selectBoards('Thematic', 6, ['A', 'B', 'C', 'D', 'E', 'F'], {
+          randomThematicBoards: true,
+          allowBEAndDFBoards: true,
+        })
+      ).toEqual([
+        { name: 'A', thematicName: 'Northeast' },
+        { name: 'B', thematicName: 'East' },
+        { name: 'C', thematicName: 'Northwest' },
+        { name: 'D', thematicName: 'West' },
+        {
+          name: 'E',
+          thematicName: 'Southeast',
+          expansion: 'Jagged Earth',
+        },
+        {
+          name: 'F',
+          thematicName: 'Southwest',
+          expansion: 'Jagged Earth',
+        },
       ]);
     });
   });

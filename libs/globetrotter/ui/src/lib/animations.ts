@@ -11,7 +11,7 @@ import {
   animateChild,
 } from '@angular/animations';
 
-import { Duration } from '@atocha/globetrotter/util';
+import { DURATION } from '@atocha/globetrotter/util';
 
 const fadeIn = animation([
   style({ opacity: '0' }),
@@ -22,7 +22,7 @@ export const fadeInAnimation = trigger('fadeIn', [
   transition(':enter', [
     useAnimation(fadeIn, {
       params: {
-        timing: Duration.fadeIn,
+        timing: DURATION.fadeIn,
         delay: 0,
       },
     }),
@@ -33,8 +33,8 @@ export const fadeInWithFixedSlideablePanelDelayAnimation = trigger('fadeIn', [
   transition(':enter', [
     useAnimation(fadeIn, {
       params: {
-        timing: Duration.fadeIn,
-        delay: Duration.position,
+        timing: DURATION.fadeIn,
+        delay: DURATION.position,
       },
     }),
   ]),
@@ -53,7 +53,7 @@ export const visibilityAnimation = trigger('visibility', [
       opacity: 1,
     })
   ),
-  transition('* => *', animate(`${Duration.fadeIn}ms ease-in-out`)),
+  transition('* => *', animate(`${DURATION.fadeIn}ms ease-in-out`)),
 ]);
 
 export const flipAnimation = trigger('flip', [
@@ -69,8 +69,8 @@ export const flipAnimation = trigger('flip', [
       transform: 'rotateY(180deg)',
     })
   ),
-  transition('front => back', animate(`${Duration.cardAnimation}ms ease-in`)),
-  transition('back => front', animate(`${Duration.cardAnimation}ms ease-out`)),
+  transition('front => back', animate(`${DURATION.cardAnimation}ms ease-in`)),
+  transition('back => front', animate(`${DURATION.cardAnimation}ms ease-out`)),
 ]);
 
 export const disabledAnimation = trigger('disabled', [
@@ -80,7 +80,7 @@ export const disabledAnimation = trigger('disabled', [
       filter: 'grayscale(100%)',
     })
   ),
-  transition('* => disabled', animate(`${Duration.cardAnimation}ms ease-in`)),
+  transition('* => disabled', animate(`${DURATION.cardAnimation}ms ease-in`)),
 ]);
 
 export const guessAnimation = trigger('guess', [
@@ -105,7 +105,7 @@ export const guessAnimation = trigger('guess', [
       padding: '0',
     })
   ),
-  transition('* => *', animate(`${Duration.cardAnimation}ms ease-in`)),
+  transition('* => *', animate(`${DURATION.cardAnimation}ms ease-in`)),
 ]);
 
 export const positionAnimation = trigger('position', [
@@ -133,11 +133,11 @@ export const positionAnimation = trigger('position', [
       transform: 'translateX(100%)',
     })
   ),
-  transition('* => *', animate(`${Duration.position}ms ease-in-out`)),
+  transition('* => *', animate(`${DURATION.position}ms ease-in-out`)),
 ]);
 
 export const staggerAnimation = trigger('stagger', [
   transition(':enter', [
-    query(':enter', stagger(`${Duration.stagger}ms`, [animateChild()])),
+    query(':enter', stagger(`${DURATION.stagger}ms`, [animateChild()])),
   ]),
 ]);

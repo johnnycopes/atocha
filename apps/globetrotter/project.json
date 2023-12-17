@@ -65,10 +65,10 @@
       },
       "configurations": {
         "production": {
-          "browserTarget": "globetrotter:build:production"
+          "buildTarget": "globetrotter:build:production"
         },
         "development": {
-          "browserTarget": "globetrotter:build:development"
+          "buildTarget": "globetrotter:build:development"
         }
       },
       "defaultConfiguration": "development"
@@ -76,24 +76,17 @@
     "extract-i18n": {
       "executor": "@angular-devkit/build-angular:extract-i18n",
       "options": {
-        "browserTarget": "globetrotter:build"
+        "buildTarget": "globetrotter:build"
       }
     },
     "lint": {
-      "executor": "@nx/eslint:lint",
-      "options": {
-        "lintFilePatterns": [
-          "apps/globetrotter/**/*.ts",
-          "apps/globetrotter/**/*.html"
-        ]
-      }
+      "executor": "@nx/eslint:lint"
     },
     "test": {
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/apps/globetrotter"],
       "options": {
-        "jestConfig": "apps/globetrotter/jest.config.ts",
-        "passWithNoTests": true
+        "jestConfig": "apps/globetrotter/jest.config.ts"
       }
     },
     "deploy": {

@@ -9,18 +9,11 @@
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/libs/globetrotter/data-access"],
       "options": {
-        "jestConfig": "libs/globetrotter/data-access/jest.config.ts",
-        "passWithNoTests": true
+        "jestConfig": "libs/globetrotter/data-access/jest.config.ts"
       }
     },
     "lint": {
-      "executor": "@nx/eslint:lint",
-      "options": {
-        "lintFilePatterns": [
-          "libs/globetrotter/data-access/**/*.ts",
-          "libs/globetrotter/data-access/**/*.html"
-        ]
-      }
+      "executor": "@nx/eslint:lint"
     }
   },
   "tags": ["scope:globetrotter", "type:data-access"]
