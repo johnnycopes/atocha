@@ -31,7 +31,7 @@
     "@tinymce/tinymce-angular": "^7.0.0",
     "firebase": "^10.7.1",
     "lodash-es": "^4.17.21",
-    "rxfire": "^6.0.3",
+    "rxfire": "^6.0.5",
     "rxjs": "^7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "0.13.0"
