@@ -2,6 +2,7 @@ import {
   lower,
   removeWhitespace,
   snakeCase,
+  startCase,
   upper,
   upperFirst,
 } from './format';
@@ -25,6 +26,15 @@ describe('formatting functions', () => {
     it('transforms the first letter of a string to uppercase', () => {
       expect(upperFirst('test')).toEqual('Test');
       expect(upperFirst('second test')).toEqual('Second test');
+    });
+  });
+
+  describe('startCase', () => {
+    it('transforms the first letter of each word in a string to uppercase', () => {
+      expect(startCase('test')).toEqual('Test');
+      expect(startCase('each word should be capitalized')).toEqual(
+        'Each Word Should Be Capitalized'
+      );
     });
   });
 
