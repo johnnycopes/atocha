@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { groupBy } from 'lodash-es';
 
 import { State } from '@atocha/core/data-access';
 import {
@@ -10,6 +9,7 @@ import {
 } from '@atocha/globetrotter/util';
 import { COUNTRY_SUMMARY_NAMES } from '../data/country-modifications';
 import { ApiService } from './api.service';
+import { groupBy } from './internal/group-by';
 import { sort } from './internal/sort';
 
 @Injectable({
@@ -35,10 +35,7 @@ export class PlaceService {
           .map(mapCountryDtoToCountry),
         ({ name }) => name
       );
-      const countriesBySubregion = groupBy(
-        countries,
-        ({ subregion }) => subregion
-      );
+      const countriesBySubregion = groupBy(countries, 'subregion');
       const subregionsByRegion =
         this._groupSubregionsByRegion(countriesBySubregion);
       const regions = this._formatRegions(
