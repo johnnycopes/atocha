@@ -7,11 +7,10 @@ import {
   Output,
   EventEmitter,
 } from '@angular/core';
-import { shuffle } from 'lodash-es';
 
 import { trackByFactory } from '@atocha/core/ui';
 import { staggerAnimation, fadeInAnimation } from '@atocha/globetrotter/ui';
-import { Country, QuizType } from '@atocha/globetrotter/util';
+import { Country, QuizType, shuffle } from '@atocha/globetrotter/util';
 import { QuizCardComponent } from './quiz-card/quiz-card.component';
 
 @Component({
