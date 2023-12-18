@@ -1,6 +1,6 @@
-export function groupBy<T extends object, K extends keyof T>(
+export function groupBy<T extends object>(
   collection: T[],
-  key: K
+  key: keyof T
 ): Record<string, T[]> {
   const record: Record<string, T[]> = {};
 
