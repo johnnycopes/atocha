@@ -12,10 +12,6 @@ export const upperFirst = formatter(
   (str) => upper(str[0]) + lower(str.substring(1))
 );
 
-export const startCase = formatter((str) =>
-  str.split(' ').map(upperFirst).join(' ')
-);
-
 export const snakeCase = formatter((str) =>
   str.split(' ').map(lower).join('-')
 );
