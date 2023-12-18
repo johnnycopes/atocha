@@ -102,13 +102,13 @@ export class CsvService {
     return this._csv.formatValue(value);
   }
 
-  private _export<T extends keyof Development | keyof Family | keyof Leader>({
+  private _export({
     type,
     headers,
     cards,
   }: {
     type: Card;
-    headers: T[];
+    headers: (keyof Development)[] | (keyof Family)[] | (keyof Leader)[];
     cards: string[][];
   }): void {
     const filename = this._createFilename(type);
