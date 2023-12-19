@@ -1,6 +1,5 @@
 import { DOCUMENT } from '@angular/common';
 import { Inject, Injectable } from '@angular/core';
-import { startCase } from 'lodash-es';
 
 import { APP_NAME_TOKEN, Csv } from '@atocha/core/data-access';
 import { Card, Development, Family, Leader } from '@atocha/lorenzo/util';
@@ -21,6 +20,22 @@ type CsvLeader = CsvMapping<Leader>;
 })
 export class CsvService {
   private _csv: Csv;
+  private _formattedHeaders: Record<
+    keyof Development | keyof Family | keyof Leader,
+    string
+  > = {
+    ability: 'Ability',
+    cost: 'Cost',
+    deck: 'Deck',
+    id: 'Id',
+    immediateEffect: 'Immediate Effect',
+    name: 'Name',
+    period: 'Period',
+    permanentEffect: 'Permanent Effect',
+    privilege: 'Privilege',
+    requirement: 'Requirement',
+    type: 'Type',
+  };
 
   constructor(
     @Inject(DOCUMENT) private _document: Document,
@@ -87,17 +102,20 @@ export class CsvService {
     return this._csv.formatValue(value);
   }
 
-  private _export<T extends string>({
+  private _export({
     type,
     headers,
     cards,
   }: {
     type: Card;
-    headers: T[];
+    headers: (keyof Development)[] | (keyof Family)[] | (keyof Leader)[];
     cards: string[][];
   }): void {
     const filename = this._createFilename(type);
-    const rows = [headers.map(startCase), ...cards];
+    const rows = [
+      headers.map((header) => this._formattedHeaders[header]),
+      ...cards,
+    ];
     this._csv.downloadFile(filename, rows);
   }
 

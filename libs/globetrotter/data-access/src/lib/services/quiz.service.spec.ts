@@ -1,9 +1,8 @@
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { of } from 'rxjs';
-import { shuffle } from 'lodash-es';
 
-import { QuizType } from '@atocha/globetrotter/util';
+import { QuizType, shuffle } from '@atocha/globetrotter/util';
 import { QuizService } from './quiz.service';
 import { PlaceService } from './place.service';
 import {
@@ -13,7 +12,12 @@ import {
   SEYCHELLES,
 } from '../mock-data/countries';
 
-jest.mock('lodash-es', () => ({
+jest.mock('@atocha/globetrotter/util', () => ({
+  QuizType: {
+    flagsCountries: 1,
+    capitalsCountries: 2,
+    countriesCapitals: 3,
+  },
   shuffle: jest.fn(<T>(arr: T[]) => arr.slice()),
 }));
 
