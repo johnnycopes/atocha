@@ -107,6 +107,31 @@
         }
       },
       "defaultConfiguration": "development"
+    },
+    "db": {
+      "executor": "nx:run-commands",
+      "outputs": [],
+      "options": {
+        "parallel": false
+      },
+      "configurations": {
+        "reset": {
+          "commands": [
+            "node ./apps/menu-matriarch/src/firebase/scripts/dev/delete-all-accounts.js"
+          ]
+        },
+        "delete-account": {
+          "commands": [
+            "node ./apps/menu-matriarch/src/firebase/scripts/dev/delete-account.js"
+          ]
+        },
+        "delete-data": {
+          "commands": [
+            "node ./apps/menu-matriarch/src/firebase/scripts/dev/delete-data.js"
+          ]
+        }
+      },
+      "defaultConfiguration": "reset"
     }
   },
   "tags": ["scope:menu-matriarch", "type:app"]
