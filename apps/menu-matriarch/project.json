@@ -116,13 +116,19 @@
       },
       "configurations": {
         "reset": {
-          "commands": ["node ./firebase/scripts/dev/delete-all-accounts.js"]
+          "commands": [
+            "node ./apps/menu-matriarch/src/firebase/scripts/dev/delete-all-accounts.js"
+          ]
         },
         "delete-account": {
-          "commands": ["node ./firebase/scripts/dev/delete-account.js"]
+          "commands": [
+            "node ./apps/menu-matriarch/src/firebase/scripts/dev/delete-account.js"
+          ]
         },
         "delete-data": {
-          "commands": ["node ./firebase/scripts/dev/delete-data.js"]
+          "commands": [
+            "node ./apps/menu-matriarch/src/firebase/scripts/dev/delete-data.js"
+          ]
         }
       },
       "defaultConfiguration": "reset"
