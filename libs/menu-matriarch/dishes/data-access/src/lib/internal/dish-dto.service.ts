@@ -44,6 +44,10 @@ export class DishDtoService implements IDtoService<Dish, DishDto> {
     return this._dtoService.getOne(this._endpoint, id);
   }
 
+  getMany(ids: string[]): Observable<DishDto[]> {
+    return this._dtoService.getMany(this._endpoint, ids);
+  }
+
   getAll(uid: string): Observable<DishDto[]> {
     return this._dtoService.getAll(this._endpoint, uid);
   }
