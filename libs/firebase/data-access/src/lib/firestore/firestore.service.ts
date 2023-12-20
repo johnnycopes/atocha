@@ -21,8 +21,8 @@ import {
   where,
   writeBatch,
 } from '@angular/fire/firestore';
-import { Observable, of } from 'rxjs';
-import { catchError, shareReplay } from 'rxjs/operators';
+import { Observable, combineLatest, of } from 'rxjs';
+import { catchError, map, shareReplay } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -50,6 +50,11 @@ export class FirestoreService {
       catchError(() => of(undefined)),
       shareReplay({ bufferSize: 1, refCount: true })
     );
+  }
+
+  getMany<T>(endpoint: string, ids: string[]): Observable<T[]> {
+    const docs$ = ids.map((id) => this.getOne<T>(endpoint, id));
+    return combineLatest(docs$).pipe(map((docs) => docs.filter(isDefined)));
   }
 
   getAll<T>(endpoint: string, uid: string): Observable<T[]> {
@@ -103,4 +108,10 @@ export class FirestoreService {
   private _getDocRef<T>(endpoint: string, id: string): DocumentReference<T> {
     return doc(this._firestore, endpoint, id) as DocumentReference<T>;
   }
+}
+
+function isDefined<T>(
+  arg: T | null | undefined
+): arg is T extends null | undefined ? never : T {
+  return arg !== null && arg !== undefined;
 }
