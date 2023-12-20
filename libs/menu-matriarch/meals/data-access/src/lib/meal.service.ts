@@ -48,7 +48,7 @@ export class MealService implements IEntityService<Meal, EditableMealData> {
       concatMap((uid) => {
         if (uid) {
           return combineLatest([
-            this._mealDtoService.getMany(uid),
+            this._mealDtoService.getAll(uid),
             this._dishService.getMany(),
             this._tagService.getMany(),
           ]).pipe(

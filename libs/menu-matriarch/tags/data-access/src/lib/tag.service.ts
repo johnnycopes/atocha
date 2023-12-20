@@ -25,7 +25,7 @@ export class TagService implements IEntityService<Tag, EditableTagData> {
       first(),
       concatMap((uid) => {
         if (uid) {
-          return this._tagDtoService.getMany(uid);
+          return this._tagDtoService.getAll(uid);
         }
         return of([]);
       })

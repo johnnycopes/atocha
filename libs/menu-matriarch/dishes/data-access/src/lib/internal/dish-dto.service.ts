@@ -44,8 +44,8 @@ export class DishDtoService implements IDtoService<Dish, DishDto> {
     return this._dtoService.getOne(this._endpoint, id);
   }
 
-  getMany(uid: string): Observable<DishDto[]> {
-    return this._dtoService.getMany(this._endpoint, uid);
+  getAll(uid: string): Observable<DishDto[]> {
+    return this._dtoService.getAll(this._endpoint, uid);
   }
 
   async create(uid: string, dish: EditableDishData): Promise<string> {

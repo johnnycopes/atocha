@@ -46,7 +46,7 @@ export class MenuService implements IEntityService<Menu, EditableMenuData> {
       concatMap((uid) => {
         if (uid) {
           return combineLatest([
-            this._menuDtoService.getMany(uid),
+            this._menuDtoService.getAll(uid),
             this._dishService.getMany(),
             this._userService.getPreferences(),
           ]).pipe(

@@ -47,7 +47,7 @@ export class IngredientTypeService
       concatMap((uid) => {
         if (uid) {
           return combineLatest([
-            this._ingredientTypeDtoService.getMany(uid),
+            this._ingredientTypeDtoService.getAll(uid),
             this._ingredientService.getMany(),
           ]).pipe(
             map(([dishDtos, ingredients]) =>
