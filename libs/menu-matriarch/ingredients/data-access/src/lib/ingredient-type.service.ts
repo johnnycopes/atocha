@@ -24,9 +24,7 @@ export class IngredientTypeService
     private _ingredientTypeDtoService: IngredientTypeDtoService,
     private _ingredientDtoService: IngredientDtoService,
     private _ingredientService: IngredientService
-  ) {
-    this.getOne('LeUlBOssJlvdiNVGskSk').subscribe();
-  }
+  ) {}
 
   getOne(id: string): Observable<IngredientType | undefined> {
     const ingredientTypeDto$ = this._ingredientTypeDtoService.getOne(id);
