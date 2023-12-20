@@ -52,7 +52,7 @@ export class FirestoreService {
     );
   }
 
-  getMany<T>(endpoint: string, uid: string): Observable<T[]> {
+  getAll<T>(endpoint: string, uid: string): Observable<T[]> {
     const q = query(
       collection(this._firestore, endpoint) as CollectionReference<T>,
       where('uid', '==', uid),
