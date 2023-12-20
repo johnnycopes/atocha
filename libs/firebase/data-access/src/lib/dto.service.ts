@@ -17,6 +17,10 @@ export class DtoService<T> {
     return this._firestoreService.getOne<T>(endpoint, id);
   }
 
+  getMany(endpoint: string, ids: string[]): Observable<T[]> {
+    return this._firestoreService.getMany<T>(endpoint, ids);
+  }
+
   getAll(endpoint: string, uid: string): Observable<T[]> {
     return this._firestoreService.getAll<T>(endpoint, uid);
   }
