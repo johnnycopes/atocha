@@ -30,8 +30,8 @@ export class MealService implements IEntityService<Meal, EditableMealData> {
   getOne(id: string): Observable<Meal | undefined> {
     return combineLatest([
       this._mealDtoService.getOne(id),
-      this._dishService.getMany(),
-      this._tagService.getMany(),
+      this._dishService.getAll(),
+      this._tagService.getAll(),
     ]).pipe(
       map(([mealDto, dishes, tags]) => {
         if (!mealDto) {
@@ -42,15 +42,15 @@ export class MealService implements IEntityService<Meal, EditableMealData> {
     );
   }
 
-  getMany(): Observable<Meal[]> {
+  getAll(): Observable<Meal[]> {
     return this._authService.uid$.pipe(
       first(),
       concatMap((uid) => {
         if (uid) {
           return combineLatest([
             this._mealDtoService.getAll(uid),
-            this._dishService.getMany(),
-            this._tagService.getMany(),
+            this._dishService.getAll(),
+            this._tagService.getAll(),
           ]).pipe(
             map(([mealDtos, dishes, tags]) =>
               mealDtos.map((mealDto) =>

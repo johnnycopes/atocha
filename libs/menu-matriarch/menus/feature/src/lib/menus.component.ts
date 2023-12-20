@@ -31,7 +31,7 @@ export class MenusComponent {
   addingSubject = new BehaviorSubject<boolean>(false);
 
   vm$ = combineLatest([
-    this._menuService.getMany(),
+    this._menuService.getAll(),
     this._menuService.activeMenuId$,
     this.addingSubject.asObservable(),
   ]).pipe(

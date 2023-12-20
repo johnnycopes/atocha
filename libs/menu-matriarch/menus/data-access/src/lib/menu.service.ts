@@ -28,7 +28,7 @@ export class MenuService implements IEntityService<Menu, EditableMenuData> {
   getOne(id: string): Observable<Menu | undefined> {
     return combineLatest([
       this._menuDtoService.getOne(id),
-      this._dishService.getMany(),
+      this._dishService.getAll(),
       this._userService.getPreferences(),
     ]).pipe(
       map(([menuDto, dishes, preferences]) => {
@@ -40,14 +40,14 @@ export class MenuService implements IEntityService<Menu, EditableMenuData> {
     );
   }
 
-  getMany(): Observable<Menu[]> {
+  getAll(): Observable<Menu[]> {
     return this._authService.uid$.pipe(
       first(),
       concatMap((uid) => {
         if (uid) {
           return combineLatest([
             this._menuDtoService.getAll(uid),
-            this._dishService.getMany(),
+            this._dishService.getAll(),
             this._userService.getPreferences(),
           ]).pipe(
             map(([menuDtos, dishes, preferences]) => {
