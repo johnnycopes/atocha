@@ -50,9 +50,9 @@ export class IngredientTypeService
             this._ingredientTypeDtoService.getAll(uid),
             this._ingredientService.getAll(),
           ]).pipe(
-            map(([dishDtos, ingredients]) =>
-              dishDtos.map((dishDto) =>
-                mapIngredientTypeDtoToIngredientType(dishDto, ingredients)
+            map(([ingredientDtos, ingredients]) =>
+              ingredientDtos.map((ingredientDto) =>
+                mapIngredientTypeDtoToIngredientType(ingredientDto, ingredients)
               )
             )
           );
