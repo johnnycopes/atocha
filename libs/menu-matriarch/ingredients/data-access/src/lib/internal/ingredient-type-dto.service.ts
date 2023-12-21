@@ -34,7 +34,7 @@ export class IngredientTypeDtoService
   }
 
   getAll(uid: string): Observable<IngredientTypeDto[]> {
-    return this._dtoService.getMany(this._endpoint, uid);
+    return this._dtoService.getAll(this._endpoint, uid);
   }
 
   async create(
