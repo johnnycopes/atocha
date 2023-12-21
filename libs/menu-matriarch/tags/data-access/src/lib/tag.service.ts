@@ -20,6 +20,10 @@ export class TagService implements IEntityService<Tag, EditableTagData> {
     return this._tagDtoService.getOne(id);
   }
 
+  getMany(ids: string[]): Observable<Tag[]> {
+    return this._tagDtoService.getMany(ids);
+  }
+
   getAll(): Observable<Tag[]> {
     return this._authService.uid$.pipe(
       first(),

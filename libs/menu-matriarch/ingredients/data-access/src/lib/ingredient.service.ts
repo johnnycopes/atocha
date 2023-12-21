@@ -25,6 +25,10 @@ export class IngredientService
     return this._ingredientDtoService.getOne(id);
   }
 
+  getMany(ids: string[]): Observable<Ingredient[]> {
+    return this._ingredientDtoService.getMany(ids);
+  }
+
   getAll(): Observable<Ingredient[]> {
     return this._authService.uid$.pipe(
       first(),
