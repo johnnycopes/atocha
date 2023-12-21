@@ -35,7 +35,7 @@ export class MealDtoService implements IDtoService<Meal, MealDto> {
   }
 
   getAll(uid: string): Observable<MealDto[]> {
-    return this._dtoService.getMany(this._endpoint, uid);
+    return this._dtoService.getAll(this._endpoint, uid);
   }
 
   async create(uid: string, meal: EditableMealData): Promise<string> {

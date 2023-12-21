@@ -17,8 +17,8 @@ export class DtoService<T> {
     return this._firestoreService.getOne<T>(endpoint, id);
   }
 
-  getMany(endpoint: string, uid: string): Observable<T[]> {
-    return this._firestoreService.getMany<T>(endpoint, uid);
+  getAll(endpoint: string, uid: string): Observable<T[]> {
+    return this._firestoreService.getAll<T>(endpoint, uid);
   }
 
   async create(endpoint: string, id: string, details: T): Promise<void> {

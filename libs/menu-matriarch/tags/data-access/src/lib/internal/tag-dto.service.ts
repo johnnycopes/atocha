@@ -32,7 +32,7 @@ export class TagDtoService implements IDtoService<Tag, TagDto> {
   }
 
   getAll(uid: string): Observable<TagDto[]> {
-    return this._dtoService.getMany(this._endpoint, uid);
+    return this._dtoService.getAll(this._endpoint, uid);
   }
 
   async create(uid: string, tag: EditableTagData): Promise<string> {
