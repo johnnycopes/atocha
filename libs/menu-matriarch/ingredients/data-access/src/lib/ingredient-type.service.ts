@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, combineLatest, of } from 'rxjs';
-import { concatMap, first, map, switchMap } from 'rxjs/operators';
+import { concatMap, first, map, switchMap, tap } from 'rxjs/operators';
 
 import { AuthService } from '@atocha/firebase/data-access';
 import { IEntityService } from '@atocha/menu-matriarch/shared/data-access-api';
@@ -52,17 +52,7 @@ export class IngredientTypeService
       first(),
       concatMap((uid) => {
         if (uid) {
-          return combineLatest([
-            this._ingredientTypeDtoService.getAll(uid),
-            this._ingredientService.getAll(),
-          ]).pipe(
-            map(([ingredientDtos, ingredients]) => {
-              // console.log(ingredientDtos, ingredients);
-              return ingredientDtos.map((dishDto) =>
-                mapIngredientTypeDtoToIngredientType(dishDto, ingredients)
-              );
-            })
-          );
+          return this._getIngredientTypes(uid);
         }
         return of([]);
       })
@@ -97,5 +87,59 @@ export class IngredientTypeService
 
   async delete(ingredientType: IngredientType): Promise<void> {
     return this._ingredientTypeDtoService.delete(ingredientType);
+  }
+
+  private _getIngredientTypes(uid: string) {
+    return combineLatest([
+      this._ingredientTypeDtoService.getAll(uid),
+      this._ingredientService.getAll(),
+    ]).pipe(
+      map(([ingredientDtos, ingredients]) => {
+        return ingredientDtos.map((dishDto) =>
+          mapIngredientTypeDtoToIngredientType(dishDto, ingredients)
+        );
+      }),
+      tap(console.log)
+    );
+  }
+
+  // Working, but no less efficient on the ingredients screen since all ingredients are fetched anyway. Maybe more useful for dishes/meals/menus/tags
+  private _newGetIngredientTypes1(uid: string) {
+    const dtos$ = this._ingredientTypeDtoService.getAll(uid);
+    const ingredients$ = dtos$.pipe(
+      map((dtos) => dtos.flatMap((dto) => dto.ingredientIds)),
+      concatMap((ids) => this._ingredientDtoService.getMany(ids))
+    );
+
+    return combineLatest([dtos$, ingredients$]).pipe(
+      map(([dtos, ingredients]) => {
+        console.log(dtos, ingredients);
+        return dtos.map((dto) =>
+          mapIngredientTypeDtoToIngredientType(dto, ingredients)
+        );
+      }),
+      tap(console.log)
+    );
+  }
+
+  // Not working and not sure why. The idea is to get all dtos, then fetch all ingredients on the dtos
+  private _newGetIngredientTypes2(uid: string) {
+    const dtos$ = this._ingredientTypeDtoService.getAll(uid);
+    const types$ = dtos$.pipe(
+      concatMap((dtos) => {
+        const types = dtos.flatMap((dto) => {
+          const ingredient = this._ingredientDtoService
+            .getMany(dto.ingredientIds)
+            .pipe(
+              map((ingredients) =>
+                mapIngredientTypeDtoToIngredientType(dto, ingredients)
+              )
+            );
+          return ingredient;
+        });
+        return types;
+      })
+    );
+    return types$;
   }
 }
