@@ -31,7 +31,7 @@ export class TagDtoService implements IDtoService<Tag, TagDto> {
     return this._dtoService.getOne(this._endpoint, id);
   }
 
-  getMany(uid: string): Observable<TagDto[]> {
+  getAll(uid: string): Observable<TagDto[]> {
     return this._dtoService.getMany(this._endpoint, uid);
   }
 

@@ -31,7 +31,7 @@ export class MenuDtoService implements IDtoService<Menu, MenuDto> {
     return this._dtoService.getOne(this._endpoint, id);
   }
 
-  getMany(uid: string): Observable<MenuDto[]> {
+  getAll(uid: string): Observable<MenuDto[]> {
     return this._dtoService.getMany(this._endpoint, uid);
   }
 

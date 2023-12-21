@@ -39,8 +39,8 @@ export class MealEditComponent {
 
   meal$: Observable<MealConfig> = combineLatest([
     this._meal$,
-    this._dishService.getMany(),
-    this._tagService.getMany(),
+    this._dishService.getAll(),
+    this._tagService.getAll(),
     this._userService.getPreferences(),
   ]).pipe(
     map(([meal, dishes, tags, preferences]) => ({

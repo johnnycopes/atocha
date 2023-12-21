@@ -40,7 +40,7 @@ export class IngredientsComponent {
 
   vm$ = combineLatest([
     this._userService.getPreferences(),
-    this._ingredientTypeService.getMany(),
+    this._ingredientTypeService.getAll(),
     this.addingSubject.asObservable(),
   ]).pipe(
     map(([preferences, ingredientTypes, adding]) => {

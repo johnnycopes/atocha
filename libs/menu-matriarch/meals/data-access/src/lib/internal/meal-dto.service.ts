@@ -34,7 +34,7 @@ export class MealDtoService implements IDtoService<Meal, MealDto> {
     return this._dtoService.getOne(this._endpoint, id);
   }
 
-  getMany(uid: string): Observable<MealDto[]> {
+  getAll(uid: string): Observable<MealDto[]> {
     return this._dtoService.getMany(this._endpoint, uid);
   }
 
