@@ -53,6 +53,9 @@ export class FirestoreService {
   }
 
   getMany<T>(endpoint: string, ids: string[]): Observable<T[]> {
+    if (!ids.length) {
+      return of([]);
+    }
     const docs$ = ids.map((id) => this.getOne<T>(endpoint, id));
     return combineLatest(docs$).pipe(map((docs) => docs.filter(isDefined)));
   }
