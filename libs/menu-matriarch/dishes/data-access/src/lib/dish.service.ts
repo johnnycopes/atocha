@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { combineLatest, Observable, of } from 'rxjs';
-import { concatMap, first, map } from 'rxjs/operators';
+import { concatMap, first, map, switchMap, tap } from 'rxjs/operators';
 
 import { AuthService } from '@atocha/firebase/data-access';
 import { IEntityService } from '@atocha/menu-matriarch/shared/data-access-api';
@@ -28,6 +28,22 @@ export class DishService implements IEntityService<Dish, EditableDishData> {
   ) {}
 
   getOne(id: string): Observable<Dish | undefined> {
+    const dishDto$ = this._dishDtoService.getOne(id);
+    const ingredients$ = dishDto$.pipe(
+      switchMap((dto) =>
+        this._ingredientService.getMany(dto?.ingredientIds ?? [])
+      )
+    );
+    const tags$ = dishDto$.pipe(
+      switchMap((dto) => this._tagService.getMany(dto?.tagIds ?? []))
+    );
+
+    return combineLatest([dishDto$, ingredients$, tags$]).pipe(
+      map(([dishDto, ingredients, tags]) =>
+        dishDto ? mapDishDtoToDish(dishDto, ingredients, tags) : undefined
+      )
+    );
+
     return combineLatest([
       this._dishDtoService.getOne(id),
       this._ingredientService.getAll(),
@@ -38,7 +54,8 @@ export class DishService implements IEntityService<Dish, EditableDishData> {
           return undefined;
         }
         return mapDishDtoToDish(dishDto, ingredients, tags);
-      })
+      }),
+      tap(console.log)
     );
   }
 

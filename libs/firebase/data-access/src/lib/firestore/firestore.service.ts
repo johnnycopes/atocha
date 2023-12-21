@@ -22,7 +22,7 @@ import {
   writeBatch,
 } from '@angular/fire/firestore';
 import { Observable, combineLatest, of } from 'rxjs';
-import { catchError, map, shareReplay } from 'rxjs/operators';
+import { catchError, first, map, shareReplay } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -56,8 +56,13 @@ export class FirestoreService {
     if (!ids.length) {
       return of([]);
     }
+
     const docs$ = ids.map((id) => this.getOne<T>(endpoint, id));
-    return combineLatest(docs$).pipe(map((docs) => docs.filter(isDefined)));
+    return combineLatest(docs$).pipe(
+      map((docs) => docs.filter(isDefined)),
+      first(),
+      shareReplay({ bufferSize: 1, refCount: true })
+    );
   }
 
   getAll<T>(endpoint: string, uid: string): Observable<T[]> {
