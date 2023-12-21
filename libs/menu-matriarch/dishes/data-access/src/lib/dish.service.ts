@@ -59,20 +59,21 @@ export class DishService implements IEntityService<Dish, EditableDishData> {
     );
   }
 
-  getAll(): Observable<Dish[]> {
+  getAll(
+    { tags }: { tags?: boolean } = {
+      tags: false,
+    }
+  ): Observable<Dish[]> {
     return this._authService.uid$.pipe(
       first(),
       concatMap((uid) => {
         if (uid) {
           return combineLatest([
             this._dishDtoService.getAll(uid),
-            this._ingredientService.getAll(),
-            this._tagService.getAll(),
+            tags ? this._tagService.getAll() : of([]),
           ]).pipe(
-            map(([dishDtos, ingredients, tags]) =>
-              dishDtos.map((dishDto) =>
-                mapDishDtoToDish(dishDto, ingredients, tags)
-              )
+            map(([dishDtos, tags]) =>
+              dishDtos.map((dishDto) => mapDishDtoToDish(dishDto, [], tags))
             )
           );
         }
