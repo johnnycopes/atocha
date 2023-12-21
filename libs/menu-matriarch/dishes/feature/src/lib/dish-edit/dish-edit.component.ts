@@ -36,8 +36,8 @@ export class DishEditComponent {
     : of(undefined);
   dish$: Observable<DishConfig> = combineLatest([
     this._dish$,
-    this._ingredientService.getMany(),
-    this._tagService.getMany(),
+    this._ingredientService.getAll(),
+    this._tagService.getAll(),
   ]).pipe(
     map(([dish, ingredients, tags]) => ({
       name: dish?.name ?? '',

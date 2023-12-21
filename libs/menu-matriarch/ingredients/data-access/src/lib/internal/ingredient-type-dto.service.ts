@@ -33,7 +33,7 @@ export class IngredientTypeDtoService
     return this._dtoService.getOne(this._endpoint, id);
   }
 
-  getMany(uid: string): Observable<IngredientTypeDto[]> {
+  getAll(uid: string): Observable<IngredientTypeDto[]> {
     return this._dtoService.getMany(this._endpoint, uid);
   }
 

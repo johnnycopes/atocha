@@ -25,7 +25,7 @@ import { TagCardComponent } from './tag-card/tag-card.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TagsComponent {
-  tags$ = this._tagService.getMany();
+  tags$ = this._tagService.getAll();
   startAdd$ = new Subject<void>();
   finishAdd$ = new Subject<void>();
   adding$ = merge(
