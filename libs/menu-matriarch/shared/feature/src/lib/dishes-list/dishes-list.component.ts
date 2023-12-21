@@ -41,7 +41,7 @@ import { FilterService } from '../filter.service';
 export class DishesListComponent {
   @Output() nameDblClick = new EventEmitter<void>();
   vm$ = combineLatest([
-    this._dishService.getAll(),
+    this._dishService.getAll({ tags: true }),
     this._tagService.getAll(),
     this._filterService.state$,
     this._dishService.activeDishId$,
