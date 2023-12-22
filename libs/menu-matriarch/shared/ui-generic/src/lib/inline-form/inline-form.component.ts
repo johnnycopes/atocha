@@ -18,7 +18,7 @@ import { ButtonComponent } from '@atocha/core/ui';
   standalone: true,
   // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'form[ui-inline-form]',
-  imports: [ButtonComponent, CommonModule, FormsModule, FaIconComponent],
+  imports: [ButtonComponent, CommonModule, FaIconComponent, FormsModule],
   templateUrl: './inline-form.component.html',
   styleUrls: ['./inline-form.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

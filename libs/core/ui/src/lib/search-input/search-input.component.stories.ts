@@ -3,10 +3,10 @@ import { FormsModule } from '@angular/forms';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import {
   Meta,
-  moduleMetadata,
   StoryFn,
-  componentWrapperDecorator,
   StoryObj,
+  moduleMetadata,
+  componentWrapperDecorator,
 } from '@storybook/angular';
 
 import { AutofocusDirective } from '../autofocus/autofocus.directive';
@@ -20,8 +20,8 @@ export default {
       imports: [
         AutofocusDirective,
         CommonModule,
-        FormsModule,
         FaIconComponent,
+        FormsModule,
         SearchInputComponent,
         StorybookWrapperComponent,
       ],

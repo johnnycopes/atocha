@@ -9,16 +9,16 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
-import { FormsModule } from '@angular/forms';
 
 import { AutofocusDirective } from '../autofocus/autofocus.directive';
 
 @Component({
   standalone: true,
   selector: 'core-search-input',
-  imports: [AutofocusDirective, CommonModule, FormsModule, FaIconComponent],
+  imports: [AutofocusDirective, CommonModule, FaIconComponent, FormsModule],
   templateUrl: './search-input.component.html',
   styleUrls: ['./search-input.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
