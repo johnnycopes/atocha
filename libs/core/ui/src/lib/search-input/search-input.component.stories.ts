@@ -5,8 +5,8 @@ import {
   Meta,
   StoryFn,
   StoryObj,
-  moduleMetadata,
   componentWrapperDecorator,
+  moduleMetadata,
 } from '@storybook/angular';
 
 import { AutofocusDirective } from '../autofocus/autofocus.directive';
