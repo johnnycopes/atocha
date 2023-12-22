@@ -15,7 +15,7 @@ import {
   moveItemInArray,
   transferArrayItem,
 } from '@angular/cdk/drag-drop';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { faEllipsisH } from '@fortawesome/free-solid-svg-icons';
 
 import { trackByFactory } from '@atocha/core/ui';
@@ -45,7 +45,7 @@ export interface KanbanBoardItemMove {
   imports: [
     CommonModule,
     DragDropModule,
-    FontAwesomeModule,
+    FaIconComponent,
     KanbanBoardFormComponent,
   ],
   templateUrl: './kanban-board-column.component.html',

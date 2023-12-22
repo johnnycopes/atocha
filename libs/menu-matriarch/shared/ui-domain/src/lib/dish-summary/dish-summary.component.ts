@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { faLink } from '@fortawesome/free-solid-svg-icons';
 
 import { ExternalLinkDirective } from '@atocha/core/ui';
@@ -18,7 +18,7 @@ import { TagDefDirective } from '../tags/tags-list/tag-def.directive';
     CommonModule,
     CountComponent,
     ExternalLinkDirective,
-    FontAwesomeModule,
+    FaIconComponent,
     RouterLink,
     TagComponent,
     TagDefDirective,
