@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import {
   Meta,
   moduleMetadata,
@@ -21,7 +21,7 @@ export default {
         AutofocusDirective,
         CommonModule,
         FormsModule,
-        FontAwesomeModule,
+        FaIconComponent,
         SearchInputComponent,
         StorybookWrapperComponent,
       ],

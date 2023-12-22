@@ -9,7 +9,7 @@ import {
   Input,
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
 
 import { ButtonComponent } from '@atocha/core/ui';
@@ -18,7 +18,7 @@ import { ButtonComponent } from '@atocha/core/ui';
   standalone: true,
   // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'form[ui-inline-form]',
-  imports: [ButtonComponent, CommonModule, FormsModule, FontAwesomeModule],
+  imports: [ButtonComponent, CommonModule, FormsModule, FaIconComponent],
   templateUrl: './inline-form.component.html',
   styleUrls: ['./inline-form.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

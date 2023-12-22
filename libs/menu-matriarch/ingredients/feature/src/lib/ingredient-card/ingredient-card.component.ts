@@ -6,7 +6,7 @@ import {
   Output,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 import { BehaviorSubject } from 'rxjs';
 
@@ -33,7 +33,7 @@ type State = 'default' | 'renaming';
     CardComponent,
     CommonModule,
     CountComponent,
-    FontAwesomeModule,
+    FaIconComponent,
     InlineNameEditComponent,
     OptionsMenuComponent,
     OptionsMenuItemComponent,

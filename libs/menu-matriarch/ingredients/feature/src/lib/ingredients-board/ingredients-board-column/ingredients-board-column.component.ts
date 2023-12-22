@@ -11,7 +11,7 @@ import {
   DragDropModule,
   transferArrayItem,
 } from '@angular/cdk/drag-drop';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 import { BehaviorSubject } from 'rxjs';
 
@@ -59,7 +59,7 @@ type State = 'default' | 'renaming' | 'addingIngredient';
     ButtonComponent,
     CommonModule,
     DragDropModule,
-    FontAwesomeModule,
+    FaIconComponent,
     IngredientCardComponent,
     InlineNameEditComponent,
     OptionsMenuComponent,

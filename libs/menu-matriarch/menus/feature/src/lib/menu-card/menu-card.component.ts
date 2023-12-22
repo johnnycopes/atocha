@@ -7,7 +7,7 @@ import {
   Output,
 } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 import { BehaviorSubject } from 'rxjs';
 
@@ -41,7 +41,7 @@ type State = 'default' | 'renaming' | 'changingStartDay';
     ButtonComponent,
     CardComponent,
     CommonModule,
-    FontAwesomeModule,
+    FaIconComponent,
     InlineNameEditComponent,
     InlineDaySelectComponent,
     MealSummaryComponent,
