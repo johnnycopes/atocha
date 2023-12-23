@@ -1,9 +1,14 @@
 @import 'styles';
 
+:host {
+  display: block;
+}
+
 $toolbar-width: map-get($spacing, 384);
 
 .container {
   display: grid;
+  height: 100%;
   grid-template-columns: [toolbar] $toolbar-width [details] 1fr;
   grid-gap: map-get($spacing, 24);
 }
