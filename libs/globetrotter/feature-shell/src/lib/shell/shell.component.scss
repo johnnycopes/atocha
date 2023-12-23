@@ -1,8 +1,14 @@
 @import 'styles';
 
+:host {
+  display: block;
+  height: 100%;
+}
+
 .content {
   position: relative;
   margin-left: map-get($app, navigation-width);
+  min-height: 100%;
 
   &__wrapper {
     display: flex;
