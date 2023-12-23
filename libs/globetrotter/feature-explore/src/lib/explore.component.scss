@@ -1,11 +1,9 @@
 @import 'styles';
 
-:host {
+:host,
+.wrapper,
+.list-details {
   display: block;
-  height: 100%;
-}
-
-.wrapper {
   height: 100%;
 }
 

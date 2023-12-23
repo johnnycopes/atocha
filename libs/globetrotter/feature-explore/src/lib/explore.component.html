@@ -2,7 +2,7 @@
   *ngIf="vm$ | async as vm"
   class="wrapper"
 >
-  <ui-list-details
+  <ui-list-details class="list-details"
     [items]="vm.filteredCountries"
     [listItemTemplate]="listItemTemplate"
     [detailsTemplate]="detailsTemplate"
