@@ -1,9 +1,11 @@
 @import 'styles';
 
 :host {
-  @include full-screen-page;
-  background: map-get($color, darkest);
-  z-index: 1;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .content {
