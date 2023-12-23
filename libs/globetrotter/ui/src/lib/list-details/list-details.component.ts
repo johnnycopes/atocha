@@ -120,16 +120,16 @@ export class ListDetailsComponent<T>
   }
 
   ngAfterViewInit(): void {
-    this.toolbarHeight = `
-      calc(100vh -
-      ${this.search?.nativeElement?.offsetHeight ?? 0}px -
-      ${this.styles.gap} -
-      ${this.styles.gap} -
-      ${this.styles.gap} -
-      ${this.styles.offsetTop})
-    `;
-    this._listItemHeight =
-      this.listItem.nativeElement.offsetHeight + parseInt(this.gap);
+    // this.toolbarHeight = `
+    //   calc(100vh -
+    //   ${this.search?.nativeElement?.offsetHeight ?? 0}px -
+    //   ${this.styles.gap} -
+    //   ${this.styles.gap} -
+    //   ${this.styles.gap} -
+    //   ${this.styles.offsetTop})
+    // `;
+    // this._listItemHeight =
+    //   this.listItem.nativeElement.offsetHeight + parseInt(this.gap);
     this.changeDetectorRef.detectChanges();
   }
 

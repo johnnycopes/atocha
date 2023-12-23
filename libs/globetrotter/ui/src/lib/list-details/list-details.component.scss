@@ -10,6 +10,7 @@ $toolbar-width: map-get($spacing, 384);
   display: grid;
   height: 100%;
   grid-template-columns: [toolbar] $toolbar-width [details] 1fr;
+  grid-template-rows: 100%;
   grid-gap: map-get($spacing, 24);
 }
 
@@ -19,6 +20,7 @@ $toolbar-width: map-get($spacing, 384);
 }
 
 .list {
+  height: 100%;
   overflow: auto;
   scroll-behavior: smooth;
   @include custom-scrollbar;
@@ -42,6 +44,5 @@ $toolbar-width: map-get($spacing, 384);
 
 .details {
   grid-column: details;
-  height: 100%;
   overflow: auto;
 }
