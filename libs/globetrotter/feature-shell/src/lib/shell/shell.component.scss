@@ -8,12 +8,11 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    min-height: 100vh;
+    height: 100%;
     margin: 0 auto;
     padding: map-get($app, gap) map-get($app, wrapper-padding);
 
     &--no-scroll {
-      height: 100vh;
       overflow: hidden;
     }
   }
