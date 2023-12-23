@@ -38,4 +38,5 @@ $toolbar-width: map-get($spacing, 384);
 
 .details {
   grid-column: details;
+  overflow: auto;
 }
