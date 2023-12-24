@@ -9,6 +9,7 @@ $toolbar-width: map-get($spacing, 384);
 .container {
   display: grid;
   height: 100%;
+  overflow: hidden;
   grid-template-columns: [toolbar] $toolbar-width [details] 1fr;
   grid-template-rows: 100%;
   grid-gap: map-get($spacing, 24);
