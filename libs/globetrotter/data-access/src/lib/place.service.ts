@@ -2,12 +2,9 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { State } from '@atocha/core/data-access';
-import {
-  Country,
-  mapCountryDtoToCountry,
-  Region,
-} from '@atocha/globetrotter/util';
+import { Country, Region } from '@atocha/globetrotter/util';
 import { ApiService } from './api.service';
+import { mapCountryDtoToCountry } from './internal/map-country-dto-to-country';
 import { groupBy } from './internal/group-by';
 import { sort } from './internal/sort';
 
