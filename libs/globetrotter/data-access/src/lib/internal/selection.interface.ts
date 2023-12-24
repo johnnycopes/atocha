@@ -5,9 +5,3 @@ export interface Selection {
   quantity: number;
   places: string[];
 }
-
-export interface SelectionParams {
-  type: string;
-  quantity: string;
-  places: string;
-}

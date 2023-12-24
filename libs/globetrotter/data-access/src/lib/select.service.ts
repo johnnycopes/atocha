@@ -4,7 +4,13 @@ import { map } from 'rxjs/operators';
 import { State } from '@atocha/core/data-access';
 import { QuizType, mapRegionsToPlacesModel } from '@atocha/globetrotter/util';
 import { PlaceService } from './place.service';
-import { Selection, SelectionParams } from './internal/selection.interface';
+import { Selection } from './internal/selection.interface';
+
+interface SelectionParams {
+  type: string;
+  quantity: string;
+  places: string;
+}
 
 @Injectable({
   providedIn: 'root',
