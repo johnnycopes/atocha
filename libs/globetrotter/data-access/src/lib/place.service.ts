@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { State } from '@atocha/core/data-access';
-import { Country, Region } from '@atocha/globetrotter/util';
 import { ApiService } from './api.service';
 import { Places } from './internal/places';
 
@@ -15,11 +14,7 @@ const COUNTRY_SUMMARY_NAMES: Readonly<Record<string, string>> = {
   providedIn: 'root',
 })
 export class PlaceService {
-  private readonly _places = new State<{
-    countries: Country[];
-    countriesBySubregion: Record<string, Country[]>;
-    regions: Region[];
-  }>(new Places());
+  private readonly _places = new State(new Places());
   places$ = this._places.get();
 
   constructor(private _apiService: ApiService) {
