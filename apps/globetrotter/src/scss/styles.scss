@@ -10,6 +10,11 @@
   box-sizing: border-box;
 }
 
+html,
+body {
+  height: 100%;
+}
+
 body {
   color: map-get($color, lightest);
   background: map-get($color, darkest);
@@ -17,7 +22,6 @@ body {
   font-size: map-get($font-size, 20);
   font-weight: map-get($font-weight, normal);
   line-height: map-get($line-height, small);
-  min-height: 100vh;
   position: relative;
   @include custom-scrollbar;
 
@@ -107,6 +111,7 @@ app-root {
   .core-search-input {
     &__field {
       padding-right: map-get($spacing, 32);
+      outline: none;
     }
 
     &__clear {

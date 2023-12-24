@@ -23,15 +23,6 @@ $breakpoints: (
   }
 }
 
-@mixin full-screen-page {
-  position: absolute;
-  height: 100vh;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 @mixin small-caps {
   margin-bottom: map-get($spacing, 8);
   font-size: map-get($font-size, 16);

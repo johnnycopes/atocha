@@ -13,8 +13,6 @@ import {
   ChangeDetectionStrategy,
   ViewChild,
   ElementRef,
-  AfterViewInit,
-  ChangeDetectorRef,
   HostListener,
 } from '@angular/core';
 
@@ -34,9 +32,7 @@ export interface ListDetailsStyles {
   styleUrls: ['./list-details.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ListDetailsComponent<T>
-  implements OnInit, OnChanges, AfterViewInit
-{
+export class ListDetailsComponent<T> implements OnInit, OnChanges {
   @Input() items: T[] = [];
   @Input() listItemTemplate: TemplateRef<unknown> | undefined;
   @Input() detailsTemplate: TemplateRef<unknown> | undefined;
@@ -91,8 +87,6 @@ export class ListDetailsComponent<T>
     this._moveDownList(10);
   }
 
-  constructor(private changeDetectorRef: ChangeDetectorRef) {}
-
   ngOnInit(): void {
     if (!this.getItemUniqueId) {
       throw new Error(
@@ -117,21 +111,6 @@ export class ListDetailsComponent<T>
         });
       }
     }
-  }
-
-  ngAfterViewInit(): void {
-    this.containerHeight = `calc(100vh - ${this.styles.gap} - ${this.styles.gap} - ${this.styles.offsetTop})`;
-    this.toolbarHeight = `
-      calc(100vh -
-      ${this.search?.nativeElement?.offsetHeight ?? 0}px -
-      ${this.styles.gap} -
-      ${this.styles.gap} -
-      ${this.styles.gap} -
-      ${this.styles.offsetTop})
-    `;
-    this._listItemHeight =
-      this.listItem.nativeElement.offsetHeight + parseInt(this.gap);
-    this.changeDetectorRef.detectChanges();
   }
 
   onSearch(searchTerm: string): void {

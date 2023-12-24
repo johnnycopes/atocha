@@ -1,20 +1,26 @@
 @import 'styles';
 
-$toolbar-width: map-get($spacing, 384);
+:host {
+  display: block;
+}
 
 .container {
   display: grid;
-  grid-template-columns: [toolbar] $toolbar-width [details] 1fr;
+  height: 100%;
+  overflow: hidden;
+  grid-template-columns: [toolbar] map-get($spacing, 384) [details] 1fr;
+  grid-template-rows: 100%;
   grid-gap: map-get($spacing, 24);
 }
 
 .toolbar {
   grid-column: toolbar;
-  position: fixed;
-  width: $toolbar-width;
 }
 
 .list {
+  height: calc(
+    100% - 60px
+  ); // subtract the total height of the search input and its bottom margin
   overflow: auto;
   scroll-behavior: smooth;
   @include custom-scrollbar;
@@ -38,4 +44,5 @@ $toolbar-width: map-get($spacing, 384);
 
 .details {
   grid-column: details;
+  overflow: auto;
 }

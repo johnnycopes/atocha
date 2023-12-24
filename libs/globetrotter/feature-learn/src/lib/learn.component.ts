@@ -6,6 +6,15 @@ import { RouterOutlet } from '@angular/router';
   selector: 'app-learn',
   imports: [RouterOutlet],
   template: `<router-outlet></router-outlet>`,
+  styles: [
+    `
+      :host {
+        display: block;
+        min-height: 100%;
+        overflow: auto;
+      }
+    `,
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LearnComponent {}

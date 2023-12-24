@@ -1,8 +1,13 @@
 @import 'styles';
 
 :host {
-  @include full-screen-page;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
 .loader {
   width: map-get($spacing, 128);
   height: map-get($spacing, 128);
