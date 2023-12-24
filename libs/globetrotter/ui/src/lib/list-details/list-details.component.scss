@@ -21,7 +21,7 @@ $toolbar-width: map-get($spacing, 384);
 }
 
 .list {
-  height: 100%;
+  height: calc(100% - 60px); // subtract the total height of the search input and its bottom margin
   overflow: auto;
   scroll-behavior: smooth;
   @include custom-scrollbar;
