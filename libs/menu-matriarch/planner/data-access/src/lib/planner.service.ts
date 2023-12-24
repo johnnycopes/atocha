@@ -5,7 +5,7 @@ import { LocalStorageService, State } from '@atocha/core/data-access';
 import { MenuService } from '@atocha/menu-matriarch/menus/data-access';
 import {
   LocalStorageKey,
-  Route,
+  ROUTES,
 } from '@atocha/menu-matriarch/shared/data-access-routing';
 import { PlannerView } from '@atocha/menu-matriarch/shared/util';
 
@@ -27,7 +27,7 @@ export class PlannerService {
     );
 
   route$ = this._menuService.activeMenuId$.pipe(
-    map((menuId) => (menuId ? [Route.planner, menuId] : [Route.planner]))
+    map((menuId) => (menuId ? [ROUTES.planner, menuId] : [ROUTES.planner]))
   );
 
   constructor(

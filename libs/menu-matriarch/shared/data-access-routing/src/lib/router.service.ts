@@ -10,7 +10,7 @@ import { map, filter, tap } from 'rxjs/operators';
 
 import { LocalStorageService, State } from '@atocha/core/data-access';
 import { LocalStorageKey } from './local-storage-key.enum';
-import { Route } from './routes';
+import { ROUTES } from './routes';
 
 @Injectable({
   providedIn: 'root',
@@ -61,11 +61,11 @@ export class RouterService {
 
     this._routerEvents$
       .pipe(
-        filter(({ url }) => url.includes(Route.planner)),
+        filter(({ url }) => url.includes(ROUTES.planner)),
         tap((event) => {
           const divviedUrl = event.urlAfterRedirects.split('/');
           const menuId = divviedUrl[divviedUrl.length - 1];
-          if (menuId !== Route.planner) {
+          if (menuId !== ROUTES.planner) {
             this._state.updateProp('activeMenuId', menuId);
           }
         })
@@ -74,7 +74,7 @@ export class RouterService {
 
     this._routerEvents$
       .pipe(
-        filter(({ url }) => url.includes(Route.meals)),
+        filter(({ url }) => url.includes(ROUTES.meals)),
         tap((event) => {
           const divviedUrl = event.urlAfterRedirects.split('/');
           const mealId = divviedUrl[2];
@@ -85,7 +85,7 @@ export class RouterService {
 
     this._routerEvents$
       .pipe(
-        filter(({ url }) => url.includes(Route.dishes)),
+        filter(({ url }) => url.includes(ROUTES.dishes)),
         tap((event) => {
           const divviedUrl = event.urlAfterRedirects.split('/');
           const dishId = divviedUrl[2];

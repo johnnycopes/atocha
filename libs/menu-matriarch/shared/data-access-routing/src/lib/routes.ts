@@ -1,4 +1,4 @@
-export const Route = {
+export const ROUTES = {
   planner: 'planner',
   dishes: 'dishes',
   ingredients: 'ingredients',
