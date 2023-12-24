@@ -10,7 +10,7 @@ import { map, filter, tap } from 'rxjs/operators';
 
 import { LocalStorageService, State } from '@atocha/core/data-access';
 import { LocalStorageKey } from './local-storage-key.enum';
-import { Route } from './route.enum';
+import { Route } from './routes';
 
 @Injectable({
   providedIn: 'root',
