@@ -2,10 +2,11 @@ import { Injectable } from '@angular/core';
 import { filter, map } from 'rxjs/operators';
 
 import { State } from '@atocha/core/data-access';
-import { ROUTES, Country, Selection, shuffle } from '@atocha/globetrotter/util';
+import { Country, Selection, shuffle } from '@atocha/globetrotter/util';
 import { Quiz, QuizState } from './internal/quiz';
 import { PlaceService } from './place.service';
 import { RouterService } from './router.service';
+import { ROUTES } from './routes';
 
 @Injectable({
   providedIn: 'root',

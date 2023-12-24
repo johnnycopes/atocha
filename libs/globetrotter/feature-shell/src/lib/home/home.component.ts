@@ -2,8 +2,8 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { ButtonComponent } from '@atocha/core/ui';
+import { ROUTES } from '@atocha/globetrotter/data-access';
 import { IconComponent, fadeInAnimation } from '@atocha/globetrotter/ui';
-import { ROUTES } from '@atocha/globetrotter/util';
 
 @Component({
   standalone: true,

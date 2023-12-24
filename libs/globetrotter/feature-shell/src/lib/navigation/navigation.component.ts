@@ -4,7 +4,7 @@ import { RouterModule } from '@angular/router';
 
 import { AnimatedComponent, trackByFactory } from '@atocha/core/ui';
 import { IconComponent, positionAnimation } from '@atocha/globetrotter/ui';
-import { ROUTES } from '@atocha/globetrotter/util';
+import { ROUTES } from '@atocha/globetrotter/data-access';
 
 interface NavigationLink {
   name: string;
