@@ -1,9 +1,8 @@
 import { TestBed } from '@angular/core/testing';
-import { Observable, of } from 'rxjs';
+import { of } from 'rxjs';
 
 import { PlaceService } from './place.service';
 import { ApiService } from './internal/api.service';
-import { CountryDto } from './internal/country-dto.interface';
 import {
   DJIBOUTI,
   MONTENEGRO,
@@ -21,7 +20,7 @@ import {
 describe('PlaceService', () => {
   let service: PlaceService;
   const mockApiService: Pick<ApiService, 'fetchCountries'> = {
-    fetchCountries(): Observable<CountryDto[]> {
+    fetchCountries() {
       return of([
         MONTENEGRO_DTO,
         PHILLIPINES_DTO,
