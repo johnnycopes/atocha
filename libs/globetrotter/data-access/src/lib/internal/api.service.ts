@@ -4,7 +4,7 @@ import { Observable, of } from 'rxjs';
 import { catchError, map, shareReplay } from 'rxjs/operators';
 
 import { Summary } from '@atocha/globetrotter/util';
-import { CountryDto } from './internal/country-dto.interface';
+import { CountryDto } from './country-dto.interface';
 
 @Injectable({
   providedIn: 'root',

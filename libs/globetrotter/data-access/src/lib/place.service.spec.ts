@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 import { Observable, of } from 'rxjs';
 
 import { PlaceService } from './place.service';
-import { ApiService } from './api.service';
+import { ApiService } from './internal/api.service';
 import { CountryDto } from './internal/country-dto.interface';
 import {
   DJIBOUTI,

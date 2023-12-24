@@ -2,10 +2,10 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { State } from '@atocha/core/data-access';
-import { ApiService } from './api.service';
+import { ApiService } from './internal/api.service';
+import { Places } from './internal/places';
 import { ErrorService } from './error.service';
 import { LoaderService } from './loader.service';
-import { Places } from './internal/places';
 
 // Overrides to API data
 const COUNTRY_SUMMARY_NAMES: Readonly<Record<string, string>> = {
