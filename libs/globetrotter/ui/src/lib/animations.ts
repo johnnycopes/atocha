@@ -112,13 +112,13 @@ export const positionAnimation = trigger('position', [
   state(
     'offscreen',
     style({
-      transform: 'translateY(-100vh)',
+      transform: 'translateY(-100%)',
     })
   ),
   state(
     'header',
     style({
-      transform: 'translateY(calc(-100vh + 64px))', // this value must kept in sync with the header height in SCSS
+      transform: 'translateY(calc(-100% + 64px))', // this value must kept in sync with the header height in SCSS
     })
   ),
   state(
