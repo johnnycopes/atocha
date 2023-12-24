@@ -18,7 +18,7 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderComponent {
-  readonly Route: typeof Route = Route;
+  readonly Route = Route;
   configParams$ = this._routerService.configParams$;
 
   constructor(private _routerService: RouterService) {}
