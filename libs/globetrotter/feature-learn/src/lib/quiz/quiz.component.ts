@@ -5,7 +5,7 @@ import { combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { QuizService, SelectService } from '@atocha/globetrotter/data-access';
-import { Route, SelectionParams } from '@atocha/globetrotter/util';
+import { ROUTES, SelectionParams } from '@atocha/globetrotter/util';
 import { QuizMenuComponent } from './quiz-menu/quiz-menu.component';
 import { QuizCardsComponent } from './quiz-cards/quiz-cards.component';
 
@@ -49,7 +49,7 @@ export class QuizComponent implements OnInit {
   }
 
   async goBack(): Promise<void> {
-    await this._router.navigate([Route.learn]);
+    await this._router.navigate([ROUTES.learn]);
   }
 
   onGuess(correctGuess: boolean): void {

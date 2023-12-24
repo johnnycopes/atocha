@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 
 import { ButtonComponent } from '@atocha/core/ui';
 import { IconComponent, fadeInAnimation } from '@atocha/globetrotter/ui';
-import { Route } from '@atocha/globetrotter/util';
+import { ROUTES } from '@atocha/globetrotter/util';
 
 @Component({
   standalone: true,
@@ -18,6 +18,6 @@ export class HomeComponent {
   constructor(private _router: Router) {}
 
   async onClick(): Promise<void> {
-    await this._router.navigate([Route.learn]);
+    await this._router.navigate([ROUTES.learn]);
   }
 }
