@@ -6,7 +6,7 @@ import { Country, shuffle } from '@atocha/globetrotter/util';
 import { Quiz, QuizState } from './internal/quiz';
 import { PlaceService } from './place.service';
 import { RouterService } from './router.service';
-import { Selection } from './selection.interface';
+import { Selection } from './internal/selection.interface';
 import { ROUTES } from './routes';
 
 @Injectable({
