@@ -4,7 +4,7 @@ import { RouterModule } from '@angular/router';
 
 import { ExternalLinkDirective } from '@atocha/core/ui';
 import {
-  Route,
+  ROUTES,
   RouterService,
 } from '@atocha/spirit-islander/shared/data-access';
 
@@ -18,7 +18,7 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderComponent {
-  readonly Route = Route;
+  readonly ROUTES = ROUTES;
   configParams$ = this._routerService.configParams$;
 
   constructor(private _routerService: RouterService) {}

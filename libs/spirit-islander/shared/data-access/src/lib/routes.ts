@@ -1,4 +1,4 @@
-export const Route = {
+export const ROUTES = {
   home: '',
   config: 'config',
   gameSetup: 'game-setup',

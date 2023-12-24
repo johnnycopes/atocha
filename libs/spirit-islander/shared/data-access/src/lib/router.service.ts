@@ -4,7 +4,7 @@ import { map } from 'rxjs';
 
 import { Config } from '@atocha/spirit-islander/config/util';
 import { mapConfigToParams, mapParamsToConfig } from './internal/url-mappers';
-import { Route } from './routes';
+import { ROUTES } from './routes';
 import { StateService } from './state.service';
 
 @Injectable({
@@ -16,21 +16,21 @@ export class RouterService {
   constructor(private _stateService: StateService, private _router: Router) {}
 
   async navigateToHome(): Promise<void> {
-    await this._router.navigate([Route.home]);
+    await this._router.navigate([ROUTES.home]);
   }
 
   async navigateToGameSetup(config: Config): Promise<void> {
-    await this._router.navigate([Route.gameSetup], {
+    await this._router.navigate([ROUTES.gameSetup], {
       queryParams: mapConfigToParams(config),
     });
   }
 
   async navigateToConfig(): Promise<void> {
-    await this._router.navigate([Route.config]);
+    await this._router.navigate([ROUTES.config]);
   }
 
   async navigateToError(): Promise<void> {
-    await this._router.navigate([Route.error], {
+    await this._router.navigate([ROUTES.error], {
       skipLocationChange: true,
       queryParamsHandling: 'preserve',
     });
