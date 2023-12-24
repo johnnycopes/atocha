@@ -2,13 +2,9 @@ import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 
 import { State } from '@atocha/core/data-access';
-import {
-  QuizType,
-  Selection,
-  SelectionParams,
-  mapRegionsToPlacesModel,
-} from '@atocha/globetrotter/util';
+import { QuizType, mapRegionsToPlacesModel } from '@atocha/globetrotter/util';
 import { PlaceService } from './place.service';
+import { Selection, SelectionParams } from './selection.interface';
 
 @Injectable({
   providedIn: 'root',

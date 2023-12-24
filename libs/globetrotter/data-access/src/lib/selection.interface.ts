@@ -1,4 +1,4 @@
-import { QuizType } from './quiz-type.enum';
+import { QuizType } from '@atocha/globetrotter/util';
 
 export interface Selection {
   type: QuizType;
