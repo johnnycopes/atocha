@@ -7,10 +7,14 @@ import {
   mapCountryDtoToCountry,
   Region,
 } from '@atocha/globetrotter/util';
-import { COUNTRY_SUMMARY_NAMES } from '../data/country-modifications';
 import { ApiService } from './api.service';
 import { groupBy } from './internal/group-by';
 import { sort } from './internal/sort';
+
+// Overrides to API data
+const COUNTRY_SUMMARY_NAMES: Readonly<Record<string, string>> = {
+  Georgia: 'Georgia country',
+};
 
 @Injectable({
   providedIn: 'root',
