@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { filter, map } from 'rxjs/operators';
 
 import { State } from '@atocha/core/data-access';
-import { Route, Country, Selection, shuffle } from '@atocha/globetrotter/util';
+import { ROUTES, Country, Selection, shuffle } from '@atocha/globetrotter/util';
 import { Quiz, QuizState } from './internal/quiz';
 import { PlaceService } from './place.service';
 import { RouterService } from './router.service';
@@ -23,7 +23,7 @@ export class QuizService {
     private _routerService: RouterService
   ) {
     this._routerService.route$
-      .pipe(filter((route) => !route.includes(Route.quiz)))
+      .pipe(filter((route) => !route.includes(ROUTES.quiz)))
       .subscribe(() => this._state.updateProp('quiz', undefined));
   }
 

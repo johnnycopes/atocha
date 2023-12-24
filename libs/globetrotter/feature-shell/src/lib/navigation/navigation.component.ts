@@ -4,7 +4,7 @@ import { RouterModule } from '@angular/router';
 
 import { AnimatedComponent, trackByFactory } from '@atocha/core/ui';
 import { IconComponent, positionAnimation } from '@atocha/globetrotter/ui';
-import { Route } from '@atocha/globetrotter/util';
+import { ROUTES } from '@atocha/globetrotter/util';
 
 interface NavigationLink {
   name: string;
@@ -27,18 +27,18 @@ export class NavigationComponent extends AnimatedComponent {
   home: NavigationLink = {
     name: 'Home',
     icon: 'Globetrotter',
-    route: Route.home,
+    route: ROUTES.home,
     exactPathMatch: true,
   };
   links: NavigationLink[] = [
     {
       name: 'Explore',
-      route: Route.explore,
+      route: ROUTES.explore,
       exactPathMatch: true,
     },
     {
       name: 'Learn',
-      route: Route.learn,
+      route: ROUTES.learn,
       exactPathMatch: false,
     },
   ];

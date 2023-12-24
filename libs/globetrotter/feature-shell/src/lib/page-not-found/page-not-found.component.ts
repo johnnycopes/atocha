@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 
 import { ButtonComponent } from '@atocha/core/ui';
 import { ErrorComponent } from '@atocha/globetrotter/ui';
-import { Route } from '@atocha/globetrotter/util';
+import { ROUTES } from '@atocha/globetrotter/util';
 
 @Component({
   standalone: true,
@@ -16,6 +16,6 @@ export class PageNotFoundComponent {
   constructor(private _router: Router) {}
 
   async onHomeClick(): Promise<void> {
-    await this._router.navigate([Route.home]);
+    await this._router.navigate([ROUTES.home]);
   }
 }

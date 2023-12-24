@@ -7,7 +7,7 @@ import { first, map } from 'rxjs/operators';
 import { ButtonComponent } from '@atocha/core/ui';
 import { PlaceService, SelectService } from '@atocha/globetrotter/data-access';
 import { fadeInAnimation } from '@atocha/globetrotter/ui';
-import { Route, QuizType } from '@atocha/globetrotter/util';
+import { ROUTES, QuizType } from '@atocha/globetrotter/util';
 import { SelectTypeComponent } from './select-type/select-type.component';
 import { SelectQuantityComponent } from './select-quantity/select-quantity.component';
 import { SelectPlacesComponent } from './select-places/select-places.component';
@@ -83,7 +83,7 @@ export class SelectComponent {
         }
         const queryParams =
           this._selectService.mapSelectionToQueryParams(selection);
-        await this._router.navigate([`${Route.learn}/${Route.quiz}`], {
+        await this._router.navigate([`${ROUTES.learn}/${ROUTES.quiz}`], {
           queryParams,
         });
       });
