@@ -111,6 +111,7 @@ app-root {
   .core-search-input {
     &__field {
       padding-right: map-get($spacing, 32);
+      outline: none;
     }
 
     &__clear {
