@@ -18,7 +18,9 @@
 }
 
 .list {
-  height: calc(100% - 60px); // subtract the total height of the search input and its bottom margin
+  height: calc(
+    100% - 60px
+  ); // subtract the total height of the search input and its bottom margin
   overflow: auto;
   scroll-behavior: smooth;
   @include custom-scrollbar;

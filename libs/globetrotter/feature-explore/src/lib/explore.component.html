@@ -1,8 +1,6 @@
-<div @fadeIn
-  *ngIf="vm$ | async as vm"
-  class="wrapper"
->
-  <ui-list-details class="list-details"
+<div @fadeIn *ngIf="vm$ | async as vm" class="wrapper">
+  <ui-list-details
+    class="list-details"
     [items]="vm.filteredCountries"
     [listItemTemplate]="listItemTemplate"
     [detailsTemplate]="detailsTemplate"
