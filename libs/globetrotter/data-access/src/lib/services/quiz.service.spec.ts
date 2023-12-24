@@ -10,7 +10,7 @@ import {
   MONTENEGRO,
   PHILIPPINES,
   SEYCHELLES,
-} from '../mock-data/countries';
+} from './internal/mock-data/countries';
 
 jest.mock('@atocha/globetrotter/util', () => ({
   QuizType: {

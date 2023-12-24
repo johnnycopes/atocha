@@ -9,14 +9,14 @@ import {
   MONTENEGRO,
   PHILIPPINES,
   SEYCHELLES,
-} from '../mock-data/countries';
+} from './internal/mock-data/countries';
 import {
   DJIBOUTI_DTO,
   MONTENEGRO_DTO,
   PHILLIPINES_DTO,
   PUERTO_RICO_DTO,
   SEYCHELLES_DTO,
-} from '../mock-data/country-dtos';
+} from './internal/mock-data/country-dtos';
 
 describe('PlaceService', () => {
   let service: PlaceService;
