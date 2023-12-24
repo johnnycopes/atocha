@@ -5,7 +5,7 @@ import {
   PageNotFoundComponent,
   ShellComponent,
 } from '@atocha/globetrotter/feature-shell';
-import { Route } from '@atocha/globetrotter/util';
+import { ROUTES } from '@atocha/globetrotter/util';
 
 export const APP_ROUTES: Routes = [
   {
@@ -13,12 +13,12 @@ export const APP_ROUTES: Routes = [
     component: ShellComponent,
     children: [
       {
-        path: Route.home,
+        path: ROUTES.home,
         title: 'Globetrotter',
         component: HomeComponent,
       },
       {
-        path: Route.explore,
+        path: ROUTES.explore,
         title: 'Explore | Globetrotter',
         loadComponent: () =>
           import('@atocha/globetrotter/feature-explore').then(
@@ -26,7 +26,7 @@ export const APP_ROUTES: Routes = [
           ),
       },
       {
-        path: Route.learn,
+        path: ROUTES.learn,
         title: 'Learn | Globetrotter',
         loadChildren: () =>
           import('@atocha/globetrotter/feature-learn').then(
@@ -35,7 +35,7 @@ export const APP_ROUTES: Routes = [
       },
       {
         path: '',
-        redirectTo: Route.home,
+        redirectTo: ROUTES.home,
         pathMatch: 'full',
       },
     ],
