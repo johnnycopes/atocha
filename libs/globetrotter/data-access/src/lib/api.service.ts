@@ -3,9 +3,10 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap, shareReplay } from 'rxjs/operators';
 
-import { CountryDto, Summary } from '@atocha/globetrotter/util';
+import { Summary } from '@atocha/globetrotter/util';
 import { ErrorService } from './error.service';
 import { LoaderService } from './loader.service';
+import { CountryDto } from './internal/country-dto.interface';
 
 @Injectable({
   providedIn: 'root',
