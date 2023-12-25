@@ -9,7 +9,7 @@ import {
   PlaceService,
   ROUTES,
   SelectService,
-} from '@atocha/globetrotter/data-access';
+} from '@atocha/globetrotter/shared/data-access';
 import { fadeInAnimation } from '@atocha/globetrotter/shared/ui';
 import { QuizType } from '@atocha/globetrotter/shared/util';
 import { SelectTypeComponent } from './select-type/select-type.component';

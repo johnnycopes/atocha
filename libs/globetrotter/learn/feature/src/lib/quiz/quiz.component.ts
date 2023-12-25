@@ -8,7 +8,7 @@ import {
   QuizService,
   ROUTES,
   SelectService,
-} from '@atocha/globetrotter/data-access';
+} from '@atocha/globetrotter/shared/data-access';
 import { QuizMenuComponent } from './quiz-menu/quiz-menu.component';
 import { QuizCardsComponent } from './quiz-cards/quiz-cards.component';
 

@@ -7,7 +7,7 @@ import {
   IconComponent,
   positionAnimation,
 } from '@atocha/globetrotter/shared/ui';
-import { ROUTES } from '@atocha/globetrotter/data-access';
+import { ROUTES } from '@atocha/globetrotter/shared/data-access';
 
 interface NavigationLink {
   name: string;

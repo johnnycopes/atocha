@@ -2,7 +2,7 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { ButtonComponent } from '@atocha/core/ui';
-import { ROUTES } from '@atocha/globetrotter/data-access';
+import { ROUTES } from '@atocha/globetrotter/shared/data-access';
 import { IconComponent, fadeInAnimation } from '@atocha/globetrotter/shared/ui';
 
 @Component({

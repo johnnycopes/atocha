@@ -2,7 +2,10 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
-import { ErrorService, LoaderService } from '@atocha/globetrotter/data-access';
+import {
+  ErrorService,
+  LoaderService,
+} from '@atocha/globetrotter/shared/data-access';
 import {
   ErrorComponent,
   LoaderComponent,

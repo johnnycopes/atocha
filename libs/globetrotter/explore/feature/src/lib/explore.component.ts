@@ -10,7 +10,7 @@ import {
 } from 'rxjs/operators';
 
 import { includes } from '@atocha/core/util';
-import { PlaceService } from '@atocha/globetrotter/data-access';
+import { PlaceService } from '@atocha/globetrotter/shared/data-access';
 import {
   ListDetailsComponent,
   fadeInAnimation,
