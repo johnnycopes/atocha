@@ -5,6 +5,7 @@ import { State } from '@atocha/core/data-access';
 import { ErrorService } from './error.service';
 import { LoaderService } from './loader.service';
 import { ApiService } from './internal/api.service';
+import { CountryDto } from './internal/country-dto.interface';
 import { mapCountryDtoToCountry } from './internal/map-country-dto-to-country';
 import { Places } from './internal/places';
 import { sort } from './internal/sort';
@@ -33,14 +34,7 @@ export class PlaceService {
       .subscribe({
         next: (countryDtos) => {
           this._places.update(
-            new Places(
-              sort(
-                countryDtos
-                  .filter(({ unMember }) => unMember)
-                  .map(mapCountryDtoToCountry),
-                ({ name }) => name
-              )
-            )
+            new Places(this._mapCountryDtosToCountries(countryDtos))
           );
           this._loaderService.setGlobalLoader(false);
         },
@@ -54,5 +48,14 @@ export class PlaceService {
   getSummary(countryName: string): Observable<string> {
     const searchTerm = COUNTRY_SUMMARY_NAMES[countryName] || countryName;
     return this._apiService.fetchSummary(searchTerm);
+  }
+
+  private _mapCountryDtosToCountries(countryDtos: CountryDto[]) {
+    return sort(
+      countryDtos
+        .filter(({ unMember }) => unMember)
+        .map(mapCountryDtoToCountry),
+      ({ name }) => name
+    );
   }
 }
