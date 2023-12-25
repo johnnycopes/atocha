@@ -1,8 +1,8 @@
 import { TestBed } from '@angular/core/testing';
 import { of } from 'rxjs';
 
-import { QuizType } from '@atocha/globetrotter/shared/util';
 import { PlaceService, Places } from '@atocha/globetrotter/shared/data-access';
+import { QuizType } from '@atocha/globetrotter/learn/util';
 import { SelectService } from './select.service';
 
 describe('SelectService', () => {
