@@ -31,6 +31,9 @@
       "@atocha/globetrotter/learn/feature": [
         "libs/globetrotter/learn/feature/src/index.ts"
       ],
+      "@atocha/globetrotter/learn/util": [
+        "libs/globetrotter/learn/util/src/index.ts"
+      ],
       "@atocha/globetrotter/shared/data-access": [
         "libs/globetrotter/shared/data-access/src/index.ts"
       ],
@@ -148,7 +151,7 @@
         "libs/spirit-islander/shell/feature/src/index.ts"
       ],
       "@atocha/tree/ui": ["libs/tree/ui/src/index.ts"],
-      "@atocha/tree/util": ["libs/tree/util/src/index.ts"],
+      "@atocha/tree/util": ["libs/tree/util/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
