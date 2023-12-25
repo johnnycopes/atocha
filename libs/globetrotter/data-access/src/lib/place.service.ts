@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, first } from 'rxjs';
 
 import { State } from '@atocha/core/data-access';
 import { ApiService } from './internal/api.service';
@@ -25,16 +25,19 @@ export class PlaceService {
     private _loaderService: LoaderService
   ) {
     this._loaderService.setGlobalLoader(true);
-    this._apiService.fetchCountries().subscribe({
-      next: (countryDtos) => {
-        this._places.update(new Places(countryDtos));
-        this._loaderService.setGlobalLoader(false);
-      },
-      error: (error: { message: string }) => {
-        this._errorService.setGlobalError(!!error);
-        this._loaderService.setGlobalLoader(false);
-      },
-    });
+    this._apiService
+      .fetchCountries()
+      .pipe(first())
+      .subscribe({
+        next: (countryDtos) => {
+          this._places.update(new Places(countryDtos));
+          this._loaderService.setGlobalLoader(false);
+        },
+        error: (error: { message: string }) => {
+          this._errorService.setGlobalError(!!error);
+          this._loaderService.setGlobalLoader(false);
+        },
+      });
   }
 
   getSummary(countryName: string): Observable<string> {
