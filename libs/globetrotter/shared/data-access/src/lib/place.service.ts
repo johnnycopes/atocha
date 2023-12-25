@@ -6,8 +6,8 @@ import { ErrorService } from './error.service';
 import { LoaderService } from './loader.service';
 import { ApiService } from './internal/api.service';
 import { CountryDto } from './internal/country-dto.interface';
-import { mapCountryDtoToCountry } from './internal/map-country-dto-to-country';
 import { Places } from './internal/places';
+import { mapCountryDtoToCountry } from './internal/map-country-dto-to-country';
 import { sort } from './internal/sort';
 
 // Overrides to API data
