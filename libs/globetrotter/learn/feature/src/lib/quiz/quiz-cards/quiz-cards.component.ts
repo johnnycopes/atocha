@@ -9,7 +9,10 @@ import {
 } from '@angular/core';
 
 import { trackByFactory } from '@atocha/core/ui';
-import { staggerAnimation, fadeInAnimation } from '@atocha/globetrotter/ui';
+import {
+  staggerAnimation,
+  fadeInAnimation,
+} from '@atocha/globetrotter/shared/ui';
 import { Country, QuizType, shuffle } from '@atocha/globetrotter/util';
 import { QuizCardComponent } from './quiz-card/quiz-card.component';
 

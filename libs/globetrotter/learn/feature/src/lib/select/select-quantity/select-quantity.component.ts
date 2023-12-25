@@ -7,7 +7,7 @@ import {
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
-import { InputComponent } from '@atocha/globetrotter/ui';
+import { InputComponent } from '@atocha/globetrotter/shared/ui';
 
 @Component({
   standalone: true,

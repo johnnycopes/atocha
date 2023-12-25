@@ -11,7 +11,10 @@ import {
 
 import { includes } from '@atocha/core/util';
 import { PlaceService } from '@atocha/globetrotter/data-access';
-import { ListDetailsComponent, fadeInAnimation } from '@atocha/globetrotter/ui';
+import {
+  ListDetailsComponent,
+  fadeInAnimation,
+} from '@atocha/globetrotter/shared/ui';
 import { Country } from '@atocha/globetrotter/util';
 import { ExploreCountryComponent } from './explore-country/explore-country.component';
 

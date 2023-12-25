@@ -5,7 +5,7 @@ import { BehaviorSubject, combineLatest } from 'rxjs';
 import { map, distinctUntilChanged } from 'rxjs/operators';
 
 import { LoaderService, QuizService } from '@atocha/globetrotter/data-access';
-import { LoaderComponent } from '@atocha/globetrotter/ui';
+import { LoaderComponent } from '@atocha/globetrotter/shared/ui';
 import { NavigationComponent } from '../navigation/navigation.component';
 
 @Component({

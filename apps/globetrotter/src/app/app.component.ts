@@ -3,7 +3,10 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
 import { ErrorService, LoaderService } from '@atocha/globetrotter/data-access';
-import { ErrorComponent, LoaderComponent } from '@atocha/globetrotter/ui';
+import {
+  ErrorComponent,
+  LoaderComponent,
+} from '@atocha/globetrotter/shared/ui';
 
 @Component({
   standalone: true,

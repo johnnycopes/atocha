@@ -10,7 +10,7 @@ import {
   ROUTES,
   SelectService,
 } from '@atocha/globetrotter/data-access';
-import { fadeInAnimation } from '@atocha/globetrotter/ui';
+import { fadeInAnimation } from '@atocha/globetrotter/shared/ui';
 import { QuizType } from '@atocha/globetrotter/util';
 import { SelectTypeComponent } from './select-type/select-type.component';
 import { SelectQuantityComponent } from './select-quantity/select-quantity.component';

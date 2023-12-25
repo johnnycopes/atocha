@@ -16,7 +16,7 @@ import {
   FixedSlideablePanelComponent,
   FixedSlideablePanelPosition,
   IconComponent,
-} from '@atocha/globetrotter/ui';
+} from '@atocha/globetrotter/shared/ui';
 import { Country, QuizType } from '@atocha/globetrotter/util';
 
 @Component({

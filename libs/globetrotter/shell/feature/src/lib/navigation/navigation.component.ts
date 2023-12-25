@@ -3,7 +3,10 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { AnimatedComponent, trackByFactory } from '@atocha/core/ui';
-import { IconComponent, positionAnimation } from '@atocha/globetrotter/ui';
+import {
+  IconComponent,
+  positionAnimation,
+} from '@atocha/globetrotter/shared/ui';
 import { ROUTES } from '@atocha/globetrotter/data-access';
 
 interface NavigationLink {

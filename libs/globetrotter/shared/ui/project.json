@@ -2,14 +2,14 @@
   "name": "globetrotter-ui",
   "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
-  "sourceRoot": "libs/globetrotter/ui/src",
+  "sourceRoot": "libs/globetrotter/shared/ui/src",
   "prefix": "ui",
   "targets": {
     "test": {
       "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/libs/globetrotter/ui"],
+      "outputs": ["{workspaceRoot}/coverage/libs/globetrotter/shared/ui"],
       "options": {
-        "jestConfig": "libs/globetrotter/ui/jest.config.ts"
+        "jestConfig": "libs/globetrotter/shared/ui/jest.config.ts"
       }
     },
     "lint": {

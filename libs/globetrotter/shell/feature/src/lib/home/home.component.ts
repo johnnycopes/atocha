@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 
 import { ButtonComponent } from '@atocha/core/ui';
 import { ROUTES } from '@atocha/globetrotter/data-access';
-import { IconComponent, fadeInAnimation } from '@atocha/globetrotter/ui';
+import { IconComponent, fadeInAnimation } from '@atocha/globetrotter/shared/ui';
 
 @Component({
   standalone: true,
