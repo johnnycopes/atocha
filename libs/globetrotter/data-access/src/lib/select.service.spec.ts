@@ -4,29 +4,12 @@ import { of } from 'rxjs';
 import { QuizType } from '@atocha/globetrotter/util';
 import { PlaceService } from './place.service';
 import { SelectService } from './select.service';
+import { Places } from './internal/places';
 
 describe('SelectService', () => {
   let service: SelectService;
   const mockPlaceService: Pick<PlaceService, 'places$'> = {
-    places$: of({
-      countries: [],
-      countriesBySubregion: {},
-      regions: [
-        {
-          name: 'Africa',
-          subregions: [
-            {
-              name: 'Northern Africa',
-              countries: [],
-            },
-            {
-              name: 'Western Africa',
-              countries: [],
-            },
-          ],
-        },
-      ],
-    }),
+    places$: of(new Places()),
   };
 
   beforeEach(() => {
@@ -50,7 +33,7 @@ describe('SelectService', () => {
       expect(value).toEqual({
         type: 1,
         quantity: 5,
-        places: ['Northern Africa', 'Western Africa'],
+        places: [],
       });
       done();
     });

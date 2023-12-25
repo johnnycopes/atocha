@@ -8,10 +8,11 @@ import {
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
-import { IconComponent, SmallCapsComponent } from '@atocha/globetrotter/ui';
 import { ButtonComponent, CheckboxComponent } from '@atocha/core/ui';
 import { CountedSelectionTreeComponent } from '@atocha/tree/ui';
-import { Region, mapRegionsToPlacesModel } from '@atocha/globetrotter/util';
+import { SelectService } from '@atocha/globetrotter/data-access';
+import { IconComponent, SmallCapsComponent } from '@atocha/globetrotter/ui';
+import { Region } from '@atocha/globetrotter/util';
 import {
   createPlaceRoot,
   getId,
@@ -39,7 +40,7 @@ import {
 export class SelectPlacesComponent {
   @Input()
   set regions(regions: Region[]) {
-    this._allPlaces = mapRegionsToPlacesModel(regions);
+    this._allPlaces = this._selectService.mapRegionsToPlacesModel(regions);
     this.root = createPlaceRoot('Places', regions);
   }
   @Input() places: string[] = [];
@@ -50,6 +51,8 @@ export class SelectPlacesComponent {
   getChildren = getChildren;
   getNumberOfCountries = getNumberOfCountries;
   private _allPlaces: string[] = [];
+
+  constructor(private _selectService: SelectService) {}
 
   onPlacesChange(places: string[]): void {
     this.placesChange.emit(places);

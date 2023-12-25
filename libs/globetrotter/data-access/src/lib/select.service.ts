@@ -2,13 +2,16 @@ import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 
 import { State } from '@atocha/core/data-access';
-import {
-  QuizType,
-  Selection,
-  SelectionParams,
-  mapRegionsToPlacesModel,
-} from '@atocha/globetrotter/util';
+import { QuizType, Region } from '@atocha/globetrotter/util';
 import { PlaceService } from './place.service';
+import { Selection } from './internal/selection.interface';
+import { mapRegionsToPlacesModel } from './internal/map-regions-to-places-model';
+
+interface SelectionParams {
+  type: string;
+  quantity: string;
+  places: string;
+}
 
 @Injectable({
   providedIn: 'root',
@@ -44,6 +47,10 @@ export class SelectService {
 
   updatePlaces(places: string[]): void {
     this._state.updateProp('places', places);
+  }
+
+  mapRegionsToPlacesModel(regions: Region[]): string[] {
+    return mapRegionsToPlacesModel(regions);
   }
 
   mapSelectionToQueryParams({

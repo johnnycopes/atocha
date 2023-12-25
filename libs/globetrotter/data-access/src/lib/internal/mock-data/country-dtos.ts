@@ -1,4 +1,4 @@
-import { CountryDto } from '@atocha/globetrotter/util';
+import { CountryDto } from '../country-dto.interface';
 
 export const DJIBOUTI_DTO: CountryDto = {
   name: {
@@ -357,7 +357,7 @@ export const MONTENEGRO_DTO: CountryDto = {
   },
 };
 
-export const PHILLIPINES_DTO: CountryDto = {
+export const PHILIPPINES_DTO: CountryDto = {
   name: {
     common: 'Philippines',
     official: 'Republic of the Philippines',

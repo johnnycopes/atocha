@@ -1,5 +1,5 @@
-import { Country } from '../domain/country.interface';
-import { CountryDto } from '../dtos/country-dto.interface';
+import { Country } from '@atocha/globetrotter/util';
+import { CountryDto } from './country-dto.interface';
 import { mapCountryDtoToCountry } from './map-country-dto-to-country';
 
 describe('mapCountryDtoToCountry', () => {

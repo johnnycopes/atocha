@@ -1,4 +1,4 @@
-import { Region } from '../domain/region.interface';
+import { Region } from '@atocha/globetrotter/util';
 import { mapRegionsToPlacesModel } from './map-regions-to-places-model';
 
 describe('mapRegionsToPlacesModel', () => {

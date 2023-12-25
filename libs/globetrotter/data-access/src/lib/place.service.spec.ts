@@ -1,30 +1,29 @@
 import { TestBed } from '@angular/core/testing';
-import { Observable, of } from 'rxjs';
+import { of } from 'rxjs';
 
-import { CountryDto } from '@atocha/globetrotter/util';
 import { PlaceService } from './place.service';
-import { ApiService } from './api.service';
+import { ApiService } from './internal/api.service';
 import {
   DJIBOUTI,
   MONTENEGRO,
   PHILIPPINES,
   SEYCHELLES,
-} from '../mock-data/countries';
+} from './internal/mock-data/countries';
 import {
   DJIBOUTI_DTO,
   MONTENEGRO_DTO,
-  PHILLIPINES_DTO,
+  PHILIPPINES_DTO,
   PUERTO_RICO_DTO,
   SEYCHELLES_DTO,
-} from '../mock-data/country-dtos';
+} from './internal/mock-data/country-dtos';
 
 describe('PlaceService', () => {
   let service: PlaceService;
   const mockApiService: Pick<ApiService, 'fetchCountries'> = {
-    fetchCountries(): Observable<CountryDto[]> {
+    fetchCountries() {
       return of([
         MONTENEGRO_DTO,
-        PHILLIPINES_DTO,
+        PHILIPPINES_DTO,
         SEYCHELLES_DTO,
         PUERTO_RICO_DTO,
         DJIBOUTI_DTO,

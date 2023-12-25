@@ -1,5 +1,5 @@
-import { Country } from '../domain/country.interface';
-import { CountryDto } from '../dtos/country-dto.interface';
+import { Country } from '@atocha/globetrotter/util';
+import { CountryDto } from './country-dto.interface';
 
 const CALLING_CODES: Record<string, string[]> = {
   'United States': ['+1'],

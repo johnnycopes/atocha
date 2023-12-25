@@ -5,7 +5,7 @@ import {
   PageNotFoundComponent,
   ShellComponent,
 } from '@atocha/globetrotter/feature-shell';
-import { ROUTES } from '@atocha/globetrotter/util';
+import { ROUTES } from '@atocha/globetrotter/data-access';
 
 export const APP_ROUTES: Routes = [
   {

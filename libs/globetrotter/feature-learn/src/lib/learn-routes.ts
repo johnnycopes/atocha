@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 
-import { ROUTES } from '@atocha/globetrotter/util';
+import { ROUTES } from '@atocha/globetrotter/data-access';
 import { LearnComponent } from './learn.component';
 import { SelectComponent } from './select/select.component';
 import { QuizComponent } from './quiz/quiz.component';
