@@ -145,7 +145,10 @@
         "libs/spirit-islander/shell/feature/src/index.ts"
       ],
       "@atocha/tree/ui": ["libs/tree/ui/src/index.ts"],
-      "@atocha/tree/util": ["libs/tree/util/src/index.ts"]
+      "@atocha/tree/util": ["libs/tree/util/src/index.ts"],
+      "globetrotter-explore-data-access": [
+        "libs/globetrotter/explore/data-access/src/index.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]
