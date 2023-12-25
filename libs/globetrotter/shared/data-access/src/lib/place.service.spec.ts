@@ -41,6 +41,7 @@ describe('PlaceService', () => {
       ],
     });
     service = TestBed.inject(PlaceService);
+    service.initialize();
   });
 
   it('correctly initializes state', (done) => {
