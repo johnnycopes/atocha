@@ -7,7 +7,7 @@ import {
 import {
   DJIBOUTI_DTO,
   MONTENEGRO_DTO,
-  PHILLIPINES_DTO,
+  PHILIPPINES_DTO,
   PUERTO_RICO_DTO,
   SEYCHELLES_DTO,
 } from './mock-data/country-dtos';
@@ -26,7 +26,7 @@ describe('Places', () => {
       new Places([
         DJIBOUTI_DTO,
         MONTENEGRO_DTO,
-        PHILLIPINES_DTO,
+        PHILIPPINES_DTO,
         PUERTO_RICO_DTO,
         SEYCHELLES_DTO,
       ]).countriesBySubregion
@@ -42,7 +42,7 @@ describe('Places', () => {
       new Places([
         DJIBOUTI_DTO,
         MONTENEGRO_DTO,
-        PHILLIPINES_DTO,
+        PHILIPPINES_DTO,
         PUERTO_RICO_DTO,
         SEYCHELLES_DTO,
       ]).regions

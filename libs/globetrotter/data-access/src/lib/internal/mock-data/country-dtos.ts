@@ -357,7 +357,7 @@ export const MONTENEGRO_DTO: CountryDto = {
   },
 };
 
-export const PHILLIPINES_DTO: CountryDto = {
+export const PHILIPPINES_DTO: CountryDto = {
   name: {
     common: 'Philippines',
     official: 'Republic of the Philippines',

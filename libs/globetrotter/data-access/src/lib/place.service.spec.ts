@@ -12,7 +12,7 @@ import {
 import {
   DJIBOUTI_DTO,
   MONTENEGRO_DTO,
-  PHILLIPINES_DTO,
+  PHILIPPINES_DTO,
   PUERTO_RICO_DTO,
   SEYCHELLES_DTO,
 } from './internal/mock-data/country-dtos';
@@ -23,7 +23,7 @@ describe('PlaceService', () => {
     fetchCountries() {
       return of([
         MONTENEGRO_DTO,
-        PHILLIPINES_DTO,
+        PHILIPPINES_DTO,
         SEYCHELLES_DTO,
         PUERTO_RICO_DTO,
         DJIBOUTI_DTO,

@@ -14,7 +14,7 @@ import {
 import {
   DJIBOUTI_DTO,
   MONTENEGRO_DTO,
-  PHILLIPINES_DTO,
+  PHILIPPINES_DTO,
   SEYCHELLES_DTO,
 } from './internal/mock-data/country-dtos';
 import { Places } from './internal/places';
@@ -36,7 +36,7 @@ describe('QuizService', () => {
         DJIBOUTI_DTO,
         SEYCHELLES_DTO,
         MONTENEGRO_DTO,
-        PHILLIPINES_DTO,
+        PHILIPPINES_DTO,
       ])
     ),
   };
