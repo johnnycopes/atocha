@@ -4,9 +4,9 @@ import { Observable, first } from 'rxjs';
 import { State } from '@atocha/core/data-access';
 import { ErrorService } from './error.service';
 import { LoaderService } from './loader.service';
+import { Places } from './places';
 import { ApiService } from './internal/api.service';
 import { CountryDto } from './internal/country-dto.interface';
-import { Places } from './internal/places';
 import { mapCountryDtoToCountry } from './internal/map-country-dto-to-country';
 import { sort } from './internal/sort';
 
