@@ -14,23 +14,29 @@ import {
 import { Places } from './places';
 
 describe('Places', () => {
+  let places: Places;
+
+  beforeEach(() => {
+    places = new Places([
+      DJIBOUTI_DTO,
+      MONTENEGRO_DTO,
+      PHILIPPINES_DTO,
+      PUERTO_RICO_DTO,
+      SEYCHELLES_DTO,
+    ]);
+  });
+
   it('has countries data', () => {
-    expect(new Places([MONTENEGRO_DTO, SEYCHELLES_DTO]).countries).toEqual([
+    expect(places.countries).toEqual([
+      DJIBOUTI,
       MONTENEGRO,
+      PHILIPPINES,
       SEYCHELLES,
     ]);
   });
 
   it('has countriesBySubregion data', () => {
-    expect(
-      new Places([
-        DJIBOUTI_DTO,
-        MONTENEGRO_DTO,
-        PHILIPPINES_DTO,
-        PUERTO_RICO_DTO,
-        SEYCHELLES_DTO,
-      ]).countriesBySubregion
-    ).toEqual({
+    expect(places.countriesBySubregion).toEqual({
       'Eastern Africa': [DJIBOUTI, SEYCHELLES],
       'South-Eastern Asia': [PHILIPPINES],
       'Southeast Europe': [MONTENEGRO],
@@ -38,15 +44,7 @@ describe('Places', () => {
   });
 
   it('has regions data', () => {
-    expect(
-      new Places([
-        DJIBOUTI_DTO,
-        MONTENEGRO_DTO,
-        PHILIPPINES_DTO,
-        PUERTO_RICO_DTO,
-        SEYCHELLES_DTO,
-      ]).regions
-    ).toEqual([
+    expect(places.regions).toEqual([
       {
         name: 'Africa',
         subregions: [
