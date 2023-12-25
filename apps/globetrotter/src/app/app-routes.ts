@@ -21,7 +21,7 @@ export const APP_ROUTES: Routes = [
         path: ROUTES.explore,
         title: 'Explore | Globetrotter',
         loadComponent: () =>
-          import('@atocha/globetrotter/feature-explore').then(
+          import('@atocha/globetrotter/explore/feature').then(
             (m) => m.ExploreComponent
           ),
       },
