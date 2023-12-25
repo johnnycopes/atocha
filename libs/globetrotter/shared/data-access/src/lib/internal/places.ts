@@ -2,10 +2,12 @@ import { Country, Region } from '@atocha/globetrotter/shared/util';
 import { groupBy } from './group-by';
 
 export class Places {
+  countries: Country[];
   countriesBySubregion: Record<string, Country[]>;
   regions: Region[];
 
-  constructor(public countries: Country[] = []) {
+  constructor(countries: Country[] = []) {
+    this.countries = countries;
     this.countriesBySubregion = groupBy(countries, 'subregion');
     const subregionsByRegion = this._groupSubregionsByRegion(
       this.countriesBySubregion
