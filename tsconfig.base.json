@@ -148,6 +148,9 @@
       "@atocha/tree/util": ["libs/tree/util/src/index.ts"],
       "globetrotter-explore-data-access": [
         "libs/globetrotter/explore/data-access/src/index.ts"
+      ],
+      "globetrotter-learn-data-access": [
+        "libs/globetrotter/learn/data-access/src/index.ts"
       ]
     }
   },
