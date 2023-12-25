@@ -22,8 +22,14 @@
       "@atocha/firebase/data-access": [
         "libs/firebase/data-access/src/index.ts"
       ],
+      "@atocha/globetrotter-explore-data-access": [
+        "libs/globetrotter/explore/data-access/src/index.ts"
+      ],
       "@atocha/globetrotter/explore/feature": [
         "libs/globetrotter/explore/feature/src/index.ts"
+      ],
+      "@atocha/globetrotter-learn-data-access": [
+        "libs/globetrotter/learn/data-access/src/index.ts"
       ],
       "@atocha/globetrotter/learn/feature": [
         "libs/globetrotter/learn/feature/src/index.ts"
@@ -146,12 +152,6 @@
       ],
       "@atocha/tree/ui": ["libs/tree/ui/src/index.ts"],
       "@atocha/tree/util": ["libs/tree/util/src/index.ts"],
-      "globetrotter-explore-data-access": [
-        "libs/globetrotter/explore/data-access/src/index.ts"
-      ],
-      "globetrotter-learn-data-access": [
-        "libs/globetrotter/learn/data-access/src/index.ts"
-      ]
     }
   },
   "exclude": ["node_modules", "tmp"]
