@@ -2,11 +2,12 @@ import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { of } from 'rxjs';
 
-import { Country, QuizType, shuffle } from '@atocha/globetrotter/shared/util';
+import { Country } from '@atocha/globetrotter/shared/util';
+import { QuizType, shuffle } from '@atocha/globetrotter/learn/util';
 import { PlaceService, Places } from '@atocha/globetrotter/shared/data-access';
 import { QuizService } from './quiz.service';
 
-jest.mock('@atocha/globetrotter/shared/util', () => ({
+jest.mock('@atocha/globetrotter/learn/util', () => ({
   QuizType: {
     flagsCountries: 1,
     capitalsCountries: 2,
