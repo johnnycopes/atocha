@@ -1,7 +1,5 @@
 import { Country, Region } from '@atocha/globetrotter/shared/util';
-import { CountryDto } from './country-dto.interface';
 import { sort } from './sort';
-import { mapCountryDtoToCountry } from './map-country-dto-to-country';
 import { groupBy } from './group-by';
 
 export class Places {
@@ -9,13 +7,8 @@ export class Places {
   countriesBySubregion: Record<string, Country[]>;
   regions: Region[];
 
-  constructor(countryDtos: readonly CountryDto[] = []) {
-    this.countries = sort(
-      countryDtos
-        .filter(({ unMember }) => unMember)
-        .map(mapCountryDtoToCountry),
-      ({ name }) => name
-    );
+  constructor(countries: readonly Country[] = []) {
+    this.countries = sort(countries, ({ name }) => name);
     this.countriesBySubregion = groupBy(this.countries, 'subregion');
     const subregionsByRegion = this._groupSubregionsByRegion(
       this.countriesBySubregion
