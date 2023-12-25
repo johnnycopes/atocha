@@ -1,15 +1,15 @@
 {
   "name": "globetrotter-feature-shell",
-  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
-  "sourceRoot": "libs/globetrotter/feature-shell/src",
+  "sourceRoot": "libs/globetrotter/shell/feature/src",
   "prefix": "app",
   "targets": {
     "test": {
       "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/libs/globetrotter/feature-shell"],
+      "outputs": ["{workspaceRoot}/coverage/libs/globetrotter/shell/feature"],
       "options": {
-        "jestConfig": "libs/globetrotter/feature-shell/jest.config.ts"
+        "jestConfig": "libs/globetrotter/shell/feature/jest.config.ts"
       }
     },
     "lint": {

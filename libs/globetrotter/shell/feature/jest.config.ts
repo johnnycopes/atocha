@@ -1,10 +1,10 @@
 /* eslint-disable */
 export default {
   displayName: 'globetrotter-feature-shell',
-  preset: '../../../jest.preset.js',
+  preset: '../../../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {},
-  coverageDirectory: '../../../coverage/libs/globetrotter/feature-shell',
+  coverageDirectory: '../../../../coverage/libs/globetrotter/shell/feature',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': [
       'jest-preset-angular',
