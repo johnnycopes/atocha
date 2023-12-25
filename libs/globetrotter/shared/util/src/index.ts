@@ -5,4 +5,3 @@ export * from './lib/domain/subregion.interface';
 export * from './lib/domain/summary.interface';
 
 export * from './lib/duration';
-export * from './lib/shuffle';
