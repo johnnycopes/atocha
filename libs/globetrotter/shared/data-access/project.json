@@ -1,5 +1,5 @@
 {
-  "name": "globetrotter-data-access",
+  "name": "globetrotter-shared-data-access",
   "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "sourceRoot": "libs/globetrotter/shared/data-access/src",

@@ -1,6 +1,6 @@
 export function sort<TItem, TOutput>(
-  items: TItem[],
+  items: readonly TItem[],
   getProp: (item: TItem) => TOutput
 ): TItem[] {
-  return items.sort((a, b) => (getProp(a) > getProp(b) ? 1 : -1));
+  return items.slice().sort((a, b) => (getProp(a) > getProp(b) ? 1 : -1));
 }

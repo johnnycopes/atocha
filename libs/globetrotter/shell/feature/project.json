@@ -1,5 +1,5 @@
 {
-  "name": "globetrotter-feature-shell",
+  "name": "globetrotter-shell-feature",
   "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "sourceRoot": "libs/globetrotter/shell/feature/src",

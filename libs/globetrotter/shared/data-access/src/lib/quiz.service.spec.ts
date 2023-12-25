@@ -11,12 +11,6 @@ import {
   PHILIPPINES,
   SEYCHELLES,
 } from './internal/mock-data/countries';
-import {
-  DJIBOUTI_DTO,
-  MONTENEGRO_DTO,
-  PHILIPPINES_DTO,
-  SEYCHELLES_DTO,
-} from './internal/mock-data/country-dtos';
 import { Places } from './internal/places';
 
 jest.mock('@atocha/globetrotter/shared/util', () => ({
@@ -31,14 +25,7 @@ jest.mock('@atocha/globetrotter/shared/util', () => ({
 describe('QuizService', () => {
   let service: QuizService;
   const mockPlaceService: Pick<PlaceService, 'places$'> = {
-    places$: of(
-      new Places([
-        DJIBOUTI_DTO,
-        SEYCHELLES_DTO,
-        MONTENEGRO_DTO,
-        PHILIPPINES_DTO,
-      ])
-    ),
+    places$: of(new Places([DJIBOUTI, MONTENEGRO, PHILIPPINES, SEYCHELLES])),
   };
 
   beforeEach(() => {
