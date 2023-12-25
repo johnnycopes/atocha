@@ -2,10 +2,13 @@ import { Injectable } from '@angular/core';
 import { Observable, first } from 'rxjs';
 
 import { State } from '@atocha/core/data-access';
-import { ApiService } from './internal/api.service';
-import { Places } from './internal/places';
 import { ErrorService } from './error.service';
 import { LoaderService } from './loader.service';
+import { ApiService } from './internal/api.service';
+import { CountryDto } from './internal/country-dto.interface';
+import { Places } from './internal/places';
+import { mapCountryDtoToCountry } from './internal/map-country-dto-to-country';
+import { sort } from './internal/sort';
 
 // Overrides to API data
 const COUNTRY_SUMMARY_NAMES: Readonly<Record<string, string>> = {
@@ -30,7 +33,9 @@ export class PlaceService {
       .pipe(first())
       .subscribe({
         next: (countryDtos) => {
-          this._places.update(new Places(countryDtos));
+          this._places.update(
+            new Places(this._mapCountryDtosToCountries(countryDtos))
+          );
           this._loaderService.setGlobalLoader(false);
         },
         error: (error: { message: string }) => {
@@ -43,5 +48,14 @@ export class PlaceService {
   getSummary(countryName: string): Observable<string> {
     const searchTerm = COUNTRY_SUMMARY_NAMES[countryName] || countryName;
     return this._apiService.fetchSummary(searchTerm);
+  }
+
+  private _mapCountryDtosToCountries(countryDtos: CountryDto[]) {
+    return sort(
+      countryDtos
+        .filter(({ unMember }) => unMember)
+        .map(mapCountryDtoToCountry),
+      ({ name }) => name
+    );
   }
 }

@@ -4,26 +4,13 @@ import {
   PHILIPPINES,
   SEYCHELLES,
 } from './mock-data/countries';
-import {
-  DJIBOUTI_DTO,
-  MONTENEGRO_DTO,
-  PHILIPPINES_DTO,
-  PUERTO_RICO_DTO,
-  SEYCHELLES_DTO,
-} from './mock-data/country-dtos';
 import { Places } from './places';
 
 describe('Places', () => {
   let places: Places;
 
   beforeEach(() => {
-    places = new Places([
-      DJIBOUTI_DTO,
-      MONTENEGRO_DTO,
-      PHILIPPINES_DTO,
-      PUERTO_RICO_DTO,
-      SEYCHELLES_DTO,
-    ]);
+    places = new Places([DJIBOUTI, MONTENEGRO, PHILIPPINES, SEYCHELLES]);
   });
 
   it('has countries data', () => {
