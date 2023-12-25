@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { Observable, first } from 'rxjs';
+import { Observable, first, map } from 'rxjs';
 
 import { State } from '@atocha/core/data-access';
 import { ErrorService } from './error.service';
 import { LoaderService } from './loader.service';
+import { Places } from './places';
 import { ApiService } from './internal/api.service';
 import { CountryDto } from './internal/country-dto.interface';
-import { Places } from './internal/places';
 import { mapCountryDtoToCountry } from './internal/map-country-dto-to-country';
 import { sort } from './internal/sort';
 
@@ -47,7 +47,9 @@ export class PlaceService {
 
   getSummary(countryName: string): Observable<string> {
     const searchTerm = COUNTRY_SUMMARY_NAMES[countryName] || countryName;
-    return this._apiService.fetchSummary(searchTerm);
+    return this._apiService
+      .fetchSummary(searchTerm)
+      .pipe(map((result) => result.extract));
   }
 
   private _mapCountryDtosToCountries(countryDtos: CountryDto[]) {

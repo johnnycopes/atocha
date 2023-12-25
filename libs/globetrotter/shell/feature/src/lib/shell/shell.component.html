@@ -4,10 +4,7 @@
   <ui-loader *ngIf="vm.loading" class="loader"></ui-loader>
 
   <div *ngIf="vm.ready" class="content">
-    <div
-      class="content__wrapper"
-      [class.content__wrapper--no-scroll]="vm.quizComplete"
-    >
+    <div class="content__wrapper">
       <router-outlet></router-outlet>
     </div>
   </div>

@@ -17,9 +17,5 @@
     height: 100%;
     margin: 0 auto;
     padding: map-get($app, gap) map-get($app, wrapper-padding);
-
-    &--no-scroll {
-      overflow: hidden;
-    }
   }
 }

@@ -14,11 +14,13 @@ import {
 
 import { wait } from '@atocha/core/util';
 import {
+  DURATION,
   FlipCardComponent,
   FlipCardGuess,
   FlipCardSide,
 } from '@atocha/globetrotter/shared/ui';
-import { Country, DURATION, QuizType } from '@atocha/globetrotter/shared/util';
+import { Country } from '@atocha/globetrotter/shared/util';
+import { QuizType } from '@atocha/globetrotter/learn/util';
 
 type CardTemplate = Record<FlipCardSide, TemplateRef<unknown> | undefined>;
 

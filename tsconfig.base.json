@@ -25,8 +25,14 @@
       "@atocha/globetrotter/explore/feature": [
         "libs/globetrotter/explore/feature/src/index.ts"
       ],
+      "@atocha/globetrotter/learn/data-access": [
+        "libs/globetrotter/learn/data-access/src/index.ts"
+      ],
       "@atocha/globetrotter/learn/feature": [
         "libs/globetrotter/learn/feature/src/index.ts"
+      ],
+      "@atocha/globetrotter/learn/util": [
+        "libs/globetrotter/learn/util/src/index.ts"
       ],
       "@atocha/globetrotter/shared/data-access": [
         "libs/globetrotter/shared/data-access/src/index.ts"
