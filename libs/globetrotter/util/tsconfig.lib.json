@@ -5,6 +5,6 @@
     "declaration": true,
     "types": []
   },
-  "include": ["**/*.ts", "../data-access/src/lib/selection.interface.ts", "../data-access/src/lib/internal/map-country-dto-to-country.spec.ts", "../data-access/src/lib/internal/map-country-dto-to-country.ts"],
+  "include": ["**/*.ts"],
   "exclude": ["jest.config.ts", "**/*.spec.ts", "**/*.test.ts"]
 }
