@@ -3,7 +3,7 @@ import {
   isSubregion,
   Place,
   Region,
-} from '@atocha/globetrotter/util';
+} from '@atocha/globetrotter/shared/util';
 
 export interface Root {
   name: string;

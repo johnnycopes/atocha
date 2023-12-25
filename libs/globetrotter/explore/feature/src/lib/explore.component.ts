@@ -15,7 +15,7 @@ import {
   ListDetailsComponent,
   fadeInAnimation,
 } from '@atocha/globetrotter/shared/ui';
-import { Country } from '@atocha/globetrotter/util';
+import { Country } from '@atocha/globetrotter/shared/util';
 import { ExploreCountryComponent } from './explore-country/explore-country.component';
 
 @Component({

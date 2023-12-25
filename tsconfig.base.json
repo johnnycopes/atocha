@@ -34,10 +34,12 @@
       "@atocha/globetrotter/shared/ui": [
         "libs/globetrotter/shared/ui/src/index.ts"
       ],
+      "@atocha/globetrotter/shared/util": [
+        "libs/globetrotter/shared/util/src/index.ts"
+      ],
       "@atocha/globetrotter/shell/feature": [
         "libs/globetrotter/shell/feature/src/index.ts"
       ],
-      "@atocha/globetrotter/util": ["libs/globetrotter/util/src/index.ts"],
       "@atocha/lorenzo/data-access": ["libs/lorenzo/data-access/src/index.ts"],
       "@atocha/lorenzo/feature-browse": [
         "libs/lorenzo/feature-browse/src/index.ts"

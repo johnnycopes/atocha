@@ -17,7 +17,7 @@ import {
   MeasurementPipe,
   SmallCapsComponent,
 } from '@atocha/globetrotter/shared/ui';
-import { Country } from '@atocha/globetrotter/util';
+import { Country } from '@atocha/globetrotter/shared/util';
 
 interface TableData {
   header: string;

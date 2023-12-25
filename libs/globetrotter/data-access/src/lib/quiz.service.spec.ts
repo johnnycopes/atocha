@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { of } from 'rxjs';
 
-import { QuizType, shuffle } from '@atocha/globetrotter/util';
+import { QuizType, shuffle } from '@atocha/globetrotter/shared/util';
 import { QuizService } from './quiz.service';
 import { PlaceService } from './place.service';
 import {

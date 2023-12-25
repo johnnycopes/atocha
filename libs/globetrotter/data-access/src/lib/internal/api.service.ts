@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { catchError, map, shareReplay } from 'rxjs/operators';
 
-import { Summary } from '@atocha/globetrotter/util';
+import { Summary } from '@atocha/globetrotter/shared/util';
 import { CountryDto } from './country-dto.interface';
 
 @Injectable({

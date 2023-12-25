@@ -12,7 +12,7 @@ import {
   RadioButtonsOption,
   SmallCapsComponent,
 } from '@atocha/globetrotter/shared/ui';
-import { QuizType } from '@atocha/globetrotter/util';
+import { QuizType } from '@atocha/globetrotter/shared/util';
 
 @Component({
   standalone: true,

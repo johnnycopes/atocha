@@ -1,4 +1,4 @@
-import { Country, Region } from '@atocha/globetrotter/util';
+import { Country, Region } from '@atocha/globetrotter/shared/util';
 import { createPlaceRoot } from './create-places-root';
 
 describe('createPlaceRoot', () => {

@@ -17,7 +17,7 @@ import {
   FixedSlideablePanelPosition,
   IconComponent,
 } from '@atocha/globetrotter/shared/ui';
-import { Country, QuizType } from '@atocha/globetrotter/util';
+import { Country, QuizType } from '@atocha/globetrotter/shared/util';
 
 @Component({
   standalone: true,

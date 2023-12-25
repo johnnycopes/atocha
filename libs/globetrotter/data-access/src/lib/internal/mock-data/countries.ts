@@ -1,4 +1,4 @@
-import { Country } from '@atocha/globetrotter/util';
+import { Country } from '@atocha/globetrotter/shared/util';
 
 export const DJIBOUTI: Country = {
   area: 23200,

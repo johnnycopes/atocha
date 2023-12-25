@@ -11,7 +11,7 @@ import {
   SelectService,
 } from '@atocha/globetrotter/data-access';
 import { fadeInAnimation } from '@atocha/globetrotter/shared/ui';
-import { QuizType } from '@atocha/globetrotter/util';
+import { QuizType } from '@atocha/globetrotter/shared/util';
 import { SelectTypeComponent } from './select-type/select-type.component';
 import { SelectQuantityComponent } from './select-quantity/select-quantity.component';
 import { SelectPlacesComponent } from './select-places/select-places.component';

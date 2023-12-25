@@ -1,4 +1,4 @@
-import { Country } from '@atocha/globetrotter/util';
+import { Country } from '@atocha/globetrotter/shared/util';
 import { CountryDto } from './country-dto.interface';
 
 const CALLING_CODES: Record<string, string[]> = {

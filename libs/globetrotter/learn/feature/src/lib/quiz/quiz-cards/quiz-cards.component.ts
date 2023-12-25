@@ -13,7 +13,7 @@ import {
   staggerAnimation,
   fadeInAnimation,
 } from '@atocha/globetrotter/shared/ui';
-import { Country, QuizType, shuffle } from '@atocha/globetrotter/util';
+import { Country, QuizType, shuffle } from '@atocha/globetrotter/shared/util';
 import { QuizCardComponent } from './quiz-card/quiz-card.component';
 
 @Component({
