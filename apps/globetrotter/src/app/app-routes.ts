@@ -29,7 +29,7 @@ export const APP_ROUTES: Routes = [
         path: ROUTES.learn,
         title: 'Learn | Globetrotter',
         loadChildren: () =>
-          import('@atocha/globetrotter/feature-learn').then(
+          import('@atocha/globetrotter/learn/feature').then(
             (m) => m.LEARN_ROUTES
           ),
       },

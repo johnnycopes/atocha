@@ -28,11 +28,11 @@
       "@atocha/globetrotter/explore/feature": [
         "libs/globetrotter/explore/feature/src/index.ts"
       ],
-      "@atocha/globetrotter/feature-learn": [
-        "libs/globetrotter/feature-learn/src/index.ts"
-      ],
       "@atocha/globetrotter/feature-shell": [
         "libs/globetrotter/feature-shell/src/index.ts"
+      ],
+      "@atocha/globetrotter/learn/feature": [
+        "libs/globetrotter/learn/feature/src/index.ts"
       ],
       "@atocha/globetrotter/ui": ["libs/globetrotter/ui/src/index.ts"],
       "@atocha/globetrotter/util": ["libs/globetrotter/util/src/index.ts"],

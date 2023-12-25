@@ -1,10 +1,10 @@
 /* eslint-disable */
 export default {
   displayName: 'globetrotter-feature-learn',
-  preset: '../../../jest.preset.js',
+  preset: '../../../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {},
-  coverageDirectory: '../../../coverage/libs/globetrotter/feature-learn',
+  coverageDirectory: '../../../../coverage/libs/globetrotter/learn/feature',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': [
       'jest-preset-angular',

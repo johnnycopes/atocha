@@ -1,15 +1,15 @@
 {
   "name": "globetrotter-feature-learn",
-  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
-  "sourceRoot": "libs/globetrotter/feature-learn/src",
+  "sourceRoot": "libs/globetrotter/learn/feature/src",
   "prefix": "app",
   "targets": {
     "test": {
       "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/libs/globetrotter/feature-learn"],
+      "outputs": ["{workspaceRoot}/coverage/libs/globetrotter/learn/feature"],
       "options": {
-        "jestConfig": "libs/globetrotter/feature-learn/jest.config.ts"
+        "jestConfig": "libs/globetrotter/learn/feature/jest.config.ts"
       }
     },
     "lint": {
