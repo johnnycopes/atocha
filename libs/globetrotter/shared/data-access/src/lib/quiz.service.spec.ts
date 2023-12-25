@@ -19,7 +19,7 @@ import {
 } from './internal/mock-data/country-dtos';
 import { Places } from './internal/places';
 
-jest.mock('@atocha/globetrotter/util', () => ({
+jest.mock('@atocha/globetrotter/shared/util', () => ({
   QuizType: {
     flagsCountries: 1,
     capitalsCountries: 2,
