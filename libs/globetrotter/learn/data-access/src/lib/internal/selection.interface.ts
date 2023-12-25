@@ -1,4 +1,4 @@
-import { QuizType } from '@atocha/globetrotter/shared/util';
+import { QuizType } from '@atocha/globetrotter/learn/util';
 
 export interface Selection {
   type: QuizType;
