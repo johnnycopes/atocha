@@ -1,0 +1,22 @@
+{
+  "name": "globetrotter-data-access",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/globetrotter/shared/data-access/src",
+  "prefix": "app",
+  "targets": {
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": [
+        "{workspaceRoot}/coverage/libs/globetrotter/shared/data-access"
+      ],
+      "options": {
+        "jestConfig": "libs/globetrotter/shared/data-access/jest.config.ts"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    }
+  },
+  "tags": ["scope:globetrotter", "type:data-access"]
+}
