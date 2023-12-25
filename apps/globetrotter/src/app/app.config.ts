@@ -19,7 +19,8 @@ export const appConfig: ApplicationConfig = {
     importProvidersFrom([BrowserAnimationsModule, HttpClientModule]),
     {
       provide: APP_INITIALIZER,
-      useFactory: (placeService: PlaceService) => () => placeService.init(),
+      useFactory: (placeService: PlaceService) => () =>
+        placeService.initialize(),
       deps: [PlaceService],
       multi: true,
     },

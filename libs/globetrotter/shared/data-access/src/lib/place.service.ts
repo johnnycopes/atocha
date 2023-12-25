@@ -28,7 +28,7 @@ export class PlaceService {
     private _loaderService: LoaderService
   ) {}
 
-  init() {
+  initialize() {
     this._loaderService.setGlobalLoader(true);
     this._apiService
       .fetchCountries()
