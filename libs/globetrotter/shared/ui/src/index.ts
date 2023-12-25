@@ -1,5 +1,3 @@
-export * from './lib/animations';
-
 export * from './lib/alert/alert.component';
 export * from './lib/container/container.component';
 export * from './lib/error/error.component';
@@ -12,3 +10,6 @@ export * from './lib/loader/loader.component';
 export * from './lib/measurement/measurement.pipe';
 export * from './lib/radio-buttons/radio-buttons.component';
 export * from './lib/small-caps/small-caps.component';
+
+export * from './lib/animations';
+export * from './lib/duration';
