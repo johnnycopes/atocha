@@ -2,16 +2,9 @@ import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { of } from 'rxjs';
 
-import { QuizType, shuffle } from '@atocha/globetrotter/shared/util';
+import { Country, QuizType, shuffle } from '@atocha/globetrotter/shared/util';
+import { PlaceService, Places } from '@atocha/globetrotter/shared/data-access';
 import { QuizService } from './quiz.service';
-import { PlaceService } from './place.service';
-import {
-  DJIBOUTI,
-  MONTENEGRO,
-  PHILIPPINES,
-  SEYCHELLES,
-} from './internal/mock-data/countries';
-import { Places } from './internal/places';
 
 jest.mock('@atocha/globetrotter/shared/util', () => ({
   QuizType: {
@@ -23,10 +16,35 @@ jest.mock('@atocha/globetrotter/shared/util', () => ({
 }));
 
 describe('QuizService', () => {
-  let service: QuizService;
+  const DJIBOUTI = {
+    name: 'Djibouti',
+    region: 'Africa',
+    subregion: 'Eastern Africa',
+  } as Country;
+
+  const MONTENEGRO = {
+    name: 'Montenegro',
+    region: 'Europe',
+    subregion: 'Southeast Europe',
+  } as Country;
+
+  const PHILIPPINES = {
+    name: 'Philippines',
+    region: 'Asia',
+    subregion: 'South-Eastern Asia',
+  } as Country;
+
+  const SEYCHELLES = {
+    name: 'Seychelles',
+    region: 'Africa',
+    subregion: 'Eastern Africa',
+  } as Country;
+
   const mockPlaceService: Pick<PlaceService, 'places$'> = {
     places$: of(new Places([DJIBOUTI, MONTENEGRO, PHILIPPINES, SEYCHELLES])),
   };
+
+  let service: QuizService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
