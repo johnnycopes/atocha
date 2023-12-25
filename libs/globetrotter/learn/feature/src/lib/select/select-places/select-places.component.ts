@@ -10,12 +10,12 @@ import { FormsModule } from '@angular/forms';
 
 import { ButtonComponent, CheckboxComponent } from '@atocha/core/ui';
 import { CountedSelectionTreeComponent } from '@atocha/tree/ui';
-import { SelectService } from '@atocha/globetrotter/shared/data-access';
 import {
   IconComponent,
   SmallCapsComponent,
 } from '@atocha/globetrotter/shared/ui';
 import { Region } from '@atocha/globetrotter/shared/util';
+import { SelectService } from '@atocha/globetrotter/learn/data-access';
 import {
   createPlaceRoot,
   getId,

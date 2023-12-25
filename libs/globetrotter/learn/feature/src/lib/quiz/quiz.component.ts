@@ -4,11 +4,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import {
-  QuizService,
-  ROUTES,
-  SelectService,
-} from '@atocha/globetrotter/shared/data-access';
+import { QuizService, ROUTES } from '@atocha/globetrotter/shared/data-access';
+import { SelectService } from '@atocha/globetrotter/learn/data-access';
 import { QuizMenuComponent } from './quiz-menu/quiz-menu.component';
 import { QuizCardsComponent } from './quiz-cards/quiz-cards.component';
 
