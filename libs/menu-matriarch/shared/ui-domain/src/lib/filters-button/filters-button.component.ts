@@ -5,7 +5,7 @@ import {
   EventEmitter,
   Output,
 } from '@angular/core';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { faCaretDown, faCaretUp } from '@fortawesome/free-solid-svg-icons';
 
 import { ButtonComponent } from '@atocha/core/ui';
@@ -13,7 +13,7 @@ import { ButtonComponent } from '@atocha/core/ui';
 @Component({
   standalone: true,
   selector: 'ui-filters-button',
-  imports: [ButtonComponent, FontAwesomeModule],
+  imports: [ButtonComponent, FaIconComponent],
   templateUrl: './filters-button.component.html',
   styleUrls: ['./filters-button.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

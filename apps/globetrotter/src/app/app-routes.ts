@@ -4,8 +4,8 @@ import {
   HomeComponent,
   PageNotFoundComponent,
   ShellComponent,
-} from '@atocha/globetrotter/feature-shell';
-import { Route } from '@atocha/globetrotter/util';
+} from '@atocha/globetrotter/shell/feature';
+import { ROUTES } from '@atocha/globetrotter/shared/data-access';
 
 export const APP_ROUTES: Routes = [
   {
@@ -13,29 +13,29 @@ export const APP_ROUTES: Routes = [
     component: ShellComponent,
     children: [
       {
-        path: Route.home,
+        path: ROUTES.home,
         title: 'Globetrotter',
         component: HomeComponent,
       },
       {
-        path: Route.explore,
+        path: ROUTES.explore,
         title: 'Explore | Globetrotter',
         loadComponent: () =>
-          import('@atocha/globetrotter/feature-explore').then(
+          import('@atocha/globetrotter/explore/feature').then(
             (m) => m.ExploreComponent
           ),
       },
       {
-        path: Route.learn,
+        path: ROUTES.learn,
         title: 'Learn | Globetrotter',
         loadChildren: () =>
-          import('@atocha/globetrotter/feature-learn').then(
+          import('@atocha/globetrotter/learn/feature').then(
             (m) => m.LEARN_ROUTES
           ),
       },
       {
         path: '',
-        redirectTo: Route.home,
+        redirectTo: ROUTES.home,
         pathMatch: 'full',
       },
     ],

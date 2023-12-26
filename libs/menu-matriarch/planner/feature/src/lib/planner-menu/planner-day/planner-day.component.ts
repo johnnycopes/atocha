@@ -8,7 +8,7 @@ import {
   Output,
 } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { faPlusSquare, faTimes } from '@fortawesome/free-solid-svg-icons';
 
 import { MealSummaryComponent } from '@atocha/menu-matriarch/shared/ui-domain';
@@ -21,7 +21,7 @@ import { Day, Dish, Orientation } from '@atocha/menu-matriarch/shared/util';
   selector: '[app-planner-day]',
   imports: [
     CommonModule,
-    FontAwesomeModule,
+    FaIconComponent,
     MealSummaryComponent,
     RouterLink,
     SmallCapsLabelComponent,

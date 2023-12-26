@@ -1,0 +1,48 @@
+@import 'styles';
+
+:host {
+  display: block;
+}
+
+.container {
+  display: grid;
+  height: 100%;
+  overflow: hidden;
+  grid-template-columns: [toolbar] map-get($spacing, 384) [details] 1fr;
+  grid-template-rows: 100%;
+  grid-gap: map-get($spacing, 24);
+}
+
+.toolbar {
+  grid-column: toolbar;
+}
+
+.list {
+  height: calc(
+    100% - 60px
+  ); // subtract the total height of the search input and its bottom margin
+  overflow: auto;
+  scroll-behavior: smooth;
+  @include custom-scrollbar;
+
+  &__item {
+    padding: map-get($spacing, 12);
+    background: map-get($color, dark);
+    border-radius: map-get($border, radius);
+    cursor: pointer;
+
+    &:last-child {
+      margin-bottom: 0 !important;
+    }
+
+    &--selected {
+      background: map-get($color, light);
+      color: map-get($color, darkest);
+    }
+  }
+}
+
+.details {
+  grid-column: details;
+  overflow: auto;
+}

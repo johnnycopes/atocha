@@ -7,13 +7,13 @@ import {
   ChangeDetectionStrategy,
 } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   standalone: true,
   selector: 'app-kanban-board-form',
-  imports: [CommonModule, FontAwesomeModule, FormsModule],
+  imports: [CommonModule, FaIconComponent, FormsModule],
   templateUrl: './kanban-board-form.component.html',
   styleUrls: ['./kanban-board-form.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

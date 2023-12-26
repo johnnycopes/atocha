@@ -1,0 +1,20 @@
+{
+  "name": "globetrotter-shared-util",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/globetrotter/shared/util/src",
+  "projectType": "library",
+  "targets": {
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"]
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/libs/globetrotter/shared/util"],
+      "options": {
+        "jestConfig": "libs/globetrotter/shared/util/jest.config.ts"
+      }
+    }
+  },
+  "tags": ["scope:globetrotter", "type:util"]
+}

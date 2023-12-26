@@ -1,0 +1,21 @@
+@import 'styles';
+
+:host {
+  display: block;
+  height: 100%;
+}
+
+.content {
+  position: relative;
+  margin-left: map-get($app, navigation-width);
+  height: 100%;
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    margin: 0 auto;
+    padding: map-get($app, gap) map-get($app, wrapper-padding);
+  }
+}

@@ -1,0 +1,11 @@
+<ng-container *ngIf="vm$ | async as vm">
+  <app-navigation (animationFinished)="onNavReady()"> </app-navigation>
+
+  <ui-loader *ngIf="vm.loading" class="loader"></ui-loader>
+
+  <div *ngIf="vm.ready" class="content">
+    <div class="content__wrapper">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</ng-container>
