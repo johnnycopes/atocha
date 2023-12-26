@@ -32,6 +32,6 @@ export class CountryService {
     const searchTerm = COUNTRY_SUMMARY_NAMES[countryName] || countryName;
     return this._apiService
       .fetchSummary(searchTerm)
-      .pipe(map((result) => result.extract));
+      .pipe(map(({ extract }) => extract));
   }
 }
