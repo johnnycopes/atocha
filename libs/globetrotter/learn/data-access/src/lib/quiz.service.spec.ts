@@ -4,8 +4,9 @@ import { of } from 'rxjs';
 
 import { Country } from '@atocha/globetrotter/shared/util';
 import { QuizType, shuffle } from '@atocha/globetrotter/learn/util';
-import { PlaceService, Places } from '@atocha/globetrotter/shared/data-access';
+import { Places } from './internal/places';
 import { QuizService } from './quiz.service';
+import { PlaceService } from './place.service';
 
 jest.mock('@atocha/globetrotter/learn/util', () => ({
   QuizType: {

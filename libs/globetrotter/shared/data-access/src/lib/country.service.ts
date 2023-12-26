@@ -2,11 +2,10 @@ import { Injectable } from '@angular/core';
 import { Observable, first, map } from 'rxjs';
 
 import { State } from '@atocha/core/data-access';
+import { Country } from '@atocha/globetrotter/shared/util';
 import { ErrorService } from './error.service';
 import { LoaderService } from './loader.service';
-import { Places } from './places';
 import { ApiService } from './internal/api.service';
-import { CountryDto } from './internal/country-dto.interface';
 import { mapCountryDtoToCountry } from './internal/map-country-dto-to-country';
 import { sort } from './internal/sort';
 
@@ -18,9 +17,9 @@ const COUNTRY_SUMMARY_NAMES: Readonly<Record<string, string>> = {
 @Injectable({
   providedIn: 'root',
 })
-export class PlaceService {
-  private readonly _places = new State(new Places());
-  places$ = this._places.get();
+export class CountryService {
+  private _countries = new State<{ countries: Country[] }>({ countries: [] });
+  countries$ = this._countries.getProp('countries');
 
   constructor(
     private _apiService: ApiService,
@@ -28,15 +27,21 @@ export class PlaceService {
     private _loaderService: LoaderService
   ) {}
 
-  initialize() {
+  initialize(): void {
     this._loaderService.setGlobalLoader(true);
     this._apiService
       .fetchCountries()
       .pipe(first())
       .subscribe({
         next: (countryDtos) => {
-          this._places.update(
-            new Places(this._mapCountryDtosToCountries(countryDtos))
+          this._countries.updateProp(
+            'countries',
+            sort(
+              countryDtos
+                .filter(({ unMember }) => unMember)
+                .map(mapCountryDtoToCountry),
+              ({ name }) => name
+            )
           );
           this._loaderService.setGlobalLoader(false);
         },
@@ -52,14 +57,5 @@ export class PlaceService {
     return this._apiService
       .fetchSummary(searchTerm)
       .pipe(map((result) => result.extract));
-  }
-
-  private _mapCountryDtosToCountries(countryDtos: CountryDto[]) {
-    return sort(
-      countryDtos
-        .filter(({ unMember }) => unMember)
-        .map(mapCountryDtoToCountry),
-      ({ name }) => name
-    );
   }
 }
