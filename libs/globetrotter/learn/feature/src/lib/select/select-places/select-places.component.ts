@@ -14,8 +14,8 @@ import {
   IconComponent,
   SmallCapsComponent,
 } from '@atocha/globetrotter/shared/ui';
-import { Region } from '@atocha/globetrotter/shared/util';
 import { SelectService } from '@atocha/globetrotter/learn/data-access';
+import { Region } from '@atocha/globetrotter/learn/util';
 import {
   createPlaceRoot,
   getId,
