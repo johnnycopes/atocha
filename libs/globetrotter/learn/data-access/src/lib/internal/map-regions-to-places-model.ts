@@ -1,4 +1,4 @@
-import { Region } from '@atocha/globetrotter/shared/util';
+import { Region } from '@atocha/globetrotter/learn/util';
 
 export function mapRegionsToPlacesModel(regions: Region[]): string[] {
   const placeModel = [];
