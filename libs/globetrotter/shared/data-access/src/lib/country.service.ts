@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { first } from 'rxjs';
+import { Observable, first, map } from 'rxjs';
 
 import { State } from '@atocha/core/data-access';
 import { Country } from '@atocha/globetrotter/shared/util';
@@ -8,6 +8,11 @@ import { LoaderService } from './loader.service';
 import { ApiService } from './internal/api.service';
 import { mapCountryDtoToCountry } from './internal/map-country-dto-to-country';
 import { sort } from './internal/sort';
+
+// Overrides to API data
+const COUNTRY_SUMMARY_NAMES: Readonly<Record<string, string>> = {
+  Georgia: 'Georgia country',
+};
 
 @Injectable({
   providedIn: 'root',
@@ -22,7 +27,7 @@ export class CountryService {
     private _loaderService: LoaderService
   ) {}
 
-  initialize() {
+  initialize(): void {
     this._loaderService.setGlobalLoader(true);
     this._apiService
       .fetchCountries()
@@ -45,5 +50,12 @@ export class CountryService {
           this._loaderService.setGlobalLoader(false);
         },
       });
+  }
+
+  getSummary(countryName: string): Observable<string> {
+    const searchTerm = COUNTRY_SUMMARY_NAMES[countryName] || countryName;
+    return this._apiService
+      .fetchSummary(searchTerm)
+      .pipe(map((result) => result.extract));
   }
 }
