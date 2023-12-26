@@ -15,12 +15,19 @@ const COUNTRY_SUMMARY_NAMES: Readonly<Record<string, string>> = {
   providedIn: 'root',
 })
 export class CountryService {
+  private _countriesLoaded = false;
   private _countries = new State<{ countries: Country[] }>({ countries: [] });
   countries$ = this._countries.getProp('countries');
 
   constructor(private _apiService: ApiService) {}
 
   getCountries(): Observable<Country[]> {
+    if (this._countriesLoaded) {
+      throw new Error(
+        'Cannot call `getCountries` more than once: countries data has already been loaded'
+      );
+    }
+    this._countriesLoaded = true;
     return this._apiService.fetchCountries().pipe(
       first(),
       map(mapCountryDtosToCountries),
