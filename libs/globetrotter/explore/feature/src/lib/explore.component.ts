@@ -10,7 +10,7 @@ import {
 } from 'rxjs/operators';
 
 import { includes } from '@atocha/core/util';
-import { PlaceService } from '@atocha/globetrotter/shared/data-access';
+import { CountryService } from '@atocha/globetrotter/shared/data-access';
 import {
   ListDetailsComponent,
   fadeInAnimation,
@@ -32,9 +32,7 @@ export class ExploreComponent {
   private _selectedCountryChange = new BehaviorSubject<Country | undefined>(
     undefined
   );
-  private _countries$ = this._placeService.places$.pipe(
-    map(({ countries }) => countries)
-  );
+  private _countries$ = this._countryService.countries$;
   private _selectedCountry$ = this._selectedCountryChange.pipe(
     distinctUntilChanged()
   );
@@ -43,7 +41,7 @@ export class ExploreComponent {
       if (!country) {
         return of('');
       }
-      return this._placeService.getSummary(country.name);
+      return this._countryService.getSummary(country.name);
     }),
     distinctUntilChanged()
   );
@@ -77,7 +75,7 @@ export class ExploreComponent {
     }))
   );
 
-  constructor(private _placeService: PlaceService) {}
+  constructor(private _countryService: CountryService) {}
 
   getCountryId({ id }: Country): string {
     return id;
