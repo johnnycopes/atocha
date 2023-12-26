@@ -6,8 +6,7 @@ import { Country } from '@atocha/globetrotter/shared/util';
 import { ErrorService } from './error.service';
 import { LoaderService } from './loader.service';
 import { ApiService } from './internal/api.service';
-import { mapCountryDtoToCountry } from './internal/map-country-dto-to-country';
-import { sort } from './internal/sort';
+import { mapCountryDtosToCountries } from './internal/map-country-dtos-to-countries';
 
 // Overrides to API data
 const COUNTRY_SUMMARY_NAMES: Readonly<Record<string, string>> = {
@@ -36,12 +35,7 @@ export class CountryService {
         next: (countryDtos) => {
           this._countries.updateProp(
             'countries',
-            sort(
-              countryDtos
-                .filter(({ unMember }) => unMember)
-                .map(mapCountryDtoToCountry),
-              ({ name }) => name
-            )
+            mapCountryDtosToCountries(countryDtos)
           );
           this._loaderService.setGlobalLoader(false);
         },
