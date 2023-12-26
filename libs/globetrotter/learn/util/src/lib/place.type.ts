@@ -1,8 +1,16 @@
 import { Country } from '@atocha/globetrotter/shared/util';
-import { Region } from './region.interface';
-import { Subregion } from './subregion.interface';
 
 export type Place = Region | Subregion | Country;
+
+export interface Region {
+  name: string;
+  subregions: Subregion[];
+}
+
+export interface Subregion {
+  name: string;
+  countries: Country[];
+}
 
 export function isRegion(place: Place): place is Region {
   return 'subregions' in place;
