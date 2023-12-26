@@ -5,9 +5,12 @@ import { combineLatest } from 'rxjs';
 import { first, map } from 'rxjs/operators';
 
 import { ButtonComponent } from '@atocha/core/ui';
-import { PlaceService, ROUTES } from '@atocha/globetrotter/shared/data-access';
+import { ROUTES } from '@atocha/globetrotter/shared/data-access';
 import { fadeInAnimation } from '@atocha/globetrotter/shared/ui';
-import { SelectService } from '@atocha/globetrotter/learn/data-access';
+import {
+  PlaceService,
+  SelectService,
+} from '@atocha/globetrotter/learn/data-access';
 import { QuizType } from '@atocha/globetrotter/learn/util';
 import { SelectTypeComponent } from './select-type/select-type.component';
 import { SelectQuantityComponent } from './select-quantity/select-quantity.component';
