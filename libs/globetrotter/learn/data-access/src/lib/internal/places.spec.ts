@@ -3,7 +3,7 @@ import {
   MONTENEGRO,
   PHILIPPINES,
   SEYCHELLES,
-} from './internal/mock-data/countries';
+} from './mock-data/countries';
 import { Places } from './places';
 
 describe('Places', () => {

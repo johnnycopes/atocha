@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { State } from '@atocha/core/data-access';
 import { CountryService } from '@atocha/globetrotter/shared/data-access';
-import { Places } from './places';
+import { Places } from './internal/places';
 
 @Injectable({
   providedIn: 'root',
