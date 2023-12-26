@@ -7,7 +7,7 @@ export interface Region {
   subregions: Subregion[];
 }
 
-export interface Subregion {
+interface Subregion {
   name: string;
   countries: Country[];
 }
