@@ -1,47 +1,31 @@
 import { TestBed } from '@angular/core/testing';
 import { of } from 'rxjs';
 
+import { CountryService } from './country.service';
 import { PlaceService } from './place.service';
-import { ApiService } from './internal/api.service';
 import {
   DJIBOUTI,
   MONTENEGRO,
   PHILIPPINES,
   SEYCHELLES,
 } from './internal/mock-data/countries';
-import {
-  DJIBOUTI_DTO,
-  MONTENEGRO_DTO,
-  PHILIPPINES_DTO,
-  PUERTO_RICO_DTO,
-  SEYCHELLES_DTO,
-} from './internal/mock-data/country-dtos';
 
 describe('PlaceService', () => {
   let service: PlaceService;
-  const mockApiService: Pick<ApiService, 'fetchCountries'> = {
-    fetchCountries() {
-      return of([
-        MONTENEGRO_DTO,
-        PHILIPPINES_DTO,
-        SEYCHELLES_DTO,
-        PUERTO_RICO_DTO,
-        DJIBOUTI_DTO,
-      ]);
-    },
+  const mockCountryService: Pick<CountryService, 'countries$'> = {
+    countries$: of([DJIBOUTI, MONTENEGRO, PHILIPPINES, SEYCHELLES]),
   };
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [
         {
-          provide: ApiService,
-          useValue: mockApiService,
+          provide: CountryService,
+          useValue: mockCountryService,
         },
       ],
     });
     service = TestBed.inject(PlaceService);
-    service.initialize();
   });
 
   it('correctly initializes state', (done) => {
