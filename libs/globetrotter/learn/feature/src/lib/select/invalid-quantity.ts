@@ -2,7 +2,7 @@ import { ValidatorFn, AbstractControl, ValidationErrors } from '@angular/forms';
 
 import { Selection } from '@atocha/globetrotter/learn/util';
 
-export const playersOutnumberSelectedBoards: ValidatorFn = (
+export const invalidQuantity: ValidatorFn = (
   control: AbstractControl<Selection>
 ): ValidationErrors | null => {
   const quantity = control.value.quantity;
