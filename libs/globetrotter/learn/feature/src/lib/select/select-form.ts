@@ -2,6 +2,7 @@ import { FormBuilder, FormGroup, NonNullableFormBuilder } from '@angular/forms';
 
 import { Form } from '@atocha/core/ui';
 import { Selection } from '@atocha/globetrotter/learn/util';
+import { invalidSelection } from './invalid-selection';
 
 export class SelectForm extends FormGroup<Form<Selection>> {
   readonly type = this.controls.type;
@@ -20,7 +21,7 @@ export class SelectForm extends FormGroup<Form<Selection>> {
         places: fb.control(selection.places),
       }).controls,
       {
-        validators: [],
+        validators: [invalidSelection(getNumberOfCountries)],
       }
     );
   }
