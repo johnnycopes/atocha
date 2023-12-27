@@ -2,8 +2,7 @@ import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 
 import { State } from '@atocha/core/data-access';
-import { QuizType, Region } from '@atocha/globetrotter/learn/util';
-import { Selection } from './selection.interface';
+import { QuizType, Region, Selection } from '@atocha/globetrotter/learn/util';
 import { mapRegionsToPlacesModel } from './internal/map-regions-to-places-model';
 import { PlaceService } from './place.service';
 

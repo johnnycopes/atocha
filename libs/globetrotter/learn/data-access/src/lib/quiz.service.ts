@@ -4,9 +4,8 @@ import { filter, map } from 'rxjs/operators';
 import { State } from '@atocha/core/data-access';
 import { ROUTES, RouterService } from '@atocha/globetrotter/shared/data-access';
 import { Country } from '@atocha/globetrotter/shared/util';
-import { shuffle } from '@atocha/globetrotter/learn/util';
+import { Selection, shuffle } from '@atocha/globetrotter/learn/util';
 import { Quiz, QuizState } from './internal/quiz';
-import { Selection } from './selection.interface';
 import { PlaceService } from './place.service';
 
 @Injectable({
