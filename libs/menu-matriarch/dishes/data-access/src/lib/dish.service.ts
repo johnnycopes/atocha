@@ -30,7 +30,7 @@ export class DishService implements IEntityService<Dish, EditableDishData> {
   getOne(id: string): Observable<Dish | undefined> {
     return combineLatest([
       this._dishDtoService.getOne(id),
-      this._ingredientService.getAll(),
+      this._ingredientService.ingredients$,
       this._tagService.getAll(),
     ]).pipe(
       map(([dishDto, ingredients, tags]) => {
