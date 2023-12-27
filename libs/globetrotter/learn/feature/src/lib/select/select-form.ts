@@ -1,7 +1,7 @@
 import { FormBuilder, FormGroup, NonNullableFormBuilder } from '@angular/forms';
 
 import { Form } from '@atocha/core/ui';
-import { Selection } from '@atocha/globetrotter/learn/data-access';
+import { Selection } from '@atocha/globetrotter/learn/util';
 
 export class SelectForm extends FormGroup<Form<Selection>> {
   readonly type = this.controls.type;
