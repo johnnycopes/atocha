@@ -7,7 +7,7 @@ export function invalidQuantity(
 ): ValidatorFn {
   return (control: AbstractControl<Selection>): ValidationErrors | null => {
     const quantity = control.value.quantity;
-    const numberOfPlaces = control.value.places.length;
+    const places = control.value.places;
     const selectedCountriesQuantity = control.value.places.reduce(
       (total, name) =>
         getNumberOfCountries(name) ? total + getNumberOfCountries(name) : total,
@@ -15,7 +15,7 @@ export function invalidQuantity(
     );
 
     return quantity < 2 ||
-      numberOfPlaces === 0 ||
+      places.length === 0 ||
       quantity > selectedCountriesQuantity
       ? { invalidQuantity: 'Invalid quantity' }
       : null;
