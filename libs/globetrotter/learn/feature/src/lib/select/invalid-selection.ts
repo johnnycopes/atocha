@@ -2,7 +2,7 @@ import { ValidatorFn, AbstractControl, ValidationErrors } from '@angular/forms';
 
 import { Selection } from '@atocha/globetrotter/learn/util';
 
-export function invalidQuantity(
+export function invalidSelection(
   getNumberOfCountries: (placeName: string) => number
 ): ValidatorFn {
   return (control: AbstractControl<Selection>): ValidationErrors | null => {
@@ -17,7 +17,7 @@ export function invalidQuantity(
     return quantity < 2 ||
       places.length === 0 ||
       quantity > selectedCountriesQuantity
-      ? { invalidQuantity: 'Invalid quantity' }
+      ? { invalidSelection: 'Invalid quantity' }
       : null;
   };
 }
