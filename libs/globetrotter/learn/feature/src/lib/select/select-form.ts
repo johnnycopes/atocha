@@ -10,6 +10,7 @@ export class SelectForm extends FormGroup<Form<Selection>> {
 
   constructor(
     readonly selection: Selection,
+    readonly getNumberOfCountries: (subregionName: string) => number,
     readonly fb: NonNullableFormBuilder = new FormBuilder().nonNullable
   ) {
     super(
