@@ -20,24 +20,35 @@ describe('invalidQuantity', () => {
     }
   };
 
-  describe('returns an error', () => {
-    it('if quantity is less than 2', () => {
-      expect(
-        invalidQuantity(MOCK_GET_NUMBER_OF_COUNTRIES)(
-          fb.group<Pick<Form<Selection>, 'quantity' | 'places'>>({
-            quantity: fb.control(1),
-            places: fb.control(['Micronesia']),
-          })
-        )
-      ).toEqual({ invalidQuantity: 'Invalid quantity' });
-    });
-
-    it('if fewer than 2 countries are selected', () => {
+  describe('returns an error when', () => {
+    it('fewer than 2 countries are selected', () => {
       expect(
         invalidQuantity(MOCK_GET_NUMBER_OF_COUNTRIES)(
           fb.group<Pick<Form<Selection>, 'quantity' | 'places'>>({
             quantity: fb.control(2),
             places: fb.control([]),
+          })
+        )
+      ).toEqual({ invalidQuantity: 'Invalid quantity' });
+    });
+
+    it('quantity is less than 2', () => {
+      expect(
+        invalidQuantity(MOCK_GET_NUMBER_OF_COUNTRIES)(
+          fb.group<Pick<Form<Selection>, 'quantity' | 'places'>>({
+            quantity: fb.control(1),
+            places: fb.control(['Central America']),
+          })
+        )
+      ).toEqual({ invalidQuantity: 'Invalid quantity' });
+    });
+
+    it('quantity exceeds number of selected countries', () => {
+      expect(
+        invalidQuantity(MOCK_GET_NUMBER_OF_COUNTRIES)(
+          fb.group<Pick<Form<Selection>, 'quantity' | 'places'>>({
+            quantity: fb.control(9),
+            places: fb.control(['Micronesia']),
           })
         )
       ).toEqual({ invalidQuantity: 'Invalid quantity' });
