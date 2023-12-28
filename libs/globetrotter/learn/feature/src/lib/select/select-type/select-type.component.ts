@@ -2,9 +2,15 @@ import { CommonModule } from '@angular/common';
 import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 
+import { trackByFactory } from '@atocha/core/ui';
 import { SmallCapsComponent } from '@atocha/globetrotter/shared/ui';
 import { QuizType } from '@atocha/globetrotter/learn/util';
 import { SelectForm } from '../select-form';
+
+interface RadioButton {
+  display: string;
+  value: QuizType;
+}
 
 @Component({
   standalone: true,
@@ -17,7 +23,7 @@ import { SelectForm } from '../select-form';
 export class SelectTypeComponent {
   @Input({ required: true }) form!: SelectForm;
 
-  readonly options: readonly { display: string; value: QuizType }[] = [
+  readonly options: readonly RadioButton[] = [
     {
       display: 'Flags / Countries',
       value: QuizType.flagsCountries,
@@ -31,4 +37,7 @@ export class SelectTypeComponent {
       value: QuizType.countriesCapitals,
     },
   ];
+  readonly trackByFn = trackByFactory<RadioButton>(({ value }) =>
+    value.toString()
+  );
 }

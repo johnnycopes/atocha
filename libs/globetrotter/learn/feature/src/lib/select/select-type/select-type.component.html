@@ -2,7 +2,7 @@
   <div class="container">
     <p>Front / back of cards:</p>
     <div class="options">
-      <div class="option" *ngFor="let option of options">
+      <div class="option" *ngFor="let option of options; trackBy: trackByFn">
         <input
           class="option__input"
           [id]="option.display"
