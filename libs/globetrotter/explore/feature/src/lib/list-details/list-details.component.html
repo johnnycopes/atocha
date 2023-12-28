@@ -1,6 +1,6 @@
 <div class="container">
   <nav class="toolbar">
-    <ui-input [style.margin-bottom]="styles.gap">
+    <ui-input>
       <core-search-input
         [placeholder]="placeholderText"
         [text]="searchTerm"
@@ -13,7 +13,6 @@
         #listItem
         *ngFor="let item of items; trackBy: trackByFn"
         [class.list__item--selected]="checkIfSelected(item)"
-        [style.margin-bottom]="styles.gap"
         (click)="onSelect(item)"
       >
         <ng-container

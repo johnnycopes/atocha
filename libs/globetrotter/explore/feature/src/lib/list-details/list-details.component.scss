@@ -18,6 +18,7 @@
 }
 
 .list {
+  margin-top: map-get($spacing, 12);
   height: calc(
     100% - 60px
   ); // subtract the total height of the search input and its bottom margin
@@ -26,6 +27,7 @@
   @include custom-scrollbar;
 
   &__item {
+    margin-bottom: map-get($spacing, 12);
     padding: map-get($spacing, 12);
     background: map-get($color, dark);
     border-radius: map-get($border, radius);

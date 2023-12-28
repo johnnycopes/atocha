@@ -19,11 +19,6 @@ import {
 import { SearchInputComponent, trackByFactory } from '@atocha/core/ui';
 import { InputComponent } from '@atocha/globetrotter/shared/ui';
 
-export interface ListDetailsStyles {
-  offsetTop: string;
-  gap: string;
-}
-
 @Component({
   standalone: true,
   selector: 'app-list-details',
@@ -36,10 +31,6 @@ export class ListDetailsComponent<T> implements OnInit, OnChanges {
   @Input() items: T[] = [];
   @Input() listItemTemplate: TemplateRef<unknown> | undefined;
   @Input() detailsTemplate: TemplateRef<unknown> | undefined;
-  @Input() styles: ListDetailsStyles = {
-    offsetTop: '0px',
-    gap: '12px',
-  };
   @Input() getItemUniqueId: (item: T) => string = () => '';
   @Input() selectedItem: T | undefined;
   @Input() searchTerm = '';
@@ -56,9 +47,6 @@ export class ListDetailsComponent<T> implements OnInit, OnChanges {
   @ViewChild('listItem')
   listItem!: ElementRef<HTMLElement>;
 
-  gap = '12px';
-  containerHeight = '';
-  toolbarHeight = '';
   readonly trackByFn = trackByFactory(this.getItemUniqueId);
   private _selectedItemIndex = 0;
   private _listItemHeight = 0;
