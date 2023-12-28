@@ -7,8 +7,7 @@ import {
 } from '@angular/core';
 import { Overlay, OverlayRef } from '@angular/cdk/overlay';
 import { TemplatePortal } from '@angular/cdk/portal';
-import { fromEvent, Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { Subject, fromEvent, takeUntil } from 'rxjs';
 
 import { OptionsMenuComponent } from './options-menu.component';
 

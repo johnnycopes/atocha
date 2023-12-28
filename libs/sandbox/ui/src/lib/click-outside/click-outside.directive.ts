@@ -6,8 +6,7 @@ import {
   OnInit,
   Output,
 } from '@angular/core';
-import { fromEvent, Subject } from 'rxjs';
-import { filter, takeUntil } from 'rxjs/operators';
+import { Subject, fromEvent, filter, takeUntil } from 'rxjs';
 
 @Directive({
   standalone: true,

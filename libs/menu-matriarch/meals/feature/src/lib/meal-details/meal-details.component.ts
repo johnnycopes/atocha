@@ -1,8 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { combineLatest, of } from 'rxjs';
-import { concatMap, first, map, switchMap } from 'rxjs/operators';
+import { combineLatest, concatMap, first, map, of, switchMap } from 'rxjs';
 
 import { ButtonComponent, trackBySelf } from '@atocha/core/ui';
 import { MealService } from '@atocha/menu-matriarch/meals/data-access';

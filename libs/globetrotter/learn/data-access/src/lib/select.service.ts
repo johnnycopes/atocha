@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { map } from 'rxjs/operators';
+import { map } from 'rxjs';
 
 import { State } from '@atocha/core/data-access';
 import { QuizType, Region, Selection } from '@atocha/globetrotter/learn/util';

@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router, UrlTree } from '@angular/router';
-import { Observable } from 'rxjs';
-import { first, map } from 'rxjs/operators';
+import { Observable, first, map } from 'rxjs';
 
 import { PlannerService } from './planner.service';
 

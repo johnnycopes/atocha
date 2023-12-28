@@ -1,8 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
-import { of } from 'rxjs';
-import { map, switchMap } from 'rxjs/operators';
+import { map, of, switchMap } from 'rxjs';
 
 import { ButtonComponent } from '@atocha/core/ui';
 import { PlannerService } from '@atocha/menu-matriarch/planner/data-access';

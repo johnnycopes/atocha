@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { combineLatest, Observable } from 'rxjs';
-import { map, shareReplay, switchMap } from 'rxjs/operators';
+import { Observable, combineLatest, map, shareReplay, switchMap } from 'rxjs';
 
 import { includes } from '@atocha/core/util';
 import {

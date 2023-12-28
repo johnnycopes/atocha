@@ -2,8 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { combineLatest } from 'rxjs';
-import { first, map } from 'rxjs/operators';
+import { combineLatest, first, map } from 'rxjs';
 
 import { ButtonComponent } from '@atocha/core/ui';
 import { ROUTES } from '@atocha/globetrotter/shared/data-access';
