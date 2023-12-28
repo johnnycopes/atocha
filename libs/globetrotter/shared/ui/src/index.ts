@@ -8,7 +8,6 @@ export * from './lib/input/input.component';
 export * from './lib/list-details/list-details.component';
 export * from './lib/loader/loader.component';
 export * from './lib/measurement/measurement.pipe';
-export * from './lib/radio-buttons/radio-buttons.component';
 export * from './lib/small-caps/small-caps.component';
 
 export * from './lib/animations';
