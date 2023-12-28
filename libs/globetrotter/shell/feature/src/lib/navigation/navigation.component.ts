@@ -2,7 +2,11 @@ import { CommonModule } from '@angular/common';
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import { AnimatedComponent, trackByFactory } from '@atocha/core/ui';
+import {
+  AnimatedComponent,
+  ExternalLinkDirective,
+  trackByFactory,
+} from '@atocha/core/ui';
 import {
   IconComponent,
   positionAnimation,
@@ -19,7 +23,7 @@ interface NavigationLink {
 @Component({
   standalone: true,
   selector: 'app-navigation',
-  imports: [CommonModule, IconComponent, RouterModule],
+  imports: [CommonModule, ExternalLinkDirective, IconComponent, RouterModule],
   templateUrl: './navigation.component.html',
   styleUrls: ['./navigation.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

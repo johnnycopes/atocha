@@ -17,7 +17,7 @@ import {
 } from '@angular/core';
 
 import { SearchInputComponent, trackByFactory } from '@atocha/core/ui';
-import { InputComponent } from '../input/input.component';
+import { InputComponent } from '@atocha/globetrotter/shared/ui';
 
 export interface ListDetailsStyles {
   offsetTop: string;
@@ -26,7 +26,7 @@ export interface ListDetailsStyles {
 
 @Component({
   standalone: true,
-  selector: 'ui-list-details',
+  selector: 'app-list-details',
   imports: [CommonModule, InputComponent, SearchInputComponent],
   templateUrl: './list-details.component.html',
   styleUrls: ['./list-details.component.scss'],
