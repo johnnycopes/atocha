@@ -27,10 +27,10 @@ export class ExploreComponent {
   }
 
   onSelect(selectedCountry: Country): void {
-    this._exploreService.onSelect(selectedCountry);
+    this._exploreService.select(selectedCountry);
   }
 
   onSearch(searchTerm: string): void {
-    this._exploreService.onSearch(searchTerm);
+    this._exploreService.search(searchTerm);
   }
 }

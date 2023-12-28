@@ -55,11 +55,11 @@ export class ExploreService {
 
   constructor(private _countryService: CountryService) {}
 
-  onSelect(selectedCountry: Country): void {
-    this._selectCountry(selectedCountry);
+  select(country: Country): void {
+    this._selectCountry(country);
   }
 
-  onSearch(searchTerm: string): void {
+  search(searchTerm: string): void {
     this._state.updateProp('searchTerm', searchTerm);
   }
 
