@@ -7,7 +7,7 @@ import {
   NavigationCancel,
   NavigationError,
 } from '@angular/router';
-import { map, filter, distinctUntilChanged } from 'rxjs/operators';
+import { distinctUntilChanged, filter, map } from 'rxjs';
 
 import { State } from '@atocha/core/data-access';
 import { LoaderService } from './loader.service';

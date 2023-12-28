@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { filter, map } from 'rxjs/operators';
+import { filter, map } from 'rxjs';
 
 import { State } from '@atocha/core/data-access';
 import { ROUTES, RouterService } from '@atocha/globetrotter/shared/data-access';

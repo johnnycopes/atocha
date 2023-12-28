@@ -12,8 +12,7 @@ import {
   ViewChild,
   ElementRef,
 } from '@angular/core';
-import { merge, Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { Subject, merge, takeUntil } from 'rxjs';
 
 import { trackByFactory } from '@atocha/core/ui';
 import { AnimatedComponent } from '@atocha/core/ui';

@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Observable, map } from 'rxjs';
 
 import { DtoService } from '@atocha/firebase/data-access';
 import { Endpoint } from '@atocha/menu-matriarch/shared/data-access-api';

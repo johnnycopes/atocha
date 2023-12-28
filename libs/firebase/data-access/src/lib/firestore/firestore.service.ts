@@ -21,8 +21,7 @@ import {
   where,
   writeBatch,
 } from '@angular/fire/firestore';
-import { Observable, of } from 'rxjs';
-import { catchError, shareReplay } from 'rxjs/operators';
+import { Observable, catchError, of, shareReplay } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',

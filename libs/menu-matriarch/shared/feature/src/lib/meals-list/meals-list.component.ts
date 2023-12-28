@@ -8,8 +8,7 @@ import {
   Output,
 } from '@angular/core';
 import { Router } from '@angular/router';
-import { combineLatest } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { combineLatest, map } from 'rxjs';
 
 import { trackByFactory } from '@atocha/core/ui';
 import { MealService } from '@atocha/menu-matriarch/meals/data-access';

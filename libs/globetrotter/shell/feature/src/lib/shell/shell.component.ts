@@ -1,8 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { BehaviorSubject, combineLatest } from 'rxjs';
-import { map, distinctUntilChanged } from 'rxjs/operators';
+import {
+  BehaviorSubject,
+  combineLatest,
+  distinctUntilChanged,
+  map,
+} from 'rxjs';
 
 import { LoaderService } from '@atocha/globetrotter/shared/data-access';
 import { LoaderComponent } from '@atocha/globetrotter/shared/ui';

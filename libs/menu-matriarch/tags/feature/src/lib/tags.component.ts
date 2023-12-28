@@ -1,7 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { merge, Subject } from 'rxjs';
-import { map, shareReplay } from 'rxjs/operators';
+import { Subject, merge, map, shareReplay } from 'rxjs';
 
 import { ButtonComponent, trackByFactory } from '@atocha/core/ui';
 import { TagService } from '@atocha/menu-matriarch/tags/data-access';

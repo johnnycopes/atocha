@@ -1,8 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-import { Observable, combineLatest, of } from 'rxjs';
-import { concatMap, first, map } from 'rxjs/operators';
+import { Observable, combineLatest, concatMap, first, map, of } from 'rxjs';
 
 import {
   DishData,

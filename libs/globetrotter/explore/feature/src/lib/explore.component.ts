@@ -1,13 +1,16 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { BehaviorSubject, combineLatest, of, Subject } from 'rxjs';
 import {
-  map,
-  tap,
-  switchMap,
-  startWith,
+  BehaviorSubject,
+  Subject,
+  combineLatest,
   distinctUntilChanged,
-} from 'rxjs/operators';
+  map,
+  of,
+  tap,
+  startWith,
+  switchMap,
+} from 'rxjs';
 
 import { includes } from '@atocha/core/util';
 import { CountryService } from '@atocha/globetrotter/shared/data-access';

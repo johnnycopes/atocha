@@ -7,8 +7,7 @@ import {
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Subject } from 'rxjs';
-import { debounceTime, switchMap, takeUntil } from 'rxjs/operators';
+import { Subject, debounceTime, switchMap, takeUntil } from 'rxjs';
 
 import { ButtonComponent, trackBySelf } from '@atocha/core/ui';
 import { AuthService } from '@atocha/firebase/data-access';

@@ -6,8 +6,7 @@ import {
   Input,
   Output,
 } from '@angular/core';
-import { Subject, merge } from 'rxjs';
-import { map, shareReplay } from 'rxjs/operators';
+import { Subject, map, merge, shareReplay } from 'rxjs';
 
 import { ButtonComponent } from '@atocha/core/ui';
 import {

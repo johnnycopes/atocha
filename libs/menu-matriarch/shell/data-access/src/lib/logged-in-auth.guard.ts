@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router, UrlTree } from '@angular/router';
-import { Observable, of } from 'rxjs';
-import { first, map, switchMap } from 'rxjs/operators';
+import { Observable, first, map, of, switchMap } from 'rxjs';
 
 import { AuthService } from '@atocha/firebase/data-access';
 import { PlannerService } from '@atocha/menu-matriarch/planner/data-access';
