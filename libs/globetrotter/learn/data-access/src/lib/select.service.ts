@@ -28,24 +28,12 @@ export class SelectService {
     this._placeService.places$
       .pipe(map(({ regions }) => regions))
       .subscribe((regions) =>
-        this.updatePlaces(mapRegionsToPlacesModel(regions))
+        this._state.updateProp('places', mapRegionsToPlacesModel(regions))
       );
   }
 
   updateSelection(selection: Selection): void {
     this._state.update(selection);
-  }
-
-  updateType(type: QuizType): void {
-    this._state.updateProp('type', type);
-  }
-
-  updateQuantity(quantity: number): void {
-    this._state.updateProp('quantity', quantity);
-  }
-
-  updatePlaces(places: string[]): void {
-    this._state.updateProp('places', places);
   }
 
   mapRegionsToPlacesModel(regions: Region[]): string[] {
