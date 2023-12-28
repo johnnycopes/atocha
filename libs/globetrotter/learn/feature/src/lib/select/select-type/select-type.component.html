@@ -1,13 +1,8 @@
-<ui-small-caps header="Type"
-  [formGroup]="form"
->
+<ui-small-caps header="Type" [formGroup]="form">
   <div class="container">
     <p>Front / back of cards:</p>
     <div class="options">
-      <div
-        class="option"
-        *ngFor="let option of options"
-      >
+      <div class="option" *ngFor="let option of options">
         <input
           class="option__input"
           [id]="option.display"
