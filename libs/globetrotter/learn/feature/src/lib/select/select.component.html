@@ -19,9 +19,7 @@
       ></app-select-type>
       <app-select-quantity
         [form]="vm.form"
-        [invalid]="vm.invalidQuantity"
-        [quantity]="vm.quantity"
-        (quantityChange)="onQuantityChange($event)"
+        [error]="vm.form.getError('invalidSelection')"
       ></app-select-quantity>
     </div>
     <app-select-places

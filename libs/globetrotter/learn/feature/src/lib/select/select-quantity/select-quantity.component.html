@@ -2,8 +2,8 @@
   <ui-input
     class="input"
     label="Quantity"
-    [showError]="invalid"
-    errorMessage="Invalid quantity"
+    [showError]="!!error"
+    [errorMessage]="error"
   >
     <div class="container">
       <input
