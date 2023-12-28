@@ -1,16 +1,16 @@
 import { CommonModule } from '@angular/common';
 import {
-  Component,
-  OnChanges,
-  SimpleChanges,
-  Input,
-  Output,
-  EventEmitter,
-  TemplateRef,
   ChangeDetectionStrategy,
-  ViewChild,
+  Component,
   ElementRef,
+  EventEmitter,
   HostListener,
+  Input,
+  OnChanges,
+  Output,
+  SimpleChanges,
+  TemplateRef,
+  ViewChild,
 } from '@angular/core';
 
 import { SearchInputComponent, trackByFactory } from '@atocha/core/ui';
@@ -34,14 +34,8 @@ export class ListDetailsComponent implements OnChanges {
   @Output() selectedItemChange = new EventEmitter<Country>();
   @Output() searchTermChange = new EventEmitter<string>();
 
-  @ViewChild(InputComponent, { read: ElementRef })
-  search!: ElementRef<HTMLInputElement>;
-
-  @ViewChild('list')
+  @ViewChild('list', { static: true })
   list!: ElementRef<HTMLElement>;
-
-  @ViewChild('listItem')
-  listItem!: ElementRef<HTMLElement>;
 
   readonly _getCountryId: (country: Country) => string = ({ id }) => id;
   readonly trackByFn = trackByFactory(this._getCountryId);
@@ -81,10 +75,8 @@ export class ListDetailsComponent implements OnChanges {
       this._selectedItemIndex = this.items.indexOf(this.selectedItem);
       if (this._selectedItemIndex >= 0) {
         setTimeout(() => {
-          const list = this.list?.nativeElement;
-          if (list) {
-            list.scrollTop = this._selectedItemIndex * this._listItemHeight;
-          }
+          this.list.nativeElement.scrollTop =
+            this._selectedItemIndex * this._listItemHeight;
         });
       }
     }
