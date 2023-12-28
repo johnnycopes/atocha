@@ -1,24 +1,19 @@
-import {
-  Component,
-  ChangeDetectionStrategy,
-  Input,
-  Output,
-  EventEmitter,
-} from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { InputComponent } from '@atocha/globetrotter/shared/ui';
+import { SelectForm } from '../select-form';
 
 @Component({
   standalone: true,
   selector: 'app-select-quantity',
-  imports: [FormsModule, InputComponent],
+  imports: [CommonModule, InputComponent, ReactiveFormsModule],
   templateUrl: './select-quantity.component.html',
   styleUrls: ['./select-quantity.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SelectQuantityComponent {
-  @Input() invalid = false;
-  @Input() quantity = 0;
-  @Output() quantityChange = new EventEmitter<number>();
+  @Input({ required: true }) form!: SelectForm;
+  @Input({ required: true }) error = '';
 }

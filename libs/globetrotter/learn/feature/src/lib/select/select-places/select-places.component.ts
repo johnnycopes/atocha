@@ -1,12 +1,6 @@
 import { CommonModule } from '@angular/common';
-import {
-  Component,
-  ChangeDetectionStrategy,
-  Input,
-  Output,
-  EventEmitter,
-} from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { ButtonComponent, CheckboxComponent } from '@atocha/core/ui';
 import { CountedSelectionTreeComponent } from '@atocha/tree/ui';
@@ -23,6 +17,7 @@ import {
   getNumberOfCountries,
   Root,
 } from './create-places-root';
+import { SelectForm } from '../select-form';
 
 @Component({
   standalone: true,
@@ -34,6 +29,7 @@ import {
     CountedSelectionTreeComponent,
     FormsModule,
     IconComponent,
+    ReactiveFormsModule,
     SmallCapsComponent,
   ],
   templateUrl: './select-places.component.html',
@@ -41,31 +37,27 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SelectPlacesComponent {
-  @Input()
+  @Input({ required: true }) form!: SelectForm;
+  @Input({ required: true })
   set regions(regions: Region[]) {
     this._allPlaces = this._selectService.mapRegionsToPlacesModel(regions);
     this.root = createPlaceRoot('Places', regions);
   }
-  @Input() places: string[] = [];
-  @Output() placesChange = new EventEmitter<string[]>();
 
   root: Root | undefined;
-  getId = getId;
-  getChildren = getChildren;
-  getNumberOfCountries = getNumberOfCountries;
+  readonly getId = getId;
+  readonly getChildren = getChildren;
+  readonly getNumberOfCountries = getNumberOfCountries;
+
   private _allPlaces: string[] = [];
 
   constructor(private _selectService: SelectService) {}
 
-  onPlacesChange(places: string[]): void {
-    this.placesChange.emit(places);
+  selectAll(): void {
+    this.form.patchValue({ places: this._allPlaces });
   }
 
-  onSelectAll(): void {
-    this.placesChange.emit(this._allPlaces);
-  }
-
-  onClearAll(): void {
-    this.placesChange.emit([]);
+  clearAll(): void {
+    this.form.patchValue({ places: [] });
   }
 }

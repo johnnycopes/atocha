@@ -2,8 +2,7 @@ import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 
 import { State } from '@atocha/core/data-access';
-import { QuizType, Region } from '@atocha/globetrotter/learn/util';
-import { Selection } from './internal/selection.interface';
+import { QuizType, Region, Selection } from '@atocha/globetrotter/learn/util';
 import { mapRegionsToPlacesModel } from './internal/map-regions-to-places-model';
 import { PlaceService } from './place.service';
 
@@ -29,24 +28,12 @@ export class SelectService {
     this._placeService.places$
       .pipe(map(({ regions }) => regions))
       .subscribe((regions) =>
-        this.updatePlaces(mapRegionsToPlacesModel(regions))
+        this._state.updateProp('places', mapRegionsToPlacesModel(regions))
       );
   }
 
   updateSelection(selection: Selection): void {
     this._state.update(selection);
-  }
-
-  updateType(type: QuizType): void {
-    this._state.updateProp('type', type);
-  }
-
-  updateQuantity(quantity: number): void {
-    this._state.updateProp('quantity', quantity);
-  }
-
-  updatePlaces(places: string[]): void {
-    this._state.updateProp('places', places);
   }
 
   mapRegionsToPlacesModel(regions: Region[]): string[] {

@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { combineLatest } from 'rxjs';
 import { first, map } from 'rxjs/operators';
@@ -11,7 +12,7 @@ import {
   PlaceService,
   SelectService,
 } from '@atocha/globetrotter/learn/data-access';
-import { QuizType } from '@atocha/globetrotter/learn/util';
+import { SelectForm } from './select-form';
 import { SelectTypeComponent } from './select-type/select-type.component';
 import { SelectQuantityComponent } from './select-quantity/select-quantity.component';
 import { SelectPlacesComponent } from './select-places/select-places.component';
@@ -22,6 +23,7 @@ import { SelectPlacesComponent } from './select-places/select-places.component';
   imports: [
     ButtonComponent,
     CommonModule,
+    ReactiveFormsModule,
     SelectPlacesComponent,
     SelectQuantityComponent,
     SelectTypeComponent,
@@ -36,28 +38,14 @@ export class SelectComponent {
     this._placeService.places$,
     this._selectService.selection$,
   ]).pipe(
-    map(([{ regions, countriesBySubregion }, { places, type, quantity }]) => {
-      if (!regions.length) {
-        return undefined;
-      }
-      const selectedCountriesQuantity = places.reduce(
-        (total, name) =>
-          countriesBySubregion[name]
-            ? total + countriesBySubregion[name].length
-            : total,
-        0
-      );
-      return {
-        regions,
-        places,
-        type,
-        quantity,
-        invalidQuantity:
-          selectedCountriesQuantity < 2 ||
-          quantity < 2 ||
-          quantity > selectedCountriesQuantity,
-      };
-    })
+    first(),
+    map(([{ regions, countriesBySubregion }, selection]) => ({
+      regions,
+      form: new SelectForm(
+        selection,
+        (subregionName: string) => countriesBySubregion[subregionName].length
+      ),
+    }))
   );
 
   constructor(
@@ -66,30 +54,12 @@ export class SelectComponent {
     private _router: Router
   ) {}
 
-  onTypeChange(type: QuizType): void {
-    this._selectService.updateType(type);
-  }
-
-  onQuantityChange(quantity: number): void {
-    this._selectService.updateQuantity(quantity);
-  }
-
-  onPlacesChange(places: string[]): void {
-    this._selectService.updatePlaces(places);
-  }
-
-  async onLaunch(): Promise<void> {
-    this._selectService.selection$
-      .pipe(first())
-      .subscribe(async (selection) => {
-        if (!selection) {
-          return;
-        }
-        const queryParams =
-          this._selectService.mapSelectionToQueryParams(selection);
-        await this._router.navigate([`${ROUTES.learn}/${ROUTES.quiz}`], {
-          queryParams,
-        });
-      });
+  async launch(form: SelectForm): Promise<void> {
+    const queryParams = this._selectService.mapSelectionToQueryParams(
+      form.getRawValue()
+    );
+    await this._router.navigate([`${ROUTES.learn}/${ROUTES.quiz}`], {
+      queryParams,
+    });
   }
 }
