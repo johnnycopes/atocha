@@ -9,6 +9,10 @@ export class SelectForm extends FormGroup<Form<Selection>> {
   readonly quantity = this.controls.quantity;
   readonly places = this.controls.places;
 
+  get error(): string | null {
+    return this.getError('invalidSelection');
+  }
+
   constructor(
     readonly selection: Selection,
     readonly getNumberOfCountries: (subregionName: string) => number,
