@@ -22,10 +22,6 @@ export class ExploreComponent {
 
   constructor(private _exploreService: ExploreService) {}
 
-  getCountryId({ id }: Country): string {
-    return id;
-  }
-
   onSelect(selectedCountry: Country): void {
     this._exploreService.select(selectedCountry);
   }

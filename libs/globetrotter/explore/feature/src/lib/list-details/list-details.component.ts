@@ -1,9 +1,6 @@
-/* eslint-disable @typescript-eslint/member-ordering */
-
 import { CommonModule } from '@angular/common';
 import {
   Component,
-  OnInit,
   OnChanges,
   SimpleChanges,
   Input,
@@ -18,6 +15,7 @@ import {
 
 import { SearchInputComponent, trackByFactory } from '@atocha/core/ui';
 import { InputComponent } from '@atocha/globetrotter/shared/ui';
+import { Country } from '@atocha/globetrotter/shared/util';
 
 @Component({
   standalone: true,
@@ -27,14 +25,13 @@ import { InputComponent } from '@atocha/globetrotter/shared/ui';
   styleUrls: ['./list-details.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ListDetailsComponent<T> implements OnInit, OnChanges {
-  @Input() items: T[] = [];
+export class ListDetailsComponent implements OnChanges {
+  @Input() items: Country[] = [];
   @Input() listItemTemplate: TemplateRef<unknown> | undefined;
   @Input() detailsTemplate: TemplateRef<unknown> | undefined;
-  @Input() getItemUniqueId: (item: T) => string = () => '';
-  @Input() selectedItem: T | undefined;
+  @Input() selectedItem: Country | undefined;
   @Input() searchTerm = '';
-  @Output() selectedItemChange = new EventEmitter<T>();
+  @Output() selectedItemChange = new EventEmitter<Country>();
   @Output() searchTermChange = new EventEmitter<string>();
 
   @ViewChild(InputComponent, { read: ElementRef })
@@ -46,7 +43,8 @@ export class ListDetailsComponent<T> implements OnInit, OnChanges {
   @ViewChild('listItem')
   listItem!: ElementRef<HTMLElement>;
 
-  readonly trackByFn = trackByFactory(this.getItemUniqueId);
+  readonly _getCountryId: (country: Country) => string = ({ id }) => id;
+  readonly trackByFn = trackByFactory(this._getCountryId);
   private _selectedItemIndex = 0;
   private _listItemHeight = 0;
 
@@ -74,14 +72,6 @@ export class ListDetailsComponent<T> implements OnInit, OnChanges {
     this._moveDownList(10);
   }
 
-  ngOnInit(): void {
-    if (!this.getItemUniqueId) {
-      throw new Error(
-        'Missing input(s): getItemUniqueId must be passed to the list-details component'
-      );
-    }
-  }
-
   ngOnChanges(changes: SimpleChanges): void {
     if (changes?.['selectedItem'] || changes?.['items']) {
       if (!this.selectedItem) {
@@ -104,17 +94,15 @@ export class ListDetailsComponent<T> implements OnInit, OnChanges {
     this.searchTermChange.emit(searchTerm);
   }
 
-  onSelect(item: T): void {
+  onSelect(item: Country): void {
     this.selectedItemChange.emit(item);
   }
 
-  checkIfSelected(item: T): boolean {
+  checkIfSelected(item: Country): boolean {
     if (!this.selectedItem) {
       return false;
     }
-    return (
-      this.getItemUniqueId(item) === this.getItemUniqueId(this.selectedItem)
-    );
+    return this._getCountryId(item) === this._getCountryId(this.selectedItem);
   }
 
   private _moveUpList(incrementValue: number): void {
