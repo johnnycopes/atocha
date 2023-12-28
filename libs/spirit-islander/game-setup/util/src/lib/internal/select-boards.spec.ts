@@ -74,7 +74,7 @@ describe('selectBoards', () => {
           randomThematicBoards: false,
           allowBEAndDFBoards: false,
         });
-        expect(selectedBoards).toEqual([
+        expect(selectedBoards).toStrictEqual([
           { name: 'A', thematicName: 'Northeast' },
           { name: 'E', thematicName: 'Southeast', expansion: 'Jagged Earth' },
         ]);
@@ -85,7 +85,7 @@ describe('selectBoards', () => {
           randomThematicBoards: false,
           allowBEAndDFBoards: false,
         });
-        expect(selectedBoards).toEqual([
+        expect(selectedBoards).toStrictEqual([
           { name: 'A', thematicName: 'Northeast' },
           { name: 'F', thematicName: 'Southwest', expansion: 'Jagged Earth' },
         ]);
@@ -155,7 +155,7 @@ describe('thematic board selection', () => {
           randomThematicBoards: true,
           allowBEAndDFBoards: true,
         })
-      ).toEqual([
+      ).toStrictEqual([
         { name: 'A', thematicName: 'Northeast' },
         { name: 'B', thematicName: 'East' },
         { name: 'C', thematicName: 'Northwest' },

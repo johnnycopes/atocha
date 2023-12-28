@@ -2,11 +2,11 @@ import { getScenarios } from './get-scenarios';
 
 describe('getScenarios', () => {
   it('returns all boards if expansions argument is omitted', () => {
-    expect(getScenarios()).toEqual(getScenarios());
+    expect(getScenarios()).toStrictEqual(getScenarios());
   });
 
   it('returns scenarios from base game', () => {
-    expect(getScenarios({ expansions: [] })).toEqual([
+    expect(getScenarios({ expansions: [] })).toStrictEqual([
       { name: 'No Scenario', difficulty: 0 },
       { name: 'Blitz', difficulty: 0 },
       { name: "Guard the Isle's Heart", difficulty: 0 },
@@ -18,7 +18,7 @@ describe('getScenarios', () => {
   it('returns scenarios from base game plus any specified expansions', () => {
     expect(
       getScenarios({ expansions: ['Promo Pack 1', 'Promo Pack 2'] })
-    ).toEqual([
+    ).toStrictEqual([
       { name: 'No Scenario', difficulty: 0 },
       { name: 'Blitz', difficulty: 0 },
       { name: "Guard the Isle's Heart", difficulty: 0 },
@@ -36,7 +36,7 @@ describe('getScenarios', () => {
   it('returns scenarios with certain names', () => {
     expect(
       getScenarios({ names: ['Destiny Unfolds', 'Ward the Shores'] })
-    ).toEqual([
+    ).toStrictEqual([
       {
         name: 'Destiny Unfolds',
         difficulty: -1,

@@ -23,6 +23,6 @@ describe('mapCountryDtosToCountries', () => {
         PHILIPPINES_DTO,
         DJIBOUTI_DTO,
       ])
-    ).toEqual([DJIBOUTI, MONTENEGRO, PHILIPPINES, SEYCHELLES]);
+    ).toStrictEqual([DJIBOUTI, MONTENEGRO, PHILIPPINES, SEYCHELLES]);
   });
 });

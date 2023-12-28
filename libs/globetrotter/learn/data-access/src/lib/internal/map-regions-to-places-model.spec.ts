@@ -23,7 +23,7 @@ describe('mapRegionsToPlacesModel', () => {
       },
     ];
 
-    expect(mapRegionsToPlacesModel(regions)).toEqual([
+    expect(mapRegionsToPlacesModel(regions)).toStrictEqual([
       'North America',
       'Central America',
       'South America',

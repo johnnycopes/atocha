@@ -17,7 +17,7 @@ describe('mapMealDtoToMeal', () => {
         dishes: [PIZZA, SALAD],
         tags: TAG_DTOS,
       })
-    ).toEqual({
+    ).toStrictEqual({
       id: 'meal-1',
       uid: 'abc',
       name: 'Yin and Yang',

@@ -5,7 +5,7 @@ describe(State, () => {
     const person = new State({ name: 'Billy', age: 19 });
 
     person.get().subscribe((value) => {
-      expect(value).toEqual({
+      expect(value).toStrictEqual({
         name: 'Billy',
         age: 19,
       });
@@ -17,7 +17,7 @@ describe(State, () => {
     const person = new State({ name: 'Billy', age: 19 });
 
     person.getProp('age').subscribe((value) => {
-      expect(value).toEqual(19);
+      expect(value).toStrictEqual(19);
       done();
     });
   });
@@ -27,7 +27,7 @@ describe(State, () => {
     person.update({ name: 'William', age: 42 });
 
     person.get().subscribe((value) => {
-      expect(value).toEqual({
+      expect(value).toStrictEqual({
         name: 'William',
         age: 42,
       });
@@ -40,7 +40,7 @@ describe(State, () => {
     person.updateProp('age', 20);
 
     person.getProp('age').subscribe((value) => {
-      expect(value).toEqual(20);
+      expect(value).toStrictEqual(20);
       done();
     });
   });
@@ -53,7 +53,7 @@ describe(State, () => {
     }));
 
     person.get().subscribe((value) => {
-      expect(value).toEqual({
+      expect(value).toStrictEqual({
         name: 'Mr. Billy',
         age: 29,
       });
@@ -66,7 +66,7 @@ describe(State, () => {
     person.transformProp('age', (age) => age + 1);
 
     person.getProp('age').subscribe((value) => {
-      expect(value).toEqual(20);
+      expect(value).toStrictEqual(20);
       done();
     });
   });

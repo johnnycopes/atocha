@@ -6,7 +6,7 @@ describe('groupSpirits', () => {
   it('returns static spirits sorted into General group', () => {
     expect(
       groupSpirits(['Fractured Days Split the Sky', 'Many Minds Move as One'])
-    ).toEqual({
+    ).toStrictEqual({
       General: [
         { name: 'Fractured Days Split the Sky', expansion: 'Jagged Earth' },
         { name: 'Many Minds Move as One', expansion: 'Jagged Earth' },
@@ -32,7 +32,7 @@ describe('groupSpirits', () => {
   it('returns variable spirits sorted into associated groups', () => {
     expect(
       groupSpirits(["Lightning's Swift Strike", 'Immense', 'Pandemonium'])
-    ).toEqual({
+    ).toStrictEqual({
       General: [],
       'A Spread of Rampant Green': [],
       'Bringer of Dreams and Nightmares': [],
@@ -67,7 +67,7 @@ describe('groupSpirits', () => {
   });
 
   it('returns all possible spirits sorted into correct groups', () => {
-    expect(groupSpirits(getNames(getSpirits()))).toEqual({
+    expect(groupSpirits(getNames(getSpirits()))).toStrictEqual({
       'A Spread of Rampant Green': [
         {
           name: 'A Spread of Rampant Green',

@@ -3,11 +3,11 @@ import { getMaps } from './get-maps';
 
 describe('getMaps', () => {
   it('returns all maps if expansions argument is omitted', () => {
-    expect(getMaps()).toEqual(MAPS);
+    expect(getMaps()).toStrictEqual(MAPS);
   });
 
   it('returns maps from base game', () => {
-    expect(getMaps({ expansions: [] })).toEqual(MAPS);
+    expect(getMaps({ expansions: [] })).toStrictEqual(MAPS);
   });
 
   it('returns maps from base game plus any specified expansions', () => {
@@ -22,11 +22,11 @@ describe('getMaps', () => {
           'Promo Pack 2',
         ],
       })
-    ).toEqual(MAPS);
+    ).toStrictEqual(MAPS);
   });
 
   it('returns maps with certain names', () => {
-    expect(getMaps({ names: ['Balanced'] })).toEqual([
+    expect(getMaps({ names: ['Balanced'] })).toStrictEqual([
       { name: 'Balanced', difficulty: 0 },
     ]);
   });

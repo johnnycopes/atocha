@@ -68,7 +68,7 @@ describe('QuizService', () => {
   it('renders', () => {
     expect(service).toBeTruthy();
     expect(jest.isMockFunction(shuffle)).toBeTruthy();
-    expect(shuffle([1, 2, 3])).toEqual([1, 2, 3]);
+    expect(shuffle([1, 2, 3])).toStrictEqual([1, 2, 3]);
   });
 
   it('has correct state after initializing quiz', (done) => {
@@ -79,7 +79,7 @@ describe('QuizService', () => {
     });
 
     service.quiz$.subscribe((value) => {
-      expect(value).toEqual({
+      expect(value).toStrictEqual({
         items: [DJIBOUTI, SEYCHELLES],
         currentItem: DJIBOUTI,
         correctGuesses: 0,
@@ -103,7 +103,7 @@ describe('QuizService', () => {
     service.updateQuiz(true);
 
     service.quiz$.subscribe((value) => {
-      expect(value).toEqual({
+      expect(value).toStrictEqual({
         items: [DJIBOUTI, SEYCHELLES, MONTENEGRO, PHILIPPINES],
         currentItem: PHILIPPINES,
         correctGuesses: 1,

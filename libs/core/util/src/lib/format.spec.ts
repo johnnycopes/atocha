@@ -9,22 +9,22 @@ import {
 describe('formatting functions', () => {
   describe('lower', () => {
     it('transforms a string to lowercase', () => {
-      expect(lower('TEST')).toEqual('test');
-      expect(lower('SECOND TEST')).toEqual('second test');
+      expect(lower('TEST')).toStrictEqual('test');
+      expect(lower('SECOND TEST')).toStrictEqual('second test');
     });
   });
 
   describe('upper', () => {
     it('transforms a string to uppercase', () => {
-      expect(upper('test')).toEqual('TEST');
-      expect(upper('second test')).toEqual('SECOND TEST');
+      expect(upper('test')).toStrictEqual('TEST');
+      expect(upper('second test')).toStrictEqual('SECOND TEST');
     });
   });
 
   describe('upperFirst', () => {
     it('transforms the first letter of a string to uppercase', () => {
-      expect(upperFirst('test')).toEqual('Test');
-      expect(upperFirst('second test')).toEqual('Second test');
+      expect(upperFirst('test')).toStrictEqual('Test');
+      expect(upperFirst('second test')).toStrictEqual('Second test');
     });
   });
 

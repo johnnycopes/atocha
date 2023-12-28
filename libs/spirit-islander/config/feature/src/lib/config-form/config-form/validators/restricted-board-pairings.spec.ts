@@ -60,7 +60,7 @@ describe('restrictedBoardPairings', () => {
             boardNames: fb.control(['B', 'E']),
           })
         )
-      ).toEqual({
+      ).toStrictEqual({
         restrictedBoardPairings:
           'Boards B/E and D/F not allowed in a 2 player game',
       });
@@ -74,7 +74,7 @@ describe('restrictedBoardPairings', () => {
             boardNames: fb.control(['D', 'F']),
           })
         )
-      ).toEqual({
+      ).toStrictEqual({
         restrictedBoardPairings:
           'Boards B/E and D/F not allowed in a 2 player game',
       });

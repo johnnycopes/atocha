@@ -12,7 +12,9 @@ import { PIZZA_DTO } from '../mock-data';
 
 describe('mapDishDtoToDish', () => {
   it('returns a dish when passed a dishDto and tags', () => {
-    expect(mapDishDtoToDish(PIZZA_DTO, INGREDIENT_DTOS, TAG_DTOS)).toEqual({
+    expect(
+      mapDishDtoToDish(PIZZA_DTO, INGREDIENT_DTOS, TAG_DTOS)
+    ).toStrictEqual({
       description: 'Delicious round vessel from Italy',
       favorited: false,
       id: 'dish-1',

@@ -22,7 +22,7 @@ describe('URL mappers', () => {
           scenarioNames: ['No Scenario', 'Blitz'],
           adversaryLevelIds: ['none', 'bp-0', 'bp-1', 'bp-2'],
         })
-      ).toEqual({
+      ).toStrictEqual({
         expansions: '["Branch & Claw"]',
         players: '2',
         difficultyRange: '[0,3]',
@@ -52,7 +52,7 @@ describe('URL mappers', () => {
             adversaryLevelIds: '["none","bp-0","bp-1","bp-2"]',
           })
         )
-      ).toEqual({
+      ).toStrictEqual({
         expansions: ['Branch & Claw'],
         players: 2,
         difficultyRange: [0, 3],

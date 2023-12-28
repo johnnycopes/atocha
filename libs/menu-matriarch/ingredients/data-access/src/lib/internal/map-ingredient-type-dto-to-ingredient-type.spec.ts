@@ -14,7 +14,7 @@ describe('mapIngredientTypeDtoToIngredientType', () => {
         INGREDIENT_TYPE_DTOS[0],
         INGREDIENT_DTOS
       )
-    ).toEqual({
+    ).toStrictEqual({
       id: 'ingredient-type-1',
       ingredients: [
         {
@@ -41,7 +41,7 @@ describe('mapIngredientTypeDtoToIngredientType', () => {
         INGREDIENT_TYPE_DTOS[1],
         INGREDIENT_DTOS
       )
-    ).toEqual({
+    ).toStrictEqual({
       id: 'ingredient-type-2',
       ingredients: [
         {

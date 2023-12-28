@@ -66,12 +66,12 @@ describe('getOptionsFactory', () => {
   describe('with names filter applied', () => {
     it('returns no spirits when array is empty', () => {
       const getOptions = getOptionsFactory<SpiritName, Spirit>(mockSpirits);
-      expect(getOptions({ names: [] })).toEqual([]);
+      expect(getOptions({ names: [] })).toStrictEqual([]);
     });
 
     it('returns no boards when array is empty', () => {
       const getOptions = getOptionsFactory<SpiritName, Spirit>(mockSpirits);
-      expect(getOptions({ names: [] })).toEqual([]);
+      expect(getOptions({ names: [] })).toStrictEqual([]);
     });
 
     it('returns matching spirits when names are specified', () => {
@@ -83,7 +83,7 @@ describe('getOptionsFactory', () => {
             'Downpour Drenches the World',
           ],
         })
-      ).toEqual([
+      ).toStrictEqual([
         { name: 'Bringer of Dreams and Nightmares' },
         { name: 'Downpour Drenches the World', expansion: 'Promo Pack 2' },
       ]);
@@ -105,7 +105,7 @@ describe('getOptionsFactory', () => {
             'Downpour Drenches the World',
           ],
         })
-      ).toEqual([
+      ).toStrictEqual([
         { name: 'Bringer of Dreams and Nightmares' },
         { name: 'Downpour Drenches the World', expansion: 'Promo Pack 2' },
         { name: 'Fractured Days Split the Sky', expansion: 'Jagged Earth' },
@@ -128,7 +128,7 @@ describe('getOptionsFactory', () => {
         getOptions({
           expansions: ['Promo Pack 1', 'Promo Pack 2'],
         })
-      ).toEqual([
+      ).toStrictEqual([
         { name: 'Bringer of Dreams and Nightmares' },
         { name: 'Fractured Days Split the Sky', expansion: 'Jagged Earth' },
         { name: 'Keeper of the Forbidden Wilds', expansion: 'Branch & Claw' },

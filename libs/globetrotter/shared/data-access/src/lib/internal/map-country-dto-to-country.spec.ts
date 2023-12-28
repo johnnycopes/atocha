@@ -4,6 +4,6 @@ import { DJIBOUTI } from './mock-data/countries';
 
 describe('mapCountryDtoToCountry', () => {
   it('returns a country when passed a country DTO', () => {
-    expect(mapCountryDtoToCountry(DJIBOUTI_DTO)).toEqual(DJIBOUTI);
+    expect(mapCountryDtoToCountry(DJIBOUTI_DTO)).toStrictEqual(DJIBOUTI);
   });
 });

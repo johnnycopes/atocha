@@ -52,7 +52,7 @@ describe('ConfigForm errors', () => {
     });
 
     expect(form.valid).toBe(false);
-    expect(form.boardsError).toEqual(
+    expect(form.boardsError).toStrictEqual(
       'At least 2 boards must be selected (must match or exceed player count)'
     );
   });
@@ -70,7 +70,7 @@ describe('ConfigForm errors', () => {
     });
 
     expect(form.valid).toBe(false);
-    expect(form.boardsError).toEqual(
+    expect(form.boardsError).toStrictEqual(
       'Boards B/E and D/F not allowed in a 2 player game'
     );
   });

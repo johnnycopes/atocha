@@ -2,7 +2,7 @@ import { recordToArray } from './record-to-array';
 
 describe('recordToArray', () => {
   it('converts an empty record to an empty array', () => {
-    expect(recordToArray({})).toEqual([]);
+    expect(recordToArray({})).toStrictEqual([]);
   });
 
   it('converts a record of strings to an array of strings', () => {
@@ -12,7 +12,7 @@ describe('recordToArray', () => {
         onions: true,
         anchovies: false,
       })
-    ).toEqual(['onions']);
+    ).toStrictEqual(['onions']);
   });
 
   it('converts a record of numbers to an array of strings', () => {
@@ -22,6 +22,6 @@ describe('recordToArray', () => {
         2: true,
         3: false,
       })
-    ).toEqual(['1', '2']);
+    ).toStrictEqual(['1', '2']);
   });
 });

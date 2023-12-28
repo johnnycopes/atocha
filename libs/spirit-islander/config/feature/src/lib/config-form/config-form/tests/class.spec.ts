@@ -26,13 +26,13 @@ describe('ConfigForm', () => {
   });
 
   it('has value that matches the passed-in model', () => {
-    expect(new ConfigForm(config).value).toEqual(config);
+    expect(new ConfigForm(config).value).toStrictEqual(config);
   });
 
   it('exposes observable of selected expansions', (done) => {
     const form = new ConfigForm(config);
     form.expansions$.subscribe((value) => {
-      expect(value).toEqual(['Jagged Earth']);
+      expect(value).toStrictEqual(['Jagged Earth']);
       done();
     });
 

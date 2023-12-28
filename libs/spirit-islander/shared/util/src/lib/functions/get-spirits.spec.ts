@@ -3,11 +3,11 @@ import { getSpirits } from './get-spirits';
 
 describe('getSpirits', () => {
   it('returns all spirits if expansions argument is omitted', () => {
-    expect(getSpirits()).toEqual(SPIRITS);
+    expect(getSpirits()).toStrictEqual(SPIRITS);
   });
 
   it('returns spirits from base game', () => {
-    expect(getSpirits({ expansions: [] })).toEqual([
+    expect(getSpirits({ expansions: [] })).toStrictEqual([
       { name: 'A Spread of Rampant Green' },
       { name: 'Bringer of Dreams and Nightmares' },
       { name: "Lightning's Swift Strike" },
@@ -20,7 +20,7 @@ describe('getSpirits', () => {
   });
 
   it('returns spirits from base game plus any specified expansions', () => {
-    expect(getSpirits({ expansions: ['Branch & Claw'] })).toEqual([
+    expect(getSpirits({ expansions: ['Branch & Claw'] })).toStrictEqual([
       { name: 'A Spread of Rampant Green' },
       { name: 'Bringer of Dreams and Nightmares' },
       { name: 'Keeper of the Forbidden Wilds', expansion: 'Branch & Claw' },
@@ -35,7 +35,7 @@ describe('getSpirits', () => {
   });
 
   it('returns aspects only if their associated spirit is also returned', () => {
-    expect(getSpirits({ expansions: ['Nature Incarnate'] })).toEqual([
+    expect(getSpirits({ expansions: ['Nature Incarnate'] })).toStrictEqual([
       { name: 'A Spread of Rampant Green' },
       {
         name: 'Regrowth',
@@ -119,7 +119,7 @@ describe('getSpirits', () => {
   it('returns spirits with certain names', () => {
     expect(
       getSpirits({ names: ['A Spread of Rampant Green', 'Dark Fire'] })
-    ).toEqual([
+    ).toStrictEqual([
       { name: 'A Spread of Rampant Green' },
       {
         name: 'Dark Fire',

@@ -29,7 +29,9 @@ describe('updateSettings', () => {
 
   describe('when `allowBEAndDFBoards` setting is disabled', () => {
     it('returns an updated state object with settings changed and all boards selected (no Jagged Earth)', () => {
-      expect(updateSettings({ allowBEAndDFBoards: false }, mockState)).toEqual({
+      expect(
+        updateSettings({ allowBEAndDFBoards: false }, mockState)
+      ).toStrictEqual({
         gameSetup: mockState.gameSetup,
         config: {
           ...mockState.config,
@@ -46,7 +48,9 @@ describe('updateSettings', () => {
       mockState.config.expansions = ['Jagged Earth'];
       mockState.config.boardNames = ['B', 'E'];
 
-      expect(updateSettings({ allowBEAndDFBoards: false }, mockState)).toEqual({
+      expect(
+        updateSettings({ allowBEAndDFBoards: false }, mockState)
+      ).toStrictEqual({
         gameSetup: mockState.gameSetup,
         config: {
           ...mockState.config,
@@ -62,12 +66,12 @@ describe('updateSettings', () => {
 
   describe('when settings are modified in any other way', () => {
     it('returns an updated state object with only settings changed', () => {
-      expect(updateSettings({ randomThematicBoards: true }, mockState)).toEqual(
-        {
-          ...mockState,
-          settings: { ...mockState.settings, randomThematicBoards: true },
-        }
-      );
+      expect(
+        updateSettings({ randomThematicBoards: true }, mockState)
+      ).toStrictEqual({
+        ...mockState,
+        settings: { ...mockState.settings, randomThematicBoards: true },
+      });
     });
   });
 });

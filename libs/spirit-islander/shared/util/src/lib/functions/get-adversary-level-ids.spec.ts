@@ -4,7 +4,7 @@ import { getAdversaryLevelIds } from './get-adversary-level-ids';
 describe('getAdversaryLevelIds', () => {
   const adversaries = getAdversaries().slice(1, 3);
   it('returns the unique IDs from a collection of adversaries', () => {
-    expect(getAdversaryLevelIds(adversaries)).toEqual([
+    expect(getAdversaryLevelIds(adversaries)).toStrictEqual([
       'bp-0',
       'bp-1',
       'bp-2',

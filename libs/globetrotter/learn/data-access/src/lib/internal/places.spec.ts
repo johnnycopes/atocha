@@ -14,7 +14,7 @@ describe('Places', () => {
   });
 
   it('has countries data', () => {
-    expect(places.countries).toEqual([
+    expect(places.countries).toStrictEqual([
       DJIBOUTI,
       MONTENEGRO,
       PHILIPPINES,
@@ -23,7 +23,7 @@ describe('Places', () => {
   });
 
   it('has countriesBySubregion data', () => {
-    expect(places.countriesBySubregion).toEqual({
+    expect(places.countriesBySubregion).toStrictEqual({
       'Eastern Africa': [DJIBOUTI, SEYCHELLES],
       'South-Eastern Asia': [PHILIPPINES],
       'Southeast Europe': [MONTENEGRO],
@@ -31,7 +31,7 @@ describe('Places', () => {
   });
 
   it('has regions data', () => {
-    expect(places.regions).toEqual([
+    expect(places.regions).toStrictEqual([
       {
         name: 'Africa',
         subregions: [
