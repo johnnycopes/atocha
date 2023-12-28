@@ -6,7 +6,7 @@ import {
   Output,
   EventEmitter,
 } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { ButtonComponent, CheckboxComponent } from '@atocha/core/ui';
 import { CountedSelectionTreeComponent } from '@atocha/tree/ui';
@@ -23,6 +23,7 @@ import {
   getNumberOfCountries,
   Root,
 } from './create-places-root';
+import { SelectForm } from '../select-form';
 
 @Component({
   standalone: true,
@@ -34,6 +35,7 @@ import {
     CountedSelectionTreeComponent,
     FormsModule,
     IconComponent,
+    ReactiveFormsModule,
     SmallCapsComponent,
   ],
   templateUrl: './select-places.component.html',
@@ -41,6 +43,7 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SelectPlacesComponent {
+  @Input({ required: true }) form!: SelectForm;
   @Input()
   set regions(regions: Region[]) {
     this._allPlaces = this._selectService.mapRegionsToPlacesModel(regions);
@@ -62,10 +65,12 @@ export class SelectPlacesComponent {
   }
 
   onSelectAll(): void {
+    this.form.patchValue({ places: this._allPlaces });
     this.placesChange.emit(this._allPlaces);
   }
 
   onClearAll(): void {
+    this.form.patchValue({ places: [] });
     this.placesChange.emit([]);
   }
 }

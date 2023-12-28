@@ -1,11 +1,24 @@
-<ui-small-caps header="Type">
+<ui-small-caps header="Type"
+  [formGroup]="form"
+>
   <div class="container">
     <p>Front / back of cards:</p>
-    <ui-radio-buttons
-      class="radio-buttons"
-      [options]="options"
-      [ngModel]="selectedOption"
-      (ngModelChange)="typeChange.emit($event.value)"
-    ></ui-radio-buttons>
+    <div class="options">
+      <div
+        class="option"
+        *ngFor="let option of options"
+      >
+        <input
+          class="option__input"
+          [id]="option.display"
+          [value]="option.value"
+          formControlName="type"
+          type="radio"
+        />
+        <label class="option__label" [for]="option.display">
+          {{ option.display }}
+        </label>
+      </div>
+    </div>
   </div>
 </ui-small-caps>

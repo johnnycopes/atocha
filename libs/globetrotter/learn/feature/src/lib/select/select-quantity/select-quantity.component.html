@@ -1,15 +1,16 @@
-<ui-input
-  class="input"
-  label="Quantity"
-  [showError]="invalid"
-  errorMessage="Invalid quantity"
->
-  <div class="container">
-    <input
-      type="number"
-      [ngModel]="quantity"
-      (ngModelChange)="quantityChange.emit($event)"
-    />
-    <p>cards</p>
-  </div>
-</ui-input>
+<ng-container [formGroup]="form">
+  <ui-input
+    class="input"
+    label="Quantity"
+    [showError]="invalid"
+    errorMessage="Invalid quantity"
+  >
+    <div class="container">
+      <input
+        type="number"
+        formControlName="quantity"
+      />
+      <p>cards</p>
+    </div>
+  </ui-input>
+</ng-container>

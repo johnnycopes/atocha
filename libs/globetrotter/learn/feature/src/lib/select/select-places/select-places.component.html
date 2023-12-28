@@ -1,4 +1,6 @@
-<ui-small-caps header="Places">
+<ui-small-caps header="Places"
+  [formGroup]="form"
+>
   <core-counted-selection-tree
     *ngIf="root"
     class="places"
@@ -8,8 +10,7 @@
     [getLeafCount]="getNumberOfCountries"
     [template]="label"
     size="large"
-    [ngModel]="places"
-    (ngModelChange)="onPlacesChange($event)"
+    formControlName="places"
   ></core-counted-selection-tree>
 </ui-small-caps>
 

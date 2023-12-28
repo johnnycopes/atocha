@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import {
   Component,
   ChangeDetectionStrategy,
@@ -5,7 +6,7 @@ import {
   Output,
   EventEmitter,
 } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import {
   RadioButtonsComponent,
@@ -13,11 +14,17 @@ import {
   SmallCapsComponent,
 } from '@atocha/globetrotter/shared/ui';
 import { QuizType } from '@atocha/globetrotter/learn/util';
+import { SelectForm } from '../select-form';
 
 @Component({
   standalone: true,
   selector: 'app-select-type',
-  imports: [FormsModule, RadioButtonsComponent, SmallCapsComponent],
+  imports: [
+    CommonModule,
+    RadioButtonsComponent,
+    ReactiveFormsModule,
+    SmallCapsComponent,
+  ],
   templateUrl: './select-type.component.html',
   styleUrls: ['./select-type.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -32,6 +39,7 @@ export class SelectTypeComponent {
     value: quizType,
   }));
 
+  @Input({ required: true }) form!: SelectForm;
   @Input()
   set type(value: QuizType) {
     const option = this.options.find((type) => type.value === value);

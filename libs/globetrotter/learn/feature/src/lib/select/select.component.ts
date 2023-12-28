@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { combineLatest } from 'rxjs';
 import { first, map } from 'rxjs/operators';
@@ -15,6 +16,7 @@ import { QuizType } from '@atocha/globetrotter/learn/util';
 import { SelectTypeComponent } from './select-type/select-type.component';
 import { SelectQuantityComponent } from './select-quantity/select-quantity.component';
 import { SelectPlacesComponent } from './select-places/select-places.component';
+import { SelectForm } from './select-form';
 
 @Component({
   standalone: true,
@@ -22,6 +24,7 @@ import { SelectPlacesComponent } from './select-places/select-places.component';
   imports: [
     ButtonComponent,
     CommonModule,
+    ReactiveFormsModule,
     SelectPlacesComponent,
     SelectQuantityComponent,
     SelectTypeComponent,
@@ -36,6 +39,7 @@ export class SelectComponent {
     this._placeService.places$,
     this._selectService.selection$,
   ]).pipe(
+    first(),
     map(([{ regions, countriesBySubregion }, { places, type, quantity }]) => {
       if (!regions.length) {
         return undefined;
@@ -52,6 +56,10 @@ export class SelectComponent {
         places,
         type,
         quantity,
+        form: new SelectForm(
+          { type: 3, places, quantity },
+          (subregionName: string) => countriesBySubregion[subregionName].length
+        ),
         invalidQuantity:
           selectedCountriesQuantity < 2 ||
           quantity < 2 ||

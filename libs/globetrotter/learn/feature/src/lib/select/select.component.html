@@ -1,4 +1,9 @@
-<div class="wrapper" *ngIf="vm$ | async as vm" @fadeIn>
+<form class="wrapper"
+  *ngIf="vm$ | async as vm"
+  @fadeIn
+  [formGroup]="vm.form"
+>
+  {{ vm.form.value | json }}
   <div class="launchpad">
     <h1 class="header">Create Quiz</h1>
     <button core-button [disabled]="vm.invalidQuantity" (click)="onLaunch()">
@@ -8,19 +13,22 @@
   <div class="fields">
     <div class="fields__top">
       <app-select-type
+        [form]="vm.form"
         [type]="vm.type"
         (typeChange)="onTypeChange($event)"
       ></app-select-type>
       <app-select-quantity
+        [form]="vm.form"
         [invalid]="vm.invalidQuantity"
         [quantity]="vm.quantity"
         (quantityChange)="onQuantityChange($event)"
       ></app-select-quantity>
     </div>
     <app-select-places
+      [form]="vm.form"
       [regions]="vm.regions"
       [places]="vm.places"
       (placesChange)="onPlacesChange($event)"
     ></app-select-places>
   </div>
-</div>
+</form>
