@@ -26,9 +26,9 @@ import { Country } from '@atocha/globetrotter/shared/util';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ExploreCountriesComponent implements OnChanges {
-  @Input() countries: Country[] = [];
-  @Input() selectedCountry: Country | undefined;
-  @Input() searchTerm = '';
+  @Input({ required: true }) countries: Country[] = [];
+  @Input({ required: true }) selectedCountry: Country | undefined;
+  @Input({ required: true }) searchTerm = '';
   @Output() selectedCountryChange = new EventEmitter<Country>();
   @Output() searchTermChange = new EventEmitter<string>();
 

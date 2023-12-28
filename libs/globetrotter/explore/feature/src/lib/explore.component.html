@@ -8,6 +8,7 @@
     (searchTermChange)="onSearch($event)"
   ></nav>
   <app-explore-country class="details"
+    *ngIf="vm.selectedCountry"
     [country]="vm.selectedCountry"
     [summary]="vm.summary"
   ></app-explore-country>

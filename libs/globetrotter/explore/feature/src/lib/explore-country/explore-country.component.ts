@@ -34,8 +34,8 @@ interface TableData {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ExploreCountryComponent implements OnChanges, AfterViewInit {
-  @Input() country: Country | undefined;
-  @Input() summary = '';
+  @Input({ required: true }) country!: Country;
+  @Input({ required: true }) summary = '';
   @ViewChild('population') populationTemplate: TemplateRef<unknown> | undefined;
   @ViewChild('size') sizeTemplate: TemplateRef<unknown> | undefined;
   @ViewChild('language') languageTemplate: TemplateRef<unknown> | undefined;
