@@ -7,12 +7,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { provideRouter, withInMemoryScrolling } from '@angular/router';
 
-import { APP_ROUTES } from './app-routes';
+import { APP_NAME_TOKEN } from '@atocha/core/data-access';
 import {
   CountryService,
   ErrorService,
   LoaderService,
 } from '@atocha/globetrotter/shared/data-access';
+import { APP_ROUTES } from './app-routes';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -21,6 +22,10 @@ export const appConfig: ApplicationConfig = {
       withInMemoryScrolling({ scrollPositionRestoration: 'enabled' })
     ),
     importProvidersFrom([BrowserAnimationsModule, HttpClientModule]),
+    {
+      provide: APP_NAME_TOKEN,
+      useValue: 'GLOBETROTTER',
+    },
     {
       provide: APP_INITIALIZER,
       useFactory:
