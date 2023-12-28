@@ -4,7 +4,7 @@
       <core-search-input
         placeholder="Search by country or capital"
         [text]="searchTerm"
-        (textChange)="onSearch($event)"
+        (textChange)="searchTermChange.emit($event)"
       ></core-search-input>
     </ui-input>
     <ul class="list" #list>
@@ -13,15 +13,14 @@
         #listItem
         *ngFor="let item of items; trackBy: trackByFn"
         [class.list__item--selected]="checkIfSelected(item)"
-        (click)="onSelect(item)"
+        (click)="selectedItemChange.emit(item)"
       >
         <ng-container
           *ngTemplateOutlet="
             listItemTemplate ? listItemTemplate : defaultTemplate;
             context: { $implicit: item }
           "
-        >
-        </ng-container>
+        ></ng-container>
       </li>
     </ul>
   </nav>
@@ -31,8 +30,7 @@
         detailsTemplate ? detailsTemplate : defaultTemplate;
         context: { $implicit: selectedItem }
       "
-    >
-    </ng-container>
+    ></ng-container>
   </div>
 </div>
 

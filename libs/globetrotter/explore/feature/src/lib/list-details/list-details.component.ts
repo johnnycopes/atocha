@@ -90,14 +90,6 @@ export class ListDetailsComponent implements OnChanges {
     }
   }
 
-  onSearch(searchTerm: string): void {
-    this.searchTermChange.emit(searchTerm);
-  }
-
-  onSelect(item: Country): void {
-    this.selectedItemChange.emit(item);
-  }
-
   checkIfSelected(item: Country): boolean {
     if (!this.selectedItem) {
       return false;
@@ -108,14 +100,14 @@ export class ListDetailsComponent implements OnChanges {
   private _moveUpList(incrementValue: number): void {
     const newItemIndex = this._selectedItemIndex - incrementValue;
     if (newItemIndex >= 0) {
-      this.onSelect(this.items[newItemIndex]);
+      this.selectedItemChange.emit(this.items[newItemIndex]);
     }
   }
 
   private _moveDownList(incrementValue: number): void {
     const newItemIndex = this._selectedItemIndex + incrementValue;
     if (newItemIndex < this.items.length) {
-      this.onSelect(this.items[newItemIndex]);
+      this.selectedItemChange.emit(this.items[newItemIndex]);
     }
   }
 }
