@@ -6,7 +6,6 @@ import { invalidSelection } from './invalid-selection';
 
 describe('invalidSelection', () => {
   const fb = new FormBuilder().nonNullable;
-
   const MOCK_GET_NUMBER_OF_COUNTRIES = (placeName: string): number => {
     switch (placeName) {
       case 'Micronesia':
