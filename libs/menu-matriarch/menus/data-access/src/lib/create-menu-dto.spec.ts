@@ -3,7 +3,7 @@ import { createMenuDto } from './create-menu-dto';
 describe('createMenuDto', () => {
   it('creates default menu when no arguments are passed in', () => {
     const menu = createMenuDto({});
-    expect(menu).toEqual({
+    expect(menu).toStrictEqual({
       contents: {
         Friday: [],
         Monday: [],
@@ -38,7 +38,7 @@ describe('createMenuDto', () => {
         Sunday: ['3'],
       },
     });
-    expect(menu).toEqual({
+    expect(menu).toStrictEqual({
       id: '1',
       uid: 'A2',
       name: 'Bob',

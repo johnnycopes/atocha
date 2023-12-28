@@ -6,7 +6,7 @@ describe('required', () => {
   const fb = new FormBuilder().nonNullable;
 
   it('returns an error if control value length is 0', () => {
-    expect(required(fb.control([] as string[]))).toEqual({
+    expect(required(fb.control([] as string[]))).toStrictEqual({
       required: 'At least 1 option must be selected',
     });
   });

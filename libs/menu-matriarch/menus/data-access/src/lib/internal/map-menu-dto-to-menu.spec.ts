@@ -23,7 +23,7 @@ describe('mapMenuDtoToMenu', () => {
           ingredientTypeOrder: ['ingredient-type-2', 'ingredient-type-1'],
         },
       })
-    ).toEqual({
+    ).toStrictEqual({
       id: 'menu-1',
       uid: 'abc',
       name: '8/23 - 8/30',

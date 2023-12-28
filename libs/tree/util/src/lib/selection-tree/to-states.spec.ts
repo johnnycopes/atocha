@@ -9,16 +9,18 @@ import { MOCK_TREE } from './ids/mock-ids';
 
 describe('toStates', () => {
   it('transforms empty IDs array', () => {
-    expect(toStates([], MOCK_TREE)).toEqual({});
+    expect(toStates([], MOCK_TREE)).toStrictEqual({});
   });
 
   it('transforms partial IDs array', () => {
-    expect(toStates(SOME_SELECTED_IDS, MOCK_TREE)).toEqual(
+    expect(toStates(SOME_SELECTED_IDS, MOCK_TREE)).toStrictEqual(
       SOME_SELECTED_STATES
     );
   });
 
   it('transforms full IDs array', () => {
-    expect(toStates(ALL_SELECTED_IDS, MOCK_TREE)).toEqual(ALL_SELECTED_STATES);
+    expect(toStates(ALL_SELECTED_IDS, MOCK_TREE)).toStrictEqual(
+      ALL_SELECTED_STATES
+    );
   });
 });

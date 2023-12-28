@@ -3,11 +3,11 @@ import { getBoards } from './get-boards';
 
 describe('getBoards', () => {
   it('returns all boards if expansions argument is omitted', () => {
-    expect(getBoards()).toEqual(BOARDS);
+    expect(getBoards()).toStrictEqual(BOARDS);
   });
 
   it('returns boards from base game', () => {
-    expect(getBoards({ expansions: [] })).toEqual([
+    expect(getBoards({ expansions: [] })).toStrictEqual([
       { name: 'A', thematicName: 'Northeast' },
       { name: 'B', thematicName: 'East' },
       { name: 'C', thematicName: 'Northwest' },
@@ -16,7 +16,7 @@ describe('getBoards', () => {
   });
 
   it('returns boards from base game plus any specified expansions', () => {
-    expect(getBoards({ expansions: ['Jagged Earth'] })).toEqual([
+    expect(getBoards({ expansions: ['Jagged Earth'] })).toStrictEqual([
       { name: 'A', thematicName: 'Northeast' },
       { name: 'B', thematicName: 'East' },
       { name: 'C', thematicName: 'Northwest' },
@@ -27,7 +27,7 @@ describe('getBoards', () => {
   });
 
   it('returns boards with certain names', () => {
-    expect(getBoards({ names: ['B', 'C'] })).toEqual([
+    expect(getBoards({ names: ['B', 'C'] })).toStrictEqual([
       { name: 'B', thematicName: 'East' },
       { name: 'C', thematicName: 'Northwest' },
     ]);

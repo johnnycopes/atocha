@@ -35,7 +35,7 @@ describe('SelectForm', () => {
   });
 
   it('has places property', () => {
-    expect(form.places.value).toEqual([
+    expect(form.places.value).toStrictEqual([
       'Central America',
       'Eastern Europe',
       'Micronesia',

@@ -20,7 +20,7 @@ describe('createPlaceRoot', () => {
       },
     ];
 
-    expect(createPlaceRoot('Places', MOCK_REGIONS)).toEqual({
+    expect(createPlaceRoot('Places', MOCK_REGIONS)).toStrictEqual({
       name: 'Places',
       regions: [
         {

@@ -27,7 +27,7 @@ describe('invalidSelection', () => {
           places: fb.control([]),
         })
       )
-    ).toEqual({ invalidSelection: 'Invalid quantity' });
+    ).toStrictEqual({ invalidSelection: 'Invalid quantity' });
   });
 
   it('returns an error if quantity is less than 2', () => {
@@ -38,7 +38,7 @@ describe('invalidSelection', () => {
           places: fb.control(['Central America']),
         })
       )
-    ).toEqual({ invalidSelection: 'Invalid quantity' });
+    ).toStrictEqual({ invalidSelection: 'Invalid quantity' });
   });
 
   it('returns an error if quantity exceeds number of selected countries', () => {
@@ -49,7 +49,7 @@ describe('invalidSelection', () => {
           places: fb.control(['Micronesia']),
         })
       )
-    ).toEqual({ invalidSelection: 'Invalid quantity' });
+    ).toStrictEqual({ invalidSelection: 'Invalid quantity' });
   });
 
   it('returns null otherwise', () => {
@@ -60,6 +60,6 @@ describe('invalidSelection', () => {
           places: fb.control(['Eastern Europe', 'Central America']),
         })
       )
-    ).toEqual(null);
+    ).toStrictEqual(null);
   });
 });

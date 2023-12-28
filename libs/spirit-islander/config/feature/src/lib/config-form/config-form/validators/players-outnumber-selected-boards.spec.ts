@@ -15,7 +15,7 @@ describe('playersOutnumberSelectedBoards', () => {
           boardNames: fb.control(['A']),
         })
       )
-    ).toEqual({
+    ).toStrictEqual({
       playersOutnumberSelectedBoards:
         'At least 2 boards must be selected (must match or exceed player count)',
     });

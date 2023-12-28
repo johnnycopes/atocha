@@ -2,7 +2,7 @@ import { getDays } from './get-days';
 
 describe('getDays', () => {
   it('returns days of the week in order starting on Monday by default', () => {
-    expect(getDays()).toEqual([
+    expect(getDays()).toStrictEqual([
       'Monday',
       'Tuesday',
       'Wednesday',
@@ -14,7 +14,7 @@ describe('getDays', () => {
   });
 
   it('returns all days starting on Monday', () => {
-    expect(getDays('Monday')).toEqual([
+    expect(getDays('Monday')).toStrictEqual([
       'Monday',
       'Tuesday',
       'Wednesday',
@@ -26,7 +26,7 @@ describe('getDays', () => {
   });
 
   it('returns all days starting on Tuesday', () => {
-    expect(getDays('Tuesday')).toEqual([
+    expect(getDays('Tuesday')).toStrictEqual([
       'Tuesday',
       'Wednesday',
       'Thursday',
@@ -38,7 +38,7 @@ describe('getDays', () => {
   });
 
   it('returns all days starting on Wednesday', () => {
-    expect(getDays('Wednesday')).toEqual([
+    expect(getDays('Wednesday')).toStrictEqual([
       'Wednesday',
       'Thursday',
       'Friday',
@@ -50,7 +50,7 @@ describe('getDays', () => {
   });
 
   it('returns all days starting on Thursday', () => {
-    expect(getDays('Thursday')).toEqual([
+    expect(getDays('Thursday')).toStrictEqual([
       'Thursday',
       'Friday',
       'Saturday',
@@ -62,7 +62,7 @@ describe('getDays', () => {
   });
 
   it('returns all days starting on Friday', () => {
-    expect(getDays('Friday')).toEqual([
+    expect(getDays('Friday')).toStrictEqual([
       'Friday',
       'Saturday',
       'Sunday',
@@ -74,7 +74,7 @@ describe('getDays', () => {
   });
 
   it('returns all days starting on Saturday', () => {
-    expect(getDays('Saturday')).toEqual([
+    expect(getDays('Saturday')).toStrictEqual([
       'Saturday',
       'Sunday',
       'Monday',
@@ -86,7 +86,7 @@ describe('getDays', () => {
   });
 
   it('returns all days starting on Sunday', () => {
-    expect(getDays('Sunday')).toEqual([
+    expect(getDays('Sunday')).toStrictEqual([
       'Sunday',
       'Monday',
       'Tuesday',

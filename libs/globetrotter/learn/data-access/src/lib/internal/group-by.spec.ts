@@ -14,7 +14,7 @@ describe('groupBy', () => {
       { name: 'Julien', country: 'Canada' },
     ];
 
-    expect(groupBy(people, 'country')).toEqual({
+    expect(groupBy(people, 'country')).toStrictEqual({
       Canada: [
         { name: 'Simon', country: 'Canada' },
         { name: 'Julien', country: 'Canada' },

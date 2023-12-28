@@ -16,7 +16,7 @@ describe('Root', () => {
   });
 
   it('generates expansions root', () => {
-    expect(root.expansions).toEqual({
+    expect(root.expansions).toStrictEqual({
       id: 'Expansions',
       children: [
         { id: 'Branch & Claw' },
@@ -30,11 +30,11 @@ describe('Root', () => {
   });
 
   it('generates spirits root', () => {
-    expect(root.spirits).toEqual(SPIRITS_ROOT);
+    expect(root.spirits).toStrictEqual(SPIRITS_ROOT);
   });
 
   it('generates maps root', () => {
-    expect(root.maps).toEqual({
+    expect(root.maps).toStrictEqual({
       id: 'Maps',
       children: [
         { id: 'Balanced', display: { difficulty: 0 } },
@@ -44,7 +44,7 @@ describe('Root', () => {
   });
 
   it('generates boards root', () => {
-    expect(root.boards).toEqual({
+    expect(root.boards).toStrictEqual({
       id: 'Boards',
       children: [
         { id: 'A' },
@@ -58,10 +58,10 @@ describe('Root', () => {
   });
 
   it('generates scenarios root', () => {
-    expect(root.scenarios).toEqual(SCENARIOS_ROOT);
+    expect(root.scenarios).toStrictEqual(SCENARIOS_ROOT);
   });
 
   it('generates adversaries root', () => {
-    expect(root.adversaries).toEqual(ADVERSARIES_ROOT);
+    expect(root.adversaries).toStrictEqual(ADVERSARIES_ROOT);
   });
 });

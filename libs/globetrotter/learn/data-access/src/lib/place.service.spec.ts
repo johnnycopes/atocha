@@ -2,13 +2,14 @@ import { TestBed } from '@angular/core/testing';
 import { of } from 'rxjs';
 
 import { CountryService } from '@atocha/globetrotter/shared/data-access';
-import { PlaceService } from './place.service';
 import {
   DJIBOUTI,
   MONTENEGRO,
   PHILIPPINES,
   SEYCHELLES,
 } from './internal/mock-data/countries';
+import { Places } from './internal/places';
+import { PlaceService } from './place.service';
 
 describe('PlaceService', () => {
   let service: PlaceService;
@@ -30,43 +31,9 @@ describe('PlaceService', () => {
 
   it('correctly initializes state', (done) => {
     service.places$.subscribe((value) => {
-      expect(value).toEqual({
-        countries: [DJIBOUTI, MONTENEGRO, PHILIPPINES, SEYCHELLES],
-        countriesBySubregion: {
-          'Eastern Africa': [DJIBOUTI, SEYCHELLES],
-          'Southeast Europe': [MONTENEGRO],
-          'South-Eastern Asia': [PHILIPPINES],
-        },
-        regions: [
-          {
-            name: 'Africa',
-            subregions: [
-              {
-                name: 'Eastern Africa',
-                countries: [DJIBOUTI, SEYCHELLES],
-              },
-            ],
-          },
-          {
-            name: 'Europe',
-            subregions: [
-              {
-                name: 'Southeast Europe',
-                countries: [MONTENEGRO],
-              },
-            ],
-          },
-          {
-            name: 'Asia',
-            subregions: [
-              {
-                name: 'South-Eastern Asia',
-                countries: [PHILIPPINES],
-              },
-            ],
-          },
-        ],
-      });
+      expect(value).toStrictEqual(
+        new Places([DJIBOUTI, MONTENEGRO, PHILIPPINES, SEYCHELLES])
+      );
       done();
     });
   });

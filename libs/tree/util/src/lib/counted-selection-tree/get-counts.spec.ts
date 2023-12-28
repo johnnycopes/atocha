@@ -15,7 +15,7 @@ describe('getCounts', () => {
         getChildren,
         (node) => node.children?.length ?? 0
       )
-    ).toEqual({
+    ).toStrictEqual({
       Africa: 8,
       'Central Africa': 0,
       Fes: 0,
@@ -29,16 +29,18 @@ describe('getCounts', () => {
   });
 
   it('returns total counts record based on arbitrary targets property', () => {
-    expect(getCounts(AFRICA, getId, getChildren, getTargetCount)).toEqual({
-      Africa: 130,
-      'Central Africa': 65,
-      Fes: 11,
-      Marrakesh: 9,
-      Morocco: 20,
-      Namibia: 17,
-      'Northern Africa': 20,
-      'Southern Africa': 45,
-      Swaziland: 28,
-    });
+    expect(getCounts(AFRICA, getId, getChildren, getTargetCount)).toStrictEqual(
+      {
+        Africa: 130,
+        'Central Africa': 65,
+        Fes: 11,
+        Marrakesh: 9,
+        Morocco: 20,
+        Namibia: 17,
+        'Northern Africa': 20,
+        'Southern Africa': 45,
+        Swaziland: 28,
+      }
+    );
   });
 });

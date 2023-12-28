@@ -15,7 +15,7 @@ describe('playersOutnumberTotalBoards', () => {
           players: fb.control(5),
         })
       )
-    ).toEqual({
+    ).toStrictEqual({
       playersOutnumberTotalBoards:
         'Cannot generate a setup with more than 4 players unless playing with the Jagged Earth expansion',
     });

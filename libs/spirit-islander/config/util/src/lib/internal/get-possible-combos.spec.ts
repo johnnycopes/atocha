@@ -11,7 +11,7 @@ describe('getPossibleCombos', () => {
         scenarios: [],
         difficultyRange: [0, 0],
       })
-    ).toEqual([]);
+    ).toStrictEqual([]);
   });
 
   it('returns posible combos when passed options', () => {

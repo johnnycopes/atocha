@@ -3,7 +3,7 @@ import { createUserDto } from './create-user-dto';
 describe('createUserDto', () => {
   it('creates default user when no arguments are passed in', () => {
     const user = createUserDto({});
-    expect(user).toEqual({
+    expect(user).toStrictEqual({
       uid: '',
       name: '',
       email: '',
@@ -32,7 +32,7 @@ describe('createUserDto', () => {
         ingredientTypeOrder: ['2', '1', '3'],
       },
     });
-    expect(user).toEqual({
+    expect(user).toStrictEqual({
       uid: '1',
       email: 'fake@fake.com',
       name: 'Bob',

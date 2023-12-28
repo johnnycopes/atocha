@@ -3,7 +3,7 @@ import { createDishDto } from './create-dish-dto';
 describe('createDishDto', () => {
   it('creates default dish when no arguments are passed in', () => {
     const dish = createDishDto({});
-    expect(dish).toEqual({
+    expect(dish).toStrictEqual({
       id: '',
       uid: '',
       type: 'main',
@@ -36,7 +36,7 @@ describe('createDishDto', () => {
       tagIds: ['9'],
       usages: 1,
     });
-    expect(dish).toEqual({
+    expect(dish).toStrictEqual({
       id: '1',
       uid: '2A',
       name: 'Macaroni and Cheese',

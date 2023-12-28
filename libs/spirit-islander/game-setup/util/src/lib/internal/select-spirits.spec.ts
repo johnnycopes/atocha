@@ -23,9 +23,9 @@ describe('selectSpirits', () => {
     const mockNames = getNames(mockSpirits);
     const result = selectSpirits(mockNames, 3);
     expect(result).toHaveLength(3);
-    expect(result[0]).toEqual(mockSpirits[0]);
-    expect(result[1]).toEqual(mockSpirits[1]);
-    expect(result[2]).toEqual(mockSpirits[2]);
+    expect(result[0]).toStrictEqual(mockSpirits[0]);
+    expect(result[1]).toStrictEqual(mockSpirits[1]);
+    expect(result[2]).toStrictEqual(mockSpirits[2]);
   });
 
   it('returns some spirits if players is less than spirit names', () => {
@@ -37,8 +37,8 @@ describe('selectSpirits', () => {
     const mockNames = getNames(mockSpirits);
     const result = selectSpirits(mockNames, 2);
     expect(result).toHaveLength(2);
-    expect(result[0]).toEqual(mockSpirits[0]);
-    expect(result[1]).toEqual(mockSpirits[1]);
+    expect(result[0]).toStrictEqual(mockSpirits[0]);
+    expect(result[1]).toStrictEqual(mockSpirits[1]);
   });
 
   it('throws error if players is greater than spirit names', () => {
@@ -63,7 +63,7 @@ describe('selectSpirits', () => {
     ];
     const mockNames = getNames(mockSpirits);
     const result = selectSpirits(mockNames, 2);
-    expect(result[0]).toEqual(mockSpirits[2]);
-    expect(result[1]).toEqual(mockSpirits[0]);
+    expect(result[0]).toStrictEqual(mockSpirits[2]);
+    expect(result[1]).toStrictEqual(mockSpirits[0]);
   });
 });
