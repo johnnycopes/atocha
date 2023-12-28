@@ -21,7 +21,7 @@ export class ExploreService {
         first(),
         tap((countries) => {
           if (index === 0) {
-            this._selectCountry(countries[0]);
+            this._state.updateProp('selectedCountry', countries[0]);
           }
         }),
         map((countries) =>
@@ -56,14 +56,10 @@ export class ExploreService {
   constructor(private _countryService: CountryService) {}
 
   select(country: Country): void {
-    this._selectCountry(country);
+    this._state.updateProp('selectedCountry', country);
   }
 
   search(searchTerm: string): void {
     this._state.updateProp('searchTerm', searchTerm);
-  }
-
-  private _selectCountry(country: Country) {
-    this._state.updateProp('selectedCountry', country);
   }
 }
