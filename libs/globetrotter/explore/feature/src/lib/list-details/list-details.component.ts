@@ -46,7 +46,7 @@ export class ListDetailsComponent implements OnChanges {
   readonly _getCountryId: (country: Country) => string = ({ id }) => id;
   readonly trackByFn = trackByFactory(this._getCountryId);
   private _selectedItemIndex = 0;
-  private _listItemHeight = 0;
+  private readonly _listItemHeight = 60;
 
   @HostListener('window:keydown.arrowUp', ['$event'])
   onArrowUp(event: KeyboardEvent): void {
