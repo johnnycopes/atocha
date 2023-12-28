@@ -8,9 +8,8 @@ export function invalidSelection(
   return (control: AbstractControl<Selection>): ValidationErrors | null => {
     const quantity = control.value.quantity;
     const places = control.value.places;
-    const selectedCountriesQuantity = control.value.places.reduce(
-      (total, name) =>
-        getNumberOfCountries(name) ? total + getNumberOfCountries(name) : total,
+    const selectedCountriesQuantity = places.reduce(
+      (total, name) => total + getNumberOfCountries(name),
       0
     );
 
