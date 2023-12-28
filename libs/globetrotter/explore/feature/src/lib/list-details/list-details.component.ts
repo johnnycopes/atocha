@@ -37,8 +37,7 @@ export class ListDetailsComponent implements OnChanges {
   @ViewChild('list', { static: true })
   list!: ElementRef<HTMLElement>;
 
-  readonly _getCountryId: (country: Country) => string = ({ id }) => id;
-  readonly trackByFn = trackByFactory(this._getCountryId);
+  readonly trackByFn = trackByFactory<Country>(({ id }) => id);
   private _selectedItemIndex = 0;
   private readonly _listItemHeight = 60;
 
@@ -80,13 +79,6 @@ export class ListDetailsComponent implements OnChanges {
         });
       }
     }
-  }
-
-  checkIfSelected(item: Country): boolean {
-    if (!this.selectedItem) {
-      return false;
-    }
-    return this._getCountryId(item) === this._getCountryId(this.selectedItem);
   }
 
   private _moveUpList(incrementValue: number): void {
