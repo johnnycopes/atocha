@@ -1,7 +1,9 @@
-<ui-small-caps header="Type" [formGroup]="form">
+<ui-small-caps header="Type">
   <div class="container">
     <p>Front / back of cards:</p>
-    <div class="options">
+    <div class="options"
+      [formGroup]="form"
+    >
       <div class="option" *ngFor="let option of options; trackBy: trackByFn">
         <input
           class="option__input"

@@ -1,13 +1,11 @@
-<ng-container [formGroup]="form">
-  <ui-input
-    class="input"
-    label="Quantity"
-    [showError]="!!error"
-    [errorMessage]="error"
-  >
-    <div class="container">
-      <input type="number" formControlName="quantity" />
-      <p>cards</p>
-    </div>
-  </ui-input>
-</ng-container>
+<ui-input
+  class="input"
+  label="Quantity"
+  [showError]="!!error"
+  [errorMessage]="error"
+>
+  <div class="container" [formGroup]="form">
+    <input type="number" formControlName="quantity" />
+    <p>cards</p>
+  </div>
+</ui-input>
