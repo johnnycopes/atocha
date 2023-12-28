@@ -1,5 +1,6 @@
 <div @fadeIn *ngIf="vm$ | async as vm" class="container">
-  <nav app-explore-countries
+  <nav
+    app-explore-countries
     class="list"
     [countries]="vm.filteredCountries"
     [selectedCountry]="vm.selectedCountry"
@@ -7,7 +8,8 @@
     (selectedCountryChange)="onSelect($event)"
     (searchTermChange)="onSearch($event)"
   ></nav>
-  <app-explore-country class="details"
+  <app-explore-country
+    class="details"
     *ngIf="vm.selectedCountry"
     [country]="vm.selectedCountry"
     [summary]="vm.summary"

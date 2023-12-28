@@ -29,6 +29,7 @@
 }
 
 .table-header {
+  overflow: auto;
   line-height: map-get($line-height, normal);
   margin-right: map-get($spacing, 16);
 }

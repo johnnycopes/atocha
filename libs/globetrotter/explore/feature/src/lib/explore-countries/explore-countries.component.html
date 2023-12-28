@@ -6,7 +6,8 @@
   ></core-search-input>
 </ui-input>
 <ul class="list" #list>
-  <li *ngFor="let item of countries; trackBy: trackByFn"
+  <li
+    *ngFor="let item of countries; trackBy: trackByFn"
     class="list__item"
     [class.list__item--selected]="item.id === selectedCountry?.id"
     (click)="selectedCountryChange.emit(item)"
