@@ -34,7 +34,6 @@ export class ListDetailsComponent<T> implements OnInit, OnChanges {
   @Input() getItemUniqueId: (item: T) => string = () => '';
   @Input() selectedItem: T | undefined;
   @Input() searchTerm = '';
-  @Input() placeholderText = '';
   @Output() selectedItemChange = new EventEmitter<T>();
   @Output() searchTermChange = new EventEmitter<string>();
 
