@@ -13,6 +13,7 @@ import { ExploreCountryComponent } from './explore-country/explore-country.compo
   standalone: true,
   selector: 'app-explore',
   imports: [CommonModule, ExploreCountryComponent, ListDetailsComponent],
+  providers: [ExploreService],
   templateUrl: './explore.component.html',
   styleUrls: ['./explore.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

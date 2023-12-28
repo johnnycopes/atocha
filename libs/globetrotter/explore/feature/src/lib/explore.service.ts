@@ -14,9 +14,7 @@ import {
   switchMap,
 } from 'rxjs';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class ExploreService {
   private _searchTermChange = new Subject<string>();
   private _selectedCountryChange = new BehaviorSubject<Country | undefined>(
