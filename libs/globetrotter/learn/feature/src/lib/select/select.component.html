@@ -2,11 +2,11 @@
   *ngIf="vm$ | async as vm"
   @fadeIn
   [formGroup]="vm.form"
+  (ngSubmit)="launch(vm.form)"
 >
-  {{ vm.form.value | json }}
   <div class="launchpad">
     <h1 class="header">Create Quiz</h1>
-    <button core-button [disabled]="vm.invalidQuantity" (click)="onLaunch()">
+    <button core-button [disabled]="!vm.form.valid">
       Launch
     </button>
   </div>

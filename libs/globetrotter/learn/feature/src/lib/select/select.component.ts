@@ -100,4 +100,13 @@ export class SelectComponent {
         });
       });
   }
+
+  async launch(form: SelectForm): Promise<void> {
+    const queryParams = this._selectService.mapSelectionToQueryParams(
+      form.getRawValue()
+    );
+    await this._router.navigate([`${ROUTES.learn}/${ROUTES.quiz}`], {
+      queryParams,
+    });
+  }
 }
