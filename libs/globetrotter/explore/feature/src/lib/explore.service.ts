@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
+import { combineLatest, map, of, tap, switchMap, first } from 'rxjs';
 
 import { State } from '@atocha/core/data-access';
 import { includes } from '@atocha/core/util';
 import { CountryService } from '@atocha/globetrotter/shared/data-access';
 import { Country } from '@atocha/globetrotter/shared/util';
-import { combineLatest, map, of, tap, switchMap, first } from 'rxjs';
 
 @Injectable()
 export class ExploreService {
@@ -19,9 +19,11 @@ export class ExploreService {
     switchMap((searchTerm, index) =>
       this._countryService.countries$.pipe(
         first(),
-        tap((countries) =>
-          index === 0 ? this._selectCountry(countries[0]) : null
-        ),
+        tap((countries) => {
+          if (index === 0) {
+            this._selectCountry(countries[0]);
+          }
+        }),
         map((countries) =>
           countries.filter(({ name, capital }) =>
             includes([name, capital], searchTerm)
@@ -30,14 +32,13 @@ export class ExploreService {
       )
     )
   );
-  private _summary$ = this._state.getProp('selectedCountry').pipe(
-    switchMap((country) => {
-      if (!country) {
-        return of('');
-      }
-      return this._countryService.getSummary(country.name);
-    })
-  );
+  private _summary$ = this._state
+    .getProp('selectedCountry')
+    .pipe(
+      switchMap((country) =>
+        country ? this._countryService.getSummary(country.name) : of('')
+      )
+    );
 
   vm$ = combineLatest([
     this._state.get(),
