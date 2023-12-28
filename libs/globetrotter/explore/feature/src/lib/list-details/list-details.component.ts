@@ -27,7 +27,6 @@ import { Country } from '@atocha/globetrotter/shared/util';
 })
 export class ListDetailsComponent implements OnChanges {
   @Input() items: Country[] = [];
-  @Input() listItemTemplate: TemplateRef<unknown> | undefined;
   @Input() detailsTemplate: TemplateRef<unknown> | undefined;
   @Input() selectedItem: Country | undefined;
   @Input() searchTerm = '';

@@ -13,12 +13,7 @@
         [class.list__item--selected]="item.id === selectedItem?.id"
         (click)="selectedItemChange.emit(item)"
       >
-        <ng-container
-          *ngTemplateOutlet="
-            listItemTemplate ? listItemTemplate : defaultTemplate;
-            context: { $implicit: item }
-          "
-        ></ng-container>
+        <h3>{{ item.name }}</h3>
       </li>
     </ul>
   </nav>

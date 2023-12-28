@@ -2,21 +2,12 @@
   <app-list-details
     class="list-details"
     [items]="vm.filteredCountries"
-    [listItemTemplate]="listItemTemplate"
     [detailsTemplate]="detailsTemplate"
     [selectedItem]="vm.selectedCountry"
     [searchTerm]="vm.searchTerm"
     (selectedItemChange)="onSelect($event)"
     (searchTermChange)="onSearch($event)"
   ></app-list-details>
-
-  <ng-template #listItemTemplate let-country>
-    <div class="list-item">
-      <h3>
-        {{ country.name }}
-      </h3>
-    </div>
-  </ng-template>
 
   <ng-template #detailsTemplate let-country>
     <app-explore-country
