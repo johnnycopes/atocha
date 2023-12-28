@@ -73,10 +73,8 @@ export class ListDetailsComponent implements OnChanges {
 
       this._selectedItemIndex = this.items.indexOf(this.selectedItem);
       if (this._selectedItemIndex >= 0) {
-        setTimeout(() => {
-          this.list.nativeElement.scrollTop =
-            this._selectedItemIndex * this._listItemHeight;
-        });
+        this.list.nativeElement.scrollTop =
+          this._selectedItemIndex * this._listItemHeight;
       }
     }
   }
