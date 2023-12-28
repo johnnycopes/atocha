@@ -5,6 +5,43 @@
   align-items: center;
 }
 
-.radio-buttons {
+.options {
+  display: flex;
+  justify-content: space-between;
   margin-left: map-get($spacing, 16);
+}
+
+.option {
+  margin-right: map-get($spacing, 24);
+
+  &:last-child {
+    margin-right: 0;
+  }
+
+  &__label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: map-get($spacing, 192);
+    height: map-get($spacing, 48);
+    font-size: map-get($font-size, 20);
+    border: map-get($border, thin) solid map-get($color, medium);
+    color: map-get($color, medium);
+    transition: map-get($transition, border);
+    border-radius: map-get($border, radius);
+    cursor: pointer;
+  }
+
+  &__input {
+    visibility: hidden;
+    position: absolute;
+    left: -100vh;
+    opacity: 0;
+  }
+
+  &__input:checked ~ .option__label {
+    color: map-get($color, lightest);
+    border: map-get($border, medium) solid map-get($color, lightest);
+    font-weight: map-get($font-weight, bold);
+  }
 }

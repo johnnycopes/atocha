@@ -12,11 +12,8 @@
   </div>
   <div class="fields">
     <div class="fields__top">
-      <app-select-type
-        [form]="vm.form"
-        [type]="vm.type"
-        (typeChange)="onTypeChange($event)"
-      ></app-select-type>
+      <app-select-type [form]="vm.form">
+      </app-select-type>
       <app-select-quantity
         [form]="vm.form"
         [error]="vm.form.getError('invalidSelection')"
