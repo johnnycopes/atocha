@@ -4,14 +4,7 @@ import { State } from '@atocha/core/data-access';
 import { includes } from '@atocha/core/util';
 import { CountryService } from '@atocha/globetrotter/shared/data-access';
 import { Country } from '@atocha/globetrotter/shared/util';
-import {
-  combineLatest,
-  distinctUntilChanged,
-  map,
-  of,
-  tap,
-  switchMap,
-} from 'rxjs';
+import { combineLatest, map, of, tap, switchMap, first } from 'rxjs';
 
 @Injectable()
 export class ExploreService {
@@ -22,22 +15,10 @@ export class ExploreService {
     selectedCountry: undefined,
     searchTerm: '',
   });
-
-  private _countries$ = this._countryService.countries$;
-
-  private _summary$ = this._state.getProp('selectedCountry').pipe(
-    switchMap((country) => {
-      if (!country) {
-        return of('');
-      }
-      return this._countryService.getSummary(country.name);
-    }),
-    distinctUntilChanged()
-  );
-
   private _filteredCountries$ = this._state.getProp('searchTerm').pipe(
     switchMap((searchTerm, index) =>
-      this._countries$.pipe(
+      this._countryService.countries$.pipe(
+        first(),
         tap((countries) =>
           index === 0 ? this._selectCountry(countries[0]) : null
         ),
@@ -48,6 +29,14 @@ export class ExploreService {
         )
       )
     )
+  );
+  private _summary$ = this._state.getProp('selectedCountry').pipe(
+    switchMap((country) => {
+      if (!country) {
+        return of('');
+      }
+      return this._countryService.getSummary(country.name);
+    })
   );
 
   vm$ = combineLatest([
