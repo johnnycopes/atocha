@@ -8,8 +8,7 @@
       ></core-search-input>
     </ui-input>
     <ul class="list" #list>
-      <li #listItem
-        *ngFor="let item of items; trackBy: trackByFn"
+      <li *ngFor="let item of items; trackBy: trackByFn"
         class="list__item"
         [class.list__item--selected]="item.id === selectedItem?.id"
         (click)="selectedItemChange.emit(item)"
