@@ -1,11 +1,11 @@
 <div @fadeIn *ngIf="vm$ | async as vm" class="wrapper">
   <app-list-details
     class="list-details"
-    [items]="vm.filteredCountries"
+    [countries]="vm.filteredCountries"
     [detailsTemplate]="detailsTemplate"
-    [selectedItem]="vm.selectedCountry"
+    [selectedCountry]="vm.selectedCountry"
     [searchTerm]="vm.searchTerm"
-    (selectedItemChange)="onSelect($event)"
+    (selectedCountryChange)="onSelect($event)"
     (searchTermChange)="onSearch($event)"
   ></app-list-details>
 

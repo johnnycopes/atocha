@@ -26,19 +26,19 @@ import { Country } from '@atocha/globetrotter/shared/util';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ListDetailsComponent implements OnChanges {
-  @Input() items: Country[] = [];
+  @Input() countries: Country[] = [];
   @Input() detailsTemplate: TemplateRef<unknown> | undefined;
-  @Input() selectedItem: Country | undefined;
+  @Input() selectedCountry: Country | undefined;
   @Input() searchTerm = '';
-  @Output() selectedItemChange = new EventEmitter<Country>();
+  @Output() selectedCountryChange = new EventEmitter<Country>();
   @Output() searchTermChange = new EventEmitter<string>();
 
   @ViewChild('list', { static: true })
   list!: ElementRef<HTMLElement>;
 
   readonly trackByFn = trackByFactory<Country>(({ id }) => id);
-  private _selectedItemIndex = 0;
-  private readonly _listItemHeight = 60;
+  private _selectedCountryIndex = 0;
+  private readonly _countryHeight = 60;
 
   @HostListener('window:keydown.arrowUp', ['$event'])
   onArrowUp(event: KeyboardEvent): void {
@@ -65,30 +65,30 @@ export class ListDetailsComponent implements OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes?.['selectedItem'] || changes?.['items']) {
-      if (!this.selectedItem) {
+    if (changes?.['selectedCountry'] || changes?.['countries']) {
+      if (!this.selectedCountry) {
         return;
       }
 
-      this._selectedItemIndex = this.items.indexOf(this.selectedItem);
-      if (this._selectedItemIndex >= 0) {
+      this._selectedCountryIndex = this.countries.indexOf(this.selectedCountry);
+      if (this._selectedCountryIndex >= 0) {
         this.list.nativeElement.scrollTop =
-          this._selectedItemIndex * this._listItemHeight;
+          this._selectedCountryIndex * this._countryHeight;
       }
     }
   }
 
   private _moveUpList(incrementValue: number): void {
-    const newItemIndex = this._selectedItemIndex - incrementValue;
-    if (newItemIndex >= 0) {
-      this.selectedItemChange.emit(this.items[newItemIndex]);
+    const newIndex = this._selectedCountryIndex - incrementValue;
+    if (newIndex >= 0) {
+      this.selectedCountryChange.emit(this.countries[newIndex]);
     }
   }
 
   private _moveDownList(incrementValue: number): void {
-    const newItemIndex = this._selectedItemIndex + incrementValue;
-    if (newItemIndex < this.items.length) {
-      this.selectedItemChange.emit(this.items[newItemIndex]);
+    const newIndex = this._selectedCountryIndex + incrementValue;
+    if (newIndex < this.countries.length) {
+      this.selectedCountryChange.emit(this.countries[newIndex]);
     }
   }
 }
