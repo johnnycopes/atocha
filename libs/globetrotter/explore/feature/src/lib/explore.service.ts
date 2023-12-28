@@ -1,30 +1,31 @@
 import { Injectable } from '@angular/core';
+
+import { State } from '@atocha/core/data-access';
 import { includes } from '@atocha/core/util';
 import { CountryService } from '@atocha/globetrotter/shared/data-access';
 import { Country } from '@atocha/globetrotter/shared/util';
 import {
-  BehaviorSubject,
-  Subject,
   combineLatest,
   distinctUntilChanged,
   map,
   of,
   tap,
-  startWith,
   switchMap,
 } from 'rxjs';
 
 @Injectable()
 export class ExploreService {
-  private _searchTermChange = new Subject<string>();
-  private _selectedCountryChange = new BehaviorSubject<Country | undefined>(
-    undefined
-  );
+  private _state = new State<{
+    selectedCountry: Country | undefined;
+    searchTerm: string;
+  }>({
+    selectedCountry: undefined,
+    searchTerm: '',
+  });
+
   private _countries$ = this._countryService.countries$;
-  private _selectedCountry$ = this._selectedCountryChange.pipe(
-    distinctUntilChanged()
-  );
-  private _summary$ = this._selectedCountryChange.pipe(
+
+  private _summary$ = this._state.getProp('selectedCountry').pipe(
     switchMap((country) => {
       if (!country) {
         return of('');
@@ -33,11 +34,8 @@ export class ExploreService {
     }),
     distinctUntilChanged()
   );
-  private _searchTerm$ = this._searchTermChange.pipe(
-    startWith(''),
-    distinctUntilChanged()
-  );
-  private _filteredCountries$ = this._searchTerm$.pipe(
+
+  private _filteredCountries$ = this._state.getProp('searchTerm').pipe(
     switchMap((searchTerm, index) =>
       this._countries$.pipe(
         tap((countries) =>
@@ -51,13 +49,13 @@ export class ExploreService {
       )
     )
   );
+
   vm$ = combineLatest([
+    this._state.get(),
     this._filteredCountries$,
-    this._selectedCountry$,
-    this._searchTerm$,
     this._summary$,
   ]).pipe(
-    map(([filteredCountries, selectedCountry, searchTerm, summary]) => ({
+    map(([{ selectedCountry, searchTerm }, filteredCountries, summary]) => ({
       filteredCountries,
       selectedCountry,
       searchTerm,
@@ -72,10 +70,10 @@ export class ExploreService {
   }
 
   onSearch(searchTerm: string): void {
-    this._searchTermChange.next(searchTerm);
+    this._state.updateProp('searchTerm', searchTerm);
   }
 
   private _selectCountry(country: Country) {
-    this._selectedCountryChange.next(country);
+    this._state.updateProp('selectedCountry', country);
   }
 }
