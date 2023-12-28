@@ -9,27 +9,32 @@ import {
   OnChanges,
   Output,
   SimpleChanges,
-  TemplateRef,
   ViewChild,
 } from '@angular/core';
 
 import { SearchInputComponent, trackByFactory } from '@atocha/core/ui';
 import { InputComponent } from '@atocha/globetrotter/shared/ui';
 import { Country } from '@atocha/globetrotter/shared/util';
+import { ExploreCountryComponent } from '../explore-country/explore-country.component';
 
 @Component({
   standalone: true,
   selector: 'app-list-details',
-  imports: [CommonModule, InputComponent, SearchInputComponent],
+  imports: [
+    CommonModule,
+    ExploreCountryComponent,
+    InputComponent,
+    SearchInputComponent,
+  ],
   templateUrl: './list-details.component.html',
   styleUrls: ['./list-details.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ListDetailsComponent implements OnChanges {
   @Input() countries: Country[] = [];
-  @Input() detailsTemplate: TemplateRef<unknown> | undefined;
   @Input() selectedCountry: Country | undefined;
   @Input() searchTerm = '';
+  @Input() summary = '';
   @Output() selectedCountryChange = new EventEmitter<Country>();
   @Output() searchTermChange = new EventEmitter<string>();
 

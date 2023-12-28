@@ -2,17 +2,10 @@
   <app-list-details
     class="list-details"
     [countries]="vm.filteredCountries"
-    [detailsTemplate]="detailsTemplate"
     [selectedCountry]="vm.selectedCountry"
     [searchTerm]="vm.searchTerm"
+    [summary]="vm.summary"
     (selectedCountryChange)="onSelect($event)"
     (searchTermChange)="onSearch($event)"
   ></app-list-details>
-
-  <ng-template #detailsTemplate let-country>
-    <app-explore-country
-      [country]="country"
-      [summary]="vm.summary"
-    ></app-explore-country>
-  </ng-template>
 </div>

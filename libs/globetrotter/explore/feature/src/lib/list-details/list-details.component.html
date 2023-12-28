@@ -17,16 +17,8 @@
       </li>
     </ul>
   </nav>
-  <div class="details">
-    <ng-container
-      *ngTemplateOutlet="
-        detailsTemplate ? detailsTemplate : defaultTemplate;
-        context: { $implicit: selectedCountry }
-      "
-    ></ng-container>
-  </div>
+  <app-explore-country class="details"
+    [country]="selectedCountry"
+    [summary]="summary"
+  ></app-explore-country>
 </div>
-
-<ng-template #defaultTemplate let-item>
-  {{ item }}
-</ng-template>
