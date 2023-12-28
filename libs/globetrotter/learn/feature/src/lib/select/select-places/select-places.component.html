@@ -4,13 +4,13 @@
   <core-counted-selection-tree
     *ngIf="root"
     class="places"
+    formControlName="places"
     [root]="root"
     [getId]="getId"
     [getChildren]="getChildren"
     [getLeafCount]="getNumberOfCountries"
     [template]="label"
     size="large"
-    formControlName="places"
   ></core-counted-selection-tree>
 </ui-small-caps>
 
@@ -36,7 +36,7 @@
           core-button="secondary"
           class="top__select-all"
           type="button"
-          (click)="onSelectAll()"
+          (click)="selectAll()"
         >
           Select all
         </button>
@@ -44,7 +44,7 @@
           core-button="secondary"
           class="top__clear-all"
           type="button"
-          (click)="onClearAll()"
+          (click)="clearAll()"
         >
           Clear all
         </button>

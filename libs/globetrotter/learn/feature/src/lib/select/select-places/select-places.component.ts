@@ -1,11 +1,5 @@
 import { CommonModule } from '@angular/common';
-import {
-  Component,
-  ChangeDetectionStrategy,
-  Input,
-  Output,
-  EventEmitter,
-} from '@angular/core';
+import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { ButtonComponent, CheckboxComponent } from '@atocha/core/ui';
@@ -44,33 +38,26 @@ import { SelectForm } from '../select-form';
 })
 export class SelectPlacesComponent {
   @Input({ required: true }) form!: SelectForm;
-  @Input()
+  @Input({ required: true })
   set regions(regions: Region[]) {
     this._allPlaces = this._selectService.mapRegionsToPlacesModel(regions);
     this.root = createPlaceRoot('Places', regions);
   }
-  @Input() places: string[] = [];
-  @Output() placesChange = new EventEmitter<string[]>();
 
   root: Root | undefined;
-  getId = getId;
-  getChildren = getChildren;
-  getNumberOfCountries = getNumberOfCountries;
+  readonly getId = getId;
+  readonly getChildren = getChildren;
+  readonly getNumberOfCountries = getNumberOfCountries;
+
   private _allPlaces: string[] = [];
 
   constructor(private _selectService: SelectService) {}
 
-  onPlacesChange(places: string[]): void {
-    this.placesChange.emit(places);
-  }
-
-  onSelectAll(): void {
+  selectAll(): void {
     this.form.patchValue({ places: this._allPlaces });
-    this.placesChange.emit(this._allPlaces);
   }
 
-  onClearAll(): void {
+  clearAll(): void {
     this.form.patchValue({ places: [] });
-    this.placesChange.emit([]);
   }
 }
