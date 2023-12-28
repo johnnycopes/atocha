@@ -12,11 +12,10 @@ import {
   PlaceService,
   SelectService,
 } from '@atocha/globetrotter/learn/data-access';
-import { QuizType } from '@atocha/globetrotter/learn/util';
+import { SelectForm } from './select-form';
 import { SelectTypeComponent } from './select-type/select-type.component';
 import { SelectQuantityComponent } from './select-quantity/select-quantity.component';
 import { SelectPlacesComponent } from './select-places/select-places.component';
-import { SelectForm } from './select-form';
 
 @Component({
   standalone: true,
@@ -40,32 +39,13 @@ export class SelectComponent {
     this._selectService.selection$,
   ]).pipe(
     first(),
-    map(([{ regions, countriesBySubregion }, { places, type, quantity }]) => {
-      if (!regions.length) {
-        return undefined;
-      }
-      const selectedCountriesQuantity = places.reduce(
-        (total, name) =>
-          countriesBySubregion[name]
-            ? total + countriesBySubregion[name].length
-            : total,
-        0
-      );
-      return {
-        regions,
-        places,
-        type,
-        quantity,
-        form: new SelectForm(
-          { type: 3, places, quantity },
-          (subregionName: string) => countriesBySubregion[subregionName].length
-        ),
-        invalidQuantity:
-          selectedCountriesQuantity < 2 ||
-          quantity < 2 ||
-          quantity > selectedCountriesQuantity,
-      };
-    })
+    map(([{ regions, countriesBySubregion }, selection]) => ({
+      regions,
+      form: new SelectForm(
+        selection,
+        (subregionName: string) => countriesBySubregion[subregionName].length
+      ),
+    }))
   );
 
   constructor(
@@ -73,33 +53,6 @@ export class SelectComponent {
     private _selectService: SelectService,
     private _router: Router
   ) {}
-
-  onTypeChange(type: QuizType): void {
-    this._selectService.updateType(type);
-  }
-
-  onQuantityChange(quantity: number): void {
-    this._selectService.updateQuantity(quantity);
-  }
-
-  onPlacesChange(places: string[]): void {
-    this._selectService.updatePlaces(places);
-  }
-
-  async onLaunch(): Promise<void> {
-    this._selectService.selection$
-      .pipe(first())
-      .subscribe(async (selection) => {
-        if (!selection) {
-          return;
-        }
-        const queryParams =
-          this._selectService.mapSelectionToQueryParams(selection);
-        await this._router.navigate([`${ROUTES.learn}/${ROUTES.quiz}`], {
-          queryParams,
-        });
-      });
-  }
 
   async launch(form: SelectForm): Promise<void> {
     const queryParams = this._selectService.mapSelectionToQueryParams(
