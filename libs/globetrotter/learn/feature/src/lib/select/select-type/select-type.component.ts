@@ -17,7 +17,7 @@ import { SelectForm } from '../select-form';
 export class SelectTypeComponent {
   @Input({ required: true }) form!: SelectForm;
 
-  readonly options = [
+  readonly options: readonly { display: string; value: QuizType }[] = [
     {
       display: 'Flags / Countries',
       value: QuizType.flagsCountries,
