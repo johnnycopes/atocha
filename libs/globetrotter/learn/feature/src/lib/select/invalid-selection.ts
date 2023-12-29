@@ -5,7 +5,7 @@ import { Selection } from '@atocha/globetrotter/learn/util';
 export function invalidSelection(
   getNumberOfCountries: (placeName: string) => number
 ): ValidatorFn {
-  return (control: AbstractControl<Selection>): ValidationErrors => {
+  return (control: AbstractControl<Selection>): ValidationErrors | null => {
     const quantity = control.value.quantity;
     const places = control.value.places;
     const selectedCountriesQuantity = places.reduce(
@@ -13,15 +13,19 @@ export function invalidSelection(
       0
     );
 
-    return {
-      invalidQuantity:
-        quantity < 2 ? 'At least two cards must be selected' : null,
-      invalidPlaces:
-        places.length === 0 ? 'At least two countries must be selected' : null,
-      insufficientPlaces:
-        quantity > selectedCountriesQuantity
-          ? 'Number of countries must exceed number of cards'
-          : null,
-    };
+    const errors: ValidationErrors = {};
+    if (quantity < 2) {
+      errors['invalidQuantity'] = 'At least two cards must be selected';
+    }
+
+    if (places.length === 0) {
+      errors['invalidPlaces'] = 'At least two countries must be selected';
+    }
+
+    if (quantity > selectedCountriesQuantity) {
+      errors['insufficientPlaces'] =
+        'Number of countries must exceed number of cards';
+    }
+    return Object.keys(errors).length > 0 ? errors : null;
   };
 }

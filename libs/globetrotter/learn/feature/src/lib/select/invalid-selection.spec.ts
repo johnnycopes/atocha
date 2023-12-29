@@ -28,7 +28,6 @@ describe('invalidSelection', () => {
         })
       )
     ).toStrictEqual({
-      invalidQuantity: null,
       invalidPlaces: 'At least two countries must be selected',
       insufficientPlaces: 'Number of countries must exceed number of cards',
     });
@@ -44,8 +43,6 @@ describe('invalidSelection', () => {
       )
     ).toStrictEqual({
       invalidQuantity: 'At least two cards must be selected',
-      invalidPlaces: null,
-      insufficientPlaces: null,
     });
   });
 
@@ -58,8 +55,6 @@ describe('invalidSelection', () => {
         })
       )
     ).toStrictEqual({
-      invalidQuantity: null,
-      invalidPlaces: null,
       insufficientPlaces: 'Number of countries must exceed number of cards',
     });
   });
@@ -72,10 +67,6 @@ describe('invalidSelection', () => {
           places: fb.control(['Eastern Europe', 'Central America']),
         })
       )
-    ).toStrictEqual({
-      invalidQuantity: null,
-      invalidPlaces: null,
-      insufficientPlaces: null,
-    });
+    ).toBe(null);
   });
 });

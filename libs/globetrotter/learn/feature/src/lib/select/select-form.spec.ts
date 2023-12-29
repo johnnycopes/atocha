@@ -43,11 +43,7 @@ describe('SelectForm', () => {
   });
 
   it('has no errors on form init', () => {
-    expect(form.errors).toStrictEqual({
-      invalidQuantity: null,
-      invalidPlaces: null,
-      insufficientPlaces: null,
-    });
+    expect(form.errors).toBe(null);
   });
 
   it('has error when form is invalid', () => {
