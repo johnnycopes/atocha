@@ -51,7 +51,7 @@ describe('ExploreService', () => {
   });
 
   it('initializes with default state', (done) => {
-    service.vm$.subscribe((state) => {
+    service.state$.subscribe((state) => {
       expect(state).toStrictEqual({
         filteredCountries: [DJIBOUTI, MONTENEGRO, PHILIPPINES, SEYCHELLES],
         selectedCountry: DJIBOUTI,

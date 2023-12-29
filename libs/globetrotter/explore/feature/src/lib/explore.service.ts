@@ -40,7 +40,7 @@ export class ExploreService {
       )
     );
 
-  vm$ = combineLatest([
+  state$ = combineLatest([
     this._state.get(),
     this._filteredCountries$,
     this._summary$,

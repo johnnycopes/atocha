@@ -18,7 +18,7 @@ import { ExploreCountryComponent } from './explore-country/explore-country.compo
   animations: [fadeInAnimation],
 })
 export class ExploreComponent {
-  vm$ = this._exploreService.vm$;
+  vm$ = this._exploreService.state$;
 
   constructor(private _exploreService: ExploreService) {}
 
