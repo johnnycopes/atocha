@@ -21,6 +21,7 @@
       <app-select-type [form]="vm.form"> </app-select-type>
       <app-select-quantity
         [form]="vm.form"
+        [error]="!!vm.form.errors"
       ></app-select-quantity>
     </div>
     <app-select-places
