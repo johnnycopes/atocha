@@ -5,11 +5,13 @@ import {
   PHILIPPINES_DTO,
   PUERTO_RICO_DTO,
   SEYCHELLES_DTO,
+} from '../testing/country-dtos';
+import {
   DJIBOUTI,
   MONTENEGRO,
   PHILIPPINES,
   SEYCHELLES,
-} from '../testing';
+} from '../testing/countries';
 
 describe('mapCountryDtosToCountries', () => {
   it('returns non-UN member countries, sorted alphabetically by name', () => {

@@ -1,5 +1,6 @@
 import { mapCountryDtoToCountry } from './map-country-dto-to-country';
-import { DJIBOUTI_DTO, DJIBOUTI } from '../testing';
+import { DJIBOUTI_DTO } from '../testing/country-dtos';
+import { DJIBOUTI } from '../testing/countries';
 
 describe('mapCountryDtoToCountry', () => {
   it('returns a country when passed a country DTO', () => {
