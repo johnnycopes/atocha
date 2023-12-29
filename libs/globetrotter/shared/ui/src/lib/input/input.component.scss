@@ -16,6 +16,7 @@
   font-family: $font-stack;
   font-size: map-get($font-size, 16);
   transition: map-get($transition, border);
+  outline: none;
 
   &::placeholder {
     font-style: $font-stack;
@@ -34,10 +35,4 @@
 
 .label {
   @include small-caps;
-}
-
-.error {
-  position: absolute;
-  width: 100%;
-  bottom: -32px;
 }
