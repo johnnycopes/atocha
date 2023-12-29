@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { ValidationErrors } from '@angular/forms';
-import { trackBySelf } from '@atocha/core/ui';
 
+import { trackBySelf } from '@atocha/core/ui';
 import { AlertComponent } from '@atocha/globetrotter/shared/ui';
 
 @Component({
