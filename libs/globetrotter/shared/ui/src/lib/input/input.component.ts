@@ -1,9 +1,9 @@
 import { CommonModule } from '@angular/common';
 import {
-  Component,
-  Input,
   ChangeDetectionStrategy,
+  Component,
   HostBinding,
+  Input,
 } from '@angular/core';
 
 @Component({
