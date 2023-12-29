@@ -3,7 +3,7 @@ import {
   MONTENEGRO,
   PHILIPPINES,
   SEYCHELLES,
-} from '@atocha/globetrotter/shared/data-access';
+} from './mock-data/countries';
 import { Places } from './places';
 
 describe('Places', () => {
