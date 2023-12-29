@@ -25,4 +25,9 @@
       color: map-get($color, darkest);
     }
   }
+
+  &__placeholder {
+    margin-top: 12px;
+    text-align: center;
+  }
 }

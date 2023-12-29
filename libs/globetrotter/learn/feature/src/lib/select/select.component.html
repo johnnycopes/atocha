@@ -19,7 +19,10 @@
   <div class="fields">
     <div class="fields__top">
       <app-select-type [form]="vm.form"> </app-select-type>
-      <app-select-quantity [form]="vm.form"></app-select-quantity>
+      <app-select-quantity
+        [form]="vm.form"
+        [error]="!!vm.form.errors"
+      ></app-select-quantity>
     </div>
     <app-select-places
       [form]="vm.form"
