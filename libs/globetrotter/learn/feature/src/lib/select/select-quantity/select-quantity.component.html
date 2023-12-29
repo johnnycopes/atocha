@@ -1,8 +1,8 @@
 <ui-input
   class="input"
   label="Quantity"
-  [showError]="!!error"
-  [errorMessage]="error"
+  [showError]="false"
+  [errorMessage]="''"
 >
   <div class="container" [formGroup]="form">
     <input type="number" formControlName="quantity" />
