@@ -3,4 +3,5 @@ export * from './lib/error.service';
 export * from './lib/loader.service';
 export * from './lib/router.service';
 export * from './lib/routes';
-export * from './lib/testing';
+
+export * from './lib/testing/countries';
