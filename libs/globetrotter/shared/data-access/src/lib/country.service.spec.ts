@@ -9,14 +9,14 @@ import {
   SEYCHELLES_DTO,
   PUERTO_RICO_DTO,
   DJIBOUTI_DTO,
-} from './internal/mock-data/country-dtos';
+} from './testing/country-dtos';
 import { SummaryDto } from './internal/summary-dto.interface';
 import {
   DJIBOUTI,
   MONTENEGRO,
   PHILIPPINES,
   SEYCHELLES,
-} from './internal/mock-data/countries';
+} from './testing/countries';
 
 describe('CountryService', () => {
   let service: CountryService;
