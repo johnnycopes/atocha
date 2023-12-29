@@ -4,19 +4,19 @@ import { of } from 'rxjs';
 import { CountryService } from './country.service';
 import { ApiService } from './internal/api.service';
 import {
-  DJIBOUTI_DTO,
-  MONTENEGRO_DTO,
-  PHILIPPINES_DTO,
-  PUERTO_RICO_DTO,
-  SEYCHELLES_DTO,
-} from './testing';
-import { SummaryDto } from './internal/summary-dto.interface';
-import {
   DJIBOUTI,
   MONTENEGRO,
   PHILIPPINES,
   SEYCHELLES,
 } from './testing/countries';
+import {
+  DJIBOUTI_DTO,
+  MONTENEGRO_DTO,
+  PHILIPPINES_DTO,
+  PUERTO_RICO_DTO,
+  SEYCHELLES_DTO,
+} from './testing/country-dtos';
+import { SummaryDto } from './internal/summary-dto.interface';
 
 describe('CountryService', () => {
   let service: CountryService;
