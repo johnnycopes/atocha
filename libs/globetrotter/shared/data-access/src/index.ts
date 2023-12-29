@@ -5,4 +5,3 @@ export * from './lib/router.service';
 export * from './lib/routes';
 
 export * from './lib/testing/countries';
-export * from './lib/testing/mock-country.service';
