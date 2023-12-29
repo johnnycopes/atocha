@@ -6,6 +6,12 @@ import { Country } from '@atocha/globetrotter/shared/util';
 import { ApiService } from './internal/api.service';
 import { mapCountryDtosToCountries } from './internal/map-country-dtos-to-countries';
 
+export interface ICountryService {
+  countries$: Observable<Country[]>;
+  getCountries(): Observable<Country[]>;
+  getSummary(countryName: string): Observable<string>;
+}
+
 // Overrides to API data
 const COUNTRY_SUMMARY_NAMES: Readonly<Record<string, string>> = {
   Georgia: 'Georgia country',
@@ -14,7 +20,7 @@ const COUNTRY_SUMMARY_NAMES: Readonly<Record<string, string>> = {
 @Injectable({
   providedIn: 'root',
 })
-export class CountryService {
+export class CountryService implements ICountryService {
   private _countriesLoaded = false;
   private _countries = new State<{ countries: Country[] }>({ countries: [] });
   countries$ = this._countries.getProp('countries');
