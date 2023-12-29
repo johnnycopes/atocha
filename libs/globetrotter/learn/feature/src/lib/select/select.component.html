@@ -7,15 +7,19 @@
 >
   <div class="launchpad">
     <h1 class="header">Create Quiz</h1>
-    <button core-button [disabled]="!vm.form.valid">Launch</button>
+    <div class="submission">
+      <app-errors
+        *ngIf="vm.form.errors"
+        class="errors"
+        [errors]="vm.form.errors"
+      ></app-errors>
+      <button core-button [disabled]="!vm.form.valid">Launch</button>
+    </div>
   </div>
   <div class="fields">
     <div class="fields__top">
       <app-select-type [form]="vm.form"> </app-select-type>
-      <app-select-quantity
-        [form]="vm.form"
-        [error]="vm.form.getError('invalidSelection')"
-      ></app-select-quantity>
+      <app-select-quantity [form]="vm.form"></app-select-quantity>
     </div>
     <app-select-places
       [form]="vm.form"

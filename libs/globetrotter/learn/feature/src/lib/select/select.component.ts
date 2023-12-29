@@ -11,6 +11,7 @@ import {
   PlaceService,
   SelectService,
 } from '@atocha/globetrotter/learn/data-access';
+import { ErrorsComponent } from './errors/errors.component';
 import { SelectForm } from './select-form';
 import { SelectTypeComponent } from './select-type/select-type.component';
 import { SelectQuantityComponent } from './select-quantity/select-quantity.component';
@@ -22,6 +23,7 @@ import { SelectPlacesComponent } from './select-places/select-places.component';
   imports: [
     ButtonComponent,
     CommonModule,
+    ErrorsComponent,
     ReactiveFormsModule,
     SelectPlacesComponent,
     SelectQuantityComponent,

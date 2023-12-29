@@ -19,6 +19,18 @@
   font-weight: map-get($font-weight, bold);
 }
 
+.submission {
+  position: relative;
+
+  .errors {
+    position: absolute;
+    z-index: map-get($z-index, positive);
+    width: map-get($spacing, 384);
+    right: map-get($spacing, 128);
+    margin-right: map-get($spacing, 8);
+  }
+}
+
 .fields {
   &__top {
     display: flex;
