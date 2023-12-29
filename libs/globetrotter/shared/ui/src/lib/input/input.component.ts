@@ -1,5 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
+import {
+  Component,
+  Input,
+  ChangeDetectionStrategy,
+  HostBinding,
+} from '@angular/core';
 
 @Component({
   standalone: true,
@@ -11,5 +16,8 @@ import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 })
 export class InputComponent {
   @Input() label = '';
-  @Input() error = false;
+
+  @HostBinding('class.error')
+  @Input()
+  error = false;
 }
