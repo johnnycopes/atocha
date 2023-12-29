@@ -42,13 +42,21 @@ describe('SelectForm', () => {
     ]);
   });
 
-  it('has no error on form init', () => {
-    expect(form.error).toBe(null);
+  it('has no errors on form init', () => {
+    expect(form.errors).toStrictEqual({
+      invalidQuantity: null,
+      invalidPlaces: null,
+      insufficientPlaces: null,
+    });
   });
 
   it('has error when form is invalid', () => {
-    form.patchValue({ places: [] });
+    form.patchValue({ quantity: 1, places: [] });
 
-    expect(form.error).toBe('Invalid quantity');
+    expect(form.errors).toStrictEqual({
+      invalidQuantity: 'At least two cards must be selected',
+      invalidPlaces: 'At least two countries must be selected',
+      insufficientPlaces: 'Number of countries must exceed number of cards',
+    });
   });
 });

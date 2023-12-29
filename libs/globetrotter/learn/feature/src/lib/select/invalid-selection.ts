@@ -1,17 +1,11 @@
-import { ValidatorFn, AbstractControl } from '@angular/forms';
+import { ValidatorFn, AbstractControl, ValidationErrors } from '@angular/forms';
 
 import { Selection } from '@atocha/globetrotter/learn/util';
-
-export interface SelectionErrors {
-  invalidQuantity: 'At least two cards must be selected' | null;
-  invalidPlaces: 'At least two countries must be selected' | null;
-  insufficientPlaces: 'Number of countries must exceed number of cards' | null;
-}
 
 export function invalidSelection(
   getNumberOfCountries: (placeName: string) => number
 ): ValidatorFn {
-  return (control: AbstractControl<Selection>): SelectionErrors => {
+  return (control: AbstractControl<Selection>): ValidationErrors => {
     const quantity = control.value.quantity;
     const places = control.value.places;
     const selectedCountriesQuantity = places.reduce(
