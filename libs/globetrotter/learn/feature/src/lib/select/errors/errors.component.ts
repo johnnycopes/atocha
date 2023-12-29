@@ -3,12 +3,12 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { ValidationErrors } from '@angular/forms';
 import { trackBySelf } from '@atocha/core/ui';
 
-import { ErrorComponent } from '@atocha/globetrotter/shared/ui';
+import { AlertComponent } from '@atocha/globetrotter/shared/ui';
 
 @Component({
   standalone: true,
   selector: 'app-errors',
-  imports: [CommonModule, ErrorComponent],
+  imports: [AlertComponent, CommonModule],
   templateUrl: './errors.component.html',
   styleUrls: ['./errors.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
