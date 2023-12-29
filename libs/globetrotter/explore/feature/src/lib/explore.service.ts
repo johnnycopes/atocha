@@ -1,48 +1,29 @@
 import { Injectable } from '@angular/core';
+import { combineLatest, map, of, tap, switchMap, first } from 'rxjs';
+
+import { State } from '@atocha/core/data-access';
 import { includes } from '@atocha/core/util';
 import { CountryService } from '@atocha/globetrotter/shared/data-access';
 import { Country } from '@atocha/globetrotter/shared/util';
-import {
-  BehaviorSubject,
-  Subject,
-  combineLatest,
-  distinctUntilChanged,
-  map,
-  of,
-  tap,
-  startWith,
-  switchMap,
-} from 'rxjs';
 
 @Injectable()
 export class ExploreService {
-  private _searchTermChange = new Subject<string>();
-  private _selectedCountryChange = new BehaviorSubject<Country | undefined>(
-    undefined
-  );
-  private _countries$ = this._countryService.countries$;
-  private _selectedCountry$ = this._selectedCountryChange.pipe(
-    distinctUntilChanged()
-  );
-  private _summary$ = this._selectedCountryChange.pipe(
-    switchMap((country) => {
-      if (!country) {
-        return of('');
-      }
-      return this._countryService.getSummary(country.name);
-    }),
-    distinctUntilChanged()
-  );
-  private _searchTerm$ = this._searchTermChange.pipe(
-    startWith(''),
-    distinctUntilChanged()
-  );
-  private _filteredCountries$ = this._searchTerm$.pipe(
+  private _state = new State<{
+    selectedCountry: Country | undefined;
+    searchTerm: string;
+  }>({
+    selectedCountry: undefined,
+    searchTerm: '',
+  });
+  private _filteredCountries$ = this._state.getProp('searchTerm').pipe(
     switchMap((searchTerm, index) =>
-      this._countries$.pipe(
-        tap((countries) =>
-          index === 0 ? this._selectCountry(countries[0]) : null
-        ),
+      this._countryService.countries$.pipe(
+        first(),
+        tap((countries) => {
+          if (index === 0) {
+            this._state.updateProp('selectedCountry', countries[0]);
+          }
+        }),
         map((countries) =>
           countries.filter(({ name, capital }) =>
             includes([name, capital], searchTerm)
@@ -51,13 +32,20 @@ export class ExploreService {
       )
     )
   );
-  vm$ = combineLatest([
+  private _summary$ = this._state
+    .getProp('selectedCountry')
+    .pipe(
+      switchMap((country) =>
+        country ? this._countryService.getSummary(country.name) : of('')
+      )
+    );
+
+  state$ = combineLatest([
+    this._state.get(),
     this._filteredCountries$,
-    this._selectedCountry$,
-    this._searchTerm$,
     this._summary$,
   ]).pipe(
-    map(([filteredCountries, selectedCountry, searchTerm, summary]) => ({
+    map(([{ selectedCountry, searchTerm }, filteredCountries, summary]) => ({
       filteredCountries,
       selectedCountry,
       searchTerm,
@@ -67,15 +55,11 @@ export class ExploreService {
 
   constructor(private _countryService: CountryService) {}
 
-  onSelect(selectedCountry: Country): void {
-    this._selectCountry(selectedCountry);
+  select(country: Country): void {
+    this._state.updateProp('selectedCountry', country);
   }
 
-  onSearch(searchTerm: string): void {
-    this._searchTermChange.next(searchTerm);
-  }
-
-  private _selectCountry(country: Country) {
-    this._selectedCountryChange.next(country);
+  search(searchTerm: string): void {
+    this._state.updateProp('searchTerm', searchTerm);
   }
 }

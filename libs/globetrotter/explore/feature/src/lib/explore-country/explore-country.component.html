@@ -1,77 +1,75 @@
-<ng-container *ngIf="country">
-  <div class="top">
-    <div class="top__details">
-      <h1 class="name">
-        {{ country.name }}
-      </h1>
-      <h2 class="capital">
-        {{ country.capital }}
-      </h2>
-    </div>
-    <img class="flag" [src]="country.flag" alt="Flag of {{ country.name }}" />
+<div class="top">
+  <div class="top__details">
+    <h1 class="name">
+      {{ country.name }}
+    </h1>
+    <h2 class="capital">
+      {{ country.capital }}
+    </h2>
   </div>
-  <div class="table">
-    <ui-small-caps
-      *ngFor="let tableDatum of tableData; trackBy: tableDataTrackByFn"
-      class="table-header"
-      [header]="tableDatum.header"
-      [template]="tableDatum?.template"
-    >
-      {{ tableDatum?.content }}
-    </ui-small-caps>
+  <img class="flag" [src]="country.flag" alt="Flag of {{ country.name }}" />
+</div>
+<div class="table">
+  <ui-small-caps
+    *ngFor="let tableDatum of tableData; trackBy: tableDataTrackByFn"
+    class="table-header"
+    [header]="tableDatum.header"
+    [template]="tableDatum?.template"
+  >
+    {{ tableDatum?.content }}
+  </ui-small-caps>
+</div>
+<p class="summary">
+  {{ summary }}
+</p>
+
+<ng-template #language>
+  <ng-container
+    *ngTemplateOutlet="
+      list;
+      context: {
+        items: country.languages
+      }
+    "
+  ></ng-container>
+</ng-template>
+
+<ng-template #currency>
+  <ng-container
+    *ngTemplateOutlet="
+      list;
+      context: {
+        items: country.currencies
+      }
+    "
+  ></ng-container>
+</ng-template>
+
+<ng-template #population>
+  {{ country.population | number }}
+</ng-template>
+
+<ng-template #size>
+  <div>{{ country.area | number }} km<sup>2</sup></div>
+  <div>
+    {{ country.area | uiMeasurement : 'sqKm' : 'sqMi' | number : '0.0-0' }}
+    mi<sup>2</sup>
   </div>
-  <p *ngIf="summary" class="summary">
-    {{ summary }}
-  </p>
+</ng-template>
 
-  <ng-template #language>
-    <ng-container
-      *ngTemplateOutlet="
-        list;
-        context: {
-          items: country.languages
-        }
-      "
-    ></ng-container>
-  </ng-template>
+<ng-template #list let-items="items">
+  <span *ngFor="let item of items; last as last; trackBy: itemTrackByFn">
+    {{ item }}{{ !last ? ',' : '' }}
+  </span>
+</ng-template>
 
-  <ng-template #currency>
-    <ng-container
-      *ngTemplateOutlet="
-        list;
-        context: {
-          items: country.currencies
-        }
-      "
-    ></ng-container>
-  </ng-template>
-
-  <ng-template #population>
-    {{ country.population | number }}
-  </ng-template>
-
-  <ng-template #size>
-    <div>{{ country.area | number }} km<sup>2</sup></div>
-    <div>
-      {{ country.area | uiMeasurement : 'sqKm' : 'sqMi' | number : '0.0-0' }}
-      mi<sup>2</sup>
-    </div>
-  </ng-template>
-
-  <ng-template #list let-items="items">
-    <span *ngFor="let item of items; last as last; trackBy: itemTrackByFn">
-      {{ item }}{{ !last ? ',' : '' }}
-    </span>
-  </ng-template>
-
-  <ng-template #callingCodes>
-    <ng-container
-      *ngTemplateOutlet="
-        list;
-        context: {
-          items: country.callingCodes
-        }
-      "
-    ></ng-container>
-  </ng-template>
-</ng-container>
+<ng-template #callingCodes>
+  <ng-container
+    *ngTemplateOutlet="
+      list;
+      context: {
+        items: country.callingCodes
+      }
+    "
+  ></ng-container>
+</ng-template>

@@ -1,23 +1,7 @@
 @import 'styles';
 
-:host {
-  display: block;
-}
-
-.container {
-  display: grid;
-  height: 100%;
-  overflow: hidden;
-  grid-template-columns: [toolbar] map-get($spacing, 384) [details] 1fr;
-  grid-template-rows: 100%;
-  grid-gap: map-get($spacing, 24);
-}
-
-.toolbar {
-  grid-column: toolbar;
-}
-
 .list {
+  margin-top: map-get($spacing, 12);
   height: calc(
     100% - 60px
   ); // subtract the total height of the search input and its bottom margin
@@ -26,6 +10,7 @@
   @include custom-scrollbar;
 
   &__item {
+    margin-bottom: map-get($spacing, 12);
     padding: map-get($spacing, 12);
     background: map-get($color, dark);
     border-radius: map-get($border, radius);
@@ -40,9 +25,4 @@
       color: map-get($color, darkest);
     }
   }
-}
-
-.details {
-  grid-column: details;
-  overflow: auto;
 }
