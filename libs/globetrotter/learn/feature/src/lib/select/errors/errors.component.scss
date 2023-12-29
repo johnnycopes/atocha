@@ -1,7 +1,6 @@
 @import 'styles';
 
 .message {
-
   &:not(:last-of-type) {
     margin-bottom: map-get($spacing, 4);
   }
