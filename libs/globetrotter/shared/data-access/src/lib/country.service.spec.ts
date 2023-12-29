@@ -4,12 +4,12 @@ import { of } from 'rxjs';
 import { CountryService } from './country.service';
 import { ApiService } from './internal/api.service';
 import {
+  DJIBOUTI_DTO,
   MONTENEGRO_DTO,
   PHILIPPINES_DTO,
-  SEYCHELLES_DTO,
   PUERTO_RICO_DTO,
-  DJIBOUTI_DTO,
-} from './testing/country-dtos';
+  SEYCHELLES_DTO,
+} from './testing';
 import { SummaryDto } from './internal/summary-dto.interface';
 import {
   DJIBOUTI,
