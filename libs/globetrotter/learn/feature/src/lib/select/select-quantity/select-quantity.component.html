@@ -1,4 +1,4 @@
-<ui-input class="input" label="Quantity" [error]="error">
+<ui-input class="input" label="Quantity" [error]="!!form.errors">
   <div class="container" [formGroup]="form">
     <input type="number" formControlName="quantity" />
     <p>cards</p>
