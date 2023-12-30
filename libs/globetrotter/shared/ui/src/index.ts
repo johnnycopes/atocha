@@ -1,4 +1,3 @@
-export * from './lib/alert/alert.component';
 export * from './lib/container/container.component';
 export * from './lib/error/error.component';
 export * from './lib/fixed-slideable-panel/fixed-slideable-panel.component';
