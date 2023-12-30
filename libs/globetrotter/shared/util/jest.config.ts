@@ -1,6 +1,6 @@
 /* eslint-disable */
 export default {
-  displayName: 'globetrotter-util',
+  displayName: 'globetrotter-shared-util',
   preset: '../../../../jest.preset.js',
   globals: {},
   testEnvironment: 'node',
