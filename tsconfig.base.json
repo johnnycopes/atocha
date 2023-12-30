@@ -31,6 +31,9 @@
       "@atocha/globetrotter/learn/feature": [
         "libs/globetrotter/learn/feature/src/index.ts"
       ],
+      "@atocha/globetrotter/learn/ui": [
+        "libs/globetrotter/learn/ui/src/index.ts"
+      ],
       "@atocha/globetrotter/learn/util": [
         "libs/globetrotter/learn/util/src/index.ts"
       ],
