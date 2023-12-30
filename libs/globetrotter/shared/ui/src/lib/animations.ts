@@ -29,33 +29,6 @@ export const fadeInAnimation = trigger('fadeIn', [
   ]),
 ]);
 
-export const fadeInWithFixedSlideablePanelDelayAnimation = trigger('fadeIn', [
-  transition(':enter', [
-    useAnimation(fadeIn, {
-      params: {
-        timing: DURATION.fadeIn,
-        delay: DURATION.position,
-      },
-    }),
-  ]),
-]);
-
-export const visibilityAnimation = trigger('visibility', [
-  state(
-    'invisible',
-    style({
-      opacity: 0,
-    })
-  ),
-  state(
-    'visible',
-    style({
-      opacity: 1,
-    })
-  ),
-  transition('* => *', animate(`${DURATION.fadeIn}ms ease-in-out`)),
-]);
-
 export const flipAnimation = trigger('flip', [
   state(
     'front',
