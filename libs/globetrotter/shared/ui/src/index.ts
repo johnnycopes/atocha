@@ -1,4 +1,5 @@
 export * from './lib/error/error.component';
+export * from './lib/flag/flag.component';
 export * from './lib/icon/icon.component';
 export * from './lib/input/input.component';
 export * from './lib/loader/loader.component';
