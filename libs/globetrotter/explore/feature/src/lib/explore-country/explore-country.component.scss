@@ -17,7 +17,6 @@
 }
 
 .flag {
-  @include flag;
   margin-left: map-get($spacing, 48);
 }
 

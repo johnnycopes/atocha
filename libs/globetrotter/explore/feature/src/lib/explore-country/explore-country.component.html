@@ -7,7 +7,10 @@
       {{ country.capital }}
     </h2>
   </div>
-  <img class="flag" [src]="country.flag" alt="Flag of {{ country.name }}" />
+  <ui-flag class="flag"
+    [src]="country.flag"
+    [name]="country.name"
+  ></ui-flag>
 </div>
 <div class="table">
   <ui-small-caps
