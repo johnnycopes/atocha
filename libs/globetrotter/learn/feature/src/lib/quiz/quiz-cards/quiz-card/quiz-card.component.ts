@@ -13,7 +13,7 @@ import {
 } from '@angular/core';
 
 import { wait } from '@atocha/core/util';
-import { DURATION } from '@atocha/globetrotter/shared/ui';
+import { DURATION, FlagComponent } from '@atocha/globetrotter/shared/ui';
 import { Country } from '@atocha/globetrotter/shared/util';
 import {
   FlipCardComponent,
@@ -27,7 +27,7 @@ type CardTemplate = Record<FlipCardSide, TemplateRef<unknown> | undefined>;
 @Component({
   standalone: true,
   selector: 'app-quiz-card',
-  imports: [CommonModule, FlipCardComponent],
+  imports: [CommonModule, FlagComponent, FlipCardComponent],
   templateUrl: './quiz-card.component.html',
   styleUrls: ['./quiz-card.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

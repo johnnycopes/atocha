@@ -1,9 +1,6 @@
 @import 'styles';
 
 .quiz-card {
-  &__flag {
-    @include flag;
-  }
 
   &__name {
     width: map-get($spacing, 192);
