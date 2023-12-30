@@ -1,5 +1,4 @@
 export * from './lib/error/error.component';
-export * from './lib/fixed-slideable-panel/fixed-slideable-panel.component';
 export * from './lib/flip-card/flip-card.component';
 export * from './lib/icon/icon.component';
 export * from './lib/input/input.component';
