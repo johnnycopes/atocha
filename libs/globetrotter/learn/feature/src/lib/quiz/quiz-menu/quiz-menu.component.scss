@@ -2,9 +2,31 @@
 
 $padding: map-get($app, wrapper-padding);
 
+@mixin layout($justify-content-position) {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  justify-content: $justify-content-position;
+  align-items: center;
+}
+
 .progress {
   max-width: map-get($learn, max-width) + $padding + $padding;
   margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.left {
+  @include layout(flex-start);
+}
+
+.center {
+  @include layout(center);
+}
+
+.right {
+  @include layout(flex-end);
 }
 
 .back {
