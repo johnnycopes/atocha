@@ -14,10 +14,7 @@
 </ui-flip-card>
 
 <ng-template #flagTemplate>
-  <ui-flag *ngIf="country"
-    [src]="country.flag"
-    [name]="country.name"
-  ></ui-flag>
+  <ui-flag *ngIf="country" [src]="country.flag" [name]="country.name"></ui-flag>
 </ng-template>
 
 <ng-template #countryTemplate>
