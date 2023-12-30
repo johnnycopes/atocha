@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
-import { fadeInAnimation } from '@atocha/globetrotter/shared/ui';
+import { fadeIn } from '@atocha/globetrotter/shared/ui';
 import { Country } from '@atocha/globetrotter/shared/util';
 import { ExploreService } from './explore.service';
 import { ExploreCountriesComponent } from './explore-countries/explore-countries.component';
@@ -15,7 +15,7 @@ import { ExploreCountryComponent } from './explore-country/explore-country.compo
   templateUrl: './explore.component.html',
   styleUrls: ['./explore.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  animations: [fadeInAnimation],
+  animations: [fadeIn],
 })
 export class ExploreComponent {
   vm$ = this._exploreService.state$;

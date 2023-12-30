@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
 
-import { fadeInAnimation } from '../animations';
+import { fadeIn } from '../animations';
 
 @Component({
   standalone: true,
@@ -8,7 +8,7 @@ import { fadeInAnimation } from '../animations';
   templateUrl: './error.component.html',
   styleUrls: ['./error.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  animations: [fadeInAnimation],
+  animations: [fadeIn],
 })
 export class ErrorComponent {
   @Input() header = '';

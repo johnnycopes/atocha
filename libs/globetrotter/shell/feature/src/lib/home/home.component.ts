@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 
 import { ButtonComponent } from '@atocha/core/ui';
 import { ROUTES } from '@atocha/globetrotter/shared/data-access';
-import { IconComponent, fadeInAnimation } from '@atocha/globetrotter/shared/ui';
+import { IconComponent, fadeIn } from '@atocha/globetrotter/shared/ui';
 
 @Component({
   standalone: true,
@@ -12,7 +12,7 @@ import { IconComponent, fadeInAnimation } from '@atocha/globetrotter/shared/ui';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  animations: [fadeInAnimation],
+  animations: [fadeIn],
 })
 export class HomeComponent {
   constructor(private _router: Router) {}

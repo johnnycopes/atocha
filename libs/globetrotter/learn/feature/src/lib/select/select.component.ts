@@ -6,7 +6,7 @@ import { combineLatest, first, map } from 'rxjs';
 
 import { ButtonComponent } from '@atocha/core/ui';
 import { ROUTES } from '@atocha/globetrotter/shared/data-access';
-import { fadeInAnimation } from '@atocha/globetrotter/shared/ui';
+import { fadeIn } from '@atocha/globetrotter/shared/ui';
 import {
   PlaceService,
   SelectService,
@@ -32,7 +32,7 @@ import { SelectPlacesComponent } from './select-places/select-places.component';
   templateUrl: './select.component.html',
   styleUrls: ['./select.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  animations: [fadeInAnimation],
+  animations: [fadeIn],
 })
 export class SelectComponent {
   vm$ = combineLatest([

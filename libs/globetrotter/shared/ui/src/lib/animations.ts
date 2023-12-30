@@ -9,7 +9,7 @@ import {
 
 import { DURATION } from './duration';
 
-export const fadeInAnimation = trigger('fadeIn', [
+export const fadeIn = trigger('fadeIn', [
   transition(':enter', [
     useAnimation(
       animation([
