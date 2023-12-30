@@ -36,7 +36,3 @@
 :host-context(.error) ::ng-deep input {
   border-color: #bd2222;
 }
-
-.label {
-  @include small-caps;
-}
