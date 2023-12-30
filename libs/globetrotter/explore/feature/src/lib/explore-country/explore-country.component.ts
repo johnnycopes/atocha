@@ -12,11 +12,9 @@ import {
 
 import { trackByFactory, trackBySelf } from '@atocha/core/ui';
 import { pluralize } from '@atocha/core/util';
-import {
-  MeasurementPipe,
-  SmallCapsComponent,
-} from '@atocha/globetrotter/shared/ui';
+import { SmallCapsComponent } from '@atocha/globetrotter/shared/ui';
 import { Country } from '@atocha/globetrotter/shared/util';
+import { MeasurementPipe } from './measurement.pipe';
 
 interface TableData {
   header: string;
