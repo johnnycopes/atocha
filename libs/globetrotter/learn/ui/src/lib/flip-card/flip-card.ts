@@ -21,8 +21,8 @@ export const flipAnimation = trigger('flip', [
       transform: 'rotateY(180deg)',
     })
   ),
-  transition('front => back', animate(`${DURATION.cardAnimation}ms ease-in`)),
-  transition('back => front', animate(`${DURATION.cardAnimation}ms ease-out`)),
+  transition('front => back', animate(`${DURATION.cardFlip}ms ease-in`)),
+  transition('back => front', animate(`${DURATION.cardFlip}ms ease-out`)),
 ]);
 
 export const disabledAnimation = trigger('disabled', [
@@ -32,7 +32,7 @@ export const disabledAnimation = trigger('disabled', [
       filter: 'grayscale(100%)',
     })
   ),
-  transition('* => disabled', animate(`${DURATION.cardAnimation}ms ease-in`)),
+  transition('* => disabled', animate(`${DURATION.cardFlip}ms ease-in`)),
 ]);
 
 export const guessAnimation = trigger('guess', [
@@ -57,5 +57,5 @@ export const guessAnimation = trigger('guess', [
       padding: '0',
     })
   ),
-  transition('* => *', animate(`${DURATION.cardAnimation}ms ease-in`)),
+  transition('* => *', animate(`${DURATION.cardFlip}ms ease-in`)),
 ]);

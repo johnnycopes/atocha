@@ -27,5 +27,5 @@ export const positionAnimation = trigger('position', [
       transform: 'translateY(0)',
     })
   ),
-  transition('* => *', animate(`${DURATION.position}ms ease-in-out`)),
+  transition('* => *', animate(`${DURATION.headerSidenavSlide}ms ease-in-out`)),
 ]);
