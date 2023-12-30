@@ -1,7 +1,7 @@
 import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 
 import { AnimatedComponent } from '@atocha/core/ui';
-import { positionAnimation } from '../animations';
+import { positionAnimation } from '@atocha/globetrotter/shared/ui';
 
 export type FixedSlideablePanelPosition = 'offscreen' | 'header' | 'fullscreen';
 
