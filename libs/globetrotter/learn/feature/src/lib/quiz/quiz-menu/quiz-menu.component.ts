@@ -12,7 +12,6 @@ import {
 
 import { ButtonComponent } from '@atocha/core/ui';
 import {
-  ContainerComponent,
   FixedSlideablePanelComponent,
   FixedSlideablePanelPosition,
   IconComponent,
@@ -26,7 +25,6 @@ import { QuizType } from '@atocha/globetrotter/learn/util';
   imports: [
     ButtonComponent,
     CommonModule,
-    ContainerComponent,
     FixedSlideablePanelComponent,
     IconComponent,
   ],
