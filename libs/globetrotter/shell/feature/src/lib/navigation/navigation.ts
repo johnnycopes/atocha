@@ -16,19 +16,7 @@ export const positionAnimation = trigger('position', [
     })
   ),
   state(
-    'header',
-    style({
-      transform: 'translateY(calc(-100% + 64px))', // this value must kept in sync with the header height in SCSS
-    })
-  ),
-  state(
-    'fullscreen',
-    style({
-      transform: 'translateY(0)',
-    })
-  ),
-  state(
-    'navigation',
+    'onscreen',
     style({
       transform: 'translateX(100%)',
     })

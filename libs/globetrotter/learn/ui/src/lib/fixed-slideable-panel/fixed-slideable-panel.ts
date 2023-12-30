@@ -27,11 +27,5 @@ export const positionAnimation = trigger('position', [
       transform: 'translateY(0)',
     })
   ),
-  state(
-    'navigation',
-    style({
-      transform: 'translateX(100%)',
-    })
-  ),
   transition('* => *', animate(`${DURATION.position}ms ease-in-out`)),
 ]);
