@@ -7,11 +7,9 @@ import {
   ExternalLinkDirective,
   trackByFactory,
 } from '@atocha/core/ui';
-import {
-  IconComponent,
-  positionAnimation,
-} from '@atocha/globetrotter/shared/ui';
 import { ROUTES } from '@atocha/globetrotter/shared/data-access';
+import { IconComponent } from '@atocha/globetrotter/shared/ui';
+import { positionAnimation } from './navigation';
 
 interface NavigationLink {
   name: string;
