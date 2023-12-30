@@ -6,9 +6,6 @@ import {
   transition,
   useAnimation,
   state,
-  query,
-  stagger,
-  animateChild,
 } from '@angular/animations';
 
 import { DURATION } from './duration';
@@ -55,10 +52,4 @@ export const positionAnimation = trigger('position', [
     })
   ),
   transition('* => *', animate(`${DURATION.position}ms ease-in-out`)),
-]);
-
-export const staggerAnimation = trigger('stagger', [
-  transition(':enter', [
-    query(':enter', stagger(`${DURATION.stagger}ms`, [animateChild()])),
-  ]),
 ]);
