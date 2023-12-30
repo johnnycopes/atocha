@@ -11,12 +11,12 @@ import {
 } from '@angular/core';
 
 import { ButtonComponent } from '@atocha/core/ui';
+import { IconComponent } from '@atocha/globetrotter/shared/ui';
+import { Country } from '@atocha/globetrotter/shared/util';
 import {
   FixedSlideablePanelComponent,
   FixedSlideablePanelPosition,
-  IconComponent,
-} from '@atocha/globetrotter/shared/ui';
-import { Country } from '@atocha/globetrotter/shared/util';
+} from '@atocha/globetrotter/learn/ui';
 import { QuizType } from '@atocha/globetrotter/learn/util';
 
 @Component({
