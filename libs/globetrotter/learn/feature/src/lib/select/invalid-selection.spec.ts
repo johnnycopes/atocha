@@ -19,7 +19,22 @@ describe('invalidSelection', () => {
     }
   };
 
-  it('returns an error if fewer than 2 countries are selected', () => {
+  it('returns errors if fewer than 2 countries are selected and quantity is less than 2', () => {
+    expect(
+      invalidSelection(MOCK_GET_NUMBER_OF_COUNTRIES)(
+        fb.group<Pick<Form<Selection>, 'quantity' | 'places'>>({
+          quantity: fb.control(1),
+          places: fb.control([]),
+        })
+      )
+    ).toStrictEqual({
+      invalidQuantity: 'At least two cards must be selected',
+      invalidPlaces: 'At least two countries must be selected',
+      insufficientPlaces: 'Number of countries must exceed number of cards',
+    });
+  });
+
+  it('returns errors if fewer than 2 countries are selected', () => {
     expect(
       invalidSelection(MOCK_GET_NUMBER_OF_COUNTRIES)(
         fb.group<Pick<Form<Selection>, 'quantity' | 'places'>>({
@@ -27,7 +42,10 @@ describe('invalidSelection', () => {
           places: fb.control([]),
         })
       )
-    ).toStrictEqual({ invalidSelection: 'Invalid quantity' });
+    ).toStrictEqual({
+      invalidPlaces: 'At least two countries must be selected',
+      insufficientPlaces: 'Number of countries must exceed number of cards',
+    });
   });
 
   it('returns an error if quantity is less than 2', () => {
@@ -38,7 +56,9 @@ describe('invalidSelection', () => {
           places: fb.control(['Central America']),
         })
       )
-    ).toStrictEqual({ invalidSelection: 'Invalid quantity' });
+    ).toStrictEqual({
+      invalidQuantity: 'At least two cards must be selected',
+    });
   });
 
   it('returns an error if quantity exceeds number of selected countries', () => {
@@ -49,7 +69,9 @@ describe('invalidSelection', () => {
           places: fb.control(['Micronesia']),
         })
       )
-    ).toStrictEqual({ invalidSelection: 'Invalid quantity' });
+    ).toStrictEqual({
+      insufficientPlaces: 'Number of countries must exceed number of cards',
+    });
   });
 
   it('returns null otherwise', () => {
@@ -60,6 +82,6 @@ describe('invalidSelection', () => {
           places: fb.control(['Eastern Europe', 'Central America']),
         })
       )
-    ).toStrictEqual(null);
+    ).toBe(null);
   });
 });

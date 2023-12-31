@@ -13,13 +13,13 @@ import {
 } from '@angular/core';
 
 import { wait } from '@atocha/core/util';
+import { DURATION, FlagComponent } from '@atocha/globetrotter/shared/ui';
+import { Country } from '@atocha/globetrotter/shared/util';
 import {
-  DURATION,
   FlipCardComponent,
   FlipCardGuess,
   FlipCardSide,
-} from '@atocha/globetrotter/shared/ui';
-import { Country } from '@atocha/globetrotter/shared/util';
+} from '@atocha/globetrotter/learn/ui';
 import { QuizType } from '@atocha/globetrotter/learn/util';
 
 type CardTemplate = Record<FlipCardSide, TemplateRef<unknown> | undefined>;
@@ -27,7 +27,7 @@ type CardTemplate = Record<FlipCardSide, TemplateRef<unknown> | undefined>;
 @Component({
   standalone: true,
   selector: 'app-quiz-card',
-  imports: [CommonModule, FlipCardComponent],
+  imports: [CommonModule, FlagComponent, FlipCardComponent],
   templateUrl: './quiz-card.component.html',
   styleUrls: ['./quiz-card.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -88,7 +88,7 @@ export class QuizCardComponent implements OnInit {
     // After flip animation is complete, the card is flipped back over and the guess is reset
     else if (triggerName === 'guess') {
       if (toState === 'correct' || toState === 'incorrect') {
-        await wait(DURATION.cardFlipDisplay);
+        await wait(DURATION.cardReverseDisplay);
         this.guess = 'none';
         this.flipCardComponent?.flip();
         this._changeDetectorRef.markForCheck();
@@ -107,7 +107,7 @@ export class QuizCardComponent implements OnInit {
   }
 
   private async _updateQuiz() {
-    await wait(DURATION.quizUpdateDelay);
+    await wait(DURATION.quizPromptDelay);
     this.guessed.emit(this.isCurrentCountry);
     this.flipped.emit(false);
     this._processingFlip = false;

@@ -54,5 +54,9 @@
   font-size: map-get($font-size, 14);
   line-height: map-get($line-height, normal);
   text-align: center;
-  color: map-get($color, medium-dark);
+  color: map-get($color, medium);
+
+  &__name {
+    text-decoration: underline;
+  }
 }

@@ -14,11 +14,7 @@
 </ui-flip-card>
 
 <ng-template #flagTemplate>
-  <img
-    class="quiz-card__flag"
-    [src]="country?.flag"
-    alt="Flag of {{ country?.name }}"
-  />
+  <ui-flag *ngIf="country" [src]="country.flag" [name]="country.name"></ui-flag>
 </ng-template>
 
 <ng-template #countryTemplate>

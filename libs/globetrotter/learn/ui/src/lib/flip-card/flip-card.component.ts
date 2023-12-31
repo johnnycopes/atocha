@@ -7,11 +7,7 @@ import {
 } from '@angular/core';
 
 import { AnimatedComponent } from '@atocha/core/ui';
-import {
-  flipAnimation,
-  guessAnimation,
-  disabledAnimation,
-} from '../animations';
+import { flipAnimation, guessAnimation, disabledAnimation } from './flip-card';
 
 export type FlipCardSide = 'front' | 'back';
 export type FlipCardGuess = 'correct' | 'incorrect' | 'none';

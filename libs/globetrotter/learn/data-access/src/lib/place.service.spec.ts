@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 import { of } from 'rxjs';
 
-import { CountryService } from '@atocha/globetrotter/shared/data-access';
 import {
+  CountryService,
   DJIBOUTI,
   MONTENEGRO,
   PHILIPPINES,
   SEYCHELLES,
-} from './internal/mock-data/countries';
+} from '@atocha/globetrotter/shared/data-access';
 import { Places } from './internal/places';
 import { PlaceService } from './place.service';
 

@@ -1,0 +1,22 @@
+<ui-input>
+  <core-search-input
+    placeholder="Search by country or capital"
+    [text]="searchTerm"
+    (textChange)="searchTermChange.emit($event)"
+  ></core-search-input>
+</ui-input>
+<ul class="list" #list>
+  <ng-container *ngIf="countries.length; else noCountries">
+    <li
+      *ngFor="let item of countries; trackBy: trackByFn"
+      class="list__item"
+      [class.list__item--selected]="item.id === selectedCountry?.id"
+      (click)="selectedCountryChange.emit(item)"
+    >
+      <h3>{{ item.name }}</h3>
+    </li>
+  </ng-container>
+  <ng-template #noCountries>
+    <li class="list__placeholder">No results</li>
+  </ng-template>
+</ul>

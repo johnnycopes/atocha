@@ -1,4 +1,4 @@
-import { CountryDto } from '../country-dto.interface';
+import { CountryDto } from '../internal/country-dto.interface';
 
 export const DJIBOUTI_DTO: CountryDto = {
   name: {

@@ -1,6 +1,6 @@
 /* eslint-disable */
 export default {
-  displayName: 'globetrotter-data-access',
+  displayName: 'globetrotter-shared-data-access',
   preset: '../../../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {},

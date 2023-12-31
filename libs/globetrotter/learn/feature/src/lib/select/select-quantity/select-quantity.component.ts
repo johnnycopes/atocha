@@ -15,5 +15,5 @@ import { SelectForm } from '../select-form';
 })
 export class SelectQuantityComponent {
   @Input({ required: true }) form!: SelectForm;
-  @Input({ required: true }) error = '';
+  @Input({ required: true }) error = false;
 }
