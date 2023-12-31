@@ -121,6 +121,9 @@
       "@atocha/menu-matriarch/tags/feature": [
         "libs/menu-matriarch/tags/feature/src/index.ts"
       ],
+      "@atocha/menu-matriarch/tags/ui": [
+        "libs/menu-matriarch/tags/ui/src/index.ts"
+      ],
       "@atocha/sandbox/ui": ["libs/sandbox/ui/src/index.ts"],
       "@atocha/sandbox/util": ["libs/sandbox/util/src/index.ts"],
       "@atocha/spirit-islander/config/feature": [
