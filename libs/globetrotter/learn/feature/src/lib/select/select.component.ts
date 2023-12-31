@@ -6,12 +6,12 @@ import { combineLatest, first, map } from 'rxjs';
 
 import { ButtonComponent } from '@atocha/core/ui';
 import { ROUTES } from '@atocha/globetrotter/shared/data-access';
-import { fadeInAnimation } from '@atocha/globetrotter/shared/ui';
+import { fadeIn } from '@atocha/globetrotter/shared/ui';
 import {
   PlaceService,
   SelectService,
 } from '@atocha/globetrotter/learn/data-access';
-import { ErrorsComponent } from './errors/errors.component';
+import { ErrorsComponent } from '@atocha/globetrotter/learn/ui';
 import { SelectForm } from './select-form';
 import { SelectTypeComponent } from './select-type/select-type.component';
 import { SelectQuantityComponent } from './select-quantity/select-quantity.component';
@@ -32,7 +32,7 @@ import { SelectPlacesComponent } from './select-places/select-places.component';
   templateUrl: './select.component.html',
   styleUrls: ['./select.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  animations: [fadeInAnimation],
+  animations: [fadeIn],
 })
 export class SelectComponent {
   vm$ = combineLatest([

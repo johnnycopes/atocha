@@ -8,11 +8,11 @@
   <div class="launchpad">
     <h1 class="header">Create Quiz</h1>
     <div class="submission">
-      <app-errors
+      <ui-errors
         *ngIf="vm.form.errors"
         class="errors"
         [errors]="vm.form.errors"
-      ></app-errors>
+      ></ui-errors>
       <button core-button [disabled]="!vm.form.valid">Launch</button>
     </div>
   </div>

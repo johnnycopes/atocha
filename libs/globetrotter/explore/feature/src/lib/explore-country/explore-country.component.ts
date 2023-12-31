@@ -13,10 +13,11 @@ import {
 import { trackByFactory, trackBySelf } from '@atocha/core/ui';
 import { pluralize } from '@atocha/core/util';
 import {
-  MeasurementPipe,
+  FlagComponent,
   SmallCapsComponent,
 } from '@atocha/globetrotter/shared/ui';
 import { Country } from '@atocha/globetrotter/shared/util';
+import { MeasurementPipe } from './measurement.pipe';
 
 interface TableData {
   header: string;
@@ -27,7 +28,7 @@ interface TableData {
 @Component({
   standalone: true,
   selector: 'app-explore-country',
-  imports: [CommonModule, MeasurementPipe, SmallCapsComponent],
+  imports: [CommonModule, FlagComponent, MeasurementPipe, SmallCapsComponent],
   templateUrl: './explore-country.component.html',
   styleUrls: ['./explore-country.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

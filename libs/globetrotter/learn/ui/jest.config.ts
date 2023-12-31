@@ -1,11 +1,9 @@
 /* eslint-disable */
 export default {
-  displayName: 'globetrotter-shared-data-access',
+  displayName: 'globetrotter-learn-ui',
   preset: '../../../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
-  globals: {},
-  coverageDirectory:
-    '../../../../coverage/libs/globetrotter/shared/data-access',
+  coverageDirectory: '../../../../coverage/libs/globetrotter/learn/ui',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': [
       'jest-preset-angular',

@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import {
@@ -7,11 +7,9 @@ import {
   ExternalLinkDirective,
   trackByFactory,
 } from '@atocha/core/ui';
-import {
-  IconComponent,
-  positionAnimation,
-} from '@atocha/globetrotter/shared/ui';
 import { ROUTES } from '@atocha/globetrotter/shared/data-access';
+import { IconComponent } from '@atocha/globetrotter/shared/ui';
+import { positionAnimation } from './navigation';
 
 interface NavigationLink {
   name: string;
@@ -29,8 +27,8 @@ interface NavigationLink {
   changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [positionAnimation],
 })
-export class NavigationComponent extends AnimatedComponent {
-  position = 'navigation';
+export class NavigationComponent extends AnimatedComponent implements OnInit {
+  position: 'offscreen' | 'onscreen' = 'offscreen';
   home: NavigationLink = {
     name: 'Home',
     icon: 'Globetrotter',
@@ -50,4 +48,8 @@ export class NavigationComponent extends AnimatedComponent {
     },
   ];
   readonly trackByFn = trackByFactory<NavigationLink>(({ name }) => name);
+
+  ngOnInit(): void {
+    this.position = 'onscreen';
+  }
 }
