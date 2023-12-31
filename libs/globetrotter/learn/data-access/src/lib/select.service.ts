@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { map, tap } from 'rxjs';
+import { first, map, tap } from 'rxjs';
 
 import { LocalStorageService, State } from '@atocha/core/data-access';
 import { QuizType, Region, Selection } from '@atocha/globetrotter/learn/util';
@@ -30,7 +30,10 @@ export class SelectService {
     private _placeService: PlaceService
   ) {
     this._placeService.places$
-      .pipe(map(({ regions }) => regions))
+      .pipe(
+        first(),
+        map(({ regions }) => regions)
+      )
       .subscribe((regions) =>
         this._state.transformProp(
           'places',

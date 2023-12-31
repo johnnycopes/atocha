@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { filter, map } from 'rxjs';
+import { filter, first, map } from 'rxjs';
 
 import { State } from '@atocha/core/data-access';
 import { ROUTES, RouterService } from '@atocha/globetrotter/shared/data-access';
@@ -31,6 +31,7 @@ export class QuizService {
   initializeQuiz({ quantity, places }: Selection): void {
     this._placeService.places$
       .pipe(
+        first(),
         map(({ countriesBySubregion }) => {
           const countries: Country[] = [];
 
