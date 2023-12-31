@@ -13,12 +13,10 @@ import { combineLatest, map } from 'rxjs';
 import { DishService } from '@atocha/menu-matriarch/dishes/data-access';
 import { TagService } from '@atocha/menu-matriarch/tags/data-access';
 import {
-  dishTrackByFn,
-  groupTrackByFn,
-} from '@atocha/menu-matriarch/shared/ui-domain';
-import {
   TabComponent,
   TabsetComponent,
+  dishTrackByFn,
+  groupTrackByFn,
 } from '@atocha/menu-matriarch/shared/ui';
 import { DishContext, DishDefDirective } from './dish-def.directive';
 import { FilterService } from '../filter.service';

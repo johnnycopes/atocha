@@ -12,7 +12,6 @@ import {
   moveItemInArray,
 } from '@angular/cdk/drag-drop';
 
-import { ingredientTypeTrackByFn } from '@atocha/menu-matriarch/shared/ui-domain';
 import { Ingredient, IngredientType } from '@atocha/menu-matriarch/shared/util';
 import {
   IngredientAdd,
@@ -20,6 +19,7 @@ import {
   IngredientRename,
   IngredientsBoardColumnComponent,
 } from './ingredients-board-column/ingredients-board-column.component';
+import { ingredientTypeTrackByFn } from '@atocha/menu-matriarch/shared/ui';
 
 export interface TypeRename {
   type: IngredientType;

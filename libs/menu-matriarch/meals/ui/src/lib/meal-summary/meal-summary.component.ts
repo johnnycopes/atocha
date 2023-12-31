@@ -3,10 +3,10 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 import {
+  SmallCapsLabelComponent,
   dishTrackByFn,
   groupTrackByFn,
-} from '@atocha/menu-matriarch/shared/ui-domain';
-import { SmallCapsLabelComponent } from '@atocha/menu-matriarch/shared/ui';
+} from '@atocha/menu-matriarch/shared/ui';
 import {
   Dish,
   FilteredDishesGroup,
