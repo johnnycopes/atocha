@@ -28,7 +28,7 @@ interface NavigationLink {
   animations: [positionAnimation],
 })
 export class NavigationComponent extends AnimatedComponent implements OnInit {
-  position = 'offscreen';
+  position: 'offscreen' | 'onscreen' = 'offscreen';
   home: NavigationLink = {
     name: 'Home',
     icon: 'Globetrotter',
