@@ -7,8 +7,10 @@ import {
   PrintService,
 } from '@atocha/menu-matriarch/menus/data-access';
 import { Menu, MenuEntry } from '@atocha/menu-matriarch/shared/util';
-import { menuEntryTrackByFn } from '@atocha/menu-matriarch/shared/ui-domain';
-import { SectionComponent } from '@atocha/menu-matriarch/shared/ui-generic';
+import {
+  SectionComponent,
+  menuEntryTrackByFn,
+} from '@atocha/menu-matriarch/shared/ui';
 import { PlannerDayComponent } from './planner-day/planner-day.component';
 
 @Component({

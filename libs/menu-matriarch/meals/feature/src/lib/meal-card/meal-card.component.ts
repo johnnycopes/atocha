@@ -2,14 +2,14 @@ import { CommonModule } from '@angular/common';
 import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
+import { MealSummaryComponent } from '@atocha/menu-matriarch/meals/ui';
+import { CardComponent } from '@atocha/menu-matriarch/shared/ui';
+import { Dish, Orientation, Tag } from '@atocha/menu-matriarch/shared/util';
 import {
-  MealSummaryComponent,
   TagComponent,
   TagDefDirective,
   TagsListComponent,
-} from '@atocha/menu-matriarch/shared/ui-domain';
-import { CardComponent } from '@atocha/menu-matriarch/shared/ui-generic';
-import { Dish, Orientation, Tag } from '@atocha/menu-matriarch/shared/util';
+} from '@atocha/menu-matriarch/tags/ui';
 
 @Component({
   standalone: true,

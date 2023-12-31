@@ -10,11 +10,11 @@ import { Subject, map, merge, shareReplay } from 'rxjs';
 
 import { ButtonComponent } from '@atocha/core/ui';
 import {
+  CardComponent,
   CountComponent,
   InlineNameEditComponent,
-  TagComponent,
-} from '@atocha/menu-matriarch/shared/ui-domain';
-import { CardComponent } from '@atocha/menu-matriarch/shared/ui-generic';
+} from '@atocha/menu-matriarch/shared/ui';
+import { TagComponent } from '@atocha/menu-matriarch/tags/ui';
 
 @Component({
   standalone: true,

@@ -12,24 +12,22 @@ import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 import { BehaviorSubject } from 'rxjs';
 
 import { ButtonComponent } from '@atocha/core/ui';
+import { MealSummaryComponent } from '@atocha/menu-matriarch/meals/ui';
 import {
   Day,
   MenuEntry,
   Orientation,
 } from '@atocha/menu-matriarch/shared/util';
 import {
+  CardComponent,
   InlineDaySelectComponent,
   InlineNameEditComponent,
-  MealSummaryComponent,
-  menuEntryTrackByFn,
-} from '@atocha/menu-matriarch/shared/ui-domain';
-import {
-  CardComponent,
   OptionsMenuComponent,
   OptionsMenuItemComponent,
   OptionsMenuTriggerDirective,
   SmallCapsLabelComponent,
-} from '@atocha/menu-matriarch/shared/ui-generic';
+  menuEntryTrackByFn,
+} from '@atocha/menu-matriarch/shared/ui';
 
 type State = 'default' | 'renaming' | 'changingStartDay';
 

@@ -10,28 +10,23 @@ import {
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 
+import { DishSummaryComponent } from '@atocha/menu-matriarch/dishes/ui';
 import {
   AutofocusDirective,
   ButtonComponent,
   CheckboxComponent,
 } from '@atocha/core/ui';
 import { MealData } from '@atocha/menu-matriarch/meals/data-access';
+import { MealSummaryComponent } from '@atocha/menu-matriarch/meals/ui';
 import {
   DishDefDirective,
   DishesListComponent,
 } from '@atocha/menu-matriarch/shared/feature';
 import {
-  DishSummaryComponent,
-  MealSummaryComponent,
-  TagComponent,
-  TagDefDirective,
-  TagsListComponent,
-} from '@atocha/menu-matriarch/shared/ui-domain';
-import {
   CardComponent,
   InputComponent,
   SectionComponent,
-} from '@atocha/menu-matriarch/shared/ui-generic';
+} from '@atocha/menu-matriarch/shared/ui';
 import {
   DishModel,
   Meal,
@@ -39,6 +34,11 @@ import {
   UserPreferences,
   recordToArray,
 } from '@atocha/menu-matriarch/shared/util';
+import {
+  TagComponent,
+  TagDefDirective,
+  TagsListComponent,
+} from '@atocha/menu-matriarch/tags/ui';
 import { MealEditForm } from './meal-edit-form';
 
 export type MealConfig = Pick<Meal, 'name' | 'description'> &

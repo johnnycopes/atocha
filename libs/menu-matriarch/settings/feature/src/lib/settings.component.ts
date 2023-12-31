@@ -16,7 +16,7 @@ import {
   CardComponent,
   InputComponent,
   SectionComponent,
-} from '@atocha/menu-matriarch/shared/ui-generic';
+} from '@atocha/menu-matriarch/shared/ui';
 import { UserPreferences, getDays } from '@atocha/menu-matriarch/shared/util';
 
 @Component({

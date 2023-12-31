@@ -1,4 +1,4 @@
-<ui-filterable-list
+<app-filterable-list
   *ngIf="vm$ | async as vm"
   [total]="vm.total"
   [searchText]="vm.searchText"
@@ -28,4 +28,4 @@
   <ng-template #noMealsPlaceholder>
     <div class="placeholder">No meals to display</div>
   </ng-template>
-</ui-filterable-list>
+</app-filterable-list>

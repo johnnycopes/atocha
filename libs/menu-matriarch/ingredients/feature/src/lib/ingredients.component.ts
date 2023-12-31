@@ -8,8 +8,10 @@ import {
   IngredientTypeService,
 } from '@atocha/menu-matriarch/ingredients/data-access';
 import { UserService } from '@atocha/menu-matriarch/settings/data-access';
-import { InlineNameEditComponent } from '@atocha/menu-matriarch/shared/ui-domain';
-import { SectionComponent } from '@atocha/menu-matriarch/shared/ui-generic';
+import {
+  InlineNameEditComponent,
+  SectionComponent,
+} from '@atocha/menu-matriarch/shared/ui';
 import { Ingredient, IngredientType } from '@atocha/menu-matriarch/shared/util';
 import {
   TypeRename,
