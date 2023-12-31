@@ -9,7 +9,7 @@ import {
 import { FormsModule } from '@angular/forms';
 
 import { CheckboxComponent, trackByFactory } from '@atocha/core/ui';
-import { DishSummaryComponent } from '@atocha/menu-matriarch/shared/ui-domain';
+import { DishSummaryComponent } from '@atocha/menu-matriarch/dishes/ui';
 import { CardComponent } from '@atocha/menu-matriarch/shared/ui-generic';
 import { Day, DishType, Menu, Tag } from '@atocha/menu-matriarch/shared/util';
 

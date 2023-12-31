@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
-import { DishSummaryComponent } from '@atocha/menu-matriarch/shared/ui-domain';
 import { CardComponent } from '@atocha/menu-matriarch/shared/ui-generic';
 import { Tag, DishType } from '@atocha/menu-matriarch/shared/util';
+import { DishSummaryComponent } from '@atocha/menu-matriarch/dishes/ui';
 
 @Component({
   standalone: true,
