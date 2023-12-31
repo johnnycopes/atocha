@@ -18,16 +18,14 @@ import {
   Orientation,
 } from '@atocha/menu-matriarch/shared/util';
 import {
+  CardComponent,
   InlineDaySelectComponent,
   InlineNameEditComponent,
-  menuEntryTrackByFn,
-} from '@atocha/menu-matriarch/shared/ui-domain';
-import {
-  CardComponent,
   OptionsMenuComponent,
   OptionsMenuItemComponent,
   OptionsMenuTriggerDirective,
   SmallCapsLabelComponent,
+  menuEntryTrackByFn,
 } from '@atocha/menu-matriarch/shared/ui';
 import { MealSummaryComponent } from '@atocha/menu-matriarch/meals/ui';
 

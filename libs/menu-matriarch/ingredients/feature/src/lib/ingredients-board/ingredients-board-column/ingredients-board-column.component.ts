@@ -19,12 +19,10 @@ import { ButtonComponent } from '@atocha/core/ui';
 import { Ingredient } from '@atocha/menu-matriarch/shared/util';
 import {
   InlineNameEditComponent,
-  ingredientTrackByFn,
-} from '@atocha/menu-matriarch/shared/ui-domain';
-import {
   OptionsMenuComponent,
   OptionsMenuItemComponent,
   OptionsMenuTriggerDirective,
+  ingredientTrackByFn,
 } from '@atocha/menu-matriarch/shared/ui';
 import { IngredientCardComponent } from '../../ingredient-card/ingredient-card.component';
 

@@ -5,7 +5,7 @@ import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { faLink } from '@fortawesome/free-solid-svg-icons';
 
 import { ExternalLinkDirective } from '@atocha/core/ui';
-import { CountComponent } from '@atocha/menu-matriarch/shared/ui-domain';
+import { CountComponent } from '@atocha/menu-matriarch/shared/ui';
 import { Tag } from '@atocha/menu-matriarch/shared/util';
 import {
   TagComponent,

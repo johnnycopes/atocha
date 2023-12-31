@@ -7,8 +7,10 @@ import {
   MenuService,
   PrintService,
 } from '@atocha/menu-matriarch/menus/data-access';
-import { InlineNameEditComponent } from '@atocha/menu-matriarch/shared/ui-domain';
-import { SectionComponent } from '@atocha/menu-matriarch/shared/ui';
+import {
+  InlineNameEditComponent,
+  SectionComponent,
+} from '@atocha/menu-matriarch/shared/ui';
 import { Day, Menu } from '@atocha/menu-matriarch/shared/util';
 import { MenuCardComponent } from './menu-card/menu-card.component';
 
