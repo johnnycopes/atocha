@@ -5,13 +5,13 @@ import { combineLatest, concatMap, first, map, of, switchMap } from 'rxjs';
 
 import { ButtonComponent, trackBySelf } from '@atocha/core/ui';
 import { MealService } from '@atocha/menu-matriarch/meals/data-access';
+import { MealSummaryComponent } from '@atocha/menu-matriarch/meals/ui';
 import { UserService } from '@atocha/menu-matriarch/settings/data-access';
 import { getDishTypes } from '@atocha/menu-matriarch/shared/util';
 import {
   SectionComponent,
   dishTrackByFn,
 } from '@atocha/menu-matriarch/shared/ui';
-import { MealSummaryComponent } from '@atocha/menu-matriarch/meals/ui';
 import {
   TagComponent,
   TagDefDirective,

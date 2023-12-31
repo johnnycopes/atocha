@@ -12,6 +12,7 @@ import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 import { BehaviorSubject } from 'rxjs';
 
 import { ButtonComponent } from '@atocha/core/ui';
+import { MealSummaryComponent } from '@atocha/menu-matriarch/meals/ui';
 import {
   Day,
   MenuEntry,
@@ -27,7 +28,6 @@ import {
   SmallCapsLabelComponent,
   menuEntryTrackByFn,
 } from '@atocha/menu-matriarch/shared/ui';
-import { MealSummaryComponent } from '@atocha/menu-matriarch/meals/ui';
 
 type State = 'default' | 'renaming' | 'changingStartDay';
 

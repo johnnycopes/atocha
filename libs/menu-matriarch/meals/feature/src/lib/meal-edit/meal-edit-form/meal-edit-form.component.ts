@@ -10,12 +10,14 @@ import {
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 
+import { DishSummaryComponent } from '@atocha/menu-matriarch/dishes/ui';
 import {
   AutofocusDirective,
   ButtonComponent,
   CheckboxComponent,
 } from '@atocha/core/ui';
 import { MealData } from '@atocha/menu-matriarch/meals/data-access';
+import { MealSummaryComponent } from '@atocha/menu-matriarch/meals/ui';
 import {
   DishDefDirective,
   DishesListComponent,
@@ -32,8 +34,6 @@ import {
   UserPreferences,
   recordToArray,
 } from '@atocha/menu-matriarch/shared/util';
-import { DishSummaryComponent } from '@atocha/menu-matriarch/dishes/ui';
-import { MealSummaryComponent } from '@atocha/menu-matriarch/meals/ui';
 import {
   TagComponent,
   TagDefDirective,
