@@ -7,11 +7,9 @@ import { ButtonComponent, trackBySelf } from '@atocha/core/ui';
 import { MealService } from '@atocha/menu-matriarch/meals/data-access';
 import { UserService } from '@atocha/menu-matriarch/settings/data-access';
 import { getDishTypes } from '@atocha/menu-matriarch/shared/util';
-import {
-  MealSummaryComponent,
-  dishTrackByFn,
-} from '@atocha/menu-matriarch/shared/ui-domain';
+import { dishTrackByFn } from '@atocha/menu-matriarch/shared/ui-domain';
 import { SectionComponent } from '@atocha/menu-matriarch/shared/ui-generic';
+import { MealSummaryComponent } from '@atocha/menu-matriarch/meals/ui';
 import {
   TagComponent,
   TagDefDirective,

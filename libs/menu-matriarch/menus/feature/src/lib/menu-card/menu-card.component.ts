@@ -20,7 +20,6 @@ import {
 import {
   InlineDaySelectComponent,
   InlineNameEditComponent,
-  MealSummaryComponent,
   menuEntryTrackByFn,
 } from '@atocha/menu-matriarch/shared/ui-domain';
 import {
@@ -30,6 +29,7 @@ import {
   OptionsMenuTriggerDirective,
   SmallCapsLabelComponent,
 } from '@atocha/menu-matriarch/shared/ui-generic';
+import { MealSummaryComponent } from '@atocha/menu-matriarch/meals/ui';
 
 type State = 'default' | 'renaming' | 'changingStartDay';
 

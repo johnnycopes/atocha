@@ -20,10 +20,7 @@ import {
   DishDefDirective,
   DishesListComponent,
 } from '@atocha/menu-matriarch/shared/feature';
-import {
-  DishSummaryComponent,
-  MealSummaryComponent,
-} from '@atocha/menu-matriarch/shared/ui-domain';
+import { DishSummaryComponent } from '@atocha/menu-matriarch/shared/ui-domain';
 import {
   CardComponent,
   InputComponent,
@@ -36,6 +33,7 @@ import {
   UserPreferences,
   recordToArray,
 } from '@atocha/menu-matriarch/shared/util';
+import { MealSummaryComponent } from '@atocha/menu-matriarch/meals/ui';
 import {
   TagComponent,
   TagDefDirective,
