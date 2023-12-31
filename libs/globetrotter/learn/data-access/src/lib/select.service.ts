@@ -32,7 +32,11 @@ export class SelectService {
     this._placeService.places$
       .pipe(map(({ regions }) => regions))
       .subscribe((regions) =>
-        this._state.updateProp('places', mapRegionsToPlacesModel(regions))
+        this._state.transformProp(
+          'places',
+          (places) =>
+            places.length ? places : mapRegionsToPlacesModel(regions) // skip update if places were retrieved from local storage
+        )
       );
   }
 
@@ -73,8 +77,8 @@ export class SelectService {
     return selection
       ? JSON.parse(selection)
       : {
-          type: QuizType.countriesCapitals,
-          quantity: 8,
+          type: QuizType.flagsCountries,
+          quantity: 5,
           places: [],
         };
   }
