@@ -17,7 +17,7 @@ import {
   SectionComponent,
 } from '@atocha/menu-matriarch/shared/ui-generic';
 import { Tag } from '@atocha/menu-matriarch/shared/util';
-import { FiltersButtonComponent } from '../filters-button/filters-button.component';
+import { FiltersButtonComponent } from './filters-button/filters-button.component';
 import { FiltersComponent } from './filters/filters.component';
 
 @Component({
