@@ -18,12 +18,7 @@ import {
   trackBySelf,
 } from '@atocha/core/ui';
 import { DishData } from '@atocha/menu-matriarch/dishes/data-access';
-import {
-  TagComponent,
-  TagDefDirective,
-  TagsListComponent,
-  ingredientTrackByFn,
-} from '@atocha/menu-matriarch/shared/ui-domain';
+import { ingredientTrackByFn } from '@atocha/menu-matriarch/shared/ui-domain';
 import { InputComponent } from '@atocha/menu-matriarch/shared/ui-generic';
 import {
   Dish,
@@ -32,6 +27,11 @@ import {
   getDishTypes,
   recordToArray,
 } from '@atocha/menu-matriarch/shared/util';
+import {
+  TagComponent,
+  TagDefDirective,
+  TagsListComponent,
+} from '@atocha/menu-matriarch/tags/ui';
 import { DishEditForm } from './dish-edit-form';
 
 export type DishConfig = Pick<

@@ -6,10 +6,12 @@ import { faLink } from '@fortawesome/free-solid-svg-icons';
 
 import { ExternalLinkDirective } from '@atocha/core/ui';
 import { Tag } from '@atocha/menu-matriarch/shared/util';
+import {
+  TagComponent,
+  TagDefDirective,
+  TagsListComponent,
+} from '@atocha/menu-matriarch/tags/ui';
 import { CountComponent } from '../count/count.component';
-import { TagComponent } from '../tags/tag/tag.component';
-import { TagsListComponent } from '../tags/tags-list/tags-list.component';
-import { TagDefDirective } from '../tags/tags-list/tag-def.directive';
 
 @Component({
   standalone: true,

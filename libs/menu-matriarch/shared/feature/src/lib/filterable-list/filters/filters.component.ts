@@ -9,13 +9,13 @@ import {
 import { FormsModule } from '@angular/forms';
 
 import { ButtonComponent, CheckboxComponent } from '@atocha/core/ui';
+import { CardComponent } from '@atocha/menu-matriarch/shared/ui-generic';
+import { Tag } from '@atocha/menu-matriarch/shared/util';
 import {
   TagComponent,
   TagDefDirective,
   TagsListComponent,
-} from '@atocha/menu-matriarch/shared/ui-domain';
-import { CardComponent } from '@atocha/menu-matriarch/shared/ui-generic';
-import { Tag } from '@atocha/menu-matriarch/shared/util';
+} from '@atocha/menu-matriarch/tags/ui';
 
 @Component({
   standalone: true,

@@ -23,9 +23,6 @@ import {
 import {
   DishSummaryComponent,
   MealSummaryComponent,
-  TagComponent,
-  TagDefDirective,
-  TagsListComponent,
 } from '@atocha/menu-matriarch/shared/ui-domain';
 import {
   CardComponent,
@@ -39,6 +36,11 @@ import {
   UserPreferences,
   recordToArray,
 } from '@atocha/menu-matriarch/shared/util';
+import {
+  TagComponent,
+  TagDefDirective,
+  TagsListComponent,
+} from '@atocha/menu-matriarch/tags/ui';
 import { MealEditForm } from './meal-edit-form';
 
 export type MealConfig = Pick<Meal, 'name' | 'description'> &

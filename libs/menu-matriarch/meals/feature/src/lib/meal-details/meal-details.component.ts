@@ -9,12 +9,14 @@ import { UserService } from '@atocha/menu-matriarch/settings/data-access';
 import { getDishTypes } from '@atocha/menu-matriarch/shared/util';
 import {
   MealSummaryComponent,
-  TagComponent,
-  TagDefDirective,
-  TagsListComponent,
   dishTrackByFn,
 } from '@atocha/menu-matriarch/shared/ui-domain';
 import { SectionComponent } from '@atocha/menu-matriarch/shared/ui-generic';
+import {
+  TagComponent,
+  TagDefDirective,
+  TagsListComponent,
+} from '@atocha/menu-matriarch/tags/ui';
 
 @Component({
   standalone: true,

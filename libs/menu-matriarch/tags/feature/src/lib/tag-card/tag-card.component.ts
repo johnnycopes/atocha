@@ -12,9 +12,9 @@ import { ButtonComponent } from '@atocha/core/ui';
 import {
   CountComponent,
   InlineNameEditComponent,
-  TagComponent,
 } from '@atocha/menu-matriarch/shared/ui-domain';
 import { CardComponent } from '@atocha/menu-matriarch/shared/ui-generic';
+import { TagComponent } from '@atocha/menu-matriarch/tags/ui';
 
 @Component({
   standalone: true,

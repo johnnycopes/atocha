@@ -10,12 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 
 import { CheckboxComponent, trackByFactory } from '@atocha/core/ui';
-import {
-  MealSummaryComponent,
-  TagComponent,
-  TagDefDirective,
-  TagsListComponent,
-} from '@atocha/menu-matriarch/shared/ui-domain';
+import { MealSummaryComponent } from '@atocha/menu-matriarch/shared/ui-domain';
 import { CardComponent } from '@atocha/menu-matriarch/shared/ui-generic';
 import {
   Day,
@@ -24,6 +19,11 @@ import {
   Orientation,
   Tag,
 } from '@atocha/menu-matriarch/shared/util';
+import {
+  TagComponent,
+  TagDefDirective,
+  TagsListComponent,
+} from '@atocha/menu-matriarch/tags/ui';
 
 interface EntryModel {
   day: Day;
