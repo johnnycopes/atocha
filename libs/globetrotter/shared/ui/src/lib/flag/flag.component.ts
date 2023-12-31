@@ -8,6 +8,11 @@ import { Component, Input } from '@angular/core';
   template: `<img class="flag" [src]="src" alt="Flag of {{ name }}" />`,
   styles: [
     `
+      :host {
+        display: inline-block;
+        width: 100%;
+      }
+
       .flag {
         max-width: 192px;
         max-height: 128px;
