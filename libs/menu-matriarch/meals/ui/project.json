@@ -3,7 +3,7 @@
   "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/menu-matriarch/meals/ui/src",
   "prefix": "ui",
-  "tags": ["scope:globetrotter", "type:ui"],
+  "tags": ["scope:menu-matriarch", "type:ui"],
   "projectType": "library",
   "targets": {
     "test": {
