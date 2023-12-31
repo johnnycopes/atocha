@@ -13,7 +13,6 @@ import { combineLatest, map } from 'rxjs';
 import { DishService } from '@atocha/menu-matriarch/dishes/data-access';
 import { TagService } from '@atocha/menu-matriarch/tags/data-access';
 import {
-  FilterableListComponent,
   dishTrackByFn,
   groupTrackByFn,
 } from '@atocha/menu-matriarch/shared/ui-domain';
@@ -23,6 +22,7 @@ import {
 } from '@atocha/menu-matriarch/shared/ui-generic';
 import { DishContext, DishDefDirective } from './dish-def.directive';
 import { FilterService } from '../filter.service';
+import { FilterableListComponent } from '../filterable-list/filterable-list.component';
 
 @Component({
   standalone: true,

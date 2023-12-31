@@ -14,9 +14,9 @@ import { trackByFactory } from '@atocha/core/ui';
 import { MealService } from '@atocha/menu-matriarch/meals/data-access';
 import { UserService } from '@atocha/menu-matriarch/settings/data-access';
 import { TagService } from '@atocha/menu-matriarch/tags/data-access';
-import { FilterableListComponent } from '@atocha/menu-matriarch/shared/ui-domain';
 import { Meal } from '@atocha/menu-matriarch/shared/util';
 import { FilterService } from '../filter.service';
+import { FilterableListComponent } from '../filterable-list/filterable-list.component';
 import { MealDefContext, MealDefDirective } from './meal-def.directive';
 
 @Component({
