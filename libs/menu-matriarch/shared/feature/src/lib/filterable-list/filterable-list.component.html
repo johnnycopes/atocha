@@ -12,24 +12,24 @@
           (textChange)="searchTextChange.emit($event)"
         ></core-search-input>
       </ui-input>
-      <ui-filters-button
+      <app-filters-button
         class="button"
         [count]="filters.length"
         [open]="isPanelOpen"
         (clicked)="filtersButtonClick.emit()"
-      ></ui-filters-button>
+      ></app-filters-button>
       <a core-button class="button" (click)="newButtonClick.emit()">
         New {{ entity }}
       </a>
     </div>
-    <ui-filters
+    <app-filters
       *ngIf="isPanelOpen"
       class="filters"
       [tags]="tags"
       [selected]="filters"
       (selectedChange)="filtersChange.emit($event)"
       (selectedClear)="filtersChange.emit([])"
-    ></ui-filters>
+    ></app-filters>
   </div>
   <div class="ui-section__content">
     <ng-content></ng-content>
