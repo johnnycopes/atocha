@@ -11,7 +11,7 @@ import { AutofocusDirective } from '@atocha/core/ui';
 import {
   InlineFormComponent,
   InputComponent,
-} from '@atocha/menu-matriarch/shared/ui-generic';
+} from '@atocha/menu-matriarch/shared/ui';
 
 @Component({
   standalone: true,

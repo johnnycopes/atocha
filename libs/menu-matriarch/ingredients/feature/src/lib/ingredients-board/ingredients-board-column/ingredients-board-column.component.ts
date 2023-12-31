@@ -25,7 +25,7 @@ import {
   OptionsMenuComponent,
   OptionsMenuItemComponent,
   OptionsMenuTriggerDirective,
-} from '@atocha/menu-matriarch/shared/ui-generic';
+} from '@atocha/menu-matriarch/shared/ui';
 import { IngredientCardComponent } from '../../ingredient-card/ingredient-card.component';
 
 export interface IngredientAdd {

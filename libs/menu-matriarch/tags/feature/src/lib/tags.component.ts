@@ -6,7 +6,7 @@ import { ButtonComponent, trackByFactory } from '@atocha/core/ui';
 import { TagService } from '@atocha/menu-matriarch/tags/data-access';
 import { Tag } from '@atocha/menu-matriarch/shared/util';
 import { InlineNameEditComponent } from '@atocha/menu-matriarch/shared/ui-domain';
-import { SectionComponent } from '@atocha/menu-matriarch/shared/ui-generic';
+import { SectionComponent } from '@atocha/menu-matriarch/shared/ui';
 import { TagCardComponent } from './tag-card/tag-card.component';
 
 @Component({

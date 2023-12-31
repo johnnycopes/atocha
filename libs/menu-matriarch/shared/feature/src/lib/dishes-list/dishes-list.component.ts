@@ -19,7 +19,7 @@ import {
 import {
   TabComponent,
   TabsetComponent,
-} from '@atocha/menu-matriarch/shared/ui-generic';
+} from '@atocha/menu-matriarch/shared/ui';
 import { DishContext, DishDefDirective } from './dish-def.directive';
 import { FilterService } from '../filter.service';
 import { FilterableListComponent } from '../filterable-list/filterable-list.component';

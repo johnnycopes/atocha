@@ -20,7 +20,7 @@ import {
   OptionsMenuComponent,
   OptionsMenuItemComponent,
   OptionsMenuTriggerDirective,
-} from '@atocha/menu-matriarch/shared/ui-generic';
+} from '@atocha/menu-matriarch/shared/ui';
 
 type State = 'default' | 'renaming';
 

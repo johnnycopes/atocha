@@ -11,7 +11,7 @@ import {
   trackBySelf,
 } from '@atocha/core/ui';
 import { DishService } from '@atocha/menu-matriarch/dishes/data-access';
-import { SectionComponent } from '@atocha/menu-matriarch/shared/ui-generic';
+import { SectionComponent } from '@atocha/menu-matriarch/shared/ui';
 import {
   TagComponent,
   TagDefDirective,

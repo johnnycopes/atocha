@@ -19,7 +19,7 @@ import {
 } from '@atocha/core/ui';
 import { DishData } from '@atocha/menu-matriarch/dishes/data-access';
 import { ingredientTrackByFn } from '@atocha/menu-matriarch/shared/ui-domain';
-import { InputComponent } from '@atocha/menu-matriarch/shared/ui-generic';
+import { InputComponent } from '@atocha/menu-matriarch/shared/ui';
 import {
   Dish,
   IngredientModel,

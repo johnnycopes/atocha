@@ -13,7 +13,7 @@ import {
   CountComponent,
   InlineNameEditComponent,
 } from '@atocha/menu-matriarch/shared/ui-domain';
-import { CardComponent } from '@atocha/menu-matriarch/shared/ui-generic';
+import { CardComponent } from '@atocha/menu-matriarch/shared/ui';
 import { TagComponent } from '@atocha/menu-matriarch/tags/ui';
 
 @Component({

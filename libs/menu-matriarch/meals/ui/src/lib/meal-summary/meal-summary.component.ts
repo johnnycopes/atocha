@@ -6,7 +6,7 @@ import {
   dishTrackByFn,
   groupTrackByFn,
 } from '@atocha/menu-matriarch/shared/ui-domain';
-import { SmallCapsLabelComponent } from '@atocha/menu-matriarch/shared/ui-generic';
+import { SmallCapsLabelComponent } from '@atocha/menu-matriarch/shared/ui';
 import {
   Dish,
   FilteredDishesGroup,

@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
-import { CardComponent } from '@atocha/menu-matriarch/shared/ui-generic';
+import { CardComponent } from '@atocha/menu-matriarch/shared/ui';
 import { Dish, Orientation, Tag } from '@atocha/menu-matriarch/shared/util';
 import { MealSummaryComponent } from '@atocha/menu-matriarch/meals/ui';
 import {

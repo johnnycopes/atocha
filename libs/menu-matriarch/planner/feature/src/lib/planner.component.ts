@@ -6,7 +6,7 @@ import { map, of, switchMap } from 'rxjs';
 import { ButtonComponent } from '@atocha/core/ui';
 import { PlannerService } from '@atocha/menu-matriarch/planner/data-access';
 import { MenuService } from '@atocha/menu-matriarch/menus/data-access';
-import { EmptyViewPlaceholderComponent } from '@atocha/menu-matriarch/shared/ui-generic';
+import { EmptyViewPlaceholderComponent } from '@atocha/menu-matriarch/shared/ui';
 import { PlannerView } from '@atocha/menu-matriarch/shared/util';
 import { PlannerDishesComponent } from './planner-dishes/planner-dishes.component';
 import { PlannerMealsComponent } from './planner-meals/planner-meals.component';

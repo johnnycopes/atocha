@@ -10,7 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 
 import { CheckboxComponent, trackByFactory } from '@atocha/core/ui';
-import { CardComponent } from '@atocha/menu-matriarch/shared/ui-generic';
+import { CardComponent } from '@atocha/menu-matriarch/shared/ui';
 import {
   Day,
   Dish,

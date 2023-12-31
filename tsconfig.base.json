@@ -106,11 +106,11 @@
       "@atocha/menu-matriarch/shared/feature": [
         "libs/menu-matriarch/shared/feature/src/index.ts"
       ],
+      "@atocha/menu-matriarch/shared/ui": [
+        "libs/menu-matriarch/shared/ui/src/index.ts"
+      ],
       "@atocha/menu-matriarch/shared/ui-domain": [
         "libs/menu-matriarch/shared/ui-domain/src/index.ts"
-      ],
-      "@atocha/menu-matriarch/shared/ui-generic": [
-        "libs/menu-matriarch/shared/ui-generic/src/index.ts"
       ],
       "@atocha/menu-matriarch/shared/util": [
         "libs/menu-matriarch/shared/util/src/index.ts"
