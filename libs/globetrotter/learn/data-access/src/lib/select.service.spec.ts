@@ -1,6 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { of } from 'rxjs';
 
+import { APP_NAME_TOKEN } from '@atocha/core/data-access';
 import { QuizType } from '@atocha/globetrotter/learn/util';
 import { Places } from './internal/places';
 import { PlaceService } from './place.service';
@@ -15,6 +16,10 @@ describe('SelectService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [
+        {
+          provide: APP_NAME_TOKEN,
+          useValue: '',
+        },
         {
           provide: PlaceService,
           useValue: mockPlaceService,
