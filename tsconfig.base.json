@@ -76,6 +76,9 @@
       "@atocha/menu-matriarch/meals/feature": [
         "libs/menu-matriarch/meals/feature/src/index.ts"
       ],
+      "@atocha/menu-matriarch/meals/ui": [
+        "libs/menu-matriarch/meals/ui/src/index.ts"
+      ],
       "@atocha/menu-matriarch/menus/data-access": [
         "libs/menu-matriarch/menus/data-access/src/index.ts"
       ],
