@@ -18,7 +18,8 @@
       <ui-card class="card">
         <form #form="ngForm" class="form">
           <ui-input label="Default Menu Start Day">
-            <select ui-select-day
+            <select
+              ui-select-day
               id="Default Menu Start Day"
               name="menuStartDay"
               [ngModel]="user.preferences.defaultMenuStartDay"

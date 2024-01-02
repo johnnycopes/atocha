@@ -5,7 +5,8 @@
   (save)="save.emit(form.value.startDay)"
 >
   <ui-input>
-    <select ui-select-day
+    <select
+      ui-select-day
       name="startDay"
       [ngModel]="startDay"
       (keydown.enter)="save.emit(form.value.startDay)"
