@@ -6,7 +6,7 @@ import {
   signInWithPopup,
   user,
 } from '@angular/fire/auth';
-import { map, shareReplay } from 'rxjs/operators';
+import { map, shareReplay } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',

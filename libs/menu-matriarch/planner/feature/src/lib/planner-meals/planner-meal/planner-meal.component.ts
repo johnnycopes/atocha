@@ -10,13 +10,8 @@ import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 
 import { CheckboxComponent, trackByFactory } from '@atocha/core/ui';
-import {
-  MealSummaryComponent,
-  TagComponent,
-  TagDefDirective,
-  TagsListComponent,
-} from '@atocha/menu-matriarch/shared/ui-domain';
-import { CardComponent } from '@atocha/menu-matriarch/shared/ui-generic';
+import { MealSummaryComponent } from '@atocha/menu-matriarch/meals/ui';
+import { CardComponent } from '@atocha/menu-matriarch/shared/ui';
 import {
   Day,
   Dish,
@@ -24,6 +19,11 @@ import {
   Orientation,
   Tag,
 } from '@atocha/menu-matriarch/shared/util';
+import {
+  TagComponent,
+  TagDefDirective,
+  TagsListComponent,
+} from '@atocha/menu-matriarch/tags/ui';
 
 interface EntryModel {
   day: Day;
@@ -60,9 +60,9 @@ export class PlannerMealComponent {
   @Input() orientation: Orientation = 'horizontal';
   @Input()
   set menu(menu: Menu | undefined) {
+    const mealDishIds = this.dishes.map(({ id }) => id);
     this.entryModels =
       menu?.entries.map(({ day, dishes }) => {
-        const mealDishIds = this.dishes.map(({ id }) => id);
         const entryDishIds = dishes.map(({ id }) => id);
         const { checked, indeterminate } = this._compare(
           mealDishIds,

@@ -1,13 +1,24 @@
 @import 'styles';
 
-:host,
-.wrapper,
-.list-details {
+:host {
   display: block;
   height: 100%;
 }
 
-.list-item {
-  display: flex;
-  justify-content: space-between;
+.container {
+  display: grid;
+  height: 100%;
+  grid-template-columns: [list] map-get($spacing, 384) [details] 1fr;
+  grid-template-rows: 100%;
+  grid-gap: map-get($spacing, 24);
+}
+
+.list {
+  grid-column: list;
+}
+
+.details {
+  grid-column: details;
+  overflow: auto;
+  display: block;
 }

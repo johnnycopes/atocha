@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
-import { map } from 'rxjs/operators';
+import { first, map, tap } from 'rxjs';
 
-import { State } from '@atocha/core/data-access';
-import { QuizType, Region } from '@atocha/globetrotter/learn/util';
-import { Selection } from './internal/selection.interface';
+import { LocalStorageService, State } from '@atocha/core/data-access';
+import { QuizType, Region, Selection } from '@atocha/globetrotter/learn/util';
 import { mapRegionsToPlacesModel } from './internal/map-regions-to-places-model';
 import { PlaceService } from './place.service';
 
@@ -17,36 +16,35 @@ interface SelectionParams {
   providedIn: 'root',
 })
 export class SelectService {
-  private readonly _state = new State<Selection>({
-    type: QuizType.flagsCountries,
-    quantity: 5,
-    places: [],
-  });
+  private readonly _key = 'SELECTION';
+  private readonly _state = new State<Selection>(this._getSelection());
 
-  selection$ = this._state.get();
+  selection$ = this._state.get().pipe(
+    tap((selection) => {
+      this._setSelection(selection);
+    })
+  );
 
-  constructor(private _placeService: PlaceService) {
+  constructor(
+    private _localStorageService: LocalStorageService,
+    private _placeService: PlaceService
+  ) {
     this._placeService.places$
-      .pipe(map(({ regions }) => regions))
+      .pipe(
+        first(),
+        map(({ regions }) => regions)
+      )
       .subscribe((regions) =>
-        this.updatePlaces(mapRegionsToPlacesModel(regions))
+        this._state.transformProp(
+          'places',
+          (places) =>
+            places.length ? places : mapRegionsToPlacesModel(regions) // skip update if places were retrieved from local storage
+        )
       );
   }
 
   updateSelection(selection: Selection): void {
     this._state.update(selection);
-  }
-
-  updateType(type: QuizType): void {
-    this._state.updateProp('type', type);
-  }
-
-  updateQuantity(quantity: number): void {
-    this._state.updateProp('quantity', quantity);
-  }
-
-  updatePlaces(places: string[]): void {
-    this._state.updateProp('places', places);
   }
 
   mapRegionsToPlacesModel(regions: Region[]): string[] {
@@ -75,5 +73,20 @@ export class SelectService {
       quantity: parseInt(quantity, 10),
       places: places.split(','),
     };
+  }
+
+  private _getSelection(): Selection {
+    const selection = this._localStorageService.getItem(this._key);
+    return selection
+      ? JSON.parse(selection)
+      : {
+          type: QuizType.flagsCountries,
+          quantity: 5,
+          places: [],
+        };
+  }
+
+  private _setSelection(selection: Selection): void {
+    this._localStorageService.setItem(this._key, JSON.stringify(selection));
   }
 }

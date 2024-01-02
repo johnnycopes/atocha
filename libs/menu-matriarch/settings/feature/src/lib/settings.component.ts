@@ -7,8 +7,7 @@ import {
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Subject } from 'rxjs';
-import { debounceTime, switchMap, takeUntil } from 'rxjs/operators';
+import { Subject, debounceTime, switchMap, takeUntil } from 'rxjs';
 
 import { ButtonComponent, trackBySelf } from '@atocha/core/ui';
 import { AuthService } from '@atocha/firebase/data-access';
@@ -17,7 +16,8 @@ import {
   CardComponent,
   InputComponent,
   SectionComponent,
-} from '@atocha/menu-matriarch/shared/ui-generic';
+  SelectDayComponent,
+} from '@atocha/menu-matriarch/shared/ui';
 import { UserPreferences, getDays } from '@atocha/menu-matriarch/shared/util';
 
 @Component({
@@ -30,6 +30,7 @@ import { UserPreferences, getDays } from '@atocha/menu-matriarch/shared/util';
     FormsModule,
     InputComponent,
     SectionComponent,
+    SelectDayComponent,
   ],
   templateUrl: './settings.component.html',
   styleUrls: ['./settings.component.scss'],

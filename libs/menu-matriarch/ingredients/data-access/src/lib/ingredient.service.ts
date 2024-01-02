@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { concatMap, first } from 'rxjs/operators';
+import { Observable, concatMap, first, of } from 'rxjs';
 
 import { AuthService } from '@atocha/firebase/data-access';
 import { IEntityService } from '@atocha/menu-matriarch/shared/data-access-api';

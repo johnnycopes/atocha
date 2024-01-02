@@ -32,14 +32,14 @@ describe('ConfigForm changes', () => {
       scenarioNames,
       adversaryLevelIds,
     } = form.value;
-    expect(spiritNames).toEqual([
+    expect(spiritNames).toStrictEqual([
       'A Spread of Rampant Green',
       'Thunderspeaker',
     ]);
-    expect(mapNames).toEqual(['Balanced']);
-    expect(boardNames).toEqual(['A', 'C', 'D']);
-    expect(scenarioNames).toEqual(['No Scenario', 'Blitz']);
-    expect(adversaryLevelIds).toEqual(['none', 'bp-0', 'bp-1', 'bp-2']);
+    expect(mapNames).toStrictEqual(['Balanced']);
+    expect(boardNames).toStrictEqual(['A', 'C', 'D']);
+    expect(scenarioNames).toStrictEqual(['No Scenario', 'Blitz']);
+    expect(adversaryLevelIds).toStrictEqual(['none', 'bp-0', 'bp-1', 'bp-2']);
   });
 
   it('when an expansion is clicked twice', () => {
@@ -54,15 +54,15 @@ describe('ConfigForm changes', () => {
       scenarioNames,
       adversaryLevelIds,
     } = form.value;
-    expect(spiritNames).toEqual([
+    expect(spiritNames).toStrictEqual([
       'A Spread of Rampant Green',
       'Thunderspeaker',
       'Keeper of the Forbidden Wilds',
       'Sharp Fangs Behind the Leaves',
     ]);
-    expect(mapNames).toEqual(['Balanced']);
-    expect(boardNames).toEqual(['A', 'C', 'D']);
-    expect(scenarioNames).toEqual([
+    expect(mapNames).toStrictEqual(['Balanced']);
+    expect(boardNames).toStrictEqual(['A', 'C', 'D']);
+    expect(scenarioNames).toStrictEqual([
       'No Scenario',
       'Blitz',
       'Second Wave',
@@ -70,7 +70,7 @@ describe('ConfigForm changes', () => {
       'Ward the Shores',
       'Rituals of Destroying Flame',
     ]);
-    expect(adversaryLevelIds).toEqual([
+    expect(adversaryLevelIds).toStrictEqual([
       'none',
       'bp-0',
       'bp-1',
@@ -105,7 +105,7 @@ describe('ConfigForm changes', () => {
       scenarioNames,
       adversaryLevelIds,
     } = form.value;
-    expect(spiritNames).toEqual([
+    expect(spiritNames).toStrictEqual([
       'A Spread of Rampant Green',
       'Thunderspeaker',
       'Keeper of the Forbidden Wilds',
@@ -141,9 +141,9 @@ describe('ConfigForm changes', () => {
       'Resilience',
       'Volcano Looming High',
     ]);
-    expect(mapNames).toEqual(['Balanced']);
-    expect(boardNames).toEqual(['A', 'C', 'D', 'E', 'F']);
-    expect(scenarioNames).toEqual([
+    expect(mapNames).toStrictEqual(['Balanced']);
+    expect(boardNames).toStrictEqual(['A', 'C', 'D', 'E', 'F']);
+    expect(scenarioNames).toStrictEqual([
       'No Scenario',
       'Blitz',
       'Second Wave',
@@ -156,7 +156,7 @@ describe('ConfigForm changes', () => {
       'Rituals of Destroying Flame',
       'The Great River',
     ]);
-    expect(adversaryLevelIds).toEqual([
+    expect(adversaryLevelIds).toStrictEqual([
       'none',
       'bp-0',
       'bp-1',
@@ -213,13 +213,13 @@ describe('ConfigForm changes', () => {
       scenarioNames,
       adversaryLevelIds,
     } = form.value;
-    expect(spiritNames).toEqual([
+    expect(spiritNames).toStrictEqual([
       'A Spread of Rampant Green',
       'Thunderspeaker',
     ]);
-    expect(mapNames).toEqual(['Balanced']);
-    expect(boardNames).toEqual(['A', 'C', 'D']);
-    expect(scenarioNames).toEqual(['No Scenario', 'Blitz']);
-    expect(adversaryLevelIds).toEqual(['none', 'bp-0', 'bp-1', 'bp-2']);
+    expect(mapNames).toStrictEqual(['Balanced']);
+    expect(boardNames).toStrictEqual(['A', 'C', 'D']);
+    expect(scenarioNames).toStrictEqual(['No Scenario', 'Blitz']);
+    expect(adversaryLevelIds).toStrictEqual(['none', 'bp-0', 'bp-1', 'bp-2']);
   });
 });

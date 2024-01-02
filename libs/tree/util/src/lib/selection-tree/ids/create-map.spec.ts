@@ -3,7 +3,7 @@ import { IdsMap, createMap } from './create-map';
 
 describe('createMap', () => {
   it("returns a flat map structure with references to every node's parent ID and children IDs", () => {
-    expect(createMap(AFRICA, getId, getChildren)).toEqual<IdsMap>(
+    expect(createMap(AFRICA, getId, getChildren)).toStrictEqual<IdsMap>(
       new Map([
         [
           'Africa',

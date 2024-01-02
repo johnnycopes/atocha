@@ -23,7 +23,7 @@ describe('bfsReduce', () => {
         initialValue: [],
         reducer: pusher,
       })
-    ).toEqual([{ name: 'Item 1' }]);
+    ).toStrictEqual([{ name: 'Item 1' }]);
 
     expect(
       bfsReduce({
@@ -32,7 +32,7 @@ describe('bfsReduce', () => {
         initialValue: [],
         reducer: pusher,
       })
-    ).toEqual([{ name: 'Item 2', children: [] }]);
+    ).toStrictEqual([{ name: 'Item 2', children: [] }]);
   });
 
   it('returns an array of nested nodes', () => {
@@ -52,7 +52,7 @@ describe('bfsReduce', () => {
         initialValue: [],
         reducer: (accumulator, item) => [...accumulator, item],
       })
-    ).toEqual([
+    ).toStrictEqual([
       {
         name: 'Item 1',
         children: [
@@ -85,7 +85,7 @@ describe('bfsReduce', () => {
         initialValue: [],
         reducer: (accumulator, item) => [...accumulator, item.name],
       })
-    ).toEqual(['Item 1', 'Item 1A', 'Item 1B', 'Item 1C', 'Item 1C.1']);
+    ).toStrictEqual(['Item 1', 'Item 1A', 'Item 1B', 'Item 1C', 'Item 1C.1']);
   });
 
   it('returns an object of all items keyed by item description', () => {
@@ -112,7 +112,7 @@ describe('bfsReduce', () => {
           [node.name]: node.description ?? 'No description',
         }),
       })
-    ).toEqual({
+    ).toStrictEqual({
       'Item 1': 'First item',
       'Item 1A': 'First item A',
       'Item 1B': 'First item B',

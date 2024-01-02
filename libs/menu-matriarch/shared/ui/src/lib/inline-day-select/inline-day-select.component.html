@@ -1,0 +1,16 @@
+<form
+  ui-inline-form
+  #form="ngForm"
+  (cancel)="cancel.emit()"
+  (save)="save.emit(form.value.startDay)"
+>
+  <ui-input>
+    <select
+      ui-select-day
+      name="startDay"
+      [ngModel]="startDay"
+      (keydown.enter)="save.emit(form.value.startDay)"
+      (keydown.escape)="cancel.emit()"
+    ></select>
+  </ui-input>
+</form>

@@ -21,7 +21,9 @@ describe('invalidDifficultyRange', () => {
           adversaryLevelIds: fb.control(['none']),
         })
       )
-    ).toEqual({ invalidDifficultyRange: 'Minimum cannot exceed maximum' });
+    ).toStrictEqual({
+      invalidDifficultyRange: 'Minimum cannot exceed maximum',
+    });
   });
 
   it('returns an error if valid combos cannot be generated', () => {
@@ -38,7 +40,7 @@ describe('invalidDifficultyRange', () => {
           adversaryLevelIds: fb.control(['none']),
         })
       )
-    ).toEqual({
+    ).toStrictEqual({
       invalidDifficultyRange: `
       Combination of selected maps, adversaries, and scenarios cannot
       generate a setup between difficulty levels 10 and 15

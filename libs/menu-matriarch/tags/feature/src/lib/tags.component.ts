@@ -1,13 +1,14 @@
 import { CommonModule } from '@angular/common';
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { merge, Subject } from 'rxjs';
-import { map, shareReplay } from 'rxjs/operators';
+import { Subject, merge, map, shareReplay } from 'rxjs';
 
 import { ButtonComponent, trackByFactory } from '@atocha/core/ui';
 import { TagService } from '@atocha/menu-matriarch/tags/data-access';
 import { Tag } from '@atocha/menu-matriarch/shared/util';
-import { InlineNameEditComponent } from '@atocha/menu-matriarch/shared/ui-domain';
-import { SectionComponent } from '@atocha/menu-matriarch/shared/ui-generic';
+import {
+  InlineNameEditComponent,
+  SectionComponent,
+} from '@atocha/menu-matriarch/shared/ui';
 import { TagCardComponent } from './tag-card/tag-card.component';
 
 @Component({

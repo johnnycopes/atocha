@@ -31,6 +31,9 @@
       "@atocha/globetrotter/learn/feature": [
         "libs/globetrotter/learn/feature/src/index.ts"
       ],
+      "@atocha/globetrotter/learn/ui": [
+        "libs/globetrotter/learn/ui/src/index.ts"
+      ],
       "@atocha/globetrotter/learn/util": [
         "libs/globetrotter/learn/util/src/index.ts"
       ],
@@ -58,6 +61,9 @@
       "@atocha/menu-matriarch/dishes/feature": [
         "libs/menu-matriarch/dishes/feature/src/index.ts"
       ],
+      "@atocha/menu-matriarch/dishes/ui": [
+        "libs/menu-matriarch/dishes/ui/src/index.ts"
+      ],
       "@atocha/menu-matriarch/ingredients/data-access": [
         "libs/menu-matriarch/ingredients/data-access/src/index.ts"
       ],
@@ -69,6 +75,9 @@
       ],
       "@atocha/menu-matriarch/meals/feature": [
         "libs/menu-matriarch/meals/feature/src/index.ts"
+      ],
+      "@atocha/menu-matriarch/meals/ui": [
+        "libs/menu-matriarch/meals/ui/src/index.ts"
       ],
       "@atocha/menu-matriarch/menus/data-access": [
         "libs/menu-matriarch/menus/data-access/src/index.ts"
@@ -97,11 +106,8 @@
       "@atocha/menu-matriarch/shared/feature": [
         "libs/menu-matriarch/shared/feature/src/index.ts"
       ],
-      "@atocha/menu-matriarch/shared/ui-domain": [
-        "libs/menu-matriarch/shared/ui-domain/src/index.ts"
-      ],
-      "@atocha/menu-matriarch/shared/ui-generic": [
-        "libs/menu-matriarch/shared/ui-generic/src/index.ts"
+      "@atocha/menu-matriarch/shared/ui": [
+        "libs/menu-matriarch/shared/ui/src/index.ts"
       ],
       "@atocha/menu-matriarch/shared/util": [
         "libs/menu-matriarch/shared/util/src/index.ts"
@@ -117,6 +123,9 @@
       ],
       "@atocha/menu-matriarch/tags/feature": [
         "libs/menu-matriarch/tags/feature/src/index.ts"
+      ],
+      "@atocha/menu-matriarch/tags/ui": [
+        "libs/menu-matriarch/tags/ui/src/index.ts"
       ],
       "@atocha/sandbox/ui": ["libs/sandbox/ui/src/index.ts"],
       "@atocha/sandbox/util": ["libs/sandbox/util/src/index.ts"],

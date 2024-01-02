@@ -1,8 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-import { of } from 'rxjs';
-import { concatMap, first, switchMap } from 'rxjs/operators';
+import { concatMap, first, of, switchMap } from 'rxjs';
 
 import {
   ButtonComponent,
@@ -12,12 +11,12 @@ import {
   trackBySelf,
 } from '@atocha/core/ui';
 import { DishService } from '@atocha/menu-matriarch/dishes/data-access';
+import { SectionComponent } from '@atocha/menu-matriarch/shared/ui';
 import {
   TagComponent,
   TagDefDirective,
   TagsListComponent,
-} from '@atocha/menu-matriarch/shared/ui-domain';
-import { SectionComponent } from '@atocha/menu-matriarch/shared/ui-generic';
+} from '@atocha/menu-matriarch/tags/ui';
 
 @Component({
   standalone: true,

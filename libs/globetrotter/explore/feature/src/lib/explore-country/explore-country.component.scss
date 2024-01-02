@@ -17,7 +17,6 @@
 }
 
 .flag {
-  @include flag;
   margin-left: map-get($spacing, 48);
 }
 
@@ -29,6 +28,7 @@
 }
 
 .table-header {
+  overflow: auto;
   line-height: map-get($line-height, normal);
   margin-right: map-get($spacing, 16);
 }

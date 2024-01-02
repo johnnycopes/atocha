@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { first } from 'rxjs/operators';
+import { first } from 'rxjs';
 
 import { AuthService } from '@atocha/firebase/data-access';
 import { ButtonComponent } from '@atocha/core/ui';

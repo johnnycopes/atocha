@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { catchError, shareReplay } from 'rxjs/operators';
+import { Observable, catchError, shareReplay } from 'rxjs';
 
 import { CountryDto } from './country-dto.interface';
 import { SummaryDto } from './summary-dto.interface';

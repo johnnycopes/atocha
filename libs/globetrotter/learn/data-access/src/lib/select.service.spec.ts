@@ -1,6 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { of } from 'rxjs';
 
+import { APP_NAME_TOKEN } from '@atocha/core/data-access';
 import { QuizType } from '@atocha/globetrotter/learn/util';
 import { Places } from './internal/places';
 import { PlaceService } from './place.service';
@@ -16,6 +17,10 @@ describe('SelectService', () => {
     TestBed.configureTestingModule({
       providers: [
         {
+          provide: APP_NAME_TOKEN,
+          useValue: '',
+        },
+        {
           provide: PlaceService,
           useValue: mockPlaceService,
         },
@@ -30,7 +35,7 @@ describe('SelectService', () => {
 
   it('correctly initializes state', (done) => {
     service.selection$.subscribe((value) => {
-      expect(value).toEqual({
+      expect(value).toStrictEqual({
         type: 1,
         quantity: 5,
         places: [],
@@ -46,7 +51,7 @@ describe('SelectService', () => {
         quantity: 3,
         places: ['Northern Africa', 'Western Africa'],
       })
-    ).toEqual({
+    ).toStrictEqual({
       type: '1',
       quantity: '3',
       places: 'Northern Africa,Western Africa',
@@ -60,7 +65,7 @@ describe('SelectService', () => {
         quantity: '7',
         places: 'Melanesia,Micronesia,Polynesia',
       })
-    ).toEqual({
+    ).toStrictEqual({
       type: QuizType.capitalsCountries,
       quantity: 7,
       places: ['Melanesia', 'Micronesia', 'Polynesia'],

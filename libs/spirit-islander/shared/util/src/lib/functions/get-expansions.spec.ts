@@ -2,7 +2,7 @@ import { getExpansions } from './get-expansions';
 
 describe('getExpansions', () => {
   it('returns all game expansions', () => {
-    expect(getExpansions()).toEqual([
+    expect(getExpansions()).toStrictEqual([
       'Branch & Claw',
       'Horizons',
       'Jagged Earth',

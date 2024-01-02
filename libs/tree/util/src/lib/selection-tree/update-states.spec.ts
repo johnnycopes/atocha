@@ -19,7 +19,7 @@ describe('updateStates', () => {
 
     updateStates({ states, tree: MOCK_TREE, targetId: item.id });
 
-    expect(states).toEqual(ALL_SELECTED_STATES);
+    expect(states).toStrictEqual(ALL_SELECTED_STATES);
   });
 
   it('deselects all states when the top node is deselected', () => {
@@ -27,7 +27,7 @@ describe('updateStates', () => {
 
     updateStates({ states, tree: MOCK_TREE, targetId: item.id });
 
-    expect(states).toEqual({});
+    expect(states).toStrictEqual({});
   });
 
   it('updates states when middle checkbox is selected', () => {
@@ -39,7 +39,7 @@ describe('updateStates', () => {
       targetId: 'Morocco',
     });
 
-    expect(states).toEqual({
+    expect(states).toStrictEqual({
       Africa: 'indeterminate',
       Fes: 'checked',
       Marrakesh: 'checked',
@@ -57,7 +57,7 @@ describe('updateStates', () => {
       targetId: 'Namibia',
     });
 
-    expect(states).toEqual({
+    expect(states).toStrictEqual({
       Africa: 'indeterminate',
       Namibia: 'checked',
       'Southern Africa': 'indeterminate',
@@ -73,7 +73,7 @@ describe('updateStates', () => {
       targetId: 'Southern Africa',
     });
 
-    expect(states).toEqual({
+    expect(states).toStrictEqual({
       Africa: 'indeterminate',
       Fes: 'checked',
       Morocco: 'indeterminate',

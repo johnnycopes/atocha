@@ -4,7 +4,7 @@ import { getScenarios } from './get-scenarios';
 describe('getNames', () => {
   it('returns only the names from a group of options', () => {
     const scenarios = getScenarios().slice(0, 5);
-    expect(getNames(scenarios)).toEqual([
+    expect(getNames(scenarios)).toStrictEqual([
       'No Scenario',
       'Destiny Unfolds',
       'Blitz',

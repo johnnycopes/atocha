@@ -7,7 +7,7 @@ describe('Models', () => {
 
       expect(
         models.update(['Branch & Claw'], 'Branch & Claw').spiritNames
-      ).toEqual([
+      ).toStrictEqual([
         'Keeper of the Forbidden Wilds',
         'Sharp Fangs Behind the Leaves',
       ]);
@@ -23,7 +23,7 @@ describe('Models', () => {
       expect(
         models.update(['Branch & Claw', 'Promo Pack 1'], 'Branch & Claw')
           .spiritNames
-      ).toEqual([
+      ).toStrictEqual([
         'Heart of the Wildfire',
         'Thunderspeaker',
         'Keeper of the Forbidden Wilds',
@@ -41,7 +41,7 @@ describe('Models', () => {
           ['Branch & Claw', 'Jagged Earth', 'Promo Pack 1', 'Promo Pack 2'],
           'Expansions'
         ).spiritNames
-      ).toEqual([
+      ).toStrictEqual([
         'Downpour Drenches the World',
         'Finder of Paths Unseen',
         'Fractured Days Split the Sky',
@@ -80,7 +80,7 @@ describe('Models', () => {
           ['Branch & Claw', 'Jagged Earth', 'Promo Pack 1', 'Promo Pack 2'],
           'Expansions'
         ).spiritNames
-      ).toEqual([
+      ).toStrictEqual([
         'Thunderspeaker',
         'Downpour Drenches the World',
         'Finder of Paths Unseen',
@@ -122,7 +122,7 @@ describe('Models', () => {
           ['Branch & Claw', 'Jagged Earth', 'Promo Pack 1', 'Promo Pack 2'],
           'Expansions'
         ).spiritNames
-      ).toEqual([
+      ).toStrictEqual([
         'Keeper of the Forbidden Wilds',
         'Thunderspeaker',
         'Downpour Drenches the World',
@@ -164,7 +164,7 @@ describe('Models', () => {
         ],
       });
 
-      expect(models.update([], 'Branch & Claw').spiritNames).toEqual([]);
+      expect(models.update([], 'Branch & Claw').spiritNames).toStrictEqual([]);
     });
 
     it('leaves one name', () => {
@@ -176,7 +176,7 @@ describe('Models', () => {
         ],
       });
 
-      expect(models.update([], 'Branch & Claw').spiritNames).toEqual([
+      expect(models.update([], 'Branch & Claw').spiritNames).toStrictEqual([
         'Thunderspeaker',
       ]);
     });
@@ -193,7 +193,7 @@ describe('Models', () => {
 
       expect(
         models.update(['Promo Pack 1'], 'Branch & Claw').spiritNames
-      ).toEqual(['Heart of the Wildfire', 'Thunderspeaker']);
+      ).toStrictEqual(['Heart of the Wildfire', 'Thunderspeaker']);
     });
   });
 
@@ -201,19 +201,19 @@ describe('Models', () => {
     it('leaves zero options', () => {
       const models = new Models();
 
-      expect(models.update([], 'Expansions').spiritNames).toEqual([]);
+      expect(models.update([], 'Expansions').spiritNames).toStrictEqual([]);
     });
 
     it('leaves zero options when nothing selected', () => {
       const models = new Models();
 
-      expect(models.update([], 'Expansions').spiritNames).toEqual([]);
+      expect(models.update([], 'Expansions').spiritNames).toStrictEqual([]);
     });
 
     it('leaves base option(s) selected', () => {
       const models = new Models({ spiritNames: ['Thunderspeaker'] });
 
-      expect(models.update([], 'Expansions').spiritNames).toEqual([
+      expect(models.update([], 'Expansions').spiritNames).toStrictEqual([
         'Thunderspeaker',
       ]);
     });
@@ -241,7 +241,7 @@ describe('Models', () => {
         ],
       });
 
-      expect(models.update([], 'Expansions').spiritNames).toEqual([
+      expect(models.update([], 'Expansions').spiritNames).toStrictEqual([
         'Thunderspeaker',
       ]);
     });
@@ -253,7 +253,7 @@ describe('Models', () => {
         spiritNames: ["Lightning's Swift Strike", 'Immense'],
       });
 
-      expect(models.update([], 'Promo Pack 2').spiritNames).toEqual([
+      expect(models.update([], 'Promo Pack 2').spiritNames).toStrictEqual([
         "Lightning's Swift Strike",
       ]);
     });
@@ -265,7 +265,7 @@ describe('Models', () => {
 
       expect(
         models.update(['Nature Incarnate'], 'Branch & Claw').spiritNames
-      ).toEqual(['Warrior']);
+      ).toStrictEqual(['Warrior']);
     });
   });
 });

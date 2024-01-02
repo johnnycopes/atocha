@@ -1,23 +1,23 @@
 import { CommonModule } from '@angular/common';
 import {
+  AfterViewInit,
   Component,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Input,
   OnChanges,
-  AfterViewInit,
-  ChangeDetectionStrategy,
-  ViewChild,
   TemplateRef,
-  ChangeDetectorRef,
-  SimpleChanges,
+  ViewChild,
 } from '@angular/core';
 
 import { trackByFactory, trackBySelf } from '@atocha/core/ui';
 import { pluralize } from '@atocha/core/util';
 import {
-  MeasurementPipe,
+  FlagComponent,
   SmallCapsComponent,
 } from '@atocha/globetrotter/shared/ui';
 import { Country } from '@atocha/globetrotter/shared/util';
+import { MeasurementPipe } from './measurement.pipe';
 
 interface TableData {
   header: string;
@@ -28,14 +28,14 @@ interface TableData {
 @Component({
   standalone: true,
   selector: 'app-explore-country',
-  imports: [CommonModule, MeasurementPipe, SmallCapsComponent],
+  imports: [CommonModule, FlagComponent, MeasurementPipe, SmallCapsComponent],
   templateUrl: './explore-country.component.html',
   styleUrls: ['./explore-country.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ExploreCountryComponent implements OnChanges, AfterViewInit {
-  @Input() country: Country | undefined;
-  @Input() summary = '';
+  @Input({ required: true }) country!: Country;
+  @Input({ required: true }) summary = '';
   @ViewChild('population') populationTemplate: TemplateRef<unknown> | undefined;
   @ViewChild('size') sizeTemplate: TemplateRef<unknown> | undefined;
   @ViewChild('language') languageTemplate: TemplateRef<unknown> | undefined;
@@ -52,10 +52,8 @@ export class ExploreCountryComponent implements OnChanges, AfterViewInit {
 
   constructor(private _changeDetectorRef: ChangeDetectorRef) {}
 
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes) {
-      this._setTableData();
-    }
+  ngOnChanges(): void {
+    this._setTableData();
   }
 
   ngAfterViewInit(): void {
@@ -64,9 +62,6 @@ export class ExploreCountryComponent implements OnChanges, AfterViewInit {
   }
 
   private _setTableData(): void {
-    if (!this.country) {
-      return;
-    }
     const {
       subregion,
       demonym,
@@ -75,6 +70,7 @@ export class ExploreCountryComponent implements OnChanges, AfterViewInit {
       callingCodes,
       topLevelDomain,
     } = this.country;
+
     this.tableData = [
       {
         header: 'subregion',
@@ -85,7 +81,7 @@ export class ExploreCountryComponent implements OnChanges, AfterViewInit {
         content: demonym,
       },
       {
-        header: pluralize(languages.length, 'languages'),
+        header: pluralize(languages.length, 'language'),
         template: this.languageTemplate,
       },
       {

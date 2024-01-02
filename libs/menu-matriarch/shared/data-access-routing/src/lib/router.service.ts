@@ -6,7 +6,7 @@ import {
   NavigationCancel,
   NavigationError,
 } from '@angular/router';
-import { map, filter, tap } from 'rxjs/operators';
+import { map, filter, tap } from 'rxjs';
 
 import { LocalStorageService, State } from '@atocha/core/data-access';
 import { LocalStorageKey } from './local-storage-key.enum';

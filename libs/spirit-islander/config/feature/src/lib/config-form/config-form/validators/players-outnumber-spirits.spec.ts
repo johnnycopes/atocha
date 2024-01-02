@@ -15,7 +15,7 @@ describe('playersOutnumberSpirits', () => {
           spiritNames: fb.control(['Thunderspeaker']),
         })
       )
-    ).toEqual({
+    ).toStrictEqual({
       playersOutnumberSpirits: 'At least 2 unique spirits must be selected',
     });
   });

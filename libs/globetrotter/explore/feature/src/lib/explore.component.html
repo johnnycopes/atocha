@@ -1,29 +1,17 @@
-<div @fadeIn *ngIf="vm$ | async as vm" class="wrapper">
-  <ui-list-details
-    class="list-details"
-    [items]="vm.filteredCountries"
-    [listItemTemplate]="listItemTemplate"
-    [detailsTemplate]="detailsTemplate"
-    [getItemUniqueId]="getCountryId"
-    [selectedItem]="vm.selectedCountry"
+<div @fadeIn *ngIf="vm$ | async as vm" class="container">
+  <nav
+    app-explore-countries
+    class="list"
+    [countries]="vm.filteredCountries"
+    [selectedCountry]="vm.selectedCountry"
     [searchTerm]="vm.searchTerm"
-    placeholderText="Search by country or capital"
-    (selectedItemChange)="onSelect($event)"
+    (selectedCountryChange)="onSelect($event)"
     (searchTermChange)="onSearch($event)"
-  ></ui-list-details>
-
-  <ng-template #listItemTemplate let-country>
-    <div class="list-item">
-      <h3>
-        {{ country.name }}
-      </h3>
-    </div>
-  </ng-template>
-
-  <ng-template #detailsTemplate let-country>
-    <app-explore-country
-      [country]="country"
-      [summary]="vm.summary"
-    ></app-explore-country>
-  </ng-template>
+  ></nav>
+  <app-explore-country
+    class="details"
+    *ngIf="vm.selectedCountry"
+    [country]="vm.selectedCountry"
+    [summary]="vm.summary"
+  ></app-explore-country>
 </div>

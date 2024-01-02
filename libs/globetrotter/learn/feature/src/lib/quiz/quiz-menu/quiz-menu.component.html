@@ -2,24 +2,29 @@
   [position]="position"
   (animationFinished)="onMenuAnimationFinish($event)"
 >
-  <ui-container *ngIf="!isComplete" class="progress" header>
-    <ui-icon
-      left
-      class="back"
-      icon="Cancel"
-      [highlighted]="true"
-      (clicked)="exit.emit()"
-    ></ui-icon>
-    <p class="prompt" center>
-      {{ prompt }}
-    </p>
-    <div class="details" right>
-      <h4 class="details__tally">
-        {{ correctGuesses }} / {{ totalCountries }}
-      </h4>
-      <h4 class="details__guess">Guess #{{ guess }}</h4>
+  <div *ngIf="!isComplete" class="progress" header>
+    <div class="left">
+      <ui-icon
+        class="back"
+        icon="Cancel"
+        [highlighted]="true"
+        (clicked)="exit.emit()"
+      ></ui-icon>
     </div>
-  </ui-container>
+    <div class="center">
+      <p class="prompt">
+        {{ prompt }}
+      </p>
+    </div>
+    <div class="right">
+      <div class="details">
+        <h4 class="details__tally">
+          {{ correctGuesses }} / {{ totalCountries }}
+        </h4>
+        <h4 class="details__guess">Guess #{{ guess }}</h4>
+      </div>
+    </div>
+  </div>
   <div *ngIf="isComplete" class="outcome" content>
     <p class="text">Quiz complete! You scored</p>
     <h1 class="accuracy">{{ accuracy }}%</h1>

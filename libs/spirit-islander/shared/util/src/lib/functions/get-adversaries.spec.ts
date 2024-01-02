@@ -3,11 +3,11 @@ import { getAdversaries } from './get-adversaries';
 
 describe('getAdversaries', () => {
   it('returns all boards if expansions argument is omitted', () => {
-    expect(getAdversaries()).toEqual(ADVERSARIES);
+    expect(getAdversaries()).toStrictEqual(ADVERSARIES);
   });
 
   it('returns adversaries from base game', () => {
-    expect(getAdversaries({ expansions: [] })).toEqual([
+    expect(getAdversaries({ expansions: [] })).toStrictEqual([
       {
         name: 'No Adversary',
         levels: [{ id: 'none', name: 'N/A', difficulty: 0 }],
@@ -52,7 +52,7 @@ describe('getAdversaries', () => {
   });
 
   it('returns adversaries from base game plus any specified expansions', () => {
-    expect(getAdversaries({ expansions: ['Branch & Claw'] })).toEqual([
+    expect(getAdversaries({ expansions: ['Branch & Claw'] })).toStrictEqual([
       {
         name: 'No Adversary',
         levels: [{ id: 'none', name: 'N/A', difficulty: 0 }],
@@ -110,7 +110,7 @@ describe('getAdversaries', () => {
   });
 
   it('returns adversaries with certain names', () => {
-    expect(getAdversaries({ names: ['Russia'] })).toEqual([
+    expect(getAdversaries({ names: ['Russia'] })).toStrictEqual([
       {
         name: 'Russia',
         expansion: 'Jagged Earth',

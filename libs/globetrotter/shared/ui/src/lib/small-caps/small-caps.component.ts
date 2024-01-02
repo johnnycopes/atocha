@@ -11,7 +11,6 @@ import {
   selector: 'ui-small-caps',
   imports: [CommonModule],
   templateUrl: './small-caps.component.html',
-  styleUrls: ['./small-caps.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SmallCapsComponent {

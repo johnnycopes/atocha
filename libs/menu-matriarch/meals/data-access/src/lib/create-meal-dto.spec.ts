@@ -3,7 +3,7 @@ import { createMealDto } from './create-meal-dto';
 describe('createMealDto', () => {
   it('creates default meal when no arguments are passed in', () => {
     const meal = createMealDto({});
-    expect(meal).toEqual({
+    expect(meal).toStrictEqual({
       description: '',
       dishIds: [],
       id: '',
@@ -22,7 +22,7 @@ describe('createMealDto', () => {
       tagIds: ['10'],
       uid: '1',
     });
-    expect(meal).toEqual({
+    expect(meal).toStrictEqual({
       description: 'Very tasty',
       dishIds: ['1', '2'],
       id: '3A',

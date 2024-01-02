@@ -1,6 +1,5 @@
 import { Directive, EventEmitter, HostListener, Output } from '@angular/core';
-import { interval, Observable, Subject } from 'rxjs';
-import { filter, takeUntil, tap } from 'rxjs/operators';
+import { Observable, Subject, filter, interval, takeUntil, tap } from 'rxjs';
 
 @Directive({
   standalone: true,

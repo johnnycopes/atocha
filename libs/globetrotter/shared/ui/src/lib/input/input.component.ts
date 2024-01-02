@@ -1,18 +1,23 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
-
-import { AlertComponent } from '../alert/alert.component';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  HostBinding,
+  Input,
+} from '@angular/core';
 
 @Component({
   standalone: true,
   selector: 'ui-input',
-  imports: [AlertComponent, CommonModule],
+  imports: [CommonModule],
   templateUrl: './input.component.html',
   styleUrls: ['./input.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InputComponent {
   @Input() label = '';
-  @Input() showError = false;
-  @Input() errorMessage = '';
+
+  @HostBinding('class.error')
+  @Input()
+  error = false;
 }

@@ -1,91 +1,32 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { BehaviorSubject, combineLatest, of, Subject } from 'rxjs';
-import {
-  map,
-  tap,
-  switchMap,
-  startWith,
-  distinctUntilChanged,
-} from 'rxjs/operators';
 
-import { includes } from '@atocha/core/util';
-import { CountryService } from '@atocha/globetrotter/shared/data-access';
-import {
-  ListDetailsComponent,
-  fadeInAnimation,
-} from '@atocha/globetrotter/shared/ui';
+import { fadeIn } from '@atocha/globetrotter/shared/ui';
 import { Country } from '@atocha/globetrotter/shared/util';
+import { ExploreService } from './explore.service';
+import { ExploreCountriesComponent } from './explore-countries/explore-countries.component';
 import { ExploreCountryComponent } from './explore-country/explore-country.component';
 
 @Component({
   standalone: true,
   selector: 'app-explore',
-  imports: [CommonModule, ExploreCountryComponent, ListDetailsComponent],
+  imports: [CommonModule, ExploreCountriesComponent, ExploreCountryComponent],
+  providers: [ExploreService],
   templateUrl: './explore.component.html',
   styleUrls: ['./explore.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  animations: [fadeInAnimation],
+  animations: [fadeIn],
 })
 export class ExploreComponent {
-  private _searchTermChange = new Subject<string>();
-  private _selectedCountryChange = new BehaviorSubject<Country | undefined>(
-    undefined
-  );
-  private _countries$ = this._countryService.countries$;
-  private _selectedCountry$ = this._selectedCountryChange.pipe(
-    distinctUntilChanged()
-  );
-  private _summary$ = this._selectedCountryChange.pipe(
-    switchMap((country) => {
-      if (!country) {
-        return of('');
-      }
-      return this._countryService.getSummary(country.name);
-    }),
-    distinctUntilChanged()
-  );
-  private _searchTerm$ = this._searchTermChange.pipe(
-    startWith(''),
-    distinctUntilChanged()
-  );
-  private _filteredCountries$ = this._searchTerm$.pipe(
-    switchMap((searchTerm, index) =>
-      this._countries$.pipe(
-        tap((countries) => (index === 0 ? this.onSelect(countries[0]) : null)),
-        map((countries) =>
-          countries.filter(({ name, capital }) =>
-            includes([name, capital], searchTerm)
-          )
-        )
-      )
-    )
-  );
-  vm$ = combineLatest([
-    this._filteredCountries$,
-    this._selectedCountry$,
-    this._searchTerm$,
-    this._summary$,
-  ]).pipe(
-    map(([filteredCountries, selectedCountry, searchTerm, summary]) => ({
-      filteredCountries,
-      selectedCountry,
-      searchTerm,
-      summary,
-    }))
-  );
+  vm$ = this._exploreService.state$;
 
-  constructor(private _countryService: CountryService) {}
-
-  getCountryId({ id }: Country): string {
-    return id;
-  }
+  constructor(private _exploreService: ExploreService) {}
 
   onSelect(selectedCountry: Country): void {
-    this._selectedCountryChange.next(selectedCountry);
+    this._exploreService.select(selectedCountry);
   }
 
   onSearch(searchTerm: string): void {
-    this._searchTermChange.next(searchTerm);
+    this._exploreService.search(searchTerm);
   }
 }

@@ -1,0 +1,33 @@
+@import 'styles';
+
+.list {
+  margin-top: map-get($spacing, 12);
+  height: calc(
+    100% - 60px
+  ); // subtract the total height of the search input and its bottom margin
+  overflow: auto;
+  scroll-behavior: smooth;
+  @include custom-scrollbar;
+
+  &__item {
+    margin-bottom: map-get($spacing, 12);
+    padding: map-get($spacing, 12);
+    background: map-get($color, dark);
+    border-radius: map-get($border, radius);
+    cursor: pointer;
+
+    &:last-child {
+      margin-bottom: 0 !important;
+    }
+
+    &--selected {
+      background: map-get($color, light);
+      color: map-get($color, darkest);
+    }
+  }
+
+  &__placeholder {
+    margin-top: 12px;
+    text-align: center;
+  }
+}

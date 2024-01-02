@@ -2,7 +2,12 @@ import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { of } from 'rxjs';
 
-import { Country } from '@atocha/globetrotter/shared/util';
+import {
+  DJIBOUTI,
+  MONTENEGRO,
+  PHILIPPINES,
+  SEYCHELLES,
+} from '@atocha/globetrotter/shared/data-access';
 import { QuizType, shuffle } from '@atocha/globetrotter/learn/util';
 import { Places } from './internal/places';
 import { QuizService } from './quiz.service';
@@ -18,30 +23,6 @@ jest.mock('@atocha/globetrotter/learn/util', () => ({
 }));
 
 describe('QuizService', () => {
-  const DJIBOUTI = {
-    name: 'Djibouti',
-    region: 'Africa',
-    subregion: 'Eastern Africa',
-  } as Country;
-
-  const MONTENEGRO = {
-    name: 'Montenegro',
-    region: 'Europe',
-    subregion: 'Southeast Europe',
-  } as Country;
-
-  const PHILIPPINES = {
-    name: 'Philippines',
-    region: 'Asia',
-    subregion: 'South-Eastern Asia',
-  } as Country;
-
-  const SEYCHELLES = {
-    name: 'Seychelles',
-    region: 'Africa',
-    subregion: 'Eastern Africa',
-  } as Country;
-
   const mockPlaceService: Pick<PlaceService, 'places$'> = {
     places$: of(new Places([DJIBOUTI, MONTENEGRO, PHILIPPINES, SEYCHELLES])),
   };
@@ -68,7 +49,7 @@ describe('QuizService', () => {
   it('renders', () => {
     expect(service).toBeTruthy();
     expect(jest.isMockFunction(shuffle)).toBeTruthy();
-    expect(shuffle([1, 2, 3])).toEqual([1, 2, 3]);
+    expect(shuffle([1, 2, 3])).toStrictEqual([1, 2, 3]);
   });
 
   it('has correct state after initializing quiz', (done) => {
@@ -79,7 +60,7 @@ describe('QuizService', () => {
     });
 
     service.quiz$.subscribe((value) => {
-      expect(value).toEqual({
+      expect(value).toStrictEqual({
         items: [DJIBOUTI, SEYCHELLES],
         currentItem: DJIBOUTI,
         correctGuesses: 0,
@@ -103,7 +84,7 @@ describe('QuizService', () => {
     service.updateQuiz(true);
 
     service.quiz$.subscribe((value) => {
-      expect(value).toEqual({
+      expect(value).toStrictEqual({
         items: [DJIBOUTI, SEYCHELLES, MONTENEGRO, PHILIPPINES],
         currentItem: PHILIPPINES,
         correctGuesses: 1,

@@ -1,21 +1,22 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { combineLatest, of } from 'rxjs';
-import { concatMap, first, map, switchMap } from 'rxjs/operators';
+import { combineLatest, concatMap, first, map, of, switchMap } from 'rxjs';
 
 import { ButtonComponent, trackBySelf } from '@atocha/core/ui';
 import { MealService } from '@atocha/menu-matriarch/meals/data-access';
+import { MealSummaryComponent } from '@atocha/menu-matriarch/meals/ui';
 import { UserService } from '@atocha/menu-matriarch/settings/data-access';
 import { getDishTypes } from '@atocha/menu-matriarch/shared/util';
 import {
-  MealSummaryComponent,
+  SectionComponent,
+  dishTrackByFn,
+} from '@atocha/menu-matriarch/shared/ui';
+import {
   TagComponent,
   TagDefDirective,
   TagsListComponent,
-  dishTrackByFn,
-} from '@atocha/menu-matriarch/shared/ui-domain';
-import { SectionComponent } from '@atocha/menu-matriarch/shared/ui-generic';
+} from '@atocha/menu-matriarch/tags/ui';
 
 @Component({
   standalone: true,

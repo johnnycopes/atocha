@@ -1,26 +1,32 @@
-<div class="wrapper" *ngIf="vm$ | async as vm" @fadeIn>
+<form
+  class="wrapper"
+  *ngIf="vm$ | async as vm"
+  @fadeIn
+  [formGroup]="vm.form"
+  (ngSubmit)="launch(vm.form)"
+>
   <div class="launchpad">
     <h1 class="header">Create Quiz</h1>
-    <button core-button [disabled]="vm.invalidQuantity" (click)="onLaunch()">
-      Launch
-    </button>
+    <div class="submission">
+      <ui-errors
+        *ngIf="vm.form.errors"
+        class="errors"
+        [errors]="vm.form.errors"
+      ></ui-errors>
+      <button core-button [disabled]="!vm.form.valid">Launch</button>
+    </div>
   </div>
   <div class="fields">
     <div class="fields__top">
-      <app-select-type
-        [type]="vm.type"
-        (typeChange)="onTypeChange($event)"
-      ></app-select-type>
+      <app-select-type [form]="vm.form"> </app-select-type>
       <app-select-quantity
-        [invalid]="vm.invalidQuantity"
-        [quantity]="vm.quantity"
-        (quantityChange)="onQuantityChange($event)"
+        [form]="vm.form"
+        [error]="!!vm.form.errors"
       ></app-select-quantity>
     </div>
     <app-select-places
+      [form]="vm.form"
       [regions]="vm.regions"
-      [places]="vm.places"
-      (placesChange)="onPlacesChange($event)"
     ></app-select-places>
   </div>
-</div>
+</form>

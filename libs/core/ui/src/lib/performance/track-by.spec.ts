@@ -28,7 +28,7 @@ describe('trackBy', () => {
         idTrackByFn(index, veggie)
       );
 
-      expect(trackByFnVeggies).toEqual(trackByIdVeggies);
+      expect(trackByFnVeggies).toStrictEqual(trackByIdVeggies);
     });
   });
 
@@ -46,7 +46,7 @@ describe('trackBy', () => {
         trackBySelf(index, veggie)
       );
 
-      expect(trackByFnVeggies).toEqual(trackBySelfVeggies);
+      expect(trackByFnVeggies).toStrictEqual(trackBySelfVeggies);
     });
   });
 });
