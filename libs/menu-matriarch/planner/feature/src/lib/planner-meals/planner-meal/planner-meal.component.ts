@@ -60,9 +60,9 @@ export class PlannerMealComponent {
   @Input() orientation: Orientation = 'horizontal';
   @Input()
   set menu(menu: Menu | undefined) {
+    const mealDishIds = this.dishes.map(({ id }) => id);
     this.entryModels =
       menu?.entries.map(({ day, dishes }) => {
-        const mealDishIds = this.dishes.map(({ id }) => id);
         const entryDishIds = dishes.map(({ id }) => id);
         const { checked, indeterminate } = this._compare(
           mealDishIds,
