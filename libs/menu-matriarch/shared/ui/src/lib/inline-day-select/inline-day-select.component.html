@@ -6,14 +6,11 @@
 >
   <ui-input>
     <select
+      ui-select-day
       name="startDay"
       [ngModel]="startDay"
       (keydown.enter)="save.emit(form.value.startDay)"
       (keydown.escape)="cancel.emit()"
-    >
-      <option *ngFor="let day of days; trackBy: dayTrackByFn" [ngValue]="day">
-        {{ day }}
-      </option>
-    </select>
+    ></select>
   </ui-input>
 </form>

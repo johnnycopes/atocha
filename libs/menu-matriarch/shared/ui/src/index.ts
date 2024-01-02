@@ -10,5 +10,6 @@ export * from './lib/options-menu/options-menu-trigger.directive';
 export * from './lib/tabset/tabset.component';
 export * from './lib/tabset/tab/tab.component';
 export * from './lib/section/section.component';
+export * from './lib/select-day/select-day.component';
 export * from './lib/small-caps-label/small-caps-label.component';
 export * from './lib/track-by-functions';
