@@ -16,6 +16,7 @@ import {
   CardComponent,
   InputComponent,
   SectionComponent,
+  SelectDayComponent,
 } from '@atocha/menu-matriarch/shared/ui';
 import { UserPreferences, getDays } from '@atocha/menu-matriarch/shared/util';
 
@@ -29,6 +30,7 @@ import { UserPreferences, getDays } from '@atocha/menu-matriarch/shared/util';
     FormsModule,
     InputComponent,
     SectionComponent,
+    SelectDayComponent,
   ],
   templateUrl: './settings.component.html',
   styleUrls: ['./settings.component.scss'],
