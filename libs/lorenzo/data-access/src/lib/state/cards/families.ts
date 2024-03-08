@@ -76,8 +76,8 @@ export const FAMILIES: readonly Family[] = [
   {
     name: 'Sforza',
     privilege: `
-      When taking a Character Card, also gain 1 Special Token. Additionally, you may have up to 8
-      Character Cards. Having 7 or 8 of them at the end of the game is worth 28 or 36 Victory Points (respectively).
+      Before the Family Tiles auction, draw 2 Leader Cards and place them faceup next to this tile.
+      If you take this Family Tile, take the 2 Leader Cards and immediately play 1 of them
     `,
   },
   {
