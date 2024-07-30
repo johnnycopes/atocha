@@ -3,7 +3,6 @@ import { FormsModule } from '@angular/forms';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import {
   Meta,
-  StoryFn,
   StoryObj,
   componentWrapperDecorator,
   moduleMetadata,
@@ -31,62 +30,52 @@ export default {
   argTypes: {
     onClick: { action: 'clicked' },
   },
-} as Meta;
-
-const Template: StoryFn<SearchInputComponent> = (args: Args) => ({
-  props: args,
-  template: `
-    <core-search-input
-      [class]="className"
-      [autofocus]="autofocus"
-      [disabled]="disabled"
-      [placeholder]="placeholder"
-      [text]="text"
-      (textChange)="text = $event; onClick($event)"
-    ></core-search-input>
-  `,
-});
+} as Meta<SearchInputComponent>;
 
 export const base: StoryObj<SearchInputComponent> = {
-  render: Template,
+  render: (args) => ({
+    props: args,
+    template: `
+      <core-search-input
+        [class]="className"
+        [autofocus]="autofocus"
+        [disabled]="disabled"
+        [placeholder]="placeholder"
+        [text]="text"
+        (textChange)="text = $event; onClick($event)"
+      ></core-search-input>
+    `,
+  }),
   args: createArgs({}),
 };
 
 export const autofocus: StoryObj<SearchInputComponent> = {
-  render: Template,
-
+  ...base,
   args: createArgs({
     autofocus: true,
   }),
 };
 
 export const disabled: StoryObj<SearchInputComponent> = {
-  render: Template,
-
+  ...base,
   args: createArgs({
     disabled: true,
   }),
 };
 
 export const withText: StoryObj<SearchInputComponent> = {
-  render: Template,
-
+  ...base,
   args: createArgs({
     text: 'Search term',
   }),
 };
 
 export const withCustomStyling: StoryObj<SearchInputComponent> = {
-  render: Template,
-
+  ...base,
   args: createArgs({
     text: 'This looks totally different',
     className: 'custom-search-input',
   }),
-};
-
-type Args = Partial<SearchInputComponent> & {
-  className?: string;
 };
 
 function createArgs(
@@ -96,7 +85,7 @@ function createArgs(
     text = '',
     placeholder = 'Type words here...',
     className = '',
-  } = {} as Args
-): Args {
+  } = {}
+) {
   return { autofocus, disabled, text, placeholder, className };
 }
