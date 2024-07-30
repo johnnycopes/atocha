@@ -78,14 +78,12 @@ export const withCustomStyling: StoryObj<SearchInputComponent> = {
   }),
 };
 
-function createArgs(
-  {
-    autofocus = false,
-    disabled = false,
-    text = '',
-    placeholder = 'Type words here...',
-    className = '',
-  } = {}
-) {
+function createArgs({
+  autofocus = false,
+  disabled = false,
+  text = '',
+  placeholder = 'Type words here...',
+  className = '',
+} = {}) {
   return { autofocus, disabled, text, placeholder, className };
 }

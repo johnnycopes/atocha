@@ -44,7 +44,7 @@ export const base: StoryObj<CheckboxComponent> = {
   }),
   args: createArgs({
     slot: 'Click me!',
-  })
+  }),
 };
 
 export const withCustomStyling: StoryObj<CheckboxComponent> = {
