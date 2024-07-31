@@ -127,6 +127,9 @@
       "@atocha/menu-matriarch/tags/ui": [
         "libs/menu-matriarch/tags/ui/src/index.ts"
       ],
+      "@atocha/oxioracle/data-access": [
+        "libs/oxioracle/data-access/src/index.ts"
+      ],
       "@atocha/oxioracle/feature-data": [
         "libs/oxioracle/feature-data/src/index.ts"
       ],
