@@ -1,3 +1,12 @@
-import { Route } from '@angular/router';
+import { Routes } from '@angular/router';
 
-export const appRoutes: Route[] = [];
+import { ShellComponent } from '@atocha/oxioracle/feature-shell';
+
+export const APP_ROUTES: Routes = [
+  {
+    path: '',
+    component: ShellComponent,
+    children: [],
+  },
+];
+

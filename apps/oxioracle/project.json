@@ -4,7 +4,7 @@
   "projectType": "application",
   "prefix": "app",
   "sourceRoot": "apps/oxioracle/src",
-  "tags": [],
+  "tags": ["scope:oxioracle", "type:app"],
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:application",
