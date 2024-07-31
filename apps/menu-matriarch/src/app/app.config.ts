@@ -19,11 +19,9 @@ export const appConfig: ApplicationConfig = {
       APP_ROUTES,
       withInMemoryScrolling({ scrollPositionRestoration: 'enabled' })
     ),
-    importProvidersFrom([
-      provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
-      provideFirestore(() => getFirestore()),
-      provideAuth(() => getAuth()),
-      BrowserAnimationsModule,
-    ]),
+    provideFirebaseApp(() => initializeApp({ ...environment.firebaseConfig })),
+    provideFirestore(() => getFirestore()),
+    provideAuth(() => getAuth()),
+    importProvidersFrom([BrowserAnimationsModule]),
   ],
 };

@@ -1,7 +1,6 @@
 import {
   StoryObj,
   moduleMetadata,
-  StoryFn,
   Meta,
   componentWrapperDecorator,
 } from '@storybook/angular';
@@ -31,33 +30,30 @@ export default {
   },
 } as Meta<ButtonComponent>;
 
-const Template: StoryFn<ButtonComponent> = (args: Args) => ({
-  props: args,
-  template: `
-    <button core-button="{{ variant }}"
-      [disabled]="disabled"
-      (click)="onClick($event)"
-    >
-      {{ slot }}
-    </button>
-  `,
-});
-
 export const base: StoryObj<ButtonComponent> = {
-  render: Template,
+  render: (args: Args) => ({
+    props: args,
+    template: `
+      <button core-button="{{ variant }}"
+        [disabled]="disabled"
+        (click)="onClick($event)"
+      >
+        {{ slot }}
+      </button>
+    `,
+  }),
   args: createArgs({}),
 };
 
 export const primary: StoryObj<ButtonComponent> = {
-  render: Template,
-
+  ...base,
   args: createArgs({
     variant: 'primary',
   }),
 };
 
 export const secondary: StoryObj<ButtonComponent> = {
-  render: Template,
+  ...base,
 
   args: createArgs({
     variant: 'secondary',
@@ -65,7 +61,7 @@ export const secondary: StoryObj<ButtonComponent> = {
 };
 
 export const tertiary: StoryObj<ButtonComponent> = {
-  render: Template,
+  ...base,
 
   args: createArgs({
     variant: 'tertiary',
@@ -73,15 +69,14 @@ export const tertiary: StoryObj<ButtonComponent> = {
 };
 
 export const danger: StoryObj<ButtonComponent> = {
-  render: Template,
-
+  ...base,
   args: createArgs({
     variant: 'danger',
   }),
 };
 
 export const disabled: StoryObj<ButtonComponent> = {
-  render: Template,
+  ...base,
   args: createArgs({}),
 };
 

@@ -1,5 +1,5 @@
 import { DragDropModule } from '@angular/cdk/drag-drop';
-import { Meta, moduleMetadata, StoryFn } from '@storybook/angular';
+import { Meta, moduleMetadata, StoryObj } from '@storybook/angular';
 
 import { KanbanBoardComponent } from './kanban-board.component';
 
@@ -29,72 +29,62 @@ export default {
     onItemMove: { action: 'itemMove' },
     actionClick: { action: 'actionClick' },
   },
-} as Meta;
+} as Meta<KanbanBoardComponent<KitchenLocation, string>>;
 
-const Template: StoryFn<KanbanBoardComponent<KitchenLocation, string>> = (
-  args: Args
-) => ({
-  props: {
-    ...args,
-    getColumnId,
-    getColumnName,
-    getColumnItems,
-    getItemId,
-  },
-  template: `
-    <app-kanban-board
-      [columns]="columns"
-      [actions]="actions"
-      [getColumnId]="getColumnId"
-      [getColumnName]="getColumnName"
-      [getColumnItems]="getColumnItems"
-      [getItemId]="getItemId"
-      (columnAdd)="onColumnAdd($event)"
-      (columnMove)="onColumnMove($event)"
-      (itemAdd)="onItemAdd($event)"
-      (itemMove)="onItemMove($event)"
-      (actionClick)="onActionClick($event)"
-    ></app-kanban-board>
-  `,
-});
-
-export const base = {
-  render: Template,
+export const base: StoryObj<KanbanBoardComponent<KitchenLocation, string>> = {
+  render: (args) => ({
+    props: {
+      ...args,
+      getColumnId,
+      getColumnName,
+      getColumnItems,
+      getItemId,
+    },
+    template: `
+      <app-kanban-board
+        [columns]="columns"
+        [actions]="actions"
+        [getColumnId]="getColumnId"
+        [getColumnName]="getColumnName"
+        [getColumnItems]="getColumnItems"
+        [getItemId]="getItemId"
+        (columnAdd)="onColumnAdd($event)"
+        (columnMove)="onColumnMove($event)"
+        (itemAdd)="onItemAdd($event)"
+        (itemMove)="onItemMove($event)"
+        (actionClick)="onActionClick($event)"
+      ></app-kanban-board>
+    `,
+  }),
   args: createArgs(),
 };
 
-type Args = Partial<KanbanBoardComponent<KitchenLocation, string>> & {
-  className?: string;
-};
-
-function createArgs(
-  {
-    columns = [
-      {
-        id: '01',
-        name: 'Refrigerator',
-        foods: ['Salmon', 'Cheese', 'Oat milk', 'Mustard'],
-      },
-      {
-        id: '02',
-        name: 'Freezer',
-        foods: ['Chicken', 'Mixed veggies'],
-      },
-      {
-        id: '03',
-        name: 'Pantry',
-        foods: [
-          'Avocados',
-          'Tomatoes',
-          'Bell peppers',
-          'Red onions',
-          'Sweet pototoes',
-        ],
-      },
-    ],
-    actions = ['Export', 'Print'],
-  } = {} as Args
-): Args {
+function createArgs({
+  columns = [
+    {
+      id: '01',
+      name: 'Refrigerator',
+      foods: ['Salmon', 'Cheese', 'Oat milk', 'Mustard'],
+    },
+    {
+      id: '02',
+      name: 'Freezer',
+      foods: ['Chicken', 'Mixed veggies'],
+    },
+    {
+      id: '03',
+      name: 'Pantry',
+      foods: [
+        'Avocados',
+        'Tomatoes',
+        'Bell peppers',
+        'Red onions',
+        'Sweet pototoes',
+      ],
+    },
+  ],
+  actions = ['Export', 'Print'],
+} = {}) {
   return {
     columns,
     actions,

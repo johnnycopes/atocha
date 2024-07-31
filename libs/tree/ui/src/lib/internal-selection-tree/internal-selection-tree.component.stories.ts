@@ -1,7 +1,6 @@
 import { FormsModule } from '@angular/forms';
 import {
   moduleMetadata,
-  StoryFn,
   Meta,
   componentWrapperDecorator,
   StoryObj,
@@ -56,66 +55,59 @@ export default {
   },
 } as Meta<InternalSelectionTreeComponent<TestItem>>;
 
-const Template: StoryFn<InternalSelectionTreeComponent<TestItem>> = (
-  args: Args
-) => ({
-  props: {
-    ...args,
-    getId,
-    getChildren,
-  },
-  template: `
-    <core-internal-selection-tree
-      [class]="className"
-      [tree]="tree"
-      [template]="checkboxTemplate"
-      [ids]="ids"
-      (changed)="ids = $event; changed($event)"
-      (nodeClick)="nodeClick($event)"
-      (selectedChange)="selectedChange($event)"
-      (totalChange)="totalChange($event)"
-    ></core-internal-selection-tree>
-
-    <ng-template #checkboxTemplate
-      let-node
-      let-level="level"
-      let-checked="checked"
-      let-indeterminate="indeterminate"
-      let-onChange="onChange"
-    >
-      <core-checkbox
-        [style.margin-left.px]="level * 24"
-        [style.margin-bottom.px]="4"
-        [indeterminate]="indeterminate"
-        size="normal"
-        [ngModel]="checked"
-        (ngModelChange)="onChange(node)"
-      >
-        {{ this.getId(node) }}
-      </core-checkbox>
-    </ng-template>
-  `,
-});
-
 export const noneSelected: StoryObj<InternalSelectionTreeComponent<TestItem>> =
   {
-    render: Template,
+    render: (args) => ({
+      props: {
+        ...args,
+        getId,
+        getChildren,
+      },
+      template: `
+        <core-internal-selection-tree
+          [class]="className"
+          [tree]="tree"
+          [template]="checkboxTemplate"
+          [ids]="ids"
+          (changed)="ids = $event; changed($event)"
+          (nodeClick)="nodeClick($event)"
+          (selectedChange)="selectedChange($event)"
+          (totalChange)="totalChange($event)"
+        ></core-internal-selection-tree>
 
+        <ng-template #checkboxTemplate
+          let-node
+          let-level="level"
+          let-checked="checked"
+          let-indeterminate="indeterminate"
+          let-onChange="onChange"
+        >
+          <core-checkbox
+            [style.margin-left.px]="level * 24"
+            [style.margin-bottom.px]="4"
+            [indeterminate]="indeterminate"
+            size="normal"
+            [ngModel]="checked"
+            (ngModelChange)="onChange(node)"
+          >
+            {{ this.getId(node) }}
+          </core-checkbox>
+        </ng-template>
+      `,
+    }),
     args: createArgs({}),
   };
 
 export const someSelected: StoryObj<InternalSelectionTreeComponent<TestItem>> =
   {
-    render: Template,
-
+    ...noneSelected,
     args: createArgs({
       tree: new SelectionTree(AFRICA, getId, getChildren, SOME_SELECTED_IDS),
     }),
   };
 
 export const allSelected: StoryObj<InternalSelectionTreeComponent<TestItem>> = {
-  render: Template,
-
+  ...noneSelected,
   args: createArgs({
     tree: new SelectionTree(AFRICA, getId, getChildren, ALL_SELECTED_IDS),
   }),
@@ -124,23 +116,15 @@ export const allSelected: StoryObj<InternalSelectionTreeComponent<TestItem>> = {
 export const withCustomStyling: StoryObj<
   InternalSelectionTreeComponent<TestItem>
 > = {
-  render: Template,
-
+  ...noneSelected,
   args: createArgs({
-    ids: [],
     className: 'custom-selection-tree',
   }),
 };
 
-type Args = Partial<InternalSelectionTreeComponent<TestItem>> & {
-  className?: string;
-};
-
-function createArgs(
-  {
-    tree = new SelectionTree(AFRICA, getId, getChildren),
-    className = '',
-  } = {} as Args
-): Args {
+function createArgs({
+  tree = new SelectionTree(AFRICA, getId, getChildren),
+  className = '',
+} = {}) {
   return { tree, className };
 }

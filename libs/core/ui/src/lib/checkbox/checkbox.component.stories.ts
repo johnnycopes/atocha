@@ -2,7 +2,6 @@ import { FormsModule } from '@angular/forms';
 import {
   Meta,
   moduleMetadata,
-  StoryFn,
   componentWrapperDecorator,
   StoryObj,
 } from '@storybook/angular';
@@ -25,35 +24,31 @@ export default {
     },
     onClick: { action: 'clicked' },
   },
-} as Meta;
-
-const Template: StoryFn<CheckboxComponent> = (args: Args) => ({
-  props: args,
-  template: `
-    <core-checkbox
-      [class]="className"
-      [indeterminate]="indeterminate"
-      [disabled]="disabled"
-      [size]="size"
-      [ngModel]="checked"
-      (ngModelChange)="checked = $event; onClick($event)"
-    >
-      {{ slot }}
-    </core-checkbox>
-  `,
-});
+} as Meta<CheckboxComponent>;
 
 export const base: StoryObj<CheckboxComponent> = {
-  render: Template,
-
+  render: (args: Args) => ({
+    props: args,
+    template: `
+      <core-checkbox
+        [class]="className"
+        [indeterminate]="indeterminate"
+        [disabled]="disabled"
+        [size]="size"
+        [ngModel]="checked"
+        (ngModelChange)="checked = $event; onClick($event)"
+      >
+        {{ slot }}
+      </core-checkbox>
+    `,
+  }),
   args: createArgs({
     slot: 'Click me!',
   }),
 };
 
 export const withCustomStyling: StoryObj<CheckboxComponent> = {
-  render: Template,
-
+  ...base,
   args: createArgs({
     slot: 'Click me!',
     size: 'large',

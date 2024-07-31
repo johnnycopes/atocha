@@ -40,6 +40,7 @@ Thumbs.db
 
 .angular
 .env
+.nx
 
 # Firebase
 .firebase
@@ -49,5 +50,3 @@ cypress.env.json
 
 # Local Netlify folder
 .netlify
-
-.nx/cache
