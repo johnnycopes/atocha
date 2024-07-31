@@ -40,6 +40,13 @@
                 ]
               },
               {
+                "sourceTag": "scope:oxioracle",
+                "onlyDependOnLibsWithTags": [
+                  "scope:shared",
+                  "scope:oxioracle"
+                ]
+              },
+              {
                 "sourceTag": "scope:spirit-islander",
                 "onlyDependOnLibsWithTags": [
                   "scope:shared",
