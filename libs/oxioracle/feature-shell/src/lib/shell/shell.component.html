@@ -1,1 +1,7 @@
-<p>Shell works!</p>
+<header app-nav class="header"></header>
+
+<main class="content">
+  <div class="wrapper" [@routerTransition]="getState(outlet)">
+    <router-outlet #outlet="outlet"> </router-outlet>
+  </div>
+</main>
