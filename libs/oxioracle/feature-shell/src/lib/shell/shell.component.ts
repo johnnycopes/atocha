@@ -9,5 +9,4 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   styleUrl: './shell.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ShellComponent {
-}
+export class ShellComponent {}
