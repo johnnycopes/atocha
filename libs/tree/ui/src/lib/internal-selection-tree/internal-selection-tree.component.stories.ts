@@ -98,12 +98,13 @@ export const noneSelected: StoryObj<InternalSelectionTreeComponent<TestItem>> =
     args: createArgs({}),
   };
 
-export const someSelected: StoryObj<InternalSelectionTreeComponent<TestItem>> = {
-  ...noneSelected,
-  args: createArgs({
-    tree: new SelectionTree(AFRICA, getId, getChildren, SOME_SELECTED_IDS),
-  }),
-};
+export const someSelected: StoryObj<InternalSelectionTreeComponent<TestItem>> =
+  {
+    ...noneSelected,
+    args: createArgs({
+      tree: new SelectionTree(AFRICA, getId, getChildren, SOME_SELECTED_IDS),
+    }),
+  };
 
 export const allSelected: StoryObj<InternalSelectionTreeComponent<TestItem>> = {
   ...noneSelected,
@@ -112,7 +113,9 @@ export const allSelected: StoryObj<InternalSelectionTreeComponent<TestItem>> = {
   }),
 };
 
-export const withCustomStyling: StoryObj<InternalSelectionTreeComponent<TestItem>> = {
+export const withCustomStyling: StoryObj<
+  InternalSelectionTreeComponent<TestItem>
+> = {
   ...noneSelected,
   args: createArgs({
     className: 'custom-selection-tree',
