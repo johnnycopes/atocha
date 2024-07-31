@@ -1,0 +1,7 @@
+main {
+  height: calc(100% - 64px);
+}
+
+.wrapper {
+  height: 100%;
+}
