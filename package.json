@@ -57,7 +57,7 @@
     "@swc-node/register": "1.9.2",
     "@swc/core": "1.5.7",
     "@types/jest": "29.5.11",
-    "@types/node": "18.16.9",
+    "@types/node": "20.16.0",
     "@typescript-eslint/eslint-plugin": "7.18.0",
     "@typescript-eslint/parser": "7.18.0",
     "cypress": "13.13.1",
