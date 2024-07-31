@@ -14,7 +14,7 @@ export const APP_ROUTES: Routes = [
         data: { state: ROUTES.table },
         loadComponent: () =>
           import('@atocha/oxioracle/feature-data').then(
-            (m) => m.OxioracleFeatureDataComponent
+            (m) => m.TableComponent
           ),
       },
       {
@@ -23,7 +23,7 @@ export const APP_ROUTES: Routes = [
         data: { state: ROUTES.charts },
         loadComponent: () =>
           import('@atocha/oxioracle/feature-data').then(
-            (m) => m.OxioracleFeatureDataComponent
+            (m) => m.ChartsComponent
           ),
       },
     ],

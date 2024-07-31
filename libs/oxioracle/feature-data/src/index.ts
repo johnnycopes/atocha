@@ -1,1 +1,2 @@
-export * from './lib/oxioracle-feature-data/oxioracle-feature-data.component';
+export * from './lib/charts/charts.component';
+export * from './lib/table/table.component';
