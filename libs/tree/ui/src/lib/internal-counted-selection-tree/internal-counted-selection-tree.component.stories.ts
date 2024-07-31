@@ -1,7 +1,6 @@
 import { FormsModule } from '@angular/forms';
 import {
   moduleMetadata,
-  StoryFn,
   Meta,
   componentWrapperDecorator,
   StoryObj,
@@ -56,67 +55,61 @@ export default {
   },
 } as Meta<InternalCountedSelectionTreeComponent<TestItem>>;
 
-const Template: StoryFn<InternalCountedSelectionTreeComponent<TestItem>> = (
-  args: Args
-) => ({
-  props: {
-    ...args,
-    getId,
-    getChildren,
-  },
-  template: `
-    <core-internal-counted-selection-tree
-      [class]="className"
-      [tree]="tree"
-      [template]="checkboxTemplate"
-      [ids]="ids"
-      (nodeClick)="onNodeClick($event)"
-      (changed)="ids = $event; onChanged($event)"
-      (selectedChange)="onSelectedChange($event)"
-      (totalChange)="onTotalChange($event)"
-    ></core-internal-counted-selection-tree>
-
-    <ng-template #checkboxTemplate
-      let-node
-      let-level="level"
-      let-checked="checked"
-      let-indeterminate="indeterminate"
-      let-onChange="onChange"
-      let-selected="selected"
-      let-total="total"
-    >
-      <core-checkbox
-        [style.margin-left.px]="level * 24"
-        [style.margin-bottom.px]="4"
-        [indeterminate]="indeterminate"
-        size="normal"
-        [ngModel]="checked"
-        (ngModelChange)="onChange(node)"
-      >
-        {{ this.getId(node) }}
-        ({{
-          this.getChildren(node).length
-            ? selected + ' / ' + total
-            : total
-        }})
-      </core-checkbox>
-    </ng-template>
-  `,
-});
-
 export const noneSelected: StoryObj<
   InternalCountedSelectionTreeComponent<TestItem>
 > = {
-  render: Template,
+  render: (args) => ({
+    props: {
+      ...args,
+      getId,
+      getChildren,
+    },
+    template: `
+      <core-internal-counted-selection-tree
+        [class]="className"
+        [tree]="tree"
+        [template]="checkboxTemplate"
+        [ids]="ids"
+        (nodeClick)="onNodeClick($event)"
+        (changed)="ids = $event; onChanged($event)"
+        (selectedChange)="onSelectedChange($event)"
+        (totalChange)="onTotalChange($event)"
+      ></core-internal-counted-selection-tree>
 
+      <ng-template #checkboxTemplate
+        let-node
+        let-level="level"
+        let-checked="checked"
+        let-indeterminate="indeterminate"
+        let-onChange="onChange"
+        let-selected="selected"
+        let-total="total"
+      >
+        <core-checkbox
+          [style.margin-left.px]="level * 24"
+          [style.margin-bottom.px]="4"
+          [indeterminate]="indeterminate"
+          size="normal"
+          [ngModel]="checked"
+          (ngModelChange)="onChange(node)"
+        >
+          {{ this.getId(node) }}
+          ({{
+            this.getChildren(node).length
+              ? selected + ' / ' + total
+              : total
+          }})
+        </core-checkbox>
+      </ng-template>
+    `,
+  }),
   args: createArgs({}),
 };
 
 export const someSelected: StoryObj<
   InternalCountedSelectionTreeComponent<TestItem>
 > = {
-  render: Template,
-
+  ...noneSelected,
   args: createArgs({
     tree: new CountedSelectionTree(
       AFRICA,
@@ -131,8 +124,7 @@ export const someSelected: StoryObj<
 export const allSelected: StoryObj<
   InternalCountedSelectionTreeComponent<TestItem>
 > = {
-  render: Template,
-
+  ...noneSelected,
   args: createArgs({
     tree: new CountedSelectionTree(
       AFRICA,
@@ -147,23 +139,15 @@ export const allSelected: StoryObj<
 export const withCustomStyling: StoryObj<
   InternalCountedSelectionTreeComponent<TestItem>
 > = {
-  render: Template,
-
+  ...noneSelected,
   args: createArgs({
-    ids: [],
     className: 'custom-selection-tree',
   }),
 };
 
-type Args = Partial<InternalCountedSelectionTreeComponent<TestItem>> & {
-  className?: string;
-};
-
-function createArgs(
-  {
-    tree = new CountedSelectionTree(AFRICA, getId, getChildren, getTargetCount),
-    className = '',
-  } = {} as Args
-): Args {
+function createArgs({
+  tree = new CountedSelectionTree(AFRICA, getId, getChildren, getTargetCount),
+  className = '',
+} = {}) {
   return { tree, className };
 }
