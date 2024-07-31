@@ -1,1 +1,2 @@
-export * from './lib/oxioracle-feature-shell/oxioracle-feature-shell.component';
+export * from './lib/nav/nav.component';
+export * from './lib/shell/shell.component';
