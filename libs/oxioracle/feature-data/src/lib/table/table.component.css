@@ -1,0 +1,11 @@
+:host {
+  display: block;
+  overflow: auto;
+  height: 100%;
+}
+
+.container {
+  margin: 0 auto 32px;
+  width: 80%;
+  max-width: 1536px;
+}
