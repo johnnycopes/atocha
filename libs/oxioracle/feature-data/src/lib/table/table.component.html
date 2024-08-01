@@ -1,11 +1,11 @@
 <div class="container">
   <table
     *ngIf="dataSource$ | async as dataSource"
+    class="table mat-elevation-z0"
     mat-table
     matSort
     [dataSource]="dataSource"
     (matSortChange)="announceSortChange($event)"
-    class="mat-elevation-z8"
   >
     <ng-container matColumnDef="id">
       <th
@@ -19,7 +19,6 @@
       <td mat-cell *matCellDef="let element">{{ element.id }}</td>
     </ng-container>
 
-    <!-- Name Column -->
     <ng-container matColumnDef="userId">
       <th
         mat-header-cell
