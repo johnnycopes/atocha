@@ -35,7 +35,12 @@ export class TableComponent implements AfterViewInit {
   vm$ = combineLatest([this._dataSource$, this._sort$]).pipe(
     map(([dataSource, sort]) => ({ dataSource, sort }))
   );
-  displayedColumns: string[] = ['id', 'userId', 'title', 'completed'];
+  readonly displayedColumns: readonly string[] = [
+    'id',
+    'userId',
+    'title',
+    'completed',
+  ];
 
   constructor(
     private _liveAnnouncer: LiveAnnouncer,
