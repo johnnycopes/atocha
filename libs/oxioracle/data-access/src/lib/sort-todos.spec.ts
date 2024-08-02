@@ -18,6 +18,12 @@ describe('sortTodos', () => {
     ).toStrictEqual([...todos]);
   });
 
+  it('throws error with invalid key', () => {
+    expect(() =>
+      sortTodos(todos, { active: 'BOGUS', direction: 'asc' })
+    ).toThrow();
+  });
+
   describe('by ID', () => {
     it('ascending', () => {
       expect(
