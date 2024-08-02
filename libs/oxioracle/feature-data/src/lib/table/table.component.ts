@@ -45,7 +45,7 @@ export class TableComponent implements AfterViewInit {
   }
 
   onSort(sortState: Sort) {
-    console.log(sortState);
+    this._todoService.updateSort(sortState);
     this._announceSortChange(sortState);
   }
 
