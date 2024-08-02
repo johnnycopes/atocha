@@ -15,16 +15,14 @@ export class TodoForm extends FormGroup<Form<EditableTodo>> {
   readonly title = this.controls.title;
   readonly completed = this.controls.completed;
 
-  get userIdError(): string {
-    return this.userId.touched && this.userId.errors?.[Validators.required.name]
-      ? 'User ID is required'
-      : '';
+  get userIdError(): boolean {
+    return (
+      this.userId.touched && this.userId.errors?.[Validators.required.name]
+    );
   }
 
-  get titleError(): string {
-    return this.title.touched && this.title?.errors?.[Validators.required.name]
-      ? 'Title is required'
-      : '';
+  get titleError(): boolean {
+    return this.title.touched && this.title?.errors?.[Validators.required.name];
   }
 
   constructor(

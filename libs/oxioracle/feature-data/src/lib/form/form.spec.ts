@@ -17,37 +17,37 @@ describe('TodoForm', () => {
 
   describe('userId', () => {
     it('is valid if blank and untouched', () => {
-      expect(form.userIdError).toBe('');
+      expect(form.userIdError).toBe(false);
     });
 
     it('is valid if filled out', () => {
       form.patchValue({ userId: '3' });
 
-      expect(form.userIdError).toBe('');
+      expect(form.userIdError).toBe(false);
     });
 
     it('has error if blank and touched', () => {
       form.userId.markAsTouched();
 
-      expect(form.userIdError).toBe('User ID is required');
+      expect(form.userIdError).toBe(true);
     });
   });
 
   describe('title', () => {
     it('is valid if blank and untouched', () => {
-      expect(form.titleError).toBe('');
+      expect(form.titleError).toBe(false);
     });
 
     it('is valid if filled out', () => {
       form.patchValue({ title: 'My task' });
 
-      expect(form.titleError).toBe('');
+      expect(form.titleError).toBe(false);
     });
 
     it('has error if blank and touched', () => {
       form.title.markAsTouched();
 
-      expect(form.titleError).toBe('Title is required');
+      expect(form.titleError).toBe(true);
     });
   });
 
