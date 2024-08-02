@@ -49,7 +49,7 @@ export class TodoService {
       ...todo,
       id: this._generateUUID(),
     };
-    this._todos.transformProp('todos', (todos) => [newTodo, ...todos]);
+    this._todos.transformProp('todos', (todos) => [...todos, newTodo]);
   }
 
   updateSort(sort: Sort) {
