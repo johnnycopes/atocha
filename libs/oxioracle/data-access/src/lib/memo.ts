@@ -1,4 +1,4 @@
-export function memo(start: number) {
+export function memo(start = 0) {
   let value = start;
 
   return function increment() {

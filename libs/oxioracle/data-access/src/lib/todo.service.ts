@@ -3,9 +3,10 @@ import { first, map, Observable, tap } from 'rxjs';
 import { Sort } from '@angular/material/sort';
 
 import { State } from '@atocha/core/data-access';
-import { EditableTodo, memo, Todo } from '@atocha/oxioracle/util';
+import { EditableTodo, Todo } from '@atocha/oxioracle/util';
 import { ApiService } from './api.service';
 import { mapTodoDtoToTodo } from './map-todo-dto-to-todo';
+import { memo } from './memo';
 import { sortTodos } from './sort-todos';
 
 type SortState = Sort | null;
