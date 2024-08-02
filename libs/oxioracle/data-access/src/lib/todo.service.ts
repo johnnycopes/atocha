@@ -41,6 +41,10 @@ export class TodoService {
     );
   }
 
+  addTodo(todo: Todo) {
+    this._todos.transformProp('todos', (todos) => [todo, ...todos]);
+  }
+
   updateSort(sort: Sort) {
     this._todos.updateProp('sort', sort.direction === '' ? null : sort);
   }
