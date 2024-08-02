@@ -3,9 +3,10 @@ import { first, map, Observable, tap } from 'rxjs';
 import { Sort } from '@angular/material/sort';
 
 import { State } from '@atocha/core/data-access';
-import { Todo } from '@atocha/oxioracle/util';
+import { EditableTodo, Todo } from '@atocha/oxioracle/util';
 import { ApiService } from './api.service';
 import { mapTodoDtoToTodo } from './map-todo-dto-to-todo';
+import { memo } from './memo';
 import { sortTodos } from './sort-todos';
 
 type SortState = Sort | null;
@@ -17,6 +18,8 @@ export class TodoService {
     todos: [],
     sort: null,
   });
+  private _generateUUID = memo(this._apiService.startingTodoId);
+
   todos$ = this._todos.getProp('todos');
   sort$ = this._todos.getProp('sort');
   sortedTodos$ = this._todos
@@ -39,6 +42,14 @@ export class TodoService {
       map((dtos) => dtos.map(mapTodoDtoToTodo)),
       tap((todos) => this._todos.updateProp('todos', todos))
     );
+  }
+
+  addTodo(todo: EditableTodo) {
+    const newTodo = {
+      ...todo,
+      id: this._generateUUID(),
+    };
+    this._todos.transformProp('todos', (todos) => [...todos, newTodo]);
   }
 
   updateSort(sort: Sort) {
