@@ -4,7 +4,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { TodoForm } from './form';
 import { TodoService } from '@atocha/oxioracle/data-access';
-import { Todo } from '@atocha/oxioracle/util';
 
 @Component({
   standalone: true,
@@ -20,11 +19,7 @@ export class FormComponent {
   constructor(private _todoService: TodoService) {}
 
   onSubmit() {
-    const todo: Todo = {
-      ...this.form.getRawValue(),
-      id: '181818',
-    };
-    this._todoService.addTodo(todo);
+    this._todoService.addTodo(this.form.getRawValue());
     this.form.reset();
   }
 }

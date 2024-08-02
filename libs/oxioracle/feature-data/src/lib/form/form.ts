@@ -6,9 +6,7 @@ import {
 } from '@angular/forms';
 
 import { Form } from '@atocha/core/ui';
-import { Todo } from '@atocha/oxioracle/util';
-
-export type EditableTodo = Omit<Todo, 'id'>;
+import { EditableTodo } from '@atocha/oxioracle/util';
 
 export class TodoForm extends FormGroup<Form<EditableTodo>> {
   readonly userId = this.controls.userId;

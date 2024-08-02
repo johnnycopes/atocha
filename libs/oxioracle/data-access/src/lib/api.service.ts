@@ -5,6 +5,7 @@ import { TodoDto } from './todo-dto.interface';
 
 @Injectable({ providedIn: 'root' })
 export class ApiService {
+  readonly startingTodoId = 201; // the API call returns 200 todos
   private readonly _countriesApiUrl =
     'https://jsonplaceholder.typicode.com/todos';
 
