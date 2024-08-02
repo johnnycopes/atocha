@@ -1,11 +1,13 @@
 <div class="container">
   {{ sort }}
   <table
-    *ngIf="dataSource$ | async as dataSource"
+    *ngIf="vm$ | async as vm"
     class="table mat-elevation-z0"
     mat-table
     matSort
-    [dataSource]="dataSource"
+    [matSortActive]="vm.sort?.active ?? ''"
+    [matSortDirection]="vm.sort?.direction ?? ''"
+    [dataSource]="vm.dataSource"
     (matSortChange)="onSort($event)"
   >
     <ng-container matColumnDef="id">

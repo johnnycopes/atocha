@@ -17,6 +17,7 @@ export class TodoService {
     sort: null,
   });
   todos$ = this._todos.getProp('todos');
+  sort$ = this._todos.getProp('sort');
 
   constructor(private _apiService: ApiService) {}
 
