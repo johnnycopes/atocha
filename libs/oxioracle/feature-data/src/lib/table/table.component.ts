@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 import { MatSort, MatSortModule, Sort } from '@angular/material/sort';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
-import { map } from 'rxjs';
+import { combineLatest, map } from 'rxjs';
 
 import { TodoService } from '@atocha/oxioracle/data-access';
 import { Todo } from '@atocha/oxioracle/util';
@@ -22,16 +22,25 @@ import { Todo } from '@atocha/oxioracle/util';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TableComponent implements AfterViewInit {
-  displayedColumns: string[] = ['id', 'userId', 'title', 'completed'];
-
   private _dataSource = new MatTableDataSource<Todo>();
-  dataSource$ = this._todoService.todos$.pipe(
+  private _dataSource$ = this._todoService.todos$.pipe(
     map((todos) => {
       const dataSource = this._dataSource;
       dataSource.data = todos;
       return dataSource;
     })
   );
+  private _sort$ = this._todoService.sort$;
+
+  vm$ = combineLatest([this._dataSource$, this._sort$]).pipe(
+    map(([dataSource, sort]) => ({ dataSource, sort }))
+  );
+  readonly displayedColumns: readonly string[] = [
+    'id',
+    'userId',
+    'title',
+    'completed',
+  ];
 
   constructor(
     private _liveAnnouncer: LiveAnnouncer,
@@ -44,7 +53,12 @@ export class TableComponent implements AfterViewInit {
     this._dataSource.sort = this.sort;
   }
 
-  announceSortChange(sortState: Sort) {
+  onSort(sortState: Sort) {
+    this._todoService.updateSort(sortState);
+    this._announceSortChange(sortState);
+  }
+
+  private _announceSortChange(sortState: Sort) {
     if (sortState.direction) {
       this._liveAnnouncer.announce(`Sorted ${sortState.direction}ending`);
     } else {

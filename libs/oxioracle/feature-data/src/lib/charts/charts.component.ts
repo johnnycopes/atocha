@@ -12,7 +12,7 @@ import { TodoService } from '@atocha/oxioracle/data-access';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ChartsComponent {
-  todos$ = this._todoService.todos$;
+  todos$ = this._todoService.sortedTodos$;
 
   constructor(private _todoService: TodoService) {}
 }
