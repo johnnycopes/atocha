@@ -3,6 +3,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { TodoForm } from './form';
+import { TodoService } from '@atocha/oxioracle/data-access';
+import { Todo } from '@atocha/oxioracle/util';
 
 @Component({
   standalone: true,
@@ -15,7 +17,14 @@ import { TodoForm } from './form';
 export class FormComponent {
   readonly form = new TodoForm();
 
-  addTodo() {
-    console.log(this.form.getRawValue());
+  constructor(private _todoService: TodoService) {}
+
+  onSubmit() {
+    const todo: Todo = {
+      ...this.form.getRawValue(),
+      id: '181818',
+    };
+    this._todoService.addTodo(todo);
+    this.form.reset();
   }
 }
