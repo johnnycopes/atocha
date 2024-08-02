@@ -16,4 +16,5 @@ import { ROUTES } from '@atocha/oxioracle/data-access';
 export class NavComponent {
   readonly tableLink = ROUTES.table;
   readonly chartsLink = ROUTES.charts;
+  readonly formLink = ROUTES.form;
 }

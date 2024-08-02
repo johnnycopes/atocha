@@ -26,6 +26,13 @@ export const APP_ROUTES: Routes = [
             (m) => m.ChartsComponent
           ),
       },
+      {
+        path: `${ROUTES.form}`,
+        title: 'Oxioracle | Form',
+        data: { state: ROUTES.form },
+        loadComponent: () =>
+          import('@atocha/oxioracle/feature-data').then((m) => m.FormComponent),
+      },
     ],
   },
 ];
