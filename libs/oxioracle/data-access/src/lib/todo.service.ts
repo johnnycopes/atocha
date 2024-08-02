@@ -6,6 +6,7 @@ import { State } from '@atocha/core/data-access';
 import { Todo } from '@atocha/oxioracle/util';
 import { ApiService } from './api.service';
 import { mapTodoDtoToTodo } from './map-todo-dto-to-todo';
+import { sortTodos } from './sort-todos';
 
 type SortState = Sort | null;
 
@@ -18,6 +19,11 @@ export class TodoService {
   });
   todos$ = this._todos.getProp('todos');
   sort$ = this._todos.getProp('sort');
+  sortedTodos$ = this._todos
+    .get()
+    .pipe(
+      map(({ todos, sort }) => (sort === null ? todos : sortTodos(todos, sort)))
+    );
 
   constructor(private _apiService: ApiService) {}
 
