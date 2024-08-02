@@ -44,7 +44,12 @@ export class TableComponent implements AfterViewInit {
     this._dataSource.sort = this.sort;
   }
 
-  announceSortChange(sortState: Sort) {
+  onSort(sortState: Sort) {
+    console.log(sortState);
+    this._announceSortChange(sortState);
+  }
+
+  private _announceSortChange(sortState: Sort) {
     if (sortState.direction) {
       this._liveAnnouncer.announce(`Sorted ${sortState.direction}ending`);
     } else {
