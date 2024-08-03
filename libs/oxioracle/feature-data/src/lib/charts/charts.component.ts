@@ -8,8 +8,7 @@ import { TodoService } from '@atocha/oxioracle/data-access';
 import { groupBy, Todo } from '@atocha/oxioracle/util';
 
 interface PieChart {
-  datasets: [{ data: number[] }];
-  labels: string[];
+  data: ChartConfiguration<'pie'>['data'];
   options: ChartOptions<'pie'>;
 }
 
@@ -64,8 +63,10 @@ export class ChartsComponent {
       const completed = todos.filter((todo) => todo.completed).length;
       const data = [completed, todos.length - completed];
       return {
-        datasets: [{ data }],
-        labels: ['Completed', 'Not completed'],
+        data: {
+          datasets: [{ data }],
+          labels: ['Completed', 'Not completed'],
+        },
         options: { responsive: true },
       };
     })

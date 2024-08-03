@@ -10,7 +10,6 @@
   *ngIf="pieChart$ | async as chart"
   baseChart
   type="pie"
-  [datasets]="chart.datasets"
-  [labels]="chart.labels"
+  [data]="chart.data"
   [options]="chart.options"
 ></canvas>
