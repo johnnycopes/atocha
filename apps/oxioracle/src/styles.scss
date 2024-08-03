@@ -37,12 +37,14 @@ $oxioracle-theme: mat.define-theme(
 
   // Styling
   --font: 'Raleway', sans-serif;
+  --border-radius: 12px;
 
   // Colors
   --bg-dark: #012730;
   --bg-med: #094677;
   --primary: #87fac8;
   --input: #e2e0e1;
+  --success: #48b586;
   --error: #d40c0c;
   --text: #fff;
 }

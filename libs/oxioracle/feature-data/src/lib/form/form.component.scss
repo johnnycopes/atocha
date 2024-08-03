@@ -32,6 +32,8 @@ label {
 .input {
   margin: 0;
   border: 2px solid var(--input);
+  padding: 8px;
+  font-size: 16px;
 }
 
 .input-error {
@@ -43,10 +45,6 @@ label {
   color: var(--error);
   font-weight: 700;
   font-size: 12px;
-}
-
-input.input {
-  padding: 8px;
 }
 
 .button {
@@ -64,4 +62,24 @@ input.input {
 .button:hover {
   background: var(--primary);
   color: var(--bg-dark);
+}
+
+.success {
+  background: var(--success);
+  text-align: center;
+  color: var(--text);
+  padding: 16px;
+  border-radius: var(--border-radius);
+  position: absolute;
+  top: 0;
+  width: 384px;
+  left: 50%;
+  transform: translate(-50%, -100%);
+  transition: 200ms all ease-in-out;
+  opacity: 0;
+}
+
+.success.show {
+  transform: translate(-50%, 32px);
+  opacity: 1;
 }

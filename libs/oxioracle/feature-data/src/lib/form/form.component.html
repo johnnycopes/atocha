@@ -35,5 +35,9 @@
     </div>
 
     <button class="button">Submit</button>
+
+    <div class="success" [class.show]="feedback$ | async">
+      Todo added successfully!
+    </div>
   </form>
 </div>
