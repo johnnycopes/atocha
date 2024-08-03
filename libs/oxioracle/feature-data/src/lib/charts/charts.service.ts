@@ -8,7 +8,7 @@ import {
   ChartTypeRegistry,
 } from 'chart.js';
 
-import { groupBy } from '@atocha/core/util';
+import { groupBy } from './group-by';
 
 export interface Chart<T extends ChartType = keyof ChartTypeRegistry> {
   data: ChartConfiguration<T>['data'];
