@@ -2,20 +2,23 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { BaseChartDirective } from 'ng2-charts';
-import { ChartConfiguration, ChartOptions } from 'chart.js';
+import {
+  ChartConfiguration,
+  ChartOptions,
+  ChartType,
+  ChartTypeRegistry,
+} from 'chart.js';
 
 import { TodoService } from '@atocha/oxioracle/data-access';
 import { groupBy, Todo } from '@atocha/oxioracle/util';
 
-interface PieChart {
-  data: ChartConfiguration<'pie'>['data'];
-  options: ChartOptions<'pie'>;
+interface Chart<T extends ChartType = keyof ChartTypeRegistry> {
+  data: ChartConfiguration<T>['data'];
+  options: ChartOptions<T>;
 }
 
-interface BarChart {
-  data: ChartConfiguration<'bar'>['data'];
-  options: ChartOptions<'bar'>;
-}
+type BarChart = Chart<'bar'>;
+type PieChart = Chart<'pie'>;
 
 @Component({
   standalone: true,
