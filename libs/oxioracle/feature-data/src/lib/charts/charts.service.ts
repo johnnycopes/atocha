@@ -52,7 +52,9 @@ export class ChartsService {
             title: {
               display: true,
               text: `Todos by User ID (${todos.length} total)`,
+              font: { family: 'Raleway, sans-serif' },
             },
+            legend: { labels: { font: { family: 'Raleway, sans-serif' } } },
           },
         },
         type: 'bar',
@@ -72,7 +74,12 @@ export class ChartsService {
         options: {
           responsive: true,
           plugins: {
-            title: { display: true, text: `All todos (${todos.length} total)` },
+            title: {
+              display: true,
+              text: `All todos (${todos.length} total)`,
+              font: { family: 'Raleway, sans-serif' },
+            },
+            legend: { labels: { font: { family: 'Raleway, sans-serif' } } },
           },
         },
         type: 'pie',
