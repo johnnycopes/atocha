@@ -21,6 +21,10 @@ type PieChart = Chart<'pie'>;
 
 @Injectable()
 export class ChartsService {
+  private readonly _todoColor = '#ffcd56';
+  private readonly _completedTodoColor = '#36a2eb';
+  private readonly _incompleteTodoColor = '#ff6384';
+
   barChart$: Observable<BarChart> = this._todoService.todos$.pipe(
     map((todos) => {
       const todosByUser = groupBy<Todo>(todos, 'userId');
@@ -30,18 +34,24 @@ export class ChartsService {
             {
               data: Object.values(todosByUser).map((todos) => todos.length),
               label: 'All todos',
+              backgroundColor: this._todoColor,
+              borderColor: this._todoColor,
             },
             {
               data: Object.values(todosByUser).map(
                 (todos) => todos.filter((todo) => todo.completed).length
               ),
               label: 'Completed todos',
+              backgroundColor: this._completedTodoColor,
+              borderColor: this._completedTodoColor,
             },
             {
               data: Object.values(todosByUser).map(
                 (todos) => todos.filter((todo) => !todo.completed).length
               ),
               label: 'Incomplete todos',
+              backgroundColor: this._incompleteTodoColor,
+              borderColor: this._incompleteTodoColor,
             },
           ],
           labels: Object.keys(todosByUser),
@@ -68,7 +78,15 @@ export class ChartsService {
       const data = [completed, todos.length - completed];
       return {
         data: {
-          datasets: [{ data }],
+          datasets: [
+            {
+              data,
+              backgroundColor: [
+                this._completedTodoColor,
+                this._incompleteTodoColor,
+              ],
+            },
+          ],
           labels: ['Completed', 'Not completed'],
         },
         options: {
