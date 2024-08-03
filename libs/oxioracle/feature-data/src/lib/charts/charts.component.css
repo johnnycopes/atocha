@@ -1,0 +1,18 @@
+:host {
+  display: block;
+}
+
+.charts {
+  display: flex;
+  gap: 32px;
+}
+
+.bar-chart {
+  position: relative;
+  width: 70%;
+}
+
+.pie-chart {
+  position: relative;
+  width: 30%;
+}
