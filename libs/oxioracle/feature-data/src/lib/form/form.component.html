@@ -1,5 +1,6 @@
 <div class="container">
-  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <form class="form" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <h2 class="title">Add a new todo</h2>
     <div class="field">
       <label>
         <span class="field-name">User ID</span>
@@ -17,7 +18,9 @@
     <div class="field">
       <label>
         <span class="field-name">Completed</span>
-        <input class="input" formControlName="completed" type="checkbox" />
+        <div class="checkbox">
+          <input class="input" formControlName="completed" type="checkbox" />
+        </div>
       </label>
     </div>
 
