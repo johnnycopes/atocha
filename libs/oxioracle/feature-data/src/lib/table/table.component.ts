@@ -32,8 +32,16 @@ export class TableComponent implements AfterViewInit {
   );
   private _sort$ = this._todoService.sort$;
 
-  vm$ = combineLatest([this._dataSource$, this._sort$]).pipe(
-    map(([dataSource, sort]) => ({ dataSource, sort }))
+  vm$ = combineLatest([
+    this._todoService.todos$,
+    this._dataSource$,
+    this._sort$,
+  ]).pipe(
+    map(([todos, dataSource, sort]) => ({
+      total: todos.length,
+      dataSource,
+      sort,
+    }))
   );
   readonly displayedColumns: readonly string[] = [
     'id',

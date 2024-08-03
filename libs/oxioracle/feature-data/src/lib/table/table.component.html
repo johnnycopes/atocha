@@ -1,4 +1,5 @@
-<div class="container">
+<div *ngIf="vm$ | async as vm" class="container">
+  <h2 class="header">All todos ({{ vm.total }} total)</h2>
   <table
     *ngIf="vm$ | async as vm"
     class="table mat-elevation-z0"

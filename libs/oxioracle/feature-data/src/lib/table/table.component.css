@@ -3,3 +3,11 @@
   overflow: auto;
   height: 100%;
 }
+
+.header {
+  text-align: center;
+}
+
+.mat-mdc-table {
+  background: #fff;
+}
