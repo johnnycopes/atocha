@@ -32,11 +32,16 @@ label {
 
 .input {
   margin: 0;
+  border: 2px solid var(--input);
+}
+
+.input-error {
+  border-color: var(--error);
 }
 
 .error {
   margin-top: 4px;
-  color: red;
+  color: var(--error);
   font-weight: 700;
   font-size: 12px;
 }

@@ -4,14 +4,24 @@
     <div class="field">
       <label>
         <span class="field-name">User ID</span>
-        <input class="input" formControlName="userId" type="text" />
+        <input
+          class="input"
+          [class.input-error]="form.userIdError"
+          formControlName="userId"
+          type="text"
+        />
       </label>
       <p *ngIf="form.userIdError" class="error">User ID must be filled out</p>
     </div>
     <div class="field">
       <label>
         <span class="field-name">Title</span>
-        <input class="input" formControlName="title" type="text" />
+        <input
+          class="input"
+          [class.input-error]="form.titleError"
+          formControlName="title"
+          type="text"
+        />
       </label>
       <p *ngIf="form.titleError" class="error">Title must be filled out</p>
     </div>
