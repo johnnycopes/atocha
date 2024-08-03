@@ -37,7 +37,19 @@ export class ChartsComponent {
           datasets: [
             {
               data: Object.values(todosByUser).map((todos) => todos.length),
-              label: 'Todos',
+              label: 'All todos',
+            },
+            {
+              data: Object.values(todosByUser).map(
+                (todos) => todos.filter((todo) => todo.completed).length
+              ),
+              label: 'Completed todos',
+            },
+            {
+              data: Object.values(todosByUser).map(
+                (todos) => todos.filter((todo) => !todo.completed).length
+              ),
+              label: 'Incomplete todos',
             },
           ],
           labels: Object.keys(todosByUser),
