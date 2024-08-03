@@ -46,7 +46,15 @@ export class ChartsService {
           ],
           labels: Object.keys(todosByUser),
         },
-        options: { responsive: true },
+        options: {
+          responsive: true,
+          plugins: {
+            title: {
+              display: true,
+              text: `Todos by User ID (${todos.length} total)`,
+            },
+          },
+        },
         type: 'bar',
       };
     })
@@ -61,7 +69,12 @@ export class ChartsService {
           datasets: [{ data }],
           labels: ['Completed', 'Not completed'],
         },
-        options: { responsive: true },
+        options: {
+          responsive: true,
+          plugins: {
+            title: { display: true, text: `All todos (${todos.length} total)` },
+          },
+        },
         type: 'pie',
       };
     })
