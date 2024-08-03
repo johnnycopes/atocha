@@ -2,8 +2,17 @@
   display: block;
 }
 
-.container {
+.charts {
+  display: flex;
+  gap: 32px;
+}
+
+.bar-chart {
   position: relative;
-  width: 50%;
-  margin: 0 auto;
+  width: 70%;
+}
+
+.pie-chart {
+  position: relative;
+  width: 30%;
 }
