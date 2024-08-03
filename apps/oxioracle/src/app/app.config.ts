@@ -7,6 +7,7 @@ import {
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { provideHttpClient } from '@angular/common/http';
 import { provideRouter } from '@angular/router';
+import { provideCharts, withDefaultRegisterables } from 'ng2-charts';
 
 import { APP_ROUTES } from './app.routes';
 import { TodoService } from '@atocha/oxioracle/data-access';
@@ -18,6 +19,7 @@ export const appConfig: ApplicationConfig = {
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideHttpClient(),
     provideRouter(APP_ROUTES),
+    provideCharts(withDefaultRegisterables()),
     importProvidersFrom([BrowserAnimationsModule]),
     {
       provide: APP_INITIALIZER,
