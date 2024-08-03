@@ -1,5 +1,8 @@
-<ul>
-  <li *ngFor="let todo of todos$ | async">
-    {{ todo.id }} | {{ todo.userId }} | {{ todo.title }} | {{ todo.completed }}
-  </li>
-</ul>
+<canvas
+  *ngIf="pieChart$ | async as chart"
+  baseChart
+  type="pie"
+  [datasets]="chart.datasets"
+  [labels]="chart.labels"
+  [options]="chart.options"
+></canvas>
