@@ -1,6 +1,6 @@
-import { groupBy } from '@atocha/core/util';
 import { Country } from '@atocha/globetrotter/shared/util';
 import { Region } from '@atocha/globetrotter/learn/util';
+import { groupBy } from '@atocha/core/util';
 
 export class Places {
   countries: Country[];
