@@ -10,7 +10,7 @@ export const APP_ROUTES: Routes = [
     children: [
       {
         path: `${ROUTES.table}`,
-        title: 'Oxioracle | Table',
+        title: 'OXIOracle | Table',
         data: { state: ROUTES.table },
         loadComponent: () =>
           import('@atocha/oxioracle/feature-data').then(
@@ -19,7 +19,7 @@ export const APP_ROUTES: Routes = [
       },
       {
         path: `${ROUTES.charts}`,
-        title: 'Oxioracle | Charts',
+        title: 'OXIOracle | Charts',
         data: { state: ROUTES.charts },
         loadComponent: () =>
           import('@atocha/oxioracle/feature-data').then(
@@ -28,7 +28,7 @@ export const APP_ROUTES: Routes = [
       },
       {
         path: `${ROUTES.form}`,
-        title: 'Oxioracle | Form',
+        title: 'OXIOracle | Form',
         data: { state: ROUTES.form },
         loadComponent: () =>
           import('@atocha/oxioracle/feature-data').then((m) => m.FormComponent),
