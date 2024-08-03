@@ -44,6 +44,10 @@ $oxioracle-theme: mat.define-theme(
 // @include mat.color-variants-backwards-compatibility($oxioracle-theme);
 :root {
   --font: 'Raleway', sans-serif;
+  --bg-dark: #012730;
+  --bg-med: #094677;
+  --primary: #87fac8;
+  --font: #fff;
 }
 
 *,
