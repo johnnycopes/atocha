@@ -19,6 +19,10 @@ export class FormComponent {
   constructor(private _todoService: TodoService) {}
 
   onSubmit() {
+    if (!this.form.valid) {
+      this.form.markAllAsTouched();
+      return;
+    }
     this._todoService.addTodo(this.form.getRawValue());
     this.form.reset();
   }

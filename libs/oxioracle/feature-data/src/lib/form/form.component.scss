@@ -16,6 +16,10 @@
   margin-bottom: 16px;
 }
 
+.field:last-of-type {
+  margin-bottom: 32px;
+}
+
 .field-name {
   margin-bottom: 4px;
 }
@@ -41,6 +45,19 @@ input.input {
   padding: 8px;
 }
 
-.button:disabled {
-  background: lightgray;
+.button {
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 500;
+  font-family: var(--font);
+  color: var(--text);
+  padding: 12px 24px;
+  border: 0;
+  background: var(--bg-dark);
+  cursor: pointer;
+}
+
+.button:hover {
+  background: var(--primary);
+  color: var(--bg-dark);
 }
