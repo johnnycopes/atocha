@@ -1,21 +1,23 @@
-<div class="charts">
-  <div class="bar-chart">
-    <canvas
-      *ngIf="barChart$ | async as chart"
-      baseChart
-      [type]="chart.type"
-      [data]="chart.data"
-      [options]="chart.options"
-    ></canvas>
-  </div>
+<div class="container">
+  <div class="charts">
+    <div class="bar-chart">
+      <canvas
+        *ngIf="barChart$ | async as chart"
+        baseChart
+        [type]="chart.type"
+        [data]="chart.data"
+        [options]="chart.options"
+      ></canvas>
+    </div>
 
-  <div class="pie-chart">
-    <canvas
-      *ngIf="pieChart$ | async as chart"
-      baseChart
-      [type]="chart.type"
-      [data]="chart.data"
-      [options]="chart.options"
-    ></canvas>
+    <div class="pie-chart">
+      <canvas
+        *ngIf="pieChart$ | async as chart"
+        baseChart
+        [type]="chart.type"
+        [data]="chart.data"
+        [options]="chart.options"
+      ></canvas>
+    </div>
   </div>
 </div>
