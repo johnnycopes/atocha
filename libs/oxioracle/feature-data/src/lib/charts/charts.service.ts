@@ -13,6 +13,7 @@ import { groupBy, Todo } from '@atocha/oxioracle/util';
 export interface Chart<T extends ChartType = keyof ChartTypeRegistry> {
   data: ChartConfiguration<T>['data'];
   options: ChartOptions<T>;
+  type: T;
 }
 
 type BarChart = Chart<'bar'>;
@@ -46,6 +47,7 @@ export class ChartsService {
           labels: Object.keys(todosByUser),
         },
         options: { responsive: true },
+        type: 'bar',
       };
     })
   );
@@ -60,6 +62,7 @@ export class ChartsService {
           labels: ['Completed', 'Not completed'],
         },
         options: { responsive: true },
+        type: 'pie',
       };
     })
   );

@@ -1,7 +1,7 @@
 <canvas
   *ngIf="barChart$ | async as chart"
   baseChart
-  type="bar"
+  [type]="chart.type"
   [data]="chart.data"
   [options]="chart.options"
 ></canvas>
@@ -9,7 +9,7 @@
 <canvas
   *ngIf="pieChart$ | async as chart"
   baseChart
-  type="pie"
+  [type]="chart.type"
   [data]="chart.data"
   [options]="chart.options"
 ></canvas>
