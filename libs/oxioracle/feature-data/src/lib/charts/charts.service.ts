@@ -8,7 +8,7 @@ import {
   ChartTypeRegistry,
 } from 'chart.js';
 
-import { groupBy, Todo } from '@atocha/oxioracle/util';
+import { groupBy } from '@atocha/core/util';
 
 export interface Chart<T extends ChartType = keyof ChartTypeRegistry> {
   data: ChartConfiguration<T>['data'];
@@ -27,7 +27,7 @@ export class ChartsService {
 
   barChart$: Observable<BarChart> = this._todoService.todos$.pipe(
     map((todos) => {
-      const todosByUser = groupBy<Todo>(todos, 'userId');
+      const todosByUser = groupBy(todos, 'userId');
       return {
         data: {
           datasets: [
