@@ -1,11 +1,22 @@
 :host {
   display: block;
+}
+
+.form {
   margin: 0 auto;
-  width: 80%;
+  max-width: 512px;
+}
+
+.title {
+  margin-bottom: 24px;
 }
 
 .field {
   margin-bottom: 16px;
+}
+
+.field:last-of-type {
+  margin-bottom: 48px;
 }
 
 .field-name {
@@ -15,25 +26,60 @@
 label {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
   font-size: 16px;
 }
 
 .input {
   margin: 0;
+  border: 2px solid var(--input);
+  padding: 8px;
+  font-size: 16px;
+}
+
+.input-error {
+  border-color: var(--error);
 }
 
 .error {
   margin-top: 4px;
-  color: red;
+  color: var(--error);
   font-weight: 700;
   font-size: 12px;
 }
 
-input.input {
-  padding: 8px;
+.button {
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 500;
+  font-family: var(--font);
+  color: var(--text);
+  padding: 12px 24px;
+  border: 0;
+  background: var(--bg-dark);
+  cursor: pointer;
 }
 
-.button:disabled {
-  background: lightgray;
+.button:hover {
+  background: var(--primary);
+  color: var(--bg-dark);
+}
+
+.success {
+  background: var(--success);
+  text-align: center;
+  color: var(--text);
+  padding: 16px;
+  border-radius: var(--border-radius);
+  position: absolute;
+  top: 0;
+  width: 384px;
+  left: 50%;
+  transform: translate(-50%, -100%);
+  transition: 200ms all ease-in-out;
+  opacity: 0;
+}
+
+.success.show {
+  transform: translate(-50%, 32px);
+  opacity: 1;
 }

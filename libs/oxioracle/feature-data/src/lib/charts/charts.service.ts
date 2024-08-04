@@ -21,9 +21,9 @@ type PieChart = Chart<'pie'>;
 
 @Injectable()
 export class ChartsService {
-  private readonly _todoColor = '#ffcd56';
-  private readonly _completedTodoColor = '#36a2eb';
-  private readonly _incompleteTodoColor = '#ff6384';
+  private readonly _todoColor = '#094677';
+  private readonly _completedTodoColor = '#48b586';
+  private readonly _incompleteTodoColor = '#d7d58e';
 
   barChart$: Observable<BarChart> = this._todoService.todos$.pipe(
     map((todos) => {
@@ -62,7 +62,7 @@ export class ChartsService {
             title: {
               display: true,
               text: `Todos by User ID (${todos.length} total)`,
-              font: { size: 20, weight: 400, family: 'Raleway, sans-serif' },
+              font: { size: 24, weight: 400, family: 'Raleway, sans-serif' },
             },
             legend: { labels: { font: { family: 'Raleway, sans-serif' } } },
           },
@@ -95,7 +95,7 @@ export class ChartsService {
             title: {
               display: true,
               text: `All todos (${todos.length} total)`,
-              font: { size: 20, weight: 400, family: 'Raleway, sans-serif' },
+              font: { size: 24, weight: 400, family: 'Raleway, sans-serif' },
             },
             legend: { labels: { font: { family: 'Raleway, sans-serif' } } },
           },

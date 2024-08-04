@@ -1,24 +1,43 @@
-<form [formGroup]="form" (ngSubmit)="onSubmit()">
-  <div class="field">
-    <label>
-      <span class="field-name">User ID</span>
-      <input class="input" formControlName="userId" type="text" />
-    </label>
-    <p *ngIf="form.userIdError" class="error">User ID must be filled out</p>
-  </div>
-  <div class="field">
-    <label>
-      <span class="field-name">Title</span>
-      <input class="input" formControlName="title" type="text" />
-    </label>
-    <p *ngIf="form.titleError" class="error">Title must be filled out</p>
-  </div>
-  <div class="field">
-    <label>
-      <span class="field-name">Completed</span>
-      <input class="input" formControlName="completed" type="checkbox" />
-    </label>
-  </div>
+<div class="container">
+  <form class="form" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <h2 class="title">Add a new todo</h2>
+    <div class="field">
+      <label>
+        <span class="field-name">User ID</span>
+        <input
+          class="input"
+          [class.input-error]="form.userIdError"
+          formControlName="userId"
+          type="text"
+        />
+      </label>
+      <p *ngIf="form.userIdError" class="error">User ID must be filled out</p>
+    </div>
+    <div class="field">
+      <label>
+        <span class="field-name">Title</span>
+        <input
+          class="input"
+          [class.input-error]="form.titleError"
+          formControlName="title"
+          type="text"
+        />
+      </label>
+      <p *ngIf="form.titleError" class="error">Title must be filled out</p>
+    </div>
+    <div class="field">
+      <label>
+        <span class="field-name">Completed</span>
+        <div class="checkbox">
+          <input class="input" formControlName="completed" type="checkbox" />
+        </div>
+      </label>
+    </div>
 
-  <button class="button" [disabled]="!form.valid">Submit</button>
-</form>
+    <button class="button">Submit</button>
+
+    <div class="success" [class.show]="feedback$ | async">
+      Todo added successfully!
+    </div>
+  </form>
+</div>

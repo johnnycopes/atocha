@@ -4,6 +4,16 @@
   align-items: center;
   padding: 0 32px;
   height: 64px;
+  background: var(--bg-dark);
+  color: var(--text);
+}
+
+.title {
+  font-size: 24px;
+}
+
+.heavy {
+  font-weight: 700;
 }
 
 ul {
@@ -21,12 +31,16 @@ a {
   cursor: pointer;
   padding: 0 32px;
   height: 100%;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
 }
 
 a:hover {
-  background: lightgray;
+  text-decoration: underline;
 }
 
 .active {
-  background: darkgray;
+  background: var(--primary);
+  color: var(--bg-dark);
 }
