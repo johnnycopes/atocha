@@ -1,12 +1,18 @@
-<h1 class="title"><span class="heavy">OXIO</span>racle</h1>
+<h1 class="title">
+  <a [coreExternalLink]="readmeLink"> <span class="heavy">OXIO</span>racle </a>
+</h1>
 <ul>
   <li>
-    <a [routerLink]="tableLink" routerLinkActive="active">Table</a>
+    <a class="route" [routerLink]="tableLink" routerLinkActive="active"
+      >Table</a
+    >
   </li>
   <li>
-    <a [routerLink]="chartsLink" routerLinkActive="active">Charts</a>
+    <a class="route" [routerLink]="chartsLink" routerLinkActive="active"
+      >Charts</a
+    >
   </li>
   <li>
-    <a [routerLink]="formLink" routerLinkActive="active">Form</a>
+    <a class="route" [routerLink]="formLink" routerLinkActive="active">Form</a>
   </li>
 </ul>
