@@ -11,7 +11,9 @@
           type="text"
         />
       </label>
-      <p *ngIf="form.userIdError" class="error">User ID must be filled out</p>
+      <div class="errors">
+        <p *ngIf="form.userIdError" class="error">User ID must be filled out</p>
+      </div>
     </div>
     <div class="field">
       <label>
@@ -23,7 +25,9 @@
           type="text"
         />
       </label>
-      <p *ngIf="form.titleError" class="error">Title must be filled out</p>
+      <div class="errors">
+        <p *ngIf="form.titleError" class="error">Title must be filled out</p>
+      </div>
     </div>
     <div class="field">
       <label>
