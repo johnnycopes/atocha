@@ -33,6 +33,11 @@ export const APP_ROUTES: Routes = [
         loadComponent: () =>
           import('@atocha/oxioracle/feature-data').then((m) => m.FormComponent),
       },
+      {
+        path: '',
+        redirectTo: ROUTES.table,
+        pathMatch: 'full',
+      },
     ],
   },
 ];
