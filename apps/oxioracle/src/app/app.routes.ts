@@ -1,7 +1,10 @@
 import { Routes } from '@angular/router';
 
 import { ROUTES } from '@atocha/oxioracle/data-access';
-import { ShellComponent } from '@atocha/oxioracle/feature-shell';
+import {
+  PageNotFoundComponent,
+  ShellComponent,
+} from '@atocha/oxioracle/feature-shell';
 
 export const APP_ROUTES: Routes = [
   {
@@ -37,6 +40,11 @@ export const APP_ROUTES: Routes = [
         path: '',
         redirectTo: ROUTES.table,
         pathMatch: 'full',
+      },
+      {
+        path: '**',
+        title: 'OXIOracle | Error',
+        component: PageNotFoundComponent,
       },
     ],
   },
