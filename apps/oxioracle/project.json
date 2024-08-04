@@ -81,7 +81,7 @@
       "executor": "@nx/web:file-server",
       "options": {
         "buildTarget": "oxioracle:build",
-        "port": 4200,
+        "port": 4700,
         "staticFilePath": "dist/apps/oxioracle/browser",
         "spa": true
       }
