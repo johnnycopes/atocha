@@ -12,6 +12,6 @@ export default defineConfig({
       },
       ciWebServerCommand: 'nx run oxioracle:serve-static',
     }),
-    baseUrl: 'http://localhost:4700',
+    baseUrl: 'http://localhost:4800',
   },
 });
