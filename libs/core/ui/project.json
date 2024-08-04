@@ -18,7 +18,7 @@
     "storybook": {
       "executor": "@storybook/angular:start-storybook",
       "options": {
-        "port": 4600,
+        "port": 4200,
         "configDir": "libs/core/ui/.storybook",
         "browserTarget": "core-ui:build-storybook",
         "compodoc": false
