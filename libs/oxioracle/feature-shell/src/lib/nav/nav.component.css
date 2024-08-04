@@ -1,15 +1,33 @@
 :host {
+  background: var(--bg-dark);
+  color: var(--text);
+  height: 48px;
+
+  @media screen and (min-width: 768px) {
+    height: 64px;
+  }
+}
+
+.wrapper {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 32px;
-  height: 64px;
-  background: var(--bg-dark);
-  color: var(--text);
+  margin: 0 auto;
+  padding: 0 16px;
+  height: 100%;
+
+  @media screen and (min-width: 768px) {
+    padding: 0 32px;
+    max-width: 1664px;
+  }
 }
 
 .title {
-  font-size: 24px;
+  font-size: 20px;
+
+  @media screen and (min-width: 768px) {
+    font-size: 24px;
+  }
 }
 
 .heavy {
@@ -33,11 +51,16 @@ a:hover {
   display: flex;
   align-items: center;
   cursor: pointer;
-  padding: 0 32px;
+  padding: 0 16px;
   height: 100%;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 500;
   cursor: pointer;
+
+  @media screen and (min-width: 768px) {
+    font-size: 16px;
+    padding: 0 32px;
+  }
 }
 
 .active {
