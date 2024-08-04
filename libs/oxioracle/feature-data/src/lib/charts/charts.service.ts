@@ -87,7 +87,7 @@ export class ChartsService {
               ],
             },
           ],
-          labels: ['Completed', 'Not completed'],
+          labels: ['Completed todos', 'Incomplete todos'],
         },
         options: {
           responsive: true,

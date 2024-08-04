@@ -1,17 +1,21 @@
+import { defineConfig } from 'cypress';
 import { nxE2EPreset } from '@nx/cypress/plugins/cypress-preset';
 
-import { defineConfig } from 'cypress';
-
+const cypressJsonConfig = {
+  fileServerFolder: '.',
+  fixturesFolder: './src/fixtures',
+  video: true,
+  videosFolder: '../../dist/cypress/apps/oxioracle-e2e/videos',
+  screenshotsFolder: '../../dist/cypress/apps/oxioracle-e2e/screenshots',
+  chromeWebSecurity: false,
+  baseUrl: 'http://localhost:4800',
+  specPattern: 'src/e2e/**/*.cy.{js,jsx,ts,tsx}',
+  supportFile: 'src/support/e2e.ts',
+};
 export default defineConfig({
   e2e: {
-    ...nxE2EPreset(__filename, {
-      cypressDir: 'src',
-      webServerCommands: {
-        default: 'nx run oxioracle:serve:development',
-        production: 'nx run oxioracle:serve:production',
-      },
-      ciWebServerCommand: 'nx run oxioracle:serve-static',
-    }),
-    baseUrl: 'http://localhost:4200',
+    ...nxE2EPreset(__filename),
+    ...cypressJsonConfig,
+    testIsolation: true,
   },
 });

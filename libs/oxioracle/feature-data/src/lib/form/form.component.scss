@@ -40,8 +40,12 @@ label {
   border-color: var(--error);
 }
 
-.error {
+.errors {
   margin-top: 4px;
+  height: 16px;
+}
+
+.error {
   color: var(--error);
   font-weight: 700;
   font-size: 12px;

@@ -1,12 +1,36 @@
-<h1 class="title"><span class="heavy">OXIO</span>racle</h1>
-<ul>
-  <li>
-    <a [routerLink]="tableLink" routerLinkActive="active">Table</a>
-  </li>
-  <li>
-    <a [routerLink]="chartsLink" routerLinkActive="active">Charts</a>
-  </li>
-  <li>
-    <a [routerLink]="formLink" routerLinkActive="active">Form</a>
-  </li>
-</ul>
+<nav class="wrapper">
+  <h1 class="title">
+    <a [coreExternalLink]="readmeLink" data-test="app-name">
+      <span class="heavy">OXIO</span>racle
+    </a>
+  </h1>
+  <ul>
+    <li>
+      <a
+        class="route"
+        [routerLink]="tableLink"
+        routerLinkActive="active"
+        data-test="table-link"
+        >Table</a
+      >
+    </li>
+    <li>
+      <a
+        class="route"
+        [routerLink]="chartsLink"
+        routerLinkActive="active"
+        data-test="charts-link"
+        >Charts</a
+      >
+    </li>
+    <li>
+      <a
+        class="route"
+        [routerLink]="formLink"
+        routerLinkActive="active"
+        data-test="form-link"
+        >Form</a
+      >
+    </li>
+  </ul>
+</nav>
