@@ -133,8 +133,17 @@ body {
 }
 
 .container {
-  margin: 0 auto 32px;
-  padding-top: 64px;
-  width: 80%;
+  margin: 0 auto;
+  padding-bottom: 32px;
+  padding-top: 32px;
+  padding-left: 8px;
+  padding-right: 8px;
   max-width: 1536px;
+
+  @media screen and (min-width: 768px) {
+    padding-top: 64px;
+    padding-left: unset;
+    padding-right: unset;
+    width: 80%;
+  }
 }
