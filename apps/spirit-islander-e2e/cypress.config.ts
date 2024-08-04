@@ -8,7 +8,7 @@ const cypressJsonConfig = {
   videosFolder: '../../dist/cypress/apps/spirit-islander-e2e/videos',
   screenshotsFolder: '../../dist/cypress/apps/spirit-islander-e2e/screenshots',
   chromeWebSecurity: false,
-  baseUrl: 'http://localhost:4500',
+  baseUrl: 'http://localhost:4700',
   specPattern: 'src/e2e/**/*.cy.{js,jsx,ts,tsx}',
   supportFile: 'src/support/e2e.ts',
 };
