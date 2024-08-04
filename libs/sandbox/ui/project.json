@@ -20,7 +20,7 @@
     "storybook": {
       "executor": "@storybook/angular:start-storybook",
       "options": {
-        "port": 4400,
+        "port": 4100,
         "configDir": "libs/sandbox/ui/.storybook",
         "browserTarget": "sandbox-ui:build-storybook",
         "compodoc": false
