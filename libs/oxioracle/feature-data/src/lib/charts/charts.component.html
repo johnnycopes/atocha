@@ -1,6 +1,6 @@
 <div class="container">
   <div class="charts">
-    <div class="bar-chart">
+    <div class="bar-chart" data-test="bar-chart">
       <canvas
         *ngIf="barChart$ | async as chart"
         baseChart
@@ -10,7 +10,7 @@
       ></canvas>
     </div>
 
-    <div class="pie-chart">
+    <div class="pie-chart" data-test="pie-chart">
       <canvas
         *ngIf="pieChart$ | async as chart"
         baseChart

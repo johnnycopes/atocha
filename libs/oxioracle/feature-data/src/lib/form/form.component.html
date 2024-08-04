@@ -1,5 +1,10 @@
 <div class="container">
-  <form class="form" [formGroup]="form" (ngSubmit)="onSubmit()">
+  <form
+    class="form"
+    data-test="form"
+    [formGroup]="form"
+    (ngSubmit)="onSubmit()"
+  >
     <h2 class="title">Add a new todo</h2>
     <div class="field">
       <label>

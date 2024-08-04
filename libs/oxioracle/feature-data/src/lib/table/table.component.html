@@ -3,6 +3,7 @@
   <table
     *ngIf="vm$ | async as vm"
     class="table mat-elevation-z0"
+    data-test="table"
     mat-table
     matSort
     [matSortActive]="vm.sort?.active ?? ''"
