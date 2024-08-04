@@ -8,7 +8,7 @@ const cypressJsonConfig = {
   videosFolder: '../../dist/cypress/apps/lorenzo-e2e/videos',
   screenshotsFolder: '../../dist/cypress/apps/lorenzo-e2e/screenshots',
   chromeWebSecurity: false,
-  baseUrl: 'http://localhost:4500',
+  baseUrl: 'http://localhost:4600',
   specPattern: 'src/e2e/**/*.cy.{js,jsx,ts,tsx}',
   supportFile: 'src/support/e2e.ts',
 };
