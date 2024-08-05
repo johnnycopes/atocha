@@ -4,9 +4,8 @@ describe('oxioracle-e2e', () => {
   it('has README link', () => {
     cy.get('[data-test="app-name"')
       .should('have.attr', 'href')
-      .and('include', 'README');
-    // TODO: add after README file is created
-    // .then((href) => cy.visit(String(href)));
+      .and('include', 'README')
+      .then((href) => cy.visit(String(href)));
   });
 
   describe('loads table route', () => {
