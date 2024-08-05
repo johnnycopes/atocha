@@ -4,6 +4,7 @@ A coding challenge submission by [John Coppola](https://www.johnnycopes.com/).
 
 ## Links
 
+1. [Live site](https://oxioracle.surge.sh)
 1. [GitHub codespaces](https://probable-robot-5grv69jwjx5c4j6.github.dev/)
 1. [Commit history](https://github.com/johnnycopes/atocha/pull/554/commits)
 1. [All code changes](https://github.com/johnnycopes/atocha/pull/554/files)
@@ -20,6 +21,7 @@ Locally on your machine:
 
 1. Run `git clone https://github.com/johnnycopes/atocha.git` to clone the project monorepo
 1. Run `npm install` in your terminal to install all dependencies
+1. Run `git checkout oxio` to access the feature branch
 1. Run `npm start oxioracle` to boot the application
 1. Visit http://localhost:4800 in your browser to see the application running
 
@@ -80,3 +82,21 @@ These can be run locally with `nx run-many -t test`. Examples:
 These can be run locally with `nx e2e oxioracle-e2e`. Example:
 
 1. The [navigation links and routes](https://github.com/johnnycopes/atocha/blob/oxio/apps/oxioracle-e2e/src/e2e/app.cy.ts)
+
+### Performance
+
+Some highlights as to what makes Oxioracle fast:
+
+1. Exactly one API call is made on app initialization. Afterwards, all data is managed locally
+2. All Angular components use the `OnPush` change detection strategy to avoid unnecessary re-renders
+3. The routing is technically not lazy-loaded, but it'd be easy to do so by splitting the feature components into separate Nx libraries. I didn't see it as necessary in this case because the application is small, but it's standard practice in real-world projects
+
+### Wish list
+
+If I'd had more time, I would have liked to:
+
+1. Improve the uniformity of the UI (make the table and charts look more integrated into the app)
+2. Come up with a more sophisticated way to integrate the form into the application. Putting it on its own page is sufficient, but feels a bit clunky
+3. Added more capabilities to the table, like searching
+4. Loaded more significant amounts of data into the app
+5. Created more charts
