@@ -97,6 +97,6 @@ If I'd had more time, I would have liked to:
 
 1. Improve the uniformity of the UI (make the table and charts look more integrated into the app)
 2. Come up with a more sophisticated way to integrate the form into the application. Putting it on its own page is sufficient, but feels a bit clunky
-3. Added more capabilities to the table, like searching
-4. Loaded more significant amounts of data into the app
-5. Created more charts
+3. Add more capabilities to the table, like searching
+4. Load more significant amounts of data into the app
+5. Create more charts
