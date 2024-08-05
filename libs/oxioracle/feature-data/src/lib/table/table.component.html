@@ -1,0 +1,65 @@
+<div *ngIf="vm$ | async as vm" class="container">
+  <h2 class="header">All todos ({{ vm.total }} total)</h2>
+  <table
+    *ngIf="vm$ | async as vm"
+    class="table mat-elevation-z0"
+    data-test="table"
+    mat-table
+    matSort
+    [matSortActive]="vm.sort?.active ?? ''"
+    [matSortDirection]="vm.sort?.direction ?? ''"
+    [dataSource]="vm.dataSource"
+    (matSortChange)="onSort($event)"
+  >
+    <ng-container matColumnDef="id">
+      <th
+        mat-header-cell
+        *matHeaderCellDef
+        mat-sort-header
+        sortActionDescription="Sort by ID"
+      >
+        ID
+      </th>
+      <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="userId">
+      <th
+        mat-header-cell
+        *matHeaderCellDef
+        mat-sort-header
+        sortActionDescription="Sort by user ID"
+      >
+        User ID
+      </th>
+      <td mat-cell *matCellDef="let element">{{ element.userId }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="title">
+      <th
+        mat-header-cell
+        *matHeaderCellDef
+        mat-sort-header
+        sortActionDescription="Sort by title"
+      >
+        Title
+      </th>
+      <td mat-cell *matCellDef="let element">{{ element.title }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="completed">
+      <th
+        mat-header-cell
+        *matHeaderCellDef
+        mat-sort-header
+        sortActionDescription="Sort by completed"
+      >
+        Completed
+      </th>
+      <td mat-cell *matCellDef="let element">{{ element.completed }}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+</div>

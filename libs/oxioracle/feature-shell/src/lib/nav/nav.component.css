@@ -1,0 +1,69 @@
+:host {
+  background: var(--bg-dark);
+  color: var(--text);
+  height: 48px;
+
+  @media screen and (min-width: 768px) {
+    height: 64px;
+  }
+}
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  padding: 0 8px;
+  height: 100%;
+
+  @media screen and (min-width: 768px) {
+    padding: 0 32px;
+    max-width: 1792px;
+  }
+}
+
+.title {
+  font-size: 20px;
+
+  @media screen and (min-width: 768px) {
+    font-size: 24px;
+  }
+}
+
+.heavy {
+  font-weight: 700;
+}
+
+ul {
+  display: flex;
+  height: 100%;
+}
+
+li {
+  height: 100%;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.route {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 0 16px;
+  height: 100%;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+
+  @media screen and (min-width: 768px) {
+    font-size: 16px;
+    padding: 0 32px;
+  }
+}
+
+.active {
+  background: var(--primary);
+  color: var(--bg-dark);
+}

@@ -1,0 +1,20 @@
+{
+  "name": "oxioracle-feature-data",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/oxioracle/feature-data/src",
+  "prefix": "lib",
+  "projectType": "library",
+  "tags": ["scope:oxioracle", "type:feature"],
+  "targets": {
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "libs/oxioracle/feature-data/jest.config.ts"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    }
+  }
+}
