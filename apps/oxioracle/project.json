@@ -80,6 +80,23 @@
         "jestConfig": "apps/oxioracle/jest.config.ts"
       }
     },
+    "deploy": {
+      "executor": "nx:run-commands",
+      "outputs": [],
+      "options": {
+        "parallel": false
+      },
+      "configurations": {
+        "production": {
+          "commands": [
+            "nx build oxioracle",
+            "cd ./dist/apps/oxioracle/browser && mv index.html 200.html",
+            "surge ./dist/apps/oxioracle/browser --domain=https://oxioracle.surge.sh"
+          ]
+        }
+      },
+      "defaultConfiguration": "production"
+    },
     "serve-static": {
       "executor": "@nx/web:file-server",
       "options": {
