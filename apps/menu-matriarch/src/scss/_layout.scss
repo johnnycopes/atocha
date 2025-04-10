@@ -1,3 +1,4 @@
+@use "sass:map";
 /*
 Use these values for spacing and sizing. A hand-crafted type scale
 (source: Refactoring UI, page 73)
@@ -44,19 +45,19 @@ $border: (
 );
 
 @function z-index($value) {
-  @return map-get($z-index, $value);
+  @return map.get($z-index, $value);
 }
 
 @function spacing($size) {
-  @return map-get($spacing, $size);
+  @return map.get($spacing, $size);
 }
 
 @function border($size) {
-  @return map-get($border, $size);
+  @return map.get($border, $size);
 }
 
 @function box-shadow($intensity) {
-  @return map-get($box-shadow, $intensity);
+  @return map.get($box-shadow, $intensity);
 }
 
 $app: (
@@ -64,5 +65,5 @@ $app: (
 );
 
 @function app-size($value) {
-  @return map-get($app, $value);
+  @return map.get($app, $value);
 }

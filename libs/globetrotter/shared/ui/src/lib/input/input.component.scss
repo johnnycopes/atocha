@@ -1,3 +1,4 @@
+@use "sass:map";
 @import 'styles';
 
 :host {
@@ -8,27 +9,27 @@
 
 :host ::ng-deep input {
   width: 100%;
-  padding: map-get($spacing, 8);
-  border: map-get($border, medium) solid transparent;
-  border-radius: map-get($border, radius);
-  background: map-get($color, white);
-  color: map-get($color, darkest);
+  padding: map.get($spacing, 8);
+  border: map.get($border, medium) solid transparent;
+  border-radius: map.get($border, radius);
+  background: map.get($color, white);
+  color: map.get($color, darkest);
   font-family: $font-stack;
-  font-size: map-get($font-size, 16);
-  transition: map-get($transition, border);
+  font-size: map.get($font-size, 16);
+  transition: map.get($transition, border);
   outline: none;
 
   &::placeholder {
     font-style: $font-stack;
-    color: map-get($color, medium);
+    color: map.get($color, medium);
   }
 
   &:focus {
-    border-color: map-get($color, medium);
+    border-color: map.get($color, medium);
   }
 
   &:disabled {
-    background: map-get($color, medium);
+    background: map.get($color, medium);
     cursor: not-allowed;
   }
 }

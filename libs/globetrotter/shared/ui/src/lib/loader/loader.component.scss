@@ -1,3 +1,4 @@
+@use "sass:map";
 @import 'styles';
 
 :host {
@@ -9,11 +10,11 @@
 }
 
 .loader {
-  width: map-get($spacing, 128);
-  height: map-get($spacing, 128);
+  width: map.get($spacing, 128);
+  height: map.get($spacing, 128);
   border-radius: 50%;
-  border: map-get($spacing, 8) solid map-get($color, lightest);
-  border-top-color: map-get($color, dark);
+  border: map.get($spacing, 8) solid map.get($color, lightest);
+  border-top-color: map.get($color, dark);
   animation: loading 1.2s ease-in-out infinite;
 }
 

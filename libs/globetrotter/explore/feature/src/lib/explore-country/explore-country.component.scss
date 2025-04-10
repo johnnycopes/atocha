@@ -1,39 +1,40 @@
+@use "sass:map";
 @import 'styles';
 
 .top {
   display: flex;
   justify-content: space-between;
-  margin-bottom: map-get($spacing, 64);
+  margin-bottom: map.get($spacing, 64);
 }
 
 .name {
-  font-size: map-get($font-size, 48);
-  margin-bottom: map-get($spacing, 24);
-  font-weight: map-get($font-weight, bold);
+  font-size: map.get($font-size, 48);
+  margin-bottom: map.get($spacing, 24);
+  font-weight: map.get($font-weight, bold);
 }
 
 .capital {
-  font-size: map-get($font-size, 36);
+  font-size: map.get($font-size, 36);
 }
 
 .flag {
-  margin-left: map-get($spacing, 48);
+  margin-left: map.get($spacing, 48);
 }
 
 .table {
   display: grid;
-  grid-template-rows: repeat(2, map-get($spacing, 128));
+  grid-template-rows: repeat(2, map.get($spacing, 128));
   grid-template-columns: repeat(4, 25%);
-  margin-bottom: map-get($spacing, 16);
+  margin-bottom: map.get($spacing, 16);
 }
 
 .table-header {
   overflow: auto;
-  line-height: map-get($line-height, normal);
-  margin-right: map-get($spacing, 16);
+  line-height: map.get($line-height, normal);
+  margin-right: map.get($spacing, 16);
 }
 
 .summary {
-  line-height: map-get($line-height, normal);
-  margin-bottom: map-get($spacing, 32);
+  line-height: map.get($line-height, normal);
+  margin-bottom: map.get($spacing, 32);
 }

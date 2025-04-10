@@ -1,7 +1,8 @@
+@use "sass:map";
 @import 'styles';
 
 .wrapper {
-  max-width: map-get($learn, max-width);
+  max-width: map.get($learn, max-width);
   margin: 0 auto;
 }
 
@@ -9,14 +10,14 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  margin-bottom: map-get($spacing, 24);
-  padding-bottom: map-get($spacing, 16);
-  border-bottom: map-get($border, thin) solid map-get($color, dark);
+  margin-bottom: map.get($spacing, 24);
+  padding-bottom: map.get($spacing, 16);
+  border-bottom: map.get($border, thin) solid map.get($color, dark);
 }
 
 .header {
-  font-size: map-get($font-size, 36);
-  font-weight: map-get($font-weight, bold);
+  font-size: map.get($font-size, 36);
+  font-weight: map.get($font-weight, bold);
 }
 
 .submission {
@@ -24,10 +25,10 @@
 
   .errors {
     position: absolute;
-    z-index: map-get($z-index, positive);
-    width: map-get($spacing, 384);
-    right: map-get($spacing, 128);
-    margin-right: map-get($spacing, 8);
+    z-index: map.get($z-index, positive);
+    width: map.get($spacing, 384);
+    right: map.get($spacing, 128);
+    margin-right: map.get($spacing, 8);
   }
 }
 
@@ -35,6 +36,6 @@
   &__top {
     display: flex;
     justify-content: space-between;
-    margin-bottom: map-get($spacing, 24);
+    margin-bottom: map.get($spacing, 24);
   }
 }

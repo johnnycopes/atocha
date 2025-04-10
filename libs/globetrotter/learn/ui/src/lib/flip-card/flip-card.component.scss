@@ -1,3 +1,4 @@
+@use "sass:map";
 @import 'styles';
 
 :host {
@@ -6,10 +7,10 @@
 
 .flip-card {
   font-family: $font-stack;
-  color: map-get($color, darkest);
+  color: map.get($color, darkest);
   position: relative;
-  width: map-get($app, card-width);
-  height: map-get($app, card-width);
+  width: map.get($app, card-width);
+  height: map.get($app, card-width);
   transform-style: preserve-3d;
   cursor: pointer;
 
@@ -24,17 +25,17 @@
     align-items: center;
     backface-visibility: hidden;
     user-select: none;
-    padding: map-get($border, thick);
-    border-radius: map-get($border, radius);
+    padding: map.get($border, thick);
+    border-radius: map.get($border, radius);
     text-align: center;
   }
 
   &__front {
-    background: map-get($color, light);
+    background: map.get($color, light);
   }
 
   &__back {
-    background: map-get($color, lightest);
+    background: map.get($color, lightest);
     transform: rotateY(180deg);
   }
 
