@@ -27,12 +27,11 @@ export interface TypeRename {
 }
 
 @Component({
-  standalone: true,
-  selector: 'app-ingredients-board',
-  imports: [CommonModule, DragDropModule, IngredientsBoardColumnComponent],
-  templateUrl: './ingredients-board.component.html',
-  styleUrls: ['./ingredients-board.scss', './ingredients-board.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'app-ingredients-board',
+    imports: [CommonModule, DragDropModule, IngredientsBoardColumnComponent],
+    templateUrl: './ingredients-board.component.html',
+    styleUrls: ['./ingredients-board.scss', './ingredients-board.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class IngredientsBoardComponent {
   @Input() types: IngredientType[] = [];

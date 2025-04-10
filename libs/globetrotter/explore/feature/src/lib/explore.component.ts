@@ -8,14 +8,13 @@ import { ExploreCountriesComponent } from './explore-countries/explore-countries
 import { ExploreCountryComponent } from './explore-country/explore-country.component';
 
 @Component({
-  standalone: true,
-  selector: 'app-explore',
-  imports: [CommonModule, ExploreCountriesComponent, ExploreCountryComponent],
-  providers: [ExploreService],
-  templateUrl: './explore.component.html',
-  styleUrls: ['./explore.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  animations: [fadeIn],
+    selector: 'app-explore',
+    imports: [CommonModule, ExploreCountriesComponent, ExploreCountryComponent],
+    providers: [ExploreService],
+    templateUrl: './explore.component.html',
+    styleUrls: ['./explore.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    animations: [fadeIn]
 })
 export class ExploreComponent {
   vm$ = this._exploreService.state$;

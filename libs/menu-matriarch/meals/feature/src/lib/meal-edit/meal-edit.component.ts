@@ -17,17 +17,16 @@ import {
 } from './meal-edit-form/meal-edit-form.component';
 
 @Component({
-  standalone: true,
-  selector: 'app-meal-edit',
-  imports: [CommonModule, MealEditFormComponent, RouterModule],
-  template: `
+    selector: 'app-meal-edit',
+    imports: [CommonModule, MealEditFormComponent, RouterModule],
+    template: `
     <app-meal-edit-form
       *ngIf="meal$ | async as meal"
       [meal]="meal"
       (save)="onSave($event)"
     ></app-meal-edit-form>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MealEditComponent {
   private _routeId = this._route.snapshot.paramMap.get('id');

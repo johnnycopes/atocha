@@ -15,18 +15,17 @@ import { Day, Menu } from '@atocha/menu-matriarch/shared/util';
 import { MenuCardComponent } from './menu-card/menu-card.component';
 
 @Component({
-  standalone: true,
-  selector: 'app-menus',
-  imports: [
-    ButtonComponent,
-    CommonModule,
-    InlineNameEditComponent,
-    MenuCardComponent,
-    SectionComponent,
-  ],
-  templateUrl: './menus.component.html',
-  styleUrls: ['./menus.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'app-menus',
+    imports: [
+        ButtonComponent,
+        CommonModule,
+        InlineNameEditComponent,
+        MenuCardComponent,
+        SectionComponent,
+    ],
+    templateUrl: './menus.component.html',
+    styleUrls: ['./menus.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MenusComponent {
   addingSubject = new BehaviorSubject<boolean>(false);

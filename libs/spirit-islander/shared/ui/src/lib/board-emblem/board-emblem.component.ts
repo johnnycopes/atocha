@@ -19,12 +19,11 @@ import { EmblemComponent } from '../emblem/emblem.component';
 type ThematicBoardNameAbberviation = 'E' | 'NE' | 'NW' | 'SE' | 'SW' | 'W';
 
 @Component({
-  selector: 'ui-board-emblem',
-  standalone: true,
-  imports: [CommonModule, EmblemComponent, SnakeCasePipe],
-  templateUrl: './board-emblem.component.html',
-  styleUrls: ['./board-emblem.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'ui-board-emblem',
+    imports: [CommonModule, EmblemComponent, SnakeCasePipe],
+    templateUrl: './board-emblem.component.html',
+    styleUrls: ['./board-emblem.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BoardEmblemComponent implements OnChanges {
   @Input() mapName: MapName = 'Balanced';

@@ -5,12 +5,11 @@ import { ValidationErrors } from '@angular/forms';
 import { trackBySelf } from '@atocha/core/ui';
 
 @Component({
-  standalone: true,
-  selector: 'ui-errors',
-  imports: [CommonModule],
-  templateUrl: './errors.component.html',
-  styleUrls: ['./errors.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'ui-errors',
+    imports: [CommonModule],
+    templateUrl: './errors.component.html',
+    styleUrls: ['./errors.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ErrorsComponent {
   messages: string[] = [];

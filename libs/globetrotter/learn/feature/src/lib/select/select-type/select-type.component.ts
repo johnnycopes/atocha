@@ -13,12 +13,11 @@ interface RadioButton {
 }
 
 @Component({
-  standalone: true,
-  selector: 'app-select-type',
-  imports: [CommonModule, ReactiveFormsModule, SmallCapsComponent],
-  templateUrl: './select-type.component.html',
-  styleUrls: ['./select-type.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'app-select-type',
+    imports: [CommonModule, ReactiveFormsModule, SmallCapsComponent],
+    templateUrl: './select-type.component.html',
+    styleUrls: ['./select-type.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SelectTypeComponent {
   @Input({ required: true }) form!: SelectForm;

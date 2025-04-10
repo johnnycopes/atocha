@@ -6,19 +6,18 @@ import {
 } from '@atocha/menu-matriarch/shared/data-access-routing';
 
 @Component({
-  standalone: true,
-  selector: 'app-root',
-  imports: [RouterOutlet],
-  template: `<router-outlet></router-outlet>`,
-  styles: [
-    `
+    selector: 'app-root',
+    imports: [RouterOutlet],
+    template: `<router-outlet></router-outlet>`,
+    styles: [
+        `
       :host {
         display: block;
         height: 100%;
       }
     `,
-  ],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    ],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent {
   error$ = this._errorService.errors$;

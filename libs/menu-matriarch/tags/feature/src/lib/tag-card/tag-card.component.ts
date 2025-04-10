@@ -17,20 +17,19 @@ import {
 import { TagComponent } from '@atocha/menu-matriarch/tags/ui';
 
 @Component({
-  standalone: true,
-  // eslint-disable-next-line @angular-eslint/component-selector
-  selector: '[app-tag-card]',
-  imports: [
-    ButtonComponent,
-    CardComponent,
-    CommonModule,
-    CountComponent,
-    InlineNameEditComponent,
-    TagComponent,
-  ],
-  templateUrl: './tag-card.component.html',
-  styleUrls: ['./tag-card.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    // eslint-disable-next-line @angular-eslint/component-selector
+    selector: '[app-tag-card]',
+    imports: [
+        ButtonComponent,
+        CardComponent,
+        CommonModule,
+        CountComponent,
+        InlineNameEditComponent,
+        TagComponent,
+    ],
+    templateUrl: './tag-card.component.html',
+    styleUrls: ['./tag-card.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TagCardComponent {
   @Input() id = '';

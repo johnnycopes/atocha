@@ -16,17 +16,16 @@ import {
 } from './dish-edit-form/dish-edit-form.component';
 
 @Component({
-  standalone: true,
-  selector: 'app-dish-edit',
-  imports: [CommonModule, DishEditFormComponent, RouterModule],
-  template: `
+    selector: 'app-dish-edit',
+    imports: [CommonModule, DishEditFormComponent, RouterModule],
+    template: `
     <app-dish-edit-form
       *ngIf="dish$ | async as dish"
       [dish]="dish"
       (save)="onSave($event)"
     ></app-dish-edit-form>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DishEditComponent {
   private _routeId = this._route.snapshot.paramMap.get('id');

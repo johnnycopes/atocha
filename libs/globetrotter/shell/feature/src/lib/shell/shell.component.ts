@@ -13,12 +13,11 @@ import { LoaderComponent } from '@atocha/globetrotter/shared/ui';
 import { NavigationComponent } from '../navigation/navigation.component';
 
 @Component({
-  standalone: true,
-  selector: 'app-shell',
-  imports: [CommonModule, LoaderComponent, NavigationComponent, RouterModule],
-  templateUrl: './shell.component.html',
-  styleUrls: ['./shell.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'app-shell',
+    imports: [CommonModule, LoaderComponent, NavigationComponent, RouterModule],
+    templateUrl: './shell.component.html',
+    styleUrls: ['./shell.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ShellComponent {
   private _navReadySubject = new BehaviorSubject<boolean>(false);

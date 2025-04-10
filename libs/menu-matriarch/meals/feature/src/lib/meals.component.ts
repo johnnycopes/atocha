@@ -8,16 +8,15 @@ import {
 } from '@atocha/menu-matriarch/shared/feature';
 
 @Component({
-  standalone: true,
-  selector: 'app-meals',
-  imports: [
-    MealCardComponent,
-    MealDefDirective,
-    MealsListComponent,
-    RouterModule,
-  ],
-  templateUrl: './meals.component.html',
-  styleUrls: ['./meals.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'app-meals',
+    imports: [
+        MealCardComponent,
+        MealDefDirective,
+        MealsListComponent,
+        RouterModule,
+    ],
+    templateUrl: './meals.component.html',
+    styleUrls: ['./meals.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MealsComponent {}

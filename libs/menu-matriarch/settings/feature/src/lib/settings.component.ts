@@ -21,20 +21,19 @@ import {
 import { UserPreferences, getDays } from '@atocha/menu-matriarch/shared/util';
 
 @Component({
-  standalone: true,
-  selector: 'app-settings',
-  imports: [
-    ButtonComponent,
-    CardComponent,
-    CommonModule,
-    FormsModule,
-    InputComponent,
-    SectionComponent,
-    SelectDayComponent,
-  ],
-  templateUrl: './settings.component.html',
-  styleUrls: ['./settings.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'app-settings',
+    imports: [
+        ButtonComponent,
+        CardComponent,
+        CommonModule,
+        FormsModule,
+        InputComponent,
+        SectionComponent,
+        SelectDayComponent,
+    ],
+    templateUrl: './settings.component.html',
+    styleUrls: ['./settings.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SettingsComponent implements OnInit, OnDestroy {
   user$ = this._userService.getUser();

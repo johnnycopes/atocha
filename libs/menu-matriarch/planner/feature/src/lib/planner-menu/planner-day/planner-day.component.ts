@@ -16,19 +16,18 @@ import { SmallCapsLabelComponent } from '@atocha/menu-matriarch/shared/ui';
 import { Day, Dish, Orientation } from '@atocha/menu-matriarch/shared/util';
 
 @Component({
-  standalone: true,
-  // eslint-disable-next-line @angular-eslint/component-selector
-  selector: '[app-planner-day]',
-  imports: [
-    CommonModule,
-    FaIconComponent,
-    MealSummaryComponent,
-    RouterLink,
-    SmallCapsLabelComponent,
-  ],
-  templateUrl: './planner-day.component.html',
-  styleUrls: ['./planner-day.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    // eslint-disable-next-line @angular-eslint/component-selector
+    selector: '[app-planner-day]',
+    imports: [
+        CommonModule,
+        FaIconComponent,
+        MealSummaryComponent,
+        RouterLink,
+        SmallCapsLabelComponent,
+    ],
+    templateUrl: './planner-day.component.html',
+    styleUrls: ['./planner-day.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PlannerDayComponent implements OnInit {
   @Input() day: Day | undefined;

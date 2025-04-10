@@ -11,12 +11,11 @@ import {
 } from '@angular/core';
 
 @Component({
-  standalone: true,
-  selector: 'ui-icon',
-  imports: [CommonModule],
-  templateUrl: './icon.component.html',
-  styleUrls: ['./icon.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'ui-icon',
+    imports: [CommonModule],
+    templateUrl: './icon.component.html',
+    styleUrls: ['./icon.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class IconComponent implements OnInit {
   @Input() icon = '';

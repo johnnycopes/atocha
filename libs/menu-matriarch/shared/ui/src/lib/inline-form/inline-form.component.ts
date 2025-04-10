@@ -15,14 +15,13 @@ import { faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { ButtonComponent } from '@atocha/core/ui';
 
 @Component({
-  standalone: true,
-  // eslint-disable-next-line @angular-eslint/component-selector
-  selector: 'form[ui-inline-form]',
-  imports: [ButtonComponent, CommonModule, FaIconComponent, FormsModule],
-  templateUrl: './inline-form.component.html',
-  styleUrls: ['./inline-form.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
+    // eslint-disable-next-line @angular-eslint/component-selector
+    selector: 'form[ui-inline-form]',
+    imports: [ButtonComponent, CommonModule, FaIconComponent, FormsModule],
+    templateUrl: './inline-form.component.html',
+    styleUrls: ['./inline-form.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    encapsulation: ViewEncapsulation.None
 })
 export class InlineFormComponent {
   @Input() disabled = false;

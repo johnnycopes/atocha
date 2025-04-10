@@ -2,12 +2,11 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-  selector: 'ui-emblem',
-  standalone: true,
-  imports: [CommonModule],
-  template: `<ng-content></ng-content>`,
-  styles: [
-    `
+    selector: 'ui-emblem',
+    imports: [CommonModule],
+    template: `<ng-content></ng-content>`,
+    styles: [
+        `
       :host {
         display: inline-flex;
         justify-content: center;
@@ -23,7 +22,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         }
       }
     `,
-  ],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    ],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class EmblemComponent {}

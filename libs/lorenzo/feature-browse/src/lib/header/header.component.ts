@@ -7,13 +7,12 @@ import { View } from '@atocha/lorenzo/util';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  standalone: true,
-  // eslint-disable-next-line @angular-eslint/component-selector
-  selector: 'header[app-header]',
-  imports: [ButtonComponent, CommonModule, SearchInputComponent],
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    // eslint-disable-next-line @angular-eslint/component-selector
+    selector: 'header[app-header]',
+    imports: [ButtonComponent, CommonModule, SearchInputComponent],
+    templateUrl: './header.component.html',
+    styleUrls: ['./header.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HeaderComponent {
   vm$ = combineLatest([

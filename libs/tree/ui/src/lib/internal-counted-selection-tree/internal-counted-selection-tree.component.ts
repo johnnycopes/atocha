@@ -18,16 +18,15 @@ import {
 } from '../types';
 
 @Component({
-  standalone: true,
-  selector: 'core-internal-counted-selection-tree',
-  imports: [CommonModule, InternalSelectionTreeComponent],
-  templateUrl: './internal-counted-selection-tree.component.html',
-  styleUrls: ['./internal-counted-selection-tree.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
-  host: {
-    class: 'core-selection-tree',
-  },
+    selector: 'core-internal-counted-selection-tree',
+    imports: [CommonModule, InternalSelectionTreeComponent],
+    templateUrl: './internal-counted-selection-tree.component.html',
+    styleUrls: ['./internal-counted-selection-tree.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    encapsulation: ViewEncapsulation.None,
+    host: {
+        class: 'core-selection-tree',
+    }
 })
 export class InternalCountedSelectionTreeComponent<T>
   implements InternalCountedSelectionTreeComponentAPI<T>, OnInit

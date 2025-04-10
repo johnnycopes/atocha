@@ -11,19 +11,18 @@ import { trackBySelf } from '@atocha/core/ui';
 type Range = [number, number];
 
 @Component({
-  selector: 'app-select-range',
-  standalone: true,
-  imports: [CommonModule, FormsModule],
-  templateUrl: './select-range.component.html',
-  styleUrls: ['./select-range.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: SelectRangeComponent,
-      multi: true,
-    },
-  ],
+    selector: 'app-select-range',
+    imports: [CommonModule, FormsModule],
+    templateUrl: './select-range.component.html',
+    styleUrls: ['./select-range.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        {
+            provide: NG_VALUE_ACCESSOR,
+            useExisting: SelectRangeComponent,
+            multi: true,
+        },
+    ]
 })
 export class SelectRangeComponent implements ControlValueAccessor {
   @Input() label = '';

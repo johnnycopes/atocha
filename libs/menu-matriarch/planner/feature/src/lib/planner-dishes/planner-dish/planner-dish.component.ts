@@ -19,18 +19,17 @@ interface EntryModel {
 }
 
 @Component({
-  standalone: true,
-  selector: 'app-planner-dish',
-  imports: [
-    CardComponent,
-    CheckboxComponent,
-    CommonModule,
-    DishSummaryComponent,
-    FormsModule,
-  ],
-  templateUrl: './planner-dish.component.html',
-  styleUrls: ['./planner-dish.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'app-planner-dish',
+    imports: [
+        CardComponent,
+        CheckboxComponent,
+        CommonModule,
+        DishSummaryComponent,
+        FormsModule,
+    ],
+    templateUrl: './planner-dish.component.html',
+    styleUrls: ['./planner-dish.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PlannerDishComponent {
   @Input() id = '';

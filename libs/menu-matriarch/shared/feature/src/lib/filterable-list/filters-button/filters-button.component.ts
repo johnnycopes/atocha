@@ -11,12 +11,11 @@ import { faCaretDown, faCaretUp } from '@fortawesome/free-solid-svg-icons';
 import { ButtonComponent } from '@atocha/core/ui';
 
 @Component({
-  standalone: true,
-  selector: 'app-filters-button',
-  imports: [ButtonComponent, FaIconComponent],
-  templateUrl: './filters-button.component.html',
-  styleUrls: ['./filters-button.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'app-filters-button',
+    imports: [ButtonComponent, FaIconComponent],
+    templateUrl: './filters-button.component.html',
+    styleUrls: ['./filters-button.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FiltersButtonComponent {
   @Input() count = 0;

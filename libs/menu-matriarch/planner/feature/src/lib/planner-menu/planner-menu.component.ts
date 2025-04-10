@@ -14,17 +14,16 @@ import {
 import { PlannerDayComponent } from './planner-day/planner-day.component';
 
 @Component({
-  standalone: true,
-  selector: 'app-planner-menu',
-  imports: [
-    ButtonComponent,
-    CommonModule,
-    PlannerDayComponent,
-    SectionComponent,
-  ],
-  templateUrl: './planner-menu.component.html',
-  styleUrls: ['./planner-menu.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'app-planner-menu',
+    imports: [
+        ButtonComponent,
+        CommonModule,
+        PlannerDayComponent,
+        SectionComponent,
+    ],
+    templateUrl: './planner-menu.component.html',
+    styleUrls: ['./planner-menu.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PlannerMenuComponent {
   @Input() menu: Menu | undefined;

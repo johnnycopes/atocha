@@ -20,16 +20,15 @@ import {
 } from '../types';
 
 @Component({
-  standalone: true,
-  selector: 'core-internal-selection-tree',
-  imports: [CommonModule, TreeComponent],
-  templateUrl: './internal-selection-tree.component.html',
-  styleUrls: ['./internal-selection-tree.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
-  host: {
-    class: 'core-selection-tree',
-  },
+    selector: 'core-internal-selection-tree',
+    imports: [CommonModule, TreeComponent],
+    templateUrl: './internal-selection-tree.component.html',
+    styleUrls: ['./internal-selection-tree.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    encapsulation: ViewEncapsulation.None,
+    host: {
+        class: 'core-selection-tree',
+    }
 })
 export class InternalSelectionTreeComponent<T>
   implements InternalSelectionTreeComponentAPI<T>, OnChanges

@@ -15,18 +15,17 @@ import { InputComponent } from '../input/input.component';
 import { SelectDayComponent } from '../select-day/select-day.component';
 
 @Component({
-  standalone: true,
-  selector: 'ui-inline-day-select',
-  imports: [
-    CommonModule,
-    FormsModule,
-    InlineFormComponent,
-    InputComponent,
-    SelectDayComponent,
-  ],
-  templateUrl: './inline-day-select.component.html',
-  styleUrls: ['./inline-day-select.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'ui-inline-day-select',
+    imports: [
+        CommonModule,
+        FormsModule,
+        InlineFormComponent,
+        InputComponent,
+        SelectDayComponent,
+    ],
+    templateUrl: './inline-day-select.component.html',
+    styleUrls: ['./inline-day-select.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class InlineDaySelectComponent {
   @Input() startDay: Day = 'Monday';

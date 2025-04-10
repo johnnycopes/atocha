@@ -8,15 +8,14 @@ import { getFamilyId } from '@atocha/lorenzo/util';
 import { FamilyComponent } from './family.component';
 
 @Component({
-  standalone: true,
-  selector: 'app-families',
-  imports: [
-    CardsComponent,
-    CardTemplateDirective,
-    CommonModule,
-    FamilyComponent,
-  ],
-  template: `
+    selector: 'app-families',
+    imports: [
+        CardsComponent,
+        CardTemplateDirective,
+        CommonModule,
+        FamilyComponent,
+    ],
+    template: `
     <ui-cards
       *ngIf="vm$ | async as vm"
       type="Families"
@@ -38,7 +37,7 @@ import { FamilyComponent } from './family.component';
       ></app-family>
     </ui-cards>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FamiliesComponent {
   vm$ = this._cardStateService.families$;

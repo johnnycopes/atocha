@@ -19,13 +19,12 @@ interface NavigationLink {
 }
 
 @Component({
-  standalone: true,
-  selector: 'app-navigation',
-  imports: [CommonModule, ExternalLinkDirective, IconComponent, RouterModule],
-  templateUrl: './navigation.component.html',
-  styleUrls: ['./navigation.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  animations: [positionAnimation],
+    selector: 'app-navigation',
+    imports: [CommonModule, ExternalLinkDirective, IconComponent, RouterModule],
+    templateUrl: './navigation.component.html',
+    styleUrls: ['./navigation.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    animations: [positionAnimation]
 })
 export class NavigationComponent extends AnimatedComponent implements OnInit {
   position: 'offscreen' | 'onscreen' = 'offscreen';

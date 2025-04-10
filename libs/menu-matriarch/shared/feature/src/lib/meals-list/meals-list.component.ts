@@ -20,12 +20,11 @@ import { FilterableListComponent } from '../filterable-list/filterable-list.comp
 import { MealDefContext, MealDefDirective } from './meal-def.directive';
 
 @Component({
-  standalone: true,
-  selector: 'app-meals-list',
-  imports: [CommonModule, FilterableListComponent],
-  templateUrl: './meals-list.component.html',
-  styleUrls: ['./meals-list.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'app-meals-list',
+    imports: [CommonModule, FilterableListComponent],
+    templateUrl: './meals-list.component.html',
+    styleUrls: ['./meals-list.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MealsListComponent {
   @Output() nameDblClick = new EventEmitter<void>();

@@ -21,21 +21,20 @@ import { FiltersButtonComponent } from './filters-button/filters-button.componen
 import { FiltersComponent } from './filters/filters.component';
 
 @Component({
-  standalone: true,
-  selector: 'app-filterable-list',
-  imports: [
-    ButtonComponent,
-    CommonModule,
-    FiltersButtonComponent,
-    FiltersComponent,
-    PluralPipe,
-    InputComponent,
-    SearchInputComponent,
-    SectionComponent,
-  ],
-  templateUrl: './filterable-list.component.html',
-  styleUrls: ['./filterable-list.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'app-filterable-list',
+    imports: [
+        ButtonComponent,
+        CommonModule,
+        FiltersButtonComponent,
+        FiltersComponent,
+        PluralPipe,
+        InputComponent,
+        SearchInputComponent,
+        SectionComponent,
+    ],
+    templateUrl: './filterable-list.component.html',
+    styleUrls: ['./filterable-list.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FilterableListComponent {
   @Input() total = 0;

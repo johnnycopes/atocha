@@ -5,12 +5,11 @@ import { Expansion } from '@atocha/spirit-islander/shared/util';
 import { EmblemComponent } from '../emblem/emblem.component';
 
 @Component({
-  selector: 'ui-expansion-emblem',
-  standalone: true,
-  imports: [CommonModule, EmblemComponent],
-  templateUrl: './expansion-emblem.component.html',
-  styleUrls: ['./expansion-emblem.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'ui-expansion-emblem',
+    imports: [CommonModule, EmblemComponent],
+    templateUrl: './expansion-emblem.component.html',
+    styleUrls: ['./expansion-emblem.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ExpansionEmblemComponent {
   @Input()

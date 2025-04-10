@@ -27,20 +27,19 @@ import { LeadersComponent } from './cards/leaders/leaders.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 
 @Component({
-  standalone: true,
-  selector: 'app-browse',
-  imports: [
-    CommonModule,
-    DevelopmentsComponent,
-    FamiliesComponent,
-    FooterComponent,
-    HeaderComponent,
-    LeadersComponent,
-    ToolbarComponent,
-  ],
-  templateUrl: './browse.component.html',
-  styleUrls: ['./browse.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'app-browse',
+    imports: [
+        CommonModule,
+        DevelopmentsComponent,
+        FamiliesComponent,
+        FooterComponent,
+        HeaderComponent,
+        LeadersComponent,
+        ToolbarComponent,
+    ],
+    templateUrl: './browse.component.html',
+    styleUrls: ['./browse.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BrowseComponent implements OnInit, OnDestroy {
   private _positionSubject = new BehaviorSubject<number>(0);

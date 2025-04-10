@@ -27,24 +27,23 @@ import { GameSetup } from '@atocha/spirit-islander/game-setup/util';
 import { getAdversaryNameById } from './get-adversary-name-by-id';
 
 @Component({
-  selector: 'app-game-setup-output',
-  standalone: true,
-  imports: [
-    AspectEmblemComponent,
-    BoardEmblemComponent,
-    ButtonComponent,
-    CardComponent,
-    CardGroupComponent,
-    CommonModule,
-    DifficultyEmblemComponent,
-    ExpansionEmblemComponent,
-    PluralPipe,
-    SeparatorComponent,
-  ],
-  templateUrl: './game-setup-output.component.html',
-  styleUrls: ['./game-setup-output.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
+    selector: 'app-game-setup-output',
+    imports: [
+        AspectEmblemComponent,
+        BoardEmblemComponent,
+        ButtonComponent,
+        CardComponent,
+        CardGroupComponent,
+        CommonModule,
+        DifficultyEmblemComponent,
+        ExpansionEmblemComponent,
+        PluralPipe,
+        SeparatorComponent,
+    ],
+    templateUrl: './game-setup-output.component.html',
+    styleUrls: ['./game-setup-output.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    encapsulation: ViewEncapsulation.None
 })
 export class GameSetupOutputComponent {
   private _setup: GameSetup | undefined;

@@ -20,17 +20,16 @@ import {
 import { QuizType } from '@atocha/globetrotter/learn/util';
 
 @Component({
-  standalone: true,
-  selector: 'app-quiz-menu',
-  imports: [
-    ButtonComponent,
-    CommonModule,
-    FixedSlideablePanelComponent,
-    IconComponent,
-  ],
-  templateUrl: './quiz-menu.component.html',
-  styleUrls: ['./quiz-menu.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'app-quiz-menu',
+    imports: [
+        ButtonComponent,
+        CommonModule,
+        FixedSlideablePanelComponent,
+        IconComponent,
+    ],
+    templateUrl: './quiz-menu.component.html',
+    styleUrls: ['./quiz-menu.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class QuizMenuComponent implements OnChanges {
   private _promptFns: Record<QuizType, (country: Country) => string> = {

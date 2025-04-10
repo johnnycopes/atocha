@@ -20,21 +20,20 @@ import {
 import { SelectForm } from '../select-form';
 
 @Component({
-  standalone: true,
-  selector: 'app-select-places',
-  imports: [
-    ButtonComponent,
-    CheckboxComponent,
-    CommonModule,
-    CountedSelectionTreeComponent,
-    FormsModule,
-    IconComponent,
-    ReactiveFormsModule,
-    SmallCapsComponent,
-  ],
-  templateUrl: './select-places.component.html',
-  styleUrls: ['./select-places.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'app-select-places',
+    imports: [
+        ButtonComponent,
+        CheckboxComponent,
+        CommonModule,
+        CountedSelectionTreeComponent,
+        FormsModule,
+        IconComponent,
+        ReactiveFormsModule,
+        SmallCapsComponent,
+    ],
+    templateUrl: './select-places.component.html',
+    styleUrls: ['./select-places.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SelectPlacesComponent {
   @Input({ required: true }) form!: SelectForm;

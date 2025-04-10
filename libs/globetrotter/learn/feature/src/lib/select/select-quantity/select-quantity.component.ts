@@ -6,12 +6,11 @@ import { InputComponent } from '@atocha/globetrotter/shared/ui';
 import { SelectForm } from '../select-form';
 
 @Component({
-  standalone: true,
-  selector: 'app-select-quantity',
-  imports: [CommonModule, InputComponent, ReactiveFormsModule],
-  templateUrl: './select-quantity.component.html',
-  styleUrls: ['./select-quantity.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'app-select-quantity',
+    imports: [CommonModule, InputComponent, ReactiveFormsModule],
+    templateUrl: './select-quantity.component.html',
+    styleUrls: ['./select-quantity.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SelectQuantityComponent {
   @Input({ required: true }) form!: SelectForm;
