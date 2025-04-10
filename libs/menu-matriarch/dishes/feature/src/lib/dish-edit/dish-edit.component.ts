@@ -16,16 +16,16 @@ import {
 } from './dish-edit-form/dish-edit-form.component';
 
 @Component({
-    selector: 'app-dish-edit',
-    imports: [CommonModule, DishEditFormComponent, RouterModule],
-    template: `
+  selector: 'app-dish-edit',
+  imports: [CommonModule, DishEditFormComponent, RouterModule],
+  template: `
     <app-dish-edit-form
       *ngIf="dish$ | async as dish"
       [dish]="dish"
       (save)="onSave($event)"
     ></app-dish-edit-form>
   `,
-    changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DishEditComponent {
   private _routeId = this._route.snapshot.paramMap.get('id');
@@ -44,12 +44,11 @@ export class DishEditComponent {
       type: dish?.type ?? 'main',
       tagModels: tags.map<TagModel>((tag) => ({
         ...tag,
-        checked: !!dish?.tags.find(({ id }) => id === tag.id) ?? false,
+        checked: !!dish?.tags.find(({ id }) => id === tag.id),
       })),
       ingredientModels: ingredients.map<IngredientModel>((ingredient) => ({
         ...ingredient,
-        checked:
-          !!dish?.ingredients.find(({ id }) => id === ingredient.id) ?? false,
+        checked: !!dish?.ingredients.find(({ id }) => id === ingredient.id),
       })),
       notes: dish?.notes ?? '',
     }))
