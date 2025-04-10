@@ -6,7 +6,7 @@ import {
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
-import { ButtonComponent, CheckboxComponent } from '@atocha/core/ui';
+import { CheckboxComponent } from '@atocha/core/ui';
 import { Settings } from '@atocha/spirit-islander/settings/util';
 import { StateService } from '@atocha/spirit-islander/shared/data-access';
 import {
@@ -15,16 +15,15 @@ import {
 } from '@atocha/spirit-islander/shared/ui';
 
 @Component({
-    selector: 'app-settings',
-    imports: [
-        ButtonComponent,
-        CardComponent,
-        CardGroupComponent,
-        CheckboxComponent,
-        CommonModule,
-        FormsModule,
-    ],
-    template: `
+  selector: 'app-settings',
+  imports: [
+    CardComponent,
+    CardGroupComponent,
+    CheckboxComponent,
+    CommonModule,
+    FormsModule,
+  ],
+  template: `
     <ui-card-group
       ui-page-content
       name="Settings"
@@ -69,8 +68,8 @@ import {
       </div>
     </ui-card-group>
   `,
-    styles: [
-        `
+  styles: [
+    `
       .ui-card-group-contents.settings {
         grid-template-areas: 'options options options options options options';
       }
@@ -96,9 +95,9 @@ import {
         }
       }
     `,
-    ],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    encapsulation: ViewEncapsulation.None
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
 })
 export class SettingsComponent {
   settings$ = this._stateService.settings$;
