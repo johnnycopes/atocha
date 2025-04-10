@@ -25,6 +25,7 @@ import { ButtonComponent } from '@atocha/core/ui';
 })
 export class InlineFormComponent {
   @Input() disabled = false;
+  // eslint-disable-next-line @angular-eslint/no-output-native
   @Output() cancel = new EventEmitter<void>();
   @Output() save = new EventEmitter<void>();
   readonly cancelIcon = faTimes;
