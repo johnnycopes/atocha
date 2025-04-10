@@ -48,29 +48,29 @@ export type MealConfig = Pick<Meal, 'name' | 'description'> &
   };
 
 @Component({
-    selector: 'app-meal-edit-form',
-    imports: [
-        AutofocusDirective,
-        ButtonComponent,
-        CardComponent,
-        CheckboxComponent,
-        CommonModule,
-        DishDefDirective,
-        DishesListComponent,
-        DishSummaryComponent,
-        FormsModule,
-        InputComponent,
-        MealSummaryComponent,
-        ReactiveFormsModule,
-        RouterLink,
-        SectionComponent,
-        TagComponent,
-        TagDefDirective,
-        TagsListComponent,
-    ],
-    templateUrl: './meal-edit-form.component.html',
-    styleUrls: ['./meal-edit-form.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+  selector: 'app-meal-edit-form',
+  imports: [
+    AutofocusDirective,
+    ButtonComponent,
+    CardComponent,
+    CheckboxComponent,
+    CommonModule,
+    DishDefDirective,
+    DishesListComponent,
+    DishSummaryComponent,
+    FormsModule,
+    InputComponent,
+    MealSummaryComponent,
+    ReactiveFormsModule,
+    RouterLink,
+    SectionComponent,
+    TagComponent,
+    TagDefDirective,
+    TagsListComponent,
+  ],
+  templateUrl: './meal-edit-form.component.html',
+  styleUrls: ['./meal-edit-form.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MealEditFormComponent implements OnInit {
   @Input() meal: MealConfig | undefined;

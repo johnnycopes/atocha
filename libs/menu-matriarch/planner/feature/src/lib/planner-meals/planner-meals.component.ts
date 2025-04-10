@@ -15,10 +15,10 @@ import { Day, Menu } from '@atocha/menu-matriarch/shared/util';
 import { PlannerMealComponent } from './planner-meal/planner-meal.component';
 
 @Component({
-    selector: 'app-planner-meals',
-    imports: [MealDefDirective, MealsListComponent, PlannerMealComponent],
-    templateUrl: './planner-meals.component.html',
-    changeDetection: ChangeDetectionStrategy.OnPush
+  selector: 'app-planner-meals',
+  imports: [MealDefDirective, MealsListComponent, PlannerMealComponent],
+  templateUrl: './planner-meals.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PlannerMealsComponent {
   @Input() menu: Menu | undefined;

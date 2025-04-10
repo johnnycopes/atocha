@@ -11,11 +11,11 @@ import { CardComponent, CardHeaderComponent } from '@atocha/lorenzo/ui';
 import { Family } from '@atocha/lorenzo/util';
 
 @Component({
-    selector: 'app-family',
-    imports: [CardComponent, CardHeaderComponent, CommonModule],
-    templateUrl: './family.component.html',
-    styleUrls: ['./family.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+  selector: 'app-family',
+  imports: [CardComponent, CardHeaderComponent, CommonModule],
+  templateUrl: './family.component.html',
+  styleUrls: ['./family.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FamilyComponent {
   @Input() data: Family | undefined;

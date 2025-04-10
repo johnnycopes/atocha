@@ -19,22 +19,22 @@ import {
 } from '@atocha/menu-matriarch/tags/ui';
 
 @Component({
-    selector: 'app-dish-details',
-    imports: [
-        ButtonComponent,
-        CommonModule,
-        ExternalLinkDirective,
-        PluralPipe,
-        RouterModule,
-        SafePipe,
-        SectionComponent,
-        TagComponent,
-        TagDefDirective,
-        TagsListComponent,
-    ],
-    templateUrl: './dish-details.component.html',
-    styleUrls: ['./dish-details.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+  selector: 'app-dish-details',
+  imports: [
+    ButtonComponent,
+    CommonModule,
+    ExternalLinkDirective,
+    PluralPipe,
+    RouterModule,
+    SafePipe,
+    SectionComponent,
+    TagComponent,
+    TagDefDirective,
+    TagsListComponent,
+  ],
+  templateUrl: './dish-details.component.html',
+  styleUrls: ['./dish-details.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DishDetailsComponent {
   dish$ = this._route.params.pipe(

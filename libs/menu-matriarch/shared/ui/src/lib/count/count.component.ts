@@ -11,11 +11,11 @@ import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 type CountType = 'days' | 'dishes' | 'meals' | 'menus';
 
 @Component({
-    selector: 'ui-count',
-    imports: [FaIconComponent],
-    templateUrl: './count.component.html',
-    styleUrls: ['./count.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+  selector: 'ui-count',
+  imports: [FaIconComponent],
+  templateUrl: './count.component.html',
+  styleUrls: ['./count.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CountComponent {
   @Input() count = 0;

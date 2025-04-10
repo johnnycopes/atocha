@@ -18,19 +18,19 @@ import {
 } from '@atocha/menu-matriarch/tags/ui';
 
 @Component({
-    selector: 'app-filters',
-    imports: [
-        ButtonComponent,
-        CardComponent,
-        CheckboxComponent,
-        CommonModule,
-        FormsModule,
-        TagComponent,
-        TagDefDirective,
-        TagsListComponent,
-    ],
-    templateUrl: './filters.component.html',
-    changeDetection: ChangeDetectionStrategy.OnPush
+  selector: 'app-filters',
+  imports: [
+    ButtonComponent,
+    CardComponent,
+    CheckboxComponent,
+    CommonModule,
+    FormsModule,
+    TagComponent,
+    TagDefDirective,
+    TagsListComponent,
+  ],
+  templateUrl: './filters.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FiltersComponent {
   @Input() tags: Tag[] = [];

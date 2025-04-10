@@ -10,9 +10,9 @@ import {
 import { GameSetupOutputComponent } from './game-setup-output/game-setup-output.component';
 
 @Component({
-    selector: 'app-game-setup',
-    imports: [CommonModule, GameSetupOutputComponent],
-    template: `
+  selector: 'app-game-setup',
+  imports: [CommonModule, GameSetupOutputComponent],
+  template: `
     <app-game-setup-output
       *ngIf="gameSetup$ | async as gameSetup"
       [setup]="gameSetup"
@@ -20,7 +20,7 @@ import { GameSetupOutputComponent } from './game-setup-output/game-setup-output.
       (regenerate)="onRegenerate()"
     ></app-game-setup-output>
   `,
-    changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GameSetupComponent implements OnInit {
   gameSetup$ = this._stateService.gameSetup$;

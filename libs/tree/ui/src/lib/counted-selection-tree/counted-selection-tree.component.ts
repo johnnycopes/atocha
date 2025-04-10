@@ -31,22 +31,22 @@ import {
 } from '../types';
 
 @Component({
-    selector: 'core-counted-selection-tree',
-    imports: [CommonModule, FormsModule, InternalCountedSelectionTreeComponent],
-    templateUrl: './counted-selection-tree.component.html',
-    styleUrls: ['./counted-selection-tree.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    encapsulation: ViewEncapsulation.None,
-    host: {
-        class: 'core-counted-selection-tree',
+  selector: 'core-counted-selection-tree',
+  imports: [CommonModule, FormsModule, InternalCountedSelectionTreeComponent],
+  templateUrl: './counted-selection-tree.component.html',
+  styleUrls: ['./counted-selection-tree.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
+  host: {
+    class: 'core-counted-selection-tree',
+  },
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => CountedSelectionTreeComponent),
+      multi: true,
     },
-    providers: [
-        {
-            provide: NG_VALUE_ACCESSOR,
-            useExisting: forwardRef(() => CountedSelectionTreeComponent),
-            multi: true,
-        },
-    ]
+  ],
 })
 export class CountedSelectionTreeComponent<T>
   implements

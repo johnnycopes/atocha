@@ -11,11 +11,11 @@ import {
 import { fadeInAnimation } from '../animations';
 
 @Component({
-    selector: 'ui-tab',
-    imports: [CommonModule],
-    templateUrl: './tab.component.html',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    animations: [fadeInAnimation]
+  selector: 'ui-tab',
+  imports: [CommonModule],
+  templateUrl: './tab.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  animations: [fadeInAnimation],
 })
 export class TabComponent {
   @Input()

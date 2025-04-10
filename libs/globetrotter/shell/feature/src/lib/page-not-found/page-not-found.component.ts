@@ -6,10 +6,10 @@ import { ROUTES } from '@atocha/globetrotter/shared/data-access';
 import { ErrorComponent } from '@atocha/globetrotter/shared/ui';
 
 @Component({
-    selector: 'app-page-not-found',
-    imports: [ButtonComponent, ErrorComponent],
-    templateUrl: './page-not-found.component.html',
-    changeDetection: ChangeDetectionStrategy.OnPush
+  selector: 'app-page-not-found',
+  imports: [ButtonComponent, ErrorComponent],
+  templateUrl: './page-not-found.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PageNotFoundComponent {
   constructor(private _router: Router) {}

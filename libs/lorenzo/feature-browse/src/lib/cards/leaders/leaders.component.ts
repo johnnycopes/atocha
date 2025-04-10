@@ -8,14 +8,14 @@ import { getLeaderId } from '@atocha/lorenzo/util';
 import { LeaderComponent } from './leader.component';
 
 @Component({
-    selector: 'app-leaders',
-    imports: [
-        CardsComponent,
-        CardTemplateDirective,
-        CommonModule,
-        LeaderComponent,
-    ],
-    template: `
+  selector: 'app-leaders',
+  imports: [
+    CardsComponent,
+    CardTemplateDirective,
+    CommonModule,
+    LeaderComponent,
+  ],
+  template: `
     <ui-cards
       *ngIf="vm$ | async as vm"
       type="Leaders"
@@ -37,7 +37,7 @@ import { LeaderComponent } from './leader.component';
       ></app-leader>
     </ui-cards>
   `,
-    changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LeadersComponent {
   vm$ = this._cardStateService.leaders$;

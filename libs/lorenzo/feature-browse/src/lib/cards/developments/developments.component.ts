@@ -8,14 +8,14 @@ import { getDevelopmentId } from '@atocha/lorenzo/util';
 import { DevelopmentComponent } from './development.component';
 
 @Component({
-    selector: 'app-developments',
-    imports: [
-        CardsComponent,
-        CardTemplateDirective,
-        CommonModule,
-        DevelopmentComponent,
-    ],
-    template: `
+  selector: 'app-developments',
+  imports: [
+    CardsComponent,
+    CardTemplateDirective,
+    CommonModule,
+    DevelopmentComponent,
+  ],
+  template: `
     <ui-cards
       *ngIf="vm$ | async as vm"
       type="Developments"
@@ -37,7 +37,7 @@ import { DevelopmentComponent } from './development.component';
       ></app-development>
     </ui-cards>
   `,
-    changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DevelopmentsComponent {
   vm$ = this._cardStateService.developments$;

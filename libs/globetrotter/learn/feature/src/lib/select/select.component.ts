@@ -18,20 +18,20 @@ import { SelectQuantityComponent } from './select-quantity/select-quantity.compo
 import { SelectPlacesComponent } from './select-places/select-places.component';
 
 @Component({
-    selector: 'app-select',
-    imports: [
-        ButtonComponent,
-        CommonModule,
-        ErrorsComponent,
-        ReactiveFormsModule,
-        SelectPlacesComponent,
-        SelectQuantityComponent,
-        SelectTypeComponent,
-    ],
-    templateUrl: './select.component.html',
-    styleUrls: ['./select.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    animations: [fadeIn]
+  selector: 'app-select',
+  imports: [
+    ButtonComponent,
+    CommonModule,
+    ErrorsComponent,
+    ReactiveFormsModule,
+    SelectPlacesComponent,
+    SelectQuantityComponent,
+    SelectTypeComponent,
+  ],
+  templateUrl: './select.component.html',
+  styleUrls: ['./select.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  animations: [fadeIn],
 })
 export class SelectComponent {
   vm$ = combineLatest([

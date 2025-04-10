@@ -23,16 +23,16 @@ import { FilterService } from '../filter.service';
 import { FilterableListComponent } from '../filterable-list/filterable-list.component';
 
 @Component({
-    selector: 'app-dishes-list',
-    imports: [
-        CommonModule,
-        FilterableListComponent,
-        TabsetComponent,
-        TabComponent,
-    ],
-    templateUrl: './dishes-list.component.html',
-    styleUrls: ['./dishes-list.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+  selector: 'app-dishes-list',
+  imports: [
+    CommonModule,
+    FilterableListComponent,
+    TabsetComponent,
+    TabComponent,
+  ],
+  templateUrl: './dishes-list.component.html',
+  styleUrls: ['./dishes-list.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DishesListComponent {
   @Output() nameDblClick = new EventEmitter<void>();

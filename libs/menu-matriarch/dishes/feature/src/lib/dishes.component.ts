@@ -8,15 +8,15 @@ import {
 } from '@atocha/menu-matriarch/shared/feature';
 
 @Component({
-    selector: 'app-dishes',
-    imports: [
-        DishCardComponent,
-        DishDefDirective,
-        DishesListComponent,
-        RouterModule,
-    ],
-    templateUrl: './dishes.component.html',
-    styleUrls: ['./dishes.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+  selector: 'app-dishes',
+  imports: [
+    DishCardComponent,
+    DishDefDirective,
+    DishesListComponent,
+    RouterModule,
+  ],
+  templateUrl: './dishes.component.html',
+  styleUrls: ['./dishes.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DishesComponent {}

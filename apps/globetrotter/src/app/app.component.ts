@@ -12,10 +12,10 @@ import {
 } from '@atocha/globetrotter/shared/ui';
 
 @Component({
-    selector: 'app-root',
-    imports: [CommonModule, ErrorComponent, LoaderComponent, RouterOutlet],
-    templateUrl: './app.component.html',
-    changeDetection: ChangeDetectionStrategy.OnPush
+  selector: 'app-root',
+  imports: [CommonModule, ErrorComponent, LoaderComponent, RouterOutlet],
+  templateUrl: './app.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
   loading$ = this._loaderService.global$;

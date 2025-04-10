@@ -16,12 +16,12 @@ import { QuizCardComponent } from './quiz-card/quiz-card.component';
 import { staggerAnimation } from './quiz-cards';
 
 @Component({
-    selector: 'app-quiz-cards',
-    imports: [CommonModule, QuizCardComponent],
-    templateUrl: './quiz-cards.component.html',
-    styleUrls: ['./quiz-cards.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    animations: [fadeIn, staggerAnimation]
+  selector: 'app-quiz-cards',
+  imports: [CommonModule, QuizCardComponent],
+  templateUrl: './quiz-cards.component.html',
+  styleUrls: ['./quiz-cards.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  animations: [fadeIn, staggerAnimation],
 })
 export class QuizCardsComponent implements OnInit {
   @Input() type: QuizType | undefined;

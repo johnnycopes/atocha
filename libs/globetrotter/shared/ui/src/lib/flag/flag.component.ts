@@ -2,11 +2,11 @@ import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 
 @Component({
-    selector: 'ui-flag',
-    imports: [CommonModule],
-    template: `<img class="flag" [src]="src" alt="Flag of {{ name }}" />`,
-    styles: [
-        `
+  selector: 'ui-flag',
+  imports: [CommonModule],
+  template: `<img class="flag" [src]="src" alt="Flag of {{ name }}" />`,
+  styles: [
+    `
       :host {
         display: inline-block;
         width: 100%;
@@ -17,7 +17,7 @@ import { Component, Input } from '@angular/core';
         max-height: 128px;
       }
     `,
-    ]
+  ],
 })
 export class FlagComponent {
   @Input({ required: true }) src = '';

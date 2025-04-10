@@ -25,11 +25,11 @@ import { QuizType } from '@atocha/globetrotter/learn/util';
 type CardTemplate = Record<FlipCardSide, TemplateRef<unknown> | undefined>;
 
 @Component({
-    selector: 'app-quiz-card',
-    imports: [CommonModule, FlagComponent, FlipCardComponent],
-    templateUrl: './quiz-card.component.html',
-    styleUrls: ['./quiz-card.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+  selector: 'app-quiz-card',
+  imports: [CommonModule, FlagComponent, FlipCardComponent],
+  templateUrl: './quiz-card.component.html',
+  styleUrls: ['./quiz-card.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class QuizCardComponent implements OnInit {
   @Input() country: Country | undefined;

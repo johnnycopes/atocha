@@ -16,19 +16,19 @@ import {
 export type CheckboxSize = 'normal' | 'large';
 
 @Component({
-    selector: 'core-checkbox',
-    imports: [CommonModule, FormsModule],
-    templateUrl: './checkbox.component.html',
-    styleUrls: ['./checkbox.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    encapsulation: ViewEncapsulation.None,
-    providers: [
-        {
-            provide: NG_VALUE_ACCESSOR,
-            useExisting: CheckboxComponent,
-            multi: true,
-        },
-    ]
+  selector: 'core-checkbox',
+  imports: [CommonModule, FormsModule],
+  templateUrl: './checkbox.component.html',
+  styleUrls: ['./checkbox.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: CheckboxComponent,
+      multi: true,
+    },
+  ],
 })
 export class CheckboxComponent implements ControlValueAccessor {
   @Input() size: CheckboxSize = 'normal';

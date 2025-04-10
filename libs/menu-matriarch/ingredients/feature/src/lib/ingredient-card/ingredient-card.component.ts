@@ -23,22 +23,22 @@ import {
 type State = 'default' | 'renaming';
 
 @Component({
-    // eslint-disable-next-line @angular-eslint/component-selector
-    selector: '[app-ingredient-card]',
-    imports: [
-        ButtonComponent,
-        CardComponent,
-        CommonModule,
-        CountComponent,
-        FaIconComponent,
-        InlineNameEditComponent,
-        OptionsMenuComponent,
-        OptionsMenuItemComponent,
-        OptionsMenuTriggerDirective,
-    ],
-    templateUrl: './ingredient-card.component.html',
-    styleUrls: ['./ingredient-card.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+  // eslint-disable-next-line @angular-eslint/component-selector
+  selector: '[app-ingredient-card]',
+  imports: [
+    ButtonComponent,
+    CardComponent,
+    CommonModule,
+    CountComponent,
+    FaIconComponent,
+    InlineNameEditComponent,
+    OptionsMenuComponent,
+    OptionsMenuItemComponent,
+    OptionsMenuTriggerDirective,
+  ],
+  templateUrl: './ingredient-card.component.html',
+  styleUrls: ['./ingredient-card.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class IngredientCardComponent {
   @Input() name = '';

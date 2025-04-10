@@ -19,20 +19,20 @@ import {
 } from '@atocha/menu-matriarch/tags/ui';
 
 @Component({
-    selector: 'app-meal-details',
-    imports: [
-        ButtonComponent,
-        CommonModule,
-        MealSummaryComponent,
-        SectionComponent,
-        TagComponent,
-        TagDefDirective,
-        TagsListComponent,
-        RouterLink,
-    ],
-    templateUrl: './meal-details.component.html',
-    styleUrls: ['./meal-details.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+  selector: 'app-meal-details',
+  imports: [
+    ButtonComponent,
+    CommonModule,
+    MealSummaryComponent,
+    SectionComponent,
+    TagComponent,
+    TagDefDirective,
+    TagsListComponent,
+    RouterLink,
+  ],
+  templateUrl: './meal-details.component.html',
+  styleUrls: ['./meal-details.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MealDetailsComponent {
   vm$ = combineLatest([

@@ -21,11 +21,11 @@ import {
 } from './card-template.directive';
 
 @Component({
-    selector: 'ui-cards',
-    imports: [ButtonComponent, CommonModule],
-    templateUrl: './cards.component.html',
-    styleUrls: ['./cards.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+  selector: 'ui-cards',
+  imports: [ButtonComponent, CommonModule],
+  templateUrl: './cards.component.html',
+  styleUrls: ['./cards.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CardsComponent<T> implements OnChanges {
   @Input() type = '';

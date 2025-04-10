@@ -6,11 +6,11 @@ import { getPlayers } from '@atocha/spirit-islander/shared/util';
 import { trackBySelf } from '@atocha/core/ui';
 
 @Component({
-    selector: 'app-select-players',
-    imports: [CommonModule, FormsModule, ReactiveFormsModule],
-    templateUrl: './select-players.component.html',
-    styleUrls: ['./select-players.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+  selector: 'app-select-players',
+  imports: [CommonModule, FormsModule, ReactiveFormsModule],
+  templateUrl: './select-players.component.html',
+  styleUrls: ['./select-players.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SelectPlayersComponent {
   @Input() form: FormGroup | undefined;

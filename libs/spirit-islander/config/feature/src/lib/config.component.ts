@@ -10,16 +10,16 @@ import { Config } from '@atocha/spirit-islander/config/util';
 import { ConfigFormComponent } from './config-form/config-form.component';
 
 @Component({
-    selector: 'app-config',
-    imports: [CommonModule, ConfigFormComponent],
-    template: `
+  selector: 'app-config',
+  imports: [CommonModule, ConfigFormComponent],
+  template: `
     <app-config-form
       *ngIf="config$ | async as config"
       [config]="config"
       (generate)="onGenerate($event)"
     ></app-config-form>
   `,
-    changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ConfigComponent {
   config$ = this._stateService.config$.pipe(first());

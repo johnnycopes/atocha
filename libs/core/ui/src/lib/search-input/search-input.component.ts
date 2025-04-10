@@ -16,15 +16,15 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { AutofocusDirective } from '../autofocus/autofocus.directive';
 
 @Component({
-    selector: 'core-search-input',
-    imports: [AutofocusDirective, CommonModule, FaIconComponent, FormsModule],
-    templateUrl: './search-input.component.html',
-    styleUrls: ['./search-input.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    encapsulation: ViewEncapsulation.None,
-    host: {
-        class: 'core-search-input',
-    }
+  selector: 'core-search-input',
+  imports: [AutofocusDirective, CommonModule, FaIconComponent, FormsModule],
+  templateUrl: './search-input.component.html',
+  styleUrls: ['./search-input.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
+  host: {
+    class: 'core-search-input',
+  },
 })
 export class SearchInputComponent {
   @Input() autofocus = true;

@@ -18,20 +18,20 @@ import { SelectionTreeComponent } from '@atocha/tree/ui';
 import { Node } from '../config-form/root';
 
 @Component({
-    selector: 'app-checkbox-tree',
-    imports: [
-        AspectEmblemComponent,
-        CheckboxComponent,
-        CommonModule,
-        DifficultyEmblemComponent,
-        ExpansionEmblemComponent,
-        FormsModule,
-        ReactiveFormsModule,
-        SelectionTreeComponent,
-    ],
-    templateUrl: './checkbox-tree.component.html',
-    styleUrls: ['./checkbox-tree.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+  selector: 'app-checkbox-tree',
+  imports: [
+    AspectEmblemComponent,
+    CheckboxComponent,
+    CommonModule,
+    DifficultyEmblemComponent,
+    ExpansionEmblemComponent,
+    FormsModule,
+    ReactiveFormsModule,
+    SelectionTreeComponent,
+  ],
+  templateUrl: './checkbox-tree.component.html',
+  styleUrls: ['./checkbox-tree.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CheckboxTreeComponent<T> {
   @Input({ required: true }) root!: Node<T>;

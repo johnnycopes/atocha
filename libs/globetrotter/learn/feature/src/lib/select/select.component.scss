@@ -1,4 +1,4 @@
-@use "sass:map";
+@use 'sass:map';
 @use 'styles' as styles;
 
 .wrapper {
@@ -12,7 +12,8 @@
   align-items: flex-end;
   margin-bottom: map.get(styles.$spacing, 24);
   padding-bottom: map.get(styles.$spacing, 16);
-  border-bottom: map.get(styles.$border, thin) solid map.get(styles.$color, dark);
+  border-bottom: map.get(styles.$border, thin) solid
+    map.get(styles.$color, dark);
 }
 
 .header {

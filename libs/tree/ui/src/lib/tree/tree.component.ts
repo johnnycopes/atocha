@@ -13,14 +13,14 @@ import { GetChildren, GetId } from '@atocha/tree/util';
 import { TreeComponentAPI, TreeNodeContext } from '../types';
 
 @Component({
-    selector: 'core-tree',
-    imports: [CommonModule],
-    templateUrl: './tree.component.html',
-    styleUrls: ['./tree.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {
-        class: 'core-tree',
-    }
+  selector: 'core-tree',
+  imports: [CommonModule],
+  templateUrl: './tree.component.html',
+  styleUrls: ['./tree.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  host: {
+    class: 'core-tree',
+  },
 })
 export class TreeComponent<T> implements TreeComponentAPI<T>, OnInit {
   @Input({ required: true }) root!: T;

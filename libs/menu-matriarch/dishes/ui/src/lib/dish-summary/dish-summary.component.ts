@@ -14,20 +14,20 @@ import {
 } from '@atocha/menu-matriarch/tags/ui';
 
 @Component({
-    selector: 'ui-dish-summary',
-    imports: [
-        CommonModule,
-        CountComponent,
-        ExternalLinkDirective,
-        FaIconComponent,
-        RouterLink,
-        TagComponent,
-        TagDefDirective,
-        TagsListComponent,
-    ],
-    templateUrl: './dish-summary.component.html',
-    styleUrls: ['./dish-summary.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+  selector: 'ui-dish-summary',
+  imports: [
+    CommonModule,
+    CountComponent,
+    ExternalLinkDirective,
+    FaIconComponent,
+    RouterLink,
+    TagComponent,
+    TagDefDirective,
+    TagsListComponent,
+  ],
+  templateUrl: './dish-summary.component.html',
+  styleUrls: ['./dish-summary.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DishSummaryComponent {
   @Input() id = '';

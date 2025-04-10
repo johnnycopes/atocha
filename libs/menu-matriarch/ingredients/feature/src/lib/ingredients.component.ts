@@ -24,17 +24,17 @@ import {
 } from './ingredients-board/ingredients-board-column/ingredients-board-column.component';
 
 @Component({
-    imports: [
-        ButtonComponent,
-        CommonModule,
-        IngredientsBoardComponent,
-        InlineNameEditComponent,
-        SectionComponent,
-    ],
-    selector: 'app-ingredients',
-    templateUrl: './ingredients.component.html',
-    styleUrls: ['./ingredients.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+  imports: [
+    ButtonComponent,
+    CommonModule,
+    IngredientsBoardComponent,
+    InlineNameEditComponent,
+    SectionComponent,
+  ],
+  selector: 'app-ingredients',
+  templateUrl: './ingredients.component.html',
+  styleUrls: ['./ingredients.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class IngredientsComponent {
   addingSubject = new BehaviorSubject<boolean>(false);

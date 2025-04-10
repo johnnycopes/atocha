@@ -42,24 +42,24 @@ export type DishConfig = Pick<
 > & { ingredientModels: IngredientModel[]; tagModels: TagModel[] };
 
 @Component({
-    selector: 'app-dish-edit-form',
-    imports: [
-        AutofocusDirective,
-        ButtonComponent,
-        CheckboxComponent,
-        CommonModule,
-        EditorComponent,
-        FormsModule,
-        InputComponent,
-        ReactiveFormsModule,
-        RouterLink,
-        TagComponent,
-        TagDefDirective,
-        TagsListComponent,
-    ],
-    templateUrl: './dish-edit-form.component.html',
-    styleUrls: ['./dish-edit-form.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+  selector: 'app-dish-edit-form',
+  imports: [
+    AutofocusDirective,
+    ButtonComponent,
+    CheckboxComponent,
+    CommonModule,
+    EditorComponent,
+    FormsModule,
+    InputComponent,
+    ReactiveFormsModule,
+    RouterLink,
+    TagComponent,
+    TagDefDirective,
+    TagsListComponent,
+  ],
+  templateUrl: './dish-edit-form.component.html',
+  styleUrls: ['./dish-edit-form.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DishEditFormComponent implements OnInit {
   @Input() dish: DishConfig | undefined;

@@ -13,19 +13,19 @@ import { PlannerMealsComponent } from './planner-meals/planner-meals.component';
 import { PlannerMenuComponent } from './planner-menu/planner-menu.component';
 
 @Component({
-    selector: 'app-planner',
-    imports: [
-        ButtonComponent,
-        CommonModule,
-        EmptyViewPlaceholderComponent,
-        PlannerDishesComponent,
-        PlannerMealsComponent,
-        PlannerMenuComponent,
-        RouterModule,
-    ],
-    templateUrl: './planner.component.html',
-    styleUrls: ['./planner.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+  selector: 'app-planner',
+  imports: [
+    ButtonComponent,
+    CommonModule,
+    EmptyViewPlaceholderComponent,
+    PlannerDishesComponent,
+    PlannerMealsComponent,
+    PlannerMenuComponent,
+    RouterModule,
+  ],
+  templateUrl: './planner.component.html',
+  styleUrls: ['./planner.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PlannerComponent {
   view$ = this._plannerService.view$;

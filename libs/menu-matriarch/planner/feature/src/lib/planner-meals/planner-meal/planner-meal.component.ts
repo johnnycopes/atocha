@@ -33,21 +33,21 @@ interface EntryModel {
 }
 
 @Component({
-    selector: 'app-planner-meal',
-    imports: [
-        CardComponent,
-        CheckboxComponent,
-        CommonModule,
-        FormsModule,
-        MealSummaryComponent,
-        TagComponent,
-        TagDefDirective,
-        TagsListComponent,
-        RouterLink,
-    ],
-    templateUrl: './planner-meal.component.html',
-    styleUrls: ['./planner-meal.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+  selector: 'app-planner-meal',
+  imports: [
+    CardComponent,
+    CheckboxComponent,
+    CommonModule,
+    FormsModule,
+    MealSummaryComponent,
+    TagComponent,
+    TagDefDirective,
+    TagsListComponent,
+    RouterLink,
+  ],
+  templateUrl: './planner-meal.component.html',
+  styleUrls: ['./planner-meal.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PlannerMealComponent {
   @Input() id = '';

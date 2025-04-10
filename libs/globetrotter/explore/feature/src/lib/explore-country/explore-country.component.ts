@@ -26,11 +26,11 @@ interface TableData {
 }
 
 @Component({
-    selector: 'app-explore-country',
-    imports: [CommonModule, FlagComponent, MeasurementPipe, SmallCapsComponent],
-    templateUrl: './explore-country.component.html',
-    styleUrls: ['./explore-country.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+  selector: 'app-explore-country',
+  imports: [CommonModule, FlagComponent, MeasurementPipe, SmallCapsComponent],
+  templateUrl: './explore-country.component.html',
+  styleUrls: ['./explore-country.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ExploreCountryComponent implements OnChanges, AfterViewInit {
   @Input({ required: true }) country!: Country;

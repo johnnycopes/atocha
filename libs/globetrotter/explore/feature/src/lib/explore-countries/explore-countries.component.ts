@@ -17,12 +17,12 @@ import { InputComponent } from '@atocha/globetrotter/shared/ui';
 import { Country } from '@atocha/globetrotter/shared/util';
 
 @Component({
-    // eslint-disable-next-line @angular-eslint/component-selector
-    selector: 'nav[app-explore-countries]',
-    imports: [CommonModule, InputComponent, SearchInputComponent],
-    templateUrl: './explore-countries.component.html',
-    styleUrls: ['./explore-countries.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+  // eslint-disable-next-line @angular-eslint/component-selector
+  selector: 'nav[app-explore-countries]',
+  imports: [CommonModule, InputComponent, SearchInputComponent],
+  templateUrl: './explore-countries.component.html',
+  styleUrls: ['./explore-countries.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ExploreCountriesComponent implements OnChanges {
   @Input({ required: true }) countries: Country[] = [];

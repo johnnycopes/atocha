@@ -44,25 +44,25 @@ export interface IngredientRename {
 type State = 'default' | 'renaming' | 'addingIngredient';
 
 @Component({
-    // eslint-disable-next-line @angular-eslint/component-selector
-    selector: '[app-ingredients-board-column]',
-    templateUrl: './ingredients-board-column.component.html',
-    styleUrls: [
-        '../ingredients-board.scss',
-        './ingredients-board-column.component.scss',
-    ],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [
-        ButtonComponent,
-        CommonModule,
-        DragDropModule,
-        FaIconComponent,
-        IngredientCardComponent,
-        InlineNameEditComponent,
-        OptionsMenuComponent,
-        OptionsMenuItemComponent,
-        OptionsMenuTriggerDirective,
-    ]
+  // eslint-disable-next-line @angular-eslint/component-selector
+  selector: '[app-ingredients-board-column]',
+  templateUrl: './ingredients-board-column.component.html',
+  styleUrls: [
+    '../ingredients-board.scss',
+    './ingredients-board-column.component.scss',
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [
+    ButtonComponent,
+    CommonModule,
+    DragDropModule,
+    FaIconComponent,
+    IngredientCardComponent,
+    InlineNameEditComponent,
+    OptionsMenuComponent,
+    OptionsMenuItemComponent,
+    OptionsMenuTriggerDirective,
+  ],
 })
 export class IngredientsBoardColumnComponent {
   @Input() id = '';

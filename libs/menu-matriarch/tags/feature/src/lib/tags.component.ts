@@ -12,17 +12,17 @@ import {
 import { TagCardComponent } from './tag-card/tag-card.component';
 
 @Component({
-    selector: 'app-tags',
-    imports: [
-        ButtonComponent,
-        CommonModule,
-        InlineNameEditComponent,
-        SectionComponent,
-        TagCardComponent,
-    ],
-    templateUrl: './tags.component.html',
-    styleUrls: ['./tags.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+  selector: 'app-tags',
+  imports: [
+    ButtonComponent,
+    CommonModule,
+    InlineNameEditComponent,
+    SectionComponent,
+    TagCardComponent,
+  ],
+  templateUrl: './tags.component.html',
+  styleUrls: ['./tags.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TagsComponent {
   tags$ = this._tagService.getAll();

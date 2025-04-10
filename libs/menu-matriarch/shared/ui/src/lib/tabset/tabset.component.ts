@@ -22,12 +22,12 @@ import { TabComponent } from './tab/tab.component';
 export type TabsetContentVisibility = 'visible' | 'invisible';
 
 @Component({
-    selector: 'ui-tabset',
-    imports: [CommonModule],
-    templateUrl: './tabset.component.html',
-    styleUrls: ['./tabset.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    animations: [fadeInAnimation, visibilityAnimation]
+  selector: 'ui-tabset',
+  imports: [CommonModule],
+  templateUrl: './tabset.component.html',
+  styleUrls: ['./tabset.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  animations: [fadeInAnimation, visibilityAnimation],
 })
 export class TabsetComponent
   extends AnimatedComponent

@@ -1,4 +1,4 @@
-@use "sass:map";
+@use 'sass:map';
 @use 'styles' as styles;
 
 .container {
@@ -42,7 +42,8 @@
 
   &__input:checked ~ .option__label {
     color: map.get(styles.$color, lightest);
-    border: map.get(styles.$border, medium) solid map.get(styles.$color, lightest);
+    border: map.get(styles.$border, medium) solid
+      map.get(styles.$color, lightest);
     font-weight: map.get(styles.$font-weight, bold);
   }
 }

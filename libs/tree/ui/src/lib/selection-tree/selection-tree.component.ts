@@ -23,22 +23,22 @@ import { InternalSelectionTreeComponent } from '../internal-selection-tree/inter
 import { SelectionTreeComponentAPI, SelectionTreeNodeContext } from '../types';
 
 @Component({
-    selector: 'core-selection-tree',
-    imports: [CommonModule, FormsModule, InternalSelectionTreeComponent],
-    templateUrl: './selection-tree.component.html',
-    styleUrls: ['./selection-tree.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    encapsulation: ViewEncapsulation.None,
-    host: {
-        class: 'core-selection-tree',
+  selector: 'core-selection-tree',
+  imports: [CommonModule, FormsModule, InternalSelectionTreeComponent],
+  templateUrl: './selection-tree.component.html',
+  styleUrls: ['./selection-tree.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
+  host: {
+    class: 'core-selection-tree',
+  },
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => SelectionTreeComponent),
+      multi: true,
     },
-    providers: [
-        {
-            provide: NG_VALUE_ACCESSOR,
-            useExisting: forwardRef(() => SelectionTreeComponent),
-            multi: true,
-        },
-    ]
+  ],
 })
 export class SelectionTreeComponent<T>
   implements SelectionTreeComponentAPI<T>, OnChanges, ControlValueAccessor

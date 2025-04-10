@@ -1,4 +1,9 @@
-import { ApplicationConfig, importProvidersFrom, inject, provideAppInitializer } from '@angular/core';
+import {
+  ApplicationConfig,
+  importProvidersFrom,
+  inject,
+  provideAppInitializer,
+} from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { provideRouter, withInMemoryScrolling } from '@angular/router';
@@ -23,7 +28,8 @@ export const appConfig: ApplicationConfig = {
       useValue: 'GLOBETROTTER',
     },
     provideAppInitializer(() => {
-        const initializerFn = ((
+      const initializerFn = (
+        (
           countryService: CountryService,
           errorService: ErrorService,
           loaderService: LoaderService
@@ -37,8 +43,9 @@ export const appConfig: ApplicationConfig = {
               loaderService.setGlobalLoader(false);
             },
           });
-        })(inject(CountryService), inject(ErrorService), inject(LoaderService));
-        return initializerFn();
-      }),
+        }
+      )(inject(CountryService), inject(ErrorService), inject(LoaderService));
+      return initializerFn();
+    }),
   ],
 };

@@ -28,22 +28,22 @@ import { ConfigForm } from './config-form';
 import { Root } from './root';
 
 @Component({
-    selector: 'app-config-form',
-    imports: [
-        ButtonComponent,
-        CardComponent,
-        CardGroupComponent,
-        CheckboxTreeComponent,
-        CommonModule,
-        FormsModule,
-        ReactiveFormsModule,
-        SelectDifficultyRangeComponent,
-        SelectPlayersComponent,
-    ],
-    templateUrl: './config-form.component.html',
-    styleUrls: ['./config-form.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    encapsulation: ViewEncapsulation.None
+  selector: 'app-config-form',
+  imports: [
+    ButtonComponent,
+    CardComponent,
+    CardGroupComponent,
+    CheckboxTreeComponent,
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    SelectDifficultyRangeComponent,
+    SelectPlayersComponent,
+  ],
+  templateUrl: './config-form.component.html',
+  styleUrls: ['./config-form.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
 })
 export class ConfigFormComponent implements OnInit, OnDestroy {
   @Input() config: Config | undefined;

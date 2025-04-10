@@ -12,19 +12,19 @@ import {
 } from '@atocha/menu-matriarch/tags/ui';
 
 @Component({
-    selector: 'app-meal-card',
-    imports: [
-        CardComponent,
-        CommonModule,
-        MealSummaryComponent,
-        RouterLink,
-        TagComponent,
-        TagDefDirective,
-        TagsListComponent,
-    ],
-    templateUrl: './meal-card.component.html',
-    styleUrls: ['./meal-card.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+  selector: 'app-meal-card',
+  imports: [
+    CardComponent,
+    CommonModule,
+    MealSummaryComponent,
+    RouterLink,
+    TagComponent,
+    TagDefDirective,
+    TagsListComponent,
+  ],
+  templateUrl: './meal-card.component.html',
+  styleUrls: ['./meal-card.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MealCardComponent {
   @Input() id = '';

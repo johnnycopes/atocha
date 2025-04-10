@@ -5,12 +5,12 @@ import { routerTransition } from '@atocha/core/ui';
 import { HeaderComponent } from '../header/header.component';
 
 @Component({
-    selector: 'app-shell',
-    imports: [HeaderComponent, RouterModule],
-    templateUrl: './shell.component.html',
-    styleUrls: ['./shell.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    animations: [routerTransition]
+  selector: 'app-shell',
+  imports: [HeaderComponent, RouterModule],
+  templateUrl: './shell.component.html',
+  styleUrls: ['./shell.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  animations: [routerTransition],
 })
 export class ShellComponent {
   getState(outlet: RouterOutlet): string | undefined {

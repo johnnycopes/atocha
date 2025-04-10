@@ -1,4 +1,4 @@
-@use "sass:map";
+@use 'sass:map';
 @use 'styles' as styles;
 
 .navigation {
@@ -10,7 +10,8 @@
   width: map.get(styles.$app, navigation-width);
   height: 100%;
   padding: map.get(styles.$spacing, 16) 0;
-  border-right: map.get(styles.$border, thinnest) solid map.get(styles.$color, dark);
+  border-right: map.get(styles.$border, thinnest) solid
+    map.get(styles.$color, dark);
   background: map.get(styles.$color, darkest-inset);
 }
 

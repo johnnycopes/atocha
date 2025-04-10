@@ -7,10 +7,10 @@ import {
 } from '@angular/core';
 
 @Component({
-    selector: 'ui-small-caps',
-    imports: [CommonModule],
-    templateUrl: './small-caps.component.html',
-    changeDetection: ChangeDetectionStrategy.OnPush
+  selector: 'ui-small-caps',
+  imports: [CommonModule],
+  templateUrl: './small-caps.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SmallCapsComponent {
   @Input() header = '';
