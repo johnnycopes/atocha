@@ -1,5 +1,5 @@
 @use "sass:map";
-@import 'styles';
+@use 'styles' as styles;
 
 :host {
   height: 100%;
@@ -14,8 +14,8 @@
 }
 
 .header {
-  font-size: map.get($font-size, 48);
-  margin-bottom: map.get($spacing, 24);
+  font-size: map.get(styles.$font-size, 48);
+  margin-bottom: map.get(styles.$spacing, 24);
 }
 
 .action {
@@ -23,6 +23,6 @@
 
   &:not(:empty) {
     display: block;
-    margin-top: map.get($spacing, 32);
+    margin-top: map.get(styles.$spacing, 32);
   }
 }

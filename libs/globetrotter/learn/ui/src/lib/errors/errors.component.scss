@@ -1,15 +1,15 @@
 @use "sass:map";
-@import 'styles';
+@use 'styles' as styles;
 
 .message {
-  padding: map.get($spacing, 4);
-  border-radius: map.get($border, radius);
-  font-size: map.get($font-size, 16);
-  font-weight: map.get($font-weight, bold);
+  padding: map.get(styles.$spacing, 4);
+  border-radius: map.get(styles.$border, radius);
+  font-size: map.get(styles.$font-size, 16);
+  font-weight: map.get(styles.$font-weight, bold);
   background: #ffc3cd;
   color: #bd2222;
 
   &:not(:last-of-type) {
-    margin-bottom: map.get($spacing, 4);
+    margin-bottom: map.get(styles.$spacing, 4);
   }
 }

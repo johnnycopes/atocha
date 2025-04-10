@@ -1,5 +1,5 @@
 @use "sass:map";
-@import 'styles';
+@use 'styles' as styles;
 
 :host {
   display: flex;
@@ -9,27 +9,27 @@
 
 :host ::ng-deep input {
   width: 100%;
-  padding: map.get($spacing, 8);
-  border: map.get($border, medium) solid transparent;
-  border-radius: map.get($border, radius);
-  background: map.get($color, white);
-  color: map.get($color, darkest);
-  font-family: $font-stack;
-  font-size: map.get($font-size, 16);
-  transition: map.get($transition, border);
+  padding: map.get(styles.$spacing, 8);
+  border: map.get(styles.$border, medium) solid transparent;
+  border-radius: map.get(styles.$border, radius);
+  background: map.get(styles.$color, white);
+  color: map.get(styles.$color, darkest);
+  font-family: styles.$font-stack;
+  font-size: map.get(styles.$font-size, 16);
+  transition: map.get(styles.$transition, border);
   outline: none;
 
   &::placeholder {
-    font-style: $font-stack;
-    color: map.get($color, medium);
+    font-style: styles.$font-stack;
+    color: map.get(styles.$color, medium);
   }
 
   &:focus {
-    border-color: map.get($color, medium);
+    border-color: map.get(styles.$color, medium);
   }
 
   &:disabled {
-    background: map.get($color, medium);
+    background: map.get(styles.$color, medium);
     cursor: not-allowed;
   }
 }

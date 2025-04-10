@@ -1,14 +1,14 @@
 @use "sass:map";
-@import 'styles';
+@use 'styles' as styles;
 
 .quiz-cards {
   display: grid;
-  grid-template-columns: repeat(auto-fill, map.get($app, card-width));
-  grid-auto-rows: map.get($app, card-width);
-  grid-gap: map.get($app, gap);
+  grid-template-columns: repeat(auto-fill, map.get(styles.$app, card-width));
+  grid-auto-rows: map.get(styles.$app, card-width);
+  grid-gap: map.get(styles.$app, gap);
   justify-content: center;
-  max-width: map.get($learn, max-width);
+  max-width: map.get(styles.$learn, max-width);
   margin: 0 auto;
-  padding-top: map.get($app, header-height);
-  padding-bottom: calc((#{map.get($app, header-height)} / 2));
+  padding-top: map.get(styles.$app, header-height);
+  padding-bottom: calc((#{map.get(styles.$app, header-height)} / 2));
 }

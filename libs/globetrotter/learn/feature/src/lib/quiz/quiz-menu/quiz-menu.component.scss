@@ -1,7 +1,7 @@
 @use "sass:map";
-@import 'styles';
+@use 'styles' as styles;
 
-$padding: map.get($app, wrapper-padding);
+$padding: map.get(styles.$app, wrapper-padding);
 
 @mixin layout($justify-content-position) {
   flex: 1;
@@ -12,7 +12,7 @@ $padding: map.get($app, wrapper-padding);
 }
 
 .progress {
-  max-width: map.get($learn, max-width) + $padding + $padding;
+  max-width: map.get(styles.$learn, max-width) + $padding + $padding;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
@@ -31,19 +31,19 @@ $padding: map.get($app, wrapper-padding);
 }
 
 .back {
-  width: map.get($spacing, 24);
+  width: map.get(styles.$spacing, 24);
 }
 
 .prompt {
-  font-weight: map.get($font-weight, bold);
+  font-weight: map.get(styles.$font-weight, bold);
 }
 
 .details {
-  font-size: map.get($font-size, 20);
+  font-size: map.get(styles.$font-size, 20);
   text-align: right;
 
   &__tally {
-    margin-bottom: map.get($spacing, 8);
+    margin-bottom: map.get(styles.$spacing, 8);
   }
 }
 
@@ -55,15 +55,15 @@ $padding: map.get($app, wrapper-padding);
 }
 
 .text {
-  font-size: map.get($font-size, 36);
-  margin-bottom: map.get($spacing, 16);
+  font-size: map.get(styles.$font-size, 36);
+  margin-bottom: map.get(styles.$spacing, 16);
 }
 
 .accuracy {
-  font-size: map.get($font-size, 128);
-  margin-bottom: map.get($spacing, 16);
+  font-size: map.get(styles.$font-size, 128);
+  margin-bottom: map.get(styles.$spacing, 16);
 }
 
 .reset {
-  margin-right: map.get($spacing, 16);
+  margin-right: map.get(styles.$spacing, 16);
 }
