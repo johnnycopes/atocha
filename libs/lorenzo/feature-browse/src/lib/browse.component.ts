@@ -27,7 +27,6 @@ import { LeadersComponent } from './cards/leaders/leaders.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 
 @Component({
-  standalone: true,
   selector: 'app-browse',
   imports: [
     CommonModule,

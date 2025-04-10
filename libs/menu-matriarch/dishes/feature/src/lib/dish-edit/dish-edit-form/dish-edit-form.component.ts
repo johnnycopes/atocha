@@ -42,7 +42,6 @@ export type DishConfig = Pick<
 > & { ingredientModels: IngredientModel[]; tagModels: TagModel[] };
 
 @Component({
-  standalone: true,
   selector: 'app-dish-edit-form',
   imports: [
     AutofocusDirective,

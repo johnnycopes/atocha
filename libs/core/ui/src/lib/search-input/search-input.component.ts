@@ -16,7 +16,6 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { AutofocusDirective } from '../autofocus/autofocus.directive';
 
 @Component({
-  standalone: true,
   selector: 'core-search-input',
   imports: [AutofocusDirective, CommonModule, FaIconComponent, FormsModule],
   templateUrl: './search-input.component.html',

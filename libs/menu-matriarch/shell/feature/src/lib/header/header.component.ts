@@ -6,7 +6,6 @@ import { PlannerService } from '@atocha/menu-matriarch/planner/data-access';
 import { ROUTES } from '@atocha/menu-matriarch/shared/data-access-routing';
 
 @Component({
-  standalone: true,
   // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'header[app-header]',
   imports: [CommonModule, RouterModule],

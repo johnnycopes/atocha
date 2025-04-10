@@ -44,7 +44,6 @@ export interface IngredientRename {
 type State = 'default' | 'renaming' | 'addingIngredient';
 
 @Component({
-  standalone: true,
   // eslint-disable-next-line @angular-eslint/component-selector
   selector: '[app-ingredients-board-column]',
   templateUrl: './ingredients-board-column.component.html',

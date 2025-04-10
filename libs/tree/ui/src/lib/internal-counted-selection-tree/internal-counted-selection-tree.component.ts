@@ -18,7 +18,6 @@ import {
 } from '../types';
 
 @Component({
-  standalone: true,
   selector: 'core-internal-counted-selection-tree',
   imports: [CommonModule, InternalSelectionTreeComponent],
   templateUrl: './internal-counted-selection-tree.component.html',

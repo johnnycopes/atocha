@@ -6,7 +6,6 @@ import { ROUTES } from '@atocha/globetrotter/shared/data-access';
 import { IconComponent, fadeIn } from '@atocha/globetrotter/shared/ui';
 
 @Component({
-  standalone: true,
   selector: 'app-home',
   imports: [ButtonComponent, IconComponent],
   templateUrl: './home.component.html',

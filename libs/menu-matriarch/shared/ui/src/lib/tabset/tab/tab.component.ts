@@ -11,7 +11,6 @@ import {
 import { fadeInAnimation } from '../animations';
 
 @Component({
-  standalone: true,
   selector: 'ui-tab',
   imports: [CommonModule],
   templateUrl: './tab.component.html',

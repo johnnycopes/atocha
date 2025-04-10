@@ -10,7 +10,6 @@ import { Config } from '@atocha/spirit-islander/config/util';
 import { ConfigFormComponent } from './config-form/config-form.component';
 
 @Component({
-  standalone: true,
   selector: 'app-config',
   imports: [CommonModule, ConfigFormComponent],
   template: `

@@ -1,19 +1,20 @@
-@import 'styles';
+@use 'sass:map';
+@use 'styles' as styles;
 
 .list {
-  margin-top: map-get($spacing, 12);
+  margin-top: map.get(styles.$spacing, 12);
   height: calc(
     100% - 60px
   ); // subtract the total height of the search input and its bottom margin
   overflow: auto;
   scroll-behavior: smooth;
-  @include custom-scrollbar;
+  @include styles.custom-scrollbar;
 
   &__item {
-    margin-bottom: map-get($spacing, 12);
-    padding: map-get($spacing, 12);
-    background: map-get($color, dark);
-    border-radius: map-get($border, radius);
+    margin-bottom: map.get(styles.$spacing, 12);
+    padding: map.get(styles.$spacing, 12);
+    background: map.get(styles.$color, dark);
+    border-radius: map.get(styles.$border, radius);
     cursor: pointer;
 
     &:last-child {
@@ -21,8 +22,8 @@
     }
 
     &--selected {
-      background: map-get($color, light);
-      color: map-get($color, darkest);
+      background: map.get(styles.$color, light);
+      color: map.get(styles.$color, darkest);
     }
   }
 

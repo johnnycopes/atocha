@@ -20,7 +20,6 @@ import {
 import { SelectForm } from '../select-form';
 
 @Component({
-  standalone: true,
   selector: 'app-select-places',
   imports: [
     ButtonComponent,

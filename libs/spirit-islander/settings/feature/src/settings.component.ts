@@ -6,7 +6,7 @@ import {
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
-import { ButtonComponent, CheckboxComponent } from '@atocha/core/ui';
+import { CheckboxComponent } from '@atocha/core/ui';
 import { Settings } from '@atocha/spirit-islander/settings/util';
 import { StateService } from '@atocha/spirit-islander/shared/data-access';
 import {
@@ -15,10 +15,8 @@ import {
 } from '@atocha/spirit-islander/shared/ui';
 
 @Component({
-  standalone: true,
   selector: 'app-settings',
   imports: [
-    ButtonComponent,
     CardComponent,
     CardGroupComponent,
     CheckboxComponent,

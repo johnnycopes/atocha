@@ -20,7 +20,6 @@ type ThematicBoardNameAbberviation = 'E' | 'NE' | 'NW' | 'SE' | 'SW' | 'W';
 
 @Component({
   selector: 'ui-board-emblem',
-  standalone: true,
   imports: [CommonModule, EmblemComponent, SnakeCasePipe],
   templateUrl: './board-emblem.component.html',
   styleUrls: ['./board-emblem.component.scss'],

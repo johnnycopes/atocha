@@ -2,7 +2,6 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import { ExternalLinkDirective } from '@atocha/core/ui';
 import {
   ROUTES,
   RouterService,
@@ -11,8 +10,7 @@ import {
 @Component({
   // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'header[app-header]',
-  standalone: true,
-  imports: [CommonModule, ExternalLinkDirective, RouterModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

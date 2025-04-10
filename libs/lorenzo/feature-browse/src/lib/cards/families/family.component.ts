@@ -11,7 +11,6 @@ import { CardComponent, CardHeaderComponent } from '@atocha/lorenzo/ui';
 import { Family } from '@atocha/lorenzo/util';
 
 @Component({
-  standalone: true,
   selector: 'app-family',
   imports: [CardComponent, CardHeaderComponent, CommonModule],
   templateUrl: './family.component.html',

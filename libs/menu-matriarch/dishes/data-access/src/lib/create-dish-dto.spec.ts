@@ -1,3 +1,9 @@
+// TODO: remove this chunk after newer version of Jest is installed
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const { fetch, Response } = require('util');
+global.fetch = fetch;
+global.Response = Response;
+
 import { createDishDto } from './create-dish-dto';
 
 describe('createDishDto', () => {

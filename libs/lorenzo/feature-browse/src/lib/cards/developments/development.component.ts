@@ -11,7 +11,6 @@ import { CardComponent, CardHeaderComponent } from '@atocha/lorenzo/ui';
 import { Development } from '@atocha/lorenzo/util';
 
 @Component({
-  standalone: true,
   selector: 'app-development',
   imports: [CardComponent, CardHeaderComponent, CommonModule],
   templateUrl: './development.component.html',

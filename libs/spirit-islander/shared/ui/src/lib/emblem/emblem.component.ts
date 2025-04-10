@@ -3,7 +3,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   selector: 'ui-emblem',
-  standalone: true,
   imports: [CommonModule],
   template: `<ng-content></ng-content>`,
   styles: [

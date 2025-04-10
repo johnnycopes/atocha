@@ -6,7 +6,6 @@ import { InputComponent } from '@atocha/globetrotter/shared/ui';
 import { SelectForm } from '../select-form';
 
 @Component({
-  standalone: true,
   selector: 'app-select-quantity',
   imports: [CommonModule, InputComponent, ReactiveFormsModule],
   templateUrl: './select-quantity.component.html',

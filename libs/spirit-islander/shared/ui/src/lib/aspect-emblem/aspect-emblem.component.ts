@@ -1,14 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
-import { SnakeCasePipe } from '@atocha/core/ui';
 import { SpiritFamilyName } from '@atocha/spirit-islander/shared/util';
 import { EmblemComponent } from '../emblem/emblem.component';
 
 @Component({
   selector: 'ui-aspect-emblem',
-  standalone: true,
-  imports: [CommonModule, EmblemComponent, SnakeCasePipe],
+  imports: [CommonModule, EmblemComponent],
   templateUrl: './aspect-emblem.component.html',
   styleUrls: ['./aspect-emblem.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

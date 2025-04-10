@@ -12,7 +12,6 @@ import { InlineFormComponent } from '../inline-form/inline-form.component';
 import { InputComponent } from '../input/input.component';
 
 @Component({
-  standalone: true,
   selector: 'ui-inline-name-edit',
   imports: [
     AutofocusDirective,
@@ -26,6 +25,7 @@ import { InputComponent } from '../input/input.component';
 })
 export class InlineNameEditComponent {
   @Input() name = '';
+  // eslint-disable-next-line @angular-eslint/no-output-native
   @Output() cancel = new EventEmitter<void>();
   @Output() save = new EventEmitter<string>();
 

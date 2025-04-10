@@ -11,7 +11,6 @@ import { faCaretDown, faCaretUp } from '@fortawesome/free-solid-svg-icons';
 import { ButtonComponent } from '@atocha/core/ui';
 
 @Component({
-  standalone: true,
   selector: 'app-filters-button',
   imports: [ButtonComponent, FaIconComponent],
   templateUrl: './filters-button.component.html',

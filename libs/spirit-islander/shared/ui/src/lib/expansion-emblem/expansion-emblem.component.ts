@@ -6,7 +6,6 @@ import { EmblemComponent } from '../emblem/emblem.component';
 
 @Component({
   selector: 'ui-expansion-emblem',
-  standalone: true,
   imports: [CommonModule, EmblemComponent],
   templateUrl: './expansion-emblem.component.html',
   styleUrls: ['./expansion-emblem.component.scss'],

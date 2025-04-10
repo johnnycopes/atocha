@@ -1,3 +1,4 @@
+@use 'sass:map';
 /*
 Use these colors across the app. Lean heavily on primary
 and secondary -- the other colors should be used sparingly.
@@ -91,7 +92,7 @@ $yellow: (
 );
 
 @function color($palette, $value) {
-  @return map-get($palette, $value);
+  @return map.get($palette, $value);
 }
 
 @mixin hover {

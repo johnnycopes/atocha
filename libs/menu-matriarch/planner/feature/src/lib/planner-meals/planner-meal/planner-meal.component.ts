@@ -33,7 +33,6 @@ interface EntryModel {
 }
 
 @Component({
-  standalone: true,
   selector: 'app-planner-meal',
   imports: [
     CardComponent,

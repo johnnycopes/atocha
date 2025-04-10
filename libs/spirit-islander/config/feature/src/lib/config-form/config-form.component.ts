@@ -29,7 +29,6 @@ import { Root } from './root';
 
 @Component({
   selector: 'app-config-form',
-  standalone: true,
   imports: [
     ButtonComponent,
     CardComponent,

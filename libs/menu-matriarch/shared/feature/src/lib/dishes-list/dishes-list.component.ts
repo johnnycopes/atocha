@@ -23,7 +23,6 @@ import { FilterService } from '../filter.service';
 import { FilterableListComponent } from '../filterable-list/filterable-list.component';
 
 @Component({
-  standalone: true,
   selector: 'app-dishes-list',
   imports: [
     CommonModule,

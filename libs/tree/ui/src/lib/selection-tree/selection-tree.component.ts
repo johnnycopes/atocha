@@ -23,7 +23,6 @@ import { InternalSelectionTreeComponent } from '../internal-selection-tree/inter
 import { SelectionTreeComponentAPI, SelectionTreeNodeContext } from '../types';
 
 @Component({
-  standalone: true,
   selector: 'core-selection-tree',
   imports: [CommonModule, FormsModule, InternalSelectionTreeComponent],
   templateUrl: './selection-tree.component.html',

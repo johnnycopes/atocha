@@ -1,8 +1,9 @@
-@import 'styles';
+@use 'sass:map';
+@use 'styles' as styles;
 
 :host {
   display: inline-block;
-  width: map-get($font-size, 36);
+  width: map.get(styles.$font-size, 36);
 }
 
 .icon {
@@ -15,7 +16,7 @@
 
   &--highlighted {
     path {
-      fill: map-get($color, lightest);
+      fill: map.get(styles.$color, lightest);
     }
   }
 

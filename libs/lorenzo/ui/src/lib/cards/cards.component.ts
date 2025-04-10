@@ -21,7 +21,6 @@ import {
 } from './card-template.directive';
 
 @Component({
-  standalone: true,
   selector: 'ui-cards',
   imports: [ButtonComponent, CommonModule],
   templateUrl: './cards.component.html',

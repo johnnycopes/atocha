@@ -2,7 +2,6 @@ import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 
 @Component({
-  standalone: true,
   selector: 'ui-flag',
   imports: [CommonModule],
   template: `<img class="flag" [src]="src" alt="Flag of {{ name }}" />`,

@@ -48,7 +48,6 @@ export type MealConfig = Pick<Meal, 'name' | 'description'> &
   };
 
 @Component({
-  standalone: true,
   selector: 'app-meal-edit-form',
   imports: [
     AutofocusDirective,

@@ -5,7 +5,6 @@ import { Tag, DishType } from '@atocha/menu-matriarch/shared/util';
 import { DishSummaryComponent } from '@atocha/menu-matriarch/dishes/ui';
 
 @Component({
-  standalone: true,
   selector: 'app-dish-card',
   imports: [CardComponent, DishSummaryComponent],
   templateUrl: './dish-card.component.html',

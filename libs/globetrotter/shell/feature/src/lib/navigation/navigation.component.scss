@@ -1,38 +1,40 @@
-@import 'styles';
+@use 'sass:map';
+@use 'styles' as styles;
 
 .navigation {
   display: flex;
   flex-direction: column;
   position: fixed;
   top: 0;
-  left: -(map-get($app, navigation-width));
-  width: map-get($app, navigation-width);
+  left: -(map.get(styles.$app, navigation-width));
+  width: map.get(styles.$app, navigation-width);
   height: 100%;
-  padding: map-get($spacing, 16) 0;
-  border-right: map-get($border, thinnest) solid map-get($color, dark);
-  background: map-get($color, darkest-inset);
+  padding: map.get(styles.$spacing, 16) 0;
+  border-right: map.get(styles.$border, thinnest) solid
+    map.get(styles.$color, dark);
+  background: map.get(styles.$color, darkest-inset);
 }
 
 .home {
   display: flex;
   justify-content: center;
-  margin-bottom: map-get($spacing, 32);
+  margin-bottom: map.get(styles.$spacing, 32);
   padding: 0;
 
   &__icon {
-    width: map-get($spacing, 64);
+    width: map.get(styles.$spacing, 64);
   }
 }
 
 .link {
   display: block;
-  padding: map-get($spacing, 16) map-get($app, wrapper-padding);
-  font-size: map-get($font-size, 20);
-  color: map-get($color, light);
+  padding: map.get(styles.$spacing, 16) map.get(styles.$app, wrapper-padding);
+  font-size: map.get(styles.$font-size, 20);
+  color: map.get(styles.$color, light);
 
   &--active {
-    color: map-get($color, lightest);
-    font-weight: map-get($font-weight, bold);
+    color: map.get(styles.$color, lightest);
+    font-weight: map.get(styles.$font-weight, bold);
     position: relative;
 
     &::after {
@@ -42,19 +44,19 @@
       left: 0;
       height: 70%;
       transform: translateY(-50%);
-      width: map-get($spacing, 4);
-      background: map-get($color, white);
+      width: map.get(styles.$spacing, 4);
+      background: map.get(styles.$color, white);
     }
   }
 }
 
 .signature {
   margin-top: auto;
-  padding: 0 map-get($spacing, 12);
-  font-size: map-get($font-size, 14);
-  line-height: map-get($line-height, normal);
+  padding: 0 map.get(styles.$spacing, 12);
+  font-size: map.get(styles.$font-size, 14);
+  line-height: map.get(styles.$line-height, normal);
   text-align: center;
-  color: map-get($color, medium);
+  color: map.get(styles.$color, medium);
 
   &__name {
     text-decoration: underline;

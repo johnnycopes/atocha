@@ -8,7 +8,6 @@ import { getFamilyId } from '@atocha/lorenzo/util';
 import { FamilyComponent } from './family.component';
 
 @Component({
-  standalone: true,
   selector: 'app-families',
   imports: [
     CardsComponent,

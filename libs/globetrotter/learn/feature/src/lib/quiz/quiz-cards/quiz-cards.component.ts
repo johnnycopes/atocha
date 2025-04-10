@@ -16,7 +16,6 @@ import { QuizCardComponent } from './quiz-card/quiz-card.component';
 import { staggerAnimation } from './quiz-cards';
 
 @Component({
-  standalone: true,
   selector: 'app-quiz-cards',
   imports: [CommonModule, QuizCardComponent],
   templateUrl: './quiz-cards.component.html',

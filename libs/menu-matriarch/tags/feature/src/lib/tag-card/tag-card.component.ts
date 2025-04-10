@@ -17,7 +17,6 @@ import {
 import { TagComponent } from '@atocha/menu-matriarch/tags/ui';
 
 @Component({
-  standalone: true,
   // eslint-disable-next-line @angular-eslint/component-selector
   selector: '[app-tag-card]',
   imports: [

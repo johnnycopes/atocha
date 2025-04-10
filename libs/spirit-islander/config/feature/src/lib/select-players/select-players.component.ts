@@ -7,7 +7,6 @@ import { trackBySelf } from '@atocha/core/ui';
 
 @Component({
   selector: 'app-select-players',
-  standalone: true,
   imports: [CommonModule, FormsModule, ReactiveFormsModule],
   templateUrl: './select-players.component.html',
   styleUrls: ['./select-players.component.scss'],

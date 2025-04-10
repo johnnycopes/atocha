@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'ui-separator',
-  standalone: true,
   imports: [CommonModule],
   template: `&#8203;`,
   styles: [

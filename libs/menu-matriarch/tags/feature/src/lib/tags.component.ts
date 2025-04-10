@@ -12,7 +12,6 @@ import {
 import { TagCardComponent } from './tag-card/tag-card.component';
 
 @Component({
-  standalone: true,
   selector: 'app-tags',
   imports: [
     ButtonComponent,

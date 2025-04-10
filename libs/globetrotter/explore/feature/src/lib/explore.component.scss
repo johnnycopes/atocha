@@ -1,4 +1,5 @@
-@import 'styles';
+@use 'sass:map';
+@use 'styles' as styles;
 
 :host {
   display: block;
@@ -8,9 +9,9 @@
 .container {
   display: grid;
   height: 100%;
-  grid-template-columns: [list] map-get($spacing, 384) [details] 1fr;
+  grid-template-columns: [list] map.get(styles.$spacing, 384) [details] 1fr;
   grid-template-rows: 100%;
-  grid-gap: map-get($spacing, 24);
+  grid-gap: map.get(styles.$spacing, 24);
 }
 
 .list {

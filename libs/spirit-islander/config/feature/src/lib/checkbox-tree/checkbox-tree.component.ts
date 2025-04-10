@@ -19,7 +19,6 @@ import { Node } from '../config-form/root';
 
 @Component({
   selector: 'app-checkbox-tree',
-  standalone: true,
   imports: [
     AspectEmblemComponent,
     CheckboxComponent,

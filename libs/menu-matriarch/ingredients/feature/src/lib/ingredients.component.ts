@@ -24,7 +24,6 @@ import {
 } from './ingredients-board/ingredients-board-column/ingredients-board-column.component';
 
 @Component({
-  standalone: true,
   imports: [
     ButtonComponent,
     CommonModule,

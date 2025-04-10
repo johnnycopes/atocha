@@ -8,12 +8,9 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 
-import { CardHeaderComponent } from './card-header/card-header.component';
-
 @Component({
-  standalone: true,
   selector: 'ui-card',
-  imports: [CardHeaderComponent, CommonModule],
+  imports: [CommonModule],
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

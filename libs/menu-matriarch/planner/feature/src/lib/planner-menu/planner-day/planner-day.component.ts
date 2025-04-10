@@ -16,7 +16,6 @@ import { SmallCapsLabelComponent } from '@atocha/menu-matriarch/shared/ui';
 import { Day, Dish, Orientation } from '@atocha/menu-matriarch/shared/util';
 
 @Component({
-  standalone: true,
   // eslint-disable-next-line @angular-eslint/component-selector
   selector: '[app-planner-day]',
   imports: [

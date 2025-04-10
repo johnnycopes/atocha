@@ -21,7 +21,6 @@ import {
 import { UserPreferences, getDays } from '@atocha/menu-matriarch/shared/util';
 
 @Component({
-  standalone: true,
   selector: 'app-settings',
   imports: [
     ButtonComponent,

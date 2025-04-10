@@ -1,4 +1,5 @@
-@import 'styles';
+@use 'sass:map';
+@use 'styles' as styles;
 
 :host {
   display: block;
@@ -7,7 +8,7 @@
 
 .content {
   position: relative;
-  margin-left: map-get($app, navigation-width);
+  margin-left: map.get(styles.$app, navigation-width);
   height: 100%;
 
   &__wrapper {
@@ -16,6 +17,6 @@
     justify-content: center;
     height: 100%;
     margin: 0 auto;
-    padding: map-get($app, gap) map-get($app, wrapper-padding);
+    padding: map.get(styles.$app, gap) map.get(styles.$app, wrapper-padding);
   }
 }

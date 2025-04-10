@@ -4,13 +4,11 @@ import { FormsModule } from '@angular/forms';
 
 import { trackBySelf } from '@atocha/core/ui';
 import { getDays } from '@atocha/menu-matriarch/shared/util';
-import { InputComponent } from '../input/input.component';
 
 @Component({
-  standalone: true,
   // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'select[ui-select-day]',
-  imports: [CommonModule, FormsModule, InputComponent],
+  imports: [CommonModule, FormsModule],
   template: `
     <option *ngFor="let day of days; trackBy: trackByFn" [ngValue]="day">
       {{ day }}

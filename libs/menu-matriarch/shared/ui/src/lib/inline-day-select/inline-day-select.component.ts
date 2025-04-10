@@ -15,7 +15,6 @@ import { InputComponent } from '../input/input.component';
 import { SelectDayComponent } from '../select-day/select-day.component';
 
 @Component({
-  standalone: true,
   selector: 'ui-inline-day-select',
   imports: [
     CommonModule,
@@ -30,6 +29,7 @@ import { SelectDayComponent } from '../select-day/select-day.component';
 })
 export class InlineDaySelectComponent {
   @Input() startDay: Day = 'Monday';
+  // eslint-disable-next-line @angular-eslint/no-output-native
   @Output() cancel = new EventEmitter<void>();
   @Output() save = new EventEmitter<Day>();
   readonly days = getDays();

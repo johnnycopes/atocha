@@ -14,7 +14,6 @@ import {
 import { PlannerDayComponent } from './planner-day/planner-day.component';
 
 @Component({
-  standalone: true,
   selector: 'app-planner-menu',
   imports: [
     ButtonComponent,

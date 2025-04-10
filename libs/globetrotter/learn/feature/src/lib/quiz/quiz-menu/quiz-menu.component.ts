@@ -20,7 +20,6 @@ import {
 import { QuizType } from '@atocha/globetrotter/learn/util';
 
 @Component({
-  standalone: true,
   selector: 'app-quiz-menu',
   imports: [
     ButtonComponent,

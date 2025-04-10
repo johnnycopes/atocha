@@ -12,7 +12,6 @@ import {
 } from '@atocha/globetrotter/shared/ui';
 
 @Component({
-  standalone: true,
   selector: 'app-root',
   imports: [CommonModule, ErrorComponent, LoaderComponent, RouterOutlet],
   templateUrl: './app.component.html',

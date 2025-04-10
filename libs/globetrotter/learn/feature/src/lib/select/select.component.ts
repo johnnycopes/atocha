@@ -18,7 +18,6 @@ import { SelectQuantityComponent } from './select-quantity/select-quantity.compo
 import { SelectPlacesComponent } from './select-places/select-places.component';
 
 @Component({
-  standalone: true,
   selector: 'app-select',
   imports: [
     ButtonComponent,

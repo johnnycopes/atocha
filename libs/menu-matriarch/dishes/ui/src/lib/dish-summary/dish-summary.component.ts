@@ -14,7 +14,6 @@ import {
 } from '@atocha/menu-matriarch/tags/ui';
 
 @Component({
-  standalone: true,
   selector: 'ui-dish-summary',
   imports: [
     CommonModule,

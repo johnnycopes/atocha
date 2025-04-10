@@ -23,7 +23,6 @@ import {
 type State = 'default' | 'renaming';
 
 @Component({
-  standalone: true,
   // eslint-disable-next-line @angular-eslint/component-selector
   selector: '[app-ingredient-card]',
   imports: [

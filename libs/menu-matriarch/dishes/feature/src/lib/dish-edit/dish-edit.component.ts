@@ -16,7 +16,6 @@ import {
 } from './dish-edit-form/dish-edit-form.component';
 
 @Component({
-  standalone: true,
   selector: 'app-dish-edit',
   imports: [CommonModule, DishEditFormComponent, RouterModule],
   template: `
@@ -45,12 +44,11 @@ export class DishEditComponent {
       type: dish?.type ?? 'main',
       tagModels: tags.map<TagModel>((tag) => ({
         ...tag,
-        checked: !!dish?.tags.find(({ id }) => id === tag.id) ?? false,
+        checked: !!dish?.tags.find(({ id }) => id === tag.id),
       })),
       ingredientModels: ingredients.map<IngredientModel>((ingredient) => ({
         ...ingredient,
-        checked:
-          !!dish?.ingredients.find(({ id }) => id === ingredient.id) ?? false,
+        checked: !!dish?.ingredients.find(({ id }) => id === ingredient.id),
       })),
       notes: dish?.notes ?? '',
     }))

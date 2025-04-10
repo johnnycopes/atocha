@@ -28,7 +28,6 @@ import { getAdversaryNameById } from './get-adversary-name-by-id';
 
 @Component({
   selector: 'app-game-setup-output',
-  standalone: true,
   imports: [
     AspectEmblemComponent,
     BoardEmblemComponent,

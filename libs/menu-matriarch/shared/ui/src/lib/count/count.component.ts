@@ -11,7 +11,6 @@ import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 type CountType = 'days' | 'dishes' | 'meals' | 'menus';
 
 @Component({
-  standalone: true,
   selector: 'ui-count',
   imports: [FaIconComponent],
   templateUrl: './count.component.html',

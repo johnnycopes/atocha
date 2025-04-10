@@ -17,7 +17,6 @@ import {
 } from './meal-edit-form/meal-edit-form.component';
 
 @Component({
-  standalone: true,
   selector: 'app-meal-edit',
   imports: [CommonModule, MealEditFormComponent, RouterModule],
   template: `
@@ -55,7 +54,7 @@ export class MealEditComponent {
       })),
       tagModels: tags.map<TagModel>((tag) => ({
         ...tag,
-        checked: !!meal?.tags.find(({ id }) => id === tag.id) ?? false,
+        checked: !!meal?.tags.find(({ id }) => id === tag.id),
       })),
       emptyMealText: preferences?.emptyMealText ?? '',
       mealOrientation: preferences?.mealOrientation ?? 'horizontal',

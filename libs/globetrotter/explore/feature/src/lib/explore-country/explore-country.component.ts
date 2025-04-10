@@ -26,7 +26,6 @@ interface TableData {
 }
 
 @Component({
-  standalone: true,
   selector: 'app-explore-country',
   imports: [CommonModule, FlagComponent, MeasurementPipe, SmallCapsComponent],
   templateUrl: './explore-country.component.html',

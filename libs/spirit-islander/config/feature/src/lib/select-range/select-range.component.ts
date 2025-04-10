@@ -12,7 +12,6 @@ type Range = [number, number];
 
 @Component({
   selector: 'app-select-range',
-  standalone: true,
   imports: [CommonModule, FormsModule],
   templateUrl: './select-range.component.html',
   styleUrls: ['./select-range.component.scss'],

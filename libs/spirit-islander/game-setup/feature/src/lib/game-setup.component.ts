@@ -11,7 +11,6 @@ import { GameSetupOutputComponent } from './game-setup-output/game-setup-output.
 
 @Component({
   selector: 'app-game-setup',
-  standalone: true,
   imports: [CommonModule, GameSetupOutputComponent],
   template: `
     <app-game-setup-output

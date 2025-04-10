@@ -15,7 +15,6 @@ import {
 } from '@atocha/menu-matriarch/shared/util';
 
 @Component({
-  standalone: true,
   selector: 'ui-meal-summary',
   imports: [CommonModule, RouterLink, SmallCapsLabelComponent],
   templateUrl: './meal-summary.component.html',

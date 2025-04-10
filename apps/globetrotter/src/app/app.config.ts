@@ -1,7 +1,8 @@
 import {
-  APP_INITIALIZER,
   ApplicationConfig,
   importProvidersFrom,
+  inject,
+  provideAppInitializer,
 } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -26,9 +27,8 @@ export const appConfig: ApplicationConfig = {
       provide: APP_NAME_TOKEN,
       useValue: 'GLOBETROTTER',
     },
-    {
-      provide: APP_INITIALIZER,
-      useFactory:
+    provideAppInitializer(() => {
+      const initializerFn = (
         (
           countryService: CountryService,
           errorService: ErrorService,
@@ -43,9 +43,9 @@ export const appConfig: ApplicationConfig = {
               loaderService.setGlobalLoader(false);
             },
           });
-        },
-      deps: [CountryService, ErrorService, LoaderService],
-      multi: true,
-    },
+        }
+      )(inject(CountryService), inject(ErrorService), inject(LoaderService));
+      return initializerFn();
+    }),
   ],
 };

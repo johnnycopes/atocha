@@ -12,7 +12,6 @@ import { QuizMenuComponent } from './quiz-menu/quiz-menu.component';
 import { QuizCardsComponent } from './quiz-cards/quiz-cards.component';
 
 @Component({
-  standalone: true,
   selector: 'app-quiz',
   imports: [CommonModule, QuizCardsComponent, QuizMenuComponent],
   templateUrl: './quiz.component.html',

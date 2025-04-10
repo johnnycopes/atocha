@@ -7,7 +7,6 @@ import { SelectRangeComponent } from '../select-range/select-range.component';
 
 @Component({
   selector: 'app-select-difficulty-range',
-  standalone: true,
   imports: [
     CommonModule,
     FormsModule,

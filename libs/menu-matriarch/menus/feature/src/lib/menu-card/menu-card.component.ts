@@ -32,7 +32,6 @@ import {
 type State = 'default' | 'renaming' | 'changingStartDay';
 
 @Component({
-  standalone: true,
   // eslint-disable-next-line @angular-eslint/component-selector
   selector: '[app-menu-card]',
   imports: [

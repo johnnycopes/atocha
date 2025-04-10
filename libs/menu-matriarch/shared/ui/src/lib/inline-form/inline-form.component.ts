@@ -15,7 +15,6 @@ import { faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { ButtonComponent } from '@atocha/core/ui';
 
 @Component({
-  standalone: true,
   // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'form[ui-inline-form]',
   imports: [ButtonComponent, CommonModule, FaIconComponent, FormsModule],
@@ -26,6 +25,7 @@ import { ButtonComponent } from '@atocha/core/ui';
 })
 export class InlineFormComponent {
   @Input() disabled = false;
+  // eslint-disable-next-line @angular-eslint/no-output-native
   @Output() cancel = new EventEmitter<void>();
   @Output() save = new EventEmitter<void>();
   readonly cancelIcon = faTimes;

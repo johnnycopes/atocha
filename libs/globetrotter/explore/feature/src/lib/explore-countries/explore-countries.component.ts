@@ -17,7 +17,6 @@ import { InputComponent } from '@atocha/globetrotter/shared/ui';
 import { Country } from '@atocha/globetrotter/shared/util';
 
 @Component({
-  standalone: true,
   // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'nav[app-explore-countries]',
   imports: [CommonModule, InputComponent, SearchInputComponent],

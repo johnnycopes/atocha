@@ -5,7 +5,6 @@ import { routerTransition } from '@atocha/core/ui';
 import { HeaderComponent } from '../header/header.component';
 
 @Component({
-  standalone: true,
   selector: 'app-shell',
   imports: [HeaderComponent, RouterModule],
   templateUrl: './shell.component.html',

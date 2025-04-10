@@ -8,7 +8,6 @@ import {
 } from '@atocha/menu-matriarch/shared/feature';
 
 @Component({
-  standalone: true,
   selector: 'app-dishes',
   imports: [
     DishCardComponent,

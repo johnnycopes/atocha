@@ -19,7 +19,6 @@ interface NavigationLink {
 }
 
 @Component({
-  standalone: true,
   selector: 'app-navigation',
   imports: [CommonModule, ExternalLinkDirective, IconComponent, RouterModule],
   templateUrl: './navigation.component.html',

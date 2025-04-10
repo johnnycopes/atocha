@@ -13,7 +13,6 @@ import { GetChildren, GetId } from '@atocha/tree/util';
 import { TreeComponentAPI, TreeNodeContext } from '../types';
 
 @Component({
-  standalone: true,
   selector: 'core-tree',
   imports: [CommonModule],
   templateUrl: './tree.component.html',

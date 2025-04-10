@@ -1,4 +1,5 @@
-@import 'styles';
+@use 'sass:map';
+@use 'styles' as styles;
 
 :host {
   display: flex;
@@ -6,7 +7,7 @@
 }
 
 .input {
-  margin-left: map-get($spacing, 16);
+  margin-left: map.get(styles.$spacing, 16);
 }
 
 .container {
@@ -14,6 +15,6 @@
   align-items: center;
 
   input {
-    margin-right: map-get($spacing, 8);
+    margin-right: map.get(styles.$spacing, 8);
   }
 }

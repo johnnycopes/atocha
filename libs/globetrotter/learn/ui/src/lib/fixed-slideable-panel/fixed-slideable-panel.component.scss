@@ -1,11 +1,12 @@
-@import 'styles';
+@use 'sass:map';
+@use 'styles' as styles;
 
-$height: map-get($app, header-height);
+$height: map.get(styles.$app, header-height);
 
 @mixin content-slot {
   height: 100%;
   width: 100%;
-  padding: 0 map-get($app, wrapper-padding);
+  padding: 0 map.get(styles.$app, wrapper-padding);
 }
 
 .fixed-slideable-panel {
@@ -13,12 +14,12 @@ $height: map-get($app, header-height);
   top: 0;
   right: 0;
   height: 100%;
-  width: calc(100% - #{map-get($app, navigation-width)});
+  width: calc(100% - #{map.get(styles.$app, navigation-width)});
   transform: translateY(-100%);
   display: flex;
   flex-direction: column;
-  background: map-get($color, dark);
-  z-index: map-get($z-index, fixed-slideable-panel);
+  background: map.get(styles.$color, dark);
+  z-index: map.get(styles.$z-index, fixed-slideable-panel);
 
   &__offset,
   &__header {

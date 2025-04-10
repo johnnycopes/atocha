@@ -19,7 +19,6 @@ interface EntryModel {
 }
 
 @Component({
-  standalone: true,
   selector: 'app-planner-dish',
   imports: [
     CardComponent,

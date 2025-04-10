@@ -8,7 +8,6 @@ import { getLeaderId } from '@atocha/lorenzo/util';
 import { LeaderComponent } from './leader.component';
 
 @Component({
-  standalone: true,
   selector: 'app-leaders',
   imports: [
     CardsComponent,

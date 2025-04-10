@@ -15,7 +15,6 @@ import { Day, Menu } from '@atocha/menu-matriarch/shared/util';
 import { MenuCardComponent } from './menu-card/menu-card.component';
 
 @Component({
-  standalone: true,
   selector: 'app-menus',
   imports: [
     ButtonComponent,

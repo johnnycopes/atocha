@@ -13,7 +13,6 @@ import { PlannerMealsComponent } from './planner-meals/planner-meals.component';
 import { PlannerMenuComponent } from './planner-menu/planner-menu.component';
 
 @Component({
-  standalone: true,
   selector: 'app-planner',
   imports: [
     ButtonComponent,

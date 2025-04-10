@@ -1,7 +1,8 @@
-@import 'styles';
+@use 'sass:map';
+@use 'styles' as styles;
 
 .quiz-card {
   &__name {
-    width: map-get($spacing, 192);
+    width: map.get(styles.$spacing, 192);
   }
 }

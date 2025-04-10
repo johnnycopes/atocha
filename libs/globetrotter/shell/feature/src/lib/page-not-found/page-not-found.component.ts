@@ -6,7 +6,6 @@ import { ROUTES } from '@atocha/globetrotter/shared/data-access';
 import { ErrorComponent } from '@atocha/globetrotter/shared/ui';
 
 @Component({
-  standalone: true,
   selector: 'app-page-not-found',
   imports: [ButtonComponent, ErrorComponent],
   templateUrl: './page-not-found.component.html',

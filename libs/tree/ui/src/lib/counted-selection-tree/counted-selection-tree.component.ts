@@ -31,7 +31,6 @@ import {
 } from '../types';
 
 @Component({
-  standalone: true,
   selector: 'core-counted-selection-tree',
   imports: [CommonModule, FormsModule, InternalCountedSelectionTreeComponent],
   templateUrl: './counted-selection-tree.component.html',

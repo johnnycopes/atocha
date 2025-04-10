@@ -8,7 +8,6 @@ import { getDevelopmentId } from '@atocha/lorenzo/util';
 import { DevelopmentComponent } from './development.component';
 
 @Component({
-  standalone: true,
   selector: 'app-developments',
   imports: [
     CardsComponent,

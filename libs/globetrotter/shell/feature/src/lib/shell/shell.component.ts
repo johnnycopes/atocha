@@ -13,7 +13,6 @@ import { LoaderComponent } from '@atocha/globetrotter/shared/ui';
 import { NavigationComponent } from '../navigation/navigation.component';
 
 @Component({
-  standalone: true,
   selector: 'app-shell',
   imports: [CommonModule, LoaderComponent, NavigationComponent, RouterModule],
   templateUrl: './shell.component.html',

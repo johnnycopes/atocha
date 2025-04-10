@@ -3,7 +3,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ExternalLinkDirective } from '@atocha/core/ui';
 
 @Component({
-  standalone: true,
   // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'footer[app-footer]',
   imports: [ExternalLinkDirective],

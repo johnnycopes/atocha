@@ -10,7 +10,6 @@ import {
 export type ButtonVariant = 'primary' | 'secondary' | 'tertiary' | 'danger';
 
 @Component({
-  standalone: true,
   // eslint-disable-next-line @angular-eslint/component-selector
   selector: '[core-button]',
   imports: [CommonModule],

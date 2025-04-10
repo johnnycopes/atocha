@@ -11,7 +11,6 @@ import {
 } from '@angular/core';
 
 @Component({
-  standalone: true,
   selector: 'ui-icon',
   imports: [CommonModule],
   templateUrl: './icon.component.html',

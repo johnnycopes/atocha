@@ -7,7 +7,6 @@ import { HeaderComponent } from '../header/header.component';
 import { FooterComponent } from '../footer/footer.component';
 
 @Component({
-  standalone: true,
   selector: 'app-shell',
   imports: [FooterComponent, HeaderComponent, PageComponent, RouterModule],
   templateUrl: './shell.component.html',

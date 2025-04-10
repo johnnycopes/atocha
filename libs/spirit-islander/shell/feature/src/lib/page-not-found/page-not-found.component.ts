@@ -6,7 +6,6 @@ import { RouterService } from '@atocha/spirit-islander/shared/data-access';
 
 @Component({
   selector: 'app-page-not-found',
-  standalone: true,
   imports: [ButtonComponent, CommonModule],
   templateUrl: './page-not-found.component.html',
   styleUrls: ['./page-not-found.component.scss'],

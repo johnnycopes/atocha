@@ -12,7 +12,6 @@ import {
 } from '@atocha/menu-matriarch/tags/ui';
 
 @Component({
-  standalone: true,
   selector: 'app-meal-card',
   imports: [
     CardComponent,

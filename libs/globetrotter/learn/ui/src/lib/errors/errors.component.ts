@@ -5,7 +5,6 @@ import { ValidationErrors } from '@angular/forms';
 import { trackBySelf } from '@atocha/core/ui';
 
 @Component({
-  standalone: true,
   selector: 'ui-errors',
   imports: [CommonModule],
   templateUrl: './errors.component.html',

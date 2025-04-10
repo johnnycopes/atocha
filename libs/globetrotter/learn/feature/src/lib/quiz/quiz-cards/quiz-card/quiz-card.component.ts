@@ -25,7 +25,6 @@ import { QuizType } from '@atocha/globetrotter/learn/util';
 type CardTemplate = Record<FlipCardSide, TemplateRef<unknown> | undefined>;
 
 @Component({
-  standalone: true,
   selector: 'app-quiz-card',
   imports: [CommonModule, FlagComponent, FlipCardComponent],
   templateUrl: './quiz-card.component.html',

@@ -18,7 +18,6 @@ import {
 } from '@atocha/menu-matriarch/tags/ui';
 
 @Component({
-  standalone: true,
   selector: 'app-filters',
   imports: [
     ButtonComponent,

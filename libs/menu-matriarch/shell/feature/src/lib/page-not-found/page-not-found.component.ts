@@ -5,7 +5,6 @@ import { ButtonComponent } from '@atocha/core/ui';
 import { EmptyViewPlaceholderComponent } from '@atocha/menu-matriarch/shared/ui';
 
 @Component({
-  standalone: true,
   selector: 'app-page-not-found',
   imports: [ButtonComponent, EmptyViewPlaceholderComponent, RouterModule],
   templateUrl: './page-not-found.component.html',

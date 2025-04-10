@@ -16,7 +16,6 @@ import {
 export type CheckboxSize = 'normal' | 'large';
 
 @Component({
-  standalone: true,
   selector: 'core-checkbox',
   imports: [CommonModule, FormsModule],
   templateUrl: './checkbox.component.html',

@@ -13,7 +13,6 @@ interface RadioButton {
 }
 
 @Component({
-  standalone: true,
   selector: 'app-select-type',
   imports: [CommonModule, ReactiveFormsModule, SmallCapsComponent],
   templateUrl: './select-type.component.html',

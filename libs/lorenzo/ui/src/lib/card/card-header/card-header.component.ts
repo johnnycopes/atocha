@@ -12,7 +12,6 @@ import { faStar as faStarFull } from '@fortawesome/free-solid-svg-icons';
 import { faStar as faStarEmpty } from '@fortawesome/free-regular-svg-icons';
 
 @Component({
-  standalone: true,
   selector: 'ui-card-header',
   imports: [CommonModule, FaIconComponent],
   templateUrl: './card-header.component.html',

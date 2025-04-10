@@ -20,7 +20,6 @@ import {
 } from '../types';
 
 @Component({
-  standalone: true,
   selector: 'core-internal-selection-tree',
   imports: [CommonModule, TreeComponent],
   templateUrl: './internal-selection-tree.component.html',

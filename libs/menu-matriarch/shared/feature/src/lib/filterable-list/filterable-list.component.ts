@@ -21,7 +21,6 @@ import { FiltersButtonComponent } from './filters-button/filters-button.componen
 import { FiltersComponent } from './filters/filters.component';
 
 @Component({
-  standalone: true,
   selector: 'app-filterable-list',
   imports: [
     ButtonComponent,

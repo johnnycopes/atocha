@@ -19,7 +19,6 @@ import {
 } from '@atocha/menu-matriarch/tags/ui';
 
 @Component({
-  standalone: true,
   selector: 'app-dish-details',
   imports: [
     ButtonComponent,

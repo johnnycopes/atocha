@@ -27,7 +27,6 @@ export interface TypeRename {
 }
 
 @Component({
-  standalone: true,
   selector: 'app-ingredients-board',
   imports: [CommonModule, DragDropModule, IngredientsBoardColumnComponent],
   templateUrl: './ingredients-board.component.html',

@@ -8,7 +8,6 @@ import { ExploreCountriesComponent } from './explore-countries/explore-countries
 import { ExploreCountryComponent } from './explore-country/explore-country.component';
 
 @Component({
-  standalone: true,
   selector: 'app-explore',
   imports: [CommonModule, ExploreCountriesComponent, ExploreCountryComponent],
   providers: [ExploreService],

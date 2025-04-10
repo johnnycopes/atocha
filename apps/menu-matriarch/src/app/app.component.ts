@@ -6,7 +6,6 @@ import {
 } from '@atocha/menu-matriarch/shared/data-access-routing';
 
 @Component({
-  standalone: true,
   selector: 'app-root',
   imports: [RouterOutlet],
   template: `<router-outlet></router-outlet>`,
