@@ -1,6 +1,8 @@
 // TODO: remove this chunk after newer version of Jest is installed
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const { TextEncoder, TextDecoder } = require('util');
+const { fetch, Response, TextEncoder, TextDecoder } = require('util');
+global.fetch = fetch;
+global.Response = Response;
 global.TextEncoder = TextEncoder;
 global.TextDecoder = TextDecoder;
 
