@@ -10,6 +10,7 @@ interface Item {
 }
 
 @Component({
+  imports: [TreeComponent],
   template: `
     <core-tree
       [root]="leafItem"
@@ -58,8 +59,7 @@ describe('TreeComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      imports: [TreeComponent],
-      declarations: [TestHostComponent],
+      imports: [TestHostComponent],
     }).compileComponents();
   }));
 
