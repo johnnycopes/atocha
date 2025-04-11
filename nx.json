@@ -65,6 +65,5 @@
       "!{projectRoot}/tsconfig.storybook.json"
     ]
   },
-  "nxCloudAccessToken": "YjFlYTJlYzgtNWYzZi00NjkzLTg3ZjUtM2U4MGI3ZjcyNWU0fHJlYWQtd3JpdGU=",
-  "useLegacyCache": true
+  "nxCloudAccessToken": "YjFlYTJlYzgtNWYzZi00NjkzLTg3ZjUtM2U4MGI3ZjcyNWU0fHJlYWQtd3JpdGU="
 }
