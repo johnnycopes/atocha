@@ -4,7 +4,6 @@
   "license": "MIT",
   "scripts": {
     "ng": "nx",
-    "postinstall": "node ./decorate-angular-cli.js",
     "start": "nx serve",
     "build": "nx build",
     "test": "nx test"
@@ -75,8 +74,6 @@
     "jsonc-eslint-parser": "^2.1.0",
     "nx": "20.7.2",
     "prettier": "^2.6.2",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
     "storybook": "^8.6.12",
     "ts-jest": "29.1.0",
     "ts-node": "10.9.1",

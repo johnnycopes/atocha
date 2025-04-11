@@ -30,6 +30,7 @@ export default {
   argTypes: {
     onClick: { action: 'clicked' },
   },
+  tags: ['autodocs'],
 } as Meta<SearchInputComponent>;
 
 export const base: StoryObj<SearchInputComponent> = {

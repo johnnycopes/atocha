@@ -24,6 +24,7 @@ export default {
     },
     onClick: { action: 'clicked' },
   },
+  tags: ['autodocs'],
 } as Meta<CheckboxComponent>;
 
 export const base: StoryObj<CheckboxComponent> = {
