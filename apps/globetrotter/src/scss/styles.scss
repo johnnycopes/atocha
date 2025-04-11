@@ -1,9 +1,5 @@
 @use 'sass:map';
-@import 'typography';
-@import 'colors';
-@import 'layout';
-@import 'animations';
-@import 'mixins';
+@use 'modules' as styles;
 
 *,
 *::before,
@@ -17,17 +13,17 @@ body {
 }
 
 body {
-  color: map.get($color, lightest);
-  background: map.get($color, darkest);
-  font-family: $font-stack;
-  font-size: map.get($font-size, 20);
-  font-weight: map.get($font-weight, normal);
-  line-height: map.get($line-height, small);
+  color: map.get(styles.$color, lightest);
+  background: map.get(styles.$color, darkest);
+  font-family: styles.$font-stack;
+  font-size: map.get(styles.$font-size, 20);
+  font-weight: map.get(styles.$font-weight, normal);
+  line-height: map.get(styles.$line-height, small);
   position: relative;
-  @include custom-scrollbar;
+  @include styles.custom-scrollbar;
 
-  @include tablet {
-    font-size: map.get($font-size, 24);
+  @include styles.tablet {
+    font-size: map.get(styles.$font-size, 24);
   }
 }
 
@@ -38,74 +34,74 @@ sup {
 }
 
 .bold {
-  font-weight: map.get($font-weight, bold);
+  font-weight: map.get(styles.$font-weight, bold);
 }
 
 .small-caps {
-  margin-bottom: map.get($spacing, 8);
-  font-size: map.get($font-size, 16);
-  font-weight: map.get($font-weight, bold);
+  margin-bottom: map.get(styles.$spacing, 8);
+  font-size: map.get(styles.$font-size, 16);
+  font-weight: map.get(styles.$font-weight, bold);
   text-transform: uppercase;
   letter-spacing: 1px;
-  color: map.get($color, medium);
+  color: map.get(styles.$color, medium);
 }
 
 // Component styling overrides
 
 app-root {
   .core-button {
-    padding: map.get($spacing, 2) 0;
-    width: map.get($spacing, 128);
-    color: map.get($color, darkest);
-    background: map.get($color, lightest);
-    font-family: $font-stack;
-    font-size: map.get($font-size, 20);
-    border: map.get($border, thin) solid map.get($color, lightest);
-    border-radius: map.get($border, radius);
+    padding: map.get(styles.$spacing, 2) 0;
+    width: map.get(styles.$spacing, 128);
+    color: map.get(styles.$color, darkest);
+    background: map.get(styles.$color, lightest);
+    font-family: styles.$font-stack;
+    font-size: map.get(styles.$font-size, 20);
+    border: map.get(styles.$border, thin) solid map.get(styles.$color, lightest);
+    border-radius: map.get(styles.$border, radius);
 
     &--primary {
-      color: map.get($color, darkest);
-      background: map.get($color, lightest);
+      color: map.get(styles.$color, darkest);
+      background: map.get(styles.$color, lightest);
 
       &:hover {
-        background: lighten(map.get($color, lightest), 10%);
+        background: map.get(styles.$color, white);
       }
 
       &:disabled {
-        background: map.get($color, medium);
+        background: map.get(styles.$color, medium);
       }
     }
 
     &--secondary {
-      color: map.get($color, lightest);
+      color: map.get(styles.$color, lightest);
       background: transparent;
 
       &:hover {
-        background: lighten(map.get($color, darkest), 10%);
+        background: map.get(styles.$color, dark);
       }
 
       &:disabled {
-        color: map.get($color, medium);
+        color: map.get(styles.$color, medium);
       }
     }
 
     &:disabled {
-      border-color: map.get($color, medium);
+      border-color: map.get(styles.$color, medium);
     }
   }
 
   .core-checkbox {
-    --checkbox-color-hover: #{map.get($color, medium)};
-    --label-margin: #{map.get($spacing, 12)};
-    --checkbox-border: #{map.get($color, lightest)};
-    --checkmark-color: #{map.get($color, lightest)};
+    --checkbox-color-hover: #{map.get(styles.$color, medium)};
+    --label-margin: #{map.get(styles.$spacing, 12)};
+    --checkbox-border: #{map.get(styles.$color, lightest)};
+    --checkmark-color: #{map.get(styles.$color, lightest)};
   }
 
   [data-level='1'] > .core-checkbox--checked,
   [data-level='1'] > .core-checkbox--indeterminate {
-    --checkbox-border: #{map.get($color, lightest)};
-    --checkmark-color: #{map.get($color, darkest)};
-    --checkbox-color: #{map.get($color, lightest)};
+    --checkbox-border: #{map.get(styles.$color, lightest)};
+    --checkmark-color: #{map.get(styles.$color, darkest)};
+    --checkbox-color: #{map.get(styles.$color, lightest)};
   }
 
   [data-level='1'] > .core-checkbox > .core-checkbox__container {
@@ -113,19 +109,19 @@ app-root {
   }
 
   .core-checkbox--unchecked {
-    --checkbox-border: #{map.get($color, medium)};
-    --checkmark-color: #{map.get($color, medium)};
-    color: map.get($color, medium);
+    --checkbox-border: #{map.get(styles.$color, medium)};
+    --checkmark-color: #{map.get(styles.$color, medium)};
+    color: map.get(styles.$color, medium);
   }
 
   .core-search-input {
     &__field {
-      padding-right: map.get($spacing, 32);
+      padding-right: map.get(styles.$spacing, 32);
     }
 
     &__clear {
-      width: map.get($spacing, 32);
-      color: map.get($color, medium);
+      width: map.get(styles.$spacing, 32);
+      color: map.get(styles.$color, medium);
     }
   }
 }

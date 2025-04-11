@@ -1,5 +1,5 @@
 @use 'sass:map';
-@use 'styles' as styles;
+@use 'modules' as styles;
 
 $height: map.get(styles.$app, header-height);
 
