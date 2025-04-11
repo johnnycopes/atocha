@@ -16,6 +16,7 @@ export default {
     }),
     componentWrapperDecorator(StorybookWrapperComponent),
   ],
+  tags: ['autodocs'],
 } as Meta<AutofocusDirective>;
 
 export const base: StoryObj<Args> = {

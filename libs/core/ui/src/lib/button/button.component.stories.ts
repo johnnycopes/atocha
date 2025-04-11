@@ -28,6 +28,7 @@ export default {
     },
     onClick: { action: 'clicked' },
   },
+  tags: ['autodocs'],
 } as Meta<ButtonComponent>;
 
 export const base: StoryObj<ButtonComponent> = {
