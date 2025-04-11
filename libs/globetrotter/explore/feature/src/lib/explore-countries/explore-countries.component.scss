@@ -1,5 +1,5 @@
 @use 'sass:map';
-@use 'styles' as styles;
+@use 'modules' as styles;
 
 .list {
   margin-top: map.get(styles.$spacing, 12);
