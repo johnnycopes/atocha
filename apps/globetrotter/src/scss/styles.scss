@@ -1,6 +1,7 @@
 @use 'sass:map';
 @use 'modules' as styles;
 
+
 *,
 *::before,
 *::after {
@@ -64,7 +65,7 @@ app-root {
       background: map.get(styles.$color, lightest);
 
       &:hover {
-        background: lighten(map.get(styles.$color, lightest), 10%);
+        background: map.get(styles.$color, white);
       }
 
       &:disabled {
@@ -77,7 +78,7 @@ app-root {
       background: transparent;
 
       &:hover {
-        background: lighten(map.get(styles.$color, darkest), 10%);
+        background: map.get(styles.$color, dark);
       }
 
       &:disabled {
