@@ -48,17 +48,26 @@ describe('getValidCombos', () => {
       [
         { name: 'Balanced', difficulty: 0 },
         { id: 'none', name: 'N/A', difficulty: 0 },
-        { name: 'Blitz', difficulty: 0 },
+        { name: 'Blitz', identifier: 'Blitz', difficulty: 0 },
       ],
       [
         { name: 'Balanced', difficulty: 0 },
         { id: 'none', name: 'N/A', difficulty: 0 },
-        { name: "Guard the Isle's Heart", difficulty: 0 },
+        {
+          name: "Guard the Isle's Heart",
+          identifier: 'GuardTheIslesHeart',
+          difficulty: 0,
+        },
       ],
       [
         { name: 'Balanced', difficulty: 0 },
         { id: 'none', name: 'N/A', difficulty: 0 },
-        { name: 'Second Wave', difficulty: 0, expansion: 'Branch & Claw' },
+        {
+          name: 'Second Wave',
+          identifier: 'SecondWave',
+          difficulty: 0,
+          expansion: 'Branch & Claw',
+        },
       ],
       [
         { name: 'Balanced', difficulty: 0 },
@@ -74,6 +83,7 @@ describe('getValidCombos', () => {
         { id: 'none', name: 'N/A', difficulty: 0 },
         {
           name: 'Elemental Invocation',
+          identifier: 'ElementalInvocation',
           difficulty: 0,
           expansion: 'Jagged Earth',
         },

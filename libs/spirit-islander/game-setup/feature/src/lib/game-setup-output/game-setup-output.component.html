@@ -116,5 +116,11 @@
   <div ui-page-actions>
     <button core-button (click)="edit.emit()">Edit</button>
     <button core-button (click)="regenerate.emit()">Regenerate</button>
+    <button core-button *ngIf="canLaunch()" (click)="launchSteam()">
+      Launch (Steam)
+    </button>
+    <button core-button *ngIf="canLaunch()" (click)="launchMobile()">
+      Launch (mobile)
+    </button>
   </div>
 </ng-container>

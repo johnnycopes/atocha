@@ -1,8 +1,11 @@
 import { SPIRITS } from '../data';
+import { AspectIdentifier, SpiritIdentifier } from './identitiers';
 import { ExpansionOption } from './option';
 
 export interface Spirit extends ExpansionOption<SpiritName> {
   aspectOf?: SpiritFamilyName;
+  spiritIdentifier?: SpiritIdentifier;
+  aspectIdentifier?: AspectIdentifier;
 }
 
 export type SpiritName = (typeof SPIRITS)[number]['name'];

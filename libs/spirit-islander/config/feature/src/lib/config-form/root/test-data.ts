@@ -274,16 +274,16 @@ export const SPIRITS_ROOT = {
       },
     },
     {
-      id: 'Sun-Bright Whirlwind',
-      display: { expansion: 'Horizons' },
-    },
-    {
       id: 'Starlight Seeks Its Form',
       display: { expansion: 'Jagged Earth' },
     },
     {
       id: "Stone's Unyielding Defiance",
       display: { expansion: 'Jagged Earth' },
+    },
+    {
+      id: 'Sun-Bright Whirlwind',
+      display: { expansion: 'Horizons' },
     },
     {
       id: 'Towering Roots of the Jungle',

@@ -24,6 +24,11 @@ import {
   getDifficulty,
 } from '@atocha/spirit-islander/shared/util';
 import { GameSetup } from '@atocha/spirit-islander/game-setup/util';
+import {
+  buildMobileLaunchUrl,
+  buildSteamLaunchUrl,
+  canLaunch,
+} from './digital-launcher';
 import { getAdversaryNameById } from './get-adversary-name-by-id';
 
 @Component({
@@ -47,6 +52,9 @@ import { getAdversaryNameById } from './get-adversary-name-by-id';
 })
 export class GameSetupOutputComponent {
   private _setup: GameSetup | undefined;
+  private _steamUrl: string | undefined;
+  private _mobileUrl: string | undefined;
+
   @Input()
   get setup() {
     return this._setup;
@@ -64,14 +72,29 @@ export class GameSetupOutputComponent {
       adversaryLevel.difficulty,
       expansions
     );
+    this._steamUrl = buildSteamLaunchUrl(this._setup);
+    this._mobileUrl = buildMobileLaunchUrl(this._setup);
   }
 
   @Output() edit = new EventEmitter<void>();
   @Output() regenerate = new EventEmitter<void>();
+  @Output() launchGame = new EventEmitter<string>();
 
   readonly trackByFn = trackBySelf;
   mapDifficulty: Difficulty = 0;
   scenarioDifficulty: Difficulty = 0;
   adversaryName: AdversaryName = 'No Adversary';
   adversaryDifficulty: Difficulty = 0;
+
+  canLaunch() {
+    return this._setup !== undefined && canLaunch(this._setup);
+  }
+
+  launchMobile() {
+    this.launchGame.emit(this._mobileUrl);
+  }
+
+  launchSteam() {
+    this.launchGame.emit(this._steamUrl);
+  }
 }
