@@ -8,8 +8,16 @@ describe('groupSpirits', () => {
       groupSpirits(['Fractured Days Split the Sky', 'Many Minds Move as One'])
     ).toStrictEqual({
       General: [
-        { name: 'Fractured Days Split the Sky', expansion: 'Jagged Earth' },
-        { name: 'Many Minds Move as One', expansion: 'Jagged Earth' },
+        {
+          name: 'Fractured Days Split the Sky',
+          expansion: 'Jagged Earth',
+          spiritIdentifier: 'FracturedDaysSplitTheSky',
+        },
+        {
+          name: 'Many Minds Move as One',
+          expansion: 'Jagged Earth',
+          spiritIdentifier: 'ManyMindsMoveAsOne',
+        },
       ],
       'A Spread of Rampant Green': [],
       'Bringer of Dreams and Nightmares': [],
@@ -41,6 +49,7 @@ describe('groupSpirits', () => {
       "Lightning's Swift Strike": [
         {
           name: "Lightning's Swift Strike",
+          spiritIdentifier: 'LightningsSwiftStrike',
         },
         {
           aspectOf: "Lightning's Swift Strike",
@@ -51,6 +60,8 @@ describe('groupSpirits', () => {
           aspectOf: "Lightning's Swift Strike",
           expansion: 'Jagged Earth',
           name: 'Pandemonium',
+          aspectIdentifier: 'Pandemonium',
+          spiritIdentifier: 'LightningsSwiftStrike',
         },
       ],
       'Lure of the Deep Wilderness': [],
@@ -71,6 +82,7 @@ describe('groupSpirits', () => {
       'A Spread of Rampant Green': [
         {
           name: 'A Spread of Rampant Green',
+          spiritIdentifier: 'ASpreadOfRampantGreen',
         },
         {
           aspectOf: 'A Spread of Rampant Green',
@@ -86,6 +98,7 @@ describe('groupSpirits', () => {
       'Bringer of Dreams and Nightmares': [
         {
           name: 'Bringer of Dreams and Nightmares',
+          spiritIdentifier: 'BringerOfDreamsAndNightmares',
         },
         {
           aspectOf: 'Bringer of Dreams and Nightmares',
@@ -110,6 +123,7 @@ describe('groupSpirits', () => {
         {
           expansion: 'Horizons',
           name: 'Devouring Teeth Lurk Underfoot',
+          spiritIdentifier: 'DevouringTeethLurkUnderfoot',
         },
         {
           expansion: 'Promo Pack 2',
@@ -122,10 +136,12 @@ describe('groupSpirits', () => {
         {
           expansion: 'Horizons',
           name: 'Eyes Watch From the Trees',
+          spiritIdentifier: 'EyesWatchFromTheTrees',
         },
         {
           expansion: 'Horizons',
           name: 'Fathomless Mud of the Swamp',
+          spiritIdentifier: 'FathomlessMudOfTheSwamp',
         },
         {
           expansion: 'Promo Pack 2',
@@ -134,10 +150,12 @@ describe('groupSpirits', () => {
         {
           expansion: 'Jagged Earth',
           name: 'Fractured Days Split the Sky',
+          spiritIdentifier: 'FracturedDaysSplitTheSky',
         },
         {
           expansion: 'Jagged Earth',
           name: 'Grinning Trickster Stirs Up Trouble',
+          spiritIdentifier: 'GrinningTricksterStirsUpTrouble',
         },
         {
           expansion: 'Nature Incarnate',
@@ -146,6 +164,7 @@ describe('groupSpirits', () => {
         {
           expansion: 'Jagged Earth',
           name: 'Many Minds Move as One',
+          spiritIdentifier: 'ManyMindsMoveAsOne',
         },
         {
           expansion: 'Nature Incarnate',
@@ -154,10 +173,7 @@ describe('groupSpirits', () => {
         {
           expansion: 'Horizons',
           name: 'Rising Heat of Stone and Sand',
-        },
-        {
-          expansion: 'Horizons',
-          name: 'Sun-Bright Whirlwind',
+          spiritIdentifier: 'RisingHeatOfStoneAndSand',
         },
         {
           expansion: 'Jagged Earth',
@@ -166,6 +182,12 @@ describe('groupSpirits', () => {
         {
           expansion: 'Jagged Earth',
           name: "Stone's Unyielding Defiance",
+          spiritIdentifier: 'StonesUnyieldingDefiance',
+        },
+        {
+          expansion: 'Horizons',
+          name: 'Sun-Bright Whirlwind',
+          spiritIdentifier: 'SunBrightWhirlwind',
         },
         {
           expansion: 'Nature Incarnate',
@@ -174,10 +196,12 @@ describe('groupSpirits', () => {
         {
           expansion: 'Jagged Earth',
           name: 'Vengeance as a Burning Plague',
+          spiritIdentifier: 'VengeanceAsABurningPlague',
         },
         {
           expansion: 'Jagged Earth',
           name: 'Volcano Looming High',
+          spiritIdentifier: 'VolcanoLoomingHigh',
         },
         {
           expansion: 'Nature Incarnate',
@@ -192,6 +216,7 @@ describe('groupSpirits', () => {
         {
           expansion: 'Promo Pack 1',
           name: 'Heart of the Wildfire',
+          spiritIdentifier: 'HeartOfTheWildfire',
         },
         {
           aspectOf: 'Heart of the Wildfire',
@@ -203,6 +228,7 @@ describe('groupSpirits', () => {
         {
           expansion: 'Branch & Claw',
           name: 'Keeper of the Forbidden Wilds',
+          spiritIdentifier: 'KeeperOfTheForbiddenWilds',
         },
         {
           aspectOf: 'Keeper of the Forbidden Wilds',
@@ -213,6 +239,7 @@ describe('groupSpirits', () => {
       "Lightning's Swift Strike": [
         {
           name: "Lightning's Swift Strike",
+          spiritIdentifier: 'LightningsSwiftStrike',
         },
         {
           aspectOf: "Lightning's Swift Strike",
@@ -223,6 +250,8 @@ describe('groupSpirits', () => {
           aspectOf: "Lightning's Swift Strike",
           expansion: 'Jagged Earth',
           name: 'Pandemonium',
+          spiritIdentifier: 'LightningsSwiftStrike',
+          aspectIdentifier: 'Pandemonium',
         },
         {
           aspectOf: "Lightning's Swift Strike",
@@ -233,12 +262,15 @@ describe('groupSpirits', () => {
           aspectOf: "Lightning's Swift Strike",
           expansion: 'Jagged Earth',
           name: 'Wind',
+          spiritIdentifier: 'LightningsSwiftStrike',
+          aspectIdentifier: 'Wind',
         },
       ],
       'Lure of the Deep Wilderness': [
         {
           expansion: 'Jagged Earth',
           name: 'Lure of the Deep Wilderness',
+          spiritIdentifier: 'LureOfTheDeepWilderness',
         },
         {
           aspectOf: 'Lure of the Deep Wilderness',
@@ -249,6 +281,7 @@ describe('groupSpirits', () => {
       "Ocean's Hungry Grasp": [
         {
           name: "Ocean's Hungry Grasp",
+          spiritIdentifier: 'OceansHungryGrasp',
         },
         {
           aspectOf: "Ocean's Hungry Grasp",
@@ -259,6 +292,7 @@ describe('groupSpirits', () => {
       'River Surges in Sunlight': [
         {
           name: 'River Surges in Sunlight',
+          spiritIdentifier: 'RiverSurgesInSunlight',
         },
         {
           aspectOf: 'River Surges in Sunlight',
@@ -269,6 +303,8 @@ describe('groupSpirits', () => {
           aspectOf: 'River Surges in Sunlight',
           expansion: 'Jagged Earth',
           name: 'Sunshine',
+          spiritIdentifier: 'RiverSurgesInSunlight',
+          aspectIdentifier: 'Sunshine',
         },
         {
           aspectOf: 'River Surges in Sunlight',
@@ -280,6 +316,7 @@ describe('groupSpirits', () => {
         {
           expansion: 'Promo Pack 1',
           name: 'Serpent Slumbering Beneath the Island',
+          spiritIdentifier: 'SerpentSlumberingBeneathTheIsland',
         },
         {
           aspectOf: 'Serpent Slumbering Beneath the Island',
@@ -290,6 +327,7 @@ describe('groupSpirits', () => {
       'Shadows Flicker Like Flame': [
         {
           name: 'Shadows Flicker Like Flame',
+          spiritIdentifier: 'ShadowsFlickerLikeFlame',
         },
         {
           aspectOf: 'Shadows Flicker Like Flame',
@@ -310,17 +348,22 @@ describe('groupSpirits', () => {
           aspectOf: 'Shadows Flicker Like Flame',
           expansion: 'Jagged Earth',
           name: 'Madness',
+          spiritIdentifier: 'ShadowsFlickerLikeFlame',
+          aspectIdentifier: 'Madness',
         },
         {
           aspectOf: 'Shadows Flicker Like Flame',
           expansion: 'Jagged Earth',
           name: 'Reach',
+          spiritIdentifier: 'ShadowsFlickerLikeFlame',
+          aspectIdentifier: 'Reach',
         },
       ],
       'Sharp Fangs Behind the Leaves': [
         {
           expansion: 'Branch & Claw',
           name: 'Sharp Fangs Behind the Leaves',
+          spiritIdentifier: 'SharpFangsBehindTheLeaves',
         },
         {
           aspectOf: 'Sharp Fangs Behind the Leaves',
@@ -337,6 +380,7 @@ describe('groupSpirits', () => {
         {
           expansion: 'Jagged Earth',
           name: 'Shifting Memory of Ages',
+          spiritIdentifier: 'ShiftingMemoryOfAges',
         },
         {
           aspectOf: 'Shifting Memory of Ages',
@@ -353,6 +397,7 @@ describe('groupSpirits', () => {
         {
           expansion: 'Jagged Earth',
           name: 'Shroud of Silent Mist',
+          spiritIdentifier: 'ShroudOfSilentMist',
         },
         {
           aspectOf: 'Shroud of Silent Mist',
@@ -363,6 +408,7 @@ describe('groupSpirits', () => {
       Thunderspeaker: [
         {
           name: 'Thunderspeaker',
+          spiritIdentifier: 'Thunderspeaker',
         },
         {
           aspectOf: 'Thunderspeaker',
@@ -378,6 +424,7 @@ describe('groupSpirits', () => {
       'Vital Strength of the Earth': [
         {
           name: 'Vital Strength of the Earth',
+          spiritIdentifier: 'VitalStrengthOfTheEarth',
         },
         {
           aspectOf: 'Vital Strength of the Earth',
@@ -393,6 +440,8 @@ describe('groupSpirits', () => {
           aspectOf: 'Vital Strength of the Earth',
           expansion: 'Jagged Earth',
           name: 'Resilience',
+          spiritIdentifier: 'VitalStrengthOfTheEarth',
+          aspectIdentifier: 'Resilience',
         },
       ],
     });

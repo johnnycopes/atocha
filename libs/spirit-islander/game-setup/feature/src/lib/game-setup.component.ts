@@ -18,6 +18,7 @@ import { GameSetupOutputComponent } from './game-setup-output/game-setup-output.
       [setup]="gameSetup"
       (edit)="onEdit()"
       (regenerate)="onRegenerate()"
+      (launchGame)="onLaunch($event)"
     ></app-game-setup-output>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -45,5 +46,9 @@ export class GameSetupComponent implements OnInit {
 
   onRegenerate(): void {
     this._stateService.updateGameSetup();
+  }
+
+  onLaunch(url: string): void {
+    this._stateService.launchGame(url);
   }
 }
