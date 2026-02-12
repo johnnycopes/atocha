@@ -13,7 +13,6 @@ import {
   DJIBOUTI_DTO,
   MONTENEGRO_DTO,
   PHILIPPINES_DTO,
-  PUERTO_RICO_DTO,
   SEYCHELLES_DTO,
 } from './testing/country-dtos';
 import { SummaryDto } from './internal/summary-dto.interface';
@@ -26,7 +25,6 @@ describe('CountryService', () => {
         MONTENEGRO_DTO,
         PHILIPPINES_DTO,
         SEYCHELLES_DTO,
-        PUERTO_RICO_DTO,
         DJIBOUTI_DTO,
       ]);
     },

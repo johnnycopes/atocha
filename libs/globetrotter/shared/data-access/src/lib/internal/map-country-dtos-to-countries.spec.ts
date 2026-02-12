@@ -9,7 +9,6 @@ import {
   DJIBOUTI_DTO,
   MONTENEGRO_DTO,
   PHILIPPINES_DTO,
-  PUERTO_RICO_DTO,
   SEYCHELLES_DTO,
 } from '../testing/country-dtos';
 
@@ -18,7 +17,6 @@ describe('mapCountryDtosToCountries', () => {
     expect(
       mapCountryDtosToCountries([
         MONTENEGRO_DTO,
-        PUERTO_RICO_DTO,
         SEYCHELLES_DTO,
         PHILIPPINES_DTO,
         DJIBOUTI_DTO,
