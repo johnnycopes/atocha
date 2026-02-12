@@ -9,7 +9,8 @@ import { SummaryDto } from './summary-dto.interface';
   providedIn: 'root',
 })
 export class ApiService {
-  private readonly _countriesApiUrl = 'https://restcountries.com/v3.1/all';
+  private readonly _countriesApiUrl =
+    'https://restcountries.com/v3.1/independent?status=true&fields=area,capital,currencies,demonyms,flags,idd,languages,name,population,region,subregion,tld';
   private readonly _wikipediaApiUrl =
     'https://en.wikipedia.org/api/rest_v1/page/summary/';
 

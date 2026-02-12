@@ -6,7 +6,6 @@ export function mapCountryDtosToCountries(
   countryDtos: CountryDto[]
 ): Country[] {
   return countryDtos
-    .filter(({ unMember }) => unMember)
     .map(mapCountryDtoToCountry)
     .sort((a, b) => (a.name > b.name ? 1 : -1));
 }
