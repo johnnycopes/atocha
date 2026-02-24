@@ -80,6 +80,10 @@ export class StateService {
       );
   }
 
+  launchGame(url: string): void {
+    window.open(url);
+  }
+
   updateSettings(changes: Partial<Settings>): void {
     this._state.transform((state) => updateSettings(changes, state));
   }

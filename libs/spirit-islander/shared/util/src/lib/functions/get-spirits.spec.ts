@@ -8,35 +8,82 @@ describe('getSpirits', () => {
 
   it('returns spirits from base game', () => {
     expect(getSpirits({ expansions: [] })).toStrictEqual([
-      { name: 'A Spread of Rampant Green' },
-      { name: 'Bringer of Dreams and Nightmares' },
-      { name: "Lightning's Swift Strike" },
-      { name: "Ocean's Hungry Grasp" },
-      { name: 'River Surges in Sunlight' },
-      { name: 'Shadows Flicker Like Flame' },
-      { name: 'Thunderspeaker' },
-      { name: 'Vital Strength of the Earth' },
+      {
+        name: 'A Spread of Rampant Green',
+        spiritIdentifier: 'ASpreadOfRampantGreen',
+      },
+      {
+        name: 'Bringer of Dreams and Nightmares',
+        spiritIdentifier: 'BringerOfDreamsAndNightmares',
+      },
+      {
+        name: "Lightning's Swift Strike",
+        spiritIdentifier: 'LightningsSwiftStrike',
+      },
+      { name: "Ocean's Hungry Grasp", spiritIdentifier: 'OceansHungryGrasp' },
+      {
+        name: 'River Surges in Sunlight',
+        spiritIdentifier: 'RiverSurgesInSunlight',
+      },
+      {
+        name: 'Shadows Flicker Like Flame',
+        spiritIdentifier: 'ShadowsFlickerLikeFlame',
+      },
+      { name: 'Thunderspeaker', spiritIdentifier: 'Thunderspeaker' },
+      {
+        name: 'Vital Strength of the Earth',
+        spiritIdentifier: 'VitalStrengthOfTheEarth',
+      },
     ]);
   });
 
   it('returns spirits from base game plus any specified expansions', () => {
     expect(getSpirits({ expansions: ['Branch & Claw'] })).toStrictEqual([
-      { name: 'A Spread of Rampant Green' },
-      { name: 'Bringer of Dreams and Nightmares' },
-      { name: 'Keeper of the Forbidden Wilds', expansion: 'Branch & Claw' },
-      { name: "Lightning's Swift Strike" },
-      { name: "Ocean's Hungry Grasp" },
-      { name: 'River Surges in Sunlight' },
-      { name: 'Shadows Flicker Like Flame' },
-      { name: 'Sharp Fangs Behind the Leaves', expansion: 'Branch & Claw' },
-      { name: 'Thunderspeaker' },
-      { name: 'Vital Strength of the Earth' },
+      {
+        name: 'A Spread of Rampant Green',
+        spiritIdentifier: 'ASpreadOfRampantGreen',
+      },
+      {
+        name: 'Bringer of Dreams and Nightmares',
+        spiritIdentifier: 'BringerOfDreamsAndNightmares',
+      },
+      {
+        name: 'Keeper of the Forbidden Wilds',
+        expansion: 'Branch & Claw',
+        spiritIdentifier: 'KeeperOfTheForbiddenWilds',
+      },
+      {
+        name: "Lightning's Swift Strike",
+        spiritIdentifier: 'LightningsSwiftStrike',
+      },
+      { name: "Ocean's Hungry Grasp", spiritIdentifier: 'OceansHungryGrasp' },
+      {
+        name: 'River Surges in Sunlight',
+        spiritIdentifier: 'RiverSurgesInSunlight',
+      },
+      {
+        name: 'Shadows Flicker Like Flame',
+        spiritIdentifier: 'ShadowsFlickerLikeFlame',
+      },
+      {
+        name: 'Sharp Fangs Behind the Leaves',
+        expansion: 'Branch & Claw',
+        spiritIdentifier: 'SharpFangsBehindTheLeaves',
+      },
+      { name: 'Thunderspeaker', spiritIdentifier: 'Thunderspeaker' },
+      {
+        name: 'Vital Strength of the Earth',
+        spiritIdentifier: 'VitalStrengthOfTheEarth',
+      },
     ]);
   });
 
   it('returns aspects only if their associated spirit is also returned', () => {
     expect(getSpirits({ expansions: ['Nature Incarnate'] })).toStrictEqual([
-      { name: 'A Spread of Rampant Green' },
+      {
+        name: 'A Spread of Rampant Green',
+        spiritIdentifier: 'ASpreadOfRampantGreen',
+      },
       {
         name: 'Regrowth',
         expansion: 'Nature Incarnate',
@@ -51,7 +98,10 @@ describe('getSpirits', () => {
         name: 'Breath of Darkness Down Your Spine',
         expansion: 'Nature Incarnate',
       },
-      { name: 'Bringer of Dreams and Nightmares' },
+      {
+        name: 'Bringer of Dreams and Nightmares',
+        spiritIdentifier: 'BringerOfDreamsAndNightmares',
+      },
       {
         name: 'Enticing',
         expansion: 'Nature Incarnate',
@@ -68,33 +118,42 @@ describe('getSpirits', () => {
       },
       { name: 'Ember-Eyed Behemoth', expansion: 'Nature Incarnate' },
       { name: 'Hearth-Vigil', expansion: 'Nature Incarnate' },
-      { name: "Lightning's Swift Strike" },
+      {
+        name: "Lightning's Swift Strike",
+        spiritIdentifier: 'LightningsSwiftStrike',
+      },
       {
         name: 'Sparking',
         expansion: 'Nature Incarnate',
         aspectOf: "Lightning's Swift Strike",
       },
-      { name: "Ocean's Hungry Grasp" },
+      { name: "Ocean's Hungry Grasp", spiritIdentifier: 'OceansHungryGrasp' },
       {
         name: 'Deeps',
         expansion: 'Nature Incarnate',
         aspectOf: "Ocean's Hungry Grasp",
       },
       { name: 'Relentless Gaze of the Sun', expansion: 'Nature Incarnate' },
-      { name: 'River Surges in Sunlight' },
+      {
+        name: 'River Surges in Sunlight',
+        spiritIdentifier: 'RiverSurgesInSunlight',
+      },
       {
         name: 'Haven',
         expansion: 'Nature Incarnate',
         aspectOf: 'River Surges in Sunlight',
       },
-      { name: 'Shadows Flicker Like Flame' },
+      {
+        name: 'Shadows Flicker Like Flame',
+        spiritIdentifier: 'ShadowsFlickerLikeFlame',
+      },
       {
         name: 'Dark Fire',
         expansion: 'Nature Incarnate',
         aspectOf: 'Shadows Flicker Like Flame',
       },
       { name: 'Towering Roots of the Jungle', expansion: 'Nature Incarnate' },
-      { name: 'Thunderspeaker' },
+      { name: 'Thunderspeaker', spiritIdentifier: 'Thunderspeaker' },
       {
         name: 'Tactician',
         expansion: 'Nature Incarnate',
@@ -105,7 +164,10 @@ describe('getSpirits', () => {
         expansion: 'Nature Incarnate',
         aspectOf: 'Thunderspeaker',
       },
-      { name: 'Vital Strength of the Earth' },
+      {
+        name: 'Vital Strength of the Earth',
+        spiritIdentifier: 'VitalStrengthOfTheEarth',
+      },
       {
         name: 'Nourishing',
         expansion: 'Nature Incarnate',
@@ -120,7 +182,10 @@ describe('getSpirits', () => {
     expect(
       getSpirits({ names: ['A Spread of Rampant Green', 'Dark Fire'] })
     ).toStrictEqual([
-      { name: 'A Spread of Rampant Green' },
+      {
+        name: 'A Spread of Rampant Green',
+        spiritIdentifier: 'ASpreadOfRampantGreen',
+      },
       {
         name: 'Dark Fire',
         expansion: 'Nature Incarnate',

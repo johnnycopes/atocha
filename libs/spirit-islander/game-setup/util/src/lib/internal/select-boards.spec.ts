@@ -20,14 +20,17 @@ describe('selectBoards', () => {
       expect(selectedBoards).toHaveLength(3);
       expect(selectedBoards).toContainEqual({
         name: 'A',
+        thematicIdentifier: 'NorthEast',
         thematicName: 'Northeast',
       });
       expect(selectedBoards).toContainEqual({
         name: 'B',
+        thematicIdentifier: 'East',
         thematicName: 'East',
       });
       expect(selectedBoards).toContainEqual({
         name: 'C',
+        thematicIdentifier: 'NorthWest',
         thematicName: 'Northwest',
       });
     });
@@ -75,8 +78,17 @@ describe('selectBoards', () => {
           allowBEAndDFBoards: false,
         });
         expect(selectedBoards).toStrictEqual([
-          { name: 'A', thematicName: 'Northeast' },
-          { name: 'E', thematicName: 'Southeast', expansion: 'Jagged Earth' },
+          {
+            name: 'A',
+            thematicName: 'Northeast',
+            thematicIdentifier: 'NorthEast',
+          },
+          {
+            name: 'E',
+            thematicName: 'Southeast',
+            thematicIdentifier: 'SouthEast',
+            expansion: 'Jagged Earth',
+          },
         ]);
       });
 
@@ -86,8 +98,17 @@ describe('selectBoards', () => {
           allowBEAndDFBoards: false,
         });
         expect(selectedBoards).toStrictEqual([
-          { name: 'A', thematicName: 'Northeast' },
-          { name: 'F', thematicName: 'Southwest', expansion: 'Jagged Earth' },
+          {
+            name: 'A',
+            thematicName: 'Northeast',
+            thematicIdentifier: 'NorthEast',
+          },
+          {
+            name: 'F',
+            thematicName: 'Southwest',
+            thematicIdentifier: 'SouthWest',
+            expansion: 'Jagged Earth',
+          },
         ]);
       });
     });
@@ -98,52 +119,99 @@ describe('thematic board selection', () => {
   describe('with randomizedThematic turned off', () => {
     it('returns Northeast for 1 player', () => {
       expect(selectBoards('Thematic', 1, [])).toStrictEqual([
-        { name: 'A', thematicName: 'Northeast' },
+        {
+          name: 'A',
+          thematicIdentifier: 'NorthEast',
+          thematicName: 'Northeast',
+        },
       ]);
     });
 
     it('returns West and East for 2 players', () => {
       expect(selectBoards('Thematic', 2, [])).toStrictEqual([
-        { name: 'D', thematicName: 'West' },
-        { name: 'B', thematicName: 'East' },
+        { name: 'D', thematicIdentifier: 'West', thematicName: 'West' },
+        { name: 'B', thematicIdentifier: 'East', thematicName: 'East' },
       ]);
     });
 
     it('returns West, East, and Northeast for 3 players', () => {
       expect(selectBoards('Thematic', 3, [])).toStrictEqual([
-        { name: 'D', thematicName: 'West' },
-        { name: 'B', thematicName: 'East' },
-        { name: 'A', thematicName: 'Northeast' },
+        { name: 'D', thematicIdentifier: 'West', thematicName: 'West' },
+        { name: 'B', thematicIdentifier: 'East', thematicName: 'East' },
+        {
+          name: 'A',
+          thematicIdentifier: 'NorthEast',
+          thematicName: 'Northeast',
+        },
       ]);
     });
 
     it('returns West, East, Northeast, and Northwest for 4 players', () => {
       expect(selectBoards('Thematic', 4, [])).toStrictEqual([
-        { name: 'D', thematicName: 'West' },
-        { name: 'B', thematicName: 'East' },
-        { name: 'A', thematicName: 'Northeast' },
-        { name: 'C', thematicName: 'Northwest' },
+        { name: 'D', thematicIdentifier: 'West', thematicName: 'West' },
+        { name: 'B', thematicIdentifier: 'East', thematicName: 'East' },
+        {
+          name: 'A',
+          thematicIdentifier: 'NorthEast',
+          thematicName: 'Northeast',
+        },
+        {
+          name: 'C',
+          thematicIdentifier: 'NorthWest',
+          thematicName: 'Northwest',
+        },
       ]);
     });
 
     it('returns West, East, Northeast, Northwest, and Southwest for 5 players', () => {
       expect(selectBoards('Thematic', 5, [])).toStrictEqual([
-        { name: 'D', thematicName: 'West' },
-        { name: 'B', thematicName: 'East' },
-        { name: 'A', thematicName: 'Northeast' },
-        { name: 'C', thematicName: 'Northwest' },
-        { name: 'F', thematicName: 'Southwest', expansion: 'Jagged Earth' },
+        { name: 'D', thematicIdentifier: 'West', thematicName: 'West' },
+        { name: 'B', thematicIdentifier: 'East', thematicName: 'East' },
+        {
+          name: 'A',
+          thematicIdentifier: 'NorthEast',
+          thematicName: 'Northeast',
+        },
+        {
+          name: 'C',
+          thematicIdentifier: 'NorthWest',
+          thematicName: 'Northwest',
+        },
+        {
+          name: 'F',
+          thematicIdentifier: 'SouthWest',
+          thematicName: 'Southwest',
+          expansion: 'Jagged Earth',
+        },
       ]);
     });
 
     it('returns West, East, Northeast, Northwest, Southwest, and Southeast for 6 players', () => {
       expect(selectBoards('Thematic', 6, [])).toStrictEqual([
-        { name: 'D', thematicName: 'West' },
-        { name: 'B', thematicName: 'East' },
-        { name: 'A', thematicName: 'Northeast' },
-        { name: 'C', thematicName: 'Northwest' },
-        { name: 'F', thematicName: 'Southwest', expansion: 'Jagged Earth' },
-        { name: 'E', thematicName: 'Southeast', expansion: 'Jagged Earth' },
+        { name: 'D', thematicIdentifier: 'West', thematicName: 'West' },
+        { name: 'B', thematicIdentifier: 'East', thematicName: 'East' },
+        {
+          name: 'A',
+          thematicIdentifier: 'NorthEast',
+          thematicName: 'Northeast',
+        },
+        {
+          name: 'C',
+          thematicIdentifier: 'NorthWest',
+          thematicName: 'Northwest',
+        },
+        {
+          name: 'F',
+          thematicIdentifier: 'SouthWest',
+          thematicName: 'Southwest',
+          expansion: 'Jagged Earth',
+        },
+        {
+          name: 'E',
+          thematicIdentifier: 'SouthEast',
+          thematicName: 'Southeast',
+          expansion: 'Jagged Earth',
+        },
       ]);
     });
   });
@@ -156,18 +224,28 @@ describe('thematic board selection', () => {
           allowBEAndDFBoards: true,
         })
       ).toStrictEqual([
-        { name: 'A', thematicName: 'Northeast' },
-        { name: 'B', thematicName: 'East' },
-        { name: 'C', thematicName: 'Northwest' },
-        { name: 'D', thematicName: 'West' },
+        {
+          name: 'A',
+          thematicIdentifier: 'NorthEast',
+          thematicName: 'Northeast',
+        },
+        { name: 'B', thematicIdentifier: 'East', thematicName: 'East' },
+        {
+          name: 'C',
+          thematicIdentifier: 'NorthWest',
+          thematicName: 'Northwest',
+        },
+        { name: 'D', thematicIdentifier: 'West', thematicName: 'West' },
         {
           name: 'E',
           thematicName: 'Southeast',
+          thematicIdentifier: 'SouthEast',
           expansion: 'Jagged Earth',
         },
         {
           name: 'F',
           thematicName: 'Southwest',
+          thematicIdentifier: 'SouthWest',
           expansion: 'Jagged Earth',
         },
       ]);

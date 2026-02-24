@@ -1,8 +1,10 @@
 import { ADVERSARIES } from '../data';
+import { AdversaryIdentifier } from './identitiers';
 import { ExpansionOption, DifficultyOption } from './option';
 
 export interface Adversary extends ExpansionOption<AdversaryName> {
   levels: readonly AdversaryLevel[];
+  identifier?: AdversaryIdentifier;
 }
 
 export type AdversaryName = (typeof ADVERSARIES)[number]['name'];
@@ -15,4 +17,5 @@ export type AdversaryLevelId =
 
 export interface AdversaryLevel extends DifficultyOption<AdversaryLevelName> {
   id: AdversaryLevelId;
+  level?: number;
 }

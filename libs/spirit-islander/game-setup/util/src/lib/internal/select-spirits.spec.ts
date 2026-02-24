@@ -18,7 +18,11 @@ describe('selectSpirits', () => {
     const mockSpirits: readonly Spirit[] = [
       { name: 'Downpour Drenches the World', expansion: 'Promo Pack 2' },
       { name: 'Finder of Paths Unseen', expansion: 'Promo Pack 2' },
-      { name: 'Shifting Memory of Ages', expansion: 'Jagged Earth' },
+      {
+        name: 'Shifting Memory of Ages',
+        spiritIdentifier: 'ShiftingMemoryOfAges',
+        expansion: 'Jagged Earth',
+      },
     ];
     const mockNames = getNames(mockSpirits);
     const result = selectSpirits(mockNames, 3);
@@ -53,7 +57,10 @@ describe('selectSpirits', () => {
 
   it('returns only one variant of a spirit if both the base version and its aspects are requested', () => {
     const mockSpirits: readonly Spirit[] = [
-      { name: 'Vital Strength of the Earth' },
+      {
+        name: 'Vital Strength of the Earth',
+        spiritIdentifier: 'VitalStrengthOfTheEarth',
+      },
       {
         name: 'Might',
         expansion: 'Promo Pack 2',
