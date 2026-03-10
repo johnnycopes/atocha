@@ -1,4 +1,4 @@
-@import 'main';
+@use 'main' as *;
 
 .ui-section__toolbar {
   justify-content: flex-end;

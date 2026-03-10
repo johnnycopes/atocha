@@ -1,4 +1,4 @@
-@import 'main';
+@use 'main' as *;
 
 .ui-section__toolbar {
   flex-direction: column;

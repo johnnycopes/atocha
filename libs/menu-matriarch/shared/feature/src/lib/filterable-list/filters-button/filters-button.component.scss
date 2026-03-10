@@ -1,4 +1,4 @@
-@import 'main';
+@use 'main' as *;
 
 .icon {
   margin-left: spacing(4);

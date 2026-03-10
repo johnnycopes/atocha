@@ -39,8 +39,7 @@
         <div class="details">
           <ul>
             @for (
-              ingredient of dish.ingredients; track ingredientTrackByFn($index,
-              ingredient)) {
+              ingredient of dish.ingredients; track ingredient) {
               <li
                 >
                 {{ ingredient.name }}

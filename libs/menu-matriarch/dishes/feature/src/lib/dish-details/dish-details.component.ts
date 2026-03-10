@@ -8,7 +8,6 @@ import {
   ExternalLinkDirective,
   PluralPipe,
   SafePipe,
-  trackBySelf,
 } from '@atocha/core/ui';
 import { DishService } from '@atocha/menu-matriarch/dishes/data-access';
 import { SectionComponent } from '@atocha/menu-matriarch/shared/ui';
@@ -45,7 +44,6 @@ export class DishDetailsComponent {
       return this._dishService.getOne(id);
     })
   );
-  readonly ingredientTrackByFn = trackBySelf;
 
   constructor(
     private _route: ActivatedRoute,
