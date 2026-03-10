@@ -6,8 +6,6 @@ import {
   NG_VALUE_ACCESSOR,
 } from '@angular/forms';
 
-import { trackBySelf } from '@atocha/core/ui';
-
 type Range = [number, number];
 
 @Component({
@@ -28,7 +26,6 @@ export class SelectRangeComponent implements ControlValueAccessor {
   @Input() label = '';
   @Input() options: readonly number[] = [];
   range: Range = [0, 0];
-  readonly trackByFn = trackBySelf;
 
   private _onChangeFn: (value: Range) => void = () => undefined;
 

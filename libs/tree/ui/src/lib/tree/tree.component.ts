@@ -8,7 +8,6 @@ import {
   TemplateRef,
 } from '@angular/core';
 
-import { trackByFactory } from '@atocha/core/ui';
 import { GetChildren, GetId } from '@atocha/tree/util';
 import { TreeComponentAPI, TreeNodeContext } from '../types';
 
@@ -38,8 +37,6 @@ export class TreeComponent<T> implements TreeComponentAPI<T>, OnInit {
   @HostBinding('attr.data-level')
   @Input()
   level = 0;
-
-  trackByFn = trackByFactory(this.getId);
 
   ngOnInit(): void {
     if (!this.root) {

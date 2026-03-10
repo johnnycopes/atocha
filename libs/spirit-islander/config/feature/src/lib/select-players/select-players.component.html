@@ -1,7 +1,7 @@
 @if (form) {
   <ng-container [formGroup]="form">
     <select formControlName="players" class="select-planers">
-      @for (player of players; track trackByFn($index, player)) {
+      @for (player of players; track player) {
         <option
           [ngValue]="player"
           >

@@ -14,7 +14,7 @@
             No Expansions
           </li>
         } @else {
-          @for (expansion of setup.expansions; track trackByFn($index, expansion)) {
+          @for (expansion of setup.expansions; track expansion) {
             <li
               class="datum"
               >
@@ -43,9 +43,7 @@
         {{ setup.players | corePlural : 'Spirit' }}
       </h3>
       <ul ui-card-content>
-        @for (
-          spirit of setup.spirits; track trackByFn(index,
-          spirit); let index = $index) {
+        @for (spirit of setup.spirits; track spirit.name; let index = $index) {
           <li
             class="datum"
             >

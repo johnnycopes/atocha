@@ -6,8 +6,8 @@
   }"
 ></ng-container>
 
-@if (getChildren(root)?.length) {
-  @for (child of getChildren(root); track trackByFn($index, child)) {
+@if (getChildren(root).length) {
+  @for (child of getChildren(root); track getId(child)) {
     <core-tree
       [root]="child"
       [template]="template ? template : defaultTemplate"
