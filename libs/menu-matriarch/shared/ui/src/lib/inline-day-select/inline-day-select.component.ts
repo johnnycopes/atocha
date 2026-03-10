@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import {
   Component,
   ChangeDetectionStrategy,
@@ -17,12 +17,11 @@ import { SelectDayComponent } from '../select-day/select-day.component';
 @Component({
   selector: 'ui-inline-day-select',
   imports: [
-    CommonModule,
     FormsModule,
     InlineFormComponent,
     InputComponent,
-    SelectDayComponent,
-  ],
+    SelectDayComponent
+],
   templateUrl: './inline-day-select.component.html',
   styleUrls: ['./inline-day-select.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

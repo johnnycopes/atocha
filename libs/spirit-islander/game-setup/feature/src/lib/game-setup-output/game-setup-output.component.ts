@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import {
   ChangeDetectionStrategy,
   Component,
@@ -34,12 +34,11 @@ import { getAdversaryNameById } from './get-adversary-name-by-id';
     ButtonComponent,
     CardComponent,
     CardGroupComponent,
-    CommonModule,
     DifficultyEmblemComponent,
     ExpansionEmblemComponent,
     PluralPipe,
-    SeparatorComponent,
-  ],
+    SeparatorComponent
+],
   templateUrl: './game-setup-output.component.html',
   styleUrls: ['./game-setup-output.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

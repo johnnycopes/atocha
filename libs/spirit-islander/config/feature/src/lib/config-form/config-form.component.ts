@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/member-ordering */
-import { CommonModule } from '@angular/common';
+
 import {
   ChangeDetectionStrategy,
   Component,
@@ -34,12 +34,11 @@ import { Root } from './root';
     CardComponent,
     CardGroupComponent,
     CheckboxTreeComponent,
-    CommonModule,
     FormsModule,
     ReactiveFormsModule,
     SelectDifficultyRangeComponent,
-    SelectPlayersComponent,
-  ],
+    SelectPlayersComponent
+],
   templateUrl: './config-form.component.html',
   styleUrls: ['./config-form.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

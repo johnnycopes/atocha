@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import {
   Component,
   ChangeDetectionStrategy,
@@ -24,14 +24,13 @@ import { FiltersComponent } from './filters/filters.component';
   selector: 'app-filterable-list',
   imports: [
     ButtonComponent,
-    CommonModule,
     FiltersButtonComponent,
     FiltersComponent,
     PluralPipe,
     InputComponent,
     SearchInputComponent,
-    SectionComponent,
-  ],
+    SectionComponent
+],
   templateUrl: './filterable-list.component.html',
   styleUrls: ['./filterable-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

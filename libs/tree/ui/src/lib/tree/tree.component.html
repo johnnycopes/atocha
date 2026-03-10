@@ -6,16 +6,17 @@
   }"
 ></ng-container>
 
-<ng-container *ngIf="getChildren(root)?.length">
-  <core-tree
-    *ngFor="let child of getChildren(root); trackBy: trackByFn"
-    [root]="child"
-    [template]="template ? template : defaultTemplate"
-    [level]="level + 1"
-    [getId]="getId"
-    [getChildren]="getChildren"
-  ></core-tree>
-</ng-container>
+@if (getChildren(root)?.length) {
+  @for (child of getChildren(root); track trackByFn($index, child)) {
+    <core-tree
+      [root]="child"
+      [template]="template ? template : defaultTemplate"
+      [level]="level + 1"
+      [getId]="getId"
+      [getChildren]="getChildren"
+    ></core-tree>
+  }
+}
 
 <ng-template #defaultTemplate let-node>
   <span data-test="core-tree-default-node">

@@ -1,23 +1,26 @@
-<ui-card *ngIf="state$ | async as state" class="ingredient">
-  <ng-container [ngSwitch]="state">
-    <ng-container *ngSwitchCase="'default'">
-      <h4 class="name">
-        {{ name }}
-      </h4>
-      <ui-count class="count" type="dishes" [count]="dishIds.length"></ui-count>
-      <button core-button="tertiary" [uiOptionsMenuTrigger]="optionsMenu">
-        <fa-icon class="icon" [icon]="menuToggleIcon"></fa-icon>
-      </button>
-      <ui-options-menu #optionsMenu>
-        <li ui-options-menu-item (click)="onRename()">Rename</li>
-        <li ui-options-menu-item (click)="delete.emit()">Delete</li>
-      </ui-options-menu>
-    </ng-container>
-    <ui-inline-name-edit
-      *ngSwitchCase="'renaming'"
-      [name]="name"
-      (cancel)="onCancel()"
-      (save)="onRenameSave($event)"
-    ></ui-inline-name-edit>
-  </ng-container>
-</ui-card>
+@if (state$ | async; as state) {
+  <ui-card class="ingredient">
+    @switch (state) {
+      @case ('default') {
+        <h4 class="name">
+          {{ name }}
+        </h4>
+        <ui-count class="count" type="dishes" [count]="dishIds.length"></ui-count>
+        <button core-button="tertiary" [uiOptionsMenuTrigger]="optionsMenu">
+          <fa-icon class="icon" [icon]="menuToggleIcon"></fa-icon>
+        </button>
+        <ui-options-menu #optionsMenu>
+          <li ui-options-menu-item (click)="onRename()">Rename</li>
+          <li ui-options-menu-item (click)="delete.emit()">Delete</li>
+        </ui-options-menu>
+      }
+      @case ('renaming') {
+        <ui-inline-name-edit
+          [name]="name"
+          (cancel)="onCancel()"
+          (save)="onRenameSave($event)"
+        ></ui-inline-name-edit>
+      }
+    }
+  </ui-card>
+}

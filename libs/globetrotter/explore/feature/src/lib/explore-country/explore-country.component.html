@@ -10,14 +10,15 @@
   <ui-flag class="flag" [src]="country.flag" [name]="country.name"></ui-flag>
 </div>
 <div class="table">
-  <ui-small-caps
-    *ngFor="let tableDatum of tableData; trackBy: tableDataTrackByFn"
-    class="table-header"
-    [header]="tableDatum.header"
-    [template]="tableDatum?.template"
-  >
-    {{ tableDatum?.content }}
-  </ui-small-caps>
+  @for (tableDatum of tableData; track tableDataTrackByFn($index, tableDatum)) {
+    <ui-small-caps
+      class="table-header"
+      [header]="tableDatum.header"
+      [template]="tableDatum?.template"
+      >
+      {{ tableDatum?.content }}
+    </ui-small-caps>
+  }
 </div>
 <p class="summary">
   {{ summary }}
@@ -31,7 +32,7 @@
         items: country.languages
       }
     "
-  ></ng-container>
+></ng-container>
 </ng-template>
 
 <ng-template #currency>
@@ -42,7 +43,7 @@
         items: country.currencies
       }
     "
-  ></ng-container>
+></ng-container>
 </ng-template>
 
 <ng-template #population>
@@ -58,9 +59,11 @@
 </ng-template>
 
 <ng-template #list let-items="items">
-  <span *ngFor="let item of items; last as last; trackBy: itemTrackByFn">
-    {{ item }}{{ !last ? ',' : '' }}
-  </span>
+  @for (item of items; track itemTrackByFn($index, item); let last = $last) {
+    <span>
+      {{ item }}{{ !last ? ',' : '' }}
+    </span>
+  }
 </ng-template>
 
 <ng-template #callingCodes>
@@ -71,5 +74,5 @@
         items: country.callingCodes
       }
     "
-  ></ng-container>
+></ng-container>
 </ng-template>

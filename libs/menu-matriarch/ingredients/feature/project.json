@@ -4,6 +4,7 @@
   "projectType": "library",
   "sourceRoot": "libs/menu-matriarch/ingredients/feature/src",
   "prefix": "app",
+  "tags": ["scope:menu-matriarch", "type:feature"],
   "targets": {
     "test": {
       "executor": "@nx/jest:jest",
@@ -11,12 +12,12 @@
         "{workspaceRoot}/coverage/libs/menu-matriarch/ingredients/feature"
       ],
       "options": {
-        "jestConfig": "libs/menu-matriarch/ingredients/feature/jest.config.ts"
+        "jestConfig": "libs/menu-matriarch/ingredients/feature/jest.config.ts",
+        "tsConfig": "libs/menu-matriarch/ingredients/feature/tsconfig.spec.json"
       }
     },
     "lint": {
       "executor": "@nx/eslint:lint"
     }
-  },
-  "tags": ["scope:menu-matriarch", "type:feature"]
+  }
 }

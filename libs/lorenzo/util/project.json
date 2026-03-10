@@ -3,6 +3,7 @@
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/lorenzo/util/src",
   "projectType": "library",
+  "tags": ["scope:lorenzo", "type:util"],
   "targets": {
     "lint": {
       "executor": "@nx/eslint:lint",
@@ -15,6 +16,5 @@
         "jestConfig": "libs/lorenzo/util/jest.config.ts"
       }
     }
-  },
-  "tags": ["scope:lorenzo", "type:util"]
+  }
 }

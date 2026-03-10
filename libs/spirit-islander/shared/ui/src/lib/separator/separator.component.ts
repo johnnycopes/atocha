@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 
 @Component({
   selector: 'ui-separator',
-  imports: [CommonModule],
+  imports: [],
   template: `&#8203;`,
   styles: [
     `

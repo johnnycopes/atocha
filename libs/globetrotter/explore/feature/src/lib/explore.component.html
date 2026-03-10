@@ -1,17 +1,20 @@
-<div @fadeIn *ngIf="vm$ | async as vm" class="container">
-  <nav
-    app-explore-countries
-    class="list"
-    [countries]="vm.filteredCountries"
-    [selectedCountry]="vm.selectedCountry"
-    [searchTerm]="vm.searchTerm"
-    (selectedCountryChange)="onSelect($event)"
-    (searchTermChange)="onSearch($event)"
-  ></nav>
-  <app-explore-country
-    class="details"
-    *ngIf="vm.selectedCountry"
-    [country]="vm.selectedCountry"
-    [summary]="vm.summary"
-  ></app-explore-country>
-</div>
+@if (vm$ | async; as vm) {
+  <div @fadeIn class="container">
+    <nav
+      app-explore-countries
+      class="list"
+      [countries]="vm.filteredCountries"
+      [selectedCountry]="vm.selectedCountry"
+      [searchTerm]="vm.searchTerm"
+      (selectedCountryChange)="onSelect($event)"
+      (searchTermChange)="onSearch($event)"
+    ></nav>
+    @if (vm.selectedCountry) {
+      <app-explore-country
+        class="details"
+        [country]="vm.selectedCountry"
+        [summary]="vm.summary"
+      ></app-explore-country>
+    }
+  </div>
+}

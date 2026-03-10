@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import {
   Component,
   Input,
@@ -17,7 +17,7 @@ export type CheckboxSize = 'normal' | 'large';
 
 @Component({
   selector: 'core-checkbox',
-  imports: [CommonModule, FormsModule],
+  imports: [FormsModule],
   templateUrl: './checkbox.component.html',
   styleUrls: ['./checkbox.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

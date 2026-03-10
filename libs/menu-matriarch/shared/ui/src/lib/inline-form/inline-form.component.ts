@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import {
   Component,
   ChangeDetectionStrategy,
@@ -17,7 +17,7 @@ import { ButtonComponent } from '@atocha/core/ui';
 @Component({
   // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'form[ui-inline-form]',
-  imports: [ButtonComponent, CommonModule, FaIconComponent, FormsModule],
+  imports: [ButtonComponent, FaIconComponent, FormsModule],
   templateUrl: './inline-form.component.html',
   styleUrls: ['./inline-form.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

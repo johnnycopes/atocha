@@ -1,3 +1,5 @@
-<div class="message" *ngFor="let message of messages; trackBy: trackyByFn">
-  {{ message }}
-</div>
+@for (message of messages; track trackyByFn($index, message)) {
+  <div class="message">
+    {{ message }}
+  </div>
+}

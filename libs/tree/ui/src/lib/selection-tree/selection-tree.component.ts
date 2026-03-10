@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/member-ordering */
-import { CommonModule } from '@angular/common';
+
 import {
   Component,
   Input,
@@ -24,7 +24,7 @@ import { SelectionTreeComponentAPI, SelectionTreeNodeContext } from '../types';
 
 @Component({
   selector: 'core-selection-tree',
-  imports: [CommonModule, FormsModule, InternalSelectionTreeComponent],
+  imports: [FormsModule, InternalSelectionTreeComponent],
   templateUrl: './selection-tree.component.html',
   styleUrls: ['./selection-tree.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

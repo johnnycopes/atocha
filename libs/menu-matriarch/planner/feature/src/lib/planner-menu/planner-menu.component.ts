@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 import { ButtonComponent } from '@atocha/core/ui';
@@ -17,10 +17,9 @@ import { PlannerDayComponent } from './planner-day/planner-day.component';
   selector: 'app-planner-menu',
   imports: [
     ButtonComponent,
-    CommonModule,
     PlannerDayComponent,
-    SectionComponent,
-  ],
+    SectionComponent
+],
   templateUrl: './planner-menu.component.html',
   styleUrls: ['./planner-menu.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

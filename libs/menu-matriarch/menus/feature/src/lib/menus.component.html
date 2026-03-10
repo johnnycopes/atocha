@@ -1,36 +1,40 @@
-<ui-section *ngIf="vm$ | async as vm">
-  <div class="ui-section__toolbar">
-    <h2 class="title">Menus ({{ vm.menus.length }})</h2>
-    <button
-      core-button
-      [disabled]="vm.adding"
-      (click)="addingSubject.next(true)"
-    >
-      New Menu
-    </button>
-    <ui-inline-name-edit
-      class="form"
-      *ngIf="vm.adding"
-      (cancel)="addingSubject.next(false)"
-      (save)="onSave($event)"
-    ></ui-inline-name-edit>
-  </div>
-  <ul class="ui-section__content menus">
-    <li
-      app-menu-card
-      *ngFor="let menu of vm.menus; trackBy: trackByFn"
-      [id]="menu.id"
-      [name]="menu.name"
-      [startDay]="menu.startDay"
-      [entries]="menu.entries"
-      [fallbackText]="menu.fallbackText"
-      [orientation]="menu.orientation"
-      [canDelete]="vm.menus.length > 1"
-      [active]="menu.id === vm.activeMenuId"
-      (print)="onPrint(menu)"
-      (rename)="onRename(menu, $event)"
-      (startDayChange)="onStartDayChange(menu, $event)"
-      (delete)="onDelete(menu)"
-    ></li>
-  </ul>
-</ui-section>
+@if (vm$ | async; as vm) {
+  <ui-section>
+    <div class="ui-section__toolbar">
+      <h2 class="title">Menus ({{ vm.menus.length }})</h2>
+      <button
+        core-button
+        [disabled]="vm.adding"
+        (click)="addingSubject.next(true)"
+        >
+        New Menu
+      </button>
+      @if (vm.adding) {
+        <ui-inline-name-edit
+          class="form"
+          (cancel)="addingSubject.next(false)"
+          (save)="onSave($event)"
+        ></ui-inline-name-edit>
+      }
+    </div>
+    <ul class="ui-section__content menus">
+      @for (menu of vm.menus; track trackByFn($index, menu)) {
+        <li
+          app-menu-card
+          [id]="menu.id"
+          [name]="menu.name"
+          [startDay]="menu.startDay"
+          [entries]="menu.entries"
+          [fallbackText]="menu.fallbackText"
+          [orientation]="menu.orientation"
+          [canDelete]="vm.menus.length > 1"
+          [active]="menu.id === vm.activeMenuId"
+          (print)="onPrint(menu)"
+          (rename)="onRename(menu, $event)"
+          (startDayChange)="onStartDayChange(menu, $event)"
+          (delete)="onDelete(menu)"
+        ></li>
+      }
+    </ul>
+  </ui-section>
+}

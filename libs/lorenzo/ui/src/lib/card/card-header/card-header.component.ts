@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import {
   ChangeDetectionStrategy,
   Component,
@@ -13,7 +13,7 @@ import { faStar as faStarEmpty } from '@fortawesome/free-regular-svg-icons';
 
 @Component({
   selector: 'ui-card-header',
-  imports: [CommonModule, FaIconComponent],
+  imports: [FaIconComponent],
   templateUrl: './card-header.component.html',
   styleUrls: ['./card-header.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

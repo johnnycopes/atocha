@@ -1,42 +1,41 @@
-<ng-container *ngIf="setup">
+@if (setup) {
   <ui-card-group
     ui-page-content
     name="Setup"
     description="Details of your generated game setup"
-  >
+    >
     <ui-card name="expansions">
       <h3 ui-card-header>
         {{ setup.expansions.length | corePlural : 'Expansion' }}
       </h3>
       <ul ui-card-content>
-        <li *ngIf="!setup.expansions.length; else expansionsTemplate">
-          No Expansions
-        </li>
-        <ng-template #expansionsTemplate>
-          <li
-            *ngFor="let expansion of setup.expansions; trackBy: trackByFn"
-            class="datum"
-          >
-            {{ expansion }}
+        @if (!setup.expansions.length) {
+          <li>
+            No Expansions
           </li>
-        </ng-template>
+        } @else {
+          @for (expansion of setup.expansions; track trackByFn($index, expansion)) {
+            <li
+              class="datum"
+              >
+              {{ expansion }}
+            </li>
+          }
+        }
       </ul>
     </ui-card>
-
     <ui-card name="players">
       <h3 ui-card-header>Players</h3>
       <p ui-card-content class="datum">
         {{ setup.players }}
       </p>
     </ui-card>
-
     <ui-card name="difficulty">
       <h3 ui-card-header>Difficulty</h3>
       <p ui-card-content class="datum">
         {{ setup.difficulty }}
       </p>
     </ui-card>
-
     <ui-card name="spirits">
       <h3 ui-card-header>
         {{ setup.players | corePlural : 'Board' }}
@@ -44,77 +43,78 @@
         {{ setup.players | corePlural : 'Spirit' }}
       </h3>
       <ul ui-card-content>
-        <li
-          *ngFor="
-            let spirit of setup.spirits;
-            index as index;
-            trackBy: trackByFn
-          "
-          class="datum"
-        >
-          <ui-board-emblem
-            [board]="setup.boards[index]"
-            [mapName]="setup.map.name"
-          ></ui-board-emblem>
-          <ui-separator></ui-separator>
-          <ui-aspect-emblem
-            *ngIf="spirit.aspectOf"
-            [name]="spirit.aspectOf"
-          ></ui-aspect-emblem>
-          {{ spirit.name }}
-          <ui-expansion-emblem
-            *ngIf="spirit.expansion"
-            [value]="spirit.expansion"
-          >
-          </ui-expansion-emblem>
-        </li>
+        @for (
+          spirit of setup.spirits; track trackByFn(index,
+          spirit); let index = $index) {
+          <li
+            class="datum"
+            >
+            <ui-board-emblem
+              [board]="setup.boards[index]"
+              [mapName]="setup.map.name"
+            ></ui-board-emblem>
+            <ui-separator></ui-separator>
+            @if (spirit.aspectOf) {
+              <ui-aspect-emblem
+                [name]="spirit.aspectOf"
+              ></ui-aspect-emblem>
+            }
+            {{ spirit.name }}
+            @if (spirit.expansion) {
+              <ui-expansion-emblem
+                [value]="spirit.expansion"
+                >
+              </ui-expansion-emblem>
+            }
+          </li>
+        }
       </ul>
     </ui-card>
-
     <ui-card name="map">
       <h3 ui-card-header>Map</h3>
       <p ui-card-content class="datum">
         {{ setup.map.name }}
-        <ui-difficulty-emblem
-          *ngIf="mapDifficulty"
-          [value]="mapDifficulty"
-        ></ui-difficulty-emblem>
+        @if (mapDifficulty) {
+          <ui-difficulty-emblem
+            [value]="mapDifficulty"
+          ></ui-difficulty-emblem>
+        }
       </p>
     </ui-card>
-
     <ui-card name="scenario">
       <h3 ui-card-header>Scenario</h3>
       <p ui-card-content class="datum">
         {{ setup.scenario.name }}
-        <ui-difficulty-emblem
-          *ngIf="scenarioDifficulty"
-          [value]="scenarioDifficulty"
-        ></ui-difficulty-emblem>
-        <ui-expansion-emblem
-          *ngIf="setup.scenario.expansion"
-          [value]="setup.scenario.expansion"
-        >
-        </ui-expansion-emblem>
+        @if (scenarioDifficulty) {
+          <ui-difficulty-emblem
+            [value]="scenarioDifficulty"
+          ></ui-difficulty-emblem>
+        }
+        @if (setup.scenario.expansion) {
+          <ui-expansion-emblem
+            [value]="setup.scenario.expansion"
+            >
+          </ui-expansion-emblem>
+        }
       </p>
     </ui-card>
-
     <ui-card name="adversary">
       <h3 ui-card-header>Adversary</h3>
       <p ui-card-content class="datum">
         {{ adversaryName }}
-        <ng-container *ngIf="adversaryName !== 'No Adversary'">
+        @if (adversaryName !== 'No Adversary') {
           {{ setup.adversaryLevel.name }}
-          <ui-difficulty-emblem
-            *ngIf="adversaryDifficulty"
-            [value]="adversaryDifficulty"
-          ></ui-difficulty-emblem>
-        </ng-container>
+          @if (adversaryDifficulty) {
+            <ui-difficulty-emblem
+              [value]="adversaryDifficulty"
+            ></ui-difficulty-emblem>
+          }
+        }
       </p>
     </ui-card>
   </ui-card-group>
-
   <div ui-page-actions>
     <button core-button (click)="edit.emit()">Edit</button>
     <button core-button (click)="regenerate.emit()">Regenerate</button>
   </div>
-</ng-container>
+}

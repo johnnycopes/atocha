@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import {
   Component,
   ChangeDetectionStrategy,
@@ -23,12 +23,11 @@ import {
     ButtonComponent,
     CardComponent,
     CheckboxComponent,
-    CommonModule,
     FormsModule,
     TagComponent,
     TagDefDirective,
-    TagsListComponent,
-  ],
+    TagsListComponent
+],
   templateUrl: './filters.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

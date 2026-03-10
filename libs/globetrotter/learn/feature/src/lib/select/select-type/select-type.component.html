@@ -2,18 +2,20 @@
   <div class="container">
     <p>Front / back of cards:</p>
     <div class="options" [formGroup]="form">
-      <div class="option" *ngFor="let option of options; trackBy: trackByFn">
-        <input
-          class="option__input"
-          [id]="option.display"
-          [value]="option.value"
-          formControlName="type"
-          type="radio"
-        />
-        <label class="option__label" [for]="option.display">
-          {{ option.display }}
-        </label>
-      </div>
+      @for (option of options; track trackByFn($index, option)) {
+        <div class="option">
+          <input
+            class="option__input"
+            [id]="option.display"
+            [value]="option.value"
+            formControlName="type"
+            type="radio"
+            />
+          <label class="option__label" [for]="option.display">
+            {{ option.display }}
+          </label>
+        </div>
+      }
     </div>
   </div>
 </ui-small-caps>

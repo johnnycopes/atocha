@@ -4,17 +4,18 @@
   "projectType": "library",
   "sourceRoot": "libs/lorenzo/data-access/src",
   "prefix": "app",
+  "tags": ["scope:lorenzo", "type:data-access"],
   "targets": {
     "test": {
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/libs/lorenzo/data-access"],
       "options": {
-        "jestConfig": "libs/lorenzo/data-access/jest.config.ts"
+        "jestConfig": "libs/lorenzo/data-access/jest.config.ts",
+        "tsConfig": "libs/lorenzo/data-access/tsconfig.spec.json"
       }
     },
     "lint": {
       "executor": "@nx/eslint:lint"
     }
-  },
-  "tags": ["scope:lorenzo", "type:data-access"]
+  }
 }

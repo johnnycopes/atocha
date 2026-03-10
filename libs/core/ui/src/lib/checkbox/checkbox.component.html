@@ -1,7 +1,7 @@
 <label
   class="core-checkbox__container"
   [class.core-checkbox__container--disabled]="disabled"
->
+  >
   <input
     class="core-checkbox__input"
     type="checkbox"
@@ -10,23 +10,24 @@
     [disabled]="disabled"
     [ngModel]="checked"
     (ngModelChange)="onChange($event)"
-  />
+    />
   <div
     class="core-checkbox__checkbox"
     [class.core-checkbox__checkbox--normal]="size === 'normal'"
     [class.core-checkbox__checkbox--large]="size === 'large'"
-  >
-    <div
-      *ngIf="checked || indeterminate"
-      class="core-checkbox__checkmark"
+    >
+    @if (checked || indeterminate) {
+      <div
+        class="core-checkbox__checkmark"
       [class.core-checkbox__checkmark--normal]="
         !indeterminate && size === 'normal'
       "
       [class.core-checkbox__checkmark--large]="
         !indeterminate && size === 'large'
       "
-      [class.core-checkbox__checkmark--indeterminate]="indeterminate"
-    ></div>
+        [class.core-checkbox__checkmark--indeterminate]="indeterminate"
+      ></div>
+    }
   </div>
   <div class="core-checkbox__label">
     <ng-content></ng-content>

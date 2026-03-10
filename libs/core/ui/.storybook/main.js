@@ -1,11 +1,17 @@
+import { fileURLToPath } from "node:url";
+import { dirname } from "node:path";
 const config = {
   stories: ['../src/lib/**/*.@(mdx|stories.@(js|jsx|ts|tsx))'],
-  addons: ['@storybook/addon-essentials', '@chromatic-com/storybook'],
+  addons: [getAbsolutePath("@chromatic-com/storybook"), getAbsolutePath("@storybook/addon-docs")],
 
   framework: {
-    name: '@storybook/angular',
+    name: getAbsolutePath("@storybook/angular"),
     options: {},
   },
 };
 
 export default config;
+
+function getAbsolutePath(value) {
+  return dirname(fileURLToPath(import.meta.resolve(`${value}/package.json`)));
+}

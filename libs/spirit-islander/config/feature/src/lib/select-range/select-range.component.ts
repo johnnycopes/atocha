@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import {
   ControlValueAccessor,
@@ -12,7 +12,7 @@ type Range = [number, number];
 
 @Component({
   selector: 'app-select-range',
-  imports: [CommonModule, FormsModule],
+  imports: [FormsModule],
   templateUrl: './select-range.component.html',
   styleUrls: ['./select-range.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

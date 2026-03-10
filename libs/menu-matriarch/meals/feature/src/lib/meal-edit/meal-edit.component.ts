@@ -20,12 +20,13 @@ import {
   selector: 'app-meal-edit',
   imports: [CommonModule, MealEditFormComponent, RouterModule],
   template: `
-    <app-meal-edit-form
-      *ngIf="meal$ | async as meal"
-      [meal]="meal"
-      (save)="onSave($event)"
-    ></app-meal-edit-form>
-  `,
+    @if (meal$ | async; as meal) {
+      <app-meal-edit-form
+        [meal]="meal"
+        (save)="onSave($event)"
+      ></app-meal-edit-form>
+    }
+    `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MealEditComponent {

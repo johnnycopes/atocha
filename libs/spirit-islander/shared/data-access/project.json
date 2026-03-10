@@ -4,6 +4,7 @@
   "projectType": "library",
   "sourceRoot": "libs/spirit-islander/shared/data-access/src",
   "prefix": "app",
+  "tags": ["scope:spirit-islander", "type:data-access"],
   "targets": {
     "test": {
       "executor": "@nx/jest:jest",
@@ -11,12 +12,12 @@
         "{workspaceRoot}/coverage/libs/spirit-islander/shared/data-access"
       ],
       "options": {
-        "jestConfig": "libs/spirit-islander/shared/data-access/jest.config.ts"
+        "jestConfig": "libs/spirit-islander/shared/data-access/jest.config.ts",
+        "tsConfig": "libs/spirit-islander/shared/data-access/tsconfig.spec.json"
       }
     },
     "lint": {
       "executor": "@nx/eslint:lint"
     }
-  },
-  "tags": ["scope:spirit-islander", "type:data-access"]
+  }
 }

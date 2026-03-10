@@ -4,17 +4,18 @@
   "projectType": "library",
   "sourceRoot": "libs/menu-matriarch/shell/feature/src",
   "prefix": "app",
+  "tags": ["scope:menu-matriarch", "type:feature"],
   "targets": {
     "test": {
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/libs/menu-matriarch/shell/feature"],
       "options": {
-        "jestConfig": "libs/menu-matriarch/shell/feature/jest.config.ts"
+        "jestConfig": "libs/menu-matriarch/shell/feature/jest.config.ts",
+        "tsConfig": "libs/menu-matriarch/shell/feature/tsconfig.spec.json"
       }
     },
     "lint": {
       "executor": "@nx/eslint:lint"
     }
-  },
-  "tags": ["scope:menu-matriarch", "type:feature"]
+  }
 }

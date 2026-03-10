@@ -16,27 +16,28 @@ import { LeaderComponent } from './leader.component';
     LeaderComponent,
   ],
   template: `
-    <ui-cards
-      *ngIf="vm$ | async as vm"
-      type="Leaders"
-      [cards]="vm.filteredCards"
-      [total]="vm.totalCards"
-      [ordinal]="vm.ordinal"
-      [visible]="vm.visible"
-      [favorites]="vm.favoriteIds"
-      [trackByFn]="trackByFn"
-      (moveUp)="moveUp()"
-      (moveDown)="moveDown()"
-      (visibleChange)="toggleVisibility()"
-    >
-      <app-leader
-        *uiCard="vm.filteredCards as leader"
-        [data]="leader"
-        [favorite]="vm.favoriteIds.has(getId(leader))"
-        (favoriteChange)="toggleId(getId(leader))"
-      ></app-leader>
-    </ui-cards>
-  `,
+    @if (vm$ | async; as vm) {
+      <ui-cards
+        type="Leaders"
+        [cards]="vm.filteredCards"
+        [total]="vm.totalCards"
+        [ordinal]="vm.ordinal"
+        [visible]="vm.visible"
+        [favorites]="vm.favoriteIds"
+        [trackByFn]="trackByFn"
+        (moveUp)="moveUp()"
+        (moveDown)="moveDown()"
+        (visibleChange)="toggleVisibility()"
+        >
+        <app-leader
+          *uiCard="vm.filteredCards as leader"
+          [data]="leader"
+          [favorite]="vm.favoriteIds.has(getId(leader))"
+          (favoriteChange)="toggleId(getId(leader))"
+        ></app-leader>
+      </ui-cards>
+    }
+    `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LeadersComponent {

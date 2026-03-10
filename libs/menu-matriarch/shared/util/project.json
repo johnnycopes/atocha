@@ -3,6 +3,7 @@
   "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/menu-matriarch/shared/util/src",
   "projectType": "library",
+  "tags": ["scope:menu-matriarch", "type:util"],
   "targets": {
     "lint": {
       "executor": "@nx/eslint:lint",
@@ -15,6 +16,5 @@
         "jestConfig": "libs/menu-matriarch/shared/util/jest.config.ts"
       }
     }
-  },
-  "tags": ["scope:menu-matriarch", "type:util"]
+  }
 }

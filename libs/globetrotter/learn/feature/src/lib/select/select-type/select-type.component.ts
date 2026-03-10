@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 
@@ -14,7 +14,7 @@ interface RadioButton {
 
 @Component({
   selector: 'app-select-type',
-  imports: [CommonModule, ReactiveFormsModule, SmallCapsComponent],
+  imports: [ReactiveFormsModule, SmallCapsComponent],
   templateUrl: './select-type.component.html',
   styleUrls: ['./select-type.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

@@ -4,12 +4,14 @@
   "projectType": "library",
   "sourceRoot": "libs/core/ui/src",
   "prefix": "core",
+  "tags": ["scope:shared", "type:ui"],
   "targets": {
     "test": {
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/libs/core/ui"],
       "options": {
-        "jestConfig": "libs/core/ui/jest.config.ts"
+        "jestConfig": "libs/core/ui/jest.config.ts",
+        "tsConfig": "libs/core/ui/tsconfig.spec.json"
       }
     },
     "lint": {
@@ -45,6 +47,5 @@
         }
       }
     }
-  },
-  "tags": ["scope:shared", "type:ui"]
+  }
 }

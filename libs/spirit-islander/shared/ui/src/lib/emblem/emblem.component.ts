@@ -1,9 +1,9 @@
-import { CommonModule } from '@angular/common';
+
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   selector: 'ui-emblem',
-  imports: [CommonModule],
+  imports: [],
   template: `<ng-content></ng-content>`,
   styles: [
     `

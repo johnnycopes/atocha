@@ -13,12 +13,13 @@ import { ConfigFormComponent } from './config-form/config-form.component';
   selector: 'app-config',
   imports: [CommonModule, ConfigFormComponent],
   template: `
-    <app-config-form
-      *ngIf="config$ | async as config"
-      [config]="config"
-      (generate)="onGenerate($event)"
-    ></app-config-form>
-  `,
+    @if (config$ | async; as config) {
+      <app-config-form
+        [config]="config"
+        (generate)="onGenerate($event)"
+      ></app-config-form>
+    }
+    `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ConfigComponent {

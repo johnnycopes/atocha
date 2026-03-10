@@ -8,11 +8,12 @@
   [placeholder]="placeholder"
   [ngModel]="text"
   (ngModelChange)="textChange.emit($event)"
-/>
-<fa-icon
-  *ngIf="text"
-  data-test="core-search-input-icon"
-  class="core-search-input__clear"
-  [icon]="clearIcon"
-  (click)="onClear()"
-></fa-icon>
+  />
+@if (text) {
+  <fa-icon
+    data-test="core-search-input-icon"
+    class="core-search-input__clear"
+    [icon]="clearIcon"
+    (click)="onClear()"
+  ></fa-icon>
+}

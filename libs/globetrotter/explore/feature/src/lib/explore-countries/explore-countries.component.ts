@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import {
   ChangeDetectionStrategy,
   Component,
@@ -19,7 +19,7 @@ import { Country } from '@atocha/globetrotter/shared/util';
 @Component({
   // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'nav[app-explore-countries]',
-  imports: [CommonModule, InputComponent, SearchInputComponent],
+  imports: [InputComponent, SearchInputComponent],
   templateUrl: './explore-countries.component.html',
   styleUrls: ['./explore-countries.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

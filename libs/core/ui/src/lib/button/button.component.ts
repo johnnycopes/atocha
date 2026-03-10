@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import {
   ChangeDetectionStrategy,
   Component,
@@ -12,7 +12,7 @@ export type ButtonVariant = 'primary' | 'secondary' | 'tertiary' | 'danger';
 @Component({
   // eslint-disable-next-line @angular-eslint/component-selector
   selector: '[core-button]',
-  imports: [CommonModule],
+  imports: [],
   templateUrl: './button.component.html',
   styleUrls: ['./button.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

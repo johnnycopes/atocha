@@ -19,12 +19,13 @@ import {
   selector: 'app-dish-edit',
   imports: [CommonModule, DishEditFormComponent, RouterModule],
   template: `
-    <app-dish-edit-form
-      *ngIf="dish$ | async as dish"
-      [dish]="dish"
-      (save)="onSave($event)"
-    ></app-dish-edit-form>
-  `,
+    @if (dish$ | async; as dish) {
+      <app-dish-edit-form
+        [dish]="dish"
+        (save)="onSave($event)"
+      ></app-dish-edit-form>
+    }
+    `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DishEditComponent {

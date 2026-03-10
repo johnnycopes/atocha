@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 
@@ -7,7 +7,7 @@ import { SelectForm } from '../select-form';
 
 @Component({
   selector: 'app-select-quantity',
-  imports: [CommonModule, InputComponent, ReactiveFormsModule],
+  imports: [InputComponent, ReactiveFormsModule],
   templateUrl: './select-quantity.component.html',
   styleUrls: ['./select-quantity.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

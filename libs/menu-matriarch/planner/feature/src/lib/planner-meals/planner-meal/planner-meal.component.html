@@ -5,24 +5,29 @@
         {{ name }}
       </h3>
     </a>
-    <p *ngIf="description" class="description">
-      {{ description }}
-    </p>
-    <ui-tags-list *ngIf="tags.length" class="tags" [tags]="tags">
-      <ui-tag *uiTagDef="let tag" [id]="tag.id" [name]="tag.name"></ui-tag>
-    </ui-tags-list>
+    @if (description) {
+      <p class="description">
+        {{ description }}
+      </p>
+    }
+    @if (tags.length) {
+      <ui-tags-list class="tags" [tags]="tags">
+        <ui-tag *uiTagDef="let tag" [id]="tag.id" [name]="tag.name"></ui-tag>
+      </ui-tags-list>
+    }
   </div>
   <ui-meal-summary
     [dishes]="dishes"
     [fallbackText]="fallbackText"
     [orientation]="orientation"
   ></ui-meal-summary>
-  <div *ngIf="entryModels.length" class="schedule">
-    <core-checkbox
-      *ngFor="let model of entryModels; trackBy: trackByFn"
-      class="checkbox"
-      [indeterminate]="model.indeterminate"
-      [ngModel]="model.checked"
+  @if (entryModels.length) {
+    <div class="schedule">
+      @for (model of entryModels; track trackByFn($index, model)) {
+        <core-checkbox
+          class="checkbox"
+          [indeterminate]="model.indeterminate"
+          [ngModel]="model.checked"
       (ngModelChange)="
         dayChange.emit({
           day: model.day,
@@ -30,8 +35,10 @@
           selected: $event
         })
       "
-    >
-      {{ model.day | slice : 0 : 3 }}
-    </core-checkbox>
-  </div>
+          >
+          {{ model.day | slice : 0 : 3 }}
+        </core-checkbox>
+      }
+    </div>
+  }
 </ui-card>

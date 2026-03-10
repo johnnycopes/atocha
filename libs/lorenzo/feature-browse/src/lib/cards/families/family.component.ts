@@ -5,14 +5,14 @@ import {
   Input,
   Output,
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 
 import { CardComponent, CardHeaderComponent } from '@atocha/lorenzo/ui';
 import { Family } from '@atocha/lorenzo/util';
 
 @Component({
   selector: 'app-family',
-  imports: [CardComponent, CardHeaderComponent, CommonModule],
+  imports: [CardComponent, CardHeaderComponent],
   templateUrl: './family.component.html',
   styleUrls: ['./family.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

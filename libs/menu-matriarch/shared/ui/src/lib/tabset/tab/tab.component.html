@@ -1,3 +1,5 @@
-<div *ngIf="selected" @fadeIn>
-  <ng-content></ng-content>
-</div>
+@if (selected) {
+  <div @fadeIn>
+    <ng-content></ng-content>
+  </div>
+}

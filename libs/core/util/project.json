@@ -3,6 +3,7 @@
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/core/util/src",
   "projectType": "library",
+  "tags": ["scope:shared", "type:util"],
   "targets": {
     "build": {
       "executor": "@nx/js:tsc",
@@ -36,6 +37,5 @@
         "jestConfig": "libs/core/util/jest.config.ts"
       }
     }
-  },
-  "tags": ["scope:shared", "type:util"]
+  }
 }

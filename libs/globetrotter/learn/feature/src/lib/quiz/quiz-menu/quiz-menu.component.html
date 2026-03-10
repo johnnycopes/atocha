@@ -1,33 +1,37 @@
 <ui-fixed-slideable-panel
   [position]="position"
   (animationFinished)="onMenuAnimationFinish($event)"
->
-  <div *ngIf="!isComplete" class="progress" header>
-    <div class="left">
-      <ui-icon
-        class="back"
-        icon="Cancel"
-        [highlighted]="true"
-        (clicked)="exit.emit()"
-      ></ui-icon>
-    </div>
-    <div class="center">
-      <p class="prompt">
-        {{ prompt }}
-      </p>
-    </div>
-    <div class="right">
-      <div class="details">
-        <h4 class="details__tally">
-          {{ correctGuesses }} / {{ totalCountries }}
-        </h4>
-        <h4 class="details__guess">Guess #{{ guess }}</h4>
+  >
+  @if (!isComplete) {
+    <div class="progress" header>
+      <div class="left">
+        <ui-icon
+          class="back"
+          icon="Cancel"
+          [highlighted]="true"
+          (clicked)="exit.emit()"
+        ></ui-icon>
+      </div>
+      <div class="center">
+        <p class="prompt">
+          {{ prompt }}
+        </p>
+      </div>
+      <div class="right">
+        <div class="details">
+          <h4 class="details__tally">
+            {{ correctGuesses }} / {{ totalCountries }}
+          </h4>
+          <h4 class="details__guess">Guess #{{ guess }}</h4>
+        </div>
       </div>
     </div>
-  </div>
-  <div *ngIf="isComplete" class="outcome" content>
-    <p class="text">Quiz complete! You scored</p>
-    <h1 class="accuracy">{{ accuracy }}%</h1>
-    <button core-button class="reset" (click)="exit.emit()">Reset</button>
-  </div>
+  }
+  @if (isComplete) {
+    <div class="outcome" content>
+      <p class="text">Quiz complete! You scored</p>
+      <h1 class="accuracy">{{ accuracy }}%</h1>
+      <button core-button class="reset" (click)="exit.emit()">Reset</button>
+    </div>
+  }
 </ui-fixed-slideable-panel>

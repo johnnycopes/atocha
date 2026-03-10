@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import {
   ChangeDetectionStrategy,
   Component,
@@ -8,7 +8,7 @@ import {
 @Component({
   // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'main[ui-page]',
-  imports: [CommonModule],
+  imports: [],
   templateUrl: './page.component.html',
   styleUrls: ['./page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

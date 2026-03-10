@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 import { Expansion } from '@atocha/spirit-islander/shared/util';
@@ -6,7 +6,7 @@ import { EmblemComponent } from '../emblem/emblem.component';
 
 @Component({
   selector: 'ui-expansion-emblem',
-  imports: [CommonModule, EmblemComponent],
+  imports: [EmblemComponent],
   templateUrl: './expansion-emblem.component.html',
   styleUrls: ['./expansion-emblem.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

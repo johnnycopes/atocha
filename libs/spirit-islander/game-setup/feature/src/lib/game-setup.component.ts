@@ -13,13 +13,14 @@ import { GameSetupOutputComponent } from './game-setup-output/game-setup-output.
   selector: 'app-game-setup',
   imports: [CommonModule, GameSetupOutputComponent],
   template: `
-    <app-game-setup-output
-      *ngIf="gameSetup$ | async as gameSetup"
-      [setup]="gameSetup"
-      (edit)="onEdit()"
-      (regenerate)="onRegenerate()"
-    ></app-game-setup-output>
-  `,
+    @if (gameSetup$ | async; as gameSetup) {
+      <app-game-setup-output
+        [setup]="gameSetup"
+        (edit)="onEdit()"
+        (regenerate)="onRegenerate()"
+      ></app-game-setup-output>
+    }
+    `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GameSetupComponent implements OnInit {

@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -24,13 +24,12 @@ import { SelectForm } from '../select-form';
   imports: [
     ButtonComponent,
     CheckboxComponent,
-    CommonModule,
     CountedSelectionTreeComponent,
     FormsModule,
     IconComponent,
     ReactiveFormsModule,
-    SmallCapsComponent,
-  ],
+    SmallCapsComponent
+],
   templateUrl: './select-places.component.html',
   styleUrls: ['./select-places.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

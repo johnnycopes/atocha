@@ -16,27 +16,28 @@ import { DevelopmentComponent } from './development.component';
     DevelopmentComponent,
   ],
   template: `
-    <ui-cards
-      *ngIf="vm$ | async as vm"
-      type="Developments"
-      [cards]="vm.filteredCards"
-      [total]="vm.totalCards"
-      [ordinal]="vm.ordinal"
-      [visible]="vm.visible"
-      [favorites]="vm.favoriteIds"
-      [trackByFn]="trackByFn"
-      (moveUp)="moveUp()"
-      (moveDown)="moveDown()"
-      (visibleChange)="toggleVisibility()"
-    >
-      <app-development
-        *uiCard="vm.filteredCards as development"
-        [data]="development"
-        [favorite]="vm.favoriteIds.has(getId(development))"
-        (favoriteChange)="toggleId(getId(development))"
-      ></app-development>
-    </ui-cards>
-  `,
+    @if (vm$ | async; as vm) {
+      <ui-cards
+        type="Developments"
+        [cards]="vm.filteredCards"
+        [total]="vm.totalCards"
+        [ordinal]="vm.ordinal"
+        [visible]="vm.visible"
+        [favorites]="vm.favoriteIds"
+        [trackByFn]="trackByFn"
+        (moveUp)="moveUp()"
+        (moveDown)="moveDown()"
+        (visibleChange)="toggleVisibility()"
+        >
+        <app-development
+          *uiCard="vm.filteredCards as development"
+          [data]="development"
+          [favorite]="vm.favoriteIds.has(getId(development))"
+          (favoriteChange)="toggleId(getId(development))"
+        ></app-development>
+      </ui-cards>
+    }
+    `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DevelopmentsComponent {

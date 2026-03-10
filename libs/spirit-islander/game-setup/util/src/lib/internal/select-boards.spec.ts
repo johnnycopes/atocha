@@ -53,7 +53,7 @@ describe('selectBoards', () => {
             randomThematicBoards: false,
             allowBEAndDFBoards: false,
           })
-        ).toThrowError(
+        ).toThrow(
           'Board pairings B/E and D/F are not permitted in a 2 player game'
         );
       });
@@ -64,7 +64,7 @@ describe('selectBoards', () => {
             randomThematicBoards: false,
             allowBEAndDFBoards: false,
           })
-        ).toThrowError(
+        ).toThrow(
           'Board pairings B/E and D/F are not permitted in a 2 player game'
         );
       });

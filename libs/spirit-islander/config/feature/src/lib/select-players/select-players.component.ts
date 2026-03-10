@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -7,7 +7,7 @@ import { trackBySelf } from '@atocha/core/ui';
 
 @Component({
   selector: 'app-select-players',
-  imports: [CommonModule, FormsModule, ReactiveFormsModule],
+  imports: [FormsModule, ReactiveFormsModule],
   templateUrl: './select-players.component.html',
   styleUrls: ['./select-players.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

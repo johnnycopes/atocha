@@ -4,17 +4,18 @@
   "projectType": "library",
   "sourceRoot": "libs/globetrotter/shell/feature/src",
   "prefix": "app",
+  "tags": ["scope:globetrotter", "type:feature"],
   "targets": {
     "test": {
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/libs/globetrotter/shell/feature"],
       "options": {
-        "jestConfig": "libs/globetrotter/shell/feature/jest.config.ts"
+        "jestConfig": "libs/globetrotter/shell/feature/jest.config.ts",
+        "tsConfig": "libs/globetrotter/shell/feature/tsconfig.spec.json"
       }
     },
     "lint": {
       "executor": "@nx/eslint:lint"
     }
-  },
-  "tags": ["scope:globetrotter", "type:feature"]
+  }
 }
