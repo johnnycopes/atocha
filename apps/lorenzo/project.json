@@ -7,21 +7,18 @@
   "tags": ["scope:lorenzo", "type:app"],
   "targets": {
     "build": {
-      "executor": "@angular/build:application",
-      "outputs": ["{options.outputPath.base}"],
+      "executor": "@angular-devkit/build-angular:browser",
+      "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": {
-          "base": "dist/apps/lorenzo",
-          "browser": ""
-        },
+        "outputPath": "dist/apps/lorenzo",
         "index": "apps/lorenzo/src/index.html",
-        "polyfills": ["apps/lorenzo/src/polyfills.ts"],
+        "main": "apps/lorenzo/src/main.ts",
+        "polyfills": "apps/lorenzo/src/polyfills.ts",
         "tsConfig": "apps/lorenzo/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "assets": ["apps/lorenzo/src/assets"],
         "styles": ["apps/lorenzo/src/styles.scss"],
-        "scripts": [],
-        "browser": "apps/lorenzo/src/main.ts"
+        "scripts": []
       },
       "configurations": {
         "production": {
@@ -46,7 +43,9 @@
           "outputHashing": "all"
         },
         "development": {
+          "buildOptimizer": false,
           "optimization": false,
+          "vendorChunk": true,
           "extractLicenses": false,
           "sourceMap": true,
           "namedChunks": true
@@ -55,7 +54,7 @@
       "defaultConfiguration": "production"
     },
     "serve": {
-      "executor": "@angular/build:dev-server",
+      "executor": "@angular-devkit/build-angular:dev-server",
       "configurations": {
         "production": {
           "buildTarget": "lorenzo:build:production"
