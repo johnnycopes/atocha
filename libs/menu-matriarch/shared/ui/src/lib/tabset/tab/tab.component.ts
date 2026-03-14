@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import {
   Component,
   EventEmitter,
@@ -6,18 +5,21 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Output,
+  inject,
 } from '@angular/core';
 
 import { fadeInAnimation } from '../animations';
 
 @Component({
   selector: 'ui-tab',
-  imports: [CommonModule],
+  imports: [],
   templateUrl: './tab.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [fadeInAnimation],
 })
 export class TabComponent {
+  private _changeDetectorRef = inject(ChangeDetectorRef);
+
   @Input()
   set name(value: string) {
     this._name = value;
@@ -42,6 +44,4 @@ export class TabComponent {
 
   @Output() nameChange = new EventEmitter<string>();
   @Output() selectedChange = new EventEmitter<boolean>();
-
-  constructor(private _changeDetectorRef: ChangeDetectorRef) {}
 }

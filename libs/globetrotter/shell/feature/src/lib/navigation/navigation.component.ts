@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
@@ -20,7 +19,7 @@ interface NavigationLink {
 
 @Component({
   selector: 'app-navigation',
-  imports: [CommonModule, ExternalLinkDirective, IconComponent, RouterModule],
+  imports: [ExternalLinkDirective, IconComponent, RouterModule],
   templateUrl: './navigation.component.html',
   styleUrls: ['./navigation.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

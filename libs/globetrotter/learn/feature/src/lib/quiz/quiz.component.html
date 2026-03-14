@@ -1,23 +1,20 @@
-<ng-container *ngIf="vm$ | async as vm">
-  <ng-container *ngIf="vm.quiz">
-    <app-quiz-menu
-      [type]="vm.type"
-      [guess]="vm.quiz.totalGuesses + 1"
-      [correctGuesses]="vm.quiz.correctGuesses"
-      [currentCountry]="vm.quiz.currentItem"
-      [totalCountries]="vm.quiz.items.length"
-      [accuracy]="vm.quiz.accuracy"
-      [isComplete]="vm.quiz.isComplete"
-      (menuReady)="showCards = $event"
-      (exit)="goBack()"
-    ></app-quiz-menu>
-
-    <app-quiz-cards
-      *ngIf="showCards"
-      [type]="vm.type"
-      [countries]="vm.quiz.items"
-      [currentCountry]="vm.quiz.currentItem"
-      (guessed)="onGuess($event)"
-    ></app-quiz-cards>
-  </ng-container>
-</ng-container>
+@if (vm$ | async; as vm) { @if (vm.quiz) {
+<app-quiz-menu
+  [type]="vm.type"
+  [guess]="vm.quiz.totalGuesses + 1"
+  [correctGuesses]="vm.quiz.correctGuesses"
+  [currentCountry]="vm.quiz.currentItem"
+  [totalCountries]="vm.quiz.items.length"
+  [accuracy]="vm.quiz.accuracy"
+  [isComplete]="vm.quiz.isComplete"
+  (menuReady)="showCards = $event"
+  (exit)="goBack()"
+></app-quiz-menu>
+@if (showCards) {
+<app-quiz-cards
+  [type]="vm.type"
+  [countries]="vm.quiz.items"
+  [currentCountry]="vm.quiz.currentItem"
+  (guessed)="onGuess($event)"
+></app-quiz-cards>
+} } }

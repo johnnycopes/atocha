@@ -1,11 +1,3 @@
-// TODO: remove this chunk after newer version of Jest is installed
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const { fetch, Response, TextEncoder, TextDecoder } = require('util');
-global.fetch = fetch;
-global.Response = Response;
-global.TextEncoder = TextEncoder;
-global.TextDecoder = TextDecoder;
-
 import { PIZZA, SALAD } from '@atocha/menu-matriarch/dishes/data-access';
 import { mapMenuDtoToMenu } from './map-menu-dto-to-menu';
 import { MENU_DTO } from '../mock-data';

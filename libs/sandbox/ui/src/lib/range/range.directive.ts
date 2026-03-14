@@ -1,4 +1,10 @@
-import { Directive, Input, ViewContainerRef, TemplateRef } from '@angular/core';
+import {
+  Directive,
+  Input,
+  ViewContainerRef,
+  TemplateRef,
+  inject,
+} from '@angular/core';
 
 type Range = [number, number];
 
@@ -6,6 +12,8 @@ type Range = [number, number];
   selector: '[appRange]',
 })
 export class RangeDirective {
+  private _viewContainerRef = inject(ViewContainerRef);
+  private _template = inject<TemplateRef<unknown>>(TemplateRef);
   private _appRange: number[] = [];
 
   @Input()
@@ -19,11 +27,6 @@ export class RangeDirective {
       });
     });
   }
-
-  constructor(
-    private _viewContainerRef: ViewContainerRef,
-    private _template: TemplateRef<unknown>
-  ) {}
 
   private _generateRange([from, to]: Range): number[] {
     const range = [];

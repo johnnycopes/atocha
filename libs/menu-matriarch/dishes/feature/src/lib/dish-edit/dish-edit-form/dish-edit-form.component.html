@@ -1,5 +1,5 @@
+@if (dish && form) {
 <form
-  *ngIf="dish && form"
   class="ui-section__content"
   [formGroup]="form"
   (keydown.enter)="$event.preventDefault()"
@@ -22,10 +22,8 @@
   </ui-input>
   <ui-input class="input" label="dish type">
     <div class="radio-container">
-      <label
-        *ngFor="let dishType of dishTypes; trackBy: typeTrackByFn"
-        class="radio-button"
-      >
+      @for (dishType of dishTypes; track typeTrackByFn($index, dishType)) {
+      <label class="radio-button">
         <input
           type="radio"
           name="type"
@@ -34,37 +32,33 @@
         />
         {{ dishType | titlecase }}
       </label>
+      }
     </div>
   </ui-input>
   <ui-input class="input" label="ingredients">
-    <ul
-      class="ingredients"
-      *ngIf="dish.ingredientModels.length; else noIngredientsPlaceholder"
-      formGroupName="ingredientIds"
-    >
-      <li
-        *ngFor="
-          let ingredient of dish.ingredientModels;
-          trackBy: ingredientTrackByFn
-        "
-      >
+    @if (dish.ingredientModels.length) {
+    <ul class="ingredients" formGroupName="ingredientIds">
+      @for ( ingredient of dish.ingredientModels; track
+      ingredientTrackByFn($index, ingredient)) {
+      <li>
         <core-checkbox [formControlName]="ingredient.id">
           {{ ingredient.name }}
         </core-checkbox>
       </li>
+      }
     </ul>
-    <ng-template #noIngredientsPlaceholder>
-      <div class="placeholder">
-        <p>No ingredients to display</p>
-        <a core-button class="button" routerLink="/ingredients">
-          New Ingredient
-        </a>
-      </div>
-    </ng-template>
+    } @else {
+    <div class="placeholder">
+      <p>No ingredients to display</p>
+      <a core-button class="button" routerLink="/ingredients">
+        New Ingredient
+      </a>
+    </div>
+    }
   </ui-input>
   <ui-input class="input" label="tags">
+    @if (dish.tagModels.length) {
     <ui-tags-list
-      *ngIf="dish.tagModels.length; else noTagsPlaceholder"
       class="tags"
       formGroupName="tagIds"
       [tags]="dish.tagModels"
@@ -76,12 +70,12 @@
         </core-checkbox>
       </ng-container>
     </ui-tags-list>
-    <ng-template #noTagsPlaceholder>
-      <div class="placeholder">
-        <p>No tags to display</p>
-        <a core-button class="button" routerLink="/tags"> New Tag </a>
-      </div>
-    </ng-template>
+    } @else {
+    <div class="placeholder">
+      <p>No tags to display</p>
+      <a core-button class="button" routerLink="/tags"> New Tag </a>
+    </div>
+    }
   </ui-input>
   <ui-input class="input" label="notes">
     <editor
@@ -92,3 +86,4 @@
     ></editor>
   </ui-input>
 </form>
+}

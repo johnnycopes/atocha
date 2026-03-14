@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { BatchService, DtoService } from '@atocha/firebase/data-access';
@@ -18,14 +18,12 @@ export type EditableMenuData = Partial<Pick<MenuDto, 'name' | 'startDay'>>;
   providedIn: 'root',
 })
 export class MenuDtoService implements IDtoService<Menu, MenuDto> {
-  private readonly _endpoint = Endpoint.menus;
+  private _batchService = inject(BatchService);
+  private _dtoService = inject<DtoService<MenuDto>>(DtoService);
+  private _dishUpdateService = inject(DishUpdateService);
+  private _menuUpdateService = inject(MenuUpdateService);
 
-  constructor(
-    private _batchService: BatchService,
-    private _dtoService: DtoService<MenuDto>,
-    private _dishUpdateService: DishUpdateService,
-    private _menuUpdateService: MenuUpdateService
-  ) {}
+  private readonly _endpoint = Endpoint.menus;
 
   getOne(id: string): Observable<MenuDto | undefined> {
     return this._dtoService.getOne(this._endpoint, id);

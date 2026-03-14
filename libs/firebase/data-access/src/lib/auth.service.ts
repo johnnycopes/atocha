@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import {
   Auth,
   GoogleAuthProvider,
@@ -12,7 +12,7 @@ import { map, shareReplay } from 'rxjs';
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private _auth: Auth) {}
+  private _auth = inject(Auth);
 
   uid$ = user(this._auth).pipe(
     map((user) => user?.uid),

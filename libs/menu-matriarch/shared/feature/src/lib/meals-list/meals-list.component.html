@@ -1,5 +1,5 @@
+@if (vm$ | async; as vm) {
 <app-filterable-list
-  *ngIf="vm$ | async as vm"
   [total]="vm.total"
   [searchText]="vm.searchText"
   [filters]="vm.filters"
@@ -12,8 +12,10 @@
   (filtersButtonClick)="onFiltersButtonClick()"
   (nameDblClick)="nameDblClick.emit()"
 >
-  <ul *ngIf="vm.total; else noMealsPlaceholder" class="ui-section__content">
-    <li *ngFor="let meal of vm.filteredMeals; trackBy: trackByFn" class="meal">
+  @if (vm.total) {
+  <ul class="ui-section__content">
+    @for (meal of vm.filteredMeals; track trackByFn($index, meal)) {
+    <li class="meal">
       <ng-container
         [ngTemplateOutlet]="mealTemplate"
         [ngTemplateOutletContext]="{
@@ -24,8 +26,10 @@
         }"
       ></ng-container>
     </li>
+    }
   </ul>
-  <ng-template #noMealsPlaceholder>
-    <div class="placeholder">No meals to display</div>
-  </ng-template>
+  } @else {
+  <div class="placeholder">No meals to display</div>
+  }
 </app-filterable-list>
+}

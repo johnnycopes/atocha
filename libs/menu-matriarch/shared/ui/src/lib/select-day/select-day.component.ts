@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
@@ -8,11 +7,13 @@ import { getDays } from '@atocha/menu-matriarch/shared/util';
 @Component({
   // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'select[ui-select-day]',
-  imports: [CommonModule, FormsModule],
+  imports: [FormsModule],
   template: `
-    <option *ngFor="let day of days; trackBy: trackByFn" [ngValue]="day">
+    @for (day of days; track trackByFn($index, day)) {
+    <option [ngValue]="day">
       {{ day }}
     </option>
+    }
   `,
 })
 export class SelectDayComponent {

@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Observable, first, map, tap } from 'rxjs';
 
 import { LocalStorageService, State } from '@atocha/core/data-access';
@@ -29,6 +29,8 @@ import { updateSettings } from './internal/update-settings';
   providedIn: 'root',
 })
 export class StateService {
+  private _localStorageService = inject(LocalStorageService);
+
   config$: Observable<Config>;
   gameSetup$: Observable<GameSetup | undefined>;
   settings$: Observable<Settings>;
@@ -39,7 +41,7 @@ export class StateService {
   private readonly _configKey = 'CONFIG';
   private readonly _settingsKey = 'SETTINGS';
 
-  constructor(private _localStorageService: LocalStorageService) {
+  constructor() {
     const config = this._getConfig();
     const settings = this._getSettings();
 

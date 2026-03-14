@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import {
   Component,
   Input,
@@ -28,7 +27,7 @@ export interface TypeRename {
 
 @Component({
   selector: 'app-ingredients-board',
-  imports: [CommonModule, DragDropModule, IngredientsBoardColumnComponent],
+  imports: [DragDropModule, IngredientsBoardColumnComponent],
   templateUrl: './ingredients-board.component.html',
   styleUrls: ['./ingredients-board.scss', './ingredients-board.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

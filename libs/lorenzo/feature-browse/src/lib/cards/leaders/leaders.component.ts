@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 
 import { trackByFactory } from '@atocha/core/ui';
 import { CardStateService } from '@atocha/lorenzo/data-access';
@@ -16,8 +16,8 @@ import { LeaderComponent } from './leader.component';
     LeaderComponent,
   ],
   template: `
+    @if (vm$ | async; as vm) {
     <ui-cards
-      *ngIf="vm$ | async as vm"
       type="Leaders"
       [cards]="vm.filteredCards"
       [total]="vm.totalCards"
@@ -36,15 +36,16 @@ import { LeaderComponent } from './leader.component';
         (favoriteChange)="toggleId(getId(leader))"
       ></app-leader>
     </ui-cards>
+    }
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LeadersComponent {
+  private _cardStateService = inject(CardStateService);
+
   vm$ = this._cardStateService.leaders$;
   getId = getLeaderId;
   trackByFn = trackByFactory(this.getId);
-
-  constructor(private _cardStateService: CardStateService) {}
 
   toggleVisibility(): void {
     this._cardStateService.toggleVisibility('leader');

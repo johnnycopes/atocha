@@ -9,10 +9,11 @@
   [ngModel]="text"
   (ngModelChange)="textChange.emit($event)"
 />
+@if (text) {
 <fa-icon
-  *ngIf="text"
   data-test="core-search-input-icon"
   class="core-search-input__clear"
   [icon]="clearIcon"
   (click)="onClear()"
 ></fa-icon>
+}

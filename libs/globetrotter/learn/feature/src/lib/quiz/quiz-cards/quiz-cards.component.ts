@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import {
   Component,
   ChangeDetectionStrategy,
@@ -17,7 +16,7 @@ import { staggerAnimation } from './quiz-cards';
 
 @Component({
   selector: 'app-quiz-cards',
-  imports: [CommonModule, QuizCardComponent],
+  imports: [QuizCardComponent],
   templateUrl: './quiz-cards.component.html',
   styleUrls: ['./quiz-cards.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

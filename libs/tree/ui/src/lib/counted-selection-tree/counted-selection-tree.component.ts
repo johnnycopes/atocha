@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import {
   Component,
   Input,
@@ -32,7 +31,7 @@ import {
 
 @Component({
   selector: 'core-counted-selection-tree',
-  imports: [CommonModule, FormsModule, InternalCountedSelectionTreeComponent],
+  imports: [FormsModule, InternalCountedSelectionTreeComponent],
   templateUrl: './counted-selection-tree.component.html',
   styleUrls: ['./counted-selection-tree.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

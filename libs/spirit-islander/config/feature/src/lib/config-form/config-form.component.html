@@ -1,10 +1,5 @@
-<form
-  *ngIf="config"
-  class="config"
-  ui-page-content
-  [formGroup]="form"
-  (ngSubmit)="onSubmit()"
->
+@if (config) {
+<form class="config" ui-page-content [formGroup]="form" (ngSubmit)="onSubmit()">
   <ui-card-group name="You" description="What are you playing with?">
     <ui-card name="expansions">
       <app-checkbox-tree
@@ -14,19 +9,16 @@
         (nodeClick)="onExpansionChange($event)"
       ></app-checkbox-tree>
     </ui-card>
-
     <ui-card name="players" [error]="form.playersError">
       <h3 ui-card-header>Players</h3>
       <app-select-players ui-card-content [form]="form"></app-select-players>
     </ui-card>
-
     <ui-card name="difficulty" [error]="form.difficultyError">
       <h3 ui-card-header>Difficulty</h3>
       <app-select-difficulty-range ui-card-content [form]="form">
       </app-select-difficulty-range>
     </ui-card>
   </ui-card-group>
-
   <ui-card-group
     name="The Game"
     description="What are you open to playing with?"
@@ -38,7 +30,6 @@
         controlName="spiritNames"
       ></app-checkbox-tree>
     </ui-card>
-
     <ui-card name="maps" [error]="form.mapsError">
       <app-checkbox-tree
         [root]="root.maps"
@@ -46,7 +37,6 @@
         controlName="mapNames"
       ></app-checkbox-tree>
     </ui-card>
-
     <ui-card name="boards" [error]="form.boardsError">
       <app-checkbox-tree
         [class.six-boards]="jaggedEarth"
@@ -55,7 +45,6 @@
         controlName="boardNames"
       ></app-checkbox-tree>
     </ui-card>
-
     <ui-card name="scenarios" [error]="form.scenariosError">
       <app-checkbox-tree
         [root]="root.scenarios"
@@ -63,7 +52,6 @@
         controlName="scenarioNames"
       ></app-checkbox-tree>
     </ui-card>
-
     <ui-card name="adversaries" [error]="form.adversariesError">
       <app-checkbox-tree
         [root]="root.adversaries"
@@ -72,8 +60,8 @@
       ></app-checkbox-tree>
     </ui-card>
   </ui-card-group>
-
   <div ui-page-actions>
     <button core-button [disabled]="!form.valid">Generate</button>
   </div>
 </form>
+}

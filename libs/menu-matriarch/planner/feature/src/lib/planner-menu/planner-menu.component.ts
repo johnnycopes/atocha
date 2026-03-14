@@ -1,5 +1,9 @@
-import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  inject,
+} from '@angular/core';
 
 import { ButtonComponent } from '@atocha/core/ui';
 import {
@@ -15,24 +19,17 @@ import { PlannerDayComponent } from './planner-day/planner-day.component';
 
 @Component({
   selector: 'app-planner-menu',
-  imports: [
-    ButtonComponent,
-    CommonModule,
-    PlannerDayComponent,
-    SectionComponent,
-  ],
+  imports: [ButtonComponent, PlannerDayComponent, SectionComponent],
   templateUrl: './planner-menu.component.html',
   styleUrls: ['./planner-menu.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PlannerMenuComponent {
+  private _menuService = inject(MenuService);
+  private _printService = inject(PrintService);
+
   @Input() menu: Menu | undefined;
   readonly trackByFn = menuEntryTrackByFn;
-
-  constructor(
-    private _menuService: MenuService,
-    private _printService: PrintService
-  ) {}
 
   onPrint(): void {
     if (!this.menu) {

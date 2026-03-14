@@ -6,9 +6,9 @@
   (cdkDropListDropped)="onDropColumn($event)"
 >
   <div class="app-kb__columns" cdkDropListGroup>
+    @for (column of columns; track trackByFn($index, column)) {
     <app-kanban-board-column
       class="app-kb__column"
-      *ngFor="let column of columns; trackBy: trackByFn"
       cdkDrag
       [cdkDragData]="getColumnId(column)"
       [id]="getColumnId(column)"
@@ -24,6 +24,7 @@
       (cdkDragStarted)="onDragColumn()"
       [(moving)]="moving"
     ></app-kanban-board-column>
+    }
     <app-kanban-board-form
       class="app-kb__column"
       [name]="columnUnit"

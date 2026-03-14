@@ -4,6 +4,7 @@
   "projectType": "application",
   "sourceRoot": "apps/globetrotter/src",
   "prefix": "app",
+  "tags": ["scope:globetrotter", "type:app"],
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
@@ -71,7 +72,8 @@
           "buildTarget": "globetrotter:build:development"
         }
       },
-      "defaultConfiguration": "development"
+      "defaultConfiguration": "development",
+      "continuous": true
     },
     "extract-i18n": {
       "executor": "@angular-devkit/build-angular:extract-i18n",
@@ -86,7 +88,8 @@
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/apps/globetrotter"],
       "options": {
-        "jestConfig": "apps/globetrotter/jest.config.ts"
+        "jestConfig": "apps/globetrotter/jest.config.ts",
+        "tsConfig": "apps/globetrotter/tsconfig.spec.json"
       }
     },
     "deploy": {
@@ -111,6 +114,5 @@
       },
       "defaultConfiguration": "development"
     }
-  },
-  "tags": ["scope:globetrotter", "type:app"]
+  }
 }

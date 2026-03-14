@@ -11,6 +11,7 @@ import {
   ChangeDetectorRef,
   ViewChild,
   ElementRef,
+  inject,
 } from '@angular/core';
 import { Subject, merge, takeUntil } from 'rxjs';
 
@@ -33,6 +34,8 @@ export class TabsetComponent
   extends AnimatedComponent
   implements AfterContentInit, OnDestroy
 {
+  private _changeDetectorRef = inject(ChangeDetectorRef);
+
   @Input() controlsTemplate: TemplateRef<unknown> | undefined;
   @Input() contentVisibility: TabsetContentVisibility = 'visible';
   @ContentChildren(TabComponent)
@@ -42,10 +45,6 @@ export class TabsetComponent
 
   @ViewChild('tabsElement')
   tabsElement: ElementRef | undefined;
-
-  constructor(private _changeDetectorRef: ChangeDetectorRef) {
-    super();
-  }
 
   ngAfterContentInit(): void {
     const selectedTab = this.tabs?.find(({ selected }) => selected);

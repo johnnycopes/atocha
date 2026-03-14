@@ -1,5 +1,5 @@
 import { AnimationEvent } from '@angular/animations';
-import { CommonModule } from '@angular/common';
+
 import {
   Component,
   ChangeDetectionStrategy,
@@ -21,12 +21,7 @@ import { QuizType } from '@atocha/globetrotter/learn/util';
 
 @Component({
   selector: 'app-quiz-menu',
-  imports: [
-    ButtonComponent,
-    CommonModule,
-    FixedSlideablePanelComponent,
-    IconComponent,
-  ],
+  imports: [ButtonComponent, FixedSlideablePanelComponent, IconComponent],
   templateUrl: './quiz-menu.component.html',
   styleUrls: ['./quiz-menu.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

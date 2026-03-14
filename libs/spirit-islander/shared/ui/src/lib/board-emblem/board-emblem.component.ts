@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -20,7 +19,7 @@ type ThematicBoardNameAbberviation = 'E' | 'NE' | 'NW' | 'SE' | 'SW' | 'W';
 
 @Component({
   selector: 'ui-board-emblem',
-  imports: [CommonModule, EmblemComponent, SnakeCasePipe],
+  imports: [EmblemComponent, SnakeCasePipe],
   templateUrl: './board-emblem.component.html',
   styleUrls: ['./board-emblem.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

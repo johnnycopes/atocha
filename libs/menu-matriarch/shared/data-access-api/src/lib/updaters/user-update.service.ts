@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 
 import { BatchService, BatchUpdate } from '@atocha/firebase/data-access';
 import { Endpoint } from '../types/endpoint.enum';
@@ -7,7 +7,7 @@ import { Endpoint } from '../types/endpoint.enum';
   providedIn: 'root',
 })
 export class UserUpdateService {
-  constructor(private _batchService: BatchService) {}
+  private _batchService = inject(BatchService);
 
   getUpdate({
     uid,

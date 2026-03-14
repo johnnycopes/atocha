@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
@@ -16,7 +15,7 @@ import {
 
 @Component({
   selector: 'ui-meal-summary',
-  imports: [CommonModule, RouterLink, SmallCapsLabelComponent],
+  imports: [RouterLink, SmallCapsLabelComponent],
   templateUrl: './meal-summary.component.html',
   styleUrls: ['./meal-summary.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

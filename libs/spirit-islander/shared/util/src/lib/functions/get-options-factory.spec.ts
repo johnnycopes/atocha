@@ -25,7 +25,7 @@ describe('getOptionsFactory', () => {
           expansions: [],
           names: [],
         })
-      ).toThrowError(
+      ).toThrow(
         'Options can only be filtered by expansions OR names (not both at once)'
       );
     });

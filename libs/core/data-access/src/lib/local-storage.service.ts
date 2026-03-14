@@ -1,4 +1,4 @@
-import { Inject, Injectable, InjectionToken } from '@angular/core';
+import { Injectable, InjectionToken, inject } from '@angular/core';
 
 export const APP_NAME_TOKEN = new InjectionToken<string>('appName');
 
@@ -6,9 +6,11 @@ export const APP_NAME_TOKEN = new InjectionToken<string>('appName');
   providedIn: 'root',
 })
 export class LocalStorageService {
+  private _appName = inject(APP_NAME_TOKEN);
+
   private _prefix = '';
 
-  constructor(@Inject(APP_NAME_TOKEN) private _appName: string) {
+  constructor() {
     this._prefix = this._appName + '_';
   }
 

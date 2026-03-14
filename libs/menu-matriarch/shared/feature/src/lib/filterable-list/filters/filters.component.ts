@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import {
   Component,
   ChangeDetectionStrategy,
@@ -23,7 +22,6 @@ import {
     ButtonComponent,
     CardComponent,
     CheckboxComponent,
-    CommonModule,
     FormsModule,
     TagComponent,
     TagDefDirective,

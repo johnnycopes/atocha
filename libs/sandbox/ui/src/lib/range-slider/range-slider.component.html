@@ -1,31 +1,31 @@
 <div class="labels">
-  <ng-container *ngIf="steps.length; else noSteps">
-    <p class="labels__start">
-      <ng-container
-        *ngTemplateOutlet="
-          template ? template : defaultTemplate;
-          context: { $implicit: currentPosition?.start }
-        "
-      >
-      </ng-container>
-    </p>
-    <p class="labels__end">
-      <ng-container
-        *ngTemplateOutlet="
-          template ? template : defaultTemplate;
-          context: { $implicit: currentPosition?.end }
-        "
-      >
-      </ng-container>
-    </p>
-  </ng-container>
-  <ng-template #noSteps>
-    <p class="labels__unavailable">Range selection unavailable</p>
-  </ng-template>
+  @if (steps.length) {
+  <p class="labels__start">
+    <ng-container
+      *ngTemplateOutlet="
+        template ? template : defaultTemplate;
+        context: { $implicit: currentPosition?.start }
+      "
+    >
+    </ng-container>
+  </p>
+  <p class="labels__end">
+    <ng-container
+      *ngTemplateOutlet="
+        template ? template : defaultTemplate;
+        context: { $implicit: currentPosition?.end }
+      "
+    >
+    </ng-container>
+  </p>
+  } @else {
+  <p class="labels__unavailable">Range selection unavailable</p>
+  }
 </div>
 <div class="slider-container" #container>
   <div class="line" [class]="{ 'line--disabled': !steps.length }"></div>
-  <div class="track" *ngIf="steps.length">
+  @if (steps.length) {
+  <div class="track">
     <div
       class="marker start-marker"
       [class.marker--elevated]="elevatedMarker === 'start'"
@@ -47,6 +47,7 @@
       (cdkDragReleased)="onDragRelease()"
     ></div>
   </div>
+  }
 </div>
 
 <ng-template #defaultTemplate let-value>

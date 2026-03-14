@@ -1,10 +1,6 @@
 <ui-card>
-  <ui-tags-list
-    *ngIf="tags.length; else noTagsTemplate"
-    class="tags"
-    [tags]="tags"
-    [interactive]="true"
-  >
+  @if (tags.length) {
+  <ui-tags-list class="tags" [tags]="tags" [interactive]="true">
     <ng-container *uiTagDef="let tag">
       <core-checkbox
         [name]="tag.id"
@@ -25,7 +21,7 @@
       </button>
     </li>
   </ui-tags-list>
-  <ng-template #noTagsTemplate>
-    <p>No filters to display</p>
-  </ng-template>
+  } @else {
+  <p>No filters to display</p>
+  }
 </ui-card>

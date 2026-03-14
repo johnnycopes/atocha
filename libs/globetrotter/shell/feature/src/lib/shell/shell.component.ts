@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import {
   BehaviorSubject,
@@ -20,6 +20,8 @@ import { NavigationComponent } from '../navigation/navigation.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ShellComponent {
+  private _loaderService = inject(LoaderService);
+
   private _navReadySubject = new BehaviorSubject<boolean>(false);
   private _navReady$ = this._navReadySubject.pipe(distinctUntilChanged());
   private _loading$ = this._loaderService.shell$;
@@ -30,8 +32,6 @@ export class ShellComponent {
       ready: showContent && !loading,
     }))
   );
-
-  constructor(private _loaderService: LoaderService) {}
 
   onNavReady(): void {
     this._navReadySubject.next(true);

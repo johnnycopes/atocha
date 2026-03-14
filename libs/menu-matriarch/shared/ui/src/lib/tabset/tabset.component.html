@@ -1,13 +1,14 @@
 <ng-template #defaultControlsTemplate>
   <ul class="tabs" #tabsElement>
+    @for (tab of tabs; track trackByFn($index, tab)) {
     <li
-      *ngFor="let tab of tabs; trackBy: trackByFn"
       class="tab"
       [class.tab--selected]="tab.selected"
       (click)="onSelectTab(tab)"
     >
       {{ tab.name }}
     </li>
+    }
   </ul>
 </ng-template>
 

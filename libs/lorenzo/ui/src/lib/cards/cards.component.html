@@ -8,16 +8,20 @@
       <span class="count"> ({{ cards.length }} / {{ total }}) </span>
     </h2>
     <div class="ordinals">
-      <button core-button *ngIf="showMoveUp" (click)="moveUp.emit()">
+      @if (showMoveUp) {
+      <button core-button (click)="moveUp.emit()">
         <span class="left-arrow"> ↑ </span>
       </button>
-      <button core-button *ngIf="showMoveDown" (click)="moveDown.emit()">
+      } @if (showMoveDown) {
+      <button core-button (click)="moveDown.emit()">
         <span class="right-arrow"> ↓ </span>
       </button>
+      }
     </div>
   </div>
   <ul [hidden]="!visible" class="cards">
-    <li *ngFor="let card of cards; trackBy: trackByFn" class="card">
+    @for (card of cards; track trackByFn($index, card)) {
+    <li class="card">
       <ng-container
         [ngTemplateOutlet]="cardTemplate"
         [ngTemplateOutletContext]="{
@@ -26,6 +30,8 @@
         }"
       ></ng-container>
     </li>
-    <li *ngIf="!cards.length">No matching cards</li>
+    } @if (!cards.length) {
+    <li>No matching cards</li>
+    }
   </ul>
 </section>

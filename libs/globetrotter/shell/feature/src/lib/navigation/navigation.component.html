@@ -4,16 +4,17 @@
   (@position.done)="onAnimationFinish($event)"
 >
   <a class="home" routerLink="/{{ home.route }}">
+    @if (home.icon) {
     <ui-icon
-      *ngIf="home.icon"
       class="home__icon"
       [icon]="home.icon"
       [highlighted]="false"
     ></ui-icon>
+    }
   </a>
+  @for (link of links; track trackByFn($index, link)) {
   <a
     class="link"
-    *ngFor="let link of links; trackBy: trackByFn"
     routerLink="/{{ link.route }}"
     routerLinkActive="link--active"
     [routerLinkActiveOptions]="{ exact: link.exactPathMatch }"
@@ -21,6 +22,7 @@
   >
     {{ link.name }}
   </a>
+  }
   <p class="signature">
     Made by
     <a class="signature__name" coreExternalLink="https://www.johnnycopes.com"

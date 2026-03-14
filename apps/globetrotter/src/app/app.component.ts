@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
 import {
@@ -18,11 +18,9 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
+  private _loaderService = inject(LoaderService);
+  private _errorService = inject(ErrorService);
+
   loading$ = this._loaderService.global$;
   error$ = this._errorService.global$;
-
-  constructor(
-    private _loaderService: LoaderService,
-    private _errorService: ErrorService
-  ) {}
 }

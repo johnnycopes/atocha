@@ -4,6 +4,7 @@
   "projectType": "application",
   "sourceRoot": "apps/menu-matriarch/src",
   "prefix": "app",
+  "tags": ["scope:menu-matriarch", "type:app"],
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
@@ -68,7 +69,8 @@
           "buildTarget": "menu-matriarch:build:development"
         }
       },
-      "defaultConfiguration": "development"
+      "defaultConfiguration": "development",
+      "continuous": true
     },
     "extract-i18n": {
       "executor": "@angular-devkit/build-angular:extract-i18n",
@@ -83,7 +85,8 @@
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/apps/menu-matriarch"],
       "options": {
-        "jestConfig": "apps/menu-matriarch/jest.config.ts"
+        "jestConfig": "apps/menu-matriarch/jest.config.ts",
+        "tsConfig": "apps/menu-matriarch/tsconfig.spec.json"
       }
     },
     "deploy": {
@@ -133,6 +136,5 @@
       },
       "defaultConfiguration": "reset"
     }
-  },
-  "tags": ["scope:menu-matriarch", "type:app"]
+  }
 }

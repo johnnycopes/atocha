@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -8,7 +7,7 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 
-import { ButtonComponent, PluralPipe, trackBySelf } from '@atocha/core/ui';
+import { ButtonComponent, PluralPipe } from '@atocha/core/ui';
 import {
   AspectEmblemComponent,
   BoardEmblemComponent,
@@ -34,7 +33,6 @@ import { getAdversaryNameById } from './get-adversary-name-by-id';
     ButtonComponent,
     CardComponent,
     CardGroupComponent,
-    CommonModule,
     DifficultyEmblemComponent,
     ExpansionEmblemComponent,
     PluralPipe,
@@ -69,7 +67,6 @@ export class GameSetupOutputComponent {
   @Output() edit = new EventEmitter<void>();
   @Output() regenerate = new EventEmitter<void>();
 
-  readonly trackByFn = trackBySelf;
   mapDifficulty: Difficulty = 0;
   scenarioDifficulty: Difficulty = 0;
   adversaryName: AdversaryName = 'No Adversary';

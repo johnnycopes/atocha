@@ -1,9 +1,3 @@
-// TODO: remove this chunk after newer version of Jest is installed
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const { fetch, Response } = require('util');
-global.fetch = fetch;
-global.Response = Response;
-
 import { TAG_DTOS } from '@atocha/menu-matriarch/tags/data-access';
 import { INGREDIENT_DTOS } from '@atocha/menu-matriarch/ingredients/data-access';
 

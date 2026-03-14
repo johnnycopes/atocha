@@ -1,5 +1,9 @@
-import { CommonModule } from '@angular/common';
-import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
+import {
+  Component,
+  ChangeDetectionStrategy,
+  Input,
+  inject,
+} from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { ButtonComponent, CheckboxComponent } from '@atocha/core/ui';
@@ -24,7 +28,6 @@ import { SelectForm } from '../select-form';
   imports: [
     ButtonComponent,
     CheckboxComponent,
-    CommonModule,
     CountedSelectionTreeComponent,
     FormsModule,
     IconComponent,
@@ -36,6 +39,8 @@ import { SelectForm } from '../select-form';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SelectPlacesComponent {
+  private _selectService = inject(SelectService);
+
   @Input({ required: true }) form!: SelectForm;
   @Input({ required: true })
   set regions(regions: Region[]) {
@@ -49,8 +54,6 @@ export class SelectPlacesComponent {
   readonly getNumberOfCountries = getNumberOfCountries;
 
   private _allPlaces: string[] = [];
-
-  constructor(private _selectService: SelectService) {}
 
   selectAll(): void {
     this.form.patchValue({ places: this._allPlaces });

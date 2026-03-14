@@ -3,14 +3,15 @@
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/firebase/data-access/src",
   "prefix": "app",
-  "tags": ["scope:shared", "type:data-access"],
   "projectType": "library",
+  "tags": ["scope:shared", "type:data-access"],
   "targets": {
     "test": {
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "libs/firebase/data-access/jest.config.ts"
+        "jestConfig": "libs/firebase/data-access/jest.config.ts",
+        "tsConfig": "libs/firebase/data-access/tsconfig.spec.json"
       }
     },
     "lint": {

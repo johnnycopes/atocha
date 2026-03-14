@@ -1,5 +1,5 @@
 import { DOCUMENT } from '@angular/common';
-import { Inject, Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 
 import { APP_NAME_TOKEN, Csv } from '@atocha/core/data-access';
 import { Card, Development, Family, Leader } from '@atocha/lorenzo/util';
@@ -19,6 +19,9 @@ type CsvLeader = CsvMapping<Leader>;
   providedIn: 'root',
 })
 export class CsvService {
+  private _document = inject<Document>(DOCUMENT);
+  private _appName = inject(APP_NAME_TOKEN);
+
   private _csv: Csv;
   private _formattedHeaders: Record<
     keyof Development | keyof Family | keyof Leader,
@@ -37,10 +40,7 @@ export class CsvService {
     type: 'Type',
   };
 
-  constructor(
-    @Inject(DOCUMENT) private _document: Document,
-    @Inject(APP_NAME_TOKEN) private _appName: string
-  ) {
+  constructor() {
     this._csv = new Csv(this._document);
   }
 

@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { combineLatest, concatMap, first, map, of, switchMap } from 'rxjs';
 
@@ -35,6 +35,11 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MealDetailsComponent {
+  private _route = inject(ActivatedRoute);
+  private _router = inject(Router);
+  private _mealService = inject(MealService);
+  private _userService = inject(UserService);
+
   vm$ = combineLatest([
     this._route.params.pipe(
       switchMap(({ id }) => {
@@ -55,13 +60,6 @@ export class MealDetailsComponent {
   readonly dishTypes = getDishTypes();
   readonly typeTrackByFn = trackBySelf;
   readonly dishTrackByFn = dishTrackByFn;
-
-  constructor(
-    private _route: ActivatedRoute,
-    private _router: Router,
-    private _mealService: MealService,
-    private _userService: UserService
-  ) {}
 
   onDelete(): void {
     this.vm$

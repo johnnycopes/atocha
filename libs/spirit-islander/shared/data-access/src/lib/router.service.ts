@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { ParamMap, Router } from '@angular/router';
 import { map } from 'rxjs';
 
@@ -11,9 +11,10 @@ import { StateService } from './state.service';
   providedIn: 'root',
 })
 export class RouterService {
-  configParams$ = this._stateService.config$.pipe(map(mapConfigToParams));
+  private _stateService = inject(StateService);
+  private _router = inject(Router);
 
-  constructor(private _stateService: StateService, private _router: Router) {}
+  configParams$ = this._stateService.config$.pipe(map(mapConfigToParams));
 
   async navigateToHome(): Promise<void> {
     await this._router.navigate([ROUTES.home]);

@@ -4,6 +4,7 @@ import {
   EventEmitter,
   Input,
   Output,
+  inject,
 } from '@angular/core';
 
 import { MenuService } from '@atocha/menu-matriarch/menus/data-access';
@@ -21,10 +22,10 @@ import { PlannerDishComponent } from './planner-dish/planner-dish.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PlannerDishesComponent {
+  private _menuService = inject(MenuService);
+
   @Input() menu: Menu | undefined;
   @Output() nameDblClick = new EventEmitter<void>();
-
-  constructor(private _menuService: MenuService) {}
 
   async onDayChange(
     menu: Menu | undefined,

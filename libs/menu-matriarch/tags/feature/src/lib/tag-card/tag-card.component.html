@@ -1,14 +1,12 @@
 <ui-card>
+  @if (editing$ | async) {
   <ui-inline-name-edit
-    *ngIf="editing$ | async; else detailsTemplate"
     class="form"
     [name]="name"
     (cancel)="finishEdit$.next()"
     (save)="onSave($event)"
   ></ui-inline-name-edit>
-</ui-card>
-
-<ng-template #detailsTemplate>
+  } @else {
   <ui-tag [id]="id" [name]="name"></ui-tag>
   <div class="container">
     <ui-count class="count" type="meals" [count]="mealIds.length"></ui-count>
@@ -20,4 +18,5 @@
       Edit
     </button>
   </div>
-</ng-template>
+  }
+</ui-card>

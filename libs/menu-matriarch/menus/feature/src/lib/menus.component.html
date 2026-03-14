@@ -1,4 +1,5 @@
-<ui-section *ngIf="vm$ | async as vm">
+@if (vm$ | async; as vm) {
+<ui-section>
   <div class="ui-section__toolbar">
     <h2 class="title">Menus ({{ vm.menus.length }})</h2>
     <button
@@ -8,17 +9,18 @@
     >
       New Menu
     </button>
+    @if (vm.adding) {
     <ui-inline-name-edit
       class="form"
-      *ngIf="vm.adding"
       (cancel)="addingSubject.next(false)"
       (save)="onSave($event)"
     ></ui-inline-name-edit>
+    }
   </div>
   <ul class="ui-section__content menus">
+    @for (menu of vm.menus; track trackByFn($index, menu)) {
     <li
       app-menu-card
-      *ngFor="let menu of vm.menus; trackBy: trackByFn"
       [id]="menu.id"
       [name]="menu.name"
       [startDay]="menu.startDay"
@@ -32,5 +34,7 @@
       (startDayChange)="onStartDayChange(menu, $event)"
       (delete)="onDelete(menu)"
     ></li>
+    }
   </ul>
 </ui-section>
+}

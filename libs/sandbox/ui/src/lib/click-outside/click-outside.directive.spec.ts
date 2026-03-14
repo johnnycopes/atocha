@@ -55,14 +55,14 @@ describe('ClickOutsideDirective', () => {
     jest.spyOn(component, 'doLogic');
     fixture.detectChanges();
     target.nativeElement.click();
-    expect(component.doLogic).toBeCalledTimes(0);
+    expect(component.doLogic).toHaveBeenCalledTimes(0);
   });
 
   it('should fire clicking anywhere outside the directive host', () => {
     jest.spyOn(component, 'doLogic');
     fixture.detectChanges();
     document.dispatchEvent(new MouseEvent('click'));
-    expect(component.doLogic).toBeCalledTimes(1);
+    expect(component.doLogic).toHaveBeenCalledTimes(1);
   });
 
   it('should fire when pressing escape (but not any other key)', () => {
@@ -70,6 +70,6 @@ describe('ClickOutsideDirective', () => {
     fixture.detectChanges();
     document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' }));
     document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter' }));
-    expect(component.doLogic).toBeCalledTimes(1);
+    expect(component.doLogic).toHaveBeenCalledTimes(1);
   });
 });

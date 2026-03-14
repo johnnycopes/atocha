@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { map, tap } from 'rxjs';
 
 import { LocalStorageService, State } from '@atocha/core/data-access';
@@ -13,6 +13,9 @@ import { PlannerView } from '@atocha/menu-matriarch/shared/util';
   providedIn: 'root',
 })
 export class PlannerService {
+  private _localStorageService = inject(LocalStorageService);
+  private _menuService = inject(MenuService);
+
   private _state = new State<{ view: PlannerView }>({
     view: (this._localStorageService.getItem(LocalStorageKey.plannerView) ??
       'dishes') as PlannerView,
@@ -29,11 +32,6 @@ export class PlannerService {
   route$ = this._menuService.activeMenuId$.pipe(
     map((menuId) => (menuId ? [ROUTES.planner, menuId] : [ROUTES.planner]))
   );
-
-  constructor(
-    private _localStorageService: LocalStorageService,
-    private _menuService: MenuService
-  ) {}
 
   updateView(view: PlannerView): void {
     this._state.updateProp('view', view);

@@ -4,6 +4,7 @@
   "projectType": "library",
   "sourceRoot": "libs/globetrotter/shared/data-access/src",
   "prefix": "app",
+  "tags": ["scope:globetrotter", "type:data-access"],
   "targets": {
     "test": {
       "executor": "@nx/jest:jest",
@@ -11,12 +12,12 @@
         "{workspaceRoot}/coverage/libs/globetrotter/shared/data-access"
       ],
       "options": {
-        "jestConfig": "libs/globetrotter/shared/data-access/jest.config.ts"
+        "jestConfig": "libs/globetrotter/shared/data-access/jest.config.ts",
+        "tsConfig": "libs/globetrotter/shared/data-access/tsconfig.spec.json"
       }
     },
     "lint": {
       "executor": "@nx/eslint:lint"
     }
-  },
-  "tags": ["scope:globetrotter", "type:data-access"]
+  }
 }

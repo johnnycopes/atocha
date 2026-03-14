@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Observable, combineLatest, map, shareReplay, switchMap } from 'rxjs';
 
 import { includes } from '@atocha/core/util';
@@ -34,6 +34,12 @@ type Data = { [key in Extract<Card, 'development'>]: State<Development> } & {
   providedIn: 'root',
 })
 export class CardStateService {
+  private _cardService = inject(CardService);
+  private _favoriteService = inject(FavoriteService);
+  private _filterService = inject(FilterService);
+  private _ordinalService = inject(OrdinalService);
+  private _visibilityService = inject(VisibilityService);
+
   private _cards$ = this._filterService.view$.pipe(
     switchMap((view) =>
       view === 'all'
@@ -82,14 +88,6 @@ export class CardStateService {
   families$ = this._state$.pipe(map(({ family }) => family));
   leaders$ = this._state$.pipe(map(({ leader }) => leader));
   ordinal$ = this._ordinalService.ordinal$;
-
-  constructor(
-    private _cardService: CardService,
-    private _favoriteService: FavoriteService,
-    private _filterService: FilterService,
-    private _ordinalService: OrdinalService,
-    private _visibilityService: VisibilityService
-  ) {}
 
   toggleFavoriteId(id: string, type: Card): void {
     this._favoriteService.toggleId(id, type);

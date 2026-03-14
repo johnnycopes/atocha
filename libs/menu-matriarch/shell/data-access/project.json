@@ -3,14 +3,15 @@
   "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/menu-matriarch/shell/data-access/src",
   "prefix": "app",
-  "tags": ["scope:menu-matriarch", "type:data-access"],
   "projectType": "library",
+  "tags": ["scope:menu-matriarch", "type:data-access"],
   "targets": {
     "test": {
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "libs/menu-matriarch/shell/data-access/jest.config.ts"
+        "jestConfig": "libs/menu-matriarch/shell/data-access/jest.config.ts",
+        "tsConfig": "libs/menu-matriarch/shell/data-access/tsconfig.spec.json"
       }
     },
     "lint": {

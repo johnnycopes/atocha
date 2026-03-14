@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import {
   Component,
   ChangeDetectionStrategy,
@@ -24,7 +23,6 @@ import { FiltersComponent } from './filters/filters.component';
   selector: 'app-filterable-list',
   imports: [
     ButtonComponent,
-    CommonModule,
     FiltersButtonComponent,
     FiltersComponent,
     PluralPipe,

@@ -4,17 +4,18 @@
   "projectType": "library",
   "sourceRoot": "libs/core/data-access/src",
   "prefix": "app",
+  "tags": ["scope:shared", "type:data-access"],
   "targets": {
     "test": {
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/libs/core/data-access"],
       "options": {
-        "jestConfig": "libs/core/data-access/jest.config.ts"
+        "jestConfig": "libs/core/data-access/jest.config.ts",
+        "tsConfig": "libs/core/data-access/tsconfig.spec.json"
       }
     },
     "lint": {
       "executor": "@nx/eslint:lint"
     }
-  },
-  "tags": ["scope:shared", "type:data-access"]
+  }
 }

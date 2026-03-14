@@ -3,14 +3,15 @@
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/tree/ui/src",
   "prefix": "core",
-  "tags": ["scope:shared", "type:ui"],
   "projectType": "library",
+  "tags": ["scope:shared", "type:ui"],
   "targets": {
     "test": {
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "libs/tree/ui/jest.config.ts"
+        "jestConfig": "libs/tree/ui/jest.config.ts",
+        "tsConfig": "libs/tree/ui/tsconfig.spec.json"
       }
     },
     "lint": {

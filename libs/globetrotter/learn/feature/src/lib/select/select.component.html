@@ -1,6 +1,6 @@
+@if (vm$ | async; as vm) {
 <form
   class="wrapper"
-  *ngIf="vm$ | async as vm"
   @fadeIn
   [formGroup]="vm.form"
   (ngSubmit)="launch(vm.form)"
@@ -8,11 +8,9 @@
   <div class="launchpad">
     <h1 class="header">Create Quiz</h1>
     <div class="submission">
-      <ui-errors
-        *ngIf="vm.form.errors"
-        class="errors"
-        [errors]="vm.form.errors"
-      ></ui-errors>
+      @if (vm.form.errors) {
+      <ui-errors class="errors" [errors]="vm.form.errors"></ui-errors>
+      }
       <button core-button [disabled]="!vm.form.valid">Launch</button>
     </div>
   </div>
@@ -30,3 +28,4 @@
     ></app-select-places>
   </div>
 </form>
+}

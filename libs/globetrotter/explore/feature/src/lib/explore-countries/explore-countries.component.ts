@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -19,7 +18,7 @@ import { Country } from '@atocha/globetrotter/shared/util';
 @Component({
   // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'nav[app-explore-countries]',
-  imports: [CommonModule, InputComponent, SearchInputComponent],
+  imports: [InputComponent, SearchInputComponent],
   templateUrl: './explore-countries.component.html',
   styleUrls: ['./explore-countries.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -39,25 +38,25 @@ export class ExploreCountriesComponent implements OnChanges {
   private readonly _countryHeight = 60;
 
   @HostListener('window:keydown.arrowUp', ['$event'])
-  onArrowUp(event: KeyboardEvent): void {
+  onArrowUp(event: Event): void {
     event.preventDefault();
     this._moveUpList(1);
   }
 
   @HostListener('window:keydown.shift.arrowUp', ['$event'])
-  onShiftArrowUp(event: KeyboardEvent): void {
+  onShiftArrowUp(event: Event): void {
     event.preventDefault();
     this._moveUpList(10);
   }
 
   @HostListener('window:keydown.arrowDown', ['$event'])
-  onArrowDown(event: KeyboardEvent): void {
+  onArrowDown(event: Event): void {
     event.preventDefault();
     this._moveDownList(1);
   }
 
   @HostListener('window:keydown.shift.arrowDown', ['$event'])
-  onShiftArrowDown(event: KeyboardEvent): void {
+  onShiftArrowDown(event: Event): void {
     event.preventDefault();
     this._moveDownList(10);
   }

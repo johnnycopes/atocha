@@ -1,4 +1,4 @@
-@import 'main';
+@use 'main' as *;
 
 .cdk-drag-preview {
   box-shadow: box-shadow(heaviest);

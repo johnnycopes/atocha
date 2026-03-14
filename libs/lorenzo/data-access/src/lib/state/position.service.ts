@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { tap } from 'rxjs';
 
 import { LocalStorageService, State } from '@atocha/core/data-access';
@@ -8,6 +8,8 @@ import { View } from '@atocha/lorenzo/util';
   providedIn: 'root',
 })
 export class PositionService {
+  private _localStorageService = inject(LocalStorageService);
+
   private readonly _keys: Record<View, string> = {
     all: 'ALL_POSITION',
     favorites: 'FAVORITES_POSITION',
@@ -23,8 +25,6 @@ export class PositionService {
       this._setPosition(this._keys.favorites, favorites);
     })
   );
-
-  constructor(private _localStorageService: LocalStorageService) {}
 
   updatePosition(position: number, view: View): void {
     this._positions.updateProp(view, position);

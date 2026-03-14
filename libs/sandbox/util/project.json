@@ -3,6 +3,7 @@
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/sandbox/util/src",
   "projectType": "library",
+  "tags": ["scope:experimental", "type:util"],
   "targets": {
     "build": {
       "executor": "@nx/js:tsc",
@@ -25,6 +26,5 @@
         "jestConfig": "libs/sandbox/util/jest.config.ts"
       }
     }
-  },
-  "tags": ["scope:experimental", "type:util"]
+  }
 }

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import {
   ErrorService,
@@ -20,11 +20,9 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
+  private _errorService = inject(ErrorService);
+  private _loadingService = inject(LoadingService);
+
   error$ = this._errorService.errors$;
   loading$ = this._loadingService.loading$;
-
-  constructor(
-    private _errorService: ErrorService,
-    private _loadingService: LoadingService
-  ) {}
 }

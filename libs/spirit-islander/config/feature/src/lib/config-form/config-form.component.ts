@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/member-ordering */
-import { CommonModule } from '@angular/common';
+
 import {
   ChangeDetectionStrategy,
   Component,
@@ -9,6 +9,7 @@ import {
   OnInit,
   Output,
   ViewEncapsulation,
+  inject,
 } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { first, withLatestFrom, Subject, Subscription } from 'rxjs';
@@ -34,7 +35,6 @@ import { Root } from './root';
     CardComponent,
     CardGroupComponent,
     CheckboxTreeComponent,
-    CommonModule,
     FormsModule,
     ReactiveFormsModule,
     SelectDifficultyRangeComponent,
@@ -46,6 +46,8 @@ import { Root } from './root';
   encapsulation: ViewEncapsulation.None,
 })
 export class ConfigFormComponent implements OnInit, OnDestroy {
+  private _stateService = inject(StateService);
+
   @Input() config: Config | undefined;
   @Output() generate = new EventEmitter<Config>();
 
@@ -56,7 +58,7 @@ export class ConfigFormComponent implements OnInit, OnDestroy {
   readonly root = new Root();
   jaggedEarth = false;
 
-  constructor(private _stateService: StateService) {
+  constructor() {
     this._stateService.settings$.pipe(first()).subscribe((settings) => {
       this.form = new ConfigForm(
         {

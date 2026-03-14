@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { filter, first, map } from 'rxjs';
 
 import { State } from '@atocha/core/data-access';
@@ -12,6 +12,9 @@ import { PlaceService } from './place.service';
   providedIn: 'root',
 })
 export class QuizService {
+  private _placeService = inject(PlaceService);
+  private _routerService = inject(RouterService);
+
   private readonly _state = new State<{
     quiz: QuizState<Country> | undefined;
   }>({ quiz: undefined });
@@ -19,10 +22,7 @@ export class QuizService {
 
   quiz$ = this._state.getProp('quiz');
 
-  constructor(
-    private _placeService: PlaceService,
-    private _routerService: RouterService
-  ) {
+  constructor() {
     this._routerService.route$
       .pipe(filter((route) => !route.includes(ROUTES.quiz)))
       .subscribe(() => this._state.updateProp('quiz', undefined));

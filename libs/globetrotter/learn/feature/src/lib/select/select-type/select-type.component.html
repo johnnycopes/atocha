@@ -2,7 +2,8 @@
   <div class="container">
     <p>Front / back of cards:</p>
     <div class="options" [formGroup]="form">
-      <div class="option" *ngFor="let option of options; trackBy: trackByFn">
+      @for (option of options; track trackByFn($index, option)) {
+      <div class="option">
         <input
           class="option__input"
           [id]="option.display"
@@ -14,6 +15,7 @@
           {{ option.display }}
         </label>
       </div>
+      }
     </div>
   </div>
 </ui-small-caps>

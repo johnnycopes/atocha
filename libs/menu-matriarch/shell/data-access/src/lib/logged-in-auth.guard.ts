@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Router, UrlTree } from '@angular/router';
 import { Observable, first, map, of, switchMap } from 'rxjs';
 
@@ -9,11 +9,9 @@ import { PlannerService } from '@atocha/menu-matriarch/planner/data-access';
   providedIn: 'root',
 })
 export class LoggedInAuthGuard {
-  constructor(
-    private _router: Router,
-    private _authService: AuthService,
-    private _plannerService: PlannerService
-  ) {}
+  private _router = inject(Router);
+  private _authService = inject(AuthService);
+  private _plannerService = inject(PlannerService);
 
   canActivate():
     | Observable<boolean | UrlTree>

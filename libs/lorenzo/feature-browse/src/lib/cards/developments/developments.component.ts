@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 
 import { trackByFactory } from '@atocha/core/ui';
 import { CardStateService } from '@atocha/lorenzo/data-access';
@@ -16,8 +16,8 @@ import { DevelopmentComponent } from './development.component';
     DevelopmentComponent,
   ],
   template: `
+    @if (vm$ | async; as vm) {
     <ui-cards
-      *ngIf="vm$ | async as vm"
       type="Developments"
       [cards]="vm.filteredCards"
       [total]="vm.totalCards"
@@ -36,15 +36,16 @@ import { DevelopmentComponent } from './development.component';
         (favoriteChange)="toggleId(getId(development))"
       ></app-development>
     </ui-cards>
+    }
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DevelopmentsComponent {
+  private _cardStateService = inject(CardStateService);
+
   vm$ = this._cardStateService.developments$;
   getId = getDevelopmentId;
   trackByFn = trackByFactory(this.getId);
-
-  constructor(private _cardStateService: CardStateService) {}
 
   toggleVisibility(): void {
     this._cardStateService.toggleVisibility('development');

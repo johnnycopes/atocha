@@ -4,6 +4,7 @@
   "projectType": "library",
   "sourceRoot": "libs/spirit-islander/game-setup/feature/src",
   "prefix": "app",
+  "tags": ["scope:spirit-islander", "type:feature"],
   "targets": {
     "test": {
       "executor": "@nx/jest:jest",
@@ -11,12 +12,12 @@
         "{workspaceRoot}/coverage/libs/spirit-islander/game-setup/feature"
       ],
       "options": {
-        "jestConfig": "libs/spirit-islander/game-setup/feature/jest.config.ts"
+        "jestConfig": "libs/spirit-islander/game-setup/feature/jest.config.ts",
+        "tsConfig": "libs/spirit-islander/game-setup/feature/tsconfig.spec.json"
       }
     },
     "lint": {
       "executor": "@nx/eslint:lint"
     }
-  },
-  "tags": ["scope:spirit-islander", "type:feature"]
+  }
 }

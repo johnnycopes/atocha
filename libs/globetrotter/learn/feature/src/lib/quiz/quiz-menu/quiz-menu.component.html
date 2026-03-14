@@ -2,7 +2,8 @@
   [position]="position"
   (animationFinished)="onMenuAnimationFinish($event)"
 >
-  <div *ngIf="!isComplete" class="progress" header>
+  @if (!isComplete) {
+  <div class="progress" header>
     <div class="left">
       <ui-icon
         class="back"
@@ -25,9 +26,11 @@
       </div>
     </div>
   </div>
-  <div *ngIf="isComplete" class="outcome" content>
+  } @if (isComplete) {
+  <div class="outcome" content>
     <p class="text">Quiz complete! You scored</p>
     <h1 class="accuracy">{{ accuracy }}%</h1>
     <button core-button class="reset" (click)="exit.emit()">Reset</button>
   </div>
+  }
 </ui-fixed-slideable-panel>

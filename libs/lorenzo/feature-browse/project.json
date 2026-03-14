@@ -4,17 +4,18 @@
   "projectType": "library",
   "sourceRoot": "libs/lorenzo/feature-browse/src",
   "prefix": "app",
+  "tags": ["scope:lorenzo", "type:feature"],
   "targets": {
     "test": {
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/libs/lorenzo/feature-browse"],
       "options": {
-        "jestConfig": "libs/lorenzo/feature-browse/jest.config.ts"
+        "jestConfig": "libs/lorenzo/feature-browse/jest.config.ts",
+        "tsConfig": "libs/lorenzo/feature-browse/tsconfig.spec.json"
       }
     },
     "lint": {
       "executor": "@nx/eslint:lint"
     }
-  },
-  "tags": ["scope:lorenzo", "type:feature"]
+  }
 }

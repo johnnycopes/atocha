@@ -1,10 +1,11 @@
-<ng-container *ngIf="form" [formGroup]="form">
+@if (form) {
+<ng-container [formGroup]="form">
   <select formControlName="players" class="select-planers">
-    <option
-      *ngFor="let player of players; trackBy: trackByFn"
-      [ngValue]="player"
-    >
+    @for (player of players; track player) {
+    <option [ngValue]="player">
       {{ player }}
     </option>
+    }
   </select>
 </ng-container>
+}

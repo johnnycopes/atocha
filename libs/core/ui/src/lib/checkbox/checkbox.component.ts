@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import {
   Component,
   Input,
@@ -6,6 +5,7 @@ import {
   ChangeDetectorRef,
   HostBinding,
   ViewEncapsulation,
+  inject,
 } from '@angular/core';
 import {
   ControlValueAccessor,
@@ -17,7 +17,7 @@ export type CheckboxSize = 'normal' | 'large';
 
 @Component({
   selector: 'core-checkbox',
-  imports: [CommonModule, FormsModule],
+  imports: [FormsModule],
   templateUrl: './checkbox.component.html',
   styleUrls: ['./checkbox.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -31,6 +31,8 @@ export type CheckboxSize = 'normal' | 'large';
   ],
 })
 export class CheckboxComponent implements ControlValueAccessor {
+  private _changeDetectorRef = inject(ChangeDetectorRef);
+
   @Input() size: CheckboxSize = 'normal';
   @Input() disabled = false;
   @Input() indeterminate = false;
@@ -41,8 +43,6 @@ export class CheckboxComponent implements ControlValueAccessor {
   dataTestAttr = 'core-checkbox';
 
   private _onChangeFn: (value: boolean) => void = () => undefined;
-
-  constructor(private _changeDetectorRef: ChangeDetectorRef) {}
 
   @HostBinding('class')
   get hostClasses(): Record<string, boolean> {

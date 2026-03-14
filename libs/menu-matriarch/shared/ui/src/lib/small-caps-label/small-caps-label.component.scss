@@ -1,4 +1,4 @@
-@import 'main';
+@use 'main' as *;
 
 .app-small-caps-label {
   display: inline-block;

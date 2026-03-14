@@ -16,11 +16,11 @@ describe('Tally', () => {
     });
 
     it('throws an error on decrement or clear when value does not exist in tally', () => {
-      expect(() => tally.calculateChange('fake', 'decrement')).toThrowError(
+      expect(() => tally.calculateChange('fake', 'decrement')).toThrow(
         'Cannot decrement or clear value: key is not present in tally'
       );
 
-      expect(() => tally.calculateChange('fake', 'clear')).toThrowError(
+      expect(() => tally.calculateChange('fake', 'clear')).toThrow(
         'Cannot decrement or clear value: key is not present in tally'
       );
     });

@@ -4,6 +4,6 @@
 
 <ng-content></ng-content>
 
-<ng-container *ngIf="template">
-  <ng-container *ngTemplateOutlet="template"> </ng-container>
-</ng-container>
+@if (template) {
+<ng-container *ngTemplateOutlet="template"> </ng-container>
+}

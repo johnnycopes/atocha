@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 
 import { BatchService, BatchUpdate } from '@atocha/firebase/data-access';
 import { Day } from '@atocha/menu-matriarch/shared/util';
@@ -8,7 +8,7 @@ import { Endpoint } from '../types/endpoint.enum';
   providedIn: 'root',
 })
 export class MenuUpdateService {
-  constructor(private _batchService: BatchService) {}
+  private _batchService = inject(BatchService);
 
   getContentsUpdates({
     menuIds,

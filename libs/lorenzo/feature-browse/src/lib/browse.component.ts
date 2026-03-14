@@ -5,6 +5,7 @@ import {
   Component,
   OnDestroy,
   OnInit,
+  inject,
 } from '@angular/core';
 import {
   BehaviorSubject,
@@ -42,6 +43,10 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BrowseComponent implements OnInit, OnDestroy {
+  private _appStateService = inject(AppStateService);
+  private _cardStateService = inject(CardStateService);
+  private _cdRef = inject(ChangeDetectorRef);
+
   private _positionSubject = new BehaviorSubject<number>(0);
   private _scrollActionSubject = new Subject<{
     position: number;
@@ -72,12 +77,6 @@ export class BrowseComponent implements OnInit, OnDestroy {
       )?.[0] as Card | undefined,
     }))
   );
-
-  constructor(
-    private _appStateService: AppStateService,
-    private _cardStateService: CardStateService,
-    private _cdRef: ChangeDetectorRef
-  ) {}
 
   ngOnInit(): void {
     this._scrollActionSubject

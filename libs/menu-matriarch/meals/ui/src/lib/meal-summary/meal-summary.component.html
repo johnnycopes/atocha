@@ -1,36 +1,29 @@
-<span *ngIf="showFallback; else mealTemplate" class="fallback">
+@if (showFallback) {
+<span class="fallback">
   {{ fallbackText }}
 </span>
-
-<ng-template #mealTemplate>
-  <ng-container *ngFor="let group of dishesGroups; trackBy: groupTrackByFn">
-    <ng-container *ngIf="group.dishes.length">
-      <ui-small-caps-label *ngIf="boundaries === 'labeled'" class="dish-type">
-        {{ group.type + 's' }} ({{ group.dishes.length }})
-      </ui-small-caps-label>
-      <ul
-        class="dishes"
-        [class.dishes--labeled]="boundaries === 'labeled'"
-        [class.dishes--unlabeled]="boundaries === 'unlabeled'"
-        [class.dishes--horizontal]="orientation === 'horizontal'"
-        [class.dishes--vertical]="orientation === 'vertical'"
-      >
-        <li
-          *ngFor="
-            let dish of group.dishes;
-            let last = last;
-            trackBy: dishTrackByFn
-          "
-        >
-          <a
-            class="dish-link {{ group.type }}"
-            [routerLink]="['/dishes', dish.id]"
-          >
-            {{ dish.name
-            }}<span *ngIf="orientation === 'horizontal' && !last">,&nbsp;</span>
-          </a>
-        </li>
-      </ul>
-    </ng-container>
-  </ng-container>
-</ng-template>
+} @else { @for (group of dishesGroups; track groupTrackByFn($index, group)) {
+@if (group.dishes.length) { @if (boundaries === 'labeled') {
+<ui-small-caps-label class="dish-type">
+  {{ group.type + 's' }} ({{ group.dishes.length }})
+</ui-small-caps-label>
+}
+<ul
+  class="dishes"
+  [class.dishes--labeled]="boundaries === 'labeled'"
+  [class.dishes--unlabeled]="boundaries === 'unlabeled'"
+  [class.dishes--horizontal]="orientation === 'horizontal'"
+  [class.dishes--vertical]="orientation === 'vertical'"
+>
+  @for ( dish of group.dishes; track dishTrackByFn($index, dish); let last =
+  $last) {
+  <li>
+    <a class="dish-link {{ group.type }}" [routerLink]="['/dishes', dish.id]">
+      {{ dish.name }}@if (orientation === 'horizontal' && !last) {
+      <span>,&nbsp;</span>
+      }
+    </a>
+  </li>
+  }
+</ul>
+} } }

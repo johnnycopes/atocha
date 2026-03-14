@@ -1,5 +1,5 @@
+@if (vm$ | async; as vm) {
 <app-filterable-list
-  *ngIf="vm$ | async as vm"
   [total]="vm.total"
   [searchText]="vm.searchText"
   [filters]="vm.filters"
@@ -14,16 +14,15 @@
   (nameDblClick)="nameDblClick.emit()"
 >
   <ui-tabset>
+    @for (group of vm.filteredDishes; track groupTrackByFn($index, group)) {
     <ui-tab
-      *ngFor="let group of vm.filteredDishes; trackBy: groupTrackByFn"
       name="{{ group.type + 's' }} ({{ group.dishes.length }})"
       [selected]="vm.initialTab === group.type"
     >
-      <ul *ngIf="group.dishes.length; else noDishesPlaceholder">
-        <li
-          *ngFor="let dish of group.dishes; trackBy: dishTrackByFn"
-          class="dish"
-        >
+      @if (group.dishes.length) {
+      <ul>
+        @for (dish of group.dishes; track dishTrackByFn($index, dish)) {
+        <li class="dish">
           <ng-container
             [ngTemplateOutlet]="dishTemplate"
             [ngTemplateOutletContext]="{
@@ -32,12 +31,15 @@
             }"
           ></ng-container>
         </li>
+        }
       </ul>
-      <ng-template #noDishesPlaceholder>
-        <div class="placeholder">
-          {{ group.placeholderText }}
-        </div>
-      </ng-template>
+      } @else {
+      <div class="placeholder">
+        {{ group.placeholderText }}
+      </div>
+      }
     </ui-tab>
+    }
   </ui-tabset>
 </app-filterable-list>
+}

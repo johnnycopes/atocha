@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { map, of, switchMap } from 'rxjs';
 
@@ -28,6 +28,10 @@ import { PlannerMenuComponent } from './planner-menu/planner-menu.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PlannerComponent {
+  private _route = inject(ActivatedRoute);
+  private _menuService = inject(MenuService);
+  private _plannerService = inject(PlannerService);
+
   view$ = this._plannerService.view$;
   menu$ = this._route.paramMap.pipe(
     map((paramMap) => paramMap.get('menuId')),
@@ -39,12 +43,6 @@ export class PlannerComponent {
     }),
     map((menu) => (menu ? menu : 'INVALID'))
   );
-
-  constructor(
-    private _route: ActivatedRoute,
-    private _menuService: MenuService,
-    private _plannerService: PlannerService
-  ) {}
 
   updateView(view: PlannerView): void {
     this._plannerService.updateView(view);

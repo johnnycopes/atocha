@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Observable, concatMap, first, of } from 'rxjs';
 
 import { AuthService } from '@atocha/firebase/data-access';
@@ -15,10 +15,8 @@ import {
 export class IngredientService
   implements IEntityService<Ingredient, EditableIngredientData>
 {
-  constructor(
-    private _authService: AuthService,
-    private _ingredientDtoService: IngredientDtoService
-  ) {}
+  private _authService = inject(AuthService);
+  private _ingredientDtoService = inject(IngredientDtoService);
 
   getOne(id: string): Observable<Ingredient | undefined> {
     return this._ingredientDtoService.getOne(id);

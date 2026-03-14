@@ -3,6 +3,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   ViewEncapsulation,
+  inject,
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
@@ -29,7 +30,8 @@ import {
       name="Settings"
       description="Options that modify how the app works"
     >
-      <div *ngIf="settings$ | async as settings" class="options">
+      @if (settings$ | async; as settings) {
+      <div class="options">
         <ui-card>
           <h3 ui-card-header>
             <core-checkbox
@@ -66,6 +68,7 @@ import {
           </p>
         </ui-card>
       </div>
+      }
     </ui-card-group>
   `,
   styles: [
@@ -100,9 +103,9 @@ import {
   encapsulation: ViewEncapsulation.None,
 })
 export class SettingsComponent {
-  settings$ = this._stateService.settings$;
+  private _stateService = inject(StateService);
 
-  constructor(private _stateService: StateService) {}
+  settings$ = this._stateService.settings$;
 
   updateSettings(change: Partial<Settings>) {
     this._stateService.updateSettings(change);

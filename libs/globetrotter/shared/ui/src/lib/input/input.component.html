@@ -1,5 +1,7 @@
-<label *ngIf="label" class="small-caps" [for]="label">
+@if (label) {
+<label class="small-caps" [for]="label">
   {{ label }}
 </label>
+}
 
 <ng-content></ng-content>

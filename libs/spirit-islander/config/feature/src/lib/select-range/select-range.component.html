@@ -5,12 +5,11 @@
     [ngModel]="range[0]"
     (ngModelChange)="onMinChange($event)"
   >
-    <option
-      *ngFor="let option of options; trackBy: trackByFn"
-      [ngValue]="option"
-    >
+    @for (option of options; track option) {
+    <option [ngValue]="option">
       {{ option }}
     </option>
+    }
   </select>
 </div>
 
@@ -21,11 +20,10 @@
     [ngModel]="range[1]"
     (ngModelChange)="onMaxChange($event)"
   >
-    <option
-      *ngFor="let option of options; trackBy: trackByFn"
-      [ngValue]="option"
-    >
+    @for (option of options; track option) {
+    <option [ngValue]="option">
       {{ option }}
     </option>
+    }
   </select>
 </div>

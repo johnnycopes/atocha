@@ -1,4 +1,5 @@
-<ui-section *ngIf="user$ | async as user">
+@if (user$ | async; as user) {
+<ui-section>
   <div class="ui-section__content">
     <div class="account">
       <h2 class="title">Account</h2>
@@ -12,7 +13,6 @@
         <button core-button (click)="signOut()">Sign Out</button>
       </ui-card>
     </div>
-
     <div class="settings">
       <h2 class="title">Settings</h2>
       <ui-card class="card">
@@ -71,3 +71,4 @@
     </div>
   </div>
 </ui-section>
+}

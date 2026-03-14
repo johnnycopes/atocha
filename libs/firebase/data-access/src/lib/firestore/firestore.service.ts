@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import {
   CollectionReference,
   DocumentReference,
@@ -27,7 +27,7 @@ import { Observable, catchError, of, shareReplay } from 'rxjs';
   providedIn: 'root',
 })
 export class FirestoreService {
-  constructor(private _firestore: Firestore) {}
+  private _firestore = inject(Firestore);
 
   createBatch(): WriteBatch {
     return writeBatch(this._firestore);

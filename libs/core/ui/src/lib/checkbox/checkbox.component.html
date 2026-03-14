@@ -16,8 +16,8 @@
     [class.core-checkbox__checkbox--normal]="size === 'normal'"
     [class.core-checkbox__checkbox--large]="size === 'large'"
   >
+    @if (checked || indeterminate) {
     <div
-      *ngIf="checked || indeterminate"
       class="core-checkbox__checkmark"
       [class.core-checkbox__checkmark--normal]="
         !indeterminate && size === 'normal'
@@ -27,6 +27,7 @@
       "
       [class.core-checkbox__checkmark--indeterminate]="indeterminate"
     ></div>
+    }
   </div>
   <div class="core-checkbox__label">
     <ng-content></ng-content>

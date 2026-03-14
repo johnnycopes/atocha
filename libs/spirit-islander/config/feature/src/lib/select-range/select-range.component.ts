@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import {
   ControlValueAccessor,
@@ -6,13 +5,11 @@ import {
   NG_VALUE_ACCESSOR,
 } from '@angular/forms';
 
-import { trackBySelf } from '@atocha/core/ui';
-
 type Range = [number, number];
 
 @Component({
   selector: 'app-select-range',
-  imports: [CommonModule, FormsModule],
+  imports: [FormsModule],
   templateUrl: './select-range.component.html',
   styleUrls: ['./select-range.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -28,7 +25,6 @@ export class SelectRangeComponent implements ControlValueAccessor {
   @Input() label = '';
   @Input() options: readonly number[] = [];
   range: Range = [0, 0];
-  readonly trackByFn = trackBySelf;
 
   private _onChangeFn: (value: Range) => void = () => undefined;
 

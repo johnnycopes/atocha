@@ -5,7 +5,7 @@ import {
   Input,
   Output,
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { CheckboxComponent } from '@atocha/core/ui';
@@ -22,7 +22,6 @@ import { Node } from '../config-form/root';
   imports: [
     AspectEmblemComponent,
     CheckboxComponent,
-    CommonModule,
     DifficultyEmblemComponent,
     ExpansionEmblemComponent,
     FormsModule,

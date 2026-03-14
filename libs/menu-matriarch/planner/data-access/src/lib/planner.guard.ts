@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Router, UrlTree } from '@angular/router';
 import { Observable, first, map } from 'rxjs';
 
@@ -8,10 +8,8 @@ import { PlannerService } from './planner.service';
   providedIn: 'root',
 })
 export class PlannerGuard {
-  constructor(
-    private _router: Router,
-    private _plannerService: PlannerService
-  ) {}
+  private _router = inject(Router);
+  private _plannerService = inject(PlannerService);
 
   canActivate():
     | Observable<boolean | UrlTree>

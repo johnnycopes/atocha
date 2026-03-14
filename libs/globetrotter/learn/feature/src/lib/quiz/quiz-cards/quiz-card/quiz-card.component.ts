@@ -10,6 +10,7 @@ import {
   TemplateRef,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
+  inject,
 } from '@angular/core';
 
 import { wait } from '@atocha/core/util';
@@ -32,6 +33,8 @@ type CardTemplate = Record<FlipCardSide, TemplateRef<unknown> | undefined>;
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class QuizCardComponent implements OnInit {
+  private _changeDetectorRef = inject(ChangeDetectorRef);
+
   @Input() country: Country | undefined;
   @Input() isCurrentCountry = false;
   @Input() canFlip = false;
@@ -60,8 +63,6 @@ export class QuizCardComponent implements OnInit {
     [QuizType.capitalsCountries]: undefined,
   };
   private _processingFlip = false;
-
-  constructor(private _changeDetectorRef: ChangeDetectorRef) {}
 
   ngOnInit(): void {
     this._setCardTemplates();

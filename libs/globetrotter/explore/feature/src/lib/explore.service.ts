@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { combineLatest, map, of, tap, switchMap, first } from 'rxjs';
 
 import { State } from '@atocha/core/data-access';
@@ -8,6 +8,8 @@ import { Country } from '@atocha/globetrotter/shared/util';
 
 @Injectable()
 export class ExploreService {
+  private _countryService = inject(CountryService);
+
   private _state = new State<{
     selectedCountry: Country | undefined;
     searchTerm: string;
@@ -52,8 +54,6 @@ export class ExploreService {
       summary,
     }))
   );
-
-  constructor(private _countryService: CountryService) {}
 
   select(country: Country): void {
     this._state.updateProp('selectedCountry', country);

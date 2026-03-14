@@ -1,5 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  OnInit,
+  inject,
+} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { first } from 'rxjs';
 
@@ -13,23 +18,22 @@ import { GameSetupOutputComponent } from './game-setup-output/game-setup-output.
   selector: 'app-game-setup',
   imports: [CommonModule, GameSetupOutputComponent],
   template: `
+    @if (gameSetup$ | async; as gameSetup) {
     <app-game-setup-output
-      *ngIf="gameSetup$ | async as gameSetup"
       [setup]="gameSetup"
       (edit)="onEdit()"
       (regenerate)="onRegenerate()"
     ></app-game-setup-output>
+    }
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GameSetupComponent implements OnInit {
-  gameSetup$ = this._stateService.gameSetup$;
+  private _route = inject(ActivatedRoute);
+  private _routerService = inject(RouterService);
+  private _stateService = inject(StateService);
 
-  constructor(
-    private _route: ActivatedRoute,
-    private _routerService: RouterService,
-    private _stateService: StateService
-  ) {}
+  gameSetup$ = this._stateService.gameSetup$;
 
   ngOnInit(): void {
     this._route.queryParamMap

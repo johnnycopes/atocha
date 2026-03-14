@@ -1,4 +1,5 @@
-<form *ngIf="meal && form" [formGroup]="form" (ngSubmit)="onSave()">
+@if (meal && form) {
+<form [formGroup]="form" (ngSubmit)="onSave()">
   <app-dishes-list class="dishes" formGroupName="dishIds">
     <ui-card *appDishDef="let dish">
       <ui-dish-summary
@@ -16,7 +17,6 @@
       </core-checkbox>
     </ui-card>
   </app-dishes-list>
-
   <ui-section>
     <div class="ui-section__toolbar">
       <a core-button="secondary" class="button" routerLink=".."> Cancel </a>
@@ -32,8 +32,8 @@
         <input id="description" type="text" formControlName="description" />
       </ui-input>
       <ui-input class="input" label="tags">
+        @if (meal.tagModels) {
         <ui-tags-list
-          *ngIf="meal.tagModels; else noTagsPlaceholder"
           class="tags"
           formGroupName="tagIds"
           [tags]="meal.tagModels"
@@ -45,12 +45,12 @@
             </core-checkbox>
           </ng-container>
         </ui-tags-list>
-        <ng-template #noTagsPlaceholder>
-          <div class="placeholder">
-            <p>No tags to display</p>
-            <a core-button class="button" routerLink="/tags"> New Tag </a>
-          </div>
-        </ng-template>
+        } @else {
+        <div class="placeholder">
+          <p>No tags to display</p>
+          <a core-button class="button" routerLink="/tags"> New Tag </a>
+        </div>
+        }
       </ui-input>
       <div class="details">
         <ui-meal-summary
@@ -63,3 +63,4 @@
     </div>
   </ui-section>
 </form>
+}

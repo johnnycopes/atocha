@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { tap } from 'rxjs';
 
 import { LocalStorageService, State } from '@atocha/core/data-access';
@@ -8,6 +8,8 @@ import { Card, Ordinal } from '@atocha/lorenzo/util';
   providedIn: 'root',
 })
 export class OrdinalService {
+  private _localStorageService = inject(LocalStorageService);
+
   private readonly _keys: Record<Card, string> = {
     development: 'DEVELOPMENT_ORDINAL',
     family: 'FAMILY_ORDINAL',
@@ -26,8 +28,6 @@ export class OrdinalService {
       this._setOrdinal(this._keys.leader, leader);
     })
   );
-
-  constructor(private _localStorageService: LocalStorageService) {}
 
   incrementOrdinal(type: Card): void {
     this._ordinals.transform((ordinals) =>

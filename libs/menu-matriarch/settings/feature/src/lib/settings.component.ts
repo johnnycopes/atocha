@@ -4,6 +4,7 @@ import {
   Component,
   OnDestroy,
   OnInit,
+  inject,
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -36,18 +37,16 @@ import { UserPreferences, getDays } from '@atocha/menu-matriarch/shared/util';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SettingsComponent implements OnInit, OnDestroy {
+  private _router = inject(Router);
+  private _authService = inject(AuthService);
+  private _userService = inject(UserService);
+
   user$ = this._userService.getUser();
   preferences$ = this._userService.getPreferences();
   updateAction$ = new Subject<Partial<UserPreferences>>();
   readonly trackByFn = trackBySelf;
   readonly days = getDays();
   private _destroy$ = new Subject<void>();
-
-  constructor(
-    private _router: Router,
-    private _authService: AuthService,
-    private _userService: UserService
-  ) {}
 
   ngOnInit(): void {
     this.updateAction$

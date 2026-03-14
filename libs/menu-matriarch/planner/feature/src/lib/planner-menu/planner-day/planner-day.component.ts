@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -19,7 +18,6 @@ import { Day, Dish, Orientation } from '@atocha/menu-matriarch/shared/util';
   // eslint-disable-next-line @angular-eslint/component-selector
   selector: '[app-planner-day]',
   imports: [
-    CommonModule,
     FaIconComponent,
     MealSummaryComponent,
     RouterLink,

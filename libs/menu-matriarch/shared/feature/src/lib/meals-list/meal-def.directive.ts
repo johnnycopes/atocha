@@ -1,4 +1,4 @@
-import { Directive, TemplateRef } from '@angular/core';
+import { Directive, TemplateRef, inject } from '@angular/core';
 
 import { Meal, Orientation } from '@atocha/menu-matriarch/shared/util';
 
@@ -14,5 +14,5 @@ export interface MealDefContext {
   selector: '[appMealDef]',
 })
 export class MealDefDirective {
-  constructor(public template: TemplateRef<MealDefContext>) {}
+  template = inject<TemplateRef<MealDefContext>>(TemplateRef);
 }

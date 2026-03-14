@@ -5,9 +5,9 @@
   cdkDropListOrientation="horizontal"
   (cdkDropListDropped)="onDrop($event)"
 >
+  @for (type of types; track trackByFn($index, type)) {
   <li
     app-ingredients-board-column
-    *ngFor="let type of types; trackBy: trackByFn"
     class="column"
     cdkDrag
     [id]="type.id"
@@ -20,4 +20,5 @@
     (ingredientRename)="ingredientRename.emit($event)"
     (ingredientDelete)="ingredientDelete.emit($event)"
   ></li>
+  }
 </ul>

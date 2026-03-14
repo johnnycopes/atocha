@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { BehaviorSubject, combineLatest, map } from 'rxjs';
 
 import { ButtonComponent } from '@atocha/core/ui';
@@ -37,6 +37,10 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class IngredientsComponent {
+  private _ingredientService = inject(IngredientService);
+  private _ingredientTypeService = inject(IngredientTypeService);
+  private _userService = inject(UserService);
+
   addingSubject = new BehaviorSubject<boolean>(false);
 
   vm$ = combineLatest([
@@ -68,12 +72,6 @@ export class IngredientsComponent {
       };
     })
   );
-
-  constructor(
-    private _ingredientService: IngredientService,
-    private _ingredientTypeService: IngredientTypeService,
-    private _userService: UserService
-  ) {}
 
   onTypeAdd(name: string): void {
     this._ingredientTypeService.create({ name }).subscribe();

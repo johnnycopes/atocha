@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
@@ -16,7 +15,6 @@ import {
 @Component({
   selector: 'ui-dish-summary',
   imports: [
-    CommonModule,
     CountComponent,
     ExternalLinkDirective,
     FaIconComponent,

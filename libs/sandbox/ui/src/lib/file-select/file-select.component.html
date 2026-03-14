@@ -5,8 +5,9 @@
   [attr.multiple]="multiple ? '' : null"
   (change)="onFileSelectChange($event)"
 />
+@if (fileSelectDef) {
 <ng-container
-  *ngIf="fileSelectDef"
   [ngTemplateOutlet]="fileSelectDef.template"
   [ngTemplateOutletContext]="fileSelectDefContext"
 ></ng-container>
+}

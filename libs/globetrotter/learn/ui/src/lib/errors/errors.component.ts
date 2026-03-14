@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { ValidationErrors } from '@angular/forms';
 
@@ -6,7 +5,7 @@ import { trackBySelf } from '@atocha/core/ui';
 
 @Component({
   selector: 'ui-errors',
-  imports: [CommonModule],
+  imports: [],
   templateUrl: './errors.component.html',
   styleUrls: ['./errors.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

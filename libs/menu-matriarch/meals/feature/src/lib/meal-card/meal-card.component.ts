@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
@@ -15,7 +14,6 @@ import {
   selector: 'app-meal-card',
   imports: [
     CardComponent,
-    CommonModule,
     MealSummaryComponent,
     RouterLink,
     TagComponent,

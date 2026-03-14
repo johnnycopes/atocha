@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 
 import { Batch, BatchSet, BatchUpdate } from './firestore/batch';
 import { FirestoreService } from './firestore/firestore.service';
@@ -8,7 +8,7 @@ import { uniqueDiff } from './util/unique-diff';
   providedIn: 'root',
 })
 class BatchService {
-  constructor(private _firestoreService: FirestoreService) {}
+  private _firestoreService = inject(FirestoreService);
 
   createBatch(): Batch {
     return new Batch(this._firestoreService.createBatch(), (endpoint, id) =>

@@ -4,17 +4,18 @@
   "projectType": "library",
   "sourceRoot": "libs/lorenzo/ui/src",
   "prefix": "ui",
+  "tags": ["scope:lorenzo", "type:ui"],
   "targets": {
     "test": {
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/libs/lorenzo/ui"],
       "options": {
-        "jestConfig": "libs/lorenzo/ui/jest.config.ts"
+        "jestConfig": "libs/lorenzo/ui/jest.config.ts",
+        "tsConfig": "libs/lorenzo/ui/tsconfig.spec.json"
       }
     },
     "lint": {
       "executor": "@nx/eslint:lint"
     }
-  },
-  "tags": ["scope:lorenzo", "type:ui"]
+  }
 }

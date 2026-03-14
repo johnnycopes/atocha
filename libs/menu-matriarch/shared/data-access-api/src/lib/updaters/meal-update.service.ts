@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 
 import { BatchService, BatchUpdate } from '@atocha/firebase/data-access';
 import { Endpoint } from '../types/endpoint.enum';
@@ -8,7 +8,7 @@ import { KeyToUpdate } from './internal/key-to-update.type';
   providedIn: 'root',
 })
 export class MealUpdateService {
-  constructor(private _batchService: BatchService) {}
+  private _batchService = inject(BatchService);
 
   getUpdates({
     key,

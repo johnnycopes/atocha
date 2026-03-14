@@ -1,14 +1,10 @@
-<ui-loader *ngIf="loading$ | async">
-</ui-loader>
-
-<ui-error *ngIf="error$ | async"
+@if (loading$ | async) {
+<ui-loader> </ui-loader>
+} @if (error$ | async) {
+<ui-error
   header="Server Error"
   message="Please check your connection and try reloading."
 ></ui-error>
-
-<ng-container *ngIf="
-  (loading$ | async) === false &&
-  (error$ | async) === false
-">
-  <router-outlet></router-outlet>
-</ng-container>
+} @if ( (loading$ | async) === false && (error$ | async) === false ) {
+<router-outlet></router-outlet>
+}

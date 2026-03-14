@@ -1,4 +1,4 @@
-import { Directive, TemplateRef } from '@angular/core';
+import { Directive, TemplateRef, inject } from '@angular/core';
 
 export interface FileSelectContext {
   $implicit: () => void;
@@ -9,5 +9,5 @@ export interface FileSelectContext {
   selector: '[appFileSelectDef]',
 })
 export class FileSelectDefDirective {
-  constructor(public template: TemplateRef<FileSelectContext> | null) {}
+  template = inject<TemplateRef<FileSelectContext>>(TemplateRef);
 }

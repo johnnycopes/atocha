@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Observable, first, map, tap } from 'rxjs';
 
 import { State } from '@atocha/core/data-access';
@@ -15,11 +15,11 @@ const COUNTRY_SUMMARY_NAMES: Readonly<Record<string, string>> = {
   providedIn: 'root',
 })
 export class CountryService {
+  private _apiService = inject(ApiService);
+
   private _countriesLoaded = false;
   private _countries = new State<{ countries: Country[] }>({ countries: [] });
   countries$ = this._countries.getProp('countries');
-
-  constructor(private _apiService: ApiService) {}
 
   getCountries(): Observable<Country[]> {
     if (this._countriesLoaded) {

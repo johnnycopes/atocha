@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Observable, map } from 'rxjs';
 
 import { DtoService } from '@atocha/firebase/data-access';
@@ -10,9 +10,9 @@ import { UserDto } from './user-dto';
   providedIn: 'root',
 })
 export class UserDtoService {
-  private readonly _endpoint = Endpoint.users;
+  private _dtoService = inject<DtoService<UserDto>>(DtoService);
 
-  constructor(private _dtoService: DtoService<UserDto>) {}
+  private readonly _endpoint = Endpoint.users;
 
   getUser(uid: string): Observable<User | undefined> {
     return this._dtoService.getOne(this._endpoint, uid);

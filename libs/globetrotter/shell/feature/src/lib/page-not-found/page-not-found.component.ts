@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { ButtonComponent } from '@atocha/core/ui';
@@ -12,7 +12,7 @@ import { ErrorComponent } from '@atocha/globetrotter/shared/ui';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PageNotFoundComponent {
-  constructor(private _router: Router) {}
+  private _router = inject(Router);
 
   async onHomeClick(): Promise<void> {
     await this._router.navigate([ROUTES.home]);
