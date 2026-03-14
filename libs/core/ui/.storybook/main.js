@@ -1,4 +1,7 @@
 import { dirname } from 'node:path';
+import { createRequire } from 'node:module';
+
+const require = createRequire(import.meta.url);
 const config = {
   stories: ['../src/lib/**/*.@(mdx|stories.@(js|jsx|ts|tsx))'],
   addons: [
