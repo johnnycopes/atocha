@@ -2,6 +2,7 @@
 export default {
   displayName: 'menu-matriarch-menus-data-access',
   preset: '../../../../jest.preset.js',
+  testEnvironment: 'node',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   coverageDirectory:
     '../../../../coverage/libs/menu-matriarch/menus/data-access',

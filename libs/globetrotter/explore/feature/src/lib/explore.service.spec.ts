@@ -1,3 +1,4 @@
+import { TestBed } from '@angular/core/testing';
 import { of } from 'rxjs';
 
 import {
@@ -17,7 +18,13 @@ describe('ExploreService', () => {
   } as CountryService;
 
   beforeEach(() => {
-    service = new ExploreService(mockCountryService);
+    TestBed.configureTestingModule({
+      providers: [
+        ExploreService,
+        { provide: CountryService, useValue: mockCountryService },
+      ],
+    });
+    service = TestBed.inject(ExploreService);
   });
 
   it('initializes with default state', (done) => {
