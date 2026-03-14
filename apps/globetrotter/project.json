@@ -7,13 +7,15 @@
   "tags": ["scope:globetrotter", "type:app"],
   "targets": {
     "build": {
-      "executor": "@angular-devkit/build-angular:browser",
-      "outputs": ["{options.outputPath}"],
+      "executor": "@angular/build:application",
+      "outputs": ["{options.outputPath.base}"],
       "options": {
-        "outputPath": "dist/apps/globetrotter",
+        "outputPath": {
+          "base": "dist/apps/globetrotter",
+          "browser": ""
+        },
         "index": "apps/globetrotter/src/index.html",
-        "main": "apps/globetrotter/src/main.ts",
-        "polyfills": "apps/globetrotter/src/polyfills.ts",
+        "polyfills": ["apps/globetrotter/src/polyfills.ts"],
         "tsConfig": "apps/globetrotter/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "assets": ["apps/globetrotter/src/assets"],
@@ -24,7 +26,8 @@
         "stylePreprocessorOptions": {
           "includePaths": ["apps/globetrotter/src/scss"]
         },
-        "scripts": []
+        "scripts": [],
+        "browser": "apps/globetrotter/src/main.ts"
       },
       "configurations": {
         "production": {
@@ -49,9 +52,7 @@
           "outputHashing": "all"
         },
         "development": {
-          "buildOptimizer": false,
           "optimization": false,
-          "vendorChunk": true,
           "extractLicenses": false,
           "sourceMap": true,
           "namedChunks": true
@@ -60,7 +61,7 @@
       "defaultConfiguration": "production"
     },
     "serve": {
-      "executor": "@angular-devkit/build-angular:dev-server",
+      "executor": "@angular/build:dev-server",
       "options": {
         "port": 4400
       },

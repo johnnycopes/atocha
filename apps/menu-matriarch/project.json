@@ -7,13 +7,15 @@
   "tags": ["scope:menu-matriarch", "type:app"],
   "targets": {
     "build": {
-      "executor": "@angular-devkit/build-angular:browser",
-      "outputs": ["{options.outputPath}"],
+      "executor": "@angular/build:application",
+      "outputs": ["{options.outputPath.base}"],
       "options": {
-        "outputPath": "dist/apps/menu-matriarch",
+        "outputPath": {
+          "base": "dist/apps/menu-matriarch",
+          "browser": ""
+        },
         "index": "apps/menu-matriarch/src/index.html",
-        "main": "apps/menu-matriarch/src/main.ts",
-        "polyfills": "apps/menu-matriarch/src/polyfills.ts",
+        "polyfills": ["apps/menu-matriarch/src/polyfills.ts"],
         "tsConfig": "apps/menu-matriarch/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "assets": ["apps/menu-matriarch/src/assets"],
@@ -21,7 +23,8 @@
         "stylePreprocessorOptions": {
           "includePaths": ["apps/menu-matriarch/src/scss"]
         },
-        "scripts": []
+        "scripts": [],
+        "browser": "apps/menu-matriarch/src/main.ts"
       },
       "configurations": {
         "production": {
@@ -46,9 +49,7 @@
           "outputHashing": "all"
         },
         "development": {
-          "buildOptimizer": false,
           "optimization": false,
-          "vendorChunk": true,
           "extractLicenses": false,
           "sourceMap": true,
           "namedChunks": true
@@ -57,7 +58,7 @@
       "defaultConfiguration": "production"
     },
     "serve": {
-      "executor": "@angular-devkit/build-angular:dev-server",
+      "executor": "@angular/build:dev-server",
       "options": {
         "port": 4500
       },

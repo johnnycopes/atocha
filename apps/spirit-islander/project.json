@@ -7,18 +7,21 @@
   "tags": ["scope:spirit-islander", "type:app"],
   "targets": {
     "build": {
-      "executor": "@angular-devkit/build-angular:browser",
-      "outputs": ["{options.outputPath}"],
+      "executor": "@angular/build:application",
+      "outputs": ["{options.outputPath.base}"],
       "options": {
-        "outputPath": "dist/apps/spirit-islander",
+        "outputPath": {
+          "base": "dist/apps/spirit-islander",
+          "browser": ""
+        },
         "index": "apps/spirit-islander/src/index.html",
-        "main": "apps/spirit-islander/src/main.ts",
-        "polyfills": "apps/spirit-islander/src/polyfills.ts",
+        "polyfills": ["apps/spirit-islander/src/polyfills.ts"],
         "tsConfig": "apps/spirit-islander/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "assets": ["apps/spirit-islander/src/assets"],
         "styles": ["apps/spirit-islander/src/styles.scss"],
-        "scripts": []
+        "scripts": [],
+        "browser": "apps/spirit-islander/src/main.ts"
       },
       "configurations": {
         "production": {
@@ -43,9 +46,7 @@
           "outputHashing": "all"
         },
         "development": {
-          "buildOptimizer": false,
           "optimization": false,
-          "vendorChunk": true,
           "extractLicenses": false,
           "sourceMap": true,
           "namedChunks": true
@@ -54,7 +55,7 @@
       "defaultConfiguration": "production"
     },
     "serve": {
-      "executor": "@angular-devkit/build-angular:dev-server",
+      "executor": "@angular/build:dev-server",
       "configurations": {
         "production": {
           "buildTarget": "spirit-islander:build:production"
