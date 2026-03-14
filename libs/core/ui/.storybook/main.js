@@ -1,4 +1,3 @@
-import { fileURLToPath } from "node:url";
 import { dirname } from "node:path";
 const config = {
   stories: ['../src/lib/**/*.@(mdx|stories.@(js|jsx|ts|tsx))'],
@@ -13,5 +12,5 @@ const config = {
 export default config;
 
 function getAbsolutePath(value) {
-  return dirname(fileURLToPath(import.meta.resolve(`${value}/package.json`)));
+  return dirname(require.resolve(`${value}/package.json`));
 }

@@ -1,4 +1,3 @@
-import { fileURLToPath } from "node:url";
 import { dirname } from "node:path";
 const config = {
   stories: ['../**/*.@(mdx|stories.@(js|jsx|ts|tsx))'],
@@ -17,5 +16,5 @@ export default config;
 // and https://nx.dev/recipes/storybook/custom-builder-configs
 
 function getAbsolutePath(value) {
-  return dirname(fileURLToPath(import.meta.resolve(`${value}/package.json`)));
+  return dirname(require.resolve(`${value}/package.json`));
 }
