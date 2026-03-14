@@ -20,12 +20,12 @@ import { CommonModule } from '@angular/common';
   template: `
     <ul class="tags">
       @for (item of items; track $index) {
-        <li>
-          <ng-container
-            [ngTemplateOutlet]="itemTemplate"
-            [ngTemplateOutletContext]="{ $implicit: item }"
-          ></ng-container>
-        </li>
+      <li>
+        <ng-container
+          [ngTemplateOutlet]="itemTemplate"
+          [ngTemplateOutletContext]="{ $implicit: item }"
+        ></ng-container>
+      </li>
       }
     </ul>
   `,

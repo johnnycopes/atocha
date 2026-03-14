@@ -3,10 +3,7 @@
     {{ name }}
   </h2>
   @if (actions.length) {
-    <fa-icon
-      class="app-kbc__menu-icon"
-      [icon]="menuIcon"
-    ></fa-icon>
+  <fa-icon class="app-kbc__menu-icon" [icon]="menuIcon"></fa-icon>
   }
 </div>
 <ul
@@ -16,21 +13,21 @@
   (cdkDropListDropped)="onDropItem($event)"
 >
   @for (item of items; track trackByFn($index, item)) {
-    <li
-      class="app-kbc__list-item"
-      [class.list-item--moving]="moving"
-      cdkDrag
-      [cdkDragData]="{
-        columnId: id,
-        item: item
-      }"
-      (cdkDragStarted)="onDragItem()"
-    >
-      <ng-container
-        [ngTemplateOutlet]="itemTemplate ? itemTemplate : defaultTemplate"
-        [ngTemplateOutletContext]="{ $implicit: item }"
-      ></ng-container>
-    </li>
+  <li
+    class="app-kbc__list-item"
+    [class.list-item--moving]="moving"
+    cdkDrag
+    [cdkDragData]="{
+      columnId: id,
+      item: item
+    }"
+    (cdkDragStarted)="onDragItem()"
+  >
+    <ng-container
+      [ngTemplateOutlet]="itemTemplate ? itemTemplate : defaultTemplate"
+      [ngTemplateOutletContext]="{ $implicit: item }"
+    ></ng-container>
+  </li>
   }
 </ul>
 <app-kanban-board-form

@@ -7,23 +7,23 @@
 >
   <div class="app-kb__columns" cdkDropListGroup>
     @for (column of columns; track trackByFn($index, column)) {
-      <app-kanban-board-column
-        class="app-kb__column"
-        cdkDrag
-        [cdkDragData]="getColumnId(column)"
-        [id]="getColumnId(column)"
-        [name]="getColumnName(column)"
-        [items]="getColumnItems(column)"
-        [getItemId]="getItemId"
-        [itemUnit]="itemUnit"
-        [itemTemplate]="itemTemplate"
-        [actions]="actions"
-        (actionClick)="onActionClick($event)"
-        (itemAdd)="onItemAdd($event)"
-        (itemMove)="onItemMove($event)"
-        (cdkDragStarted)="onDragColumn()"
-        [(moving)]="moving"
-      ></app-kanban-board-column>
+    <app-kanban-board-column
+      class="app-kb__column"
+      cdkDrag
+      [cdkDragData]="getColumnId(column)"
+      [id]="getColumnId(column)"
+      [name]="getColumnName(column)"
+      [items]="getColumnItems(column)"
+      [getItemId]="getItemId"
+      [itemUnit]="itemUnit"
+      [itemTemplate]="itemTemplate"
+      [actions]="actions"
+      (actionClick)="onActionClick($event)"
+      (itemAdd)="onItemAdd($event)"
+      (itemMove)="onItemMove($event)"
+      (cdkDragStarted)="onDragColumn()"
+      [(moving)]="moving"
+    ></app-kanban-board-column>
     }
     <app-kanban-board-form
       class="app-kb__column"

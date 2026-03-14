@@ -6,8 +6,8 @@
   (change)="onFileSelectChange($event)"
 />
 @if (fileSelectDef) {
-  <ng-container
-    [ngTemplateOutlet]="fileSelectDef.template"
-    [ngTemplateOutletContext]="fileSelectDefContext"
-  ></ng-container>
+<ng-container
+  [ngTemplateOutlet]="fileSelectDef.template"
+  [ngTemplateOutletContext]="fileSelectDefContext"
+></ng-container>
 }

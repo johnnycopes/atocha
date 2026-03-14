@@ -1,4 +1,10 @@
-import { Directive, Input, ViewContainerRef, TemplateRef, inject } from '@angular/core';
+import {
+  Directive,
+  Input,
+  ViewContainerRef,
+  TemplateRef,
+  inject,
+} from '@angular/core';
 
 type Range = [number, number];
 
