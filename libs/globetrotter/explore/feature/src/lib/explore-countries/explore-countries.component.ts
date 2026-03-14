@@ -38,25 +38,25 @@ export class ExploreCountriesComponent implements OnChanges {
   private readonly _countryHeight = 60;
 
   @HostListener('window:keydown.arrowUp', ['$event'])
-  onArrowUp(event: KeyboardEvent): void {
+  onArrowUp(event: Event): void {
     event.preventDefault();
     this._moveUpList(1);
   }
 
   @HostListener('window:keydown.shift.arrowUp', ['$event'])
-  onShiftArrowUp(event: KeyboardEvent): void {
+  onShiftArrowUp(event: Event): void {
     event.preventDefault();
     this._moveUpList(10);
   }
 
   @HostListener('window:keydown.arrowDown', ['$event'])
-  onArrowDown(event: KeyboardEvent): void {
+  onArrowDown(event: Event): void {
     event.preventDefault();
     this._moveDownList(1);
   }
 
   @HostListener('window:keydown.shift.arrowDown', ['$event'])
-  onShiftArrowDown(event: KeyboardEvent): void {
+  onShiftArrowDown(event: Event): void {
     event.preventDefault();
     this._moveDownList(10);
   }
