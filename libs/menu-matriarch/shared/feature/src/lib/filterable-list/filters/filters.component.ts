@@ -1,4 +1,3 @@
-
 import {
   Component,
   ChangeDetectionStrategy,
@@ -26,8 +25,8 @@ import {
     FormsModule,
     TagComponent,
     TagDefDirective,
-    TagsListComponent
-],
+    TagsListComponent,
+  ],
   templateUrl: './filters.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

@@ -26,8 +26,8 @@ import { Node } from '../config-form/root';
     ExpansionEmblemComponent,
     FormsModule,
     ReactiveFormsModule,
-    SelectionTreeComponent
-],
+    SelectionTreeComponent,
+  ],
   templateUrl: './checkbox-tree.component.html',
   styleUrls: ['./checkbox-tree.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

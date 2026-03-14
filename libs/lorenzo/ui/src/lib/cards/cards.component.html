@@ -9,31 +9,29 @@
     </h2>
     <div class="ordinals">
       @if (showMoveUp) {
-        <button core-button (click)="moveUp.emit()">
-          <span class="left-arrow"> ↑ </span>
-        </button>
-      }
-      @if (showMoveDown) {
-        <button core-button (click)="moveDown.emit()">
-          <span class="right-arrow"> ↓ </span>
-        </button>
+      <button core-button (click)="moveUp.emit()">
+        <span class="left-arrow"> ↑ </span>
+      </button>
+      } @if (showMoveDown) {
+      <button core-button (click)="moveDown.emit()">
+        <span class="right-arrow"> ↓ </span>
+      </button>
       }
     </div>
   </div>
   <ul [hidden]="!visible" class="cards">
     @for (card of cards; track trackByFn($index, card)) {
-      <li class="card">
-        <ng-container
-          [ngTemplateOutlet]="cardTemplate"
+    <li class="card">
+      <ng-container
+        [ngTemplateOutlet]="cardTemplate"
         [ngTemplateOutletContext]="{
           $implicit: card,
           uiCard: card
         }"
-        ></ng-container>
-      </li>
-    }
-    @if (!cards.length) {
-      <li>No matching cards</li>
+      ></ng-container>
+    </li>
+    } @if (!cards.length) {
+    <li>No matching cards</li>
     }
   </ul>
 </section>

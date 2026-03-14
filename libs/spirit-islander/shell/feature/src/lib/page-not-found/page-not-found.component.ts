@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
-
 import { ButtonComponent } from '@atocha/core/ui';
 import { RouterService } from '@atocha/spirit-islander/shared/data-access';
 

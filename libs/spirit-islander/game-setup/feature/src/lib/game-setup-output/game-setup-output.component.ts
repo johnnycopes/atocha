@@ -1,4 +1,3 @@
-
 import {
   ChangeDetectionStrategy,
   Component,
@@ -37,8 +36,8 @@ import { getAdversaryNameById } from './get-adversary-name-by-id';
     DifficultyEmblemComponent,
     ExpansionEmblemComponent,
     PluralPipe,
-    SeparatorComponent
-],
+    SeparatorComponent,
+  ],
   templateUrl: './game-setup-output.component.html',
   styleUrls: ['./game-setup-output.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

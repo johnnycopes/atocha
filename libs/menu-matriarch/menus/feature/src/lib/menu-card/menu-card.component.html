@@ -1,64 +1,62 @@
 @if (state$ | async; as state) {
-  <ui-card [active]="active">
-    <div class="top">
-      @if (state === 'renaming') {
-        <ui-inline-name-edit
-          [name]="name"
-          (cancel)="onCancel()"
-          (save)="onRenameSave($event)"
-        ></ui-inline-name-edit>
-      } @else {
-        <a routerLink="/planner/{{ id }}">
-          <h3 class="name">
-            {{ name }}
-          </h3>
-        </a>
-        <button
-          core-button="tertiary"
-          [disabled]="state !== 'default'"
-          [uiOptionsMenuTrigger]="optionsMenu"
-          >
-          <fa-icon class="icon" [icon]="menuToggleIcon"></fa-icon>
-        </button>
-        <ui-options-menu #optionsMenu>
-          <li ui-options-menu-item (click)="print.emit()">Print</li>
-          <li ui-options-menu-item (click)="onRename()">Rename</li>
-          <li ui-options-menu-item (click)="onChangeStartDay()">
-            Change Start Day
-          </li>
-          <a ui-options-menu-item routerLink="/planner/{{ id }}"> Plan Meals </a>
-          @if (canDelete) {
-            <li ui-options-menu-item (click)="delete.emit()">
-              Delete
-            </li>
-          }
-        </ui-options-menu>
+<ui-card [active]="active">
+  <div class="top">
+    @if (state === 'renaming') {
+    <ui-inline-name-edit
+      [name]="name"
+      (cancel)="onCancel()"
+      (save)="onRenameSave($event)"
+    ></ui-inline-name-edit>
+    } @else {
+    <a routerLink="/planner/{{ id }}">
+      <h3 class="name">
+        {{ name }}
+      </h3>
+    </a>
+    <button
+      core-button="tertiary"
+      [disabled]="state !== 'default'"
+      [uiOptionsMenuTrigger]="optionsMenu"
+    >
+      <fa-icon class="icon" [icon]="menuToggleIcon"></fa-icon>
+    </button>
+    <ui-options-menu #optionsMenu>
+      <li ui-options-menu-item (click)="print.emit()">Print</li>
+      <li ui-options-menu-item (click)="onRename()">Rename</li>
+      <li ui-options-menu-item (click)="onChangeStartDay()">
+        Change Start Day
+      </li>
+      <a ui-options-menu-item routerLink="/planner/{{ id }}"> Plan Meals </a>
+      @if (canDelete) {
+      <li ui-options-menu-item (click)="delete.emit()">Delete</li>
       }
-    </div>
-    @if (state === 'changingStartDay') {
-      <ui-inline-day-select
-        class="start-day-form"
-        [startDay]="startDay"
-        (cancel)="onCancel()"
-        (save)="onChangeStartDaySave($event)"
-      ></ui-inline-day-select>
+    </ui-options-menu>
     }
-    <ul>
-      @for (entry of entries; track trackByFn($index, entry)) {
-        <li class="entry">
-          <ui-small-caps-label class="day">
-            <h4>
-              {{ entry.day | slice : 0 : 3 }}
-            </h4>
-          </ui-small-caps-label>
-          <ui-meal-summary
-            class="meal"
-            [dishes]="entry.dishes"
-            [fallbackText]="fallbackText"
-            [orientation]="orientation"
-          ></ui-meal-summary>
-        </li>
-      }
-    </ul>
-  </ui-card>
+  </div>
+  @if (state === 'changingStartDay') {
+  <ui-inline-day-select
+    class="start-day-form"
+    [startDay]="startDay"
+    (cancel)="onCancel()"
+    (save)="onChangeStartDaySave($event)"
+  ></ui-inline-day-select>
+  }
+  <ul>
+    @for (entry of entries; track trackByFn($index, entry)) {
+    <li class="entry">
+      <ui-small-caps-label class="day">
+        <h4>
+          {{ entry.day | slice : 0 : 3 }}
+        </h4>
+      </ui-small-caps-label>
+      <ui-meal-summary
+        class="meal"
+        [dishes]="entry.dishes"
+        [fallbackText]="fallbackText"
+        [orientation]="orientation"
+      ></ui-meal-summary>
+    </li>
+    }
+  </ul>
+</ui-card>
 }

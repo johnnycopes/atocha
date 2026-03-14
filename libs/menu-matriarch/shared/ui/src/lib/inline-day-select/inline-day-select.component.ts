@@ -1,4 +1,3 @@
-
 import {
   Component,
   ChangeDetectionStrategy,
@@ -20,8 +19,8 @@ import { SelectDayComponent } from '../select-day/select-day.component';
     FormsModule,
     InlineFormComponent,
     InputComponent,
-    SelectDayComponent
-],
+    SelectDayComponent,
+  ],
   templateUrl: './inline-day-select.component.html',
   styleUrls: ['./inline-day-select.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

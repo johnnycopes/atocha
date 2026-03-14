@@ -6,17 +6,16 @@
   ></core-search-input>
 </ui-input>
 <ul class="list" #list>
-  @if (countries.length) {
-    @for (item of countries; track trackByFn($index, item)) {
-      <li
-        class="list__item"
-        [class.list__item--selected]="item.id === selectedCountry?.id"
-        (click)="selectedCountryChange.emit(item)"
-        >
-        <h3>{{ item.name }}</h3>
-      </li>
-    }
-  } @else {
-    <li class="list__placeholder">No results</li>
+  @if (countries.length) { @for (item of countries; track trackByFn($index,
+  item)) {
+  <li
+    class="list__item"
+    [class.list__item--selected]="item.id === selectedCountry?.id"
+    (click)="selectedCountryChange.emit(item)"
+  >
+    <h3>{{ item.name }}</h3>
+  </li>
+  } } @else {
+  <li class="list__placeholder">No results</li>
   }
 </ul>

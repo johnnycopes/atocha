@@ -1,4 +1,3 @@
-
 import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
@@ -19,8 +18,8 @@ import {
     RouterLink,
     TagComponent,
     TagDefDirective,
-    TagsListComponent
-],
+    TagsListComponent,
+  ],
   templateUrl: './meal-card.component.html',
   styleUrls: ['./meal-card.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

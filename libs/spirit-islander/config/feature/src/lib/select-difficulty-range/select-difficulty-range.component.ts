@@ -1,4 +1,3 @@
-
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -7,11 +6,7 @@ import { SelectRangeComponent } from '../select-range/select-range.component';
 
 @Component({
   selector: 'app-select-difficulty-range',
-  imports: [
-    FormsModule,
-    ReactiveFormsModule,
-    SelectRangeComponent
-],
+  imports: [FormsModule, ReactiveFormsModule, SelectRangeComponent],
   templateUrl: './select-difficulty-range.component.html',
   styleUrls: ['./select-difficulty-range.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

@@ -20,12 +20,12 @@ import {
   imports: [CommonModule, DishEditFormComponent, RouterModule],
   template: `
     @if (dish$ | async; as dish) {
-      <app-dish-edit-form
-        [dish]="dish"
-        (save)="onSave($event)"
-      ></app-dish-edit-form>
+    <app-dish-edit-form
+      [dish]="dish"
+      (save)="onSave($event)"
+    ></app-dish-edit-form>
     }
-    `,
+  `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DishEditComponent {

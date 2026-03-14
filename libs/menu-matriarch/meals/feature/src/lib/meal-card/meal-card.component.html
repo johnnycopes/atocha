@@ -6,14 +6,13 @@
       </h3>
     </a>
     @if (description) {
-      <p class="description">
-        {{ description }}
-      </p>
-    }
-    @if (tags.length) {
-      <ui-tags-list class="tags" [tags]="tags">
-        <ui-tag *uiTagDef="let tag" [id]="tag.id" [name]="tag.name"></ui-tag>
-      </ui-tags-list>
+    <p class="description">
+      {{ description }}
+    </p>
+    } @if (tags.length) {
+    <ui-tags-list class="tags" [tags]="tags">
+      <ui-tag *uiTagDef="let tag" [id]="tag.id" [name]="tag.name"></ui-tag>
+    </ui-tags-list>
     }
   </div>
   <ui-meal-summary

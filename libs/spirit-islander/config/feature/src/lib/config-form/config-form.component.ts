@@ -37,8 +37,8 @@ import { Root } from './root';
     FormsModule,
     ReactiveFormsModule,
     SelectDifficultyRangeComponent,
-    SelectPlayersComponent
-],
+    SelectPlayersComponent,
+  ],
   templateUrl: './config-form.component.html',
   styleUrls: ['./config-form.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

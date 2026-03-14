@@ -11,13 +11,13 @@
 </div>
 <div class="table">
   @for (tableDatum of tableData; track tableDataTrackByFn($index, tableDatum)) {
-    <ui-small-caps
-      class="table-header"
-      [header]="tableDatum.header"
-      [template]="tableDatum?.template"
-      >
-      {{ tableDatum?.content }}
-    </ui-small-caps>
+  <ui-small-caps
+    class="table-header"
+    [header]="tableDatum.header"
+    [template]="tableDatum?.template"
+  >
+    {{ tableDatum?.content }}
+  </ui-small-caps>
   }
 </div>
 <p class="summary">
@@ -32,7 +32,7 @@
         items: country.languages
       }
     "
-></ng-container>
+  ></ng-container>
 </ng-template>
 
 <ng-template #currency>
@@ -43,7 +43,7 @@
         items: country.currencies
       }
     "
-></ng-container>
+  ></ng-container>
 </ng-template>
 
 <ng-template #population>
@@ -60,9 +60,7 @@
 
 <ng-template #list let-items="items">
   @for (item of items; track itemTrackByFn($index, item); let last = $last) {
-    <span>
-      {{ item }}{{ !last ? ',' : '' }}
-    </span>
+  <span> {{ item }}{{ !last ? ',' : '' }} </span>
   }
 </ng-template>
 
@@ -74,5 +72,5 @@
         items: country.callingCodes
       }
     "
-></ng-container>
+  ></ng-container>
 </ng-template>

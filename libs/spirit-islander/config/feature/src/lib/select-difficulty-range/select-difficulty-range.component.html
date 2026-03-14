@@ -1,9 +1,9 @@
 @if (form) {
-  <ng-container [formGroup]="form">
-    <app-select-range
-      formControlName="difficultyRange"
-      label="difficulty-range"
-      [options]="difficulties"
-    ></app-select-range>
-  </ng-container>
+<ng-container [formGroup]="form">
+  <app-select-range
+    formControlName="difficultyRange"
+    label="difficulty-range"
+    [options]="difficulties"
+  ></app-select-range>
+</ng-container>
 }

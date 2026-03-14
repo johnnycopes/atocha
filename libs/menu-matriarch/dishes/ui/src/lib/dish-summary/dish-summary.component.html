@@ -6,9 +6,9 @@
   </a>
   <div class="details">
     @if (link) {
-      <a [coreExternalLink]="link" class="external-link">
-        <fa-icon [icon]="faLink"> </fa-icon>
-      </a>
+    <a [coreExternalLink]="link" class="external-link">
+      <fa-icon [icon]="faLink"> </fa-icon>
+    </a>
     }
     <ui-count class="count" type="days" [count]="usages"></ui-count>
     <ui-count class="count" type="menus" [count]="menuIds.length"></ui-count>
@@ -17,13 +17,11 @@
 </div>
 
 @if (description) {
-  <p class="description">
-    {{ description }}
-  </p>
-}
-
-@if (tags.length) {
-  <ui-tags-list class="tags" [tags]="tags">
-    <ui-tag *uiTagDef="let tag" [id]="tag.id" [name]="tag.name"></ui-tag>
-  </ui-tags-list>
+<p class="description">
+  {{ description }}
+</p>
+} @if (tags.length) {
+<ui-tags-list class="tags" [tags]="tags">
+  <ui-tag *uiTagDef="let tag" [id]="tag.id" [name]="tag.name"></ui-tag>
+</ui-tags-list>
 }

@@ -4,21 +4,21 @@
   cdkDropListGroup
   cdkDropListOrientation="horizontal"
   (cdkDropListDropped)="onDrop($event)"
-  >
+>
   @for (type of types; track trackByFn($index, type)) {
-    <li
-      app-ingredients-board-column
-      class="column"
-      cdkDrag
-      [id]="type.id"
-      [name]="type.name"
-      [ingredients]="type.ingredients"
-      (rename)="typeRename.emit({ type: type, name: $event })"
-      (delete)="typeDelete.emit(type)"
-      (ingredientAdd)="ingredientAdd.emit($event)"
-      (ingredientMove)="ingredientMove.emit($event)"
-      (ingredientRename)="ingredientRename.emit($event)"
-      (ingredientDelete)="ingredientDelete.emit($event)"
-    ></li>
+  <li
+    app-ingredients-board-column
+    class="column"
+    cdkDrag
+    [id]="type.id"
+    [name]="type.name"
+    [ingredients]="type.ingredients"
+    (rename)="typeRename.emit({ type: type, name: $event })"
+    (delete)="typeDelete.emit(type)"
+    (ingredientAdd)="ingredientAdd.emit($event)"
+    (ingredientMove)="ingredientMove.emit($event)"
+    (ingredientRename)="ingredientRename.emit($event)"
+    (ingredientDelete)="ingredientDelete.emit($event)"
+  ></li>
   }
 </ul>

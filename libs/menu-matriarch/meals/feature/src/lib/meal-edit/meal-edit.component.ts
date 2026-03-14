@@ -21,12 +21,12 @@ import {
   imports: [CommonModule, MealEditFormComponent, RouterModule],
   template: `
     @if (meal$ | async; as meal) {
-      <app-meal-edit-form
-        [meal]="meal"
-        (save)="onSave($event)"
-      ></app-meal-edit-form>
+    <app-meal-edit-form
+      [meal]="meal"
+      (save)="onSave($event)"
+    ></app-meal-edit-form>
     }
-    `,
+  `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MealEditComponent {

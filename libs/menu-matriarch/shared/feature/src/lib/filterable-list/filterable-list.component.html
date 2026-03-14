@@ -23,13 +23,13 @@
       </a>
     </div>
     @if (isPanelOpen) {
-      <app-filters
-        class="filters"
-        [tags]="tags"
-        [selected]="filters"
-        (selectedChange)="filtersChange.emit($event)"
-        (selectedClear)="filtersChange.emit([])"
-      ></app-filters>
+    <app-filters
+      class="filters"
+      [tags]="tags"
+      [selected]="filters"
+      (selectedChange)="filtersChange.emit($event)"
+      (selectedClear)="filtersChange.emit([])"
+    ></app-filters>
     }
   </div>
   <div class="ui-section__content">

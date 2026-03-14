@@ -1,47 +1,45 @@
 @if (vm$ | async; as vm) {
-  <app-filterable-list
-    [total]="vm.total"
-    [searchText]="vm.searchText"
-    [filters]="vm.filters"
-    [isPanelOpen]="vm.filterPanel"
-    [tags]="vm.tags"
-    entity="Dish"
-    pluralEntity="Dishes"
-    (searchTextChange)="onSearchTextChange($event)"
-    (filtersChange)="onFiltersChange($event)"
-    (filtersButtonClick)="onFiltersButtonClick()"
-    (newButtonClick)="onNewButtonClick()"
-    (nameDblClick)="nameDblClick.emit()"
+<app-filterable-list
+  [total]="vm.total"
+  [searchText]="vm.searchText"
+  [filters]="vm.filters"
+  [isPanelOpen]="vm.filterPanel"
+  [tags]="vm.tags"
+  entity="Dish"
+  pluralEntity="Dishes"
+  (searchTextChange)="onSearchTextChange($event)"
+  (filtersChange)="onFiltersChange($event)"
+  (filtersButtonClick)="onFiltersButtonClick()"
+  (newButtonClick)="onNewButtonClick()"
+  (nameDblClick)="nameDblClick.emit()"
+>
+  <ui-tabset>
+    @for (group of vm.filteredDishes; track groupTrackByFn($index, group)) {
+    <ui-tab
+      name="{{ group.type + 's' }} ({{ group.dishes.length }})"
+      [selected]="vm.initialTab === group.type"
     >
-    <ui-tabset>
-      @for (group of vm.filteredDishes; track groupTrackByFn($index, group)) {
-        <ui-tab
-          name="{{ group.type + 's' }} ({{ group.dishes.length }})"
-          [selected]="vm.initialTab === group.type"
-          >
-          @if (group.dishes.length) {
-            <ul>
-              @for (dish of group.dishes; track dishTrackByFn($index, dish)) {
-                <li
-                  class="dish"
-                  >
-                  <ng-container
-                    [ngTemplateOutlet]="dishTemplate"
+      @if (group.dishes.length) {
+      <ul>
+        @for (dish of group.dishes; track dishTrackByFn($index, dish)) {
+        <li class="dish">
+          <ng-container
+            [ngTemplateOutlet]="dishTemplate"
             [ngTemplateOutletContext]="{
               $implicit: dish,
               activeDish: vm.activeDish
             }"
-                  ></ng-container>
-                </li>
-              }
-            </ul>
-          } @else {
-            <div class="placeholder">
-              {{ group.placeholderText }}
-            </div>
-          }
-        </ui-tab>
+          ></ng-container>
+        </li>
+        }
+      </ul>
+      } @else {
+      <div class="placeholder">
+        {{ group.placeholderText }}
+      </div>
       }
-    </ui-tabset>
-  </app-filterable-list>
+    </ui-tab>
+    }
+  </ui-tabset>
+</app-filterable-list>
 }

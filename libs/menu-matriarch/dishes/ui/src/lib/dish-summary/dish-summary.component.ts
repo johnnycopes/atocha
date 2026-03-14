@@ -1,4 +1,3 @@
-
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
@@ -22,8 +21,8 @@ import {
     RouterLink,
     TagComponent,
     TagDefDirective,
-    TagsListComponent
-],
+    TagsListComponent,
+  ],
   templateUrl: './dish-summary.component.html',
   styleUrls: ['./dish-summary.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

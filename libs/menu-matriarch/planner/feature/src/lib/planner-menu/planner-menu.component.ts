@@ -1,4 +1,3 @@
-
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 import { ButtonComponent } from '@atocha/core/ui';
@@ -15,11 +14,7 @@ import { PlannerDayComponent } from './planner-day/planner-day.component';
 
 @Component({
   selector: 'app-planner-menu',
-  imports: [
-    ButtonComponent,
-    PlannerDayComponent,
-    SectionComponent
-],
+  imports: [ButtonComponent, PlannerDayComponent, SectionComponent],
   templateUrl: './planner-menu.component.html',
   styleUrls: ['./planner-menu.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

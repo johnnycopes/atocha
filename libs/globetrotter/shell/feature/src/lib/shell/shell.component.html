@@ -1,13 +1,11 @@
 @if (vm$ | async; as vm) {
-  <app-navigation (animationFinished)="onNavReady()"> </app-navigation>
-  @if (vm.loading) {
-    <ui-loader class="loader"></ui-loader>
-  }
-  @if (vm.ready) {
-    <div class="content">
-      <div class="content__wrapper">
-        <router-outlet></router-outlet>
-      </div>
-    </div>
-  }
-}
+<app-navigation (animationFinished)="onNavReady()"> </app-navigation>
+@if (vm.loading) {
+<ui-loader class="loader"></ui-loader>
+} @if (vm.ready) {
+<div class="content">
+  <div class="content__wrapper">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+} }

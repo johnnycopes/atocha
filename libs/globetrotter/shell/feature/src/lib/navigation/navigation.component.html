@@ -2,31 +2,31 @@
   class="navigation"
   [@position]="position"
   (@position.done)="onAnimationFinish($event)"
-  >
+>
   <a class="home" routerLink="/{{ home.route }}">
     @if (home.icon) {
-      <ui-icon
-        class="home__icon"
-        [icon]="home.icon"
-        [highlighted]="false"
-      ></ui-icon>
+    <ui-icon
+      class="home__icon"
+      [icon]="home.icon"
+      [highlighted]="false"
+    ></ui-icon>
     }
   </a>
   @for (link of links; track trackByFn($index, link)) {
-    <a
-      class="link"
-      routerLink="/{{ link.route }}"
-      routerLinkActive="link--active"
-      [routerLinkActiveOptions]="{ exact: link.exactPathMatch }"
-      #navigationLink="routerLinkActive"
-      >
-      {{ link.name }}
-    </a>
+  <a
+    class="link"
+    routerLink="/{{ link.route }}"
+    routerLinkActive="link--active"
+    [routerLinkActiveOptions]="{ exact: link.exactPathMatch }"
+    #navigationLink="routerLinkActive"
+  >
+    {{ link.name }}
+  </a>
   }
   <p class="signature">
     Made by
     <a class="signature__name" coreExternalLink="https://www.johnnycopes.com"
       >johnnycopes</a
-      >.
-    </p>
-  </nav>
+    >.
+  </p>
+</nav>

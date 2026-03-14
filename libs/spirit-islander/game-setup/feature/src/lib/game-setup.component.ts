@@ -14,13 +14,13 @@ import { GameSetupOutputComponent } from './game-setup-output/game-setup-output.
   imports: [CommonModule, GameSetupOutputComponent],
   template: `
     @if (gameSetup$ | async; as gameSetup) {
-      <app-game-setup-output
-        [setup]="gameSetup"
-        (edit)="onEdit()"
-        (regenerate)="onRegenerate()"
-      ></app-game-setup-output>
+    <app-game-setup-output
+      [setup]="gameSetup"
+      (edit)="onEdit()"
+      (regenerate)="onRegenerate()"
+    ></app-game-setup-output>
     }
-    `,
+  `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GameSetupComponent implements OnInit {

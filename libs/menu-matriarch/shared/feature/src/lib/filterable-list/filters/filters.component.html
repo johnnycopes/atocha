@@ -1,31 +1,27 @@
 <ui-card>
   @if (tags.length) {
-    <ui-tags-list
-      class="tags"
-      [tags]="tags"
-      [interactive]="true"
+  <ui-tags-list class="tags" [tags]="tags" [interactive]="true">
+    <ng-container *uiTagDef="let tag">
+      <core-checkbox
+        [name]="tag.id"
+        [ngModel]="selected.includes(tag.id)"
+        (ngModelChange)="onTagChange(tag.id, $event)"
       >
-      <ng-container *uiTagDef="let tag">
-        <core-checkbox
-          [name]="tag.id"
-          [ngModel]="selected.includes(tag.id)"
-          (ngModelChange)="onTagChange(tag.id, $event)"
-          >
-          <ui-tag [id]="tag.id" [name]="tag.name"></ui-tag>
-        </core-checkbox>
-      </ng-container>
-      <li>
-        <button
-          core-button="tertiary"
-          buttonStyle="ternary"
-          [disabled]="!selected.length"
-          (click)="selectedClear.emit()"
-          >
-          Clear All
-        </button>
-      </li>
-    </ui-tags-list>
+        <ui-tag [id]="tag.id" [name]="tag.name"></ui-tag>
+      </core-checkbox>
+    </ng-container>
+    <li>
+      <button
+        core-button="tertiary"
+        buttonStyle="ternary"
+        [disabled]="!selected.length"
+        (click)="selectedClear.emit()"
+      >
+        Clear All
+      </button>
+    </li>
+  </ui-tags-list>
   } @else {
-    <p>No filters to display</p>
+  <p>No filters to display</p>
   }
 </ui-card>

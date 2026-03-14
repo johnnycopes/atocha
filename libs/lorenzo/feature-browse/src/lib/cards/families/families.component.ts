@@ -17,27 +17,27 @@ import { FamilyComponent } from './family.component';
   ],
   template: `
     @if (vm$ | async; as vm) {
-      <ui-cards
-        type="Families"
-        [cards]="vm.filteredCards"
-        [total]="vm.totalCards"
-        [ordinal]="vm.ordinal"
-        [visible]="vm.visible"
-        [favorites]="vm.favoriteIds"
-        [trackByFn]="trackByFn"
-        (moveUp)="moveUp()"
-        (moveDown)="moveDown()"
-        (visibleChange)="toggleVisibility()"
-        >
-        <app-family
-          *uiCard="vm.filteredCards as family"
-          [data]="family"
-          [favorite]="vm.favoriteIds.has(getId(family))"
-          (favoriteChange)="toggleId(getId(family))"
-        ></app-family>
-      </ui-cards>
+    <ui-cards
+      type="Families"
+      [cards]="vm.filteredCards"
+      [total]="vm.totalCards"
+      [ordinal]="vm.ordinal"
+      [visible]="vm.visible"
+      [favorites]="vm.favoriteIds"
+      [trackByFn]="trackByFn"
+      (moveUp)="moveUp()"
+      (moveDown)="moveDown()"
+      (visibleChange)="toggleVisibility()"
+    >
+      <app-family
+        *uiCard="vm.filteredCards as family"
+        [data]="family"
+        [favorite]="vm.favoriteIds.has(getId(family))"
+        (favoriteChange)="toggleId(getId(family))"
+      ></app-family>
+    </ui-cards>
     }
-    `,
+  `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FamiliesComponent {

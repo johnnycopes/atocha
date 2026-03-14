@@ -6,7 +6,6 @@ import {
   Output,
 } from '@angular/core';
 
-
 import { CardComponent, CardHeaderComponent } from '@atocha/lorenzo/ui';
 import { Family } from '@atocha/lorenzo/util';
 

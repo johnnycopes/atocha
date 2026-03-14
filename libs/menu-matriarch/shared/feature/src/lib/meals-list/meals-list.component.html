@@ -1,35 +1,35 @@
 @if (vm$ | async; as vm) {
-  <app-filterable-list
-    [total]="vm.total"
-    [searchText]="vm.searchText"
-    [filters]="vm.filters"
-    [isPanelOpen]="vm.filterPanel"
-    [tags]="vm.tags"
-    entity="Meal"
-    (searchTextChange)="onSearchTextChange($event)"
-    (newButtonClick)="onNewButtonClick()"
-    (filtersChange)="onFiltersChange($event)"
-    (filtersButtonClick)="onFiltersButtonClick()"
-    (nameDblClick)="nameDblClick.emit()"
-    >
-    @if (vm.total) {
-      <ul class="ui-section__content">
-        @for (meal of vm.filteredMeals; track trackByFn($index, meal)) {
-          <li class="meal">
-            <ng-container
-              [ngTemplateOutlet]="mealTemplate"
+<app-filterable-list
+  [total]="vm.total"
+  [searchText]="vm.searchText"
+  [filters]="vm.filters"
+  [isPanelOpen]="vm.filterPanel"
+  [tags]="vm.tags"
+  entity="Meal"
+  (searchTextChange)="onSearchTextChange($event)"
+  (newButtonClick)="onNewButtonClick()"
+  (filtersChange)="onFiltersChange($event)"
+  (filtersButtonClick)="onFiltersButtonClick()"
+  (nameDblClick)="nameDblClick.emit()"
+>
+  @if (vm.total) {
+  <ul class="ui-section__content">
+    @for (meal of vm.filteredMeals; track trackByFn($index, meal)) {
+    <li class="meal">
+      <ng-container
+        [ngTemplateOutlet]="mealTemplate"
         [ngTemplateOutletContext]="{
           $implicit: meal,
           activeMeal: vm.activeMeal,
           fallbackText: vm.preferences?.emptyMealText ?? '',
           orientation: vm.preferences?.mealOrientation ?? 'horizontal'
         }"
-            ></ng-container>
-          </li>
-        }
-      </ul>
-    } @else {
-      <div class="placeholder">No meals to display</div>
+      ></ng-container>
+    </li>
     }
-  </app-filterable-list>
+  </ul>
+  } @else {
+  <div class="placeholder">No meals to display</div>
+  }
+</app-filterable-list>
 }

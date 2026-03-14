@@ -1,34 +1,31 @@
 @if (vm$ | async; as vm) {
-  <form
-    class="wrapper"
-    @fadeIn
-    [formGroup]="vm.form"
-    (ngSubmit)="launch(vm.form)"
-    >
-    <div class="launchpad">
-      <h1 class="header">Create Quiz</h1>
-      <div class="submission">
-        @if (vm.form.errors) {
-          <ui-errors
-            class="errors"
-            [errors]="vm.form.errors"
-          ></ui-errors>
-        }
-        <button core-button [disabled]="!vm.form.valid">Launch</button>
-      </div>
+<form
+  class="wrapper"
+  @fadeIn
+  [formGroup]="vm.form"
+  (ngSubmit)="launch(vm.form)"
+>
+  <div class="launchpad">
+    <h1 class="header">Create Quiz</h1>
+    <div class="submission">
+      @if (vm.form.errors) {
+      <ui-errors class="errors" [errors]="vm.form.errors"></ui-errors>
+      }
+      <button core-button [disabled]="!vm.form.valid">Launch</button>
     </div>
-    <div class="fields">
-      <div class="fields__top">
-        <app-select-type [form]="vm.form"> </app-select-type>
-        <app-select-quantity
-          [form]="vm.form"
-          [error]="!!vm.form.errors"
-        ></app-select-quantity>
-      </div>
-      <app-select-places
+  </div>
+  <div class="fields">
+    <div class="fields__top">
+      <app-select-type [form]="vm.form"> </app-select-type>
+      <app-select-quantity
         [form]="vm.form"
-        [regions]="vm.regions"
-      ></app-select-places>
+        [error]="!!vm.form.errors"
+      ></app-select-quantity>
     </div>
-  </form>
+    <app-select-places
+      [form]="vm.form"
+      [regions]="vm.regions"
+    ></app-select-places>
+  </div>
+</form>
 }

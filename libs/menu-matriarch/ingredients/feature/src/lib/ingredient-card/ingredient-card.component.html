@@ -1,26 +1,23 @@
 @if (state$ | async; as state) {
-  <ui-card class="ingredient">
-    @switch (state) {
-      @case ('default') {
-        <h4 class="name">
-          {{ name }}
-        </h4>
-        <ui-count class="count" type="dishes" [count]="dishIds.length"></ui-count>
-        <button core-button="tertiary" [uiOptionsMenuTrigger]="optionsMenu">
-          <fa-icon class="icon" [icon]="menuToggleIcon"></fa-icon>
-        </button>
-        <ui-options-menu #optionsMenu>
-          <li ui-options-menu-item (click)="onRename()">Rename</li>
-          <li ui-options-menu-item (click)="delete.emit()">Delete</li>
-        </ui-options-menu>
-      }
-      @case ('renaming') {
-        <ui-inline-name-edit
-          [name]="name"
-          (cancel)="onCancel()"
-          (save)="onRenameSave($event)"
-        ></ui-inline-name-edit>
-      }
-    }
-  </ui-card>
+<ui-card class="ingredient">
+  @switch (state) { @case ('default') {
+  <h4 class="name">
+    {{ name }}
+  </h4>
+  <ui-count class="count" type="dishes" [count]="dishIds.length"></ui-count>
+  <button core-button="tertiary" [uiOptionsMenuTrigger]="optionsMenu">
+    <fa-icon class="icon" [icon]="menuToggleIcon"></fa-icon>
+  </button>
+  <ui-options-menu #optionsMenu>
+    <li ui-options-menu-item (click)="onRename()">Rename</li>
+    <li ui-options-menu-item (click)="delete.emit()">Delete</li>
+  </ui-options-menu>
+  } @case ('renaming') {
+  <ui-inline-name-edit
+    [name]="name"
+    (cancel)="onCancel()"
+    (save)="onRenameSave($event)"
+  ></ui-inline-name-edit>
+  } }
+</ui-card>
 }

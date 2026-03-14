@@ -14,12 +14,12 @@ import { ConfigFormComponent } from './config-form/config-form.component';
   imports: [CommonModule, ConfigFormComponent],
   template: `
     @if (config$ | async; as config) {
-      <app-config-form
-        [config]="config"
-        (generate)="onGenerate($event)"
-      ></app-config-form>
+    <app-config-form
+      [config]="config"
+      (generate)="onGenerate($event)"
+    ></app-config-form>
     }
-    `,
+  `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ConfigComponent {

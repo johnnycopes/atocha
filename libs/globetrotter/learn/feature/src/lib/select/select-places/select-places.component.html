@@ -1,15 +1,15 @@
 <ui-small-caps header="Places" [formGroup]="form">
   @if (root) {
-    <core-counted-selection-tree
-      class="places"
-      formControlName="places"
-      [root]="root"
-      [getId]="getId"
-      [getChildren]="getChildren"
-      [getLeafCount]="getNumberOfCountries"
-      [template]="label"
-      size="large"
-    ></core-counted-selection-tree>
+  <core-counted-selection-tree
+    class="places"
+    formControlName="places"
+    [root]="root"
+    [getId]="getId"
+    [getChildren]="getChildren"
+    [getLeafCount]="getNumberOfCountries"
+    [template]="label"
+    size="large"
+  ></core-counted-selection-tree>
   }
 </ui-small-caps>
 
@@ -22,61 +22,57 @@
   let-onChange="onChange"
   let-selected="selected"
   let-total="total"
+>
+  @switch (level) { @case (0) {
+  <div class="top">
+    <div class="top__counter">
+      <span class="bold"> {{ selected }} / {{ total }} </span>
+      possible countries in the cards.
+    </div>
+    <div class="top__buttons">
+      <button
+        core-button="secondary"
+        class="top__select-all"
+        type="button"
+        (click)="selectAll()"
+      >
+        Select all
+      </button>
+      <button
+        core-button="secondary"
+        class="top__clear-all"
+        type="button"
+        (click)="clearAll()"
+      >
+        Clear all
+      </button>
+    </div>
+  </div>
+  } @case (1) {
+  <ui-icon
+    class="image"
+    [icon]="getId(node)"
+    [highlighted]="!!selected"
+  ></ui-icon>
+  <core-checkbox
+    class="checkbox region-checkbox"
+    [indeterminate]="indeterminate"
+    size="large"
+    [ngModel]="checked"
+    (ngModelChange)="onChange(node)"
   >
-  @switch (level) {
-    @case (0) {
-      <div class="top">
-        <div class="top__counter">
-          <span class="bold"> {{ selected }} / {{ total }} </span>
-          possible countries in the cards.
-        </div>
-        <div class="top__buttons">
-          <button
-            core-button="secondary"
-            class="top__select-all"
-            type="button"
-            (click)="selectAll()"
-            >
-            Select all
-          </button>
-          <button
-            core-button="secondary"
-            class="top__clear-all"
-            type="button"
-            (click)="clearAll()"
-            >
-            Clear all
-          </button>
-        </div>
-      </div>
-    }
-    @case (1) {
-      <ui-icon
-        class="image"
-        [icon]="getId(node)"
-        [highlighted]="!!selected"
-      ></ui-icon>
-      <core-checkbox
-        class="checkbox region-checkbox"
-        [indeterminate]="indeterminate"
-        size="large"
-        [ngModel]="checked"
-        (ngModelChange)="onChange(node)"
-        >
-        {{ this.getId(node) }}
-        ({{ this.getChildren(node).length ? selected + ' / ' + total : total }})
-      </core-checkbox>
-    }
-    @case (2) {
-      <core-checkbox
-        class="checkbox"
-        [indeterminate]="indeterminate"
-        size="large"
-        [ngModel]="checked"
-        (ngModelChange)="onChange(node)"
-        >
-        {{ getId(node) }} ({{ total }})
-      </core-checkbox>
-    }
-  }
+    {{ this.getId(node) }}
+    ({{ this.getChildren(node).length ? selected + ' / ' + total : total }})
+  </core-checkbox>
+  } @case (2) {
+  <core-checkbox
+    class="checkbox"
+    [indeterminate]="indeterminate"
+    size="large"
+    [ngModel]="checked"
+    (ngModelChange)="onChange(node)"
+  >
+    {{ getId(node) }} ({{ total }})
+  </core-checkbox>
+  } }
 </ng-template>

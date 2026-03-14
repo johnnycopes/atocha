@@ -1,60 +1,55 @@
 @if (dish$ | async; as dish) {
-  <ui-section>
-    <div class="ui-section__toolbar">
-      <button core-button="danger" class="button" (click)="onDelete()">
-        Delete
-      </button>
-      <a core-button="secondary" class="button" routerLink="edit"> Edit </a>
+<ui-section>
+  <div class="ui-section__toolbar">
+    <button core-button="danger" class="button" (click)="onDelete()">
+      Delete
+    </button>
+    <a core-button="secondary" class="button" routerLink="edit"> Edit </a>
+  </div>
+  <div class="ui-section__content">
+    <h2 class="name">
+      {{ dish.name }}
+    </h2>
+    @if (dish.description) {
+    <p class="description">
+      {{ dish.description }}
+    </p>
+    } @if (dish.link) {
+    <a [coreExternalLink]="dish.link">
+      {{ dish.link }}
+    </a>
+    }
+    <div class="details">
+      <p>{{ dish.type | uppercase }}</p>
+      <p>
+        Included {{ dish.usages }} {{ dish.usages | corePlural : 'time' }} in
+        {{ dish.menuIds.length }} different
+        {{ dish.menuIds.length | corePlural : 'menu' }}. Included in
+        {{ dish.mealIds.length }}
+        {{ dish.mealIds.length | corePlural : 'meal' }}.
+      </p>
     </div>
-    <div class="ui-section__content">
-      <h2 class="name">
-        {{ dish.name }}
-      </h2>
-      @if (dish.description) {
-        <p class="description">
-          {{ dish.description }}
-        </p>
-      }
-      @if (dish.link) {
-        <a [coreExternalLink]="dish.link">
-          {{ dish.link }}
-        </a>
-      }
-      <div class="details">
-        <p>{{ dish.type | uppercase }}</p>
-        <p>
-          Included {{ dish.usages }} {{ dish.usages | corePlural : 'time' }} in
-          {{ dish.menuIds.length }} different
-          {{ dish.menuIds.length | corePlural : 'menu' }}. Included in
-          {{ dish.mealIds.length }}
-          {{ dish.mealIds.length | corePlural : 'meal' }}.
-        </p>
-      </div>
-      @if (dish?.notes) {
-        <div class="details notes">
-          <div [innerHTML]="dish.notes | coreSafe : 'html'"></div>
-        </div>
-      }
-      @if (dish.ingredients.length) {
-        <div class="details">
-          <ul>
-            @for (
-              ingredient of dish.ingredients; track ingredient) {
-              <li
-                >
-                {{ ingredient.name }}
-              </li>
-            }
-          </ul>
-        </div>
-      }
-      @if (dish.tags.length) {
-        <div class="details">
-          <ui-tags-list [tags]="dish.tags">
-            <ui-tag *uiTagDef="let tag" [id]="tag.id" [name]="tag.name"></ui-tag>
-          </ui-tags-list>
-        </div>
-      }
+    @if (dish?.notes) {
+    <div class="details notes">
+      <div [innerHTML]="dish.notes | coreSafe : 'html'"></div>
     </div>
-  </ui-section>
+    } @if (dish.ingredients.length) {
+    <div class="details">
+      <ul>
+        @for ( ingredient of dish.ingredients; track ingredient) {
+        <li>
+          {{ ingredient.name }}
+        </li>
+        }
+      </ul>
+    </div>
+    } @if (dish.tags.length) {
+    <div class="details">
+      <ui-tags-list [tags]="dish.tags">
+        <ui-tag *uiTagDef="let tag" [id]="tag.id" [name]="tag.name"></ui-tag>
+      </ui-tags-list>
+    </div>
+    }
+  </div>
+</ui-section>
 }

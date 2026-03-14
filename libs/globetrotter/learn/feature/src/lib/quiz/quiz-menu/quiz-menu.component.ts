@@ -21,11 +21,7 @@ import { QuizType } from '@atocha/globetrotter/learn/util';
 
 @Component({
   selector: 'app-quiz-menu',
-  imports: [
-    ButtonComponent,
-    FixedSlideablePanelComponent,
-    IconComponent
-],
+  imports: [ButtonComponent, FixedSlideablePanelComponent, IconComponent],
   templateUrl: './quiz-menu.component.html',
   styleUrls: ['./quiz-menu.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

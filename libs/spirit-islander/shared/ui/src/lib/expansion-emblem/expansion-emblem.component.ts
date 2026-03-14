@@ -1,4 +1,3 @@
-
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 import { Expansion } from '@atocha/spirit-islander/shared/util';

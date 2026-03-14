@@ -1,10 +1,10 @@
 @if (tree.root) {
-  <core-tree
-    [root]="tree.root"
-    [getId]="tree.getId"
-    [getChildren]="tree.getChildren"
-    [template]="nodeTemplate"
-  ></core-tree>
+<core-tree
+  [root]="tree.root"
+  [getId]="tree.getId"
+  [getChildren]="tree.getChildren"
+  [template]="nodeTemplate"
+></core-tree>
 }
 
 <ng-template #nodeTemplate let-node let-level="level">

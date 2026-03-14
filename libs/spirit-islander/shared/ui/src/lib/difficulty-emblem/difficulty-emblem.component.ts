@@ -1,4 +1,3 @@
-
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 import { Difficulty } from '@atocha/spirit-islander/shared/util';

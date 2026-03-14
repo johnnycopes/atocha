@@ -28,48 +28,48 @@ import {
       ui-page-content
       name="Settings"
       description="Options that modify how the app works"
-      >
+    >
       @if (settings$ | async; as settings) {
-        <div class="options">
-          <ui-card>
-            <h3 ui-card-header>
-              <core-checkbox
-                [ngModel]="settings['randomThematicBoards']"
-                (ngModelChange)="updateSettings({ randomThematicBoards: $event })"
-                >
-                Random thematic boards
-              </core-checkbox>
-            </h3>
-            <p ui-card-content>
-              When playing the thematic map, specific boards are normally assigned
-              to each player (base game rulebook, page 23). When enabled, this
-              option makes it so thematic boards are instead assigned at random.
-            </p>
-          </ui-card>
-          <ui-card>
-            <h3 ui-card-header>
-              <core-checkbox
-                [ngModel]="settings['allowBEAndDFBoards']"
-                (ngModelChange)="updateSettings({ allowBEAndDFBoards: $event })"
-                >
-                Allow B/E and D/F board pairings
-              </core-checkbox>
-            </h3>
-            <p ui-card-content>
-              The Jagged Earth expansion introduces two new island boards, E and
-              F, which can skew difficulty in games with fewer than 4 players
-              (Jagged Earth rulebook, page 6). When disabled, this option prevents
-              boards B/E and D/F from being paired together in two player games.
-              <br />
-              <br />
-              <em>NOTE:</em> Disabling this option will select all boards in order
-              to avoid potential conflicts.
-            </p>
-          </ui-card>
-        </div>
+      <div class="options">
+        <ui-card>
+          <h3 ui-card-header>
+            <core-checkbox
+              [ngModel]="settings['randomThematicBoards']"
+              (ngModelChange)="updateSettings({ randomThematicBoards: $event })"
+            >
+              Random thematic boards
+            </core-checkbox>
+          </h3>
+          <p ui-card-content>
+            When playing the thematic map, specific boards are normally assigned
+            to each player (base game rulebook, page 23). When enabled, this
+            option makes it so thematic boards are instead assigned at random.
+          </p>
+        </ui-card>
+        <ui-card>
+          <h3 ui-card-header>
+            <core-checkbox
+              [ngModel]="settings['allowBEAndDFBoards']"
+              (ngModelChange)="updateSettings({ allowBEAndDFBoards: $event })"
+            >
+              Allow B/E and D/F board pairings
+            </core-checkbox>
+          </h3>
+          <p ui-card-content>
+            The Jagged Earth expansion introduces two new island boards, E and
+            F, which can skew difficulty in games with fewer than 4 players
+            (Jagged Earth rulebook, page 6). When disabled, this option prevents
+            boards B/E and D/F from being paired together in two player games.
+            <br />
+            <br />
+            <em>NOTE:</em> Disabling this option will select all boards in order
+            to avoid potential conflicts.
+          </p>
+        </ui-card>
+      </div>
       }
     </ui-card-group>
-    `,
+  `,
   styles: [
     `
       .ui-card-group-contents.settings {

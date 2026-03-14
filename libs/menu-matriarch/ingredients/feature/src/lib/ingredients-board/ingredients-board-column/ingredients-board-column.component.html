@@ -1,57 +1,50 @@
 @if (state$ | async; as state) {
-  <div class="header">
-    @if (state === 'renaming') {
-      <ui-inline-name-edit
-        class="rename-type-form"
-        [name]="name"
-        (cancel)="onCancel()"
-        (save)="onRenameSave($event)"
-      ></ui-inline-name-edit>
-    } @else {
-      <h2 class="name">{{ name }} ({{ ingredients.length }})</h2>
-      <button core-button="tertiary" [uiOptionsMenuTrigger]="optionsMenu">
-        <fa-icon class="icon" [icon]="menuToggleIcon"></fa-icon>
-      </button>
-      <ui-options-menu #optionsMenu>
-        <li ui-options-menu-item (click)="onAddNewIngredient()">
-          New Ingredient
-        </li>
-        <li ui-options-menu-item (click)="onRename()">Rename</li>
-        @if (!ingredients.length) {
-          <li
-            ui-options-menu-item
-            (click)="delete.emit()"
-            >
-            Delete
-          </li>
-        }
-      </ui-options-menu>
+<div class="header">
+  @if (state === 'renaming') {
+  <ui-inline-name-edit
+    class="rename-type-form"
+    [name]="name"
+    (cancel)="onCancel()"
+    (save)="onRenameSave($event)"
+  ></ui-inline-name-edit>
+  } @else {
+  <h2 class="name">{{ name }} ({{ ingredients.length }})</h2>
+  <button core-button="tertiary" [uiOptionsMenuTrigger]="optionsMenu">
+    <fa-icon class="icon" [icon]="menuToggleIcon"></fa-icon>
+  </button>
+  <ui-options-menu #optionsMenu>
+    <li ui-options-menu-item (click)="onAddNewIngredient()">New Ingredient</li>
+    <li ui-options-menu-item (click)="onRename()">Rename</li>
+    @if (!ingredients.length) {
+    <li ui-options-menu-item (click)="delete.emit()">Delete</li>
     }
-  </div>
-  @if (state === 'addingIngredient') {
-    <ui-inline-name-edit
-      class="add-ingredient-form"
-      (cancel)="onCancel()"
-      (save)="onAddIngredientSave($event)"
-    ></ui-inline-name-edit>
+  </ui-options-menu>
   }
-  <ul
-    class="ingredients"
-    cdkDropList
-    [cdkDropListData]="ingredients"
-    (cdkDropListDropped)="onDrop($event)"
-    >
-    @for (ingredient of ingredients; track trackByFn($index, ingredient)) {
-      <li
-        app-ingredient-card
-        class="ingredient"
-        [name]="ingredient.name"
-        [dishIds]="ingredient.dishIds"
-        cdkDrag
-        [cdkDragData]="ingredient"
-        (rename)="ingredientRename.emit({ ingredient: ingredient, name: $event })"
-        (delete)="ingredientDelete.emit(ingredient)"
-      ></li>
-    }
-  </ul>
+</div>
+@if (state === 'addingIngredient') {
+<ui-inline-name-edit
+  class="add-ingredient-form"
+  (cancel)="onCancel()"
+  (save)="onAddIngredientSave($event)"
+></ui-inline-name-edit>
+}
+<ul
+  class="ingredients"
+  cdkDropList
+  [cdkDropListData]="ingredients"
+  (cdkDropListDropped)="onDrop($event)"
+>
+  @for (ingredient of ingredients; track trackByFn($index, ingredient)) {
+  <li
+    app-ingredient-card
+    class="ingredient"
+    [name]="ingredient.name"
+    [dishIds]="ingredient.dishIds"
+    cdkDrag
+    [cdkDragData]="ingredient"
+    (rename)="ingredientRename.emit({ ingredient: ingredient, name: $event })"
+    (delete)="ingredientDelete.emit(ingredient)"
+  ></li>
+  }
+</ul>
 }

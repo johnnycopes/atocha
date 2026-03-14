@@ -5,7 +5,6 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 
-
 import { SnakeCasePipe } from '@atocha/core/ui';
 
 @Component({

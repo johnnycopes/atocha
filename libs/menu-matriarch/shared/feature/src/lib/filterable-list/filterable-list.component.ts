@@ -1,4 +1,3 @@
-
 import {
   Component,
   ChangeDetectionStrategy,
@@ -29,8 +28,8 @@ import { FiltersComponent } from './filters/filters.component';
     PluralPipe,
     InputComponent,
     SearchInputComponent,
-    SectionComponent
-],
+    SectionComponent,
+  ],
   templateUrl: './filterable-list.component.html',
   styleUrls: ['./filterable-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

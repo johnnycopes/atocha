@@ -10,16 +10,16 @@
     [usages]="usages"
   ></ui-dish-summary>
   @if (entryModels.length) {
-    <div class="schedule">
-      @for (model of entryModels; track trackByFn($index, model)) {
-        <core-checkbox
-          class="checkbox"
-          [ngModel]="model.checked"
-          (ngModelChange)="dayChange.emit({ id, day: model.day, selected: $event })"
-          >
-          {{ model.day | slice : 0 : 3 }}
-        </core-checkbox>
-      }
-    </div>
+  <div class="schedule">
+    @for (model of entryModels; track trackByFn($index, model)) {
+    <core-checkbox
+      class="checkbox"
+      [ngModel]="model.checked"
+      (ngModelChange)="dayChange.emit({ id, day: model.day, selected: $event })"
+    >
+      {{ model.day | slice : 0 : 3 }}
+    </core-checkbox>
+    }
+  </div>
   }
 </ui-card>

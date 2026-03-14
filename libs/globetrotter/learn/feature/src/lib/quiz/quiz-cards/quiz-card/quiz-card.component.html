@@ -4,22 +4,21 @@
   [disabled]="disabled"
   (flipped)="onFlip()"
   (animationFinished)="onAnimationFinish($event)"
-  >
+>
   @if (template?.front; as front) {
-    <ng-container app-flip-card-front>
-      <ng-container *ngTemplateOutlet="front"></ng-container>
-    </ng-container>
-  }
-  @if (template?.back; as back) {
-    <ng-container app-flip-card-back>
-      <ng-container *ngTemplateOutlet="back"></ng-container>
-    </ng-container>
+  <ng-container app-flip-card-front>
+    <ng-container *ngTemplateOutlet="front"></ng-container>
+  </ng-container>
+  } @if (template?.back; as back) {
+  <ng-container app-flip-card-back>
+    <ng-container *ngTemplateOutlet="back"></ng-container>
+  </ng-container>
   }
 </ui-flip-card>
 
 <ng-template #flagTemplate>
   @if (country) {
-    <ui-flag [src]="country.flag" [name]="country.name"></ui-flag>
+  <ui-flag [src]="country.flag" [name]="country.name"></ui-flag>
   }
 </ng-template>
 
@@ -27,7 +26,7 @@
   <ng-container
     [ngTemplateOutlet]="nameTemplate"
     [ngTemplateOutletContext]="{ $implicit: country?.name }"
-    >
+  >
   </ng-container>
 </ng-template>
 
@@ -35,7 +34,7 @@
   <ng-container
     [ngTemplateOutlet]="nameTemplate"
     [ngTemplateOutletContext]="{ $implicit: country?.capital }"
-    >
+  >
   </ng-container>
 </ng-template>
 

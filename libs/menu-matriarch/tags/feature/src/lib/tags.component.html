@@ -1,36 +1,36 @@
 @if (tags$ | async; as tags) {
-  <ui-section>
-    <div class="ui-section__toolbar">
-      <h2 class="title">Tags ({{ tags.length }})</h2>
-      <button
-        core-button
-        [disabled]="(adding$ | async) ?? false"
-        (click)="startAdd$.next()"
-        >
-        New Tag
-      </button>
-      @if (adding$ | async) {
-        <ui-inline-name-edit
-          class="form"
-          (cancel)="finishAdd$.next()"
-          (save)="onNewTagSave($event)"
-        ></ui-inline-name-edit>
-      }
-    </div>
-    <ul class="ui-section__content tags">
-      @for (tag of tags; track trackByFn($index, tag)) {
-        <li
-          app-tag-card
-          [id]="tag.id"
-          [name]="tag.name"
-          [mealIds]="tag.mealIds"
-          [dishIds]="tag.dishIds"
-          (edit)="onTagEdit(tag, $event)"
-          (delete)="onTagDelete(tag)"
-          >
-          {{ tag.name }}
-        </li>
-      }
-    </ul>
-  </ui-section>
+<ui-section>
+  <div class="ui-section__toolbar">
+    <h2 class="title">Tags ({{ tags.length }})</h2>
+    <button
+      core-button
+      [disabled]="(adding$ | async) ?? false"
+      (click)="startAdd$.next()"
+    >
+      New Tag
+    </button>
+    @if (adding$ | async) {
+    <ui-inline-name-edit
+      class="form"
+      (cancel)="finishAdd$.next()"
+      (save)="onNewTagSave($event)"
+    ></ui-inline-name-edit>
+    }
+  </div>
+  <ul class="ui-section__content tags">
+    @for (tag of tags; track trackByFn($index, tag)) {
+    <li
+      app-tag-card
+      [id]="tag.id"
+      [name]="tag.name"
+      [mealIds]="tag.mealIds"
+      [dishIds]="tag.dishIds"
+      (edit)="onTagEdit(tag, $event)"
+      (delete)="onTagDelete(tag)"
+    >
+      {{ tag.name }}
+    </li>
+    }
+  </ul>
+</ui-section>
 }

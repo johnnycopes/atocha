@@ -1,4 +1,3 @@
-
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
@@ -11,11 +10,11 @@ import { getDays } from '@atocha/menu-matriarch/shared/util';
   imports: [FormsModule],
   template: `
     @for (day of days; track trackByFn($index, day)) {
-      <option [ngValue]="day">
-        {{ day }}
-      </option>
+    <option [ngValue]="day">
+      {{ day }}
+    </option>
     }
-    `,
+  `,
 })
 export class SelectDayComponent {
   readonly days = getDays();
