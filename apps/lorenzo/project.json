@@ -4,21 +4,35 @@
   "projectType": "application",
   "sourceRoot": "apps/lorenzo/src",
   "prefix": "app",
-  "tags": ["scope:lorenzo", "type:app"],
+  "tags": [
+    "scope:lorenzo",
+    "type:app"
+  ],
   "targets": {
     "build": {
-      "executor": "@angular-devkit/build-angular:browser",
-      "outputs": ["{options.outputPath}"],
+      "executor": "@angular/build:application",
+      "outputs": [
+        "{options.outputPath.base}"
+      ],
       "options": {
-        "outputPath": "dist/apps/lorenzo",
+        "outputPath": {
+          "base": "dist/apps/lorenzo",
+          "browser": ""
+        },
         "index": "apps/lorenzo/src/index.html",
-        "main": "apps/lorenzo/src/main.ts",
-        "polyfills": "apps/lorenzo/src/polyfills.ts",
+        "polyfills": [
+          "apps/lorenzo/src/polyfills.ts"
+        ],
         "tsConfig": "apps/lorenzo/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
-        "assets": ["apps/lorenzo/src/assets"],
-        "styles": ["apps/lorenzo/src/styles.scss"],
-        "scripts": []
+        "assets": [
+          "apps/lorenzo/src/assets"
+        ],
+        "styles": [
+          "apps/lorenzo/src/styles.scss"
+        ],
+        "scripts": [],
+        "browser": "apps/lorenzo/src/main.ts"
       },
       "configurations": {
         "production": {
@@ -43,9 +57,7 @@
           "outputHashing": "all"
         },
         "development": {
-          "buildOptimizer": false,
           "optimization": false,
-          "vendorChunk": true,
           "extractLicenses": false,
           "sourceMap": true,
           "namedChunks": true
@@ -80,7 +92,9 @@
     },
     "test": {
       "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/apps/lorenzo"],
+      "outputs": [
+        "{workspaceRoot}/coverage/apps/lorenzo"
+      ],
       "options": {
         "jestConfig": "apps/lorenzo/jest.config.ts",
         "tsConfig": "apps/lorenzo/tsconfig.spec.json"

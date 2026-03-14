@@ -4,24 +4,40 @@
   "projectType": "application",
   "sourceRoot": "apps/menu-matriarch/src",
   "prefix": "app",
-  "tags": ["scope:menu-matriarch", "type:app"],
+  "tags": [
+    "scope:menu-matriarch",
+    "type:app"
+  ],
   "targets": {
     "build": {
-      "executor": "@angular-devkit/build-angular:browser",
-      "outputs": ["{options.outputPath}"],
+      "executor": "@angular/build:application",
+      "outputs": [
+        "{options.outputPath.base}"
+      ],
       "options": {
-        "outputPath": "dist/apps/menu-matriarch",
+        "outputPath": {
+          "base": "dist/apps/menu-matriarch",
+          "browser": ""
+        },
         "index": "apps/menu-matriarch/src/index.html",
-        "main": "apps/menu-matriarch/src/main.ts",
-        "polyfills": "apps/menu-matriarch/src/polyfills.ts",
+        "polyfills": [
+          "apps/menu-matriarch/src/polyfills.ts"
+        ],
         "tsConfig": "apps/menu-matriarch/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
-        "assets": ["apps/menu-matriarch/src/assets"],
-        "styles": ["apps/menu-matriarch/src/styles.scss"],
+        "assets": [
+          "apps/menu-matriarch/src/assets"
+        ],
+        "styles": [
+          "apps/menu-matriarch/src/styles.scss"
+        ],
         "stylePreprocessorOptions": {
-          "includePaths": ["apps/menu-matriarch/src/scss"]
+          "includePaths": [
+            "apps/menu-matriarch/src/scss"
+          ]
         },
-        "scripts": []
+        "scripts": [],
+        "browser": "apps/menu-matriarch/src/main.ts"
       },
       "configurations": {
         "production": {
@@ -46,9 +62,7 @@
           "outputHashing": "all"
         },
         "development": {
-          "buildOptimizer": false,
           "optimization": false,
-          "vendorChunk": true,
           "extractLicenses": false,
           "sourceMap": true,
           "namedChunks": true
@@ -83,7 +97,9 @@
     },
     "test": {
       "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/apps/menu-matriarch"],
+      "outputs": [
+        "{workspaceRoot}/coverage/apps/menu-matriarch"
+      ],
       "options": {
         "jestConfig": "apps/menu-matriarch/jest.config.ts",
         "tsConfig": "apps/menu-matriarch/tsconfig.spec.json"

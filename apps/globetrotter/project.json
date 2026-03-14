@@ -4,27 +4,41 @@
   "projectType": "application",
   "sourceRoot": "apps/globetrotter/src",
   "prefix": "app",
-  "tags": ["scope:globetrotter", "type:app"],
+  "tags": [
+    "scope:globetrotter",
+    "type:app"
+  ],
   "targets": {
     "build": {
-      "executor": "@angular-devkit/build-angular:browser",
-      "outputs": ["{options.outputPath}"],
+      "executor": "@angular/build:application",
+      "outputs": [
+        "{options.outputPath.base}"
+      ],
       "options": {
-        "outputPath": "dist/apps/globetrotter",
+        "outputPath": {
+          "base": "dist/apps/globetrotter",
+          "browser": ""
+        },
         "index": "apps/globetrotter/src/index.html",
-        "main": "apps/globetrotter/src/main.ts",
-        "polyfills": "apps/globetrotter/src/polyfills.ts",
+        "polyfills": [
+          "apps/globetrotter/src/polyfills.ts"
+        ],
         "tsConfig": "apps/globetrotter/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
-        "assets": ["apps/globetrotter/src/assets"],
+        "assets": [
+          "apps/globetrotter/src/assets"
+        ],
         "styles": [
           "apps/globetrotter/src/scss/reset.scss",
           "apps/globetrotter/src/scss/styles.scss"
         ],
         "stylePreprocessorOptions": {
-          "includePaths": ["apps/globetrotter/src/scss"]
+          "includePaths": [
+            "apps/globetrotter/src/scss"
+          ]
         },
-        "scripts": []
+        "scripts": [],
+        "browser": "apps/globetrotter/src/main.ts"
       },
       "configurations": {
         "production": {
@@ -49,9 +63,7 @@
           "outputHashing": "all"
         },
         "development": {
-          "buildOptimizer": false,
           "optimization": false,
-          "vendorChunk": true,
           "extractLicenses": false,
           "sourceMap": true,
           "namedChunks": true
@@ -86,7 +98,9 @@
     },
     "test": {
       "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/apps/globetrotter"],
+      "outputs": [
+        "{workspaceRoot}/coverage/apps/globetrotter"
+      ],
       "options": {
         "jestConfig": "apps/globetrotter/jest.config.ts",
         "tsConfig": "apps/globetrotter/tsconfig.spec.json"
