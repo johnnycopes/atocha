@@ -4,33 +4,22 @@
   "projectType": "application",
   "sourceRoot": "apps/spirit-islander/src",
   "prefix": "app",
-  "tags": [
-    "scope:spirit-islander",
-    "type:app"
-  ],
+  "tags": ["scope:spirit-islander", "type:app"],
   "targets": {
     "build": {
       "executor": "@angular/build:application",
-      "outputs": [
-        "{options.outputPath.base}"
-      ],
+      "outputs": ["{options.outputPath.base}"],
       "options": {
         "outputPath": {
           "base": "dist/apps/spirit-islander",
           "browser": ""
         },
         "index": "apps/spirit-islander/src/index.html",
-        "polyfills": [
-          "apps/spirit-islander/src/polyfills.ts"
-        ],
+        "polyfills": ["apps/spirit-islander/src/polyfills.ts"],
         "tsConfig": "apps/spirit-islander/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
-        "assets": [
-          "apps/spirit-islander/src/assets"
-        ],
-        "styles": [
-          "apps/spirit-islander/src/styles.scss"
-        ],
+        "assets": ["apps/spirit-islander/src/assets"],
+        "styles": ["apps/spirit-islander/src/styles.scss"],
         "scripts": [],
         "browser": "apps/spirit-islander/src/main.ts"
       },
@@ -92,9 +81,7 @@
     },
     "test": {
       "executor": "@nx/jest:jest",
-      "outputs": [
-        "{workspaceRoot}/coverage/apps/spirit-islander"
-      ],
+      "outputs": ["{workspaceRoot}/coverage/apps/spirit-islander"],
       "options": {
         "jestConfig": "apps/spirit-islander/jest.config.ts",
         "tsConfig": "apps/spirit-islander/tsconfig.spec.json"

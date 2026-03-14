@@ -4,37 +4,24 @@
   "projectType": "application",
   "sourceRoot": "apps/menu-matriarch/src",
   "prefix": "app",
-  "tags": [
-    "scope:menu-matriarch",
-    "type:app"
-  ],
+  "tags": ["scope:menu-matriarch", "type:app"],
   "targets": {
     "build": {
       "executor": "@angular/build:application",
-      "outputs": [
-        "{options.outputPath.base}"
-      ],
+      "outputs": ["{options.outputPath.base}"],
       "options": {
         "outputPath": {
           "base": "dist/apps/menu-matriarch",
           "browser": ""
         },
         "index": "apps/menu-matriarch/src/index.html",
-        "polyfills": [
-          "apps/menu-matriarch/src/polyfills.ts"
-        ],
+        "polyfills": ["apps/menu-matriarch/src/polyfills.ts"],
         "tsConfig": "apps/menu-matriarch/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
-        "assets": [
-          "apps/menu-matriarch/src/assets"
-        ],
-        "styles": [
-          "apps/menu-matriarch/src/styles.scss"
-        ],
+        "assets": ["apps/menu-matriarch/src/assets"],
+        "styles": ["apps/menu-matriarch/src/styles.scss"],
         "stylePreprocessorOptions": {
-          "includePaths": [
-            "apps/menu-matriarch/src/scss"
-          ]
+          "includePaths": ["apps/menu-matriarch/src/scss"]
         },
         "scripts": [],
         "browser": "apps/menu-matriarch/src/main.ts"
@@ -97,9 +84,7 @@
     },
     "test": {
       "executor": "@nx/jest:jest",
-      "outputs": [
-        "{workspaceRoot}/coverage/apps/menu-matriarch"
-      ],
+      "outputs": ["{workspaceRoot}/coverage/apps/menu-matriarch"],
       "options": {
         "jestConfig": "apps/menu-matriarch/jest.config.ts",
         "tsConfig": "apps/menu-matriarch/tsconfig.spec.json"
