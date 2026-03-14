@@ -1,10 +1,14 @@
-import { Directive, Input, TemplateRef, ViewContainerRef } from '@angular/core';
+import { Directive, Input, TemplateRef, ViewContainerRef, inject } from '@angular/core';
 
 @Directive({
   standalone: true,
   selector: '[appUnless]',
 })
 export class UnlessDirective<T> {
+  private _templateRef = inject<TemplateRef<T>>(TemplateRef);
+  private _viewContainer = inject(ViewContainerRef);
+  private _hasView = false;
+
   @Input()
   set appUnless(condition: boolean) {
     if (!condition && !this._hasView) {
@@ -15,10 +19,4 @@ export class UnlessDirective<T> {
       this._hasView = false;
     }
   }
-  private _hasView = false;
-
-  constructor(
-    private _templateRef: TemplateRef<T>,
-    private _viewContainer: ViewContainerRef
-  ) {}
 }

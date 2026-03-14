@@ -1,5 +1,5 @@
 <div class="labels">
-  <ng-container *ngIf="steps.length; else noSteps">
+  @if (steps.length) {
     <p class="labels__start">
       <ng-container
         *ngTemplateOutlet="
@@ -18,35 +18,36 @@
       >
       </ng-container>
     </p>
-  </ng-container>
-  <ng-template #noSteps>
+  } @else {
     <p class="labels__unavailable">Range selection unavailable</p>
-  </ng-template>
+  }
 </div>
 <div class="slider-container" #container>
   <div class="line" [class]="{ 'line--disabled': !steps.length }"></div>
-  <div class="track" *ngIf="steps.length">
-    <div
-      class="marker start-marker"
-      [class.marker--elevated]="elevatedMarker === 'start'"
-      [style.left.%]="(startIndex / (steps.length - 1)) * 100"
-      cdkDrag
-      cdkDragBoundary=".track"
-      [cdkDragFreeDragPosition]="baseDragPosition"
-      (cdkDragMoved)="updateStart($event)"
-      (cdkDragReleased)="onDragRelease()"
-    ></div>
-    <div
-      class="marker end-marker"
-      [class.marker--elevated]="elevatedMarker === 'end'"
-      [style.left.%]="(endIndex / (steps.length - 1)) * 100"
-      cdkDrag
-      cdkDragBoundary=".track"
-      [cdkDragFreeDragPosition]="baseDragPosition"
-      (cdkDragMoved)="updateEnd($event)"
-      (cdkDragReleased)="onDragRelease()"
-    ></div>
-  </div>
+  @if (steps.length) {
+    <div class="track">
+      <div
+        class="marker start-marker"
+        [class.marker--elevated]="elevatedMarker === 'start'"
+        [style.left.%]="(startIndex / (steps.length - 1)) * 100"
+        cdkDrag
+        cdkDragBoundary=".track"
+        [cdkDragFreeDragPosition]="baseDragPosition"
+        (cdkDragMoved)="updateStart($event)"
+        (cdkDragReleased)="onDragRelease()"
+      ></div>
+      <div
+        class="marker end-marker"
+        [class.marker--elevated]="elevatedMarker === 'end'"
+        [style.left.%]="(endIndex / (steps.length - 1)) * 100"
+        cdkDrag
+        cdkDragBoundary=".track"
+        [cdkDragFreeDragPosition]="baseDragPosition"
+        (cdkDragMoved)="updateEnd($event)"
+        (cdkDragReleased)="onDragRelease()"
+      ></div>
+    </div>
+  }
 </div>
 
 <ng-template #defaultTemplate let-value>

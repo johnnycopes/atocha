@@ -1,4 +1,4 @@
-import { Directive, TemplateRef } from '@angular/core';
+import { Directive, TemplateRef, inject } from '@angular/core';
 
 import { Item } from './item.interface';
 
@@ -11,5 +11,5 @@ export interface ListItemContext {
   selector: '[appListItemDef]',
 })
 export class ListItemDefDirective {
-  constructor(public template: TemplateRef<ListItemContext>) {}
+  template = inject<TemplateRef<ListItemContext>>(TemplateRef);
 }
