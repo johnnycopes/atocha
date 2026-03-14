@@ -1,7 +1,5 @@
-import { dirname } from 'node:path';
-import { createRequire } from 'node:module';
+const { dirname } = require('path');
 
-const require = createRequire(import.meta.url);
 const config = {
   stories: ['../src/lib/**/*.@(mdx|stories.@(js|jsx|ts|tsx))'],
   addons: [
@@ -15,7 +13,7 @@ const config = {
   },
 };
 
-export default config;
+module.exports = config;
 
 function getAbsolutePath(value) {
   return dirname(require.resolve(`${value}/package.json`));
