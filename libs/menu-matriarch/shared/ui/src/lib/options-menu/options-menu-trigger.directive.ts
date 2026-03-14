@@ -4,6 +4,7 @@ import {
   Input,
   OnDestroy,
   ViewContainerRef,
+  inject,
 } from '@angular/core';
 import { Overlay, OverlayRef } from '@angular/cdk/overlay';
 import { TemplatePortal } from '@angular/cdk/portal';
@@ -16,15 +17,13 @@ import { OptionsMenuComponent } from './options-menu.component';
   selector: '[uiOptionsMenuTrigger]',
 })
 export class OptionsMenuTriggerDirective implements AfterViewInit, OnDestroy {
+  private _viewContainerRef = inject(ViewContainerRef);
+  private _overlay = inject(Overlay);
+
   @Input('uiOptionsMenuTrigger') menu: OptionsMenuComponent | undefined;
   private _templatePortal: TemplatePortal<unknown> | undefined;
   private _overlayRef: OverlayRef | undefined;
   private _destroy$ = new Subject<void>();
-
-  constructor(
-    private _viewContainerRef: ViewContainerRef,
-    private _overlay: Overlay
-  ) {}
 
   ngAfterViewInit(): void {
     if (this.menu?.templateRef) {

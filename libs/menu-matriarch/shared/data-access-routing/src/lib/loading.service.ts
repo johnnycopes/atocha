@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 
 import { RouterService } from './router.service';
 
@@ -6,7 +6,7 @@ import { RouterService } from './router.service';
   providedIn: 'root',
 })
 export class LoadingService {
-  loading$ = this._routerService.loading$;
+  private _routerService = inject(RouterService);
 
-  constructor(private _routerService: RouterService) {}
+  loading$ = this._routerService.loading$;
 }

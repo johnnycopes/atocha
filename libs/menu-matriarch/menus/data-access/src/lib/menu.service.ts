@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Observable, combineLatest, concatMap, first, map, of } from 'rxjs';
 
 import { AuthService } from '@atocha/firebase/data-access';
@@ -14,15 +14,13 @@ import { mapMenuDtoToMenu } from './internal/map-menu-dto-to-menu';
   providedIn: 'root',
 })
 export class MenuService implements IEntityService<Menu, EditableMenuData> {
-  activeMenuId$ = this._routerService.activeMenuId$;
+  private _authService = inject(AuthService);
+  private _dishService = inject(DishService);
+  private _menuDtoService = inject(MenuDtoService);
+  private _routerService = inject(RouterService);
+  private _userService = inject(UserService);
 
-  constructor(
-    private _authService: AuthService,
-    private _dishService: DishService,
-    private _menuDtoService: MenuDtoService,
-    private _routerService: RouterService,
-    private _userService: UserService
-  ) {}
+  activeMenuId$ = this._routerService.activeMenuId$;
 
   getOne(id: string): Observable<Menu | undefined> {
     return combineLatest([

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { first } from 'rxjs';
 
@@ -15,12 +15,10 @@ import { SeedDataService } from '@atocha/menu-matriarch/shell/data-access';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class WelcomeComponent {
-  constructor(
-    private _router: Router,
-    private _authService: AuthService,
-    private _plannerService: PlannerService,
-    private _seedDataService: SeedDataService
-  ) {}
+  private _router = inject(Router);
+  private _authService = inject(AuthService);
+  private _plannerService = inject(PlannerService);
+  private _seedDataService = inject(SeedDataService);
 
   async login(): Promise<void> {
     const user = await this._authService.login().catch(console.error);

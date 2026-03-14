@@ -5,6 +5,7 @@ import {
   OnDestroy,
   OnInit,
   Output,
+  inject,
 } from '@angular/core';
 import { Subject, fromEvent, filter, takeUntil } from 'rxjs';
 
@@ -13,12 +14,12 @@ import { Subject, fromEvent, filter, takeUntil } from 'rxjs';
   selector: '[appClickOutside]',
 })
 export class ClickOutsideDirective implements OnInit, OnDestroy {
+  private _elementRef = inject(ElementRef);
+
   @Output('appClickOutside') clickOutside: EventEmitter<void> =
     new EventEmitter();
   private _animationFrame: number | undefined;
   private _destroy$ = new Subject<void>();
-
-  constructor(private _elementRef: ElementRef) {}
 
   ngOnInit(): void {
     // Wait before subscribing to void emitting event in case the host uses *ngIf

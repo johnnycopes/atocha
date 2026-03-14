@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { concatMap, first, of, switchMap } from 'rxjs';
 
@@ -36,6 +36,10 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DishDetailsComponent {
+  private _route = inject(ActivatedRoute);
+  private _router = inject(Router);
+  private _dishService = inject(DishService);
+
   dish$ = this._route.params.pipe(
     switchMap(({ id }) => {
       if (!id) {
@@ -44,12 +48,6 @@ export class DishDetailsComponent {
       return this._dishService.getOne(id);
     })
   );
-
-  constructor(
-    private _route: ActivatedRoute,
-    private _router: Router,
-    private _dishService: DishService
-  ) {}
 
   onDelete(): void {
     this.dish$

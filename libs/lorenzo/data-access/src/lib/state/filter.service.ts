@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { tap } from 'rxjs';
 
 import { LocalStorageService, State } from '@atocha/core/data-access';
@@ -8,6 +8,8 @@ import { View } from '@atocha/lorenzo/util';
   providedIn: 'root',
 })
 export class FilterService {
+  private _localStorageService = inject(LocalStorageService);
+
   private readonly _key = 'VIEW';
   private readonly _filters = new State({
     view: this._getView(),
@@ -18,8 +20,6 @@ export class FilterService {
     .getProp('view')
     .pipe(tap((view) => this._setView(view)));
   text$ = this._filters.getProp('text');
-
-  constructor(private _localStorageService: LocalStorageService) {}
 
   updateView(view: View): void {
     this._filters.updateProp('view', view);

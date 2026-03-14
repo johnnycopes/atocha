@@ -1,4 +1,4 @@
-import { Directive, TemplateRef } from '@angular/core';
+import { Directive, TemplateRef, inject } from '@angular/core';
 
 import { Dish } from '@atocha/menu-matriarch/shared/util';
 
@@ -12,5 +12,5 @@ export interface DishContext {
   selector: '[appDishDef]',
 })
 export class DishDefDirective {
-  constructor(public template: TemplateRef<DishContext>) {}
+  template = inject<TemplateRef<DishContext>>(TemplateRef);
 }

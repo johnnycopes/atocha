@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { ButtonComponent } from '@atocha/core/ui';
@@ -14,7 +14,7 @@ import { IconComponent, fadeIn } from '@atocha/globetrotter/shared/ui';
   animations: [fadeIn],
 })
 export class HomeComponent {
-  constructor(private _router: Router) {}
+  private _router = inject(Router);
 
   async onClick(): Promise<void> {
     await this._router.navigate([ROUTES.learn]);

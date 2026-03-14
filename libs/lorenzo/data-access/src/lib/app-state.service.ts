@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 
 import { View } from '@atocha/lorenzo/util';
 import { CsvService } from './state/csv.service';
@@ -9,15 +9,13 @@ import { PositionService } from './state/position.service';
   providedIn: 'root',
 })
 export class AppStateService {
+  private _csvService = inject(CsvService);
+  private _filterService = inject(FilterService);
+  private _positionService = inject(PositionService);
+
   view$ = this._filterService.view$;
   text$ = this._filterService.text$;
   position$ = this._positionService.position$;
-
-  constructor(
-    private _csvService: CsvService,
-    private _filterService: FilterService,
-    private _positionService: PositionService
-  ) {}
 
   updateView(view: View): void {
     this._filterService.updateView(view);

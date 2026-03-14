@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { tap } from 'rxjs';
 
 import { LocalStorageService, State } from '@atocha/core/data-access';
@@ -8,6 +8,8 @@ import { Card } from '@atocha/lorenzo/util';
   providedIn: 'root',
 })
 export class VisibilityService {
+  private _localStorageService = inject(LocalStorageService);
+
   private readonly _keys: Record<Card, string> = {
     development: 'DEVELOPMENT_VISIBLE',
     family: 'FAMILY_VISIBLE',
@@ -26,8 +28,6 @@ export class VisibilityService {
       this._setVisibility(this._keys.leader, leader);
     })
   );
-
-  constructor(private _localStorageService: LocalStorageService) {}
 
   toggleVisibility(type: Card): void {
     this._visibility.transformProp(type, (visibility) => !visibility);

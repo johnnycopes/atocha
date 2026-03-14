@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { combineLatest, map, Observable, of, shareReplay } from 'rxjs';
 
 import {
@@ -25,6 +25,8 @@ type Cards = {
   providedIn: 'root',
 })
 export class CardService {
+  private _favoriteService = inject(FavoriteService);
+
   private _cardSubject = of<Cards>({
     development: DEVELOPMENTS,
     family: FAMILIES,
@@ -52,6 +54,4 @@ export class CardService {
     })),
     shareReplay({ bufferSize: 1, refCount: true })
   );
-
-  constructor(private _favoriteService: FavoriteService) {}
 }

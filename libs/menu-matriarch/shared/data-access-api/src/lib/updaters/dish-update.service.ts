@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { BatchService, BatchUpdate } from '@atocha/firebase/data-access';
 
 import { Menu, flattenValues } from '@atocha/menu-matriarch/shared/util';
@@ -10,9 +10,9 @@ import { KeyToUpdate } from './internal/key-to-update.type';
   providedIn: 'root',
 })
 export class DishUpdateService {
-  private readonly _endpoint = Endpoint.dishes;
+  private _batchService = inject(BatchService);
 
-  constructor(private _batchService: BatchService) {}
+  private readonly _endpoint = Endpoint.dishes;
 
   getUpdates({
     key,

@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
 import { Subject, merge, map, shareReplay } from 'rxjs';
 
 import { ButtonComponent, trackByFactory } from '@atocha/core/ui';
@@ -25,6 +25,8 @@ import { TagCardComponent } from './tag-card/tag-card.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TagsComponent {
+  private _tagService = inject(TagService);
+
   tags$ = this._tagService.getAll();
   startAdd$ = new Subject<void>();
   finishAdd$ = new Subject<void>();
@@ -33,8 +35,6 @@ export class TagsComponent {
     this.finishAdd$.pipe(map(() => false))
   ).pipe(shareReplay({ refCount: true, bufferSize: 1 }));
   readonly trackByFn = trackByFactory<Tag>(({ id }) => id);
-
-  constructor(private _tagService: TagService) {}
 
   onNewTagSave(name: string): void {
     this._tagService.create({ name }).subscribe();

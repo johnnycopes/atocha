@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Observable, concatMap, first, of, tap } from 'rxjs';
 
 import { AuthService } from '@atocha/firebase/data-access';
@@ -9,10 +9,8 @@ import { UserDtoService } from './internal/user-dto.service';
   providedIn: 'root',
 })
 export class UserService {
-  constructor(
-    private _authService: AuthService,
-    private _userDtoService: UserDtoService
-  ) {}
+  private _authService = inject(AuthService);
+  private _userDtoService = inject(UserDtoService);
 
   getUser(): Observable<User | undefined> {
     return this._authService.uid$.pipe(

@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import {
   Router,
   NavigationEnd,
@@ -16,6 +16,9 @@ import { ROUTES } from './routes';
   providedIn: 'root',
 })
 export class RouterService {
+  private _router = inject(Router);
+  private _localStorageService = inject(LocalStorageService);
+
   private readonly _state = new State({
     loading: true,
     activeMealId: '',
@@ -39,10 +42,7 @@ export class RouterService {
   );
   activeDishId$ = this._state.getProp('activeDishId');
 
-  constructor(
-    private _router: Router,
-    private _localStorageService: LocalStorageService
-  ) {
+  constructor() {
     this._routerEvents$
       .pipe(
         map((routerEvent: RouterEvent) => {

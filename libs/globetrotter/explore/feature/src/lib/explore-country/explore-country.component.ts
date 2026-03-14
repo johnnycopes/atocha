@@ -8,6 +8,7 @@ import {
   OnChanges,
   TemplateRef,
   ViewChild,
+  inject,
 } from '@angular/core';
 
 import { trackByFactory, trackBySelf } from '@atocha/core/ui';
@@ -33,6 +34,8 @@ interface TableData {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ExploreCountryComponent implements OnChanges, AfterViewInit {
+  private _changeDetectorRef = inject(ChangeDetectorRef);
+
   @Input({ required: true }) country!: Country;
   @Input({ required: true }) summary = '';
   @ViewChild('population') populationTemplate: TemplateRef<unknown> | undefined;
@@ -48,8 +51,6 @@ export class ExploreCountryComponent implements OnChanges, AfterViewInit {
     ({ header }) => header
   );
   readonly itemTrackByFn = trackBySelf;
-
-  constructor(private _changeDetectorRef: ChangeDetectorRef) {}
 
   ngOnChanges(): void {
     this._setTableData();

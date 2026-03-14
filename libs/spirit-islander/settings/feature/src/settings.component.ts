@@ -3,6 +3,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   ViewEncapsulation,
+  inject,
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
@@ -102,9 +103,9 @@ import {
   encapsulation: ViewEncapsulation.None,
 })
 export class SettingsComponent {
-  settings$ = this._stateService.settings$;
+  private _stateService = inject(StateService);
 
-  constructor(private _stateService: StateService) {}
+  settings$ = this._stateService.settings$;
 
   updateSettings(change: Partial<Settings>) {
     this._stateService.updateSettings(change);

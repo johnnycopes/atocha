@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { BehaviorSubject, combineLatest, map } from 'rxjs';
 
 import { ButtonComponent, trackByFactory } from '@atocha/core/ui';
@@ -28,6 +28,9 @@ import { MenuCardComponent } from './menu-card/menu-card.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MenusComponent {
+  private _menuService = inject(MenuService);
+  private _printService = inject(PrintService);
+
   addingSubject = new BehaviorSubject<boolean>(false);
 
   vm$ = combineLatest([
@@ -39,11 +42,6 @@ export class MenusComponent {
   );
 
   readonly trackByFn = trackByFactory<Menu>(({ id }) => id);
-
-  constructor(
-    private _menuService: MenuService,
-    private _printService: PrintService
-  ) {}
 
   onSave(name: string): void {
     this._menuService.create({ name }).subscribe();

@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { first } from 'rxjs';
 
 import {
@@ -23,12 +23,10 @@ import { ConfigFormComponent } from './config-form/config-form.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ConfigComponent {
-  config$ = this._stateService.config$.pipe(first());
+  private _routerService = inject(RouterService);
+  private _stateService = inject(StateService);
 
-  constructor(
-    private _routerService: RouterService,
-    private _stateService: StateService
-  ) {}
+  config$ = this._stateService.config$.pipe(first());
 
   onGenerate(config: Config): void {
     this._routerService.navigateToGameSetup(config);

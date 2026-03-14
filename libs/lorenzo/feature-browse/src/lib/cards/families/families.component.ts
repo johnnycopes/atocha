@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 
 import { trackByFactory } from '@atocha/core/ui';
 import { CardStateService } from '@atocha/lorenzo/data-access';
@@ -41,11 +41,11 @@ import { FamilyComponent } from './family.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FamiliesComponent {
+  private _cardStateService = inject(CardStateService);
+
   vm$ = this._cardStateService.families$;
   getId = getFamilyId;
   trackByFn = trackByFactory(this.getId);
-
-  constructor(private _cardStateService: CardStateService) {}
 
   toggleVisibility(): void {
     this._cardStateService.toggleVisibility('family');

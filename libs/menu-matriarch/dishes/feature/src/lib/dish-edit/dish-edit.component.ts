@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { Observable, combineLatest, concatMap, first, map, of } from 'rxjs';
 
@@ -29,6 +29,12 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DishEditComponent {
+  private _route = inject(ActivatedRoute);
+  private _router = inject(Router);
+  private _dishService = inject(DishService);
+  private _ingredientService = inject(IngredientService);
+  private _tagService = inject(TagService);
+
   private _routeId = this._route.snapshot.paramMap.get('id');
   private _dish$ = this._routeId
     ? this._dishService.getOne(this._routeId)
@@ -54,14 +60,6 @@ export class DishEditComponent {
       notes: dish?.notes ?? '',
     }))
   );
-
-  constructor(
-    private _route: ActivatedRoute,
-    private _router: Router,
-    private _dishService: DishService,
-    private _ingredientService: IngredientService,
-    private _tagService: TagService
-  ) {}
 
   async onSave(data: DishData): Promise<void> {
     if (!this._routeId) {

@@ -5,6 +5,7 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Output,
+  inject,
 } from '@angular/core';
 
 import { fadeInAnimation } from '../animations';
@@ -17,6 +18,8 @@ import { fadeInAnimation } from '../animations';
   animations: [fadeInAnimation],
 })
 export class TabComponent {
+  private _changeDetectorRef = inject(ChangeDetectorRef);
+
   @Input()
   set name(value: string) {
     this._name = value;
@@ -41,6 +44,4 @@ export class TabComponent {
 
   @Output() nameChange = new EventEmitter<string>();
   @Output() selectedChange = new EventEmitter<boolean>();
-
-  constructor(private _changeDetectorRef: ChangeDetectorRef) {}
 }

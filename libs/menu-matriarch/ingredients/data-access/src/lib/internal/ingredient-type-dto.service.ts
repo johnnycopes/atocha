@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { BatchService, DtoService } from '@atocha/firebase/data-access';
@@ -21,13 +21,11 @@ export type EditableIngredientTypeData = Partial<
 export class IngredientTypeDtoService
   implements IDtoService<IngredientType, IngredientTypeDto>
 {
-  private readonly _endpoint = Endpoint.ingredientTypes;
+  private _batchService = inject(BatchService);
+  private _dtoService = inject<DtoService<IngredientTypeDto>>(DtoService);
+  private _userUpdateService = inject(UserUpdateService);
 
-  constructor(
-    private _batchService: BatchService,
-    private _dtoService: DtoService<IngredientTypeDto>,
-    private _userUpdateService: UserUpdateService
-  ) {}
+  private readonly _endpoint = Endpoint.ingredientTypes;
 
   getOne(id: string): Observable<IngredientTypeDto | undefined> {
     return this._dtoService.getOne(this._endpoint, id);

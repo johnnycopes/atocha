@@ -1,10 +1,12 @@
-import { Directive, Input, ElementRef } from '@angular/core';
+import { Directive, Input, ElementRef, inject } from '@angular/core';
 
 @Directive({
   standalone: true,
   selector: '[coreAutofocus]',
 })
 export class AutofocusDirective {
+  private _elementRef = inject(ElementRef);
+
   @Input('coreAutofocus')
   set shouldFocus(value: boolean | string) {
     // Because of the input alias, if no value is provided then the value defaults to an empty string
@@ -13,8 +15,6 @@ export class AutofocusDirective {
       this._setFocus();
     }
   }
-
-  constructor(private _elementRef: ElementRef) {}
 
   private _setFocus(): void {
     setTimeout(() => this._elementRef.nativeElement.focus());

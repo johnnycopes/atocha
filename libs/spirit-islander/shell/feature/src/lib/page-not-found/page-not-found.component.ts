@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 
 import { ButtonComponent } from '@atocha/core/ui';
 import { RouterService } from '@atocha/spirit-islander/shared/data-access';
@@ -11,7 +11,7 @@ import { RouterService } from '@atocha/spirit-islander/shared/data-access';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PageNotFoundComponent {
-  constructor(private _routerService: RouterService) {}
+  private _routerService = inject(RouterService);
 
   async onClick(): Promise<void> {
     await this._routerService.navigateToHome();

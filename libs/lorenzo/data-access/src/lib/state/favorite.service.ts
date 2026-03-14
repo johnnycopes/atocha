@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { tap } from 'rxjs';
 
 import { LocalStorageService, State } from '@atocha/core/data-access';
@@ -8,6 +8,8 @@ import { Card } from '@atocha/lorenzo/util';
   providedIn: 'root',
 })
 export class FavoriteService {
+  private _localStorageService = inject(LocalStorageService);
+
   private readonly _keys: Record<Card, string> = {
     development: 'DEVELOPMENT_IDS',
     family: 'FAMILY_IDS',
@@ -26,8 +28,6 @@ export class FavoriteService {
       this._setIds(this._keys.leader, leader);
     })
   );
-
-  constructor(private _localStorageService: LocalStorageService) {}
 
   toggleId(id: string, type: Card): void {
     this._ids.transformProp(type, (ids: Set<string>) => {

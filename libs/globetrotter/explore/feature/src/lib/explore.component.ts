@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 
 import { fadeIn } from '@atocha/globetrotter/shared/ui';
 import { Country } from '@atocha/globetrotter/shared/util';
@@ -17,9 +17,9 @@ import { ExploreCountryComponent } from './explore-country/explore-country.compo
   animations: [fadeIn],
 })
 export class ExploreComponent {
-  vm$ = this._exploreService.state$;
+  private _exploreService = inject(ExploreService);
 
-  constructor(private _exploreService: ExploreService) {}
+  vm$ = this._exploreService.state$;
 
   onSelect(selectedCountry: Country): void {
     this._exploreService.select(selectedCountry);

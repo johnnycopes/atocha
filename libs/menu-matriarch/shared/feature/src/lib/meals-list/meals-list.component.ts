@@ -6,6 +6,7 @@ import {
   TemplateRef,
   EventEmitter,
   Output,
+  inject,
 } from '@angular/core';
 import { Router } from '@angular/router';
 import { combineLatest, map } from 'rxjs';
@@ -27,6 +28,12 @@ import { MealDefContext, MealDefDirective } from './meal-def.directive';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MealsListComponent {
+  private _filterService = inject(FilterService);
+  private _mealService = inject(MealService);
+  private _router = inject(Router);
+  private _tagService = inject(TagService);
+  private _userService = inject(UserService);
+
   @Output() nameDblClick = new EventEmitter<void>();
   vm$ = combineLatest([
     this._mealService.getAll(),
@@ -61,14 +68,6 @@ export class MealsListComponent {
   get mealTemplate(): TemplateRef<MealDefContext> | null {
     return this.mealDef?.template ?? null;
   }
-
-  constructor(
-    private _filterService: FilterService,
-    private _mealService: MealService,
-    private _router: Router,
-    private _tagService: TagService,
-    private _userService: UserService
-  ) {}
 
   onSearchTextChange(text: string): void {
     this._filterService.updateText(text);

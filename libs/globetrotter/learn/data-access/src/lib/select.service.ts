@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { first, map, tap } from 'rxjs';
 
 import { LocalStorageService, State } from '@atocha/core/data-access';
@@ -16,6 +16,9 @@ interface SelectionParams {
   providedIn: 'root',
 })
 export class SelectService {
+  private _localStorageService = inject(LocalStorageService);
+  private _placeService = inject(PlaceService);
+
   private readonly _key = 'SELECTION';
   private readonly _state = new State<Selection>(this._getSelection());
 
@@ -25,10 +28,7 @@ export class SelectService {
     })
   );
 
-  constructor(
-    private _localStorageService: LocalStorageService,
-    private _placeService: PlaceService
-  ) {
+  constructor() {
     this._placeService.places$
       .pipe(
         first(),

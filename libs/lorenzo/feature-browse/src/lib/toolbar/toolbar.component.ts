@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 
 import { ButtonComponent } from '@atocha/core/ui';
 import { CardStateService } from '@atocha/lorenzo/data-access';
@@ -11,7 +11,7 @@ import { CardStateService } from '@atocha/lorenzo/data-access';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ToolbarComponent {
-  constructor(private _cardStateService: CardStateService) {}
+  private _cardStateService = inject(CardStateService);
 
   clearFavorites(): void {
     this._cardStateService.clearFavoriteIds();

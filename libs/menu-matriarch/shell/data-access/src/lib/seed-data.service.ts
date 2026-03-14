@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 
 import { BatchService, DtoService } from '@atocha/firebase/data-access';
 import { SeedData } from './seed-data/seed-data';
@@ -7,10 +7,8 @@ import { SeedData } from './seed-data/seed-data';
   providedIn: 'root',
 })
 export class SeedDataService {
-  constructor(
-    private _batchService: BatchService,
-    private _dtoService: DtoService<unknown>
-  ) {}
+  private _batchService = inject(BatchService);
+  private _dtoService = inject<DtoService<unknown>>(DtoService);
 
   async createUserData({
     uid,

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { combineLatest, map } from 'rxjs';
 
 import { ButtonComponent, SearchInputComponent } from '@atocha/core/ui';
@@ -15,12 +15,12 @@ import { CommonModule } from '@angular/common';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderComponent {
+  private _appStateService = inject(AppStateService);
+
   vm$ = combineLatest([
     this._appStateService.view$,
     this._appStateService.text$,
   ]).pipe(map(([view, text]) => ({ view, text })));
-
-  constructor(private _appStateService: AppStateService) {}
 
   onViewChange(view: View): void {
     this._appStateService.updateView(view);

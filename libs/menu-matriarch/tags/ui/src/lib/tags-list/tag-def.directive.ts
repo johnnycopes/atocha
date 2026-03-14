@@ -1,4 +1,4 @@
-import { Directive, TemplateRef } from '@angular/core';
+import { Directive, TemplateRef, inject } from '@angular/core';
 
 import { Tag } from '@atocha/menu-matriarch/shared/util';
 
@@ -11,5 +11,5 @@ export interface TagDefContext<T extends Tag> {
   selector: '[uiTagDef]',
 })
 export class TagDefDirective<T extends Tag> {
-  constructor(public template: TemplateRef<TagDefContext<T>>) {}
+  template = inject<TemplateRef<TagDefContext<T>>>(TemplateRef);
 }

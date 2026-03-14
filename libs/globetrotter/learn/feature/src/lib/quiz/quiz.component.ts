@@ -1,5 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ChangeDetectionStrategy,
+  inject,
+} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { combineLatest, map } from 'rxjs';
 
@@ -27,6 +32,11 @@ import { QuizCardsComponent } from './quiz-cards/quiz-cards.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class QuizComponent implements OnInit {
+  private _route = inject(ActivatedRoute);
+  private _router = inject(Router);
+  private _selectService = inject(SelectService);
+  private _quizService = inject(QuizService);
+
   vm$ = combineLatest([
     this._quizService.quiz$,
     this._selectService.selection$,
@@ -37,13 +47,6 @@ export class QuizComponent implements OnInit {
     }))
   );
   showCards = false;
-
-  constructor(
-    private _route: ActivatedRoute,
-    private _router: Router,
-    private _selectService: SelectService,
-    private _quizService: QuizService
-  ) {}
 
   ngOnInit(): void {
     this._route.queryParamMap.subscribe((queryParams) => {

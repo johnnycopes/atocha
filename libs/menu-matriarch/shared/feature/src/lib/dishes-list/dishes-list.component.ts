@@ -6,6 +6,7 @@ import {
   TemplateRef,
   Output,
   EventEmitter,
+  inject,
 } from '@angular/core';
 import { Router } from '@angular/router';
 import { combineLatest, map } from 'rxjs';
@@ -35,6 +36,11 @@ import { FilterableListComponent } from '../filterable-list/filterable-list.comp
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DishesListComponent {
+  private _dishService = inject(DishService);
+  private _filterService = inject(FilterService);
+  private _router = inject(Router);
+  private _tagService = inject(TagService);
+
   @Output() nameDblClick = new EventEmitter<void>();
   vm$ = combineLatest([
     this._dishService.getAll({ tags: true }),
@@ -73,13 +79,6 @@ export class DishesListComponent {
   get dishTemplate(): TemplateRef<DishContext> | null {
     return this.dishDef?.template ?? null;
   }
-
-  constructor(
-    private _dishService: DishService,
-    private _filterService: FilterService,
-    private _router: Router,
-    private _tagService: TagService
-  ) {}
 
   onSearchTextChange(text: string): void {
     this._filterService.updateText(text);

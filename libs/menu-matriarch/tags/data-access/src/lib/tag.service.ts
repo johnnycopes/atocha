@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Observable, concatMap, first, of } from 'rxjs';
 
 import { AuthService } from '@atocha/firebase/data-access';
@@ -10,10 +10,8 @@ import { EditableTagData, TagDtoService } from './internal/tag-dto.service';
   providedIn: 'root',
 })
 export class TagService implements IEntityService<Tag, EditableTagData> {
-  constructor(
-    private _authService: AuthService,
-    private _tagDtoService: TagDtoService
-  ) {}
+  private _authService = inject(AuthService);
+  private _tagDtoService = inject(TagDtoService);
 
   getOne(id: string): Observable<Tag | undefined> {
     return this._tagDtoService.getOne(id);

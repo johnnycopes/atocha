@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Observable, combineLatest, concatMap, first, map, of } from 'rxjs';
 
 import { AuthService } from '@atocha/firebase/data-access';
@@ -17,11 +17,9 @@ import { mapIngredientTypeDtoToIngredientType } from './internal/map-ingredient-
 export class IngredientTypeService
   implements IEntityService<IngredientType, EditableIngredientTypeData>
 {
-  constructor(
-    private _authService: AuthService,
-    private _ingredientTypeDtoService: IngredientTypeDtoService,
-    private _ingredientService: IngredientService
-  ) {}
+  private _authService = inject(AuthService);
+  private _ingredientTypeDtoService = inject(IngredientTypeDtoService);
+  private _ingredientService = inject(IngredientService);
 
   getOne(id: string): Observable<IngredientType | undefined> {
     return combineLatest([

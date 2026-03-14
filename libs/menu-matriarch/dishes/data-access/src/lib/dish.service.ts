@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Observable, combineLatest, concatMap, first, map, of } from 'rxjs';
 
 import { AuthService } from '@atocha/firebase/data-access';
@@ -16,15 +16,13 @@ export type DishData = EditableDishData;
   providedIn: 'root',
 })
 export class DishService implements IEntityService<Dish, EditableDishData> {
-  activeDishId$ = this._routerService.activeDishId$;
+  private _authService = inject(AuthService);
+  private _dishDtoService = inject(DishDtoService);
+  private _ingredientService = inject(IngredientService);
+  private _routerService = inject(RouterService);
+  private _tagService = inject(TagService);
 
-  constructor(
-    private _authService: AuthService,
-    private _dishDtoService: DishDtoService,
-    private _ingredientService: IngredientService,
-    private _routerService: RouterService,
-    private _tagService: TagService
-  ) {}
+  activeDishId$ = this._routerService.activeDishId$;
 
   getOne(id: string): Observable<Dish | undefined> {
     return combineLatest([

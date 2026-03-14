@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import {
   Event,
   Router,
@@ -16,10 +16,13 @@ import { LoaderService } from './loader.service';
   providedIn: 'root',
 })
 export class RouterService {
+  private _router = inject(Router);
+  private _loaderService = inject(LoaderService);
+
   private readonly _state = new State({ currentRoute: '' });
   route$ = this._state.getProp('currentRoute');
 
-  constructor(private _router: Router, private _loaderService: LoaderService) {
+  constructor() {
     this._router.events
       .pipe(
         filter((e): e is NavigationEnd => e instanceof NavigationEnd),

@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { FirestoreService } from './firestore/firestore.service';
@@ -7,7 +7,7 @@ import { FirestoreService } from './firestore/firestore.service';
   providedIn: 'root',
 })
 export class DtoService<T> {
-  constructor(private _firestoreService: FirestoreService) {}
+  private _firestoreService = inject(FirestoreService);
 
   createId(): string {
     return this._firestoreService.createId();

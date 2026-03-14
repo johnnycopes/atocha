@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { PlannerService } from '@atocha/menu-matriarch/planner/data-access';
@@ -14,8 +14,8 @@ import { ROUTES } from '@atocha/menu-matriarch/shared/data-access-routing';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderComponent {
+  private _plannerService = inject(PlannerService);
+
   readonly ROUTES = ROUTES;
   plannerRoute$ = this._plannerService.route$;
-
-  constructor(private _plannerService: PlannerService) {}
 }

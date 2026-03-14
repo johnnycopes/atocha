@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { combineLatest, first, map } from 'rxjs';
@@ -34,6 +34,10 @@ import { SelectPlacesComponent } from './select-places/select-places.component';
   animations: [fadeIn],
 })
 export class SelectComponent {
+  private _placeService = inject(PlaceService);
+  private _selectService = inject(SelectService);
+  private _router = inject(Router);
+
   vm$ = combineLatest([
     this._placeService.places$,
     this._selectService.selection$,
@@ -47,12 +51,6 @@ export class SelectComponent {
       ),
     }))
   );
-
-  constructor(
-    private _placeService: PlaceService,
-    private _selectService: SelectService,
-    private _router: Router
-  ) {}
 
   async launch(form: SelectForm): Promise<void> {
     const queryParams = this._selectService.mapSelectionToQueryParams(
