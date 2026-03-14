@@ -1,9 +1,3 @@
-// TODO: remove this chunk after newer version of Jest is installed
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const { TextEncoder, TextDecoder } = require('util');
-global.TextEncoder = TextEncoder;
-global.TextDecoder = TextDecoder;
-
 import { mapIngredientTypeDtoToIngredientType } from './map-ingredient-type-dto-to-ingredient-type';
 import { INGREDIENT_DTOS, INGREDIENT_TYPE_DTOS } from '../mock-data';
 
