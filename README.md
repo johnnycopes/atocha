@@ -15,7 +15,7 @@ This is a monorepo containing several of my applications and libraries. Technolo
 
 ### Globetrotter
 
-- Live site: https://globetrotter.rocks
+- Live site: https://glotro.netlify.app
 - [Original repo](https://github.com/johnnycopes/globetrotter)
 
 A geography app featuring a country explorer and a configurable quiz. Test yourself on national flags, capitals, or country names from any part(s) of the world you like and receive a score based on your performance.
