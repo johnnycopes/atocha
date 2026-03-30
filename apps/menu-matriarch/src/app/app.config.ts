@@ -6,6 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { provideRouter, withInMemoryScrolling } from '@angular/router';
 
 import { APP_NAME_TOKEN } from '@atocha/core/data-access';
+import { SUPABASE_CONFIG, SupabaseConfig } from '@atocha/supabase/data-access';
 import { APP_ROUTES } from './app-routes';
 import { environment } from '../environments/environment';
 
@@ -14,6 +15,10 @@ export const appConfig: ApplicationConfig = {
     {
       provide: APP_NAME_TOKEN,
       useValue: 'MENU_MATRIARCH',
+    },
+    {
+      provide: SUPABASE_CONFIG,
+      useValue: environment.supabaseConfig satisfies SupabaseConfig,
     },
     provideRouter(
       APP_ROUTES,
