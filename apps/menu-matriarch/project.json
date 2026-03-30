@@ -137,6 +137,11 @@
           "commands": [
             "node ./apps/menu-matriarch/src/firebase/scripts/dev/crawl-data.js"
           ]
+        },
+        "export-firestore": {
+          "commands": [
+            "node ./apps/menu-matriarch/src/firebase/scripts/migration/export-firestore.js"
+          ]
         }
       },
       "defaultConfiguration": "reset"
