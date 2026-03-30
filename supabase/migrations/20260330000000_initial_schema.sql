@@ -69,7 +69,7 @@ create table public.dishes (
   id          uuid        primary key default gen_random_uuid(),
   user_id     uuid        not null references public.users(id) on delete cascade,
   name        text        not null,
-  type        text        not null default 'main',
+  type        text        not null default 'main' constraint dishes_type_check check (type in ('main','side','dessert')),
   description text        not null default '',
   link        text        not null default '',
   notes       text        not null default '',
@@ -144,7 +144,7 @@ create table public.menus (
 create table public.menu_entries (
   id         uuid not null default gen_random_uuid(),
   menu_id    uuid not null references public.menus(id) on delete cascade,
-  day        text not null,
+  day        text not null constraint menu_entries_day_check check (day in ('Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday')),
   dish_id    uuid not null references public.dishes(id) on delete cascade,
   sort_order int  not null default 0,
   primary key (id)
@@ -160,19 +160,21 @@ create index on public.tags             (user_id);
 create index on public.dishes           (user_id);
 create index on public.meals            (user_id);
 create index on public.menus            (user_id);
-create index on public.menu_entries     (menu_id, day);
-create index on public.menu_entries     (dish_id);
+create index on public.menu_entries        (menu_id, day);
+create index on public.menu_entries        (dish_id);
+create unique index on public.menu_entries (menu_id, day, dish_id);
 
 -- ============================================================
 -- COMPUTED VIEW: dish usages
 -- Replaces the denormalized dishes.usages counter from
--- Firestore. Returns the number of distinct menus each dish
--- appears in.
+-- Firestore. Returns the total number of times each dish
+-- appears across all menu entries (not distinct menus).
+-- e.g. a dish on Friday AND Saturday of the same menu = 2.
 -- ============================================================
 create view public.dish_usages as
   select
     dish_id,
-    count(distinct menu_id)::int as usages
+    count(*)::int as usages
   from public.menu_entries
   group by dish_id;
 
@@ -217,27 +219,45 @@ alter table public.menu_entries     enable row level security;
 
 -- users: own row only
 create policy "users: own row" on public.users
-  using (auth.uid() = id);
+  for all
+  using      (auth.uid() = id)
+  with check (auth.uid() = id);
 
 -- ingredient_types: own rows only
 create policy "ingredient_types: own rows" on public.ingredient_types
-  using (auth.uid() = user_id);
+  for all
+  using      (auth.uid() = user_id)
+  with check (auth.uid() = user_id);
 
 -- ingredients: own rows only
 create policy "ingredients: own rows" on public.ingredients
-  using (auth.uid() = user_id);
+  for all
+  using      (auth.uid() = user_id)
+  with check (auth.uid() = user_id);
 
 -- tags: own rows only
 create policy "tags: own rows" on public.tags
-  using (auth.uid() = user_id);
+  for all
+  using      (auth.uid() = user_id)
+  with check (auth.uid() = user_id);
 
 -- dishes: own rows only
 create policy "dishes: own rows" on public.dishes
-  using (auth.uid() = user_id);
+  for all
+  using      (auth.uid() = user_id)
+  with check (auth.uid() = user_id);
 
 -- dish_ingredients: accessible if the dish belongs to the user
 create policy "dish_ingredients: via dish ownership" on public.dish_ingredients
+  for all
   using (
+    exists (
+      select 1 from public.dishes
+      where dishes.id = dish_ingredients.dish_id
+        and dishes.user_id = auth.uid()
+    )
+  )
+  with check (
     exists (
       select 1 from public.dishes
       where dishes.id = dish_ingredients.dish_id
@@ -247,7 +267,15 @@ create policy "dish_ingredients: via dish ownership" on public.dish_ingredients
 
 -- dish_tags: accessible if the dish belongs to the user
 create policy "dish_tags: via dish ownership" on public.dish_tags
+  for all
   using (
+    exists (
+      select 1 from public.dishes
+      where dishes.id = dish_tags.dish_id
+        and dishes.user_id = auth.uid()
+    )
+  )
+  with check (
     exists (
       select 1 from public.dishes
       where dishes.id = dish_tags.dish_id
@@ -257,11 +285,21 @@ create policy "dish_tags: via dish ownership" on public.dish_tags
 
 -- meals: own rows only
 create policy "meals: own rows" on public.meals
-  using (auth.uid() = user_id);
+  for all
+  using      (auth.uid() = user_id)
+  with check (auth.uid() = user_id);
 
 -- meal_dishes: accessible if the meal belongs to the user
 create policy "meal_dishes: via meal ownership" on public.meal_dishes
+  for all
   using (
+    exists (
+      select 1 from public.meals
+      where meals.id = meal_dishes.meal_id
+        and meals.user_id = auth.uid()
+    )
+  )
+  with check (
     exists (
       select 1 from public.meals
       where meals.id = meal_dishes.meal_id
@@ -271,7 +309,15 @@ create policy "meal_dishes: via meal ownership" on public.meal_dishes
 
 -- meal_tags: accessible if the meal belongs to the user
 create policy "meal_tags: via meal ownership" on public.meal_tags
+  for all
   using (
+    exists (
+      select 1 from public.meals
+      where meals.id = meal_tags.meal_id
+        and meals.user_id = auth.uid()
+    )
+  )
+  with check (
     exists (
       select 1 from public.meals
       where meals.id = meal_tags.meal_id
@@ -281,11 +327,21 @@ create policy "meal_tags: via meal ownership" on public.meal_tags
 
 -- menus: own rows only
 create policy "menus: own rows" on public.menus
-  using (auth.uid() = user_id);
+  for all
+  using      (auth.uid() = user_id)
+  with check (auth.uid() = user_id);
 
 -- menu_entries: accessible if the menu belongs to the user
 create policy "menu_entries: via menu ownership" on public.menu_entries
+  for all
   using (
+    exists (
+      select 1 from public.menus
+      where menus.id = menu_entries.menu_id
+        and menus.user_id = auth.uid()
+    )
+  )
+  with check (
     exists (
       select 1 from public.menus
       where menus.id = menu_entries.menu_id
