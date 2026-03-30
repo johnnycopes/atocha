@@ -1,0 +1,497 @@
+{
+  "dishes": [
+    {
+      "id": "6FJFjiAPNz08t9PDOgPY",
+      "fields": {
+        "id": "string",
+        "uid": "string",
+        "type": "string",
+        "name": "string",
+        "favorited": "boolean",
+        "description": "string",
+        "link": "string",
+        "notes": "string",
+        "usages": "number",
+        "menuIds": "Array<string>",
+        "mealIds": "Array<unknown>",
+        "ingredientIds": "Array<string>",
+        "tagIds": "Array<string>"
+      },
+      "sampleData": {
+        "id": "6FJFjiAPNz08t9PDOgPY",
+        "uid": "hJJ1C4hCV8cyMCWP56K6Fjk15543",
+        "type": "main",
+        "name": "Pizza",
+        "favorited": false,
+        "description": "Delicious round vessel from Italy",
+        "link": "https://cooking.nytimes.com/guides/1-how-to-make-pizza",
+        "notes": "",
+        "usages": 1,
+        "menuIds": [
+          "UH55uSHYYmMyflj4Us5B"
+        ],
+        "mealIds": [],
+        "ingredientIds": [
+          "7KLWnBTUMajG3mPmxdml",
+          "0wvFOo51uGAUY89OKj46",
+          "vTFZR46dmDwyj9gNq554",
+          "2olDS5GGBEaOoMj839xI",
+          "hIHgqFWbiA4jhG84hTmJ",
+          "W8zpIKaCk3jXJdVkBfCJ"
+        ],
+        "tagIds": [
+          "GZFZEgp3YRAhrSc9YkVv"
+        ]
+      }
+    },
+    {
+      "id": "8vTJZVLP3P6hD65RH6Hy",
+      "fields": {
+        "id": "string",
+        "uid": "string",
+        "type": "string",
+        "name": "string",
+        "favorited": "boolean",
+        "description": "string",
+        "link": "string",
+        "notes": "string",
+        "usages": "number",
+        "menuIds": "Array<string>",
+        "mealIds": "Array<unknown>",
+        "ingredientIds": "Array<unknown>",
+        "tagIds": "Array<unknown>"
+      },
+      "sampleData": {
+        "id": "8vTJZVLP3P6hD65RH6Hy",
+        "uid": "hJJ1C4hCV8cyMCWP56K6Fjk15543",
+        "type": "dessert",
+        "name": "Tiramisu",
+        "favorited": false,
+        "description": "Delicious coffee-flavored Italian cake",
+        "link": "https://cooking.nytimes.com/recipes/1018684-classic-tiramisu",
+        "notes": "",
+        "usages": 2,
+        "menuIds": [
+          "UH55uSHYYmMyflj4Us5B"
+        ],
+        "mealIds": [],
+        "ingredientIds": [],
+        "tagIds": []
+      }
+    },
+    {
+      "id": "EiTenYFrobYZASh5iW0G",
+      "fields": {
+        "id": "string",
+        "uid": "string",
+        "type": "string",
+        "name": "string",
+        "favorited": "boolean",
+        "description": "string",
+        "link": "string",
+        "notes": "string",
+        "usages": "number",
+        "menuIds": "Array<unknown>",
+        "mealIds": "Array<unknown>",
+        "ingredientIds": "Array<string>",
+        "tagIds": "Array<string>"
+      },
+      "sampleData": {
+        "id": "EiTenYFrobYZASh5iW0G",
+        "uid": "hJJ1C4hCV8cyMCWP56K6Fjk15543",
+        "type": "side",
+        "name": "Roasted Cauliflower",
+        "favorited": false,
+        "description": "",
+        "link": "https://cooking.nytimes.com/recipes/7588-roasted-cauliflower",
+        "notes": "",
+        "usages": 0,
+        "menuIds": [],
+        "mealIds": [],
+        "ingredientIds": [
+          "Mmhm9ddk2kiqMgqWEe9n",
+          "vTFZR46dmDwyj9gNq554",
+          "oYw0wuNbNh22qHwDJm9C",
+          "Rdfbwx21tL6Obv6YO92D"
+        ],
+        "tagIds": [
+          "G25bHR39IMjusKjxzQVI",
+          "4xn3UHPsxK1tkDf9cqmP",
+          "GZFZEgp3YRAhrSc9YkVv"
+        ]
+      }
+    }
+  ],
+  "ingredientTypes": [
+    {
+      "id": "3rcKM2AJ9BvBbICJQImA",
+      "fields": {
+        "id": "string",
+        "uid": "string",
+        "name": "string",
+        "ingredientIds": "Array<string>"
+      },
+      "sampleData": {
+        "id": "3rcKM2AJ9BvBbICJQImA",
+        "uid": "hJJ1C4hCV8cyMCWP56K6Fjk15543",
+        "name": "Dry Good",
+        "ingredientIds": [
+          "e1XixBG7fmAuHAPdkYHZ",
+          "CEZzcUtyTvrjkExzGS9f",
+          "NhwO5eXCQ7DLPwNzbRJq"
+        ]
+      }
+    },
+    {
+      "id": "BmbaYQPF8JxEKFxuBg02",
+      "fields": {
+        "id": "string",
+        "uid": "string",
+        "name": "string",
+        "ingredientIds": "Array<string>"
+      },
+      "sampleData": {
+        "id": "BmbaYQPF8JxEKFxuBg02",
+        "uid": "hJJ1C4hCV8cyMCWP56K6Fjk15543",
+        "name": "Refrigerated",
+        "ingredientIds": [
+          "dVoB6lxXNlqNRhbKiftZ",
+          "B3149yFeHMwjHalXTCSO",
+          "0wvFOo51uGAUY89OKj46"
+        ]
+      }
+    },
+    {
+      "id": "HpUfVgr6xeE5g4UuLqBx",
+      "fields": {
+        "id": "string",
+        "uid": "string",
+        "name": "string",
+        "ingredientIds": "Array<string>"
+      },
+      "sampleData": {
+        "id": "HpUfVgr6xeE5g4UuLqBx",
+        "uid": "hJJ1C4hCV8cyMCWP56K6Fjk15543",
+        "name": "Bread",
+        "ingredientIds": [
+          "hIHgqFWbiA4jhG84hTmJ",
+          "cgOtBwX8SMa5eJsW3vEB"
+        ]
+      }
+    }
+  ],
+  "ingredients": [
+    {
+      "id": "0wvFOo51uGAUY89OKj46",
+      "fields": {
+        "id": "string",
+        "uid": "string",
+        "name": "string",
+        "typeId": "string",
+        "dishIds": "Array<string>"
+      },
+      "sampleData": {
+        "id": "0wvFOo51uGAUY89OKj46",
+        "uid": "hJJ1C4hCV8cyMCWP56K6Fjk15543",
+        "name": "Mozzarella cheese",
+        "typeId": "BmbaYQPF8JxEKFxuBg02",
+        "dishIds": [
+          "6FJFjiAPNz08t9PDOgPY"
+        ]
+      }
+    },
+    {
+      "id": "23QhhU4MKdHe1sJm5cN4",
+      "fields": {
+        "id": "string",
+        "uid": "string",
+        "name": "string",
+        "typeId": "string",
+        "dishIds": "Array<unknown>"
+      },
+      "sampleData": {
+        "id": "23QhhU4MKdHe1sJm5cN4",
+        "uid": "hJJ1C4hCV8cyMCWP56K6Fjk15543",
+        "name": "Thyme",
+        "typeId": "VZR4qHOMlTnNmVh4bKJ1",
+        "dishIds": []
+      }
+    },
+    {
+      "id": "2olDS5GGBEaOoMj839xI",
+      "fields": {
+        "id": "string",
+        "uid": "string",
+        "name": "string",
+        "typeId": "string",
+        "dishIds": "Array<string>"
+      },
+      "sampleData": {
+        "id": "2olDS5GGBEaOoMj839xI",
+        "uid": "hJJ1C4hCV8cyMCWP56K6Fjk15543",
+        "name": "Oregano",
+        "typeId": "VZR4qHOMlTnNmVh4bKJ1",
+        "dishIds": [
+          "elUH3kkk2oxbVilx9ovJ",
+          "6FJFjiAPNz08t9PDOgPY"
+        ]
+      }
+    }
+  ],
+  "meals": [
+    {
+      "id": "3wDl7SzR8AYHL3QCkN6E",
+      "fields": {
+        "id": "string",
+        "uid": "string",
+        "name": "string",
+        "description": "string",
+        "dishIds": "Array<string>",
+        "tagIds": "Array<unknown>"
+      },
+      "sampleData": {
+        "id": "3wDl7SzR8AYHL3QCkN6E",
+        "uid": "hJJ1C4hCV8cyMCWP56K6Fjk15543",
+        "name": "Mexican Medley",
+        "description": "",
+        "dishIds": [
+          "elUH3kkk2oxbVilx9ovJ",
+          "zBxiENh07BP1NkUdpYp9"
+        ],
+        "tagIds": []
+      }
+    },
+    {
+      "id": "8LLI3QPU7ZcvTZSjCFsE",
+      "fields": {
+        "id": "string",
+        "uid": "string",
+        "name": "string",
+        "description": "string",
+        "dishIds": "Array<string>",
+        "tagIds": "Array<string>"
+      },
+      "sampleData": {
+        "id": "8LLI3QPU7ZcvTZSjCFsE",
+        "uid": "hJJ1C4hCV8cyMCWP56K6Fjk15543",
+        "name": "Sushi Dinner",
+        "description": "",
+        "dishIds": [
+          "zWFAJ18uWoh6snE0unfc",
+          "wEo4UPIHMtfZqt4IMag4"
+        ],
+        "tagIds": [
+          "ymOw6bnulzExKrttTWxT"
+        ]
+      }
+    },
+    {
+      "id": "o49kShXNk9ykzZkKGakb",
+      "fields": {
+        "id": "string",
+        "uid": "string",
+        "name": "string",
+        "description": "string",
+        "dishIds": "Array<string>",
+        "tagIds": "Array<unknown>"
+      },
+      "sampleData": {
+        "id": "o49kShXNk9ykzZkKGakb",
+        "uid": "hJJ1C4hCV8cyMCWP56K6Fjk15543",
+        "name": "Southern Classic",
+        "description": "",
+        "dishIds": [
+          "aw2SajLyyFfdcMW61xb4",
+          "IybzGmE1sn7ddMyPcqhP",
+          "SwQTNGbnueYSTMLFI7EA"
+        ],
+        "tagIds": []
+      }
+    }
+  ],
+  "menus": [
+    {
+      "id": "UH55uSHYYmMyflj4Us5B",
+      "fields": {
+        "id": "string",
+        "uid": "string",
+        "name": "string",
+        "favorited": "boolean",
+        "startDay": "string",
+        "contents": {
+          "_type": "Map",
+          "Monday": "Array<string>",
+          "Tuesday": "Array<string>",
+          "Wednesday": "Array<string>",
+          "Thursday": "Array<string>",
+          "Friday": "Array<string>",
+          "Saturday": "Array<string>",
+          "Sunday": "Array<string>"
+        }
+      },
+      "sampleData": {
+        "id": "UH55uSHYYmMyflj4Us5B",
+        "uid": "hJJ1C4hCV8cyMCWP56K6Fjk15543",
+        "name": "Menu #1",
+        "favorited": false,
+        "startDay": "Monday",
+        "contents": {
+          "Monday": [
+            "elUH3kkk2oxbVilx9ovJ",
+            "zBxiENh07BP1NkUdpYp9"
+          ],
+          "Tuesday": [
+            "zWFAJ18uWoh6snE0unfc",
+            "wEo4UPIHMtfZqt4IMag4"
+          ],
+          "Wednesday": [
+            "gM2ztDwRXvpJlBNwS2zI",
+            "tmud0ZdSKFRNDcvT8Zrl"
+          ],
+          "Thursday": [
+            "RuqPPjEO8fZZMwqklHm8"
+          ],
+          "Friday": [
+            "6FJFjiAPNz08t9PDOgPY",
+            "8vTJZVLP3P6hD65RH6Hy"
+          ],
+          "Saturday": [
+            "XYbVOkxJNprLPnEyzfV5",
+            "8vTJZVLP3P6hD65RH6Hy"
+          ],
+          "Sunday": [
+            "IybzGmE1sn7ddMyPcqhP",
+            "aw2SajLyyFfdcMW61xb4",
+            "SwQTNGbnueYSTMLFI7EA"
+          ]
+        }
+      }
+    }
+  ],
+  "tags": [
+    {
+      "id": "4xn3UHPsxK1tkDf9cqmP",
+      "fields": {
+        "id": "string",
+        "uid": "string",
+        "name": "string",
+        "color": "string",
+        "mealIds": "Array<unknown>",
+        "dishIds": "Array<string>"
+      },
+      "sampleData": {
+        "id": "4xn3UHPsxK1tkDf9cqmP",
+        "uid": "hJJ1C4hCV8cyMCWP56K6Fjk15543",
+        "name": "Vegan",
+        "color": "",
+        "mealIds": [],
+        "dishIds": [
+          "zBxiENh07BP1NkUdpYp9",
+          "wEo4UPIHMtfZqt4IMag4",
+          "RuqPPjEO8fZZMwqklHm8",
+          "EiTenYFrobYZASh5iW0G",
+          "tmud0ZdSKFRNDcvT8Zrl",
+          "XYbVOkxJNprLPnEyzfV5"
+        ]
+      }
+    },
+    {
+      "id": "G25bHR39IMjusKjxzQVI",
+      "fields": {
+        "id": "string",
+        "uid": "string",
+        "name": "string",
+        "color": "string",
+        "mealIds": "Array<unknown>",
+        "dishIds": "Array<string>"
+      },
+      "sampleData": {
+        "id": "G25bHR39IMjusKjxzQVI",
+        "uid": "hJJ1C4hCV8cyMCWP56K6Fjk15543",
+        "name": "Easy",
+        "color": "",
+        "mealIds": [],
+        "dishIds": [
+          "zBxiENh07BP1NkUdpYp9",
+          "EiTenYFrobYZASh5iW0G",
+          "XYbVOkxJNprLPnEyzfV5"
+        ]
+      }
+    },
+    {
+      "id": "GZFZEgp3YRAhrSc9YkVv",
+      "fields": {
+        "id": "string",
+        "uid": "string",
+        "name": "string",
+        "color": "string",
+        "mealIds": "Array<unknown>",
+        "dishIds": "Array<string>"
+      },
+      "sampleData": {
+        "id": "GZFZEgp3YRAhrSc9YkVv",
+        "uid": "hJJ1C4hCV8cyMCWP56K6Fjk15543",
+        "name": "Vegetarian",
+        "color": "",
+        "mealIds": [],
+        "dishIds": [
+          "aw2SajLyyFfdcMW61xb4",
+          "ZSeql748Ns4RK2HL8dQX",
+          "zBxiENh07BP1NkUdpYp9",
+          "s3iDl6qXbt9H0BMCJ6aO",
+          "SwQTNGbnueYSTMLFI7EA",
+          "wEo4UPIHMtfZqt4IMag4",
+          "6FJFjiAPNz08t9PDOgPY",
+          "RuqPPjEO8fZZMwqklHm8",
+          "EiTenYFrobYZASh5iW0G",
+          "tmud0ZdSKFRNDcvT8Zrl",
+          "XYbVOkxJNprLPnEyzfV5"
+        ]
+      }
+    }
+  ],
+  "users": [
+    {
+      "id": "hJJ1C4hCV8cyMCWP56K6Fjk15543",
+      "fields": {
+        "uid": "string",
+        "name": "string",
+        "email": "string",
+        "preferences": {
+          "_type": "Map",
+          "darkMode": "boolean",
+          "dayNameDisplay": "string",
+          "defaultMenuStartDay": "string",
+          "emptyMealText": "string",
+          "mealOrientation": "string",
+          "ingredientTypeOrder": "Array<string>"
+        }
+      },
+      "sampleData": {
+        "uid": "hJJ1C4hCV8cyMCWP56K6Fjk15543",
+        "name": "John Coppola",
+        "email": "[REDACTED]",
+        "preferences": {
+          "darkMode": false,
+          "dayNameDisplay": "full",
+          "defaultMenuStartDay": "Monday",
+          "emptyMealText": "undecided",
+          "mealOrientation": "vertical",
+          "ingredientTypeOrder": [
+            "HpUfVgr6xeE5g4UuLqBx",
+            "Pz9pRk2DpXpxrj64GIuF",
+            "3rcKM2AJ9BvBbICJQImA",
+            "KFh4Zwn3Znce8U2EUDng",
+            "z7rlNoosDgZWTc5Fsvs3",
+            "q2YQqsqf5NpywgB3Nnj2",
+            "o7KnfvZDWzy6aXJCyAuk",
+            "qLn1xiMbzgTMp6aWNPnj",
+            "BmbaYQPF8JxEKFxuBg02",
+            "bzm8z0EF46KFcp4j50eW",
+            "VZR4qHOMlTnNmVh4bKJ1"
+          ]
+        }
+      }
+    }
+  ]
+}
