@@ -132,6 +132,11 @@
           "commands": [
             "node ./apps/menu-matriarch/src/firebase/scripts/dev/delete-data.js"
           ]
+        },
+        "crawl-data": {
+          "commands": [
+            "node ./apps/menu-matriarch/src/firebase/scripts/dev/crawl-data.js"
+          ]
         }
       },
       "defaultConfiguration": "reset"
