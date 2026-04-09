@@ -1,5 +1,9 @@
 export const environment = {
   production: false,
+  supabaseConfig: {
+    url: 'http://127.0.0.1:54321',
+    anonKey: 'sb_publishable_ACJWlzQHlZjBrEguHvfOxg_3BJgxAaH',
+  },
   firebaseConfig: {
     apiKey: 'AIzaSyDKEob5wkG_7I7v1c1c2p2ISHsg9R1IdBk',
     authDomain: 'menu-matriarch-dev.firebaseapp.com',
