@@ -1,7 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { Observable, concatMap, first, of, tap } from 'rxjs';
 
-import { AuthService } from '@atocha/firebase/data-access';
+import { SupabaseService } from '@atocha/supabase/data-access';
 import { User, UserPreferences } from '@atocha/menu-matriarch/shared/util';
 import { UserDtoService } from './internal/user-dto.service';
 
@@ -9,15 +9,15 @@ import { UserDtoService } from './internal/user-dto.service';
   providedIn: 'root',
 })
 export class UserService {
-  private _authService = inject(AuthService);
+  private _supabase = inject(SupabaseService);
   private _userDtoService = inject(UserDtoService);
 
   getUser(): Observable<User | undefined> {
-    return this._authService.uid$.pipe(
+    return this._supabase.session$.pipe(
       first(),
-      concatMap((uid) => {
-        if (uid) {
-          return this._userDtoService.getUser(uid);
+      concatMap((session) => {
+        if (session?.user.id) {
+          return this._userDtoService.getUser(session.user.id);
         }
         return of(undefined);
       })
@@ -25,11 +25,11 @@ export class UserService {
   }
 
   getPreferences(): Observable<UserPreferences | undefined> {
-    return this._authService.uid$.pipe(
+    return this._supabase.session$.pipe(
       first(),
-      concatMap((uid) => {
-        if (uid) {
-          return this._userDtoService.getPreferences(uid);
+      concatMap((session) => {
+        if (session?.user.id) {
+          return this._userDtoService.getPreferences(session.user.id);
         }
         return of(undefined);
       })

@@ -11,6 +11,7 @@
 -- ============================================================
 create table public.users (
   id                      uuid primary key references auth.users(id) on delete cascade,
+  email                   text        not null default '',
   name                    text        not null default '',
   -- display preferences
   dark_mode               boolean     not null default false,

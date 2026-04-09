@@ -9,15 +9,15 @@
 
 SET session_replication_role = 'replica';
 
-INSERT INTO public.users (id, name, dark_mode, day_name_display, default_menu_start_day, empty_meal_text, meal_orientation) VALUES
-('6ff8d414-18b3-4d77-be42-640b921727d8', 'Bernard Muller', false, 'full', 'Monday', 'undecided', 'vertical'),
-('41b4c7c3-a899-47de-b003-f528de379fa1', 'Keshav Gupta', false, 'full', 'Monday', 'undecided', 'vertical'),
-('adb964f4-fdb5-41cb-ab5d-25bb9099e6ac', 'John Coppola', false, 'full', 'Monday', 'undecided', 'horizontal'),
-('c576d15b-0d62-46a3-a62c-bf1be49e6fa5', 'Maddie Coppola', false, 'full', 'Monday', 'undecided', 'horizontal'),
-('a34f3958-e00c-4a99-a66d-ab32152ed259', 'Mary Coppola', false, 'full', 'Monday', 'undecided', 'vertical'),
-('64ed428e-10b7-428e-b584-e3b6378cb171', 'Celine Chen', false, 'full', 'Monday', 'undecided', 'horizontal'),
-('67c708d0-8942-47ff-bc5d-025a3f4f9ee0', 'John Coppola', false, 'full', 'Monday', 'undecided', 'vertical'),
-('abaf1de7-05ca-4bd0-b7fd-7a57a7a37870', 'Mark Coppola', false, 'full', 'Monday', 'undecided', 'horizontal');
+INSERT INTO public.users (id, email, name, dark_mode, day_name_display, default_menu_start_day, empty_meal_text, meal_orientation) VALUES
+('6ff8d414-18b3-4d77-be42-640b921727d8', 'b.mullerjnr@gmail.com', 'Bernard Muller', false, 'full', 'Monday', 'undecided', 'vertical'),
+('41b4c7c3-a899-47de-b003-f528de379fa1', 'kvgupta24@gmail.com', 'Keshav Gupta', false, 'full', 'Monday', 'undecided', 'vertical'),
+('adb964f4-fdb5-41cb-ab5d-25bb9099e6ac', 'jdcoppola@gmail.com', 'John Coppola', false, 'full', 'Monday', 'undecided', 'horizontal'),
+('c576d15b-0d62-46a3-a62c-bf1be49e6fa5', 'maddie.coppola6@gmail.com', 'Maddie Coppola', false, 'full', 'Monday', 'undecided', 'horizontal'),
+('a34f3958-e00c-4a99-a66d-ab32152ed259', 'mecoppola16@gmail.com', 'Mary Coppola', false, 'full', 'Monday', 'undecided', 'vertical'),
+('64ed428e-10b7-428e-b584-e3b6378cb171', 'chenceline01@gmail.com', 'Celine Chen', false, 'full', 'Monday', 'undecided', 'horizontal'),
+('67c708d0-8942-47ff-bc5d-025a3f4f9ee0', 'john.coppola@thoughtspot.com', 'John Coppola', false, 'full', 'Monday', 'undecided', 'vertical'),
+('abaf1de7-05ca-4bd0-b7fd-7a57a7a37870', 'mark.coppola@gmail.com', 'Mark Coppola', false, 'full', 'Monday', 'undecided', 'horizontal');
 
 INSERT INTO public.ingredient_types (id, user_id, name, sort_order) VALUES
 ('84bac460-7253-417c-851f-6b95df48eeb5', '67c708d0-8942-47ff-bc5d-025a3f4f9ee0', 'Meat', 4),

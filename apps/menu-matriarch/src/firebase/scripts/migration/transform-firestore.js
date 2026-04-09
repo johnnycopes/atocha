@@ -64,6 +64,7 @@ for (const u of data.users) {
   const p = u.preferences || {};
   userRows.push(row([
     pgId,
+    u.email || '',
     u.name || '',
     p.darkMode ?? false,
     p.dayNameDisplay || 'full',
@@ -254,7 +255,7 @@ const sql = `-- ============================================================
 SET session_replication_role = 'replica';
 
 ${insertBlock('users',
-  ['id', 'name', 'dark_mode', 'day_name_display', 'default_menu_start_day', 'empty_meal_text', 'meal_orientation'],
+  ['id', 'email', 'name', 'dark_mode', 'day_name_display', 'default_menu_start_day', 'empty_meal_text', 'meal_orientation'],
   userRows)}
 ${insertBlock('ingredient_types',
   ['id', 'user_id', 'name', 'sort_order'],

@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 import { Subject, debounceTime, switchMap, takeUntil } from 'rxjs';
 
 import { ButtonComponent, trackBySelf } from '@atocha/core/ui';
-import { AuthService } from '@atocha/firebase/data-access';
+import { SupabaseService } from '@atocha/supabase/data-access';
 import { UserService } from '@atocha/menu-matriarch/settings/data-access';
 import {
   CardComponent,
@@ -38,7 +38,7 @@ import { UserPreferences, getDays } from '@atocha/menu-matriarch/shared/util';
 })
 export class SettingsComponent implements OnInit, OnDestroy {
   private _router = inject(Router);
-  private _authService = inject(AuthService);
+  private _supabase = inject(SupabaseService);
   private _userService = inject(UserService);
 
   user$ = this._userService.getUser();
@@ -65,7 +65,7 @@ export class SettingsComponent implements OnInit, OnDestroy {
 
   async signOut(): Promise<void> {
     try {
-      await this._authService.logout();
+      await this._supabase.signOut();
       this._router.navigate(['welcome']);
     } catch (e) {
       console.error(e);

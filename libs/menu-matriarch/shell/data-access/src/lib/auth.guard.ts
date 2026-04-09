@@ -2,24 +2,24 @@ import { Injectable, inject } from '@angular/core';
 import { Router, UrlTree } from '@angular/router';
 import { Observable, first, map } from 'rxjs';
 
-import { AuthService } from '@atocha/firebase/data-access';
+import { SupabaseService } from '@atocha/supabase/data-access';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthGuard {
   private _router = inject(Router);
-  private _authService = inject(AuthService);
+  private _supabase = inject(SupabaseService);
 
   canActivate():
     | Observable<boolean | UrlTree>
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    return this._authService.loggedIn$.pipe(
+    return this._supabase.session$.pipe(
       first(),
-      map((loggedIn) => {
-        if (!loggedIn) {
+      map((session) => {
+        if (!session) {
           return this._router.createUrlTree(['/welcome']);
         }
         return true;

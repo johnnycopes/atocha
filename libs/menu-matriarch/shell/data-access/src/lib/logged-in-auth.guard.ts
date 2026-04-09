@@ -2,7 +2,7 @@ import { Injectable, inject } from '@angular/core';
 import { Router, UrlTree } from '@angular/router';
 import { Observable, first, map, of, switchMap } from 'rxjs';
 
-import { AuthService } from '@atocha/firebase/data-access';
+import { SupabaseService } from '@atocha/supabase/data-access';
 import { PlannerService } from '@atocha/menu-matriarch/planner/data-access';
 
 @Injectable({
@@ -10,7 +10,7 @@ import { PlannerService } from '@atocha/menu-matriarch/planner/data-access';
 })
 export class LoggedInAuthGuard {
   private _router = inject(Router);
-  private _authService = inject(AuthService);
+  private _supabase = inject(SupabaseService);
   private _plannerService = inject(PlannerService);
 
   canActivate():
@@ -18,10 +18,10 @@ export class LoggedInAuthGuard {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    return this._authService.loggedIn$.pipe(
+    return this._supabase.session$.pipe(
       first(),
-      switchMap((loggedIn) =>
-        loggedIn
+      switchMap((session) =>
+        session
           ? this._plannerService.route$.pipe(
               map((route) => this._router.createUrlTree(route))
             )

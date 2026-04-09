@@ -1,11 +1,7 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { Router } from '@angular/router';
-import { first } from 'rxjs';
 
-import { AuthService } from '@atocha/firebase/data-access';
+import { SupabaseService } from '@atocha/supabase/data-access';
 import { ButtonComponent } from '@atocha/core/ui';
-import { PlannerService } from '@atocha/menu-matriarch/planner/data-access';
-import { SeedDataService } from '@atocha/menu-matriarch/shell/data-access';
 
 @Component({
   selector: 'app-welcome',
@@ -15,31 +11,9 @@ import { SeedDataService } from '@atocha/menu-matriarch/shell/data-access';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class WelcomeComponent {
-  private _router = inject(Router);
-  private _authService = inject(AuthService);
-  private _plannerService = inject(PlannerService);
-  private _seedDataService = inject(SeedDataService);
+  private _supabase = inject(SupabaseService);
 
   async login(): Promise<void> {
-    const user = await this._authService.login().catch(console.error);
-
-    if (user) {
-      const { name, email } = user;
-      this._authService.uid$.pipe(first()).subscribe(async (uid) => {
-        if (!uid) {
-          return;
-        }
-        const menuId = await this._seedDataService.createUserData({
-          uid,
-          name,
-          email,
-        });
-        this._router.navigate(['/planner', menuId]);
-      });
-    } else {
-      this._plannerService.route$.subscribe((route) =>
-        this._router.navigate(route)
-      );
-    }
+    await this._supabase.signInWithGoogle(window.location.origin);
   }
 }
