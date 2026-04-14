@@ -47,7 +47,7 @@ export class TagDtoService implements IDtoService<Tag, TagDto> {
     );
   }
 
-  getAll(_uid: string): Observable<Tag[]> {
+  getAll(): Observable<Tag[]> {
     return from(
       this._supabase.client
         .from('tags')
@@ -60,7 +60,7 @@ export class TagDtoService implements IDtoService<Tag, TagDto> {
     );
   }
 
-  async create(_uid: string, tag: EditableTagData): Promise<string> {
+  async create(tag: EditableTagData): Promise<string> {
     const {
       data: { user },
     } = await this._supabase.client.auth.getUser();

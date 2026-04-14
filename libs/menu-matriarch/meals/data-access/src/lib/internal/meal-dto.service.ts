@@ -1,5 +1,5 @@
 import { Injectable, inject } from '@angular/core';
-import { Observable, from } from 'rxjs';
+import { Observable, concatMap, first, from, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { SupabaseService } from '@atocha/supabase/data-access';
@@ -54,25 +54,37 @@ export class MealDtoService implements IDtoService<Meal, MealDto> {
     );
   }
 
-  getAll(uid: string): Observable<MealDto[]> {
-    return from(
-      this._supabase.client
-        .from('meals')
-        .select(MEAL_SELECT)
-        .eq('user_id', uid)
-        .order('name')
-    ).pipe(
-      map(({ data }) =>
-        (data ?? []).map((row) => mapRowToDto(row as unknown as MealRow))
-      )
+  getAll(): Observable<MealDto[]> {
+    return this._supabase.session$.pipe(
+      first(),
+      concatMap((session) => {
+        const uid = session?.user.id;
+        if (!uid) return of([]);
+        return from(
+          this._supabase.client
+            .from('meals')
+            .select(MEAL_SELECT)
+            .eq('user_id', uid)
+            .order('name')
+        ).pipe(
+          map(({ data }) =>
+            (data ?? []).map((row) => mapRowToDto(row as unknown as MealRow))
+          )
+        );
+      })
     );
   }
 
-  async create(uid: string, meal: EditableMealData): Promise<string> {
+  async create(meal: EditableMealData): Promise<string> {
+    const {
+      data: { user },
+    } = await this._supabase.client.auth.getUser();
+    if (!user) throw new Error('Not authenticated');
+
     const { data, error } = await this._supabase.client
       .from('meals')
       .insert({
-        user_id: uid,
+        user_id: user.id,
         name: meal.name,
         description: meal.description ?? '',
       })

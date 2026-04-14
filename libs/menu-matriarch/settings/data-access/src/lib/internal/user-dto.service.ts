@@ -1,5 +1,5 @@
 import { Injectable, inject } from '@angular/core';
-import { Observable, from } from 'rxjs';
+import { Observable, concatMap, first, from, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { SupabaseService } from '@atocha/supabase/data-access';
@@ -38,18 +38,25 @@ function mapRowToUser(row: UserRow): User {
 export class UserDtoService {
   private _supabase = inject(SupabaseService);
 
-  getUser(uid: string): Observable<User | undefined> {
-    return from(
-      this._supabase.client.from('users').select('*').eq('id', uid).single()
-    ).pipe(
-      map(({ data }) =>
-        data ? mapRowToUser(data as unknown as UserRow) : undefined
-      )
+  getUser(): Observable<User | undefined> {
+    return this._supabase.session$.pipe(
+      first(),
+      concatMap((session) => {
+        const uid = session?.user.id;
+        if (!uid) return of(undefined);
+        return from(
+          this._supabase.client.from('users').select('*').eq('id', uid).single()
+        ).pipe(
+          map(({ data }) =>
+            data ? mapRowToUser(data as unknown as UserRow) : undefined
+          )
+        );
+      })
     );
   }
 
-  getPreferences(uid: string): Observable<UserPreferences | undefined> {
-    return this.getUser(uid).pipe(map((user) => user?.preferences));
+  getPreferences(): Observable<UserPreferences | undefined> {
+    return this.getUser().pipe(map((user) => user?.preferences));
   }
 
   async updatePreferences(

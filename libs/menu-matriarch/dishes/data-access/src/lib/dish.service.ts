@@ -1,7 +1,6 @@
 import { Injectable, inject } from '@angular/core';
-import { Observable, combineLatest, concatMap, first, map, of } from 'rxjs';
+import { Observable, catchError, combineLatest, from, map, of } from 'rxjs';
 
-import { SupabaseService } from '@atocha/supabase/data-access';
 import { IEntityService } from '@atocha/menu-matriarch/shared/data-access-api';
 import { IngredientService } from '@atocha/menu-matriarch/ingredients/data-access';
 import { RouterService } from '@atocha/menu-matriarch/shared/data-access-routing';
@@ -16,7 +15,6 @@ export type DishData = EditableDishData;
   providedIn: 'root',
 })
 export class DishService implements IEntityService<Dish, EditableDishData> {
-  private _supabase = inject(SupabaseService);
   private _dishDtoService = inject(DishDtoService);
   private _ingredientService = inject(IngredientService);
   private _routerService = inject(RouterService);
@@ -44,37 +42,19 @@ export class DishService implements IEntityService<Dish, EditableDishData> {
       tags: false,
     }
   ): Observable<Dish[]> {
-    return this._supabase.session$.pipe(
-      first(),
-      concatMap((session) => {
-        const uid = session?.user.id;
-        if (uid) {
-          return combineLatest([
-            this._dishDtoService.getAll(uid),
-            tags ? this._tagService.getAll() : of([]),
-          ]).pipe(
-            map(([dishDtos, tags]) =>
-              dishDtos.map((dishDto) => mapDishDtoToDish(dishDto, [], tags))
-            )
-          );
-        }
-        return of([]);
-      })
+    return combineLatest([
+      this._dishDtoService.getAll(),
+      tags ? this._tagService.getAll() : of([]),
+    ]).pipe(
+      map(([dishDtos, tags]) =>
+        dishDtos.map((dishDto) => mapDishDtoToDish(dishDto, [], tags))
+      )
     );
   }
 
   create(dish: EditableDishData): Observable<string | undefined> {
-    return this._supabase.session$.pipe(
-      first(),
-      concatMap(async (session) => {
-        const uid = session?.user.id;
-        if (uid) {
-          const id = await this._dishDtoService.create(uid, dish);
-          return id;
-        } else {
-          return undefined;
-        }
-      })
+    return from(this._dishDtoService.create(dish)).pipe(
+      catchError(() => of(undefined))
     );
   }
 

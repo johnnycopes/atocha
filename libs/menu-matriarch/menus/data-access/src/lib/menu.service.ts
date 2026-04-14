@@ -1,7 +1,6 @@
 import { Injectable, inject } from '@angular/core';
 import { Observable, combineLatest, concatMap, first, map, of } from 'rxjs';
 
-import { SupabaseService } from '@atocha/supabase/data-access';
 import { IEntityService } from '@atocha/menu-matriarch/shared/data-access-api';
 import { DishService } from '@atocha/menu-matriarch/dishes/data-access';
 import { UserService } from '@atocha/menu-matriarch/settings/data-access';
@@ -14,7 +13,6 @@ import { mapMenuDtoToMenu } from './internal/map-menu-dto-to-menu';
   providedIn: 'root',
 })
 export class MenuService implements IEntityService<Menu, EditableMenuData> {
-  private _supabase = inject(SupabaseService);
   private _dishService = inject(DishService);
   private _menuDtoService = inject(MenuDtoService);
   private _routerService = inject(RouterService);
@@ -38,27 +36,18 @@ export class MenuService implements IEntityService<Menu, EditableMenuData> {
   }
 
   getAll(): Observable<Menu[]> {
-    return this._supabase.session$.pipe(
-      first(),
-      concatMap((session) => {
-        const uid = session?.user.id;
-        if (uid) {
-          return combineLatest([
-            this._menuDtoService.getAll(uid),
-            this._dishService.getAll(),
-            this._userService.getPreferences(),
-          ]).pipe(
-            map(([menuDtos, dishes, preferences]) => {
-              if (!preferences) {
-                return [];
-              }
-              return menuDtos.map((menuDto) =>
-                mapMenuDtoToMenu({ menuDto, dishes, preferences })
-              );
-            })
-          );
+    return combineLatest([
+      this._menuDtoService.getAll(),
+      this._dishService.getAll(),
+      this._userService.getPreferences(),
+    ]).pipe(
+      map(([menuDtos, dishes, preferences]) => {
+        if (!preferences) {
+          return [];
         }
-        return of([]);
+        return menuDtos.map((menuDto) =>
+          mapMenuDtoToMenu({ menuDto, dishes, preferences })
+        );
       })
     );
   }
@@ -68,7 +57,7 @@ export class MenuService implements IEntityService<Menu, EditableMenuData> {
       first(),
       concatMap(async (user) => {
         if (user) {
-          const id = await this._menuDtoService.create(user.uid, {
+          const id = await this._menuDtoService.create({
             name,
             startDay: user.preferences.defaultMenuStartDay,
           });

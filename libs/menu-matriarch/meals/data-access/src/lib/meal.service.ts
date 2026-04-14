@@ -1,7 +1,6 @@
 import { Injectable, inject } from '@angular/core';
-import { Observable, combineLatest, concatMap, first, map, of } from 'rxjs';
+import { Observable, catchError, combineLatest, from, map, of } from 'rxjs';
 
-import { SupabaseService } from '@atocha/supabase/data-access';
 import { IEntityService } from '@atocha/menu-matriarch/shared/data-access-api';
 import { DishService } from '@atocha/menu-matriarch/dishes/data-access';
 import { RouterService } from '@atocha/menu-matriarch/shared/data-access-routing';
@@ -16,7 +15,6 @@ export type MealData = EditableMealData;
   providedIn: 'root',
 })
 export class MealService implements IEntityService<Meal, EditableMealData> {
-  private _supabase = inject(SupabaseService);
   private _dishService = inject(DishService);
   private _mealDtoService = inject(MealDtoService);
   private _routerService = inject(RouterService);
@@ -40,40 +38,20 @@ export class MealService implements IEntityService<Meal, EditableMealData> {
   }
 
   getAll(): Observable<Meal[]> {
-    return this._supabase.session$.pipe(
-      first(),
-      concatMap((session) => {
-        const uid = session?.user.id;
-        if (uid) {
-          return combineLatest([
-            this._mealDtoService.getAll(uid),
-            this._dishService.getAll(),
-            this._tagService.getAll(),
-          ]).pipe(
-            map(([mealDtos, dishes, tags]) =>
-              mealDtos.map((mealDto) =>
-                mapMealDtoToMeal({ mealDto, dishes, tags })
-              )
-            )
-          );
-        }
-        return of([]);
-      })
+    return combineLatest([
+      this._mealDtoService.getAll(),
+      this._dishService.getAll(),
+      this._tagService.getAll(),
+    ]).pipe(
+      map(([mealDtos, dishes, tags]) =>
+        mealDtos.map((mealDto) => mapMealDtoToMeal({ mealDto, dishes, tags }))
+      )
     );
   }
 
   create(meal: EditableMealData): Observable<string | undefined> {
-    return this._supabase.session$.pipe(
-      first(),
-      concatMap(async (session) => {
-        const uid = session?.user.id;
-        if (uid) {
-          const id = await this._mealDtoService.create(uid, meal);
-          return id;
-        } else {
-          return undefined;
-        }
-      })
+    return from(this._mealDtoService.create(meal)).pipe(
+      catchError(() => of(undefined))
     );
   }
 

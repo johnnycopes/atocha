@@ -1,7 +1,6 @@
 import { Injectable, inject } from '@angular/core';
-import { Observable, combineLatest, concatMap, first, map, of } from 'rxjs';
+import { Observable, catchError, combineLatest, from, map, of } from 'rxjs';
 
-import { SupabaseService } from '@atocha/supabase/data-access';
 import { IEntityService } from '@atocha/menu-matriarch/shared/data-access-api';
 import { IngredientType } from '@atocha/menu-matriarch/shared/util';
 import {
@@ -17,7 +16,6 @@ import { mapIngredientTypeDtoToIngredientType } from './internal/map-ingredient-
 export class IngredientTypeService
   implements IEntityService<IngredientType, EditableIngredientTypeData>
 {
-  private _supabase = inject(SupabaseService);
   private _ingredientTypeDtoService = inject(IngredientTypeDtoService);
   private _ingredientService = inject(IngredientService);
 
@@ -39,44 +37,23 @@ export class IngredientTypeService
   }
 
   getAll(): Observable<IngredientType[]> {
-    return this._supabase.session$.pipe(
-      first(),
-      concatMap((session) => {
-        const uid = session?.user.id;
-        if (uid) {
-          return combineLatest([
-            this._ingredientTypeDtoService.getAll(uid),
-            this._ingredientService.getAll(),
-          ]).pipe(
-            map(([ingredientTypeDtos, ingredients]) =>
-              ingredientTypeDtos.map((dto) =>
-                mapIngredientTypeDtoToIngredientType(dto, ingredients)
-              )
-            )
-          );
-        }
-        return of([]);
-      })
+    return combineLatest([
+      this._ingredientTypeDtoService.getAll(),
+      this._ingredientService.getAll(),
+    ]).pipe(
+      map(([ingredientTypeDtos, ingredients]) =>
+        ingredientTypeDtos.map((dto) =>
+          mapIngredientTypeDtoToIngredientType(dto, ingredients)
+        )
+      )
     );
   }
 
   create(
     ingredientType: EditableIngredientTypeData
   ): Observable<string | undefined> {
-    return this._supabase.session$.pipe(
-      first(),
-      concatMap(async (session) => {
-        const uid = session?.user.id;
-        if (uid) {
-          const id = await this._ingredientTypeDtoService.create(
-            uid,
-            ingredientType
-          );
-          return id;
-        } else {
-          return undefined;
-        }
-      })
+    return from(this._ingredientTypeDtoService.create(ingredientType)).pipe(
+      catchError(() => of(undefined))
     );
   }
 

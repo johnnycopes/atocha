@@ -1,7 +1,6 @@
 import { Injectable, inject } from '@angular/core';
-import { Observable, concatMap, first, of } from 'rxjs';
+import { Observable, catchError, from, of } from 'rxjs';
 
-import { SupabaseService } from '@atocha/supabase/data-access';
 import { IEntityService } from '@atocha/menu-matriarch/shared/data-access-api';
 import { Ingredient } from '@atocha/menu-matriarch/shared/util';
 import {
@@ -15,7 +14,6 @@ import {
 export class IngredientService
   implements IEntityService<Ingredient, EditableIngredientData>
 {
-  private _supabase = inject(SupabaseService);
   private _ingredientDtoService = inject(IngredientDtoService);
 
   getOne(id: string): Observable<Ingredient | undefined> {
@@ -23,30 +21,12 @@ export class IngredientService
   }
 
   getAll(): Observable<Ingredient[]> {
-    return this._supabase.session$.pipe(
-      first(),
-      concatMap((session) => {
-        const uid = session?.user.id;
-        if (uid) {
-          return this._ingredientDtoService.getAll(uid);
-        }
-        return of([]);
-      })
-    );
+    return this._ingredientDtoService.getAll();
   }
 
   create(ingredient: EditableIngredientData): Observable<string | undefined> {
-    return this._supabase.session$.pipe(
-      first(),
-      concatMap(async (session) => {
-        const uid = session?.user.id;
-        if (uid) {
-          const id = await this._ingredientDtoService.create(uid, ingredient);
-          return id;
-        } else {
-          return undefined;
-        }
-      })
+    return from(this._ingredientDtoService.create(ingredient)).pipe(
+      catchError(() => of(undefined))
     );
   }
 

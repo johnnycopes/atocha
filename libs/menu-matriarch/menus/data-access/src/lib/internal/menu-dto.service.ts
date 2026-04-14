@@ -1,5 +1,5 @@
 import { Injectable, inject } from '@angular/core';
-import { Observable, from } from 'rxjs';
+import { Observable, concatMap, first, from, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { SupabaseService } from '@atocha/supabase/data-access';
@@ -69,25 +69,37 @@ export class MenuDtoService implements IDtoService<Menu, MenuDto> {
     );
   }
 
-  getAll(uid: string): Observable<MenuDto[]> {
-    return from(
-      this._supabase.client
-        .from('menus')
-        .select('*, menu_entries(day, dish_id, sort_order)')
-        .eq('user_id', uid)
-        .order('name'),
-    ).pipe(
-      map(({ data }) =>
-        (data ?? []).map((row) => mapRowToDto(row as unknown as MenuRow)),
-      ),
+  getAll(): Observable<MenuDto[]> {
+    return this._supabase.session$.pipe(
+      first(),
+      concatMap((session) => {
+        const uid = session?.user.id;
+        if (!uid) return of([]);
+        return from(
+          this._supabase.client
+            .from('menus')
+            .select('*, menu_entries(day, dish_id, sort_order)')
+            .eq('user_id', uid)
+            .order('name'),
+        ).pipe(
+          map(({ data }) =>
+            (data ?? []).map((row) => mapRowToDto(row as unknown as MenuRow)),
+          ),
+        );
+      })
     );
   }
 
-  async create(uid: string, menu: EditableMenuData): Promise<string> {
+  async create(menu: EditableMenuData): Promise<string> {
+    const {
+      data: { user },
+    } = await this._supabase.client.auth.getUser();
+    if (!user) throw new Error('Not authenticated');
+
     const { data, error } = await this._supabase.client
       .from('menus')
       .insert({
-        user_id: uid,
+        user_id: user.id,
         name: menu.name ?? '',
         favorited: false,
         start_day: menu.startDay ?? 'Monday',

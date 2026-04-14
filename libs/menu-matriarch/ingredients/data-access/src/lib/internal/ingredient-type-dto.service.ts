@@ -1,5 +1,5 @@
 import { Injectable, inject } from '@angular/core';
-import { Observable, from } from 'rxjs';
+import { Observable, concatMap, first, from, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { SupabaseService } from '@atocha/supabase/data-access';
@@ -50,25 +50,37 @@ export class IngredientTypeDtoService
     );
   }
 
-  getAll(uid: string): Observable<IngredientTypeDto[]> {
-    return from(
-      this._supabase.client
-        .from('ingredient_types')
-        .select('*, ingredients(id)')
-        .eq('user_id', uid)
-        .order('sort_order')
-    ).pipe(
-      map(({ data }) =>
-        (data ?? []).map((row) => mapRowToDto(row as unknown as IngredientTypeRow))
-      )
+  getAll(): Observable<IngredientTypeDto[]> {
+    return this._supabase.session$.pipe(
+      first(),
+      concatMap((session) => {
+        const uid = session?.user.id;
+        if (!uid) return of([]);
+        return from(
+          this._supabase.client
+            .from('ingredient_types')
+            .select('*, ingredients(id)')
+            .eq('user_id', uid)
+            .order('sort_order')
+        ).pipe(
+          map(({ data }) =>
+            (data ?? []).map((row) => mapRowToDto(row as unknown as IngredientTypeRow))
+          )
+        );
+      })
     );
   }
 
-  async create(uid: string, data: EditableIngredientTypeData): Promise<string> {
+  async create(data: EditableIngredientTypeData): Promise<string> {
+    const {
+      data: { user },
+    } = await this._supabase.client.auth.getUser();
+    if (!user) throw new Error('Not authenticated');
+
     const { data: existing } = await this._supabase.client
       .from('ingredient_types')
       .select('sort_order')
-      .eq('user_id', uid)
+      .eq('user_id', user.id)
       .order('sort_order', { ascending: false })
       .limit(1);
 
@@ -76,7 +88,7 @@ export class IngredientTypeDtoService
 
     const { data: created, error } = await this._supabase.client
       .from('ingredient_types')
-      .insert({ name: data.name ?? '', user_id: uid, sort_order: nextSortOrder })
+      .insert({ name: data.name ?? '', user_id: user.id, sort_order: nextSortOrder })
       .select('id')
       .single();
 
