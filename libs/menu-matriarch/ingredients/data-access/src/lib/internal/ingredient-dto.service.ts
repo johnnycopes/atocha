@@ -1,21 +1,34 @@
 import { Injectable, inject } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, from } from 'rxjs';
+import { map } from 'rxjs/operators';
 
-import { BatchService, DtoService } from '@atocha/firebase/data-access';
-import {
-  DishUpdateService,
-  IDtoService,
-  Endpoint,
-  IngredientTypeUpdateService,
-} from '@atocha/menu-matriarch/shared/data-access-api';
+import { SupabaseService } from '@atocha/supabase/data-access';
+import { IDtoService } from '@atocha/menu-matriarch/shared/data-access-api';
 import { Ingredient } from '@atocha/menu-matriarch/shared/util';
 import { IngredientDto } from './ingredient-dto';
-import { createIngredientDto } from '../create-ingredient-dto';
 
 export type EditableIngredientData = Pick<
   IngredientDto,
   'name' | 'typeId' | 'dishIds'
 >;
+
+type IngredientRow = {
+  id: string;
+  user_id: string;
+  name: string;
+  ingredient_type_id: string | null;
+  dish_ingredients: { dish_id: string }[];
+};
+
+function mapRowToDto(row: IngredientRow): IngredientDto {
+  return {
+    id: row.id,
+    uid: row.user_id,
+    name: row.name,
+    typeId: row.ingredient_type_id ?? '',
+    dishIds: row.dish_ingredients.map((di) => di.dish_id),
+  };
+}
 
 @Injectable({
   providedIn: 'root',
@@ -23,86 +36,67 @@ export type EditableIngredientData = Pick<
 export class IngredientDtoService
   implements IDtoService<Ingredient, IngredientDto>
 {
-  private _batchService = inject(BatchService);
-  private _dtoService = inject<DtoService<IngredientDto>>(DtoService);
-  private _dishUpdateService = inject(DishUpdateService);
-  private _ingredientTypeUpdateService = inject(IngredientTypeUpdateService);
-
-  private readonly _endpoint = Endpoint.ingredients;
+  private _supabase = inject(SupabaseService);
 
   getOne(id: string): Observable<IngredientDto | undefined> {
-    return this._dtoService.getOne(this._endpoint, id);
+    return from(
+      this._supabase.client
+        .from('ingredients')
+        .select('*, dish_ingredients(dish_id)')
+        .eq('id', id)
+        .single()
+    ).pipe(
+      map(({ data }) =>
+        data ? mapRowToDto(data as unknown as IngredientRow) : undefined
+      )
+    );
   }
 
   getAll(uid: string): Observable<IngredientDto[]> {
-    return this._dtoService.getAll(this._endpoint, uid);
+    return from(
+      this._supabase.client
+        .from('ingredients')
+        .select('*, dish_ingredients(dish_id)')
+        .eq('user_id', uid)
+        .order('name')
+    ).pipe(
+      map(({ data }) =>
+        (data ?? []).map((row) => mapRowToDto(row as unknown as IngredientRow))
+      )
+    );
   }
 
-  async create(
-    uid: string,
-    ingredient: EditableIngredientData
-  ): Promise<string> {
-    const id = this._dtoService.createId();
-    const batch = this._batchService.createBatch();
-
-    batch
-      .set({
-        endpoint: this._endpoint,
-        id,
-        data: createIngredientDto({ id, uid, ...ingredient }),
+  async create(uid: string, ingredient: EditableIngredientData): Promise<string> {
+    const { data, error } = await this._supabase.client
+      .from('ingredients')
+      .insert({
+        user_id: uid,
+        name: ingredient.name,
+        ingredient_type_id: ingredient.typeId || null,
       })
-      .updateMultiple(
-        this._ingredientTypeUpdateService.getUpdates({
-          ingredientId: id,
-          typeIdToAddTo: ingredient.typeId,
-        })
-      );
-
-    await batch.commit();
-    return id;
+      .select('id')
+      .single();
+    if (error) throw error;
+    return data.id;
   }
 
-  async update(
-    ingredient: Ingredient,
-    updates: EditableIngredientData
-  ): Promise<void> {
-    const batch = this._batchService.createBatch();
-
-    batch.update({
-      endpoint: Endpoint.ingredients,
-      id: ingredient.id,
-      data: updates,
-    });
-
-    if (updates.typeId) {
-      batch.updateMultiple(
-        this._ingredientTypeUpdateService.getUpdates({
-          ingredientId: ingredient.id,
-          typeIdToRemoveFrom: ingredient.typeId,
-          typeIdToAddTo: updates.typeId,
-        })
-      );
+  async update(ingredient: Ingredient, updates: EditableIngredientData): Promise<void> {
+    const patch: Record<string, unknown> = { name: updates.name };
+    if (updates.typeId !== undefined) {
+      patch['ingredient_type_id'] = updates.typeId || null;
     }
-
-    await batch.commit();
+    const { error } = await this._supabase.client
+      .from('ingredients')
+      .update(patch)
+      .eq('id', ingredient.id);
+    if (error) throw error;
   }
 
   async delete(ingredient: Ingredient): Promise<void> {
-    const batch = this._batchService.createBatch();
-
-    batch.delete(Endpoint.ingredients, ingredient.id).updateMultiple([
-      ...this._ingredientTypeUpdateService.getUpdates({
-        ingredientId: ingredient.id,
-        typeIdToRemoveFrom: ingredient.typeId,
-      }),
-      ...this._dishUpdateService.getUpdates({
-        key: 'ingredientIds',
-        initialDishIds: ingredient.dishIds,
-        finalDishIds: [],
-        entityId: ingredient.id,
-      }),
-    ]);
-
-    await batch.commit();
+    const { error } = await this._supabase.client
+      .from('ingredients')
+      .delete()
+      .eq('id', ingredient.id);
+    if (error) throw error;
   }
 }

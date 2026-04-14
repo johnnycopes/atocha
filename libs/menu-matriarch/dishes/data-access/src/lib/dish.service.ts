@@ -1,7 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { Observable, combineLatest, concatMap, first, map, of } from 'rxjs';
 
-import { AuthService } from '@atocha/firebase/data-access';
+import { SupabaseService } from '@atocha/supabase/data-access';
 import { IEntityService } from '@atocha/menu-matriarch/shared/data-access-api';
 import { IngredientService } from '@atocha/menu-matriarch/ingredients/data-access';
 import { RouterService } from '@atocha/menu-matriarch/shared/data-access-routing';
@@ -16,7 +16,7 @@ export type DishData = EditableDishData;
   providedIn: 'root',
 })
 export class DishService implements IEntityService<Dish, EditableDishData> {
-  private _authService = inject(AuthService);
+  private _supabase = inject(SupabaseService);
   private _dishDtoService = inject(DishDtoService);
   private _ingredientService = inject(IngredientService);
   private _routerService = inject(RouterService);
@@ -44,9 +44,10 @@ export class DishService implements IEntityService<Dish, EditableDishData> {
       tags: false,
     }
   ): Observable<Dish[]> {
-    return this._authService.uid$.pipe(
+    return this._supabase.session$.pipe(
       first(),
-      concatMap((uid) => {
+      concatMap((session) => {
+        const uid = session?.user.id;
         if (uid) {
           return combineLatest([
             this._dishDtoService.getAll(uid),
@@ -63,9 +64,10 @@ export class DishService implements IEntityService<Dish, EditableDishData> {
   }
 
   create(dish: EditableDishData): Observable<string | undefined> {
-    return this._authService.uid$.pipe(
+    return this._supabase.session$.pipe(
       first(),
-      concatMap(async (uid) => {
+      concatMap(async (session) => {
+        const uid = session?.user.id;
         if (uid) {
           const id = await this._dishDtoService.create(uid, dish);
           return id;

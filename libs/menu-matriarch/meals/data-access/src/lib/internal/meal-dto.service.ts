@@ -1,125 +1,135 @@
 import { Injectable, inject } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, from } from 'rxjs';
+import { map } from 'rxjs/operators';
 
-import { BatchService, DtoService } from '@atocha/firebase/data-access';
-import {
-  DishUpdateService,
-  IDtoService,
-  Endpoint,
-  TagUpdateService,
-} from '@atocha/menu-matriarch/shared/data-access-api';
+import { SupabaseService } from '@atocha/supabase/data-access';
+import { IDtoService } from '@atocha/menu-matriarch/shared/data-access-api';
 import { Meal } from '@atocha/menu-matriarch/shared/util';
 import { MealDto } from './meal-dto';
-import { createMealDto } from '../create-meal-dto';
 
 export type EditableMealData = Pick<
   MealDto,
   'name' | 'description' | 'dishIds' | 'tagIds'
 >;
 
+type MealRow = {
+  id: string;
+  user_id: string;
+  name: string;
+  description: string;
+  meal_dishes: { dish_id: string }[];
+  meal_tags: { tag_id: string }[];
+};
+
+function mapRowToDto(row: MealRow): MealDto {
+  return {
+    id: row.id,
+    uid: row.user_id,
+    name: row.name,
+    description: row.description,
+    dishIds: row.meal_dishes.map((md) => md.dish_id),
+    tagIds: row.meal_tags.map((mt) => mt.tag_id),
+  };
+}
+
+const MEAL_SELECT = '*, meal_dishes(dish_id), meal_tags(tag_id)';
+
 @Injectable({
   providedIn: 'root',
 })
 export class MealDtoService implements IDtoService<Meal, MealDto> {
-  private _batchService = inject(BatchService);
-  private _dtoService = inject<DtoService<MealDto>>(DtoService);
-  private _dishUpdateService = inject(DishUpdateService);
-  private _tagUpdateService = inject(TagUpdateService);
-
-  private readonly _endpoint = Endpoint.meals;
+  private _supabase = inject(SupabaseService);
 
   getOne(id: string): Observable<MealDto | undefined> {
-    return this._dtoService.getOne(this._endpoint, id);
+    return from(
+      this._supabase.client
+        .from('meals')
+        .select(MEAL_SELECT)
+        .eq('id', id)
+        .single()
+    ).pipe(
+      map(({ data }) =>
+        data ? mapRowToDto(data as unknown as MealRow) : undefined
+      )
+    );
   }
 
   getAll(uid: string): Observable<MealDto[]> {
-    return this._dtoService.getAll(this._endpoint, uid);
+    return from(
+      this._supabase.client
+        .from('meals')
+        .select(MEAL_SELECT)
+        .eq('user_id', uid)
+        .order('name')
+    ).pipe(
+      map(({ data }) =>
+        (data ?? []).map((row) => mapRowToDto(row as unknown as MealRow))
+      )
+    );
   }
 
   async create(uid: string, meal: EditableMealData): Promise<string> {
-    const id = this._dtoService.createId();
-    const batch = this._batchService.createBatch();
+    const { data, error } = await this._supabase.client
+      .from('meals')
+      .insert({
+        user_id: uid,
+        name: meal.name,
+        description: meal.description ?? '',
+      })
+      .select('id')
+      .single();
+    if (error) throw error;
 
-    batch.set({
-      endpoint: this._endpoint,
-      id,
-      data: createMealDto({ id, uid, ...meal }),
-    });
-    if (meal.dishIds) {
-      batch.updateMultiple(
-        this._dishUpdateService.getUpdates({
-          key: 'mealIds',
-          initialDishIds: [],
-          finalDishIds: meal.dishIds,
-          entityId: id,
-        })
-      );
+    const id = data.id;
+
+    if (meal.dishIds?.length) {
+      await this._supabase.client
+        .from('meal_dishes')
+        .insert(
+          meal.dishIds.map((dish_id, sort_order) => ({ meal_id: id, dish_id, sort_order }))
+        );
     }
-    if (meal.tagIds) {
-      batch.updateMultiple(
-        this._tagUpdateService.getUpdates({
-          key: 'mealIds',
-          initialTagIds: [],
-          finalTagIds: meal.tagIds,
-          entityId: id,
-        })
-      );
+    if (meal.tagIds?.length) {
+      await this._supabase.client
+        .from('meal_tags')
+        .insert(meal.tagIds.map((tag_id) => ({ meal_id: id, tag_id })));
     }
 
-    await batch.commit();
     return id;
   }
 
   async update(meal: Meal, data: EditableMealData): Promise<void> {
-    const batch = this._batchService.createBatch();
+    const { error } = await this._supabase.client
+      .from('meals')
+      .update({ name: data.name, description: data.description })
+      .eq('id', meal.id);
+    if (error) throw error;
 
-    batch.update({
-      endpoint: this._endpoint,
-      id: meal.id,
-      data,
-    });
-    if (data.dishIds) {
-      batch.updateMultiple(
-        this._dishUpdateService.getUpdates({
-          key: 'mealIds',
-          initialDishIds: meal.dishes.map(({ id }) => id),
-          finalDishIds: data.dishIds,
-          entityId: meal.id,
-        })
-      );
+    if (data.dishIds !== undefined) {
+      await this._supabase.client.from('meal_dishes').delete().eq('meal_id', meal.id);
+      if (data.dishIds.length) {
+        await this._supabase.client
+          .from('meal_dishes')
+          .insert(
+            data.dishIds.map((dish_id, sort_order) => ({ meal_id: meal.id, dish_id, sort_order }))
+          );
+      }
     }
-    if (data.tagIds) {
-      batch.updateMultiple(
-        this._tagUpdateService.getUpdates({
-          key: 'mealIds',
-          initialTagIds: meal.tags.map(({ id }) => id),
-          finalTagIds: data.tagIds,
-          entityId: meal.id,
-        })
-      );
+    if (data.tagIds !== undefined) {
+      await this._supabase.client.from('meal_tags').delete().eq('meal_id', meal.id);
+      if (data.tagIds.length) {
+        await this._supabase.client
+          .from('meal_tags')
+          .insert(data.tagIds.map((tag_id) => ({ meal_id: meal.id, tag_id })));
+      }
     }
-
-    await batch.commit();
   }
 
   async delete(meal: Meal): Promise<void> {
-    const batch = this._batchService.createBatch();
-
-    batch.delete(this._endpoint, meal.id).updateMultiple([
-      ...this._dishUpdateService.getUpdates({
-        key: 'mealIds',
-        initialDishIds: meal.dishes.map(({ id }) => id),
-        finalDishIds: [],
-        entityId: meal.id,
-      }),
-      ...this._tagUpdateService.getUpdates({
-        key: 'mealIds',
-        initialTagIds: meal.tags.map(({ id }) => id),
-        finalTagIds: [],
-        entityId: meal.id,
-      }),
-    ]);
-
-    await batch.commit();
+    const { error } = await this._supabase.client
+      .from('meals')
+      .delete()
+      .eq('id', meal.id);
+    if (error) throw error;
   }
 }

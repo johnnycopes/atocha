@@ -1,7 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { Observable, combineLatest, concatMap, first, map, of } from 'rxjs';
 
-import { AuthService } from '@atocha/firebase/data-access';
+import { SupabaseService } from '@atocha/supabase/data-access';
 import { IEntityService } from '@atocha/menu-matriarch/shared/data-access-api';
 import { DishService } from '@atocha/menu-matriarch/dishes/data-access';
 import { UserService } from '@atocha/menu-matriarch/settings/data-access';
@@ -14,7 +14,7 @@ import { mapMenuDtoToMenu } from './internal/map-menu-dto-to-menu';
   providedIn: 'root',
 })
 export class MenuService implements IEntityService<Menu, EditableMenuData> {
-  private _authService = inject(AuthService);
+  private _supabase = inject(SupabaseService);
   private _dishService = inject(DishService);
   private _menuDtoService = inject(MenuDtoService);
   private _routerService = inject(RouterService);
@@ -38,9 +38,10 @@ export class MenuService implements IEntityService<Menu, EditableMenuData> {
   }
 
   getAll(): Observable<Menu[]> {
-    return this._authService.uid$.pipe(
+    return this._supabase.session$.pipe(
       first(),
-      concatMap((uid) => {
+      concatMap((session) => {
+        const uid = session?.user.id;
         if (uid) {
           return combineLatest([
             this._menuDtoService.getAll(uid),

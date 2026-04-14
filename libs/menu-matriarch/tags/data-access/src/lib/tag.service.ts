@@ -1,7 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { Observable, concatMap, first, of } from 'rxjs';
 
-import { AuthService } from '@atocha/firebase/data-access';
+import { SupabaseService } from '@atocha/supabase/data-access';
 import { Tag } from '@atocha/menu-matriarch/shared/util';
 import { IEntityService } from '@atocha/menu-matriarch/shared/data-access-api';
 import { EditableTagData, TagDtoService } from './internal/tag-dto.service';
@@ -10,7 +10,7 @@ import { EditableTagData, TagDtoService } from './internal/tag-dto.service';
   providedIn: 'root',
 })
 export class TagService implements IEntityService<Tag, EditableTagData> {
-  private _authService = inject(AuthService);
+  private _supabase = inject(SupabaseService);
   private _tagDtoService = inject(TagDtoService);
 
   getOne(id: string): Observable<Tag | undefined> {
@@ -18,11 +18,11 @@ export class TagService implements IEntityService<Tag, EditableTagData> {
   }
 
   getAll(): Observable<Tag[]> {
-    return this._authService.uid$.pipe(
+    return this._supabase.session$.pipe(
       first(),
-      concatMap((uid) => {
-        if (uid) {
-          return this._tagDtoService.getAll(uid);
+      concatMap((session) => {
+        if (session) {
+          return this._tagDtoService.getAll(session.user.id);
         }
         return of([]);
       })
@@ -30,11 +30,11 @@ export class TagService implements IEntityService<Tag, EditableTagData> {
   }
 
   create(tag: EditableTagData): Observable<string | undefined> {
-    return this._authService.uid$.pipe(
+    return this._supabase.session$.pipe(
       first(),
-      concatMap(async (uid) => {
-        if (uid) {
-          const id = await this._tagDtoService.create(uid, tag);
+      concatMap(async (session) => {
+        if (session) {
+          const id = await this._tagDtoService.create(session.user.id, tag);
           return id;
         } else {
           return undefined;

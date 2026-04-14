@@ -1,72 +1,96 @@
 import { Injectable, inject } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, from } from 'rxjs';
+import { map } from 'rxjs/operators';
 
-import { BatchService, DtoService } from '@atocha/firebase/data-access';
-import {
-  DishUpdateService,
-  IDtoService,
-  Endpoint,
-  MealUpdateService,
-} from '@atocha/menu-matriarch/shared/data-access-api';
+import { SupabaseService } from '@atocha/supabase/data-access';
+import { IDtoService } from '@atocha/menu-matriarch/shared/data-access-api';
 import { Tag } from '@atocha/menu-matriarch/shared/util';
 import { TagDto } from './tag-dto';
-import { createTagDto } from '../create-tag-dto';
 
 export type EditableTagData = Pick<TagDto, 'name'>;
+
+type TagRow = {
+  id: string;
+  user_id: string;
+  name: string;
+  color: string;
+  dish_tags: { dish_id: string }[];
+  meal_tags: { meal_id: string }[];
+};
+
+function mapRowToTag(row: TagRow): Tag {
+  return {
+    id: row.id,
+    uid: row.user_id,
+    name: row.name,
+    color: row.color,
+    dishIds: row.dish_tags.map((dt) => dt.dish_id),
+    mealIds: row.meal_tags.map((mt) => mt.meal_id),
+  };
+}
 
 @Injectable({
   providedIn: 'root',
 })
 export class TagDtoService implements IDtoService<Tag, TagDto> {
-  private _batchService = inject(BatchService);
-  private _dtoService = inject<DtoService<TagDto>>(DtoService);
-  private _dishUpdateService = inject(DishUpdateService);
-  private _mealUpdateService = inject(MealUpdateService);
+  private _supabase = inject(SupabaseService);
 
-  private readonly _endpoint = Endpoint.tags;
-
-  getOne(id: string): Observable<TagDto | undefined> {
-    return this._dtoService.getOne(this._endpoint, id);
-  }
-
-  getAll(uid: string): Observable<TagDto[]> {
-    return this._dtoService.getAll(this._endpoint, uid);
-  }
-
-  async create(uid: string, tag: EditableTagData): Promise<string> {
-    const id = this._dtoService.createId();
-
-    await this._dtoService.create(
-      this._endpoint,
-      id,
-      createTagDto({ id, uid, ...tag })
+  getOne(id: string): Observable<Tag | undefined> {
+    return from(
+      this._supabase.client
+        .from('tags')
+        .select('*, dish_tags(dish_id), meal_tags(meal_id)')
+        .eq('id', id)
+        .single()
+    ).pipe(
+      map(({ data }) => (data ? mapRowToTag(data as unknown as TagRow) : undefined))
     );
+  }
 
-    return id;
+  getAll(_uid: string): Observable<Tag[]> {
+    return from(
+      this._supabase.client
+        .from('tags')
+        .select('*, dish_tags(dish_id), meal_tags(meal_id)')
+        .order('name')
+    ).pipe(
+      map(({ data }) =>
+        (data ?? []).map((row) => mapRowToTag(row as unknown as TagRow))
+      )
+    );
+  }
+
+  async create(_uid: string, tag: EditableTagData): Promise<string> {
+    const {
+      data: { user },
+    } = await this._supabase.client.auth.getUser();
+    if (!user) throw new Error('Not authenticated');
+
+    const { data, error } = await this._supabase.client
+      .from('tags')
+      .insert({ name: tag.name, color: '', user_id: user.id })
+      .select('id')
+      .single();
+
+    if (error) throw error;
+    return data.id;
   }
 
   async update(tag: Tag, data: EditableTagData): Promise<void> {
-    return this._dtoService.update(this._endpoint, tag.id, data);
+    const { error } = await this._supabase.client
+      .from('tags')
+      .update({ name: data.name })
+      .eq('id', tag.id);
+
+    if (error) throw error;
   }
 
   async delete(tag: Tag): Promise<void> {
-    const batch = this._batchService.createBatch();
+    const { error } = await this._supabase.client
+      .from('tags')
+      .delete()
+      .eq('id', tag.id);
 
-    batch.delete(this._endpoint, tag.id).updateMultiple([
-      ...this._mealUpdateService.getUpdates({
-        key: 'tagIds',
-        initialMealIds: tag.mealIds,
-        finalMealIds: [],
-        entityId: tag.id,
-      }),
-      ...this._dishUpdateService.getUpdates({
-        key: 'tagIds',
-        initialDishIds: tag.dishIds,
-        finalDishIds: [],
-        entityId: tag.id,
-      }),
-    ]);
-
-    await batch.commit();
+    if (error) throw error;
   }
 }

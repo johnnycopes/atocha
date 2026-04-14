@@ -1,56 +1,113 @@
 import { Injectable, inject } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, from } from 'rxjs';
+import { map } from 'rxjs/operators';
 
-import { BatchService, DtoService } from '@atocha/firebase/data-access';
-import {
-  DishUpdateService,
-  IDtoService,
-  Endpoint,
-  MenuUpdateService,
-} from '@atocha/menu-matriarch/shared/data-access-api';
-import { Day, Menu, flattenValues } from '@atocha/menu-matriarch/shared/util';
+import { SupabaseService } from '@atocha/supabase/data-access';
+import { IDtoService } from '@atocha/menu-matriarch/shared/data-access-api';
+import { Day, Menu } from '@atocha/menu-matriarch/shared/util';
 import { MenuDto } from './menu-dto';
-import { createMenuDto } from '../create-menu-dto';
 
 export type EditableMenuData = Partial<Pick<MenuDto, 'name' | 'startDay'>>;
+
+const ALL_DAYS: Day[] = [
+  'Monday',
+  'Tuesday',
+  'Wednesday',
+  'Thursday',
+  'Friday',
+  'Saturday',
+  'Sunday',
+];
+
+type MenuRow = {
+  id: string;
+  user_id: string;
+  name: string;
+  favorited: boolean;
+  start_day: string;
+  menu_entries: { day: string; dish_id: string; sort_order: number }[];
+};
+
+function mapRowToDto(row: MenuRow): MenuDto {
+  const contents = Object.fromEntries(
+    ALL_DAYS.map((d) => [d, []]),
+  ) as unknown as { [day in Day]: string[] };
+
+  for (const entry of [...row.menu_entries].sort(
+    (a, b) => a.sort_order - b.sort_order,
+  )) {
+    contents[entry.day as Day].push(entry.dish_id);
+  }
+
+  return {
+    id: row.id,
+    uid: row.user_id,
+    name: row.name,
+    favorited: row.favorited,
+    startDay: row.start_day as Day,
+    contents,
+  };
+}
 
 @Injectable({
   providedIn: 'root',
 })
 export class MenuDtoService implements IDtoService<Menu, MenuDto> {
-  private _batchService = inject(BatchService);
-  private _dtoService = inject<DtoService<MenuDto>>(DtoService);
-  private _dishUpdateService = inject(DishUpdateService);
-  private _menuUpdateService = inject(MenuUpdateService);
-
-  private readonly _endpoint = Endpoint.menus;
+  private _supabase = inject(SupabaseService);
 
   getOne(id: string): Observable<MenuDto | undefined> {
-    return this._dtoService.getOne(this._endpoint, id);
+    return from(
+      this._supabase.client
+        .from('menus')
+        .select('*, menu_entries(day, dish_id, sort_order)')
+        .eq('id', id)
+        .single(),
+    ).pipe(
+      map(({ data }) =>
+        data ? mapRowToDto(data as unknown as MenuRow) : undefined,
+      ),
+    );
   }
 
   getAll(uid: string): Observable<MenuDto[]> {
-    return this._dtoService.getAll(this._endpoint, uid);
+    return from(
+      this._supabase.client
+        .from('menus')
+        .select('*, menu_entries(day, dish_id, sort_order)')
+        .eq('user_id', uid)
+        .order('name'),
+    ).pipe(
+      map(({ data }) =>
+        (data ?? []).map((row) => mapRowToDto(row as unknown as MenuRow)),
+      ),
+    );
   }
 
   async create(uid: string, menu: EditableMenuData): Promise<string> {
-    const id = this._dtoService.createId();
-
-    await this._dtoService.create(
-      this._endpoint,
-      id,
-      createMenuDto({
-        id,
-        uid,
-        ...menu,
+    const { data, error } = await this._supabase.client
+      .from('menus')
+      .insert({
+        user_id: uid,
+        name: menu.name ?? '',
+        favorited: false,
+        start_day: menu.startDay ?? 'Monday',
       })
-    );
-
-    return id;
+      .select('id')
+      .single();
+    if (error) throw error;
+    return data.id;
   }
 
   async update({ id }: Menu, data: EditableMenuData): Promise<void> {
-    return await this._dtoService.update(this._endpoint, id, data);
+    const patch: Record<string, unknown> = {};
+    if (data.name !== undefined) patch['name'] = data.name;
+    if (data.startDay !== undefined) patch['start_day'] = data.startDay;
+
+    const { error } = await this._supabase.client
+      .from('menus')
+      .update(patch)
+      .eq('id', id);
+    if (error) throw error;
   }
 
   async updateMenuContents({
@@ -64,72 +121,56 @@ export class MenuDtoService implements IDtoService<Menu, MenuDto> {
     day: Day;
     selected: boolean;
   }): Promise<void> {
-    const batch = this._batchService.createBatch();
+    if (selected) {
+      const { data: existing } = await this._supabase.client
+        .from('menu_entries')
+        .select('sort_order')
+        .eq('menu_id', menu.id)
+        .eq('day', day)
+        .order('sort_order', { ascending: false })
+        .limit(1);
 
-    batch.updateMultiple([
-      ...this._dishUpdateService.getCountersUpdates({
-        dishIds,
-        menu,
-        change: selected ? 'increment' : 'decrement',
-      }),
-      ...this._menuUpdateService.getContentsUpdates({
-        menuIds: [menu.id],
-        dishIds,
-        day,
-        change: selected ? 'add' : 'remove',
-      }),
-    ]);
+      const nextOrder = (existing?.[0]?.sort_order ?? -1) + 1;
 
-    await batch.commit();
+      const { error } = await this._supabase.client.from('menu_entries').insert(
+        dishIds.map((dish_id, i) => ({
+          menu_id: menu.id,
+          day,
+          dish_id,
+          sort_order: nextOrder + i,
+        })),
+      );
+      if (error) throw error;
+    } else {
+      const { error } = await this._supabase.client
+        .from('menu_entries')
+        .delete()
+        .eq('menu_id', menu.id)
+        .eq('day', day)
+        .in('dish_id', dishIds);
+      if (error) throw error;
+    }
   }
 
   async delete(menu: Menu): Promise<void> {
-    const batch = this._batchService.createBatch();
-
-    batch.delete(this._endpoint, menu.id).updateMultiple(
-      this._dishUpdateService.getCountersUpdates({
-        dishIds: flattenValues(menu.contents),
-        menu,
-        change: 'clear',
-      })
-    );
-
-    await batch.commit();
+    const { error } = await this._supabase.client
+      .from('menus')
+      .delete()
+      .eq('id', menu.id);
+    if (error) throw error;
   }
 
   async deleteMenuContents(menu: Menu, day?: Day): Promise<void> {
-    const batch = this._batchService.createBatch();
+    let query = this._supabase.client
+      .from('menu_entries')
+      .delete()
+      .eq('menu_id', menu.id);
 
-    // Clear a single day's contents
     if (day) {
-      batch.updateMultiple([
-        ...this._menuUpdateService.getContentsUpdates({
-          menuIds: [menu.id],
-          dishIds: [],
-          day,
-        }),
-        ...this._dishUpdateService.getCountersUpdates({
-          dishIds: menu.contents[day],
-          menu,
-          change: 'decrement',
-        }),
-      ]);
-    }
-    // Clear all days' contents
-    else {
-      batch.updateMultiple([
-        ...this._menuUpdateService.getContentsUpdates({
-          menuIds: [menu.id],
-          dishIds: [],
-        }),
-        ...this._dishUpdateService.getCountersUpdates({
-          dishIds: flattenValues(menu.contents),
-          menu,
-          change: 'clear',
-        }),
-      ]);
+      query = query.eq('day', day);
     }
 
-    await batch.commit();
+    const { error } = await query;
+    if (error) throw error;
   }
 }
